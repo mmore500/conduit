@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import sys
+
 import pandas as pd
 import statsmodels.formula.api as smf
 from scipy.stats import stats
@@ -14,6 +16,17 @@ from slugify import slugify
 from keyname import keyname as kn
 from iterpop import iterpop as ip
 
+try:
+    __, synchronous = sys.argv
+except:
+    raise ValueError('specify "synchronous" as argument')
+
+try:
+    synchronous = int(synchronous)
+except:
+    raise ValueError('"synchronous" should be an integer')
+
+assert synchronous in (0, 1), '"synchronous" should be 0 or 1'
 
 def estimate_latency(group):
   '''
@@ -108,6 +121,7 @@ def plot_regression(df, x, y, extra_names={}):
     kn.pack({**{
       'x' : slugify(x),
       'y' : slugify(y),
+      'synchronous' : str(synchronous),
       'ext': '.png',
     },**extra_names}),
     transparent=True,
@@ -240,7 +254,7 @@ def estimate_properties(model):
 
 # load and set up DataFrame
 df = pd.read_csv(kn.pack({
-  "malloc" : "mimalloc",
+  "synchronous" : str(synchronous),
   "ext" : ".csv",
 }))
 df['Inverse Threads'] = 1 / df['Threads']
@@ -310,6 +324,10 @@ res = res.append(pd.DataFrame([
 res.sort_values([
   'Parameter',
 ]).to_csv(
-  'parameter_estimates.csv',
+  kn.pack({
+    'title' : 'parameter_estimates',
+    'synchronous' : str(synchronous),
+    'ext' : '.csv',
+  }),
   index=False,
 )
