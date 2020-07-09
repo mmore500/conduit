@@ -27,7 +27,7 @@ public:
 
     emp_assert(
       pending >= count,
-      error_message_mutex.lock(),
+      [](){ error_message_mutex.lock(); return "locked"; }(),
       emp::to_string("pending: ", pending),
       emp::to_string("count: ", count)
     );
