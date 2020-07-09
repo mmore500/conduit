@@ -83,8 +83,8 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   for (size_t update = 0; update < num_updates; ++update) {
 
     #pragma omp parallel for
-    for (auto & chunk : chunks) {
-      update_chunk(chunk, verbose);
+    for (size_t i = 0; i < chunks.size(); ++i) {
+      update_chunk(chunks[i], verbose);
     }
   }
 
