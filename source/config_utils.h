@@ -29,6 +29,12 @@ config_t make_config() {
       )
     },
     {
+      "synchronous",
+      std::stoi(
+        std::getenv("PP_SYNCHRONOUS") ?: "1"
+      )
+    },
+    {
       "verbose",
       std::stoi(
         std::getenv("PP_VERBOSE") ?: "0"

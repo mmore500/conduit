@@ -80,12 +80,28 @@ void run_grid(grid_t & grid, const config_t & cfg) {
 
   const size_t num_updates = cfg.at("num_updates");
   const size_t verbose = cfg.at("verbose");
-  for (size_t update = 0; update < num_updates; ++update) {
 
+  const auto run_synchronous = [num_updates, verbose, &chunks](){
+    for (size_t update = 0; update < num_updates; ++update) {
+      #pragma omp parallel for
+      for (size_t i = 0; i < chunks.size(); ++i) {
+        update_chunk(chunks[i], verbose);
+      }
+    }
+  };
+
+  const auto run_asynchronous = [num_updates, verbose, &chunks](){
     #pragma omp parallel for
     for (size_t i = 0; i < chunks.size(); ++i) {
-      update_chunk(chunks[i], verbose);
+      for (size_t update = 0; update < num_updates; ++update) {
+        update_chunk(chunks[i], verbose);
+      }
     }
-  }
+  };
+
+  const size_t synchronous = cfg.at("synchronous");
+
+  if (synchronous) run_synchronous();
+  else run_asynchronous();
 
 }
