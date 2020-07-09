@@ -12,7 +12,7 @@ for SYNCHRONOUS in 0 1; do
         echo "NUM_THREADS: ${NUM_THREADS}"
         export OMP_NUM_THREADS=$NUM_THREADS
         echo "AMT_WORK: ${AMT_WORK}"
-        GRID_SIZE=$(( $AMT_WORK * 100))
+        GRID_SIZE=$(( $AMT_WORK * 1000))
         echo "GRID_SIZE: ${GRID_SIZE}"
         export PP_GRID_SIZE=$GRID_SIZE
         echo "LOAD_PER: ${LOAD_PER}"
