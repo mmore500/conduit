@@ -53,7 +53,11 @@ std::vector<chunk_t> make_chunks(grid_t & grid, const size_t num_chunks) {
   return res;
 }
 
-void update_chunk(chunk_t & chunk, const bool verbose) {
+void update_chunk(
+  chunk_t & chunk,
+  const bool verbose,
+  const size_t resistance
+) {
 
 
   std::random_shuffle(
@@ -63,6 +67,7 @@ void update_chunk(chunk_t & chunk, const bool verbose) {
 
 
   for (auto & handle : chunk) {
+    for (size_t i = 0; i < resistance; ++i) { volatile int do_not_optimize{}; }
     if (verbose) std::cout << handle->GetState();
     handle->Update();
   }
