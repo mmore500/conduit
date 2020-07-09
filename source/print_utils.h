@@ -3,6 +3,7 @@
 #include <string>
 #include <regex>
 #include <sstream>
+#include <mutex>
 
 std::mutex error_message_mutex;
 
