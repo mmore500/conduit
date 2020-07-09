@@ -80,8 +80,9 @@ void run_grid(grid_t & grid, const config_t & cfg) {
 
   const size_t num_updates = cfg.at("num_updates");
   const size_t verbose = cfg.at("verbose");
+  const size_t resistance = cfg.at("resistance");
 
-  const auto run_synchronous = [num_updates, verbose, &chunks](){
+  const auto run_synchronous = [num_updates, verbose, resistance, &chunks](){
     for (size_t update = 0; update < num_updates; ++update) {
       #pragma omp parallel
       {
@@ -93,12 +94,12 @@ void run_grid(grid_t & grid, const config_t & cfg) {
       }
       #pragma omp for
       for (size_t i = 0; i < chunks.size(); ++i) {
-        update_chunk(chunks[i], verbose);
+        update_chunk(chunks[i], verbose, resistance);
       }
     }
   };
 
-  const auto run_asynchronous = [num_updates, verbose, &chunks](){
+  const auto run_asynchronous = [num_updates, verbose, resistance, &chunks](){
     #pragma omp parallel
     {
       // attempt to ensure synchonous thread initialization
@@ -110,7 +111,7 @@ void run_grid(grid_t & grid, const config_t & cfg) {
     #pragma omp for
     for (size_t i = 0; i < chunks.size(); ++i) {
       for (size_t update = 0; update < num_updates; ++update) {
-        update_chunk(chunks[i], verbose);
+        update_chunk(chunks[i], verbose, resistance);
       }
     }
   };

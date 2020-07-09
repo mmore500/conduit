@@ -35,6 +35,12 @@ config_t make_config() {
       )
     },
     {
+      "resistance",
+      std::stoi(
+        std::getenv("PP_RESISTANCE") ?: "0"
+      )
+    },
+    {
       "verbose",
       std::stoi(
         std::getenv("PP_VERBOSE") ?: "0"
