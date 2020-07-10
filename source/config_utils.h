@@ -41,6 +41,12 @@ config_t make_config() {
       )
     },
     {
+      "use_omp",
+      std::stoi(
+        std::getenv("PP_USE_OMP") ?: "0"
+      )
+    },
+    {
       "verbose",
       std::stoi(
         std::getenv("PP_VERBOSE") ?: "0"
