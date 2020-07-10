@@ -5,6 +5,7 @@
 #include <random>
 #include <cstdlib>
 #include <string>
+#include <thread>
 
 #include <omp.h>
 
@@ -82,43 +83,77 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   const size_t verbose = cfg.at("verbose");
   const size_t resistance = cfg.at("resistance");
 
-  const auto run_synchronous = [num_updates, verbose, resistance, &chunks](){
+  const auto sync_task = [verbose, resistance](chunk_t chunk){
+    update_chunk(chunk, verbose, resistance);
+  };
+
+  const auto async_task = [num_updates, verbose, resistance](
+    chunk_t chunk
+  ){
+    // TODO add synchronization latch here
+    for (size_t update = 0; update < num_updates; ++update) {
+      update_chunk(chunk, verbose, resistance);
+    }
+  };
+
+  const auto omp_sync = [sync_task, num_updates, &chunks](){
+
+    const size_t num_chunks = chunks.size();
+
     for (size_t update = 0; update < num_updates; ++update) {
       #pragma omp parallel
       {
         // attempt to ensure synchonous thread initialization
         #pragma omp barrier
-        // "The omp barrier directive must appear within a block
-        // or compound statement."
-        // https://www.ibm.com/support/knowledgecenter/en/SSGH2K_12.1.0/com.ibm.xlc121.aix.doc/compiler_ref/prag_omp_barrier.html
+
         #pragma omp for
-        for (size_t i = 0; i < chunks.size(); ++i) {
-          update_chunk(chunks[i], verbose, resistance);
-        }
+        for (size_t i = 0; i < num_chunks; ++i) sync_task(chunks[i]);
       }
     }
+
   };
 
-  const auto run_asynchronous = [num_updates, verbose, resistance, &chunks](){
+  const auto omp_async = [async_task, &chunks](){
+
+    const size_t num_chunks = chunks.size();
+
     #pragma omp parallel
     {
       // attempt to ensure synchonous thread initialization
       #pragma omp barrier
-      // "The omp barrier directive must appear within a block
-      // or compound statement."
-      // https://www.ibm.com/support/knowledgecenter/en/SSGH2K_12.1.0/com.ibm.xlc121.aix.doc/compiler_ref/prag_omp_barrier.html
+
       #pragma omp for
-      for (size_t i = 0; i < chunks.size(); ++i) {
-        for (size_t update = 0; update < num_updates; ++update) {
-          update_chunk(chunks[i], verbose, resistance);
-        }
-      }
+      for (size_t i = 0; i < num_chunks; ++i) async_task(chunks[i]);
     }
+
+  };
+
+  const auto std_async = [async_task, &chunks](){
+
+    std::vector<std::thread> workers;
+    for (auto chunk : chunks) {
+      workers.emplace_back(
+        [chunk, async_task](){ async_task(chunk); }
+      );
+    }
+
+    std::for_each(
+      std::begin(workers),
+      std::end(workers),
+      [](auto & worker){ worker.join(); }
+    );
+
   };
 
   const size_t synchronous = cfg.at("synchronous");
+  const size_t use_omp = cfg.at("use_omp");
 
-  if (synchronous) run_synchronous();
-  else run_asynchronous();
+  if (use_omp) {
+    if (synchronous) omp_sync();
+    else omp_async();
+  } else {
+    if (synchronous) assert(false);
+    else std_async();
+  }
 
 }
