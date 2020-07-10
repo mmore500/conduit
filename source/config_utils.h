@@ -17,6 +17,12 @@ config_t make_config() {
       )
     },
     {
+      "num_threads",
+      std::stoi(
+        std::getenv("OMP_NUM_THREADS") ?: "1"
+      )
+    },
+    {
       "num_updates",
       std::stoi(
         std::getenv("PP_NUM_UPDATES") ?: "100"

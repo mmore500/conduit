@@ -9,6 +9,9 @@
 
 #include <omp.h>
 
+#include "latch.h"
+#include "numeric_cast.h"
+
 #include "pipe_utils.h"
 #include "config_utils.h"
 #include "chunk_utils.h"
@@ -82,15 +85,25 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   const size_t num_updates = cfg.at("num_updates");
   const size_t verbose = cfg.at("verbose");
   const size_t resistance = cfg.at("resistance");
+  const size_t num_threads = cfg.at("num_threads");
 
   const auto sync_task = [verbose, resistance](chunk_t chunk){
     update_chunk(chunk, verbose, resistance);
   };
 
-  const auto async_task = [num_updates, verbose, resistance](
-    chunk_t chunk
-  ){
-    // TODO add synchronization latch here
+
+  latch latch{numeric_cast<std::ptrdiff_t>(num_threads)};
+
+  const auto async_task = [
+    num_updates,
+    num_threads,
+    verbose,
+    resistance,
+    &latch
+  ](chunk_t chunk){
+    // synchronize after thread creation
+    latch.arrive_and_wait();
+
     for (size_t update = 0; update < num_updates; ++update) {
       update_chunk(chunk, verbose, resistance);
     }
