@@ -1,5 +1,9 @@
 #!/bin/bash
 
+export OMP_PROC_BIND=true
+export OMP_PLACES=threads
+export OMP_PROC_BIND=close
+
 export PP_NUM_UPDATES=1000
 for SYNCHRONOUS in 0 1; do
   export PP_SYNCHRONOUS=$SYNCHRONOUS
