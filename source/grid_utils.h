@@ -97,7 +97,7 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   };
 
   const auto omp_sync = [sync_task, num_updates, &chunks](){
-
+    /*
     const size_t num_chunks = chunks.size();
 
     for (size_t update = 0; update < num_updates; ++update) {
@@ -110,11 +110,11 @@ void run_grid(grid_t & grid, const config_t & cfg) {
         for (size_t i = 0; i < num_chunks; ++i) sync_task(chunks[i]);
       }
     }
-
+    */
   };
 
   const auto omp_async = [async_task, &chunks](){
-
+    /*
     const size_t num_chunks = chunks.size();
 
     #pragma omp parallel
@@ -125,7 +125,7 @@ void run_grid(grid_t & grid, const config_t & cfg) {
       #pragma omp for
       for (size_t i = 0; i < num_chunks; ++i) async_task(chunks[i]);
     }
-
+    */
   };
 
   const auto std_async = [async_task, &chunks](){
