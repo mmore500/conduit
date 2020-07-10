@@ -91,10 +91,10 @@ void run_grid(grid_t & grid, const config_t & cfg) {
         // "The omp barrier directive must appear within a block
         // or compound statement."
         // https://www.ibm.com/support/knowledgecenter/en/SSGH2K_12.1.0/com.ibm.xlc121.aix.doc/compiler_ref/prag_omp_barrier.html
-      }
-      #pragma omp for
-      for (size_t i = 0; i < chunks.size(); ++i) {
-        update_chunk(chunks[i], verbose, resistance);
+        #pragma omp for
+        for (size_t i = 0; i < chunks.size(); ++i) {
+          update_chunk(chunks[i], verbose, resistance);
+        }
       }
     }
   };
@@ -107,11 +107,11 @@ void run_grid(grid_t & grid, const config_t & cfg) {
       // "The omp barrier directive must appear within a block
       // or compound statement."
       // https://www.ibm.com/support/knowledgecenter/en/SSGH2K_12.1.0/com.ibm.xlc121.aix.doc/compiler_ref/prag_omp_barrier.html
-    }
-    #pragma omp for
-    for (size_t i = 0; i < chunks.size(); ++i) {
-      for (size_t update = 0; update < num_updates; ++update) {
-        update_chunk(chunks[i], verbose, resistance);
+      #pragma omp for
+      for (size_t i = 0; i < chunks.size(); ++i) {
+        for (size_t update = 0; update < num_updates; ++update) {
+          update_chunk(chunks[i], verbose, resistance);
+        }
       }
     }
   };
