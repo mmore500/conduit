@@ -21,7 +21,15 @@ class Outlet {
 
   std::shared_ptr<Duct<T,N>> duct;
   size_t read_position{N-1}; // TODO static assert N != 0
-  size_t odometer{0};
+
+  // number of times the outlet has been read from
+  size_t read_count{0};
+
+  // number of times the current value has changed
+  size_t revision_count{0};
+
+  // total distance traversed through underlying buffer
+  size_t net_flux{0};
 
   const pending_t & GetPending() const { return duct->GetPending(); }
 
@@ -36,8 +44,16 @@ class Outlet {
 
     read_position = (read_position + step) % N;
     duct->Pop(step);
-    ++odometer; // log number of *distinct* read events
+
+    Log(step);
+
     return step;
+  }
+
+  void Log(const size_t step) {
+    ++read_count;
+    revision_count += (step > 0);
+    net_flux += step;
   }
 
   size_t FastForward() {
@@ -78,7 +94,11 @@ public:
     return DoGet();
   }
 
-  size_t ReadOdometer() const { return odometer; }
+  size_t GetReadCount() const { return read_count; }
+
+  size_t GetRevisionCount() const { return revision_count; }
+
+  size_t GetNetFlux() const { return net_flux; }
 
   std::string ToString() const {
     std::stringstream ss;
@@ -96,7 +116,9 @@ public:
       GetBuffer().at((read_position + 1) % N)
     ) << std::endl;
     ss << format_member("size_t read_position", read_position) << std::endl;
-    ss << format_member("size_t odometer", odometer);
+    ss << format_member("size_t read_count", read_count) << std::endl;
+    ss << format_member("size_t revision_count", revision_count) << std::endl;
+    ss << format_member("size_t net_flux", net_flux);
     return ss.str();
   }
 

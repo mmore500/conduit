@@ -25,10 +25,7 @@ int main() {
 
   run_grid(grid, cfg);
 
-  // for (const auto & tile : grid) {
-  //   std::cout << tile.GetReadCount() << std::endl;
-  //   std::cout << tile.GetWriteCount() << std::endl;
-  // }
+  if (cfg.at("audit")) audit_grid(grid, cfg);
 
   std::cout << ">>> end <<<" << std::endl;
 

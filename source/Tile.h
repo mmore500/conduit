@@ -71,9 +71,17 @@ public:
     FlushState();
   }
 
-  size_t GetReadCount() const { return outlet.ReadOdometer(); }
+  size_t GetWriteCount() const { return inlet.GetWriteCount(); }
 
-  size_t GetWriteCount() const { return inlet.ReadOdometer(); }
+  size_t GetBlockedWriteCount() const { return inlet.GetBlockedWriteCount(); }
+
+  size_t GetDroppedWriteCount() const { return inlet.GetDroppedWriteCount(); }
+
+  size_t GetReadCount() const { return outlet.GetReadCount(); }
+
+  size_t GetReadRevisionCount() const { return outlet.GetRevisionCount(); }
+
+  size_t GetNetFlux() const { return outlet.GetNetFlux(); }
 
   std::string ToString() const {
     std::stringstream ss;
