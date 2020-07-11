@@ -20,7 +20,9 @@ class Outlet {
   using buffer_t = std::array<T, N>;
 
   std::shared_ptr<Duct<T,N>> duct;
-  size_t read_position{N-1}; // TODO static assert N != 0
+
+  static_assert(N > 0);
+  size_t read_position{N-1};
 
   // number of times the outlet has been read from
   size_t read_count{0};
