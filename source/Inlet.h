@@ -24,7 +24,7 @@ class Inlet {
   size_t write_position{0};
 
   // number of times the inlet has been written to
-  size_t write_count{0};
+  size_t successful_write_count{0};
 
   // number of times write attempts have blocked due to buffer space
   size_t blocked_write_count{0};
@@ -46,7 +46,7 @@ class Inlet {
 
     write_position = (write_position + 1) % N;
     duct->Push();
-    ++write_count;
+    ++successful_write_count;
   }
 
   void DoPut(const T& val) {
@@ -93,7 +93,7 @@ public:
 
   }
 
-  size_t GetWriteCount() const { return write_count; }
+  size_t GetSuccessfulWriteCount() const { return successful_write_count; }
 
   size_t GetBlockedWriteCount() const { return blocked_write_count; }
 
@@ -118,7 +118,10 @@ public:
     ) << std::endl;
 
     ss << format_member("size_t write_position", write_position) << std::endl;
-    ss << format_member("size_t write_count", write_count);
+    ss << format_member(
+      "size_t successful_write_count",
+      successful_write_count
+    );
     ss << format_member("size_t dropped_write_count", dropped_write_count);
     ss << format_member("size_t blocked_write_count", blocked_write_count);
     return ss.str();

@@ -71,7 +71,9 @@ public:
     FlushState();
   }
 
-  size_t GetWriteCount() const { return inlet.GetWriteCount(); }
+  size_t GetSuccessfulWriteCount() const {
+    return inlet.GetSuccessfulWriteCount();
+  }
 
   size_t GetBlockedWriteCount() const { return inlet.GetBlockedWriteCount(); }
 
