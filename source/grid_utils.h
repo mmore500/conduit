@@ -9,6 +9,9 @@
 
 #include <omp.h>
 
+#include "data/DataFile.h"
+#include "tools/keyname_utils.h"
+
 #include "barrier.h"
 #include "latch.h"
 #include "numeric_cast.h"
@@ -157,5 +160,66 @@ void run_grid(grid_t & grid, const config_t & cfg) {
     if (synchronous) omp_sync();
     else omp_async();
   } else std_run();
+
+}
+
+void audit_grid(const grid_t & grid, const config_t& cfg) {
+
+  std::unordered_map<std::string, std::string> descriptors{
+    {"title", "audit"},
+    {"ext", ".csv"}
+  };
+
+  std::transform(
+    std::begin(cfg),
+    std::end(cfg),
+    std::inserter(descriptors, std::begin(descriptors)),
+    [](const auto & pair){
+      const auto & [key, value] = pair;
+      return std::pair<std::string, std::string>{key, emp::to_string(value)};
+    }
+  );
+
+  emp::DataFile datafile(
+    emp::keyname::pack(descriptors)
+  );
+
+  size_t tile;
+  datafile.AddVar<size_t>(tile, "Tile");
+
+  size_t write_count;
+  datafile.AddVar<size_t>(write_count, "Write Count");
+
+  size_t blocked_write_count;
+  datafile.AddVar<size_t>(blocked_write_count, "Blocked Write Count");
+
+  size_t dropped_write_count;
+  datafile.AddVar<size_t>(dropped_write_count, "Dropped Write Count");
+
+  size_t read_count;
+  datafile.AddVar<size_t>(read_count, "Read Count");
+
+  size_t read_revision_count;
+  datafile.AddVar<size_t>(read_revision_count, "Read Revision Count");
+
+  size_t net_flux;
+  datafile.AddVar<size_t>(net_flux, "Net Flux");
+
+  datafile.PrintHeaderKeys();
+
+  for (tile = 0; tile < grid.size(); ++tile) {
+    const auto & which = grid[tile];
+
+    write_count = which.GetWriteCount();
+    blocked_write_count = which.GetBlockedWriteCount();
+    dropped_write_count = which.GetDroppedWriteCount();
+    read_count = which.GetReadCount();
+    read_revision_count = which.GetReadRevisionCount();
+    net_flux = which.GetNetFlux();
+
+    datafile.Update();
+  }
+
+
 
 }

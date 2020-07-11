@@ -11,6 +11,12 @@ config_t make_config() {
 
   return config_t{
     {
+      "audit",
+      std::stoi(
+        std::getenv("PP_AUDIT") ?: "0"
+      )
+    },
+    {
       "num_chunks",
       std::stoi(
         std::getenv("OMP_NUM_THREADS") ?: "1"

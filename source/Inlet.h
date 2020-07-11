@@ -22,7 +22,16 @@ class Inlet {
 
   std::shared_ptr<Duct<T,N>> duct;
   size_t write_position{0};
-  size_t odometer{0};
+
+  // number of times the inlet has been written to
+  size_t write_count{0};
+
+  // number of times write attempts have blocked due to buffer space
+  size_t blocked_write_count{0};
+
+  // number of times write attempts have dropped due to buffer space
+  size_t dropped_write_count{0};
+
 
   const pending_t & GetPending() const { return duct->GetPending(); }
 
@@ -37,7 +46,7 @@ class Inlet {
 
     write_position = (write_position + 1) % N;
     duct->Push();
-    ++odometer;
+    ++write_count;
   }
 
   void DoPut(const T& val) {
@@ -60,7 +69,8 @@ public:
     const OccupancyGuard guard{caps.Get("Put", 1)};
 #endif
 
-    while (GetPending() == N - 1);
+    blocked_write_count += IsFull();
+    while (IsFull());
 
     DoPut(val);
 
@@ -72,7 +82,10 @@ public:
     const OccupancyGuard guard{caps.Get("MaybePut", 1)};
 #endif
 
-    if (GetPending() == N - 1) return false;
+    if (IsFull()) {
+      ++dropped_write_count;
+      return false;
+    }
 
     DoPut(val);
 
@@ -80,7 +93,13 @@ public:
 
   }
 
-  size_t ReadOdometer() const { return odometer; }
+  size_t GetWriteCount() const { return write_count; }
+
+  size_t GetBlockedWriteCount() const { return blocked_write_count; }
+
+  size_t GetDroppedWriteCount() const { return dropped_write_count; }
+
+  bool IsFull() const { return GetPending() == N - 1; }
 
   std::string ToString() const {
     std::stringstream ss;
@@ -99,7 +118,9 @@ public:
     ) << std::endl;
 
     ss << format_member("size_t write_position", write_position) << std::endl;
-    ss << format_member("size_t odometer", odometer);
+    ss << format_member("size_t write_count", write_count);
+    ss << format_member("size_t dropped_write_count", dropped_write_count);
+    ss << format_member("size_t blocked_write_count", blocked_write_count);
     return ss.str();
   }
 
