@@ -18,6 +18,7 @@
 #include "chunk_utils.h"
 
 #include "Tile.h"
+#include "ThreadTeam.h"
 
 using grid_t = std::vector<Tile>;
 using handle_t = grid_t::iterator;
@@ -142,19 +143,14 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   };
 
   const auto std_run = [&](){
-    std::vector<std::thread> workers;
+    ThreadTeam team;
 
     for (auto chunk : chunks) {
-      workers.emplace_back(
-        [chunk, task_sequence](){ task_sequence(chunk); }
-      );
+      team.Add([chunk, task_sequence](){ task_sequence(chunk); });
     }
 
-    std::for_each(
-      std::begin(workers),
-      std::end(workers),
-      [](auto & worker){ worker.join(); }
-    );
+    team.Join();
+
   };
 
   if (use_omp) {
