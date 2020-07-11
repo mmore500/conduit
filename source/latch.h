@@ -12,7 +12,7 @@
 
 class latch
 {
-  std::atomic<ptrdiff_t> arrived;
+  ptrdiff_t arrived;
 
   mutable std::condition_variable cv;
   mutable std::mutex mutex;
@@ -31,27 +31,23 @@ public:
   latch& operator=(const latch&) = delete;
 
   inline void count_down(ptrdiff_t update = 1) {
-    auto const old = arrived.fetch_sub(update, std::memory_order_release);
-    if (old == update) cv.notify_all();
+
+    const std::lock_guard<std::mutex> lock{mutex};
+
+    arrived -= update;
+
+    if (try_wait()) cv.notify_all();
+
   }
 
-  inline bool try_wait() const noexcept {
-    return 0 == arrived.load(std::memory_order_acquire);
-  }
+  inline bool try_wait() const noexcept { return arrived == 0; }
 
-  inline void wait() const
-  {
-    auto const test_function = [this]() -> bool {
-      return try_wait();
-    };
-
+  inline void wait() const {
     std::unique_lock<std::mutex> lock(mutex);
-    cv.wait(lock, test_function);
-
+    cv.wait(lock, [this](){ return try_wait(); });
   }
 
-  inline void arrive_and_wait(ptrdiff_t update = 1)
-  {
+  inline void arrive_and_wait(ptrdiff_t update = 1) {
     count_down(update);
     wait();
   }
