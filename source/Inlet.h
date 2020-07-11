@@ -6,10 +6,17 @@
 #include <atomic>
 
 #include "print_utils.h"
+
+#include "OccupancyCaps.h"
+#include "OccupancyGuard.h"
 #include "Duct.h"
 
 template<typename T, size_t N=1024>
 class Inlet {
+
+#ifndef NDEBUG
+  OccupancyCaps caps;
+#endif
 
   using buffer_t = std::array<T, N>;
 
@@ -24,12 +31,20 @@ class Inlet {
   const buffer_t & GetBuffer() const { return duct->GetBuffer(); }
 
   void Advance() {
+#ifndef NDEBUG
+    const OccupancyGuard guard{caps.Get("Advance", 1)};
+#endif
+
     write_position = (write_position + 1) % N;
     duct->Push();
     ++odometer;
   }
 
   void DoPut(const T& val) {
+#ifndef NDEBUG
+    const OccupancyGuard guard{caps.Get("DoPut", 1)};
+#endif
+
     GetBuffer().at(write_position) = val;
     Advance();
   }
@@ -41,6 +56,9 @@ public:
 
   // potentially blocking
   void Put(const T& val) {
+#ifndef NDEBUG
+    const OccupancyGuard guard{caps.Get("Put", 1)};
+#endif
 
     while (GetPending() == N - 1);
 
@@ -50,6 +68,9 @@ public:
 
   // non-blocking
   bool MaybePut(const T& val) {
+#ifndef NDEBUG
+    const OccupancyGuard guard{caps.Get("MaybePut", 1)};
+#endif
 
     if (GetPending() == N - 1) return false;
 
