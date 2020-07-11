@@ -17,6 +17,12 @@ config_t make_config() {
       )
     },
     {
+      "shuffle_tile_evaluation",
+      std::stoi(
+        std::getenv("PP_SHUFFLE_TILE_EVALUATION") ?: "1"
+      )
+    },
+    {
       "num_chunks",
       std::stoi(
         std::getenv("OMP_NUM_THREADS") ?: "1"

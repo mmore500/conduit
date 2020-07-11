@@ -56,11 +56,12 @@ std::vector<chunk_t> make_chunks(grid_t & grid, const size_t num_chunks) {
 void update_chunk(
   chunk_t & chunk,
   const bool verbose,
+  const bool shuffle,
   const size_t resistance
 ) {
 
 
-  std::random_shuffle(
+  if (shuffle) std::random_shuffle(
     std::begin(chunk),
     std::end(chunk)
   );

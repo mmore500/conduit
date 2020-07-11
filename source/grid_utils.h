@@ -93,9 +93,10 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   const size_t num_threads = cfg.at("num_threads");
   const size_t use_omp = cfg.at("use_omp");
   const size_t synchronous = cfg.at("synchronous");
+  const size_t shuffle_tile_evaluation = cfg.at("shuffle_tile_evaluation");
 
   const auto task_step = [=](chunk_t chunk){
-    update_chunk(chunk, verbose, resistance);
+    update_chunk(chunk, verbose, shuffle_tile_evaluation, resistance);
   };
 
   latch latch{numeric_cast<std::ptrdiff_t>(num_threads)};
