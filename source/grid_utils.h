@@ -187,8 +187,8 @@ void audit_grid(const grid_t & grid, const config_t& cfg) {
   size_t tile;
   datafile.AddVar<size_t>(tile, "Tile");
 
-  size_t write_count;
-  datafile.AddVar<size_t>(write_count, "Write Count");
+  size_t successful_write_count;
+  datafile.AddVar<size_t>(successful_write_count, "Successful Write Count");
 
   size_t blocked_write_count;
   datafile.AddVar<size_t>(blocked_write_count, "Blocked Write Count");
@@ -210,7 +210,7 @@ void audit_grid(const grid_t & grid, const config_t& cfg) {
   for (tile = 0; tile < grid.size(); ++tile) {
     const auto & which = grid[tile];
 
-    write_count = which.GetWriteCount();
+    successful_write_count = which.GetSuccessfulWriteCount();
     blocked_write_count = which.GetBlockedWriteCount();
     dropped_write_count = which.GetDroppedWriteCount();
     read_count = which.GetReadCount();
