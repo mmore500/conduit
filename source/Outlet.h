@@ -4,10 +4,18 @@
 #include <memory>
 #include <atomic>
 
+#include "thread_utils.h"
+
 #include "Duct.h"
+#include "OccupancyCaps.h"
+#include "OccupancyGuard.h"
 
 template<typename T, size_t N=1024>
 class Outlet {
+
+#ifndef NDEBUG
+  OccupancyCaps caps;
+#endif
 
   using buffer_t = std::array<T, N>;
 
@@ -22,6 +30,10 @@ class Outlet {
   const buffer_t & GetBuffer() const { return duct->GetBuffer(); }
 
   size_t Advance(const size_t step=1) {
+#ifndef NDEBUG
+    const OccupancyGuard guard{caps.Get("Advance", 1)};
+#endif
+
     read_position = (read_position + step) % N;
     duct->Pop(step);
     ++odometer; // log number of *distinct* read events
@@ -29,6 +41,10 @@ class Outlet {
   }
 
   size_t FastForward() {
+#ifndef NDEBUG
+    const OccupancyGuard guard{caps.Get("FastForward", 1)};
+#endif
+
     return Advance(GetPending());
   }
 
@@ -43,12 +59,20 @@ public:
 
   // non-blocking
   const T& GetCurrent() {
+#ifndef NDEBUG
+    const OccupancyGuard guard{caps.Get("GetCurrent", 1)};
+#endif
+
     FastForward();
     return DoGet();
   }
 
   // blocking
   const T& GetNext() {
+#ifndef NDEBUG
+    const OccupancyGuard guard{caps.Get("GetNext", 1)};
+#endif
+
     while (GetPending() == 0);
     Advance();
     return DoGet();
