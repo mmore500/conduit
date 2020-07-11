@@ -163,10 +163,15 @@ void run_grid(grid_t & grid, const config_t & cfg) {
 
 }
 
-void audit_grid(const grid_t & grid, const config_t& cfg) {
+void audit_grid(
+  const grid_t & grid,
+  const config_t& cfg,
+  const size_t nanoseconds
+) {
 
   std::unordered_map<std::string, std::string> descriptors{
     {"title", "audit"},
+    {"nanoseconds", emp::to_string(nanoseconds)},
     {"ext", ".csv"}
   };
 
