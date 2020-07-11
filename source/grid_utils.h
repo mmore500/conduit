@@ -99,9 +99,6 @@ void run_grid(grid_t & grid, const config_t & cfg) {
 
   const auto task_sequence = [&](chunk_t chunk){
 
-    static std::atomic<size_t> counter{};
-    const thread_local size_t thread_id{counter++};
-
     emp_assert(!use_omp);
 
     // synchronize after thread creation
