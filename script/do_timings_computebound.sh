@@ -2,7 +2,7 @@
 
 export PP_USE_OMP=0
 
-export PP_NUM_UPDATES=10000
+export PP_NUM_UPDATES=8192
 for SYNCHRONOUS in 0 1; do
   export PP_SYNCHRONOUS=$SYNCHRONOUS
   OUT_FILE="synchronous=${SYNCHRONOUS}+ext=.csv"
@@ -17,11 +17,11 @@ for SYNCHRONOUS in 0 1; do
         AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
         echo "AMT_WORK: ${AMT_WORK}"
 
-        RESISTANCE=$(( $AMT_WORK * 100))
+        RESISTANCE=$(( $AMT_WORK * 64))
         echo "RESISTANCE: ${RESISTANCE}"
         export PP_RESISTANCE=$RESISTANCE
 
-        GRID_SIZE=100
+        GRID_SIZE=64
         echo "GRID_SIZE: ${GRID_SIZE}"
         export PP_GRID_SIZE=$GRID_SIZE
 
