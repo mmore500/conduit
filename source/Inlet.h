@@ -121,9 +121,15 @@ public:
     ss << format_member(
       "size_t successful_write_count",
       successful_write_count
+    ) << std::endl;
+    ss << format_member(
+      "size_t dropped_write_count",
+      dropped_write_count
+    ) << std::endl;;
+    ss << format_member(
+      "size_t blocked_write_count",
+      blocked_write_count
     );
-    ss << format_member("size_t dropped_write_count", dropped_write_count);
-    ss << format_member("size_t blocked_write_count", blocked_write_count);
     return ss.str();
   }
 
