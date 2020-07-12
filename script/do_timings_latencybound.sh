@@ -40,6 +40,9 @@ for SYNCHRONOUS in 0 1; do
         echo "ELAPSED_TIME: ${ELAPSED_TIME}"
         echo "${NUM_THREADS},${AMT_WORK},${LOAD_PER},${REP},${ELAPSED_TIME}" \
           >> $OUT_FILE
+        echo
+        echo "========================="
+        echo
       done;
     done;
   done;
