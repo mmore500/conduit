@@ -6,12 +6,12 @@ export OMP_PROC_BIND=close
 
 export PP_USE_OMP=0
 
-for SYNCHRONOUS in 0; do
+for SYNCHRONOUS in 0 1; do
   export PP_SYNCHRONOUS=$SYNCHRONOUS
   OUT_FILE="synchronous=${SYNCHRONOUS}+ext=.csv"
   echo "Threads,Work,Load,Replicate,Time" > $OUT_FILE
-  for NUM_THREADS in 1 2 4 8 16; do
-    for LOAD_PER in 1 2 4 8 16; do
+  for NUM_THREADS in 1 2 4 8 16 32; do
+    for LOAD_PER in 1 2 4 8 16 32; do
       AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
       for REP in {0..9}; do
 
