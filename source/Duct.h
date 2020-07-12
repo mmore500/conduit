@@ -19,6 +19,13 @@ public:
 
   //todo rename
   void Push() {
+
+    emp_assert(
+      pending < N,
+      [](){ error_message_mutex.lock(); return "locked"; }(),
+      emp::to_string("pending: ", pending)
+    );
+
     pending.fetch_add(1, std::memory_order_relaxed);
   }
 
