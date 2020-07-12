@@ -1,9 +1,5 @@
 #!/bin/bash
 
-export OMP_PROC_BIND=true
-export OMP_PLACES=threads
-export OMP_PROC_BIND=close
-
 export PP_USE_OMP=0
 
 for SYNCHRONOUS in 0 1; do
