@@ -11,7 +11,7 @@ for SYNCHRONOUS in 0 1; do
       for NUM_THREADS in 1 2 4 8 16 32; do
 
         echo "NUM_THREADS: ${NUM_THREADS}"
-        export OMP_NUM_THREADS=$NUM_THREADS
+        export PP_NUM_THREADS=$NUM_THREADS
 
         RESISTANCE=64
         echo "RESISTANCE: ${RESISTANCE}"

@@ -25,13 +25,13 @@ config_t make_config() {
     {
       "num_chunks",
       std::stoi(
-        std::getenv("OMP_NUM_THREADS") ?: "1"
+        std::getenv("PP_NUM_THREADS") ?: "1"
       )
     },
     {
       "num_threads",
       std::stoi(
-        std::getenv("OMP_NUM_THREADS") ?: "1"
+        std::getenv("PP_NUM_THREADS") ?: "1"
       )
     },
     {

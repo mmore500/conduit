@@ -25,6 +25,9 @@ native: $(PROJECT)
 web: $(PROJECT).js
 all: $(PROJECT) $(PROJECT).js
 
+omp: CFLAGS_nat := $(CFLAGS_nat) -fopenmp
+omp: $(PROJECT)
+
 debug:	CFLAGS_nat := $(CFLAGS_nat_debug)
 debug:	$(PROJECT)
 
