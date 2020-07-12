@@ -10,7 +10,6 @@
 #include "ThreadDuct.h"
 
 #include "print_utils.h"
-#include "overloaded.h"
 
 template<typename T, size_t N>
 class Duct {
