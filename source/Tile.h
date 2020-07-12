@@ -38,7 +38,7 @@ class Tile {
         std::cerr << format_member("next Tile", *next) << std::endl;
         std::cerr << format_member("this Tile", *this) << std::endl;
         std::cerr << format_member("prev Tile", *prev) << std::endl;
-        exit(1);
+        assert(false);
     }
 
   }
