@@ -85,11 +85,16 @@ public:
 
   size_t GetNetFlux() const { return outlet.GetNetFlux(); }
 
+  template <typename WhichDuct, typename... Args>
+  void EmplaceDuct(Args&&... args) {
+    inlet.EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
+  }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("id", id) << std::endl;
-    ss << format_member("Inlet<char> inlet", inlet) << std::endl;
     ss << format_member("Outlet<char> outlet", outlet) << std::endl;
+    ss << format_member("Inlet<char> inlet", inlet) << std::endl;
     ss << format_member("char state", state);
     return ss.str();
   }
