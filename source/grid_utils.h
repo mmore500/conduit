@@ -42,11 +42,21 @@ grid_t make_grid(const config_t & cfg) {
     outlets.push_back(out);
   }
 
+  // before rotate
+  // outlets: 0 1 2 3
+  //          | | | |
+  // inlets:  0 1 2 3
+
   std::rotate(
     std::rbegin(outlets),
     std::rbegin(outlets) + 1,
     std::rend(outlets)
   );
+
+  // after rotate
+  // outlets:   0 1 2 3
+  //           \ \ \ \
+  // inlets:    3 0 1 2
 
   grid_t grid;
 
