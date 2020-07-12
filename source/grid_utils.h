@@ -7,7 +7,9 @@
 #include <string>
 #include <thread>
 
+#ifdef PP_USE_OMP
 #include <omp.h>
+#endif
 
 #include "data/DataFile.h"
 #include "tools/keyname_utils.h"
