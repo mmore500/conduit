@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export LD_PRELOAD=/mnt/home/mmore500/libmimalloc.so
+
 export PP_USE_OMP=0
 
 for SYNCHRONOUS in 0 1; do
