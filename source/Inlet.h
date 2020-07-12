@@ -32,12 +32,11 @@ class Inlet {
   // number of times write attempts have dropped due to buffer space
   size_t dropped_write_count{0};
 
+  size_t GetPending() const { return duct->GetPending(); }
 
-  const pending_t & GetPending() const { return duct->GetPending(); }
+  T GetElement(const size_t n) const { return duct->GetElement(n); }
 
-  buffer_t & GetBuffer() { return duct->GetBuffer(); }
-
-  const buffer_t & GetBuffer() const { return duct->GetBuffer(); }
+  void SetElement(const size_t n, const T& val) { duct->SetElement(n, val); }
 
   void Advance() {
 #ifndef NDEBUG
@@ -54,7 +53,7 @@ class Inlet {
     const OccupancyGuard guard{caps.Get("DoPut", 1)};
 #endif
 
-    GetBuffer().at(write_position) = val;
+    SetElement(write_position, val);
     Advance();
   }
 
@@ -101,20 +100,25 @@ public:
 
   bool IsFull() const { return GetPending() == N - 1; }
 
+  template <typename WhichDuct, typename... Args>
+  void EmplaceDuct(Args&&... args) {
+    duct->template EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
+  }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("std::shared_ptr<Duct<T,N>> duct", *duct) << std::endl;
     ss << format_member(
-      "GetBuffer().at(write_position - 1)",
-      GetBuffer().at((write_position + N - 1) % N)
+      "GetElement(write_position - 1)",
+      GetElement((write_position + N - 1) % N)
     ) << std::endl;
     ss << format_member(
-      "GetBuffer().at(write_position)",
-      GetBuffer().at(write_position)
+      "GetElement(write_position)",
+      GetElement(write_position)
     ) << std::endl;
     ss << format_member(
-      "GetBuffer().at(write_position + 1)",
-      GetBuffer().at((write_position + 1) % N)
+      "GetElement(write_position + 1)",
+      GetElement((write_position + 1) % N)
     ) << std::endl;
 
     ss << format_member("size_t write_position", write_position) << std::endl;
