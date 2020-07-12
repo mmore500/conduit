@@ -19,7 +19,7 @@ public:
 
   //todo rename
   void Push() {
-    ++pending;
+    pending.fetch_add(1, std::memory_order_relaxed);
   }
 
   //todo rename
@@ -32,7 +32,7 @@ public:
       emp::to_string("count: ", count)
     );
 
-    pending -= count;
+    pending.fetch_sub(count, std::memory_order_relaxed);
   }
 
   const pending_t & GetPending() const { return pending; }
