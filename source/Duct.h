@@ -1,59 +1,87 @@
 #pragma once
 
+#include <utility>
+#include <variant>
+
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
-#include "print_utils.h"
+#include "MockDuct.h"
+#include "ThreadDuct.h"
 
-using pending_t = std::atomic<size_t>;
+#include "print_utils.h"
+#include "overloaded.h"
 
 template<typename T, size_t N>
 class Duct {
 
-  using buffer_t = std::array<T, N>;
-
-  pending_t pending{0};
-  buffer_t buffer;
+  std::variant<
+    MockDuct<T, N>,
+    ThreadDuct<T, N>
+  > impl;
 
 public:
+
+  template <typename WhichDuct, typename... Args>
+  void EmplaceDuct(Args&&... args) {
+    const size_t cur_pending = std::visit(
+      [](auto & arg) { return arg.GetPending(); },
+      impl
+    );
+    impl.template emplace<WhichDuct>(std::forward<Args>(args)...);
+    std::visit(
+      [cur_pending](auto & arg) { arg.pending = cur_pending; },
+      impl
+    );
+  }
 
   //todo rename
   void Push() {
 
-    emp_assert(
-      pending < N,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("pending: ", pending)
+    std::visit(
+      [](auto & arg) { arg.Push(); },
+      impl
     );
 
-    pending.fetch_add(1, std::memory_order_relaxed);
   }
 
   //todo rename
   void Pop(const size_t count) {
 
-    emp_assert(
-      pending >= count,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("pending: ", pending),
-      emp::to_string("count: ", count)
+    std::visit(
+      [count](auto & arg) { arg.Pop(count); },
+      impl
     );
 
-    pending.fetch_sub(count, std::memory_order_relaxed);
   }
 
-  const pending_t & GetPending() const { return pending; }
+  size_t GetPending() const {
+    return std::visit(
+      [](auto & arg) -> size_t { return arg.GetPending(); },
+      impl
+    );
+  }
 
-  buffer_t & GetBuffer() { return buffer; }
+  // todo rename
+  T GetElement(const size_t n) const {
+    return std::visit(
+      [n](auto & arg) -> T { return arg.GetElement(n); },
+      impl
+    );
+  }
 
-  const buffer_t & GetBuffer() const { return buffer; }
+  void SetElement(const size_t n, const T & val) {
+    std::visit(
+      [n, &val](auto & arg) { arg.SetElement(n, val); },
+      impl
+    );
+  }
 
   std::string ToString() const {
-    std::stringstream ss;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("pending_t pending", pending);
-    return ss.str();
+    return std::visit(
+      [](auto & arg) -> std::string { return arg.ToString(); },
+      impl
+    );
   }
 
 

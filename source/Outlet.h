@@ -33,11 +33,9 @@ class Outlet {
   // total distance traversed through underlying buffer
   size_t net_flux{0};
 
-  const pending_t & GetPending() const { return duct->GetPending(); }
+  size_t GetPending() const { return duct->GetPending(); }
 
-  buffer_t & GetBuffer() { return duct->GetBuffer(); }
-
-  const buffer_t & GetBuffer() const { return duct->GetBuffer(); }
+  T GetElement(const size_t n) const { return duct->GetElement(n); }
 
   size_t Advance(const size_t step=1) {
 #ifndef NDEBUG
@@ -66,9 +64,7 @@ class Outlet {
     return Advance(GetPending());
   }
 
-  const T& DoGet() {
-    return GetBuffer().at(read_position);
-  }
+  T DoGet() { return GetElement(read_position); }
 
 public:
   Outlet(
@@ -76,7 +72,7 @@ public:
   ) : duct(duct_) { ; }
 
   // non-blocking
-  const T& GetCurrent() {
+  T GetCurrent() {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("GetCurrent", 1)};
 #endif
@@ -86,7 +82,7 @@ public:
   }
 
   // blocking
-  const T& GetNext() {
+  T GetNext() {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("GetNext", 1)};
 #endif
@@ -106,16 +102,16 @@ public:
     std::stringstream ss;
     ss << format_member("std::shared_ptr<Duct<T,N>> duct", *duct) << std::endl;
     ss << format_member(
-      "GetBuffer().at(read_position - 1)",
-      GetBuffer().at((read_position + N - 1) % N)
+      "GetElement(read_position - 1)",
+      GetElement((read_position + N - 1) % N)
     ) << std::endl;
     ss << format_member(
-      "GetBuffer().at(read_position)",
-      GetBuffer().at(read_position)
+      "GetElement(read_position)",
+      GetElement(read_position)
     ) << std::endl;
     ss << format_member(
-      "GetBuffer().at(read_position + 1)",
-      GetBuffer().at((read_position + 1) % N)
+      "GetElement(read_position + 1)",
+      GetElement((read_position + 1) % N)
     ) << std::endl;
     ss << format_member("size_t read_position", read_position) << std::endl;
     ss << format_member("size_t read_count", read_count) << std::endl;

@@ -2,6 +2,7 @@
 
 #include "grid_utils.h"
 
+#include "ThreadDuct.h"
 #include "Tile.h"
 
 using grid_t = std::vector<Tile>;
@@ -17,6 +18,9 @@ chunk_t make_chunk(handle_t begin, handle_t end) {
     std::end(res),
     begin
   );
+
+  res.front()->template EmplaceDuct<ThreadDuct<char, 1024>>();
+  res.front()->SetState('_');
 
   return res;
 
