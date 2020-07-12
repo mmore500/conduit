@@ -7,15 +7,16 @@ for SYNCHRONOUS in 0 1; do
   export PP_SYNCHRONOUS=$SYNCHRONOUS
   OUT_FILE="synchronous=${SYNCHRONOUS}+ext=.csv"
   echo "Threads,Work,Load,Replicate,Time" > $OUT_FILE
-  for NUM_THREADS in 1 2 4 8 16 32; do
+  for REP in {0..9}; do
     for LOAD_PER in 1 2 4 8 16 32; do
-      AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
-      for REP in {0..9}; do
+      for NUM_THREADS in 1 2 4 8 16 32; do
 
         echo "NUM_THREADS: ${NUM_THREADS}"
         export OMP_NUM_THREADS=$NUM_THREADS
 
+        AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
         echo "AMT_WORK: ${AMT_WORK}"
+
         RESISTANCE=$(( $AMT_WORK * 100))
         echo "RESISTANCE: ${RESISTANCE}"
         export PP_RESISTANCE=$RESISTANCE
