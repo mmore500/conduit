@@ -22,8 +22,6 @@ int main() {
     make_grid(cfg)
   );
 
-  initialize_grid(grid);
-
   const auto start = std::chrono::high_resolution_clock::now();
 
   run_grid(grid, cfg);

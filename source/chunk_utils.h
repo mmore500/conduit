@@ -21,7 +21,6 @@ chunk_t make_chunk(handle_t begin, handle_t end, const size_t num_chunks) {
 
   if (num_chunks > 1) {
     res.front()->template EmplaceInputDuct<ThreadDuct<char>>();
-    res.front().SetState('_');
   }
 
   return res;
