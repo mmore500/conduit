@@ -1,4 +1,4 @@
-TEST_NAMES := example CircularIndex
+TEST_NAMES := CircularIndex
 
 EMP_DIR := ../../Empirical/source
 
