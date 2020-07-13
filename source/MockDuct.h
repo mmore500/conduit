@@ -17,7 +17,7 @@ class MockDuct {
 
   friend Duct<T, N>;
 
-  using pending_t = std::atomic<size_t>;
+  using pending_t = size_t;
   using buffer_t = std::array<T, N>;
 
   pending_t pending{0};
