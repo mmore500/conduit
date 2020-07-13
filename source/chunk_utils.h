@@ -12,7 +12,7 @@ using chunk_t = std::vector<handle_t>;
 
 chunk_t make_chunk(handle_t begin, handle_t end) {
 
-  std::vector<handle_t> res(std::distance(begin, end));
+  chunk_t res(std::distance(begin, end));
   std::iota(
     std::begin(res),
     std::end(res),
