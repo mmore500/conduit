@@ -111,9 +111,11 @@ public:
 
   void SetElement(const size_t n, const T & val) { buffer[n] = val; }
 
+  std::string GetType() const { return "ProcessInletDuct"; }
+
   std::string ToString() const {
     std::stringstream ss;
-    ss << "ProcessInletDuct" << std::endl;
+    ss << GetType() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
     ss << format_member("pending_t pending", (size_t) pending) << std::endl;
