@@ -9,8 +9,8 @@
 
 class Tile {
 
-  Inlet<char> inlet;
-  Outlet<char> outlet;
+  Inlet<char> output;
+  Outlet<char> intake;
 
   char state;
 
@@ -46,12 +46,12 @@ class Tile {
   void DoSetState(const char& state_) {state = state_;}
 
   void FlushState() {
-    inlet.MaybePut(state);
+    output.MaybePut(state);
   }
 
 public:
-  Tile(Inlet<char> inlet_, Outlet<char> outlet_)
-  : inlet(inlet_), outlet(outlet_)
+  Tile(Inlet<char> output_, Outlet<char> intake_)
+  : output(output_), intake(intake_)
   { SetState('_'); }
 
   Tile *next;
@@ -59,7 +59,7 @@ public:
   size_t id;
 
   void Update() {
-    const char neighbor_state = outlet.GetCurrent();
+    const char neighbor_state = intake.GetCurrent();
     const char next_state = Transition(neighbor_state);
     SetState(next_state);
   }
@@ -72,29 +72,29 @@ public:
   }
 
   size_t GetSuccessfulWriteCount() const {
-    return inlet.GetSuccessfulWriteCount();
+    return output.GetSuccessfulWriteCount();
   }
 
-  size_t GetBlockedWriteCount() const { return inlet.GetBlockedWriteCount(); }
+  size_t GetBlockedWriteCount() const { return output.GetBlockedWriteCount(); }
 
-  size_t GetDroppedWriteCount() const { return inlet.GetDroppedWriteCount(); }
+  size_t GetDroppedWriteCount() const { return output.GetDroppedWriteCount(); }
 
-  size_t GetReadCount() const { return outlet.GetReadCount(); }
+  size_t GetReadCount() const { return intake.GetReadCount(); }
 
-  size_t GetReadRevisionCount() const { return outlet.GetRevisionCount(); }
+  size_t GetReadRevisionCount() const { return intake.GetRevisionCount(); }
 
-  size_t GetNetFlux() const { return outlet.GetNetFlux(); }
+  size_t GetNetFlux() const { return intake.GetNetFlux(); }
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
-    inlet.EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
+    output.EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
   }
 
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("id", id) << std::endl;
-    ss << format_member("Outlet<char> outlet", outlet) << std::endl;
-    ss << format_member("Inlet<char> inlet", inlet) << std::endl;
+    ss << format_member("Inlet<char> outlet", intake) << std::endl;
+    ss << format_member("Outlet<char> intake", output) << std::endl;
     ss << format_member("char state", state);
     return ss.str();
   }
