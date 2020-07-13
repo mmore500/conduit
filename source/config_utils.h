@@ -19,6 +19,12 @@ config_t make_config() {
       )
     },
     {
+      "checkout_memory",
+      std::stoi(
+        std::getenv("PP_CHECKOUT_MEMORY") ?: "0"
+      )
+    },
+    {
       "shuffle_tile_evaluation",
       std::stoi(
         std::getenv("PP_SHUFFLE_TILE_EVALUATION") ?: "1"

@@ -106,6 +106,7 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   const size_t use_omp = cfg.at("use_omp");
   const size_t synchronous = cfg.at("synchronous");
   const size_t shuffle_tile_evaluation = cfg.at("shuffle_tile_evaluation");
+  const size_t checkout_memory = cfg.at("checkout_memory");
 
   const auto task_step = [=](chunk_t chunk){
     update_chunk(chunk, verbose, shuffle_tile_evaluation, resistance);
@@ -114,12 +115,16 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   latch latch{numeric_cast<std::ptrdiff_t>(num_threads)};
   barrier barrier{numeric_cast<std::ptrdiff_t>(num_threads)};
 
-  const auto task_sequence = [&](chunk_t chunk){
+  const auto task_sequence = [&](chunk_t source){
 
     emp_assert(!use_omp);
 
     // synchronize after thread creation
     if (!synchronous) latch.arrive_and_wait();
+
+    auto chunk = checkout_chunk
+      ? checkout_chunk(source)
+      : source;
 
     for (size_t update = 0; update < num_updates; ++update) {
       task_step(chunk);
@@ -128,6 +133,8 @@ void run_grid(grid_t & grid, const config_t & cfg) {
       if (synchronous) barrier.arrive_and_wait();
 
     }
+
+    if (checkout_memory) checkin_chunk(source, chunk);
 
   };
 
