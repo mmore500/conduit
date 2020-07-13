@@ -19,7 +19,7 @@ chunk_t make_chunk(handle_t begin, handle_t end) {
     begin
   );
 
-  res.front()->template EmplaceDuct<ThreadDuct<char, 1024>>();
+  res.front()->template EmplaceInputDuct<ThreadDuct<char, 1024>>();
   res.front()->SetState('_');
 
   return res;
