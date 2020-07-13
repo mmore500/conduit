@@ -8,7 +8,8 @@
 
 #include "MockDuct.h"
 #include "ThreadDuct.h"
-#include "ProcessDuct.h"
+#include "ProcessInletDuct.h"
+#include "ProcessOutletDuct.h"
 
 #include "print_utils.h"
 
@@ -17,7 +18,9 @@ class Duct {
 
   std::variant<
     MockDuct<T, N>,
-    ThreadDuct<T, N>
+    ThreadDuct<T, N>,
+    ProcessInletDuct<T, N>,
+    ProcessOutletDuct<T, N>
   > impl;
 
 public:
@@ -58,6 +61,13 @@ public:
   size_t GetPending() const {
     return std::visit(
       [](auto & arg) -> size_t { return arg.GetPending(); },
+      impl
+    );
+  }
+
+  size_t GetAvailableCapacity() const {
+    return std::visit(
+      [](auto & arg) -> size_t { return arg.GetAvailableCapacity(); },
       impl
     );
   }

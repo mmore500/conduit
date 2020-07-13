@@ -36,6 +36,8 @@ class Inlet {
 
   size_t GetPending() const { return duct->GetPending(); }
 
+  size_t GetAvailableCapacity() const { return duct->GetAvailableCapacity(); }
+
   T GetElement(const size_t n) const { return duct->GetElement(n); }
 
   void SetElement(const size_t n, const T& val) { duct->SetElement(n, val); }
@@ -100,7 +102,7 @@ public:
 
   size_t GetDroppedWriteCount() const { return dropped_write_count; }
 
-  bool IsFull() const { return GetPending() == N - 1; }
+  bool IsFull() const { return 0 == GetAvailableCapacity(); }
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
