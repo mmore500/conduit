@@ -15,7 +15,7 @@ Outlet<char> make_input() {
   const int source = circular_index(get_rank(), get_nprocs(), -1);
   const int dest = get_rank();
 
-  outlet.EmplaceDuct<ProcessOutletDuct<char, 1024>>(
+  outlet.EmplaceDuct<ProcessOutletDuct<char>>(
     MPI_COMM_WORLD,
     source,
     dest,
@@ -34,7 +34,7 @@ Inlet<char> make_output() {
   const int source = get_rank();
   const int dest = circular_index(get_rank(), get_nprocs(), 1);
 
-  inlet.EmplaceDuct<ProcessInletDuct<char, 1024>>(
+  inlet.EmplaceDuct<ProcessInletDuct<char>>(
     MPI_COMM_WORLD,
     source,
     dest,

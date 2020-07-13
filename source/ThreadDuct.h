@@ -3,12 +3,13 @@
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
+#include "config_utils.h"
 #include "print_utils.h"
 
 template<typename T, size_t N>
 class Duct;
 
-template<typename T, size_t N>
+template<typename T, size_t N=DEFAULT_BUFFER>
 class ThreadDuct {
 
   friend Duct<T, N>;
