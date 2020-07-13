@@ -88,6 +88,14 @@ public:
     );
   }
 
+  std::string GetType() const {
+    return std::visit(
+      [](auto & arg) -> std::string { return arg.GetType(); },
+      impl
+    );
+  }
+
+
   std::string ToString() const {
     return std::visit(
       [](auto & arg) -> std::string { return arg.ToString(); },

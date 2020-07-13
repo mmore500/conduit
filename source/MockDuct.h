@@ -93,6 +93,8 @@ public:
     buffer[n] = val;
   }
 
+  std::string GetType() const { return "MockDuct"; }
+
   std::string ToString() const {
 
     #ifndef NDEBUG
@@ -100,7 +102,7 @@ public:
     #endif
 
     std::stringstream ss;
-    ss << "MockDuct" << std::endl;
+    ss << GetType() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
     ss << format_member("pending_t pending", pending);
