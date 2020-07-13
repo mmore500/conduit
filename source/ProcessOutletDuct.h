@@ -32,7 +32,6 @@ class ProcessOutletDuct {
   MPI_Comm comm;
 
   const int inlet_proc;
-  const int outlet_proc;
   const int tag;
 
   mutable index_t receive_position{0};
@@ -74,15 +73,12 @@ class ProcessOutletDuct {
 public:
 
   ProcessOutletDuct(
-    MPI_Comm comm_, // TODO move this last, make a default argument
-    const int inlet_proc_, // default argument? (MPI_ANY_SOURCE?)
-    const int outlet_proc_, //TODO shouldn't this always be get_rank()?
-    const int tag_ // TODO default argument? (MPI_ANY_TAG?)
+    const int inlet_proc_=MPI_ANY_SOURCE,
+    const int tag_=MPI_ANY_TAG,
+    MPI_Comm comm_=MPI_COMM_WORLD
   ) : comm(comm_)
   , inlet_proc(inlet_proc_)
-  , outlet_proc(outlet_proc_)
   , tag(tag_) {
-    emp_assert(outlet_proc == get_rank(), outlet_proc, get_rank());
     for (size_t i = 0; i < N; ++i) RequestReceive();
   }
 
@@ -133,7 +129,7 @@ public:
       }()
     ) << std::endl;
     ss << format_member("int inlet_proc", inlet_proc) << std::endl;
-    ss << format_member("int outlet_proc", outlet_proc) << std::endl;
+    ss << format_member("int get_rank()", get_rank()) << std::endl;
     ss << format_member("int tag", tag) << std::endl << std::endl;
     ss << format_member("size_t receive_position", receive_position);
     return ss.str();
