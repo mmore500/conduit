@@ -99,6 +99,9 @@ void run_grid(grid_t & grid, const config_t & cfg) {
     )
   );
 
+
+  initialize_grid(grid);
+
   const size_t num_updates = cfg.at("num_updates");
   const size_t verbose = cfg.at("verbose");
   const size_t resistance = cfg.at("resistance");
