@@ -3,6 +3,7 @@
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
+#include "CircularIndex.h"
 #include "OccupancyCap.h"
 #include "OccupancyGuard.h"
 

@@ -7,6 +7,7 @@
 
 #include "print_utils.h"
 
+#include "CircularIndex.h"
 #include "OccupancyCaps.h"
 #include "OccupancyGuard.h"
 #include "Duct.h"
@@ -19,9 +20,10 @@ class Inlet {
 #endif
 
   using buffer_t = std::array<T, N>;
+  using index_t = CircularIndex<N>;
 
   std::shared_ptr<Duct<T,N>> duct;
-  size_t write_position{0};
+  index_t write_position{0};
 
   // number of times the inlet has been written to
   size_t successful_write_count{0};
@@ -43,7 +45,7 @@ class Inlet {
     const OccupancyGuard guard{caps.Get("Advance", 1)};
 #endif
 
-    write_position = (write_position + 1) % N;
+    ++write_position;
     duct->Push();
     ++successful_write_count;
   }
@@ -110,7 +112,7 @@ public:
     ss << format_member("std::shared_ptr<Duct<T,N>> duct", *duct) << std::endl;
     ss << format_member(
       "GetElement(write_position - 1)",
-      GetElement((write_position + N - 1) % N)
+      GetElement(write_position - 1)
     ) << std::endl;
     ss << format_member(
       "GetElement(write_position)",
@@ -118,7 +120,7 @@ public:
     ) << std::endl;
     ss << format_member(
       "GetElement(write_position + 1)",
-      GetElement((write_position + 1) % N)
+      GetElement(write_position + 1)
     ) << std::endl;
 
     ss << format_member("size_t write_position", write_position) << std::endl;
