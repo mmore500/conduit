@@ -9,8 +9,8 @@
 
 class Tile {
 
-  Inlet<char> output;
   Outlet<char> input;
+  Inlet<char> output;
 
   char state;
 
@@ -35,9 +35,9 @@ class Tile {
         std::cerr
           << format_member("neighbor_state", neighbor_state)
           << std::endl;
-        std::cerr << format_member("next Tile", *next) << std::endl;
-        std::cerr << format_member("this Tile", *this) << std::endl;
         std::cerr << format_member("prev Tile", *prev) << std::endl;
+        std::cerr << format_member("this Tile", *this) << std::endl;
+        std::cerr << format_member("next Tile", *next) << std::endl;
         assert(false);
     }
 
@@ -50,9 +50,9 @@ class Tile {
   }
 
 public:
-  Tile(Inlet<char> output_, Outlet<char> input_)
-  : output(output_), input(input_)
-  { SetState('_'); }
+  Tile(Outlet<char> input_, Inlet<char> output_)
+  : input(input_), output(output_)
+  { }
 
   Tile *next;
   Tile *prev;
@@ -98,9 +98,9 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("id", id) << std::endl;
-    ss << format_member("Inlet<char> outlet", input) << std::endl;
-    ss << format_member("Outlet<char> input", output) << std::endl;
-    ss << format_member("char state", state);
+    ss << format_member("char state", state) << std::endl;
+    ss << format_member("Outlet<char> input", input) << std::endl;
+    ss << format_member("Inlet<char> output", output);
     return ss.str();
   }
 

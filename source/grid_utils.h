@@ -54,17 +54,17 @@ grid_t make_grid(const config_t & cfg) {
   );
 
   // after rotate
-  // outlets:   0 1 2 3
+  // outlets:   0 1 2 3  (inputs)
   //           \ \ \ \
-  // inlets:    3 0 1 2
+  // inlets:    3 0 1 2  (outputs)
 
   grid_t grid;
 
   for (size_t i = 0; i < grid_size; ++i) {
     grid.push_back(
       Tile(
-        inlets[i],
-        outlets[i]
+        outlets[i],
+        inlets[i]
       )
     );
   }
