@@ -109,7 +109,7 @@ public:
   size_t GetPending() const { emp_assert(false); }
 
   size_t GetAvailableCapacity() const {
-    if (pending) while (ConfirmSend());
+    while (pending && ConfirmSend());
     return N - pending;
   }
 
