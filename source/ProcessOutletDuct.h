@@ -28,6 +28,10 @@ class ProcessOutletDuct {
   mutable buffer_t buffer;
 
   mutable std::array<MPI_Request, N> receive_requests;
+#ifndef NDEBUG
+  // most vexing parse :/
+  mutable std::vector<bool> request_states=std::vector<bool>(N, false);
+#endif
 
   MPI_Comm comm;
 
@@ -37,7 +41,11 @@ class ProcessOutletDuct {
   mutable index_t receive_position{0};
 
   void RequestReceive() const {
-    // TODO add assert to check status of existing request
+    emp_assert(
+      request_states[receive_position] == false,
+      receive_position,
+      pending
+    );
     verify(MPI_Irecv(
       &buffer[receive_position],
       1,
@@ -47,6 +55,9 @@ class ProcessOutletDuct {
       comm,
       &receive_requests[receive_position]
     ));
+#ifndef NDEBUG
+    request_states[receive_position] = true;
+#endif
     ++receive_position;
   }
 
@@ -55,11 +66,19 @@ class ProcessOutletDuct {
 
     int flag{};
 
+    emp_assert(
+      request_states[receive_position] == true,
+      receive_position,
+      pending
+    );
     verify(MPI_Test(
       &receive_requests[receive_position],
       &flag,
       MPI_STATUS_IGNORE
     ));
+#ifndef NDEBUG
+    request_states[receive_position] = false;
+#endif
 
     if (flag) {
       RequestReceive();
