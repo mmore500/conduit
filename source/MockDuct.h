@@ -63,6 +63,8 @@ public:
 
   }
 
+  size_t GetAvailableCapacity() const { return N - GetPending(); }
+
   size_t GetPending() const {
 
     #ifndef NDEBUG

@@ -48,6 +48,8 @@ public:
 
   size_t GetPending() const { return pending; }
 
+  size_t GetAvailableCapacity() const { return N - pending; }
+
   T GetElement(const size_t n) const { return buffer[n]; }
 
   void SetElement(const size_t n, const T & val) { buffer[n] = val; }

@@ -1,9 +1,9 @@
-TEST_NAMES := CircularIndex
+TEST_NAMES := CircularIndex ProcessDuct
 
 EMP_DIR := ../../Empirical/source
 
 #CXX = clang++
-CXX := g++
+CXX := mpic++
 
 FLAGS = -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../source/ -I../third-party/ -I$(EMP_DIR)
 
