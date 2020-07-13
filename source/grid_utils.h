@@ -21,6 +21,7 @@
 #include "pipe_utils.h"
 #include "config_utils.h"
 #include "chunk_utils.h"
+#include "mpi_utils.h"
 
 #include "Tile.h"
 #include "ThreadTeam.h"
@@ -99,6 +100,22 @@ void run_grid(grid_t & grid, const config_t & cfg) {
     )
   );
 
+  if (is_multiprocess()) {
+
+    const size_t prev_proc = circular_index(get_rank(), get_nprocs(), -1);
+    grid.front().SplitInputDuct<ProcessOutletDuct<char>>(
+      prev_proc,
+      prev_proc
+    );
+
+    const size_t next_proc = circular_index(get_rank(), get_nprocs(), 1);
+    grid.back().SplitOutputDuct<ProcessInletDuct<char>>(
+      next_proc,
+      get_rank()
+    );
+
+
+  }
 
   initialize_grid(grid);
 

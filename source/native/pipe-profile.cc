@@ -10,7 +10,9 @@
 
 #include "../Tile.h"
 
-int main() {
+int main(int argc, char* argv[]) {
+
+  MPI_Init(&argc, &argv);
 
   std::cout << ">>> begin <<<" << std::endl << std::endl;
 
@@ -35,5 +37,7 @@ int main() {
   if (cfg.at("audit")) audit_grid(grid, cfg, duration.count());
 
   std::cout << ">>> end <<<" << std::endl;
+
+  MPI_Finalize();
 
 }
