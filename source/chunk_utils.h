@@ -22,9 +22,39 @@ chunk_t make_chunk(handle_t begin, handle_t end) {
   res.front()->template EmplaceInputDuct<ThreadDuct<char>>();
   res.front()->SetState('_');
 
+}
+
+chunk_t checkout_chunk(chunk_t & source) {
+
+  auto copy = new grid_t;
+
+  std::transform(
+    std::begin(source),
+    std::end(source),
+    std::back_inserter(*copy),
+    [](const auto & handle){ return *handle; }
+  );
+
+  chunk_t res(copy->size());
+  std::iota(
+    std::begin(res),
+    std::end(res),
+    std::begin(*copy)
+  );
+
   return res;
 
 }
+
+void checkin_chunk(chunk_t & source, const chunk_t & checkedout) {
+
+  emp_assert(source.size() == checkedout.size());
+
+  for (size_t i = 0; i < source.size(); ++i) {
+    *source[i] = *checkedout[i];
+  }
+}
+
 
 std::vector<chunk_t> make_chunks(grid_t & grid, const size_t num_chunks) {
 
