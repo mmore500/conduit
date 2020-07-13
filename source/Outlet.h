@@ -100,6 +100,11 @@ public:
 
   size_t GetNetFlux() const { return net_flux; }
 
+  template <typename WhichDuct, typename... Args>
+  void EmplaceDuct(Args&&... args) {
+    duct->template EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
+  }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("std::shared_ptr<Duct<T,N>> duct", *duct) << std::endl;
