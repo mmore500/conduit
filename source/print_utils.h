@@ -5,6 +5,10 @@
 #include <sstream>
 #include <mutex>
 
+#include "tools/string_utils.h"
+
+// TODO be clever and use fewer overloads
+
 std::mutex error_message_mutex;
 
 std::string apply_indent(std::string in) {
@@ -23,6 +27,17 @@ std::string format_member(
   std::stringstream ss;
   ss << name << ":" << std::endl;
   ss << apply_indent(member.ToString());
+  return ss.str();
+}
+
+template<>
+std::string format_member<std::string>(
+  const std::string & name,
+  const std::string& member
+) {
+  std::stringstream ss;
+  ss << name << ":" << std::endl;
+  ss << apply_indent(member);
   return ss.str();
 }
 
@@ -53,9 +68,9 @@ std::string format_member<size_t>(
 }
 
 template<>
-std::string format_member<std::atomic<size_t>>(
+std::string format_member<int>(
   const std::string & name,
-  const std::atomic<size_t>& member
+  const int& member
 ) {
   std::stringstream ss;
   ss << name << ":" << std::endl;
