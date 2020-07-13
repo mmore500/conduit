@@ -2,10 +2,10 @@
 
 #include <iostream>
 #include <memory>
-#include <atomic>
 
 #include "thread_utils.h"
 
+#include "CircularIndex.h"
 #include "Duct.h"
 #include "OccupancyCaps.h"
 #include "OccupancyGuard.h"
@@ -18,11 +18,12 @@ class Outlet {
 #endif
 
   using buffer_t = std::array<T, N>;
+  using index_t = CircularIndex<N>;
 
   std::shared_ptr<Duct<T,N>> duct;
 
   static_assert(N > 0);
-  size_t read_position{N-1};
+  index_t read_position{N-1};
 
   // number of times the outlet has been read from
   size_t read_count{0};
@@ -42,7 +43,7 @@ class Outlet {
     const OccupancyGuard guard{caps.Get("Advance", 1)};
 #endif
 
-    read_position = (read_position + step) % N;
+    read_position += step;
     duct->Pop(step);
 
     Log(step);
@@ -103,7 +104,7 @@ public:
     ss << format_member("std::shared_ptr<Duct<T,N>> duct", *duct) << std::endl;
     ss << format_member(
       "GetElement(read_position - 1)",
-      GetElement((read_position + N - 1) % N)
+      GetElement(read_position - 1)
     ) << std::endl;
     ss << format_member(
       "GetElement(read_position)",
@@ -111,7 +112,7 @@ public:
     ) << std::endl;
     ss << format_member(
       "GetElement(read_position + 1)",
-      GetElement((read_position + 1) % N)
+      GetElement(read_position + 1)
     ) << std::endl;
     ss << format_member("size_t read_position", read_position) << std::endl;
     ss << format_member("size_t read_count", read_count) << std::endl;
