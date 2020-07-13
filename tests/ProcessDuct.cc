@@ -14,7 +14,7 @@ Outlet<char> make_input() {
 
   const int source = circular_index(get_rank(), get_nprocs(), -1);
 
-  outlet.EmplaceDuct<ProcessOutletDuct<char>>(source);
+  outlet.SplitDuct<ProcessOutletDuct<char>>(source);
 
   return outlet;
 
@@ -27,7 +27,7 @@ Inlet<char> make_output() {
 
   const int dest = circular_index(get_rank(), get_nprocs(), 1);
 
-  inlet.EmplaceDuct<ProcessInletDuct<char>>(dest);
+  inlet.SplitDuct<ProcessInletDuct<char>>(dest);
 
   return inlet;
 
