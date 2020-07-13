@@ -35,8 +35,6 @@ class Inlet {
   // number of times write attempts have dropped due to buffer space
   size_t dropped_write_count{0};
 
-  size_t GetPending() const { return duct->GetPending(); }
-
   size_t GetAvailableCapacity() const { return duct->GetAvailableCapacity(); }
 
   T GetElement(const size_t n) const { return duct->GetElement(n); }
