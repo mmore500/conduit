@@ -57,7 +57,7 @@ public:
     ss << "ThreadDuct" << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("pending_t pending", pending);
+    ss << format_member("pending_t pending", (size_t) pending);
     return ss.str();
   }
 
