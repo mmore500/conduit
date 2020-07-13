@@ -7,12 +7,13 @@
 #include "OccupancyCap.h"
 #include "OccupancyGuard.h"
 
+#include "config_utils.h"
 #include "print_utils.h"
 
 template<typename T, size_t N>
 class Duct;
 
-template<typename T, size_t N>
+template<typename T, size_t N=DEFAULT_BUFFER>
 class MockDuct {
 
   friend Duct<T, N>;

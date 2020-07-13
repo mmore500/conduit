@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 
+#define DEFAULT_BUFFER 1024
+
 using config_t = std::unordered_map<std::string, size_t>;
 
 

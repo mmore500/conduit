@@ -9,7 +9,9 @@
 #include "Inlet.h"
 #include "Outlet.h"
 
-template<typename T, size_t N=1024>
+#include "config_utils.h"
+
+template<typename T, size_t N=DEFAULT_BUFFER>
 std::pair<Inlet<T,N>, Outlet<T,N>> make_pipe() {
 
   std::tuple<std::shared_ptr<Duct<T, N>>> args{std::make_shared<Duct<T, N>>()};

@@ -12,8 +12,9 @@
 #include "ProcessOutletDuct.h"
 
 #include "print_utils.h"
+#include "config_utils.h"
 
-template<typename T, size_t N>
+template<typename T, size_t N=DEFAULT_BUFFER>
 class Duct {
 
   std::variant<

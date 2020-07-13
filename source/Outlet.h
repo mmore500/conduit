@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 
+#include "config_utils.h"
 #include "thread_utils.h"
 
 #include "CircularIndex.h"
@@ -10,7 +11,7 @@
 #include "OccupancyCaps.h"
 #include "OccupancyGuard.h"
 
-template<typename T, size_t N=1024>
+template<typename T, size_t N=DEFAULT_BUFFER>
 class Outlet {
 
 #ifndef NDEBUG

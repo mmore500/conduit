@@ -5,6 +5,7 @@
 #include <memory>
 #include <atomic>
 
+#include "config_utils.h"
 #include "print_utils.h"
 
 #include "CircularIndex.h"
@@ -12,7 +13,7 @@
 #include "OccupancyGuard.h"
 #include "Duct.h"
 
-template<typename T, size_t N=1024>
+template<typename T, size_t N=DEFAULT_BUFFER>
 class Inlet {
 
 #ifndef NDEBUG
