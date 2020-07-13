@@ -8,6 +8,7 @@
 
 #include "MockDuct.h"
 #include "ThreadDuct.h"
+#include "ProcessDuct.h"
 
 #include "print_utils.h"
 
