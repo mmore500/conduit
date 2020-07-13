@@ -105,7 +105,9 @@ public:
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
+    emp_assert(GetAvailableCapacity() == N);
     duct->template EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
+    duct->Initialize(write_position);
   }
 
   template <typename WhichDuct, typename... Args>
