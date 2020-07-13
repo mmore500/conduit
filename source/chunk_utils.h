@@ -10,7 +10,7 @@ using handle_t = grid_t::iterator;
 using chunk_t = std::vector<handle_t>;
 
 
-chunk_t make_chunk(handle_t begin, handle_t end) {
+chunk_t make_chunk(handle_t begin, handle_t end, const size_t num_chunks) {
 
   chunk_t res(std::distance(begin, end));
   std::iota(
@@ -19,8 +19,12 @@ chunk_t make_chunk(handle_t begin, handle_t end) {
     begin
   );
 
-  res.front()->template EmplaceInputDuct<ThreadDuct<char>>();
-  res.front()->SetState('_');
+  if (num_chunks > 1) {
+    res.front()->template EmplaceInputDuct<ThreadDuct<char>>();
+    res.front().SetState('_');
+  }
+
+  return res;
 
 }
 
@@ -77,7 +81,7 @@ std::vector<chunk_t> make_chunks(grid_t & grid, const size_t num_chunks) {
     );
 
     res.push_back(
-      make_chunk(chunk_begin, chunk_end)
+      make_chunk(chunk_begin, chunk_end, num_chunks)
     );
 
   }
