@@ -10,7 +10,7 @@
 class Tile {
 
   Inlet<char> output;
-  Outlet<char> intake;
+  Outlet<char> input;
 
   char state;
 
@@ -50,8 +50,8 @@ class Tile {
   }
 
 public:
-  Tile(Inlet<char> output_, Outlet<char> intake_)
-  : output(output_), intake(intake_)
+  Tile(Inlet<char> output_, Outlet<char> input_)
+  : output(output_), input(input_)
   { SetState('_'); }
 
   Tile *next;
@@ -59,7 +59,7 @@ public:
   size_t id;
 
   void Update() {
-    const char neighbor_state = intake.GetCurrent();
+    const char neighbor_state = input.GetCurrent();
     const char next_state = Transition(neighbor_state);
     SetState(next_state);
   }
@@ -79,22 +79,27 @@ public:
 
   size_t GetDroppedWriteCount() const { return output.GetDroppedWriteCount(); }
 
-  size_t GetReadCount() const { return intake.GetReadCount(); }
+  size_t GetReadCount() const { return input.GetReadCount(); }
 
-  size_t GetReadRevisionCount() const { return intake.GetRevisionCount(); }
+  size_t GetReadRevisionCount() const { return input.GetRevisionCount(); }
 
-  size_t GetNetFlux() const { return intake.GetNetFlux(); }
+  size_t GetNetFlux() const { return input.GetNetFlux(); }
 
   template <typename WhichDuct, typename... Args>
-  void EmplaceDuct(Args&&... args) {
+  void EmplaceOutputDuct(Args&&... args) {
     output.EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
+  }
+
+  template <typename WhichDuct, typename... Args>
+  void EmplaceInputDuct(Args&&... args) {
+    input.EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
   }
 
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("id", id) << std::endl;
-    ss << format_member("Inlet<char> outlet", intake) << std::endl;
-    ss << format_member("Outlet<char> intake", output) << std::endl;
+    ss << format_member("Inlet<char> outlet", input) << std::endl;
+    ss << format_member("Outlet<char> input", output) << std::endl;
     ss << format_member("char state", state);
     return ss.str();
   }
