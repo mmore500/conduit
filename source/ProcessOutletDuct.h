@@ -74,14 +74,17 @@ class ProcessOutletDuct {
 public:
 
   ProcessOutletDuct(
-    MPI_Comm comm_,
-    const int inlet_proc_,
-    const int outlet_proc_,
-    const int tag_
+    MPI_Comm comm_, // TODO move this last, make a default argument
+    const int inlet_proc_, // default argument? (MPI_ANY_SOURCE?)
+    const int outlet_proc_, //TODO shouldn't this always be get_rank()?
+    const int tag_ // TODO default argument? (MPI_ANY_TAG?)
   ) : comm(comm_)
   , inlet_proc(inlet_proc_)
   , outlet_proc(outlet_proc_)
-  , tag(tag_) { for (size_t i = 0; i < N; ++i) RequestReceive(); }
+  , tag(tag_) {
+    emp_assert(outlet_proc == get_rank(), outlet_proc, get_rank());
+    for (size_t i = 0; i < N; ++i) RequestReceive();
+  }
 
   //todo rename
   void Push() { emp_assert(false); }
