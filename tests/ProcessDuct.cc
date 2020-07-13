@@ -7,15 +7,15 @@
 #include "../source/mpi_utils.h"
 #include "../source/pipe_utils.h"
 
-Outlet<char> make_intake() {
+Outlet<char> make_input() {
 
-  auto incoming = make_pipe<char>();
-  auto & [inlet, outlet] = incoming;
+  auto input_pipe = make_pipe<char>();
+  auto & [__, outlet] = input_pipe;
 
   const int source = circular_index(get_rank(), get_nprocs(), -1);
   const int dest = get_rank();
 
-  inlet.EmplaceDuct<ProcessOutletDuct<char, 1024>>(
+  outlet.EmplaceDuct<ProcessOutletDuct<char, 1024>>(
     MPI_COMM_WORLD,
     source,
     dest,
@@ -28,8 +28,8 @@ Outlet<char> make_intake() {
 
 Inlet<char> make_output() {
 
-  auto incoming = make_pipe<char>();
-  auto & [inlet, outlet] = incoming;
+  auto output_pipe = make_pipe<char>();
+  auto & [inlet, __] = output_pipe;
 
   const int source = get_rank();
   const int dest = circular_index(get_rank(), get_nprocs(), 1);
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
 
   Inlet<char> output = make_output();
 
-  Outlet<char> intake = make_intake();
+  Outlet<char> input = make_input();
 
   const char message = 65 + get_rank();
 
@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
   char res;
-  res = intake.GetCurrent();
+  res = input.GetCurrent();
 
   std::cout << "rank " << get_rank() << " sent " << message << std::endl;
   std::cout << "rank " << get_rank() << " received " << res << std::endl;
