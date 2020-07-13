@@ -31,7 +31,6 @@ class ProcessInletDuct {
 
   MPI_Comm comm;
 
-  const int inlet_proc;
   const int outlet_proc;
   const int tag;
 
@@ -73,16 +72,12 @@ class ProcessInletDuct {
 public:
 
   ProcessInletDuct(
-    MPI_Comm comm_, // TODO move this last, make a default argument
-    const int inlet_proc_, //TODO shouldn't this always be get_rank()?
-    const int outlet_proc_, //TODO default argument (MPI_ANY_SOURCE?)
-    const int tag_ //TODO default argument (MPI_ANY_TAG?)
+    const int outlet_proc_,
+    const int tag_=0,
+    MPI_Comm comm_=MPI_COMM_WORLD
   ) : comm(comm_)
-  , inlet_proc(inlet_proc_)
   , outlet_proc(outlet_proc_)
-  , tag(tag_) {
-    emp_assert(inlet_proc == get_rank(), inlet_proc, get_rank());
-  }
+  , tag(tag_) { ; }
 
   //todo rename
   void Push() {
@@ -129,7 +124,7 @@ public:
         return std::string{}.assign(data, len);
       }()
     ) << std::endl;
-    ss << format_member("int inlet_proc", inlet_proc) << std::endl;
+    ss << format_member("get_rank()", get_rank()) << std::endl;
     ss << format_member("int outlet_proc", outlet_proc) << std::endl;
     ss << format_member("int tag", tag) << std::endl;
     ss << format_member("size_t send_position", send_position);
