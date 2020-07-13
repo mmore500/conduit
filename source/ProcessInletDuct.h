@@ -28,6 +28,10 @@ class ProcessInletDuct {
   mutable buffer_t buffer;
 
   mutable std::array<MPI_Request, N> send_requests;
+#ifndef NDEBUG
+  // most vexing parse :/
+  mutable std::vector<bool> request_states=std::vector<bool>(N, false);
+#endif
 
   MPI_Comm comm;
 
@@ -37,7 +41,7 @@ class ProcessInletDuct {
   mutable index_t send_position{0};
 
   void RequestSend() const {
-    // TODO add assert to check status of existing request
+    emp_assert(request_states[send_position] == false, send_position, pending);
     verify(MPI_Isend(
       &buffer[send_position],
       1,
@@ -47,6 +51,9 @@ class ProcessInletDuct {
       comm,
       &send_requests[send_position]
     ));
+#ifndef NDEBUG
+    request_states[send_position] = true;
+#endif
     ++pending;
     ++send_position;
 
@@ -57,11 +64,15 @@ class ProcessInletDuct {
 
     int flag{};
 
+    emp_assert(request_states[send_position - pending], send_position, pending);
     verify(MPI_Test(
       &send_requests[send_position - pending],
       &flag,
       MPI_STATUS_IGNORE
     ));
+#ifndef NDEBUG
+    request_states[send_position] = false;
+#endif
 
     if (flag) --pending;
 
