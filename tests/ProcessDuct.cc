@@ -3,23 +3,16 @@
 
 #include "mpi.h"
 
+#include "../source/CircularIndex.h"
 #include "../source/mpi_utils.h"
 #include "../source/pipe_utils.h"
-
-// TODO make a util
-// TODO actually, make a type and overload +=, ++, -=, --
-// template on diff? and len?
-// call it CycleIndex CircularIndex
-size_t relative_index(const size_t pos, const size_t len, const int diff) {
-  return (pos + len + diff) % len;
-}
 
 Outlet<char> make_intake() {
 
   auto incoming = make_pipe<char>();
   auto & [inlet, outlet] = incoming;
 
-  const int source = relative_index(get_rank(), get_nprocs(), -1);
+  const int source = circular_index(get_rank(), get_nprocs(), -1);
   const int dest = get_rank();
 
   inlet.EmplaceDuct<ProcessOutletDuct<char, 1024>>(
@@ -39,7 +32,7 @@ Inlet<char> make_output() {
   auto & [inlet, outlet] = incoming;
 
   const int source = get_rank();
-  const int dest = relative_index(get_rank(), get_nprocs(), 1);
+  const int dest = circular_index(get_rank(), get_nprocs(), 1);
 
   inlet.EmplaceDuct<ProcessInletDuct<char, 1024>>(
     MPI_COMM_WORLD,

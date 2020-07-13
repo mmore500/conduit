@@ -1,6 +1,8 @@
 #pragma once
 
-// TODO how to allow for compile time and run time N
+size_t circular_index(const size_t pos, const size_t len, const int diff) {
+  return (pos + len + diff%len) % len;
+}
 
 template<size_t N>
 class CircularIndex {
