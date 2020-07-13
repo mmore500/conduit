@@ -30,6 +30,8 @@ class MockDuct {
 
 public:
 
+  void Initialize(const size_t write_position) { ; }
+
   //todo rename
   void Push() {
 

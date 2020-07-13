@@ -101,6 +101,23 @@ public:
     for (size_t i = 0; i < N; ++i) RequestReceive();
   }
 
+  void Initialize(const size_t write_position) {
+    for (size_t i = 0; i < write_position; ++i) {
+      emp_assert(
+        request_states[receive_position] == true,
+        receive_position,
+        pending
+      );
+
+      verify(MPI_Request_free(&receive_requests[i]));
+
+#ifndef NDEBUG
+      request_states[receive_position] = false;
+#endif
+      RequestReceive();
+    }
+  }
+
   //todo rename
   void Push() { emp_assert(false); }
 

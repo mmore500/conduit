@@ -102,7 +102,10 @@ public:
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
+    FastForward();
+    emp_assert(GetPending() == 0);
     duct->template EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
+    duct->Initialize(read_position+1);
   }
 
   template <typename WhichDuct, typename... Args>

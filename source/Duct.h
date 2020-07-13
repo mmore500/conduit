@@ -28,15 +28,18 @@ public:
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
-    const size_t cur_pending = std::visit(
-      [](auto & arg) { return arg.GetPending(); },
-      impl
-    );
     impl.template emplace<WhichDuct>(std::forward<Args>(args)...);
+  }
+
+  //todo refactor to remove this
+  //keep write/read position *within* duct
+  void Initialize(const size_t write_position) {
+
     std::visit(
-      [cur_pending](auto & arg) { arg.pending = cur_pending; },
+      [=](auto & arg) { arg.Initialize(write_position); },
       impl
     );
+
   }
 
   //todo rename

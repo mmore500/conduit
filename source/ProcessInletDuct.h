@@ -103,6 +103,10 @@ public:
 
   }
 
+  void Initialize(const size_t write_position) {
+    send_position = write_position;
+  }
+
   //todo rename
   void Pop(const size_t count) { emp_assert(false); }
 
