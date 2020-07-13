@@ -88,5 +88,9 @@ public:
     return operator-(CircularIndex{rhs});
   }
 
+  std::string ToString() const {
+    return std::to_string(index);
+  }
+
 
 };
