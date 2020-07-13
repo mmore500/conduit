@@ -43,9 +43,9 @@ grid_t make_grid(const config_t & cfg) {
   }
 
   // before rotate
-  // outlets: 0 1 2 3
+  // outlets: 0 1 2 3  (inputs)
   //          | | | |
-  // inlets:  0 1 2 3
+  // inlets:  0 1 2 3  (outputs)
 
   std::rotate(
     std::rbegin(outlets),
