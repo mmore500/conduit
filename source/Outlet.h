@@ -105,6 +105,13 @@ public:
     duct->template EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
   }
 
+  template <typename WhichDuct, typename... Args>
+  void SplitDuct(Args&&... args) {
+    emp_assert(GetPending() == 0);
+    duct = std::make_shared<Duct<T, N>>();
+    EmplaceDuct<WhichDuct>(args...);
+  }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("std::shared_ptr<Duct<T,N>> duct", *duct) << std::endl;

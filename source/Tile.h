@@ -95,6 +95,16 @@ public:
     input.EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
   }
 
+  template <typename WhichDuct, typename... Args>
+  void SplitOutputDuct(Args&&... args) {
+    output.SplitDuct<WhichDuct>(std::forward<Args>(args)...);
+  }
+
+  template <typename WhichDuct, typename... Args>
+  void SplitInputDuct(Args&&... args) {
+    input.SplitDuct<WhichDuct>(std::forward<Args>(args)...);
+  }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("id", id) << std::endl;
