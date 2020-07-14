@@ -5,6 +5,7 @@
 #include <limits>
 
 #include "thread_utils.h"
+#include "print_utils.h"
 
 class OccupancyCap {
 
@@ -27,12 +28,21 @@ public:
 
     const thread_id_t id = get_thread_id();
 
-    emp_assert(occupants.count(id) == 0);
+    emp_assert(
+      occupants.count(id) == 0,
+      [](){ error_message_mutex.lock(); return "locked"; }(),
+      occupants.count(id)
+    );
 
     occupants.insert(id);
 
-    //TODO write more descriptive error message
-    emp_assert(occupants.size() <= maximum_occupancy);
+    emp_assert(
+      occupants.size() <= maximum_occupancy,
+      [](){ error_message_mutex.lock(); return "locked"; }(),
+      occupants.size(),
+      maximum_occupancy,
+      to_string(occupants)
+    );
 
   }
 
@@ -45,7 +55,10 @@ public:
 
     const thread_id_t id = get_thread_id();
 
-    emp_assert(occupants.count(id));
+    emp_assert(
+      occupants.count(id),
+      [](){ error_message_mutex.lock(); return "locked"; }()
+    );
 
     occupants.erase(id);
 

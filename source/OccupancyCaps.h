@@ -7,6 +7,8 @@
 
 #include "OccupancyCap.h"
 
+#include "tools/string_utils.h"
+
 class OccupancyCaps {
 
   std::unordered_map<std::string, OccupancyCap> lookup;
@@ -36,7 +38,12 @@ public:
       return res.first->second;
     } else {
       auto & res = lookup.at(name);
-      emp_assert(res.GetMaximumOccupancy() == maximum_occupancy);
+      emp_assert(
+        res.GetMaximumOccupancy() == maximum_occupancy,
+        [](){ error_message_mutex.lock(); return "locked"; }(),
+        maximum_occupancy,
+        res.GetMaximumOccupancy()
+      );
       return res;
     }
 

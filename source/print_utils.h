@@ -92,3 +92,15 @@ std::string format_member<const void *>(
   );
   return ss.str();
 }
+
+template<typename T>
+std::string to_string(const T & container) {
+  emp::vector<std::string> res;
+  std::transform(
+    std::begin(container),
+    std::end(container),
+    std::back_inserter(res),
+    [](const auto & x){ return emp::to_string(x); }
+  );
+  return emp::join_on(res, ", ");
+}
