@@ -43,9 +43,15 @@ config_t make_config() {
       )
     },
     {
-      "num_updates",
+      "num_updates", // 0 for no limit
       std::stoi(
-        std::getenv("PP_NUM_UPDATES") ?: "100"
+        std::getenv("PP_NUM_UPDATES") ?: "0"
+      )
+    },
+    {
+      "num_seconds", // 0 for no limit
+      std::stoi(
+        std::getenv("PP_NUM_SECONDS") ?: "10"
       )
     },
     {

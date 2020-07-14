@@ -120,6 +120,7 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   initialize_grid(grid);
 
   const size_t num_updates = cfg.at("num_updates");
+  const size_t num_seconds = cfg.at("num_seconds");
   const size_t verbose = cfg.at("verbose");
   const size_t resistance = cfg.at("resistance");
   const size_t num_threads = cfg.at("num_threads");
@@ -149,13 +150,28 @@ void run_grid(grid_t & grid, const config_t & cfg) {
       ? checkout_chunk(source)
       : source;
 
-    for (size_t update = 0; update < num_updates; ++update) {
-      task_step(chunk);
+    const auto start = std::chrono::steady_clock::now();
+    const auto time_expired = [start, num_seconds](){
+      return num_seconds && std::chrono::duration_cast<std::chrono::seconds>(
+        std::chrono::steady_clock::now() - start
+      ).count() >= num_seconds;
+    };
 
+    size_t update{};
+    const auto updates_expired = [&update, num_updates](){
+      return update >= num_updates && num_updates;
+    };
+
+    while (!updates_expired() && !time_expired()) {
+      task_step(chunk);
       // synchronize after each step
       if (synchronous) barrier.arrive_and_wait();
 
+      ++update;
+
     }
+
+    if (synchronous) barrier.arrive_and_drop();
 
     if (checkout_memory) checkin_chunk(source, chunk);
 
