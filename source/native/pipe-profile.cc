@@ -14,11 +14,11 @@ int main(int argc, char* argv[]) {
 
   MPI_Init(&argc, &argv);
 
-  std::cout << ">>> begin <<<" << std::endl << std::endl;
-
   const config_t cfg{make_config()};
 
-  print_config(cfg);
+  if (!cfg.at("taciturn")) std::cout << ">>> begin <<<" << std::endl << std::endl;
+
+  if (!cfg.at("taciturn")) print_config(cfg);
 
   grid_t grid(
     make_grid(cfg)
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
 
   if (cfg.at("audit")) audit_grid(grid, cfg, duration.count());
 
-  std::cout << ">>> end <<<" << std::endl;
+  if (!cfg.at("taciturn")) std::cout << ">>> end <<<" << std::endl;
 
   MPI_Finalize();
 

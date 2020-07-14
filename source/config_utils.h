@@ -73,9 +73,15 @@ config_t make_config() {
       )
     },
     {
-      "verbose",
+      "verbose", // printing CA grid
       std::stoi(
         std::getenv("PP_VERBOSE") ?: "0"
+      )
+    },
+    {
+      "taciturn", // RE: printing other info
+      std::stoi(
+        std::getenv("PP_TACITURN") ?: "0"
       )
     }
   };
