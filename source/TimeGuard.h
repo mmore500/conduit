@@ -16,8 +16,10 @@ public:
   , start{std::chrono::steady_clock::now()}
   { ; }
 
-  ~TimeGuard() { dest = std::chrono::duration_cast<DurationType>(
-    std::chrono::steady_clock::now() - start);
+  ~TimeGuard() {
+    dest = std::chrono::duration_cast<DurationType>(
+      std::chrono::steady_clock::now() - start
+    );
   }
 
 };
