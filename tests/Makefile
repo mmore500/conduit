@@ -1,4 +1,4 @@
-TEST_NAMES := CircularIndex ProcessDuct
+TEST_NAMES := CircularIndex Gatherer ProcessDuct
 
 EMP_DIR := ../../Empirical/source
 
