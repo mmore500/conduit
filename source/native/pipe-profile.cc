@@ -11,6 +11,7 @@
 #include "../mpi_utils.h"
 
 #include "../Tile.h"
+#include "../TimeGuard.h"
 
 int main(int argc, char* argv[]) {
 
@@ -26,23 +27,24 @@ int main(int argc, char* argv[]) {
     make_grid(cfg)
   );
 
-  const auto start = std::chrono::high_resolution_clock::now();
+  std::chrono::seconds duration; {
+    const TimeGuard guard(duration);
 
-  const double mean_productivity = run_grid(grid, cfg);
+    const double mean_productivity = run_grid(grid, cfg);
 
-  if (is_root()) {
-    if (!cfg.at("taciturn")) std::cout << "mean_productivity: ";
-    std::cout << std::fixed << std::setprecision(0);
-    std::cout << mean_productivity << std::endl;
+    if (is_root()) {
+      if (!cfg.at("taciturn")) std::cout << "mean_productivity: ";
+      std::cout << std::fixed << std::setprecision(0);
+      std::cout << mean_productivity << std::endl;
+    }
+
   }
 
-  const auto stop = std::chrono::high_resolution_clock::now();
-
-  const auto duration = std::chrono::duration_cast<
-    std::chrono::nanoseconds
-  >(stop - start);
-
-  if (cfg.at("audit")) audit_grid(grid, cfg, duration.count());
+  if (cfg.at("audit")) audit_grid(
+    grid,
+    cfg,
+    std::chrono::duration_cast<std::chrono::nanoseconds>(duration).count()
+  );
 
   if (!cfg.at("taciturn")) std::cout << ">>> end <<<" << std::endl;
 
