@@ -22,3 +22,17 @@ std::pair<Inlet<T,N>, Outlet<T,N>> make_pipe() {
   );
 
 }
+
+template<typename T, size_t N=DEFAULT_BUFFER>
+Inlet<T,N> make_sink() {
+  return Inlet<T,N>(
+    std::make_shared<Duct<T, N>>()
+  );
+}
+
+template<typename T, size_t N=DEFAULT_BUFFER>
+Outlet<T,N> make_source() {
+  return Outlet<T,N>(
+    std::make_shared<Duct<T, N>>()
+  );
+}
