@@ -30,7 +30,7 @@ class ProcessInletDuct {
   mutable std::array<MPI_Request, N> send_requests;
 #ifndef NDEBUG
   // most vexing parse :/
-  mutable std::vector<bool> request_states=std::vector<bool>(N, false);
+  mutable std::vector<char> request_states=std::vector<char>(N, false);
 #endif
 
   MPI_Comm comm;
