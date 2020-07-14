@@ -23,6 +23,8 @@
 #include "chunk_utils.h"
 #include "mpi_utils.h"
 
+#include "CountdownTimer.h"
+#include "TimeoutBarrier.h"
 #include "Gatherer.h"
 #include "Tile.h"
 #include "ThreadTeam.h"
@@ -153,11 +155,8 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       ? checkout_chunk(source)
       : source;
 
-    const auto start = std::chrono::steady_clock::now();
-    const auto time_expired = [start, num_seconds](){
-      return num_seconds && std::chrono::duration_cast<std::chrono::seconds>(
-        std::chrono::steady_clock::now() - start
-      ).count() >= num_seconds;
+    CountdownTimer timer{
+      std::chrono::seconds{num_seconds}
     };
 
     size_t update{};
@@ -165,10 +164,14 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       return update >= num_updates && num_updates;
     };
 
-    while (!updates_expired() && !time_expired()) {
+    while (!updates_expired() && !timer.IsComplete()) {
       task_step(chunk);
+
       // synchronize after each step
-      if (synchronous) barrier.arrive_and_wait();
+      if (synchronous) TimeoutBarrier{
+        timer,
+        barrier
+      };
 
       ++update;
 
