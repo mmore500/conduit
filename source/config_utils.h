@@ -3,90 +3,98 @@
 #include <unordered_map>
 #include <string>
 #include <iostream>
+#include <limits>
 
 #define DEFAULT_BUFFER 1024
 
 using config_t = std::unordered_map<std::string, size_t>;
 
+size_t stoszt(const std::string & source) {
+  std::stringstream ss{source};
+  size_t res;
+  ss >> res;
+  return res;
+}
 
 config_t make_config() {
 
   return config_t{
     {
       "audit",
-      std::stoi(
+      stoszt(
         std::getenv("PP_AUDIT") ?: "0"
       )
     },
     {
       "checkout_memory",
-      std::stoi(
+      stoszt(
         std::getenv("PP_CHECKOUT_MEMORY") ?: "0"
       )
     },
     {
       "shuffle_tile_evaluation",
-      std::stoi(
+      stoszt(
         std::getenv("PP_SHUFFLE_TILE_EVALUATION") ?: "1"
       )
     },
     {
       "num_chunks",
-      std::stoi(
+      stoszt(
         std::getenv("PP_NUM_THREADS") ?: "1"
       )
     },
     {
       "num_threads",
-      std::stoi(
+      stoszt(
         std::getenv("PP_NUM_THREADS") ?: "1"
       )
     },
     {
-      "num_updates", // 0 for no limit
-      std::stoi(
-        std::getenv("PP_NUM_UPDATES") ?: "0"
+      "num_updates", // undefined = no limit
+      stoszt(
+        std::getenv("PP_NUM_UPDATES")
+        ?: emp::to_string(std::numeric_limits<size_t>::max())
       )
     },
     {
       "num_seconds", // 0 for no limit
-      std::stoi(
+      stoszt(
         std::getenv("PP_NUM_SECONDS") ?: "10"
       )
     },
     {
       "grid_size",
-      std::stoi(
+      stoszt(
         std::getenv("PP_GRID_SIZE") ?: "10"
       )
     },
     {
       "synchronous",
-      std::stoi(
+      stoszt(
         std::getenv("PP_SYNCHRONOUS") ?: "1"
       )
     },
     {
       "resistance",
-      std::stoi(
+      stoszt(
         std::getenv("PP_RESISTANCE") ?: "0"
       )
     },
     {
       "use_omp",
-      std::stoi(
+      stoszt(
         std::getenv("PP_USE_OMP") ?: "0"
       )
     },
     {
       "verbose", // printing CA grid
-      std::stoi(
+      stoszt(
         std::getenv("PP_VERBOSE") ?: "0"
       )
     },
     {
       "taciturn", // RE: printing other info
-      std::stoi(
+      stoszt(
         std::getenv("PP_TACITURN") ?: "0"
       )
     }

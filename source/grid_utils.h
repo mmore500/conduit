@@ -23,6 +23,7 @@
 #include "chunk_utils.h"
 #include "mpi_utils.h"
 
+#include "CountdownIterator.h"
 #include "CountdownTimer.h"
 #include "TimeoutBarrier.h"
 #include "Gatherer.h"
@@ -158,13 +159,9 @@ double run_grid(grid_t & grid, const config_t & cfg) {
     CountdownTimer timer{
       std::chrono::seconds{num_seconds}
     };
+    CountdownIterator counter{num_updates};
 
-    size_t update{};
-    const auto updates_expired = [&update, num_updates](){
-      return update >= num_updates && num_updates;
-    };
-
-    while (!updates_expired() && !timer.IsComplete()) {
+    while (!counter.IsComplete() && !timer.IsComplete()) {
       task_step(chunk);
 
       // synchronize after each step
@@ -173,7 +170,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
         barrier
       };
 
-      ++update;
+      counter.Step();
 
     }
 
@@ -181,7 +178,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
 
     if (checkout_memory) checkin_chunk(source, chunk);
 
-    gatherer.Put(numeric_cast<int>(update));
+    gatherer.Put(numeric_cast<int>(counter.GetElapsed()));
 
   };
 
