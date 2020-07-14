@@ -87,4 +87,10 @@ public:
 
   void arrive_and_wait() { wait(arrive()); }
 
+  void arrive_and_drop() {
+    const std::lock_guard<std::mutex> lock{mutex};
+    --expected;
+    arrive();
+  }
+
 };
