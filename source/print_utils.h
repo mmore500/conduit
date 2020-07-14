@@ -5,6 +5,8 @@
 #include <sstream>
 #include <mutex>
 
+#include "identity.h"
+
 #include "tools/string_utils.h"
 
 // TODO be clever and use fewer overloads

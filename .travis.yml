@@ -12,7 +12,6 @@ before_install:
 install:
 - sudo apt-get install -qq g++-8 libomp-dev openmpi-bin libopenmpi-dev
 - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90
-- git clone https://github.com/devosoft/Empirical ../Empirical
 - git clone https://github.com/emscripten-core/emsdk.git && cd emsdk && git pull && ./emsdk install latest && ./emsdk activate latest && . ./emsdk_env.sh && cd ..
 - git submodule init
 - git submodule update
