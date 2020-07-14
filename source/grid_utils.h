@@ -139,8 +139,11 @@ void run_grid(grid_t & grid, const config_t & cfg) {
 
     emp_assert(!use_omp);
 
-    // synchronize after thread creation
-    if (!synchronous) latch.arrive_and_wait();
+    // synchronize once after thread creation and MPI spinup
+    if (!synchronous) {
+      latch.arrive_and_wait();
+      MPI_Barrier(MPI_COMM_WORLD);
+    }
 
     auto chunk = checkout_chunk
       ? checkout_chunk(source)
