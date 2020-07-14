@@ -22,12 +22,12 @@ Outlet<char> make_input() {
 
 Inlet<char> make_output() {
 
-  auto output_pipe = make_pipe<char>();
-  auto & [inlet, __] = output_pipe;
+  // another way of doing it
+  auto inlet = make_sink<char>();
 
   const int dest = circular_index(get_rank(), get_nprocs(), 1);
 
-  inlet.SplitDuct<ProcessInletDuct<char>>(dest);
+  inlet.EmplaceDuct<ProcessInletDuct<char>>(dest);
 
   return inlet;
 
