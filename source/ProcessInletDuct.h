@@ -2,10 +2,14 @@
 
 #include "mpi.h"
 
+#include <algorithm>
+#include <array>
+
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
 #include "CircularIndex.h"
+#include "identity.h"
 
 #include "config_utils.h"
 #include "mpi_utils.h"
@@ -41,7 +45,12 @@ class ProcessInletDuct {
   mutable index_t send_position{0};
 
   void RequestSend() const {
-    emp_assert(request_states[send_position] == false, send_position, pending);
+    emp_assert(
+      request_states[send_position] == false,
+      send_position,
+      pending,
+      format_member("*this", *this)
+    );
     verify(MPI_Isend(
       &buffer[send_position],
       1,
@@ -64,7 +73,12 @@ class ProcessInletDuct {
 
     int flag{};
 
-    emp_assert(request_states[send_position - pending], send_position, pending);
+    emp_assert(
+      request_states[send_position - pending],
+      send_position,
+      pending,
+      format_member("*this", *this)
+    );
     verify(MPI_Test(
       &send_requests[send_position - pending],
       &flag,
@@ -88,7 +102,18 @@ public:
     MPI_Comm comm_=MPI_COMM_WORLD
   ) : comm(comm_)
   , outlet_proc(outlet_proc_)
-  , tag(tag_) { ; }
+  , tag(tag_) {
+    emp_assert(
+      true,
+      std::none_of(
+        std::begin(request_states),
+        std::end(request_states),
+        identity
+      ),
+      [](){ error_message_mutex.lock(); return "locked"; }(),
+      format_member("*this", *this)
+    );
+  }
 
   //todo rename
   void Push() {

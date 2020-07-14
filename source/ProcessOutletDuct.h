@@ -2,10 +2,14 @@
 
 #include "mpi.h"
 
+#include <algorithm>
+#include <array>
+
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
 #include "CircularIndex.h"
+#include "identity.h"
 
 #include "config_utils.h"
 #include "mpi_utils.h"
@@ -67,9 +71,11 @@ class ProcessOutletDuct {
     int flag{};
 
     emp_assert(
-      request_states[receive_position] == true,
+      request_states[receive_position],
+      [](){ error_message_mutex.lock(); return "locked"; }(),
       receive_position,
-      pending
+      pending,
+      format_member("*this", *this)
     );
     verify(MPI_Test(
       &receive_requests[receive_position],
@@ -99,14 +105,24 @@ public:
   , inlet_proc(inlet_proc_)
   , tag(tag_) {
     for (size_t i = 0; i < N; ++i) RequestReceive();
+    emp_assert(
+      std::all_of(
+        std::begin(request_states),
+        std::end(request_states),
+        identity
+      ),
+      [](){ error_message_mutex.lock(); return "locked"; }(),
+      format_member("*this", *this)
+    );
   }
 
   void Initialize(const size_t write_position) {
     for (size_t i = 0; i < write_position; ++i) {
       emp_assert(
-        request_states[receive_position] == true,
+        request_states[receive_position],
+        [](){ error_message_mutex.lock(); return "locked"; }(),
         receive_position,
-        pending
+        format_member("*this", *this)
       );
 
       verify(MPI_Request_free(&receive_requests[i]));
@@ -127,8 +143,9 @@ public:
     emp_assert(
       pending >= count,
       [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("pending: ", pending),
-      emp::to_string("count: ", count)
+      pending,
+      count,
+      format_member("*this", *this)
     );
 
     pending -= count;
