@@ -12,8 +12,12 @@ for SYNCHRONOUS in 0 1; do
     for LOAD_PER in 1 2 4 8 16 32; do
       for NUM_THREADS in 1 2 4 8 16 32; do
 
+        MPI_PROCS=$(( $NUM_THREADS < 8 ? 1 : $NUM_THREADS / 8 ))
+        echo "MPI_PROCS: ${MPI_PROCS}"
+
         echo "NUM_THREADS: ${NUM_THREADS}"
-        export PP_NUM_THREADS=$NUM_THREADS
+        export PP_NUM_THREADS=$(( $NUM_THREADS / $MPI_PROCS ))
+        echo "PP_NUM_THREADS: ${PP_NUM_THREADS}"
 
         RESISTANCE=64
         echo "RESISTANCE: ${RESISTANCE}"
@@ -28,13 +32,13 @@ for SYNCHRONOUS in 0 1; do
 
         GRID_SIZE=64
         echo "GRID_SIZE: ${GRID_SIZE}"
-        export PP_GRID_SIZE=$GRID_SIZE
+        export PP_GRID_SIZE=$(( $GRID_SIZE / $MPI_PROCS ))
 
         echo "LOAD_PER: ${LOAD_PER}"
         echo "REP: ${REP}"
 
         /usr/bin/time -f "%e" -o tmp \
-          ./pipe-profile \
+          mpiexec -n $MPI_PROCS ./pipe-profile \
           > /dev/null 2>&1
         ELAPSED_TIME=$(cat tmp)
         echo "ELAPSED_TIME: ${ELAPSED_TIME}"
