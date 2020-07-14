@@ -2,11 +2,13 @@
 //  Copyright (C) Matthew Andres Moreno, 2020.
 //  Released under MIT license; see LICENSE
 
+#include <iomanip>
 #include <iostream>
 #include <chrono>
 
 #include "../grid_utils.h"
 #include "../config_utils.h"
+#include "../mpi_utils.h"
 
 #include "../Tile.h"
 
@@ -26,7 +28,13 @@ int main(int argc, char* argv[]) {
 
   const auto start = std::chrono::high_resolution_clock::now();
 
-  run_grid(grid, cfg);
+  const double mean_productivity = run_grid(grid, cfg);
+
+  if (is_root()) {
+    if (!cfg.at("taciturn")) std::cout << "mean_productivity: ";
+    std::cout << std::fixed << std::setprecision(0);
+    std::cout << mean_productivity << std::endl;
+  }
 
   const auto stop = std::chrono::high_resolution_clock::now();
 

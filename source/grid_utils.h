@@ -23,6 +23,7 @@
 #include "chunk_utils.h"
 #include "mpi_utils.h"
 
+#include "Gatherer.h"
 #include "Tile.h"
 #include "ThreadTeam.h"
 
@@ -91,7 +92,7 @@ void initialize_grid(grid_t & grid) {
 
 }
 
-void run_grid(grid_t & grid, const config_t & cfg) {
+double run_grid(grid_t & grid, const config_t & cfg) {
 
   std::vector<chunk_t> chunks(
     make_chunks(
@@ -136,6 +137,8 @@ void run_grid(grid_t & grid, const config_t & cfg) {
   latch latch{numeric_cast<std::ptrdiff_t>(num_threads)};
   barrier barrier{numeric_cast<std::ptrdiff_t>(num_threads)};
 
+  Gatherer<int> gatherer(MPI_INT);
+
   const auto task_sequence = [&](chunk_t source){
 
     emp_assert(!use_omp);
@@ -174,6 +177,8 @@ void run_grid(grid_t & grid, const config_t & cfg) {
     if (synchronous) barrier.arrive_and_drop();
 
     if (checkout_memory) checkin_chunk(source, chunk);
+
+    gatherer.Put(numeric_cast<int>(update));
 
   };
 
@@ -219,6 +224,16 @@ void run_grid(grid_t & grid, const config_t & cfg) {
     if (synchronous) omp_sync();
     else omp_async();
   } else std_run();
+
+  const auto productivities = gatherer.Gather();
+
+  return productivities
+    ? std::accumulate(
+      std::begin(*productivities),
+      std::end(*productivities),
+      0.0
+    ) / productivities->size()
+    : -1.0;
 
 }
 

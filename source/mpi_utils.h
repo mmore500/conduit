@@ -21,6 +21,8 @@ int get_rank() {
   return res;
 }
 
+bool is_root() { return get_rank() == 0; }
+
 bool is_multiprocess() { return get_nprocs() > 1; }
 
 std::string to_string(const MPI_Status & status) {
