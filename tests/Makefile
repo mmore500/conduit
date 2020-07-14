@@ -1,6 +1,6 @@
 TEST_NAMES := CircularIndex Gatherer ProcessDuct
 
-EMP_DIR := ../../Empirical/source
+EMP_DIR := ../third-party/Empirical/source
 
 #CXX = clang++
 CXX := mpic++
