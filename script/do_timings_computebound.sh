@@ -12,7 +12,7 @@ for SYNCHRONOUS in 0 1; do
   OUT_FILE="title=computebound+synchronous=${SYNCHRONOUS}+ext=.csv"
   echo "Threads,Work,Load,Replicate,Unit Productivity" > $OUT_FILE
   for REP in {0..9}; do
-    for LOAD_PER in 1 2 4 8 16 32; do
+    for LOAD_PER in 1 16 256 4096 65536 1048576; do
       for NUM_THREADS in 1 2 4 8 16 32; do
 
         MPI_PROCS=$(( $NUM_THREADS < 8 ? 1 : $NUM_THREADS / 8 ))
@@ -25,11 +25,11 @@ for SYNCHRONOUS in 0 1; do
         AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
         echo "AMT_WORK: ${AMT_WORK}"
 
-        RESISTANCE=$(( $AMT_WORK * 64))
+        RESISTANCE=$(( $AMT_WORK * 1 ))
         echo "RESISTANCE: ${RESISTANCE}"
         export PP_RESISTANCE=$RESISTANCE
 
-        GRID_SIZE=64
+        GRID_SIZE=1
         echo "GRID_SIZE: ${GRID_SIZE}"
         export PP_GRID_SIZE=$(( $GRID_SIZE / $MPI_PROCS ))
 
