@@ -147,7 +147,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
 
     emp_assert(!use_omp);
 
-    auto chunk = checkout_chunk
+    auto chunk = checkout_memory
       ? checkout_chunk(source)
       : source;
 
