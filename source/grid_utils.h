@@ -147,12 +147,6 @@ double run_grid(grid_t & grid, const config_t & cfg) {
 
     emp_assert(!use_omp);
 
-    // synchronize once after thread creation and MPI spinup
-    if (!synchronous) {
-      latch.arrive_and_wait();
-      MPI_Barrier(MPI_COMM_WORLD);
-    }
-
     auto chunk = checkout_chunk
       ? checkout_chunk(source)
       : source;
@@ -162,6 +156,12 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       10000
     };
     CountdownIterator counter{num_updates};
+
+    // synchronize once after thread creation and MPI spinup
+    if (!synchronous) {
+      latch.arrive_and_wait();
+      MPI_Barrier(MPI_COMM_WORLD);
+    }
 
     while (!counter.IsComplete() && !timer.IsComplete()) {
       task_step(chunk);
