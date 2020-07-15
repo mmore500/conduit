@@ -14,14 +14,27 @@ class CountdownTimer {
     std::chrono::steady_clock::now()
   };
 
+  const size_t refresh_freq;
+  mutable size_t refresh_counter{0};
+
 public:
   CountdownTimer(
-    const Duration_T& duration_=infinite_duration
-  ) : duration{duration_}
+    const Duration_T& duration_=infinite_duration,
+    const size_t refresh_freq=1
+  ) : duration(duration_)
+  , refresh_freq(refresh_freq)
   { ; }
 
   bool IsComplete() const {
-    return duration <= GetElapsed();
+    if (refresh_counter == std::numeric_limits<size_t>::max()) return true;
+    else {
+      const bool res = refresh_counter ? false : duration <= GetElapsed();
+      refresh_counter = res
+        ? std::numeric_limits<size_t>::max()
+        : (refresh_counter + 1) % refresh_freq
+      ;
+      return res;
+    }
   }
 
   Duration_T GetElapsed() const {
