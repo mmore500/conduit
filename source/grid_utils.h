@@ -178,7 +178,14 @@ double run_grid(grid_t & grid, const config_t & cfg) {
 
     if (checkout_memory) checkin_chunk(source, chunk);
 
-    gatherer.Put(numeric_cast<int>(counter.GetElapsed()));
+    gatherer.Put(numeric_cast<int>(
+      counter.GetElapsed() / (
+        num_seconds
+        ?: std::chrono::duration_cast<std::chrono::duration<double>>(
+          timer.GetElapsed()
+        ).count() ?: 1
+      )
+    ));
 
   };
 
