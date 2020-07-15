@@ -4,6 +4,7 @@
 
 #include "ThreadDuct.h"
 #include "Tile.h"
+#include "State.h"
 
 using grid_t = std::vector<Tile>;
 using handle_t = grid_t::iterator;
@@ -20,7 +21,7 @@ chunk_t make_chunk(handle_t begin, handle_t end, const size_t num_chunks) {
   );
 
   if (num_chunks > 1) {
-    res.front()->template EmplaceInputDuct<ThreadDuct<char>>();
+    res.front()->template EmplaceInputDuct<ThreadDuct<State>>();
   }
 
   return res;
