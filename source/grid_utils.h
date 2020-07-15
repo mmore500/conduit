@@ -157,7 +157,8 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       : source;
 
     CountdownTimer timer{
-      std::chrono::seconds{num_seconds}
+      std::chrono::seconds{num_seconds},
+      10000
     };
     CountdownIterator counter{num_updates};
 
