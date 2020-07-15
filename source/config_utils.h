@@ -65,7 +65,7 @@ config_t make_config() {
     {
       "grid_size",
       stoszt(
-        std::getenv("PP_GRID_SIZE") ?: "10"
+        std::getenv("PP_GRID_SIZE") ?: "1000"
       )
     },
     {
