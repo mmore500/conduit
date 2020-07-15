@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <limits>
+#include <assert.h>
 
 #define DEFAULT_BUFFER 1024
 
