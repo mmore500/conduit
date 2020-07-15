@@ -3,12 +3,14 @@
 export LD_PRELOAD=/mnt/home/mmore500/libmimalloc.so
 
 export PP_USE_OMP=0
+export PP_TACITURN=1
+export PP_NUM_SECONDS=5
 
-export PP_NUM_UPDATES=8192
+unset PP_NUM_UPDATES
 for SYNCHRONOUS in 0 1; do
   export PP_SYNCHRONOUS=$SYNCHRONOUS
-  OUT_FILE="synchronous=${SYNCHRONOUS}+ext=.csv"
-  echo "Threads,Work,Load,Replicate,Time" > $OUT_FILE
+  OUT_FILE="title=memorybound+synchronous=${SYNCHRONOUS}+ext=.csv"
+  echo "Threads,Work,Load,Replicate,Unit Productivity" > $OUT_FILE
   for REP in {0..9}; do
     for LOAD_PER in 1 2 4 8 16 32; do
       for NUM_THREADS in 1 2 4 8 16 32; do
@@ -33,13 +35,12 @@ for SYNCHRONOUS in 0 1; do
 
         echo "LOAD_PER: ${LOAD_PER}"
         echo "REP: ${REP}"
+        echo "SYNCHRONOUS: ${SYNCHRONOUS}"
 
-        /usr/bin/time -f "%e" -o tmp \
-          mpiexec -n $MPI_PROCS ./pipe-profile \
-          > /dev/null 2>&1
-        ELAPSED_TIME=$(cat tmp)
-        echo "ELAPSED_TIME: ${ELAPSED_TIME}"
-        echo "${NUM_THREADS},${AMT_WORK},${LOAD_PER},${REP},${ELAPSED_TIME}" \
+        mpiexec -n $MPI_PROCS ./pipe-profile > tmp
+        UNIT_PRODUCTIVITY=$(cat tmp)
+        echo "UNIT_PRODUCTIVITY: ${UNIT_PRODUCTIVITY}"
+        echo "${NUM_THREADS},${AMT_WORK},${LOAD_PER},${REP},${UNIT_PRODUCTIVITY}" \
           >> $OUT_FILE
         echo
         echo "========================="
