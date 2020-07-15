@@ -29,6 +29,7 @@
 #include "Gatherer.h"
 #include "Tile.h"
 #include "ThreadTeam.h"
+#include "State.h"
 
 using grid_t = std::vector<Tile>;
 using handle_t = grid_t::iterator;
@@ -36,12 +37,12 @@ using chunk_t = std::vector<handle_t>;
 
 grid_t make_grid(const config_t & cfg) {
 
-  std::vector<Inlet<char>> inlets;
-  std::vector<Outlet<char>> outlets;
+  std::vector<Inlet<State>> inlets;
+  std::vector<Outlet<State>> outlets;
 
   const size_t grid_size = cfg.at("grid_size");
   for (size_t i = 0; i < grid_size; ++i) {
-    auto res = make_pipe<char>();
+    auto res = make_pipe<State>();
     auto & [in, out] = res;
     inlets.push_back(in);
     outlets.push_back(out);
@@ -87,7 +88,7 @@ grid_t make_grid(const config_t & cfg) {
 
 void initialize_grid(grid_t & grid) {
 
-  const std::array<char, 2> states{'_', 'O'};
+  const std::array<State, 2> states{'_', 'O'};
 
   for (size_t i = 0; i < grid.size(); ++i) {
     grid[i].SetState(states[i % states.size()]);
@@ -107,15 +108,15 @@ double run_grid(grid_t & grid, const config_t & cfg) {
   if (is_multiprocess()) {
 
     const size_t prev_proc = circular_index(get_rank(), get_nprocs(), -1);
-    grid.front().SplitInputDuct<ProcessOutletDuct<char>>(
+    grid.front().SplitInputDuct<ProcessOutletDuct<State>>(
       prev_proc,
-      prev_proc
+      prev_proc // tag
     );
 
     const size_t next_proc = circular_index(get_rank(), get_nprocs(), 1);
-    grid.back().SplitOutputDuct<ProcessInletDuct<char>>(
+    grid.back().SplitOutputDuct<ProcessInletDuct<State>>(
       next_proc,
-      get_rank()
+      get_rank() // tag
     );
 
 

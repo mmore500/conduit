@@ -6,15 +6,16 @@
 #include "Inlet.h"
 #include "Outlet.h"
 #include "print_utils.h"
+#include "State.h"
 
 class Tile {
 
-  Outlet<char> input;
-  Inlet<char> output;
+  Outlet<State> input;
+  Inlet<State> output;
 
-  char state;
+  State state;
 
-  char Transition(const char& neighbor_state) {
+  char Transition(const State& neighbor_state) {
 
     // sequence a: x -> X -> x
     // sequence b: o -> O -> o
@@ -43,14 +44,14 @@ class Tile {
 
   }
 
-  void DoSetState(const char& state_) {state = state_;}
+  void DoSetState(const State& state_) {state = state_;}
 
   void FlushState() {
     output.MaybePut(state);
   }
 
 public:
-  Tile(Outlet<char> input_, Inlet<char> output_)
+  Tile(Outlet<State> input_, Inlet<State> output_)
   : input(input_), output(output_)
   { }
 
@@ -108,9 +109,9 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("id", id) << std::endl;
-    ss << format_member("char state", state) << std::endl;
-    ss << format_member("Outlet<char> input", input) << std::endl;
-    ss << format_member("Inlet<char> output", output);
+    ss << format_member("State state", state) << std::endl;
+    ss << format_member("Outlet<State> input", input) << std::endl;
+    ss << format_member("Inlet<State> output", output);
     return ss.str();
   }
 
