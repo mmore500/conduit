@@ -18,7 +18,7 @@ size_t stoszt(const std::string & source) {
 
 config_t make_config() {
 
-  return config_t{
+  const config_t res{
     {
       "audit",
       stoszt(
@@ -99,6 +99,10 @@ config_t make_config() {
       )
     }
   };
+
+  assert(res.at("grid_size") % res.at("num_threads") == 0);
+
+  return res;
 
 }
 
