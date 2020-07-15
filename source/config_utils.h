@@ -59,7 +59,7 @@ config_t make_config() {
     {
       "num_seconds", // 0 for no limit
       stoszt(
-        std::getenv("PP_NUM_SECONDS") ?: "10"
+        std::getenv("PP_NUM_SECONDS") ?: "5"
       )
     },
     {
