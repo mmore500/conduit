@@ -64,7 +64,7 @@ for SYNCHRONOUS in 0 1; do
         ;;
     esac
 
-  OUT_FILE="Treatment=${TREATMENT}+Synchronous=${SYNCHRONOUS}+ext=.csv"
+  OUT_FILE="Synchronous=${SYNCHRONOUS}+Treatment=${TREATMENT}+ext=.csv"
   echo "Threads,Work,Replicate,Unit Productivity" > $OUT_FILE
   for REP in {0..4}; do
     for LOAD_PER in 1 4 16 64 256 1024 4096; do
