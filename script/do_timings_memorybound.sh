@@ -6,6 +6,9 @@ export PP_USE_OMP=0
 export PP_TACITURN=1
 export PP_NUM_SECONDS=5
 
+# MPI_THRESH = 0 -> MPI_PROCS = 1
+MPI_THRESH=0
+
 unset PP_NUM_UPDATES
 for SYNCHRONOUS in 0 1; do
   export PP_SYNCHRONOUS=$SYNCHRONOUS
@@ -15,7 +18,12 @@ for SYNCHRONOUS in 0 1; do
     for LOAD_PER in 1 16 256 4096 65536 1048576; do
       for NUM_THREADS in 1 2 4 8 16 32; do
 
-        MPI_PROCS=$(( $NUM_THREADS < 8 ? 1 : $NUM_THREADS / 8 ))
+        echo "MPI_THRESH: ${MPI_THRESH}"
+        MPI_PROCS=$(( \
+          $MPI_THRESH ? \
+            $NUM_THREADS < $MPI_THRESH ? 1 : $NUM_THREADS / $MPI_THRESH \
+            1 \
+        ))
         echo "MPI_PROCS: ${MPI_PROCS}"
 
         echo "NUM_THREADS: ${NUM_THREADS}"
