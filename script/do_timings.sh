@@ -104,6 +104,8 @@ for SYNCHRONOUS in 0 1; do
         mpiexec -n $MPI_PROCS ./pipe-profile > tmp
         UNIT_PRODUCTIVITY=$(cat tmp)
         echo "UNIT_PRODUCTIVITY: ${UNIT_PRODUCTIVITY}"
+        TOTAL_PRODUCTIVITY=$(( UNIT_PRODUCTIVITY * NUM_THREADS ))
+        echo "TOTAL_PRODUCTIVITY: ${TOTAL_PRODUCTIVITY}"
         echo "${NUM_THREADS},${AMT_WORK},${LOAD_PER},${REP},${UNIT_PRODUCTIVITY}" \
           >> $OUT_FILE
         echo
