@@ -4,7 +4,7 @@ export LD_PRELOAD=/mnt/home/mmore500/libmimalloc.so
 
 export PP_USE_OMP=0
 export PP_TACITURN=1
-export PP_NUM_SECONDS=5
+export PP_NUM_SECONDS=2
 
 NPROC=$(nproc)
 echo "NPROC: ${NPROC}"
@@ -72,7 +72,7 @@ for SYNCHRONOUS in 0 1; do
 
         # too many threads per proc causes crash
         # and isn't interesting to profile
-        if ((NUM_THREADS > NPROC * 64)); then
+        if ((NUM_THREADS > NPROC * 16)); then
           echo "Skipping ${NUM_THREADS}-thread eval on ${NPROC}-core alloc"
           continue
         fi
