@@ -65,11 +65,12 @@ for SYNCHRONOUS in 0 1; do
   OUT_FILE="Treatment=${TREATMENT}+Synchronous=${SYNCHRONOUS}+ext=.csv"
   echo "Threads,Work,Load,Replicate,Unit Productivity" > $OUT_FILE
   for REP in {0..9}; do
-    for LOAD_PER in 1 8 64 512 4096 32768 262144; do
+    for LOAD_PER in 1 4 16 64 256 1024 4096; do
       for NUM_THREADS in 1 4 16 64 256 1024 4096; do
 
         # too many threads per proc causes crash
-        if ((NUM_THREADS > NPROC * 256)); then
+        # and isn't interesting to profile
+        if ((NUM_THREADS > NPROC * 64)); then
           echo "Skipping ${NUM_THREADS}-thread eval on ${NPROC}-core alloc"
           continue
         fi
