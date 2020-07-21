@@ -5,7 +5,10 @@
 
 #include "chrono_utils.h"
 
-template<typename Duration_T>
+template<
+  typename Duration_T=std::chrono::seconds,
+  typename Clock_T=std::chrono::steady_clock
+>
 class CountdownTimer {
 
   const Duration_T duration;

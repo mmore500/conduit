@@ -25,6 +25,7 @@
 
 #include "CountdownIterator.h"
 #include "CountdownTimer.h"
+#include "CoarseClock.h"
 #include "TimeoutBarrier.h"
 #include "Gatherer.h"
 #include "Tile.h"
@@ -151,9 +152,8 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       ? checkout_chunk(source)
       : source;
 
-    CountdownTimer timer{
-      std::chrono::seconds{num_seconds},
-      10000
+    CountdownTimer<std::chrono::seconds, CoarseClock> timer{
+      std::chrono::seconds{num_seconds}
     };
     CountdownIterator counter{num_updates};
 

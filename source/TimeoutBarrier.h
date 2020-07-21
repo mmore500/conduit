@@ -41,7 +41,7 @@ public:
 
 }
 
-template<typename Duration_T>
+template<typename Timer_T=CountdownTimer<>>
 class TimeoutBarrier {
 
   internal::IBarrierRequest proc_barrier;
@@ -49,7 +49,7 @@ class TimeoutBarrier {
 public:
 
   TimeoutBarrier(
-    const CountdownTimer<Duration_T>& timer=CountdownTimer<Duration_T>{},
+    const Timer_T& timer=Timer_T{},
     barrier<>& thread_barrier=barrier{numeric_cast<std::ptrdiff_t>(1)},
     MPI_Comm comm=MPI_COMM_WORLD
   ) : proc_barrier(comm) {
