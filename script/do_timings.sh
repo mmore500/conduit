@@ -12,6 +12,8 @@ echo "NPROC: ${NPROC}"
 # MPI_THRESH = 0 -> MPI_PROCS = 1
 MPI_THRESH=0
 
+STRONG_SCALING=0
+
 unset PP_NUM_UPDATES
 for SYNCHRONOUS in 0 1; do
   export PP_SYNCHRONOUS=$SYNCHRONOUS
@@ -63,7 +65,7 @@ for SYNCHRONOUS in 0 1; do
     esac
 
   OUT_FILE="Treatment=${TREATMENT}+Synchronous=${SYNCHRONOUS}+ext=.csv"
-  echo "Threads,Work,Load,Replicate,Unit Productivity" > $OUT_FILE
+  echo "Threads,Work,Replicate,Unit Productivity" > $OUT_FILE
   for REP in {0..9}; do
     for LOAD_PER in 1 4 16 64 256 1024 4096; do
       for NUM_THREADS in 1 4 16 64 256 1024 4096; do
@@ -87,7 +89,11 @@ for SYNCHRONOUS in 0 1; do
         export PP_NUM_THREADS=$(( $NUM_THREADS / $MPI_PROCS ))
         echo "PP_NUM_THREADS: ${PP_NUM_THREADS}"
 
-        AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
+        AMT_WORK=$(( \
+          STRONG_SCALING \
+            ? $LOAD_PER \
+            : $NUM_THREADS * $LOAD_PER \
+        ))
         echo "AMT_WORK: ${AMT_WORK}"
 
         RESISTANCE=$(( $AMT_WORK * $RESISTANCE_SLOPE + $RESISTANCE_INTERCEPT ))
@@ -105,9 +111,13 @@ for SYNCHRONOUS in 0 1; do
         mpiexec -n $MPI_PROCS ./pipe-profile > tmp
         UNIT_PRODUCTIVITY=$(cat tmp)
         echo "UNIT_PRODUCTIVITY: ${UNIT_PRODUCTIVITY}"
-        TOTAL_PRODUCTIVITY=$(( UNIT_PRODUCTIVITY * NUM_THREADS ))
+        TOTAL_PRODUCTIVITY=$(( \
+          STRONG_SCALING \
+            ? UNIT_PRODUCTIVITY \
+            : UNIT_PRODUCTIVITY * NUM_THREADS \
+        ))
         echo "TOTAL_PRODUCTIVITY: ${TOTAL_PRODUCTIVITY}"
-        echo "${NUM_THREADS},${AMT_WORK},${LOAD_PER},${REP},${UNIT_PRODUCTIVITY}" \
+        echo "${NUM_THREADS},${AMT_WORK},${REP},${UNIT_PRODUCTIVITY}" \
           >> $OUT_FILE
         echo
         echo "========================="
