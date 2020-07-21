@@ -44,19 +44,19 @@ for SYNCHRONOUS in 0 1; do
         RESISTANCE_INTERCEPT=1
         ;;
       Compute_Moderate)
-        RESISTANCE_INTERCEPT=512
+        RESISTANCE_INTERCEPT=64
         ;;
       Compute_Intensive)
-        RESISTANCE_INTERCEPT=262144
+        RESISTANCE_INTERCEPT=4096
         ;;
       Memory_Lean)
         GRID_INTERCEPT=1
         ;;
       Memory_Moderate)
-        GRID_INTERCEPT=512
+        GRID_INTERCEPT=64
         ;;
       Memory_Intensive)
-        GRID_INTERCEPT=262144
+        GRID_INTERCEPT=4096
         ;;
       *)
         echo "bad2 TREATMENT: ${TREATMENT}"
