@@ -62,8 +62,8 @@ for SYNCHRONOUS in 0 1; do
   OUT_FILE="Treatment=${TREATMENT}+Synchronous=${SYNCHRONOUS}+ext=.csv"
   echo "Threads,Work,Load,Replicate,Unit Productivity" > $OUT_FILE
   for REP in {0..9}; do
-    for LOAD_PER in 1 16 256 4096 65536 1048576; do
-      for NUM_THREADS in 1 2 4 8 16 32; do
+    for LOAD_PER in 1 8 64 512 4096 32768 262144; do
+      for NUM_THREADS in 1 4 16 64 256 1024 4096; do
 
         echo "MPI_THRESH: ${MPI_THRESH}"
         MPI_PROCS=$(( \
