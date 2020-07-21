@@ -17,44 +17,44 @@ for SYNCHRONOUS in 0 1; do
     Memory_Lean Memory_Moderate Memory_Intensive \
     ; do
 
-    case TREATMENT in
-      Compute_*)
-        GRID_SLOPE = 1
-        RESISTANCE_SLOPE = 0
-        GRID_INTERCEPT = 1
+    case $TREATMENT in
+      Compute*)
+        GRID_SLOPE=1
+        RESISTANCE_SLOPE=0
+        GRID_INTERCEPT=0
         ;;
-      Memory_*)
-        RESISTANCE_SLOPE = 1
-        GRID_SLOPE = 0
-        RESISTANCE_INTERCEPT = 1
+      Memory*)
+        RESISTANCE_SLOPE=1
+        GRID_SLOPE=0
+        RESISTANCE_INTERCEPT=0
         ;;
       *)
-        echo "bad TREATMENT: ${TREATMENT}"
+        echo "bad1 TREATMENT: ${TREATMENT}"
         exit 1
         ;;
     esac
 
-    case TREATMENT in
+    case $TREATMENT in
       Compute_Lean)
-        RESISTANCE_INTERCEPT = 1
+        RESISTANCE_INTERCEPT=1
         ;;
       Compute_Moderate)
-        RESISTANCE_INTERCEPT = 512
+        RESISTANCE_INTERCEPT=512
         ;;
       Compute_Intensive)
-        RESISTANCE_INTERCEPT = 262144
+        RESISTANCE_INTERCEPT=262144
         ;;
       Memory_Lean)
-        GRID_INTERCEPT = 1
+        GRID_INTERCEPT=1
         ;;
       Memory_Moderate)
-        GRID_INTERCEPT = 512
+        GRID_INTERCEPT=512
         ;;
       Memory_Intensive)
-        GRID_INTERCEPT = 262144
+        GRID_INTERCEPT=262144
         ;;
       *)
-        echo "bad TREATMENT: ${TREATMENT}"
+        echo "bad2 TREATMENT: ${TREATMENT}"
         exit 1
         ;;
     esac
@@ -67,9 +67,9 @@ for SYNCHRONOUS in 0 1; do
 
         echo "MPI_THRESH: ${MPI_THRESH}"
         MPI_PROCS=$(( \
-          $MPI_THRESH ? \
-            $NUM_THREADS < $MPI_THRESH ? 1 : $NUM_THREADS / $MPI_THRESH \
-            1 \
+          $MPI_THRESH \
+            ? $NUM_THREADS < $MPI_THRESH ? 1 : $NUM_THREADS / $MPI_THRESH \
+            : 1 \
         ))
         echo "MPI_PROCS: ${MPI_PROCS}"
 
@@ -77,12 +77,12 @@ for SYNCHRONOUS in 0 1; do
         export PP_NUM_THREADS=$(( $NUM_THREADS / $MPI_PROCS ))
         echo "PP_NUM_THREADS: ${PP_NUM_THREADS}"
 
+        AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
+        echo "AMT_WORK: ${AMT_WORK}"
+
         RESISTANCE=$(( $AMT_WORK * $RESISTANCE_SLOPE + $RESISTANCE_INTERCEPT ))
         echo "RESISTANCE: ${RESISTANCE}"
         export PP_RESISTANCE=$RESISTANCE
-
-        AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
-        echo "AMT_WORK: ${AMT_WORK}"
 
         GRID_SIZE=$(( $AMT_WORK * $GRID_SLOPE + $GRID_INTERCEPT ))
         echo "GRID_SIZE: ${GRID_SIZE}"
@@ -102,5 +102,6 @@ for SYNCHRONOUS in 0 1; do
         echo
       done;
     done;
+  done;
   done;
 done
