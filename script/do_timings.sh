@@ -6,6 +6,9 @@ export PP_USE_OMP=0
 export PP_TACITURN=1
 export PP_NUM_SECONDS=5
 
+NPROC=$(nproc)
+echo "NPROC: ${NPROC}"
+
 # MPI_THRESH = 0 -> MPI_PROCS = 1
 MPI_THRESH=0
 
@@ -64,6 +67,12 @@ for SYNCHRONOUS in 0 1; do
   for REP in {0..9}; do
     for LOAD_PER in 1 8 64 512 4096 32768 262144; do
       for NUM_THREADS in 1 4 16 64 256 1024 4096; do
+
+        # too many threads per proc causes crash
+        if ((NUM_THREADS > NPROC * 256)); then
+          echo "Skipping ${NUM_THREADS}-thread eval on ${NPROC}-core alloc"
+          continue
+        fi
 
         echo "MPI_THRESH: ${MPI_THRESH}"
         MPI_PROCS=$(( \
