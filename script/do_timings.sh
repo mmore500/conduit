@@ -118,7 +118,7 @@ for SYNCHRONOUS in 0 1; do
         echo "UNIT_PRODUCTIVITY: ${UNIT_PRODUCTIVITY}"
         TOTAL_PRODUCTIVITY=$(( \
           STRONG_SCALING \
-            ? UNIT_PRODUCTIVITY \
+            ? UNIT_PRODUCTIVITY * MPI_PROCS \
             : UNIT_PRODUCTIVITY * NUM_THREADS \
         ))
         echo "TOTAL_PRODUCTIVITY: ${TOTAL_PRODUCTIVITY}"
