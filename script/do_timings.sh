@@ -12,7 +12,54 @@ MPI_THRESH=0
 unset PP_NUM_UPDATES
 for SYNCHRONOUS in 0 1; do
   export PP_SYNCHRONOUS=$SYNCHRONOUS
-  OUT_FILE="title=computebound+synchronous=${SYNCHRONOUS}+ext=.csv"
+  for TREATMENT in \
+    Compute_Lean Compute_Moderate Compute_Intensive \
+    Memory_Lean Memory_Moderate Memory_Intensive \
+    ; do
+
+    case TREATMENT in
+      Compute_*)
+        GRID_SLOPE = 1
+        RESISTANCE_SLOPE = 0
+        GRID_INTERCEPT = 1
+        ;;
+      Memory_*)
+        RESISTANCE_SLOPE = 1
+        GRID_SLOPE = 0
+        RESISTANCE_INTERCEPT = 1
+        ;;
+      *)
+        echo "bad TREATMENT: ${TREATMENT}"
+        exit 1
+        ;;
+    esac
+
+    case TREATMENT in
+      Compute_Lean)
+        RESISTANCE_INTERCEPT = 1
+        ;;
+      Compute_Moderate)
+        RESISTANCE_INTERCEPT = 512
+        ;;
+      Compute_Intensive)
+        RESISTANCE_INTERCEPT = 262144
+        ;;
+      Memory_Lean)
+        GRID_INTERCEPT = 1
+        ;;
+      Memory_Moderate)
+        GRID_INTERCEPT = 512
+        ;;
+      Memory_Intensive)
+        GRID_INTERCEPT = 262144
+        ;;
+      *)
+        echo "bad TREATMENT: ${TREATMENT}"
+        exit 1
+        ;;
+    esac
+
+  OUT_FILE="Treatment=${TREATMENT}+Synchronous=${SYNCHRONOUS}+ext=.csv"
   echo "Threads,Work,Load,Replicate,Unit Productivity" > $OUT_FILE
   for REP in {0..9}; do
     for LOAD_PER in 1 16 256 4096 65536 1048576; do
@@ -30,14 +77,14 @@ for SYNCHRONOUS in 0 1; do
         export PP_NUM_THREADS=$(( $NUM_THREADS / $MPI_PROCS ))
         echo "PP_NUM_THREADS: ${PP_NUM_THREADS}"
 
-        AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
-        echo "AMT_WORK: ${AMT_WORK}"
-
-        RESISTANCE=$(( $AMT_WORK * 1 ))
+        RESISTANCE=$(( $AMT_WORK * $RESISTANCE_SLOPE + $RESISTANCE_INTERCEPT ))
         echo "RESISTANCE: ${RESISTANCE}"
         export PP_RESISTANCE=$RESISTANCE
 
-        GRID_SIZE=1
+        AMT_WORK=$(( $NUM_THREADS * $LOAD_PER ))
+        echo "AMT_WORK: ${AMT_WORK}"
+
+        GRID_SIZE=$(( $AMT_WORK * $GRID_SLOPE + $GRID_INTERCEPT ))
         echo "GRID_SIZE: ${GRID_SIZE}"
         export PP_GRID_SIZE=$(( $GRID_SIZE / $MPI_PROCS ))
 
