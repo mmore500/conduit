@@ -66,9 +66,9 @@ for SYNCHRONOUS in 0 1; do
 
   OUT_FILE="Treatment=${TREATMENT}+Synchronous=${SYNCHRONOUS}+ext=.csv"
   echo "Threads,Work,Replicate,Unit Productivity" > $OUT_FILE
-  for REP in {0..9}; do
+  for REP in {0..4}; do
     for LOAD_PER in 1 4 16 64 256 1024 4096; do
-      for NUM_THREADS in 1 4 16 64 256 1024 4096; do
+      for NUM_THREADS in 1 2 4 8 16 32 64 128 256 512 1024 2048 4096; do
 
         # too many threads per proc causes crash
         # and isn't interesting to profile
