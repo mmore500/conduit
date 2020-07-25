@@ -70,7 +70,7 @@ std::string to_string(const MPI_Status & status) {
   return ss.str();
 }
 
-void verify (int err) {
+void verify (const int err) {
 
   std::string name;
 
