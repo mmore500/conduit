@@ -103,6 +103,7 @@ for SYNCHRONOUS in 0 1; do
         GRID_SIZE=$(( $AMT_WORK * $GRID_SLOPE + $GRID_INTERCEPT ))
         echo "GRID_SIZE: ${GRID_SIZE}"
         export PP_GRID_SIZE=$(( $GRID_SIZE / $MPI_PROCS ))
+        echo "PP_GRID_SIZE: ${PP_GRID_SIZE}"
 
         if ((NUM_THREADS > GRID_SIZE)); then
           echo "Skipping ${NUM_THREADS}-thread eval on ${NPROC}-tile grid"
