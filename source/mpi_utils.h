@@ -6,71 +6,7 @@
 // TODO rename pid_t
 using proc_id_t = int;
 
-int get_nprocs() {
-  int res;
-  MPI_Comm_size(
-    MPI_COMM_WORLD,
-    &res
-  );
-  return res;
-}
-
-//TODO replace with get_proc_id
-proc_id_t get_rank() {
-  int res;
-  MPI_Comm_rank(
-    MPI_COMM_WORLD,
-    &res
-  );
-  return res;
-}
-
-proc_id_t get_proc_id() {
-  return get_rank();
-}
-
-bool is_root() { return get_rank() == 0; }
-
-bool is_multiprocess() { return get_nprocs() > 1; }
-
-std::string to_string(const MPI_Status & status) {
-  std::stringstream ss;
-  ss << format_member(
-    "MPI_Get_count",
-    [&](){
-      int res;
-      MPI_Get_count(&status, MPI_BYTE, &res);
-      return res;
-    }()
-  ) << std::endl;
-  ss << format_member(
-    "MPI_Test_cancelled",
-    [&](){
-      int res;
-      MPI_Test_cancelled(&status, &res);
-      return res;
-    }()
-  ) << std::endl;
-  ss << format_member(
-    "int MPI_SOURCE",
-    (int) status.MPI_SOURCE
-  ) << std::endl;
-  ss << format_member(
-    "int MPI_TAG",
-    (int) status.MPI_TAG
-  ) << std::endl;
-  ss << format_member(
-    "int MPI_ERROR",
-    (int) status.MPI_ERROR
-  ) << std::endl;
-  ss << format_member(
-    "int u_count",
-    (int) status._ucount
-  );
-  return ss.str();
-}
-
-void verify (const int err) {
+void verify(const int err) {
 
   std::string name;
 
@@ -248,4 +184,69 @@ void verify (const int err) {
 
   emp_assert(err == 0, err, name);
 
+}
+
+int get_nprocs() {
+  int res;
+  verify(MPI_Comm_size(
+    MPI_COMM_WORLD,
+    &res
+  ));
+  return res;
+}
+
+//TODO replace with get_proc_id
+proc_id_t get_rank() {
+  int res;
+  verify(MPI_Comm_rank(
+    MPI_COMM_WORLD,
+    &res
+  ));
+  return res;
+}
+
+// TODO rename get_pid
+proc_id_t get_proc_id() {
+  return get_rank();
+}
+
+bool is_root() { return get_rank() == 0; }
+
+bool is_multiprocess() { return get_nprocs() > 1; }
+
+std::string to_string(const MPI_Status & status) {
+  std::stringstream ss;
+  ss << format_member(
+    "MPI_Get_count",
+    [&](){
+      int res;
+      MPI_Get_count(&status, MPI_BYTE, &res);
+      return res;
+    }()
+  ) << std::endl;
+  ss << format_member(
+    "MPI_Test_cancelled",
+    [&](){
+      int res;
+      MPI_Test_cancelled(&status, &res);
+      return res;
+    }()
+  ) << std::endl;
+  ss << format_member(
+    "int MPI_SOURCE",
+    (int) status.MPI_SOURCE
+  ) << std::endl;
+  ss << format_member(
+    "int MPI_TAG",
+    (int) status.MPI_TAG
+  ) << std::endl;
+  ss << format_member(
+    "int MPI_ERROR",
+    (int) status.MPI_ERROR
+  ) << std::endl;
+  ss << format_member(
+    "int u_count",
+    (int) status._ucount
+  );
+  return ss.str();
 }
