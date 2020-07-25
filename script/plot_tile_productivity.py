@@ -78,8 +78,6 @@ df = df[df['Threads'] == 1]
 
 df['Work Rate'] = df['Unit Productivity'] * df['Grid Size'] * df['Resistance']
 
-print(df)
-
 g = sns.FacetGrid(
   df,
   col='Treatment',
