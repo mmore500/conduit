@@ -3,6 +3,9 @@
 #include "mpi.h"
 #include "print_utils.h"
 
+// TODO rename pid_t
+using proc_id_t = int;
+
 int get_nprocs() {
   int res;
   MPI_Comm_size(
@@ -12,13 +15,18 @@ int get_nprocs() {
   return res;
 }
 
-int get_rank() {
+//TODO replace with get_proc_id
+proc_id_t get_rank() {
   int res;
   MPI_Comm_rank(
     MPI_COMM_WORLD,
     &res
   );
   return res;
+}
+
+proc_id_t get_proc_id() {
+  return get_rank();
 }
 
 bool is_root() { return get_rank() == 0; }
