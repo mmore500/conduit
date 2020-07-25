@@ -13,6 +13,7 @@
 
 #include "print_utils.h"
 #include "config_utils.h"
+#include "mpi_utils.h"
 
 template<typename T, size_t N=DEFAULT_BUFFER>
 class Duct {
@@ -99,12 +100,25 @@ public:
   }
 
 
-  std::string ToString() const {
-    return std::visit(
-      [](auto & arg) -> std::string { return arg.ToString(); },
-      impl
+  std::string GetID() const {
+    return emp::to_string(
+      get_proc_id(),
+      ":",
+      this
     );
   }
 
+  std::string ToString() const {
+    std::stringstream ss;
+    ss << format_member("GetID()", GetID()) << std::endl;
+    ss << format_member(
+      "std::variant impl",
+      std::visit(
+        [](auto & arg) -> std::string { return arg.ToString(); },
+        impl
+      )
+    );
+    return ss.str();
+  }
 
 };
