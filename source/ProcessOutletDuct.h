@@ -18,6 +18,7 @@
 template<typename T, size_t N>
 class Duct;
 
+// TODO rename ProcOutletDuct
 template<typename T, size_t N=DEFAULT_BUFFER>
 class ProcessOutletDuct {
 

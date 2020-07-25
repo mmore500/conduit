@@ -74,6 +74,7 @@ public:
   ) : duct(duct_) { ; }
 
   // non-blocking
+  // TODO rename GetLatest
   T GetCurrent() {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("GetCurrent", 1)};
