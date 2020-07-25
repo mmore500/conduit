@@ -22,6 +22,7 @@
 #include "config_utils.h"
 #include "chunk_utils.h"
 #include "mpi_utils.h"
+#include "math_utils.h"
 
 #include "CountdownIterator.h"
 #include "CountdownTimer.h"
@@ -77,8 +78,8 @@ grid_t make_grid(const config_t & cfg) {
   }
 
   for (size_t i = 0; i < grid_size; ++i) {
-    grid[i].next = &grid[(i+1)%grid_size];
-    grid[i].prev = &grid[(i+grid_size-1)%grid_size];
+    grid[i].next = &grid[circular_index(i, grid_size , 1)];
+    grid[i].prev = &grid[circular_index(i, grid_size, -1)];
     grid[i].id = i;
   }
 
