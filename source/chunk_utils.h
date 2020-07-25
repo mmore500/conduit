@@ -20,10 +20,6 @@ chunk_t make_chunk(handle_t begin, handle_t end, const size_t num_chunks) {
     begin
   );
 
-  if (num_chunks > 1) {
-    res.front()->template EmplaceInputDuct<ThreadDuct<State>>();
-  }
-
   return res;
 
 }

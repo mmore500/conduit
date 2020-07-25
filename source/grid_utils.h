@@ -32,6 +32,7 @@
 #include "Tile.h"
 #include "ThreadTeam.h"
 #include "State.h"
+#include "Mesh.h"
 
 using grid_t = std::vector<Tile>;
 using handle_t = grid_t::iterator;
@@ -43,36 +44,20 @@ grid_t make_grid(const config_t & cfg) {
   std::vector<Outlet<State>> outlets;
 
   const size_t grid_size = cfg.at("grid_size");
-  for (size_t i = 0; i < grid_size; ++i) {
-    auto res = make_pipe<State>();
-    auto & [in, out] = res;
-    inlets.push_back(in);
-    outlets.push_back(out);
-  }
-
-  // before rotate
-  // outlets: 0 1 2 3  (inputs)
-  //          | | | |
-  // inlets:  0 1 2 3  (outputs)
-
-  std::rotate(
-    std::rbegin(outlets),
-    std::rbegin(outlets) + 1,
-    std::rend(outlets)
-  );
-
-  // after rotate
-  // outlets:   0 1 2 3  (inputs)
-  //           \ \ \ \
-  // inlets:    3 0 1 2  (outputs)
+  const size_t num_threads = cfg.at("num_threads");
+  Mesh mesh{
+    make_ring_mesh<State>(grid_size),
+    assign_contiguously<thread_id_t>(num_threads, grid_size)
+  };
 
   grid_t grid;
 
   for (size_t i = 0; i < grid_size; ++i) {
+    auto & [inputs, outputs] = mesh[i];
     grid.push_back(
       Tile(
-        outlets[i],
-        inlets[i]
+        inputs[0],
+        outputs[0]
       )
     );
   }
@@ -107,6 +92,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
     )
   );
 
+  // TODO refactor to accomplish this via Mesh!
   if (is_multiprocess()) {
 
     const size_t prev_proc = circular_index(get_rank(), get_nprocs(), -1);
