@@ -13,6 +13,7 @@
 #include "../source/pipe_utils.h"
 #include "../source/numeric_cast.h"
 #include "../source/mesh_utils.h"
+#include "../source/thread_utils.h"
 
 #define MESSAGE_T int
 
@@ -87,7 +88,7 @@ int main(int argc, char* argv[]) {
 
   MPI_Init(&argc, &argv);
 
-  for (size_t threads = 1; threads < 5; ++threads) {
+  for (size_t threads = 1; threads < get_nproc(); ++threads) {
     profile_thread_count(threads);
   }
 
