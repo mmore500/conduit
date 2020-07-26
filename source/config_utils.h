@@ -6,16 +6,11 @@
 #include <limits>
 #include <assert.h>
 
+#include "math_utils.h"
+
 #define DEFAULT_BUFFER 1024
 
 using config_t = std::unordered_map<std::string, size_t>;
-
-size_t stoszt(const std::string & source) {
-  std::stringstream ss{source};
-  size_t res;
-  ss >> res;
-  return res;
-}
 
 config_t make_config() {
 
