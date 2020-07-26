@@ -1,4 +1,4 @@
-BENCHMARK_NAMES := ThreadDuct
+BENCH_NAMES := ThreadDuct
 
 EMP_DIR := ../third-party/Empirical/source
 
@@ -15,21 +15,21 @@ bench-%: %.cc
 	mpiexec -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
-bench: $(addprefix bench-, $(BENCHMARK_NAMES))
+bench: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 # Test optimized version without debug features
 debug: FLAGS := -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../source/ -I../third-party/ -I$(EMP_DIR)
-debug: $(addprefix bench-, $(BENCHMARK_NAMES))
+debug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 # Test in debug mode with pointer tracking
 fulldebug: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../source/ -I../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
-fulldebug: $(addprefix bench-, $(BENCHMARK_NAMES))
+fulldebug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 cranky: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../source/ -I../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
-cranky: $(addprefix bench-, $(BENCHMARK_NAMES))
+cranky: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 clean:
