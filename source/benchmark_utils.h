@@ -1,0 +1,24 @@
+#pragma once
+
+// adapted from Google Benchmark
+// https://github.com/google/benchmark/blob/37177a84b7e8d33696ea1e1854513cb0de3b4dc3/include/benchmark/benchmark.h#L307
+
+// GCC string: https://quick-bench.com/q/xjx4ugn7uGsYkYn6kdO9ew6NQOg
+// Clang string: https://quick-bench.com/q/4jocMN_o8PmTPdJuPN7tJMHsa3c
+
+// GCC int: https://quick-bench.com/q/Kg4Wxh_b1fFXLwEoq5147890pSM
+// Clang int: https://quick-bench.com/q/iD8r--H2CSObahy_y-D_j3JXwGU
+
+template <typename T>
+inline void do_not_optimize(const T& value) {
+  asm volatile("" : : "r,m"(value) : "memory");
+}
+
+template <typename T>
+inline void do_not_optimize(T& value) {
+#if defined(__clang__)
+  asm volatile("" : "+r,m"(value) : : "memory");
+#else
+  asm volatile("" : "+m,r"(value) : : "memory");
+#endif
+}
