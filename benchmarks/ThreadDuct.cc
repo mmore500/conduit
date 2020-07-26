@@ -48,7 +48,7 @@ void profile_thread_count(const size_t num_threads) {
 
   Mesh mesh{
     make_ring_mesh<MESSAGE_T>(num_threads),
-    [](const auto & node_id){ return node_id; }
+    assign_segregated<thread_id_t>()
   };
 
   Gatherer<MESSAGE_T> gatherer(MPI_INT);
