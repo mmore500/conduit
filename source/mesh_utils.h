@@ -69,11 +69,13 @@ mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
   std::vector<OutputLink<T, N>> inlets;
   std::vector<InputLink<T, N>> outlets;
 
+  size_t pipe_id_counter{};
+
   for (size_t i = 0; i < cardinality; ++i) {
-    auto res = make_pipe<T, N>();
-    auto & [inlet, outlet] = res;
-    inlets.push_back({inlet, i});
-    outlets.push_back({outlet, i});
+    auto pipe = make_pipe<T, N>();
+    auto & [inlet, outlet] = pipe;
+    inlets.push_back({inlet, pipe_id_counter++});
+    outlets.push_back({outlet, pipe_id_counter++});
   }
 
   // before rotate
