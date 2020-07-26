@@ -81,7 +81,7 @@ mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
   //          | | | |
   // inlets:  0 1 2 3  (outputs)
 
-  std::rotate(
+  if (cardinality) std::rotate(
     std::rbegin(outlets),
     std::rbegin(outlets) + 1,
     std::rend(outlets)
