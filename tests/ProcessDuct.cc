@@ -6,6 +6,7 @@
 #include "../source/CircularIndex.h"
 #include "../source/mpi_utils.h"
 #include "../source/pipe_utils.h"
+#include "../source/math_utils.h"
 
 Outlet<char> make_input() {
 
