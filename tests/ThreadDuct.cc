@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 
   Mesh mesh{
     make_ring_mesh<MSG_T>(num_nodes),
-    [](const auto & node_id){ return node_id; }
+    assign_segregated()
   };
 
   for (size_t node_id = 0; node_id < mesh.GetSize(); ++node_id) {
