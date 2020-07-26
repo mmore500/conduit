@@ -117,6 +117,8 @@ public:
     InitializeInterProcPipes(proc_assignment);
   }
 
+  size_t GetSize() const { return mesh.size(); }
+
   value_type & GetNode(const node_id_t node_id) { return mesh[node_id]; }
 
   value_type & operator[](const node_id_t node_id) { return GetNode(node_id); }
