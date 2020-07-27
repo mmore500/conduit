@@ -19,11 +19,11 @@ class ThreadDuct {
     std::string ToString() const { return emp::to_string(t); }
   };
 
-  using pending_t = std::atomic<size_t>;
-  using buffer_t = std::array<padded, N>;
+  struct alignas(CACHE_LINE_SIZE) pending_t : public std::atomic<size_t> { };
+  struct alignas(CACHE_LINE_SIZE) buffer_t : public std::array<padded, N> { };
 
-  pending_t alignas(CACHE_LINE_SIZE) pending{0};
-  buffer_t alignas(CACHE_LINE_SIZE) buffer;
+  pending_t pending{0};
+  buffer_t buffer;
 
 public:
 
