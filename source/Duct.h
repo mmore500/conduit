@@ -87,6 +87,13 @@ public:
     );
   }
 
+  const void * GetPosition(const size_t n) const {
+    return std::visit(
+      [n](auto & arg) -> const void * { return arg.GetPosition(n); },
+      impl
+    );
+  }
+
   void SetElement(const size_t n, const T & val) {
     std::visit(
       [n, &val](auto & arg) { arg.SetElement(n, val); },

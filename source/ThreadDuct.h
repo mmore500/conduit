@@ -60,6 +60,8 @@ public:
 
   T GetElement(const size_t n) const { return buffer[n].t; }
 
+  const void * GetPosition(const size_t n) const { return &buffer[n].t; }
+
   void SetElement(const size_t n, const T & val) { buffer[n].t = val; }
 
   std::string GetType() const { return "ThreadDuct"; }

@@ -62,6 +62,8 @@ public:
     return res ? *res : T{};
   }
 
+  const void * GetPosition(const size_t n) const { return nullptr; }
+
   void SetElement(const size_t n, const T & val) {
     queue.try_push(val);
   }

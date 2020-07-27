@@ -95,6 +95,10 @@ public:
     return DoGet();
   }
 
+  void Prime() const {
+    __builtin_prefetch(duct->GetPosition(read_position+1), 0);
+  }
+
   size_t GetReadCount() const { return read_count; }
 
   size_t GetRevisionCount() const { return revision_count; }
