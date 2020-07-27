@@ -30,14 +30,17 @@ void do_work(
   const bool is_consumer = bundle.inputs.size();
   const thread_id_t thread_id = get_thread_id();
 
-  if (is_producer) bundle.outputs[0].GetOutput().MaybePut(thread_id);
+  auto * const input = is_consumer ? &bundle.inputs[0].GetInput() : nullptr;
+  auto * const output = is_producer ? &bundle.outputs[0].GetOutput() : nullptr;
+
+  if (is_producer) output->MaybePut(thread_id);
 
   latch.arrive_and_wait();
 
   for (size_t rep = 0; rep < 1e7; ++rep) {
-    if (is_producer) bundle.outputs[0].GetOutput().MaybePut(thread_id);
+    if (is_producer) output->MaybePut(thread_id);
     if (is_consumer) do_not_optimize(
-      bundle.inputs[0].GetInput().GetCurrent()
+      input->GetCurrent()
     );
   }
 
