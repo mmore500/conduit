@@ -5,10 +5,18 @@
 #include <iostream>
 #include <limits>
 #include <assert.h>
+#include <new>
 
 #include "math_utils.h"
 
 #define DEFAULT_BUFFER 1024
+
+#ifdef __cpp_lib_hardware_interference_size
+  static constexpr size_t CACHE_LINE_SIZE =
+    std::hardware_destructive_interference_size;
+#else
+  static constexpr size_t CACHE_LINE_SIZE = 64;
+#endif
 
 using config_t = std::unordered_map<std::string, size_t>;
 
