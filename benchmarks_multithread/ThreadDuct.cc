@@ -30,7 +30,7 @@ void do_work(
 
   latch.arrive_and_wait();
 
-  for (size_t rep = 0; rep < 10000000; ++rep) {
+  for (size_t rep = 0; rep < 1e7; ++rep) {
     bundle.outputs[0].GetOutput().MaybePut(get_thread_id());
     do_not_optimize(
       bundle.inputs[0].GetInput().GetCurrent()
