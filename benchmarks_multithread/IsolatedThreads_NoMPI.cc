@@ -60,7 +60,7 @@ void profile_thread_count(const size_t num_threads) {
 
 int main(int argc, char* argv[]) {
 
-  for (size_t threads = 1; threads <= get_nproc(); ++threads) {
+  for (size_t threads = 1; threads <= get_nproc(); threads *= 2) {
     profile_thread_count(threads);
   }
 

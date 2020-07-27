@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
   verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided));
   emp_assert(provided >= MPI_THREAD_FUNNELED);
 
-  for (size_t threads = 1; threads <= get_nproc(); ++threads) {
+  for (size_t threads = 1; threads <= get_nproc(); threads *= 2) {
     profile_thread_count(threads);
   }
 
