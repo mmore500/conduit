@@ -14,6 +14,7 @@
 #include "../source/numeric_cast.h"
 #include "../source/mesh_utils.h"
 #include "../source/thread_utils.h"
+#include "../source/benchmark_utils.h"
 
 #define MESSAGE_T int
 
@@ -31,9 +32,9 @@ void do_work(
 
   for (size_t rep = 0; rep < 10000000; ++rep) {
     bundle.outputs[0].GetOutput().MaybePut(get_thread_id());
-    const volatile auto do_not_optimize{
+    do_not_optimize(
       bundle.inputs[0].GetInput().GetCurrent()
-    };
+    );
   }
 
   } // close TimeGuard
