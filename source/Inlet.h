@@ -95,6 +95,10 @@ public:
 
   }
 
+  void Prime() {
+    __builtin_prefetch(duct->GetPosition(write_position+1), 0);
+  }
+
   size_t GetSuccessfulWriteCount() const { return successful_write_count; }
 
   size_t GetBlockedWriteCount() const { return blocked_write_count; }

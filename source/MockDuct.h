@@ -86,6 +86,8 @@ public:
     return buffer[n];
   }
 
+  const void * GetPosition(const size_t n) const { return &buffer[n]; }
+
   void SetElement(const size_t n, const T & val) {
 
     #ifndef NDEBUG
