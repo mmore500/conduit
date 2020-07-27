@@ -56,7 +56,7 @@ public:
 
   size_t GetPending() const { return pending; }
 
-  size_t GetAvailableCapacity() const { return N - pending; }
+  size_t GetAvailableCapacity() const { return N - GetPending(); }
 
   T GetElement(const size_t n) const { return buffer[n].t; }
 
