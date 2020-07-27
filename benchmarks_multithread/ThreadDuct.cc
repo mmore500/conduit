@@ -66,27 +66,27 @@ void profile_thread_count(const size_t num_threads) {
 
   } // close TimeGuard
 
-  auto res = gatherer.Gather();
+  // auto res = gatherer.Gather();
 
 
-  if (res) {
-
-    std::cout << "threads: " << num_threads << std::endl;
-
-    for (auto & val : *res) std::cout << "v: " << val << std::endl;
+  // if (res) {
+  //
+  //   std::cout << "threads: " << num_threads << std::endl;
+  //
+  //   for (auto & val : *res) std::cout << "v: " << val << std::endl;
 
     std::cout << "t: " << duration.count() << std::endl;
 
-    std::cout << std::endl;
-
-  }
+  // }
 
 
 }
 
 int main(int argc, char* argv[]) {
 
-  MPI_Init(&argc, &argv);
+  int provided;
+  verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided));
+  emp_assert(provided >= MPI_THREAD_FUNNELED);
 
   for (size_t threads = 1; threads <= get_nproc(); threads*=2) {
     profile_thread_count(threads);
