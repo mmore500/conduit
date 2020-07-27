@@ -54,14 +54,15 @@ void profile_thread_count(const size_t num_threads) {
 
   } // close TimeGuard
 
-
   std::cout << "t: " << duration.count() << std::endl;
 
 }
 
 int main(int argc, char* argv[]) {
 
-  verify(MPI_Init(&argc, &argv));
+  int provided;
+  verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided));
+  emp_assert(provided >= MPI_THREAD_FUNNELED);
 
   for (size_t threads = 1; threads <= get_nproc(); ++threads) {
     profile_thread_count(threads);
