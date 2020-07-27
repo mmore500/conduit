@@ -13,8 +13,12 @@ bench-%: %.cc
 	$(CXX) $(FLAGS) $< -o $@.out
 	# execute bench
 	if echo $@ | grep -Fq "NoMPI"; \
-		then ./$@.out; \
-		else mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n 1 ./$@.out; \
+		then \
+			echo "Without MPI"; \
+		  ./$@.out; \
+		else \
+		  echo "With MPI"; \
+			mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n 1 ./$@.out; \
 	fi
 
 # Test in debug mode without pointer tracker
