@@ -71,18 +71,21 @@ void profile_thread_count(const size_t num_threads) {
 
   } // close TimeGuard
 
-  // auto res = gatherer.Gather();
+  auto res = gatherer.Gather();
 
+  if (res) {
 
-  // if (res) {
-  //
-  //   std::cout << "threads: " << num_threads << std::endl;
-  //
-  //   for (auto & val : *res) std::cout << "v: " << val << std::endl;
+    std::cout << "threads: " << num_threads << std::endl;
 
-    std::cout << "t: " << duration.count() << std::endl;
+    std::cout << "mean milliseconds:" << std::accumulate(
+        std::begin(*res),
+        std::end(*res),
+        0.0
+      ) / std::size(*res) << std::endl;;
 
-  // }
+    std::cout << "net milliseconds:" << duration.count() << std::endl;
+
+  }
 
 
 }
