@@ -1,5 +1,7 @@
 #pragma once
 
+#include <random>
+
 // adapted from Google Benchmark
 // https://github.com/google/benchmark/blob/37177a84b7e8d33696ea1e1854513cb0de3b4dc3/include/benchmark/benchmark.h#L307
 
@@ -21,4 +23,22 @@ inline void do_not_optimize(T& value) {
 #else
   asm volatile("" : "+m,r"(value) : : "memory");
 #endif
+}
+
+inline void do_compute_work(const size_t amt=1) {
+
+  thread_local std::uniform_int_distribution<size_t> distribution{
+    0,
+    std::numeric_limits<size_t>::max()
+  };
+  thread_local std::mt19937 random_number_engine;
+  thread_local auto rand = std::bind(
+    distribution,
+    random_number_engine
+  );
+
+  for (size_t i = 0; i < amt; ++i) {
+    if (rand() == 0) std::cerr << "do not optimize" << std::endl;
+  }
+
 }
