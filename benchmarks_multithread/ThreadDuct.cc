@@ -88,7 +88,7 @@ int main(int argc, char* argv[]) {
 
   MPI_Init(&argc, &argv);
 
-  for (size_t threads = 1; threads < get_nproc(); ++threads) {
+  for (size_t threads = 1; threads <= get_nproc(); threads*=2) {
     profile_thread_count(threads);
   }
 
