@@ -14,11 +14,16 @@ class ThreadDuct {
 
   friend Duct<T, N>;
 
-  using pending_t = std::atomic<size_t>;
-  using buffer_t = std::array<T, N>;
+  struct alignas(CACHE_LINE_SIZE) padded {
+    T t;
+    std::string ToString() const { return emp::to_string(t); }
+  };
 
-  pending_t pending{0};
-  buffer_t buffer;
+  using pending_t = std::atomic<size_t>;
+  using buffer_t = std::array<padded, N>;
+
+  pending_t alignas(CACHE_LINE_SIZE) pending{0};
+  buffer_t alignas(CACHE_LINE_SIZE) buffer;
 
 public:
 
@@ -53,9 +58,9 @@ public:
 
   size_t GetAvailableCapacity() const { return N - pending; }
 
-  T GetElement(const size_t n) const { return buffer[n]; }
+  T GetElement(const size_t n) const { return buffer[n].t; }
 
-  void SetElement(const size_t n, const T & val) { buffer[n] = val; }
+  void SetElement(const size_t n, const T & val) { buffer[n].t = val; }
 
   std::string GetType() const { return "ThreadDuct"; }
 
