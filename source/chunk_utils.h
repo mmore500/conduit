@@ -1,6 +1,7 @@
 #pragma once
 
 #include "grid_utils.h"
+#include "benchmark_utils.h"
 
 #include "ThreadDuct.h"
 #include "Tile.h"
@@ -100,18 +101,9 @@ void update_chunk(
     std::end(chunk)
   );
 
-  thread_local std::uniform_int_distribution<size_t> distribution{
-    0,
-    std::numeric_limits<size_t>::max()
-  };
-  thread_local std::mt19937 random_number_engine;
-  thread_local auto dice_roller = std::bind(distribution, random_number_engine);
-
   for (auto & handle : chunk) {
 
-    for (size_t i = 0; i < resistance; ++i) {
-      if (dice_roller() == 0) std::cout << "do not optimize" << std::endl;
-    }
+    do_compute_work(resistance);
 
     if (verbose) std::cout << handle->GetState();
     handle->Update();
