@@ -4,6 +4,7 @@
 
 #include "Duct.h"
 
+#include "mpi_utils.h"
 #include "mesh_utils.h"
 
 template<typename T, size_t N=DEFAULT_BUFFER>
@@ -17,6 +18,9 @@ class Mesh {
   // pipe_id -> node_id
   std::unordered_map<size_t, size_t> input_registry;
   std::unordered_map<size_t, size_t> output_registry;
+
+  const std::function<thread_id_t(node_id_t)> thread_assignment;
+  const std::function<proc_id_t(node_id_t)> proc_assignment;
 
   void InitializeRegistries() {
     for (size_t node_id = 0; node_id < mesh.size(); ++node_id) {
@@ -36,9 +40,7 @@ class Mesh {
     }
   }
 
-  void InitializeInterThreadPipes(
-    const std::function<thread_id_t(node_id_t)> thread_assignment
-  ) {
+  void InitializeInterThreadPipes() {
 
     for (size_t node_id = 0; node_id < mesh.size(); ++node_id) {
       auto & node = mesh[node_id];
@@ -60,9 +62,7 @@ class Mesh {
 
   }
 
-  void InitializeInterProcPipes(
-    const std::function<proc_id_t(node_id_t)> proc_assignment
-  ) {
+  void InitializeInterProcPipes() {
 
     for (size_t node_id = 0; node_id < mesh.size(); ++node_id) {
       auto & node = mesh[node_id];
@@ -107,14 +107,16 @@ public:
 
   Mesh(
     const mesh_t<T, N> & mesh_,
-    const std::function<thread_id_t(node_id_t)> thread_assignment,
-    const std::function<proc_id_t(node_id_t)> proc_assignment
-      =[](const auto & node_id){ return 0; }
+    const std::function<thread_id_t(node_id_t)> thread_assignment_,
+    const std::function<proc_id_t(node_id_t)> proc_assignment_
+      =assign_integrated<proc_id_t>()
   )
-  : mesh(mesh_) {
+  : mesh(mesh_)
+  , thread_assignment(thread_assignment_)
+  , proc_assignment(proc_assignment_) {
     InitializeRegistries();
-    InitializeInterThreadPipes(thread_assignment);
-    InitializeInterProcPipes(proc_assignment);
+    InitializeInterThreadPipes();
+    InitializeInterProcPipes();
   }
 
   size_t GetSize() const { return mesh.size(); }
@@ -133,6 +135,22 @@ public:
 
   typename mesh_t<T, N>::const_iterator end() const {
     return std::end(mesh);
+  }
+
+  mesh_t<T, N> GetSubmesh(
+    const thread_id_t tid,
+    const proc_id_t pid=get_proc_id()
+  ) {
+    mesh_t<T, N> res;
+    for (size_t node_id = 0; node_id < mesh.size(); ++node_id) {
+      if (
+        thread_assignment(node_id) == tid
+        && proc_assignment(node_id) == pid
+      ) res.push_back(
+        mesh[node_id]
+      );
+    }
+    return res;
   }
 
 };
