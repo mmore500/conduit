@@ -12,7 +12,7 @@ default: bench
 bench-%: %.cc
 	$(CXX) $(FLAGS) $< -o $@.out
 	# execute bench
-	mpiexec -n 1 ./$@.out
+	mpiexec --bind-to none -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(BENCH_NAMES))
