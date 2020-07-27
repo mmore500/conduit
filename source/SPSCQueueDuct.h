@@ -63,7 +63,7 @@ public:
   }
 
   void SetElement(const size_t n, const T & val) {
-    queue.push(val);
+    queue.try_push(val);
   }
 
   std::string GetType() const { return "SPSCQueueDuct"; }
