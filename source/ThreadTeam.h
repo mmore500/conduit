@@ -2,6 +2,7 @@
 
 #include <thread>
 #include <utility>
+#include <algorithm>
 
 #include "base/vector.h"
 
