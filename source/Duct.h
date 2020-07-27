@@ -8,6 +8,7 @@
 
 #include "MockDuct.h"
 #include "ThreadDuct.h"
+#include "SPSCQueueDuct.h"
 #include "ProcessInletDuct.h"
 #include "ProcessOutletDuct.h"
 
@@ -21,6 +22,7 @@ class Duct {
   std::variant<
     MockDuct<T, N>,
     ThreadDuct<T, N>,
+    SPSCQueueDuct<T, N>,
     ProcessInletDuct<T, N>,
     ProcessOutletDuct<T, N>
   > impl;
