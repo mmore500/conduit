@@ -14,7 +14,7 @@ bench-%: %.cc
 	# execute bench
 	if echo $@ | grep -Fq "NoMPI"; \
 		then ./$@.out; \
-		else mpiexec --bind-to none -n 1 ./$@.out; \
+		else mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n 1 ./$@.out; \
 	fi
 
 # Test in debug mode without pointer tracker
