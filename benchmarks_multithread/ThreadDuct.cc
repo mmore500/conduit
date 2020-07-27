@@ -26,13 +26,16 @@ void do_work(
 
   std::chrono::milliseconds duration; { const TimeGuard guard{duration};
 
-  bundle.outputs[0].GetOutput().MaybePut(get_thread_id());
+  const bool is_producer = bundle.outputs.size();
+  const bool is_consumer = bundle.inputs.size();
+
+  if (is_producer) bundle.outputs[0].GetOutput().MaybePut(get_thread_id());
 
   latch.arrive_and_wait();
 
   for (size_t rep = 0; rep < 1e7; ++rep) {
-    bundle.outputs[0].GetOutput().MaybePut(get_thread_id());
-    do_not_optimize(
+    if (is_producer) bundle.outputs[0].GetOutput().MaybePut(get_thread_id());
+    if (is_consumer) do_not_optimize(
       bundle.inputs[0].GetInput().GetCurrent()
     );
   }
