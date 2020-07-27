@@ -58,7 +58,8 @@ public:
   size_t GetAvailableCapacity() const { return N - pending; }
 
   T GetElement(const size_t n) const {
-    return *queue.front();
+    const auto res = queue.front();
+    return res ? *res : T{};
   }
 
   void SetElement(const size_t n, const T & val) {
