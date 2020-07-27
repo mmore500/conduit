@@ -1,4 +1,4 @@
-BENCH_NAMES := ThreadDuct
+BENCH_NAMES := ThreadDuct IsolatedThreads_MPI IsolatedThreads_NoMPI
 
 EMP_DIR := ../third-party/Empirical/source
 
@@ -12,7 +12,10 @@ default: bench
 bench-%: %.cc
 	$(CXX) $(FLAGS) $< -o $@.out
 	# execute bench
-	mpiexec --bind-to none -n 1 ./$@.out
+	if echo $@ | grep -Fq "NoMPI"; \
+		then ./$@.out; \
+		else mpiexec --bind-to none -n 1 ./$@.out; \
+	fi
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(BENCH_NAMES))
