@@ -66,6 +66,22 @@ using mesh_t = emp::vector<
 template<typename T, size_t N=DEFAULT_BUFFER>
 mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
 
+  /*
+  * goal
+  * nodes: -> 0 -> 1 -> 2 -> 3 ->
+  *
+  * node 0: input from 3 & output to 1
+  * node 1: input from 0 & output to 2
+  * node 2: input from 1 & output to 3
+  * node 3: input from 2 & output to 0
+  *
+  * node 0: outlet 3 & inlet 0
+  * node 1: outlet 0 & inlet 1
+  * node 2: outlet 1 & inlet 2
+  * node 3: outlet 2 & inlet 3
+  */
+
+
   std::vector<OutputLink<T, N>> inlets;
   std::vector<InputLink<T, N>> outlets;
 
@@ -78,11 +94,12 @@ mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
 
   /*
   * before rotate
-  * outlets: 0 1 2 3  (inputs)
+  * inlets:  0 1 2 3  (output from nodes)
   *          | | | |
-  * inlets:  0 1 2 3  (outputs)
+  * outlets: 0 1 2 3  (input to nodes)
   */
 
+  // rotate outlets right by one
   if (cardinality) std::rotate(
     std::rbegin(outlets),
     std::rbegin(outlets) + 1,
@@ -91,9 +108,11 @@ mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
 
   /*
   * after rotate
-  * outlets:   0 1 2 3  (inputs)
-  *           \ \ \ \
-  * inlets:    3 0 1 2  (outputs)
+  * nodes:   0 1 2 3
+  * inlets:  0 1 2 3   (output from nodes)
+  *         \ \ \ \ \
+  * outlets: 3 0 1 2   (input to nodes)
+  * nodes:   0 1 2 3
   */
 
   mesh_t<T, N> res;
@@ -158,16 +177,13 @@ mesh_t<T, N> make_loop_mesh(const size_t cardinality) {
 
   mesh_t<T, N> res;
 
-  size_t pipe_id_counter{};
-
-  for (size_t i = 0; i < cardinality; ++i) {
+  for (size_t pipe_id = 0; pipe_id < cardinality; ++pipe_id) {
     auto self_pipe = make_pipe<T, N>();
     auto & [self_inlet, self_outlet] = self_pipe;
-    const size_t self_id = pipe_id_counter++;
 
     res.push_back(io_bundle_t<T, N>{
-      {{self_outlet, self_id}},
-      {{self_inlet, self_id}}
+      {{self_outlet, pipe_id}},
+      {{self_inlet, pipe_id}}
     });
   };
 
