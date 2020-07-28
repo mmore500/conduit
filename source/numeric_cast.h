@@ -2,7 +2,7 @@
 
 #include <limits>
 
-#include "safe_less.h"
+#include "safe_compare.h"
 
 // adapted from https://stackoverflow.com/a/49658950
 template<typename Dst, typename Src>
