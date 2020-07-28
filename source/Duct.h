@@ -6,12 +6,15 @@
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
+//TODO don't include these all here
 #include "AtomicPendingDuct.h"
 #include "PendingDuct.h"
 #include "HeadTailDuct.h"
 #include "SPSCQueueDuct.h"
 #include "ISendDuct.h"
 #include "IRecvDuct.h"
+#include "RputDuct.h"
+#include "WindowDuct.h"
 
 #include "print_utils.h"
 #include "config_utils.h"

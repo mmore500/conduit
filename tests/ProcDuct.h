@@ -16,7 +16,7 @@ Outlet<char> make_input() {
 
   const int source = circular_index(get_rank(), get_nprocs(), -1);
 
-  outlet.SplitDuct<ProcOutletDuct<char>>(source);
+  outlet.SplitDuct<ProcOutletDuct<char>>(get_rank(), source);
 
   return outlet;
 
@@ -29,7 +29,7 @@ Inlet<char> make_output() {
 
   const int dest = circular_index(get_rank(), get_nprocs(), 1);
 
-  inlet.EmplaceDuct<ProcInletDuct<char>>(dest);
+  inlet.EmplaceDuct<ProcInletDuct<char>>(get_rank(), dest);
 
   return inlet;
 
@@ -40,9 +40,11 @@ int main(int argc, char* argv[]) {
 
   MPI_Init(&argc, &argv);
 
+  Outlet<char> input = make_input();
+
   Inlet<char> output = make_output();
 
-  Outlet<char> input = make_input();
+  RDMAWindow::Initialize();
 
   const char message = 65 + get_rank();
 

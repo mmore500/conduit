@@ -99,6 +99,7 @@ class IRecvDuct {
 public:
 
   IRecvDuct(
+    const int outlet_proc,
     const int inlet_proc_=MPI_ANY_SOURCE,
     const int tag_=MPI_ANY_TAG,
     MPI_Comm comm_=MPI_COMM_WORLD
