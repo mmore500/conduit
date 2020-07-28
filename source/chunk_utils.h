@@ -72,7 +72,7 @@ std::vector<chunk_t> make_chunks(grid_t & grid, const size_t num_chunks) {
   ) {
 
     chunk_end = (
-      std::distance(chunk_end, std::end(grid)) < chunk_width
+      safe_less(std::distance(chunk_end, std::end(grid)), chunk_width)
       ? std::end(grid)
       : std::next(chunk_begin, chunk_width)
     );

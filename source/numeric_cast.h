@@ -2,8 +2,9 @@
 
 #include <limits>
 
-// adapted from https://stackoverflow.com/a/49658950
+#include "safe_less.h"
 
+// adapted from https://stackoverflow.com/a/49658950
 template<typename Dst, typename Src>
 inline Dst numeric_cast(Src value)
 {
@@ -14,7 +15,7 @@ inline Dst numeric_cast(Src value)
     const bool negative_overflow_possible =
             SrcLim::is_signed
             or
-            (DstLim::lowest() > SrcLim::lowest());
+            safe_greater(DstLim::lowest(), SrcLim::lowest());
 
     // unsigned <-- unsigned
     if((not DstLim::is_signed) and (not SrcLim::is_signed)) {
