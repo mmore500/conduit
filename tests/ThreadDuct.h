@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
 
   Mesh mesh{
     make_ring_mesh<MSG_T>(num_nodes),
-    assign_segregated()
+    assign_segregated<thread_id_t>()
   };
 
   for (size_t node_id = 0; node_id < mesh.GetSize(); ++node_id) {
