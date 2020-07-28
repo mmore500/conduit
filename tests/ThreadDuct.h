@@ -1,5 +1,6 @@
 #include <thread>
 #include <unordered_set>
+#include <cassert>
 
 #include "mpi.h"
 
@@ -14,6 +15,7 @@
 #include "../source/mpi_utils.h"
 #include "../source/pipe_utils.h"
 #include "../source/numeric_cast.h"
+#include "../source/safe_compare.h"
 #include "../source/mesh_utils.h"
 #include "../source/math_utils.h"
 
@@ -37,7 +39,7 @@ void do_work(io_bundle_t<MSG_T> bundle, const size_t node_id) {
 
   const MSG_T res = bundle.inputs[0].GetInput().GetCurrent();
 
-  assert( res == circular_index(node_id, num_nodes, -1) );
+  assert( safe_equal(res, circular_index(node_id, num_nodes, -1)) );
 
   gatherer.Put(res);
 
