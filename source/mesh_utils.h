@@ -78,10 +78,12 @@ mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
     outlets.push_back({outlet, pipe_id_counter++});
   }
 
-  // before rotate
-  // outlets: 0 1 2 3  (inputs)
-  //          | | | |
-  // inlets:  0 1 2 3  (outputs)
+  /*
+  * before rotate
+  * outlets: 0 1 2 3  (inputs)
+  *          | | | |
+  * inlets:  0 1 2 3  (outputs)
+  */
 
   if (cardinality) std::rotate(
     std::rbegin(outlets),
@@ -89,10 +91,12 @@ mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
     std::rend(outlets)
   );
 
-  // after rotate
-  // outlets:   0 1 2 3  (inputs)
-  //           \ \ \ \
-  // inlets:    3 0 1 2  (outputs)
+  /*
+  * after rotate
+  * outlets:   0 1 2 3  (inputs)
+  *           \ \ \ \
+  * inlets:    3 0 1 2  (outputs)
+  */
 
   mesh_t<T, N> res;
 
