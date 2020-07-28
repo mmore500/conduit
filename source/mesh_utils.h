@@ -173,6 +173,35 @@ mesh_t<T, N> make_loop_mesh(const size_t cardinality) {
 
 }
 
+
+template<typename T, size_t N=DEFAULT_BUFFER>
+mesh_t<T, N> make_producer_consumer_mesh(const size_t cardinality) {
+
+  mesh_t<T, N> res;
+
+  size_t pipe_id_counter{};
+
+  for (size_t pair = 0; pair < cardinality/2; ++pair) {
+
+      auto forward_pipe = make_pipe<T, N>();
+      auto & [forward_inlet, forward_outlet] = forward_pipe;
+      const size_t forward_id = pipe_id_counter++;
+
+      res.push_back(io_bundle_t<T, N>{
+        {},
+        {{forward_inlet, forward_id}}
+      });
+      res.push_back(io_bundle_t<T, N>{
+        {{forward_outlet, forward_id}},
+        {}
+      });
+
+  }
+
+  return res;
+
+}
+
 // TODO
 // * make_random_mesh
 //   * degree is argument
