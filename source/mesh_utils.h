@@ -1,5 +1,7 @@
 #pragma once
 
+#include <list>
+
 #include "Inlet.h"
 #include "Outlet.h"
 #include "pipe_utils.h"
@@ -7,7 +9,7 @@
 template<typename T, size_t N=DEFAULT_BUFFER>
 class InputLink {
   Outlet<T, N> input;
-  size_t pipe_id;
+  const size_t pipe_id;
 
 public:
 
@@ -82,8 +84,8 @@ mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
   */
 
 
-  std::vector<OutputLink<T, N>> inlets;
-  std::vector<InputLink<T, N>> outlets;
+  std::list<OutputLink<T, N>> inlets;
+  std::list<InputLink<T, N>> outlets;
 
   for (size_t pipe_id = 0; pipe_id < cardinality; ++pipe_id) {
     auto pipe = make_pipe<T, N>();
@@ -100,10 +102,10 @@ mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
   */
 
   // rotate outlets right by one
-  if (cardinality) std::rotate(
-    std::rbegin(outlets),
-    std::rbegin(outlets) + 1,
-    std::rend(outlets)
+  if (cardinality) outlets.splice(
+    std::begin(outlets),
+    outlets,
+    std::prev(std::end(outlets))
   );
 
   /*
@@ -117,10 +119,16 @@ mesh_t<T, N> make_ring_mesh(const size_t cardinality) {
 
   mesh_t<T, N> res;
 
-  for (size_t i = 0; i < cardinality; ++i) {
+  auto inlet_iterator = std::begin(inlets);
+  auto outlet_iterator = std::begin(outlets);
+  for (
+    ;
+    inlet_iterator != std::end(inlets) && outlet_iterator != std::end(outlets);
+    ++inlet_iterator, ++outlet_iterator
+  ) {
     res.push_back(io_bundle_t<T, N>{
-      {outlets[i]},
-      {inlets[i]}
+      {*outlet_iterator},
+      {*inlet_iterator}
     });
   }
 
