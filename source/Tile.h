@@ -3,9 +3,9 @@
 #include <assert.h>
 #include <sstream>
 
-#include "Inlet.h"
-#include "Outlet.h"
-#include "print_utils.h"
+#include "conduit/Inlet.h"
+#include "conduit/Outlet.h"
+#include "utility/print_utils.h"
 #include "State.h"
 
 class Tile {

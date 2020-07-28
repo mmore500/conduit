@@ -5,7 +5,7 @@ EMP_DIR := ../third-party/Empirical/source
 #CXX = clang++
 CXX := mpic++
 
-FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../source/ -I../third-party/ -I$(EMP_DIR)
+FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../source/ -I../include/ -I../third-party/ -I$(EMP_DIR)
 
 default: bench
 
@@ -26,16 +26,16 @@ bench: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 # Test optimized version without debug features
-debug: FLAGS := -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../source/ -I../third-party/ -I$(EMP_DIR)
+debug: FLAGS := -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../include/ -I../source/ -I../third-party/ -I$(EMP_DIR)
 debug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../source/ -I../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function  -I../include/ -I../source/ -I../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
 fulldebug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
-cranky: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../source/ -I../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../include/ -I../source/ -I../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
 cranky: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 

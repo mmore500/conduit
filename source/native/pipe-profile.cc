@@ -8,10 +8,10 @@
 
 #include "../grid_utils.h"
 #include "../config_utils.h"
-#include "../mpi_utils.h"
+#include "distributed/mpi_utils.h"
 
 #include "../Tile.h"
-#include "../TimeGuard.h"
+#include "utility/TimeGuard.h"
 
 int main(int argc, char* argv[]) {
 

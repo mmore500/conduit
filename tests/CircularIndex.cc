@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "../source/CircularIndex.h"
+#include "utility/CircularIndex.h"
 
 TEST_CASE("Test CircularIndex")
 {

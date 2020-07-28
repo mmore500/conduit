@@ -1,7 +1,7 @@
 #pragma once
 
 #include "mpi.h"
-#include "print_utils.h"
+#include "../utility/print_utils.h"
 
 // TODO rename pid_t
 using proc_id_t = int;

@@ -3,13 +3,13 @@
 #include <iostream>
 #include <memory>
 
-#include "config_utils.h"
-#include "thread_utils.h"
+#include "config.h"
+#include "../parallel/thread_utils.h"
 
-#include "CircularIndex.h"
+#include "../utility/CircularIndex.h"
 #include "Duct.h"
-#include "OccupancyCaps.h"
-#include "OccupancyGuard.h"
+#include "../parallel/OccupancyCaps.h"
+#include "../parallel/OccupancyGuard.h"
 
 template<typename T, size_t N=DEFAULT_BUFFER>
 class Outlet {

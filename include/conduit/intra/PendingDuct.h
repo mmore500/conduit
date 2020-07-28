@@ -3,12 +3,12 @@
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
-#include "CircularIndex.h"
-#include "OccupancyCap.h"
-#include "OccupancyGuard.h"
+#include "../../utility/CircularIndex.h"
+#include "../../parallel/OccupancyCap.h"
+#include "../../parallel/OccupancyGuard.h"
 
-#include "config_utils.h"
-#include "print_utils.h"
+#include "../config.h"
+#include "../../utility/print_utils.h"
 
 template<typename T, size_t N>
 class Duct;

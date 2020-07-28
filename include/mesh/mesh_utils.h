@@ -2,9 +2,9 @@
 
 #include <list>
 
-#include "Inlet.h"
-#include "Outlet.h"
-#include "pipe_utils.h"
+#include "../conduit/Inlet.h"
+#include "../conduit/Outlet.h"
+#include "../conduit/pipe_utils.h"
 
 template<typename T, size_t N=DEFAULT_BUFFER>
 class InputLink {

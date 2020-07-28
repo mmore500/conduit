@@ -3,11 +3,11 @@
 
 #include "mpi.h"
 
-#include "../source/config_utils.h"
-#include "../source/CircularIndex.h"
-#include "../source/mpi_utils.h"
-#include "../source/pipe_utils.h"
-#include "../source/math_utils.h"
+#include "conduit/config.h"
+#include "utility/CircularIndex.h"
+#include "distributed/mpi_utils.h"
+#include "conduit/pipe_utils.h"
+#include "utility/math_utils.h"
 
 Outlet<char> make_input() {
 
