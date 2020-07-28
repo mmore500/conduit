@@ -28,7 +28,8 @@ void do_work(io_bundle_t<MSG_T> bundle, const size_t node_id) {
 
   bundle.outputs[0].GetOutput().MaybePut(node_id);
 
-  static latch latch{numeric_cast<std::ptrdiff_t>(num_nodes)};
+  static latch sync_before{numeric_cast<std::ptrdiff_t>(num_nodes)};
+  sync_before.arrive_and_wait();
 
   for (size_t rep = 0; rep < 100; ++rep) {
     bundle.outputs[0].GetOutput().MaybePut(node_id);
@@ -36,6 +37,9 @@ void do_work(io_bundle_t<MSG_T> bundle, const size_t node_id) {
       bundle.inputs[0].GetInput().GetCurrent()
     );
   }
+
+  static latch sync_after{numeric_cast<std::ptrdiff_t>(num_nodes)};
+  sync_after.arrive_and_wait();
 
   const MSG_T res = bundle.inputs[0].GetInput().GetCurrent();
 
