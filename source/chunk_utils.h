@@ -1,9 +1,9 @@
 #pragma once
 
 #include "grid_utils.h"
-#include "benchmark_utils.h"
+#include "utility/benchmark_utils.h"
 
-#include "Duct.h"
+#include "conduit/Duct.h"
 #include "Tile.h"
 #include "State.h"
 

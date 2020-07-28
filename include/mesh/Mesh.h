@@ -2,9 +2,9 @@
 
 #include <unordered_map>
 
-#include "Duct.h"
+#include "../conduit/Duct.h"
 
-#include "mpi_utils.h"
+#include "../distributed/mpi_utils.h"
 #include "mesh_utils.h"
 
 template<typename T, size_t N=DEFAULT_BUFFER>

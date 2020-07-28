@@ -7,18 +7,18 @@
 #include "tools/string_utils.h"
 
 //TODO don't include these all here
-#include "AtomicPendingDuct.h"
-#include "PendingDuct.h"
-#include "HeadTailDuct.h"
-#include "SPSCQueueDuct.h"
-#include "ISendDuct.h"
-#include "IRecvDuct.h"
-#include "RputDuct.h"
-#include "WindowDuct.h"
+#include "thread/AtomicPendingDuct.h"
+#include "intra/PendingDuct.h"
+#include "thread/HeadTailDuct.h"
+#include "thread/SPSCQueueDuct.h"
+#include "proc/ISendDuct.h"
+#include "proc/IRecvDuct.h"
+#include "proc/RputDuct.h"
+#include "proc/WindowDuct.h"
 
-#include "print_utils.h"
-#include "config_utils.h"
-#include "mpi_utils.h"
+#include "../utility/print_utils.h"
+#include "config.h"
+#include "../distributed/mpi_utils.h"
 
 template<typename T, size_t N=DEFAULT_BUFFER>
 class Duct {

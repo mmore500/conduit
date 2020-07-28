@@ -9,8 +9,9 @@
 #include "Inlet.h"
 #include "Outlet.h"
 
-#include "config_utils.h"
+#include "config.h"
 
+//TODO rename conduit
 template<typename T, size_t N=DEFAULT_BUFFER>
 std::pair<Inlet<T,N>, Outlet<T,N>> make_pipe() {
 

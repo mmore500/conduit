@@ -5,10 +5,10 @@
 
 #include "mpi.h"
 
-#include "barrier.h"
-#include "CountdownTimer.h"
+#include "../polyfill/barrier.h"
+#include "../utility/CountdownTimer.h"
 
-#include "mpi_utils.h"
+#include "../distributed/mpi_utils.h"
 
 namespace internal {
 

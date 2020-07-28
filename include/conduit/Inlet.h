@@ -5,12 +5,12 @@
 #include <memory>
 #include <atomic>
 
-#include "config_utils.h"
-#include "print_utils.h"
+#include "config.h"
+#include "../utility/print_utils.h"
 
-#include "CircularIndex.h"
-#include "OccupancyCaps.h"
-#include "OccupancyGuard.h"
+#include "../utility/CircularIndex.h"
+#include "../parallel/OccupancyCaps.h"
+#include "../parallel/OccupancyGuard.h"
 #include "Duct.h"
 
 template<typename T, size_t N=DEFAULT_BUFFER>

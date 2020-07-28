@@ -8,12 +8,12 @@
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
-#include "CircularIndex.h"
-#include "identity.h"
+#include "../../utility/CircularIndex.h"
+#include "../../utility/identity.h"
 
-#include "config_utils.h"
-#include "mpi_utils.h"
-#include "print_utils.h"
+#include "../config.h"
+#include "../../distributed/mpi_utils.h"
+#include "../../utility/print_utils.h"
 
 template<typename T, size_t N>
 class Duct;

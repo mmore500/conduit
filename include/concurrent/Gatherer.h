@@ -8,7 +8,7 @@
 
 #include "base/vector.h"
 
-#include "mpi_utils.h"
+#include "../distributed/mpi_utils.h"
 
 template<typename T>
 class Gatherer {

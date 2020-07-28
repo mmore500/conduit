@@ -5,7 +5,7 @@
 #include <limits>
 
 #include "thread_utils.h"
-#include "print_utils.h"
+#include "../utility/print_utils.h"
 
 class OccupancyCap {
 

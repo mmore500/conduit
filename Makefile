@@ -3,7 +3,7 @@ PROJECT := pipe-profile
 EMP_DIR := third-party/Empirical/source
 
 # Flags to use regardless of compiler
-CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -I$(EMP_DIR)/ -fopenmp
+CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -I$(EMP_DIR)/ -Iinclude/ -fopenmp
 
 # Native compiler information
 CXX_nat := mpic++

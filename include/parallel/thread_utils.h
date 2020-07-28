@@ -3,8 +3,8 @@
 #include <atomic>
 #include <thread>
 
-#include "exec_utils.h"
-#include "math_utils.h"
+#include "../utility/exec_utils.h"
+#include "../utility/math_utils.h"
 
 // TODO rename tid_t
 using thread_id_t = size_t;

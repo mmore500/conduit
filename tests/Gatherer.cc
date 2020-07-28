@@ -2,15 +2,15 @@
 
 #include "mpi.h"
 
-#include "../source/Gatherer.h"
-#include "../source/CircularIndex.h"
-#include "../source/ThreadTeam.h"
-#include "../source/barrier.h"
+#include "concurrent/Gatherer.h"
+#include "utility/CircularIndex.h"
+#include "parallel/ThreadTeam.h"
+#include "polyfill/barrier.h"
 
 
-#include "../source/mpi_utils.h"
-#include "../source/pipe_utils.h"
-#include "../source/numeric_cast.h"
+#include "distributed/mpi_utils.h"
+#include "conduit/pipe_utils.h"
+#include "utility/numeric_cast.h"
 
 Gatherer<int> gather(MPI_INT);
 
