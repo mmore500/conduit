@@ -7,6 +7,8 @@
 #include <assert.h>
 #include <new>
 
+#include "tools/string_utils.h"
+
 #include "math_utils.h"
 
 #define DEFAULT_BUFFER 1024
@@ -19,6 +21,22 @@
 #endif
 
 using config_t = std::unordered_map<std::string, size_t>;
+
+#ifndef ProcInletDuct
+  #define ProcInletDuct ISendDuct
+#endif
+
+#ifndef ProcOutletDuct
+  #define ProcOutletDuct IRecvDuct
+#endif
+
+#ifndef ThreadDuct
+  #define ThreadDuct HeadTailDuct
+#endif
+
+#ifndef IntraDuct
+  #define IntraDuct PendingDuct
+#endif
 
 config_t make_config() {
 

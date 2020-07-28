@@ -3,6 +3,7 @@
 
 #include "mpi.h"
 
+#include "../source/config_utils.h"
 #include "../source/Gatherer.h"
 #include "../source/CircularIndex.h"
 #include "../source/ThreadTeam.h"

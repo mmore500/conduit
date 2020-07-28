@@ -1,4 +1,4 @@
-BENCH_NAMES := ThreadDuct IsolatedThreads_MPI IsolatedThreads_NoMPI
+BENCH_NAMES := SPSCQueueDuct HeadTailDuct AtomicPendingDuct IsolatedThreads_MPI IsolatedThreads_NoMPI
 
 EMP_DIR := ../third-party/Empirical/source
 

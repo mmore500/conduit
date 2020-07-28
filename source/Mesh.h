@@ -75,7 +75,7 @@ class Mesh {
 
         if (my_proc != their_proc) {
           link.GetInput().template SplitDuct<
-            ProcessInletDuct<T, N>
+            ProcInletDuct<T, N>
           >(
             their_proc,
             link.GetPipeID()
@@ -89,7 +89,7 @@ class Mesh {
 
         if (my_proc != their_proc) {
           link.GetOutput().template SplitDuct<
-            ProcessOutletDuct<T, N>
+            ProcOutletDuct<T, N>
           >(
             their_proc,
             link.GetPipeID()

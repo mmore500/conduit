@@ -18,9 +18,9 @@
 template<typename T, size_t N>
 class Duct;
 
-// TODO rename ProcOutletDuct
+// TODO rename ProcInletDuct
 template<typename T, size_t N=DEFAULT_BUFFER>
-class ProcessOutletDuct {
+class ISendDuct {
 
   friend Duct<T, N>;
 
@@ -32,7 +32,7 @@ class ProcessOutletDuct {
   mutable pending_t pending{0};
   mutable buffer_t buffer;
 
-  mutable std::array<MPI_Request, N> receive_requests;
+  mutable std::array<MPI_Request, N> send_requests;
 #ifndef NDEBUG
   // most vexing parse :/
   mutable std::vector<char> request_states=std::vector<char>(N, false);
@@ -40,57 +40,56 @@ class ProcessOutletDuct {
 
   MPI_Comm comm;
 
-  const int inlet_proc;
+  const int outlet_proc;
   const int tag;
 
-  mutable index_t receive_position{0};
+  mutable index_t send_position{0};
 
-  void RequestReceive() const {
+  void RequestSend() const {
     emp_assert(
-      request_states[receive_position] == false,
-      receive_position,
-      pending
+      request_states[send_position] == false,
+      send_position,
+      pending,
+      format_member("*this", *this)
     );
-    verify(MPI_Irecv(
-      &buffer[receive_position],
+    verify(MPI_Isend(
+      &buffer[send_position],
       1,
       MPI_BYTE, // TODO template on T
-      inlet_proc,
+      outlet_proc,
       tag,
       comm,
-      &receive_requests[receive_position]
+      &send_requests[send_position]
     ));
 #ifndef NDEBUG
-    request_states[receive_position] = true;
+    request_states[send_position] = true;
 #endif
-    ++receive_position;
+    ++pending;
+    ++send_position;
+
   }
 
-  // AcceptReceive Take
-  bool ConfirmReceive() const {
+  // AcceptSend Take
+  bool ConfirmSend() const {
 
     int flag{};
 
     emp_assert(
-      request_states[receive_position],
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      receive_position,
+      request_states[send_position - pending],
+      send_position,
       pending,
       format_member("*this", *this)
     );
     verify(MPI_Test(
-      &receive_requests[receive_position],
+      &send_requests[send_position - pending],
       &flag,
       MPI_STATUS_IGNORE
     ));
 #ifndef NDEBUG
-    request_states[receive_position] = false;
+    request_states[send_position] = false;
 #endif
 
-    if (flag) {
-      RequestReceive();
-      ++pending;
-    }
+    if (flag) --pending;
 
     return flag;
 
@@ -98,16 +97,16 @@ class ProcessOutletDuct {
 
 public:
 
-  ProcessOutletDuct(
-    const int inlet_proc_=MPI_ANY_SOURCE,
-    const int tag_=MPI_ANY_TAG,
+  ISendDuct(
+    const int outlet_proc_,
+    const int tag_=0,
     MPI_Comm comm_=MPI_COMM_WORLD
   ) : comm(comm_)
-  , inlet_proc(inlet_proc_)
+  , outlet_proc(outlet_proc_)
   , tag(tag_) {
-    for (size_t i = 0; i < N; ++i) RequestReceive();
     emp_assert(
-      std::all_of(
+      true,
+      std::none_of(
         std::begin(request_states),
         std::end(request_states),
         identity
@@ -117,56 +116,40 @@ public:
     );
   }
 
-  void Initialize(const size_t write_position) {
-    for (size_t i = 0; i < write_position; ++i) {
-      emp_assert(
-        request_states[receive_position],
-        [](){ error_message_mutex.lock(); return "locked"; }(),
-        receive_position,
-        format_member("*this", *this)
-      );
-
-      verify(MPI_Request_free(&receive_requests[i]));
-
-#ifndef NDEBUG
-      request_states[receive_position] = false;
-#endif
-      RequestReceive();
-    }
-  }
-
   //todo rename
-  void Push() { emp_assert(false); }
-
-  //todo rename
-  void Pop(const size_t count) {
+  void Push() {
 
     emp_assert(
-      pending >= count,
+      pending < N,
       [](){ error_message_mutex.lock(); return "locked"; }(),
-      pending,
-      count,
-      format_member("*this", *this)
+      emp::to_string("pending: ", pending)
     );
 
-    pending -= count;
+    RequestSend();
 
   }
 
-  size_t GetPending() const {
-    while (ConfirmReceive());
-    return pending;
+  void Initialize(const size_t write_position) {
+    send_position = write_position;
   }
 
-  size_t GetAvailableCapacity() const { emp_assert(false); }
+  //todo rename
+  void Pop(const size_t count) { emp_assert(false); }
+
+  size_t GetPending() const { emp_assert(false); }
+
+  size_t GetAvailableCapacity() const {
+    while (pending && ConfirmSend());
+    return N - pending;
+  }
 
   T GetElement(const size_t n) const { return buffer[n]; }
 
   const void * GetPosition(const size_t n) const { return &buffer[n]; }
 
-  void SetElement(const size_t n, const T & val) { emp_assert(false); }
+  void SetElement(const size_t n, const T & val) { buffer[n] = val; }
 
-  std::string GetType() const { return "ProcessOutletDuct"; }
+  std::string GetType() const { return "ISendDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
@@ -184,10 +167,10 @@ public:
         return std::string{}.assign(data, len);
       }()
     ) << std::endl;
-    ss << format_member("int inlet_proc", inlet_proc) << std::endl;
-    ss << format_member("int get_rank()", get_rank()) << std::endl;
-    ss << format_member("int tag", tag) << std::endl << std::endl;
-    ss << format_member("size_t receive_position", receive_position);
+    ss << format_member("get_rank()", get_rank()) << std::endl;
+    ss << format_member("int outlet_proc", outlet_proc) << std::endl;
+    ss << format_member("int tag", tag) << std::endl;
+    ss << format_member("size_t send_position", send_position);
     return ss.str();
   }
 
