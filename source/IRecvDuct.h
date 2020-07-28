@@ -136,7 +136,7 @@ public:
   }
 
   //todo rename
-  void Push() { emp_assert(false); }
+  [[noreturn]] void Push() { throw "bad Push on IRecvDuct"; }
 
   //todo rename
   void Pop(const size_t count) {
@@ -158,13 +158,17 @@ public:
     return pending;
   }
 
-  size_t GetAvailableCapacity() const { emp_assert(false); }
+  [[noreturn]] size_t GetAvailableCapacity() const {
+    throw "bad GetAvailableCapacity on IRecvDuct";
+  }
 
   T GetElement(const size_t n) const { return buffer[n]; }
 
   const void * GetPosition(const size_t n) const { return &buffer[n]; }
 
-  void SetElement(const size_t n, const T & val) { emp_assert(false); }
+  [[noreturn]] void SetElement(const size_t n, const T & val) {
+    throw "bad SetElement on IRecvDuct";
+  }
 
   std::string GetType() const { return "IRecvDuct"; }
 

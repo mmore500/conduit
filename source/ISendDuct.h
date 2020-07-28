@@ -134,9 +134,13 @@ public:
   }
 
   //todo rename
-  void Pop(const size_t count) { emp_assert(false); }
+  [[noreturn]] void Pop(const size_t count) {
+    throw "bad Pop on ISendDuct";
+  }
 
-  size_t GetPending() const { emp_assert(false); }
+  [[noreturn]] size_t GetPending() const {
+    throw "bad GetPending on ISendDuct";
+  }
 
   size_t GetAvailableCapacity() const {
     while (pending && ConfirmSend());
