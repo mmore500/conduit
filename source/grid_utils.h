@@ -17,6 +17,7 @@
 #include "barrier.h"
 #include "latch.h"
 #include "numeric_cast.h"
+#include "safe_compare.h"
 
 #include "pipe_utils.h"
 #include "config_utils.h"
