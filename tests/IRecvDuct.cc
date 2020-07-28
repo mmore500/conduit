@@ -3,6 +3,9 @@
 
 #include "mpi.h"
 
+#define ProcDuct IRecvDuct
+
+#include "../source/config_utils.h"
 #include "../source/CircularIndex.h"
 #include "../source/mpi_utils.h"
 #include "../source/pipe_utils.h"
@@ -15,7 +18,7 @@ Outlet<char> make_input() {
 
   const int source = circular_index(get_rank(), get_nprocs(), -1);
 
-  outlet.SplitDuct<ProcessOutletDuct<char>>(source);
+  outlet.SplitDuct<ProcOutletDuct<char>>(source);
 
   return outlet;
 
@@ -28,7 +31,7 @@ Inlet<char> make_output() {
 
   const int dest = circular_index(get_rank(), get_nprocs(), 1);
 
-  inlet.EmplaceDuct<ProcessInletDuct<char>>(dest);
+  inlet.EmplaceDuct<ProcInletDuct<char>>(dest);
 
   return inlet;
 

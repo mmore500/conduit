@@ -3,7 +3,7 @@
 #include "grid_utils.h"
 #include "benchmark_utils.h"
 
-#include "ThreadDuct.h"
+#include "Duct.h"
 #include "Tile.h"
 #include "State.h"
 

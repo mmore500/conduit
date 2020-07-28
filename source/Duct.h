@@ -6,11 +6,12 @@
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
-#include "MockDuct.h"
-#include "ThreadDuct.h"
+#include "AtomicPendingDuct.h"
+#include "PendingDuct.h"
+#include "HeadTailDuct.h"
 #include "SPSCQueueDuct.h"
-#include "ProcessInletDuct.h"
-#include "ProcessOutletDuct.h"
+#include "ISendDuct.h"
+#include "IRecvDuct.h"
 
 #include "print_utils.h"
 #include "config_utils.h"
@@ -20,11 +21,10 @@ template<typename T, size_t N=DEFAULT_BUFFER>
 class Duct {
 
   std::variant<
-    MockDuct<T, N>,
+    IntraDuct<T, N>,
     ThreadDuct<T, N>,
-    SPSCQueueDuct<T, N>,
-    ProcessInletDuct<T, N>,
-    ProcessOutletDuct<T, N>
+    ProcInletDuct<T, N>,
+    ProcOutletDuct<T, N>
   > impl;
 
 public:

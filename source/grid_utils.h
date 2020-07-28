@@ -96,13 +96,13 @@ double run_grid(grid_t & grid, const config_t & cfg) {
   if (is_multiprocess()) {
 
     const size_t prev_proc = circular_index(get_rank(), get_nprocs(), -1);
-    grid.front().SplitInputDuct<ProcessOutletDuct<State>>(
+    grid.front().SplitInputDuct<ProcOutletDuct<State>>(
       prev_proc,
       prev_proc // tag
     );
 
     const size_t next_proc = circular_index(get_rank(), get_nprocs(), 1);
-    grid.back().SplitOutputDuct<ProcessInletDuct<State>>(
+    grid.back().SplitOutputDuct<ProcInletDuct<State>>(
       next_proc,
       get_rank() // tag
     );
