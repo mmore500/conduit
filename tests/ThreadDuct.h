@@ -43,7 +43,14 @@ void do_work(io_bundle_t<MSG_T> bundle, const size_t node_id) {
 
   const MSG_T res = bundle.inputs[0].GetInput().GetCurrent();
 
-  assert( safe_equal(res, circular_index(node_id, num_nodes, -1)) );
+  assert(
+    safe_equal(res, circular_index(node_id, num_nodes, -1))
+    || [&](){
+      std::cerr
+        << res << ", " << circular_index(node_id, num_nodes, -1) << std::endl;
+      return false;
+    }()
+  );
 
   gatherer.Put(res);
 
