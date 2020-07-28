@@ -84,7 +84,7 @@ class IRecvDuct {
       MPI_STATUS_IGNORE
     ));
 #ifndef NDEBUG
-    request_states[receive_position] = false;
+    if (flag) request_states[receive_position] = false;
 #endif
 
     if (flag) {
