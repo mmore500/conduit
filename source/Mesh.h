@@ -67,6 +67,7 @@ class Mesh {
     for (size_t node_id = 0; node_id < mesh.size(); ++node_id) {
       auto & node = mesh[node_id];
       auto & [inputs, outputs] = node;
+      // TODO rename
       const proc_id_t my_proc = proc_assignment(node_id);
 
       for (auto & link : inputs) {
@@ -77,6 +78,7 @@ class Mesh {
           link.GetInput().template SplitDuct<
             ProcInletDuct<T, N>
           >(
+            my_proc,
             their_proc,
             link.GetPipeID()
           );
@@ -91,6 +93,7 @@ class Mesh {
           link.GetOutput().template SplitDuct<
             ProcOutletDuct<T, N>
           >(
+            my_proc,
             their_proc,
             link.GetPipeID()
           );
