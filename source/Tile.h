@@ -65,7 +65,7 @@ public:
     SetState(next_state);
   }
 
-  const char& GetState() const { return state; }
+  const State& GetState() const { return state; }
 
   void SetState(const char& state) {
     DoSetState(state);
