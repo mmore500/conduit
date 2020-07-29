@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = pipe-profile
+SPHINXPROJ    = conduit
 SOURCEDIR     = .
 BUILDDIR      = _build
 

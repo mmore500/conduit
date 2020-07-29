@@ -6,7 +6,7 @@
     "puppeteer": "1.9.0"
   },
   "main": "index.js",
-  "name": "pipe-profile",
+  "name": "conduit",
   "scripts": {
     "test": "make test"
   },

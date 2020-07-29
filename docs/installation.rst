@@ -12,7 +12,7 @@ To install Pipe Profile, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install pipe-profile
+    $ pip install conduit
 
 This is the preferred method to install Pipe Profile, as it will always install the most recent stable release.
 
@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/mmore500/pipe-profile
+    $ git clone git://github.com/mmore500/conduit
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/mmore500/pipe-profile/tarball/master
+    $ curl  -OL https://github.com/mmore500/conduit/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/mmore500/pipe-profile
-.. _tarball: https://github.com/mmore500/pipe-profile/tarball/master
+.. _Github repo: https://github.com/mmore500/conduit
+.. _tarball: https://github.com/mmore500/conduit/tarball/master
