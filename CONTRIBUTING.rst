@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/mmore500/pipe-profile/issues.
+Report bugs at https://github.com/mmore500/conduit/issues.
 
 If you are reporting a bug, please include:
 
@@ -45,7 +45,7 @@ articles, and such.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/mmore500/pipe-profile/issues.
+The best way to send feedback is to file an issue at https://github.com/mmore500/conduit/issues.
 
 If you are proposing a feature:
 
@@ -57,17 +57,17 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `pipe-profile` for local development.
+Ready to contribute? Here's how to set up `conduit` for local development.
 
-1. Fork the `pipe-profile` repo on GitHub.
+1. Fork the `conduit` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/pipe-profile.git
+    $ git clone git@github.com:your_name_here/conduit.git
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
-    $ mkvirtualenv pipe-profile
-    $ cd pipe-profile/
+    $ mkvirtualenv conduit
+    $ cd conduit/
     $ python setup.py develop
 
 4. Create a branch for local development::
