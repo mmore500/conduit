@@ -1,4 +1,4 @@
-TEST_NAMES := CircularIndex Gatherer ISendDuct IRecvDuct HeadTailDuct AtomicPendingDuct RputDuct WindowDuct
+TEST_NAMES := CircularIndex Gatherer ISendDuct IRecvDuct HeadTailDuct AtomicPendingDuct RputDuct WindowDuct math_utils
 
 EMP_DIR := ../third-party/Empirical/source
 
