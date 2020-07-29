@@ -62,9 +62,9 @@ public:
   //todo rename
   void Pop(const size_t count) { ; }
 
-  size_t GetPending() const { return 1; }
+  size_t GetPending() { return 1; }
 
-  [[noreturn]] size_t GetAvailableCapacity() const {
+  [[noreturn]] size_t GetAvailableCapacity() {
     throw "bad GetAvailableCapacity on WindowDuct";
   }
 

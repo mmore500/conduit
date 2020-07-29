@@ -35,7 +35,7 @@ class Inlet {
   // number of times write attempts have dropped due to buffer space
   size_t dropped_write_count{0};
 
-  size_t GetAvailableCapacity() const { return duct->GetAvailableCapacity(); }
+  size_t GetAvailableCapacity() { return duct->GetAvailableCapacity(); }
 
   T GetElement(const size_t n) const { return duct->GetElement(n); }
 
@@ -105,7 +105,7 @@ public:
 
   size_t GetDroppedWriteCount() const { return dropped_write_count; }
 
-  bool IsFull() const { return 0 == GetAvailableCapacity(); }
+  bool IsFull() { return 0 == GetAvailableCapacity(); }
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {

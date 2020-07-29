@@ -68,14 +68,14 @@ public:
 
   }
 
-  size_t GetPending() const {
+  size_t GetPending() {
     return std::visit(
       [](auto & arg) -> size_t { return arg.GetPending(); },
       impl
     );
   }
 
-  size_t GetAvailableCapacity() const {
+  size_t GetAvailableCapacity() {
     return std::visit(
       [](auto & arg) -> size_t { return arg.GetAvailableCapacity(); },
       impl

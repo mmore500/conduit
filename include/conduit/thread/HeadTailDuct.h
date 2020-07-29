@@ -54,12 +54,12 @@ public:
     tail+=count;
   }
 
-  size_t GetPending() const {
+  size_t GetPending() {
     // TODO handle wraparound case?
     return head - tail;
   }
 
-  size_t GetAvailableCapacity() const { return N - GetPending(); }
+  size_t GetAvailableCapacity() { return N - GetPending(); }
 
   T GetElement(const size_t n) const { return buffer[n].t; }
 
