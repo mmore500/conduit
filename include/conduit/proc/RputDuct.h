@@ -8,7 +8,7 @@
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
-#include "../../distributed/RDMAWindow.h"
+#include "../../distributed/RDMAWindowManager.h"
 #include "../../utility/CircularIndex.h"
 #include "../../utility/identity.h"
 
@@ -76,7 +76,7 @@ class RputDuct {
       // rank of locked window (nonnegative integer)
       0, // int assert TODO optimize?
       // Used to optimize this call; zero may be used as a default.
-      RDMAWindow::GetWindow()// MPI_Win win
+      RDMAWindowManager::GetWindow(outlet_proc)// MPI_Win win
       // window object (handle)
     ));
     verify(MPI_Rput(
@@ -88,13 +88,13 @@ class RputDuct {
       // with MPI_Recv?, TODO factor in send_position offset?
       sizeof(T), // int target_count
       MPI_BYTE, // MPI_Datatype target_datatype
-      RDMAWindow::GetWindow(), //
+      RDMAWindowManager::GetWindow(outlet_proc), //
       &send_requests[send_position] // RMA request (handle)
     ));
     verify(MPI_Win_unlock(
       outlet_proc, // int rank
       // rank of window (nonnegative integer)
-      RDMAWindow::GetWindow() // MPI_Win win
+      RDMAWindowManager::GetWindow(outlet_proc) // MPI_Win win
       // window object (handle)
     ));
 
@@ -142,6 +142,10 @@ public:
     MPI_Comm comm_=MPI_COMM_WORLD
   ) : comm(comm_)
   , outlet_proc(outlet_proc_) {
+
+    // make spoof call to ensure reciporical activation
+    RDMAWindowManager::Acquire(outlet_proc, 0);
+
     if (get_rank(comm) == inlet_proc) {
       // we'll emp_assert to make sure it actually completed
       verify(MPI_Irecv(

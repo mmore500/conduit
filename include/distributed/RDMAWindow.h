@@ -6,11 +6,11 @@
 // between each pair of procs?
 class RDMAWindow {
 
-  static inline char * buffer{nullptr};
+  char * buffer{nullptr};
 
-  static inline MPI_Win window{};
+  MPI_Win window;
 
-  static inline size_t size;
+  size_t size;
 
 public:
 
@@ -19,21 +19,21 @@ public:
     verify(MPI_Free_mem(buffer));
   }
 
-  static bool IsInitialized() { return buffer; }
+  bool IsInitialized() { return buffer; }
 
   // TODO cache line alignment?
-  static size_t Acquire(const size_t num_bytes) {
+  size_t Acquire(const size_t num_bytes) {
+    emp_assert(!IsInitialized());
 
-    emp_assert(!IsInitialized(), buffer);
     const size_t res = size;
     size += num_bytes;
     return res;
 
   }
 
-  static char * GetBytes(const size_t byte_offset) {
+  char * GetBytes(const size_t byte_offset) {
+    emp_assert(IsInitialized());
 
-    emp_assert(IsInitialized(), buffer);
     return std::next(
       reinterpret_cast<char *>(buffer),
       byte_offset
@@ -41,16 +41,14 @@ public:
 
   }
 
-  static const MPI_Win & GetWindow() {
-    emp_assert(IsInitialized(), buffer);
+  const MPI_Win & GetWindow() {
+    emp_assert(IsInitialized());
+
     return window;
   }
 
-  static void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {
-    emp_assert(
-      !IsInitialized(),
-      emp::to_string(reinterpret_cast<void *>(buffer))
-    );
+  void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {
+    emp_assert(!IsInitialized());
 
     verify(MPI_Alloc_mem(
       size,
