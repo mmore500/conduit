@@ -89,7 +89,7 @@ public:
       comm // MPI_Comm comm
     ));
 
-    return root == get_rank()
+    return root == get_rank(comm)
       ? std::optional{res}
       : std::nullopt;
 

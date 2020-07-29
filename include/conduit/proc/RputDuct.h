@@ -142,7 +142,7 @@ public:
     MPI_Comm comm_=MPI_COMM_WORLD
   ) : comm(comm_)
   , outlet_proc(outlet_proc_) {
-    if (get_rank() == inlet_proc) {
+    if (get_rank(comm) == inlet_proc) {
       // we'll emp_assert to make sure it actually completed
       verify(MPI_Irecv(
         &target_offset, // void *buf

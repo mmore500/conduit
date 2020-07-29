@@ -186,28 +186,28 @@ void verify(const int err) {
 
 }
 
-int get_nprocs() {
+int get_nprocs(MPI_Comm comm=MPI_COMM_WORLD) {
   int res;
   verify(MPI_Comm_size(
-    MPI_COMM_WORLD,
+    comm,
     &res
   ));
   return res;
 }
 
 //TODO replace with get_proc_id
-proc_id_t get_rank() {
+proc_id_t get_rank(MPI_Comm comm=MPI_COMM_WORLD) {
   int res;
   verify(MPI_Comm_rank(
-    MPI_COMM_WORLD,
+    comm,
     &res
   ));
   return res;
 }
 
 // TODO rename get_pid
-proc_id_t get_proc_id() {
-  return get_rank();
+proc_id_t get_proc_id(MPI_Comm comm=MPI_COMM_WORLD) {
+  return get_rank(comm);
 }
 
 bool is_root() { return get_rank() == 0; }

@@ -35,11 +35,11 @@ public:
     const int tag_=0,
     MPI_Comm comm_=MPI_COMM_WORLD
   ) : byte_offset(
-    outlet_proc == get_rank()
+    outlet_proc == get_rank(comm_)
       ? RDMAWindow::Acquire(sizeof(T) /** N*/)
       : -1
   ) {
-    if (outlet_proc == get_rank()) {
+    if (outlet_proc == get_rank(comm_)) {
       MPI_Request req;
       verify(MPI_Isend(
         &byte_offset, // const void *buf
