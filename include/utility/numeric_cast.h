@@ -11,7 +11,10 @@ inline Dst numeric_cast(Src value)
     typedef std::numeric_limits<Dst> DstLim;
     typedef std::numeric_limits<Src> SrcLim;
 
-    const bool positive_overflow_possible = DstLim::max() < SrcLim::max();
+    const bool positive_overflow_possible = safe_less(
+      DstLim::max(),
+      SrcLim::max()
+    );
     const bool negative_overflow_possible =
             SrcLim::is_signed
             or
@@ -26,7 +29,7 @@ inline Dst numeric_cast(Src value)
     }
     // unsigned <-- signed
     else if((not DstLim::is_signed) and SrcLim::is_signed) {
-        if(positive_overflow_possible and (value > DstLim::max())) {
+        if(positive_overflow_possible and safe_greater(value, DstLim::max())) {
             throw std::overflow_error(__PRETTY_FUNCTION__ +
                                       std::string(": positive overflow"));
         }
@@ -38,17 +41,17 @@ inline Dst numeric_cast(Src value)
     }
     // signed <-- unsigned
     else if(DstLim::is_signed and (not SrcLim::is_signed)) {
-        if(positive_overflow_possible and (value > DstLim::max())) {
+        if(positive_overflow_possible and safe_greater(value, DstLim::max())) {
             throw std::overflow_error(__PRETTY_FUNCTION__ +
                                       std::string(": positive overflow"));
         }
     }
     // signed <-- signed
     else if(DstLim::is_signed and SrcLim::is_signed) {
-        if(positive_overflow_possible and (value > DstLim::max())) {
+        if(positive_overflow_possible and safe_greater(value, DstLim::max())) {
             throw std::overflow_error(__PRETTY_FUNCTION__ +
                                       std::string(": positive overflow"));
-        } else if(negative_overflow_possible and (value < DstLim::lowest())) {
+        } else if(negative_overflow_possible and safe_less(value, DstLim::lowest())) {
             throw std::overflow_error(__PRETTY_FUNCTION__ +
                                       std::string(": negative overflow"));
         }
