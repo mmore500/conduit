@@ -250,3 +250,109 @@ std::string to_string(const MPI_Status & status) {
   );
   return ss.str();
 }
+
+MPI_Group comm_to_group(const MPI_Comm & comm){
+  MPI_Group group;
+  verify(MPI_Comm_group(
+    comm, // MPI_Comm comm
+    &group // MPI_Group* group
+  ));
+  return group;
+}
+
+MPI_Comm group_to_comm(
+  const MPI_Group & group,
+  const MPI_Comm & comm=MPI_COMM_WORLD
+) {
+  MPI_Comm res;
+  verify(MPI_Comm_create_group(
+    comm, // MPI_Comm comm
+    group, // MPI_Group group
+    0, // int tag TODO is this important?
+    &res // MPI_Comm * newcomm
+  ));
+  return res;
+}
+
+MPI_Group intersect_groups(emp::vector<MPI_Group> groups) {
+
+  MPI_Group res{
+    groups.size() ? groups.back() : MPI_GROUP_EMPTY
+  };
+
+  // TODO more MPI_Group_free ?
+  for ( ; groups.size(); groups.pop_back()) {
+
+    MPI_Group temp;
+    verify(MPI_Group_intersection(
+      res, // MPI_Group group1,
+      groups.back(), // MPI_Group group2,
+      &temp // MPI_Group* newgroup
+    ));
+    verify(MPI_Group_free(
+      &res // MPI_Group* group
+    ));
+    res = temp;
+  }
+
+  return res;
+
+}
+
+MPI_Group combine_groups(emp::vector<MPI_Group> groups) {
+
+  MPI_Group res{
+    groups.size() ? groups.back() : MPI_GROUP_EMPTY
+  };
+
+  // TODO more MPI_Group_free ?
+  for ( ; groups.size(); groups.pop_back()) {
+
+    MPI_Group temp;
+    verify(MPI_Group_union(
+      res, // MPI_Group group1
+      groups.back(), // MPI_Group group2
+      &temp // MPI_Group* newgroup
+    ));
+    verify(MPI_Group_free(
+      &res // MPI_Group* group
+    ));
+    res = temp;
+  }
+
+  return res;
+
+}
+
+MPI_Group subtract_groups(
+  const MPI_Group & minuend,
+  const MPI_Group & subtrahend
+) {
+
+  MPI_Group res;
+
+  verify(MPI_Group_difference(
+    minuend, // MPI_Group group1
+    subtrahend, // MPI_Group group2
+    &res // MPI_Group * newgroup
+  ));
+
+  return res;
+
+}
+
+size_t group_size(const MPI_Group & group) {
+  int res;
+  verify(MPI_Group_size(
+    group, // MPI_Group group
+    &res // int *size
+  ));
+  emp_assert(res >= 0);
+  return res;
+}
+
+size_t comm_size(const MPI_Comm & comm) {
+  const int res{ get_nprocs(comm) };
+  emp_assert(res >= 0);
+  return res;
+}

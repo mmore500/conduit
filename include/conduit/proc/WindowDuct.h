@@ -8,7 +8,7 @@
 #include "base/assert.h"
 #include "tools/string_utils.h"
 
-#include "../../distributed/RDMAWindow.h"
+#include "../../distributed/RDMAWindowManager.h"
 #include "../../utility/CircularIndex.h"
 #include "../../utility/identity.h"
 
@@ -25,18 +25,24 @@ class WindowDuct {
 
   friend Duct<T, N>;
 
+  const int outlet_proc;
+
+  const int inlet_proc;
+
   const int byte_offset;
 
 public:
 
   WindowDuct(
-    const int outlet_proc,
+    const int outlet_proc_,
     const int inlet_proc_,
     const int tag_=0,
     MPI_Comm comm_=MPI_COMM_WORLD
-  ) : byte_offset(
+  ) : outlet_proc(outlet_proc_)
+  , inlet_proc(inlet_proc_)
+  , byte_offset(
     outlet_proc == get_rank(comm_)
-      ? RDMAWindow::Acquire(sizeof(T) /** N*/)
+      ? RDMAWindowManager::Acquire(inlet_proc, sizeof(T) /** N*/)
       : -1
   ) {
     if (outlet_proc == get_rank(comm_)) {
@@ -79,25 +85,25 @@ public:
       MPI_LOCK_SHARED, // int lock_type TODO shared?
       // Indicates whether other processes may access the target window at the /
       // same time (if MPI_LOCK_SHARED) or not (MPI_LOCK_EXCLUSIVE)
-      get_rank(), // int rank
+      outlet_proc, // int rank
       // rank of locked window (nonnegative integer)
       0, // int assert TODO optimize?
       // Used to optimize this call; zero may be used as a default.
-      RDMAWindow::GetWindow()// MPI_Win win
+      RDMAWindowManager::GetWindow(inlet_proc)// MPI_Win win
       // window object (handle)
     ));
     // get latest value
     // TODO somehow use Rget?
     std::memcpy(
       &res,
-      RDMAWindow::GetBytes(byte_offset /*+ sizeof(T) * n*/),
+      RDMAWindowManager::GetBytes(inlet_proc, byte_offset /*+ sizeof(T) * n*/),
       sizeof(T)
     );
     // unlock own window
     verify(MPI_Win_unlock(
-      get_rank(), // int rank
+      outlet_proc, // int rank
       // rank of window (nonnegative integer)
-      RDMAWindow::GetWindow() // MPI_Win win
+      RDMAWindowManager::GetWindow(inlet_proc) // MPI_Win win
       // window object (handle)
     ));
 
@@ -105,7 +111,7 @@ public:
   }
 
   const void * GetPosition(const size_t n) const {
-    return RDMAWindow::GetBytes(byte_offset /*+ sizeof(T) * n*/);
+    return RDMAWindowManager::GetBytes(inlet_proc, byte_offset /*+ sizeof(T) * n*/);
   }
 
   [[noreturn]] void SetElement(const size_t n, const T & val) {

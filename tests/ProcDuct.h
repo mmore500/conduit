@@ -6,6 +6,7 @@
 #include "conduit/config.h"
 #include "utility/CircularIndex.h"
 #include "distributed/mpi_utils.h"
+#include "distributed/RDMAWindowManager.h"
 #include "conduit/pipe_utils.h"
 #include "utility/math_utils.h"
 
@@ -36,15 +37,14 @@ Inlet<char> make_output() {
 }
 
 
-int main(int argc, char* argv[]) {
+void run() {
 
-  MPI_Init(&argc, &argv);
 
   Outlet<char> input = make_input();
 
   Inlet<char> output = make_output();
 
-  RDMAWindow::Initialize();
+  RDMAWindowManager::Initialize();
 
   const char message = 65 + get_rank();
 
@@ -57,6 +57,16 @@ int main(int argc, char* argv[]) {
 
   std::cout << "rank " << get_rank() << " sent " << message << std::endl;
   std::cout << "rank " << get_rank() << " received " << res << std::endl;
+
+}
+
+int main(int argc, char* argv[]) {
+
+  MPI_Init(&argc, &argv);
+
+  run();
+
+  RDMAWindowManager::Cleanup();
 
   MPI_Finalize();
 
