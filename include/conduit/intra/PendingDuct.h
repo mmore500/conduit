@@ -66,9 +66,9 @@ public:
 
   }
 
-  size_t GetAvailableCapacity() const { return N - GetPending(); }
+  size_t GetAvailableCapacity() { return N - GetPending(); }
 
-  size_t GetPending() const {
+  size_t GetPending() {
 
     #ifndef NDEBUG
       const OccupancyGuard guard{cap};

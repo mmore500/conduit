@@ -56,9 +56,9 @@ public:
     pending.fetch_sub(count, std::memory_order_relaxed);
   }
 
-  size_t GetPending() const { return pending; }
+  size_t GetPending() { return pending; }
 
-  size_t GetAvailableCapacity() const { return N - GetPending(); }
+  size_t GetAvailableCapacity() { return N - GetPending(); }
 
   T GetElement(const size_t n) const { return buffer[n].t; }
 

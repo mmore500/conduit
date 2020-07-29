@@ -35,7 +35,7 @@ class Outlet {
   // total distance traversed through underlying buffer
   size_t net_flux{0};
 
-  size_t GetPending() const { return duct->GetPending(); }
+  size_t GetPending() { return duct->GetPending(); }
 
   T GetElement(const size_t n) const { return duct->GetElement(n); }
 

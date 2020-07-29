@@ -29,27 +29,26 @@ class RputDuct {
   using buffer_t = std::array<T, N>;
   using index_t = CircularIndex<N>;
 
-  //TODO fix all these damn mutables
-  mutable pending_t pending{0};
-  mutable buffer_t buffer;
+  pending_t pending{0};
+  buffer_t buffer;
   //TODO do we need a buffer if we're just overwriting on the other end?
 
-  mutable std::array<MPI_Request, N> send_requests;
+  std::array<MPI_Request, N> send_requests;
 #ifndef NDEBUG
   // most vexing parse :/
-  mutable std::vector<char> request_states=std::vector<char>(N, false);
+  std::vector<char> request_states=std::vector<char>(N, false);
 #endif
 
   MPI_Comm comm;
 
   const int outlet_proc;
 
-  mutable MPI_Request target_offset_request;
+  MPI_Request target_offset_request;
   int target_offset;
 
-  mutable index_t send_position{0};
+  index_t send_position{0};
 
-  void RequestSend() const {
+  void RequestSend() {
 
     // make sure that target offset has been received
     emp_assert([this](){
@@ -108,7 +107,7 @@ class RputDuct {
   }
 
   // AcceptSend Take
-  bool ConfirmSend() const {
+  bool ConfirmSend() {
 
     int flag{};
 
@@ -191,11 +190,11 @@ public:
     throw "bad Pop on RputDuct";
   }
 
-  [[noreturn]] size_t GetPending() const {
+  [[noreturn]] size_t GetPending() {
     throw "bad GetPending on RputDuct";
   }
 
-  size_t GetAvailableCapacity() const {
+  size_t GetAvailableCapacity() {
     while (pending && ConfirmSend());
     return N - pending;
   }

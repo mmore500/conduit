@@ -28,14 +28,13 @@ class IRecvDuct {
   using buffer_t = std::array<T, N>;
   using index_t = CircularIndex<N>;
 
-  //TODO fix all these damn mutables
-  mutable pending_t pending{0};
-  mutable buffer_t buffer;
+  pending_t pending{0};
+  buffer_t buffer;
 
-  mutable std::array<MPI_Request, N> receive_requests;
+  std::array<MPI_Request, N> receive_requests;
 #ifndef NDEBUG
   // most vexing parse :/
-  mutable std::vector<char> request_states=std::vector<char>(N, false);
+  std::vector<char> request_states=std::vector<char>(N, false);
 #endif
 
   MPI_Comm comm;
@@ -43,9 +42,9 @@ class IRecvDuct {
   const int inlet_proc;
   const int tag;
 
-  mutable index_t receive_position{0};
+  index_t receive_position{0};
 
-  void RequestReceive() const {
+  void RequestReceive() {
     emp_assert(
       request_states[receive_position] == false,
       receive_position,
@@ -67,7 +66,7 @@ class IRecvDuct {
   }
 
   // AcceptReceive Take
-  bool ConfirmReceive() const {
+  bool ConfirmReceive() {
 
     int flag{};
 
@@ -154,12 +153,12 @@ public:
 
   }
 
-  size_t GetPending() const {
+  size_t GetPending() {
     while (ConfirmReceive());
     return pending;
   }
 
-  [[noreturn]] size_t GetAvailableCapacity() const {
+  [[noreturn]] size_t GetAvailableCapacity() {
     throw "bad GetAvailableCapacity on IRecvDuct";
   }
 

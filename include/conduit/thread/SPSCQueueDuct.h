@@ -20,7 +20,7 @@ class SPSCQueueDuct {
   using buffer_t = std::array<T, N>;
 
   pending_t pending{0};
-  mutable rigtorp::SPSCQueue<T> queue{N};
+  rigtorp::SPSCQueue<T> queue{N};
 
 public:
 
@@ -53,9 +53,9 @@ public:
 
   }
 
-  size_t GetPending() const { return pending; }
+  size_t GetPending() { return pending; }
 
-  size_t GetAvailableCapacity() const { return N - pending; }
+  size_t GetAvailableCapacity() { return N - pending; }
 
   T GetElement(const size_t n) const {
     const auto res = queue.front();
