@@ -43,11 +43,25 @@ class RputDuct {
   MPI_Comm comm;
 
   const int outlet_proc;
+
+  mutable MPI_Request target_offset_request;
   int target_offset;
 
   mutable index_t send_position{0};
 
   void RequestSend() const {
+
+    // make sure that target offset has been received
+    emp_assert([this](){
+      int flag{};
+      verify(MPI_Test(
+        &target_offset_request,
+        &flag,
+        MPI_STATUS_IGNORE
+      ));
+      return flag;
+    }());
+
     // TODO handle more than one at a time
     emp_assert(
       request_states[send_position] == false,
@@ -130,16 +144,15 @@ public:
   ) : comm(comm_)
   , outlet_proc(outlet_proc_) {
     if (get_rank() == inlet_proc) {
-      // TODO make this nonblocking and add an emp_assert
-      // to make sure it actually completed
-      verify(MPI_Recv(
+      // we'll emp_assert to make sure it actually completed
+      verify(MPI_Irecv(
         &target_offset, // void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype
         outlet_proc, // int source
         tag_, // int tag
         comm, // MPI_Comm comm
-        MPI_STATUS_IGNORE // MPI_Status * status
+        &target_offset_request // MPI_Request *request
       ));
     }
 

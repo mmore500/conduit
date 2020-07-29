@@ -67,6 +67,9 @@ public:
       comm, // comm: communicator (handle)
       &window // win: window object returned by the call (handle)
     ));
+
+    // ensure that RputDucts have received target offsets
+    verify(MPI_Barrier(comm));
   }
 
 };
