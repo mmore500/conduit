@@ -271,3 +271,19 @@ TEST_CASE("test_bit") {
   REQUIRE( test_bit( (char) 8, 3) == 1 );
 
 }
+
+TEST_CASE("difference") {
+
+  REQUIRE(difference(3,8) == 5);
+  REQUIRE(difference(12,8) == 4);
+  REQUIRE(difference(1,0) == 1);
+  REQUIRE(difference(42,442) == 400);
+
+  for (size_t i = 0; i < 10; ++i) {
+    for (size_t j = 0; j < 10; ++j) {
+      REQUIRE(difference(i, j) == difference(j, i));
+      REQUIRE(difference(i, i) == 0);
+    }
+  }
+
+}
