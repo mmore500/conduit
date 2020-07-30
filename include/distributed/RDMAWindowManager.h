@@ -17,11 +17,29 @@ class RDMAWindowManager {
 
   inline static std::unordered_map<int, RDMAWindow> windows{};
 
-public:
-
   static bool IsInitialized() {
-    return windows.size() && std::begin(windows)->second.IsInitialized();
+    return std::any_of(
+      std::begin(windows),
+      std::end(windows),
+      [](const auto & key_value){
+        const auto & [rank, window] = key_value;
+        return window.IsInitialized();
+      }
+    );
   }
+
+  static bool IsInitializable() {
+    return std::any_of(
+      std::begin(windows),
+      std::end(windows),
+      [](const auto & key_value){
+        const auto & [rank, window] = key_value;
+        return window.IsInitializable();
+      }
+    );
+  }
+
+public:
 
   // TODO cache line alignment?
   static size_t Acquire(const int rank, const size_t num_bytes) {
@@ -70,6 +88,8 @@ public:
 
     // ensure that RputDucts have received target offsets
     verify(MPI_Barrier(comm));
+
+    emp_assert(IsInitialized() || !IsInitializable());
   }
 
   static void Cleanup() {
