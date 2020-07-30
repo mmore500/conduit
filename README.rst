@@ -26,7 +26,6 @@ TODO
 * move utility to Empirical
 * write tests
 * test on more than one mpiproc
-* organize tests into hierarchy
 * add automated test coverage
 * collect data from benchmarks
 

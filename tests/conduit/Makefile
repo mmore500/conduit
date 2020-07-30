@@ -1,4 +1,4 @@
-TEST_NAMES := concurrent conduit distributed utility
+TEST_NAMES := proc thread
 
 default: test
 
