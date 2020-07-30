@@ -43,7 +43,7 @@ namespace internal {
     }
   };
 
-};
+}
 
 template <typename I, typename J>
 inline bool safe_less(I x, J y) {
