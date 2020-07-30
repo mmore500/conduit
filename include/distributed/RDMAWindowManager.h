@@ -17,6 +17,17 @@ class RDMAWindowManager {
 
   inline static std::unordered_map<proc_id_t, RDMAWindow> windows{};
 
+  static std::set<proc_id_t> GetSortedRanks() {
+    std::set<proc_id_t> res;
+    std::transform(
+      std::begin(windows),
+      std::end(windows),
+      std::inserter(res, std::begin(res)),
+      [](const auto & kv_pair){ return kv_pair.first; }
+    );
+    return res;
+  }
+
   static bool IsInitialized() {
     return std::any_of(
       std::begin(windows),
@@ -65,15 +76,7 @@ public:
     emp_assert(!IsInitialized());
 
     // sort ranks to prevent deadlock
-    std::set<int> sorted_ranks;
-    std::transform(
-      std::begin(windows),
-      std::end(windows),
-      std::inserter(sorted_ranks, std::begin(sorted_ranks)),
-      [](const auto & kv_pair){ return kv_pair.first; }
-    );
-
-    for (int rank : sorted_ranks) {
+    for (proc_id_t rank : GetSortedRanks()) {
 
       MPI_Comm dyad{
         group_to_comm(
