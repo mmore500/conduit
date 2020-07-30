@@ -18,6 +18,7 @@
 #include "utility/safe_compare.h"
 #include "mesh/mesh_utils.h"
 #include "utility/math_utils.h"
+#include "utility/assign_utils.h"
 
 #define MSG_T int
 #define num_nodes 4

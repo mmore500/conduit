@@ -2,6 +2,7 @@
 
 #include <unordered_map>
 
+#include "../utility/assign_utils.h"
 #include "../conduit/Duct.h"
 
 #include "../distributed/mpi_utils.h"
