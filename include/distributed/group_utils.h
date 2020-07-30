@@ -29,21 +29,10 @@ emp::vector<MPI_Comm> make_binary_digit_comms(MPI_Comm comm=MPI_COMM_WORLD) {
     res.emplace_back();
     verify(MPI_Comm_split(
       comm, // MPI_Comm comm
-      test_bit(rank, bit), // int color
+      !test_bit(rank, bit), // int color
       0, // int key
       &res.back() // MPI_Comm * newcomm
     ));
-
-    emp_assert(
-      comm_size(res.back()) >= num_ranks/num_groups,
-      bit,
-      comm_size(res.back())
-    );
-    emp_assert(
-      comm_size(res.back()) <= num_ranks/num_groups + 1,
-      bit,
-      comm_size(res.back())
-    );
 
   }
 
