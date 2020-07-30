@@ -1,5 +1,7 @@
 #pragma once
 
+#include <numeric>
+
 #include "mpi.h"
 #include "../utility/print_utils.h"
 
@@ -210,7 +212,7 @@ proc_id_t get_proc_id(MPI_Comm comm=MPI_COMM_WORLD) {
   return get_rank(comm);
 }
 
-bool is_root() { return get_rank() == 0; }
+bool is_root(MPI_Comm comm=MPI_COMM_WORLD) { return get_rank(comm) == 0; }
 
 bool is_multiprocess() { return get_nprocs() > 1; }
 
@@ -354,4 +356,68 @@ size_t comm_size(const MPI_Comm & comm) {
   const int res{ get_nprocs(comm) };
   emp_assert(res >= 0);
   return res;
+}
+
+MPI_Comm split_comm(
+  const std::function<int(const int)> colorer,
+  MPI_Comm comm=MPI_COMM_WORLD
+) {
+
+  MPI_Comm res;
+  MPI_Comm_split(
+    comm, // MPI_Comm comm
+    colorer(get_rank(comm)), // int color
+    0, // int key
+    &res // MPI_Comm * newcomm
+  );
+  return res;
+
+}
+
+emp::vector<proc_id_t> get_group_ranks(const MPI_Group& group) {
+
+  emp::vector<proc_id_t> within_group_ranks(group_size(group));
+  std::iota(
+    std::begin(within_group_ranks),
+    std::end(within_group_ranks),
+    0
+  );
+
+  emp::vector<proc_id_t> within_world_ranks(within_group_ranks.size());
+  verify(MPI_Group_translate_ranks(
+    group, // MPI_Group group1
+    within_group_ranks.size(), // int n
+    within_group_ranks.data(), // const int ranks1[]
+    comm_to_group(MPI_COMM_WORLD), // MPI_Group group2
+    within_world_ranks.data() // int ranks2[]
+  ));
+
+  return within_world_ranks;
+
+}
+
+emp::vector<proc_id_t> get_comm_ranks(const MPI_Comm& comm) {
+  return get_group_ranks(comm_to_group(comm));
+}
+
+void print_separator(const proc_id_t rank) {
+  std::cout << "======================" << std::endl;
+  std::cout << "\\/ \\/ Rank " << rank << " \\/ \\/" << std::endl;
+  std::cout << "======================" << std::endl;
+}
+
+//TODO add a thread do successively and a combined do successively
+template <typename TaskFunction, typename BeforeTaskFunction>
+void do_successively(
+  TaskFunction&& task,
+  BeforeTaskFunction&& before_task=[](const proc_id_t rank){},
+  MPI_Comm comm=MPI_COMM_WORLD
+) {
+  for (proc_id_t rank = 0; rank < get_nprocs(comm); ++rank) {
+    if (rank == get_rank(comm)) {
+      before_task(rank);
+      task();
+    }
+    verify(MPI_Barrier(comm));
+  }
 }
