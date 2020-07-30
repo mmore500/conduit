@@ -44,3 +44,7 @@ template<typename TYPE>
 bool test_bit(const TYPE x, const size_t bit) {
   return std::bitset<sizeof(TYPE)*8>(emp::Abs(x)).test(bit);
 }
+
+size_t difference(const size_t a, const size_t b) {
+  return std::max(a, b) - std::min(a, b);
+}
