@@ -155,23 +155,21 @@ TEST_CASE("combine_groups") {
     group_size(combine_groups({halves, every_other})) > group_size(halves)
   );
 
-  const MPI_Comm combo_comm{
-    group_to_comm(combine_groups({halves, every_other}))
-  };
-
-  const emp::vector<proc_id_t> comm_ranks( get_comm_ranks(combo_comm) );
+  const emp::vector<proc_id_t> group_ranks( get_group_ranks(
+    combine_groups({halves, every_other})
+  ) );
 
   if (num_ranks >= 4) REQUIRE( std::any_of(
-    std::begin(comm_ranks),
-    std::end(comm_ranks),
+    std::begin(group_ranks),
+    std::end(group_ranks),
     [my_rank](const auto & rank){
       return assign_round_robin<proc_id_t>(2)(rank) != assign_round_robin<proc_id_t>(2)(my_rank);
     }
   ) );
 
   if (num_ranks >= 4) REQUIRE( std::any_of(
-    std::begin(comm_ranks),
-    std::end(comm_ranks),
+    std::begin(group_ranks),
+    std::end(group_ranks),
     [my_rank](const auto & rank){
       return assign_round_robin<proc_id_t>(2)(rank) == assign_round_robin<proc_id_t>(2)(my_rank);
     }
