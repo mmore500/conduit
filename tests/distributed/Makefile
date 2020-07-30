@@ -12,10 +12,9 @@ default: test
 test-%: %.cc
 	$(CXX) $(FLAGS) $< -o $@.out
 	# execute test
-	mpiexec -n 1 ./$@.out
-	mpiexec -n 2 ./$@.out
-	mpiexec -n 4 ./$@.out
-	mpiexec -n 8 ./$@.out
+	for n in $$(seq 1 8); do \
+		mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n $$n ./$@.out; \
+	done
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TEST_NAMES))
