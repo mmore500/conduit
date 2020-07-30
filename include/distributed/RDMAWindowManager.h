@@ -15,7 +15,7 @@
 // between each pair of procs?
 class RDMAWindowManager {
 
-  inline static std::unordered_map<int, RDMAWindow> windows{};
+  inline static std::unordered_map<proc_id_t, RDMAWindow> windows{};
 
   static bool IsInitialized() {
     return std::any_of(
@@ -42,21 +42,21 @@ class RDMAWindowManager {
 public:
 
   // TODO cache line alignment?
-  static size_t Acquire(const int rank, const size_t num_bytes) {
+  static size_t Acquire(const proc_id_t rank, const size_t num_bytes) {
     emp_assert(!IsInitialized());
 
     return windows[rank].Acquire(num_bytes);
 
   }
 
-  static char * GetBytes(const int rank, const size_t byte_offset) {
+  static char * GetBytes(const proc_id_t rank, const size_t byte_offset) {
     emp_assert(IsInitialized());
 
     return windows.at(rank).GetBytes(byte_offset);
 
   }
 
-  static const MPI_Win & GetWindow(const int rank) {
+  static const MPI_Win & GetWindow(const proc_id_t rank) {
     emp_assert(IsInitialized());
     return windows.at(rank).GetWindow();
   }
