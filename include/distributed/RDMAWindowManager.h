@@ -46,9 +46,6 @@ public:
   static void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {
     emp_assert(!IsInitialized());
 
-    // everybody needs to do this call
-    make_binary_digit_groups(comm);
-
     // sort ranks to prevent deadlock
     std::set<int> sorted_ranks;
     std::transform(
@@ -62,7 +59,7 @@ public:
 
       MPI_Comm dyad{
         group_to_comm(
-          make_dyad_group(rank, get_rank(comm)),
+          make_group({rank, get_rank(comm)}, comm_to_group(comm)),
           comm
         )
       };

@@ -1,105 +1,45 @@
 #pragma once
 
+#include <set>
+
 #include "mpi.h"
 
+#include "base/assert.h"
 #include "tools/math.h"
 
 #include "utility/math_utils.h"
 #include "utility/safe_compare.h"
+#include "utility/print_utils.h"
 
 #include "mpi_utils.h"
 
-emp::vector<MPI_Comm> make_binary_digit_comms(MPI_Comm comm=MPI_COMM_WORLD) {
-
-  // TODO add a way to free these comms
-  static emp::vector<MPI_Comm> res;
-
-  const size_t num_ranks = comm_size(comm);
-  const size_t num_groups = num_bits(num_ranks);
-
-  if (res.size() == num_groups) {
-    return res;
-  }
-
-  emp_assert(res.size() == 0);
-
-  const proc_id_t rank = get_rank(comm);
-  for (size_t bit = 0; bit < num_groups; ++bit) {
-
-    res.emplace_back();
-    verify(MPI_Comm_split(
-      comm, // MPI_Comm comm
-      !test_bit(rank, bit), // int color
-      0, // int key
-      &res.back() // MPI_Comm * newcomm
-    ));
-
-  }
-
-  return res;
-
-}
-
-emp::vector<MPI_Group> make_binary_digit_groups(MPI_Comm comm=MPI_COMM_WORLD) {
-
-  emp::vector<MPI_Comm> comms{ make_binary_digit_comms(comm) };
-
-  emp::vector<MPI_Group> res;
-  std::transform(
-    std::begin(comms),
-    std::end(comms),
-    std::back_inserter(res),
-    comm_to_group
-  );
-
-  emp_assert(safe_equal(res.size(), num_bits(get_nprocs(comm))));
-
-  return res;
-
-}
-
-MPI_Group make_singleton_group(
-  const proc_id_t rank,
-  MPI_Comm comm=MPI_COMM_WORLD
+MPI_Group make_group(
+  emp::vector<proc_id_t> ranks,
+  const MPI_Group source=comm_to_group(MPI_COMM_WORLD)
 ) {
 
-  // TODO refactor to make this a class?
-  emp::vector<MPI_Group> binary_groups = make_binary_digit_groups(comm);
+  std::sort(std::begin(ranks), std::end(ranks));
+  const auto last{ std::unique(std::begin(ranks), std::end(ranks)) };
+  ranks.erase(last, std::end(ranks));
 
-  const proc_id_t this_rank = get_rank(comm);
-
-  emp::vector<MPI_Group> includes;
-  emp::vector<MPI_Group> excludes;
-  for (size_t bit = 0; bit < binary_groups.size(); ++bit) {
-    if (test_bit(rank, bit) == test_bit(this_rank, bit)) {
-      includes.push_back(binary_groups[bit]);
-    } else {
-      excludes.push_back(binary_groups[bit]);
+  emp_assert(std::set<proc_id_t>(
+    std::begin(ranks),
+    std::end(ranks)
+  ).size() == ranks.size(), to_string(ranks));
+  emp_assert(std::all_of(
+    std::begin(ranks),
+    std::end(ranks),
+    [&](const auto & rank){
+      return safe_less(rank, group_size(source)) && rank >= 0;
     }
-  }
+  ), to_string(ranks));
 
-  const MPI_Group include = intersect_groups(includes);
-  const MPI_Group exclude = combine_groups(excludes);
-
-  emp_assert(include != MPI_GROUP_NULL);
-  emp_assert(exclude != MPI_GROUP_NULL);
-  emp_assert(include != MPI_GROUP_EMPTY);
-
-  const MPI_Group res = subtract_groups(include, exclude);
-  emp_assert(group_size(res) == 1);
-
+  MPI_Group res;
+  verify(MPI_Group_incl(
+    source, // MPI_Group group
+    ranks.size(), // int n
+    ranks.data(), // const int ranks[]
+    &res // MPI_Group * newgroup
+  ));
   return res;
-
-}
-
-MPI_Group make_dyad_group(
-  const proc_id_t rank1,
-  const proc_id_t rank2
-) {
-
-  return combine_groups({
-    make_singleton_group(rank1),
-    make_singleton_group(rank2)
-  });
-
 }
