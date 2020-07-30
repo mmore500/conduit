@@ -96,7 +96,10 @@ public:
   }
 
   static void Cleanup() {
-    windows.clear();
+    // sort ranks to prevent deadlock
+    for (proc_id_t rank : GetSortedRanks()) {
+      windows.erase(rank);
+    }
   }
 
 };
