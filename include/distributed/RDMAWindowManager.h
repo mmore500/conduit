@@ -7,8 +7,7 @@
 
 #include "RDMAWindow.h"
 #include "mpi_utils.h"
-#include "make_binary_digit_groups.h"
-#include "make_dyad_group.h"
+#include "group_utils.h"
 
 #include <unordered_map>
 
