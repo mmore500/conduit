@@ -19,6 +19,16 @@ Check out the live in-browser web app at `https://mmore500.github.io/conduit`_.
 * Free software: MIT license
 * Documentation: https://conduit.readthedocs.io.
 
+TODO
+----
+
+* namespace
+* move utility to Empirical
+* write tests
+* test on more than one mpiproc
+* organize tests into hierarchy
+* add automated test coverage
+* collect data from benchmarks
 
 Features
 --------
