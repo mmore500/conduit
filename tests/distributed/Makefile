@@ -1,4 +1,4 @@
-TEST_NAMES := mpi_utils
+TEST_NAMES := mpi_utils group_utils
 
 EMP_DIR := ../../third-party/Empirical/source
 
