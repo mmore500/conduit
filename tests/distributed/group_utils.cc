@@ -8,9 +8,21 @@
 
 TEST_CASE("make_group") {
 
-  if (get_rank()) const MPI_Group dyad{
-    make_group({0, get_rank()})
-  };
+  if (get_rank()) {
+    const MPI_Group dyad{
+      make_group({0, get_rank()})
+    };
+    group_to_comm(dyad);
+  } else {
+
+    for (proc_id_t target = 1; target < get_nprocs(); ++target) {
+      const MPI_Group dyad{
+        make_group({0, target})
+      };
+      group_to_comm(dyad);
+    }
+
+  }
 
 }
 
