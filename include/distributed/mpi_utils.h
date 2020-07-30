@@ -265,10 +265,9 @@ MPI_Comm group_to_comm(
   const MPI_Comm & comm=MPI_COMM_WORLD
 ) {
   MPI_Comm res;
-  verify(MPI_Comm_create_group(
+  verify(MPI_Comm_create(
     comm, // MPI_Comm comm
     group, // MPI_Group group
-    0, // int tag TODO is this important?
     &res // MPI_Comm * newcomm
   ));
   return res;
