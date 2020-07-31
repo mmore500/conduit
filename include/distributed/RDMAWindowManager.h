@@ -72,6 +72,32 @@ public:
     return windows.at(rank).GetWindow();
   }
 
+  static void LockExclusive(const proc_id_t rank) {
+    emp_assert(IsInitialized() || !IsInitializable());
+    return windows.at(rank).LockExclusive();
+  }
+
+  static void LockShared(const proc_id_t rank) {
+    emp_assert(IsInitialized() || !IsInitializable());
+    return windows.at(rank).LockShared();
+  }
+
+  static void Unlock(const proc_id_t rank) {
+    emp_assert(IsInitialized() || !IsInitializable());
+    return windows.at(rank).Unlock();
+  }
+
+  template<typename T>
+  static void Rput(
+    const proc_id_t rank,
+    const T *origin_addr,
+    const MPI_Aint target_disp,
+    MPI_Request *request
+  ) {
+    emp_assert(IsInitialized() || !IsInitializable());
+    windows.at(rank).Rput<T>(origin_addr, target_disp, request);
+  }
+
   static void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {
     emp_assert(!IsInitialized());
 
@@ -85,7 +111,10 @@ public:
         )
       };
 
-      windows.at(rank).Initialize(dyad);
+      windows.at(rank).Initialize(
+        translate_rank(rank, comm, dyad),
+        dyad
+      );
 
     }
 

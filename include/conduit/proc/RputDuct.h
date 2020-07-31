@@ -68,35 +68,17 @@ class RputDuct {
       pending,
       format_member("*this", *this)
     );
-    verify(MPI_Win_lock(
-      MPI_LOCK_EXCLUSIVE, // int lock_type
-      // Indicates whether other processes may access the target window at the /
-      // same time (if MPI_LOCK_SHARED) or not (MPI_LOCK_EXCLUSIVE)
-      outlet_proc, // int rank
-      // rank of locked window (nonnegative integer)
-      0, // int assert TODO optimize?
-      // Used to optimize this call; zero may be used as a default.
-      RDMAWindowManager::GetWindow(outlet_proc)// MPI_Win win
-      // window object (handle)
-    ));
-    verify(MPI_Rput(
-      &buffer[send_position], // const void *origin_addr
-      sizeof(T), // int origin_count
-      MPI_BYTE, // MPI_Datatype origin_datatype
-      outlet_proc, // int target_rank
-      target_offset, // MPI_Aint target_disp
-      // with MPI_Recv?, TODO factor in send_position offset?
-      sizeof(T), // int target_count
-      MPI_BYTE, // MPI_Datatype target_datatype
-      RDMAWindowManager::GetWindow(outlet_proc), //
-      &send_requests[send_position] // RMA request (handle)
-    ));
-    verify(MPI_Win_unlock(
-      outlet_proc, // int rank
-      // rank of window (nonnegative integer)
-      RDMAWindowManager::GetWindow(outlet_proc) // MPI_Win win
-      // window object (handle)
-    ));
+
+    RDMAWindowManager::LockExclusive(outlet_proc);
+
+    RDMAWindowManager::Rput(
+      outlet_proc,
+      &buffer[send_position],
+      target_offset,
+      &send_requests[send_position]
+    );
+
+    RDMAWindowManager::Unlock(outlet_proc);
 
 #ifndef NDEBUG
     request_states[send_position] = true;

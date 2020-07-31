@@ -12,6 +12,9 @@ class RDMAWindow {
 
   size_t size;
 
+  // rank where window is located
+  proc_id_t local_rank;
+
 public:
 
   ~RDMAWindow() {
@@ -51,8 +54,84 @@ public:
     return window;
   }
 
-  void Initialize(MPI_Comm comm_=MPI_COMM_WORLD) {
+  void LockExclusive() {
+
+    emp_assert(IsInitialized() || !IsInitializable());
+
+    verify(MPI_Win_lock(
+      MPI_LOCK_EXCLUSIVE, // int lock_type
+      // Indicates whether other processes may access the target window at the
+      // same time (if MPI_LOCK_SHARED) or not (MPI_LOCK_EXCLUSIVE)
+      local_rank, // int rank
+      // rank of locked window (nonnegative integer)
+      0, // int assert TODO optimize?
+      // Used to optimize this call; zero may be used as a default.
+      window // MPI_Win win
+      // window object (handle)
+    ));
+
+  }
+
+  void LockShared() {
+
+    emp_assert(IsInitialized() || !IsInitializable());
+
+    verify(MPI_Win_lock(
+      MPI_LOCK_SHARED, // int lock_type
+      // Indicates whether other processes may access the target window at the
+      // same time (if MPI_LOCK_SHARED) or not (MPI_LOCK_EXCLUSIVE)
+      local_rank, // int rank
+      // rank of locked window (nonnegative integer)
+      0, // int assert TODO optimize?
+      // Used to optimize this call; zero may be used as a default.
+      window // MPI_Win win
+      // window object (handle)
+    ));
+
+  }
+
+  void Unlock() {
+
+    emp_assert(IsInitialized() || !IsInitializable());
+
+    verify(MPI_Win_unlock(
+      local_rank, // int rank
+      // rank of window (nonnegative integer)
+      window // MPI_Win win
+      // window object (handle)
+    ));
+
+  }
+
+  template<typename T>
+  void Rput(
+    const T *origin_addr,
+    const MPI_Aint target_disp,
+    MPI_Request *request
+  ) {
+
+    emp_assert(IsInitialized() || !IsInitializable());
+
+    verify(MPI_Rput(
+      origin_addr, // const void *origin_addr
+      sizeof(T), // int origin_count
+      MPI_BYTE, // MPI_Datatype origin_datatype
+      local_rank, // int target_rank
+      target_disp, // MPI_Aint target_disp
+      // with MPI_Recv?, TODO factor in send_position offset?
+      sizeof(T), // int target_count
+      MPI_BYTE, // MPI_Datatype target_datatype
+      window, // MPI_Win win
+      request // MPI_Request* request (handle)
+    ));
+
+  }
+
+
+  void Initialize(const proc_id_t target, MPI_Comm comm=MPI_COMM_WORLD) {
     emp_assert(IsUninitialized());
+
+    local_rank = target;
 
     if (size) verify(MPI_Alloc_mem(
       size,
