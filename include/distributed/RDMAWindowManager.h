@@ -2,6 +2,7 @@
 
 #include <set>
 #include <unordered_map>
+#include <thread>
 
 #include "mpi.h"
 
@@ -54,6 +55,11 @@ public:
 
   // TODO cache line alignment?
   static size_t Acquire(const proc_id_t rank, const size_t num_bytes) {
+
+    // make this call thread safe
+    static std::mutex m;
+    const std::lock_guard guard{m};
+
     emp_assert(!IsInitialized());
 
     return windows[rank].Acquire(num_bytes);
