@@ -1,6 +1,6 @@
-============
-Pipe Profile
-============
+=======
+Conduit
+=======
 
 
 .. image:: https://img.shields.io/travis/mmore500/conduit.svg
@@ -22,11 +22,27 @@ Check out the live in-browser web app at `https://mmore500.github.io/conduit`_.
 TODO
 ----
 
-* namespace
+* namespace (uit? ondu? cdt? con? duit? cndt? cnd?)
 * move utility to Empirical
 * write tests
 * add automated test coverage
 * collect data from benchmarks
+* add benchmarks to CI build
+* add opt, fulldebug, and cranky tests to build
+* come up with some sort of system to archive benchmark data
+  * datafile named for hash of current commit?
+* break tests up into multiple builds
+* switch README.rst to Markdown
+* write description and link blog posts
+* move TODOs to GH tracker
+* register with Zenodo
+* add how to cite info to README
+* come up with interface to reflect
+  * variable-length,
+* switch to branch-based workflow
+* consider re-organizing header files
+* re-organize header files in includes: one header file in each subdirectory that grabs the rest?
+  * like `include/concurrent/concurrent.h` would have includes for all the other header files in that directory in it
 
 Features
 --------
