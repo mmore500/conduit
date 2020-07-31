@@ -80,38 +80,24 @@ public:
     // TODO just do a RDMA Get or something on own window?
     // TODO move this all into RDMAWindow and rely on intermittent calls there
     // to get latest?
+
     // lock own window
-    verify(MPI_Win_lock(
-      MPI_LOCK_SHARED, // int lock_type TODO shared?
-      // Indicates whether other processes may access the target window at the /
-      // same time (if MPI_LOCK_SHARED) or not (MPI_LOCK_EXCLUSIVE)
-      outlet_proc, // int rank
-      // rank of locked window (nonnegative integer)
-      0, // int assert TODO optimize?
-      // Used to optimize this call; zero may be used as a default.
-      RDMAWindowManager::GetWindow(inlet_proc)// MPI_Win win
-      // window object (handle)
-    ));
-    // get latest value
-    // TODO somehow use Rget?
+    RDMAWindowManager::LockShared(inlet_proc);
     std::memcpy(
       &res,
       RDMAWindowManager::GetBytes(inlet_proc, byte_offset /*+ sizeof(T) * n*/),
       sizeof(T)
     );
-    // unlock own window
-    verify(MPI_Win_unlock(
-      outlet_proc, // int rank
-      // rank of window (nonnegative integer)
-      RDMAWindowManager::GetWindow(inlet_proc) // MPI_Win win
-      // window object (handle)
-    ));
+    RDMAWindowManager::Unlock(inlet_proc);
 
     return res;
   }
 
   const void * GetPosition(const size_t n) const {
-    return RDMAWindowManager::GetBytes(inlet_proc, byte_offset /*+ sizeof(T) * n*/);
+    return RDMAWindowManager::GetBytes(
+      inlet_proc,
+      byte_offset /*+ sizeof(T) * n*/
+    );
   }
 
   [[noreturn]] void SetElement(const size_t n, const T & val) {

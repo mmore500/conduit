@@ -422,3 +422,27 @@ void do_successively(
     verify(MPI_Barrier(comm));
   }
 }
+
+proc_id_t translate_rank(
+  const proc_id_t rank,
+  const MPI_Group& from,
+  const MPI_Group& to=comm_to_group(MPI_COMM_WORLD)
+) {
+  proc_id_t res;
+  verify(MPI_Group_translate_ranks(
+    from, // MPI_Group group1
+    1, // int n
+    &rank, // const int ranks1[]
+    to, // MPI_Group group2
+    &res // int ranks2[]
+  ));
+  return res;
+}
+
+proc_id_t translate_rank(
+  const proc_id_t rank,
+  const MPI_Comm& from,
+  const MPI_Comm& to=MPI_COMM_WORLD
+) {
+  return translate_rank(rank, comm_to_group(from), comm_to_group(to));
+}
