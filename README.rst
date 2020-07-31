@@ -25,7 +25,6 @@ TODO
 * namespace
 * move utility to Empirical
 * write tests
-* test on more than one mpiproc
 * add automated test coverage
 * collect data from benchmarks
 
