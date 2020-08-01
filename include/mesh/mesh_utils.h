@@ -230,6 +230,38 @@ mesh_t<T, N> make_producer_consumer_mesh(const size_t cardinality) {
 
 }
 
+template<typename T, size_t N=DEFAULT_BUFFER>
+struct RingMeshFactory {
+  mesh_t<T, N> operator()(const size_t cardinality) const {
+    return make_ring_mesh<T, N>(cardinality);
+  }
+  static std::string GetName() { return "Ring Mesh"; }
+};
+
+template<typename T, size_t N=DEFAULT_BUFFER>
+struct DyadicMeshFactory {
+  mesh_t<T, N> operator()(const size_t cardinality) const {
+    return make_dyadic_mesh<T, N>(cardinality);
+  }
+  static std::string GetName() { return "Dyadic Mesh"; }
+};
+
+template<typename T, size_t N=DEFAULT_BUFFER>
+struct LoopMeshFactory {
+  mesh_t<T, N> operator()(const size_t cardinality) const {
+    return make_loop_mesh<T, N>(cardinality);
+  }
+  static std::string GetName() { return "Loop Mesh"; }
+};
+
+template<typename T, size_t N=DEFAULT_BUFFER>
+struct ProducerConsumerMeshFactory {
+  mesh_t<T, N> operator()(const size_t cardinality) const {
+    return make_producer_consumer_mesh<T, N>(cardinality);
+  }
+  static std::string GetName() { return "Producer Consumer Mesh"; }
+};
+
 // TODO
 // * make_random_mesh
 //   * degree is argument
