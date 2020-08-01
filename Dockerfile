@@ -62,6 +62,25 @@ RUN \
   && \
   echo "finalized set up dependency versions"
 
+RUN \ 
+  git clone https://github.com/google/benchmark.git
+    && \
+  git clone https://github.com/google/googletest.git benchmark/googletest
+    && \
+  cd benchmark
+    && \
+  mkdir build && cd build
+    && \
+  cmake ../  
+    && \
+  make
+    && \
+  make test
+    && \
+  make install
+    && \
+  echo "installed Google benchmark"
+
 RUN \
   cd /opt/conduit \
     && \
