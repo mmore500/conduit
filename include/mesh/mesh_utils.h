@@ -203,6 +203,8 @@ mesh_t<T, N> make_loop_mesh(const size_t cardinality) {
 template<typename T, size_t N=DEFAULT_BUFFER>
 mesh_t<T, N> make_producer_consumer_mesh(const size_t cardinality) {
 
+  if (cardinality == 1) return make_loop_mesh<T, N>(cardinality);
+
   mesh_t<T, N> res;
 
   size_t pipe_id_counter{};
