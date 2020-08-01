@@ -1,4 +1,4 @@
-BENCH_NAMES := HeadTailDuct AtomicPendingDuct IsolatedThreads_MPI IsolatedThreads_NoMPI
+BENCH_NAMES := HeadTailDuct AtomicPendingDuct HeadTailDuctMicrobench AtomicPendingDuctMicrobench IsolatedThreads_MPI IsolatedThreads_NoMPI
 
 EMP_DIR := ../third-party/Empirical/source
 
@@ -10,7 +10,7 @@ FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../source/ -I../
 default: bench
 
 bench-%: %.cc
-	$(CXX) $(FLAGS) $< -o $@.out
+	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
 	if echo $@ | grep -Fq "NoMPI"; \
 		then \

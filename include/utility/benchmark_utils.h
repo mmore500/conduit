@@ -2,6 +2,10 @@
 
 #include <random>
 
+#include <benchmark/benchmark.h>
+
+#include "stats_utils.h"
+
 // adapted from Google Benchmark
 // https://github.com/google/benchmark/blob/37177a84b7e8d33696ea1e1854513cb0de3b4dc3/include/benchmark/benchmark.h#L307
 
@@ -41,4 +45,29 @@ inline void do_compute_work(const size_t amt=1) {
     if (rand() == 0) std::cerr << "do not optimize" << std::endl;
   }
 
+}
+
+template<size_t NumReps=25>
+benchmark::internal::Benchmark* report_confidence(
+  benchmark::internal::Benchmark* bench
+) {
+  return bench->Repetitions(
+    NumReps
+  )->ComputeStatistics(
+    "ci5",
+    [](const std::vector<double>& v) -> double {
+      emp::Random rand;
+      return std::get<0>(
+        bootstrap(rand, v)
+      );
+    }
+  )->ComputeStatistics(
+    "ci95",
+    [](const std::vector<double>& v) -> double {
+      emp::Random rand;
+      return std::get<1>(
+        bootstrap(rand, v)
+      );
+    }
+  );
 }
