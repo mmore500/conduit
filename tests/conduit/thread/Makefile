@@ -8,7 +8,6 @@ CXX := mpic++
 FLAGS = -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/ -I$(EMP_DIR)
 
 default: test
-	cd distributed && make test
 
 test-%: %.cc
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread  -o $@.out
