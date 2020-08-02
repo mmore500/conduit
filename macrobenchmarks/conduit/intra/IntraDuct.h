@@ -25,7 +25,7 @@ void do_work(
   uit::Gatherer<MESSAGE_T> & gatherer
 ) {
 
-  std::chrono::milliseconds duration; { const TimeGuard guard{duration};
+  std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
   const bool is_producer = bundle.outputs.size();
   const bool is_consumer = bundle.inputs.size();
@@ -62,7 +62,7 @@ void profile_thread_count(const size_t num_threads) {
 
   uit::Gatherer<MESSAGE_T> gatherer(MPI_INT);
 
-  std::chrono::milliseconds duration; { const TimeGuard guard{duration};
+  std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
   std::latch latch{numeric_cast<std::ptrdiff_t>(num_threads)};
   for (auto & node : mesh) {
@@ -100,9 +100,10 @@ int main(int argc, char* argv[]) {
   verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided));
   emp_assert(provided >= MPI_THREAD_FUNNELED);
 
-  for (size_t threads = 1; threads <= get_nproc(); threads*=2) {
-    profile_thread_count(threads);
-  }
+  // TODO
+  // for (size_t threads = 1; threads <= uit::get_nproc(); threads*=2) {
+  //   profile_thread_count(threads);
+  // }
 
   MPI_Finalize();
 
