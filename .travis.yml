@@ -15,7 +15,7 @@ install:
 
 script:
 - docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
-- docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make cov"
+- docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make cov"
 
 after_success:
 - curl -s https://codecov.io/bash | bash
