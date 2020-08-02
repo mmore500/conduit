@@ -6,6 +6,8 @@
 
 #include "base/vector.h"
 
+namespace uit {
+
 class ThreadTeam {
 
   emp::vector<std::thread> workers;
@@ -29,3 +31,5 @@ public:
   size_t Size() const { return workers.size(); }
 
 };
+
+}

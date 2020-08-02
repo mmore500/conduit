@@ -15,6 +15,8 @@
 #include "../../distributed/mpi_utils.h"
 #include "../../utility/print_utils.h"
 
+namespace uit {
+
 template<typename T, size_t N>
 class Duct;
 
@@ -196,3 +198,5 @@ public:
   }
 
 };
+
+}

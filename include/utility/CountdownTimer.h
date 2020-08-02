@@ -5,6 +5,8 @@
 
 #include "chrono_utils.h"
 
+namespace uit {
+
 template<
   typename Duration_T=std::chrono::seconds,
   typename Clock_T=std::chrono::steady_clock
@@ -54,3 +56,5 @@ public:
   }
 
 };
+
+}

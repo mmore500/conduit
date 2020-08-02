@@ -1,5 +1,7 @@
 #pragma once
 
+namespace uit {
+
 template<size_t N>
 class CircularIndex {
 
@@ -92,3 +94,5 @@ public:
 
 
 };
+
+}

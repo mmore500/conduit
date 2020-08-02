@@ -11,6 +11,8 @@
 
 #include "config.h"
 
+namespace uit {
+
 //TODO rename conduit
 template<typename T, size_t N=DEFAULT_BUFFER>
 std::pair<Inlet<T,N>, Outlet<T,N>> make_pipe() {
@@ -36,4 +38,6 @@ Outlet<T,N> make_source() {
   return Outlet<T,N>(
     std::make_shared<Duct<T, N>>()
   );
+}
+
 }

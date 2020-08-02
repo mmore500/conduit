@@ -42,14 +42,14 @@ using chunk_t = std::vector<handle_t>;
 
 grid_t make_grid(const config_t & cfg) {
 
-  std::vector<Inlet<State>> inlets;
-  std::vector<Outlet<State>> outlets;
+  std::vector<uit::Inlet<State>> inlets;
+  std::vector<uit::Outlet<State>> outlets;
 
   const size_t grid_size = cfg.at("grid_size");
   const size_t num_threads = cfg.at("num_threads");
-  Mesh mesh{
-    make_ring_mesh<State>(grid_size),
-    assign_contiguously<thread_id_t>(num_threads, grid_size)
+  uit::Mesh mesh{
+    uit::make_ring_mesh<State>(grid_size),
+    uit::assign_contiguously<uit::thread_id_t>(num_threads, grid_size)
   };
 
   grid_t grid;
@@ -65,8 +65,8 @@ grid_t make_grid(const config_t & cfg) {
   }
 
   for (size_t i = 0; i < grid_size; ++i) {
-    grid[i].next = &grid[circular_index(i, grid_size , 1)];
-    grid[i].prev = &grid[circular_index(i, grid_size, -1)];
+    grid[i].next = &grid[uit::circular_index(i, grid_size , 1)];
+    grid[i].prev = &grid[uit::circular_index(i, grid_size, -1)];
     grid[i].id = i;
   }
 
@@ -95,18 +95,26 @@ double run_grid(grid_t & grid, const config_t & cfg) {
   );
 
   // TODO refactor to accomplish this via Mesh!
-  if (is_multiprocess()) {
+  if (uit::is_multiprocess()) {
 
-    const size_t prev_proc = circular_index(get_rank(), get_nprocs(), -1);
-    grid.front().SplitInputDuct<ProcOutletDuct<State>>(
+    const size_t prev_proc = uit::circular_index(
+      uit::get_rank(),
+      uit::get_nprocs(),
+      -1
+    );
+    grid.front().SplitInputDuct<uit::ProcOutletDuct<State>>(
       prev_proc,
       prev_proc // tag
     );
 
-    const size_t next_proc = circular_index(get_rank(), get_nprocs(), 1);
-    grid.back().SplitOutputDuct<ProcInletDuct<State>>(
+    const size_t next_proc = uit::circular_index(
+      uit::get_rank(),
+      uit::get_nprocs(),
+      1
+    );
+    grid.back().SplitOutputDuct<uit::ProcInletDuct<State>>(
       next_proc,
-      get_rank() // tag
+      uit::get_rank() // tag
     );
 
 
@@ -128,10 +136,10 @@ double run_grid(grid_t & grid, const config_t & cfg) {
     update_chunk(chunk, verbose, shuffle_tile_evaluation, resistance);
   };
 
-  latch latch{numeric_cast<std::ptrdiff_t>(num_threads)};
-  barrier barrier{numeric_cast<std::ptrdiff_t>(num_threads)};
+  std::latch latch{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
+  std::barrier barrier{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
 
-  Gatherer<int> gatherer(MPI_INT);
+  uit::Gatherer<int> gatherer(MPI_INT);
 
   const auto task_sequence = [&](chunk_t source){
 
@@ -141,10 +149,10 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       ? checkout_chunk(source)
       : source;
 
-    CountdownTimer<std::chrono::seconds, CoarseClock> timer{
+    uit::CountdownTimer<std::chrono::seconds, uit::CoarseClock> timer{
       std::chrono::seconds{num_seconds}
     };
-    CountdownIterator counter{num_updates};
+    uit::CountdownIterator counter{num_updates};
 
     // synchronize once after thread creation and MPI spinup
     if (!synchronous) {
@@ -156,7 +164,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       task_step(chunk);
 
       // synchronize after each step
-      if (synchronous) TimeoutBarrier{
+      if (synchronous) uit::TimeoutBarrier{
         timer,
         barrier
       };
@@ -169,7 +177,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
 
     if (checkout_memory) checkin_chunk(source, chunk);
 
-    gatherer.Put(numeric_cast<int>(
+    gatherer.Put(uit::numeric_cast<int>(
       counter.GetElapsed() / (
         num_seconds
         ?: std::chrono::duration_cast<std::chrono::duration<double>>(
@@ -208,7 +216,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
   };
 
   const auto std_run = [&](){
-    ThreadTeam team;
+    uit::ThreadTeam team;
 
     for (auto chunk : chunks) {
       team.Add([chunk, task_sequence](){ task_sequence(chunk); });

@@ -6,6 +6,8 @@
 // polyfill until C++20 barrier becomes available
 // TODO C++20 cpp20 switch to std::barrier
 
+namespace std {
+
 // adapted from
 // https://github.com/llvm/llvm-project/blob/bcf14f375e29b94e7abb381920df795eeefb2309/libcxx/include/barrier
 
@@ -96,3 +98,5 @@ public:
   }
 
 };
+
+}

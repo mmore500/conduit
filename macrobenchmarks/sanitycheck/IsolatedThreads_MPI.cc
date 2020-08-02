@@ -18,15 +18,15 @@
 #define MESSAGE_T int
 
 void do_work(
-  io_bundle_t<MESSAGE_T> bundle,
-  latch & latch
+  uit::io_bundle_t<MESSAGE_T> bundle,
+  std::latch & latch
 ) {
 
-  std::chrono::milliseconds duration; { const TimeGuard guard{duration};
+  std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
   latch.arrive_and_wait();
 
-  do_compute_work(1e7);
+  uit::do_compute_work(1e7);
 
   } // close TimeGuard
 
@@ -34,16 +34,16 @@ void do_work(
 
 void profile_thread_count(const size_t num_threads) {
 
-  ThreadTeam team;
+  uit::ThreadTeam team;
 
-  Mesh mesh{
-    make_loop_mesh<MESSAGE_T>(num_threads),
-    assign_segregated<thread_id_t>()
+  uit::Mesh mesh{
+    uit::make_loop_mesh<MESSAGE_T>(num_threads),
+    uit::assign_segregated<uit::thread_id_t>()
   };
 
-  std::chrono::milliseconds duration; { const TimeGuard guard{duration};
+  std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
-  latch latch{numeric_cast<std::ptrdiff_t>(num_threads)};
+  std::latch latch{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
   for (auto & node : mesh) {
     team.Add(
       [node, &latch](){ do_work(node, latch); }
@@ -61,10 +61,10 @@ void profile_thread_count(const size_t num_threads) {
 int main(int argc, char* argv[]) {
 
   int provided;
-  verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided));
+  uit::verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided));
   emp_assert(provided >= MPI_THREAD_FUNNELED);
 
-  for (size_t threads = 1; threads <= get_nproc(); threads *= 2) {
+  for (size_t threads = 1; threads <= uit::get_nproc(); threads *= 2) {
     profile_thread_count(threads);
   }
 

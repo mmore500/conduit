@@ -21,8 +21,8 @@
 
 void do_work(
   io_bundle_t<MESSAGE_T> bundle,
-  latch & latch,
-  Gatherer<MESSAGE_T> & gatherer
+  std::latch & latch,
+  uit::Gatherer<MESSAGE_T> & gatherer
 ) {
 
   std::chrono::milliseconds duration; { const TimeGuard guard{duration};
@@ -53,18 +53,18 @@ void do_work(
 
 void profile_thread_count(const size_t num_threads) {
 
-  ThreadTeam team;
+  uit::ThreadTeam team;
 
-  Mesh mesh{
+  uit::Mesh mesh{
     make_ring_mesh<MESSAGE_T>(num_threads),
     assign_segregated<thread_id_t>()
   };
 
-  Gatherer<MESSAGE_T> gatherer(MPI_INT);
+  uit::Gatherer<MESSAGE_T> gatherer(MPI_INT);
 
   std::chrono::milliseconds duration; { const TimeGuard guard{duration};
 
-  latch latch{numeric_cast<std::ptrdiff_t>(num_threads)};
+  std::latch latch{numeric_cast<std::ptrdiff_t>(num_threads)};
   for (auto & node : mesh) {
     team.Add(
       [node, &latch, &gatherer](){ do_work(node, latch, gatherer); }

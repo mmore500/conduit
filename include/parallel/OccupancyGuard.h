@@ -2,6 +2,8 @@
 
 #include "OccupancyCap.h"
 
+namespace uit {
+
 class OccupancyGuard {
 
   OccupancyCap & space;
@@ -14,3 +16,5 @@ public:
   ~OccupancyGuard() { space.Exit(); }
 
 };
+
+}

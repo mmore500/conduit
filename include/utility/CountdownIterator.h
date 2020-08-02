@@ -6,6 +6,8 @@
 
 #include "chrono_utils.h"
 
+namespace uit {
+
 class CountdownIterator {
 
   const size_t duration;
@@ -36,3 +38,5 @@ public:
   }
 
 };
+
+}

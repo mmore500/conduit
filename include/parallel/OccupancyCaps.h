@@ -9,6 +9,8 @@
 
 #include "tools/string_utils.h"
 
+namespace uit {
+
 class OccupancyCaps {
 
   std::unordered_map<std::string, OccupancyCap> lookup;
@@ -50,3 +52,5 @@ public:
   }
 
 };
+
+}

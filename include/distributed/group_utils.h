@@ -13,6 +13,8 @@
 
 #include "mpi_utils.h"
 
+namespace uit {
+
 MPI_Group make_group(
   emp::vector<proc_id_t> ranks,
   const MPI_Group source=comm_to_group(MPI_COMM_WORLD)
@@ -42,4 +44,6 @@ MPI_Group make_group(
     &res // MPI_Group * newgroup
   ));
   return res;
+}
+
 }

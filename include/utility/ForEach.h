@@ -9,6 +9,8 @@
 // negate
 
 
+namespace uit {
+
 template <
   template<size_t> typename Payload,
   size_t N,
@@ -40,3 +42,5 @@ struct ForEach {
   }
 
 };
+
+}

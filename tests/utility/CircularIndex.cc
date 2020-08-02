@@ -6,7 +6,7 @@
 
 TEST_CASE("Test CircularIndex")
 {
-  CircularIndex<10> i;
+  uit::CircularIndex<10> i;
 
   REQUIRE( i == 0 );
 
@@ -18,7 +18,7 @@ TEST_CASE("Test CircularIndex")
 
   REQUIRE ( (i += 8) == 0 );
 
-  CircularIndex<10> j(i);
+  uit::CircularIndex<10> j(i);
 
   REQUIRE( j == 0 );
 

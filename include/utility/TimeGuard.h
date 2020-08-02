@@ -2,6 +2,8 @@
 
 #include <chrono>
 
+namespace uit {
+
 template<typename DurationType>
 class TimeGuard {
 
@@ -23,3 +25,5 @@ public:
   }
 
 };
+
+}

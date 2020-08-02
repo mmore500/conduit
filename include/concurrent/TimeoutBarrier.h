@@ -10,6 +10,8 @@
 
 #include "../distributed/mpi_utils.h"
 
+namespace uit {
+
 namespace internal {
 
 class IBarrierRequest {
@@ -50,7 +52,9 @@ public:
 
   TimeoutBarrier(
     const Timer_T& timer=Timer_T{},
-    barrier<>& thread_barrier=barrier{numeric_cast<std::ptrdiff_t>(1)},
+    std::barrier<>& thread_barrier=std::barrier{
+      uit::numeric_cast<std::ptrdiff_t>(1)
+    },
     MPI_Comm comm=MPI_COMM_WORLD
   ) : proc_barrier(comm) {
 
@@ -61,3 +65,5 @@ public:
   }
 
 };
+
+}

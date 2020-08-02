@@ -12,6 +12,8 @@
 
 #include <unordered_map>
 
+namespace uit {
+
 // TODO is it possible to have a seperate window/communicator
 // between each pair of procs?
 class RDMAWindowManager {
@@ -138,3 +140,5 @@ public:
   }
 
 };
+
+}

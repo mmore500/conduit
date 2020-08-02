@@ -6,6 +6,8 @@
 #include "../utility/exec_utils.h"
 #include "../utility/math_utils.h"
 
+namespace uit {
+
 // TODO rename tid_t
 using thread_id_t = size_t;
 
@@ -18,4 +20,6 @@ thread_id_t get_thread_id() {
 
 size_t get_nproc() {
   return stoszt(exec("nproc"));
+}
+
 }

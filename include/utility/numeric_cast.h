@@ -4,6 +4,8 @@
 
 #include "safe_compare.h"
 
+namespace uit {
+
 // adapted from https://stackoverflow.com/a/49658950
 template<typename Dst, typename Src>
 inline Dst numeric_cast(Src value)
@@ -59,4 +61,6 @@ inline Dst numeric_cast(Src value)
 
     // limits have been checked, therefore safe to cast
     return static_cast<Dst>(value);
+}
+
 }

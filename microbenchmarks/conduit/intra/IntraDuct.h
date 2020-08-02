@@ -1,7 +1,7 @@
 #include "../DuctMicrobenchUtils.h"
 
 // sample doubling thread counts
-ForEach<
+uit::ForEach<
   ThreadCountPayload,
   2
 > range{};

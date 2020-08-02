@@ -24,13 +24,13 @@ template<
 >
 struct DuctMicrobenchRunner {
 
-  Mesh<MESSAGE_T> mesh{
+  uit::Mesh<MESSAGE_T> mesh{
    MeshFactory{}(num_threads), // TODO *2
-   assign_segregated<thread_id_t>()
+   uit::assign_segregated<uit::thread_id_t>()
   };
 
   void Run(benchmark::State& state) {
-    io_bundle_t<MESSAGE_T> & bundle = mesh.GetNode(state.thread_index);
+    uit::io_bundle_t<MESSAGE_T> & bundle = mesh.GetNode(state.thread_index);
 
     const bool is_producer = bundle.outputs.size();
     const bool is_consumer = bundle.inputs.size();

@@ -6,6 +6,8 @@
 #include "../conduit/Outlet.h"
 #include "../conduit/pipe_utils.h"
 
+namespace uit {
+
 template<typename T, size_t N=DEFAULT_BUFFER>
 class InputLink {
   Outlet<T, N> input;
@@ -56,8 +58,8 @@ public:
 
 template<typename T, size_t N=DEFAULT_BUFFER>
 struct io_bundle_t {
-  emp::vector<InputLink<T, N>> inputs;
-  emp::vector<OutputLink<T, N>> outputs;
+  emp::vector<uit::InputLink<T, N>> inputs;
+  emp::vector<uit::OutputLink<T, N>> outputs;
 };
 
 template<typename T, size_t N=DEFAULT_BUFFER>
@@ -286,3 +288,5 @@ struct ProducerConsumerMeshFactory {
 // out of a container
 // maybe make a class MeshDelegator that divies everything up in constructor
 // then you can iterate through sub-vectors?
+
+}

@@ -11,6 +11,8 @@
 #include "../parallel/OccupancyCaps.h"
 #include "../parallel/OccupancyGuard.h"
 
+namespace uit {
+
 template<typename T, size_t N=DEFAULT_BUFFER>
 class Outlet {
 
@@ -143,3 +145,5 @@ public:
   }
 
 };
+
+}

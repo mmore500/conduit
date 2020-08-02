@@ -12,6 +12,8 @@
 // clang: https://quick-bench.com/q/wq_AmWxlB370-9kWRvqYOW9s094
 // ~280x faster than std::chrono clocks
 
+namespace uit {
+
 struct CoarseClock {
 
   // An arithmetic type or a class emulating an arithmetic type.
@@ -40,3 +42,5 @@ struct CoarseClock {
   }
 
 };
+
+}
