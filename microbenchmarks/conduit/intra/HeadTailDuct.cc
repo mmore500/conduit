@@ -1,3 +1,3 @@
-#define ThreadDuct HeadTailDuct
+#define IntraDuct HeadTailDuct
 
 #include "IntraDuct.h"
