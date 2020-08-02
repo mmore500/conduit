@@ -16,3 +16,6 @@
 [submodule "third-party/benchmark"]
 	path = third-party/benchmark
 	url = https://github.com/google/benchmark.git
+[submodule "third-party/emsdk"]
+	path = third-party/emsdk
+	url = https://github.com/emscripten-core/emsdk
