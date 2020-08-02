@@ -84,7 +84,7 @@ RUN \
   apt-get install -y \
     nodejs \
     python-pip \
-    nodejs \
+    npm \
     && \
   echo "installed web dependencies"
 
