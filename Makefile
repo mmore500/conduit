@@ -28,13 +28,13 @@ all: $(PROJECT) $(PROJECT).js
 omp: CFLAGS_nat := $(CFLAGS_nat) -fopenmp
 omp: $(PROJECT)
 
-debug:	CFLAGS_nat := $(CFLAGS_nat_debug)
-debug:	$(PROJECT)
+debug: CFLAGS_nat := $(CFLAGS_nat_debug)
+debug: $(PROJECT)
 
-debug-web:	CFLAGS_web := $(CFLAGS_web_debug)
-debug-web:	$(PROJECT).js
+debug-web: CFLAGS_web := $(CFLAGS_web_debug)
+debug-web: $(PROJECT).js
 
-web-debug:	debug-web
+web-debug: debug-web
 
 $(PROJECT):	source/native/$(PROJECT).cc
 	$(CXX_nat) $(CFLAGS_nat) source/native/$(PROJECT).cc -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
@@ -42,8 +42,6 @@ $(PROJECT):	source/native/$(PROJECT).cc
 
 $(PROJECT).js: source/web/$(PROJECT)-web.cc
 	$(CXX_web) $(CFLAGS_web) source/web/$(PROJECT)-web.cc -o web/$(PROJECT).js
-
-.PHONY: clean test serve
 
 serve:
 	python3 -m http.server
@@ -79,7 +77,8 @@ tests:
 	cd microbenchmarks && make build
 	cd macrobenchmarks && make build
 
+.PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov
+
+
 # Debugging information
 print-%: ; @echo '$(subst ','\'',$*=$($*))'
-
-.PHONY: tests
