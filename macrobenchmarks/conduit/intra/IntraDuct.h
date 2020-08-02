@@ -20,7 +20,7 @@
 #define MESSAGE_T int
 
 void do_work(
-  hit::io_bundle_t<MESSAGE_T> bundle,
+  uit::io_bundle_t<MESSAGE_T> bundle,
   std::latch & latch,
   uit::Gatherer<MESSAGE_T> & gatherer
 ) {
@@ -97,7 +97,7 @@ void profile_thread_count(const size_t num_threads) {
 int main(int argc, char* argv[]) {
 
   int provided;
-  verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided));
+  uit::verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided));
   emp_assert(provided >= MPI_THREAD_FUNNELED);
 
   // TODO
