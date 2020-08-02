@@ -1,3 +1,3 @@
 #define ThreadDuct AtomicPendingDuct
 
-#include "ThreadDuctMicrobench.h"
+#include "ThreadDuct.h"

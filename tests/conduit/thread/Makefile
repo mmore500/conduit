@@ -11,7 +11,7 @@ default: test
 	cd distributed && make test
 
 test-%: %.cc
-	$(CXX) $(FLAGS) $< -o $@.out
+	$(CXX) $(FLAGS) $< -lbenchmark -lpthread  -o $@.out
 	# execute test
 	./$@.out
 
