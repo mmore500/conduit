@@ -7,12 +7,12 @@ SHELL ["/bin/bash", "-c"]
 
 # Install.
 RUN \
-  apt-get update -y \
+  apt-get update -qq \
     && \
   echo "initialized packaging system"
 
 RUN \
-  apt-get install -y \
+  apt-get install -qq \
     curl \
     git \
     gzip \
@@ -23,7 +23,7 @@ RUN \
   echo "installed fundamentals"
 
 RUN \
-  apt-get install -y software-properties-common \
+  apt-get install -qq software-properties-common \
     && \
   add-apt-repository -y ppa:ubuntu-toolchain-r/test \
     && \
@@ -31,14 +31,14 @@ RUN \
     && \
   apt-add-repository "deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-7 main" \
     && \
-  apt-get update -y \
+  apt-get update -qq \
     && \
-  apt-get -y upgrade \
+  apt-get upgrade -qq \
     && \
   echo "configured packaging system"
 
 RUN \
-  apt-get install -y \
+  apt-get install -qq \
     g++-8 \
     libclang-7-dev \
     llvm-7 \
@@ -55,7 +55,7 @@ RUN \
   echo "installed core dependencies"
 
 RUN \
-  apt-get install -y \
+  apt-get install -qq \
     libopenmpi-dev \
     libopenmpi2 \
     openmpi-bin \
@@ -81,7 +81,7 @@ RUN \
   echo "installed hpc dependencies"
 
 RUN \
-  apt-get install -y \
+  apt-get install -qq \
     nodejs \
     python-pip \
     npm \
@@ -89,7 +89,7 @@ RUN \
   echo "installed web dependencies"
 
 RUN \
-  apt-get install -y \
+  apt-get install -qq \
     man \
     vim \
     nano \
