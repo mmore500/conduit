@@ -43,13 +43,40 @@ struct ThreadDuctMicrobenchRunner {
       : nullptr;
 
 
-    // TODO add counters for num unique received
+    MESSAGE_T last{};
+    size_t num_messages{};
+    int latency{};
+
+    int epoch{};
     for (auto _ : state) {
-      if (is_producer) output->MaybePut(state.thread_index);
-      if (is_consumer) do_not_optimize(
-        input->GetCurrent()
-      );
+      if (is_producer) output->MaybePut(epoch);
+      if (is_consumer) {
+        const MESSAGE_T cur = input->GetCurrent();
+        num_messages += (cur != last);
+        latency += epoch - cur;
+        last = cur;
+      }
+      ++epoch;
     }
+
+    state.counters.insert({
+      {
+        "Latency",
+        benchmark::Counter(
+          latency * num_messages / epoch,
+          benchmark::Counter::kAvgThreadsRate
+            | benchmark::Counter::kInvert
+        )
+      },
+      {
+        "Lossiness",
+        benchmark::Counter(
+          1.0 - ((double)num_messages)/epoch,
+          benchmark::Counter::kAvgThreads
+        )
+      }
+    });
+
 
   }
 
