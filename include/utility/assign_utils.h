@@ -3,12 +3,12 @@
 template<typename RETURN_TYPE>
 std::function<RETURN_TYPE(size_t)> assign_integrated() {
   return [](const auto & node_id){ return 0; };
-};
+}
 
 template<typename RETURN_TYPE>
 std::function<RETURN_TYPE(size_t)> assign_segregated() {
   return [](const auto & node_id){ return node_id; };
-};
+}
 
 template<typename RETURN_TYPE>
 std::function<RETURN_TYPE(size_t)> assign_contiguously(
@@ -18,7 +18,7 @@ std::function<RETURN_TYPE(size_t)> assign_contiguously(
   return [=](const auto & node_id){
     return node_id * num_threads / num_nodes;
   };
-};
+}
 
 template<typename RETURN_TYPE>
 std::function<RETURN_TYPE(size_t)> assign_round_robin(
@@ -27,4 +27,4 @@ std::function<RETURN_TYPE(size_t)> assign_round_robin(
   return [=](const auto & node_id){
     return node_id % num_threads;
   };
-};
+}
