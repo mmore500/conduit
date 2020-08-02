@@ -145,7 +145,8 @@ RUN \
 WORKDIR /opt/conduit
 
 # Perform any further action as an unprivileged user.
-# adapted from https://itnext.io/go-continuous-integration-with-travis-ci-and-docker-4b26379e54b7
-USER nobody:nobody
+# adapted from https://stackoverflow.com/a/27703359
+RUN useradd --create-home --shell /bin/bash user
+USER user
 
 CMD ["bash"]
