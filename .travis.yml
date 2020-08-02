@@ -4,30 +4,54 @@ sudo: required
 services:
   - docker
 
-# https://docs.travis-ci.com/user/docker/
-before_install:
-- docker build -t mmore500/conduit .
-- docker ps -a
+jobs:
+  include:
+    - stage: "Tests"
+      name: "Unit Tests"
+      install:
+        - docker build -t mmore500/conduit .
+        - docker ps -a
+      script:
+        - docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
+    - name: "Macrobenchmarks"
+      install:
+        - docker build -t mmore500/conduit .
+        - docker ps -a
+      script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make macrobenchmark"
+    - name: "Microbenchmarks"
+      install:
+        - docker build -t mmore500/conduit .
+        - docker ps -a
+      script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make microbenchmark"
+    - name: "Coverage"
+      install:
+        - docker build -t mmore500/conduit .
+        - docker ps -a
+      script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make cov"
+      after_success: curl -s https://codecov.io/bash | bash
+    - name: "Source"
+      install:
+        - docker build -t mmore500/conduit .
+        - docker ps -a
+      script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make test"
+    - stage: "Deploy"
+      name: "Deploy to GitHub Pages"
+      install:
+        - docker build -t mmore500/conduit .
+        - docker ps -a
+      script:
+        - docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make web"
+      after_success:
+        - git config --global user.email "travis@travis-ci.org"
+        - git config --global user.name "Travis CI"
+        - cd web
+        - git init
+        - git remote add origin https://${GH_TOKEN}@github.com/mmore500/conduit.git > /dev/null 2>&1
+        - git checkout -b gh-pages
+        - git add .
+        - git commit --message "Travis build ${TRAVIS_BUILD_NUMBER}"
+        - test ${TRAVIS_BRANCH} = "master" && git push --force --quiet origin gh-pages
 
-install:
-- git submodule init
-- git submodule update
-
-script:
-- docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make test"
-- docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make cov"
-
-after_success:
-- curl -s https://codecov.io/bash | bash
-- git config --global user.email "travis@travis-ci.org"
-- git config --global user.name "Travis CI"
-- cd web
-- git init
-- git remote add origin https://${GH_TOKEN}@github.com/mmore500/conduit.git > /dev/null 2>&1
-- git checkout -b gh-pages
-- git add .
-- git commit --message "Travis build ${TRAVIS_BUILD_NUMBER}"
-- test ${TRAVIS_BRANCH} = "master" && git push --force --quiet origin gh-pages
 env:
   global:
     secure: oZPMB8k0E1/nnJ1LqPBqGu8XKRWnvC3TzWa/CBryfJetmK8iNXng7lTFZpaCGBfpPM+Zyota7E0VGT9GE2MZznb9NrSPqSRgvwGqySSS31mFGcA5vPMQVfL1vA2mswpdTCZjGGZ86KCbb14IapxnsQ44TZNvmsA2jX5PrK4hrysJYVcS4KPNicQ0X2EwSq2hTugbtzCn2bd9H971joabO19YdVl6LaBhkhvFVRR/rbD+FSNx6EkfR1DKMpA7LGCrNw+sUKBjul4Xc8jb9Wjhc2nbRpbMIx/qJFwdoBjXzqGPY6FpdFyrkX/dnn3d3OrZcEuckRa02tyAepXEQm8jWeBUgwNu6arZm9GpA58O06Tk/i605XCSn4IhCe90ssPZu6xubp45Tmduthla8AJOM0rfSOcv0/3twsE5fPC1mGsB/kocZcOokLldZzh98AtO90KTaNNFjFfD5B7h1W4EOcIh2y8/Po8lnJISLT9DzuZCdIXRIs+MjXm+bkV8r7td6WNntjVoZzCuR5q/iWr6YTp/SjGYaMJNBvLEBgdxg4tCM3VUNcLAiIqO8LsxGEUZOur1uSOIbJ//idzUVk0+gr6tlPnwh7ZwP+vVGnfOuV1bMK7cslgs4Keo4BYUDdbKYH7rhIcMZHKf0aWmK4cGV/OIDp6SAXW0vtOAEcokg0Q=
