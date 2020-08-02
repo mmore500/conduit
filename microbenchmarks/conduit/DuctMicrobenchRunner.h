@@ -49,7 +49,7 @@ struct DuctMicrobenchRunner {
 
     int epoch{};
     for (auto _ : state) {
-      if (is_producer) output->MaybePut(epoch); //TODO +1
+      if (is_producer) output->MaybePut(epoch+1);
       if (is_consumer) {
         const MESSAGE_T cur = input->GetCurrent();
         num_messages += (cur != last);
