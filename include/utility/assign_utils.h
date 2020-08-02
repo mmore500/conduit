@@ -1,5 +1,7 @@
 #pragma once
 
+#include <functional>
+
 namespace uit {
 
 template<typename RETURN_TYPE>

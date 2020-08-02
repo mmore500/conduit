@@ -5,6 +5,7 @@
 
 #include "mpi.h"
 
+#include "../utility/numeric_cast.h"
 #include "../polyfill/barrier.h"
 #include "../utility/CountdownTimer.h"
 
