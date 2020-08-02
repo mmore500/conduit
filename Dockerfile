@@ -146,7 +146,17 @@ WORKDIR /opt/conduit
 
 # Perform any further action as an unprivileged user.
 # adapted from https://stackoverflow.com/a/27703359
-RUN useradd --create-home --shell /bin/bash user
+RUN \
+  useradd --create-home --shell /bin/bash user \
+    && \
+  echo "user added"
+
 USER user
+
+#adapted from https://askubuntu.com/a/809562
+RUN \
+  setfacl --recursive -m u:user:rwx /opt \
+    && \
+  echo "user granted access to /opt"
 
 CMD ["bash"]
