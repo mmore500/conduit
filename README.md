@@ -50,3 +50,5 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 ## Credits
 
 This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [devosoft/cookiecutter-empirical-project](https://github.com/devosoft/cookiecutter-empirical-project) project template.
+
+This project is built using the [Empirical C++ library](https://github.com/devosoft/Empirical/).
