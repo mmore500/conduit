@@ -36,7 +36,7 @@ cov: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../../../cover
 cov: $(addprefix cov-, $(TEST_NAMES))
 
 cov-%: %.cc ../../../third-party/Catch/single_include/catch2/catch.hpp
-	export OMPI_CXX=clang++ &&  $(CXX) $(FLAGS) $< -o $@.out
+	export OMPI_CXX=clang++ && $(CXX) $(FLAGS) $< -o -lbenchmark -lpthread $@.out
 	#echo "running $@.out"
 	# execute test
 	./$@.out
