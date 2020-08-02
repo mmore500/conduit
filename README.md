@@ -2,6 +2,8 @@
 
 [![build status](https://img.shields.io/travis/mmore500/conduit.svg)](https://travis-ci.org/mmore500/conduit)
 [![documentation status](https://readthedocs.org/projects/conduit/badge/?version=latest)](https://conduit.readthedocs.io/en/latest/?badge=latest)
+[![code coverage status](https://codecov.io/gh/mmore500/conduit/branch/master/graph/badge.svg)](https://codecov.io/gh/mmore500/conduit)
+[![DockerHub status](https://img.shields.io/docker/build/mmore500/conduit.svg)](https://hub.docker.com/r/mmore500/conduit)
 
 A multithread profiling project.
 
