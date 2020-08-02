@@ -29,7 +29,7 @@ fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
 
 cranky: $(addprefix cranky-, $(TEST_NAMES))
 
-cranky: $(addprefix cov-, $(TEST_NAMES))
+cov: $(addprefix cov-, $(TEST_NAMES))
 
 clean: $(addprefix clean-, $(TEST_NAMES))
 	rm -f *.out
