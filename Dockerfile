@@ -125,6 +125,9 @@ RUN \
     && \
   echo "installed web dependencies"
 
+# magic from https://github.com/puppeteer/puppeteer/issues/3451#issuecomment-523961368
+RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
+
 RUN \
   apt-get install -qq \
     man \
