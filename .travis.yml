@@ -33,7 +33,7 @@ jobs:
       install:
         - docker build -t mmore500/conduit .
         - docker ps -a
-      script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make test"
+      script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make test-source"
     - stage: "Deploy"
       name: "Deploy to GitHub Pages"
       install:
