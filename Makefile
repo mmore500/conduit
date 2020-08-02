@@ -51,6 +51,14 @@ serve:
 clean:
 	rm -f $(PROJECT) web/$(PROJECT).js web/*.js.map web/*.js.map *~ source/*.o web/*.wasm web/*.wast
 
+macrobenchmark:
+	cd macrobenchmarks && make bench
+
+microbenchmark:
+	cd microbenchmarks && make bench
+
+benchmark: macrobenchmark microbenchmark
+
 test: debug debug-web tests
 	./conduit | grep -q '>>> end <<<' && echo 'matched!' || exit 1
 	npm install
@@ -61,6 +69,8 @@ tests:
 	cd tests && make
 	cd tests && make opt
 	cd tests && make fulldebug
+	cd microbenchmarks && make build
+	cd macrobenchmarks && make build
 
 # Debugging information
 print-%: ; @echo '$(subst ','\'',$*=$($*))'

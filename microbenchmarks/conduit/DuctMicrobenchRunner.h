@@ -22,10 +22,10 @@ template<
   typename MeshFactory,
   typename MESSAGE_T
 >
-struct ThreadDuctMicrobenchRunner {
+struct DuctMicrobenchRunner {
 
   Mesh<MESSAGE_T> mesh{
-   MeshFactory{}(num_threads),
+   MeshFactory{}(num_threads), // TODO *2
    assign_segregated<thread_id_t>()
   };
 
@@ -49,7 +49,7 @@ struct ThreadDuctMicrobenchRunner {
 
     int epoch{};
     for (auto _ : state) {
-      if (is_producer) output->MaybePut(epoch);
+      if (is_producer) output->MaybePut(epoch); //TODO +1
       if (is_consumer) {
         const MESSAGE_T cur = input->GetCurrent();
         num_messages += (cur != last);

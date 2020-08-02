@@ -10,7 +10,7 @@ FLAGS = -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field
 default: test
 
 test-%: %.cc
-	$(CXX) $(FLAGS) $< -o $@.out
+	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
 		mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n $$n ./$@.out; \

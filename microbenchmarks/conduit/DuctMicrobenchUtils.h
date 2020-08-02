@@ -23,10 +23,9 @@
 #include "utility/benchmark_utils.h"
 #include "utility/stats_utils.h"
 
-#include "ThreadDuctMicrobenchRunner.h"
+#include "DuctMicrobenchRunner.h"
 
 #define MESSAGE_T int
-
 
 template<typename MeshFactory, size_t N>
 struct RegisterBenchmarks {
@@ -38,7 +37,7 @@ struct RegisterBenchmarks {
     auto res = benchmark::RegisterBenchmark(
       name.c_str(),
       [](benchmark::State& state){
-        static ThreadDuctMicrobenchRunner<
+        static DuctMicrobenchRunner<
           N,
           MeshFactory,
           MESSAGE_T
@@ -85,20 +84,3 @@ struct ThreadCountPayload {
 
   }
 };
-
-// sample doubling thread counts
-ForEach<
-  ThreadCountPayload,
-  256,
-  2,
-  std::multiplies<size_t>
-> range{};
-
-// initialize
-struct Initializer {
-  Initializer() {
-    range.item<1>();
-  }
-} i;
-
-BENCHMARK_MAIN();
