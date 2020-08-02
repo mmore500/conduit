@@ -28,7 +28,7 @@ jobs:
         - docker build -t mmore500/conduit .
         - docker ps -a
       script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make cov"
-      after_success: curl -s https://codecov.io/bash | bash
+      after_success: bash <(curl -s https://codecov.io/bash) -vZ
     - name: "Source"
       install:
         - docker build -t mmore500/conduit .
