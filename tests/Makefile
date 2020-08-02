@@ -17,6 +17,14 @@ cranky-%: %
 clean-%: %
 	cd $< && make clean
 
+cov-%:
+	cd $(@:cov-%=%) && make cov
+
+cov: coverage_conversion $(addprefix cov-, $(TEST_NAMES))
+
+coverage_conversion:
+	./convert_for_tests.sh
+
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TEST_NAMES))
 

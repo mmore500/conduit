@@ -14,6 +14,9 @@ fulldebug-%: %
 cranky-%: %
 	cd $< && make cranky
 
+cov-%: %
+	cd $< && make cov
+
 clean-%: %
 	cd $< && make clean
 
@@ -25,6 +28,8 @@ opt: $(addprefix opt-, $(TEST_NAMES))
 fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
 
 cranky: $(addprefix cranky-, $(TEST_NAMES))
+
+cranky: $(addprefix cov-, $(TEST_NAMES))
 
 clean: $(addprefix clean-, $(TEST_NAMES))
 	rm -f *.out
