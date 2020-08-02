@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h>
+
 namespace uit {
 
 #define DEFAULT_BUFFER 1024

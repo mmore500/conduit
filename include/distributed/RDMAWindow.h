@@ -2,6 +2,8 @@
 
 #include "mpi.h"
 
+#include "mpi_utils.h"
+
 namespace uit {
 
 // TODO is it possible to have a seperate window/communicator
