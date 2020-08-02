@@ -48,6 +48,13 @@ $(PROJECT).js: source/web/$(PROJECT)-web.cc
 serve:
 	python3 -m http.server
 
+install-coverage-dependencies:
+	git submodule init && git submodule update \
+		&& cd third-party/force-cover && make
+
+cov: install-coverage-dependencies
+	cd tests && make cov
+
 clean:
 	rm -f $(PROJECT) web/$(PROJECT).js web/*.js.map web/*.js.map *~ source/*.o web/*.wasm web/*.wast
 
