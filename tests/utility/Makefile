@@ -40,8 +40,8 @@ cov-%: %.cc ../../third-party/Catch/single_include/catch2/catch.hpp
 	#echo "running $@.out"
 	# execute test
 	./$@.out
-	llvm-profdata-7 merge default.profraw -o default.profdata
-	llvm-cov-7 show ./$@.out -instr-profile=default.profdata > coverage_$@.txt
+	llvm-profdata merge default.profraw -o default.profdata
+	llvm-cov show ./$@.out -instr-profile=default.profdata > coverage_$@.txt
 	python ../../third-party/force-cover/fix_coverage.py coverage_$@.txt
 
 clean:
