@@ -7,6 +7,8 @@
 #include "thread_utils.h"
 #include "../utility/print_utils.h"
 
+namespace uit {
+
 class OccupancyCap {
 
   mutable std::mutex mutex;
@@ -65,3 +67,5 @@ public:
   }
 
 };
+
+}

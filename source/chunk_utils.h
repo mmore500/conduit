@@ -72,7 +72,7 @@ std::vector<chunk_t> make_chunks(grid_t & grid, const size_t num_chunks) {
   ) {
 
     chunk_end = (
-      safe_less(std::distance(chunk_end, std::end(grid)), chunk_width)
+      uit::safe_less(std::distance(chunk_end, std::end(grid)), chunk_width)
       ? std::end(grid)
       : std::next(chunk_begin, chunk_width)
     );
@@ -103,7 +103,7 @@ void update_chunk(
 
   for (auto & handle : chunk) {
 
-    do_compute_work(resistance);
+    uit::do_compute_work(resistance);
 
     if (verbose) std::cout << handle->GetState();
     handle->Update();

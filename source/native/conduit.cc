@@ -28,11 +28,11 @@ int main(int argc, char* argv[]) {
   );
 
   std::chrono::seconds duration; {
-    const TimeGuard guard(duration);
+    const uit::TimeGuard guard(duration);
 
     const double mean_productivity = run_grid(grid, cfg);
 
-    if (is_root()) {
+    if (uit::is_root()) {
       if (!cfg.at("taciturn")) std::cout << "mean_productivity: ";
       std::cout << std::fixed << std::setprecision(0);
       std::cout << mean_productivity << std::endl;

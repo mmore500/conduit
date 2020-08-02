@@ -8,6 +8,8 @@
 #include "../distributed/mpi_utils.h"
 #include "mesh_utils.h"
 
+namespace uit {
+
 template<typename T, size_t N=DEFAULT_BUFFER>
 class Mesh {
 
@@ -158,3 +160,5 @@ public:
   }
 
 };
+
+}

@@ -10,8 +10,8 @@
 
 class Tile {
 
-  Outlet<State> input;
-  Inlet<State> output;
+  uit::Outlet<State> input;
+  uit::Inlet<State> output;
 
   State state;
 
@@ -32,13 +32,13 @@ class Tile {
       case '_':
         return '_';
       default:
-        error_message_mutex.lock();
+        uit::error_message_mutex.lock();
         std::cerr
-          << format_member("neighbor_state", neighbor_state)
+          << uit::format_member("neighbor_state", neighbor_state)
           << std::endl;
-        std::cerr << format_member("prev Tile", *prev) << std::endl;
-        std::cerr << format_member("this Tile", *this) << std::endl;
-        std::cerr << format_member("next Tile", *next) << std::endl;
+        std::cerr << uit::format_member("prev Tile", *prev) << std::endl;
+        std::cerr << uit::format_member("this Tile", *this) << std::endl;
+        std::cerr << uit::format_member("next Tile", *next) << std::endl;
         throw "bad Transition on Tile";
     }
 
@@ -51,7 +51,7 @@ class Tile {
   }
 
 public:
-  Tile(Outlet<State> input_, Inlet<State> output_)
+  Tile(uit::Outlet<State> input_, uit::Inlet<State> output_)
   : input(input_), output(output_)
   { }
 
@@ -108,10 +108,10 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member("id", id) << std::endl;
-    ss << format_member("State state", state) << std::endl;
-    ss << format_member("Outlet<State> input", input) << std::endl;
-    ss << format_member("Inlet<State> output", output);
+    ss << uit::format_member("id", id) << std::endl;
+    ss << uit::format_member("State state", state) << std::endl;
+    ss << uit::format_member("Outlet<State> input", input) << std::endl;
+    ss << uit::format_member("Inlet<State> output", output);
     return ss.str();
   }
 

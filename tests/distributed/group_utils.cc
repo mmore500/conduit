@@ -8,18 +8,18 @@
 
 TEST_CASE("make_group") {
 
-  if (get_rank()) {
+  if (uit::get_rank()) {
     const MPI_Group dyad{
-      make_group({0, get_rank()})
+      uit::make_group({0, uit::get_rank()})
     };
-    group_to_comm(dyad);
+    uit::group_to_comm(dyad);
   } else {
 
-    for (proc_id_t target = 1; target < get_nprocs(); ++target) {
+    for (uit::proc_id_t target = 1; target < uit::get_nprocs(); ++target) {
       const MPI_Group dyad{
-        make_group({0, target})
+        uit::make_group({0, target})
       };
-      group_to_comm(dyad);
+      uit::group_to_comm(dyad);
     }
 
   }

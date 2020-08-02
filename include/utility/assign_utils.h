@@ -1,5 +1,7 @@
 #pragma once
 
+namespace uit {
+
 template<typename RETURN_TYPE>
 std::function<RETURN_TYPE(size_t)> assign_integrated() {
   return [](const auto & node_id){ return 0; };
@@ -27,4 +29,6 @@ std::function<RETURN_TYPE(size_t)> assign_round_robin(
   return [=](const auto & node_id){
     return node_id % num_threads;
   };
+}
+
 }

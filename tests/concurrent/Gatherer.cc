@@ -12,15 +12,15 @@
 #include "conduit/pipe_utils.h"
 #include "utility/numeric_cast.h"
 
-Gatherer<int> gather(MPI_INT);
+uit::Gatherer<int> gather(MPI_INT);
 
 void do_work() {
 
-  static barrier barrier{numeric_cast<std::ptrdiff_t>(2)};
+  static std::barrier barrier{uit::numeric_cast<std::ptrdiff_t>(2)};
 
   barrier.arrive_and_wait();
 
-  gather.Put(get_thread_id());
+  gather.Put(uit::get_thread_id());
 
 }
 
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 
   MPI_Init(&argc, &argv);
 
-  ThreadTeam team;
+  uit::ThreadTeam team;
 
   team.Add(do_work);
   team.Add(do_work);

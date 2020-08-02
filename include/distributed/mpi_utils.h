@@ -5,6 +5,8 @@
 #include "mpi.h"
 #include "../utility/print_utils.h"
 
+namespace uit {
+
 // TODO rename pid_t
 using proc_id_t = int;
 
@@ -445,4 +447,6 @@ proc_id_t translate_rank(
   const MPI_Comm& to=MPI_COMM_WORLD
 ) {
   return translate_rank(rank, comm_to_group(from), comm_to_group(to));
+}
+
 }

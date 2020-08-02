@@ -2,6 +2,8 @@
 
 #include <utility>
 
+namespace uit {
+
 // TODO cpp20
 // adpated from https://codereview.stackexchange.com/q/134627
 static constexpr struct identity_t {
@@ -10,3 +12,5 @@ static constexpr struct identity_t {
     return std::forward<T>(t);
   }
 } identity{};
+
+}

@@ -1,5 +1,7 @@
 #pragma once
 
+namespace uit {
+
 #define DEFAULT_BUFFER 1024
 
 #ifdef __cpp_lib_hardware_interference_size
@@ -24,3 +26,5 @@
 #ifndef IntraDuct
   #define IntraDuct PendingDuct
 #endif
+
+}

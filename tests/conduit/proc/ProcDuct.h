@@ -10,27 +10,31 @@
 #include "conduit/pipe_utils.h"
 #include "utility/math_utils.h"
 
-Outlet<char> make_input() {
+uit::Outlet<char> make_input() {
 
-  auto input_pipe = make_pipe<char>();
+  auto input_pipe = uit::make_pipe<char>();
   auto & [__, outlet] = input_pipe;
 
-  const int source = circular_index(get_rank(), get_nprocs(), -1);
+  const int source = uit::circular_index(
+    uit::get_rank(),
+    uit::get_nprocs(),
+    -1
+  );
 
-  outlet.SplitDuct<ProcOutletDuct<char>>(get_rank(), source);
+  outlet.SplitDuct<uit::ProcOutletDuct<char>>(uit::get_rank(), source);
 
   return outlet;
 
 }
 
-Inlet<char> make_output() {
+uit::Inlet<char> make_output() {
 
   // another way of doing it
-  auto inlet = make_sink<char>();
+  auto inlet = uit::make_sink<char>();
 
-  const int dest = circular_index(get_rank(), get_nprocs(), 1);
+  const int dest = uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1);
 
-  inlet.EmplaceDuct<ProcInletDuct<char>>(get_rank(), dest);
+  inlet.EmplaceDuct<uit::ProcInletDuct<char>>(uit::get_rank(), dest);
 
   return inlet;
 
@@ -40,13 +44,13 @@ Inlet<char> make_output() {
 void run() {
 
 
-  Outlet<char> input = make_input();
+  uit::Outlet<char> input = make_input();
 
-  Inlet<char> output = make_output();
+  uit::Inlet<char> output = make_output();
 
-  RDMAWindowManager::Initialize();
+  uit::RDMAWindowManager::Initialize();
 
-  const char message = 65 + get_rank();
+  const char message = 65 + uit::get_rank();
 
   output.MaybePut(message);
 
@@ -55,8 +59,8 @@ void run() {
   char res;
   res = input.GetCurrent();
 
-  std::cout << "rank " << get_rank() << " sent " << message << std::endl;
-  std::cout << "rank " << get_rank() << " received " << res << std::endl;
+  std::cout << "rank " << uit::get_rank() << " sent " << message << std::endl;
+  std::cout << "rank " << uit::get_rank() << " received " << res << std::endl;
 
 }
 
@@ -66,7 +70,7 @@ int main(int argc, char* argv[]) {
 
   run();
 
-  RDMAWindowManager::Cleanup();
+  uit::RDMAWindowManager::Cleanup();
 
   MPI_Finalize();
 

@@ -11,6 +11,8 @@
 
 // TODO be clever and use fewer overloads
 
+namespace uit {
+
 std::mutex error_message_mutex;
 
 std::string apply_indent(std::string in) {
@@ -105,4 +107,6 @@ std::string to_string(const T & container) {
     [](const auto & x){ return emp::to_string(x); }
   );
   return emp::join_on(res, ", ");
+}
+
 }

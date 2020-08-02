@@ -1,5 +1,7 @@
 #pragma once
 
+#include "tools/string_utils.h"
+
 class State {
 
   char state;

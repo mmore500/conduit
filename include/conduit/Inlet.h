@@ -13,6 +13,8 @@
 #include "../parallel/OccupancyGuard.h"
 #include "Duct.h"
 
+namespace uit {
+
 template<typename T, size_t N=DEFAULT_BUFFER>
 class Inlet {
 
@@ -155,3 +157,5 @@ public:
 
 
 };
+
+}

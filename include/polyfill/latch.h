@@ -1,14 +1,16 @@
 #pragma once
 
+#include <atomic>
+#include <cstddef>
+#include <condition_variable>
+
 // polyfill until C++20 barrier becomes available
 // TODO C++20 cpp20 switch to std::barrier
 
 // adapted from
 // https://github.com/llvm/llvm-project/blob/bcf14f375e29b94e7abb381920df795eeefb2309/libcxx/include/latch
 
-#include <atomic>
-#include <cstddef>
-#include <condition_variable>
+namespace std {
 
 class latch
 {
@@ -52,3 +54,5 @@ public:
     wait();
   }
 };
+
+}

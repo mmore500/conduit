@@ -5,6 +5,8 @@
 #include <string>
 #include <array>
 
+namespace uit {
+
 // adapted from https://stackoverflow.com/a/478960
 std::string exec(const char* cmd) {
     std::array<char, 128> buffer;
@@ -17,4 +19,6 @@ std::string exec(const char* cmd) {
         result += buffer.data();
     }
     return result;
+}
+
 }

@@ -3,6 +3,7 @@
 #include "data/DataNode.h"
 #include "base/vector.h"
 
+namespace uit {
 
 double sample_mean_with_replacement(
   emp::Random & rand,
@@ -43,5 +44,7 @@ std::tuple<double, double> bootstrap(
     sampled.GetPercentile(percentile),
     sampled.GetPercentile(100.0 - percentile)
   };
+
+}
 
 }

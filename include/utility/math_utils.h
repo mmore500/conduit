@@ -8,6 +8,8 @@
 
 #include "utility/numeric_cast.h"
 
+namespace uit {
+
 size_t mod(int in_val, const size_t mod_val) {
   emp_assert(mod_val > 0);
   const int signed_mod_val = std::min(
@@ -47,4 +49,6 @@ bool test_bit(const TYPE x, const size_t bit) {
 
 size_t difference(const size_t a, const size_t b) {
   return std::max(a, b) - std::min(a, b);
+}
+
 }

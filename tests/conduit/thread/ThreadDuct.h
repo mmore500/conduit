@@ -23,32 +23,33 @@
 #define MSG_T int
 #define num_nodes 4
 
-Gatherer<MSG_T> gatherer(MPI_INT);
+uit::Gatherer<MSG_T> gatherer(MPI_INT);
 
-void do_work(io_bundle_t<MSG_T> bundle, const size_t node_id) {
+void do_work(uit::io_bundle_t<MSG_T> bundle, const size_t node_id) {
 
   bundle.outputs[0].GetOutput().MaybePut(node_id);
 
-  static latch sync_before{numeric_cast<std::ptrdiff_t>(num_nodes)};
+  static std::latch sync_before{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
   sync_before.arrive_and_wait();
 
   for (size_t rep = 0; rep < 100; ++rep) {
     bundle.outputs[0].GetOutput().MaybePut(node_id);
-    do_not_optimize(
+    uit::do_not_optimize(
       bundle.inputs[0].GetInput().GetCurrent()
     );
   }
 
-  static latch sync_after{numeric_cast<std::ptrdiff_t>(num_nodes)};
+  static std::latch sync_after{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
   sync_after.arrive_and_wait();
 
   const MSG_T res = bundle.inputs[0].GetInput().GetCurrent();
 
   assert(
-    safe_equal(res, circular_index(node_id, num_nodes, -1))
+    uit::safe_equal(res, uit::circular_index(node_id, num_nodes, -1))
     || [&](){
       std::cerr
-        << res << ", " << circular_index(node_id, num_nodes, -1) << std::endl;
+        << res << ", " << uit::circular_index(node_id, num_nodes, -1)
+        << std::endl;
       return false;
     }()
   );
@@ -62,11 +63,11 @@ int main(int argc, char* argv[]) {
 
   MPI_Init(&argc, &argv);
 
-  ThreadTeam team;
+  uit::ThreadTeam team;
 
-  Mesh mesh{
-    make_ring_mesh<MSG_T>(num_nodes),
-    assign_segregated<thread_id_t>()
+  uit::Mesh mesh{
+    uit::make_ring_mesh<MSG_T>(num_nodes),
+    uit::assign_segregated<uit::thread_id_t>()
   };
 
   for (size_t node_id = 0; node_id < mesh.GetSize(); ++node_id) {

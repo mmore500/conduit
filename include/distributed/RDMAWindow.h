@@ -2,6 +2,8 @@
 
 #include "mpi.h"
 
+namespace uit {
+
 // TODO is it possible to have a seperate window/communicator
 // between each pair of procs?
 class RDMAWindow {
@@ -158,3 +160,5 @@ public:
   }
 
 };
+
+}

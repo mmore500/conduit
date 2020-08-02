@@ -10,6 +10,8 @@
 
 #include "../distributed/mpi_utils.h"
 
+namespace uit {
+
 template<typename T>
 class Gatherer {
 
@@ -96,3 +98,5 @@ public:
   }
 
 };
+
+}

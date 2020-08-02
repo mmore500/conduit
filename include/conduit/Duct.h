@@ -20,6 +20,8 @@
 #include "config.h"
 #include "../distributed/mpi_utils.h"
 
+namespace uit {
+
 template<typename T, size_t N=DEFAULT_BUFFER>
 class Duct {
 
@@ -134,3 +136,5 @@ public:
   }
 
 };
+
+}

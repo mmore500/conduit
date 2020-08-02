@@ -5,6 +5,8 @@
 
 #include "tools/math.h"
 
+namespace uit {
+
 namespace internal {
 
   // adapted from https://www.jwwalker.com/pages/safe-compare.html
@@ -63,4 +65,6 @@ inline bool safe_greater(I x, J y) {
 template <typename I, typename J>
 inline bool safe_equal(I x, J y) {
   return !safe_less<I, J>(x, y) && !safe_greater<I, J>(x, y);
+}
+
 }

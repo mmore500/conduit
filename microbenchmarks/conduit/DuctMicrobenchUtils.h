@@ -68,13 +68,13 @@ struct ThreadCountPayload {
   ThreadCountPayload() {
 
     using factories_t = emp::TypePack<
-      RingMeshFactory<MESSAGE_T>,
-      DyadicMeshFactory<MESSAGE_T>,
-      ProducerConsumerMeshFactory<MESSAGE_T>
+      uit::RingMeshFactory<MESSAGE_T>,
+      uit::DyadicMeshFactory<MESSAGE_T>,
+      uit::ProducerConsumerMeshFactory<MESSAGE_T>
     >;
 
     using benchmarks_t = typename factories_t::wrap<
-      Curry<RegisterBenchmarks, N>::template curried
+      uit::Curry<RegisterBenchmarks, N>::template curried
     >;
 
     using instantiator_t = typename benchmarks_t::template apply<std::tuple>;

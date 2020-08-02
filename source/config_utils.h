@@ -18,80 +18,80 @@ config_t make_config() {
   const config_t res{
     {
       "audit",
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_AUDIT") ?: "0"
       )
     },
     {
       "checkout_memory",
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_CHECKOUT_MEMORY") ?: "0"
       )
     },
     {
       "shuffle_tile_evaluation",
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_SHUFFLE_TILE_EVALUATION") ?: "1"
       )
     },
     {
       "num_chunks",
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_NUM_THREADS") ?: "1"
       )
     },
     {
       "num_threads",
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_NUM_THREADS") ?: "1"
       )
     },
     {
       "num_updates", // undefined = no limit
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_NUM_UPDATES")
         ?: emp::to_string(std::numeric_limits<size_t>::max())
       )
     },
     {
       "num_seconds", // 0 for no limit
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_NUM_SECONDS") ?: "5"
       )
     },
     {
       "grid_size",
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_GRID_SIZE") ?: "1000"
       )
     },
     {
       "synchronous",
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_SYNCHRONOUS") ?: "1"
       )
     },
     {
       "resistance",
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_RESISTANCE") ?: "0"
       )
     },
     {
       "use_omp",
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_USE_OMP") ?: "0"
       )
     },
     {
       "verbose", // printing CA grid
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_VERBOSE") ?: "0"
       )
     },
     {
       "taciturn", // RE: printing other info
-      stoszt(
+      uit::stoszt(
         std::getenv("PP_TACITURN") ?: "0"
       )
     }
