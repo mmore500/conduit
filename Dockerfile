@@ -144,4 +144,8 @@ RUN \
 # Define default working directory.
 WORKDIR /opt/conduit
 
+# Perform any further action as an unprivileged user.
+# adapted from https://itnext.io/go-continuous-integration-with-travis-ci-and-docker-4b26379e54b7
+USER nobody:nobody
+
 CMD ["bash"]
