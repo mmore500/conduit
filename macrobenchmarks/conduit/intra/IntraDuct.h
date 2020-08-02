@@ -29,7 +29,7 @@ void do_work(
 
   const bool is_producer = bundle.outputs.size();
   const bool is_consumer = bundle.inputs.size();
-  const thread_id_t thread_id = uit::get_thread_id();
+  const uit::thread_id_t thread_id = uit::get_thread_id();
 
   auto * const input = is_consumer ? &bundle.inputs[0].GetInput() : nullptr;
   auto * const output = is_producer ? &bundle.outputs[0].GetOutput() : nullptr;
