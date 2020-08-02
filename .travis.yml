@@ -12,16 +12,10 @@ before_install:
 install:
 - git submodule init
 - git submodule update
-- apt-get update -y
-- sudo wget -O- http://neuro.debian.net/lists/xenial.us-ca.full | sudo tee /etc/apt/sources.list.d/neurodebian.sources.list
-- sudo apt-key adv --recv-keys --keyserver hkp://pool.sks-keyservers.net:80 0xA5D32F012649A5A9
-- sudo apt-get update -y
-- sudo apt-get install -y singularity-container
-- singularity --version
 
 script:
-- singularity run docker://mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make test"
-- singularity run docker://mmore500/conduit /bin/bash -c "cd /opt/conduit && make cov"
+- docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make test"
+- docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make cov"
 
 after_success:
 - curl -s https://codecov.io/bash | bash
