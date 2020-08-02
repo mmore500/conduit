@@ -74,9 +74,6 @@ tests:
 	cd tests && make
 	cd tests && make opt
 	cd tests && make fulldebug
-	cd microbenchmarks && make build
-	cd macrobenchmarks && make build
-
 .PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov
 
 
