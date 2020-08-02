@@ -1,26 +1,16 @@
-=======
-Conduit
-=======
+# Conduit
 
-
-.. image:: https://img.shields.io/travis/mmore500/conduit.svg
-        :target: https://travis-ci.org/mmore500/conduit
-
-.. image:: https://readthedocs.org/projects/conduit/badge/?version=latest
-        :target: https://conduit.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
+[![build status](https://img.shields.io/travis/mmore500/conduit.svg)](https://travis-ci.org/mmore500/conduit)
+[![documentation status](https://readthedocs.org/projects/conduit/badge/?version=latest)](https://conduit.readthedocs.io/en/latest/?badge=latest)
 
 A multithread profiling project.
 
-Check out the live in-browser web app at `https://mmore500.github.io/conduit`_.
-
+Check out the live in-browser web app at [https://mmore500.github.io/conduit](https://mmore500.github.io/conduit).
 
 * Free software: MIT license
-* Documentation: https://conduit.readthedocs.io.
+* Documentation: [https://conduit.readthedocs.io](https://conduit.readthedocs.io).
 
-TODO
-----
+## TODO
 
 * namespace (uit? ondu? cdt? con? duit? cndt? cnd?)
 * move utility to Empirical
@@ -44,13 +34,11 @@ TODO
 * re-organize header files in includes: one header file in each subdirectory that grabs the rest?
   * like `include/concurrent/concurrent.h` would have includes for all the other header files in that directory in it
 
-Features
---------
+## Features
 
 * TODO
 
-Reading List
-------------
+## Reading List
 
 * [spsc-bip-buffer](https://github.com/utaal/spsc-bip-buffer/)
 * [Lockless Ring Buffer Design](https://www.kernel.org/doc/Documentation/trace/ring-buffer-design.txt)
@@ -59,12 +47,6 @@ Reading List
 * [boost spsc_queue implementation](https://github.com/boostorg/lockfree/blob/771e8c1016a5d9b61acbc871e442a3fb139e1494/include/boost/lockfree/spsc_queue.hpp)
 * [The Bip Buffer - The Circular Buffer with a Twist](https://www.codeproject.com/Articles/3479/The-Bip-Buffer-The-Circular-Buffer-with-a-Twist)
 
-Credits
--------
+## Credits
 
-This package was created with Cookiecutter_ and the `devosoft/cookiecutter-empirical-project`_ project template.
-
-
-.. _`https://mmore500.github.io/conduit`: https://mmore500.github.io/conduit
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`devosoft/cookiecutter-empirical-project`: https://github.com/devosoft/cookiecutter-empirical-project
+This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [devosoft/cookiecutter-empirical-project](https://github.com/devosoft/cookiecutter-empirical-project) project template.
