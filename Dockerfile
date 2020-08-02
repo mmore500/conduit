@@ -1,5 +1,5 @@
 # Pull base image.
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 COPY . /opt/conduit
 
@@ -9,9 +9,27 @@ SHELL ["/bin/bash", "-c"]
 RUN \
   apt-get update -y \
     && \
+  echo "initialized packaging system"
+
+RUN \
+  apt-get install -y \
+    curl \
+    git \
+    gzip \
+    unzip \
+    tar \
+    wget \
+    && \
+  echo "installed fundamentals"
+
+RUN \
   apt-get install -y software-properties-common \
     && \
   add-apt-repository -y ppa:ubuntu-toolchain-r/test \
+    && \
+  wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
+    && \
+  apt-add-repository "deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-7 main" \
     && \
   apt-get update -y \
     && \
@@ -22,75 +40,88 @@ RUN \
 RUN \
   apt-get install -y \
     g++-8 \
+    libclang-7-dev \
+    llvm-7 \
+    clang-7 \
+    libstdc++-7-dev \
     cmake \
     build-essential \
     python-virtualenv \
     python-pip \
-    tar \
-    gzip \
     libpthread-stubs0-dev \
     libc6-dbg \
     gdb \
-    libopenmpi-dev \
-    libopenmpi-bin \
-    hdf5-tools \
-    libhdf5-10 \
-    libhdf5-10-dbg \
-    libhdf5-cpp-11 \
-    libhdf5-cpp-11-dbg \
-    libhdf5-dev \
-    libhdf5-doc \
-    libhdf5-mpi-dev \
     && \
   echo "installed core dependencies"
 
 RUN \
   apt-get install -y \
-    curl \
-    git \
-    htop \
+    libopenmpi-dev \
+    libopenmpi2 \
+    openmpi-bin \
+    openmpi-common \
+    openmpi-doc \
+    libmpich-dev \
+    libmpich12 \
+    hdf5-helpers \
+    hdf5-tools \
+    libhdf5-100 \
+    libhdf5-cpp-100 \
+    libhdf5-dev \
+    libhdf5-doc \
+    libhdf5-mpi-dev \
+    libhdf5-mpich-100 \
+    libhdf5-mpich-dev \
+    libhdf5-openmpi-100 \
+    libhdf5-openmpi-dev \
+    libhdf5-serial-dev \
+    python-h5py \
+    python3-h5py \
+    && \
+  echo "installed hpc dependencies"
+
+RUN \
+  apt-get install -y \
+    nodejs \
+    python-pip \
+    nodejs \
+    && \
+  echo "installed web dependencies"
+
+RUN \
+  apt-get install -y \
     man \
-    unzip \
     vim \
     nano \
-    wget \
+    htop \
     && \
   echo "installed creature comforts"
 
 RUN \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90 \
-  && \
-  echo "finalized set up dependency versions"
-
-RUN \ 
-  git clone https://github.com/google/benchmark.git
     && \
-  git clone https://github.com/google/googletest.git benchmark/googletest
+  update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-7 90 \
     && \
-  cd benchmark
+  update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-7 90 \
     && \
-  mkdir build && cd build
+  npm install -g n \
     && \
-  cmake ../  
+  n 12.18.2 \
     && \
-  make
+  export python="/usr/bin/python" \
     && \
-  make test
+  npm install source-map \
     && \
-  make install
-    && \
-  echo "installed Google benchmark"
+  echo "finalized dependency versions"
 
 RUN \
-  cd /opt/conduit \
+  cd /opt/conduit/ \
     && \
-  git submodule deinit -f . \
+  cd third-party \
     && \
-  git submodule init \
+  ./install_dependencies.sh \
     && \
-  git submodule update -f \
-    && \
-  echo "initialized submodules"
+  echo "installed third party dependencies"
 
 RUN \
   cd /opt/conduit \
