@@ -104,6 +104,8 @@ RUN \
     && \
   update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-7 90 \
     && \
+  update-alternatives --install /usr/bin/llvm-profdata llvm-profdata /usr/bin/llvm-profdata-7 90 \
+    && \
   npm install -g n \
     && \
   n 12.18.2 \
