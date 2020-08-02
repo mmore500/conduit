@@ -1,4 +1,4 @@
-BENCH_NAMES := HeadTailDuct AtomicPendingDuct
+BENCH_NAMES := HeadTailDuct PendingDuct
 
 EMP_DIR := ../../../third-party/Empirical/source
 
