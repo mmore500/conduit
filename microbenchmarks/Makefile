@@ -47,5 +47,7 @@ clean: $(addprefix clean-, $(TEST_NAMES))
 	rm -f *.gcno
 	rm -f *.info
 	rm -f *.gcov
+	rm -f *.csv
+	rm -f *.json
 	rm -f ./Coverage*
 	rm -rf ./temp
