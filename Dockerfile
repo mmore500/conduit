@@ -138,6 +138,12 @@ RUN \
   echo "installed creature comforts"
 
 RUN \
+  pip install \
+    osfclient  \
+    && \
+  echo "installed Python packages"
+
+RUN \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90 \
     && \
   update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-7 90 \
