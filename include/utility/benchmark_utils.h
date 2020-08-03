@@ -49,7 +49,7 @@ inline void do_compute_work(const size_t amt=1) {
 
 }
 
-template<size_t NumReps=25>
+template<size_t NumReps=10>
 benchmark::internal::Benchmark* report_confidence(
   benchmark::internal::Benchmark* bench
 ) {
