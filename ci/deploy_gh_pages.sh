@@ -8,4 +8,4 @@ git remote add origin https://${GH_TOKEN}@github.com/mmore500/conduit.git > /dev
 git checkout -b gh-pages
 git add .
 git commit --message "Travis build ${TRAVIS_BUILD_NUMBER}"
-test ${TRAVIS_BRANCH} = "master" && git push --force --quiet origin gh-pages
+git push --force --quiet origin gh-pages
