@@ -23,7 +23,7 @@ struct ForEach {
   template <size_t I>
   void item() {
 
-    if constexpr ( !Comparison{}(I, N) ) Payload<I>{};
+    if constexpr ( Comparison{}(I, N) ) Payload<I>{};
 
     constexpr size_t next = Afterthought{}(
       I,
@@ -31,7 +31,7 @@ struct ForEach {
     );
 
     // recurse upwards
-    if constexpr ( !Comparison{}(I, N) ) ForEach<
+    if constexpr ( Comparison{}(I, N) ) ForEach<
       Payload,
       N,
       Operand,
