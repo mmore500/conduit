@@ -141,6 +141,7 @@ RUN \
   pip install \
     osfclient  \
     keyname  \
+    pandas  \
     && \
   echo "installed Python packages"
 
