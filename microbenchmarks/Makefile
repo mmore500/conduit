@@ -1,5 +1,7 @@
 TEST_NAMES := conduit
 
+VERSION := $$(git describe --dirty --always)
+
 default: bench
 
 bench-%: %
@@ -22,6 +24,13 @@ clean-%: %
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(TEST_NAMES))
+	for f in */*/*.json; do \
+		osf -u mmore500.login@gmail.com -p 7jkgp \
+		  upload $$f $(VERSION)/$$CONTEXT/$$f; \
+	done
+	python3 consolidate.py */*/*.json
+	osf -u mmore500 -p 7jkgp \
+		upload "consolidated.csv" $(VERSION)/$$CONTEXT/consolidated.csv
 
 build: $(addprefix build-, $(TEST_NAMES))
 
