@@ -140,6 +140,7 @@ RUN \
 RUN \
   pip install \
     osfclient  \
+    keyname  \
     && \
   echo "installed Python packages"
 
