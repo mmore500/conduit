@@ -1,5 +1,9 @@
+#pragma once
+
 #include <thread>
 #include <tuple>
+#include <iostream>
+
 #include <benchmark/benchmark.h>
 
 #include "mpi.h"
@@ -47,7 +51,7 @@ struct RegisterBenchmarks {
     );
 
     res->Threads(N);
-    report_confidence(res);
+    uit::report_confidence(res);
 
     return res;
 
