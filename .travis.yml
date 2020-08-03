@@ -27,7 +27,7 @@ jobs:
       install:
         - docker build -t mmore500/conduit .
         - docker ps -a
-      script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make cov" && bash <(curl -s https://codecov.io/bash) -vZ
+      script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make cov && bash <(curl -s https://codecov.io/bash)"
     - name: "Source"
       install:
         - docker build -t mmore500/conduit .
@@ -39,17 +39,7 @@ jobs:
         - docker build -t mmore500/conduit .
         - docker ps -a
       script:
-        - docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make web"
-      after_success:
-        - git config --global user.email "travis@travis-ci.org"
-        - git config --global user.name "Travis CI"
-        - cd web
-        - git init
-        - git remote add origin https://${GH_TOKEN}@github.com/mmore500/conduit.git > /dev/null 2>&1
-        - git checkout -b gh-pages
-        - git add .
-        - git commit --message "Travis build ${TRAVIS_BUILD_NUMBER}"
-        - test ${TRAVIS_BRANCH} = "master" && git push --force --quiet origin gh-pages
+        - docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make web && ./ci/deploy_gh_pages.sh"
 
 env:
   global:
