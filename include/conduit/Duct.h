@@ -5,6 +5,7 @@
 
 #include "base/assert.h"
 #include "tools/string_utils.h"
+#include "meta/TypePack.h"
 
 //TODO don't include these all here
 #include "thread/AtomicPendingDuct.h"
@@ -25,12 +26,14 @@ namespace uit {
 template<typename T, size_t N=DEFAULT_BUFFER>
 class Duct {
 
-  std::variant<
+  using ducts_t = typename emp::TypePack<
     IntraDuct<T, N>,
     ThreadDuct<T, N>,
     ProcInletDuct<T, N>,
     ProcOutletDuct<T, N>
-  > impl;
+  >::make_unique;
+
+  typename ducts_t::template apply<std::variant> impl;
 
 public:
 
