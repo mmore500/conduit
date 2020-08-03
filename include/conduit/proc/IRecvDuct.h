@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <array>
+#include <stddef.h>
 
 #include "base/assert.h"
 #include "tools/string_utils.h"

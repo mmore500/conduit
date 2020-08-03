@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h>
+
 #include "data/DataNode.h"
 #include "base/vector.h"
 

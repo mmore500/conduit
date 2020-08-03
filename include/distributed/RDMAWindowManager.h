@@ -3,6 +3,7 @@
 #include <set>
 #include <unordered_map>
 #include <thread>
+#include <stddef.h>
 
 #include "mpi.h"
 

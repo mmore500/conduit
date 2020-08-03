@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include <stddef.h>
 
 #include "../conduit/Inlet.h"
 #include "../conduit/Outlet.h"

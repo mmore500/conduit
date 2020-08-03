@@ -3,6 +3,7 @@
 #include <mutex>
 #include <unordered_set>
 #include <limits>
+#include <stddef.h>
 
 #include "thread_utils.h"
 #include "../utility/print_utils.h"

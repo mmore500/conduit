@@ -4,6 +4,7 @@
 #include <utility>
 #include <memory>
 #include <atomic>
+#include <stddef.h>
 
 #include "Duct.h"
 #include "Inlet.h"
