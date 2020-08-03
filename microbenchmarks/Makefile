@@ -29,7 +29,7 @@ bench: $(addprefix bench-, $(TEST_NAMES))
 		  upload $$f $(VERSION)/$$CONTEXT/$$f; \
 	done
 	python3 consolidate.py */*/*.json
-	osf -u mmore500 -p 7jkgp \
+	osf -u mmore500.login@gmail.com -p 7jkgp \
 		upload "consolidated.csv" $(VERSION)/$$CONTEXT/consolidated.csv
 
 build: $(addprefix build-, $(TEST_NAMES))
