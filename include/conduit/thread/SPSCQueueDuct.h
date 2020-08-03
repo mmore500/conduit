@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h>
+
 #include "../third-party/SPSCQueue/include/rigtorp/SPSCQueue.h"
 
 #include "base/assert.h"

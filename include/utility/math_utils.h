@@ -3,6 +3,7 @@
 #include <cmath>
 #include <limits>
 #include <bitset>
+#include <stddef.h>
 
 #include "tools/math.h"
 

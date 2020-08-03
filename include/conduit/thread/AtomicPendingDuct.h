@@ -1,6 +1,7 @@
 #pragma once
 
 #include <atomic>
+#include <stddef.h>
 
 #include "base/assert.h"
 #include "tools/string_utils.h"

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <limits>
+#include <stddef.h>
 
 #include "safe_compare.h"
 

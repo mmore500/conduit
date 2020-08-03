@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <memory>
+#include <stddef.h>
 
 #include "config.h"
 #include "../parallel/thread_utils.h"

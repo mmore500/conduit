@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h>
+
 #include "mpi.h"
 
 #include "mpi_utils.h"

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <numeric>
+#include <stddef.h>
 
 #include "mpi.h"
 #include "../utility/print_utils.h"

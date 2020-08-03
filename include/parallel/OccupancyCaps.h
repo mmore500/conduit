@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <string>
 #include <tuple>
+#include <stddef.h>
 
 #include "OccupancyCap.h"
 

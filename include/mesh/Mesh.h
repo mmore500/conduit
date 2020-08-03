@@ -1,6 +1,7 @@
 #pragma once
 
 #include <unordered_map>
+#include <stddef.h>
 
 #include "../utility/assign_utils.h"
 #include "../conduit/Duct.h"

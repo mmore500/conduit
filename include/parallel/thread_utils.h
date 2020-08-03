@@ -2,6 +2,7 @@
 
 #include <atomic>
 #include <thread>
+#include <stddef.h>
 
 #include "../utility/exec_utils.h"
 #include "../utility/math_utils.h"

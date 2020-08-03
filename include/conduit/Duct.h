@@ -2,6 +2,7 @@
 
 #include <utility>
 #include <variant>
+#include <stddef.h>
 
 #include "base/assert.h"
 #include "tools/string_utils.h"
