@@ -53,9 +53,17 @@ public:
 
   TimeoutBarrier(
     const Timer_T& timer=Timer_T{},
-    std::barrier<>& thread_barrier=std::barrier{
-      uit::numeric_cast<std::ptrdiff_t>(1)
-    },
+    MPI_Comm comm=MPI_COMM_WORLD
+  ) : proc_barrier(comm) {
+
+    while (!proc_barrier.IsComplete() && !timer.IsComplete());
+
+  }
+
+  template<typename T>
+  TimeoutBarrier(
+    const Timer_T& timer,
+    std::barrier<T>& thread_barrier,
     MPI_Comm comm=MPI_COMM_WORLD
   ) : proc_barrier(comm) {
 
