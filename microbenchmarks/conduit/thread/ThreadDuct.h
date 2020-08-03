@@ -24,67 +24,7 @@
 #include "utility/stats_utils.h"
 
 #include "../DuctMicrobenchRunner.h"
-
-#define MESSAGE_T int
-
-
-template<typename MeshFactory, size_t N>
-struct RegisterBenchmarks {
-
-  benchmark::internal::Benchmark * make_benchmark() {
-
-    const std::string name{ MeshFactory::GetName() };
-
-    auto res = benchmark::RegisterBenchmark(
-      name.c_str(),
-      [](benchmark::State& state){
-        static DuctMicrobenchRunner<
-          N,
-          MeshFactory,
-          MESSAGE_T
-        > runner{};
-        runner.Run(state);
-      }
-    );
-
-    res->Threads(N);
-    report_confidence(res);
-
-    return res;
-
-  }
-
-  RegisterBenchmarks() {
-
-    make_benchmark();
-    make_benchmark()->UseRealTime();
-
-  }
-};
-
-// instantiated for each sample thread counts
-template<size_t N>
-struct ThreadCountPayload {
-
-  ThreadCountPayload() {
-
-    using factories_t = emp::TypePack<
-      uit::RingMeshFactory<MESSAGE_T>,
-      uit::DyadicMeshFactory<MESSAGE_T>,
-      uit::ProducerConsumerMeshFactory<MESSAGE_T>
-    >;
-
-    using benchmarks_t = typename factories_t::wrap<
-      uit::Curry<RegisterBenchmarks, N>::template curried
-    >;
-
-    using instantiator_t = typename benchmarks_t::template apply<std::tuple>;
-
-    // benchmarks registered in constructors for each type in tuple
-    instantiator_t{};
-
-  }
-};
+#include "../DuctMicrobenchUtils.h"
 
 // sample doubling thread counts
 uit::ForEach<
