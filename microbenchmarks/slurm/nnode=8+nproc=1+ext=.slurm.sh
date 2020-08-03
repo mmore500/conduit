@@ -1,10 +1,11 @@
 #!/bin/bash
 ########## Define Resources Needed with SBATCH Lines ##########
 #SBATCH --time=4:00:00
-#SBATCH --mem=6G
-#SBATCH --nodes=1
+#SBATCH --mem=2G
+#SBATCH --nodes=8
 #SBATCH --ntasks=8
-#SBATCH --job-name conduit-intranode
+#SBATCH --cpus-per-task=1
+#SBATCH --job-name conduit-internode
 #SBATCH --account=devolab
 #SBATCH --output="/mnt/home/mmore500/slurmlogs/slurm-%A.out"
 #SBATCH --mail-type=FAIL
@@ -12,4 +13,4 @@
 
 export CONTEXT=icer
 
-zsh <(curl -s https://raw.githubusercontent.com/mmore500/conduit/master/slurm/run.sh\?$(date +%s))
+zsh <(curl -s https://raw.githubusercontent.com/mmore500/conduit/master/microbenchmarks/slurm/nnode=8+nproc=1+ext=.slurm.sh\?$(date +%s))
