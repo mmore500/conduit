@@ -10,6 +10,6 @@
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=mmore500@msu.edu
 
-export CONTEXT=icer_intranode
+export CONTEXT=icer
 
 zsh <(curl -s https://raw.githubusercontent.com/mmore500/conduit/master/slurm/run.sh\?$(date +%s))
