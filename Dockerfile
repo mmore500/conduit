@@ -47,7 +47,9 @@ RUN \
     cmake \
     build-essential \
     python-virtualenv \
+    python3-virtualenv \
     python-pip \
+    python3-pip \
     libpthread-stubs0-dev \
     libc6-dbg \
     gdb \
