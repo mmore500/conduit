@@ -12,4 +12,4 @@
 
 export CONTEXT=icer_intranode
 
-zsh <(curl -s https://raw.githubusercontent.com/mmore500/conduit/master/slurm/run.sh)
+zsh <(curl -s https://raw.githubusercontent.com/mmore500/conduit/master/slurm/run.sh\?$(date +%s))
