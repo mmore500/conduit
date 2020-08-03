@@ -2,7 +2,7 @@
 ########## Define Resources Needed with SBATCH Lines ##########
 #SBATCH --time=4:00:00
 #SBATCH --mem=2G
-#SBATCH --nodes=1
+#SBATCH --nodes=8
 #SBATCH --ntasks=8
 #SBATCH --cpus-per-task=1
 #SBATCH --job-name conduit-internode

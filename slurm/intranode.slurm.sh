@@ -2,7 +2,7 @@
 ########## Define Resources Needed with SBATCH Lines ##########
 #SBATCH --time=4:00:00
 #SBATCH --mem=6G
-#SBATCH --nodes=8
+#SBATCH --nodes=1
 #SBATCH --ntasks=8
 #SBATCH --job-name conduit-intranode
 #SBATCH --account=devolab
