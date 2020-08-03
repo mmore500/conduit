@@ -1,4 +1,4 @@
-TEST_NAMES := CircularIndex math_utils safe_compare
+TEST_NAMES := CircularIndex math_utils safe_compare Curry
 
 EMP_DIR := ../../third-party/Empirical/source
 

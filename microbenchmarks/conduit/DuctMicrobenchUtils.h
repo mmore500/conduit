@@ -65,6 +65,12 @@ struct RegisterBenchmarks {
   }
 };
 
+template<typename MeshFactory, typename Ntype>
+struct RegisterBenchmarksTypeTemplate : public RegisterBenchmarks<
+  MeshFactory,
+  Ntype{}()
+> {};
+
 // instantiated for each sample thread counts
 template<size_t N>
 struct ThreadCountPayload {
@@ -78,7 +84,10 @@ struct ThreadCountPayload {
     >;
 
     using benchmarks_t = typename factories_t::wrap<
-      uit::Curry<RegisterBenchmarks, N>::template curried
+      uit::Curry<
+        RegisterBenchmarksTypeTemplate,
+        uit::ValType<N>
+      >::template curried
     >;
 
     using instantiator_t = typename benchmarks_t::template apply<std::tuple>;
