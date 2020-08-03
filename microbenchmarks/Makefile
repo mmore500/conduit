@@ -26,11 +26,11 @@ clean-%: %
 bench: $(addprefix bench-, $(TEST_NAMES))
 	for f in */*/*.json; do \
 		osf -u mmore500.login@gmail.com -p 7jkgp \
-		  upload $$f $(./make_osf_path.sh)/$$f; \
+		  upload $$f $$(./make_osf_path.sh)/$$f; \
 	done
 	python3 consolidate.py */*/*.json
 	osf -u mmore500.login@gmail.com -p 7jkgp \
-		upload "consolidated.csv" $(./make_osf_path.sh)/consolidated.csv
+		upload "consolidated.csv" $$(./make_osf_path.sh)/consolidated.csv
 
 build: $(addprefix build-, $(TEST_NAMES))
 
