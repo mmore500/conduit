@@ -79,6 +79,8 @@ RUN \
     libhdf5-serial-dev \
     python-h5py \
     python3-h5py \
+    slurm-client \
+    slurm-client-dbg \
     && \
   echo "installed hpc dependencies"
 
