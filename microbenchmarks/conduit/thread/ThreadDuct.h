@@ -29,7 +29,7 @@
 // sample doubling thread counts
 uit::ForEach<
   ThreadCountPayload,
-  256,
+  128,
   2,
   std::multiplies<size_t>
 > range{};
