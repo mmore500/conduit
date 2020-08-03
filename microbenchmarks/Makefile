@@ -24,13 +24,11 @@ clean-%: %
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(TEST_NAMES))
-	for f in */*/*.json; do \
+	python3 script/consolidate.py */*/*.json
+	for f in */*/*.json *.csv; do \
 		osf -u mmore500.login@gmail.com -p 7jkgp \
 		  upload $$f $$(./script/make_osf_path.sh)/$$f; \
 	done
-	python3 script/consolidate.py */*/*.json
-	osf -u mmore500.login@gmail.com -p 7jkgp \
-		upload "consolidated.csv" $$(./script/make_osf_path.sh)/consolidated.csv
 
 build: $(addprefix build-, $(TEST_NAMES))
 

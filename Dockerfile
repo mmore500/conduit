@@ -145,6 +145,7 @@ RUN \
     osfclient  \
     keyname  \
     pandas  \
+    frozendict  \
     && \
   echo "installed Python packages"
 
