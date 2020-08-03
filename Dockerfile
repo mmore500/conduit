@@ -138,7 +138,7 @@ RUN \
   echo "installed creature comforts"
 
 RUN \
-  pip install \
+  pip3 install \
     osfclient  \
     keyname  \
     pandas  \
