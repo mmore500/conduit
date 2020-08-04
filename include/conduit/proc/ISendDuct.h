@@ -88,7 +88,7 @@ class ISendDuct {
       MPI_STATUS_IGNORE
     ));
 #ifndef NDEBUG
-    if(flag) request_states[send_position] = false;
+    if(flag) request_states[send_position - pending] = false;
 #endif
 
     if (flag) --pending;
