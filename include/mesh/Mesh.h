@@ -116,7 +116,7 @@ public:
     const mesh_t<T, N> & mesh_,
     const std::function<thread_id_t(node_id_t)> thread_assignment_,
     const std::function<proc_id_t(node_id_t)> proc_assignment_
-      =assign_integrated<proc_id_t>()
+      =uit::AssignIntegrated<proc_id_t>{}
   )
   : mesh(mesh_)
   , thread_assignment(thread_assignment_)

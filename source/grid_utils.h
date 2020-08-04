@@ -49,7 +49,7 @@ grid_t make_grid(const config_t & cfg) {
   const size_t num_threads = cfg.at("num_threads");
   uit::Mesh mesh{
     uit::make_ring_mesh<State>(grid_size),
-    uit::assign_contiguously<uit::thread_id_t>(num_threads, grid_size)
+    uit::AssignContiguously<uit::thread_id_t>{num_threads, grid_size}
   };
 
   grid_t grid;

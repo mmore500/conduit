@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 
   uit::Mesh mesh{
     uit::make_ring_mesh<MSG_T>(num_nodes),
-    uit::assign_segregated<uit::thread_id_t>()
+    uit::AssignSegregated<uit::thread_id_t>{}
   };
 
   for (size_t node_id = 0; node_id < mesh.GetSize(); ++node_id) {
