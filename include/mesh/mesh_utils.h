@@ -275,15 +275,6 @@ struct ProducerConsumerMeshFactory {
 // * make_complete_mesh
 
 
-// TODO assign_randomly
-// make a vector of IDs, shuffle it, capture it,
-// then return result of indexing into it
-
-// TODO assign_chunkily (rename)
-// arrange into n-dimensional volume
-// then divvy into n-dimensional subcubes
-// (special case of assign_contiguously)
-
 // TODO make a util to get only values corresponding
 // to your thread's or your proc's indices
 // out of a container

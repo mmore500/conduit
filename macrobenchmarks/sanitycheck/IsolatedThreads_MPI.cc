@@ -38,7 +38,7 @@ void profile_thread_count(const size_t num_threads) {
 
   uit::Mesh mesh{
     uit::make_loop_mesh<MESSAGE_T>(num_threads),
-    uit::assign_segregated<uit::thread_id_t>()
+    uit::AssignSegregated<uit::thread_id_t>{}
   };
 
   std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
