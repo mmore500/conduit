@@ -16,9 +16,7 @@
 #include "mesh/Mesh.h"
 #include "mesh/mesh_utils.h"
 
-TEST_CASE("Ring Mesh") {
-
-
+uit::Conduit<int> make_conduit() {
   uit::Mesh<int> mesh{
     uit::RingMeshFactory<int>{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
@@ -34,12 +32,23 @@ TEST_CASE("Ring Mesh") {
 
   uit::RDMAWindowManager::Initialize();
 
-  const int message = uit::get_rank();
+  return uit::Conduit<int>{output, input};
 
-  output.MaybePut(message);
+};
 
-  // std::this_thread::sleep_for(std::chrono::seconds{1});
-  MPI_Barrier(MPI_COMM_WORLD);
+TEST_CASE("Ring Mesh") {
+
+  auto [output, input] = make_conduit();
+
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+
+  // check that everyone's connected properly
+  output.MaybePut(uit::get_rank());
+
+  // give enough time to "guarantee" message delivery
+  std::this_thread::sleep_for(std::chrono::seconds{1});
+  // this barrier is necessary for RDMA... TODO why?
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
   REQUIRE(
     input.GetCurrent()
@@ -47,6 +56,30 @@ TEST_CASE("Ring Mesh") {
       uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
     )
   );
+
+  // setup for next test
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  output.MaybePut(0);
+  std::this_thread::sleep_for(std::chrono::seconds{1});
+
+  // check that buffer wraparound works properly
+  for (int i = 0; i < DEFAULT_BUFFER + 100; ++i) {
+
+    output.MaybePut(i);
+
+    // nobody should see messages that haven't been sent yet
+    REQUIRE(input.GetCurrent() <= i);
+
+    uit::verify(MPI_Barrier(MPI_COMM_WORLD)); //TODO is this necessary
+
+  }
+
+  // give enough time to "guarantee" message delivery
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  std::this_thread::sleep_for(std::chrono::seconds{1});
+
+  // everyone should have gotten the final message by now
+  REQUIRE( input.GetCurrent() == DEFAULT_BUFFER + 99 );
 
 }
 

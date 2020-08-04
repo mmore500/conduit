@@ -14,9 +14,12 @@
 
 namespace uit {
 
+template<typename T, size_t N=DEFAULT_BUFFER>
+using Conduit = std::pair<Inlet<T,N>, Outlet<T,N>>;
+
 //TODO rename conduit
 template<typename T, size_t N=DEFAULT_BUFFER>
-std::pair<Inlet<T,N>, Outlet<T,N>> make_pipe() {
+Conduit<T,N> make_pipe() {
 
   std::tuple<std::shared_ptr<Duct<T, N>>> args{std::make_shared<Duct<T, N>>()};
   return std::pair<Inlet<T,N>, Outlet<T,N>>(
