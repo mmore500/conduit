@@ -10,48 +10,27 @@
 #include "utility/CircularIndex.h"
 #include "distributed/mpi_utils.h"
 #include "distributed/RDMAWindowManager.h"
+#include "distributed/assign_utils.h"
 #include "conduit/pipe_utils.h"
 #include "utility/math_utils.h"
-
-// TODO rewrite this to use catch and to use mesh_utils
-
-uit::Outlet<int> make_input() {
-
-  auto input_pipe = uit::make_pipe<int>();
-  auto & [__, outlet] = input_pipe;
-
-  const int source = uit::circular_index(
-    uit::get_rank(),
-    uit::get_nprocs(),
-    -1
-  );
-
-  outlet.SplitDuct<uit::ProcOutletDuct<int>>(uit::get_rank(), source);
-
-  return outlet;
-
-}
-
-uit::Inlet<int> make_output() {
-
-  // another way of doing it
-  auto inlet = uit::make_sink<int>();
-
-  const int dest = uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1);
-
-  inlet.EmplaceDuct<uit::ProcInletDuct<int>>(uit::get_rank(), dest);
-
-  return inlet;
-
-}
-
+#include "mesh/Mesh.h"
+#include "mesh/mesh_utils.h"
 
 TEST_CASE("Ring Mesh") {
 
 
-  uit::Outlet<int> input = make_input();
+  uit::Mesh<int> mesh{
+    uit::RingMeshFactory<int>{}(uit::get_nprocs()),
+    uit::AssignIntegrated<uit::thread_id_t>{},
+    uit::AssignAvailableProcs{}
+  };
 
-  uit::Inlet<int> output = make_output();
+  auto bundles = mesh.GetSubmesh(0);
+
+  REQUIRE( bundles.size() == 1);
+
+  uit::Outlet<int> input = bundles[0].inputs[0];
+  uit::Inlet<int> output = bundles[0].outputs[0];
 
   uit::RDMAWindowManager::Initialize();
 
@@ -62,10 +41,8 @@ TEST_CASE("Ring Mesh") {
   // std::this_thread::sleep_for(std::chrono::seconds{1});
   MPI_Barrier(MPI_COMM_WORLD);
 
-  const int res = input.GetCurrent();
-
   REQUIRE(
-    res
+    input.GetCurrent()
     == uit::numeric_cast<int>(
       uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
     )
