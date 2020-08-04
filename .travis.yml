@@ -44,7 +44,7 @@ jobs:
       web && ./ci/deploy_gh_pages.sh"
     on:
       branch: master
-    name: Deploy to DockerHub
+  - name: Deploy to DockerHub
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
