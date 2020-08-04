@@ -60,7 +60,7 @@ struct RegisterBenchmarks {
   RegisterBenchmarks() {
 
     make_benchmark();
-    make_benchmark()->UseRealTime();
+    // make_benchmark()->UseRealTime();
 
   }
 };
