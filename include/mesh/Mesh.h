@@ -80,7 +80,7 @@ class Mesh {
 
         if (my_proc != their_proc) {
           link.GetInput().template SplitDuct<
-            ProcInletDuct<T, N>
+            ProcOutletDuct<T, N>
           >(
             my_proc,
             their_proc,
@@ -95,7 +95,7 @@ class Mesh {
 
         if (my_proc != their_proc) {
           link.GetOutput().template SplitDuct<
-            ProcOutletDuct<T, N>
+            ProcInletDuct<T, N>
           >(
             my_proc,
             their_proc,
