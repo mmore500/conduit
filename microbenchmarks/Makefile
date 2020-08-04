@@ -25,6 +25,9 @@ clean-%: %
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(TEST_NAMES))
 	python3 script/consolidate.py */*/*.json
+	for f in *run_type=iteration*.json; do \
+		python3 script/graph.py $$f; \
+	done
 	./script/upload.sh
 
 build: $(addprefix build-, $(TEST_NAMES))
@@ -37,6 +40,7 @@ cranky: $(addprefix cranky-, $(TEST_NAMES))
 
 clean: $(addprefix clean-, $(TEST_NAMES))
 	rm -f *.out
+	rm -f *.png
 	rm -f *.o
 	rm -f *.gcda
 	rm -f *.gcno
