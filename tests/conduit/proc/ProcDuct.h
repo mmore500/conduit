@@ -3,6 +3,9 @@
 
 #include "mpi.h"
 
+#define CATCH_CONFIG_RUNNER
+#include "Catch/single_include/catch2/catch.hpp"
+
 #include "conduit/config.h"
 #include "utility/CircularIndex.h"
 #include "distributed/mpi_utils.h"
@@ -10,9 +13,11 @@
 #include "conduit/pipe_utils.h"
 #include "utility/math_utils.h"
 
-uit::Outlet<char> make_input() {
+// TODO rewrite this to use catch and to use mesh_utils
 
-  auto input_pipe = uit::make_pipe<char>();
+uit::Outlet<int> make_input() {
+
+  auto input_pipe = uit::make_pipe<int>();
   auto & [__, outlet] = input_pipe;
 
   const int source = uit::circular_index(
@@ -21,58 +26,62 @@ uit::Outlet<char> make_input() {
     -1
   );
 
-  outlet.SplitDuct<uit::ProcOutletDuct<char>>(uit::get_rank(), source);
+  outlet.SplitDuct<uit::ProcOutletDuct<int>>(uit::get_rank(), source);
 
   return outlet;
 
 }
 
-uit::Inlet<char> make_output() {
+uit::Inlet<int> make_output() {
 
   // another way of doing it
-  auto inlet = uit::make_sink<char>();
+  auto inlet = uit::make_sink<int>();
 
   const int dest = uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1);
 
-  inlet.EmplaceDuct<uit::ProcInletDuct<char>>(uit::get_rank(), dest);
+  inlet.EmplaceDuct<uit::ProcInletDuct<int>>(uit::get_rank(), dest);
 
   return inlet;
 
 }
 
 
-void run() {
+TEST_CASE("Ring Mesh") {
 
 
-  uit::Outlet<char> input = make_input();
+  uit::Outlet<int> input = make_input();
 
-  uit::Inlet<char> output = make_output();
+  uit::Inlet<int> output = make_output();
 
   uit::RDMAWindowManager::Initialize();
 
-  const char message = 65 + uit::get_rank();
+  const int message = uit::get_rank();
 
   output.MaybePut(message);
 
-  std::this_thread::sleep_for(std::chrono::seconds{1});
+  // std::this_thread::sleep_for(std::chrono::seconds{1});
+  MPI_Barrier(MPI_COMM_WORLD);
 
-  char res;
-  res = input.GetCurrent();
+  const int res = input.GetCurrent();
 
-  std::cout << "rank " << uit::get_rank() << " sent " << message << std::endl;
-  std::cout << "rank " << uit::get_rank() << " received " << res << std::endl;
+  REQUIRE(
+    res
+    == uit::numeric_cast<int>(
+      uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+    )
+  );
 
 }
 
 int main(int argc, char* argv[]) {
 
-  MPI_Init(&argc, &argv);
+  uit::verify(MPI_Init(&argc, &argv));
 
-  run();
+  int result = Catch::Session{}.run( argc, argv );
 
-  uit::RDMAWindowManager::Cleanup();
+  uit::RDMAWindowManager::Cleanup(); // TODO rename Finalize
 
-  MPI_Finalize();
+  uit::verify(MPI_Finalize());
 
-  return 0;
+  return result;
 }
