@@ -56,7 +56,7 @@ class ISendDuct {
     );
     verify(MPI_Isend(
       &buffer[send_position],
-      1,
+      sizeof(T),
       MPI_BYTE, // TODO template on T
       outlet_proc,
       tag,

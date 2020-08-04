@@ -55,7 +55,7 @@ class IRecvDuct {
     );
     verify(MPI_Irecv(
       &buffer[receive_position],
-      1,
+      sizeof(T),
       MPI_BYTE, // TODO template on T
       inlet_proc,
       tag,
