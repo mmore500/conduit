@@ -146,6 +146,10 @@ RUN \
     keyname  \
     pandas  \
     frozendict  \
+    seaborn  \
+    matplotlib  \
+    python-slugify  \
+    iterpop  \
     && \
   echo "installed Python packages"
 
