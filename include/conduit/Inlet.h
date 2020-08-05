@@ -23,7 +23,7 @@ class Inlet {
   OccupancyCaps caps;
 #endif
 
-  using buffer_t = std::array<T, N>;
+  using buffer_t = emp::array<T, N>;
   using index_t = CircularIndex<N>;
 
   std::shared_ptr<Duct<T,N>> duct;

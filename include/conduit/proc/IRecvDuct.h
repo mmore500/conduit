@@ -28,16 +28,16 @@ class IRecvDuct {
   friend Duct<T, N>;
 
   using pending_t = size_t;
-  using buffer_t = std::array<T, N>;
+  using buffer_t = emp::array<T, N>;
   using index_t = CircularIndex<N>;
 
   pending_t pending{0};
   buffer_t buffer;
 
-  std::array<MPI_Request, N> receive_requests;
+  emp::array<MPI_Request, N> receive_requests;
 #ifndef NDEBUG
   // most vexing parse :/
-  std::vector<char> request_states=std::vector<char>(N, false);
+  emp::vector<char> request_states=emp::vector<char>(N, false);
 #endif
 
   MPI_Comm comm;

@@ -87,7 +87,7 @@ void initialize_grid(grid_t & grid) {
 
 double run_grid(grid_t & grid, const config_t & cfg) {
 
-  std::vector<chunk_t> chunks(
+  emp::vector<chunk_t> chunks(
     make_chunks(
       grid,
       cfg.at("num_chunks")

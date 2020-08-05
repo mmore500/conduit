@@ -23,7 +23,7 @@ class HeadTailDuct {
     std::string ToString() const { return emp::to_string(t); }
   };
 
-  struct alignas(CACHE_LINE_SIZE) buffer_t : public std::array<padded, N> { };
+  struct alignas(CACHE_LINE_SIZE) buffer_t : public emp::array<padded, N> { };
 
   alignas(CACHE_LINE_SIZE) size_t head{0};
   alignas(CACHE_LINE_SIZE) size_t tail{0};
