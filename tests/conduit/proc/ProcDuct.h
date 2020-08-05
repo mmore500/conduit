@@ -16,7 +16,9 @@
 #include "mesh/Mesh.h"
 #include "mesh/mesh_utils.h"
 
-uit::Conduit<int> make_conduit() {
+#include "../../MultiprocessReporter.h"
+
+uit::Conduit<int> make_ring_bundle() {
   uit::Mesh<int> mesh{
     uit::RingMeshFactory<int>{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
@@ -34,11 +36,11 @@ uit::Conduit<int> make_conduit() {
 
   return uit::Conduit<int>{output, input};
 
-};
+}
 
 TEST_CASE("Ring Mesh") {
 
-  auto [output, input] = make_conduit();
+  auto [output, input] = make_ring_bundle();
 
   uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
@@ -63,14 +65,14 @@ TEST_CASE("Ring Mesh") {
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
   // check that buffer wraparound works properly
-  for (int i = 0; i < DEFAULT_BUFFER + 100; ++i) {
+  for (int i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
 
     output.MaybePut(i);
 
     // nobody should see messages that haven't been sent yet
     REQUIRE(input.GetCurrent() <= i);
 
-    uit::verify(MPI_Barrier(MPI_COMM_WORLD)); //TODO is this necessary
+    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
   }
 
@@ -79,7 +81,9 @@ TEST_CASE("Ring Mesh") {
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
   // everyone should have gotten the final message by now
-  REQUIRE( input.GetCurrent() == DEFAULT_BUFFER + 99 );
+  REQUIRE( input.GetCurrent() == 2 * DEFAULT_BUFFER  );
+
+  uit::RDMAWindowManager::Cleanup(); // TODO rename Finalize
 
 }
 
@@ -87,9 +91,9 @@ int main(int argc, char* argv[]) {
 
   uit::verify(MPI_Init(&argc, &argv));
 
-  int result = Catch::Session{}.run( argc, argv );
-
-  uit::RDMAWindowManager::Cleanup(); // TODO rename Finalize
+  Catch::Session session;
+  session.configData().reporterName = "multiprocess";
+  int result = session.run( argc, argv );
 
   uit::verify(MPI_Finalize());
 
