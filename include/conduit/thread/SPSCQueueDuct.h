@@ -21,7 +21,7 @@ class SPSCQueueDuct {
   friend Duct<T, N>;
 
   using pending_t = std::atomic<size_t>;
-  using buffer_t = std::array<T, N>;
+  using buffer_t = emp::array<T, N>;
 
   pending_t pending{0};
   rigtorp::SPSCQueue<T> queue{N};

@@ -25,7 +25,7 @@ class AtomicPendingDuct {
   };
 
   struct alignas(CACHE_LINE_SIZE) pending_t : public std::atomic<size_t> { };
-  struct alignas(CACHE_LINE_SIZE) buffer_t : public std::array<padded, N> { };
+  struct alignas(CACHE_LINE_SIZE) buffer_t : public emp::array<padded, N> { };
 
   pending_t pending{0};
   buffer_t buffer;
