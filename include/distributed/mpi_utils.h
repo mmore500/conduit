@@ -1,5 +1,6 @@
 #pragma once
 
+#include <assert.h>
 #include <numeric>
 #include <stddef.h>
 
@@ -448,6 +449,17 @@ proc_id_t translate_rank(
   const MPI_Comm& to=MPI_COMM_WORLD
 ) {
   return translate_rank(rank, comm_to_group(from), comm_to_group(to));
+}
+
+void init_multithread(int *argc, char ***argv) {
+  int res{};
+  uit::verify(MPI_Init_thread(argc, argv, MPI_THREAD_MULTIPLE, &res));
+  assert(res >= MPI_THREAD_MULTIPLE);
+}
+
+void init_multithread() {
+  int argc{};
+  init_multithread(&argc, nullptr);
 }
 
 }
