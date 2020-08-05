@@ -224,12 +224,12 @@ TEST_CASE("Producer-Consumer Mesh") {
   // check that buffer wraparound works properly
   for (int i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
 
+    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+
     if (output) output->MaybePut(i);
 
     // nobody should see messages that haven't been sent yet
     if (input) REQUIRE(input->GetCurrent() <= i);
-
-    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
   }
 
@@ -240,7 +240,6 @@ TEST_CASE("Producer-Consumer Mesh") {
   // everyone should have gotten the final message by now
   if (input) REQUIRE( input->GetCurrent() == DEFAULT_BUFFER * 2 );
 
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
   uit::RDMAWindowManager::Cleanup(); // TODO rename Finalize
 
