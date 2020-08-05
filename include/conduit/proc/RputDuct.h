@@ -166,7 +166,6 @@ public:
     }
 
     emp_assert(
-      true,
       std::none_of(
         std::begin(request_states),
         std::end(request_states),

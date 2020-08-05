@@ -129,7 +129,6 @@ public:
   , outlet_proc(outlet_proc_)
   , tag(tag_) {
     emp_assert(
-      true,
       std::none_of(
         std::begin(request_states),
         std::end(request_states),
