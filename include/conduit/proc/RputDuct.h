@@ -149,10 +149,10 @@ public:
   ) : comm(comm_)
   , outlet_proc(outlet_proc_) {
 
-    // make spoof call to ensure reciporical activation
-    RDMAWindowManager::Acquire(outlet_proc, 0);
-
     if (get_rank(comm) == inlet_proc) {
+      // make spoof call to ensure reciporical activation
+      RDMAWindowManager::Acquire(outlet_proc, 0);
+
       // we'll emp_assert to make sure it actually completed
       verify(MPI_Irecv(
         &target_offset, // void *buf
