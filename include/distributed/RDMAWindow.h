@@ -18,6 +18,7 @@ class RDMAWindow {
 
   size_t size;
 
+  // this is relative to the window communicator
   // rank where window is located
   proc_id_t local_rank;
 

@@ -143,6 +143,7 @@ TEST_CASE("Ring Mesh") {
   }
 
   // give enough time to "guarantee" message delivery
+  // this barrier is necessary for RDMA... TODO why?
   uit::verify(MPI_Barrier(MPI_COMM_WORLD));
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
@@ -215,6 +216,7 @@ TEST_CASE("Producer-Consumer Mesh") {
   } else REQUIRE( uit::get_rank() % 2 == 0 ); // is producer
 
   // setup for next test
+  // this barrier is necessary for RDMA... TODO why?
   uit::verify(MPI_Barrier(MPI_COMM_WORLD));
   if (output) output->MaybePut(0);
   std::this_thread::sleep_for(std::chrono::seconds{1});
