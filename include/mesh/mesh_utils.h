@@ -206,8 +206,6 @@ mesh_t<T, N> make_loop_mesh(const size_t cardinality) {
 template<typename T, size_t N=DEFAULT_BUFFER>
 mesh_t<T, N> make_producer_consumer_mesh(const size_t cardinality) {
 
-  if (cardinality == 1) return make_loop_mesh<T, N>(cardinality);
-
   mesh_t<T, N> res;
 
   size_t pipe_id_counter{};
@@ -228,6 +226,18 @@ mesh_t<T, N> make_producer_consumer_mesh(const size_t cardinality) {
       });
 
   }
+
+  // for odd cardinality, add a loop pipe
+  if (cardinality%2) {
+    auto self_pipe = make_pipe<T, N>();
+    auto & [self_inlet, self_outlet] = self_pipe;
+    const size_t self_id = pipe_id_counter++;
+
+    res.push_back(io_bundle_t<T, N>{
+      {{self_outlet, self_id}},
+      {{self_inlet, self_id}}
+    });
+  };
 
   return res;
 
