@@ -74,6 +74,9 @@ TEST_CASE("Unmatched puts") {
   uit::verify(MPI_Barrier(MPI_COMM_WORLD));
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
+  // TODO why are these extra GetCurrent's necessary?
+  input.GetCurrent();
+  input.GetCurrent();
   REQUIRE( input.GetCurrent() >= DEFAULT_BUFFER - 1 );
   REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
 
