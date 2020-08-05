@@ -117,6 +117,27 @@ class RputDuct {
 
   }
 
+  void CancelSend() {
+
+    emp_assert(
+      request_states[send_position - pending],
+      send_position,
+      pending,
+      format_member("*this", *this)
+    );
+    verify(MPI_Cancel(
+      &send_requests[send_position - pending]
+    ));
+#ifndef NDEBUG
+    request_states[send_position - pending] = false;
+#endif
+
+    --pending;
+
+  }
+
+  void Flush() { while (pending && ConfirmSend()); }
+
 public:
 
   // TODO check if is inlet proc
@@ -157,6 +178,20 @@ public:
 
   }
 
+  ~RputDuct() {
+    Flush();
+    while (pending) CancelSend();
+    emp_assert(
+      std::none_of(
+        std::begin(request_states),
+        std::end(request_states),
+        identity
+      ),
+      [](){ error_message_mutex.lock(); return "locked"; }(),
+      format_member("*this", *this)
+    );
+  }
+
   //todo rename
   void Push() {
 
@@ -184,7 +219,7 @@ public:
   }
 
   size_t GetAvailableCapacity() {
-    while (pending && ConfirmSend());
+    Flush();
     return N - pending;
   }
 

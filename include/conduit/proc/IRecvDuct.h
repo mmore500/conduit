@@ -98,6 +98,36 @@ class IRecvDuct {
 
   }
 
+  void CancelReceive(const size_t position) {
+
+    emp_assert(
+      request_states[position],
+      [](){ error_message_mutex.lock(); return "locked"; }(),
+      position,
+      receive_position,
+      pending,
+      format_member("*this", *this)
+    );
+
+    verify(MPI_Cancel(
+      &receive_requests[position]
+    ));
+#ifndef NDEBUG
+    request_states[position] = false;
+#endif
+
+  }
+
+  void CancelReceives() {
+
+    for (size_t position = 0; position < N; ++position) {
+      CancelReceive(position);
+    }
+
+  }
+
+  void Flush() { while (ConfirmReceive()); }
+
 public:
 
   IRecvDuct(
@@ -111,6 +141,20 @@ public:
     for (size_t i = 0; i < N; ++i) RequestReceive();
     emp_assert(
       std::all_of(
+        std::begin(request_states),
+        std::end(request_states),
+        identity
+      ),
+      [](){ error_message_mutex.lock(); return "locked"; }(),
+      format_member("*this", *this)
+    );
+  }
+
+  ~IRecvDuct() {
+    Flush();
+    CancelReceives();
+    emp_assert(
+      std::none_of(
         std::begin(request_states),
         std::end(request_states),
         identity
@@ -157,7 +201,7 @@ public:
   }
 
   size_t GetPending() {
-    while (ConfirmReceive());
+    Flush();
     return pending;
   }
 
