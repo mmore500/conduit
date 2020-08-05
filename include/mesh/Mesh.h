@@ -160,6 +160,30 @@ public:
     return res;
   }
 
+  std::string ToString() const {
+    std::stringstream ss;
+
+    std::map sorted(
+      std::begin(output_registry),
+      std::end(output_registry)
+    );
+
+    for (const auto & [pipe_id, output_id] : sorted) {
+      const auto input_id = input_registry.at(pipe_id);
+      ss << "conduit " << pipe_id << ": "
+        << "node " << output_id
+        << " (process " <<  proc_assignment(output_id)
+        << ", thread " << thread_assignment(output_id) << ")"
+        << " -> "
+        << "node " << input_id
+        << " (process " <<  proc_assignment(input_id)
+        << ", thread " << thread_assignment(input_id) << ")"
+        << std::endl;
+    }
+
+    return ss.str();
+  }
+
 };
 
 }
