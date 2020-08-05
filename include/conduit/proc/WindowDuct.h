@@ -107,7 +107,7 @@ public:
     throw "bad SetElement on WindowDuct";
   }
 
-  std::string GetType() const { return "WindowDuct"; }
+  static std::string GetType() { return "WindowDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;

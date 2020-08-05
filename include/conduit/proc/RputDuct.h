@@ -228,7 +228,7 @@ public:
 
   void SetElement(const size_t n, const T & val) { buffer[n] = val; }
 
-  std::string GetType() const { return "RputDuct"; }
+  static std::string GetType() { return "RputDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;

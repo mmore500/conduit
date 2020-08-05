@@ -72,7 +72,7 @@ public:
     queue.try_push(val);
   }
 
-  std::string GetType() const { return "SPSCQueueDuct"; }
+  static std::string GetType() { return "SPSCQueueDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;

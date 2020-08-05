@@ -189,7 +189,7 @@ public:
 
   void SetElement(const size_t n, const T & val) { buffer[n] = val; }
 
-  std::string GetType() const { return "ISendDuct"; }
+  static std::string GetType() { return "ISendDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
