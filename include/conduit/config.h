@@ -4,6 +4,7 @@
 
 namespace uit {
 
+// TODO don't use macros
 #define DEFAULT_BUFFER 1024
 
 #ifdef __cpp_lib_hardware_interference_size
