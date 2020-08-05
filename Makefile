@@ -55,6 +55,7 @@ cov: install-coverage-dependencies
 
 clean:
 	rm -f $(PROJECT) web/$(PROJECT).js web/*.js.map web/*.js.map *~ source/*.o web/*.wasm web/*.wast
+	rm -rf coverage_include
 	cd macrobenchmarks && make clean
 	cd microbenchmarks && make clean
 	cd tests && make clean
