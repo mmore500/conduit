@@ -57,13 +57,13 @@ void checkin_chunk(chunk_t & source, const chunk_t & checkedout) {
 }
 
 
-std::vector<chunk_t> make_chunks(grid_t & grid, const size_t num_chunks) {
+emp::vector<chunk_t> make_chunks(grid_t & grid, const size_t num_chunks) {
 
   const size_t chunk_width = grid.size() / num_chunks;
 
   assert(grid.size() % num_chunks == 0);
 
-  std::vector<chunk_t> res;
+  emp::vector<chunk_t> res;
 
   for (
     auto [chunk_begin, chunk_end] = std::tuple{std::begin(grid), handle_t{}};

@@ -65,7 +65,7 @@ benchmark::internal::Benchmark* report_confidence(
     }
   )->ComputeStatistics(
     "ci95",
-    [](const std::vector<double>& v) -> double {
+    [](const emp::vector<double>& v) -> double {
       emp::Random rand;
       return std::get<1>(
         bootstrap(rand, v)

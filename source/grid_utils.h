@@ -36,14 +36,14 @@
 #include "State.h"
 #include "mesh/Mesh.h"
 
-using grid_t = std::vector<Tile>;
+using grid_t = emp::vector<Tile>;
 using handle_t = grid_t::iterator;
-using chunk_t = std::vector<handle_t>;
+using chunk_t = emp::vector<handle_t>;
 
 grid_t make_grid(const config_t & cfg) {
 
-  std::vector<uit::Inlet<State>> inlets;
-  std::vector<uit::Outlet<State>> outlets;
+  emp::vector<uit::Inlet<State>> inlets;
+  emp::vector<uit::Outlet<State>> outlets;
 
   const size_t grid_size = cfg.at("grid_size");
   const size_t num_threads = cfg.at("num_threads");
