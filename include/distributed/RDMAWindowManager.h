@@ -140,6 +140,19 @@ public:
     }
   }
 
+  static std::string ToString() {
+
+    std::stringstream ss;
+
+    for (proc_id_t rank : GetSortedRanks()) {
+      ss << format_member("rank", rank) << std::endl;
+      ss << format_member("window", windows.at(rank).ToString());
+    }
+
+    return ss.str();
+
+  }
+
 };
 
 }

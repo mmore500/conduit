@@ -163,6 +163,30 @@ public:
 
   }
 
+  size_t GetSize() const { return size; }
+
+  proc_id_t GetLocalRank() const { return local_rank; }
+
+  std::string ToString() const {
+
+    std::stringstream ss;
+    ss << format_member("IsInitialized()", emp::to_string(IsInitialized()))
+      << std::endl;
+    ss << format_member("IsUninitialized()", emp::to_string(IsUninitialized()))
+      << std::endl;
+    ss << format_member("IsInitializable()", emp::to_string(IsInitializable()))
+      << std::endl;
+    // TODO add print function for MPI_Win
+    ss << format_member("char * buffer", static_cast<const void *>(buffer))
+      << std::endl;
+    ss << format_member("size_t size", size) << std::endl;
+    ss << format_member("proc_id_t local_rank", local_rank);
+
+    return ss.str();
+
+  }
+
+
 };
 
 }
