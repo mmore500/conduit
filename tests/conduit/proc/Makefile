@@ -53,5 +53,8 @@ clean:
 	rm -f *.gcno
 	rm -f *.info
 	rm -f *.gcov
+	rm -f *.txt
+	rm -f *.profdata
+	rm -f *.profraw
 	rm -f ./Coverage*
 	rm -rf ./temp
