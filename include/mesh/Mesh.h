@@ -20,14 +20,14 @@ class Mesh {
   mesh_t<T, N> mesh;
 
   // pipe_id -> node_id
-  std::unordered_map<size_t, size_t> input_registry;
-  std::unordered_map<size_t, size_t> output_registry;
+  std::unordered_map<pipe_id_t, node_id_t> input_registry;
+  std::unordered_map<pipe_id_t, node_id_t> output_registry;
 
   const std::function<thread_id_t(node_id_t)> thread_assignment;
   const std::function<proc_id_t(node_id_t)> proc_assignment;
 
   void InitializeRegistries() {
-    for (size_t node_id = 0; node_id < mesh.size(); ++node_id) {
+    for (node_id_t node_id = 0; node_id < mesh.size(); ++node_id) {
       auto & node = mesh[node_id];
       auto & [inputs, outputs] = node;
 
@@ -46,7 +46,7 @@ class Mesh {
 
   void InitializeInterThreadPipes() {
 
-    for (size_t node_id = 0; node_id < mesh.size(); ++node_id) {
+    for (node_id_t node_id = 0; node_id < mesh.size(); ++node_id) {
       auto & node = mesh[node_id];
       auto & [inputs, outputs] = node;
       const thread_id_t my_thread = thread_assignment(node_id);
@@ -68,7 +68,7 @@ class Mesh {
 
   void InitializeInterProcPipes() {
 
-    for (size_t node_id = 0; node_id < mesh.size(); ++node_id) {
+    for (node_id_t node_id = 0; node_id < mesh.size(); ++node_id) {
       auto & node = mesh[node_id];
       auto & [inputs, outputs] = node;
       // TODO rename
@@ -149,7 +149,7 @@ public:
     const proc_id_t pid=get_proc_id()
   ) {
     mesh_t<T, N> res;
-    for (size_t node_id = 0; node_id < mesh.size(); ++node_id) {
+    for (node_id_t node_id = 0; node_id < mesh.size(); ++node_id) {
       if (
         thread_assignment(node_id) == tid
         && proc_assignment(node_id) == pid
