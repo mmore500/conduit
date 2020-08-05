@@ -57,7 +57,7 @@ benchmark::internal::Benchmark* report_confidence(
     NumReps
   )->ComputeStatistics(
     "ci5",
-    [](const emp::vector<double>& v) -> double {
+    [](const std::vector<double>& v) -> double {
       emp::Random rand;
       return std::get<0>(
         bootstrap(rand, v)
@@ -65,7 +65,7 @@ benchmark::internal::Benchmark* report_confidence(
     }
   )->ComputeStatistics(
     "ci95",
-    [](const emp::vector<double>& v) -> double {
+    [](const std::vector<double>& v) -> double {
       emp::Random rand;
       return std::get<1>(
         bootstrap(rand, v)
