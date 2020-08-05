@@ -101,7 +101,7 @@ public:
     buffer[n] = val;
   }
 
-  std::string GetType() const { return "PendingDuct"; }
+  static std::string GetType() { return "PendingDuct"; }
 
   std::string ToString() const {
 

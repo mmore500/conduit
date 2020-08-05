@@ -217,7 +217,7 @@ public:
     throw "bad SetElement on IRecvDuct";
   }
 
-  std::string GetType() const { return "IRecvDuct"; }
+  static std::string GetType() { return "IRecvDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;

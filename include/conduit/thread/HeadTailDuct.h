@@ -71,7 +71,7 @@ public:
 
   void SetElement(const size_t n, const T & val) { buffer[n].t = val; }
 
-  std::string GetType() const { return "HeadTailDuct"; }
+  static std::string GetType() { return "HeadTailDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
