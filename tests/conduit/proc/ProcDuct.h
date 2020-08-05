@@ -18,6 +18,69 @@
 
 #include "../../MultiprocessReporter.h"
 
+TEST_CASE("Unmatched gets") {
+
+  uit::Mesh<int> mesh{
+    uit::DyadicMeshFactory<int>{}(uit::get_nprocs()),
+    uit::AssignIntegrated<uit::thread_id_t>{},
+    uit::AssignAvailableProcs{}
+  };
+
+  auto bundles = mesh.GetSubmesh(0);
+
+  REQUIRE( bundles.size() == 1 );
+
+  uit::Outlet<int> input = bundles[0].inputs[0];
+  uit::Inlet<int> output = bundles[0].outputs[0];
+
+  uit::RDMAWindowManager::Initialize();
+
+  output.MaybePut(42);
+  // this barrier is necessary for RDMA... TODO why?
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  std::this_thread::sleep_for(std::chrono::seconds{1});
+
+
+  for (int i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
+    REQUIRE( input.GetCurrent() == 42 );
+  }
+
+  uit::RDMAWindowManager::Cleanup();
+
+}
+
+TEST_CASE("Unmatched puts") {
+
+  uit::Mesh<int> mesh{
+    uit::DyadicMeshFactory<int>{}(uit::get_nprocs()),
+    uit::AssignIntegrated<uit::thread_id_t>{},
+    uit::AssignAvailableProcs{}
+  };
+
+  auto bundles = mesh.GetSubmesh(0);
+
+  REQUIRE( bundles.size() == 1 );
+
+  uit::Outlet<int> input = bundles[0].inputs[0];
+  uit::Inlet<int> output = bundles[0].outputs[0];
+
+  uit::RDMAWindowManager::Initialize();
+
+  for (int i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
+    output.MaybePut(i);
+  }
+
+  // this barrier is necessary for RDMA... TODO why?
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  std::this_thread::sleep_for(std::chrono::seconds{1});
+
+  REQUIRE( input.GetCurrent() >= DEFAULT_BUFFER - 1 );
+  REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
+
+  uit::RDMAWindowManager::Cleanup();
+
+}
+
 uit::Conduit<int> make_ring_bundle() {
   uit::Mesh<int> mesh{
     uit::RingMeshFactory<int>{}(uit::get_nprocs()),
