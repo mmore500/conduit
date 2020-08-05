@@ -153,6 +153,97 @@ TEST_CASE("Ring Mesh") {
 
 }
 
+std::pair<
+  std::optional< uit::Outlet<int> >,
+  std::optional< uit::Inlet<int> >
+> make_producer_consumer_bundle() {
+
+  uit::Mesh<int> mesh{
+    uit::ProducerConsumerMeshFactory<int>{}(uit::get_nprocs()),
+    uit::AssignIntegrated<uit::thread_id_t>{},
+    uit::AssignAvailableProcs{}
+  };
+
+  auto bundles = mesh.GetSubmesh(0);
+
+  REQUIRE( bundles.size() == 1 );
+
+  std::optional<uit::Outlet<int>> input = (
+    bundles[0].inputs.size()
+    ? std::optional{bundles[0].inputs[0]}
+    : std::nullopt
+  );
+  std::optional<uit::Inlet<int>> output = (
+    bundles[0].outputs.size()
+    ? std::optional{bundles[0].outputs[0]}
+    : std::nullopt
+  );
+
+  uit::RDMAWindowManager::Initialize();
+
+  return std::pair{input, output};
+
+};
+
+TEST_CASE("Producer-Consumer Mesh") {
+
+  auto [input, output] = make_producer_consumer_bundle();
+
+  REQUIRE((input || output));
+
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+
+  // check that everyone's connected properly
+  if (output) output->MaybePut(uit::get_rank());
+
+  // give enough time to "guarantee" message delivery
+  std::this_thread::sleep_for(std::chrono::seconds{1});
+  // this barrier is necessary for RDMA... TODO why?
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+
+  // did we get expected rank ID as message?
+  if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
+    // is odd process loop at end
+    REQUIRE( input->GetCurrent() == uit::get_rank());
+  } else if (input) {
+    // is consumer
+    REQUIRE(
+      input->GetCurrent() == uit::numeric_cast<int>(
+        uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+      )
+    );
+  } else REQUIRE( uit::get_rank() % 2 == 0 ); // is producer
+
+  // setup for next test
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  if (output) output->MaybePut(0);
+  std::this_thread::sleep_for(std::chrono::seconds{1});
+
+  // check that buffer wraparound works properly
+  for (int i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
+
+    if (output) output->MaybePut(i);
+
+    // nobody should see messages that haven't been sent yet
+    if (input) REQUIRE(input->GetCurrent() <= i);
+
+    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+
+  }
+
+  // give enough time to "guarantee" message delivery
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  std::this_thread::sleep_for(std::chrono::seconds{1});
+
+  // everyone should have gotten the final message by now
+  if (input) REQUIRE( input->GetCurrent() == DEFAULT_BUFFER * 2 );
+
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+
+  uit::RDMAWindowManager::Cleanup(); // TODO rename Finalize
+
+}
+
 int main(int argc, char* argv[]) {
 
   uit::verify(MPI_Init(&argc, &argv));
