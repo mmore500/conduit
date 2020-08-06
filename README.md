@@ -35,6 +35,53 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * consider re-organizing header files
 * re-organize header files in includes: one header file in each subdirectory that grabs the rest?
   * like `include/concurrent/concurrent.h` would have includes for all the other header files in that directory in it
+* make RDMA window manager NOT static
+* make the read position and the write position internal to duct
+* add valgrind to continuous integration
+* add mpich run mode to tests, clang mode (?)
+* rename the mesh factories to be topology factories
+
+## Design Plan
+
+```
+      sharedptr       sharedptr
+Inlet  --->     duct    <--- Outlet
+      std::variant
+        *IntraDuct
+        *ThreadDuct
+        *ProcessDuct
+
+Inlet  --->
+    sharedptr
+
+Node object
+- vector of NodeOutput
+- vector of NodeInput
+
+class MeshState; (better name for this)
+
+only when the inlet is part of a mesh
+(NodeOutput) Inlet Wrapper (better name for this)
+- (private secret) shared_ptr to MeshState
+- (private) Inlet member object
+- write methods that forward to Inlet member object
+- is there a better way to do than composition? (inheritance, encapsulation?)
+(NodeInput) Outlet Wrapper (better name for this)
+- shared_ptr to MeshState
+- private secret Outlet member object
+
+
+++ Mesh ++
+
+new shared_ptr MeshState
+- RDMAWindowManager
+
+- vector of Inlets
+- vector of Outlets
+
+- get me wrappers of I'm responsible for
+- vector of Nodes
+```
 
 ## Features
 
