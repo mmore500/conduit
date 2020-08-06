@@ -71,6 +71,11 @@ public:
 
   static char * GetBytes(const proc_id_t rank, const size_t byte_offset) {
     emp_assert(IsInitialized());
+    emp_assert(
+      windows.count(rank),
+      rank,
+      ToString()
+    );
 
     return windows.at(rank).GetBytes(byte_offset);
 
@@ -78,21 +83,41 @@ public:
 
   static const MPI_Win & GetWindow(const proc_id_t rank) {
     emp_assert(IsInitialized());
+    emp_assert(
+      windows.count(rank),
+      rank,
+      ToString()
+    );
     return windows.at(rank).GetWindow();
   }
 
   static void LockExclusive(const proc_id_t rank) {
     emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(
+      windows.count(rank),
+      rank,
+      ToString()
+    );
     return windows.at(rank).LockExclusive();
   }
 
   static void LockShared(const proc_id_t rank) {
     emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(
+      windows.count(rank),
+      rank,
+      ToString()
+    );
     return windows.at(rank).LockShared();
   }
 
   static void Unlock(const proc_id_t rank) {
     emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(
+      windows.count(rank),
+      rank,
+      ToString()
+    );
     return windows.at(rank).Unlock();
   }
 
@@ -104,6 +129,11 @@ public:
     MPI_Request *request
   ) {
     emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(
+      windows.count(rank),
+      rank,
+      ToString()
+    );
     windows.at(rank).Rput<T>(origin_addr, target_disp, request);
   }
 
@@ -133,20 +163,21 @@ public:
     emp_assert(IsInitialized() || !IsInitializable());
   }
 
-  static void Cleanup() {
+  void Cleanup() {
     // sort ranks to prevent deadlock
     for (proc_id_t rank : GetSortedRanks()) {
       windows.erase(rank);
     }
   }
 
-  static std::string ToString() {
+  std::string ToString() {
 
     std::stringstream ss;
+    ss << format_member("windows.size()", windows.size()) << std::endl;
 
     for (proc_id_t rank : GetSortedRanks()) {
       ss << format_member("rank", rank) << std::endl;
-      ss << format_member("window", windows.at(rank).ToString());
+      ss << format_member("window", windows.at(rank).ToString()) << std::endl;
     }
 
     return ss.str();
