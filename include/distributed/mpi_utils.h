@@ -412,7 +412,10 @@ void print_separator(const proc_id_t rank) {
 }
 
 //TODO add a thread do successively and a combined do successively
-template <typename TaskFunction, typename BeforeTaskFunction>
+template<
+  typename TaskFunction,
+  typename BeforeTaskFunction=std::function<void(const proc_id_t)>
+>
 void do_successively(
   TaskFunction&& task,
   BeforeTaskFunction&& before_task=[](const proc_id_t rank){},
