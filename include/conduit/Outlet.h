@@ -14,17 +14,19 @@
 
 namespace uit {
 
-template<typename T, size_t N=DEFAULT_BUFFER>
+template<typename ImplSpec>
 class Outlet {
+
+  using T = typename ImplSpec::T;
+  constexpr inline static size_t N{ImplSpec::N};
 
 #ifndef NDEBUG
   OccupancyCaps caps;
 #endif
 
-  using buffer_t = emp::array<T, N>;
   using index_t = CircularIndex<N>;
 
-  std::shared_ptr<Duct<T,N>> duct;
+  std::shared_ptr<Duct<ImplSpec>> duct;
 
   static_assert(N > 0);
   index_t read_position{N-1};
@@ -73,7 +75,7 @@ class Outlet {
 
 public:
   Outlet(
-    std::shared_ptr<Duct<T,N>> duct_
+    std::shared_ptr<Duct<ImplSpec>> duct_
   ) : duct(duct_) { ; }
 
   // non-blocking
@@ -119,13 +121,13 @@ public:
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
     emp_assert(GetPending() == 0);
-    duct = std::make_shared<Duct<T, N>>();
+    duct = std::make_shared<Duct<ImplSpec>>();
     EmplaceDuct<WhichDuct>(args...);
   }
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member("std::shared_ptr<Duct<T,N>> duct", *duct) << std::endl;
+    ss << format_member("std::shared_ptr<Duct<ImplSpec>> duct", *duct) << std::endl;
     ss << format_member(
       "GetElement(read_position - 1)",
       GetElement(read_position - 1)

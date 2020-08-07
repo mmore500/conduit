@@ -19,14 +19,17 @@
 
 namespace uit {
 
-template<typename T, size_t N>
+template<typename ImplSpec>
 class Duct;
 
 // TODO rename WindowDuct
-template<typename T, size_t N=DEFAULT_BUFFER>
+template<typename ImplSpec>
 class WindowDuct {
 
-  friend Duct<T, N>;
+  friend Duct<ImplSpec>;
+
+  using T = typename ImplSpec::T;
+  constexpr inline static size_t N{ImplSpec::N};
 
   const int outlet_proc;
 
