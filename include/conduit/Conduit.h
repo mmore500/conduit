@@ -1,47 +1,58 @@
 #pragma once
 
-#include <iostream>
 #include <utility>
 #include <memory>
-#include <atomic>
 #include <stddef.h>
 
 #include "Duct.h"
 #include "Inlet.h"
 #include "Outlet.h"
 
-#include "config.h"
-
 namespace uit {
 
-template<typename T, size_t N=DEFAULT_BUFFER>
-using Conduit = std::pair<Inlet<T,N>, Outlet<T,N>>;
+template<typename ImplSpec>
+class Conduit {
 
-//TODO rename conduit
-template<typename T, size_t N=DEFAULT_BUFFER>
-Conduit<T,N> make_pipe() {
+  using duct_t = uit::Duct<ImplSpec>;
+  std::shared_ptr<duct_t> duct{ std::make_shared<duct_t>() };
 
-  std::tuple<std::shared_ptr<Duct<T, N>>> args{std::make_shared<Duct<T, N>>()};
-  return std::pair<Inlet<T,N>, Outlet<T,N>>(
-    std::piecewise_construct_t{},
-    args,
-    args
-  );
+  uit::Inlet<ImplSpec> inlet{ duct };
+  uit::Outlet<ImplSpec> outlet{ duct };
+
+public:
+
+  // for structured bindings
+  template <size_t N>
+  decltype(auto) get() const {
+      // parens needed to get reference?
+      if constexpr (N == 0) return (inlet);
+      else if constexpr (N == 1) return (outlet);
+  }
+
+  uit::Inlet<ImplSpec> & GetInlet() { return inlet; }
+
+  uit::Outlet<ImplSpec> & GetOutlet() { return outlet; }
+
+  // TODO implicit conversion operators?
+
+
+};
 
 }
 
-template<typename T, size_t N=DEFAULT_BUFFER>
-Inlet<T,N> make_sink() {
-  return Inlet<T,N>(
-    std::make_shared<Duct<T, N>>()
-  );
-}
+// for structured bindings
+namespace std {
 
-template<typename T, size_t N=DEFAULT_BUFFER>
-Outlet<T,N> make_source() {
-  return Outlet<T,N>(
-    std::make_shared<Duct<T, N>>()
-  );
-}
+  template<typename ImplSpec>
+  struct tuple_size<uit::Conduit<ImplSpec>>
+    : std::integral_constant<size_t, 2>{};
+
+  template<typename ImplSpec, size_t N>
+  struct tuple_element<N, uit::Conduit<ImplSpec>> {
+
+    using type = decltype(
+      std::declval<uit::Conduit<ImplSpec>>().template get<N>()
+    );
+  };
 
 }

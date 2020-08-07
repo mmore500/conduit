@@ -1,4 +1,4 @@
-TEST_NAMES := ImplSpec
+TEST_NAMES := ImplSpec Conduit Sink Source
 
 EMP_DIR := ../../../third-party/Empirical/source
 
