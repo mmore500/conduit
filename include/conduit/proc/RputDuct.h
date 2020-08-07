@@ -16,6 +16,8 @@
 #include "../config.h"
 #include "../../distributed/mpi_utils.h"
 #include "../../utility/print_utils.h"
+#include "InterProcAddress.h"
+#include "SharedBackEnd.h"
 
 namespace uit {
 
@@ -45,9 +47,8 @@ class RputDuct {
   emp::vector<char> request_states=emp::vector<char>(N, false);
 #endif
 
-  MPI_Comm comm;
-
-  const int outlet_proc;
+  const uit::InterProcAddress address;
+  std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end;
 
   MPI_Request target_offset_request;
   int target_offset;
@@ -75,16 +76,16 @@ class RputDuct {
       format_member("*this", *this)
     );
 
-    RDMAWindowManager::LockExclusive(outlet_proc);
+    back_end->GetWindowManager().LockExclusive(address.GetOutletProc());
 
-    RDMAWindowManager::Rput(
-      outlet_proc,
+    back_end->GetWindowManager().Rput(
+      address.GetOutletProc(),
       &buffer[send_position],
       target_offset,
       &send_requests[send_position]
     );
 
-    RDMAWindowManager::Unlock(outlet_proc);
+    back_end->GetWindowManager().Unlock(address.GetOutletProc());
 
 #ifndef NDEBUG
     request_states[send_position] = true;
@@ -145,25 +146,24 @@ public:
 
   // TODO check if is inlet proc
   RputDuct(
-    const int inlet_proc,
-    const int outlet_proc_=MPI_ANY_SOURCE,
-    const int tag_=0,
-    MPI_Comm comm_=MPI_COMM_WORLD
-  ) : comm(comm_)
-  , outlet_proc(outlet_proc_) {
+    const uit::InterProcAddress& address_,
+    std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end_
+  ) : address(address_)
+  , back_end(back_end_)
+  {
 
-    if (get_rank(comm) == inlet_proc) {
+    if (uit::get_rank(address.GetComm()) == address.GetInletProc()) {
       // make spoof call to ensure reciporical activation
-      RDMAWindowManager::Acquire(outlet_proc, 0);
+      back_end->GetWindowManager().Acquire(address.GetOutletProc(), 0);
 
-      // we'll emp_assert to make sure it actually completed
+      // we'll emp_assert later to make sure it actually completed
       verify(MPI_Irecv(
         &target_offset, // void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype
-        outlet_proc, // int source
-        tag_, // int tag
-        comm, // MPI_Comm comm
+        address.GetOutletProc(), // int source
+        address.GetTag(), // int tag
+        address.GetComm(), // MPI_Comm comm
         &target_offset_request // MPI_Request *request
       ));
     }
@@ -239,18 +239,7 @@ public:
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
     ss << format_member("pending_t pending", (size_t) pending) << std::endl;
-    ss << format_member(
-      "MPI_Comm comm",
-      [this](){
-        int len;
-        char data[MPI_MAX_OBJECT_NAME];
-        // TODO at least log/warn error codes
-        verify(MPI_Comm_get_name(comm, data, &len));
-        return std::string{}.assign(data, len);
-      }()
-    ) << std::endl;
-    ss << format_member("get_rank()", get_rank()) << std::endl;
-    ss << format_member("int outlet_proc", outlet_proc) << std::endl;
+    ss << format_member("InterProcAddress address", address) << std::endl;
     ss << format_member("size_t send_position", send_position);
     return ss.str();
   }

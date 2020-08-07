@@ -15,6 +15,8 @@
 #include "../config.h"
 #include "../../distributed/mpi_utils.h"
 #include "../../utility/print_utils.h"
+#include "InterProcAddress.h"
+#include "SharedBackEnd.h"
 
 namespace uit {
 
@@ -43,10 +45,7 @@ class IRecvDuct {
   emp::vector<char> request_states=emp::vector<char>(N, false);
 #endif
 
-  MPI_Comm comm;
-
-  const int inlet_proc;
-  const int tag;
+  const uit::InterProcAddress address;
 
   index_t receive_position{0};
 
@@ -60,9 +59,9 @@ class IRecvDuct {
       &buffer[receive_position],
       sizeof(T),
       MPI_BYTE, // TODO template on T
-      inlet_proc,
-      tag,
-      comm,
+      address.GetInletProc(),
+      address.GetTag(),
+      address.GetComm(),
       &receive_requests[receive_position]
     ));
 #ifndef NDEBUG
@@ -134,13 +133,9 @@ class IRecvDuct {
 public:
 
   IRecvDuct(
-    const int outlet_proc,
-    const int inlet_proc_=MPI_ANY_SOURCE,
-    const int tag_=MPI_ANY_TAG,
-    MPI_Comm comm_=MPI_COMM_WORLD
-  ) : comm(comm_)
-  , inlet_proc(inlet_proc_)
-  , tag(tag_) {
+    const uit::InterProcAddress& address_,
+    std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end
+  ) : address(address_) {
     for (size_t i = 0; i < N; ++i) RequestReceive();
     emp_assert(
       std::all_of(
@@ -228,19 +223,7 @@ public:
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
     ss << format_member("pending_t pending", (size_t) pending) << std::endl;
-    ss << format_member(
-      "MPI_Comm comm",
-      [this](){
-        int len;
-        char data[MPI_MAX_OBJECT_NAME];
-        // TODO at least log/warn error codes
-        verify(MPI_Comm_get_name(comm, data, &len));
-        return std::string{}.assign(data, len);
-      }()
-    ) << std::endl;
-    ss << format_member("int inlet_proc", inlet_proc) << std::endl;
-    ss << format_member("int get_rank()", get_rank()) << std::endl;
-    ss << format_member("int tag", tag) << std::endl << std::endl;
+    ss << format_member("InterProcAddress address", address) << std::endl;
     ss << format_member("size_t receive_position", receive_position);
     return ss.str();
   }

@@ -1,4 +1,4 @@
-TEST_NAMES := ISendDuct IRecvDuct RputDuct WindowDuct
+TEST_NAMES := ISendDuct IRecvDuct RputDuct WindowDuct InterProcAddress SharedBackEnd
 
 EMP_DIR := ../../../third-party/Empirical/source
 
