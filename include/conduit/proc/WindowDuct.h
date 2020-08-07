@@ -16,13 +16,14 @@
 #include "../config.h"
 #include "../../distributed/mpi_utils.h"
 #include "../../utility/print_utils.h"
+#include "InterProcAddress.h"
+#include "SharedBackEnd.h"
 
 namespace uit {
 
 template<typename ImplSpec>
 class Duct;
 
-// TODO rename WindowDuct
 template<typename ImplSpec>
 class WindowDuct {
 
@@ -31,35 +32,33 @@ class WindowDuct {
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  const int outlet_proc;
-
-  const int inlet_proc;
+  const uit::InterProcAddress address;
+  std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end;
 
   const int byte_offset;
 
 public:
 
   WindowDuct(
-    const int outlet_proc_,
-    const int inlet_proc_,
-    const int tag_=0,
-    MPI_Comm comm_=MPI_COMM_WORLD
-  ) : outlet_proc(outlet_proc_)
-  , inlet_proc(inlet_proc_)
+    const uit::InterProcAddress& address_,
+    std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end_
+  ) : address(address_)
+  , back_end(back_end_)
   , byte_offset(
-    outlet_proc == get_rank(comm_)
-      ? RDMAWindowManager::Acquire(inlet_proc, sizeof(T) /** N*/)
-      : -1
+    address.GetOutletProc() == uit::get_rank(address.GetComm())
+      ? back_end->GetWindowManager().Acquire(
+        address.GetInletProc(), sizeof(T) /** N*/
+      ) : -1
   ) {
-    if (outlet_proc == get_rank(comm_)) {
+    if (address.GetOutletProc() == uit::get_rank(address.GetComm())) {
       MPI_Request req;
       verify(MPI_Isend(
         &byte_offset, // const void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype
-        inlet_proc_, // int dest
-        tag_, // int tag
-        comm_, // MPI_Comm comm
+        address.GetInletProc(), // int dest
+        address.GetTag(), // int tag
+        address.GetComm(), // MPI_Comm comm
         &req // MPI_Request * request
       ));
       MPI_Request_free(&req); //TODO test for completion in destructor?
@@ -88,20 +87,22 @@ public:
     // to get latest?
 
     // lock own window
-    RDMAWindowManager::LockShared(inlet_proc);
+    back_end->GetWindowManager().LockShared(address.GetInletProc());
     std::memcpy(
       &res,
-      RDMAWindowManager::GetBytes(inlet_proc, byte_offset /*+ sizeof(T) * n*/),
+      back_end->GetWindowManager().GetBytes(
+        address.GetInletProc(), byte_offset /*+ sizeof(T) * n*/
+      ),
       sizeof(T)
     );
-    RDMAWindowManager::Unlock(inlet_proc);
+    back_end->GetWindowManager().Unlock(address.GetInletProc());
 
     return res;
   }
 
   const void * GetPosition(const size_t n) const {
-    return RDMAWindowManager::GetBytes(
-      inlet_proc,
+    return back_end->GetWindowManager().GetBytes(
+      address.GetInletProc(),
       byte_offset /*+ sizeof(T) * n*/
     );
   }

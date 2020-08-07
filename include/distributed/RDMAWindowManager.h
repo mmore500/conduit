@@ -19,9 +19,10 @@ namespace uit {
 // between each pair of procs?
 class RDMAWindowManager {
 
-  inline static std::unordered_map<proc_id_t, RDMAWindow> windows{};
+  std::unordered_map<proc_id_t, RDMAWindow> windows{};
+  mutable std::mutex mutex;
 
-  static std::set<proc_id_t> GetSortedRanks() {
+  std::set<proc_id_t> GetSortedRanks() {
     std::set<proc_id_t> res;
     std::transform(
       std::begin(windows),
@@ -32,7 +33,7 @@ class RDMAWindowManager {
     return res;
   }
 
-  static bool IsInitialized() {
+  bool IsInitialized() {
     return std::any_of(
       std::begin(windows),
       std::end(windows),
@@ -43,7 +44,7 @@ class RDMAWindowManager {
     );
   }
 
-  static bool IsInitializable() {
+  bool IsInitializable() {
     return std::any_of(
       std::begin(windows),
       std::end(windows),
@@ -57,11 +58,10 @@ class RDMAWindowManager {
 public:
 
   // TODO cache line alignment?
-  static size_t Acquire(const proc_id_t rank, const size_t num_bytes) {
+  size_t Acquire(const proc_id_t rank, const size_t num_bytes) {
 
     // make this call thread safe
-    static std::mutex m;
-    const std::lock_guard guard{m};
+    const std::lock_guard guard{mutex};
 
     emp_assert(!IsInitialized());
 
@@ -69,7 +69,7 @@ public:
 
   }
 
-  static char * GetBytes(const proc_id_t rank, const size_t byte_offset) {
+  char * GetBytes(const proc_id_t rank, const size_t byte_offset) {
     emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),
@@ -81,7 +81,7 @@ public:
 
   }
 
-  static const MPI_Win & GetWindow(const proc_id_t rank) {
+  const MPI_Win & GetWindow(const proc_id_t rank) {
     emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),
@@ -91,7 +91,7 @@ public:
     return windows.at(rank).GetWindow();
   }
 
-  static void LockExclusive(const proc_id_t rank) {
+  void LockExclusive(const proc_id_t rank) {
     emp_assert(IsInitialized() || !IsInitializable());
     emp_assert(
       windows.count(rank),
@@ -101,7 +101,7 @@ public:
     return windows.at(rank).LockExclusive();
   }
 
-  static void LockShared(const proc_id_t rank) {
+  void LockShared(const proc_id_t rank) {
     emp_assert(IsInitialized() || !IsInitializable());
     emp_assert(
       windows.count(rank),
@@ -111,7 +111,7 @@ public:
     return windows.at(rank).LockShared();
   }
 
-  static void Unlock(const proc_id_t rank) {
+  void Unlock(const proc_id_t rank) {
     emp_assert(IsInitialized() || !IsInitializable());
     emp_assert(
       windows.count(rank),
@@ -122,7 +122,7 @@ public:
   }
 
   template<typename T>
-  static void Rput(
+  void Rput(
     const proc_id_t rank,
     const T *origin_addr,
     const MPI_Aint target_disp,
@@ -137,7 +137,7 @@ public:
     windows.at(rank).Rput<T>(origin_addr, target_disp, request);
   }
 
-  static void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {
+  void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {
     emp_assert(!IsInitialized());
 
     // sort ranks to prevent deadlock
