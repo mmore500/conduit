@@ -5,6 +5,7 @@
 #include <memory>
 #include <atomic>
 #include <stddef.h>
+#include <cstdint>
 
 #include "config.h"
 #include "../utility/print_utils.h"
