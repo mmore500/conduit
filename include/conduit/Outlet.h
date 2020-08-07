@@ -29,6 +29,7 @@ class Outlet {
   std::shared_ptr<Duct<ImplSpec>> duct;
 
   static_assert(N > 0);
+  // TODO this should be internal state to the duct
   index_t read_position{N-1};
 
   // number of times the outlet has been read from

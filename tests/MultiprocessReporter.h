@@ -5,6 +5,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 #include "distributed/mpi_utils.h"
 
+// TODO move to include/utils
+
 class MultiprocessReporter : public Catch::ConsoleReporter {
 
   Catch::ConsoleReporter impl;
