@@ -39,7 +39,17 @@ class Duct {
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
+  std::string GetName() const {
+    return emp::to_string(
+      get_proc_id(),
+      ":",
+      GetUID()
+    );
+  }
+
 public:
+
+  using uid_t = std::uintptr_t;
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
@@ -120,18 +130,11 @@ public:
     );
   }
 
-
-  std::string GetID() const {
-    return emp::to_string(
-      get_proc_id(),
-      ":",
-      this
-    );
-  }
+  uid_t GetUID() const { return reinterpret_cast<uid_t>(this); }
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member("GetID()", GetID()) << std::endl;
+    ss << format_member("GetName()", GetName()) << std::endl;
     ss << format_member(
       "std::variant impl",
       std::visit(

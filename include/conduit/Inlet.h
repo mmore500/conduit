@@ -126,7 +126,7 @@ public:
     EmplaceDuct<WhichDuct>(args...);
   }
 
-  Duct::uid_t GetDuctUID const { return duct->GetUID(); }
+  typename Duct<ImplSpec>::uid_t GetDuctUID() const { return duct->GetUID(); }
 
   std::string ToString() const {
     std::stringstream ss;

@@ -125,6 +125,8 @@ public:
     EmplaceDuct<WhichDuct>(args...);
   }
 
+  typename Duct<ImplSpec>::uid_t GetDuctUID() const { return duct->GetUID(); }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("std::shared_ptr<Duct<ImplSpec>> duct", *duct) << std::endl;
