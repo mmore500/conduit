@@ -10,6 +10,7 @@
 
 #include "meta/TypePack.h"
 #include "tools/Random.h"
+#include "tools/string_utils.h"
 
 #include "conduit/config.h"
 #include "utility/CircularIndex.h"

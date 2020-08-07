@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 #include <stddef.h>
+#include <cstdint>
 
 #include "config.h"
 #include "../parallel/thread_utils.h"
