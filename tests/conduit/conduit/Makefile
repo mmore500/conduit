@@ -1,4 +1,4 @@
-TEST_NAMES := ImplSpec Conduit Sink Source
+TEST_NAMES := ImplSpec Conduit Sink Source Duct Inlet Outlet
 
 EMP_DIR := ../../../third-party/Empirical/source
 
