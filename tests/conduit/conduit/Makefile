@@ -3,7 +3,7 @@ TEST_NAMES := ImplSpec Conduit Sink Source
 EMP_DIR := ../../../third-party/Empirical/source
 
 #CXX = clang++
-CXX := mpic++.openmpi
+CXX := mpic++
 
 FLAGS = -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/ -I$(EMP_DIR)
 
@@ -13,7 +13,7 @@ test-%: %.cc
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
-		mpiexec.openmpi --mca mpi_warn_on_fork 0 --bind-to none -n $$n ./$@.out || break; \
+		mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n $$n ./$@.out || break; \
 	done
 
 # Test in debug mode without pointer tracker
