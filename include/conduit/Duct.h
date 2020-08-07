@@ -24,17 +24,20 @@
 
 namespace uit {
 
-template<typename T, size_t N=DEFAULT_BUFFER>
+template<typename ImplSpec>
 class Duct {
 
   using ducts_t = typename emp::TypePack<
-    IntraDuct<T, N>,
-    ThreadDuct<T, N>,
-    ProcInletDuct<T, N>,
-    ProcOutletDuct<T, N>
+    typename ImplSpec::IntraDuct,
+    typename ImplSpec::ThreadDuct,
+    typename ImplSpec::ProcInletDuct,
+    typename ImplSpec::ProcOutletDuct
   >::make_unique;
 
   typename ducts_t::template apply<std::variant> impl;
+
+  using T = typename ImplSpec::T;
+  constexpr inline static size_t N{ImplSpec::N};
 
 public:
 

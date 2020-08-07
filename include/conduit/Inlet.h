@@ -16,17 +16,19 @@
 
 namespace uit {
 
-template<typename T, size_t N=DEFAULT_BUFFER>
+template<typename ImplSpec>
 class Inlet {
+
+  using T = typename ImplSpec::T;
+  constexpr inline static size_t N{ImplSpec::N};
 
 #ifndef NDEBUG
   OccupancyCaps caps;
 #endif
 
-  using buffer_t = emp::array<T, N>;
   using index_t = CircularIndex<N>;
 
-  std::shared_ptr<Duct<T,N>> duct;
+  std::shared_ptr<Duct<ImplSpec>> duct;
   index_t write_position{0};
 
   // number of times the inlet has been written to
@@ -65,7 +67,7 @@ class Inlet {
 
 public:
   Inlet(
-    std::shared_ptr<Duct<T,N>> duct_
+    std::shared_ptr<Duct<ImplSpec>> duct_
   ) : duct(duct_) { ; }
 
   // potentially blocking
@@ -120,13 +122,15 @@ public:
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
     emp_assert(GetAvailableCapacity() == N);
-    duct = std::make_shared<Duct<T,N>>();
+    duct = std::make_shared<Duct<ImplSpec>>();
     EmplaceDuct<WhichDuct>(args...);
   }
 
+  Duct::uid_t GetDuctUID const { return duct->GetUID(); }
+
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member("std::shared_ptr<Duct<T,N>> duct", *duct) << std::endl;
+    ss << format_member("std::shared_ptr<Duct<ImplSpec>> duct", *duct) << std::endl;
     ss << format_member(
       "GetElement(write_position - 1)",
       GetElement(write_position - 1)

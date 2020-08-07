@@ -18,14 +18,16 @@
 
 namespace uit {
 
-template<typename T, size_t N>
+template<typename ImplSpec>
 class Duct;
 
-// TODO rename ProcInletDuct
-template<typename T, size_t N=DEFAULT_BUFFER>
+template<typename ImplSpec>
 class ISendDuct {
 
-  friend Duct<T, N>;
+  friend Duct<ImplSpec>;
+
+  using T = typename ImplSpec::T;
+  constexpr inline static size_t N{ImplSpec::N};
 
   using pending_t = size_t;
   using buffer_t = emp::array<T, N>;

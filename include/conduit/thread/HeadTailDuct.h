@@ -10,13 +10,16 @@
 
 namespace uit {
 
-template<typename T, size_t N>
+template<typename ImplSpec>
 class Duct;
 
-template<typename T, size_t N=DEFAULT_BUFFER>
+template<typename ImplSpec>
 class HeadTailDuct {
 
-  friend Duct<T, N>;
+  friend Duct<ImplSpec>;
+
+  using T = typename ImplSpec::T;
+  constexpr inline static size_t N{ImplSpec::N};
 
   struct alignas(CACHE_LINE_SIZE) padded {
     T t;

@@ -15,20 +15,4 @@ namespace uit {
   static constexpr size_t CACHE_LINE_SIZE = 64;
 #endif
 
-#ifndef ProcInletDuct
-  #define ProcInletDuct ISendDuct
-#endif
-
-#ifndef ProcOutletDuct
-  #define ProcOutletDuct IRecvDuct
-#endif
-
-#ifndef ThreadDuct
-  #define ThreadDuct HeadTailDuct
-#endif
-
-#ifndef IntraDuct
-  #define IntraDuct PendingDuct
-#endif
-
 }
