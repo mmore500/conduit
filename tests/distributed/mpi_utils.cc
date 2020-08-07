@@ -2,13 +2,19 @@
 
 #include "mpi.h"
 
-#define CATCH_CONFIG_RUNNER
+#define CATCH_CONFIG_MAIN
+#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
+#include "../MultiprocessReporter.h"
+
 #include "distributed/mpi_utils.h"
+#include "distributed/MPIGuard.h"
 #include "utility/math_utils.h"
 
 #include "utility/assign_utils.h"
+
+const uit::MPIGuard guard;
 
 TEST_CASE("get_nprocs") {
 
@@ -321,15 +327,4 @@ TEST_CASE("to_string") {
 
   REQUIRE(uit::to_string(MPI_COMM_WORLD) != "");
 
-}
-
-int main(int argc, char* argv[]) {
-
-  uit::verify(MPI_Init(&argc, &argv));
-
-  int result = Catch::Session{}.run( argc, argv );
-
-  uit::verify(MPI_Finalize());
-
-  return result;
 }

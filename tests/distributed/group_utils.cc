@@ -1,10 +1,16 @@
 #include "mpi.h"
 
-#define CATCH_CONFIG_RUNNER
+#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
+#define CATCH_CONFIG_MAIN
+
 #include "Catch/single_include/catch2/catch.hpp"
+#include "../MultiprocessReporter.h"
 
 #include "distributed/group_utils.h"
 #include "distributed/mpi_utils.h"
+#include "distributed/MPIGuard.h"
+
+const uit::MPIGuard guard;
 
 TEST_CASE("make_group") {
 
@@ -24,15 +30,4 @@ TEST_CASE("make_group") {
 
   }
 
-}
-
-int main(int argc, char* argv[]) {
-
-  uit::verify(MPI_Init(&argc, &argv));
-
-  int result = Catch::Session{}.run( argc, argv );
-
-  uit::verify(MPI_Finalize());
-
-  return result;
 }
