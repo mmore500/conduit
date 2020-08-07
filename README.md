@@ -40,6 +40,17 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * add valgrind to continuous integration
 * add mpich run mode to tests, clang mode (?)
 * rename the mesh factories to be topology factories
+* refactor error_mutex_lock to make a uit_assert
+* add -g flags to debug make recipes
+* break up/refactor mpi_utils.h
+
+* make_random_mesh
+  * degree is argument
+* make_toroidal_mesh (make ring mesh is special case of this)
+  * dimension is argument
+* make_grid_mesh (like toroidal mesh, but no wraparound) lattice?
+  * dimension is argument
+* make_complete_mesh
 
 ## Design Plan
 

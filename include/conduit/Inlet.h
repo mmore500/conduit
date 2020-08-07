@@ -29,6 +29,7 @@ class Inlet {
   using index_t = CircularIndex<N>;
 
   std::shared_ptr<Duct<ImplSpec>> duct;
+  // TODO this should be internal state to the duct
   index_t write_position{0};
 
   // number of times the inlet has been written to

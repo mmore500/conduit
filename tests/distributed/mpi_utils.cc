@@ -246,6 +246,7 @@ TEST_CASE("split_comm") {
 
   const uit::proc_id_t num_ranks{ uit::get_nprocs() };
 
+  // TODO refactor to use assign_utils
   const MPI_Comm every_other{
     uit::split_comm([](const uit::proc_id_t rank){ return rank%2 == 0; })
   };
