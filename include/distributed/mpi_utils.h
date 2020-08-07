@@ -3,9 +3,11 @@
 #include <assert.h>
 #include <numeric>
 #include <stddef.h>
+#include <limits>
 
 #include "mpi.h"
 #include "../utility/print_utils.h"
+#include "../utility/numeric_cast.h"
 
 namespace uit {
 
@@ -463,6 +465,37 @@ void init_multithread(int *argc, char ***argv) {
 void init_multithread() {
   int argc{};
   init_multithread(&argc, nullptr);
+}
+
+void mpi_init() {
+  int argc{};
+  uit::verify(MPI_Init(&argc, nullptr));
+}
+
+int combine_tag(const size_t a, const size_t b) {
+
+  // half of non-sign int bits
+  const size_t int_bits = sizeof(int) * 8;
+  const size_t each_bits = (int_bits - 1) / 2;
+
+  // bounds checking
+  emp_assert(std::bitset<each_bits>(a).to_ullong() == a);
+  emp_assert(std::bitset<each_bits>(b).to_ullong() == b);
+
+  const auto bottom_bits = std::bitset<int_bits>(a);
+  const auto top_bits = std::bitset<int_bits>(b) << each_bits;
+
+  const auto res = top_bits | bottom_bits;
+
+  return uit::numeric_cast<int>(res.to_ullong());
+
+}
+
+std::string to_string(const MPI_Comm comm) {
+  int len;
+  char data[MPI_MAX_OBJECT_NAME];
+  uit::verify(MPI_Comm_get_name(comm, data, &len));
+  return std::string{}.assign(data, len);
 }
 
 }
