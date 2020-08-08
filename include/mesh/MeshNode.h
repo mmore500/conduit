@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <optional>
 
 #include "base/vector.h"
 
@@ -36,6 +37,8 @@ public:
     outputs.push_back(output);
   }
 
+  size_t GetNodeID() const { return node_id; }
+
   inputs_t& GetInputs() { return inputs; }
 
   outputs_t& GetOutputs() { return outputs; }
@@ -44,7 +47,33 @@ public:
 
   const outputs_t& GetOutputs() const { return outputs; }
 
-  size_t GetNodeID() const { return node_id; }
+  input_t& GetInput(const size_t i) { return inputs[i]; }
+
+  output_t& GetOutput(const size_t i) { return outputs[i]; }
+
+  const input_t& GetInput(const size_t i) const { return inputs[i]; }
+
+  const output_t& GetOutput(const size_t i) const { return outputs[i]; }
+
+  size_t GetNumInputs() const { return inputs.size(); }
+
+  size_t GetNumOutputs() const { return outputs.size(); }
+
+  bool HasInputs() const { return GetNumInputs(); }
+
+  bool HasOutputs() const { return GetNumOutputs(); }
+
+  bool HasInput(const size_t i) const { return i < GetNumInputs(); }
+
+  bool HasOutput(const size_t i) const { return i < GetNumOutputs(); }
+
+  std::optional<input_t> GetInputOrNullopt(const size_t i) const {
+    return HasInput(i) ? std::optional<input_t>{GetInput(i)} : std::nullopt;
+  }
+
+  std::optional<output_t> GetOutputOrNullopt(const size_t i) const {
+    return HasOutput(i) ? std::optional<output_t>{GetOutput(i)} : std::nullopt;
+  }
 
 };
 
