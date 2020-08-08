@@ -147,7 +147,7 @@ public:
   , proc_assignment(proc_assignment_) {
     InitializeInterThreadDucts();
     InitializeInterProcDucts();
-
+    back_end->Initialize();
   }
 
   size_t GetNodeCount() const { return nodes.GetNodeCount(); }

@@ -57,6 +57,13 @@ class RDMAWindowManager {
 
 public:
 
+  ~RDMAWindowManager() {
+    // sort ranks to prevent deadlock
+    for (proc_id_t rank : GetSortedRanks()) {
+      windows.erase(rank);
+    }
+  }
+
   // TODO cache line alignment?
   size_t Acquire(const proc_id_t rank, const size_t num_bytes) {
 
@@ -161,13 +168,6 @@ public:
     verify(MPI_Barrier(comm));
 
     emp_assert(IsInitialized() || !IsInitializable());
-  }
-
-  void Cleanup() {
-    // sort ranks to prevent deadlock
-    for (proc_id_t rank : GetSortedRanks()) {
-      windows.erase(rank);
-    }
   }
 
   std::string ToString() {
