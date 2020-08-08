@@ -13,6 +13,7 @@
 
 #include "utility/benchmark_utils.h"
 #include "distributed/mpi_utils.h"
+#include "distributed/MPIGuard.h"
 #include "conduit/Conduit.h"
 #include "conduit/ImplSpec.h"
 #include "utility/numeric_cast.h"
@@ -25,6 +26,8 @@
 #define num_nodes 4
 
 using Spec = uit::ImplSpec<MSG_T>;
+
+const uit::MPIGuard guard;
 
 uit::Gatherer<MSG_T> gatherer(MPI_INT);
 
@@ -64,8 +67,6 @@ void do_work(uit::MeshNode<Spec> node, const size_t node_id) {
 
 int main(int argc, char* argv[]) {
 
-  MPI_Init(&argc, &argv);
-
   uit::ThreadTeam team;
 
   uit::Mesh<Spec> mesh{
@@ -92,8 +93,6 @@ int main(int argc, char* argv[]) {
     for (auto & val : *res) std::cout << "v: " << val << std::endl;
 
   }
-
-  MPI_Finalize();
 
   return 0;
 }
