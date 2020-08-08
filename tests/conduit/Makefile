@@ -1,4 +1,4 @@
-TEST_NAMES := proc thread conduit
+TEST_NAMES := proc thread conduit intra
 
 default: test
 
