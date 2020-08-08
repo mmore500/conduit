@@ -18,6 +18,8 @@ public:
     return window_manager;
   }
 
+  void Initialize() { window_manager.Initialize(); }
+
 };
 
 }
