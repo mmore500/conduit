@@ -31,7 +31,7 @@
 #define MSG_T int
 #define num_nodes 4
 
-using Spec = uit::ImplSpec<MSG_T>;
+using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
 const uit::MPIGuard guard;
 
