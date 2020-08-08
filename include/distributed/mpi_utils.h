@@ -251,10 +251,6 @@ std::string to_string(const MPI_Status & status) {
   ss << format_member(
     "int MPI_ERROR",
     (int) status.MPI_ERROR
-  ) << std::endl;
-  ss << format_member(
-    "int u_count",
-    (int) status._ucount
   );
   return ss.str();
 }
@@ -432,6 +428,8 @@ void do_successively(
   }
 }
 
+#ifndef MPICH_VERSION
+// apparently MPICH can't differentiate groups and comms?
 proc_id_t translate_rank(
   const proc_id_t rank,
   const MPI_Group& from,
@@ -447,6 +445,7 @@ proc_id_t translate_rank(
   ));
   return res;
 }
+#endif
 
 proc_id_t translate_rank(
   const proc_id_t rank,
