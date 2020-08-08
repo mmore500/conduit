@@ -3,184 +3,175 @@
 #include <unordered_map>
 #include <stddef.h>
 
+#include "mpi.h"
+
 #include "../utility/assign_utils.h"
 #include "../conduit/Duct.h"
+#include "../conduit/proc/SharedBackEnd.h"
 
 #include "../distributed/mpi_utils.h"
-#include "mesh_utils.h"
+#include "../topology/Topology.h"
+
+#include "MeshNode.h"
+#include "MeshTopology.h"
 
 namespace uit {
 
-template<typename T, size_t N=DEFAULT_BUFFER>
+template<typename ImplSpec>
 class Mesh {
 
   using node_id_t = size_t;
-  using pipe_id_t = size_t;
+  using edge_id_t = size_t;
+  using node_t = MeshNode<ImplSpec>;
+  using node_container_t = emp::vector<node_t>;
 
-  mesh_t<T, N> mesh;
+  inline static size_t mesh_id_counter{};
+  const size_t mesh_id;
+  const MPI_Comm comm;
 
-  // pipe_id -> node_id
-  std::unordered_map<pipe_id_t, node_id_t> input_registry;
-  std::unordered_map<pipe_id_t, node_id_t> output_registry;
+  // node_id -> node
+  internal::MeshTopology<ImplSpec> nodes;
 
-  const std::function<thread_id_t(node_id_t)> thread_assignment;
-  const std::function<proc_id_t(node_id_t)> proc_assignment;
+  const std::function<uit::thread_id_t(node_id_t)> thread_assignment;
+  const std::function<uit::proc_id_t(node_id_t)> proc_assignment;
 
-  void InitializeRegistries() {
-    for (node_id_t node_id = 0; node_id < mesh.size(); ++node_id) {
-      auto & node = mesh[node_id];
-      auto & [inputs, outputs] = node;
+  using back_end_t = uit::SharedBackEnd<ImplSpec>;
+  const std::shared_ptr<back_end_t> back_end{ std::make_shared<back_end_t>() };
 
-      for (auto & link : inputs) {
-        emp_assert(input_registry.count(link) == 0);
-        input_registry[link.GetPipeID()] = node_id;
-      }
-
-      for (auto & link : outputs) {
-        emp_assert(output_registry.count(link) == 0);
-        output_registry[link.GetPipeID()] = node_id;
-      }
-
+  void InitializeInterThreadDucts() {
+    for (auto& [node_id, node] : nodes) {
+      InitializeInterThreadDucts(node_id, node);
     }
   }
 
-  void InitializeInterThreadPipes() {
+  void InitializeInterThreadDucts(const node_id_t node_id, node_t & node) {
+    // only need to iterate through inputs because this fixes outputs' ducts too
+    for (auto& input : node.GetInputs()) InitializeInterThreadDuct(input);
+  }
 
-    for (node_id_t node_id = 0; node_id < mesh.size(); ++node_id) {
-      auto & node = mesh[node_id];
-      auto & [inputs, outputs] = node;
-      const thread_id_t my_thread = thread_assignment(node_id);
+  void InitializeInterThreadDuct(uit::MeshNodeInput<ImplSpec> & input) {
 
-      for (auto & link : inputs) {
-        const node_id_t their_node = output_registry[link];
-        const thread_id_t their_thread = thread_assignment(their_node);
+    const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
+      input.GetEdgeID()
+    );
+    const uit::thread_id_t inlet_thread = thread_assignment(inlet_node_id);
 
-        if (my_thread != their_thread) {
-          link.GetInput().template EmplaceDuct<
-            ThreadDuct<T, N>
-          >();
-        }
-      }
+    const node_id_t outlet_node_id = nodes.GetInputRegistry().at(
+      input.GetEdgeID()
+    );
+    const uit::thread_id_t outlet_thread = thread_assignment(outlet_node_id);
 
-    }
+    if (inlet_thread != outlet_thread) input.template EmplaceDuct<
+      typename ImplSpec::ThreadDuct
+    >();
 
   }
 
-  void InitializeInterProcPipes() {
-
-    for (node_id_t node_id = 0; node_id < mesh.size(); ++node_id) {
-      auto & node = mesh[node_id];
-      auto & [inputs, outputs] = node;
-      // TODO rename
-      const proc_id_t my_proc = proc_assignment(node_id);
-
-      for (auto & link : inputs) {
-        const node_id_t their_node = output_registry[link];
-        const proc_id_t their_proc = proc_assignment(their_node);
-
-        if (my_proc != their_proc) {
-          link.GetInput().template SplitDuct<
-            ProcOutletDuct<T, N>
-          >(
-            my_proc,
-            their_proc,
-            link.GetPipeID()
-          );
-        }
-      }
-
-      for (auto & link : outputs) {
-        const node_id_t their_node = input_registry[link];
-        const proc_id_t their_proc = proc_assignment(their_node);
-
-        if (my_proc != their_proc) {
-          link.GetOutput().template SplitDuct<
-            ProcInletDuct<T, N>
-          >(
-            my_proc,
-            their_proc,
-            link.GetPipeID()
-          );
-        }
-      }
-
+  void InitializeInterProcDucts() {
+    for (auto& [node_id, node] : nodes) {
+      InitializeInterProcDucts(node_id, node);
     }
+  }
+
+  void InitializeInterProcDucts(const node_id_t node_id, node_t& node) {
+
+    for (auto & input : node.GetInputs()) InitializeInterProcDuct(input);
+
+    for (auto & output : node.GetOutputs()) InitializeInterProcDuct(output);
 
   }
+
+  void InitializeInterProcDuct(uit::MeshNodeInput<ImplSpec>& input) {
+    const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
+      input.GetEdgeID()
+    );
+    const uit::proc_id_t inlet_proc_id = proc_assignment(inlet_node_id);
+
+    const node_id_t outlet_node_id = nodes.GetInputRegistry().at(input.GetEdgeID());
+    const uit::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
+
+    const InterProcAddress addr{
+      outlet_proc_id,
+      inlet_proc_id,
+      uit::combine_tag(mesh_id, input.GetEdgeID()),
+      comm
+    };
+
+    if (inlet_proc_id != outlet_proc_id) input.template SplitDuct<
+      typename ImplSpec::ProcOutletDuct
+    >(addr, back_end);
+
+  }
+
+  void InitializeInterProcDuct(uit::MeshNodeOutput<ImplSpec>& output) {
+    const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
+      output.GetEdgeID()
+    );
+    const uit::proc_id_t inlet_proc_id = proc_assignment(inlet_node_id);
+
+    const node_id_t outlet_node_id = nodes.GetInputRegistry().at(
+      output.GetEdgeID()
+    );
+    const uit::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
+
+    const uit::InterProcAddress addr{
+      outlet_proc_id,
+      inlet_proc_id,
+      uit::combine_tag(mesh_id, output.GetEdgeID()),
+      comm
+    };
+
+    if (inlet_proc_id != outlet_proc_id) output.template SplitDuct<
+      typename ImplSpec::ProcInletDuct
+    >(addr, back_end);
+
+
+  }
+
 
 public:
 
-  using value_type = io_bundle_t<T, N>;
-
   Mesh(
-    const mesh_t<T, N> & mesh_,
-    const std::function<thread_id_t(node_id_t)> thread_assignment_,
+    const Topology & topology,
+    const std::function<thread_id_t(node_id_t)> thread_assignment_
+      =uit::AssignIntegrated<thread_id_t>{},
     const std::function<proc_id_t(node_id_t)> proc_assignment_
-      =uit::AssignIntegrated<proc_id_t>{}
+      =uit::AssignIntegrated<proc_id_t>{},
+    const MPI_Comm comm_=MPI_COMM_WORLD,
+    const size_t mesh_id_=mesh_id_counter++
   )
-  : mesh(mesh_)
+  : mesh_id(mesh_id_)
+  , comm(comm_)
+  , nodes(topology, proc_assignment_, comm)
   , thread_assignment(thread_assignment_)
   , proc_assignment(proc_assignment_) {
-    InitializeRegistries();
-    InitializeInterThreadPipes();
-    InitializeInterProcPipes();
+    InitializeInterThreadDucts();
+    InitializeInterProcDucts();
+
   }
 
-  size_t GetSize() const { return mesh.size(); }
+  size_t GetNodeCount() const { return nodes.GetNodeCount(); }
 
-  value_type & GetNode(const node_id_t node_id) { return mesh[node_id]; }
+  size_t GetEdgeCount() const { return nodes.GetEdgeCount(); }
 
-  value_type & operator[](const node_id_t node_id) { return GetNode(node_id); }
-
-  typename mesh_t<T, N>::iterator begin() { return std::begin(mesh); }
-
-  typename mesh_t<T, N>::iterator end() { return std::end(mesh); }
-
-  typename mesh_t<T, N>::const_iterator begin() const {
-    return std::begin(mesh);
+  node_container_t GetSubmesh(const thread_id_t tid=0) {
+    return GetSubmesh(tid, uit::get_proc_id(comm));
   }
 
-  typename mesh_t<T, N>::const_iterator end() const {
-    return std::end(mesh);
-  }
-
-  mesh_t<T, N> GetSubmesh(
-    const thread_id_t tid,
-    const proc_id_t pid=get_proc_id()
-  ) {
-    mesh_t<T, N> res;
-    for (node_id_t node_id = 0; node_id < mesh.size(); ++node_id) {
+  node_container_t GetSubmesh(const thread_id_t tid, const proc_id_t pid) {
+    node_container_t res;
+    for (const auto& [node_id, node] : nodes) {
       if (
         thread_assignment(node_id) == tid
         && proc_assignment(node_id) == pid
-      ) res.push_back(
-        mesh[node_id]
-      );
+      ) res.push_back(node);
     }
     return res;
   }
 
   std::string ToString() const {
     std::stringstream ss;
-
-    std::map sorted(
-      std::begin(output_registry),
-      std::end(output_registry)
-    );
-
-    for (const auto & [pipe_id, output_id] : sorted) {
-      const auto input_id = input_registry.at(pipe_id);
-      ss << "conduit " << pipe_id << ": "
-        << "node " << output_id
-        << " (process " <<  proc_assignment(output_id)
-        << ", thread " << thread_assignment(output_id) << ")"
-        << " -> "
-        << "node " << input_id
-        << " (process " <<  proc_assignment(input_id)
-        << ", thread " << thread_assignment(input_id) << ")"
-        << std::endl;
-    }
-
+    ss << "TODO" << std::endl;
     return ss.str();
   }
 
