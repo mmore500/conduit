@@ -154,11 +154,14 @@ public:
 
   size_t GetEdgeCount() const { return nodes.GetEdgeCount(); }
 
-  node_container_t GetSubmesh(const thread_id_t tid=0) {
+  node_container_t GetSubmesh(const thread_id_t tid=0) const {
     return GetSubmesh(tid, uit::get_proc_id(comm));
   }
 
-  node_container_t GetSubmesh(const thread_id_t tid, const proc_id_t pid) {
+  node_container_t GetSubmesh(
+    const thread_id_t tid,
+    const proc_id_t pid
+  ) const {
     node_container_t res;
     for (const auto& [node_id, node] : nodes) {
       if (
