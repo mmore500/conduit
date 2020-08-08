@@ -4,6 +4,12 @@
 
 #include "mpi.h"
 
+#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
+#define CATCH_CONFIG_MAIN
+
+#include "Catch/single_include/catch2/catch.hpp"
+#include "../../MultiprocessReporter.h"
+
 #include "conduit/config.h"
 #include "concurrent/Gatherer.h"
 #include "utility/CircularIndex.h"
@@ -38,34 +44,21 @@ void do_work(uit::MeshNode<Spec> node, const size_t node_id) {
   static std::latch sync_before{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
   sync_before.arrive_and_wait();
 
-  for (size_t rep = 0; rep < 100; ++rep) {
-    node.GetOutput(0).MaybePut(node_id);
-    uit::do_not_optimize(
-      node.GetInput(0).GetCurrent()
-    );
-  }
+  for (size_t rep = 0; rep < 100; ++rep) node.GetOutput(0).MaybePut(node_id);
 
   static std::latch sync_after{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
   sync_after.arrive_and_wait();
 
   const MSG_T res = node.GetInput(0).GetCurrent();
 
-  assert(
-    uit::safe_equal(res, uit::circular_index(node_id, num_nodes, -1))
-    || [&](){
-      std::cerr
-        << res << ", " << uit::circular_index(node_id, num_nodes, -1)
-        << std::endl;
-      return false;
-    }()
-  );
+  REQUIRE( uit::safe_equal(res, uit::circular_index(node_id, num_nodes, -1)) );
 
   gatherer.Put(res);
 
 }
 
 
-int main(int argc, char* argv[]) {
+TEST_CASE("Test ThreadDuct") {
 
   uit::ThreadTeam team;
 
@@ -83,7 +76,7 @@ int main(int argc, char* argv[]) {
   auto res = gatherer.Gather();
 
   if (res) {
-    assert(
+    REQUIRE(
       std::unordered_set(
         std::begin(*res),
         std::end(*res)
@@ -94,5 +87,4 @@ int main(int argc, char* argv[]) {
 
   }
 
-  return 0;
 }
