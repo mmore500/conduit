@@ -47,14 +47,12 @@ TEST_CASE("Unmatched gets") {
     REQUIRE( input.GetCurrent() == 42 );
   }
 
-  uit::RDMAWindowManager::Cleanup();
-
 }
 
 TEST_CASE("Unmatched puts") {
 
-  uit::Mesh<int> mesh{
-    uit::DyadicMeshFactory<int>{}(uit::get_nprocs()),
+  uit::Mesh<uit::ImplSpec<int>> mesh{
+    uit::DyadicTopologyFactory{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignAvailableProcs{}
   };
@@ -63,10 +61,8 @@ TEST_CASE("Unmatched puts") {
 
   REQUIRE( bundles.size() == 1 );
 
-  uit::Outlet<int> input = bundles[0].inputs[0];
-  uit::Inlet<int> output = bundles[0].outputs[0];
-
-  uit::RDMAWindowManager::Initialize();
+  uit::Outlet<uit::ImplSpec<int>> input = bundles[0].GetInput(0);
+  uit::Inlet<uit::ImplSpec<int>> output = bundles[0].GetOutput(0);
 
   for (int i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
     output.MaybePut(i);
@@ -82,27 +78,23 @@ TEST_CASE("Unmatched puts") {
   REQUIRE( input.GetCurrent() >= DEFAULT_BUFFER - 1 );
   REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
 
-  uit::RDMAWindowManager::Cleanup();
-
 }
 
-uit::Conduit<int> make_ring_bundle() {
-  uit::Mesh<int> mesh{
-    uit::RingMeshFactory<int>{}(uit::get_nprocs()),
+decltype(auto) make_ring_bundle() {
+  uit::Mesh<uit::ImplSpec<int>> mesh{
+    uit::RingTopologyFactory{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignAvailableProcs{}
   };
 
-  auto bundles = mesh.GetSubmesh(0);
+  auto bundles = mesh.GetSubmesh();
 
   REQUIRE( bundles.size() == 1);
 
-  uit::Outlet<int> input = bundles[0].inputs[0];
-  uit::Inlet<int> output = bundles[0].outputs[0];
+  uit::Outlet<uit::ImplSpec<int>> input = bundles[0].GetInput(0);
+  uit::Inlet<uit::ImplSpec<int>> output = bundles[0].GetOutput(0);
 
-  uit::RDMAWindowManager::Initialize();
-
-  return uit::Conduit<int>{output, input};
+  return std::tuple{output, input};
 
 }
 
@@ -152,17 +144,15 @@ TEST_CASE("Ring Mesh") {
   // everyone should have gotten the final message by now
   REQUIRE( input.GetCurrent() == 2 * DEFAULT_BUFFER  );
 
-  uit::RDMAWindowManager::Cleanup(); // TODO rename Finalize
-
 }
 
 std::pair<
-  std::optional< uit::Outlet<int> >,
-  std::optional< uit::Inlet<int> >
+  std::optional< uit::Outlet<uit::ImplSpec<int>> >,
+  std::optional< uit::Inlet<uit::ImplSpec<int>> >
 > make_producer_consumer_bundle() {
 
-  uit::Mesh<int> mesh{
-    uit::ProducerConsumerMeshFactory<int>{}(uit::get_nprocs()),
+  uit::Mesh<uit::ImplSpec<int>> mesh{
+    uit::ProConTopologyFactory{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignAvailableProcs{}
   };
@@ -171,18 +161,16 @@ std::pair<
 
   REQUIRE( bundles.size() == 1 );
 
-  std::optional<uit::Outlet<int>> input = (
-    bundles[0].inputs.size()
-    ? std::optional{bundles[0].inputs[0]}
+  std::optional<uit::MeshNodeInput<uit::ImplSpec<int>>> input = (
+    bundles[0].HasInputs()
+    ? std::optional{bundles[0].GetInput(0)}
     : std::nullopt
   );
-  std::optional<uit::Inlet<int>> output = (
-    bundles[0].outputs.size()
-    ? std::optional{bundles[0].outputs[0]}
+  std::optional<uit::MeshNodeOutput<uit::ImplSpec<int>>> output = (
+    bundles[0].HasOutputs()
+    ? std::optional{bundles[0].GetOutput(0)}
     : std::nullopt
   );
-
-  uit::RDMAWindowManager::Initialize();
 
   return std::pair{input, output};
 
@@ -241,9 +229,6 @@ TEST_CASE("Producer-Consumer Mesh") {
 
   // everyone should have gotten the final message by now
   if (input) REQUIRE( input->GetCurrent() == DEFAULT_BUFFER * 2 );
-
-
-  uit::RDMAWindowManager::Cleanup(); // TODO rename Finalize
 
 }
 
