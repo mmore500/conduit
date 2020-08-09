@@ -1,5 +1,6 @@
 # Conduit
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/eeb84ac3b8a3419f9714819f9191d7bf)](https://app.codacy.com/manual/mmore500/conduit?utm_source=github.com&utm_medium=referral&utm_content=mmore500/conduit&utm_campaign=Badge_Grade_Dashboard)
 [![build status](https://travis-ci.com/mmore500/conduit.svg)](https://travis-ci.com/mmore500/conduit)
 [![documentation status](https://readthedocs.org/projects/conduit/badge/?version=latest)](https://conduit.readthedocs.io/en/latest/?badge=latest)
 [![code coverage status](https://codecov.io/gh/mmore500/conduit/branch/master/graph/badge.svg)](https://codecov.io/gh/mmore500/conduit)
