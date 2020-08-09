@@ -7,21 +7,25 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "conduit/config.h"
+#include "conduit/ImplSpec.h"
 #include "utility/CircularIndex.h"
 #include "distributed/mpi_utils.h"
 #include "distributed/RDMAWindowManager.h"
 #include "distributed/assign_utils.h"
-#include "conduit/pipe_utils.h"
 #include "utility/math_utils.h"
 #include "mesh/Mesh.h"
-#include "mesh/mesh_utils.h"
+#include "mesh/MeshNodeInput.h"
+#include "mesh/MeshNodeOutput.h"
+#include "topology/DyadicTopologyFactory.h"
+#include "topology/RingTopologyFactory.h"
+#include "topology/ProConTopologyFactory.h"
 
 #include "../../MultiprocessReporter.h"
 
 TEST_CASE("Unmatched gets") {
 
-  uit::Mesh<int> mesh{
-    uit::DyadicMeshFactory<int>{}(uit::get_nprocs()),
+  uit::Mesh<uit::ImplSpec<int>> mesh{
+    uit::DyadicTopologyFactory{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignAvailableProcs{}
   };
@@ -30,10 +34,8 @@ TEST_CASE("Unmatched gets") {
 
   REQUIRE( bundles.size() == 1 );
 
-  uit::Outlet<int> input = bundles[0].inputs[0];
-  uit::Inlet<int> output = bundles[0].outputs[0];
-
-  uit::RDMAWindowManager::Initialize();
+  uit::Outlet<uit::ImplSpec<int>> input = bundles[0].GetInput(0);
+  uit::Inlet<uit::ImplSpec<int>> output = bundles[0].GetOutput(0);
 
   output.MaybePut(42);
   // this barrier is necessary for RDMA... TODO why?
