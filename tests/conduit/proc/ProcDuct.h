@@ -112,6 +112,7 @@ TEST_CASE("Validity") {
     output.MaybePut(msg);
     const MSG_T current = input.GetCurrent();
     REQUIRE( current >= 0 );
+    REQUIRE( current < 10 * std::kilo{}.num );
     REQUIRE( last <= current );
     last = current;
   }

@@ -56,6 +56,7 @@ TEST_CASE("Test IntraDuct Validity") {
       node.GetOutput(0).MaybePut(msg);
       const MSG_T current = node.GetInput(0).GetCurrent();
       REQUIRE( current >= 0 );
+      REQUIRE( current < 10 * std::kilo{}.num );
       REQUIRE( last[node.GetNodeID()] <= current );
       last[node.GetNodeID()] = current;
     }

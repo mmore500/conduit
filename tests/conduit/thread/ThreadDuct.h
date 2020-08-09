@@ -99,6 +99,7 @@ void check_validity(uit::MeshNode<Spec> node, const size_t node_id) {
     node.GetOutput(0).MaybePut(msg);
     const MSG_T current = node.GetInput(0).GetCurrent();
     REQUIRE( current >= 0 );
+    REQUIRE( current < 10 * std::kilo{}.num );
     REQUIRE( last <= current );
     last = current;
   }
