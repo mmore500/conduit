@@ -190,17 +190,6 @@ RUN \
     && \
   echo "switched to https origin remote url"
 
-RUN \
-  cd /opt/conduit/ \
-    && \
-  make \
-    && \
-  cd /opt/conduit/tests/utility \
-    && \
-  make \
-    && \
-  echo "representative compile and tests passed!"
-
 # Define default working directory.
 WORKDIR /opt/conduit
 
