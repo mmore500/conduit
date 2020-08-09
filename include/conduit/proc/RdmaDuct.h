@@ -1,15 +1,15 @@
 #pragma once
 
-#include "R.h"
-#include "IRecvDuct.h"
+#include "RputDuct.h"
+#include "WindowDuct.h"
 
 namespace uit {
 
 template<typename ImplSpec>
 struct RdmaDuct {
 
-  using InletImpl = RputDuct<ImplSpec>;
-  using OutletImpl = WindowDuct<ImplSpec>;
+  using InletImpl = uit::RputDuct<ImplSpec>;
+  using OutletImpl = uit::WindowDuct<ImplSpec>;
 
 };
 

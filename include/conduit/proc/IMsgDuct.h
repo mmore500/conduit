@@ -8,8 +8,8 @@ namespace uit {
 template<typename ImplSpec>
 struct IMsgDuct {
 
-  using InletImpl = ISendDuct<ImplSpec>;
-  using OutletImpl = IRecvDuct<ImplSpec>;
+  using InletImpl = uit::ISendDuct<ImplSpec>;
+  using OutletImpl = uit::IRecvDuct<ImplSpec>;
 
 };
 
