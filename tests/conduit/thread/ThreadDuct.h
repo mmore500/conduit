@@ -1,3 +1,4 @@
+#include <ratio>
 #include <thread>
 #include <unordered_set>
 #include <cassert>
@@ -37,7 +38,7 @@ const uit::MPIGuard guard;
 
 uit::Gatherer<MSG_T> gatherer(MPI_INT);
 
-void do_work(uit::MeshNode<Spec> node, const size_t node_id) {
+void check_connectivity(uit::MeshNode<Spec> node, const size_t node_id) {
 
   node.GetOutput(0).MaybePut(node_id);
 
@@ -57,8 +58,7 @@ void do_work(uit::MeshNode<Spec> node, const size_t node_id) {
 
 }
 
-
-TEST_CASE("Test ThreadDuct") {
+TEST_CASE("Test ThreadDuct Connectivity") {
 
   uit::ThreadTeam team;
 
@@ -68,7 +68,7 @@ TEST_CASE("Test ThreadDuct") {
   };
 
   for (size_t i = 0; i < num_nodes; ++i) {
-    team.Add([=](){ do_work(mesh.GetSubmesh(i)[0], i); });
+    team.Add([=](){ check_connectivity(mesh.GetSubmesh(i)[0], i); });
   }
 
   team.Join();
@@ -86,5 +86,47 @@ TEST_CASE("Test ThreadDuct") {
     for (auto & val : *res) std::cout << "v: " << val << std::endl;
 
   }
+
+}
+
+void check_validity(uit::MeshNode<Spec> node, const size_t node_id) {
+
+  static std::latch sync_before{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
+  sync_before.arrive_and_wait();
+
+  MSG_T last{};
+  for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
+    node.GetOutput(0).MaybePut(msg);
+    const MSG_T current = node.GetInput(0).GetCurrent();
+    REQUIRE( current >= 0 );
+    REQUIRE( last <= current );
+    last = current;
+  }
+
+  // all puts must be complete for next part of the test
+  static std::latch sync_after{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
+  sync_after.arrive_and_wait();
+
+  for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
+    REQUIRE( node.GetInput(0).GetCurrent() >= 0 );
+    REQUIRE( node.GetInput(0).GetCurrent() == node.GetInput(0).GetCurrent() );
+  }
+
+}
+
+TEST_CASE("Test ThreadDuct Validity") {
+
+  uit::ThreadTeam team;
+
+  uit::Mesh<Spec> mesh{
+    uit::RingTopologyFactory{}(num_nodes),
+    uit::AssignSegregated<uit::thread_id_t>{}
+  };
+
+  for (size_t i = 0; i < num_nodes; ++i) {
+    team.Add([=](){ check_validity(mesh.GetSubmesh(i)[0], i); });
+  }
+
+  team.Join();
 
 }

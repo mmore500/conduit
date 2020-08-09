@@ -88,6 +88,41 @@ TEST_CASE("Unmatched puts") {
 
 }
 
+TEST_CASE("Validity") {
+
+  uit::Mesh<Spec> mesh{
+    uit::DyadicTopologyFactory{}(uit::get_nprocs()),
+    uit::AssignIntegrated<uit::thread_id_t>{},
+    uit::AssignAvailableProcs{}
+  };
+
+  auto bundles = mesh.GetSubmesh();
+
+  REQUIRE( bundles.size() == 1 );
+
+  uit::Outlet<Spec> input = bundles[0].GetInput(0);
+  uit::Inlet<Spec> output = bundles[0].GetOutput(0);
+
+  int last{};
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
+    output.MaybePut(msg);
+    const MSG_T current = input.GetCurrent();
+    REQUIRE( current >= 0 );
+    REQUIRE( last <= current );
+    last = current;
+  }
+
+  // all puts must be complete for next part of the test
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+
+  for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
+    REQUIRE( input.GetCurrent() >= 0 );
+    REQUIRE( input.GetCurrent() == input.GetCurrent() );
+  }
+
+}
+
 decltype(auto) make_ring_bundle() {
   uit::Mesh<Spec> mesh{
     uit::RingTopologyFactory{}(uit::get_nprocs()),
