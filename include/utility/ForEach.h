@@ -24,21 +24,23 @@ struct ForEach {
   template <size_t I>
   void item() {
 
-    if constexpr ( Comparison{}(I, N) ) Payload<I>{};
+    if constexpr ( Comparison{}(I, N) ) {
+      Payload<I>{};
 
-    constexpr size_t next = Afterthought{}(
-      I,
-      Operand
-    );
+      constexpr size_t next = Afterthought{}(
+        I,
+        Operand
+      );
 
-    // recurse upwards
-    if constexpr ( Comparison{}(I, N) ) ForEach<
-      Payload,
-      N,
-      Operand,
-      Afterthought,
-      Comparison
-    >{}.template item<next>();
+      // recurse upwards
+      ForEach<
+        Payload,
+        N,
+        Operand,
+        Afterthought,
+        Comparison
+      >{}.template item<next>();
+    }
 
   }
 
