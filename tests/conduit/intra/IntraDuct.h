@@ -31,7 +31,7 @@ const uit::MPIGuard guard;
 
 TEST_CASE("Test IntraDuct") {
 
-  uit::Mesh<Spec> mesh{ uit::RingTopologyFactory{}(num_nodes), };
+  uit::Mesh<Spec> mesh{ uit::RingTopologyFactory{}(num_nodes) };
 
   for (auto & node : mesh.GetSubmesh()) node.GetOutput(0).MaybePut(
     node.GetNodeID()
