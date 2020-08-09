@@ -5,6 +5,8 @@
 #include <string>
 #include <array>
 
+#include "base/array.h"
+
 namespace uit {
 
 // adapted from https://stackoverflow.com/a/478960
