@@ -28,9 +28,11 @@
 
 const uit::MPIGuard guard;
 
+using Spec = uit::ImplSpec<int, DEFAULT_BUFFER, ImplSel>;
+
 TEST_CASE("Unmatched gets") {
 
-  uit::Mesh<uit::ImplSpec<int>> mesh{
+  uit::Mesh<Spec> mesh{
     uit::DyadicTopologyFactory{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignAvailableProcs{}
@@ -40,8 +42,8 @@ TEST_CASE("Unmatched gets") {
 
   REQUIRE( bundles.size() == 1 );
 
-  uit::Outlet<uit::ImplSpec<int>> input = bundles[0].GetInput(0);
-  uit::Inlet<uit::ImplSpec<int>> output = bundles[0].GetOutput(0);
+  uit::Outlet<Spec> input = bundles[0].GetInput(0);
+  uit::Inlet<Spec> output = bundles[0].GetOutput(0);
 
   output.MaybePut(42);
   // this barrier is necessary for RDMA... TODO why?
@@ -57,7 +59,7 @@ TEST_CASE("Unmatched gets") {
 
 TEST_CASE("Unmatched puts") {
 
-  uit::Mesh<uit::ImplSpec<int>> mesh{
+  uit::Mesh<Spec> mesh{
     uit::DyadicTopologyFactory{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignAvailableProcs{}
@@ -67,8 +69,8 @@ TEST_CASE("Unmatched puts") {
 
   REQUIRE( bundles.size() == 1 );
 
-  uit::Outlet<uit::ImplSpec<int>> input = bundles[0].GetInput(0);
-  uit::Inlet<uit::ImplSpec<int>> output = bundles[0].GetOutput(0);
+  uit::Outlet<Spec> input = bundles[0].GetInput(0);
+  uit::Inlet<Spec> output = bundles[0].GetOutput(0);
 
   for (int i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
     output.MaybePut(i);
@@ -87,7 +89,7 @@ TEST_CASE("Unmatched puts") {
 }
 
 decltype(auto) make_ring_bundle() {
-  uit::Mesh<uit::ImplSpec<int>> mesh{
+  uit::Mesh<Spec> mesh{
     uit::RingTopologyFactory{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignAvailableProcs{}
@@ -97,8 +99,8 @@ decltype(auto) make_ring_bundle() {
 
   REQUIRE( bundles.size() == 1);
 
-  uit::Outlet<uit::ImplSpec<int>> input = bundles[0].GetInput(0);
-  uit::Inlet<uit::ImplSpec<int>> output = bundles[0].GetOutput(0);
+  uit::Outlet<Spec> input = bundles[0].GetInput(0);
+  uit::Inlet<Spec> output = bundles[0].GetOutput(0);
 
   return std::tuple{output, input};
 
@@ -153,11 +155,11 @@ TEST_CASE("Ring Mesh") {
 }
 
 std::pair<
-  std::optional< uit::Outlet<uit::ImplSpec<int>> >,
-  std::optional< uit::Inlet<uit::ImplSpec<int>> >
+  std::optional< uit::Outlet<Spec> >,
+  std::optional< uit::Inlet<Spec> >
 > make_producer_consumer_bundle() {
 
-  uit::Mesh<uit::ImplSpec<int>> mesh{
+  uit::Mesh<Spec> mesh{
     uit::ProConTopologyFactory{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignAvailableProcs{}
@@ -167,12 +169,12 @@ std::pair<
 
   REQUIRE( bundles.size() == 1 );
 
-  std::optional<uit::MeshNodeInput<uit::ImplSpec<int>>> input = (
+  std::optional<uit::MeshNodeInput<Spec>> input = (
     bundles[0].HasInputs()
     ? std::optional{bundles[0].GetInput(0)}
     : std::nullopt
   );
-  std::optional<uit::MeshNodeOutput<uit::ImplSpec<int>>> output = (
+  std::optional<uit::MeshNodeOutput<Spec>> output = (
     bundles[0].HasOutputs()
     ? std::optional{bundles[0].GetOutput(0)}
     : std::nullopt

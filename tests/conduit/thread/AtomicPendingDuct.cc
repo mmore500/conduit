@@ -2,6 +2,7 @@
 #include "conduit/thread/AtomicPendingDuct.h"
 
 using ImplSel = uit::ImplSelector<
+  uit::PendingDuct,
   uit::AtomicPendingDuct
 >;
 
