@@ -3,8 +3,11 @@
 
 #include "mpi.h"
 
-#define CATCH_CONFIG_RUNNER
+#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
+#define CATCH_CONFIG_MAIN
+
 #include "Catch/single_include/catch2/catch.hpp"
+#include "../../MultiprocessReporter.h"
 
 #include "conduit/config.h"
 #include "conduit/ImplSpec.h"
@@ -16,11 +19,14 @@
 #include "mesh/Mesh.h"
 #include "mesh/MeshNodeInput.h"
 #include "mesh/MeshNodeOutput.h"
+#include "distributed/MPIGuard.h"
 #include "topology/DyadicTopologyFactory.h"
 #include "topology/RingTopologyFactory.h"
 #include "topology/ProConTopologyFactory.h"
 
 #include "../../MultiprocessReporter.h"
+
+const uit::MPIGuard guard;
 
 TEST_CASE("Unmatched gets") {
 
@@ -230,17 +236,4 @@ TEST_CASE("Producer-Consumer Mesh") {
   // everyone should have gotten the final message by now
   if (input) REQUIRE( input->GetCurrent() == DEFAULT_BUFFER * 2 );
 
-}
-
-int main(int argc, char* argv[]) {
-
-  uit::verify(MPI_Init(&argc, &argv));
-
-  Catch::Session session;
-  session.configData().reporterName = "multiprocess";
-  int result = session.run( argc, argv );
-
-  uit::verify(MPI_Finalize());
-
-  return result;
 }
