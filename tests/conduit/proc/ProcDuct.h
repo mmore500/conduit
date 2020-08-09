@@ -28,7 +28,8 @@
 
 const uit::MPIGuard guard;
 
-using Spec = uit::ImplSpec<int, DEFAULT_BUFFER, ImplSel>;
+using MSG_T = int;
+using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
 TEST_CASE("Unmatched gets") {
 
@@ -38,7 +39,7 @@ TEST_CASE("Unmatched gets") {
     uit::AssignAvailableProcs{}
   };
 
-  auto bundles = mesh.GetSubmesh(0);
+  auto bundles = mesh.GetSubmesh();
 
   REQUIRE( bundles.size() == 1 );
 
@@ -51,7 +52,7 @@ TEST_CASE("Unmatched gets") {
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
 
-  for (int i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
+  for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
     REQUIRE( input.GetCurrent() == 42 );
   }
 
@@ -65,14 +66,14 @@ TEST_CASE("Unmatched puts") {
     uit::AssignAvailableProcs{}
   };
 
-  auto bundles = mesh.GetSubmesh(0);
+  auto bundles = mesh.GetSubmesh();
 
   REQUIRE( bundles.size() == 1 );
 
   uit::Outlet<Spec> input = bundles[0].GetInput(0);
   uit::Inlet<Spec> output = bundles[0].GetOutput(0);
 
-  for (int i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
+  for (MSG_T i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
     output.MaybePut(i);
   }
 
@@ -80,9 +81,11 @@ TEST_CASE("Unmatched puts") {
   uit::verify(MPI_Barrier(MPI_COMM_WORLD));
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
-  // TODO why are these extra GetCurrent's necessary?
-  input.GetCurrent();
-  input.GetCurrent();
+  REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
+
+  // TODO why are these extra GetCurrent's necessary for IMsg?
+  for(size_t i = 0; i < 10; ++i) input.GetCurrent();
+
   REQUIRE( input.GetCurrent() >= DEFAULT_BUFFER - 1 );
   REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
 
@@ -157,7 +160,7 @@ TEST_CASE("Ring Mesh") {
 
   REQUIRE(
     input.GetCurrent()
-    == uit::numeric_cast<int>(
+    == uit::numeric_cast<MSG_T>(
       uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
     )
   );
@@ -168,7 +171,7 @@ TEST_CASE("Ring Mesh") {
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
   // check that buffer wraparound works properly
-  for (int i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
+  for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
 
     output.MaybePut(i);
 
@@ -255,7 +258,7 @@ TEST_CASE("Producer-Consumer Mesh") {
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
   // check that buffer wraparound works properly
-  for (int i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
+  for (MSG_T i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
 
     uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
