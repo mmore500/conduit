@@ -1,4 +1,4 @@
-TEST_NAMES := DyadicTopologyFactory RingTopologyFactory TopoNode LoopTopologyFactory TopoEdge TopoNodeInput ProconTopologyFactory Topology TopoNodeOutput
+TEST_NAMES := DyadicTopologyFactory RingTopologyFactory TopoNode LoopTopologyFactory TopoEdge TopoNodeInput ProConTopologyFactory Topology TopoNodeOutput
 
 EMP_DIR := ../../third-party/Empirical/source
 
