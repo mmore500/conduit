@@ -14,35 +14,36 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 
 ## TODO
 
-* namespace (uit? ondu? cdt? con? duit? cndt? cnd?)
 * move utility to Empirical
 * write tests
-* add automated test coverage
 * collect data from benchmarks
 * add benchmarks to CI build
 * add opt, fulldebug, and cranky tests to build
-* come up with some sort of system to archive benchmark data
-  * datafile named for hash of current commit?
-* break tests up into multiple builds
-* switch README.rst to Markdown
 * write description and link blog posts
 * move TODOs to GH tracker
 * register with Zenodo
 * add how to cite info to README
-* come up with interface to reflect
-  * variable-length,
 * switch to branch-based workflow
-* consider re-organizing header files
 * re-organize header files in includes: one header file in each subdirectory that grabs the rest?
   * like `include/concurrent/concurrent.h` would have includes for all the other header files in that directory in it
-* make RDMA window manager NOT static
 * make the read position and the write position internal to duct
 * add valgrind to continuous integration
 * add mpich run mode to tests, clang mode (?)
-* rename the mesh factories to be topology factories
 * refactor error_mutex_lock to make a uit_assert
 * add -g flags to debug make recipes
 * break up/refactor mpi_utils.h
+* move utilities/assign_utils to assignment/
+* make all paths to Empirical headers relative
+* add a way for ducts to specify what they are versus aren't capable of
+  * can only do getcurrent
+  * can do getcurrent or get next
+    * can do varlen types (would wrap T with a function to get length?)
+* rename ISend to Isend etc.
+* remove redundant proc benchmarks/tests
+* setup ReadTheDocs
+* investigate leaking MPI_Comms
+* make a pass to reorganize header includes
+* write Docstrings
 
 * make_random_mesh
   * degree is argument

@@ -150,8 +150,10 @@ public:
     back_end->Initialize();
   }
 
+  // TODO rename GetNumNodes
   size_t GetNodeCount() const { return nodes.GetNodeCount(); }
 
+  // TODO rename GetNumEdges
   size_t GetEdgeCount() const { return nodes.GetEdgeCount(); }
 
   node_container_t GetSubmesh(const thread_id_t tid=0) const {
