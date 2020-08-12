@@ -2,6 +2,8 @@
 
 #include <stddef.h>
 
+#include "utility/print_utils.h"
+
 namespace uit {
 
 class TopoNodeInput {
@@ -15,6 +17,15 @@ public:
   { ; }
 
   size_t GetEdgeID() const { return edge_id; }
+
+  std::string ToString() const {
+    std::stringstream ss;
+    ss << format_member(
+      "size_t edge_id",
+      edge_id
+    );
+    return ss.str();
+  }
 
 };
 
