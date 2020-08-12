@@ -40,17 +40,17 @@ class Mesh {
   using node_container_t = emp::vector<node_t>;
 
   inline static size_t mesh_id_counter{};
-  const size_t mesh_id;
-  const MPI_Comm comm;
+  size_t mesh_id;
+  MPI_Comm comm;
 
   // node_id -> node
   internal::MeshTopology<ImplSpec> nodes;
 
-  const std::function<uit::thread_id_t(node_id_t)> thread_assignment;
-  const std::function<uit::proc_id_t(node_id_t)> proc_assignment;
+  std::function<uit::thread_id_t(node_id_t)> thread_assignment;
+  std::function<uit::proc_id_t(node_id_t)> proc_assignment;
 
   using back_end_t = uit::SharedBackEnd<ImplSpec>;
-  const std::shared_ptr<back_end_t> back_end{ std::make_shared<back_end_t>() };
+  std::shared_ptr<back_end_t> back_end{ std::make_shared<back_end_t>() };
 
   void InitializeInterThreadDucts() {
     for (auto& [node_id, node] : nodes) {
