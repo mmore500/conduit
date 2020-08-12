@@ -120,6 +120,9 @@ TEST_CASE("Validity") {
   // all puts must be complete for next part of the test
   uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
+  // flush
+  for (size_t i = 0; i < std::kilo{}.num; ++i) input.GetCurrent();
+
   for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
     REQUIRE( input.GetCurrent() >= 0 );
     REQUIRE( input.GetCurrent() == input.GetCurrent() );
