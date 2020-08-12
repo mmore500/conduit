@@ -3,6 +3,8 @@
 #include "TopoNodeInput.h"
 #include "TopoNodeOutput.h"
 
+#include "utility/print_utils.h"
+
 #include "base/vector.h"
 
 namespace uit {
@@ -24,6 +26,27 @@ public:
   const inputs_t& GetInputs() const { return inputs; }
 
   const outputs_t& GetOutputs() const { return outputs; }
+
+  size_t GetNumInputs() const { return inputs.size(); }
+
+  size_t GetNumOutputs() const { return outputs.size(); }
+
+  bool HasInputs() const { return inputs.size(); }
+
+  bool HasOutputs() const { return outputs.size(); }
+
+  std::string ToString() const {
+    std::stringstream ss;
+    ss << format_member(
+      "emp::vector<uit::TopoNodeInput> inputs",
+      uit::to_string(inputs)
+    ) << std::endl;
+    ss << format_member(
+      "emp::vector<uit::TopoNodeInput> inputs",
+      uit::to_string(outputs)
+    );
+    return ss.str();
+  }
 
 };
 
