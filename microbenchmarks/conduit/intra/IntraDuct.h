@@ -1,16 +1,14 @@
-#include "../DuctMicrobenchUtils.h"
+#include "../DuctBenchmarkRegistration.h"
+#include "utility/ScopeGuard.h"
+#include "distributed/MPIGuard.h"
 
-// sample doubling thread counts
 uit::ForEach<
   ThreadCountPayload,
   2
 > range{};
 
-// initialize
-struct Initializer {
-  Initializer() {
-    range.item<1>();
-  }
-} i;
+const uit::MPIGuard mguard{};
+
+const uit::ScopeGuard sguard{ [](){ range.item<1>(); } };
 
 BENCHMARK_MAIN();

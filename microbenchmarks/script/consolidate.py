@@ -22,8 +22,8 @@ for filename, entry in [
             'time_type' : (
                 'wall_time'
                 if (
-                    len(benchmark['name'].split('/')) > 2
-                    and benchmark['name'].split('/')[2] == 'real_time'
+                    len(benchmark['name'].split('/')) > 3
+                    and benchmark['name'].split('/')[3] == 'real_time'
                 ) else 'cpu_time'
             )
         })].append({
