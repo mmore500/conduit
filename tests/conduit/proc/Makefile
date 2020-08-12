@@ -1,4 +1,4 @@
-TEST_NAMES := IMsgDuct InterProcAddress SharedBackEnd #RdmaDuct
+TEST_NAMES := InterProcAddress SharedBackEnd IMsgDuct MsgDuct #IrmsgDuct RMsgDuct RdmaDuct
 
 EMP_DIR := ../../../third-party/Empirical/source
 
