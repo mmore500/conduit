@@ -37,10 +37,6 @@
 #include "State.h"
 #include "mesh/Mesh.h"
 
-using grid_t = emp::vector<Tile>;
-using handle_t = grid_t::iterator;
-using chunk_t = emp::vector<handle_t>;
-
 grid_t make_grid(const config_t & cfg) {
 
   emp::vector<uit::Inlet<Spec>> inlets;
