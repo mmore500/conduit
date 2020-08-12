@@ -37,7 +37,6 @@ class Mesh {
   using node_id_t = size_t;
   using edge_id_t = size_t;
   using node_t = MeshNode<ImplSpec>;
-  using node_container_t = emp::vector<node_t>;
 
   inline static size_t mesh_id_counter{};
   size_t mesh_id;
@@ -170,15 +169,17 @@ public:
   // TODO rename GetNumEdges
   size_t GetEdgeCount() const { return nodes.GetEdgeCount(); }
 
-  node_container_t GetSubmesh(const thread_id_t tid=0) const {
+  using submesh_t = emp::vector<node_t>;;
+
+  submesh_t GetSubmesh(const thread_id_t tid=0) const {
     return GetSubmesh(tid, uit::get_proc_id(comm));
   }
 
-  node_container_t GetSubmesh(
+  submesh_t GetSubmesh(
     const thread_id_t tid,
     const proc_id_t pid
   ) const {
-    node_container_t res;
+    submesh_t res;
     for (const auto& [node_id, node] : nodes) {
       if (
         thread_assignment(node_id) == tid

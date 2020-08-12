@@ -13,11 +13,12 @@ namespace uit {
 template<typename ImplSpec>
 class MeshNode {
 
-
+public:
   using input_t = uit::MeshNodeInput<ImplSpec>;
-  using inputs_t = emp::vector<input_t>;
-
   using output_t = uit::MeshNodeOutput<ImplSpec>;
+
+private:
+  using inputs_t = emp::vector<input_t>;
   using outputs_t = emp::vector<output_t>;
 
   inputs_t inputs;
