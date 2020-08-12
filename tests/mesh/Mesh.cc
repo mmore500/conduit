@@ -6,6 +6,7 @@
 #include "conduit/ImplSpec.h"
 #include "distributed/MPIGuard.h"
 #include "topology/RingTopologyFactory.h"
+#include "topology/ProConTopologyFactory.h"
 
 const uit::MPIGuard guard;
 
@@ -21,3 +22,18 @@ TEST_CASE("Test Mesh") {
   REQUIRE( mesh.GetSubmesh().size() == 100 );
 
 }
+
+TEST_CASE("Test with ProConTopologyFactory") {
+
+  using Spec = uit::ImplSpec<char>;
+
+  uit::Mesh<Spec> mesh{uit::ProConTopologyFactory{}(100)};
+
+  REQUIRE( mesh.GetNodeCount() == 100 );
+  REQUIRE( mesh.GetEdgeCount() == 50 );
+  REQUIRE( mesh.GetSubmesh().size() == 100 );
+
+}
+
+// TODO add tests with more TopologyFactories
+// TODO add tests with no-connection nodes
