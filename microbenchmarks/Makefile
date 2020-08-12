@@ -1,4 +1,4 @@
-TEST_NAMES := conduit
+TEST_NAMES := conduit distributed
 
 VERSION := $$(git describe --dirty --always)
 
@@ -24,7 +24,7 @@ clean-%: %
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(TEST_NAMES))
-	python3 script/consolidate.py */*/*.json
+	python3 script/consolidate.py conduit/*/*.json
 	for f in *run_type=iteration*.json; do \
 		python3 script/graph.py $$f; \
 	done
