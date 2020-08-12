@@ -179,10 +179,10 @@ TEST_CASE("Ring Mesh") {
 
     output.MaybePut(i);
 
+    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+
     // nobody should see messages that haven't been sent yet
     REQUIRE(input.GetCurrent() <= i);
-
-    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
   }
 
