@@ -1,4 +1,4 @@
-BENCH_NAMES := IMsgDuct MsgDuct IrmsgDuct RdmaDuct RMsgDuct
+BENCH_NAMES := IMsgDuct MsgDuct IrmsgDuct RMsgDuct #RdmaDuct
 
 EMP_DIR := ../../../third-party/Empirical/source
 
