@@ -52,6 +52,13 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * #include "mpi.h" -> #include <mpi.h>
 * add libmimalloc to container
 * change file extensions to `.hpp` and `.cpp`
+* add real time fairness tests
+* add an unstable warning to RDMADuct, Irduct, rduct constructor
+* refactor I / no-I ducts for less code duplication
+* remove mca warn on fork
+* add examples directory
+* make apps or demos directory, move most of source there
+* debug RDMADuct
 
 * make_random_mesh
   * degree is argument
