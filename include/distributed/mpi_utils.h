@@ -497,4 +497,24 @@ std::string to_string(const MPI_Comm comm) {
   return std::string{}.assign(data, len);
 }
 
+
+MPI_Comm duplicate_comm(const MPI_Comm comm) {
+  MPI_Comm res;
+  uit::verify(MPI_Comm_dup(
+    comm,
+    &res
+  ));
+  return res;
+}
+
+bool test_completion(MPI_Request& request) {
+  int flag{};
+  uit::verify(MPI_Test(
+    &request,
+    &flag,
+    MPI_STATUS_IGNORE
+  ));
+  return flag;
+}
+
 }
