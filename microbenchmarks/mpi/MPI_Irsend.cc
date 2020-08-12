@@ -102,6 +102,13 @@ static void MPI_Irsend(benchmark::State& state) {
       benchmark::Counter(
         drop_counter / static_cast<double>(streak_counter)
       )
+    },
+    {
+      "Processes",
+      benchmark::Counter(
+        uit::get_nprocs(),
+        benchmark::Counter::kAvgThreads
+      )
     }
   });
 
@@ -211,6 +218,7 @@ int main(int argc, char** argv) {
     // notify support that benchmarking is complete
     MPI_Request ibarrier_request;
     uit::verify(MPI_Ibarrier(MPI_COMM_WORLD, &ibarrier_request));
+    uit::verify(MPI_Wait(&ibarrier_request, MPI_STATUSES_IGNORE));
 
   } else {
 

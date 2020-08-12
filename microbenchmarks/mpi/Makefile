@@ -2,6 +2,8 @@ BENCH_NAMES := MPI_Isend MPI_Irsend MPI_Rsend MPI_Send MPI_Test MPI_Testall MPI_
 
 EMP_DIR := ../../third-party/Empirical/source
 
+SHELL := /bin/bash
+
 #CXX = clang++
 CXX := mpic++
 
@@ -12,10 +14,14 @@ default: bench
 bench-%: %.cc
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
-	for n in $$(seq 2 2); do \
-		mpiexec --bind-to none -n $$n ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=$$n+ext=.json"; \
+	let i=1; \
+	test -z "$$SLURM_NTASKS" && SLURM_NTASKS=$$(nproc); \
+	while :; do \
+		let n=$$((2**$$i)); \
+		test $$n -gt $$SLURM_NTASKS && break; \
+		mpiexec --bind-to none -n $$n ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=$$n+ext=.json" | ../script/headtail.sh; \
+		let i++; \
 	done
-
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(BENCH_NAMES))

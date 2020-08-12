@@ -13,7 +13,7 @@ const uit::MPIGuard guard;
 
 constexpr size_t buffer_size{ DEFAULT_BUFFER };
 
-static void MPI_Irecv(benchmark::State& state) {
+static void MPI_Rsend(benchmark::State& state) {
 
   // set up
   std::deque<MPI_Request> requests;
@@ -29,94 +29,44 @@ static void MPI_Irecv(benchmark::State& state) {
 
     ++epoch_counter;
 
-    // if receive buffer is at capacity, make some space
+    // if send buffer is at capacity, make some space
     if (requests.size() == buffer_size) {
 
-      if (uit::test_completion(requests.front())) {
-        // if front request is complete, pop it
-        requests.pop_front();
-        buffers.pop_front();
-
-        if (current_streak) ++streak_counter;
-        current_streak=0;
-
-      } else {
-        // otherwise, log a drop try again
-        ++current_streak;
-        ++drop_counter;
-        continue;
-      }
+      // if front request is complete, pop it
+      requests.pop_front();
+      buffers.pop_front();
 
     }
 
-    // add a receive request
+    // add a send request
     requests.emplace_back();
     buffers.emplace_back();
-    uit::verify(MPI_Irecv(
+    uit::verify(MPI_Rsend(
       &buffers.back(), // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
-      1, // int source
+      1, // int dest
       1, // int tag
-      MPI_COMM_WORLD, // MPI_Comm comm
-      &requests.back() // MPI_Request * request
+      MPI_COMM_WORLD // MPI_Comm comm
     ));
 
   }
 
+
   // log results
   state.counters.insert({
     {
-      "Dropped Receives",
+      "Processes",
       benchmark::Counter(
-        drop_counter
-      )
-    },
-    {
-      "Drop Rate",
-      benchmark::Counter(
-        drop_counter,
-        benchmark::Counter::kIsRate
-      )
-    },
-    {
-      "Drop Fraction",
-      benchmark::Counter(
-        drop_counter / static_cast<double>(epoch_counter)
-      )
-    },
-    {
-      "Epochs",
-      benchmark::Counter(
-        epoch_counter
-      )
-    },
-    {
-      "Drop Streak Count",
-      benchmark::Counter(
-        streak_counter
-      )
-    },
-    {
-      "Average Drop Streak Length",
-      benchmark::Counter(
-        drop_counter / static_cast<double>(streak_counter)
+        uit::get_nprocs(),
+        benchmark::Counter::kAvgThreads
       )
     }
   });
 
-  // clean up
-  // wait on all remaining receive requests to complete
-  emp::vector<MPI_Request> contiguous(std::begin(requests), std::end(requests));
-  uit::verify(MPI_Waitall(
-    contiguous.size(),
-    contiguous.data(),
-    MPI_STATUSES_IGNORE
-  ));
-
 }
 
-static void post_fresh_sends(
+static void post_fresh_recvs(
   std::deque<MPI_Request>& requests,
   std::deque<int>& buffers
 ) {
@@ -124,11 +74,11 @@ static void post_fresh_sends(
   for (size_t i = 0; i < buffer_size; ++i) {
     requests.emplace_back();
     buffers.emplace_back();
-    uit::verify(MPI_Isend(
+    uit::verify(MPI_Irecv(
       &buffers.back(), // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
-      0, // int dest
+      0, // int source
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &requests.back() // MPI_Request * request
@@ -159,13 +109,13 @@ static void post_fresh_sends(
 }
 
 
-// post continuous stream of sends
+// post continuous stream of receives to match incoming sends
 static void support() {
 
   std::deque<MPI_Request> requests;
   std::deque<int> buffers;
 
-  post_fresh_sends(requests, buffers);
+  post_fresh_recvs(requests, buffers);
 
   // signal setup is complete
   uit::verify(MPI_Barrier(MPI_COMM_WORLD));
@@ -179,7 +129,7 @@ static void support() {
 
     // has sender started to catch up with our posted recv's?
     if (uit::test_completion(requests[requests.size() - buffer_size])) {
-      post_fresh_sends(requests, buffers);
+      post_fresh_recvs(requests, buffers);
     }
 
   }
@@ -190,8 +140,8 @@ static void support() {
 const uit::ScopeGuard registration{[](){
   uit::report_confidence(
     benchmark::RegisterBenchmark(
-      "MPI_Irecv",
-      MPI_Irecv
+      "MPI_Rsend",
+      MPI_Rsend
     )
   );
 }};
@@ -211,6 +161,7 @@ int main(int argc, char** argv) {
     // notify support that benchmarking is complete
     MPI_Request ibarrier_request;
     uit::verify(MPI_Ibarrier(MPI_COMM_WORLD, &ibarrier_request));
+    uit::verify(MPI_Wait(&ibarrier_request, MPI_STATUSES_IGNORE));
 
   } else {
 

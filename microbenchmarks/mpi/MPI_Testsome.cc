@@ -48,6 +48,17 @@ static void MPI_Testsome_nopending(benchmark::State& state) {
 
   }
 
+  // log results
+  state.counters.insert({
+    {
+      "Processes",
+      benchmark::Counter(
+        uit::get_nprocs(),
+        benchmark::Counter::kAvgThreads
+      )
+    }
+  });
+
   // clean up
   for (auto& request : requests)  uit::verify(MPI_Cancel(&request));
 
