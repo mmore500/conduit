@@ -53,6 +53,7 @@ RUN \
     libpthread-stubs0-dev \
     libc6-dbg \
     gdb \
+    jsonlint \
     && \
   echo "installed core dependencies"
 
