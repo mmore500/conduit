@@ -7,11 +7,12 @@
 #include "conduit/Outlet.h"
 #include "utility/print_utils.h"
 #include "State.h"
+#include "config_utils.h"
 
 class Tile {
 
-  uit::Outlet<State> input;
-  uit::Inlet<State> output;
+  uit::Outlet<Spec> input;
+  uit::Inlet<Spec> output;
 
   State state;
 
@@ -51,7 +52,7 @@ class Tile {
   }
 
 public:
-  Tile(uit::Outlet<State> input_, uit::Inlet<State> output_)
+  Tile(uit::Outlet<Spec> input_, uit::Inlet<Spec> output_)
   : input(input_), output(output_)
   { }
 
@@ -86,32 +87,12 @@ public:
 
   size_t GetNetFlux() const { return input.GetNetFlux(); }
 
-  template <typename WhichDuct, typename... Args>
-  void EmplaceOutputDuct(Args&&... args) {
-    output.EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
-  }
-
-  template <typename WhichDuct, typename... Args>
-  void EmplaceInputDuct(Args&&... args) {
-    input.EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
-  }
-
-  template <typename WhichDuct, typename... Args>
-  void SplitOutputDuct(Args&&... args) {
-    output.SplitDuct<WhichDuct>(std::forward<Args>(args)...);
-  }
-
-  template <typename WhichDuct, typename... Args>
-  void SplitInputDuct(Args&&... args) {
-    input.SplitDuct<WhichDuct>(std::forward<Args>(args)...);
-  }
-
   std::string ToString() const {
     std::stringstream ss;
     ss << uit::format_member("id", id) << std::endl;
     ss << uit::format_member("State state", state) << std::endl;
-    ss << uit::format_member("Outlet<State> input", input) << std::endl;
-    ss << uit::format_member("Inlet<State> output", output);
+    ss << uit::format_member("Outlet<Spec> input", input) << std::endl;
+    ss << uit::format_member("Inlet<Spec> output", output);
     return ss.str();
   }
 
