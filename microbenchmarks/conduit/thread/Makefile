@@ -6,7 +6,7 @@ FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../../source/
 
 default: bench
 
-bench-%: %.cc
+bench-%: %.cpp
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
 	mpiexec.openmpi --bind-to none -n 1 ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=1+ext=.json" | ../../script/headtail.sh
@@ -15,7 +15,7 @@ bench-%: %.cc
 bench: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
-build-%: %.cc
+build-%: %.cpp
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
