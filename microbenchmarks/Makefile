@@ -26,7 +26,7 @@ clean-%: %
 bench: $(addprefix bench-, $(TEST_NAMES))
 	./script/validate.sh
 	python3 script/consolidate.py conduit/*/*.json
-	for f in *run_type=iteration*.json; do \
+	for f in *run_type=iteration*.csv; do \
 		python3 script/graph.py $$f; \
 	done
 	./script/upload.sh
