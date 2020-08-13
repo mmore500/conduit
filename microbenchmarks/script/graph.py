@@ -30,7 +30,7 @@ def draw_plots(measurement, df):
 
     plt.savefig(
       kn.pack({
-        'measurement' : measurement,
+        'measurement' : slugify(measurement),
         'time_type' : ip.pophomogeneous(df['time_type']),
         'ext' : '.png',
       }),
