@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "topology/ProConTopologyFactory.h"
+#include "topology/ProConTopologyFactory.hpp"
 
 TEST_CASE("Test ProConTopologyFactory") {
 

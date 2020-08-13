@@ -2,10 +2,10 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "topology/RingTopologyFactory.h"
-#include "distributed/MPIGuard.h"
-#include "mesh/MeshTopology.h"
-#include "conduit/ImplSpec.h"
+#include "topology/RingTopologyFactory.hpp"
+#include "distributed/MPIGuard.hpp"
+#include "mesh/MeshTopology.hpp"
+#include "conduit/ImplSpec.hpp"
 
 const uit::MPIGuard guard;
 

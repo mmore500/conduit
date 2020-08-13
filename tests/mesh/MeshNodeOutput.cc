@@ -2,9 +2,9 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "conduit/Sink.h"
-#include "mesh/MeshNodeOutput.h"
-#include "conduit/ImplSpec.h"
+#include "conduit/Sink.hpp"
+#include "mesh/MeshNodeOutput.hpp"
+#include "conduit/ImplSpec.hpp"
 
 TEST_CASE("Test MeshNodeOutput") {
 

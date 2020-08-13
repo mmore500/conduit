@@ -4,11 +4,11 @@
 #define CATCH_CONFIG_MAIN
 
 #include "Catch/single_include/catch2/catch.hpp"
-#include "../MultiprocessReporter.h"
+#include "../MultiprocessReporter.hpp"
 
-#include "distributed/group_utils.h"
-#include "distributed/mpi_utils.h"
-#include "distributed/MPIGuard.h"
+#include "distributed/group_utils.hpp"
+#include "distributed/mpi_utils.hpp"
+#include "distributed/MPIGuard.hpp"
 
 const uit::MPIGuard guard;
 

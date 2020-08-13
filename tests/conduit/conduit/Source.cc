@@ -2,11 +2,11 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "../../MultiprocessReporter.h"
+#include "../../MultiprocessReporter.hpp"
 
-#include "distributed/MPIGuard.h"
-#include "conduit/Source.h"
-#include "conduit/ImplSpec.h"
+#include "distributed/MPIGuard.hpp"
+#include "conduit/Source.hpp"
+#include "conduit/ImplSpec.hpp"
 
 const uit::MPIGuard guard;
 

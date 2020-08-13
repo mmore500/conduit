@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "topology/RingTopologyFactory.h"
+#include "topology/RingTopologyFactory.hpp"
 
 TEST_CASE("Test RingTopologyFactory") {
 

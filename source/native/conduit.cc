@@ -6,12 +6,12 @@
 #include <iostream>
 #include <chrono>
 
-#include "../grid_utils.h"
-#include "../config_utils.h"
-#include "distributed/mpi_utils.h"
+#include "../grid_utils.hpp"
+#include "../config_utils.hpp"
+#include "distributed/mpi_utils.hpp"
 
-#include "../Tile.h"
-#include "utility/TimeGuard.h"
+#include "../Tile.hpp"
+#include "utility/TimeGuard.hpp"
 
 int main(int argc, char* argv[]) {
 
