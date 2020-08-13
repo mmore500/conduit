@@ -187,7 +187,10 @@ struct DuctMicrobenchRunner {
         benchmark::Counter(
           res.net_latency * res.unique_msg_counter
             / static_cast<double>(res.epoch_counter),
-          benchmark::Counter::kAvgThreadsRate | benchmark::Counter::kInvert
+          // infinite latency breaks JSON, so remap it to zero
+          res.net_latency * res.unique_msg_counter
+            ? benchmark::Counter::kAvgThreadsRate | benchmark::Counter::kInvert
+            : benchmark::Counter::kAvgThreads
         )
       },
       {
