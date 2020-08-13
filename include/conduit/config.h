@@ -6,7 +6,7 @@
 namespace uit {
 
 // TODO don't use macros
-#define DEFAULT_BUFFER 1024
+#define DEFAULT_BUFFER 64
 
 #ifdef __cpp_lib_hardware_interference_size
   static constexpr size_t CACHE_LINE_SIZE =

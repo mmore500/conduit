@@ -120,6 +120,9 @@ TEST_CASE("Validity") {
   // all puts must be complete for next part of the test
   uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
+  // flush
+  for (size_t i = 0; i < std::kilo{}.num; ++i) input.GetCurrent();
+
   for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
     REQUIRE( input.GetCurrent() >= 0 );
     REQUIRE( input.GetCurrent() == input.GetCurrent() );
@@ -160,25 +163,23 @@ TEST_CASE("Ring Mesh") {
   uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
   REQUIRE(
-    input.GetCurrent()
+    input.GetNext()
     == uit::numeric_cast<MSG_T>(
       uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
     )
   );
 
   // setup for next test
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
   output.MaybePut(0);
+  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
   std::this_thread::sleep_for(std::chrono::seconds{1});
 
   // check that buffer wraparound works properly
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
 
     output.MaybePut(i);
-
     // nobody should see messages that haven't been sent yet
     REQUIRE(input.GetCurrent() <= i);
-
     uit::verify(MPI_Barrier(MPI_COMM_WORLD));
 
   }

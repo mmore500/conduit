@@ -47,6 +47,20 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * investigate leaking MPI_Comms
 * make a pass to reorganize header includes
 * write Docstrings
+* write adaptor that caches and then sends every n
+* write backend that caches and then sends every n
+* #include "mpi.h" -> #include <mpi.h>
+* add libmimalloc to container
+* change file extensions to `.hpp` and `.cpp`
+* add real time fairness tests
+* add an unstable warning to RDMADuct, Irduct, rduct constructor
+* refactor I / no-I ducts for less code duplication
+* remove mca warn on fork
+* add examples directory
+* make apps or demos directory, move most of source there
+* debug RDMADuct
+* rename ring mesh to bucket brigade
+* make macrobenchmarks run for fixed time not iters, add proc macrobenchmarks, upload macrobenchmark results to osf
 
 * make_random_mesh
   * degree is argument
@@ -110,6 +124,7 @@ new shared_ptr MeshState
 * [boost spsc_queue docs](https://www.boost.org/doc/libs/1_73_0/doc/html/boost/lockfree/spsc_queue.html)
 * [boost spsc_queue implementation](https://github.com/boostorg/lockfree/blob/771e8c1016a5d9b61acbc871e442a3fb139e1494/include/boost/lockfree/spsc_queue.hpp)
 * [The Bip Buffer - The Circular Buffer with a Twist](https://www.codeproject.com/Articles/3479/The-Bip-Buffer-The-Circular-Buffer-with-a-Twist)
+* [MPI: blocking vs non-blocking](https://stackoverflow.com/a/47041382)
 
 ## Credits
 

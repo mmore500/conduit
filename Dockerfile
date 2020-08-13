@@ -5,6 +5,10 @@ COPY . /opt/conduit
 
 SHELL ["/bin/bash", "-c"]
 
+# Prevent interactive time zone config.
+# adapted from https://askubuntu.com/a/1013396
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Install.
 RUN \
   apt-get update -qq \
@@ -53,6 +57,7 @@ RUN \
     libpthread-stubs0-dev \
     libc6-dbg \
     gdb \
+    jsonlint \
     && \
   echo "installed core dependencies"
 

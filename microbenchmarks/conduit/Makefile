@@ -1,4 +1,4 @@
-TEST_NAMES := thread intra
+TEST_NAMES := thread intra proc
 
 default: bench
 

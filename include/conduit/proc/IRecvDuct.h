@@ -71,9 +71,7 @@ class IRecvDuct {
   }
 
   // AcceptReceive Take
-  bool ConfirmReceive() {
-
-    int flag{};
+  void ConfirmReceive() {
 
     emp_assert(
       request_states[receive_position],
@@ -82,21 +80,12 @@ class IRecvDuct {
       pending,
       format_member("*this", *this)
     );
-    verify(MPI_Test(
-      &receive_requests[receive_position],
-      &flag,
-      MPI_STATUS_IGNORE
-    ));
 #ifndef NDEBUG
-    if (flag) request_states[receive_position] = false;
+    request_states[receive_position] = false;
 #endif
 
-    if (flag) {
-      RequestReceive();
-      ++pending;
-    }
-
-    return flag;
+    RequestReceive();
+    ++pending;
 
   }
 
@@ -128,7 +117,22 @@ class IRecvDuct {
 
   }
 
-  void Flush() { while (ConfirmReceive()); }
+  void Flush() {
+    int count{};
+    do {
+      thread_local emp::array<int, N> out_indices;
+
+      MPI_Testsome(
+        N, // int count
+        receive_requests.data(), // MPI_Request array_of_requests[]
+        &count, // int *outcount
+        out_indices.data(), // int *indices
+        MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
+      );
+      for (int i = 0; i < count; ++i) ConfirmReceive();
+
+    } while (count == N);
+  }
 
 public:
 

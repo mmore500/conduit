@@ -7,8 +7,13 @@
 #include <assert.h>
 #include <new>
 
+#include "conduit/ImplSpec.h"
 #include "tools/string_utils.h"
 #include "utility/math_utils.h"
+
+#include "State.h"
+
+using Spec = uit::ImplSpec<State>;
 
 using config_t = std::unordered_map<std::string, size_t>;
 

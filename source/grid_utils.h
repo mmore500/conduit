@@ -19,7 +19,7 @@
 #include "utility/numeric_cast.h"
 #include "utility/safe_compare.h"
 
-#include "conduit/pipe_utils.h"
+#include "conduit/Conduit.h"
 #include "conduit/config.h"
 #include "config_utils.h"
 #include "chunk_utils.h"
@@ -33,33 +33,31 @@
 #include "concurrent/Gatherer.h"
 #include "Tile.h"
 #include "parallel/ThreadTeam.h"
+#include "topology/RingTopologyFactory.h"
 #include "State.h"
 #include "mesh/Mesh.h"
 
-using grid_t = emp::vector<Tile>;
-using handle_t = grid_t::iterator;
-using chunk_t = emp::vector<handle_t>;
-
 grid_t make_grid(const config_t & cfg) {
 
-  emp::vector<uit::Inlet<State>> inlets;
-  emp::vector<uit::Outlet<State>> outlets;
+  emp::vector<uit::Inlet<Spec>> inlets;
+  emp::vector<uit::Outlet<Spec>> outlets;
 
   const size_t grid_size = cfg.at("grid_size");
   const size_t num_threads = cfg.at("num_threads");
-  uit::Mesh mesh{
-    uit::make_ring_mesh<State>(grid_size),
+  uit::Mesh<Spec> mesh{
+    uit::RingTopologyFactory{}(grid_size * uit::get_nprocs()),
     uit::AssignContiguously<uit::thread_id_t>{num_threads, grid_size}
   };
 
   grid_t grid;
 
-  for (size_t i = 0; i < grid_size; ++i) {
-    auto & [inputs, outputs] = mesh[i];
+  uit::Mesh<Spec>::submesh_t submesh{ mesh.GetSubmesh() };
+
+  for (const auto & node : submesh) {
     grid.push_back(
       Tile(
-        inputs[0],
-        outputs[0]
+        node.GetInput(0),
+        node.GetOutput(0)
       )
     );
   }
@@ -93,32 +91,6 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       cfg.at("num_chunks")
     )
   );
-
-  // TODO refactor to accomplish this via Mesh!
-  if (uit::is_multiprocess()) {
-
-    const size_t prev_proc = uit::circular_index(
-      uit::get_rank(),
-      uit::get_nprocs(),
-      -1
-    );
-    grid.front().SplitInputDuct<uit::ProcOutletDuct<State>>(
-      prev_proc,
-      prev_proc // tag
-    );
-
-    const size_t next_proc = uit::circular_index(
-      uit::get_rank(),
-      uit::get_nprocs(),
-      1
-    );
-    grid.back().SplitOutputDuct<uit::ProcInletDuct<State>>(
-      next_proc,
-      uit::get_rank() // tag
-    );
-
-
-  }
 
   initialize_grid(grid);
 

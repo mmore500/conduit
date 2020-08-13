@@ -11,37 +11,35 @@
 #include "utility/TimeGuard.h"
 
 #include "distributed/mpi_utils.h"
-#include "conduit/pipe_utils.h"
+#include "conduit/Conduit.h"
 #include "utility/numeric_cast.h"
-#include "mesh/mesh_utils.h"
+#include "topology/RingTopologyFactory.h"
 #include "parallel/thread_utils.h"
 #include "utility/benchmark_utils.h"
 
 #define MESSAGE_T int
 
+using Spec = uit::ImplSpec<MESSAGE_T, DEFAULT_BUFFER, ImplSel>;
+
 void do_work(
-  uit::io_bundle_t<MESSAGE_T> bundle,
+  uit::Mesh<Spec>::submesh_t submesh,
   std::latch & latch,
   uit::Gatherer<MESSAGE_T> & gatherer
 ) {
 
   std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
-  const bool is_producer = bundle.outputs.size();
-  const bool is_consumer = bundle.inputs.size();
-  const uit::thread_id_t thread_id = uit::get_thread_id();
+  auto optional_input = submesh.front().GetInputOrNullopt(0);
+  auto optional_output = submesh.front().GetOutputOrNullopt(0);
 
-  auto * const input = is_consumer ? &bundle.inputs[0].GetInput() : nullptr;
-  auto * const output = is_producer ? &bundle.outputs[0].GetOutput() : nullptr;
-
-  if (is_producer) output->MaybePut(thread_id);
+  if (optional_output) optional_output->MaybePut(uit::get_thread_id());
 
   latch.arrive_and_wait();
 
   for (size_t rep = 0; rep < 1e7; ++rep) {
-    if (is_producer) output->MaybePut(thread_id);
-    if (is_consumer) uit::do_not_optimize(
-      input->GetCurrent()
+    if (optional_output) optional_output->MaybePut(uit::get_thread_id());
+    if (optional_input) uit::do_not_optimize(
+      optional_input->GetCurrent()
     );
   }
 
@@ -55,8 +53,8 @@ void profile_thread_count(const size_t num_threads) {
 
   uit::ThreadTeam team;
 
-  uit::Mesh mesh{
-    uit::make_ring_mesh<MESSAGE_T>(num_threads),
+  uit::Mesh<Spec> mesh{
+    uit::RingTopologyFactory{}(num_threads),
     uit::AssignSegregated<uit::thread_id_t>()
   };
 
@@ -65,9 +63,11 @@ void profile_thread_count(const size_t num_threads) {
   std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
   std::latch latch{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
-  for (auto & node : mesh) {
+  for (uit::thread_id_t i = 0; i < num_threads; ++i) {
     team.Add(
-      [node, &latch, &gatherer](){ do_work(node, latch, gatherer); }
+      [i, &latch, &gatherer, &mesh](){
+        do_work(mesh.GetSubmesh(i), latch, gatherer);
+      }
     );
   }
 

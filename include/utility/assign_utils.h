@@ -36,7 +36,7 @@ struct AssignContiguously {
   { ; }
 
   RETURN_TYPE operator()(const size_t & node_id) {
-    return node_id * num_threads / num_nodes;
+    return (node_id * num_threads / num_nodes) % num_threads;
   }
 
 };

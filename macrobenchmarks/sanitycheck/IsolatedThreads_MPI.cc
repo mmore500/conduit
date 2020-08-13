@@ -9,18 +9,15 @@
 #include "utility/TimeGuard.h"
 
 #include "distributed/mpi_utils.h"
-#include "conduit/pipe_utils.h"
+#include "conduit/Conduit.h"
 #include "utility/numeric_cast.h"
-#include "mesh/mesh_utils.h"
 #include "parallel/thread_utils.h"
 #include "utility/benchmark_utils.h"
+#include "conduit/ImplSpec.h"
 
 #define MESSAGE_T int
 
-void do_work(
-  uit::io_bundle_t<MESSAGE_T> bundle,
-  std::latch & latch
-) {
+void do_work(std::latch & latch) {
 
   std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
@@ -36,18 +33,11 @@ void profile_thread_count(const size_t num_threads) {
 
   uit::ThreadTeam team;
 
-  uit::Mesh mesh{
-    uit::make_loop_mesh<MESSAGE_T>(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
-  };
-
   std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
   std::latch latch{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
-  for (auto & node : mesh) {
-    team.Add(
-      [node, &latch](){ do_work(node, latch); }
-    );
+  for (size_t i = 0; i < num_threads; ++i) {
+    team.Add( [&latch](){ do_work(latch); } );
   }
 
   team.Join();
