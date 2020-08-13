@@ -8,6 +8,5 @@ NPROC=$(nproc)
 OSF_PATH="microbenchmarks/context=${CONTEXT}/nnode=${NNODE}+nproc=${NPROC}/time=${TIME}+version=${VERSION}"
 
 for f in $(find . -name "*.json"); do
-  echo "validating ${f}..."
   jsonlint-php $f
 done
