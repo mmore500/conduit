@@ -12,7 +12,7 @@ default: bench
 bench-%: %.cc
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
-	mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n 1 ./$@.out
+	mpiexec --bind-to none -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(BENCH_NAMES))

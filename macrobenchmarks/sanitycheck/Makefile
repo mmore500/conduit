@@ -18,7 +18,7 @@ bench-%: %.cc
 		  ./$@.out; \
 		else \
 		  echo "With MPI"; \
-			mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n 1 ./$@.out; \
+			mpiexec --bind-to none -n 1 ./$@.out; \
 	fi
 
 # Test in debug mode without pointer tracker

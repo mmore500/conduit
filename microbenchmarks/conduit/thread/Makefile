@@ -12,7 +12,7 @@ default: bench
 bench-%: %.cc
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
-	mpiexec.openmpi --mca mpi_warn_on_fork 0 --bind-to none -n 1 ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=1+ext=.json" | ../../script/headtail.sh
+	mpiexec.openmpi --bind-to none -n 1 ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=1+ext=.json" | ../../script/headtail.sh
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(BENCH_NAMES))

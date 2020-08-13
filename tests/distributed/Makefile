@@ -13,7 +13,7 @@ test-%: %.cc
 	$(CXX) $(FLAGS) $< -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
-		mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n $$n ./$@.out; \
+		mpiexec --bind-to none -n $$n ./$@.out; \
 	done
 
 # Test in debug mode without pointer tracker
