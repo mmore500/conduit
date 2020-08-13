@@ -11,5 +11,5 @@ set -o xtrace
 
 for f in $(find . -name "*.json"); do
   echo "validating ${f}..."
-  jsonlint -v $f
+  jsonlint-php -v $f
 done
