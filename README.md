@@ -33,7 +33,6 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * add valgrind to continuous integration
 * add mpich run mode to tests, clang mode (?)
 * refactor error_mutex_lock to make a uit_assert
-* add -g flags to debug make recipes
 * break up/refactor mpi_utils.h
 * move utilities/assign_utils to assignment/
 * add a way for ducts to specify what they are versus aren't capable of
