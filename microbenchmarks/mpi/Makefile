@@ -31,7 +31,7 @@ build-%: %.cc
 build: $(addprefix build-, $(BENCH_NAMES))
 
 # Test optimized version without debug features
-debug: FLAGS := -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/ -g
+debug: FLAGS := -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/ -g
 debug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
