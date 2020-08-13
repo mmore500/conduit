@@ -4,7 +4,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "utility/math_utils.h"
+#include "utility/math_utils.hpp"
 
 TEST_CASE("Test mod") {
 

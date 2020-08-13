@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "conduit/ImplSpec.h"
+#include "conduit/ImplSpec.hpp"
 
 
 TEST_CASE("Test ImplSelector") {

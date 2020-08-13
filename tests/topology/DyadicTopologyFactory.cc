@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "topology/DyadicTopologyFactory.h"
+#include "topology/DyadicTopologyFactory.hpp"
 
 TEST_CASE("Test DyadicTopologyFactory") {
 

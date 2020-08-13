@@ -1,8 +1,8 @@
-#include "conduit/ImplSpec.h"
-#include "conduit/thread/HeadTailDuct.h"
+#include "conduit/ImplSpec.hpp"
+#include "conduit/thread/HeadTailDuct.hpp"
 
 using ImplSel = uit::ImplSelector<
   uit::HeadTailDuct
 >;
 
-#include "IntraDuct.h"
+#include "IntraDuct.hpp"

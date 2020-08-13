@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "topology/TopoNode.h"
+#include "topology/TopoNode.hpp"
 
 TEST_CASE("Test TopoNode") {
 

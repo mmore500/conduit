@@ -3,11 +3,11 @@
 
 #include <benchmark/benchmark.h>
 
-#include "distributed/mpi_utils.h"
-#include "distributed/MPIGuard.h"
-#include "conduit/config.h"
-#include "utility/ScopeGuard.h"
-#include "utility/benchmark_utils.h"
+#include "distributed/mpi_utils.hpp"
+#include "distributed/MPIGuard.hpp"
+#include "conduit/config.hpp"
+#include "utility/ScopeGuard.hpp"
+#include "utility/benchmark_utils.hpp"
 
 const uit::MPIGuard guard;
 

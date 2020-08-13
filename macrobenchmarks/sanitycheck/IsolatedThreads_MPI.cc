@@ -2,18 +2,18 @@
 
 #include <mpi.h>
 
-#include "utility/CircularIndex.h"
-#include "parallel/ThreadTeam.h"
-#include "mesh/Mesh.h"
-#include "polyfill/latch.h"
-#include "utility/TimeGuard.h"
+#include "utility/CircularIndex.hpp"
+#include "parallel/ThreadTeam.hpp"
+#include "mesh/Mesh.hpp"
+#include "polyfill/latch.hpp"
+#include "utility/TimeGuard.hpp"
 
-#include "distributed/mpi_utils.h"
-#include "conduit/Conduit.h"
-#include "utility/numeric_cast.h"
-#include "parallel/thread_utils.h"
-#include "utility/benchmark_utils.h"
-#include "conduit/ImplSpec.h"
+#include "distributed/mpi_utils.hpp"
+#include "conduit/Conduit.hpp"
+#include "utility/numeric_cast.hpp"
+#include "parallel/thread_utils.hpp"
+#include "utility/benchmark_utils.hpp"
+#include "conduit/ImplSpec.hpp"
 
 #define MESSAGE_T int
 

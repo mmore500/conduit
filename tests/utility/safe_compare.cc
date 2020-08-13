@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "utility/safe_compare.h"
+#include "utility/safe_compare.hpp"
 
 #include <limits>
 

@@ -2,9 +2,9 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "mesh/MeshNode.h"
-#include "conduit/Conduit.h"
-#include "conduit/ImplSpec.h"
+#include "mesh/MeshNode.hpp"
+#include "conduit/Conduit.hpp"
+#include "conduit/ImplSpec.hpp"
 
 TEST_CASE("Test MeshNode") {
 

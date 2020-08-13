@@ -1,10 +1,10 @@
 #define CATCH_CONFIG_RUNNER
 
 #include "Catch/single_include/catch2/catch.hpp"
-#include "../../MultiprocessReporter.h"
+#include "../../MultiprocessReporter.hpp"
 
-#include "conduit/proc/SharedBackEnd.h"
-#include "conduit/ImplSpec.h"
+#include "conduit/proc/SharedBackEnd.hpp"
+#include "conduit/ImplSpec.hpp"
 
 TEST_CASE("Test SharedBackEnd") {
 
