@@ -17,6 +17,7 @@ class TopoNode {
 
 public:
 
+  TopoNode() = default;
   TopoNode(const inputs_t& inputs_, const outputs_t& outputs_)
   : inputs(inputs_), outputs(outputs_)
   { ; }
@@ -24,6 +25,14 @@ public:
   const inputs_t& GetInputs() const { return inputs; }
 
   const outputs_t& GetOutputs() const { return outputs; }
+
+  void AddInput(const uit::TopoNodeInput& input_) {
+    inputs.push_back(input_);
+  }
+
+  void AddOutput(const uit::TopoNodeOutput& output_) {
+    outputs.push_back(output_);
+  }
 
 };
 
