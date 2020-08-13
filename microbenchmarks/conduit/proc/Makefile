@@ -8,7 +8,7 @@ FLAGS = -std=c++17 -g -pthread -DNDEBUG -O3 -Wno-unused-function -I../../../sour
 
 default: bench
 
-bench-%: %.cc
+bench-%: %.cpp
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
 	let i=0; \
@@ -25,7 +25,7 @@ bench-%: %.cc
 bench: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
-build-%: %.cc
+build-%: %.cpp
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
