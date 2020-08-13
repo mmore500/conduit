@@ -4,8 +4,8 @@
 
 #include "../third-party/SPSCQueue/include/rigtorp/SPSCQueue.h"
 
-#include "base/assert.h"
-#include "tools/string_utils.h"
+#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../config.h"
 #include "../../utility/print_utils.h"

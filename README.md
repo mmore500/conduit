@@ -36,7 +36,6 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * add -g flags to debug make recipes
 * break up/refactor mpi_utils.h
 * move utilities/assign_utils to assignment/
-* make all paths to Empirical headers relative
 * add a way for ducts to specify what they are versus aren't capable of
   * can only do getcurrent
   * can do getcurrent or get next

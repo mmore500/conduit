@@ -6,7 +6,7 @@
 #include <numeric>
 #include <thread>
 
-#include "base/vector.h"
+#include "../../third-party/Empirical/source/base/vector.h"
 
 #include "../distributed/mpi_utils.h"
 

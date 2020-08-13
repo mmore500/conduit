@@ -6,8 +6,8 @@
 #include <array>
 #include <stddef.h>
 
-#include "base/assert.h"
-#include "tools/string_utils.h"
+#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../utility/CircularIndex.h"
 #include "../../utility/identity.h"

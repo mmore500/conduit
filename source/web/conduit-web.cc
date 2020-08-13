@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#include "web/web.h"
+#include "../../third-party/Empirical/source/web/web.h"
 
 namespace UI = emp::web;
 

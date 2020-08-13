@@ -3,7 +3,7 @@
 #include <limits>
 #include <type_traits>
 
-#include "tools/math.h"
+#include "../../third-party/Empirical/source/tools/math.h"
 
 namespace uit {
 

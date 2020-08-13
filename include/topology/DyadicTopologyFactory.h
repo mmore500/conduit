@@ -1,6 +1,6 @@
 #pragma once
 
-#include "base/vector.h"
+#include "../../third-party/Empirical/source/base/vector.h"
 
 #include "Topology.h"
 #include "TopoNode.h"

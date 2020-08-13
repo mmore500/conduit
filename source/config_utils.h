@@ -8,7 +8,7 @@
 #include <new>
 
 #include "conduit/ImplSpec.h"
-#include "tools/string_utils.h"
+#include "../third-party/Empirical/source/tools/string_utils.h"
 #include "utility/math_utils.h"
 
 #include "State.h"
