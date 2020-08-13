@@ -5,7 +5,7 @@
 #include <thread>
 #include <stddef.h>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #include "RDMAWindow.h"
 #include "mpi_utils.h"

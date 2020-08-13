@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <limits>
 
-#include "mpi.h"
+#include <mpi.h>
 #include "../utility/print_utils.h"
 #include "../utility/numeric_cast.h"
 

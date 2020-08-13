@@ -3,7 +3,7 @@
 #include <condition_variable>
 #include <thread>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #include "../utility/numeric_cast.h"
 #include "../polyfill/barrier.h"

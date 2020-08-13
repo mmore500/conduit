@@ -1,6 +1,6 @@
 #include <unordered_set>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #define CATCH_CONFIG_MAIN
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"

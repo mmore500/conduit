@@ -7,7 +7,7 @@
 #include <optional>
 #include <benchmark/benchmark.h>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #include "conduit/config.h"
 #include "utility/CircularIndex.h"

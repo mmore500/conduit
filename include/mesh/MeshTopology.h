@@ -4,7 +4,7 @@
 #include <set>
 #include <stddef.h>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #include "../utility/assign_utils.h"
 #include "../conduit/Conduit.h"

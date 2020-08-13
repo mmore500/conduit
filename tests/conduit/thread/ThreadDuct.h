@@ -3,7 +3,7 @@
 #include <unordered_set>
 #include <cassert>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #define CATCH_CONFIG_MAIN
