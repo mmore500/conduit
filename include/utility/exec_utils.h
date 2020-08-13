@@ -5,7 +5,7 @@
 #include <string>
 #include <array>
 
-#include "base/array.h"
+#include "../../third-party/Empirical/source/base/array.h"
 
 namespace uit {
 

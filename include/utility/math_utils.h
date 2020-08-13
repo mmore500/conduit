@@ -5,7 +5,7 @@
 #include <bitset>
 #include <stddef.h>
 
-#include "tools/math.h"
+#include "../../third-party/Empirical/source/tools/math.h"
 
 #include "utility/numeric_cast.h"
 

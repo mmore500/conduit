@@ -3,7 +3,7 @@
 #include <stddef.h>
 #include <optional>
 
-#include "base/vector.h"
+#include "../../third-party/Empirical/source/base/vector.h"
 
 #include "MeshNodeInput.h"
 #include "MeshNodeOutput.h"

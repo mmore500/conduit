@@ -4,8 +4,8 @@
 
 #include <mpi.h>
 
-#include "base/assert.h"
-#include "tools/math.h"
+#include "../../third-party/Empirical/source/base/assert.h"
+#include "../../third-party/Empirical/source/tools/math.h"
 
 #include "utility/math_utils.h"
 #include "utility/safe_compare.h"

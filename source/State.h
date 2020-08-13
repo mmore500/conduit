@@ -1,6 +1,6 @@
 #pragma once
 
-#include "tools/string_utils.h"
+#include "../third-party/Empirical/source/tools/string_utils.h"
 
 class State {
 

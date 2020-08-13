@@ -4,9 +4,9 @@
 #include <variant>
 #include <stddef.h>
 
-#include "base/assert.h"
-#include "tools/string_utils.h"
-#include "meta/TypePack.h"
+#include "../../third-party/Empirical/source/base/assert.h"
+#include "../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../third-party/Empirical/source/meta/TypePack.h"
 
 //TODO don't include these all here
 #include "thread/AtomicPendingDuct.h"

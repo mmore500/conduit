@@ -7,7 +7,7 @@
 
 #include "identity.h"
 
-#include "tools/string_utils.h"
+#include "../../third-party/Empirical/source/tools/string_utils.h"
 
 // TODO be clever and use fewer overloads
 

@@ -9,9 +9,9 @@
 
 #include <mpi.h>
 
-#include "meta/TypePack.h"
-#include "tools/Random.h"
-#include "tools/string_utils.h"
+#include "../../third-party/Empirical/source/meta/TypePack.h"
+#include "../../third-party/Empirical/source/tools/Random.h"
+#include "../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "polyfill/barrier.h"
 #include "conduit/config.h"

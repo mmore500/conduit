@@ -11,8 +11,8 @@
 #include <omp.h>
 #endif
 
-#include "data/DataFile.h"
-#include "tools/keyname_utils.h"
+#include "../third-party/Empirical/source/data/DataFile.h"
+#include "../third-party/Empirical/source/tools/keyname_utils.h"
 
 #include "polyfill/barrier.h"
 #include "polyfill/latch.h"
