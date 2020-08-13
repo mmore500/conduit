@@ -2,7 +2,7 @@
 #include <set>
 #include <algorithm>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #define CATCH_CONFIG_MAIN
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"

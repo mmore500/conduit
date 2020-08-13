@@ -7,7 +7,7 @@
 
 #include <benchmark/benchmark.h>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #include "meta/TypePack.h"
 #include "tools/Random.h"

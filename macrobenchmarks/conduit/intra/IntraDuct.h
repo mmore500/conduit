@@ -1,6 +1,6 @@
 #include <thread>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #include "conduit/config.h"
 #include "concurrent/Gatherer.h"

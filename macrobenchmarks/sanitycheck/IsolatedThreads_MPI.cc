@@ -1,6 +1,6 @@
 #include <thread>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #include "utility/CircularIndex.h"
 #include "parallel/ThreadTeam.h"

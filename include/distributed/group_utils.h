@@ -2,7 +2,7 @@
 
 #include <set>
 
-#include "mpi.h"
+#include <mpi.h>
 
 #include "base/assert.h"
 #include "tools/math.h"
