@@ -3,17 +3,17 @@ TEST_NAMES := InterProcAddress SharedBackEnd IMsgDuct MsgDuct #IrmsgDuct RMsgDuc
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/
 
 MPICXX ?= mpic++
-MXC ?= mpiexec
+MPIEXEC ?= mpiexec
 
 default: test
 
 test-%: %.cpp
 	echo "MPICXX" $(MPICXX)
-	echo "MXC" $(MXC)
+	echo "MPIEXEC" $(MPIEXEC)
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
-		$(MXC) --bind-to none -n $$n ./$@.out || break; \
+		$(MPIEXEC) --bind-to none -n $$n ./$@.out || break; \
 	done
 
 # Test in debug mode without pointer tracker

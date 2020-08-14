@@ -1,7 +1,7 @@
 BENCH_NAMES := HeadTailDuct PendingDuct
 
 MPICXX ?= mpic++
-MXC ?= mpiexec
+MPIEXEC ?= mpiexec
 
 FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../../source/ -I../../../include/ -I../../../third-party/
 
@@ -10,7 +10,7 @@ default: bench
 bench-%: %.cpp
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
-	$(MXC) --bind-to none -n 1 ./$@.out
+	$(MPIEXEC) --bind-to none -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(BENCH_NAMES))

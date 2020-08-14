@@ -3,16 +3,16 @@ TEST_NAMES := CircularIndex math_utils safe_compare Curry ScopeGuard
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
 
 MPICXX ?= mpic++
-MXC ?= mpiexec
+MPIEXEC ?= mpiexec
 
 default: test
 
 test-%: %.cpp
 	echo "MPICXX" $(MPICXX)
-	echo "MXC" $(MXC)
+	echo "MPIEXEC" $(MPIEXEC)
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
-	$(MXC) -n 1 ./$@.out
+	$(MPIEXEC) -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TEST_NAMES))
@@ -36,7 +36,7 @@ cov: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../../coverage
 cov: $(addprefix cov-, $(TEST_NAMES))
 
 cov-%: %.cpp ../../third-party/Catch/single_include/catch2/catch.hpp
-	export OMPI_CXX=clang++ && $(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	export OMPI_CXX=clang++ && $(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	#echo "running $@.out"
 	# execute test
 	./$@.out

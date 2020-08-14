@@ -1,7 +1,7 @@
 BENCH_NAMES := IsolatedThreads_MPI IsolatedThreads_NoMPI
 
 MPICXX ?= mpic++
-MXC ?= mpiexec
+MPIEXEC ?= mpiexec
 
 FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../source/ -I../../include/ -I../../third-party/
 
@@ -16,7 +16,7 @@ bench-%: %.cpp
 		  ./$@.out; \
 		else \
 		  echo "With MPI"; \
-			$(MXC) --bind-to none -n 1 ./$@.out; \
+			$(MPIEXEC) --bind-to none -n 1 ./$@.out; \
 	fi
 
 # Test in debug mode without pointer tracker
