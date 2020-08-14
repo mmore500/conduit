@@ -31,7 +31,6 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
   * like `include/concurrent/concurrent.h` would have includes for all the other header files in that directory in it
 * make the read position and the write position internal to duct
 * add valgrind to continuous integration
-* add mpich run mode to tests, clang mode (?)
 * refactor error_mutex_lock to make a uit_assert
 * break up/refactor mpi_utils.h
 * move utilities/assign_utils to assignment/
