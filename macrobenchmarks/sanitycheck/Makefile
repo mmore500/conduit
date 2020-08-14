@@ -1,14 +1,14 @@
 BENCH_NAMES := IsolatedThreads_MPI IsolatedThreads_NoMPI
 
-CXX ?= mpic++
-MXX ?= mpiexec
+MPICXX ?= mpic++
+MXC ?= mpiexec
 
 FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../source/ -I../../include/ -I../../third-party/
 
 default: bench
 
 bench-%: %.cpp
-	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
 	if echo $@ | grep -Fq "NoMPI"; \
 		then \
@@ -16,7 +16,7 @@ bench-%: %.cpp
 		  ./$@.out; \
 		else \
 		  echo "With MPI"; \
-			$(MXX) --bind-to none -n 1 ./$@.out; \
+			$(MXC) --bind-to none -n 1 ./$@.out; \
 	fi
 
 # Test in debug mode without pointer tracker
@@ -24,7 +24,7 @@ bench: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 build-%: %.cpp
-	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
 build: $(addprefix build-, $(BENCH_NAMES))
