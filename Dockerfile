@@ -57,7 +57,6 @@ RUN \
     libpthread-stubs0-dev \
     libc6-dbg \
     gdb \
-    jsonlint \
     && \
   echo "installed core dependencies"
 
@@ -178,6 +177,11 @@ RUN \
   npm install source-map \
     && \
   echo "finalized dependency versions"
+
+RUN \
+  npm install -g jsonlint \
+    && \
+  echo "installed npm dependencies"
 
 RUN \
   cd /opt/conduit/ \
