@@ -2,7 +2,8 @@ TEST_NAMES := HeadTailDuct PendingDuct
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/
 
-CXX := mpic++
+CXX ?= mpic++
+MXX ?= mpiexec
 
 default: test
 
