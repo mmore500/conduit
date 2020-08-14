@@ -2,10 +2,9 @@
 
 #include <mpi.h>
 
-#include "Catch/single_include/catch2/catch.hpp"
-#include "distributed/mpi_utils.hpp"
+#include "../../third-party/Catch/single_include/catch2/catch.hpp"
 
-// TODO move to include/utils
+#include "mpi_utils.hpp"
 
 class MultiprocessReporter : public Catch::ConsoleReporter {
 
