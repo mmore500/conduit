@@ -10,7 +10,7 @@ default: test
 test-%: %.cpp
 	echo "MPICXX" $(MPICXX)
 	echo "MPIEXEC" $(MPIEXEC)
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lmimalloc -lpthread  -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread  -o $@.out
 	# execute test
 	$(MPIEXEC) -n 1 ./$@.out
 
@@ -36,7 +36,7 @@ cov: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../../../cover
 cov: $(addprefix cov-, $(TEST_NAMES))
 
 cov-%: %.cpp ../../../third-party/Catch/single_include/catch2/catch.hpp
-	export OMPI_CXX=clang++ && $(MPICXX) $(FLAGS) $< -lbenchmark -lmimalloc -lpthread -o $@.out
+	export OMPI_CXX=clang++ && $(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	#echo "running $@.out"
 	# execute test
 	./$@.out
