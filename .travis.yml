@@ -6,19 +6,19 @@ jobs:
   include:
   - stage: Tests
     name: OpenMPI Unit Tests
-    env: MPICXX=mpicxx.openmpi MXC=mpiexec.openmpi
+    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MXC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
   - name: MPICH Unit Tests
-    env: MPICXX=mpicxx.mpich MXC=mpiexec.mpich
+    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MXC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
   - name: Macrobenchmarks
     install:
     - docker build -t mmore500/conduit .

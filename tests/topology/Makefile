@@ -1,7 +1,7 @@
 TEST_NAMES := DyadicTopologyFactory RingTopologyFactory TopoNode LoopTopologyFactory TopoEdge TopoNodeInput ProConTopologyFactory Topology TopoNodeOutput
 
 MPICXX ?= mpic++
-MXC ?= mpiexec
+MPIEXEC ?= mpiexec
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
 
@@ -9,10 +9,10 @@ default: test
 
 test-%: %.cpp
 	echo "MPICXX" $(MPICXX)
-	echo "MXC" $(MXC)
+	echo "MPIEXEC" $(MPIEXEC)
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
-	$(MXC) -n 1 ./$@.out
+	$(MPIEXEC) -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TEST_NAMES))
