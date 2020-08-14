@@ -11,14 +11,14 @@ jobs:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
+    - docker run -e MPICXX -e MXC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
   - name: MPICH Unit Tests
     env: MPICXX=mpicxx.mpich MXC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
+    - docker run -e MPICXX -e MXC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
   - name: Macrobenchmarks
     install:
     - docker build -t mmore500/conduit .
