@@ -1,9 +1,9 @@
+#include <array>
 #include <cstdio>
 #include <iostream>
 #include <memory>
 #include <stdexcept>
 #include <string>
-#include <array>
 
 #include "../../third-party/Empirical/source/base/array.h"
 

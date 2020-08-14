@@ -1,14 +1,7 @@
 #pragma once
 
-#include <stddef.h>
 #include <functional>
-// plus
-// minus
-// multiplies
-// divides
-// modulus
-// negate
-
+#include <stddef.h>
 
 namespace uit {
 

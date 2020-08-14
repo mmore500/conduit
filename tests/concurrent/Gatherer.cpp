@@ -1,6 +1,6 @@
-#include <thread>
-#include <set>
 #include <algorithm>
+#include <set>
+#include <thread>
 
 #include <mpi.h>
 
@@ -8,20 +8,17 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "distributed/MultiprocessReporter.hpp"
-
 #include "../../third-party/Empirical/source/base/vector.h"
 
-#include "distributed/mpi_utils.hpp"
-#include "distributed/MPIGuard.hpp"
 #include "concurrent/Gatherer.hpp"
-#include "utility/CircularIndex.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "polyfill/barrier.hpp"
-
+#include "distributed/MultiprocessReporter.hpp"
+#include "distributed/MPIGuard.hpp"
 #include "distributed/mpi_utils.hpp"
-#include "parallel/thread_utils.hpp"
+#include "utility/CircularIndex.hpp"
 #include "utility/numeric_cast.hpp"
+#include "parallel/ThreadTeam.hpp"
+#include "parallel/thread_utils.hpp"
+#include "polyfill/barrier.hpp"
 
 const uit::MPIGuard guard;
 

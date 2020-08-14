@@ -1,7 +1,7 @@
 #pragma once
 
-#include <stddef.h>
 #include <new>
+#include <stddef.h>
 
 namespace uit {
 

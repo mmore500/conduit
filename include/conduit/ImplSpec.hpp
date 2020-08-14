@@ -1,9 +1,10 @@
 #pragma once
 
-#include "intra/PendingDuct.hpp"
-#include "thread/HeadTailDuct.hpp"
-#include "proc/ImsgDuct.hpp"
 #include "config.hpp"
+
+#include "intra/PendingDuct.hpp"
+#include "proc/ImsgDuct.hpp"
+#include "thread/HeadTailDuct.hpp"
 
 namespace uit {
 

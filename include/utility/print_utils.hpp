@@ -1,13 +1,13 @@
 #pragma once
 
-#include <string>
+#include <mutex>
 #include <regex>
 #include <sstream>
-#include <mutex>
-
-#include "identity.hpp"
+#include <string>
 
 #include "../../third-party/Empirical/source/tools/string_utils.h"
+
+#include "identity.hpp"
 
 // TODO be clever and use fewer overloads
 

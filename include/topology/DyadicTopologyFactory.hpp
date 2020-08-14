@@ -2,9 +2,9 @@
 
 #include "../../third-party/Empirical/source/base/vector.h"
 
+#include "TopoEdge.hpp"
 #include "Topology.hpp"
 #include "TopoNode.hpp"
-#include "TopoEdge.hpp"
 
 namespace uit {
 

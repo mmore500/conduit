@@ -1,28 +1,26 @@
 #pragma once
 
 #include <assert.h>
+#include <optional>
 #include <ratio>
 #include <thread>
 #include <tuple>
-#include <optional>
-#include <benchmark/benchmark.h>
 
 #include <mpi.h>
+#include <benchmark/benchmark.h>
 
-#include "conduit/config.hpp"
-#include "utility/CircularIndex.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "mesh/Mesh.hpp"
-#include "utility/TimeGuard.hpp"
-#include "utility/ForEach.hpp"
 #include "concurrent/Gatherer.hpp"
-
-#include "distributed/mpi_utils.hpp"
 #include "conduit/Conduit.hpp"
-#include "utility/numeric_cast.hpp"
+#include "conduit/config.hpp"
+#include "distributed/mpi_utils.hpp"
 #include "mesh/Mesh.hpp"
+#include "parallel/ThreadTeam.hpp"
 #include "parallel/thread_utils.hpp"
 #include "utility/benchmark_utils.hpp"
+#include "utility/CircularIndex.hpp"
+#include "utility/ForEach.hpp"
+#include "utility/numeric_cast.hpp"
+#include "utility/TimeGuard.hpp"
 
 template<
   typename NumThreadsType,

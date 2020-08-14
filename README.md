@@ -36,7 +36,6 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
     * can do varlen types (would wrap T with a function to get length?)
 * setup ReadTheDocs
 * investigate leaking MPI_Comms
-* make a pass to reorganize header includes
 * write Docstrings
 * write adaptor that caches and then sends every n
 * write backend that caches and then sends every n

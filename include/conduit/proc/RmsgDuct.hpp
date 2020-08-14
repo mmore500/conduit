@@ -1,7 +1,7 @@
 #pragma once
 
-#include "RsendDuct.hpp"
 #include "IrecvDuct.hpp"
+#include "RsendDuct.hpp"
 
 namespace uit {
 

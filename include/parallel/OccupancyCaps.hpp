@@ -1,14 +1,14 @@
 #pragma once
 
 #include <limits>
-#include <unordered_map>
+#include <stddef.h>
 #include <string>
 #include <tuple>
-#include <stddef.h>
-
-#include "OccupancyCap.hpp"
+#include <unordered_map>
 
 #include "../../third-party/Empirical/source/tools/string_utils.h"
+
+#include "OccupancyCap.hpp"
 
 namespace uit {
 

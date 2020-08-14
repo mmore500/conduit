@@ -1,11 +1,11 @@
 #pragma once
 
-#include "grid_utils.hpp"
+#include "conduit/Duct.hpp"
 #include "utility/benchmark_utils.hpp"
 
-#include "conduit/Duct.hpp"
-#include "Tile.hpp"
+#include "grid_utils.hpp"
 #include "State.hpp"
+#include "Tile.hpp"
 
 using grid_t = std::vector<Tile>;
 using handle_t = grid_t::iterator;

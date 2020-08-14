@@ -1,14 +1,15 @@
 #pragma once
 
-#include <unordered_map>
-#include <string>
+#include <assert.h>
 #include <iostream>
 #include <limits>
-#include <assert.h>
 #include <new>
+#include <string>
+#include <unordered_map>
+
+#include "../third-party/Empirical/source/tools/string_utils.h"
 
 #include "conduit/ImplSpec.hpp"
-#include "../third-party/Empirical/source/tools/string_utils.h"
 #include "utility/math_utils.hpp"
 
 #include "State.hpp"

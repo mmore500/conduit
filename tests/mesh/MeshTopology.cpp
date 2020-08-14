@@ -1,11 +1,10 @@
 #define CATCH_CONFIG_MAIN
-
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "topology/RingTopologyFactory.hpp"
 #include "distributed/MPIGuard.hpp"
-#include "mesh/MeshTopology.hpp"
 #include "conduit/ImplSpec.hpp"
+#include "mesh/MeshTopology.hpp"
+#include "topology/RingTopologyFactory.hpp"
 
 const uit::MPIGuard guard;
 

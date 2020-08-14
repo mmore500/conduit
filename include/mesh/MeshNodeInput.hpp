@@ -3,7 +3,7 @@
 #include <memory>
 #include <stddef.h>
 
-#include "conduit/Outlet.hpp"
+#include "../conduit/Outlet.hpp"
 
 namespace uit {
 

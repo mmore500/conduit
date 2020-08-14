@@ -1,13 +1,13 @@
 #pragma once
 
 #include <cmath>
-#include <limits>
 #include <bitset>
+#include <limits>
 #include <stddef.h>
 
 #include "../../third-party/Empirical/source/tools/math.h"
 
-#include "utility/numeric_cast.hpp"
+#include "numeric_cast.hpp"
 
 namespace uit {
 

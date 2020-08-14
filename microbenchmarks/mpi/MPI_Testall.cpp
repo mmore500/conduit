@@ -1,13 +1,13 @@
-#include <mpi.h>
 #include <deque>
 
+#include <mpi.h>
 #include <benchmark/benchmark.h>
 
-#include "distributed/mpi_utils.hpp"
-#include "utility/ScopeGuard.hpp"
-#include "distributed/MPIGuard.hpp"
 #include "conduit/config.hpp"
+#include "distributed/MPIGuard.hpp"
+#include "distributed/mpi_utils.hpp"
 #include "utility/benchmark_utils.hpp"
+#include "utility/ScopeGuard.hpp"
 
 const uit::MPIGuard guard;
 

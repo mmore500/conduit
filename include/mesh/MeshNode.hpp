@@ -1,7 +1,7 @@
 #pragma once
 
-#include <stddef.h>
 #include <optional>
+#include <stddef.h>
 
 #include "../../third-party/Empirical/source/base/vector.h"
 

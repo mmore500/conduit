@@ -1,17 +1,16 @@
 #pragma once
 
-#include <set>
 #include <unordered_map>
 #include <thread>
+#include <set>
 #include <stddef.h>
+#include <unordered_map>
 
 #include <mpi.h>
 
-#include "RDMAWindow.hpp"
-#include "mpi_utils.hpp"
 #include "group_utils.hpp"
-
-#include <unordered_map>
+#include "mpi_utils.hpp"
+#include "RDMAWindow.hpp"
 
 namespace uit {
 

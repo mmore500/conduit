@@ -1,13 +1,14 @@
 #pragma once
 
 #include <assert.h>
+#include <limits>
 #include <numeric>
 #include <stddef.h>
-#include <limits>
 
 #include <mpi.h>
-#include "../utility/print_utils.hpp"
+
 #include "../utility/numeric_cast.hpp"
+#include "../utility/print_utils.hpp"
 
 namespace uit {
 

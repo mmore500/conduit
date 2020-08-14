@@ -5,11 +5,10 @@
 
 #include <mpi.h>
 
-#include "../utility/numeric_cast.hpp"
+#include "../distributed/mpi_utils.hpp"
 #include "../polyfill/barrier.hpp"
 #include "../utility/CountdownTimer.hpp"
-
-#include "../distributed/mpi_utils.hpp"
+#include "../utility/numeric_cast.hpp"
 
 namespace uit {
 

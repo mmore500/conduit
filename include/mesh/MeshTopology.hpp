@@ -1,17 +1,16 @@
 #pragma once
 
-#include <unordered_map>
 #include <set>
 #include <stddef.h>
+#include <unordered_map>
 
 #include <mpi.h>
 
-#include "../utility/assign_utils.hpp"
 #include "../conduit/Conduit.hpp"
 #include "../conduit/Duct.hpp"
-
 #include "../distributed/mpi_utils.hpp"
 #include "../topology/Topology.hpp"
+#include "../utility/assign_utils.hpp"
 
 #include "MeshNode.hpp"
 

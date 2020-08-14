@@ -1,8 +1,8 @@
 #pragma once
 
-#include <utility>
 #include <memory>
 #include <stddef.h>
+#include <utility>
 
 #include "Duct.hpp"
 #include "Inlet.hpp"

@@ -1,33 +1,30 @@
 #include <ratio>
 #include <thread>
 #include <unordered_set>
-#include <cassert>
 
 #include <mpi.h>
 
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #define CATCH_CONFIG_MAIN
-
 #include "Catch/single_include/catch2/catch.hpp"
-#include "distributed/MultiprocessReporter.hpp"
 
 #include "conduit/config.hpp"
-#include "concurrent/Gatherer.hpp"
-#include "utility/CircularIndex.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "mesh/Mesh.hpp"
-#include "polyfill/latch.hpp"
-
-#include "utility/benchmark_utils.hpp"
-#include "distributed/mpi_utils.hpp"
-#include "distributed/MPIGuard.hpp"
 #include "conduit/Conduit.hpp"
 #include "conduit/ImplSpec.hpp"
+#include "concurrent/Gatherer.hpp"
+#include "distributed/MPIGuard.hpp"
+#include "distributed/mpi_utils.hpp"
+#include "distributed/MultiprocessReporter.hpp"
+#include "mesh/Mesh.hpp"
+#include "parallel/ThreadTeam.hpp"
+#include "polyfill/latch.hpp"
+#include "topology/RingTopologyFactory.hpp"
+#include "utility/assign_utils.hpp"
+#include "utility/benchmark_utils.hpp"
+#include "utility/CircularIndex.hpp"
+#include "utility/math_utils.hpp"
 #include "utility/numeric_cast.hpp"
 #include "utility/safe_compare.hpp"
-#include "topology/RingTopologyFactory.hpp"
-#include "utility/math_utils.hpp"
-#include "utility/assign_utils.hpp"
 
 #define MSG_T int
 #define num_nodes 4
