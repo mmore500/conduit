@@ -1,9 +1,8 @@
 #define CATCH_CONFIG_RUNNER
-
 #include "Catch/single_include/catch2/catch.hpp"
-#include "distributed/MultiprocessReporter.hpp"
 
 #include "conduit/proc/InterProcAddress.hpp"
+#include "distributed/MultiprocessReporter.hpp"
 
 TEST_CASE("Test InterProcAddress") {
 

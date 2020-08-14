@@ -2,12 +2,10 @@
 
 #include <stddef.h>
 
-#include "../third-party/SPSCQueue/include/rigtorp/SPSCQueue.h"
-
 #include "../../../third-party/Empirical/source/base/assert.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../third-party/SPSCQueue/include/rigtorp/SPSCQueue.h"
 
-#include "../config.hpp"
 #include "../../utility/print_utils.hpp"
 
 namespace uit {

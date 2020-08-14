@@ -7,9 +7,9 @@
 #include "../../third-party/Empirical/source/base/assert.h"
 #include "../../third-party/Empirical/source/tools/math.h"
 
-#include "utility/math_utils.hpp"
-#include "utility/safe_compare.hpp"
-#include "utility/print_utils.hpp"
+#include "../utility/math_utils.hpp"
+#include "../utility/print_utils.hpp"
+#include "../utility/safe_compare.hpp"
 
 #include "mpi_utils.hpp"
 

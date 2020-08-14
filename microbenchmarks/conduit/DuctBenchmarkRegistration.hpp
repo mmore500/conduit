@@ -1,37 +1,35 @@
 #pragma once
 
+#include <iostream>
 #include <list>
 #include <thread>
 #include <tuple>
-#include <iostream>
-
-#include <benchmark/benchmark.h>
 
 #include <mpi.h>
+#include <benchmark/benchmark.h>
 
 #include "../../third-party/Empirical/source/meta/TypePack.h"
 #include "../../third-party/Empirical/source/tools/Random.h"
 #include "../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "polyfill/barrier.hpp"
-#include "conduit/config.hpp"
-#include "utility/CircularIndex.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "mesh/Mesh.hpp"
-#include "utility/TimeGuard.hpp"
-#include "utility/ForEach.hpp"
-#include "utility/Curry.hpp"
-
-#include "distributed/mpi_utils.hpp"
 #include "conduit/Conduit.hpp"
+#include "conduit/config.hpp"
 #include "conduit/ImplSpec.hpp"
-#include "utility/numeric_cast.hpp"
+#include "distributed/mpi_utils.hpp"
+#include "mesh/Mesh.hpp"
 #include "topology/RingTopologyFactory.hpp"
 #include "topology/DyadicTopologyFactory.hpp"
 #include "topology/ProConTopologyFactory.hpp"
-#include "parallel/thread_utils.hpp"
 #include "utility/benchmark_utils.hpp"
+#include "utility/CircularIndex.hpp"
+#include "utility/Curry.hpp"
+#include "utility/ForEach.hpp"
+#include "utility/numeric_cast.hpp"
 #include "utility/stats_utils.hpp"
+#include "utility/TimeGuard.hpp"
+#include "parallel/ThreadTeam.hpp"
+#include "parallel/thread_utils.hpp"
+#include "polyfill/barrier.hpp"
 
 #include "DuctBenchmarkRunner.hpp"
 

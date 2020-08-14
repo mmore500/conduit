@@ -1,11 +1,11 @@
 #pragma once
 
-#include <vector>
+#include <cstdlib>
 #include <algorithm>
 #include <random>
-#include <cstdlib>
 #include <string>
 #include <thread>
+#include <vector>
 
 #ifdef PP_USE_OMP
 #include <omp.h>
@@ -14,28 +14,28 @@
 #include "../third-party/Empirical/source/data/DataFile.h"
 #include "../third-party/Empirical/source/tools/keyname_utils.h"
 
-#include "polyfill/barrier.hpp"
-#include "polyfill/latch.hpp"
-#include "utility/numeric_cast.hpp"
-#include "utility/safe_compare.hpp"
-
+#include "concurrent/Gatherer.hpp"
+#include "concurrent/TimeoutBarrier.hpp"
 #include "conduit/Conduit.hpp"
 #include "conduit/config.hpp"
-#include "config_utils.hpp"
-#include "chunk_utils.hpp"
 #include "distributed/mpi_utils.hpp"
-#include "utility/math_utils.hpp"
-
 #include "utility/CountdownIterator.hpp"
 #include "utility/CountdownTimer.hpp"
 #include "utility/CoarseClock.hpp"
-#include "concurrent/TimeoutBarrier.hpp"
-#include "concurrent/Gatherer.hpp"
-#include "Tile.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "topology/RingTopologyFactory.hpp"
-#include "State.hpp"
+#include "utility/math_utils.hpp"
+#include "utility/numeric_cast.hpp"
+#include "utility/safe_compare.hpp"
 #include "mesh/Mesh.hpp"
+#include "parallel/ThreadTeam.hpp"
+#include "polyfill/barrier.hpp"
+#include "polyfill/latch.hpp"
+#include "topology/RingTopologyFactory.hpp"
+
+#include "chunk_utils.hpp"
+#include "config_utils.hpp"
+#include "State.hpp"
+#include "Tile.hpp"
+
 
 grid_t make_grid(const config_t & cfg) {
 

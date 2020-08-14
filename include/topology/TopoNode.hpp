@@ -1,11 +1,11 @@
 #pragma once
 
+#include "../../third-party/Empirical/source/base/vector.h"
+
+#include "../utility/print_utils.hpp"
+
 #include "TopoNodeInput.hpp"
 #include "TopoNodeOutput.hpp"
-
-#include "utility/print_utils.hpp"
-
-#include "../../third-party/Empirical/source/base/vector.h"
 
 namespace uit {
 

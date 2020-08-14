@@ -1,12 +1,13 @@
 #pragma once
 
-#include <mutex>
-#include <unordered_set>
 #include <limits>
+#include <mutex>
 #include <stddef.h>
+#include <unordered_set>
+
+#include "../utility/print_utils.hpp"
 
 #include "thread_utils.hpp"
-#include "../utility/print_utils.hpp"
 
 namespace uit {
 

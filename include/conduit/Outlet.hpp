@@ -1,17 +1,17 @@
 #pragma once
 
+#include <cstdint>
 #include <iostream>
 #include <memory>
 #include <stddef.h>
-#include <cstdint>
 
-#include "config.hpp"
 #include "../parallel/thread_utils.hpp"
-
-#include "../utility/CircularIndex.hpp"
-#include "Duct.hpp"
 #include "../parallel/OccupancyCaps.hpp"
 #include "../parallel/OccupancyGuard.hpp"
+#include "../utility/CircularIndex.hpp"
+
+#include "config.hpp"
+#include "Duct.hpp"
 
 namespace uit {
 

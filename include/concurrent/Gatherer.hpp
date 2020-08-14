@@ -1,10 +1,10 @@
 #pragma once
 
-#include <mpi.h>
-
 #include <algorithm>
 #include <numeric>
 #include <thread>
+
+#include <mpi.h>
 
 #include "../../third-party/Empirical/source/base/vector.h"
 

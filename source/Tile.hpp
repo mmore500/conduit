@@ -6,8 +6,9 @@
 #include "conduit/Inlet.hpp"
 #include "conduit/Outlet.hpp"
 #include "utility/print_utils.hpp"
-#include "State.hpp"
+
 #include "config_utils.hpp"
+#include "State.hpp"
 
 class Tile {
 

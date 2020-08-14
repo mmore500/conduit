@@ -1,6 +1,7 @@
-#include "../DuctBenchmarkRegistration.hpp"
-#include "utility/ScopeGuard.hpp"
 #include "distributed/MPIGuard.hpp"
+#include "utility/ScopeGuard.hpp"
+
+#include "../DuctBenchmarkRegistration.hpp"
 
 uit::ForEach<
   ThreadCountPayload,

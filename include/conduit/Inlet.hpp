@@ -1,18 +1,18 @@
 #pragma once
 
-#include <iostream>
-#include <utility>
-#include <memory>
 #include <atomic>
-#include <stddef.h>
 #include <cstdint>
+#include <iostream>
+#include <memory>
+#include <stddef.h>
+#include <utility>
 
-#include "config.hpp"
-#include "../utility/print_utils.hpp"
-
-#include "../utility/CircularIndex.hpp"
 #include "../parallel/OccupancyCaps.hpp"
 #include "../parallel/OccupancyGuard.hpp"
+#include "../utility/CircularIndex.hpp"
+#include "../utility/print_utils.hpp"
+
+#include "config.hpp"
 #include "Duct.hpp"
 
 namespace uit {

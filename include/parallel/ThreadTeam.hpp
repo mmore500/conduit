@@ -1,9 +1,9 @@
 #pragma once
 
-#include <thread>
-#include <utility>
 #include <algorithm>
 #include <stddef.h>
+#include <thread>
+#include <utility>
 
 #include "../../third-party/Empirical/source/base/vector.h"
 

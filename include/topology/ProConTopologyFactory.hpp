@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Topology.hpp"
 #include "TopoEdge.hpp"
+#include "Topology.hpp"
 #include "TopoNode.hpp"
 
 namespace uit {

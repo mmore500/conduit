@@ -1,20 +1,21 @@
 #pragma once
 
-#include <mpi.h>
-
 #include <algorithm>
 #include <array>
 #include <stddef.h>
 
+#include <mpi.h>
+
 #include "../../../third-party/Empirical/source/base/assert.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../distributed/mpi_utils.hpp"
 #include "../../utility/CircularIndex.hpp"
 #include "../../utility/identity.hpp"
+#include "../../utility/print_utils.hpp"
 
 #include "../config.hpp"
-#include "../../distributed/mpi_utils.hpp"
-#include "../../utility/print_utils.hpp"
+
 #include "InterProcAddress.hpp"
 #include "SharedBackEnd.hpp"
 

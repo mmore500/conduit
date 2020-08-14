@@ -5,12 +5,12 @@
 #include "../../../third-party/Empirical/source/base/assert.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../utility/CircularIndex.hpp"
 #include "../../parallel/OccupancyCap.hpp"
 #include "../../parallel/OccupancyGuard.hpp"
+#include "../../utility/CircularIndex.hpp"
+#include "../../utility/print_utils.hpp"
 
 #include "../config.hpp"
-#include "../../utility/print_utils.hpp"
 
 namespace uit {
 

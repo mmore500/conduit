@@ -1,7 +1,7 @@
 #pragma once
 
-#include "SendDuct.hpp"
 #include "IrecvDuct.hpp"
+#include "SendDuct.hpp"
 
 namespace uit {
 

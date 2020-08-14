@@ -5,26 +5,23 @@
 
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #define CATCH_CONFIG_MAIN
-
 #include "Catch/single_include/catch2/catch.hpp"
-#include "distributed/MultiprocessReporter.hpp"
 
 #include "conduit/config.hpp"
 #include "conduit/ImplSpec.hpp"
-#include "utility/CircularIndex.hpp"
-#include "distributed/mpi_utils.hpp"
-#include "distributed/RDMAWindowManager.hpp"
 #include "distributed/assign_utils.hpp"
-#include "utility/math_utils.hpp"
+#include "distributed/MPIGuard.hpp"
+#include "distributed/mpi_utils.hpp"
+#include "distributed/MultiprocessReporter.hpp"
+#include "distributed/RDMAWindowManager.hpp"
 #include "mesh/Mesh.hpp"
 #include "mesh/MeshNodeInput.hpp"
 #include "mesh/MeshNodeOutput.hpp"
-#include "distributed/MPIGuard.hpp"
 #include "topology/DyadicTopologyFactory.hpp"
-#include "topology/RingTopologyFactory.hpp"
 #include "topology/ProConTopologyFactory.hpp"
-
-#include "distributed/MultiprocessReporter.hpp"
+#include "topology/RingTopologyFactory.hpp"
+#include "utility/CircularIndex.hpp"
+#include "utility/math_utils.hpp"
 
 const uit::MPIGuard guard;
 

@@ -1,26 +1,17 @@
 #pragma once
 
+#include <stddef.h>
 #include <utility>
 #include <variant>
-#include <stddef.h>
 
 #include "../../third-party/Empirical/source/base/assert.h"
-#include "../../third-party/Empirical/source/tools/string_utils.h"
 #include "../../third-party/Empirical/source/meta/TypePack.h"
+#include "../../third-party/Empirical/source/tools/string_utils.h"
 
-//TODO don't include these all here
-#include "thread/AtomicPendingDuct.hpp"
-#include "intra/PendingDuct.hpp"
-#include "thread/HeadTailDuct.hpp"
-#include "thread/SPSCQueueDuct.hpp"
-#include "proc/IsendDuct.hpp"
-#include "proc/IrecvDuct.hpp"
-#include "proc/RputDuct.hpp"
-#include "proc/WindowDuct.hpp"
-
-#include "../utility/print_utils.hpp"
-#include "config.hpp"
 #include "../distributed/mpi_utils.hpp"
+#include "../utility/print_utils.hpp"
+
+#include "config.hpp"
 
 namespace uit {
 
