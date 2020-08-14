@@ -188,6 +188,9 @@ RUN \
     && \
   echo "installed third party dependencies"
 
+# Use mimalloc override within the container.
+ENV LD_PRELOAD=/usr/local/lib/mimalloc-1.6/libmimalloc.so
+
 RUN \
   cd /opt/conduit \
     && \
