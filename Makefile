@@ -38,7 +38,7 @@ debug-web: $(PROJECT).js
 web-debug: debug-web
 
 $(PROJECT):	source/native/$(PROJECT).cpp
-	$(MPICXX) $(CFLAGS_nat) source/native/$(PROJECT).cpp -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
+	$(MPICXX) $(CFLAGS_nat) source/native/$(PROJECT).cpp -lstdc++fs -lbenchmark -lmimalloc -lpthread -o $(PROJECT)
 	@echo To build the web version use: make web
 
 $(PROJECT).js: source/web/$(PROJECT)-web.cpp

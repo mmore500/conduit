@@ -8,7 +8,7 @@ FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../source/ -I
 default: bench
 
 bench-%: %.cpp
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lmimalloc -lpthread -o $@.out
 	# execute bench
 	if echo $@ | grep -Fq "NoMPI"; \
 		then \
@@ -24,7 +24,7 @@ bench: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 build-%: %.cpp
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lmimalloc -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
 build: $(addprefix build-, $(BENCH_NAMES))
