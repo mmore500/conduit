@@ -2,7 +2,8 @@ TEST_NAMES := ImplSpec Conduit Sink Source Duct Inlet Outlet
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/
 
-CXX := mpic++
+CXX ?= mpic++
+MXX ?= mpiexec
 
 default: test
 
@@ -10,7 +11,7 @@ test-%: %.cpp
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
-		mpiexec --bind-to none -n $$n ./$@.out || break; \
+		$(MXX) --bind-to none -n $$n ./$@.out || break; \
 	done
 
 # Test in debug mode without pointer tracker

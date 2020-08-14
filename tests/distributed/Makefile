@@ -1,6 +1,7 @@
 TEST_NAMES := mpi_utils group_utils MPIGuard
 
-CXX := mpic++
+CXX ?= mpic++
+MXX ?= mpiexec
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
 
@@ -10,7 +11,7 @@ test-%: %.cpp
 	$(CXX) $(FLAGS) $< -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
-		mpiexec --bind-to none -n $$n ./$@.out; \
+		$(MXX) --bind-to none -n $$n ./$@.out; \
 	done
 
 # Test in debug mode without pointer tracker

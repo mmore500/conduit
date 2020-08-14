@@ -1,6 +1,7 @@
 TEST_NAMES := HeadTailDuct AtomicPendingDuct
 
-CXX := mpic++
+CXX ?= mpic++
+MXX ?= mpiexec
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/
 
@@ -9,7 +10,7 @@ default: test
 test-%: %.cpp
 	$(CXX) $(FLAGS) $< -lbenchmark -lpthread  -o $@.out
 	# execute test
-	./$@.out
+	$(MXX) -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TEST_NAMES))

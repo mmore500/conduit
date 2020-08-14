@@ -2,7 +2,8 @@ BENCH_NAMES := MPI_Isend MPI_Irsend MPI_Rsend MPI_Send MPI_Test MPI_Testall MPI_
 
 SHELL := /bin/bash
 
-CXX := mpic++
+CXX ?= mpic++
+MXX ?= mpiexec
 
 FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../source/ -I../../include/ -I../../third-party/
 
@@ -16,7 +17,7 @@ bench-%: %.cpp
 	while :; do \
 		let n=$$((2**$$i)); \
 		test $$n -gt $$SLURM_NTASKS && break; \
-		mpiexec --bind-to none -n $$n ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=$$n+ext=.json" | ../script/headtail.sh; \
+		$(MXX) --bind-to none -n $$n ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=$$n+ext=.json" | ../script/headtail.sh; \
 		let i++; \
 	done
 
