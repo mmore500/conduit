@@ -7,7 +7,7 @@
 #define CATCH_CONFIG_MAIN
 
 #include "Catch/single_include/catch2/catch.hpp"
-#include "../../MultiprocessReporter.hpp"
+#include "distributed/MultiprocessReporter.hpp"
 
 #include "conduit/config.hpp"
 #include "conduit/ImplSpec.hpp"
@@ -24,7 +24,7 @@
 #include "topology/RingTopologyFactory.hpp"
 #include "topology/ProConTopologyFactory.hpp"
 
-#include "../../MultiprocessReporter.hpp"
+#include "distributed/MultiprocessReporter.hpp"
 
 const uit::MPIGuard guard;
 

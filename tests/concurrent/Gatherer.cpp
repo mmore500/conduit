@@ -8,7 +8,7 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "../MultiprocessReporter.hpp"
+#include "distributed/MultiprocessReporter.hpp"
 
 #include "../../third-party/Empirical/source/base/vector.h"
 
