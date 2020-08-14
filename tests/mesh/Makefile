@@ -8,6 +8,8 @@ FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-fi
 default: test
 
 test-%: %.cpp
+	echo "MPICXX" $(MPICXX)
+	echo "MXC" $(MXC)
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
 	$(MXC) -n 1 ./$@.out
