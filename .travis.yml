@@ -6,14 +6,14 @@ jobs:
   include:
   - stage: Tests
     name: OpenMPI Unit Tests
-    env: CXX=mpicxx.openmpi MXX=mpiexec.openmpi
+    env: MPICXX=mpicxx.openmpi MXC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
     - docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
   - name: MPICH Unit Tests
-    env: CXX=mpicxx.mpich MXX=mpiexec.mpich
+    env: MPICXX=mpicxx.mpich MXC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a

@@ -2,15 +2,15 @@ TEST_NAMES := CircularIndex math_utils safe_compare Curry ScopeGuard
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
 
-CXX ?= mpic++
-MXX ?= mpiexec
+MPICXX ?= mpic++
+MXC ?= mpiexec
 
 default: test
 
 test-%: %.cpp
-	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
-	$(MXX) -n 1 ./$@.out
+	$(MXC) -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TEST_NAMES))

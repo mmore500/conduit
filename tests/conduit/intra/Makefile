@@ -2,13 +2,13 @@ TEST_NAMES := HeadTailDuct PendingDuct
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/
 
-CXX ?= mpic++
-MXX ?= mpiexec
+MPICXX ?= mpic++
+MXC ?= mpiexec
 
 default: test
 
 test-%: %.cpp
-	$(CXX) $(FLAGS) $< -lbenchmark -lpthread  -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread  -o $@.out
 	# execute test
 	./$@.out
 
