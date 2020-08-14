@@ -38,7 +38,6 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
   * can only do getcurrent
   * can do getcurrent or get next
     * can do varlen types (would wrap T with a function to get length?)
-* rename ISend to Isend etc.
 * remove redundant proc benchmarks/tests
 * setup ReadTheDocs
 * investigate leaking MPI_Comms

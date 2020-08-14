@@ -2,7 +2,7 @@
 
 #include "intra/PendingDuct.hpp"
 #include "thread/HeadTailDuct.hpp"
-#include "proc/IMsgDuct.hpp"
+#include "proc/ImsgDuct.hpp"
 #include "config.hpp"
 
 namespace uit {
@@ -10,7 +10,7 @@ namespace uit {
 template<
   template<typename> typename IntraDuct_ = uit::PendingDuct,
   template<typename> typename ThreadDuct_ = uit::HeadTailDuct,
-  template<typename> typename ProcDuct_ = uit::IMsgDuct
+  template<typename> typename ProcDuct_ = uit::ImsgDuct
 >
 struct ImplSelector {
 
