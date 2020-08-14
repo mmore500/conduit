@@ -13,8 +13,8 @@
 #include "intra/PendingDuct.hpp"
 #include "thread/HeadTailDuct.hpp"
 #include "thread/SPSCQueueDuct.hpp"
-#include "proc/ISendDuct.hpp"
-#include "proc/IRecvDuct.hpp"
+#include "proc/IsendDuct.hpp"
+#include "proc/IrecvDuct.hpp"
 #include "proc/RputDuct.hpp"
 #include "proc/WindowDuct.hpp"
 

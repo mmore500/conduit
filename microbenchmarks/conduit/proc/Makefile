@@ -1,4 +1,4 @@
-BENCH_NAMES := IMsgDuct MsgDuct IrmsgDuct RMsgDuct #RdmaDuct
+BENCH_NAMES := ImsgDuct MsgDuct IrmsgDuct RmsgDuct #RdmaDuct
 
 SHELL := /bin/bash
 

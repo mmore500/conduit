@@ -1,14 +1,14 @@
 #pragma once
 
-#include "SendDuct.hpp"
+#include "RsendDuct.hpp"
 #include "IrecvDuct.hpp"
 
 namespace uit {
 
 template<typename ImplSpec>
-struct MsgDuct {
+struct RmsgDuct {
 
-  using InletImpl = uit::SendDuct<ImplSpec>;
+  using InletImpl = uit::RsendDuct<ImplSpec>;
   using OutletImpl = uit::IrecvDuct<ImplSpec>;
 
 };

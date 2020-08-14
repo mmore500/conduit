@@ -1,10 +1,10 @@
 #include "conduit/ImplSpec.hpp"
-#include "conduit/proc/IMsgDuct.hpp"
+#include "conduit/proc/RmsgDuct.hpp"
 
 using ImplSel = uit::ImplSelector<
   uit::PendingDuct,
   uit::HeadTailDuct,
-  uit::IMsgDuct
+  uit::RmsgDuct
 >;
 
 #include "ProcDuct.hpp"

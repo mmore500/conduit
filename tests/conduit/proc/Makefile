@@ -1,4 +1,4 @@
-TEST_NAMES := InterProcAddress SharedBackEnd IMsgDuct MsgDuct #IrmsgDuct RMsgDuct RdmaDuct
+TEST_NAMES := InterProcAddress SharedBackEnd ImsgDuct MsgDuct #IrmsgDuct RmsgDuct RdmaDuct
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/
 

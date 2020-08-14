@@ -24,7 +24,7 @@ template<typename ImplSpec>
 class Duct;
 
 template<typename ImplSpec>
-class ISendDuct {
+class IsendDuct {
 
   friend Duct<ImplSpec>;
 
@@ -121,7 +121,7 @@ class ISendDuct {
 
 public:
 
-  ISendDuct(
+  IsendDuct(
     const uit::InterProcAddress& address_,
     std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end
   ) : address(address_)
@@ -137,7 +137,7 @@ public:
     );
   }
 
-  ~ISendDuct() {
+  ~IsendDuct() {
     while (pending) CancelSend();
     emp_assert(
       std::none_of(
@@ -169,11 +169,11 @@ public:
 
   //todo rename
   [[noreturn]] void Pop(const size_t count) {
-    throw "bad Pop on ISendDuct";
+    throw "bad Pop on IsendDuct";
   }
 
   [[noreturn]] size_t GetPending() {
-    throw "bad GetPending on ISendDuct";
+    throw "bad GetPending on IsendDuct";
   }
 
   size_t GetAvailableCapacity() {
@@ -187,7 +187,7 @@ public:
 
   void SetElement(const size_t n, const T & val) { buffer[n] = val; }
 
-  static std::string GetType() { return "ISendDuct"; }
+  static std::string GetType() { return "IsendDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;

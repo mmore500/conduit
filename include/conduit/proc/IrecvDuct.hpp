@@ -25,7 +25,7 @@ class Duct;
 
 // TODO rename ProcOutletDuct
 template<typename ImplSpec>
-class IRecvDuct {
+class IrecvDuct {
 
   friend Duct<ImplSpec>;
 
@@ -136,7 +136,7 @@ class IRecvDuct {
 
 public:
 
-  IRecvDuct(
+  IrecvDuct(
     const uit::InterProcAddress& address_,
     std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end
   ) : address(address_) {
@@ -152,7 +152,7 @@ public:
     );
   }
 
-  ~IRecvDuct() {
+  ~IrecvDuct() {
     Flush();
     CancelReceives();
     emp_assert(
@@ -185,7 +185,7 @@ public:
   }
 
   //todo rename
-  [[noreturn]] void Push() { throw "bad Push on IRecvDuct"; }
+  [[noreturn]] void Push() { throw "bad Push on IrecvDuct"; }
 
   //todo rename
   void Pop(const size_t count) {
@@ -208,7 +208,7 @@ public:
   }
 
   [[noreturn]] size_t GetAvailableCapacity() {
-    throw "bad GetAvailableCapacity on IRecvDuct";
+    throw "bad GetAvailableCapacity on IrecvDuct";
   }
 
   T GetElement(const size_t n) const { return buffer[n]; }
@@ -216,10 +216,10 @@ public:
   const void * GetPosition(const size_t n) const { return &buffer[n]; }
 
   [[noreturn]] void SetElement(const size_t n, const T & val) {
-    throw "bad SetElement on IRecvDuct";
+    throw "bad SetElement on IrecvDuct";
   }
 
-  static std::string GetType() { return "IRecvDuct"; }
+  static std::string GetType() { return "IrecvDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
