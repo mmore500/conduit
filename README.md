@@ -46,7 +46,6 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * write Docstrings
 * write adaptor that caches and then sends every n
 * write backend that caches and then sends every n
-* add libmimalloc to container
 * add real time fairness tests
 * add an unstable warning to RDMADuct, Irduct, rduct constructor
 * refactor I / no-I ducts for less code duplication

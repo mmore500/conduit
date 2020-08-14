@@ -8,7 +8,7 @@ FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../../source/
 default: bench
 
 bench-%: %.cpp
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lmimalloc -lpthread -o $@.out
 	# execute bench
 	$(MPIEXEC) --bind-to none -n 1 ./$@.out
 
@@ -17,7 +17,7 @@ bench: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 build-%: %.cpp
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lmimalloc -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
 build: $(addprefix build-, $(BENCH_NAMES))
