@@ -19,14 +19,10 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 
 * move utility to Empirical
 * write tests
-* collect data from benchmarks
-* add benchmarks to CI build
-* add opt, fulldebug, and cranky tests to build
 * write description and link blog posts
 * move TODOs to GH tracker
 * make a 0.1.0 release and add Zenodo badgev
 * add how to cite info to README
-* switch to branch-based workflow
 * re-organize header files in includes: one header file in each subdirectory that grabs the rest?
   * like `include/concurrent/concurrent.h` would have includes for all the other header files in that directory in it
 * make the read position and the write position internal to duct
@@ -38,7 +34,6 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
   * can only do getcurrent
   * can do getcurrent or get next
     * can do varlen types (would wrap T with a function to get length?)
-* remove redundant proc benchmarks/tests
 * setup ReadTheDocs
 * investigate leaking MPI_Comms
 * make a pass to reorganize header includes
