@@ -46,6 +46,7 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * debug RDMADuct
 * rename ring mesh to bucket brigade
 * make macrobenchmarks run for fixed time not iters, add proc macrobenchmarks, upload macrobenchmark results to osf
+* disable deploy on non-master builds
 
 * make_random_mesh
   * degree is argument
