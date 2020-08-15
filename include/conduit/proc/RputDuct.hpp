@@ -14,6 +14,7 @@
 #include "../../utility/CircularIndex.hpp"
 #include "../../utility/identity.hpp"
 #include "../../utility/print_utils.hpp"
+#include "../../utility/WarnOnce.hpp"
 
 #include "../config.hpp"
 
@@ -178,6 +179,10 @@ public:
       [](){ error_message_mutex.lock(); return "locked"; }(),
       format_member("*this", *this)
     );
+
+    static const uit::WarnOnce warning{
+      "RputDuct is experimental and may be unreliable"
+    };
 
   }
 

@@ -1,8 +1,10 @@
 #pragma once
 
+#include <mutex>
 #include <stddef.h>
 
 #include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/source/base/errors.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 #include "../../../third-party/SPSCQueue/include/rigtorp/SPSCQueue.h"
 
@@ -28,6 +30,13 @@ class SPSCQueueDuct {
   rigtorp::SPSCQueue<T> queue{N};
 
 public:
+
+  SPSCQueueDuct() {
+    static std::once_flag flag;
+    std::call_once(flag, [](){
+      emp::NotifyWarning("SPSCQueueDuct is experimental and may be unreliable");
+    });
+  }
 
   void Initialize(const size_t write_position) { ; }
 
