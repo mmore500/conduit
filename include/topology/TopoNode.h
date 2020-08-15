@@ -1,18 +1,27 @@
 #pragma once
 
+#include <iostream>
+#include <algorithm>
+#include <string_view>
+
 #include "TopoNodeInput.h"
 #include "TopoNodeOutput.h"
 
 #include "utility/print_utils.h"
+#include "utility/string_utils.h"
 
 #include "base/vector.h"
+#include "polyfill/span.h"
 
 namespace uit {
 
 class TopoNode {
 
-  using inputs_t = emp::vector<uit::TopoNodeInput>;
-  using outputs_t = emp::vector<uit::TopoNodeOutput>;
+  using input_t = uit::TopoNodeInput;
+  using output_t = uit::TopoNodeOutput;
+
+  using inputs_t = emp::vector<input_t>>;
+  using outputs_t = emp::vector<output_t>;
 
   inputs_t inputs;
   outputs_t outputs;
