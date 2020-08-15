@@ -57,6 +57,30 @@ public:
     return ss.str();
   }
 
+  friend std::ostream& operator<<(std::ostream&, const TopoNode&);
+  friend std::istream& operator>>(std::istream&, TopoNode&);
+
+  }
 };
+
+std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
+  const auto& outputs = node.GetOutputs();
+  for (const auto& node : std::span<const node::input_t>(
+    outputs.cbegin(),
+    outputs.cend() - 1
+  )) {
+    os << node.GetEdgeID() << " ";
+  }
+  os << outputs.back().GetEdgeID();
+  return os;
+}
+
+std::istream& operator>>(std::istream& is, TopoNode& node) {
+  size_t input;
+  for (is >> input) {
+    node.AddInput(input);
+  }
+  return is;
+}
 
 }
