@@ -1,4 +1,4 @@
-TEST_NAMES := concurrent conduit containers distributed mesh topology utility
+TEST_NAMES := safe
 
 default: test
 
@@ -14,16 +14,11 @@ fulldebug-%: %
 cranky-%: %
 	cd $< && make cranky
 
+cov-%: %
+	cd $< && make cov
+
 clean-%: %
 	cd $< && make clean
-
-cov-%:
-	cd $(@:cov-%=%) && make cov
-
-cov: coverage_conversion $(addprefix cov-, $(TEST_NAMES))
-
-coverage_conversion:
-	./convert_for_tests.sh
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TEST_NAMES))
@@ -33,6 +28,8 @@ opt: $(addprefix opt-, $(TEST_NAMES))
 fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
 
 cranky: $(addprefix cranky-, $(TEST_NAMES))
+
+cov: $(addprefix cov-, $(TEST_NAMES))
 
 clean: $(addprefix clean-, $(TEST_NAMES))
 	rm -f *.out
