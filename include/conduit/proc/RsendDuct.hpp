@@ -2,19 +2,18 @@
 
 #include <algorithm>
 #include <array>
-#include <mutex>
 #include <stddef.h>
 
 #include <mpi.h>
 
 #include "../../../third-party/Empirical/source/base/assert.h"
-#include "../../../third-party/Empirical/source/base/errors.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../distributed/mpi_utils.hpp"
 #include "../../utility/CircularIndex.hpp"
 #include "../../utility/identity.hpp"
 #include "../../utility/print_utils.hpp"
+#include "../../utility/WarnOnce.hpp"
 
 #include "../config.hpp"
 
@@ -62,10 +61,9 @@ public:
     const uit::InterProcAddress& address_,
     std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end
   ) : address(address_) {
-    static std::once_flag flag;
-    std::call_once(flag, [](){
-      emp::NotifyWarning("RsendDuct is experimental and may be unreliable");
-    });
+    static const uit::WarnOnce warning{
+      "RsendDuct is experimental and may be unreliable"
+    };
   }
 
   ~RsendDuct() {
