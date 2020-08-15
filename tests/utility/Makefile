@@ -1,4 +1,4 @@
-TEST_NAMES := CircularIndex math_utils safe_compare Curry ScopeGuard
+TEST_NAMES := CircularIndex math_utils safe_compare Curry ScopeGuard WarnOnce
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
 

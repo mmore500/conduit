@@ -13,6 +13,7 @@
 #include "../../utility/CircularIndex.hpp"
 #include "../../utility/identity.hpp"
 #include "../../utility/print_utils.hpp"
+#include "../../utility/WarnOnce.hpp"
 
 #include "../config.hpp"
 
@@ -59,8 +60,11 @@ public:
   RsendDuct(
     const uit::InterProcAddress& address_,
     std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end
-  ) : address(address_)
-  { ; }
+  ) : address(address_) {
+    static const uit::WarnOnce warning{
+      "RsendDuct is experimental and may be unreliable"
+    };
+  }
 
   ~RsendDuct() {
   }

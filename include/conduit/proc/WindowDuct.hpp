@@ -14,6 +14,7 @@
 #include "../../utility/CircularIndex.hpp"
 #include "../../utility/identity.hpp"
 #include "../../utility/print_utils.hpp"
+#include "../../utility/WarnOnce.hpp"
 
 #include "../config.hpp"
 
@@ -64,6 +65,11 @@ public:
       ));
       MPI_Request_free(&req); //TODO test for completion in destructor?
     }
+
+    static const uit::WarnOnce warning{
+      "WindowDuct is experimental and may be unreliable"
+    };
+
   }
 
   void Initialize(const size_t write_position) { ; }
