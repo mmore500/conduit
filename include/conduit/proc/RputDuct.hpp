@@ -2,11 +2,13 @@
 
 #include <algorithm>
 #include <array>
+#include <mutex>
 #include <stddef.h>
 
 #include <mpi.h>
 
 #include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/source/base/errors.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../distributed/mpi_utils.hpp"
@@ -178,6 +180,11 @@ public:
       [](){ error_message_mutex.lock(); return "locked"; }(),
       format_member("*this", *this)
     );
+
+    static std::once_flag flag;
+    std::call_once(flag, [](){
+      emp::NotifyWarning("RputDuct is experimental and may be unreliable");
+    });
 
   }
 

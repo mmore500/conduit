@@ -2,11 +2,13 @@
 
 #include <algorithm>
 #include <array>
+#include <mutex>
 #include <stddef.h>
 
 #include <mpi.h>
 
 #include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/source/base/errors.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../distributed/mpi_utils.hpp"
@@ -64,6 +66,12 @@ public:
       ));
       MPI_Request_free(&req); //TODO test for completion in destructor?
     }
+
+    static std::once_flag flag;
+    std::call_once(flag, [](){
+      emp::NotifyWarning("WindowDuct is experimental and may be unreliable");
+    });
+
   }
 
   void Initialize(const size_t write_position) { ; }
