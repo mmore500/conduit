@@ -2,13 +2,11 @@
 
 #include <algorithm>
 #include <array>
-#include <mutex>
 #include <stddef.h>
 
 #include <mpi.h>
 
 #include "../../../third-party/Empirical/source/base/assert.h"
-#include "../../../third-party/Empirical/source/base/errors.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../distributed/mpi_utils.hpp"
@@ -16,6 +14,7 @@
 #include "../../utility/CircularIndex.hpp"
 #include "../../utility/identity.hpp"
 #include "../../utility/print_utils.hpp"
+#include "../../utility/WarnOnce.hpp"
 
 #include "../config.hpp"
 
@@ -67,10 +66,9 @@ public:
       MPI_Request_free(&req); //TODO test for completion in destructor?
     }
 
-    static std::once_flag flag;
-    std::call_once(flag, [](){
-      emp::NotifyWarning("WindowDuct is experimental and may be unreliable");
-    });
+    static const uit::WarnOnce warning{
+      "WindowDuct is experimental and may be unreliable"
+    };
 
   }
 
