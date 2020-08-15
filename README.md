@@ -19,46 +19,31 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 
 * move utility to Empirical
 * write tests
-* collect data from benchmarks
-* add benchmarks to CI build
-* add opt, fulldebug, and cranky tests to build
 * write description and link blog posts
 * move TODOs to GH tracker
-* register with Zenodo
+* make a 0.1.0 release and add Zenodo badgev
 * add how to cite info to README
-* switch to branch-based workflow
 * re-organize header files in includes: one header file in each subdirectory that grabs the rest?
   * like `include/concurrent/concurrent.h` would have includes for all the other header files in that directory in it
 * make the read position and the write position internal to duct
 * add valgrind to continuous integration
-* add mpich run mode to tests, clang mode (?)
 * refactor error_mutex_lock to make a uit_assert
-* add -g flags to debug make recipes
 * break up/refactor mpi_utils.h
 * move utilities/assign_utils to assignment/
-* make all paths to Empirical headers relative
 * add a way for ducts to specify what they are versus aren't capable of
   * can only do getcurrent
   * can do getcurrent or get next
     * can do varlen types (would wrap T with a function to get length?)
-* rename ISend to Isend etc.
-* remove redundant proc benchmarks/tests
 * setup ReadTheDocs
 * setup Doxygen
 * investigate leaking MPI_Comms
-* make a pass to reorganize header includes
 * write Docstrings
 * write adaptor that caches and then sends every n
 * write backend that caches and then sends every n
-* #include "mpi.h" -> #include <mpi.h>
-* add libmimalloc to container
-* change file extensions to `.hpp` and `.cpp`
-* check for const refs
 * make hot code be noexcept/inline whenever possible
 * add real time fairness tests
 * add an unstable warning to RDMADuct, Irduct, rduct constructor
 * refactor I / no-I ducts for less code duplication
-* remove mca warn on fork
 * add examples directory
 * make apps or demos directory, move most of source there
 * debug RDMADuct

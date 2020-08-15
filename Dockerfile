@@ -57,7 +57,6 @@ RUN \
     libpthread-stubs0-dev \
     libc6-dbg \
     gdb \
-    jsonlint \
     && \
   echo "installed core dependencies"
 
@@ -180,6 +179,11 @@ RUN \
   echo "finalized dependency versions"
 
 RUN \
+  npm install -g jsonlint \
+    && \
+  echo "installed npm dependencies"
+
+RUN \
   cd /opt/conduit/ \
     && \
   cd third-party \
@@ -187,6 +191,9 @@ RUN \
   ./install_dependencies.sh \
     && \
   echo "installed third party dependencies"
+
+# Use mimalloc override within the container.
+ENV LD_PRELOAD=/usr/local/lib/mimalloc-1.6/libmimalloc.so
 
 RUN \
   cd /opt/conduit \
