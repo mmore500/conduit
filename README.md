@@ -44,6 +44,7 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * rename ISend to Isend etc.
 * remove redundant proc benchmarks/tests
 * setup ReadTheDocs
+* setup Doxygen
 * investigate leaking MPI_Comms
 * make a pass to reorganize header includes
 * write Docstrings
@@ -52,6 +53,8 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * #include "mpi.h" -> #include <mpi.h>
 * add libmimalloc to container
 * change file extensions to `.hpp` and `.cpp`
+* check for const refs
+* make hot code be noexcept/inline whenever possible
 * add real time fairness tests
 * add an unstable warning to RDMADuct, Irduct, rduct constructor
 * refactor I / no-I ducts for less code duplication
