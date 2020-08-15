@@ -35,6 +35,7 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
   * can do getcurrent or get next
     * can do varlen types (would wrap T with a function to get length?)
 * setup ReadTheDocs
+  * include this resource https://developer.lsst.io/cpp/api-docs.html
 * investigate leaking MPI_Comms
 * write Docstrings
 * write adaptor that caches and then sends every n
