@@ -13,15 +13,9 @@ template<
   class Pred = std::equal_to<Key>,
   class Allocator = std::allocator<std::pair<const Key, T>>
 >
-class unordered_map : public std::unordered_map<
-  Key,
-  T,
-  Hash,
-  Pred,
-  Allocator
-> {
+class unordered_map {
 
-  using parent_t = std::unordered_map<
+  using impl_t = std::unordered_map<
     Key,
     T,
     Hash,
@@ -31,23 +25,31 @@ class unordered_map : public std::unordered_map<
 
   mutable std::shared_mutex mutex;
 
+  impl_t impl;
+
 public:
 
-  using const_iterator = typename parent_t::const_iterator;
-  using insert_return_type = typename parent_t::insert_return_type;
-  using iterator = typename parent_t::iterator;
-  using key_type = typename parent_t::key_type;
-  using mapped_type = typename parent_t::mapped_type;
-  using node_type = typename parent_t::node_type;
-  using size_type = typename parent_t::size_type;
-  using value_type = typename parent_t::value_type;
+  using allocator_type = typename impl_t::allocator_type;
+  using const_iterator = typename impl_t::const_iterator;
+  using const_local_iterator = typename impl_t::const_local_iterator;
+  using insert_return_type = typename impl_t::insert_return_type;
+  using iterator = typename impl_t::iterator;
+  using key_type = typename impl_t::key_type;
+  using local_iterator = typename impl_t::local_iterator;
+  using mapped_type = typename impl_t::mapped_type;
+  using node_type = typename impl_t::node_type;
+  using size_type = typename impl_t::size_type;
+  using value_type = typename impl_t::value_type;
 
-  // inherit constructors
-  using parent_t::parent_t;
+  template<typename... Args>
+  unordered_map(Args&&... args)
+  : impl(std::forward<Args>(args)...)
+  { ; }
+
 
   unordered_map& operator=(const unordered_map& arg) {
     const std::unique_lock lock{ mutex };
-    return parent_t::operator=(arg);
+    return impl.operator=(arg);
   }
 
   unordered_map& operator=(unordered_map&& arg) noexcept(
@@ -56,37 +58,43 @@ public:
     && std::is_nothrow_move_assignable_v<Pred>
   ) {
     const std::unique_lock lock{ mutex };
-    return parent_t::operator=(std::move(arg));
+    return impl.operator=(std::move(arg));
   }
 
   unordered_map& operator=(std::initializer_list<value_type> arg) {
     const std::unique_lock lock{ mutex };
-    return parent_t::operator=(arg);
+    return impl.operator=(arg);
   }
 
-  // no override
-  // allocator_type get_allocator() const noexcept {};
+  allocator_type get_allocator() const noexcept {
+    return impl.get_allocator();
+  }
 
   // iterators
-  // no override
-  // iterator       begin() noexcept;
-  // const_iterator begin() const noexcept;
-  // iterator       end() noexcept;
-  // const_iterator end() const noexcept;
-  // const_iterator cbegin() const noexcept;
-  // const_iterator cend() const noexcept;
+  iterator begin() noexcept { return impl.begin(); }
+
+  const_iterator begin() const noexcept { return impl.begin(); }
+
+  iterator end() noexcept { return impl.end(); }
+
+  const_iterator end() const noexcept { return impl.end(); }
+
+  const_iterator cbegin() const noexcept { return impl.cbegin(); }
+
+  const_iterator cend() const noexcept { return impl.cend(); }
 
   // capacity
-  // no override
-  // [[nodiscard]] bool empty() const noexcept;
-  // size_type size() const noexcept;
-  // size_type max_size() const noexcept;
+  [[nodiscard]] bool empty() const noexcept { return impl.empty(); }
+
+  size_type size() const noexcept { return impl.size(); }
+
+  size_type max_size() const noexcept { return impl.max_size(); }
 
   // modifiers
   template<class... Args>
   std::pair<iterator, bool> emplace(Args&&... args) {
-    std::unique_lock{ mutex };
-    return parent_t::emplace(std::forward<Args>(args)...);
+    const std::unique_lock lock{ mutex };
+    return impl.emplace(std::forward<Args>(args)...);
   }
 
   template<class... Args>
@@ -94,80 +102,80 @@ public:
     const_iterator position,
     Args&&... args
   ) {
-    std::unique_lock{ mutex };
-    return parent_t::emplace_hint(
+    const std::unique_lock lock{ mutex };
+    return impl.emplace_hint(
       position,
       std::forward<Args>(args)...
     );
   }
 
   std::pair<iterator, bool> insert(const value_type& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(obj);
+    const std::unique_lock lock{ mutex };
+    return impl.insert(obj);
   }
 
   std::pair<iterator, bool> insert(value_type&& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(std::move(obj));
+    const std::unique_lock lock{ mutex };
+    return impl.insert(std::move(obj));
   }
 
   template<class P>
   std::pair<iterator, bool> insert(P&& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(std::move(obj));
+    const std::unique_lock lock{ mutex };
+    return impl.insert(std::move(obj));
   }
 
   iterator insert(const_iterator hint, const value_type& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(hint, obj);
+    const std::unique_lock lock{ mutex };
+    return impl.insert(hint, obj);
   }
 
   iterator insert(const_iterator hint, value_type&& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(hint, std::move(obj));
+    const std::unique_lock lock{ mutex };
+    return impl.insert(hint, std::move(obj));
   }
 
   template<class P>
   iterator insert(const_iterator hint, P&& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(hint, std::move(obj));
+    const std::unique_lock lock{ mutex };
+    return impl.insert(hint, std::move(obj));
   }
 
   template<class InputIt>
   void insert(InputIt first, InputIt last) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(first, last);
+    const std::unique_lock lock{ mutex };
+    return impl.insert(first, last);
   }
 
   void insert(std::initializer_list<value_type> arg) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(arg);
+    const std::unique_lock lock{ mutex };
+    return impl.insert(arg);
   }
 
   node_type extract(const_iterator position) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(position);
+    const std::unique_lock lock{ mutex };
+    return impl.insert(position);
   }
 
   node_type extract(const key_type& x) {
-    std::unique_lock{ mutex };
-    return parent_t::extract(x);
+    const std::unique_lock lock{ mutex };
+    return impl.extract(x);
   }
 
   insert_return_type insert(node_type&& nh) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(std::move(nh));
+    const std::unique_lock lock{ mutex };
+    return impl.insert(std::move(nh));
   }
 
   iterator insert(const_iterator hint, node_type&& nh) {
-    std::unique_lock{ mutex };
-    return parent_t::insert(hint, std::move(nh));
+    const std::unique_lock lock{ mutex };
+    return impl.insert(hint, std::move(nh));
   }
 
   template<class... Args>
   std::pair<iterator, bool> try_emplace(const key_type& k, Args&&... args) {
-    std::unique_lock{ mutex };
-    return parent_t::try_emplace(
+    const std::unique_lock lock{ mutex };
+    return impl.try_emplace(
       k,
       std::forward<Args>(args)...
     );
@@ -175,8 +183,8 @@ public:
 
   template<class... Args>
   std::pair<iterator, bool> try_emplace(key_type&& k, Args&&... args) {
-    std::unique_lock{ mutex };
-    return parent_t::try_emplace(
+    const std::unique_lock lock{ mutex };
+    return impl.try_emplace(
       k,
       std::forward<Args>(args)...
     );
@@ -184,8 +192,8 @@ public:
 
   template<class... Args>
   iterator try_emplace(const_iterator hint, const key_type& k, Args&&... args) {
-    std::unique_lock{ mutex };
-    return parent_t::try_emplace(
+    const std::unique_lock lock{ mutex };
+    return impl.try_emplace(
       hint,
       k,
       std::forward<Args>(args)...
@@ -194,8 +202,8 @@ public:
 
   template<class... Args>
   iterator try_emplace(const_iterator hint, key_type&& k, Args&&... args) {
-    std::unique_lock{ mutex };
-    return parent_t::try_emplace(
+    const std::unique_lock lock{ mutex };
+    return impl.try_emplace(
       hint,
       std::move(k),
       std::forward<Args>(args)...
@@ -204,8 +212,8 @@ public:
 
   template<class M>
   std::pair<iterator, bool> insert_or_assign(const key_type& k, M&& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert_or_assign(
+    const std::unique_lock lock{ mutex };
+    return impl.insert_or_assign(
       k,
       std::move(obj)
     );
@@ -213,8 +221,8 @@ public:
 
   template<class M>
   std::pair<iterator, bool> insert_or_assign(key_type&& k, M&& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert_or_assign(
+    const std::unique_lock lock{ mutex };
+    return impl.insert_or_assign(
       std::move(k),
       std::move(obj)
     );
@@ -222,8 +230,8 @@ public:
 
   template<class M>
   iterator insert_or_assign(const_iterator hint, const key_type& k, M&& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert_or_assign(
+    const std::unique_lock lock{ mutex };
+    return impl.insert_or_assign(
       hint,
       k,
       std::move(obj)
@@ -232,8 +240,8 @@ public:
 
   template<class M>
   iterator insert_or_assign(const_iterator hint, key_type&& k, M&& obj) {
-    std::unique_lock{ mutex };
-    return parent_t::insert_or_assign(
+    const std::unique_lock lock{ mutex };
+    return impl.insert_or_assign(
       hint,
       std::move(k),
       std::move(obj)
@@ -241,23 +249,23 @@ public:
   }
 
   iterator erase(iterator position) {
-    std::unique_lock{ mutex };
-    return parent_t::erase(position);
+    const std::unique_lock lock{ mutex };
+    return impl.erase(position);
   }
 
   iterator erase(const_iterator position) {
-    std::unique_lock{ mutex };
-    return parent_t::erase(position);
+    const std::unique_lock lock{ mutex };
+    return impl.erase(position);
   }
 
   size_type erase(const key_type& k) {
-    std::unique_lock{ mutex };
-    return parent_t::erase(k);
+    const std::unique_lock lock{ mutex };
+    return impl.erase(k);
   }
 
   iterator erase(const_iterator first, const_iterator last) {
-    std::unique_lock{ mutex };
-    return parent_t::erase(first, last);
+    const std::unique_lock lock{ mutex };
+    return impl.erase(first, last);
   }
 
   void swap(unordered_map& arg) noexcept(
@@ -265,37 +273,37 @@ public:
     && std::is_nothrow_swappable_v<Hash>
     && std::is_nothrow_swappable_v<Pred>
   ) {
-    std::unique_lock{ mutex };
-    parent_t::swap(arg);
+    const std::unique_lock lock{ mutex };
+    impl.swap(arg);
   }
 
   void clear() noexcept {
-    std::unique_lock{ mutex };
-    parent_t::clear();
+    const std::unique_lock lock{ mutex };
+    impl.clear();
   }
 
   template<class H2, class P2>
   void merge(std::unordered_map<Key, T, H2, P2, Allocator>& source) {
-    std::unique_lock{ mutex };
-    parent_t::merge(source);
+    const std::unique_lock lock{ mutex };
+    impl.merge(source);
   }
 
   template<class H2, class P2>
   void merge(std::unordered_map<Key, T, H2, P2, Allocator>&& source) {
-    std::unique_lock{ mutex };
-    parent_t::merge(std::move(source));
+    const std::unique_lock lock{ mutex };
+    impl.merge(std::move(source));
   }
 
   template<class H2, class P2>
   void merge(std::unordered_multimap<Key, T, H2, P2, Allocator>& source) {
-    std::unique_lock{ mutex };
-    parent_t::merge(source);
+    const std::unique_lock lock{ mutex };
+    impl.merge(source);
   }
 
   template<class H2, class P2>
   void merge(std::unordered_multimap<Key, T, H2, P2, Allocator>&& source) {
-    std::unique_lock{ mutex };
-    parent_t::merge(std::move(source));
+    const std::unique_lock lock{ mutex };
+    impl.merge(std::move(source));
   }
 
   // observers
@@ -306,125 +314,157 @@ public:
   // map operations
   iterator find(const key_type& k) {
     const std::shared_lock lock{ mutex };
-    return parent_t::find(k);
+    return impl.find(k);
   }
 
   const_iterator find(const key_type& k) const {
     const std::shared_lock lock{ mutex };
-    return parent_t::find(k);
+    return impl.find(k);
   }
 
   template<class K>
   iterator find(const K& k) {
     const std::shared_lock lock{ mutex };
-    return parent_t::find(k);
+    return impl.find(k);
   }
 
   template<class K>
   const_iterator find(const K& k) const {
     const std::shared_lock lock{ mutex };
-    return parent_t::find(k);
+    return impl.find(k);
   }
 
   template<class K>
   size_type count(const key_type& k) const {
     const std::shared_lock lock{ mutex };
-    return parent_t::count(k);
+    return impl.count(k);
   }
 
   template<class K>
   size_type count(const K& k) const {
     const std::shared_lock lock{ mutex };
-    return parent_t::count(k);
+    return impl.count(k);
   }
 
   bool contains(const key_type& k) const {
     const std::shared_lock lock{ mutex };
-    return parent_t::contains(k);
+    return impl.contains(k);
   }
 
   template<class K>
   bool contains(const K& k) const {
     const std::shared_lock lock{ mutex };
-    return parent_t::contains(k);
+    return impl.contains(k);
   }
 
   std::pair<iterator, iterator> equal_range(const key_type& k) {
     const std::shared_lock lock{ mutex };
-    return parent_t::equal_range(k);
+    return impl.equal_range(k);
   }
 
   std::pair<const_iterator, const_iterator> equal_range(
     const key_type& k
   ) const {
     const std::shared_lock lock{ mutex };
-    return parent_t::equal_range(k);
+    return impl.equal_range(k);
   }
 
   template<class K>
   std::pair<iterator, iterator> equal_range(const K& k) {
     const std::shared_lock lock{ mutex };
-    return parent_t::equal_range(k);
+    return impl.equal_range(k);
   }
 
   template<class K>
   std::pair<const_iterator, const_iterator> equal_range(const K& k) const {
     const std::shared_lock lock{ mutex };
-    return parent_t::equal_range(k);
+    return impl.equal_range(k);
   }
 
   // element access
   mapped_type& operator[](const key_type& k) {
     const std::shared_lock lock{ mutex };
-    return parent_t::operator[](k);
+    return impl.operator[](k);
   }
 
   mapped_type& operator[](key_type&& k) {
     const std::shared_lock lock{ mutex };
-    return parent_t::operator[](std::move(k));
+    return impl.operator[](std::move(k));
   }
 
   mapped_type& at(const key_type& k) {
     const std::shared_lock lock{ mutex };
-    return parent_t::at(k);
+    return impl.at(k);
   }
 
   const mapped_type& at(const key_type& k) const {
     const std::shared_lock lock{ mutex };
-    return parent_t::at(k);
+    return impl.at(k);
   }
 
   // bucket interface
-  // no override
-  // size_type bucket_count() const noexcept;
-  // size_type max_bucket_count() const noexcept;
-  // size_type bucket_size(size_type n) const;
-  // size_type bucket(const key_type& k) const;
-  // local_iterator begin(size_type n);
-  // const_local_iterator begin(size_type n) const;
-  // local_iterator end(size_type n);
-  // const_local_iterator end(size_type n) const;
-  // const_local_iterator cbegin(size_type n) const;
-  // const_local_iterator cend(size_type n) const;
+  size_type bucket_count() const noexcept {
+    return impl.bucket_count();
+  }
+
+  size_type max_bucket_count() const noexcept {
+    return impl.max_bucket_count();
+  }
+
+  size_type bucket_size(size_type n) const {
+    return impl.bucket_size(n);
+  }
+
+  size_type bucket(const key_type& k) const {
+    return impl.bucket(k);
+  }
+
+  local_iterator begin(size_type n) {
+    return impl.begin(n);
+  }
+
+  const_local_iterator begin(size_type n) const {
+    return impl.begin(n);
+  }
+
+  local_iterator end(size_type n) {
+    return impl.end(n);
+  }
+
+  const_local_iterator end(size_type n) const {
+    return impl.end(n);
+  }
+
+  const_local_iterator cbegin(size_type n) const {
+    return impl.cbegin(n);
+  }
+
+  const_local_iterator cend(size_type n) const {
+    return impl.cend(n);
+  }
 
   // hash policy
-  // no override
-  // float load_factor() const noexcept
-  // float max_load_factor() const noexcept;
+  float load_factor() const noexcept {
+    return impl.load_factor();
+  }
+
+  float max_load_factor() const noexcept {
+    return impl.max_load_factor();
+  }
 
   void max_load_factor(float z) {
     const std::unique_lock lock{ mutex };
-    parent_t::max_load_factor(z);
+    impl.max_load_factor(z);
   }
 
   void rehash(size_type n) {
     const std::unique_lock lock{ mutex };
-    parent_t::rehash(n);
+    impl.rehash(n);
   }
 
   void reserve(size_type n) {
     const std::unique_lock lock{ mutex };
-    parent_t::reserve(n);
+    impl.reserve(n);
   }
 
 };
