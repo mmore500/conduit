@@ -24,9 +24,9 @@ public:
   : inputs(inputs_), outputs(outputs_)
   { ; }
 
-  const inputs_t& GetInputs() const { return inputs; }
+  const inputs_t& GetInputs() const noexcept { return inputs; }
 
-  const outputs_t& GetOutputs() const { return outputs; }
+  const outputs_t& GetOutputs() const noexcept { return outputs; }
 
   void AddInput(const uit::TopoNodeInput& input_) {
     inputs.push_back(input_);
@@ -36,13 +36,13 @@ public:
     outputs.push_back(output_);
   }
 
-  size_t GetNumInputs() const { return inputs.size(); }
+  size_t GetNumInputs() const noexcept { return inputs.size(); }
 
-  size_t GetNumOutputs() const { return outputs.size(); }
+  size_t GetNumOutputs() const noexcept { return outputs.size(); }
 
-  bool HasInputs() const { return inputs.size(); }
+  bool HasInputs() const noexcept { return inputs.size(); }
 
-  bool HasOutputs() const { return outputs.size(); }
+  bool HasOutputs() const noexcept { return outputs.size(); }
 
   std::string ToString() const {
     std::stringstream ss;
