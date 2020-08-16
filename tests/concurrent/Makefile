@@ -1,4 +1,4 @@
-TEST_NAMES := Gatherer TimeoutBarrier
+TEST_NAMES := Gatherer ThreadSafeIbarrierRequest TimeoutBarrier
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
