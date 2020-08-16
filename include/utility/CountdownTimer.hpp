@@ -9,7 +9,7 @@
 namespace uit {
 
 template<
-  typename Duration_T=std::chrono::seconds,
+  typename Duration_T=std::chrono::duration<double, std::ratio<1>>,
   typename Clock_T=std::chrono::steady_clock
 >
 class CountdownTimer {
