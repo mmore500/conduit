@@ -26,6 +26,7 @@
 #include "utility/numeric_cast.hpp"
 #include "utility/safe_compare.hpp"
 #include "mesh/Mesh.hpp"
+#include "parallel/ThreadIbarrierFactory.hpp"
 #include "parallel/ThreadTeam.hpp"
 #include "polyfill/barrier.hpp"
 #include "polyfill/latch.hpp"
@@ -110,6 +111,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
 
   std::latch latch{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
   std::barrier barrier{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
+  uit::ThreadIbarrierFactory factory{ num_threads };
 
   uit::Gatherer<int> gatherer(MPI_INT);
 
@@ -136,16 +138,17 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       task_step(chunk);
 
       // synchronize after each step
-      if (synchronous) uit::TimeoutBarrier{
-        timer,
-        barrier
-      };
+      if (synchronous) {
+        const uit::ThreadIbarrier thread_barrier{ factory.MakeBarrier() };
+        uit::TimeoutBarrier<decltype(timer)> barrier{
+          thread_barrier,
+          timer
+        };
+      }
 
       counter.Step();
 
     }
-
-    if (synchronous) barrier.arrive_and_drop();
 
     if (checkout_memory) checkin_chunk(source, chunk);
 
