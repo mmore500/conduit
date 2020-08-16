@@ -4,7 +4,10 @@
 #include <unordered_map>
 #include <shared_mutex>
 
+#include "../../third-party/Empirical/source/tools/string_utils.h"
+
 #include "../containers/safe/unordered_map.hpp"
+#include "../utility/print_utils.hpp"
 
 #include "thread_utils.hpp"
 
@@ -26,6 +29,14 @@ public:
   }
 
   size_t GetSize() const { return map.size(); }
+
+  std::string ToString() {
+    std::stringstream ss;
+    for (const auto & [k, v] : map) {
+      ss << format_member(emp::to_string("thread ", k), v) << std::endl;
+    }
+    return ss.str();
+  }
 
 };
 
