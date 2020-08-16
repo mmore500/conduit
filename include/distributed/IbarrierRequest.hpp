@@ -28,7 +28,7 @@ public:
    *
    * @returns true if all processes have reached barrier.
    */
-  bool IsComplete() { return uit::test_completion(request); }
+  bool IsComplete() const { return uit::test_completion(request); }
 
 };
 
