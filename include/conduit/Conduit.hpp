@@ -19,15 +19,26 @@ namespace uit {
 template<typename ImplSpec>
 class Conduit {
 
+  /// TODO.
   using duct_t = uit::Duct<ImplSpec>;
+
+  /// TODO.
   std::shared_ptr<duct_t> duct{ std::make_shared<duct_t>() };
 
+  /// TODO.
   uit::Inlet<ImplSpec> inlet{ duct };
+  /// TODO.
   uit::Outlet<ImplSpec> outlet{ duct };
 
 public:
 
   // for structured bindings
+  /**
+   * TODO.
+   *
+   * @tparam N TODO.
+   * @return TODO.
+   */
   template <size_t N>
   decltype(auto) get() const {
       // parens needed to get reference?
@@ -35,8 +46,18 @@ public:
       else if constexpr (N == 1) return (outlet);
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   uit::Inlet<ImplSpec> & GetInlet() { return inlet; }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   uit::Outlet<ImplSpec> & GetOutlet() { return outlet; }
 
   // TODO implicit conversion operators?
