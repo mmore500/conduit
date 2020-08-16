@@ -8,6 +8,13 @@
 
 namespace uit {
 
+/**
+ * TODO
+ *
+ * @tparam IntraDuct_ TODO.
+ * @tparam ThreadDuct_ TODO.
+ * @tparam ProcDuct_ TODO.
+ */
 template<
   template<typename> typename IntraDuct_ = uit::PendingDuct,
   template<typename> typename ThreadDuct_ = uit::HeadTailDuct,
@@ -26,6 +33,13 @@ struct ImplSelector {
 
 };
 
+/**
+ * TODO
+ *
+ * @tparam T_ TODO.
+ * @tparam N_ TODO.
+ * @tparam ImplSelector TODO.
+ */
 template<
   typename T_,
   size_t N_=DEFAULT_BUFFER,

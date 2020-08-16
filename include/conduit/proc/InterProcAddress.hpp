@@ -6,6 +6,12 @@
 
 namespace uit {
 
+/**
+ * TODO
+ *
+ * @tparam ImplSpec class with static and typedef members specifying
+ * implementation details for the conduit framework.
+ */
 class InterProcAddress {
 
   uit::proc_id_t outlet_proc;
