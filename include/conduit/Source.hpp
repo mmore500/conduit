@@ -18,6 +18,11 @@ namespace uit {
 template<typename ImplSpec>
 class Source {
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   uit::Outlet<ImplSpec> outlet{
     std::make_shared<uit::Duct<ImplSpec>>()
   };
@@ -25,12 +30,22 @@ class Source {
 public:
 
   // for structured bindings
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   template <size_t N>
   decltype(auto) get() const {
       // parens needed to get reference?
       if constexpr (N == 0) return (outlet);
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   uit::Outlet<ImplSpec>& GetOutlet() {
     return outlet;
   }

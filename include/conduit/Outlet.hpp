@@ -48,10 +48,29 @@ class Outlet {
   // total distance traversed through underlying buffer
   size_t net_flux{0};
 
+  /**
+   * TODO.
+   *
+   * @return
+   */
   size_t GetPending() { return duct->GetPending(); }
 
+  /**
+   * TODO.
+   *
+   * @param n TODO.
+   *
+   * @return TODO.
+   */
   T GetElement(const size_t n) const { return duct->GetElement(n); }
 
+  /**
+   * TODO.
+   *
+   * @param step TODO.
+   *
+   * @return TODO.
+   */
   size_t Advance(const size_t step=1) {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("Advance", 1)};
@@ -65,12 +84,22 @@ class Outlet {
     return step;
   }
 
+  /**
+   * TODO.
+   *
+   * @param step TODO.
+   */
   void Log(const size_t step) {
     ++read_count;
     revision_count += (step > 0);
     net_flux += step;
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   size_t FastForward() {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("FastForward", 1)};
@@ -79,15 +108,29 @@ class Outlet {
     return Advance(GetPending());
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   T DoGet() { return GetElement(read_position); }
 
 public:
+
+  /**
+   * TODO.
+   */
   Outlet(
     std::shared_ptr<Duct<ImplSpec>> duct_
   ) : duct(duct_) { ; }
 
   // non-blocking
   // TODO rename GetLatest
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   T GetCurrent() {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("GetCurrent", 1)};
@@ -98,6 +141,11 @@ public:
   }
 
   // blocking
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   T GetNext() {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("GetNext", 1)};
@@ -108,16 +156,43 @@ public:
     return DoGet();
   }
 
+  /**
+   * TODO.
+   */
   void Prime() const {
     __builtin_prefetch(duct->GetPosition(read_position+1), 0);
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   size_t GetReadCount() const { return read_count; }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   size_t GetRevisionCount() const { return revision_count; }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   size_t GetNetFlux() const { return net_flux; }
 
+  /**
+   * TODO.
+   *
+   * @tparam WhichDuct TODO
+   * @tparam Args TODO
+   * @param args TODO
+   * @return TODO.
+   * @return TODO.
+   */
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
     FastForward();
@@ -126,6 +201,14 @@ public:
     duct->Initialize(read_position+1);
   }
 
+  /**
+   * TODO.
+   *
+   * @tparam WhichDuct TODO
+   * @tparam Args TODO
+   * @param args TODO
+   * @return TODO.
+   */
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
     emp_assert(GetPending() == 0);
@@ -133,8 +216,18 @@ public:
     EmplaceDuct<WhichDuct>(args...);
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   typename Duct<ImplSpec>::uid_t GetDuctUID() const { return duct->GetUID(); }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("std::shared_ptr<Duct<ImplSpec>> duct", *duct) << std::endl;

@@ -48,12 +48,32 @@ class Inlet {
   // number of times write attempts have dropped due to buffer space
   size_t dropped_write_count{0};
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   size_t GetAvailableCapacity() { return duct->GetAvailableCapacity(); }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   T GetElement(const size_t n) const { return duct->GetElement(n); }
 
+  /**
+   * TODO.
+   *
+   * @param n
+   * @param val
+   * @return TODO.
+   */
   void SetElement(const size_t n, const T& val) { duct->SetElement(n, val); }
 
+  /**
+   * TODO.
+   */
   void Advance() {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("Advance", 1)};
@@ -64,6 +84,11 @@ class Inlet {
     ++successful_write_count;
   }
 
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
   void DoPut(const T& val) {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("DoPut", 1)};
@@ -74,11 +99,22 @@ class Inlet {
   }
 
 public:
+
+  /**
+   * TODO.
+   *
+   * @param duct_ TODO.
+   */
   Inlet(
     std::shared_ptr<Duct<ImplSpec>> duct_
   ) : duct(duct_) { ; }
 
   // potentially blocking
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
   void Put(const T& val) {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("Put", 1)};
@@ -92,6 +128,11 @@ public:
   }
 
   // non-blocking
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
   bool MaybePut(const T& val) {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("MaybePut", 1)};
@@ -108,18 +149,48 @@ public:
 
   }
 
+  /**
+   * TODO.
+   */
   void Prime() {
     __builtin_prefetch(duct->GetPosition(write_position+1), 0);
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   size_t GetSuccessfulWriteCount() const { return successful_write_count; }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   size_t GetBlockedWriteCount() const { return blocked_write_count; }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   size_t GetDroppedWriteCount() const { return dropped_write_count; }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   bool IsFull() { return 0 == GetAvailableCapacity(); }
 
+  /**
+   * TODO.
+   *
+   * @tparam WhichDuct
+   * @tparam Args
+   * @param args
+   */
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
     emp_assert(GetAvailableCapacity() == N);
@@ -127,6 +198,13 @@ public:
     duct->Initialize(write_position);
   }
 
+  /**
+   * TODO.
+   *
+   * @tparam WhichDuct
+   * @tparam Args
+   * @param args
+   */
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
     emp_assert(GetAvailableCapacity() == N);
@@ -134,8 +212,18 @@ public:
     EmplaceDuct<WhichDuct>(args...);
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   typename Duct<ImplSpec>::uid_t GetDuctUID() const { return duct->GetUID(); }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   std::string ToString() const {
     std::stringstream ss;
     ss << format_member("std::shared_ptr<Duct<ImplSpec>> duct", *duct) << std::endl;
