@@ -8,6 +8,7 @@
 
 #include "../../third-party/Empirical/source/base/vector.h"
 
+#include "../containers/safe/deque.hpp"
 #include "../distributed/mpi_utils.hpp"
 
 namespace uit {
@@ -26,9 +27,7 @@ template<typename T>
 class Gatherer {
 
   /// Data items submitted from threads in the executing process.
-  emp::vector<T> items;
-  /// Enforces thread-safe access to @items.
-  std::mutex mutex;
+  uit::safe::deque<T> items;
 
   /// MPI datatype corresponding to @T.
   // TODO use template metaprogramming to automatically deduce this
@@ -82,10 +81,7 @@ public:
    * @param item The data item to store.
    * @note This call is thread-safe.
    */
-  void Put(const T& item) {
-    const std::lock_guard guard(mutex);
-    items.push_back(item);
-  }
+  void Put(const T& item) { items.push_back(item); }
 
   /**
    * Gather put data items from across threads and processes.
@@ -96,7 +92,6 @@ public:
    * @note Only a single thread from each process should make this call.
    */
   std::optional<emp::vector<T>> Gather(const int root=0) {
-    const std::lock_guard guard(mutex);
 
     const emp::vector<int> counts = GatherCounts(root);
 
@@ -116,10 +111,13 @@ public:
     );
     emp::vector<T> res(num_items);
 
+    // initialize buffer to contribute items from
+    emp::vector<T> send_buffer( std::begin(items), std::end(items) );
+
     // do gather, contributed items are only delivered to root process
     verify(MPI_Gatherv(
-      items.data(), // const void *sendbuf
-      items.size(), // int sendcount
+      send_buffer.data(), // const void *sendbuf
+      send_buffer.size(), // int sendcount
       mpi_type, // MPI_Datatype sendtype
       res.data(), // void *recvbuf
       counts.data(), // const int *recvcounts
