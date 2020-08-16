@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <mutex>
 
 #include "../containers/safe/deque.hpp"
 #include "../polyfill/latch.hpp"
@@ -22,7 +23,13 @@ class ThreadIbarrierManager
 
   size_t expected;
 
+  std::mutex flush_mutex;
+
   void Flush() {
+
+    // prevent double-popping race condition
+    const std::lock_guard guard{ flush_mutex };
+
     // try to discard old latches
     while (
       latches.size()
