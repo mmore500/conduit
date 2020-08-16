@@ -49,7 +49,8 @@ public:
 
   unordered_map& operator=(const unordered_map& arg) {
     const std::unique_lock lock{ mutex };
-    return impl.operator=(arg);
+    impl.operator=(arg);
+    return *this;
   }
 
   unordered_map& operator=(unordered_map&& arg) noexcept(
@@ -58,12 +59,14 @@ public:
     && std::is_nothrow_move_assignable_v<Pred>
   ) {
     const std::unique_lock lock{ mutex };
-    return impl.operator=(std::move(arg));
+    impl.operator=(std::move(arg));
+    return *this;
   }
 
   unordered_map& operator=(std::initializer_list<value_type> arg) {
     const std::unique_lock lock{ mutex };
-    return impl.operator=(arg);
+    impl.operator=(arg);
+    return *this;
   }
 
   allocator_type get_allocator() const noexcept {
