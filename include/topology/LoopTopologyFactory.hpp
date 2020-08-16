@@ -37,4 +37,4 @@ struct LoopTopologyFactory {
   static std::string GetName() { return "Loop Topology"; }
 };
 
-}
+} // namespace uit

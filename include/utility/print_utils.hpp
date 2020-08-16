@@ -109,4 +109,4 @@ std::string to_string(const T & container) {
   return emp::join_on(res, ", ");
 }
 
-}
+} // namespace uit

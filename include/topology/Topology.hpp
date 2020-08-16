@@ -6,4 +6,4 @@ namespace uit {
 
 using Topology = emp::vector<TopoNode>;
 
-}
+} // namespace uit

@@ -28,7 +28,7 @@ public:
 
 };
 
-}
+} // namespace internal
 
 template<typename ImplSpec>
 class Mesh {
@@ -196,4 +196,4 @@ public:
 
 };
 
-}
+} // namespace uit

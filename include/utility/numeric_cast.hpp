@@ -64,4 +64,4 @@ inline Dst numeric_cast(Src value)
     return static_cast<Dst>(value);
 }
 
-}
+} // namespace uit

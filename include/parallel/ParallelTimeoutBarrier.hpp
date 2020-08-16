@@ -34,4 +34,4 @@ public:
 
 };
 
-} // end namespace uit
+} // namespace uit

@@ -13,4 +13,4 @@ static constexpr struct identity_t {
   }
 } identity{};
 
-}
+} // namespace uit

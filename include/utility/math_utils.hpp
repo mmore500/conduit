@@ -52,4 +52,4 @@ size_t difference(const size_t a, const size_t b) {
   return std::max(a, b) - std::min(a, b);
 }
 
-}
+} // namespace uit

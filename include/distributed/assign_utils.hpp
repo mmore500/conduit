@@ -12,4 +12,4 @@ struct AssignAvailableProcs {
 
 };
 
-}
+} // namespace uit

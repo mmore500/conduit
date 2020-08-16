@@ -19,4 +19,4 @@ struct RdmaDuct {
 
 };
 
-}
+} // namespace uit

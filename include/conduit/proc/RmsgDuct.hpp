@@ -19,4 +19,4 @@ struct RmsgDuct {
 
 };
 
-}
+} // namespace uit

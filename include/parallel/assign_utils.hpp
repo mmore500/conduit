@@ -12,4 +12,4 @@ struct AssignAvailableThreads {
 
 };
 
-}
+} // namespace uit

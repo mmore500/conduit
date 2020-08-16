@@ -76,5 +76,5 @@ public:
 
 };
 
-} // end namespace internal
-} // end namespace uit
+} // namespace internal
+} // namespace uit

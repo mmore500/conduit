@@ -57,7 +57,7 @@ public:
 
 class ThreadIbarrierManager;
 
-} // end namespace internal
+} // namespace internal
 
 // TODO add occupancy caps
 class ThreadIbarrier {
@@ -87,4 +87,4 @@ public:
 
 };
 
-} // end namespace uit
+} // namespace uit

@@ -15,4 +15,4 @@ namespace uit {
   static constexpr size_t CACHE_LINE_SIZE = 64;
 #endif
 
-}
+} // namespace uit

@@ -519,4 +519,4 @@ bool test_completion(const MPI_Request& request) {
   return flag;
 }
 
-}
+} // namespace uit

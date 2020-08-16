@@ -23,4 +23,4 @@ std::string exec(const char* cmd) {
     return result;
 }
 
-}
+} // namespace uit

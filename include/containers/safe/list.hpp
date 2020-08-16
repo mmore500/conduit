@@ -337,5 +337,5 @@ public:
 
 };
 
-} // end namespace safe
-} // end namespace uit
+} // namespace safe
+} // namespace uit
