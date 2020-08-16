@@ -1,4 +1,4 @@
-TEST_NAMES := mpi_utils group_utils MPIGuard
+TEST_NAMES := DistributedTimeoutBarrier group_utils mpi_utils MPIGuard
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
