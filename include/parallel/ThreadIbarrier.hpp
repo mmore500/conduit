@@ -3,13 +3,11 @@
 #include <atomic>
 #include <deque>
 #include <memory>
-#include <mutex>
+#include <shared_mutex>
+#include <stddef.h>
 #include <unordered_map>
 
 #include "../../third-party/Empirical/source/base/assert.h"
-
-#include "../polyfill/barrier.hpp"
-#include "../polyfill/latch.hpp"
 
 #include "OncePerThreadChecker.hpp"
 #include "ThreadMap.hpp"
@@ -19,22 +17,41 @@ namespace uit {
 namespace internal {
 
 class SharedLatch {
-  std::atomic<size_t> owner_count{};
-  std::latch latch;
+
+  size_t expected;
+
+  size_t owner_count{};
+  size_t arrival_count{};
+
+  mutable std::shared_mutex mutex{};
+
   uit::OncePerThreadChecker checker;
 
 public:
 
-  SharedLatch(const size_t expected)
-  : latch(expected)
+  SharedLatch(const size_t expected_)
+  : expected(expected_)
   { ; }
 
-  void Acquire() { ++owner_count; }
-  void Release() { emp_assert(owner_count.load()); --owner_count; }
-  void Arrive() { latch.count_down(); checker.Check(); }
-  bool TryWait() const { return latch.try_wait(); }
-  bool IsHeld() const { return owner_count; }
-  bool IsReleased() const { return !IsHeld(); }
+  void AcquireAndArrive() {
+    const std::unique_lock lock{ mutex };
+    ++owner_count;
+    ++arrival_count;
+    checker.Check();
+  }
+  void Release() {
+    const std::unique_lock lock{ mutex };
+    emp_assert(owner_count);
+    --owner_count;
+  }
+  bool TryWait() const {
+    const std::shared_lock lock{ mutex };
+    return arrival_count == expected;
+  }
+  bool IsObsolete() const {
+    const std::shared_lock lock{ mutex };
+    return owner_count == 0 && arrival_count == expected;
+  }
 
 };
 
@@ -58,8 +75,8 @@ class ThreadIbarrier {
   ) : manager(manager_)
   , latch(latch_)
   {
-    latch.Acquire();
-    latch.Arrive();
+    emp_assert( !IsComplete() );
+    latch.AcquireAndArrive();
   }
 
 public:
