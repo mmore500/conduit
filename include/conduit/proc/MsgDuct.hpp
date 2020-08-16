@@ -19,4 +19,4 @@ struct MsgDuct {
 
 };
 
-}
+} // namespace uit

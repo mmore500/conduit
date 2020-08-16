@@ -57,7 +57,7 @@ struct AssignRoundRobin {
 
 };
 
-}
+} // namespace uit
 // TODO assign_randomly
 // make a vector of IDs, shuffle it, capture it,
 // then return result of indexing into it

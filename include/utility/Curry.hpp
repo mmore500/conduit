@@ -40,4 +40,4 @@ using Curry = CurryTypes<Input, Specified>;
 template<auto x>
 using ValType=std::integral_constant<decltype(x), x>;
 
-}
+} // namespace uit

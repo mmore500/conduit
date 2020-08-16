@@ -44,7 +44,7 @@ public:
 
 };
 
-}
+} // namespace uit
 
 // for structured bindings
 namespace std {
@@ -61,4 +61,4 @@ namespace std {
     );
   };
 
-}
+} // namespace std

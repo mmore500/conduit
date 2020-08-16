@@ -39,4 +39,4 @@ struct ForEach {
 
 };
 
-}
+} // namespace uit

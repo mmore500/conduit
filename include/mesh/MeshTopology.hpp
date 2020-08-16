@@ -191,5 +191,5 @@ public:
 
 };
 
-}
-}
+} // namespace internal
+} // namespace uit

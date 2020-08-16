@@ -51,4 +51,4 @@ struct DyadicTopologyFactory {
   static std::string GetName() { return "Dyadic Topology"; }
 };
 
-}
+} // namespace uit

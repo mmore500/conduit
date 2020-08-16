@@ -28,4 +28,4 @@ size_t get_nproc() {
   return stoszt(exec("nproc"));
 }
 
-}
+} // namespace uit
