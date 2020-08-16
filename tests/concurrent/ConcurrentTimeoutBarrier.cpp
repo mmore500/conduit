@@ -2,7 +2,7 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "concurrent/TimeoutBarrier.hpp"
+#include "concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "distributed/MPIGuard.hpp"
 #include "distributed/MultiprocessReporter.hpp"
 #include "parallel/ThreadIbarrierFactory.hpp"
@@ -16,12 +16,12 @@ void do_work() {
 
   static uit::ThreadIbarrierFactory factory{ num_threads };
 
-  const uit::TimeoutBarrier barrier{ factory.MakeBarrier() };
+  const uit::ConcurrentTimeoutBarrier barrier{ factory.MakeBarrier() };
 
 }
 
 
-TEST_CASE("Test TimeoutBarrier") {
+TEST_CASE("Test ConcurrentTimeoutBarrier") {
 
   uit::ThreadTeam team;
 

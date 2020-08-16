@@ -15,7 +15,7 @@
 #include "../third-party/Empirical/source/tools/keyname_utils.h"
 
 #include "concurrent/Gatherer.hpp"
-#include "concurrent/TimeoutBarrier.hpp"
+#include "concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "conduit/Conduit.hpp"
 #include "conduit/config.hpp"
 #include "distributed/mpi_utils.hpp"
@@ -140,7 +140,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       // synchronize after each step
       if (synchronous) {
         const uit::ThreadIbarrier thread_barrier{ factory.MakeBarrier() };
-        uit::TimeoutBarrier<decltype(timer)> barrier{
+        uit::ConcurrentTimeoutBarrier{
           thread_barrier,
           timer
         };
