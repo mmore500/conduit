@@ -1,6 +1,6 @@
 #pragma once
 
-#include <mutex>
+#include <shared_mutex>
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 

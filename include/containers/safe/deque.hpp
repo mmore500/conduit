@@ -1,7 +1,7 @@
 #pragma once
 
 #include <deque>
-#include <mutex>
+#include <shared_mutex>
 
 namespace uit {
 namespace safe {
