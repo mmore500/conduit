@@ -14,7 +14,7 @@ A multithread profiling project.
 Check out the live in-browser web app at [https://mmore500.github.io/conduit](https://mmore500.github.io/conduit).
 
 * Free software: MIT license
-* Documentation: [https://conduit.readthedocs.io](https://conduit.readthedocs.io).
+* Documentation: [http://conduit.fyi](http://conduit.fyi).
 
 ## TODO
 
@@ -47,7 +47,7 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * debug RDMADuct
 * rename ring mesh to bucket brigade
 * make macrobenchmarks run for fixed time not iters, add proc macrobenchmarks, upload macrobenchmark results to osf
-* disable deploy on non-master builds
+* fix https on documentation site 
 
 * make_random_mesh
   * degree is argument
