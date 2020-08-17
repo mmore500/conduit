@@ -1,5 +1,6 @@
 # Conduit
 
+[![version](https://img.shields.io/endpoint?url=https%3A%2F%2Fmmore500.com%2Fconduit%2Fversion-badge.json)](https://github.com/mmore500/conduit/releases)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/eeb84ac3b8a3419f9714819f9191d7bf)](https://app.codacy.com/manual/mmore500/conduit?utm_source=github.com&utm_medium=referral&utm_content=mmore500/conduit&utm_campaign=Badge_Grade_Dashboard)
 [![build status](https://travis-ci.com/mmore500/conduit.svg)](https://travis-ci.com/mmore500/conduit)
 [![documentation status](https://readthedocs.org/projects/uit/badge/?version=latest)](https://uit.readthedocs.io/en/latest/?badge=latest)
