@@ -57,9 +57,14 @@ cov: install-coverage-dependencies
 clean:
 	rm -f $(PROJECT) web/$(PROJECT).js web/*.js.map web/*.js.map *~ source/*.o web/*.wasm web/*.wast
 	rm -rf coverage_include
+	cd docs && make clean
 	cd macrobenchmarks && make clean
 	cd microbenchmarks && make clean
 	cd tests && make clean
+
+docs:
+	cd docs && make html
+
 
 macrobenchmark:
 	cd macrobenchmarks && make bench
@@ -80,7 +85,7 @@ tests:
 	cd tests && make opt
 	cd tests && make fulldebug
 
-.PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov
+.PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov docs
 
 
 # Debugging information
