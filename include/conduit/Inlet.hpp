@@ -18,10 +18,42 @@
 namespace uit {
 
 /**
- * TODO
+ * Input to conduit transmission.
+ *
+ * Allows user to initiate
+ *
+ *  - potentially-blocking, assured transmisison via `Put`, or
+ *  - non-blocking, potentially-dropped transmission via `MaybePut`.
+ *
+ * An `Inlet` holds a `std::shared_ptr` to a `Duct` object, which manages data
+ * transmission from the `Inlet`.
+ *
+ * An `Inlet`'s underlying `Duct` may be altered or replaced at runtime, for
+ * example to provide thread-safe or process-safe transmission.
+ *
+ * - `EmplaceDuct` emplaces a new transmission implementation within
+ *   the  existing `Duct` object. (See `include/conduit/Duct.hpp` for details.)
+ * - `SplitDuct` makes a new `Duct` and points the `Inlet`'s `std::shared_ptr`
+ *   to that `Duct`.
+ *
+ * If an `Outlet` holds a `std::shared_ptr` to the `Inlet`'s `Duct`, under an
+ * `EmplaceDuct` call the `Duct`'s change in transmission implementation will
+ * be visible to the `Outlet` and `Inlet` and the `Outlet` will still share a
+ * `Duct`. However, under a `SplitDuct` call that `Outlet`'s `Duct` will be
+ * unaffected. After a `SplitDuct` call, the `Inlet` and `Outlet` will hold
+ * `std::shared_ptr`'s to separate `Duct`s.
  *
  * @tparam ImplSpec class with static and typedef members specifying
- * implementation details for the conduit framework.
+ *   implementation details for the conduit framework. See
+ *   `include/conduit/ImplSpec.hpp`.
+ *
+ * @note End users should probably never have to directly instantiate this
+ *   class. The `Conduit`, `Sink`, and `Source` classes take care of creating a
+ *   `Duct` and tying it to an `Inlet` and/or `Outlet`. Better yet, the
+ *   `MeshTopology` interface allows end users to construct a conduit network
+ *    in terms of a connection topology and a mapping to assign nodes to
+ *    threads and processes without having to manually construct `Conduits` and
+ *    emplace necessary thread-safe and/or process-safe `Duct` implementations.
  */
 template<typename ImplSpec>
 class Inlet {

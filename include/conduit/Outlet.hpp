@@ -16,10 +16,43 @@
 namespace uit {
 
 /**
- * TODO
+ * Output from conduit transmission.
+ *
+ * Allows user to initiate
+ *
+ *  - potentially-blocking, strictly-sequential of the next unread received
+ *     transmission, or
+ *  - non-blocking fetch of the latest received transmission via `GetCurrent`.
+ *
+ * An `Outlet` holds a `std::shared_ptr` to a `Duct` object, which manages data
+ * transmission to the `Outlet`.
+ *
+ * An `Outlet`'s underlying `Duct` may be altered or replaced at runtime, for
+ * example to provide thread-safe or process-safe transmission.
+ *
+ * - `EmplaceDuct` emplaces a new transmission implementation within
+ *   the  existing `Duct` object. (See `include/conduit/Duct.hpp` for details.)
+ * - `SplitDuct` makes a new `Duct` and points the `Outlet`'s `std::shared_ptr`
+ *   to that `Duct`.
+ *
+ * If an `Inlet` holds a `std::shared_ptr` to the `Outlet`'s `Duct`, under an
+ * `EmplaceDuct` call the `Duct`'s change in transmission implementation will
+ * be visible to the `Inlet` and the `Inlet` and `Outlet` will still share a
+ * `Duct`. However, under a `SplitDuct` call that `Inlet`'s `Duct` will be
+ * unaffected. After a `SplitDuct` call, the `Inlet` and `Outlet` will hold
+ * `std::shared_ptr`'s to separate `Duct`s.
  *
  * @tparam ImplSpec class with static and typedef members specifying
- * implementation details for the conduit framework.
+ *   implementation details for the conduit framework. See
+ *   `include/conduit/ImplSpec.hpp`.
+ *
+ * @note End users should probably never have to directly instantiate this
+ *   class. The `Conduit`, `Sink`, and `Source` classes take care of creating a
+ *   `Duct` and tying it to an `Inlet` and/or `Outlet`. Better yet, the
+ *   `MeshTopology` interface allows end users to construct a conduit network
+ *    in terms of a connection topology and a mapping to assign nodes to
+ *    threads and processes without having to manually construct `Conduits` and
+ *    emplace necessary thread-safe and/or process-safe `Duct` implementations.
  */
 template<typename ImplSpec>
 class Outlet {
