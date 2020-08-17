@@ -33,6 +33,12 @@ jobs:
     - docker ps -a
     script: docker run --cap-add=SYS_ADMIN mmore500/conduit /bin/bash -c "cd /opt/conduit
       && source third-party/emsdk/emsdk_env.sh && make test-source"
+  - name: Docs
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit
+      && make docs"
   - stage: Deploy
     name: Deploy to GitHub Pages
     install:

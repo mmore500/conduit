@@ -159,6 +159,17 @@ RUN \
   echo "installed Python packages"
 
 RUN \
+  apt-get install -qq \
+    doxygen \
+    && \
+  echo "installed documentation dependencies"
+
+RUN \
+  pip3 install -r /opt/conduit/docs/requirements.txt \
+    && \
+  echo "installed documentation build requirements"
+
+RUN \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90 \
     && \
   update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-7 90 \
