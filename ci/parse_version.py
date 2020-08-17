@@ -6,7 +6,7 @@ config = configparser.ConfigParser()
 config.read(sys.argv[1])
 res = {
   'schemaVersion' : 1,
-  'label' : 'documentation coverage',
+  'label' : 'version',
   'message' : config['bumpversion']['current_version'],
   'color' : 'orange',
 }
