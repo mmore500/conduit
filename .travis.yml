@@ -55,7 +55,7 @@ jobs:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e GH_TOKEN -e TRAVIS_BUILD_NUMBER mmore500/conduit
+    - docker run -e GH_TOKEN -e TRAVIS_BUILD_NUMBER -e OSF_PASSWORD mmore500/conduit
       /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make
       web && ./ci/deploy_gh_pages.sh"
   - name: DockerHub
