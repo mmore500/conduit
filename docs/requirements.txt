@@ -1,3 +1,4 @@
 sphinx
 exhale
 sphinx_rtd_theme
+coverxygen
