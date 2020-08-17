@@ -1,19 +1,19 @@
 TEST_NAMES := ImplSpec Conduit Sink Source Duct Inlet Outlet
 
-EMP_DIR := ../../../third-party/Empirical/source
+FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/
 
-#CXX = clang++
-CXX := mpic++
-
-FLAGS = -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/ -I$(EMP_DIR)
+MPICXX ?= mpic++
+MPIEXEC ?= mpiexec
 
 default: test
 
-test-%: %.cc
-	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+test-%: %.cpp
+	echo "MPICXX" $(MPICXX)
+	echo "MPIEXEC" $(MPIEXEC)
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
-		mpiexec --mca mpi_warn_on_fork 0 --bind-to none -n $$n ./$@.out || break; \
+		$(MPIEXEC) --bind-to none -n $$n ./$@.out || break; \
 	done
 
 # Test in debug mode without pointer tracker
@@ -21,24 +21,24 @@ test: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
 # Test optimized version without debug features
-opt: FLAGS := -std=c++2a -pthread -DNDEBUG -O3 -Wno-unused-function -I../../../include/ -I../../../source/ -I../../../third-party/ -I$(EMP_DIR)
+opt: FLAGS := -std=c++2a -pthread -DNDEBUG -O3 -Wno-unused-function -I../../../include/ -I../../../source/ -I../../../third-party/
 opt: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++2a -pthread -g -Wall -Wno-unused-function -I../../../include/ -I../../../source/ -I../../../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++2a -pthread -g -Wall -Wno-unused-function -I../../../include/ -I../../../source/ -I../../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
 fulldebug: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
-cranky: FLAGS := -std=c++2a -pthread -g -Wall -Wno-unused-function -I../../../include/ -I../../../source/ -I../../../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: FLAGS := -std=c++2a -pthread -g -Wall -Wno-unused-function -I../../../include/ -I../../../source/ -I../../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
 cranky: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
-cov: FLAGS := -std=c++2a -pthread -g -Wall -Wno-unused-function -I../../../coverage_include/ -I../../../source -I../../../third-party/ -I$(EMP_DIR) -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
+cov: FLAGS := -std=c++2a -pthread -g -Wall -Wno-unused-function -I../../../coverage_include/ -I../../../source -I../../../third-party/ -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
 cov: $(addprefix cov-, $(TEST_NAMES))
 
-cov-%: %.cc ../../../third-party/Catch/single_include/catch2/catch.hpp
-	export OMPI_CXX=clang++ && $(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+cov-%: %.cpp ../../../third-party/Catch/single_include/catch2/catch.hpp
+	export OMPI_CXX=clang++ && $(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	#echo "running $@.out"
 	# execute test
 	./$@.out

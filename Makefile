@@ -3,12 +3,13 @@ PROJECT := conduit
 EMP_DIR := third-party/Empirical/source
 
 # Flags to use regardless of compiler
-CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -I$(EMP_DIR)/ -Iinclude/ -fopenmp
+CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -Iinclude/ -fopenmp
 
 # Native compiler information
-CXX_nat := mpic++
+MPICXX := mpic++
 CFLAGS_nat := -O3 -DNDEBUG -msse4.2 $(CFLAGS_all)
 CFLAGS_nat_debug := -g $(CFLAGS_all)
+MPIEXEC ?= mpiexec
 
 # Emscripten compiler information
 CXX_web := emcc
@@ -36,12 +37,12 @@ debug-web: $(PROJECT).js
 
 web-debug: debug-web
 
-$(PROJECT):	source/native/$(PROJECT).cc
-	$(CXX_nat) $(CFLAGS_nat) source/native/$(PROJECT).cc -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
+$(PROJECT):	source/native/$(PROJECT).cpp
+	$(MPICXX) $(CFLAGS_nat) source/native/$(PROJECT).cpp -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
 	@echo To build the web version use: make web
 
-$(PROJECT).js: source/web/$(PROJECT)-web.cc
-	$(CXX_web) $(CFLAGS_web) source/web/$(PROJECT)-web.cc -o web/$(PROJECT).js
+$(PROJECT).js: source/web/$(PROJECT)-web.cpp
+	$(CXX_web) $(CFLAGS_web) source/web/$(PROJECT)-web.cpp -o web/$(PROJECT).js
 
 serve:
 	python3 -m http.server
@@ -74,7 +75,7 @@ microbenchmark:
 benchmark: macrobenchmark microbenchmark
 
 test-source: debug debug-web
-	./conduit | grep -q '>>> end <<<' && echo 'matched!' || exit 1
+	$(MPIEXEC) -n 1 ./conduit | grep -q '>>> end <<<' && echo 'matched!' || exit 1
 	npm install
 	echo "const puppeteer = require('puppeteer'); var express = require('express'); var app = express(); app.use(express.static('web')); app.listen(3000); express.static.mime.types['wasm'] = 'application/wasm'; function sleep(millis) { return new Promise(resolve => setTimeout(resolve, millis)); } async function run() { const browser = await puppeteer.launch(); const page = await browser.newPage(); await page.goto('http://localhost:3000/conduit.html'); await sleep(1000); const html = await page.content(); console.log(html); browser.close(); process.exit(0); } run();" | node | tr -d '\n' | grep -q "Hello, browser!" && echo "matched!" || exit 1
 	echo "const puppeteer = require('puppeteer'); var express = require('express'); var app = express(); app.use(express.static('web')); app.listen(3000); express.static.mime.types['wasm'] = 'application/wasm'; function sleep(millis) { return new Promise(resolve => setTimeout(resolve, millis)); } async function run() { const browser = await puppeteer.launch(); const page = await browser.newPage(); page.on('console', msg => console.log(msg.text())); await page.goto('http://localhost:3000/conduit.html'); await sleep(1000); await page.content(); browser.close(); process.exit(0); } run();" | node | grep -q "Hello, console!" && echo "matched!"|| exit 1
