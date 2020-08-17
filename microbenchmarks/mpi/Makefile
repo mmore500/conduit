@@ -1,25 +1,23 @@
 BENCH_NAMES := MPI_Isend MPI_Irsend MPI_Rsend MPI_Send MPI_Test MPI_Testall MPI_Testsome MPI_Irecv
 
-EMP_DIR := ../../third-party/Empirical/source
-
 SHELL := /bin/bash
 
-#CXX = clang++
-CXX := mpic++
+MPICXX ?= mpic++
+MPIEXEC ?= mpiexec
 
-FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../source/ -I../../include/ -I../../third-party/ -I$(EMP_DIR)
+FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../source/ -I../../include/ -I../../third-party/
 
 default: bench
 
-bench-%: %.cc
-	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+bench-%: %.cpp
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
 	let i=1; \
 	test -z "$$SLURM_NTASKS" && SLURM_NTASKS=$$(nproc); \
 	while :; do \
 		let n=$$((2**$$i)); \
 		test $$n -gt $$SLURM_NTASKS && break; \
-		mpiexec --bind-to none -n $$n ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=$$n+ext=.json" | ../script/headtail.sh; \
+		$(MPIEXEC) --bind-to none -n $$n ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=$$n+ext=.json" | ../script/headtail.sh; \
 		let i++; \
 	done
 
@@ -27,23 +25,23 @@ bench-%: %.cc
 bench: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
-build-%: %.cc
-	$(CXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+build-%: %.cpp
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
 build: $(addprefix build-, $(BENCH_NAMES))
 
 # Test optimized version without debug features
-debug: FLAGS := -std=c++17 -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/ -I$(EMP_DIR) -g
+debug: FLAGS := -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/ -g
 debug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function  -I../../include/ -I../../source/ -I../../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -g # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function  -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -g # -Wmisleading-indentation
 fulldebug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
-cranky: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -I$(EMP_DIR) -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
 cranky: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 

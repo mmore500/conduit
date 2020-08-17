@@ -5,12 +5,20 @@ services:
 jobs:
   include:
   - stage: Tests
-    name: Unit Tests
+    name: OpenMPI Unit Tests
+    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
+  - name: MPICH Unit Tests
+    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
   - name: Macrobenchmarks
     install:
     - docker build -t mmore500/conduit .
@@ -40,8 +48,9 @@ jobs:
     script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit
       && make docs"
   - stage: Deploy
-    name: Deploy to GitHub Pages
+    name: GitHub Pages
     if: branch = master
+    name: GitHub Pages
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
@@ -49,7 +58,7 @@ jobs:
     - docker run -e GH_TOKEN -e TRAVIS_BUILD_NUMBER mmore500/conduit
       /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make
       web && ./ci/deploy_gh_pages.sh"
-  - name: Deploy to DockerHub
+  - name: DockerHub
     if: branch = master
     install:
     - docker build -t mmore500/conduit .
