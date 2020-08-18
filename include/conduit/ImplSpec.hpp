@@ -21,7 +21,7 @@ template<
   template<typename> typename ThreadDuct_ = uit::HeadTailDuct,
   template<typename> typename ProcDuct_ = uit::ImsgDuct
 >
-struct ImplSelector {
+struct ImplSelect {
 
   template<typename ImplSpec>
   using IntraDuct = IntraDuct_<ImplSpec>;
@@ -39,7 +39,7 @@ struct ImplSelector {
  *
  * @tparam T_ Type to transmit.
  * @tparam N_ Buffer size.
- * @tparam ImplSelector Class with static typedef members specifying which
+ * @tparam ImplSelect Class with static typedef members specifying which
  * implementations to use for intra-thread, inter-thread, and inter-process
  * transmission.
  *
@@ -48,12 +48,12 @@ struct ImplSelector {
 template<
   typename T_,
   size_t N_=DEFAULT_BUFFER,
-  typename ImplSelector=uit::ImplSelector<>
+  typename ImplSelect=uit::ImplSelect<>
 >
 class ImplSpec {
 
   /// TODO.
-  using THIS_T = ImplSpec<T_, N_, ImplSelector>;
+  using THIS_T = ImplSpec<T_, N_, ImplSelect>;
 
 public:
 
@@ -64,17 +64,17 @@ public:
   constexpr inline static size_t N{ N_ };
 
   /// TODO.
-  using IntraDuct = typename ImplSelector::template IntraDuct<THIS_T>;
+  using IntraDuct = typename ImplSelect::template IntraDuct<THIS_T>;
 
   /// TODO.
-  using ThreadDuct = typename ImplSelector::template ThreadDuct<THIS_T>;
+  using ThreadDuct = typename ImplSelect::template ThreadDuct<THIS_T>;
 
   /// TODO.
-  using ProcInletDuct = typename ImplSelector::template
+  using ProcInletDuct = typename ImplSelect::template
     ProcDuct<THIS_T>::InletImpl;
 
   /// TODO.
-  using ProcOutletDuct = typename ImplSelector::template
+  using ProcOutletDuct = typename ImplSelect::template
     ProcDuct<THIS_T>::OutletImpl;
 
   // TODO add static ToString
