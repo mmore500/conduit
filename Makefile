@@ -23,8 +23,8 @@ CFLAGS_web_debug := $(CFLAGS_all) $(OFLAGS_web_debug) $(OFLAGS_web_all)
 
 default: $(PROJECT)
 native: $(PROJECT)
-web: $(PROJECT).js
-all: $(PROJECT) $(PROJECT).js
+web: $(PROJECT).js documentation-coverage-badge.json version-badge.json
+
 
 omp: CFLAGS_nat := $(CFLAGS_nat) -fopenmp
 omp: $(PROJECT)
@@ -54,12 +54,26 @@ install-coverage-dependencies:
 cov: install-coverage-dependencies
 	cd tests && make cov
 
+documentation-coverage:
+	cd docs && make coverage
+
+documentation-coverage-badge.json: documentation-coverage
+	python3 ci/parse_documentation_coverage.py docs/_build/doc-coverage.json > web/documentation-coverage-badge.json
+
+version-badge.json:
+	python3 ci/parse_version.py .bumpversion.cfg > web/version-badge.json
+
 clean:
 	rm -f $(PROJECT) web/$(PROJECT).js web/*.js.map web/*.js.map *~ source/*.o web/*.wasm web/*.wast
 	rm -rf coverage_include
+	cd docs && make clean
 	cd macrobenchmarks && make clean
 	cd microbenchmarks && make clean
 	cd tests && make clean
+
+docs:
+	cd docs && make html
+
 
 macrobenchmark:
 	cd macrobenchmarks && make bench
@@ -80,7 +94,7 @@ tests:
 	cd tests && make opt
 	cd tests && make fulldebug
 
-.PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov
+.PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov docs
 
 
 # Debugging information
