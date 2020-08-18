@@ -12,6 +12,6 @@ const uit::MPIGuard guard;
 TEST_CASE("Test Duct") {
 
   // TODO flesh out stub test
-  uit::Duct<uit::ImplSpec<char>>{};
+  uit::internal::Duct<uit::ImplSpec<char>>{};
 
 }
