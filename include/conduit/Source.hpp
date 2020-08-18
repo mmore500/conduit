@@ -29,7 +29,7 @@ class Source {
    * @return TODO.
    */
   uit::Outlet<ImplSpec> outlet{
-    std::make_shared<uit::Duct<ImplSpec>>()
+    std::make_shared<uit::internal::Duct<ImplSpec>>()
   };
 
 public:

@@ -66,7 +66,7 @@ class Outlet {
 
   using index_t = CircularIndex<N>;
 
-  std::shared_ptr<Duct<ImplSpec>> duct;
+  std::shared_ptr<internal::Duct<ImplSpec>> duct;
 
   static_assert(N > 0);
   // TODO this should be internal state to the duct
@@ -154,7 +154,7 @@ public:
    * TODO.
    */
   Outlet(
-    std::shared_ptr<Duct<ImplSpec>> duct_
+    std::shared_ptr<internal::Duct<ImplSpec>> duct_
   ) : duct(duct_) { ; }
 
   // non-blocking
@@ -245,7 +245,7 @@ public:
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
     emp_assert(GetPending() == 0);
-    duct = std::make_shared<Duct<ImplSpec>>();
+    duct = std::make_shared<internal::Duct<ImplSpec>>();
     EmplaceDuct<WhichDuct>(args...);
   }
 
@@ -254,7 +254,9 @@ public:
    *
    * @return TODO.
    */
-  typename Duct<ImplSpec>::uid_t GetDuctUID() const { return duct->GetUID(); }
+  typename internal::Duct<ImplSpec>::uid_t GetDuctUID() const {
+    return duct->GetUID();
+  }
 
   /**
    * TODO.
@@ -263,7 +265,7 @@ public:
    */
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member("std::shared_ptr<Duct<ImplSpec>> duct", *duct) << std::endl;
+    ss << format_member("std::shared_ptr<internal::Duct<ImplSpec>> duct", *duct) << std::endl;
     ss << format_member(
       "GetElement(read_position - 1)",
       GetElement(read_position - 1)

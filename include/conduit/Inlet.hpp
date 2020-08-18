@@ -67,7 +67,7 @@ class Inlet {
 
   using index_t = CircularIndex<N>;
 
-  std::shared_ptr<Duct<ImplSpec>> duct;
+  std::shared_ptr<internal::Duct<ImplSpec>> duct;
   // TODO this should be internal state to the duct
   index_t write_position{0};
 
@@ -138,7 +138,7 @@ public:
    * @param duct_ TODO.
    */
   Inlet(
-    std::shared_ptr<Duct<ImplSpec>> duct_
+    std::shared_ptr<internal::Duct<ImplSpec>> duct_
   ) : duct(duct_) { ; }
 
   // potentially blocking
@@ -240,7 +240,7 @@ public:
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
     emp_assert(GetAvailableCapacity() == N);
-    duct = std::make_shared<Duct<ImplSpec>>();
+    duct = std::make_shared<internal::Duct<ImplSpec>>();
     EmplaceDuct<WhichDuct>(args...);
   }
 
@@ -249,7 +249,9 @@ public:
    *
    * @return TODO.
    */
-  typename Duct<ImplSpec>::uid_t GetDuctUID() const { return duct->GetUID(); }
+  typename internal::Duct<ImplSpec>::uid_t GetDuctUID() const {
+    return duct->GetUID();
+  }
 
   /**
    * TODO.
@@ -258,7 +260,7 @@ public:
    */
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member("std::shared_ptr<Duct<ImplSpec>> duct", *duct) << std::endl;
+    ss << format_member("std::shared_ptr<internal::Duct<ImplSpec>> duct", *duct) << std::endl;
     ss << format_member(
       "GetElement(write_position - 1)",
       GetElement(write_position - 1)

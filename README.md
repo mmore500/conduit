@@ -9,6 +9,7 @@
 [![DockerHub status](https://img.shields.io/docker/build/mmore500/conduit.svg)](https://hub.docker.com/r/mmore500/conduit)
 [![Lines of Code](https://tokei.rs/b1/github/mmore500/conduit?category=code)](https://github.com/XAMPPRocky/tokei)
 [![Comments](https://tokei.rs/b1/github/mmore500/conduit?category=comments)](https://github.com/XAMPPRocky/tokei)
+[![dotos](https://img.shields.io/endpoint?url=https%3A%2F%2Fmmore500.com%2Fconduit%2Fdoto-badge.json)](https://github.com/mmore500/conduit/search?q=todo+OR+fixme&type=)
 
 A multithread profiling project.
 
@@ -16,94 +17,6 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 
 * Free software: MIT license
 * Documentation: [http://conduit.fyi](http://conduit.fyi).
-
-## TODO
-
-* move utility to Empirical
-* write tests
-* write description and link blog posts
-* move TODOs to GH tracker
-* make a 0.1.0 release and add Zenodo badgev
-* add how to cite info to README
-* re-organize header files in includes: one header file in each subdirectory that grabs the rest?
-  * like `include/concurrent/concurrent.h` would have includes for all the other header files in that directory in it
-* make the read position and the write position internal to duct
-* add valgrind to continuous integration
-* refactor error_mutex_lock to make a uit_assert
-* break up/refactor mpi_utils.h
-* move utilities/assign_utils to assignment/
-* add a way for ducts to specify what they are versus aren't capable of
-  * can only do getcurrent
-  * can do getcurrent or get next
-    * can do varlen types (would wrap T with a function to get length?)
-* setup ReadTheDocs
-  * include this resource https://developer.lsst.io/cpp/api-docs.html
-* investigate leaking MPI_Comms
-* write Docstrings
-* write adaptor that caches and then sends every n
-* write backend that caches and then sends every n
-* add real time fairness tests
-* refactor I / no-I ducts for less code duplication
-* add examples directory
-* make apps or demos directory, move most of source there
-* debug RDMADuct
-* rename ring mesh to bucket brigade
-* make macrobenchmarks run for fixed time not iters, add proc macrobenchmarks, upload macrobenchmark results to osf
-* fix https on documentation site 
-
-* make_random_mesh
-  * degree is argument
-* make_toroidal_mesh (make ring mesh is special case of this)
-  * dimension is argument
-* make_grid_mesh (like toroidal mesh, but no wraparound) lattice?
-  * dimension is argument
-* make_complete_mesh
-
-## Design Plan
-
-```
-      sharedptr       sharedptr
-Inlet  --->     duct    <--- Outlet
-      std::variant
-        *IntraDuct
-        *ThreadDuct
-        *ProcessDuct
-
-Inlet  --->
-    sharedptr
-
-Node object
-- vector of NodeOutput
-- vector of NodeInput
-
-class MeshState; (better name for this)
-
-only when the inlet is part of a mesh
-(NodeOutput) Inlet Wrapper (better name for this)
-- (private secret) shared_ptr to MeshState
-- (private) Inlet member object
-- write methods that forward to Inlet member object
-- is there a better way to do than composition? (inheritance, encapsulation?)
-(NodeInput) Outlet Wrapper (better name for this)
-- shared_ptr to MeshState
-- private secret Outlet member object
-
-
-++ Mesh ++
-
-new shared_ptr MeshState
-- RDMAWindowManager
-
-- vector of Inlets
-- vector of Outlets
-
-- get me wrappers of I'm responsible for
-- vector of Nodes
-```
-
-## Features
-
-* TODO
 
 ## Reading List
 

@@ -14,6 +14,7 @@
 #include "config.hpp"
 
 namespace uit {
+namespace internal {
 
 /**
  * Performs data transmission between an `Inlet` and an `Outlet.
@@ -266,4 +267,5 @@ public:
 
 };
 
+} // namespace internal
 } // namespace uit
