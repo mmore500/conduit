@@ -28,8 +28,14 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * [The Bip Buffer - The Circular Buffer with a Twist](https://www.codeproject.com/Articles/3479/The-Bip-Buffer-The-Circular-Buffer-with-a-Twist)
 * [MPI: blocking vs non-blocking](https://stackoverflow.com/a/47041382)
 
-## Credits
+## Acknowledgement
+
+This project is built using the [Empirical C++ library](https://github.com/devosoft/Empirical/).
 
 This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [devosoft/cookiecutter-empirical-project](https://github.com/devosoft/cookiecutter-empirical-project) project template.
 
-This project is built using the [Empirical C++ library](https://github.com/devosoft/Empirical/).
+This research was supported in part by NSF grants DEB-1655715 and DBI-0939454.
+This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-1424871.
+Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+
+Michigan State University provided computational resources used in this work through the Institute for Cyber-Enabled Research.
