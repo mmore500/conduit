@@ -249,7 +249,9 @@ public:
    *
    * @return TODO.
    */
-  typename Duct<ImplSpec>::uid_t GetDuctUID() const { return duct->GetUID(); }
+  typename internal::Duct<ImplSpec>::uid_t GetDuctUID() const {
+    return duct->GetUID();
+  }
 
   /**
    * TODO.
