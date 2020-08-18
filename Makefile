@@ -23,7 +23,7 @@ CFLAGS_web_debug := $(CFLAGS_all) $(OFLAGS_web_debug) $(OFLAGS_web_all)
 
 default: $(PROJECT)
 native: $(PROJECT)
-web: $(PROJECT).js documentation-coverage-badge.json version-badge.json
+web: $(PROJECT).js documentation-coverage-badge.json version-badge.json doto-badge.json
 
 
 omp: CFLAGS_nat := $(CFLAGS_nat) -fopenmp
@@ -62,6 +62,9 @@ documentation-coverage-badge.json: documentation-coverage
 
 version-badge.json:
 	python3 ci/parse_version.py .bumpversion.cfg > web/version-badge.json
+
+doto-badge.json:
+	python3 ci/parse_dotos.py $$(./ci/grep_dotos.sh) > web/doto-badge.json
 
 clean:
 	rm -f $(PROJECT) web/$(PROJECT).js web/*.js.map web/*.js.map *~ source/*.o web/*.wasm web/*.wast
