@@ -10,9 +10,6 @@
 
 namespace uit {
 
-template<typename ImplSpec>
-class Duct;
-
 /**
  * TODO
  *
@@ -21,8 +18,6 @@ class Duct;
  */
 template<typename ImplSpec>
 class HeadTailDuct {
-
-  friend Duct<ImplSpec>;
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
