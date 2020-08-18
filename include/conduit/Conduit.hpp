@@ -11,10 +11,15 @@
 namespace uit {
 
 /**
- * TODO
+ * Creates a coupled `Inlet` and `Outlet`.
+ *
+ * Useful for intra-process transmission (i.e., intra-thread or inter-thread
+ * transmission) where conceptually-coupled `Inlet`'s and `Outlet`'s exist
+ * within the same memory space.
  *
  * @tparam ImplSpec class with static and typedef members specifying
- * implementation details for the conduit framework.
+ * implementation details for the conduit framework. See
+ *   `include/conduit/ImplSpec.hpp`.
  */
 template<typename ImplSpec>
 class Conduit {
