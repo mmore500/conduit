@@ -25,7 +25,6 @@ default: $(PROJECT)
 native: $(PROJECT)
 web: $(PROJECT).js documentation-coverage-badge.json version-badge.json doto-badge.json
 
-
 omp: CFLAGS_nat := $(CFLAGS_nat) -fopenmp
 omp: $(PROJECT)
 

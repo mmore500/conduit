@@ -18,7 +18,6 @@ Check out the live in-browser web app at [https://mmore500.github.io/conduit](ht
 * Free software: MIT license
 * Documentation: [http://conduit.fyi](http://conduit.fyi).
 
-
 ## Reading List
 
 * [spsc-bip-buffer](https://github.com/utaal/spsc-bip-buffer/)
