@@ -100,4 +100,4 @@ struct RingTopologyFactory {
   static std::string GetName() { return "Ring Topology"; }
 };
 
-}
+} // namespace uit

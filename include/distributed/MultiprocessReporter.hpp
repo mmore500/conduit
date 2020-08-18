@@ -6,6 +6,8 @@
 
 #include "mpi_utils.hpp"
 
+namespace uit {
+
 class MultiprocessReporter : public Catch::ConsoleReporter {
 
   Catch::ConsoleReporter impl;
@@ -33,3 +35,5 @@ public:
 };
 
 CATCH_REGISTER_REPORTER ("multiprocess", MultiprocessReporter)
+
+} // namespace uit

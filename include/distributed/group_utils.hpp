@@ -46,4 +46,4 @@ MPI_Group make_group(
   return res;
 }
 
-}
+} // namespace uit

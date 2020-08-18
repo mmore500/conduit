@@ -14,4 +14,4 @@ struct MPIGuard {
 
 };
 
-}
+} // namespace uit

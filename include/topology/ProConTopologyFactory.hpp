@@ -48,4 +48,4 @@ struct ProConTopologyFactory {
   static std::string GetName() { return "Producer-Consumer Topology"; }
 };
 
-}
+} // namespace uit

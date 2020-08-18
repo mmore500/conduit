@@ -17,6 +17,12 @@ namespace uit {
 template<typename ImplSpec>
 class Duct;
 
+/**
+ * TODO
+ *
+ * @tparam ImplSpec class with static and typedef members specifying
+ * implementation details for the conduit framework.
+ */
 template<typename ImplSpec>
 class PendingDuct {
 
@@ -37,9 +43,16 @@ class PendingDuct {
 
 public:
 
+  /**
+   * TODO.
+   *
+   * @param write_position TODO.
+   */
   void Initialize(const size_t write_position) { ; }
 
-  //todo rename
+  /**
+   * TODO.
+   */
   void Push() {
 
     #ifndef NDEBUG
@@ -55,7 +68,11 @@ public:
     ++pending;
   }
 
-  //todo rename
+  /**
+   * TODO.
+   *
+   * @param count TODO.
+   */
   void Pop(const size_t count) {
 
     #ifndef NDEBUG
@@ -73,8 +90,16 @@ public:
 
   }
 
+  /**
+   * TODO.
+   *
+   */
   size_t GetAvailableCapacity() { return N - GetPending(); }
 
+  /**
+   * TODO.
+   *
+   */
   size_t GetPending() {
 
     #ifndef NDEBUG
@@ -84,6 +109,11 @@ public:
     return pending;
   }
 
+  /**
+   * TODO.
+   *
+   * @param n TODO.
+   */
   T GetElement(const size_t n) const {
 
     #ifndef NDEBUG
@@ -123,4 +153,4 @@ public:
 
 };
 
-}
+} // namespace uit
