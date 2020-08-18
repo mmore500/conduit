@@ -9,11 +9,12 @@
 namespace uit {
 
 /**
- * TODO
+ * Specifies the `Duct` implementations to be used for intra-thread, inter-
+ * thread, and inter-process transmission.
  *
- * @tparam IntraDuct_ TODO.
- * @tparam ThreadDuct_ TODO.
- * @tparam ProcDuct_ TODO.
+ * @tparam IntraDuct_ Implementation to use for intra-thread transmission.
+ * @tparam ThreadDuct_ Implementation to use for inter-thread transmission.
+ * @tparam ProcDuct_ Implementation to use for inter-process transmission
  */
 template<
   template<typename> typename IntraDuct_ = uit::PendingDuct,
@@ -34,11 +35,15 @@ struct ImplSelector {
 };
 
 /**
- * TODO
+ * Specifies implementation details for the conduit framework.
  *
- * @tparam T_ TODO.
- * @tparam N_ TODO.
- * @tparam ImplSelector TODO.
+ * @tparam T_ Type to transmit.
+ * @tparam N_ Buffer size.
+ * @tparam ImplSelector Class with static typedef members specifying which
+ * implementations to use for intra-thread, inter-thread, and inter-process
+ * transmission.
+ *
+ * @note The type `T_` should be *TriviallyCopyable*.
  */
 template<
   typename T_,
