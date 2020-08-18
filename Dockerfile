@@ -140,6 +140,7 @@ RUN \
     man \
     vim \
     nano \
+    emacs \
     htop \
     && \
   echo "installed creature comforts"
