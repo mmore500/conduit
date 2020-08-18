@@ -4,9 +4,9 @@
 #include "conduit/ImplSpec.hpp"
 
 
-TEST_CASE("Test ImplSelector") {
+TEST_CASE("Test ImplSelect") {
 
-  uit::ImplSelector<>{};
+  uit::ImplSelect<>{};
 
 }
 
