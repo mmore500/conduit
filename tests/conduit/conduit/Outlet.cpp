@@ -13,7 +13,7 @@ TEST_CASE("Test Outlet") {
 
   using Spec = uit::ImplSpec<char>;
   uit::Outlet<Spec>{
-    std::make_shared<uit::Duct<Spec>>()
+    std::make_shared<uit::internal::Duct<Spec>>()
   };
 
 }

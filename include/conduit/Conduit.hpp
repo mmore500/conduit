@@ -25,7 +25,7 @@ template<typename ImplSpec>
 class Conduit {
 
   /// TODO.
-  using duct_t = uit::Duct<ImplSpec>;
+  using duct_t = uit::internal::Duct<ImplSpec>;
 
   /// TODO.
   std::shared_ptr<duct_t> duct{ std::make_shared<duct_t>() };
