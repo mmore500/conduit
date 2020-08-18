@@ -9,9 +9,25 @@
 
 namespace uit {
 
+/**
+ * Creates an ucoupled `Outlet`.
+ *
+ * Potentially useful for inter-process transmission, where a conceptually-
+ * coupled `Inlet` and `Outlet` must be constructed within separate memory
+ * spaces.
+ *
+ * @tparam ImplSpec class with static and typedef members specifying
+ * implementation details for the conduit framework. See
+ *   `include/conduit/ImplSpec.hpp`.
+ */
 template<typename ImplSpec>
 class Source {
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   uit::Outlet<ImplSpec> outlet{
     std::make_shared<uit::Duct<ImplSpec>>()
   };
@@ -19,12 +35,22 @@ class Source {
 public:
 
   // for structured bindings
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   template <size_t N>
   decltype(auto) get() const {
       // parens needed to get reference?
       if constexpr (N == 0) return (outlet);
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   uit::Outlet<ImplSpec>& GetOutlet() {
     return outlet;
   }
@@ -33,7 +59,7 @@ public:
 
 };
 
-}
+} // namespace uit
 
 // for structured bindings
 namespace std {
@@ -50,4 +76,4 @@ namespace std {
     );
   };
 
-}
+} // namespace std

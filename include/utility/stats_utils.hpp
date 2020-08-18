@@ -49,4 +49,4 @@ std::tuple<double, double> bootstrap(
 
 }
 
-}
+} // namespace uit

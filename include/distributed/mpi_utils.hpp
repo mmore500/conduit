@@ -508,14 +508,15 @@ MPI_Comm duplicate_comm(const MPI_Comm comm) {
   return res;
 }
 
-bool test_completion(MPI_Request& request) {
+bool test_completion(const MPI_Request& request) {
   int flag{};
+  // on MPI spec, request is listed as an input param but not taken as const ptr
   uit::verify(MPI_Test(
-    &request,
-    &flag,
-    MPI_STATUS_IGNORE
+    const_cast<MPI_Request*>(&request), // MPI_Request * request
+    &flag, // int *flag
+    MPI_STATUS_IGNORE // MPI_Status * status
   ));
   return flag;
 }
 
-}
+} // namespace uit

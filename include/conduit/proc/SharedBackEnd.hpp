@@ -4,9 +4,12 @@
 
 namespace uit {
 
-// name ideas: support, kernel, state, info, backing, resources,
-// shared resources, joint, mutual, pool, backend, backing
-
+/**
+ * TODO
+ *
+ * @tparam ImplSpec class with static and typedef members specifying
+ * implementation details for the conduit framework.
+ */
 template<typename ImplSpec>
 class SharedBackEnd {
 
@@ -22,4 +25,4 @@ public:
 
 };
 
-}
+} // namespace uit

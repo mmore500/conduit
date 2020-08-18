@@ -74,4 +74,4 @@ benchmark::internal::Benchmark* report_confidence(
   );
 }
 
-}
+} // namespace uit
