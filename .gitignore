@@ -20,7 +20,9 @@ a.out
 a.out.js
 
 build/
-doc/_build/
+docs/_build/
+docs/doxyoutput
+docs/api
 
 package-lock.json
 node_modules/
