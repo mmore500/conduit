@@ -252,7 +252,7 @@ void receive_task(
   uit::Mesh<Spec>::submesh_t& my_nodes
 ) {
 
-  // goal: for each output in each node, print out info about who received what
+  // goal: for each input to each node, print out info about who received what
   // message
   for (size_t node_id = 0; node_id < my_nodes.size(); ++node_id) {
 
