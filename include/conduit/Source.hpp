@@ -28,11 +28,34 @@ class Source {
    *
    * @return TODO.
    */
-  uit::Outlet<ImplSpec> outlet{
-    std::make_shared<uit::internal::Duct<ImplSpec>>()
-  };
+  uit::Outlet<ImplSpec> outlet;
 
 public:
+
+  /**
+   * Copy constructor.
+   */
+  Source(Source& other) = default;
+
+  /**
+   * Copy constructor.
+   */
+  Source(const Source& other) = default;
+
+  /**
+   * Move constructor.
+   */
+  Source(Source&& other) = default;
+
+  /**
+   * TODO
+   */
+  template <typename... Args>
+  Source(Args&&... args) : outlet(
+    std::make_shared<internal::Duct<ImplSpec>>(
+      std::forward<Args>(args)...
+    )
+  ) { ; }
 
   // for structured bindings
   /**
