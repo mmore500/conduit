@@ -1,7 +1,7 @@
 #!/bin/bash
 ########## Define Resources Needed with SBATCH Lines ##########
 #SBATCH --time=4:00:00
-#SBATCH --mem=2G
+#SBATCH --mem=8G
 #SBATCH --nodes=1
 #SBATCH --ntasks=8
 #SBATCH --job-name conduit-intranode
