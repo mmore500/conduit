@@ -70,6 +70,7 @@ Here's an example of how this works in code.
 
 #include "conduit/Conduit.hpp"
 #include "conduit/ImplSpec.hpp"
+#include "parallel/ThreadTeam.hpp"
 
 // use int as message type
 using Spec = uit::ImplSpec<int>;
@@ -78,37 +79,33 @@ int main() {
 
   // construct conduit with thread-safe implementation active
   uit::Conduit<Spec> conduit{
-    std::in_place,
-    Spec::ThreadDuct
+    std::in_place_type_t<Spec::ThreadDuct>{}
   };
 
   auto& [inlet, outlet] = conduit;
 
-
   uit::ThreadTeam team;
 
   // start a producer thread
-  team.Add(
-    [&inlet](){
-      for (int i = 0; i < std::mega{}.num; ++i) inlet.MaybePut(i);
-    })
-  );
+  team.Add( [&inlet](){
+    for (int i = 0; i < std::mega{}.num; ++i) inlet.MaybePut(i);
+  } );
+
   // start a consumer thread
-  team.Add(
-    [&outlet](){
-      int prev{ outlet.GetCurrent() };
-      size_t update_counter{};
-      for (size_t i = 0; i < std::mega{}.num; ++i) {
-        update_counter += std::exchange(prev, outlet.GetCurrent()) == prev);
-      }
-      std::cout << update_counter << " updates detected" << std::endl
-    })
-  );
+  team.Add( [&outlet](){
+    int prev{ outlet.GetCurrent() };
+    size_t update_counter{};
+    for (size_t i = 0; i < std::mega{}.num; ++i) {
+      update_counter += std::exchange(prev, outlet.GetCurrent()) == prev;
+    }
+    std::cout << update_counter << " updates detected" << std::endl;
+  } );
 
   // wait for threads to complete
   team.Join();
 
   return 0;
+
 }
 ```
 
@@ -146,16 +143,16 @@ Here's an example topology, with each node connected to a successor in a one-dim
 
 We might choose to delegate contiguous subsets of nodes to threads and processes.
 For example, to distribute 24 nodes over four double-threaded processes, we might perform the following assignment:
-* node 0 :arrow_right: thread 0, process 0;
-* node 1 :arrow_right: thread 0, process 0;
-* node 2 :arrow_right: thread 0, process 0;
-* node 3 :arrow_right: thread 1, process 0;
-* node 4 :arrow_right: thread 1, process 0;
-* node 5 :arrow_right: thread 1, process 0;
-* node 6 :arrow_right: thread 0, process 1;
-* node 7 :arrow_right: thread 0, process 1;
-* node 8 :arrow_right: thread 0, process 1;
-* node 9 :arrow_right: thread 1, process 1;
+* node 0 :arrow_right: thread 0, process 0
+* node 1 :arrow_right: thread 0, process 0
+* node 2 :arrow_right: thread 0, process 0
+* node 3 :arrow_right: thread 1, process 0
+* node 4 :arrow_right: thread 1, process 0
+* node 5 :arrow_right: thread 1, process 0
+* node 6 :arrow_right: thread 0, process 1
+* node 7 :arrow_right: thread 0, process 1
+* node 8 :arrow_right: thread 0, process 1
+* node 9 :arrow_right: thread 1, process 1
 * etc.
 
 ![graph nodes assigned to threads and processes](docs/assets/ring-mesh.png)
@@ -195,8 +192,12 @@ Here's what the entire process looks like in code.
 #include "parallel/ThreadTeam.hpp"
 #include "topology/RingTopologyFactory.hpp"
 
-const uit::MPIGuard guard; // MPI initialization & finalization boilerplate
+const size_t num_nodes = 5; // five nodes in our topology
+const size_t num_procs = 2; // two MPI processes
+const size_t num_threads = 2; // two threads per process
 
+// message to pass through the conduits
+// contains information about node, thread, and process of sender
 struct Message {
 
   size_t node_id;
@@ -218,50 +219,87 @@ struct Message {
 
 };
 
-// transmit Message through conduits with default implementations
+// transmit Message through conduits with default duct implementations
 using Spec = uit::ImplSpec<Message>;
 
-const size_t num_nodes = 5; // five nodes in our topology
-const size_t num_procs = 2; // four MPI processes
-const size_t num_threads = 2; // two threads per process
+// MPI initialization & finalization boilerplate
+const uit::MPIGuard guard;
 
-void thread_job(const uit::thread_id_t thread_id, uit::Mesh<Spec>& mesh) {
+// first task each thread will execute
+void send_task(
+  const uit::thread_id_t thread_id,
+  uit::Mesh<Spec>::submesh_t& my_nodes
+) {
 
-  auto my_nodes = mesh.GetSubmesh(thread_id);
-
+  // goal: for each output in each node, send a message with info about the
+  // sending node, thread, and process so we can check how things are connected
   for (size_t node_id = 0; node_id < my_nodes.size(); ++node_id) {
 
-    const Message my_message{ node_id, thread_id, uit::get_proc_id() };
+    const Message message{ node_id, thread_id, uit::get_proc_id() };
 
     auto& node = my_nodes[node_id];
 
-    for (auto& output : node.GetOutputs()) output.Put( my_message );
-
-    for (auto& input : node.GetInputs()) {
-      std::cout
-        << input.GetNext().ToString()
-        << "  =>  "
-        << my_message.ToString()
-        << std::endl;
-    }
+    // send message
+    for (auto& output : node.GetOutputs()) output.Put( message );
 
   }
 
 }
 
+// second task each thread will execute
+void receive_task(
+  const uit::thread_id_t thread_id,
+  uit::Mesh<Spec>::submesh_t& my_nodes
+) {
+
+  // goal: for each output in each node, print out info about who received what
+  // message
+  for (size_t node_id = 0; node_id < my_nodes.size(); ++node_id) {
+
+    // for convenience of printing who I am
+    const Message my_info{ node_id, thread_id, uit::get_proc_id() };
+
+    auto& node = my_nodes[node_id];
+
+    for (auto& input : node.GetInputs()) {
+      const Message received{ input.GetNext() };
+      std::cout << received.ToString() << "  =>  " << my_info.ToString()
+        << std::endl;
+    }
+  }
+
+}
+
+// make each thread execute send_task then receive_&ask
+void thread_job(const uit::thread_id_t thread_id, uit::Mesh<Spec>& mesh) {
+
+  // get nodes that this thread on this process are responsible for
+  auto my_nodes = mesh.GetSubmesh(thread_id);
+
+  send_task(thread_id, my_nodes);
+  receive_task(thread_id, my_nodes);
+
+}
+
 int main() {
 
+  // instantiate a network of conduits
   uit::Mesh<Spec> mesh{
+    // how should nodes be connected?
     uit::RingTopologyFactory{}(num_nodes),
+    // how should nodes be assigned to threads?
     uit::AssignRoundRobin<uit::thread_id_t>{num_threads},
+    // how should nodes be assigned to processes?
     uit::AssignContiguously<uit::proc_id_t>{num_procs, num_nodes}
   };
 
+  // kick off threads
   uit::ThreadTeam team;
   for (uit::thread_id_t tid = 0; tid < num_threads; ++tid) {
     team.Add([tid, &mesh](){ thread_job(tid, mesh); });
   }
 
+  // wait for threads to complete
   team.Join();
 
   return 0;
