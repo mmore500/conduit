@@ -60,8 +60,7 @@ public:
    */
   template <size_t N>
   decltype(auto) get() const {
-      // parens needed to get reference?
-      if constexpr (N == 0) return (inlet);
+    if constexpr (N == 0) return inlet;
   }
 
   /**
