@@ -23,11 +23,34 @@ namespace uit {
 template<typename ImplSpec>
 class Sink {
 
-  uit::Inlet<ImplSpec> inlet{
-    std::make_shared<uit::internal::Duct<ImplSpec>>()
-  };
+  uit::Inlet<ImplSpec> inlet;
 
 public:
+
+  /**
+   * Copy constructor.
+   */
+  Sink(Sink& other) = default;
+
+  /**
+   * Copy constructor.
+   */
+  Sink(const Sink& other) = default;
+
+  /**
+   * Move constructor.
+   */
+  Sink(Sink&& other) = default;
+
+  /**
+   * TODO
+   */
+  template <typename... Args>
+  Sink(Args&&... args) : inlet(
+    std::make_shared<internal::Duct<ImplSpec>>(
+      std::forward<Args>(args)...
+    )
+  ) { ; }
 
   // for structured bindings
   /**
@@ -37,8 +60,7 @@ public:
    */
   template <size_t N>
   decltype(auto) get() const {
-      // parens needed to get reference?
-      if constexpr (N == 0) return (inlet);
+    if constexpr (N == 0) return inlet;
   }
 
   /**

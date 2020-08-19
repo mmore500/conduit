@@ -28,14 +28,39 @@ class Conduit {
   using duct_t = uit::internal::Duct<ImplSpec>;
 
   /// TODO.
-  std::shared_ptr<duct_t> duct{ std::make_shared<duct_t>() };
+  std::shared_ptr<duct_t> duct;
 
   /// TODO.
-  uit::Inlet<ImplSpec> inlet{ duct };
+  uit::Inlet<ImplSpec> inlet;
   /// TODO.
-  uit::Outlet<ImplSpec> outlet{ duct };
+  uit::Outlet<ImplSpec> outlet;
 
 public:
+
+  /**
+   * Copy constructor.
+   */
+  Conduit(Conduit& other) = default;
+
+  /**
+   * Copy constructor.
+   */
+  Conduit(const Conduit& other) = default;
+
+  /**
+   * Move constructor.
+   */
+  Conduit(Conduit&& other) = default;
+
+  /**
+   * TODO.
+   */
+  template <typename... Args>
+  Conduit(Args&&... args) : duct(
+    std::make_shared<internal::Duct<ImplSpec>>( std::forward<Args>(args)... )
+  ), inlet(duct)
+  , outlet(duct)
+  { ; }
 
   // for structured bindings
   /**
@@ -46,9 +71,8 @@ public:
    */
   template <size_t N>
   decltype(auto) get() const {
-      // parens needed to get reference?
-      if constexpr (N == 0) return (inlet);
-      else if constexpr (N == 1) return (outlet);
+    if constexpr (N == 0) return inlet;
+    else if constexpr (N == 1) return outlet;
   }
 
   /**

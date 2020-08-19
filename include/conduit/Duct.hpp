@@ -108,6 +108,30 @@ public:
   /// TODO.
   using uid_t = std::uintptr_t;
 
+
+  /**
+   * Copy constructor.
+   */
+  Duct(Duct& other) = default;
+
+  /**
+   * Copy constructor.
+   */
+  Duct(const Duct& other) = default;
+
+  /**
+   * Move constructor.
+   */
+  Duct(Duct&& other) = default;
+
+  /**
+   * TODO.
+   */
+  template <typename... Args>
+  Duct(Args&&... args)
+  : impl(std::forward<Args>(args)...)
+  { ; }
+
   /**
    * TODO.
    *
