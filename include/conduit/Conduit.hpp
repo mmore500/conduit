@@ -71,9 +71,8 @@ public:
    */
   template <size_t N>
   decltype(auto) get() const {
-      // parens needed to get reference?
-      if constexpr (N == 0) return (inlet);
-      else if constexpr (N == 1) return (outlet);
+    if constexpr (N == 0) return inlet;
+    else if constexpr (N == 1) return outlet;
   }
 
   /**
