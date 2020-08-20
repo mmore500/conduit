@@ -23,6 +23,7 @@ namespace uit {
 template<typename ImplSpec>
 class Sink {
 
+  /// `Sink`'s `Inlet`.
   uit::Inlet<ImplSpec> inlet;
 
 public:
@@ -43,7 +44,10 @@ public:
   Sink(Sink&& other) = default;
 
   /**
-   * TODO
+   * Forwarding constructor.
+   *
+   * Use `std::in_place_t<ImplType>` followed by constructor arguments to
+   * initialize the `Duct` with `ImplType` active.
    */
   template <typename... Args>
   Sink(Args&&... args) : inlet(
@@ -52,11 +56,11 @@ public:
     )
   ) { ; }
 
-  // for structured bindings
   /**
-   * TODO.
+   * Adaptor for structured bindings as interface to access `Sink`'s `Inlet`.
    *
-   * @return TODO.
+   * @tparam N Index of element to access, 0 for `Inlet`.
+   * @return `Sink`'s `Inlet`.
    */
   template <size_t N>
   decltype(auto) get() const {
@@ -64,30 +68,28 @@ public:
   }
 
   /**
-   * TODO.
+   * Accessor for `Sink`'s `Inlet`.
    *
-   * @return TODO.
+   * @return `Sink`'s `Inlet`.
    */
   uit::Inlet<ImplSpec>& GetInlet() {
     return inlet;
   }
 
-  // TODO implicit conversion operator?
-
 };
 
 } // namespace uit
 
-// for structured bindings
 namespace std {
 
+  /// Adaptor for structured bindings.
   template<typename ImplSpec>
   struct tuple_size<uit::Sink<ImplSpec>>
     : std::integral_constant<size_t, 1>{};
 
+  /// Adaptor for structured bindings.
   template<typename ImplSpec, size_t N>
   struct tuple_element<N, uit::Sink<ImplSpec>> {
-
     using type = decltype(
       std::declval<uit::Sink<ImplSpec>>().template get<N>()
     );

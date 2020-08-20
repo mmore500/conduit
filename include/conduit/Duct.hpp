@@ -125,7 +125,10 @@ public:
   Duct(Duct&& other) = default;
 
   /**
-   * TODO.
+   * Forwarding constructor.
+   *
+   * Use `std::in_place_t<ImplType>` followed by constructor arguments to
+   * initialize the `Duct` with `ImplType` active.
    */
   template <typename... Args>
   Duct(Args&&... args)

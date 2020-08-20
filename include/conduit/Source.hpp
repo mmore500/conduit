@@ -23,11 +23,7 @@ namespace uit {
 template<typename ImplSpec>
 class Source {
 
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
+  /// `Source`'s `Outlet`.
   uit::Outlet<ImplSpec> outlet;
 
 public:
@@ -48,7 +44,10 @@ public:
   Source(Source&& other) = default;
 
   /**
-   * TODO
+   * Forwarding constructor.
+   *
+   * Use `std::in_place_t<ImplType>` followed by constructor arguments to
+   * initialize the `Duct` with `ImplType` active.
    */
   template <typename... Args>
   Source(Args&&... args) : outlet(
@@ -57,11 +56,11 @@ public:
     )
   ) { ; }
 
-  // for structured bindings
   /**
-   * TODO.
+   * Adaptor for structured bindings as interface to access `Source`'s `Outlet`.
    *
-   * @return TODO.
+   * @tparam N Index of element to access, 0 for `Outlet`.
+   * @return `Source`'s `Outlet`.
    */
   template <size_t N>
   decltype(auto) get() const {
@@ -69,27 +68,26 @@ public:
   }
 
   /**
-   * TODO.
+   * Accessor for `Source`'s `Outlet`.
    *
-   * @return TODO.
+   * @return `Source`'s `Inlet`.
    */
   uit::Outlet<ImplSpec>& GetOutlet() {
     return outlet;
   }
 
-  // TODO implicit conversion operator?
-
 };
 
 } // namespace uit
 
-// for structured bindings
 namespace std {
 
+  /// Adaptor for structured bindings.
   template<typename ImplSpec>
   struct tuple_size<uit::Source<ImplSpec>>
     : std::integral_constant<size_t, 1>{};
 
+  /// Adaptor for structured bindings.
   template<typename ImplSpec, size_t N>
   struct tuple_element<N, uit::Source<ImplSpec>> {
 
