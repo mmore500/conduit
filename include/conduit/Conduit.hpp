@@ -24,15 +24,15 @@ namespace uit {
 template<typename ImplSpec>
 class Conduit {
 
-  /// TODO.
+  /// Typedef for `Duct` implementation.
   using duct_t = uit::internal::Duct<ImplSpec>;
 
-  /// TODO.
+  /// Handle to `Duct` shared by `inlet` and `outlet`.
   std::shared_ptr<duct_t> duct;
 
-  /// TODO.
+  /// `Conduit`'s `Inlet`.
   uit::Inlet<ImplSpec> inlet;
-  /// TODO.
+  /// `Conduit`'s `Outlet`.
   uit::Outlet<ImplSpec> outlet;
 
 public:
@@ -53,7 +53,10 @@ public:
   Conduit(Conduit&& other) = default;
 
   /**
-   * TODO.
+   * Forwarding constructor.
+   *
+   * Use `std::in_place_t<ImplType>` followed by constructor arguments to
+   * initialize the `Duct` with `ImplType` active.
    */
   template <typename... Args>
   Conduit(Args&&... args) : duct(
@@ -62,12 +65,12 @@ public:
   , outlet(duct)
   { ; }
 
-  // for structured bindings
   /**
-   * TODO.
+   * Adaptor for structured bindings as interface to access `Conduit`'s `Inlet`
+   * or `Outlet`.
    *
-   * @tparam N TODO.
-   * @return TODO.
+   * @tparam N Index of element to access, 0 for `Inlet` or 1 for `Outlet`.
+   * @return `Conduit`'s `Inlet` or `Outlet`.
    */
   template <size_t N>
   decltype(auto) get() const {
@@ -76,36 +79,33 @@ public:
   }
 
   /**
-   * TODO.
+   * Accessor for `Conduit`'s `Inlet`.
    *
-   * @return TODO.
+   * @return `Conduit`'s `Inlet`.
    */
   uit::Inlet<ImplSpec> & GetInlet() { return inlet; }
 
   /**
-   * TODO.
+   * Accessor for `Conduit`'s `Outlet`.
    *
-   * @return TODO.
+   * @return `Conduit`'s `Inlet`.
    */
   uit::Outlet<ImplSpec> & GetOutlet() { return outlet; }
-
-  // TODO implicit conversion operators?
-
 
 };
 
 } // namespace uit
 
-// for structured bindings
 namespace std {
 
+  /// Adaptor for structured bindings.
   template<typename ImplSpec>
   struct tuple_size<uit::Conduit<ImplSpec>>
     : std::integral_constant<size_t, 2>{};
 
+  /// Adaptor for structured bindings.
   template<typename ImplSpec, size_t N>
   struct tuple_element<N, uit::Conduit<ImplSpec>> {
-
     using type = decltype(
       std::declval<uit::Conduit<ImplSpec>>().template get<N>()
     );
