@@ -61,6 +61,7 @@ class Topology {
   }
 
 public:
+  using value_type = TopoNode;
 
   Topology() = default;
 
