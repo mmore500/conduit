@@ -47,7 +47,8 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
     std::multiplies<size_t>()
   );
 
-  Topology res(cardinality);
+  emp::vector<TopoNode> nodes(cardinality);
+  uit::UIDMap<size_t> node_edge_map;
 
   auto get_neighbor = [&dim_cardinality](Point p, const size_t dim, const int n) -> Point {
     p[dim] = uit::circular_index(p[dim], dim_cardinality[dim], n);
