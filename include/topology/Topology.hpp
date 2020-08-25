@@ -114,6 +114,16 @@ public:
   topology_t::const_iterator cbegin() const noexcept { return topology.cbegin(); }
   topology_t::const_iterator cend() const noexcept { return topology.cend(); }
 
+  void push_back(const TopoNode& node) {
+    const size_t id = topology.size();
+    topology.push_back(node);
+    RegisterNode(id, node);
+  }
+  void push_back(TopoNode&& node) {
+    const size_t id = topology.size();
+    topology.push_back(std::move(node));
+    RegisterNode(id, node);
+  }
 
 
 
