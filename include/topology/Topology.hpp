@@ -63,6 +63,48 @@ class Topology {
 public:
 
 
+  template <typename... Args>
+  Topology(Args&&... args) : topology(std::forward<Args>(args)...) {
+    for (size_t i = 0; i < topology.size(); ++i) {
+      RegisterNode(i, topology[i]);
+    }
+  }
+
+  Topology(std::istream& is) {
+    emp::vector<std::string> lines;
+    // read file lines into vector
+    uit::read_lines(is, std::back_inserter(lines));
+
+    // map of node itds to nodes
+    std::map<node_id_t, TopoNode> node_map;
+    // put nodes into map
+    for (const std::string& line : lines) {
+      std::istringstream iss(line);
+      node_id_t node_id;
+      iss >> node_id;
+      iss >> node_map[node_id];
+    }
+    // make sure we inserted every line
+    emp_assert(lines.size() == node_map.size());
+    // make sure the node ids are less than the number of line
+    emp_assert( std::all_of(
+      std::begin(node_map),
+      std::end(node_map),
+      [num_lines = lines.size()](const auto& kv) {
+        const auto& [id, node] = kv;
+        return id < num_lines;
+      }
+    ) );
+    // insert all nodes into topology
+    std::for_each(
+      std::begin(node_map),
+      std::end(node_map),
+      [this](const auto& kv) {
+        const auto& [id, node] = kv;
+        push_back(node);
+      }
+    );
+  }
 
 
 
