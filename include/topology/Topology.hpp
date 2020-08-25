@@ -21,12 +21,6 @@ extern "C" {
 namespace uit {
 
 class Topology {
-    void InitializeRegistries(const uit::Topology& topology) {
-        for (node_id_t node_id = 0; node_id < topology.size(); ++node_id) {
-            const uit::TopoNode& topo_node = topology[node_id];
-            RegisterNodeInputs(node_id, topo_node);
-            RegisterNodeOutputs(node_id, topo_node);
-        }
   // todo:: public?
   using node_id_t = size_t;
   using edge_id_t = size_t;
@@ -37,22 +31,27 @@ class Topology {
   // maps of edge ids to node ids
   std::unordered_map<edge_id_t, node_id_t> input_registry;
   std::unordered_map<edge_id_t, node_id_t> output_registry;
+
+  void RegisterNode(const node_id_t node_id, const uit::TopoNode& topo_node) {
+    RegisterNodeInputs(node_id, topo_node);
+    RegisterNodeOutputs(node_id, topo_node);
+  }
+
+  void RegisterNodeInputs(const node_id_t node_id, const uit::TopoNode& topo_node) {
+    for (const auto& input : topo_node.GetInputs()) {
+      emp_assert(input_registry.count(input.GetEdgeID()) == 0);
+      input_registry[input.GetEdgeID()] = node_id;
     }
 
-    void RegisterNodeInputs(const node_id_t node_id, const uit::TopoNode& topo_node) {
-        for (const uit::TopoNodeInput& input : topo_node.GetInputs()) {
-            emp_assert(input_registry.count(input.GetEdgeID()) == 0);
-            edge_registry.insert(input.GetEdgeID());
-            input_registry[input.GetEdgeID()] = node_id;
-        }
-    }
+  }
 
-    void RegisterNodeOutputs(const node_id_t node_id, const uit::TopoNode& topo_node) {
-        for (const uit::TopoNodeOutput& output : topo_node.GetOutputs()) {
-            emp_assert(output_registry.count(output.GetEdgeID()) == 0);
-            edge_registry.insert(output.GetEdgeID());
-            output_registry[output.GetEdgeID()] = node_id;
-        }
+  void RegisterNodeOutputs(const node_id_t node_id, const uit::TopoNode& topo_node) {
+    for (const auto& output : topo_node.GetOutputs()) {
+      emp_assert(output_registry.count(output.GetEdgeID()) == 0);
+      output_registry[output.GetEdgeID()] = node_id;
+    }
+  }
+
     }
 
 public:
