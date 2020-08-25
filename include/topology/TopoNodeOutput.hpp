@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <utility>
 #include <iostream>
 
 #include "../utility/print_utils.hpp"
@@ -38,5 +39,13 @@ public:
     return os;
   }
 };
+}
 
+namespace std {
+  template <>
+  struct hash<uit::TopoNodeOutput> {
+    std::size_t operator()(const uit::TopoNodeOutput& k) const {
+      return std::hash<size_t>()(k.GetEdgeID());
+    }
+  };
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <utility>
 #include <iostream>
 
 #include "../utility/print_utils.hpp"
@@ -39,5 +40,13 @@ public:
   }
 
 };
+}
 
+namespace std {
+  template <>
+  struct hash<uit::TopoNodeInput> {
+    std::size_t operator()(const uit::TopoNodeInput& k) const {
+      return std::hash<size_t>()(k.GetEdgeID());
+    }
+  };
 }
