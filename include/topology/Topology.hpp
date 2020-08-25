@@ -131,6 +131,9 @@ public:
     topology.emplace_back(std::forward(args)...);
     RegisterNode(id, topology[id]);
   }
+  /// Returns number of nodes in topology
+  /// @return number of nodes in topology
+  size_t GetSize() const noexcept { return topology.size(); }
 
 
     }
