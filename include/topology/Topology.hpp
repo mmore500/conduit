@@ -173,6 +173,13 @@ public:
     );  return std::make_pair(x_adj, adjacency);
   }
     }
+  void PrintNodes(std::ostream& os = std::cout) const noexcept {
+    // CHANGE NAME
+    for (size_t i = 0; i < topology.size(); ++i) {
+      os << i << " " << GetNodeOutputs(topology[i]);
+      os << std::endl;
+    }
+  }
 
     }
 };
