@@ -28,6 +28,9 @@ public:
     return ss.str();
   }
 
+  bool operator==(const TopoNodeInput& other) const {
+    return edge_id == other.edge_id;
+  }
 };
 
 }
