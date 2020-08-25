@@ -9,10 +9,32 @@
 #include "Topology.hpp"
 #include "TopoNode.hpp"
 
+#include "../../third-party/Empirical/source/tools/tuple_utils.h"
+
 #include "../utility/mapping_utils.hpp"
 #include "../utility/math_utils.hpp"
 
 namespace uit {
+
+template <typename T>
+class UIDMap {
+  using node_id_t = size_t;
+  using node_pair = std::tuple<T, T>;
+
+  std::unordered_map<
+    node_pair,
+    size_t,
+    emp::TupleHash<T, T>
+  > map;
+
+public:
+
+  size_t operator[](const node_pair& a) {
+    if (!map.count(a)) map[a] = map.size();
+    return map.at(a);
+  }
+};
+
 Topology make_toroidal_topology(const Dims& dim_cardinality) {
   /*
   * goal
