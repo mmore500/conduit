@@ -12,6 +12,7 @@ class TopoNodeOutput {
 
 public:
 
+  TopoNodeOutput() = default;
   TopoNodeOutput(const size_t edge_id_)
   : edge_id(edge_id_)
   { ; }

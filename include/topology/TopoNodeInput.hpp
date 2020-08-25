@@ -12,6 +12,7 @@ class TopoNodeInput {
 
 public:
 
+  TopoNodeInput() = default;
   TopoNodeInput(const size_t edge_id_)
   : edge_id(edge_id_)
   { ; }
