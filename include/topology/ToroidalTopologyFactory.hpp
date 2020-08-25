@@ -45,7 +45,8 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
   const size_t cardinality = std::accumulate(
     dim_cardinality.begin(),
     dim_cardinality.end(),
-    0
+    1,
+    std::multiplies<size_t>()
   );
 
   Topology res(cardinality);
