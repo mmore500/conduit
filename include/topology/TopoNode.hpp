@@ -68,21 +68,25 @@ public:
     return ss.str();
   }
 
+  bool operator==(const TopoNode& other) const {
+    return inputs == other.inputs && outputs == other.outputs;
+  }
+
   friend std::ostream& operator<<(std::ostream&, const TopoNode&);
   friend std::istream& operator>>(std::istream&, TopoNode&);
 
-  }
 };
 
 std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
-  const auto& outputs = node.GetOutputs();
-  for (const auto& node : std::span<const node::input_t>(
-    outputs.cbegin(),
-    outputs.cend() - 1
+  if (!node.HasOutputs()) return os;
+
+  for (const auto& node : std::span<const TopoNode::output_t>(
+    node.outputs.data(),
+    node.outputs.size() - 1
   )) {
     os << node.GetEdgeID() << " ";
   }
-  os << outputs.back().GetEdgeID();
+  os << node.outputs.back().GetEdgeID();
   return os;
 }
 
