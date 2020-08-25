@@ -249,7 +249,23 @@ public:
     }
   }
 
+  void PrintPartition(const emp::vector<int>& partition, std::ostream& os = std::cout) const {
+    auto name_node = [&partition] (const size_t index) -> std::string {
+      return emp::keyname::pack({
+        {"node_id", emp::to_string(index)},
+        {"partition", emp::to_string(partition[index])}
+      });
+    };
+
+    for (size_t i = 0; i < topology.size(); ++i) {
+      os << name_node(i) << " ";
+      os << topology[i].GetNumOutputs() << std::endl;
+
+      for (const auto& node : GetNodeOutputs(topology[i])) {
+        os << name_node(node) << std::endl;
+      }
     }
+  }
 
   std::string ToString() const noexcept {
     std::ostringstream oss;
