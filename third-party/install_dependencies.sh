@@ -8,3 +8,4 @@ git submodule update -f
 ./install_emsdk.sh
 ./install_force-cover.sh
 ./install_mimalloc.sh
+./install_metis.sh
