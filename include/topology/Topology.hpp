@@ -62,6 +62,7 @@ class Topology {
 
 public:
 
+  Topology() = default;
 
   template <typename... Args>
   Topology(Args&&... args) : topology(std::forward<Args>(args)...) {
