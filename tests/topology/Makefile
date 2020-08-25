@@ -1,4 +1,4 @@
-TEST_NAMES := DyadicTopologyFactory RingTopologyFactory TopoNode LoopTopologyFactory TopoEdge TopoNodeInput ProConTopologyFactory Topology TopoNodeOutput
+TEST_NAMES := DyadicTopologyFactory RingTopologyFactory ToroidalTopologyFactory TopoNode LoopTopologyFactory TopoEdge TopoNodeInput ProConTopologyFactory Topology TopoNodeOutput
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
