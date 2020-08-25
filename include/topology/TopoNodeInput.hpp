@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <iostream>
 
 #include "../utility/print_utils.hpp"
 
@@ -31,6 +32,12 @@ public:
   bool operator==(const TopoNodeInput& other) const {
     return edge_id == other.edge_id;
   }
+
+  friend std::ostream& operator<<(std::ostream& os, const TopoNodeInput& node) {
+    os << node.edge_id << " ";
+    return os;
+  }
+
 };
 
 }
