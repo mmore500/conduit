@@ -139,6 +139,39 @@ public:
   /// @return const ref to nth node
   const TopoNode& operator[](size_t n) const { return topology[n]; }
 
+  /// Return Compressed Sparse Row (CSR) representation of topology
+  /// @return std::pair of vectors of int
+  auto AsCSR() const {
+    // get vector with degree of each node
+    emp::vector<int> degrees;
+    std::transform(
+      std::begin(topology),
+      std::end(topology),
+      std::back_inserter(degrees),
+      [](const auto& node){ return node.GetNumOutputs(); }
+    );
+    // get each starting position of each node's adjacency list
+    emp::vector<int> x_adj{0};
+    std::partial_sum(
+      std::begin(degrees),
+      std::end(degrees),
+      std::back_inserter(x_adj)
+    );
+    // build vector of concatenated adjacency lists
+    emp::vector<int> adjacency;
+    std::for_each(
+      std::begin(topology),
+      std::end(topology),
+      [this, &adjacency](const auto& node){
+        const auto outputs = GetNodeOutputs(node);
+        adjacency.insert(
+          std::end(adjacency),
+          std::begin(outputs),
+          std::end(outputs)
+        );
+      }
+    );  return std::make_pair(x_adj, adjacency);
+  }
     }
 
     }
