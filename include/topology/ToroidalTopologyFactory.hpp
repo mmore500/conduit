@@ -4,6 +4,10 @@
 #include <cmath>
 #include <list>
 #include <numeric>
+#include <tuple>
+#include <unordered_map>
+
+#include "../../third-party/Empirical/source/base/vector.h"
 
 #include "TopoEdge.hpp"
 #include "Topology.hpp"
@@ -67,16 +71,20 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
     return neighbors;
   };
 
-  for (auto it = res.begin(); it != res.end(); ++it) {
-    const auto n = uit::linear_decode(it - res.begin(), dim_cardinality);
+  for (auto it = nodes.begin(); it != nodes.end(); ++it) {
+    const auto n = uit::linear_decode(it - nodes.begin(), dim_cardinality);
     const auto neighbors = get_neighbors(n);
 
     for (const auto& neighbor : neighbors) {
-      it->AddInput(uit::linear_encode(neighbor, dim_cardinality));
+      auto neighbor_node = uit::linear_encode(neighbor, dim_cardinality);
+      size_t my_id = std::distance(nodes.begin(), it);
+
+      it->AddInput(node_edge_map[{neighbor_node, my_id}]);
+      it->AddOutput(node_edge_map[{my_id, neighbor_node}]);
     }
   }
 
-  return res;
+  return nodes;
 }
 
 struct ToroidalTopologyFactory {
