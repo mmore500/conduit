@@ -107,7 +107,12 @@ public:
       }
     );
   }
+  // topology iterators must only be const
+  topology_t::const_iterator begin() const noexcept { return topology.begin(); }
+  topology_t::const_iterator end() const noexcept { return topology.end(); }
 
+  topology_t::const_iterator cbegin() const noexcept { return topology.cbegin(); }
+  topology_t::const_iterator cend() const noexcept { return topology.cend(); }
 
 
 
