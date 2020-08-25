@@ -52,41 +52,24 @@ class Topology {
     }
   }
 
+  emp::vector<node_id_t> GetNodeOutputs(const uit::TopoNode& node) const {
+    emp::vector<node_id_t> res;
+    for (const auto& edge : node.GetOutputs()) {
+      res.push_back(input_registry.at(edge.GetEdgeID()));
     }
+    return res;
+  }
 
 public:
-    Topology() = default;
-    Topology(const size_t size) : topology(size) { ; }
-    Topology(const std::istream& is) {
-        for ()
-     }
 
-    emp::vector<TopoNode>::const_iterator begin() const noexcept { return topology.begin(); }
-    emp::vector<TopoNode>::const_iterator end() const noexcept { return topology.end(); }
 
-    emp::vector<TopoNode>::const_iterator cbegin() const noexcept { return topology.cbegin(); }
-    emp::vector<TopoNode>::const_iterator cend() const noexcept { return topology.cend(); }
 
-    void push_back(const TopoNode& node) { topology.push_back(node); }
-    void push_back(TopoNode&& node) { topology.push_back(std::move(node)); }
 
-    template <typename... Args>
-    void emplace_back(Args&&... args) { topology.emplace_back(args); }
 
-    size_t GetSize() const noexcept { return topology.size(); }
 
-    const TopoNode& operator[](size_t n) const { return topology[n]; }
 
-    void print(const Topology& topo, std::ostream& os = std::cout) const noexcept {
-        for (size_t i = 0; i < topo.size(); ++i) {
-            os << i << " " << topo[i] << std::endl;
-        }
     }
 
-    std::string ToString() const noexcept {
-        std::ostringstream oss;
-        print(*this, oss);
-        return oss.str();
     }
 };
 
