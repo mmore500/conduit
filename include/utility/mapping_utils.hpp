@@ -3,7 +3,7 @@
 #include <cmath>
 #include <deque>
 
-#include "base/vector.h"
+#include "../../third-party/Empirical/source/base/vector.h"
 
 using Point = emp::vector<size_t>;
 using Dims = emp::vector<size_t>;
