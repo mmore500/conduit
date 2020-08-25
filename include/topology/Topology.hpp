@@ -135,6 +135,9 @@ public:
   /// @return number of nodes in topology
   size_t GetSize() const noexcept { return topology.size(); }
 
+  /// Return nth node in topology
+  /// @return const ref to nth node
+  const TopoNode& operator[](size_t n) const { return topology[n]; }
 
     }
 
