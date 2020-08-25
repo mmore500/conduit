@@ -10,7 +10,7 @@ default: test
 test-%: %.cpp
 	echo "MPICXX" $(MPICXX)
 	echo "MPIEXEC" $(MPIEXEC)
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lmetis -o $@.out
 	# execute test
 	$(MPIEXEC) -n 1 ./$@.out
 
