@@ -8,16 +8,19 @@
 #include <unordered_map>
 #include <utility>
 
+#include "../../third-party/Empirical/source/tools/hash_utils.h"
+#include "../../third-party/Empirical/source/tools/keyname_utils.h"
+
+extern "C" {
+#include <metis.h>
+}
+
+#include "../utility/string_utils.hpp"
 #include "TopoNode.hpp"
 
 namespace uit {
 
 class Topology {
-    using node_id_t = size_t;
-    using edge_id_t = size_t;
-
-    emp::vector<TopoNode> topology;
-
     // ordered by edge_id
     std::set<edge_id_t> edge_registry;
     // edge_id -> node_id
@@ -30,6 +33,12 @@ class Topology {
             RegisterNodeInputs(node_id, topo_node);
             RegisterNodeOutputs(node_id, topo_node);
         }
+  // todo:: public?
+  using node_id_t = size_t;
+  using edge_id_t = size_t;
+  using topology_t = emp::vector<TopoNode>;
+
+  topology_t topology;
     }
 
     void RegisterNodeInputs(const node_id_t node_id, const uit::TopoNode& topo_node) {
