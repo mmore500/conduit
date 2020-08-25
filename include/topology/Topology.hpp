@@ -21,12 +21,6 @@ extern "C" {
 namespace uit {
 
 class Topology {
-    // ordered by edge_id
-    std::set<edge_id_t> edge_registry;
-    // edge_id -> node_id
-    std::unordered_map<edge_id_t, node_id_t> input_registry;
-    std::unordered_map<edge_id_t, node_id_t> output_registry;
-
     void InitializeRegistries(const uit::Topology& topology) {
         for (node_id_t node_id = 0; node_id < topology.size(); ++node_id) {
             const uit::TopoNode& topo_node = topology[node_id];
@@ -39,6 +33,10 @@ class Topology {
   using topology_t = emp::vector<TopoNode>;
 
   topology_t topology;
+
+  // maps of edge ids to node ids
+  std::unordered_map<edge_id_t, node_id_t> input_registry;
+  std::unordered_map<edge_id_t, node_id_t> output_registry;
     }
 
     void RegisterNodeInputs(const node_id_t node_id, const uit::TopoNode& topo_node) {
