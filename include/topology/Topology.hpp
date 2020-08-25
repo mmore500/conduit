@@ -195,6 +195,12 @@ public:
   }
 
     }
+
+  std::string ToString() const noexcept {
+    std::ostringstream oss;
+    PrintNodes(oss);
+    return oss.str();
+  }
 };
 
 }
