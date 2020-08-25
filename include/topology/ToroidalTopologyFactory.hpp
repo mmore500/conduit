@@ -56,4 +56,11 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
 
   return res;
 }
+
+struct ToroidalTopologyFactory {
+  uit::Topology operator()(const Dims& dim_cardinality) const {
+    return make_toroidal_topology(dim_cardinality);
+  }
+  static std::string GetName() { return "Toroidal Topology"; }
+};
 };
