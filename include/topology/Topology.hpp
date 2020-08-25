@@ -173,6 +173,19 @@ public:
     );  return std::make_pair(x_adj, adjacency);
   }
     }
+  void PrintEdges(std::ostream& os = std::cout) const noexcept {
+    // FIX THIS
+    // ALSO CHANGE NAME
+    // node1 node2
+    // node1 node3
+    // etc
+    for (size_t i = 0; i < topology.size(); ++i) {
+      for (const auto& output : topology[i].GetOutputs()) {
+        os << i << " " << output << std::endl;
+      }
+    }
+  }
+
   void PrintNodes(std::ostream& os = std::cout) const noexcept {
     // CHANGE NAME
     for (size_t i = 0; i < topology.size(); ++i) {
