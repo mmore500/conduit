@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+#include <exception>
 #include <iostream>
 #include <iterator>
 #include <set>
@@ -172,7 +174,60 @@ public:
       }
     );  return std::make_pair(x_adj, adjacency);
   }
+
+  /// Apply METIS' K-way partitioning algorithm to subdivide topology
+  /// @param parts number of parts to subdivide topology into
+  /// @return vector indicating what partition each vertex should go into
+  emp::vector<idx_t> Optimize(int32_t parts) const {
+    // set up variables
+    idx_t nodes = topology.size();
+    idx_t n_cons = 1;
+    idx_t volume;
+
+    // get topology as CSR
+    auto [xadj, adjacency] = AsCSR();
+
+    // set up result vector
+    emp::vector<idx_t> result(nodes);
+
+    // set up options array
+    // in this case, it's just the default options
+    idx_t options[METIS_NOPTIONS];
+    METIS_SetDefaultOptions(options);
+
+    // call partitioning algorithm
+    auto status = METIS_PartGraphKway(
+      &nodes, // number of vertices in the graph
+      &n_cons, // number of balancing constraints.
+      xadj.data(), // array of node indexes into adjacency[]
+      adjacency.data(), // array of adjacenct nodes for every node
+      nullptr, // weights of nodes
+      nullptr, // size of nodes for total comunication value
+      nullptr, // weights of edges
+      &parts, // number of parts to partition the graph into
+      nullptr, // weight for each partition and constraint
+      nullptr, // allowed load imbalance tolerance for each constraint
+      nullptr, // array of options
+      &volume, // edge-cut or total comm volume of the solution
+      result.data() // partition vector of the graph
+    );
+
+    // deal with return code
+    switch(status) {
+      case METIS_OK:
+        break;
+      case METIS_ERROR_INPUT:
+        throw std::invalid_argument("Error in input.");
+        break;
+      case METIS_ERROR_MEMORY:
+        throw std::bad_alloc("Out of memory!!!");
+        break;
+      case METIS_ERROR:
+        throw std::runtime_error("Unspecified error.");
+        break;
     }
+  }
+
   void PrintEdges(std::ostream& os = std::cout) const noexcept {
     // FIX THIS
     // ALSO CHANGE NAME
