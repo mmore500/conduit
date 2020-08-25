@@ -40,8 +40,6 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
   * goal
   * make toroidal topology (such that opposite edges are the same edge)
   */
-  size_t edge_counter{};
-  const size_t dims = dim_cardinality.size();
   const size_t cardinality = std::accumulate(
     dim_cardinality.begin(),
     dim_cardinality.end(),
