@@ -125,6 +125,12 @@ public:
     RegisterNode(id, node);
   }
 
+  template <typename... Args>
+  void emplace_back(Args&&... args) {
+    const size_t id = topology.size();
+    topology.emplace_back(std::forward(args)...);
+    RegisterNode(id, topology[id]);
+  }
 
 
     }
