@@ -40,7 +40,7 @@ public:
    *
    * @return TODO.
    */
-  bool IsReadyForPut() {
+  [[noreturn]] bool IsReadyForPut() {
     emp_assert(false, "IsReadyForPut called on EmpAssertDuct");
   }
 
@@ -49,14 +49,16 @@ public:
   *
   * @throws TODO.
    */
-  const T& Get() { emp_assert(false, "Get called on EmpAssertDuct"); }
+  [[noreturn]] const T& Get() {
+    emp_assert(false, "Get called on EmpAssertDuct");
+  }
 
   /**
    * TODO.
    *
    * @throws TODO.
    */
-  size_t CountUnconsumedGets() {
+  [[noreturn]] size_t CountUnconsumedGets() {
     emp_assert(false, "CountUnconsumedGets called on EmpAssertDuct");
   }
 
@@ -65,7 +67,7 @@ public:
    *
    * @param n TODO.
    */
-  void ConsumeGets(const size_t n) {
+  [[noreturn]] void ConsumeGets(const size_t n) {
     emp_assert(false, "ConsumeGets called on EmpAssertDuct");
   }
 

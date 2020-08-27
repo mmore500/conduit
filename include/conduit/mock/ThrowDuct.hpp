@@ -38,21 +38,23 @@ public:
    *
    * @return TODO.
    */
-  bool IsReadyForPut() { throw "IsReadyForPut called on ThrowDuct"; }
+  [[noreturn]] bool IsReadyForPut() {
+    throw "IsReadyForPut called on ThrowDuct";
+  }
 
   /**
   * TODO.
   *
   * @throws TODO.
    */
-  const T& Get() { throw "Get called on ThrowDuct"; }
+  [[noreturn]] const T& Get() { throw "Get called on ThrowDuct"; }
 
   /**
    * TODO.
    *
    * @throws TODO.
    */
-  size_t CountUnconsumedGets() {
+  [[noreturn]] size_t CountUnconsumedGets() {
     throw "CountUnconsumedGets called on ThrowDuct";
   }
 
@@ -61,7 +63,7 @@ public:
    *
    * @param n TODO.
    */
-  void ConsumeGets(const size_t n) {
+  [[noreturn]] void ConsumeGets(const size_t n) {
     throw "ConsumeGets called on ThrowDuct";
   }
 
