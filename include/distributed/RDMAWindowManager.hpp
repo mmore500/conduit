@@ -43,17 +43,6 @@ class RDMAWindowManager {
     );
   }
 
-  bool IsInitializable() {
-    return std::any_of(
-      std::begin(windows),
-      std::end(windows),
-      [](const auto & key_value){
-        const auto & [rank, window] = key_value;
-        return window.IsInitializable();
-      }
-    );
-  }
-
 public:
 
   ~RDMAWindowManager() {
@@ -98,7 +87,7 @@ public:
   }
 
   void LockExclusive(const proc_id_t rank) {
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),
       rank,
@@ -108,7 +97,7 @@ public:
   }
 
   void LockShared(const proc_id_t rank) {
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),
       rank,
@@ -118,7 +107,7 @@ public:
   }
 
   void Unlock(const proc_id_t rank) {
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),
       rank,
@@ -134,7 +123,7 @@ public:
     const MPI_Aint target_disp,
     MPI_Request *request
   ) {
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),
       rank,
@@ -166,7 +155,7 @@ public:
     // ensure that RputDucts have received target offsets
     verify(MPI_Barrier(comm));
 
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
   }
 
   std::string ToString() {

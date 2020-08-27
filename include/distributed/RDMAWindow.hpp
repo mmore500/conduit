@@ -1,5 +1,6 @@
 #pragma once
 
+#include <optional>
 #include <stddef.h>
 
 #include <mpi.h>
@@ -12,9 +13,9 @@ namespace uit {
 // between each pair of procs?
 class RDMAWindow {
 
-  char * buffer{nullptr};
+  char * buffer;
 
-  MPI_Win window;
+  std::optional<MPI_Win> window;
 
   size_t size;
 
@@ -25,15 +26,15 @@ class RDMAWindow {
 public:
 
   ~RDMAWindow() {
-    verify(MPI_Win_free(&window));
-    verify(MPI_Free_mem(buffer));
+    if (IsInitialized()) {
+      uit::verify(MPI_Win_free(&window.value()));
+      uit::verify(MPI_Free_mem(buffer));
+    }
   }
 
-  bool IsInitialized() const { return buffer; }
+  bool IsInitialized() const { return window.has_value(); }
 
-  bool IsUninitialized() const { return !buffer; }
-
-  bool IsInitializable() const { return size; }
+  bool IsUninitialized() const { return !window.has_value(); }
 
   // TODO cache line alignment?
   size_t Acquire(const size_t num_bytes) {
@@ -56,14 +57,14 @@ public:
   }
 
   const MPI_Win & GetWindow() {
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
 
-    return window;
+    return window.value();
   }
 
   void LockExclusive() {
 
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
 
     verify(MPI_Win_lock(
       MPI_LOCK_EXCLUSIVE, // int lock_type
@@ -73,7 +74,7 @@ public:
       // rank of locked window (nonnegative integer)
       0, // int assert TODO optimize?
       // Used to optimize this call; zero may be used as a default.
-      window // MPI_Win win
+      window.value() // MPI_Win win
       // window object (handle)
     ));
 
@@ -81,7 +82,7 @@ public:
 
   void LockShared() {
 
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
 
     verify(MPI_Win_lock(
       MPI_LOCK_SHARED, // int lock_type
@@ -91,7 +92,7 @@ public:
       // rank of locked window (nonnegative integer)
       0, // int assert TODO optimize?
       // Used to optimize this call; zero may be used as a default.
-      window // MPI_Win win
+      window.value() // MPI_Win win
       // window object (handle)
     ));
 
@@ -99,12 +100,12 @@ public:
 
   void Unlock() {
 
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
 
     verify(MPI_Win_unlock(
       local_rank, // int rank
       // rank of window (nonnegative integer)
-      window // MPI_Win win
+      window.value() // MPI_Win win
       // window object (handle)
     ));
 
@@ -117,7 +118,7 @@ public:
     MPI_Request *request
   ) {
 
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
 
     verify(MPI_Rput(
       origin_addr, // const void *origin_addr
@@ -140,27 +141,29 @@ public:
 
     local_rank = target;
 
-    if (size) verify(MPI_Alloc_mem(
+    uit::verify(MPI_Alloc_mem(
       size,
       MPI_INFO_NULL,
       &buffer
     ));
 
+    window.emplace();
+
     // all procs must make this call
-    verify(MPI_Win_create(
+    uit::verify(MPI_Win_create(
       buffer, // base: initial address of window (choice)
       size, // size: size of window in bytes (nonnegative integer)
       1, // disp_unit: local unit size for displacements, in bytes
          //   (positive integer)
       MPI_INFO_NULL, // info: info argument (handle)
       comm, // comm: communicator (handle)
-      &window // win: window object returned by the call (handle)
+      &window.value() // win: window object returned by the call (handle)
     ));
 
     // ensure that RputDucts have received target offsets
-    verify(MPI_Barrier(comm));
+    uit::verify(MPI_Barrier(comm));
 
-    emp_assert(IsInitialized() || !IsInitializable());
+    emp_assert(IsInitialized());
 
   }
 
@@ -174,8 +177,6 @@ public:
     ss << format_member("IsInitialized()", emp::to_string(IsInitialized()))
       << std::endl;
     ss << format_member("IsUninitialized()", emp::to_string(IsUninitialized()))
-      << std::endl;
-    ss << format_member("IsInitializable()", emp::to_string(IsInitializable()))
       << std::endl;
     // TODO add print function for MPI_Win
     ss << format_member("char * buffer", static_cast<const void *>(buffer))
