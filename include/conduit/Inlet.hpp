@@ -67,13 +67,15 @@ class Inlet {
 
   using index_t = CircularIndex<N>;
 
-  std::shared_ptr<internal::Duct<ImplSpec>> duct;
   // TODO this should be internal state to the duct
   index_t write_position{0};
 
   // number of times the inlet has been written to
   size_t successful_write_count{0};
 
+  /// TODO.
+  using duct_t = internal::Duct<ImplSpec>;
+  std::shared_ptr<duct_t> duct;
   // number of times write attempts have blocked due to buffer space
   size_t blocked_write_count{0};
 
@@ -240,8 +242,10 @@ public:
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
     emp_assert(GetAvailableCapacity() == N);
-    duct = std::make_shared<internal::Duct<ImplSpec>>();
-    EmplaceDuct<WhichDuct>(args...);
+    duct = std::make_shared<duct_t>(
+      std::in_place_type_t<WhichDuct>{},
+      std::forward<Args>(args)...
+    );
   }
 
   /**
