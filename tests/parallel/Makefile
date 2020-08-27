@@ -1,4 +1,4 @@
-TEST_NAMES := OncePerThreadChecker ParallelTimeoutBarrier RecursiveExclusiveLock RecursiveMutex RelaxedAtomic ThreadLocalChecker ThreadMap
+TEST_NAMES := AlignedImplicit OncePerThreadChecker ParallelTimeoutBarrier RecursiveExclusiveLock RecursiveMutex RelaxedAtomic ThreadLocalChecker ThreadMap
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
 
