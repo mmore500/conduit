@@ -66,7 +66,8 @@ class Outlet {
 
   using index_t = CircularIndex<N>;
 
-  std::shared_ptr<internal::Duct<ImplSpec>> duct;
+  using duct_t = internal::Duct<ImplSpec>;
+  std::shared_ptr<duct_t> duct;
 
   static_assert(N > 0);
   // TODO this should be internal state to the duct
@@ -245,8 +246,10 @@ public:
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
     emp_assert(GetPending() == 0);
-    duct = std::make_shared<internal::Duct<ImplSpec>>();
-    EmplaceDuct<WhichDuct>(args...);
+    duct = std::make_shared<duct_t>(
+      std::in_place_type_t<WhichDuct>{},
+      std::forward<Args>(args)...
+    );
   }
 
   /**
