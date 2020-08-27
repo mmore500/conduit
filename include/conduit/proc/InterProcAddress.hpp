@@ -22,9 +22,9 @@ class InterProcAddress {
 public:
 
   InterProcAddress(
-    const uit::proc_id_t outlet_proc_,
-    const uit::proc_id_t inlet_proc_=MPI_ANY_SOURCE,
-    const int tag_=MPI_ANY_TAG,
+    const uit::proc_id_t outlet_proc_=0,
+    const uit::proc_id_t inlet_proc_=0,
+    const int tag_=0,
     const MPI_Comm comm_=MPI_COMM_WORLD
   ) : outlet_proc(outlet_proc_)
   , inlet_proc(inlet_proc_)
