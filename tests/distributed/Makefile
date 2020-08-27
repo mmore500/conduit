@@ -1,4 +1,4 @@
-TEST_NAMES := DistributedTimeoutBarrier group_utils mpi_utils MPIGuard
+TEST_NAMES := DistributedTimeoutBarrier group_utils IrsendFunctor IsendFunctor mpi_utils MPIGuard RsendFunctor SendFunctor
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
