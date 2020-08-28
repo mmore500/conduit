@@ -102,10 +102,16 @@ class Mesh {
     const node_id_t outlet_node_id = nodes.GetInputRegistry().at(input.GetEdgeID());
     const uit::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
 
+    static std::unordered_set<int> tag_checker;
+    const int tag = uit::combine_tag(mesh_id, input.GetEdgeID());
+
+    // assert that generated tags are unique
+    emp_assert( tag_checker.insert(tag).second );
+
     const InterProcAddress addr{
       outlet_proc_id,
       inlet_proc_id,
-      uit::combine_tag(mesh_id, input.GetEdgeID()),
+      tag,
       comm
     };
 
