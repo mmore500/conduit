@@ -24,7 +24,7 @@ class MeshIDCounter {
 
 public:
 
-  static size_t Get() { return counter++; }
+  static size_t Generate() { return counter++; }
 
 };
 
@@ -150,7 +150,7 @@ public:
     const std::function<proc_id_t(node_id_t)> proc_assignment_
       =uit::AssignIntegrated<proc_id_t>{},
     const MPI_Comm comm_=MPI_COMM_WORLD,
-    const size_t mesh_id_=internal::MeshIDCounter::Get()
+    const size_t mesh_id_=internal::MeshIDCounter::Generate()
   )
   : mesh_id(mesh_id_)
   , comm(comm_)
