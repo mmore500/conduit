@@ -12,8 +12,8 @@ test-%: %.cpp
 	echo "MPIEXEC" $(MPIEXEC)
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
-	for n in $$(seq 1 8); do \
-		$(MPIEXEC) --bind-to none -n $$n ./$@.out || break; \
+	for n in $$(seq 2 8); do \
+		$(MPIEXEC) --bind-to none -n $$n ./$@.out || exit 1; \
 	done
 
 # Test in debug mode without pointer tracker
