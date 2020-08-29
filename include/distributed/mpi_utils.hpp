@@ -519,4 +519,8 @@ bool test_completion(const MPI_Request& request) {
   return flag;
 }
 
+bool test_null(const MPI_Request& request) {
+  return request == MPI_REQUEST_NULL;
+}
+
 } // namespace uit
