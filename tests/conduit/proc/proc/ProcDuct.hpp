@@ -1,4 +1,4 @@
-#include <chrono>
+#include <ratio>
 #include <thread>
 
 #include <mpi.h>
@@ -27,7 +27,7 @@ const uit::MPIGuard guard;
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
-#define REPEAT for (size_t rep = 0; rep < 2; ++rep)
+#define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
 
 decltype(auto) make_dyadic_bundle() {
 
