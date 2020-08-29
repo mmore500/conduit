@@ -9,6 +9,7 @@
 #include "distributed/MPIGuard.hpp"
 #include "distributed/mpi_utils.hpp"
 #include "distributed/MultiprocessReporter.hpp"
+#include "distributed/Request.hpp"
 #include "utility/assign_utils.hpp"
 #include "utility/math_utils.hpp"
 
@@ -325,5 +326,31 @@ TEST_CASE("combine_tag") {
 TEST_CASE("to_string") {
 
   REQUIRE(uit::to_string(MPI_COMM_WORLD) != "");
+
+}
+
+TEST_CASE("test_null") {
+
+  uit::Request req;
+
+  REQUIRE( uit::test_null(req) );
+
+  char buf;
+  uit::verify(MPI_Irecv(
+    &buf, // void *buf
+    1, // int count
+    MPI_BYTE, // MPI_Datatype datatype
+    MPI_ANY_SOURCE, // int source
+    MPI_ANY_TAG, // int tag
+    MPI_COMM_WORLD, // MPI_Comm comm
+    &req // MPI_Request *request
+  ));
+
+  REQUIRE( !uit::test_null(req) );
+
+  uit::verify(MPI_Cancel(&req));
+  uit::verify(MPI_Request_free(&req));
+
+  REQUIRE( uit::test_null(req) );
 
 }
