@@ -8,6 +8,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "conduit/ImplSpec.hpp"
+#include "conduit/Source.hpp"
 #include "distributed/assign_utils.hpp"
 #include "distributed/MPIGuard.hpp"
 #include "distributed/mpi_utils.hpp"
@@ -81,12 +82,29 @@ decltype(auto) make_ring_bundle() {
 
 }
 
+TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+
+  std::shared_ptr<Spec::ProcBackEnd> backend{
+    std::make_shared<Spec::ProcBackEnd>()
+  };
+  uit::InterProcAddress address{};
+
+  auto [outlet] = uit::Source<Spec>{
+    std::in_place_type_t<Spec::ProcOutletDuct>{},
+    address,
+    backend
+  };
+
+  REQUIRE( outlet.GetCurrent() == MSG_T{} );
+
+} }
+
 TEST_CASE("Unmatched gets") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
-    REQUIRE( input.GetCurrent() == 0 );
+    REQUIRE( input.GetCurrent() == MSG_T{} );
   }
 
   uit::verify(MPI_Barrier( MPI_COMM_WORLD ));
@@ -180,8 +198,6 @@ TEST_CASE("Ring Mesh sequential consistency") { {
 
   auto [input, output] = make_ring_bundle();
 
-  REQUIRE(input.GetCurrent() == 0);
-
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
 
@@ -222,9 +238,6 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
 TEST_CASE("Producer-Consumer Mesh sequential consistency") { {
 
   auto [input, output] = make_producer_consumer_bundle();
-
-  // outlet should be seeded with default-constructed T
-  if (input) REQUIRE( input->GetCurrent() == 0 );
 
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
@@ -270,9 +283,6 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
 TEST_CASE("Dyadic Mesh sequential consistency") { {
 
   auto [input, output] = make_dyadic_bundle();
-
-  // outlet should be seeded with default-constructed T
-  REQUIRE( input.GetCurrent() == 0 );
 
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
