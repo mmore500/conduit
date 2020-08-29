@@ -1,9 +1,10 @@
 #include "conduit/ImplSpec.hpp"
+#include "conduit/mock/ThrowDuct.hpp"
 #include "conduit/proc/MsgDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
   uit::SerialPendingDuct,
-  uit::HeadTailDuct,
+  uit::ThrowDuct,
   uit::MsgDuct
 >;
 
