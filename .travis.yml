@@ -46,7 +46,7 @@ jobs:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit
-      && make docs"
+      && make docs && make test-readme-snippets"
   - stage: Deploy
     name: GitHub Pages
     if: branch = master

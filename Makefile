@@ -85,6 +85,9 @@ microbenchmark:
 
 benchmark: macrobenchmark microbenchmark
 
+test-readme-snippets:
+	python3 ci/test_readme_snippets.py
+
 test-source: debug debug-web
 	$(MPIEXEC) -n 1 ./conduit | grep -q '>>> end <<<' && echo 'matched!' || exit 1
 	npm install
