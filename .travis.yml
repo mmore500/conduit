@@ -5,20 +5,48 @@ services:
 jobs:
   include:
   - stage: Tests
-    name: OpenMPI Unit Tests
+    name: OpenMPI Unit Tests (debug mode)
     env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
-  - name: MPICH Unit Tests
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
+  - name: MPICH Unit Tests (debug mode)
     env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
+  - name: OpenMPI Unit Tests (fulldebug mode)
+    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
+  - name: MPICH Unit Debug Tests (fulldebug mode)
+    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
+  - name: OpenMPI Unit Tests (opt mode)
+    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
+  - name: MPICH Unit Debug Tests (opt mode)
+    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
   - name: Macrobenchmarks
     install:
     - docker build -t mmore500/conduit .
