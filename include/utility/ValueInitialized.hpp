@@ -17,6 +17,12 @@ public:
 
   T* operator&() { return &val; }
 
+  // TODO cpp20 spaceship operator
+  // https://devblogs.microsoft.com/cppblog/simplify-your-code-with-rocket-science-c20s-spaceship-operator/
+  bool operator==(const T& rhs) const { return val == rhs; }
+
+  bool operator!=(const T& rhs) const { return val != rhs; }
+
 };
 
 } // namespace uit
