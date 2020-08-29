@@ -99,7 +99,9 @@ class Mesh {
     );
     const uit::proc_id_t inlet_proc_id = proc_assignment(inlet_node_id);
 
-    const node_id_t outlet_node_id = nodes.GetInputRegistry().at(input.GetEdgeID());
+    const node_id_t outlet_node_id = nodes.GetInputRegistry().at(
+      input.GetEdgeID()
+    );
     const uit::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
 
     static std::unordered_set<int> tag_checker;
