@@ -124,10 +124,6 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(i);
 
-  if (input.GetCurrent() > 2 * DEFAULT_BUFFER) {
-    std::cout << rep << std::endl;
-    std::cout << input.GetNetFlux() << std::endl;
-  }
   REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
 
   uit::verify(MPI_Barrier( MPI_COMM_WORLD )); // todo why
@@ -168,7 +164,6 @@ TEST_CASE("Validity") { REPEAT {
     const MSG_T current = input.GetCurrent();
     REQUIRE( current >= 0 );
     REQUIRE( current < 10 * std::kilo{}.num );
-    if ( last > current ) std::cout << msg;
     REQUIRE( last <= current);
 
     last = current;
