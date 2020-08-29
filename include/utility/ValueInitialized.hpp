@@ -1,5 +1,7 @@
 #pragma once
 
+#include <utility>
+
 namespace uit {
 
 template<typename T>
@@ -22,6 +24,10 @@ public:
   bool operator==(const T& rhs) const { return val == rhs; }
 
   bool operator!=(const T& rhs) const { return val != rhs; }
+
+  T& operator=(const T& other) { return val = other; }
+
+  T& operator=(T&& other) noexcept { return val = std::move(other); }
 
 };
 

@@ -37,12 +37,12 @@ uit::Gatherer<MSG_T> gatherer(MPI_INT);
 
 void check_connectivity(uit::MeshNode<Spec> node, const size_t node_id) {
 
-  node.GetOutput(0).MaybePut(node_id);
+  node.GetOutput(0).TryPut(node_id);
 
   static std::latch sync_before{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
   sync_before.arrive_and_wait();
 
-  for (size_t rep = 0; rep < 100; ++rep) node.GetOutput(0).MaybePut(node_id);
+  for (size_t rep = 0; rep < 100; ++rep) node.GetOutput(0).TryPut(node_id);
 
   static std::latch sync_after{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
   sync_after.arrive_and_wait();
@@ -93,7 +93,7 @@ void check_validity(uit::MeshNode<Spec> node, const size_t node_id) {
 
   MSG_T last{};
   for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
-    node.GetOutput(0).MaybePut(msg);
+    node.GetOutput(0).TryPut(msg);
     const MSG_T current = node.GetInput(0).GetCurrent();
     REQUIRE( current >= 0 );
     REQUIRE( current < 10 * std::kilo{}.num );

@@ -1,8 +1,8 @@
 #include "conduit/ImplSpec.hpp"
-#include "conduit/intra/PendingDuct.hpp"
+#include "conduit/intra/SerialPendingDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
-  uit::PendingDuct
+  uit::SerialPendingDuct
 >;
 
 #include "IntraDuct.hpp"

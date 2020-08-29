@@ -49,7 +49,7 @@ class Tile {
   void DoSetState(const State& state_) {state = state_;}
 
   void FlushState() {
-    output.MaybePut(state);
+    output.TryPut(state);
   }
 
 public:
@@ -74,13 +74,13 @@ public:
     FlushState();
   }
 
-  size_t GetSuccessfulWriteCount() const {
-    return output.GetSuccessfulWriteCount();
+  size_t GetSuccessfulPutCount() const {
+    return output.GetSuccessfulPutCount();
   }
 
-  size_t GetBlockedWriteCount() const { return output.GetBlockedWriteCount(); }
+  size_t GetBlockedPutCount() const { return output.GetBlockedPutCount(); }
 
-  size_t GetDroppedWriteCount() const { return output.GetDroppedWriteCount(); }
+  size_t GetDroppedPutCount() const { return output.GetDroppedPutCount(); }
 
   size_t GetReadCount() const { return input.GetReadCount(); }
 

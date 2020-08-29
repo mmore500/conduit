@@ -1,7 +1,8 @@
 #pragma once
 
-#include "RputDuct.hpp"
-#include "WindowDuct.hpp"
+#include "backend/RdmaBackEnd.hpp"
+#include "inlet/RputDuct.hpp"
+#include "outlet/WindowDuct.hpp"
 
 namespace uit {
 

@@ -4,6 +4,8 @@
 
 #include "../../../third-party/Empirical/source/base/assert.h"
 
+#include "../proc/backend/MockBackEnd.hpp"
+
 namespace uit {
 
 /**
@@ -21,6 +23,7 @@ public:
 
   using InletImpl = EmpAssertDuct<ImplSpec>;
   using OutletImpl = EmpAssertDuct<ImplSpec>;
+  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
 
   /**
    * TODO.
@@ -67,7 +70,7 @@ public:
    *
    * @param n TODO.
    */
-  [[noreturn]] void ConsumeGets(const size_t n) {
+  [[noreturn]] size_t ConsumeGets(const size_t n) {
     emp_assert(false, "ConsumeGets called on EmpAssertDuct");
   }
 

@@ -6,6 +6,9 @@
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../conduit/config.hpp"
+#include "../../parallel/AlignedImplicit.hpp"
+#include "../../parallel/OccupancyCaps.hpp"
+#include "../../parallel/OccupancyGuard.hpp"
 #include "../../utility/print_utils.hpp"
 
 namespace uit {
@@ -22,61 +25,89 @@ class HeadTailDuct {
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  struct alignas(CACHE_LINE_SIZE) padded {
-    T t;
-    std::string ToString() const { return emp::to_string(t); }
-  };
+  // aligned implicit value initializes T
+  using buffer_t = emp::array<uit::AlignedImplicit<T>, N>;
 
-  struct alignas(CACHE_LINE_SIZE) buffer_t : public emp::array<padded, N> { };
-
-  alignas(CACHE_LINE_SIZE) size_t head{0};
-  alignas(CACHE_LINE_SIZE) size_t tail{0};
+  uit::AlignedImplicit<size_t> head{0};
+  uit::AlignedImplicit<size_t> tail{0};
   buffer_t buffer;
+
+#ifndef NDEBUG
+  mutable uit::OccupancyCaps caps;
+#endif
 
 public:
 
-  void Initialize(const size_t write_position) { ; }
-
-  //todo rename
-  void Push() {
-
-    emp_assert(
-      GetPending() < N,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("GetPending(): ",GetPending())
-    );
-
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  void Put(const T& val) {
+    #ifndef NDEBUG
+      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
+    #endif
     ++head;
-  }
-
-  //todo rename
-  void Pop(const size_t count) {
-
+    buffer[head % N] = val;
     emp_assert(
-      GetPending() >= count,
+      CountUnconsumedGets() <= N,
       [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("GetPending(): ", GetPending()),
-      emp::to_string("count: ", count)
+      emp::to_string("CountUnconsumedGets(): ", CountUnconsumedGets())
     );
-
-    tail+=count;
   }
 
-  size_t GetPending() {
-    // TODO handle wraparound case?
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  bool IsReadyForPut() const { return CountUnconsumedGets() < N; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t CountUnconsumedGets() const {
+    //TODO FIXME handle wraparound case?
+    emp_assert(tail <= head);
     return head - tail;
   }
 
-  size_t GetAvailableCapacity() { return N - GetPending(); }
 
-  T GetElement(const size_t n) const { return buffer[n].t; }
+  /**
+   * TODO.
+   *
+   * @param n TODO.
+   */
+  size_t ConsumeGets(const size_t n) {
+    #ifndef NDEBUG
+      const uit::OccupancyGuard guard{caps.Get("ConsumeGets", 1)};
+    #endif
+    const size_t num_consumed = std::min(CountUnconsumedGets(), n);
+    tail += num_consumed;
+    return num_consumed;
+  }
 
-  const void * GetPosition(const size_t n) const { return &buffer[n].t; }
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  const T& Get() const { return buffer[tail % N]; }
 
-  void SetElement(const size_t n, const T & val) { buffer[n].t = val; }
-
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   static std::string GetType() { return "HeadTailDuct"; }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;

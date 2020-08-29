@@ -2,7 +2,7 @@
 
 #include "config.hpp"
 
-#include "intra/PendingDuct.hpp"
+#include "intra/SerialPendingDuct.hpp"
 #include "proc/ImsgDuct.hpp"
 #include "thread/HeadTailDuct.hpp"
 
@@ -17,7 +17,7 @@ namespace uit {
  * @tparam ProcDuct_ Implementation to use for inter-process transmission
  */
 template<
-  template<typename> typename IntraDuct_ = uit::PendingDuct,
+  template<typename> typename IntraDuct_ = uit::SerialPendingDuct,
   template<typename> typename ThreadDuct_ = uit::HeadTailDuct,
   template<typename> typename ProcDuct_ = uit::ImsgDuct
 >
@@ -34,26 +34,17 @@ struct ImplSelect {
 
 };
 
-/**
- * Specifies implementation details for the conduit framework.
- *
- * @tparam T_ Type to transmit.
- * @tparam N_ Buffer size.
- * @tparam ImplSelect Class with static typedef members specifying which
- * implementations to use for intra-thread, inter-thread, and inter-process
- * transmission.
- *
- * @note The type `T_` should be *TriviallyCopyable*.
- */
+namespace internal {
+
 template<
   typename T_,
   size_t N_=DEFAULT_BUFFER,
   typename ImplSelect=uit::ImplSelect<>
 >
-class ImplSpec {
+class ImplSpecKernel {
 
   /// TODO.
-  using THIS_T = ImplSpec<T_, N_, ImplSelect>;
+  using THIS_T = ImplSpecKernel<T_, N_, ImplSelect>;
 
 public:
 
@@ -77,9 +68,43 @@ public:
   using ProcOutletDuct = typename ImplSelect::template
     ProcDuct<THIS_T>::OutletImpl;
 
+
   // TODO add static ToString
 
 };
 
+} // namespace internal
+
+/**
+ * Specifies implementation details for the conduit framework.
+ *
+ * @tparam T Type to transmit.
+ * @tparam N Buffer size.
+ * @tparam ImplSelect Class with static typedef members specifying which
+ * implementations to use for intra-thread, inter-thread, and inter-process
+ * transmission.
+ *
+ * @note The type `T_` should be *TriviallyCopyable*.
+ */
+template<
+  typename T,
+  size_t N=DEFAULT_BUFFER,
+  typename ImplSelect=uit::ImplSelect<>
+>
+class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect> {
+
+  using parent_t = internal::ImplSpecKernel<T, N, ImplSelect>;
+
+  static_assert(std::is_same<
+    typename parent_t::ProcInletDuct::BackEndImpl,
+    typename parent_t::ProcOutletDuct::BackEndImpl
+  >::value);
+
+public:
+
+  // TODO.
+  using ProcBackEnd = typename parent_t::ProcInletDuct::BackEndImpl;
+
+};
 
 } // namespace uit

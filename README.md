@@ -10,6 +10,7 @@
 [![Lines of Code](https://tokei.rs/b1/github/mmore500/conduit?category=code)](https://github.com/XAMPPRocky/tokei)
 [![Comments](https://tokei.rs/b1/github/mmore500/conduit?category=comments)](https://github.com/XAMPPRocky/tokei)
 [![dotos](https://img.shields.io/endpoint?url=https%3A%2F%2Fmmore500.com%2Fconduit%2Fdoto-badge.json)](https://github.com/mmore500/conduit/search?q=todo+OR+fixme&type=)
+[![GitHub stars](https://img.shields.io/github/stars/nschloe/exdown.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/nschloe/exdown)
 
 * Free software: MIT license
 * Documentation: [https://conduit.fyi](https://conduit.fyi)
@@ -88,7 +89,7 @@ int main() {
 
   // start a producer thread
   team.Add( [&inlet](){
-    for (int i = 0; i < std::mega{}.num; ++i) inlet.MaybePut(i);
+    for (int i = 0; i < std::mega{}.num; ++i) inlet.TryPut(i);
   } );
 
   // start a consumer thread
@@ -200,9 +201,21 @@ const size_t num_threads = 2; // two threads per process
 // contains information about node, thread, and process of sender
 struct Message {
 
-  size_t node_id;
-  uit::thread_id_t thread_id;
-  uit::proc_id_t proc_id;
+  size_t node_id{};
+  uit::thread_id_t thread_id{};
+  uit::proc_id_t proc_id{};
+
+  bool operator==(const Message& other) const {
+    return std::tuple{
+      node_id,
+      thread_id,
+      proc_id
+    } == std::tuple{
+      other.node_id,
+      other.thread_id,
+      other.proc_id
+    };
+  }
 
   std::string ToString() const {
 
@@ -240,7 +253,7 @@ void send_task(
     auto& node = my_nodes[node_id];
 
     // send message
-    for (auto& output : node.GetOutputs()) output.Put( message );
+    for (auto& output : node.GetOutputs()) output.SurePut( message );
 
   }
 
