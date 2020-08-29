@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <memory>
 #include <stddef.h>
 
 #include <mpi.h>
@@ -10,16 +11,16 @@
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../distributed/mpi_utils.hpp"
+#include "../../distributed/Request.hpp"
 #include "../../utility/CircularIndex.hpp"
 #include "../../utility/identity.hpp"
 #include "../../utility/print_utils.hpp"
 
-#include "../config.hpp"
-
-#include "InterProcAddress.hpp"
-#include "SharedBackEnd.hpp"
+#include "../InterProcAddress.hpp"
+#include "../proc/backend/MockBackEnd.hpp"
 
 namespace uit {
+namespace internal {
 
 /**
  * TODO
@@ -27,176 +28,205 @@ namespace uit {
  * @tparam ImplSpec class with static and typedef members specifying
  * implementation details for the conduit framework.
  */
-template<typename ImplSpec>
-class IsendDuct {
+template<typename ImmediateSendFunctor, typename ImplSpec>
+class ImmediateSendDuct {
+
+public:
+
+  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
+
+private:
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  using pending_t = size_t;
   using buffer_t = emp::array<T, N>;
-  using index_t = CircularIndex<N>;
+  buffer_t buffer{};
 
-  pending_t pending{0};
-  buffer_t buffer;
+  // where will the next send take place from?
+  using index_t = uit::CircularIndex<N>;
+  index_t send_position{};
 
-  emp::array<MPI_Request, N> send_requests;
-#ifndef NDEBUG
-  // most vexing parse :/
-  emp::vector<char> request_states=emp::vector<char>(N, false);
-#endif
+  emp::array<uit::Request, N> send_requests;
+  size_t pending_sends{};
 
   const uit::InterProcAddress address;
 
-  index_t send_position{0};
+  /*
+   * notes
+   *
+   * key:
+   * - R = open send request
+   * - N = send position (where next send request will go)
+   * - S = stalest request position
+   * initial state:
+   * ```
+   * : S :
+   * : N :
+   * |   |   |   |   |   |   |   |   |   |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * after one send posted:
+   * ```
+   * : S : N :
+   * | R |   |   |   |   |   |   |   |   |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * after another send posted:
+   * ```
+   * : S :   : N :
+   * | R | R |   |   |   |   |   |   |   |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * after a send finalized:
+   * ```
+   *     : S : N :
+   * |   | R |   |   |   |   |   |   |   |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * possible almost-full buffer arrangement:
+   * ```
+   * : S :                               : N :
+   * | R | R | R | R | R | R | R | R | R |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * one more send posted:
+   * ```
+   * : N :
+   * : S :
+   * | R | R | R | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * one send finalized:
+   * ```
+   * : N : S :
+   * |   | R | R | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * another send finalized:
+   * ```
+   * : N :   : S :
+   * |   |   | R | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   */
 
-  void RequestSend() {
-    emp_assert(
-      request_states[send_position] == false,
-      send_position,
-      pending,
-      format_member("*this", *this)
-    );
-    verify(MPI_Isend(
+  void PostSend() {
+    emp_assert( uit::test_null(send_requests[send_position]) );
+
+    uit::verify(ImmediateSendFunctor{}(
       &buffer[send_position],
       sizeof(T),
-      MPI_BYTE, // TODO template on T
+      MPI_BYTE,
       address.GetOutletProc(),
       address.GetTag(),
       address.GetComm(),
       &send_requests[send_position]
     ));
-#ifndef NDEBUG
-    request_states[send_position] = true;
-#endif
-    ++pending;
+
     ++send_position;
+    ++pending_sends;
 
   }
 
-  // AcceptSend Take
-  bool ConfirmSend() {
+  index_t CalcStalestSendPos() const { return send_position - pending_sends; }
 
-    int flag{};
+  bool TryFinalizeSend() {
+    emp_assert( !uit::test_null(send_requests[CalcStalestSendPos()]) );
 
-    emp_assert(
-      request_states[send_position - pending],
-      send_position,
-      pending,
-      format_member("*this", *this)
-    );
-    verify(MPI_Test(
-      &send_requests[send_position - pending],
-      &flag,
-      MPI_STATUS_IGNORE
-    ));
-#ifndef NDEBUG
-    if(flag) request_states[send_position - pending] = false;
-#endif
-
-    if (flag) --pending;
-
-    return flag;
+    if (uit::test_completion( send_requests[CalcStalestSendPos()] )) {
+      --pending_sends;
+      emp_assert( uit::test_null(send_requests[CalcStalestSendPos() - 1]) );
+      return true;
+    } else return false;
 
   }
 
-  void CancelSend() {
+  void CancelPendingSend() {
+    emp_assert(!uit::test_null( send_requests[CalcStalestSendPos()] ));
 
-    emp_assert(
-      request_states[send_position - pending],
-      send_position,
-      pending,
-      format_member("*this", *this)
-    );
-    verify(MPI_Cancel(
-      &send_requests[send_position - pending]
-    ));
-#ifndef NDEBUG
-    request_states[send_position - pending] = false;
-#endif
+    uit::verify(MPI_Cancel( &send_requests[CalcStalestSendPos()] ));
+    uit::verify(MPI_Request_free(&send_requests[CalcStalestSendPos()]));
 
-    --pending;
+    emp_assert( uit::test_null( send_requests[CalcStalestSendPos()] ));
 
+    --pending_sends;
   }
 
-  void Flush() { while (pending && ConfirmSend()); }
+  void FlushFinalizedSends() { while (pending_sends && TryFinalizeSend()); }
 
 public:
 
-  IsendDuct(
+  ImmediateSendDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end
+    std::shared_ptr<BackEndImpl> back_end
   ) : address(address_)
   {
-    emp_assert(
-      std::none_of(
-        std::begin(request_states),
-        std::end(request_states),
-        identity
-      ),
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      format_member("*this", *this)
-    );
+    emp_assert( std::all_of(
+      std::begin(send_requests),
+      std::end(send_requests),
+      [](const auto& req){ return uit::test_null( req ); }
+    ) );
   }
 
-  ~IsendDuct() {
-    while (pending) CancelSend();
-    emp_assert(
-      std::none_of(
-        std::begin(request_states),
-        std::end(request_states),
-        identity
-      ),
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      format_member("*this", *this)
-    );
+  ~ImmediateSendDuct() {
+    FlushFinalizedSends();
+    while (pending_sends) CancelPendingSend();
+    emp_assert( std::all_of(
+      std::begin(send_requests),
+      std::end(send_requests),
+      [](const auto& req){ return uit::test_null( req ); }
+    ) );
   }
 
-  //todo rename
-  void Push() {
-
-    emp_assert(
-      pending < N,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("pending: ", pending)
-    );
-
-    RequestSend();
-
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  void Put(const T& val) {
+    emp_assert( pending_sends < N );
+    emp_assert( uit::test_null( send_requests[send_position] ) );
+    buffer[send_position] = val;
+    PostSend();
+    emp_assert( pending_sends <= N );
   }
 
-  void Initialize(const size_t write_position) {
-    send_position = write_position;
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  bool IsReadyForPut() {
+    FlushFinalizedSends();
+    return pending_sends < N;
   }
 
-  //todo rename
-  [[noreturn]] void Pop(const size_t count) {
-    throw "bad Pop on IsendDuct";
+  [[noreturn]] size_t CountUnconsumedGets() const {
+    throw "CountUnconsumedGets called on ImmediateSendDuct";
   }
 
-  [[noreturn]] size_t GetPending() {
-    throw "bad GetPending on IsendDuct";
+  [[noreturn]] size_t ConsumeGets(const size_t requested) const {
+    throw "ConsumeGets called on ImmediateSendDuct";
   }
 
-  size_t GetAvailableCapacity() {
-    Flush();
-    return N - pending;
-  }
+  [[noreturn]] const T& Get() const { throw "Get called on ImmediateSendDuct"; }
 
-  T GetElement(const size_t n) const { return buffer[n]; }
-
-  const void * GetPosition(const size_t n) const { return &buffer[n]; }
-
-  void SetElement(const size_t n, const T & val) { buffer[n] = val; }
-
-  static std::string GetType() { return "IsendDuct"; }
+  static std::string GetType() { return "ImmediateSendDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("pending_t pending", (size_t) pending) << std::endl;
+    ss << format_member("size_t pending_sends", pending_sends) << std::endl;
     ss << format_member("InterProcAddress address", address) << std::endl;
     ss << format_member("size_t send_position", send_position);
     return ss.str();
@@ -204,4 +234,5 @@ public:
 
 };
 
+} // namespace internal
 } // namespace uit

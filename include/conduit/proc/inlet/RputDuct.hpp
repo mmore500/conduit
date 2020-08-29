@@ -6,20 +6,19 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
-#include "../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../distributed/mpi_utils.hpp"
-#include "../../distributed/RDMAWindowManager.hpp"
-#include "../../utility/CircularIndex.hpp"
-#include "../../utility/identity.hpp"
-#include "../../utility/print_utils.hpp"
-#include "../../utility/WarnOnce.hpp"
+#include "../../../distributed/mpi_utils.hpp"
+#include "../../../distributed/RDMAWindowManager.hpp"
+#include "../../../distributed/Request.hpp"
+#include "../../../utility/CircularIndex.hpp"
+#include "../../../utility/identity.hpp"
+#include "../../../utility/print_utils.hpp"
+#include "../../../utility/WarnOnce.hpp"
 
-#include "../config.hpp"
-
-#include "InterProcAddress.hpp"
-#include "SharedBackEnd.hpp"
+#include "../../InterProcAddress.hpp"
+#include "../backend/RdmaBackEnd.hpp"
 
 namespace uit {
 
@@ -32,134 +31,170 @@ namespace uit {
 template<typename ImplSpec>
 class RputDuct {
 
+public:
+
+  using BackEndImpl = uit::internal::RdmaBackEnd<ImplSpec>;
+
+private:
+
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  using pending_t = size_t;
   using buffer_t = emp::array<T, N>;
+  buffer_t buffer{};
+
   using index_t = CircularIndex<N>;
+  index_t put_position{};
 
-  pending_t pending{0};
-  buffer_t buffer;
-  //TODO do we need a buffer if we're just overwriting on the other end?
-
-  emp::array<MPI_Request, N> send_requests;
-#ifndef NDEBUG
-  // most vexing parse :/
-  emp::vector<char> request_states=emp::vector<char>(N, false);
-#endif
+  emp::array<uit::Request, N> put_requests;
+  size_t pending_puts{};
 
   const uit::InterProcAddress address;
-  std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end;
 
-  MPI_Request target_offset_request;
+  std::shared_ptr<BackEndImpl> back_end;
+
+  uit::Request target_offset_request;
   int target_offset;
 
-  index_t send_position{0};
+  /*
+   * notes
+   *
+   * key:
+   * - R = open put request
+   * - N = put position (where next put request will go)
+   * - S = stalest request position
+   * initial state:
+   * ```
+   * : S :
+   * : N :
+   * |   |   |   |   |   |   |   |   |   |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * after one put posted:
+   * ```
+   * : S : N :
+   * | R |   |   |   |   |   |   |   |   |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * after another put posted:
+   * ```
+   * : S :   : N :
+   * | R | R |   |   |   |   |   |   |   |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * after a put finalized:
+   * ```
+   *     : S : N :
+   * |   | R |   |   |   |   |   |   |   |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * possible almost-full buffer arrangement:
+   * ```
+   * : S :                               : N :
+   * | R | R | R | R | R | R | R | R | R |   |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * one more put posted:
+   * ```
+   * : N :
+   * : S :
+   * | R | R | R | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * one put finalized:
+   * ```
+   * : N : S :
+   * |   | R | R | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * another put finalized:
+   * ```
+   * : N :   : S :
+   * |   |   | R | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   */
 
-  void RequestSend() {
+  void PostPut() {
 
     // make sure that target offset has been received
-    emp_assert([this](){
-      int flag{};
-      verify(MPI_Test(
-        &target_offset_request,
-        &flag,
-        MPI_STATUS_IGNORE
-      ));
-      return flag;
-    }());
+    emp_assert( uit::test_completion(target_offset_request) );
 
     // TODO handle more than one at a time
-    emp_assert(
-      request_states[send_position] == false,
-      send_position,
-      pending,
-      format_member("*this", *this)
-    );
+    emp_assert( uit::test_null(put_requests[put_position]) );
 
-    back_end->GetWindowManager().LockExclusive(address.GetOutletProc());
+    back_end->GetWindowManager().LockExclusive( address.GetOutletProc() );
 
     back_end->GetWindowManager().Rput(
       address.GetOutletProc(),
-      &buffer[send_position],
+      &buffer[put_position],
       target_offset,
-      &send_requests[send_position]
+      &put_requests[put_position]
     );
 
-    back_end->GetWindowManager().Unlock(address.GetOutletProc());
+    back_end->GetWindowManager().Unlock( address.GetOutletProc() );
 
-#ifndef NDEBUG
-    request_states[send_position] = true;
-#endif
-    ++pending;
-    ++send_position;
+    emp_assert( !uit::test_null(put_requests[put_position]) );
+
+    ++put_position;
+    ++pending_puts;
 
   }
 
-  // AcceptSend Take
-  bool ConfirmSend() {
+  index_t CalcStalestPutPos() const { return put_position - pending_puts; }
 
-    int flag{};
+  bool TryFinalizePut() {
+    emp_assert( !uit::test_null(put_requests[CalcStalestPutPos()]) );
 
-    emp_assert(
-      request_states[send_position - pending],
-      send_position,
-      pending,
-      format_member("*this", *this)
-    );
-    verify(MPI_Test(
-      &send_requests[send_position - pending],
-      &flag,
-      MPI_STATUS_IGNORE
-    ));
-#ifndef NDEBUG
-    if (flag) request_states[send_position - pending] = false;
-#endif
-
-    if (flag) --pending;
-
-    return flag;
+    if (uit::test_completion( put_requests[CalcStalestPutPos()] )) {
+      --pending_puts;
+      emp_assert( uit::test_null(put_requests[CalcStalestPutPos() - 1]) );
+      return true;
+    } else return false;
 
   }
 
-  void CancelSend() {
+  void CancelPendingPut() {
+    emp_assert(!uit::test_null( put_requests[CalcStalestPutPos()] ));
 
-    emp_assert(
-      request_states[send_position - pending],
-      send_position,
-      pending,
-      format_member("*this", *this)
-    );
-    verify(MPI_Cancel(
-      &send_requests[send_position - pending]
-    ));
-#ifndef NDEBUG
-    request_states[send_position - pending] = false;
-#endif
+    uit::verify(MPI_Cancel( &put_requests[CalcStalestPutPos()] ));
+    uit::verify(MPI_Request_free( &put_requests[CalcStalestPutPos()] ));
 
-    --pending;
+    emp_assert(uit::test_null( put_requests[CalcStalestPutPos()] ));
 
+    --pending_puts;
   }
 
-  void Flush() { while (pending && ConfirmSend()); }
+  void FlushFinalizedPuts() { while (pending_puts && TryFinalizePut()); }
 
 public:
 
-  // TODO check if is inlet proc
   RputDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end_
+    std::shared_ptr<BackEndImpl> back_end_
   ) : address(address_)
   , back_end(back_end_)
   {
+
+    emp_assert( std::all_of(
+      std::begin(put_requests),
+      std::end(put_requests),
+      [](const auto& req){ return uit::test_null( req ); }
+    ) );
 
     if (uit::get_rank(address.GetComm()) == address.GetInletProc()) {
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(address.GetOutletProc(), 0);
 
       // we'll emp_assert later to make sure it actually completed
-      verify(MPI_Irecv(
+      uit::verify(MPI_Irecv(
         &target_offset, // void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype
@@ -170,16 +205,6 @@ public:
       ));
     }
 
-    emp_assert(
-      std::none_of(
-        std::begin(request_states),
-        std::end(request_states),
-        identity
-      ),
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      format_member("*this", *this)
-    );
-
     static const uit::WarnOnce warning{
       "RputDuct is experimental and may be unreliable"
     };
@@ -187,55 +212,47 @@ public:
   }
 
   ~RputDuct() {
-    Flush();
-    while (pending) CancelSend();
-    emp_assert(
-      std::none_of(
-        std::begin(request_states),
-        std::end(request_states),
-        identity
-      ),
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      format_member("*this", *this)
-    );
+    FlushFinalizedPuts();
+    while (pending_puts) CancelPendingPut();
+    emp_assert( std::all_of(
+      std::begin(put_requests),
+      std::end(put_requests),
+      [](const auto& req){ return uit::test_null( req ); }
+    ) );
   }
 
-  //todo rename
-  void Push() {
-
-    emp_assert(
-      pending < N,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("pending: ", pending)
-    );
-
-    RequestSend();
-
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  void Put(const T& val) {
+    emp_assert( pending_puts < N );
+    emp_assert( uit::test_null( put_requests[put_position] ) );
+    buffer[put_position] = val;
+    PostPut();
+    emp_assert( pending_puts <= N );
   }
 
-  void Initialize(const size_t write_position) {
-    send_position = write_position;
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  bool IsReadyForPut() {
+    FlushFinalizedPuts();
+    return pending_puts < N;
   }
 
-  //todo rename
-  [[noreturn]] void Pop(const size_t count) {
-    throw "bad Pop on RputDuct";
+  [[noreturn]] size_t CountUnconsumedGets() const {
+    throw "CountUnconsumedGets called on RputDuct";
   }
 
-  [[noreturn]] size_t GetPending() {
-    throw "bad GetPending on RputDuct";
+  [[noreturn]] size_t ConsumeGets(const size_t requested) const {
+    throw "ConsumeGets called on RputDuct";
   }
 
-  size_t GetAvailableCapacity() {
-    Flush();
-    return N - pending;
-  }
-
-  T GetElement(const size_t n) const { return buffer[n]; }
-
-  const void * GetPosition(const size_t n) const { return &buffer[n]; }
-
-  void SetElement(const size_t n, const T & val) { buffer[n] = val; }
+  [[noreturn]] const T& Get() const { throw "Get called on RputDuct"; }
 
   static std::string GetType() { return "RputDuct"; }
 
@@ -244,9 +261,9 @@ public:
     ss << GetType() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("pending_t pending", (size_t) pending) << std::endl;
+    ss << format_member("size_t pending_puts", pending_puts) << std::endl;
     ss << format_member("InterProcAddress address", address) << std::endl;
-    ss << format_member("size_t send_position", send_position);
+    ss << format_member("size_t put_position", put_position);
     return ss.str();
   }
 

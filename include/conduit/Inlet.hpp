@@ -23,7 +23,7 @@ namespace uit {
  * Allows user to initiate
  *
  *  - potentially-blocking, assured transmisison via `Put`, or
- *  - non-blocking, potentially-dropped transmission via `MaybePut`.
+ *  - non-blocking, potentially-dropped transmission via `TryPut`.
  *
  * An `Inlet` holds a `std::shared_ptr` to a `Duct` object, which manages data
  * transmission from the `Inlet`.
@@ -62,75 +62,49 @@ class Inlet {
   constexpr inline static size_t N{ImplSpec::N};
 
 #ifndef NDEBUG
-  OccupancyCaps caps;
+  uit::OccupancyCaps caps;
 #endif
 
-  using index_t = CircularIndex<N>;
-
-  // TODO this should be internal state to the duct
-  index_t write_position{0};
-
-  // number of times the inlet has been written to
-  size_t successful_write_count{0};
+  using index_t = uit::CircularIndex<N>;
 
   /// TODO.
   using duct_t = internal::Duct<ImplSpec>;
   std::shared_ptr<duct_t> duct;
-  // number of times write attempts have blocked due to buffer space
-  size_t blocked_write_count{0};
 
-  // number of times write attempts have dropped due to buffer space
-  size_t dropped_write_count{0};
+  /// How many put operations have been performed?
+  size_t successful_put_count{};
 
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  size_t GetAvailableCapacity() { return duct->GetAvailableCapacity(); }
+  /// How many times has SurePut blocked?
+  size_t blocked_put_count{};
+
+  // How many TryPut calls have dropped?
+  size_t dropped_put_count{};
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  T GetElement(const size_t n) const { return duct->GetElement(n); }
+  const T& Get() const { return duct->Get(); }
 
   /**
    * TODO.
    *
-   * @param n
    * @param val
-   * @return TODO.
    */
-  void SetElement(const size_t n, const T& val) { duct->SetElement(n, val); }
+  void Put(const T& val) { duct->Put(val); }
 
   /**
    * TODO.
    */
-  void Advance() {
+  void ConsumeGets(const size_t n) {
 #ifndef NDEBUG
-    const OccupancyGuard guard{caps.Get("Advance", 1)};
+    const uit::OccupancyGuard guard{caps.Get("ConsumeGets", 1)};
 #endif
-
-    ++write_position;
-    duct->Push();
-    ++successful_write_count;
+    duct->ConsumeGets(n);
+    ++successful_put_count;
   }
 
-  /**
-   * TODO.
-   *
-   * @param val TODO.
-   */
-  void DoPut(const T& val) {
-#ifndef NDEBUG
-    const OccupancyGuard guard{caps.Get("DoPut", 1)};
-#endif
-
-    SetElement(write_position, val);
-    Advance();
-  }
 
 public:
 
@@ -140,7 +114,7 @@ public:
    * @param duct_ TODO.
    */
   Inlet(
-    std::shared_ptr<internal::Duct<ImplSpec>> duct_
+    std::shared_ptr<duct_t> duct_
   ) : duct(duct_) { ; }
 
   // potentially blocking
@@ -149,15 +123,15 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
-#ifndef NDEBUG
-    const OccupancyGuard guard{caps.Get("Put", 1)};
-#endif
+  void SurePut(const T& val) {
+    #ifndef NDEBUG
+      const uit::OccupancyGuard guard{caps.Get("SurePut", 1)};
+    #endif
 
-    blocked_write_count += IsFull();
-    while (IsFull());
+    blocked_put_count += !IsReadyForPut();
+    while (!IsReadyForPut());
 
-    DoPut(val);
+    Put(val);
 
   }
 
@@ -167,17 +141,17 @@ public:
    *
    * @param val TODO.
    */
-  bool MaybePut(const T& val) {
-#ifndef NDEBUG
-    const OccupancyGuard guard{caps.Get("MaybePut", 1)};
-#endif
+  bool TryPut(const T& val) {
+    #ifndef NDEBUG
+      const uit::OccupancyGuard guard{caps.Get("TryPut", 1)};
+    #endif
 
-    if (IsFull()) {
-      ++dropped_write_count;
+    if (!IsReadyForPut()) {
+      ++dropped_put_count;
       return false;
     }
 
-    DoPut(val);
+    Put(val);
 
     return true;
 
@@ -185,38 +159,31 @@ public:
 
   /**
    * TODO.
+   *
+   * @return TODO.
    */
-  void Prime() {
-    __builtin_prefetch(duct->GetPosition(write_position+1), 0);
-  }
+  bool IsReadyForPut() { return duct->IsReadyForPut(); }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetSuccessfulWriteCount() const { return successful_write_count; }
+  size_t GetSuccessfulPutCount() const { return successful_put_count; }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetBlockedWriteCount() const { return blocked_write_count; }
+  size_t GetBlockedPutCount() const { return blocked_put_count; }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetDroppedWriteCount() const { return dropped_write_count; }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsFull() { return 0 == GetAvailableCapacity(); }
+  size_t GetDroppedPutCount() const { return dropped_put_count; }
 
   /**
    * TODO.
@@ -227,9 +194,7 @@ public:
    */
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
-    emp_assert(GetAvailableCapacity() == N);
-    duct->template EmplaceDuct<WhichDuct>(std::forward<Args>(args)...);
-    duct->Initialize(write_position);
+    duct->template EmplaceImpl<WhichDuct>(std::forward<Args>(args)...);
   }
 
   /**
@@ -241,7 +206,6 @@ public:
    */
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
-    emp_assert(GetAvailableCapacity() == N);
     duct = std::make_shared<duct_t>(
       std::in_place_type_t<WhichDuct>{},
       std::forward<Args>(args)...
@@ -253,7 +217,7 @@ public:
    *
    * @return TODO.
    */
-  typename internal::Duct<ImplSpec>::uid_t GetDuctUID() const {
+  typename duct_t::uid_t GetDuctUID() const {
     return duct->GetUID();
   }
 
@@ -264,32 +228,18 @@ public:
    */
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member("std::shared_ptr<internal::Duct<ImplSpec>> duct", *duct) << std::endl;
+    ss << format_member("duct_t duct", *duct) << std::endl;
     ss << format_member(
-      "GetElement(write_position - 1)",
-      GetElement(write_position - 1)
+      "size_t successful_put_count",
+      successful_put_count
     ) << std::endl;
     ss << format_member(
-      "GetElement(write_position)",
-      GetElement(write_position)
-    ) << std::endl;
-    ss << format_member(
-      "GetElement(write_position + 1)",
-      GetElement(write_position + 1)
-    ) << std::endl;
-
-    ss << format_member("size_t write_position", write_position) << std::endl;
-    ss << format_member(
-      "size_t successful_write_count",
-      successful_write_count
-    ) << std::endl;
-    ss << format_member(
-      "size_t dropped_write_count",
-      dropped_write_count
+      "size_t dropped_put_count",
+      dropped_put_count
     ) << std::endl;;
     ss << format_member(
-      "size_t blocked_write_count",
-      blocked_write_count
+      "size_t blocked_put_count",
+      blocked_put_count
     );
     return ss.str();
   }

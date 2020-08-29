@@ -1,5 +1,7 @@
 #pragma once
 
+#include <sstream>
+
 // TODO refactor this to preserve levelization
 #include "../conduit/config.hpp"
 
@@ -17,6 +19,12 @@ public:
 
   operator const T&() const { return val; }
   operator T&() { return val; }
+
+  std::string ToString() const {
+    std::stringstream ss;
+    ss << val;
+    return ss.str();
+  }
 
 };
 

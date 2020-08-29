@@ -6,18 +6,18 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
-#include "../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../distributed/mpi_utils.hpp"
-#include "../../utility/CircularIndex.hpp"
-#include "../../utility/identity.hpp"
-#include "../../utility/print_utils.hpp"
+#include "../../../distributed/mpi_utils.hpp"
+#include "../../../distributed/Request.hpp"
+#include "../../../utility/CircularIndex.hpp"
+#include "../../../utility/identity.hpp"
+#include "../../../utility/print_utils.hpp"
 
-#include "../config.hpp"
+#include "../../InterProcAddress.hpp"
 
-#include "InterProcAddress.hpp"
-#include "SharedBackEnd.hpp"
+#include "../backend/MockBackEnd.hpp"
 
 namespace uit {
 
@@ -30,206 +30,313 @@ namespace uit {
 template<typename ImplSpec>
 class IrecvDuct {
 
+public:
+
+  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
+
+private:
+
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  using pending_t = size_t;
+  size_t pending_gets{};
+
   using buffer_t = emp::array<T, N>;
-  using index_t = CircularIndex<N>;
+  buffer_t buffer{};
 
-  pending_t pending{0};
-  buffer_t buffer;
+  emp::array<uit::Request, N> receive_requests;
 
-  emp::array<MPI_Request, N> receive_requests;
-#ifndef NDEBUG
-  // most vexing parse :/
-  emp::vector<char> request_states=emp::vector<char>(N, false);
-#endif
+  // skip first to allow for default-constructed initial get
+  using index_t = uit::CircularIndex<N>;
+  index_t freshest_receive_pos{};
 
   const uit::InterProcAddress address;
 
-  index_t receive_position{0};
 
-  void RequestReceive() {
-    emp_assert(
-      request_states[receive_position] == false,
-      receive_position,
-      pending
-    );
-    verify(MPI_Irecv(
-      &buffer[receive_position],
+  /*
+   * notes
+   *
+   * key:
+   * - R = open receive request
+   * - P = pending get
+   *
+   * - G = current get position
+   * - S = stalest receive position
+   * - F = freshest receive position (1 before where next Request will go)
+   *
+   * initial state:
+   * ```
+   * : G : S :                           : F :
+   * |   | R | R | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * one receive fulfilled:
+   * ```
+   * : G :   : S :                       : F :
+   * |   | P | R | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * another receive fulfilled:
+   * ```
+   * : G :       : S :                   : F :
+   * |   | P | P | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * one get consumed:
+   * ```
+   * : F : G :   : S :
+   * | R |   | P | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * another get consumed:
+   * ```
+   *     : F : G : S :
+   * | R | R |   | R | R | R | R | R | R | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * possible almost maxed-out pending gets state:
+   * ```
+   *                                     : S :
+   * : G :                               : F :
+   * |   | P | P | P | P | P | P | P | P | R |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * another possible almost maxed-out pending gets state:
+   * ```
+   * : S :
+   * : F : G :
+   * | R |   | P | P | P | P | P | P | P | P |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * possible maxed-out pending gets state:
+   * ```
+   * : S :
+   * : G :                               : F :
+   * |   | P | P | P | P | P | P | P | P | P |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   * another possible maxed-out pending gets state:
+   * ```
+   *     : S :
+   * : F : G :
+   * | P |   | P | P | P | P | P | P | P | P |
+   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
+   * ```
+   *
+   *
+   * want to test requests from `S` to `F`
+   * 1. no requests available
+   *  - true if `pending_gets == N - 1`
+   *  - return 0
+   * 2. contiguous requests case
+   *  - true if `S <= F` and requests are available
+   *  - test from `S` to `F + 1` (non-inclusive)
+   * 3. wraparound requests case
+   *  - true if `F > S` and requests are available
+   *  - test from `S` to `N` (non-inclusive)
+   *  - if `result == N - S` then test from `0 to F + 1` (non-inclusive)
+   */
+
+  index_t CalcGetPosition() const { return freshest_receive_pos + 1; }
+
+  index_t CalcStalestReceivePos() const {
+    return CalcGetPosition() + pending_gets + 1;
+  }
+
+  bool ReceiveRequestsAreContiguous() const {
+    emp_assert( pending_gets < N - 1 );
+    return CalcStalestReceivePos() <= freshest_receive_pos;
+  }
+
+  void PostReceiveRequest() {
+    ++freshest_receive_pos;
+
+    emp_assert( uit::test_null( receive_requests[freshest_receive_pos] ) );
+    uit::verify(MPI_Irecv(
+      &buffer[freshest_receive_pos],
       sizeof(T),
-      MPI_BYTE, // TODO template on T
+      MPI_BYTE,
       address.GetInletProc(),
       address.GetTag(),
       address.GetComm(),
-      &receive_requests[receive_position]
+      &receive_requests[freshest_receive_pos]
     ));
-#ifndef NDEBUG
-    request_states[receive_position] = true;
-#endif
-    ++receive_position;
-  }
-
-  // AcceptReceive Take
-  void ConfirmReceive() {
-
-    emp_assert(
-      request_states[receive_position],
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      receive_position,
-      pending,
-      format_member("*this", *this)
-    );
-#ifndef NDEBUG
-    request_states[receive_position] = false;
-#endif
-
-    RequestReceive();
-    ++pending;
+    emp_assert( !uit::test_null( receive_requests[freshest_receive_pos] ) );
 
   }
 
-  void CancelReceive(const size_t position) {
+  void CancelReceiveRequest(const size_t pos) {
+    emp_assert( !uit::test_null( receive_requests[pos] ) );
 
-    emp_assert(
-      request_states[position],
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      position,
-      receive_position,
-      pending,
-      format_member("*this", *this)
-    );
+    uit::verify(MPI_Cancel( &receive_requests[pos] ));
+    uit::verify(MPI_Request_free( &receive_requests[pos] ));
 
-    verify(MPI_Cancel(
-      &receive_requests[position]
+    emp_assert( uit::test_null( receive_requests[pos] ) );
+  }
+
+  void CancelOpenReceiveRequests() {
+    for (
+      index_t idx = CalcStalestReceivePos();
+      idx != CalcGetPosition();
+      ++idx
+    ) CancelReceiveRequest(idx);
+  }
+
+  // to is non-inclusive
+  size_t TestRequests(const size_t from, const size_t to, const int context) {
+    emp_assert(from <= to);
+    emp_assert(to - from < N);
+    emp_assert( std::none_of(
+      std::begin(receive_requests) + from,
+      std::begin(receive_requests) + to,
+      [](const auto& req){ return uit::test_null( req ); }
+    ) );
+
+    thread_local emp::array<int, N> out_indices; // ignored
+    int received_count{};
+
+    uit::verify(MPI_Testsome(
+      to - from, // int count
+      &receive_requests[from], // MPI_Request array_of_requests[]
+      &received_count, // int *outcount
+      out_indices.data(), // int *indices
+      MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
     ));
-#ifndef NDEBUG
-    request_states[position] = false;
-#endif
 
+    emp_assert( std::all_of(
+      std::begin(receive_requests) + from,
+      std::begin(receive_requests) + received_count,
+      [](const auto& req){ return uit::test_null( req ); }
+    ) );
+
+    return received_count;
   }
 
-  void CancelReceives() {
+  // returns number of requests fulfilled
+  void TryFulfillReceiveRequests() {
+    pending_gets += [this]() -> size_t {
 
-    for (size_t position = 0; position < N; ++position) {
-      CancelReceive(position);
-    }
+      if ( pending_gets == N - 1 ) {
+        return 0;
+      } else if ( ReceiveRequestsAreContiguous() ) {
+        return TestRequests(
+          CalcStalestReceivePos(),
+          static_cast<size_t>(freshest_receive_pos) + 1,
+          0
+        );
+      } else {
+        size_t res = TestRequests( CalcStalestReceivePos(), N, 1 );
 
-  }
+        if ( res == N - CalcStalestReceivePos() ) res += TestRequests(
+          0,
+          static_cast<size_t>(freshest_receive_pos) + 1,
+          2
+        );
 
-  void Flush() {
-    int count{};
-    do {
-      thread_local emp::array<int, N> out_indices;
+        return res;
+      }
 
-      MPI_Testsome(
-        N, // int count
-        receive_requests.data(), // MPI_Request array_of_requests[]
-        &count, // int *outcount
-        out_indices.data(), // int *indices
-        MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
-      );
-      for (int i = 0; i < count; ++i) ConfirmReceive();
-
-    } while (count == N);
+    }();
   }
 
 public:
 
   IrecvDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end
+    std::shared_ptr<BackEndImpl> back_end
   ) : address(address_) {
-    for (size_t i = 0; i < N; ++i) RequestReceive();
-    emp_assert(
-      std::all_of(
-        std::begin(request_states),
-        std::end(request_states),
-        identity
-      ),
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      format_member("*this", *this)
-    );
+
+    emp_assert( std::all_of(
+      std::begin(buffer),
+      std::end(buffer),
+      [](const auto& val){ return val == T{}; }
+    ) );
+
+    for (size_t i = 1; i < N; ++i) PostReceiveRequest();
+    emp_assert( std::none_of(
+      std::next(std::begin(receive_requests)),
+      std::end(receive_requests),
+      [](const auto& req){ return uit::test_null( req ); }
+    ) );
   }
 
   ~IrecvDuct() {
-    Flush();
-    CancelReceives();
-    emp_assert(
-      std::none_of(
-        std::begin(request_states),
-        std::end(request_states),
-        identity
-      ),
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      format_member("*this", *this)
-    );
+    while ( CountUnconsumedGets() ) ConsumeGets( CountUnconsumedGets() );
+    CancelOpenReceiveRequests();
+    emp_assert( std::all_of(
+      std::begin(receive_requests),
+      std::end(receive_requests),
+      [](const auto& req){ return uit::test_null( req ); }
+    ) );
   }
 
-  void Initialize(const size_t write_position) {
-    for (size_t i = 0; i < write_position; ++i) {
-      emp_assert(
-        request_states[receive_position],
-        [](){ error_message_mutex.lock(); return "locked"; }(),
-        receive_position,
-        format_member("*this", *this)
-      );
+  [[noreturn]] void Put(const T& val) const { throw "Put called on IrecvDuct"; }
 
-      verify(MPI_Request_free(&receive_requests[i]));
+  [[noreturn]] bool IsReadyForPut() const {
+    throw "IsReadyForPut called on IrecvDuct";
+  }
 
-#ifndef NDEBUG
-      request_states[receive_position] = false;
-#endif
-      RequestReceive();
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t CountUnconsumedGets() {
+    TryFulfillReceiveRequests();
+    return pending_gets;
+  }
+
+  /**
+   * TODO.
+   *
+   * @param num_requested TODO.
+   * @return number items consumed.
+   */
+  size_t ConsumeGets(const size_t num_requested) {
+
+    size_t requested_countdown{ num_requested };
+    size_t batch_countdown{ CountUnconsumedGets() };
+    bool full_batch = (batch_countdown == N - 1);
+
+    while ( batch_countdown-- && requested_countdown-- ) {
+
+      --pending_gets;
+      PostReceiveRequest();
+
+      if (full_batch && batch_countdown == 0) {
+        batch_countdown = CountUnconsumedGets();
+        full_batch = (batch_countdown == N - 1);
+      }
     }
+
+    return num_requested - requested_countdown;
   }
 
-  //todo rename
-  [[noreturn]] void Push() { throw "bad Push on IrecvDuct"; }
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  const T& Get() const { return buffer[CalcGetPosition()]; }
 
-  //todo rename
-  void Pop(const size_t count) {
-
-    emp_assert(
-      pending >= count,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      pending,
-      count,
-      format_member("*this", *this)
-    );
-
-    pending -= count;
-
-  }
-
-  size_t GetPending() {
-    Flush();
-    return pending;
-  }
-
-  [[noreturn]] size_t GetAvailableCapacity() {
-    throw "bad GetAvailableCapacity on IrecvDuct";
-  }
-
-  T GetElement(const size_t n) const { return buffer[n]; }
-
-  const void * GetPosition(const size_t n) const { return &buffer[n]; }
-
-  [[noreturn]] void SetElement(const size_t n, const T & val) {
-    throw "bad SetElement on IrecvDuct";
-  }
-
-  static std::string GetType() { return "IrecvDuct"; }
+  static std::string GetName() { return "IrecvDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << GetType() << std::endl;
+    ss << GetName() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("pending_t pending", (size_t) pending) << std::endl;
+    ss << format_member("size_t pending_gets", pending_gets) << std::endl;
     ss << format_member("InterProcAddress address", address) << std::endl;
-    ss << format_member("size_t receive_position", receive_position);
+    ss << format_member("size_t freshest_receive_pos", freshest_receive_pos);
     return ss.str();
   }
 

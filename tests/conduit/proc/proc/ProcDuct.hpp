@@ -7,7 +7,6 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "conduit/config.hpp"
 #include "conduit/ImplSpec.hpp"
 #include "distributed/assign_utils.hpp"
 #include "distributed/MPIGuard.hpp"
@@ -28,7 +27,9 @@ const uit::MPIGuard guard;
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
-TEST_CASE("Unmatched gets") {
+#define REPEAT for (size_t rep = 0; rep < 2; ++rep)
+
+decltype(auto) make_dyadic_bundle() {
 
   uit::Mesh<Spec> mesh{
     uit::DyadicTopologyFactory{}(uit::get_nprocs()),
@@ -37,95 +38,33 @@ TEST_CASE("Unmatched gets") {
   };
 
   auto bundles = mesh.GetSubmesh();
-
   REQUIRE( bundles.size() == 1 );
 
-  uit::Outlet<Spec> input = bundles[0].GetInput(0);
-  uit::Inlet<Spec> output = bundles[0].GetOutput(0);
+  return std::tuple{ bundles[0].GetInput(0), bundles[0].GetOutput(0) };
 
-  output.MaybePut(42);
-  // this barrier is necessary for RDMA... TODO why?
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-  std::this_thread::sleep_for(std::chrono::seconds{1});
+};
 
-
-  for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
-    REQUIRE( input.GetCurrent() == 42 );
-  }
-
-}
-
-TEST_CASE("Unmatched puts") {
+decltype(auto) make_producer_consumer_bundle() {
 
   uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(uit::get_nprocs()),
+    uit::ProConTopologyFactory{}(uit::get_nprocs()),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignAvailableProcs{}
   };
 
-  auto bundles = mesh.GetSubmesh();
+  auto bundles = mesh.GetSubmesh(0);
 
   REQUIRE( bundles.size() == 1 );
+  REQUIRE(
+    (bundles[0].GetInputOrNullopt(0) || bundles[0].GetOutputOrNullopt(0))
+  );
 
-  uit::Outlet<Spec> input = bundles[0].GetInput(0);
-  uit::Inlet<Spec> output = bundles[0].GetOutput(0);
-
-  for (MSG_T i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
-    output.MaybePut(i);
-  }
-
-  // this barrier is necessary for RDMA... TODO why?
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-  std::this_thread::sleep_for(std::chrono::seconds{1});
-
-  REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
-
-  // TODO why are these extra GetCurrent's necessary for IMsg?
-  for(size_t i = 0; i < 10; ++i) input.GetCurrent();
-
-  REQUIRE( input.GetCurrent() >= DEFAULT_BUFFER - 1 );
-  REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
-
-}
-
-TEST_CASE("Validity") {
-
-  uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(uit::get_nprocs()),
-    uit::AssignIntegrated<uit::thread_id_t>{},
-    uit::AssignAvailableProcs{}
+  return std::tuple{
+    bundles[0].GetInputOrNullopt(0),
+    bundles[0].GetOutputOrNullopt(0)
   };
 
-  auto bundles = mesh.GetSubmesh();
-
-  REQUIRE( bundles.size() == 1 );
-
-  uit::Outlet<Spec> input = bundles[0].GetInput(0);
-  uit::Inlet<Spec> output = bundles[0].GetOutput(0);
-
-  int last{};
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-  for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
-    output.MaybePut(msg);
-    const MSG_T current = input.GetCurrent();
-    REQUIRE( current >= 0 );
-    REQUIRE( current < 10 * std::kilo{}.num );
-    REQUIRE( last <= current );
-    last = current;
-  }
-
-  // all puts must be complete for next part of the test
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-
-  // flush
-  for (size_t i = 0; i < std::kilo{}.num; ++i) input.GetCurrent();
-
-  for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
-    REQUIRE( input.GetCurrent() >= 0 );
-    REQUIRE( input.GetCurrent() == input.GetCurrent() );
-  }
-
-}
+};
 
 decltype(auto) make_ring_bundle() {
   uit::Mesh<Spec> mesh{
@@ -138,141 +77,212 @@ decltype(auto) make_ring_bundle() {
 
   REQUIRE( bundles.size() == 1);
 
-  uit::Outlet<Spec> input = bundles[0].GetInput(0);
-  uit::Inlet<Spec> output = bundles[0].GetOutput(0);
-
-  return std::tuple{output, input};
+  return std::tuple{ bundles[0].GetInput(0), bundles[0].GetOutput(0) };
 
 }
 
-TEST_CASE("Ring Mesh") {
+TEST_CASE("Unmatched gets") { REPEAT {
 
-  auto [output, input] = make_ring_bundle();
+  auto [input, output] = make_dyadic_bundle();
 
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-
-  // check that everyone's connected properly
-  output.MaybePut(uit::get_rank());
-
-  // give enough time to "guarantee" message delivery
-  std::this_thread::sleep_for(std::chrono::seconds{1});
-  // this barrier is necessary for RDMA... TODO why?
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-
-  REQUIRE(
-    input.GetNext()
-    == uit::numeric_cast<MSG_T>(
-      uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
-    )
-  );
-
-  // setup for next test
-  output.MaybePut(0);
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-  std::this_thread::sleep_for(std::chrono::seconds{1});
-
-  // check that buffer wraparound works properly
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
+    REQUIRE( input.GetCurrent() == 0 );
+  }
 
-    output.MaybePut(i);
-    // nobody should see messages that haven't been sent yet
-    REQUIRE(input.GetCurrent() <= i);
-    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  uit::verify(MPI_Barrier( MPI_COMM_WORLD ));
+
+  output.SurePut(42);
+  REQUIRE( input.GetNext() == 42 );
+
+  for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
+    REQUIRE( input.GetCurrent() == 42 );
+  }
+
+} }
+
+TEST_CASE("Unmatched puts") { REPEAT {
+
+  auto [input, output] = make_dyadic_bundle();
+
+  for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(i);
+
+  if (input.GetCurrent() > 2 * DEFAULT_BUFFER) {
+    std::cout << rep << std::endl;
+    std::cout << input.GetNetFlux() << std::endl;
+  }
+  REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
+
+  uit::verify(MPI_Barrier( MPI_COMM_WORLD )); // todo why
+
+} }
+
+TEST_CASE("Eventual flush-out") { REPEAT {
+
+  auto [input, output] = make_dyadic_bundle();
+
+  for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(0);
+
+  while ( !output.TryPut( 1 ) ) {
+    const auto res{ input.GetCurrent() }; // operational!
+    REQUIRE( std::unordered_set{0, 1}.count(res) );
+  }
+
+  while ( input.GetCurrent() != 1 ) {
+    const auto res{ input.GetCurrent() }; // operational!
+    REQUIRE( std::unordered_set{0, 1}.count(res) );
+  }
+
+  REQUIRE( input.GetCurrent() == 1 );
+
+  uit::verify(MPI_Barrier( MPI_COMM_WORLD )); // todo why
+
+} }
+
+TEST_CASE("Validity") { REPEAT {
+
+  auto [input, output] = make_dyadic_bundle();
+
+  int last{};
+  for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
+
+    output.TryPut(msg);
+
+    const MSG_T current = input.GetCurrent();
+    REQUIRE( current >= 0 );
+    REQUIRE( current < 10 * std::kilo{}.num );
+    if ( last > current ) std::cout << msg;
+    REQUIRE( last <= current);
+
+    last = current;
 
   }
 
-  // give enough time to "guarantee" message delivery
-  // this barrier is necessary for RDMA... TODO why?
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-  std::this_thread::sleep_for(std::chrono::seconds{1});
+  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
 
-  // everyone should have gotten the final message by now
-  REQUIRE( input.GetCurrent() == 2 * DEFAULT_BUFFER  );
+} }
 
-}
+TEST_CASE("Ring Mesh connectivity") { REPEAT {
 
-std::pair<
-  std::optional< uit::Outlet<Spec> >,
-  std::optional< uit::Inlet<Spec> >
-> make_producer_consumer_bundle() {
+  auto [input, output] = make_ring_bundle();
 
-  uit::Mesh<Spec> mesh{
-    uit::ProConTopologyFactory{}(uit::get_nprocs()),
-    uit::AssignIntegrated<uit::thread_id_t>{},
-    uit::AssignAvailableProcs{}
-  };
+  // check that everyone's connected properly
+  output.TryPut(uit::get_rank());
 
-  auto bundles = mesh.GetSubmesh(0);
+  REQUIRE( input.GetNext() == uit::numeric_cast<MSG_T>(
+    uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+  ) );
 
-  REQUIRE( bundles.size() == 1 );
+  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
 
-  std::optional<uit::MeshNodeInput<Spec>> input = (
-    bundles[0].HasInputs()
-    ? std::optional{bundles[0].GetInput(0)}
-    : std::nullopt
-  );
-  std::optional<uit::MeshNodeOutput<Spec>> output = (
-    bundles[0].HasOutputs()
-    ? std::optional{bundles[0].GetOutput(0)}
-    : std::nullopt
-  );
+} }
 
-  return std::pair{input, output};
+TEST_CASE("Ring Mesh sequential consistency") { {
 
-};
+  auto [input, output] = make_ring_bundle();
 
-TEST_CASE("Producer-Consumer Mesh") {
+  REQUIRE(input.GetCurrent() == 0);
+
+  // long enough to check that buffer wraparound works properly
+  for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
+
+    uit::verify( MPI_Barrier( MPI_COMM_WORLD ) );
+    output.SurePut(i);
+    REQUIRE(input.GetNext() == i);
+
+  }
+
+  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+
+} }
+
+TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
 
   auto [input, output] = make_producer_consumer_bundle();
 
-  REQUIRE((input || output));
-
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-
   // check that everyone's connected properly
-  if (output) output->MaybePut(uit::get_rank());
-
-  // give enough time to "guarantee" message delivery
-  std::this_thread::sleep_for(std::chrono::seconds{1});
-  // this barrier is necessary for RDMA... TODO why?
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  if (output) output->SurePut(uit::get_rank());
 
   // did we get expected rank ID as message?
   if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
     // is odd process loop at end
-    REQUIRE( input->GetCurrent() == uit::get_rank());
+    REQUIRE( input->GetNext() == uit::get_rank());
   } else if (input) {
     // is consumer
     REQUIRE(
-      input->GetCurrent() == uit::numeric_cast<int>(
+      input->GetNext() == uit::numeric_cast<int>(
         uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
       )
     );
   } else REQUIRE( uit::get_rank() % 2 == 0 ); // is producer
 
-  // setup for next test
-  // this barrier is necessary for RDMA... TODO why?
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-  if (output) output->MaybePut(0);
-  std::this_thread::sleep_for(std::chrono::seconds{1});
+  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
 
-  // check that buffer wraparound works properly
-  for (MSG_T i = 0; i <= DEFAULT_BUFFER * 2; ++i) {
+} }
 
-    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+TEST_CASE("Producer-Consumer Mesh sequential consistency") { {
 
-    if (output) output->MaybePut(i);
+  auto [input, output] = make_producer_consumer_bundle();
 
-    // nobody should see messages that haven't been sent yet
-    if (input) REQUIRE(input->GetCurrent() <= i);
+  // outlet should be seeded with default-constructed T
+  if (input) REQUIRE( input->GetCurrent() == 0 );
+
+  // long enough to check that buffer wraparound works properly
+  for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
+
+    uit::verify( MPI_Barrier( MPI_COMM_WORLD ) );
+    if (output) output->SurePut(i);
+    if (input) REQUIRE( input->GetNext() == i );
 
   }
 
-  // give enough time to "guarantee" message delivery
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
-  std::this_thread::sleep_for(std::chrono::seconds{1});
+  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
 
-  // everyone should have gotten the final message by now
-  if (input) REQUIRE( input->GetCurrent() == DEFAULT_BUFFER * 2 );
+} }
 
-}
+TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
+
+  auto [input, output] = make_dyadic_bundle();
+  uit::verify( MPI_Barrier(MPI_COMM_WORLD) );
+
+  // check that everyone's connected properly
+  output.SurePut(uit::get_rank());
+
+  // did we get expected rank ID as message?
+  if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
+    // is connected to self (is odd process loop at end)
+    REQUIRE( input.GetNext() == uit::get_rank() );
+  } else {
+    // is connected to neighbor
+    REQUIRE( input.GetNext() == uit::numeric_cast<int>(
+      uit::circular_index(
+        uit::get_rank(),
+        uit::get_nprocs(),
+        // is pointing forwards or backwards
+        (uit::get_rank() % 2) ? -1 : 1
+      )
+    ) );
+  }
+
+  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+
+} }
+
+TEST_CASE("Dyadic Mesh sequential consistency") { {
+
+  auto [input, output] = make_dyadic_bundle();
+
+  // outlet should be seeded with default-constructed T
+  REQUIRE( input.GetCurrent() == 0 );
+
+  // long enough to check that buffer wraparound works properly
+  for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
+
+    uit::verify( MPI_Barrier( MPI_COMM_WORLD ) );
+    output.SurePut(i);
+    REQUIRE( input.GetNext() == i );
+
+  }
+
+  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+
+} }

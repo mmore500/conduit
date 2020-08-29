@@ -2,7 +2,7 @@
 
 #include <mpi.h>
 
-#include "../../distributed/mpi_utils.hpp"
+#include "../distributed/mpi_utils.hpp"
 
 namespace uit {
 

@@ -270,9 +270,9 @@ void audit_grid(
   for (tile = 0; tile < grid.size(); ++tile) {
     const auto & which = grid[tile];
 
-    successful_write_count = which.GetSuccessfulWriteCount();
-    blocked_write_count = which.GetBlockedWriteCount();
-    dropped_write_count = which.GetDroppedWriteCount();
+    successful_write_count = which.GetSuccessfulPutCount();
+    blocked_write_count = which.GetBlockedPutCount();
+    dropped_write_count = which.GetDroppedPutCount();
     read_count = which.GetReadCount();
     read_revision_count = which.GetReadRevisionCount();
     net_flux = which.GetNetFlux();

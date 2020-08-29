@@ -2,6 +2,8 @@
 
 #include <stddef.h>
 
+#include "../proc/backend/MockBackEnd.hpp"
+
 namespace uit {
 
 /**
@@ -19,6 +21,7 @@ public:
 
   using InletImpl = ThrowDuct<ImplSpec>;
   using OutletImpl = ThrowDuct<ImplSpec>;
+  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
 
   /**
    * TODO.
@@ -63,7 +66,7 @@ public:
    *
    * @param n TODO.
    */
-  [[noreturn]] void ConsumeGets(const size_t n) {
+  [[noreturn]] size_t ConsumeGets(const size_t n) {
     throw "ConsumeGets called on ThrowDuct";
   }
 

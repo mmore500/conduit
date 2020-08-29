@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <memory>
 #include <stddef.h>
 
 #include <mpi.h>
@@ -14,12 +15,11 @@
 #include "../../utility/identity.hpp"
 #include "../../utility/print_utils.hpp"
 
-#include "../config.hpp"
-
-#include "InterProcAddress.hpp"
-#include "SharedBackEnd.hpp"
+#include "../InterProcAddress.hpp"
+#include "../proc/backend/MockBackEnd.hpp"
 
 namespace uit {
+namespace internal {
 
 /**
  * TODO
@@ -27,65 +27,76 @@ namespace uit {
  * @tparam ImplSpec class with static and typedef members specifying
  * implementation details for the conduit framework.
  */
-template<typename ImplSpec>
-class SendDuct {
+template<typename BlockingSendFunctor, typename ImplSpec>
+class BlockingSendDuct {
+
+public:
+
+  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
+
+private:
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
   using buffer_t = emp::array<T, N>;
-  using index_t = CircularIndex<N>;
+  buffer_t buffer{};
 
-  buffer_t buffer;
+  using index_t = uit::CircularIndex<N>;
+  index_t send_position{};
 
   const uit::InterProcAddress address;
 
-  index_t send_position{0};
+  void PostSend() {
 
-  void DoSend() {
-    verify(MPI_Send(
+    uit::verify(BlockingSendFunctor{}(
       &buffer[send_position],
       sizeof(T),
-      MPI_BYTE, // TODO template on T
+      MPI_BYTE,
       address.GetOutletProc(),
       address.GetTag(),
       address.GetComm()
     ));
     ++send_position;
+
   }
 
 public:
 
-  SendDuct(
+  BlockingSendDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end
+    std::shared_ptr<BackEndImpl> back_end
   ) : address(address_)
   { ; }
 
-  ~SendDuct() {
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  void Put(const T& val) {
+    buffer[send_position] = val;
+    PostSend();
   }
 
-  //todo rename
-  void Push() { DoSend(); }
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  bool IsReadyForPut() const { return true; }
 
-  void Initialize(const size_t write_position) {
-    send_position = write_position;
+  [[noreturn]] size_t CountUnconsumedGets() const {
+    throw "CountUnconsumedGets called on BlockingSendDuct";
   }
 
-  //todo rename
-  [[noreturn]] void Pop(const size_t count) { throw "bad Pop on SendDuct"; }
+  [[noreturn]] size_t ConsumeGets(const size_t requested) {
+    throw "ConsumeGets called on BlockingSendDuct";
+  }
 
-  [[noreturn]] size_t GetPending() { throw "bad GetPending on SendDuct"; }
+  [[noreturn]] const T& Get() const { throw "Get called on BlockingSendDuct"; }
 
-  size_t GetAvailableCapacity() { return N; }
-
-  T GetElement(const size_t n) const { return buffer[n]; }
-
-  const void * GetPosition(const size_t n) const { return &buffer[n]; }
-
-  void SetElement(const size_t n, const T & val) { buffer[n] = val; }
-
-  static std::string GetType() { return "SendDuct"; }
+  static std::string GetType() { return "BlockingSendDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
@@ -99,4 +110,5 @@ public:
 
 };
 
+} // namespace internal
 } // namespace uit

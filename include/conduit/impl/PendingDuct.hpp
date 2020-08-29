@@ -5,14 +5,13 @@
 #include "../../../third-party/Empirical/source/base/assert.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../parallel/OccupancyCap.hpp"
+#include "../../parallel/OccupancyCaps.hpp"
 #include "../../parallel/OccupancyGuard.hpp"
 #include "../../utility/CircularIndex.hpp"
 #include "../../utility/print_utils.hpp"
 
-#include "../config.hpp"
-
 namespace uit {
+namespace internal {
 
 /**
  * TODO
@@ -20,20 +19,25 @@ namespace uit {
  * @tparam ImplSpec class with static and typedef members specifying
  * implementation details for the conduit framework.
  */
-template<typename ImplSpec>
+template<
+  typename PendingType,
+  typename BufferElementType,
+  typename ImplSpec
+>
 class PendingDuct {
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  using pending_t = size_t;
-  using buffer_t = emp::array<T, N>;
+  using buffer_t = emp::array<BufferElementType, N>;
 
-  pending_t pending{0};
-  buffer_t buffer;
+  PendingType pending_gets{};
+  uit::CircularIndex<N> put_position{};
+  uit::CircularIndex<N> get_position{};
+  buffer_t buffer{};
 
 #ifndef NDEBUG
-  mutable OccupancyCap cap{1};
+  mutable uit::OccupancyCaps caps;
 #endif
 
 public:
@@ -41,111 +45,83 @@ public:
   /**
    * TODO.
    *
-   * @param write_position TODO.
+   * @param val TODO.
    */
-  void Initialize(const size_t write_position) { ; }
-
-  /**
-   * TODO.
-   */
-  void Push() {
-
+  void Put(const T& val) {
     #ifndef NDEBUG
-      const OccupancyGuard guard{cap};
+      const OccupancyGuard guard{caps.Get("Put", 1)};
     #endif
-
+    ++pending_gets;
+    ++put_position;
+    buffer[put_position] = val;
     emp_assert(
-      pending < N,
+      pending_gets <= N,
       [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("pending: ", pending)
+      emp::to_string("pending_gets: ", pending_gets)
     );
-
-    ++pending;
   }
 
   /**
    * TODO.
    *
-   * @param count TODO.
+   * @return TODO.
    */
-  void Pop(const size_t count) {
+  bool IsReadyForPut() const { return pending_gets < N; }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t CountUnconsumedGets() const { return pending_gets; }
+
+  /**
+   * TODO.
+   *
+   * @param requested.
+   * @return num consumed.
+   */
+  size_t ConsumeGets(const size_t requested) {
     #ifndef NDEBUG
-      const OccupancyGuard guard{cap};
+      const OccupancyGuard guard{caps.Get("ConsumeGets", 1)};
     #endif
-
-    emp_assert(
-      pending >= count,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("pending: ", pending),
-      emp::to_string("count: ", count)
-    );
-
-    pending -= count;
-
+    const size_t num_consumed = std::min( requested, CountUnconsumedGets() );
+    get_position += num_consumed;
+    pending_gets -= num_consumed;
+    return num_consumed;
   }
 
   /**
    * TODO.
    *
+   * @return TODO.
    */
-  size_t GetAvailableCapacity() { return N - GetPending(); }
+  const T& Get() const { return buffer[get_position]; }
 
   /**
    * TODO.
    *
+   * @return TODO.
    */
-  size_t GetPending() {
-
-    #ifndef NDEBUG
-      const OccupancyGuard guard{cap};
-    #endif
-
-    return pending;
-  }
+  static std::string GetName() { return "PendingDuct"; }
 
   /**
    * TODO.
    *
-   * @param n TODO.
+   * @return TODO.
    */
-  T GetElement(const size_t n) const {
-
-    #ifndef NDEBUG
-      const OccupancyGuard guard{cap};
-    #endif
-
-    return buffer[n];
-  }
-
-  const void * GetPosition(const size_t n) const { return &buffer[n]; }
-
-  void SetElement(const size_t n, const T & val) {
-
-    #ifndef NDEBUG
-      const OccupancyGuard guard{cap};
-    #endif
-
-    buffer[n] = val;
-  }
-
-  static std::string GetType() { return "PendingDuct"; }
-
   std::string ToString() const {
-
-    #ifndef NDEBUG
-      const OccupancyGuard guard{cap};
-    #endif
-
     std::stringstream ss;
-    ss << GetType() << std::endl;
+    ss << GetName() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("pending_t pending", pending);
+    ss << format_member("pending_t pending_gets", pending_gets);
+    ss << format_member("pending_t get_position", get_position);
     return ss.str();
   }
 
 
 };
 
+} // namespace internal
 } // namespace uit

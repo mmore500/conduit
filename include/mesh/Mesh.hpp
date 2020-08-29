@@ -6,7 +6,6 @@
 #include <mpi.h>
 
 #include "../conduit/Duct.hpp"
-#include "../conduit/proc/SharedBackEnd.hpp"
 #include "../distributed/mpi_utils.hpp"
 #include "../utility/assign_utils.hpp"
 #include "../topology/Topology.hpp"
@@ -47,7 +46,7 @@ class Mesh {
   std::function<uit::thread_id_t(node_id_t)> thread_assignment;
   std::function<uit::proc_id_t(node_id_t)> proc_assignment;
 
-  using back_end_t = uit::SharedBackEnd<ImplSpec>;
+  using back_end_t = typename ImplSpec::ProcBackEnd;
   std::shared_ptr<back_end_t> back_end{ std::make_shared<back_end_t>() };
 
   void InitializeInterThreadDucts() {

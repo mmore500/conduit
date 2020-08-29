@@ -1,8 +1,9 @@
 #pragma once
 
-#include "../../distributed/RDMAWindowManager.hpp"
+#include "../../../distributed/RDMAWindowManager.hpp"
 
 namespace uit {
+namespace internal {
 
 /**
  * TODO
@@ -11,7 +12,7 @@ namespace uit {
  * implementation details for the conduit framework.
  */
 template<typename ImplSpec>
-class SharedBackEnd {
+class RdmaBackEnd {
 
   uit::RDMAWindowManager window_manager;
 
@@ -25,4 +26,5 @@ public:
 
 };
 
+} // namespace internal
 } // namespace uit

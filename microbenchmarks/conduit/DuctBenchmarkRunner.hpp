@@ -104,7 +104,7 @@ struct DuctMicrobenchRunner {
       // pump all the conduits once
       for (auto& node : submesh) {
         for (auto& output : node.GetOutputs()) {
-          output.MaybePut(previously_sent_msg);
+          output.TryPut(previously_sent_msg);
         }
         for (auto& input : node.GetInputs()) {
           current_received_msg = input.GetCurrent();
@@ -231,7 +231,7 @@ struct DuctMicrobenchRunner {
         // pump all the dconduits once
         for (auto& node : submesh) {
           for (auto& output : node.GetOutputs()) {
-            output.MaybePut(previously_sent_msg);
+            output.TryPut(previously_sent_msg);
           }
           for (auto& input : node.GetInputs()) {
             current_received_msg = input.GetCurrent();

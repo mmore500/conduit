@@ -2,6 +2,8 @@
 
 #include <stddef.h>
 
+#include "../proc/backend/MockBackEnd.hpp"
+
 namespace uit {
 
 /**
@@ -19,6 +21,7 @@ public:
 
   using InletImpl = NopDuct<ImplSpec>;
   using OutletImpl = NopDuct<ImplSpec>;
+  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
 
   /**
    * TODO.
@@ -61,7 +64,7 @@ public:
    *
    * @param n TODO.
    */
-  void ConsumeGets(const size_t n) { ; }
+  size_t ConsumeGets(const size_t requested) { return 0; }
 
   /**
    * TODO.

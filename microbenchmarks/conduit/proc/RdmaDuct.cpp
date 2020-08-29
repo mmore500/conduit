@@ -2,7 +2,7 @@
 #include "conduit/proc/RdmaDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
-  uit::PendingDuct,
+  uit::SerialPendingDuct,
   uit::HeadTailDuct,
   uit::RdmaDuct
 >;

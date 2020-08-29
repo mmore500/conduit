@@ -2,7 +2,7 @@
 #include "conduit/thread/HeadTailDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
-  uit::PendingDuct,
+  uit::SerialPendingDuct,
   uit::HeadTailDuct
 >;
 

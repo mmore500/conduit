@@ -6,20 +6,20 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
-#include "../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../distributed/mpi_utils.hpp"
-#include "../../distributed/RDMAWindowManager.hpp"
-#include "../../utility/CircularIndex.hpp"
-#include "../../utility/identity.hpp"
-#include "../../utility/print_utils.hpp"
-#include "../../utility/WarnOnce.hpp"
+#include "../../../distributed/mpi_utils.hpp"
+#include "../../../distributed/RDMAWindowManager.hpp"
+#include "../../../utility/CircularIndex.hpp"
+#include "../../../utility/identity.hpp"
+#include "../../../utility/print_utils.hpp"
+#include "../../../utility/WarnOnce.hpp"
 
-#include "../config.hpp"
+#include "../../config.hpp"
+#include "../../InterProcAddress.hpp"
 
-#include "InterProcAddress.hpp"
-#include "SharedBackEnd.hpp"
+#include "../backend/RdmaBackEnd.hpp"
 
 namespace uit {
 
@@ -32,19 +32,27 @@ namespace uit {
 template<typename ImplSpec>
 class WindowDuct {
 
+public:
+
+  using BackEndImpl = uit::internal::RdmaBackEnd<ImplSpec>;
+
+private:
+
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
   const uit::InterProcAddress address;
-  std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end;
 
+  std::shared_ptr<BackEndImpl> back_end;
   const int byte_offset;
+
+  T res{};
 
 public:
 
   WindowDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<uit::SharedBackEnd<ImplSpec>> back_end_
+    std::shared_ptr<BackEndImpl> back_end_
   ) : address(address_)
   , back_end(back_end_)
   , byte_offset(
@@ -55,7 +63,7 @@ public:
   ) {
     if (address.GetOutletProc() == uit::get_rank(address.GetComm())) {
       MPI_Request req;
-      verify(MPI_Isend(
+      uit::verify(MPI_Isend(
         &byte_offset, // const void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype
@@ -73,22 +81,17 @@ public:
 
   }
 
-  void Initialize(const size_t write_position) { ; }
+  void Put(const T& val) { throw "Put called on WindowDuct"; }
 
-  //todo rename
-  [[noreturn]] void Push() { throw "bad Push on WindowDuct"; }
-
-  //todo rename
-  void Pop(const size_t count) { ; }
-
-  size_t GetPending() { return 1; }
-
-  [[noreturn]] size_t GetAvailableCapacity() {
-    throw "bad GetAvailableCapacity on WindowDuct";
+  [[noreturn]] bool IsReadyForPut() {
+    throw "IsReadyForPut called on WindowDuct";
   }
 
-  T GetElement(const size_t n) const {
-    T res;
+  size_t CountUnconsumedGets() const { return 1; }
+
+  size_t ConsumeGets(const size_t requested) const { return 1; }
+
+  const T& Get() {
     // TODO use atomics as counter?
     // TODO just do a RDMA Get or something on own window?
     // TODO move this all into RDMAWindow and rely on intermittent calls there
@@ -108,25 +111,13 @@ public:
     return res;
   }
 
-  const void * GetPosition(const size_t n) const {
-    return back_end->GetWindowManager().GetBytes(
-      address.GetInletProc(),
-      byte_offset /*+ sizeof(T) * n*/
-    );
-  }
-
-  [[noreturn]] void SetElement(const size_t n, const T & val) {
-    throw "bad SetElement on WindowDuct";
-  }
-
-  static std::string GetType() { return "WindowDuct"; }
+  static std::string GetName() { return "WindowDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << GetType() << std::endl;
+    ss << GetName() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("int get_rank()", get_rank()) << std::endl;
-    // ss << format_member("size_t receive_position", receive_position);
     return ss.str();
   }
 

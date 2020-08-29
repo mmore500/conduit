@@ -2,7 +2,7 @@
 #include "conduit/proc/IrmsgDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
-  uit::PendingDuct,
+  uit::SerialPendingDuct,
   uit::HeadTailDuct,
   uit::IrmsgDuct
 >;

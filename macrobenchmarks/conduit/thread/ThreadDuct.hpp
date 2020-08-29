@@ -32,12 +32,12 @@ void do_work(
   auto optional_input = submesh.front().GetInputOrNullopt(0);
   auto optional_output = submesh.front().GetOutputOrNullopt(0);
 
-  if (optional_output) optional_output->MaybePut(uit::get_thread_id());
+  if (optional_output) optional_output->TryPut(uit::get_thread_id());
 
   latch.arrive_and_wait();
 
   for (size_t rep = 0; rep < 1e7; ++rep) {
-    if (optional_output) optional_output->MaybePut(uit::get_thread_id());
+    if (optional_output) optional_output->TryPut(uit::get_thread_id());
     if (optional_input) uit::do_not_optimize(
       optional_input->GetCurrent()
     );

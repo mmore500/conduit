@@ -1,4 +1,4 @@
-TEST_NAMES := ImplSpec Conduit Sink Source Duct Inlet Outlet
+TEST_NAMES := Conduit Duct ImplSpec Inlet InterProcAddress Outlet Sink Source   
 
 FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/
 

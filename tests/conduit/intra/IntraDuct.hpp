@@ -31,7 +31,7 @@ TEST_CASE("Test IntraDuct Connectivity") {
 
   uit::Mesh<Spec> mesh{ uit::RingTopologyFactory{}(num_nodes) };
 
-  for (auto & node : mesh.GetSubmesh()) node.GetOutput(0).MaybePut(
+  for (auto & node : mesh.GetSubmesh()) node.GetOutput(0).TryPut(
     node.GetNodeID()
   );
 
@@ -51,7 +51,7 @@ TEST_CASE("Test IntraDuct Validity") {
   std::unordered_map<size_t, MSG_T> last;
   for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
     for (auto & node : mesh.GetSubmesh()) {
-      node.GetOutput(0).MaybePut(msg);
+      node.GetOutput(0).TryPut(msg);
       const MSG_T current = node.GetInput(0).GetCurrent();
       REQUIRE( current >= 0 );
       REQUIRE( current < 10 * std::kilo{}.num );

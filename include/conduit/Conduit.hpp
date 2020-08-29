@@ -55,7 +55,7 @@ public:
   /**
    * Forwarding constructor.
    *
-   * Use `std::in_place_t<ImplType>` followed by constructor arguments to
+   * Use `std::in_place_type_t<ImplType>{}` followed by constructor arguments to
    * initialize the `Duct` with `ImplType` active.
    */
   template <typename... Args>
