@@ -3,7 +3,7 @@
 
 using ImplSel = uit::ImplSelect<
   uit::SerialPendingDuct,
-  uit::HeadTailDuct,
+  uit::AtomicPendingDuct,
   uit::MsgDuct
 >;
 

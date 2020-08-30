@@ -4,7 +4,7 @@
 
 #include "intra/SerialPendingDuct.hpp"
 #include "proc/ImsgDuct.hpp"
-#include "thread/RigtorpDuct.hpp"
+#include "thread/AtomicPendingDuct.hpp"
 
 namespace uit {
 
@@ -18,7 +18,7 @@ namespace uit {
  */
 template<
   template<typename> typename IntraDuct_ = uit::SerialPendingDuct,
-  template<typename> typename ThreadDuct_ = uit::RigtorpDuct,
+  template<typename> typename ThreadDuct_ = uit::AtomicPendingDuct,
   template<typename> typename ProcDuct_ = uit::ImsgDuct
 >
 struct ImplSelect {
