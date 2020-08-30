@@ -32,7 +32,7 @@ class BlockingSendDuct {
 
 public:
 
-  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
+  using BackEndImpl = uit::MockBackEnd<ImplSpec>;
 
 private:
 

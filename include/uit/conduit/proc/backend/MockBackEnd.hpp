@@ -1,7 +1,6 @@
 #pragma once
 
 namespace uit {
-namespace internal {
 
 /**
  * TODO
@@ -19,5 +18,4 @@ public:
 
 };
 
-} // namespace internal
 } // namespace uit

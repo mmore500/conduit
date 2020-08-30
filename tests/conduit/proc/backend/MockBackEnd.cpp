@@ -12,6 +12,6 @@ const uit::MPIGuard guard;
 TEST_CASE("Test MockBackEnd") {
 
   // TODO flesh out stub test
-  uit::internal::MockBackEnd<uit::ImplSpec<char>>{};
+  uit::MockBackEnd<uit::ImplSpec<char>>{};
 
 }

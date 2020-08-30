@@ -23,7 +23,7 @@ public:
 
   using InletImpl = EmpAssertDuct<ImplSpec>;
   using OutletImpl = EmpAssertDuct<ImplSpec>;
-  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
+  using BackEndImpl = uit::MockBackEnd<ImplSpec>;
 
   /**
    * TODO.

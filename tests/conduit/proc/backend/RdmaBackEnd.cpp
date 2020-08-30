@@ -12,6 +12,6 @@ const uit::MPIGuard guard;
 TEST_CASE("Test RdmaBackEnd") {
 
   // TODO flesh out stub test
-  uit::internal::RdmaBackEnd<uit::ImplSpec<char>>{};
+  uit::RdmaBackEnd<uit::ImplSpec<char>>{};
 
 }

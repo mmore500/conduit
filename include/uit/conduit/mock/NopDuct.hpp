@@ -21,7 +21,7 @@ public:
 
   using InletImpl = NopDuct<ImplSpec>;
   using OutletImpl = NopDuct<ImplSpec>;
-  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
+  using BackEndImpl = uit::MockBackEnd<ImplSpec>;
 
   /**
    * TODO.

@@ -33,7 +33,7 @@ class RputDuct {
 
 public:
 
-  using BackEndImpl = uit::internal::RdmaBackEnd<ImplSpec>;
+  using BackEndImpl = uit::RdmaBackEnd<ImplSpec>;
 
 private:
 

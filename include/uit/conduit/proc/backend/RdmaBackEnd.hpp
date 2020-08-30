@@ -3,7 +3,6 @@
 #include "../../../distributed/RDMAWindowManager.hpp"
 
 namespace uit {
-namespace internal {
 
 /**
  * TODO
@@ -26,5 +25,4 @@ public:
 
 };
 
-} // namespace internal
 } // namespace uit

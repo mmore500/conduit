@@ -21,7 +21,7 @@ public:
 
   using InletImpl = ThrowDuct<ImplSpec>;
   using OutletImpl = ThrowDuct<ImplSpec>;
-  using BackEndImpl = uit::internal::MockBackEnd<ImplSpec>;
+  using BackEndImpl = uit::MockBackEnd<ImplSpec>;
 
   /**
    * TODO.
