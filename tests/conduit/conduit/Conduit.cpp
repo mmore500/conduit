@@ -16,6 +16,6 @@ TEST_CASE("Test Conduit") {
   conduit.get<0>();
   conduit.get<1>();
 
-  auto& [inlet, outlet] = conduit;
+  [[maybe_unused]] auto& [inlet, outlet] = conduit;
 
 }

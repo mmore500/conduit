@@ -15,6 +15,6 @@ TEST_CASE("Test Sink") {
   uit::Sink<uit::ImplSpec<char>> sink;
   sink.get<0>();
 
-  auto& [inlet] = sink;
+  [[maybe_unused]] auto& [inlet] = sink;
 
 }

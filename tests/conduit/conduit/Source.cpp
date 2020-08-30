@@ -15,6 +15,6 @@ TEST_CASE("Test Source") {
   uit::Source<uit::ImplSpec<char>> source;
   source.get<0>();
 
-  auto& [outlet] = source;
+  [[maybe_unused]] auto& [outlet] = source;
 
 }
