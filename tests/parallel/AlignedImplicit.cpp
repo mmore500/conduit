@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "parallel/AlignedImplicit.hpp"
+#include "uit/parallel/AlignedImplicit.hpp"
 
 TEST_CASE("AlignedImplicit") {
 

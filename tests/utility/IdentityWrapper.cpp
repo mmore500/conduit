@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "utility/IdentityWrapper.hpp"
+#include "uit/utility/IdentityWrapper.hpp"
 
 TEST_CASE("IdentityWrapper") {
 

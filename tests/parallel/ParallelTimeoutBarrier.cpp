@@ -1,8 +1,8 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "parallel/ThreadIbarrierFactory.hpp"
-#include "parallel/ParallelTimeoutBarrier.hpp"
+#include "uit/parallel/ThreadIbarrierFactory.hpp"
+#include "uit/parallel/ParallelTimeoutBarrier.hpp"
 
 TEST_CASE("ParallelTimeoutBarrier") {
 

@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "utility/ValueInitialized.hpp"
+#include "uit/utility/ValueInitialized.hpp"
 
 TEST_CASE("Test ValueInitialized") {
 

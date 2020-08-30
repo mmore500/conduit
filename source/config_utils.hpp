@@ -9,8 +9,8 @@
 
 #include "../third-party/Empirical/source/tools/string_utils.h"
 
-#include "conduit/ImplSpec.hpp"
-#include "utility/math_utils.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/utility/math_utils.hpp"
 
 #include "State.hpp"
 

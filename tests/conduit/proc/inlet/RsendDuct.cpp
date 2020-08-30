@@ -4,12 +4,12 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "conduit/ImplSpec.hpp"
-#include "conduit/InterProcAddress.hpp"
-#include "conduit/proc/backend/MockBackEnd.hpp"
-#include "conduit/proc/inlet/RsendDuct.hpp"
-#include "distributed/MPIGuard.hpp"
-#include "distributed/MultiprocessReporter.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/conduit/InterProcAddress.hpp"
+#include "uit/conduit/proc/backend/MockBackEnd.hpp"
+#include "uit/conduit/proc/inlet/RsendDuct.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/distributed/MultiprocessReporter.hpp"
 
 const uit::MPIGuard guard;
 

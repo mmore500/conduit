@@ -4,9 +4,9 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "distributed/MPIGuard.hpp"
-#include "distributed/Request.hpp"
-#include "distributed/MultiprocessReporter.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/distributed/Request.hpp"
+#include "uit/distributed/MultiprocessReporter.hpp"
 
 const uit::MPIGuard guard;
 

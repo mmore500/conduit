@@ -4,10 +4,10 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "conduit/ImplSpec.hpp"
-#include "conduit/mock/ThrowDuct.hpp"
-#include "distributed/MultiprocessReporter.hpp"
-#include "distributed/MPIGuard.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/conduit/mock/ThrowDuct.hpp"
+#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/distributed/MPIGuard.hpp"
 
 #define MSG_T int
 

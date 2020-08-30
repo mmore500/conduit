@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "utility/ScopeGuard.hpp"
+#include "uit/utility/ScopeGuard.hpp"
 
 TEST_CASE("Test ScopeGuard with default OnDestruct")
 {

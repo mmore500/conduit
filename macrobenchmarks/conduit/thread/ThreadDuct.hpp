@@ -2,20 +2,20 @@
 
 #include <mpi.h>
 
-#include "conduit/Conduit.hpp"
-#include "conduit/config.hpp"
-#include "conduit/ImplSpec.hpp"
-#include "concurrent/Gatherer.hpp"
-#include "distributed/mpi_utils.hpp"
-#include "mesh/Mesh.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "parallel/thread_utils.hpp"
-#include "polyfill/latch.hpp"
-#include "topology/RingTopologyFactory.hpp"
-#include "utility/benchmark_utils.hpp"
-#include "utility/CircularIndex.hpp"
-#include "utility/numeric_cast.hpp"
-#include "utility/TimeGuard.hpp"
+#include "uit/conduit/Conduit.hpp"
+#include "uit/conduit/config.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/concurrent/Gatherer.hpp"
+#include "uit/distributed/mpi_utils.hpp"
+#include "uit/mesh/Mesh.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
+#include "uit/parallel/thread_utils.hpp"
+#include "uit/polyfill/latch.hpp"
+#include "uit/topology/RingTopologyFactory.hpp"
+#include "uit/utility/benchmark_utils.hpp"
+#include "uit/utility/CircularIndex.hpp"
+#include "uit/utility/numeric_cast.hpp"
+#include "uit/utility/TimeGuard.hpp"
 
 #define MESSAGE_T int
 

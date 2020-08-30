@@ -69,9 +69,9 @@ Here's an example of how this works in code.
 #include <ratio>
 #include <utility>
 
-#include "conduit/Conduit.hpp"
-#include "conduit/ImplSpec.hpp"
-#include "parallel/ThreadTeam.hpp"
+#include "uit/conduit/Conduit.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
 
 // use int as message type
 using Spec = uit::ImplSpec<int>;
@@ -187,11 +187,11 @@ Here's what the entire process looks like in code.
 #include <tuple>
 #include <sstream>
 
-#include "conduit/ImplSpec.hpp"
-#include "distributed/MPIGuard.hpp"
-#include "mesh/Mesh.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "topology/RingTopologyFactory.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/mesh/Mesh.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
+#include "uit/topology/RingTopologyFactory.hpp"
 
 const size_t num_nodes = 5; // five nodes in our topology
 const size_t num_procs = 2; // two MPI processes

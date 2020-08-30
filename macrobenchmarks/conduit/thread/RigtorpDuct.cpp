@@ -1,5 +1,5 @@
-#include "conduit/ImplSpec.hpp"
-#include "conduit/thread/RigtorpDuct.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/conduit/thread/RigtorpDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
   uit::SerialPendingDuct,

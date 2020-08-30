@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "parallel/ThreadLocalChecker.hpp"
+#include "uit/parallel/ThreadLocalChecker.hpp"
 
 TEST_CASE("ThreadLocalChecker") {
 

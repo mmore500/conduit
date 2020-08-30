@@ -2,11 +2,11 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "concurrent/ConcurrentTimeoutBarrier.hpp"
-#include "distributed/MPIGuard.hpp"
-#include "distributed/MultiprocessReporter.hpp"
-#include "parallel/ThreadIbarrierFactory.hpp"
-#include "parallel/ThreadTeam.hpp"
+#include "uit/concurrent/ConcurrentTimeoutBarrier.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/parallel/ThreadIbarrierFactory.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
 
 const uit::MPIGuard guard;
 

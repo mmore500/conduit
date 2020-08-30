@@ -3,9 +3,9 @@
 #include <assert.h>
 #include <sstream>
 
-#include "conduit/Inlet.hpp"
-#include "conduit/Outlet.hpp"
-#include "utility/print_utils.hpp"
+#include "uit/conduit/Inlet.hpp"
+#include "uit/conduit/Outlet.hpp"
+#include "uit/utility/print_utils.hpp"
 
 #include "config_utils.hpp"
 #include "State.hpp"

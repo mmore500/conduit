@@ -1,9 +1,9 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "parallel/ThreadIbarrier.hpp"
-#include "parallel/ThreadIbarrierFactory.hpp"
-#include "parallel/ThreadTeam.hpp"
+#include "uit/parallel/ThreadIbarrier.hpp"
+#include "uit/parallel/ThreadIbarrierFactory.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
 
 TEST_CASE("ThreadIbarrier satisfied serial") {
 
