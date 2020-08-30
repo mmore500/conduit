@@ -5,7 +5,7 @@ SHELL := /bin/bash
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
 
-FLAGS = -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../source/ -I../../include/ -I../../third-party/
+FLAGS = -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I../../source/ -I../../include/ -I../../third-party/
 
 default: bench
 
@@ -32,16 +32,16 @@ build-%: %.cpp
 build: $(addprefix build-, $(BENCH_NAMES))
 
 # Test optimized version without debug features
-debug: FLAGS := -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/ -g
+debug: FLAGS := -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/ -g
 debug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function  -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -g # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function  -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -g # -Wmisleading-indentation
 fulldebug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
-cranky: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
 cranky: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 

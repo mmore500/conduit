@@ -10,15 +10,15 @@
 
 #include "../../third-party/Empirical/source/base/vector.h"
 
-#include "concurrent/Gatherer.hpp"
-#include "distributed/MultiprocessReporter.hpp"
-#include "distributed/MPIGuard.hpp"
-#include "distributed/mpi_utils.hpp"
-#include "utility/CircularIndex.hpp"
-#include "utility/numeric_cast.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "parallel/thread_utils.hpp"
-#include "polyfill/barrier.hpp"
+#include "uit/concurrent/Gatherer.hpp"
+#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/distributed/mpi_utils.hpp"
+#include "uit/utility/CircularIndex.hpp"
+#include "uit/utility/numeric_cast.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
+#include "uit/parallel/thread_utils.hpp"
+#include "uit/polyfill/barrier.hpp"
 
 const uit::MPIGuard guard;
 

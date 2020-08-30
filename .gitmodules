@@ -4,15 +4,9 @@
 [submodule "third-party/Empirical"]
 	path = third-party/Empirical
 	url = https://github.com/devosoft/Empirical
-[submodule "third-party/SPSCQueue"]
-	path = third-party/SPSCQueue
-	url = https://github.com/rigtorp/SPSCQueue
 [submodule "third-party/force-cover"]
 	path = third-party/force-cover
 	url = https://github.com/emilydolson/force-cover
-[submodule "third-party/--force"]
-	path = third-party/--force
-	url = https://github.com/google/benchmark.git
 [submodule "third-party/benchmark"]
 	path = third-party/benchmark
 	url = https://github.com/google/benchmark.git
@@ -22,3 +16,9 @@
 [submodule "third-party/mimalloc"]
 	path = third-party/mimalloc
 	url = https://github.com/microsoft/mimalloc
+[submodule "third-party/readerwriterqueue"]
+	path = third-party/readerwriterqueue
+	url = https://github.com/cameron314/readerwriterqueue
+[submodule "third-party/SPSCQueue"]
+	path = third-party/SPSCQueue
+	url = https://github.com/rigtorp/SPSCQueue

@@ -14,23 +14,23 @@
 #include "../third-party/Empirical/source/data/DataFile.h"
 #include "../third-party/Empirical/source/tools/keyname_utils.h"
 
-#include "concurrent/Gatherer.hpp"
-#include "concurrent/ConcurrentTimeoutBarrier.hpp"
-#include "conduit/Conduit.hpp"
-#include "conduit/config.hpp"
-#include "distributed/mpi_utils.hpp"
-#include "utility/CountdownIterator.hpp"
-#include "utility/CountdownTimer.hpp"
-#include "utility/CoarseClock.hpp"
-#include "utility/math_utils.hpp"
-#include "utility/numeric_cast.hpp"
-#include "utility/safe_compare.hpp"
-#include "mesh/Mesh.hpp"
-#include "parallel/ThreadIbarrierFactory.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "polyfill/barrier.hpp"
-#include "polyfill/latch.hpp"
-#include "topology/RingTopologyFactory.hpp"
+#include "uit/concurrent/Gatherer.hpp"
+#include "uit/concurrent/ConcurrentTimeoutBarrier.hpp"
+#include "uit/conduit/Conduit.hpp"
+#include "uit/conduit/config.hpp"
+#include "uit/distributed/mpi_utils.hpp"
+#include "uit/utility/CountdownIterator.hpp"
+#include "uit/utility/CountdownTimer.hpp"
+#include "uit/utility/CoarseClock.hpp"
+#include "uit/utility/math_utils.hpp"
+#include "uit/utility/numeric_cast.hpp"
+#include "uit/utility/safe_compare.hpp"
+#include "uit/mesh/Mesh.hpp"
+#include "uit/parallel/ThreadIbarrierFactory.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
+#include "uit/polyfill/barrier.hpp"
+#include "uit/polyfill/latch.hpp"
+#include "uit/topology/RingTopologyFactory.hpp"
 
 #include "chunk_utils.hpp"
 #include "config_utils.hpp"
@@ -270,9 +270,9 @@ void audit_grid(
   for (tile = 0; tile < grid.size(); ++tile) {
     const auto & which = grid[tile];
 
-    successful_write_count = which.GetSuccessfulWriteCount();
-    blocked_write_count = which.GetBlockedWriteCount();
-    dropped_write_count = which.GetDroppedWriteCount();
+    successful_write_count = which.GetSuccessfulPutCount();
+    blocked_write_count = which.GetBlockedPutCount();
+    dropped_write_count = which.GetDroppedPutCount();
     read_count = which.GetReadCount();
     read_revision_count = which.GetReadRevisionCount();
     net_flux = which.GetNetFlux();

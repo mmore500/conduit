@@ -155,6 +155,7 @@ RUN \
     matplotlib  \
     python-slugify  \
     iterpop  \
+    exdown \
     && \
   echo "installed Python packages"
 

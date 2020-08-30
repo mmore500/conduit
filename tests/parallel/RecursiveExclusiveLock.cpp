@@ -1,8 +1,8 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "parallel/RecursiveExclusiveLock.hpp"
-#include "parallel/RecursiveMutex.hpp"
+#include "uit/parallel/RecursiveExclusiveLock.hpp"
+#include "uit/parallel/RecursiveMutex.hpp"
 
 TEST_CASE("RecursiveExclusiveLock") {
 

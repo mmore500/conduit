@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "utility/WarnOnce.hpp"
+#include "uit/utility/WarnOnce.hpp"
 
 TEST_CASE("WarnOnce") {
 

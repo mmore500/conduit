@@ -10,6 +10,7 @@
 [![Lines of Code](https://tokei.rs/b1/github/mmore500/conduit?category=code)](https://github.com/XAMPPRocky/tokei)
 [![Comments](https://tokei.rs/b1/github/mmore500/conduit?category=comments)](https://github.com/XAMPPRocky/tokei)
 [![dotos](https://img.shields.io/endpoint?url=https%3A%2F%2Fmmore500.com%2Fconduit%2Fdoto-badge.json)](https://github.com/mmore500/conduit/search?q=todo+OR+fixme&type=)
+[![GitHub stars](https://img.shields.io/github/stars/nschloe/exdown.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/nschloe/exdown)
 
 * Free software: MIT license
 * Documentation: [https://conduit.fyi](https://conduit.fyi)
@@ -68,9 +69,9 @@ Here's an example of how this works in code.
 #include <ratio>
 #include <utility>
 
-#include "conduit/Conduit.hpp"
-#include "conduit/ImplSpec.hpp"
-#include "parallel/ThreadTeam.hpp"
+#include "uit/conduit/Conduit.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
 
 // use int as message type
 using Spec = uit::ImplSpec<int>;
@@ -88,7 +89,7 @@ int main() {
 
   // start a producer thread
   team.Add( [&inlet](){
-    for (int i = 0; i < std::mega{}.num; ++i) inlet.MaybePut(i);
+    for (int i = 0; i < std::mega{}.num; ++i) inlet.TryPut(i);
   } );
 
   // start a consumer thread
@@ -186,11 +187,11 @@ Here's what the entire process looks like in code.
 #include <tuple>
 #include <sstream>
 
-#include "conduit/ImplSpec.hpp"
-#include "distributed/MPIGuard.hpp"
-#include "mesh/Mesh.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "topology/RingTopologyFactory.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/mesh/Mesh.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
+#include "uit/topology/RingTopologyFactory.hpp"
 
 const size_t num_nodes = 5; // five nodes in our topology
 const size_t num_procs = 2; // two MPI processes
@@ -200,9 +201,21 @@ const size_t num_threads = 2; // two threads per process
 // contains information about node, thread, and process of sender
 struct Message {
 
-  size_t node_id;
-  uit::thread_id_t thread_id;
-  uit::proc_id_t proc_id;
+  size_t node_id{};
+  uit::thread_id_t thread_id{};
+  uit::proc_id_t proc_id{};
+
+  bool operator==(const Message& other) const {
+    return std::tuple{
+      node_id,
+      thread_id,
+      proc_id
+    } == std::tuple{
+      other.node_id,
+      other.thread_id,
+      other.proc_id
+    };
+  }
 
   std::string ToString() const {
 
@@ -240,7 +253,7 @@ void send_task(
     auto& node = my_nodes[node_id];
 
     // send message
-    for (auto& output : node.GetOutputs()) output.Put( message );
+    for (auto& output : node.GetOutputs()) output.SurePut( message );
 
   }
 
@@ -318,13 +331,13 @@ mpiexec -n 2 ./a.out
 
 * Create your own topologies by writing a topology-generating method or loading a topology from file, perhaps generated via another tool like [NetworkX](https://networkx.github.io/documentation/stable/reference/readwrite/adjlist.html).
 * Define your own delegation functor to control how nodes are distributed between threads and processes.
-* Seamlessly write and build with your own intra-thread, inter-thread, or intra-thread duct implementations.
+* Seamlessly write and build with your own intra-thread, inter-thread, or inter-process duct implementations.
 
 Implementations of inter-process communication currently use the [Messgage Passing Interface (MPI)](https://www.mpi-forum.org/docs/) standard.
 
 ## Benchmarks
 
-Benchmarks are performed during Travis builds and also, occasionally, on the iCER HPCC cluster.
+Benchmarks are performed during Travis builds and occasionally on the [iCER HPCC cluster](https://icer.msu.edu/).
 Benchmark results are available at [https://osf.io/7jkgp/](https://osf.io/7jkgp/).
 
 ## Acknowledgement
@@ -339,6 +352,6 @@ This research was supported in part by NSF grants DEB-1655715 and DBI-0939454.
 This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-1424871.
 Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
 
-Michigan State University provided computational resources used in this work through the Institute for Cyber-Enabled Research.
+Michigan State University provided computational resources used in this work through the [Institute for Cyber-Enabled Research](https://icer.msu.edu/).
 
 This research is conducted in affiliation with the [Digital Evolution Laboratory](https://devolab.org/) at Michigan State University, the [BEACON Center for the Study of Evolution in Action](https://www3.beacon-center.org/), the [Ecology, Evolutionary Biology, and Behavior](https://eebb.natsci.msu.edu/) Program at MSU, and the [Department of Computer Science and Engineering](http://cse.msu.edu/) at MSU.

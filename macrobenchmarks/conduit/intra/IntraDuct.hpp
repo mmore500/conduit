@@ -2,19 +2,19 @@
 
 #include <mpi.h>
 
-#include "conduit/Conduit.hpp"
-#include "conduit/config.hpp"
-#include "concurrent/Gatherer.hpp"
-#include "distributed/mpi_utils.hpp"
-#include "mesh/Mesh.hpp"
-#include "parallel/ThreadTeam.hpp"
-#include "parallel/thread_utils.hpp"
-#include "polyfill/latch.hpp"
-#include "topology/RingTopologyFactory.hpp"
-#include "utility/benchmark_utils.hpp"
-#include "utility/CircularIndex.hpp"
-#include "utility/numeric_cast.hpp"
-#include "utility/TimeGuard.hpp"
+#include "uit/conduit/Conduit.hpp"
+#include "uit/conduit/config.hpp"
+#include "uit/concurrent/Gatherer.hpp"
+#include "uit/distributed/mpi_utils.hpp"
+#include "uit/mesh/Mesh.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
+#include "uit/parallel/thread_utils.hpp"
+#include "uit/polyfill/latch.hpp"
+#include "uit/topology/RingTopologyFactory.hpp"
+#include "uit/utility/benchmark_utils.hpp"
+#include "uit/utility/CircularIndex.hpp"
+#include "uit/utility/numeric_cast.hpp"
+#include "uit/utility/TimeGuard.hpp"
 
 #define MESSAGE_T int
 
@@ -31,12 +31,12 @@ void do_work(
   auto optional_input = submesh.front().GetInputOrNullopt(0);
   auto optional_output = submesh.front().GetOutputOrNullopt(0);
 
-  if (optional_output) optional_output->MaybePut(uit::get_thread_id());
+  if (optional_output) optional_output->TryPut(uit::get_thread_id());
 
   latch.arrive_and_wait();
 
   for (size_t rep = 0; rep < 1e7; ++rep) {
-    if (optional_output) optional_output->MaybePut(uit::get_thread_id());
+    if (optional_output) optional_output->TryPut(uit::get_thread_id());
     if (optional_input) uit::do_not_optimize(
       optional_input->GetCurrent()
     );
@@ -96,7 +96,7 @@ void profile_thread_count(const size_t num_threads) {
 int main(int argc, char* argv[]) {
 
   int provided;
-  uit::verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided));
+  UIT_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided);
   emp_assert(provided >= MPI_THREAD_FUNNELED);
 
   // TODO

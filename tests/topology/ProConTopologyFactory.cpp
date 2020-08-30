@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "topology/ProConTopologyFactory.hpp"
+#include "uit/topology/ProConTopologyFactory.hpp"
 
 TEST_CASE("Test ProConTopologyFactory") {
 

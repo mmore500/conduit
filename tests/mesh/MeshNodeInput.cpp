@@ -1,9 +1,9 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "conduit/ImplSpec.hpp"
-#include "conduit/Source.hpp"
-#include "mesh/MeshNodeInput.hpp"
+#include "uit/conduit/ImplSpec.hpp"
+#include "uit/conduit/Source.hpp"
+#include "uit/mesh/MeshNodeInput.hpp"
 
 TEST_CASE("Test MeshNodeInput") {
 

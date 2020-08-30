@@ -1,5 +1,5 @@
-#include "distributed/MPIGuard.hpp"
-#include "utility/ScopeGuard.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/utility/ScopeGuard.hpp"
 
 #include "../DuctBenchmarkRegistration.hpp"
 

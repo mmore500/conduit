@@ -3,11 +3,11 @@
 #include <mpi.h>
 #include <benchmark/benchmark.h>
 
-#include "conduit/config.hpp"
-#include "distributed/MPIGuard.hpp"
-#include "distributed/mpi_utils.hpp"
-#include "utility/benchmark_utils.hpp"
-#include "utility/ScopeGuard.hpp"
+#include "uit/conduit/config.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/distributed/mpi_utils.hpp"
+#include "uit/utility/benchmark_utils.hpp"
+#include "uit/utility/ScopeGuard.hpp"
 
 const uit::MPIGuard guard;
 
@@ -20,7 +20,7 @@ static void MPI_Testsome_nopending(benchmark::State& state) {
   emp::vector<int> buffers(DEFAULT_BUFFER);
 
   for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
-    uit::verify(MPI_Irecv(
+    UIT_Irecv(
       &buffers[i], // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -28,7 +28,7 @@ static void MPI_Testsome_nopending(benchmark::State& state) {
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &requests[i] // MPI_Request * request
-    ));
+    );
   }
 
   // benchmark
@@ -38,13 +38,13 @@ static void MPI_Testsome_nopending(benchmark::State& state) {
 
     thread_local std::array<int, DEFAULT_BUFFER> out_indices;
 
-    uit::verify(MPI_Testsome(
+    UIT_Testsome(
       requests.size(), // int count
       requests.data(), // MPI_Request array_of_requests[]
       &flag, // int *outcount
       out_indices.data(), // int array_of_indices[]
       MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
-    ));
+    );
 
   }
 
@@ -60,7 +60,7 @@ static void MPI_Testsome_nopending(benchmark::State& state) {
   });
 
   // clean up
-  for (auto& request : requests)  uit::verify(MPI_Cancel(&request));
+  for (auto& request : requests)  UIT_Cancel(&request);
 
 }
 
@@ -71,7 +71,7 @@ static void MPI_Testsome_onepending(benchmark::State& state) {
   emp::vector<int> recv_buffers(DEFAULT_BUFFER);
 
   for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
-    uit::verify(MPI_Irecv(
+    UIT_Irecv(
       &recv_buffers[i], // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -79,12 +79,12 @@ static void MPI_Testsome_onepending(benchmark::State& state) {
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &recv_requests[i] // MPI_Request * request
-    ));
+    );
   }
 
   MPI_Request send_request;
   int send_buffer{};
-  uit::verify(MPI_Isend(
+  UIT_Isend(
     &send_buffer, // const void *buf
     1, // int count
     MPI_INT, // MPI_Datatype datatype
@@ -92,8 +92,8 @@ static void MPI_Testsome_onepending(benchmark::State& state) {
     1, // int tag
     MPI_COMM_WORLD, // MPI_Comm comm
     &send_request // MPI_Request * request
-  ));
-  uit::verify(MPI_Wait(&send_request, MPI_STATUS_IGNORE));
+  );
+  UIT_Wait(&send_request, MPI_STATUS_IGNORE);
 
   // benchmark
   for (auto _ : state) {
@@ -102,19 +102,19 @@ static void MPI_Testsome_onepending(benchmark::State& state) {
 
     thread_local std::array<int, DEFAULT_BUFFER> out_indices;
 
-    uit::verify(MPI_Testsome(
+    UIT_Testsome(
       recv_requests.size(), // int count
       recv_requests.data(), // MPI_Request array_of_requests[]
       &flag, // int *outcount
       out_indices.data(), // int array_of_indices[]
       MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
-    ));
+    );
 
   }
 
   // clean up
   for (auto& request : recv_requests) {
-    if (!uit::test_completion(request)) uit::verify(MPI_Cancel(&request));
+    if (!uit::test_completion(request)) UIT_Cancel(&request);
   }
 
 }
@@ -126,7 +126,7 @@ static void MPI_Testsome_somepending(benchmark::State& state) {
   emp::vector<int> recv_buffers(DEFAULT_BUFFER);
 
   for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
-    uit::verify(MPI_Irecv(
+    UIT_Irecv(
       &recv_buffers[i], // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -134,13 +134,13 @@ static void MPI_Testsome_somepending(benchmark::State& state) {
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &recv_requests[i] // MPI_Request * request
-    ));
+    );
   }
 
   for (size_t i = 0; i < DEFAULT_BUFFER/2; ++i) {
     MPI_Request send_request;
     int send_buffer{};
-    uit::verify(MPI_Isend(
+    UIT_Isend(
       &send_buffer, // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -148,8 +148,8 @@ static void MPI_Testsome_somepending(benchmark::State& state) {
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &send_request // MPI_Request * request
-    ));
-    uit::verify(MPI_Wait(&send_request, MPI_STATUS_IGNORE));
+    );
+    UIT_Wait(&send_request, MPI_STATUS_IGNORE);
   }
 
   // benchmark
@@ -159,19 +159,19 @@ static void MPI_Testsome_somepending(benchmark::State& state) {
 
     thread_local std::array<int, DEFAULT_BUFFER> out_indices;
 
-    uit::verify(MPI_Testsome(
+    UIT_Testsome(
       recv_requests.size(), // int count
       recv_requests.data(), // MPI_Request array_of_requests[]
       &flag, // int *outcount
       out_indices.data(), // int array_of_indices[]
       MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
-    ));
+    );
 
   }
 
   // clean up
   for (auto& request : recv_requests) {
-    if (!uit::test_completion(request)) uit::verify(MPI_Cancel(&request));
+    if (!uit::test_completion(request)) UIT_Cancel(&request);
   }
 
 }
@@ -183,7 +183,7 @@ static void MPI_Testsome_manypending(benchmark::State& state) {
   emp::vector<int> recv_buffers(DEFAULT_BUFFER);
 
   for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
-    uit::verify(MPI_Irecv(
+    UIT_Irecv(
       &recv_buffers[i], // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -191,13 +191,13 @@ static void MPI_Testsome_manypending(benchmark::State& state) {
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &recv_requests[i] // MPI_Request * request
-    ));
+    );
   }
 
   for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
     MPI_Request send_request;
     int send_buffer{};
-    uit::verify(MPI_Isend(
+    UIT_Isend(
       &send_buffer, // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -205,8 +205,8 @@ static void MPI_Testsome_manypending(benchmark::State& state) {
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &send_request // MPI_Request * request
-    ));
-    uit::verify(MPI_Wait(&send_request, MPI_STATUS_IGNORE));
+    );
+    UIT_Wait(&send_request, MPI_STATUS_IGNORE);
   }
 
   // benchmark
@@ -216,19 +216,19 @@ static void MPI_Testsome_manypending(benchmark::State& state) {
 
     thread_local std::array<int, DEFAULT_BUFFER> out_indices;
 
-    uit::verify(MPI_Testsome(
+    UIT_Testsome(
       recv_requests.size(), // int count
       recv_requests.data(), // MPI_Request array_of_requests[]
       &flag, // int *outcount
       out_indices.data(), // int array_of_indices[]
       MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
-    ));
+    );
 
   }
 
   // clean up
   for (auto& request : recv_requests) {
-    if (!uit::test_completion(request)) uit::verify(MPI_Cancel(&request));
+    if (!uit::test_completion(request)) UIT_Cancel(&request);
   }
 
 }
@@ -240,7 +240,7 @@ static void MPI_Testsome_manymanypending(benchmark::State& state) {
   emp::vector<int> recv_buffers(DEFAULT_BUFFER);
 
   for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
-    uit::verify(MPI_Irecv(
+    UIT_Irecv(
       &recv_buffers[i], // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -248,13 +248,13 @@ static void MPI_Testsome_manymanypending(benchmark::State& state) {
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &recv_requests[i] // MPI_Request * request
-    ));
+    );
   }
 
   int send_buffer{};
   for (size_t i = 0; i < DEFAULT_BUFFER*2; ++i) {
     MPI_Request send_request;
-    uit::verify(MPI_Isend(
+    UIT_Isend(
       &send_buffer, // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -262,7 +262,7 @@ static void MPI_Testsome_manymanypending(benchmark::State& state) {
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &send_request // MPI_Request * request
-    ));
+    );
   }
 
   // benchmark
@@ -272,25 +272,25 @@ static void MPI_Testsome_manymanypending(benchmark::State& state) {
 
     thread_local std::array<int, DEFAULT_BUFFER> out_indices;
 
-    uit::verify(MPI_Testsome(
+    UIT_Testsome(
       recv_requests.size(), // int count
       recv_requests.data(), // MPI_Request array_of_requests[]
       &flag, // int *outcount
       out_indices.data(), // int array_of_indices[]
       MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
-    ));
+    );
 
   }
 
   // clean up
   for (auto& request : recv_requests) {
-    if (!uit::test_completion(request)) uit::verify(MPI_Cancel(&request));
+    if (!uit::test_completion(request)) UIT_Cancel(&request);
   }
 
   for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
     MPI_Request request;
     int buffer{};
-    uit::verify(MPI_Irecv(
+    UIT_Irecv(
       &buffer, // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -298,8 +298,8 @@ static void MPI_Testsome_manymanypending(benchmark::State& state) {
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &request // MPI_Request * request
-    ));
-    uit::verify(MPI_Wait(&request, MPI_STATUS_IGNORE));
+    );
+    UIT_Wait(&request, MPI_STATUS_IGNORE);
   }
 
 }

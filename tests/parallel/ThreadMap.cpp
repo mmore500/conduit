@@ -3,8 +3,8 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "parallel/ThreadMap.hpp"
-#include "parallel/ThreadTeam.hpp"
+#include "uit/parallel/ThreadMap.hpp"
+#include "uit/parallel/ThreadTeam.hpp"
 
 TEST_CASE("ThreadMap") {
 

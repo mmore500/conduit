@@ -3,7 +3,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "containers/safe/vector.hpp"
+#include "uit/containers/safe/vector.hpp"
 
 TEST_CASE("vector") {
 

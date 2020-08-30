@@ -3,7 +3,7 @@ TEST_NAMES := ConcurrentTimeoutBarrier Gatherer ThreadSafeIbarrierRequest
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
 
-FLAGS = -std=c++17 -g -pthread -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
+FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
 
 default: test
 
@@ -21,23 +21,23 @@ test: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
 # Test optimized version without debug features
-opt: FLAGS := -std=c++17 -pthread -DNDEBUG -O3 -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/
+opt: FLAGS := -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/
 opt: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
 fulldebug: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
-cranky: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
 cranky: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
-cov: FLAGS := -std=c++17 -pthread -g -Wall -Wno-unused-function -I../../coverage_include/ -I../../source -I../../third-party/ -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
+cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../coverage_include/ -I../../source -I../../third-party/ -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
 cov: $(addprefix cov-, $(TEST_NAMES))
 
-cov-%: %.cpp ../../third-party/Catch/single_include/catch2/catch.hpp
+cov-%: %.cpp
 	export OMPI_CXX=clang++ && $(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	#echo "running $@.out"
 	# execute test

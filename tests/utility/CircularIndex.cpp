@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "utility/CircularIndex.hpp"
+#include "uit/utility/CircularIndex.hpp"
 
 TEST_CASE("Test CircularIndex")
 {
