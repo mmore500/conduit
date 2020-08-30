@@ -337,7 +337,7 @@ Implementations of inter-process communication currently use the [Messgage Passi
 
 ## Benchmarks
 
-Benchmarks are performed during Travis builds and also, occasionally, on the iCER HPCC cluster.
+Benchmarks are performed during Travis builds and occasionally on the [iCER HPCC cluster](https://icer.msu.edu/).
 Benchmark results are available at [https://osf.io/7jkgp/](https://osf.io/7jkgp/).
 
 ## Acknowledgement
@@ -352,6 +352,6 @@ This research was supported in part by NSF grants DEB-1655715 and DBI-0939454.
 This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. DGE-1424871.
 Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
 
-Michigan State University provided computational resources used in this work through the Institute for Cyber-Enabled Research.
+Michigan State University provided computational resources used in this work through the [Institute for Cyber-Enabled Research](https://icer.msu.edu/).
 
 This research is conducted in affiliation with the [Digital Evolution Laboratory](https://devolab.org/) at Michigan State University, the [BEACON Center for the Study of Evolution in Action](https://www3.beacon-center.org/), the [Ecology, Evolutionary Biology, and Behavior](https://eebb.natsci.msu.edu/) Program at MSU, and the [Department of Computer Science and Engineering](http://cse.msu.edu/) at MSU.
