@@ -5,11 +5,10 @@
 #include <mpi.h>
 
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
+#define CATCH_CONFIG_RUNNER
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "conduit/config.hpp"
-#include "conduit/Conduit.hpp"
+#include "conduit/Source.hpp"
 #include "conduit/ImplSpec.hpp"
 #include "concurrent/Gatherer.hpp"
 #include "distributed/MPIGuard.hpp"
@@ -17,7 +16,9 @@
 #include "distributed/MultiprocessReporter.hpp"
 #include "mesh/Mesh.hpp"
 #include "parallel/ThreadTeam.hpp"
-#include "polyfill/latch.hpp"
+#include "polyfill/barrier.hpp"
+#include "topology/DyadicTopologyFactory.hpp"
+#include "topology/ProConTopologyFactory.hpp"
 #include "topology/RingTopologyFactory.hpp"
 #include "utility/assign_utils.hpp"
 #include "utility/benchmark_utils.hpp"
@@ -26,105 +27,330 @@
 #include "utility/numeric_cast.hpp"
 #include "utility/safe_compare.hpp"
 
-#define MSG_T int
-#define num_nodes 4
-
-using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
-
 const uit::MPIGuard guard;
 
-uit::Gatherer<MSG_T> gatherer(MPI_INT);
+using MSG_T = int;
+using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
-void check_connectivity(uit::MeshNode<Spec> node, const size_t node_id) {
+#define REPEAT for (size_t rep = 0; rep < std::deca{}.num ; ++rep)
 
-  node.GetOutput(0).TryPut(node_id);
+#define THREADED_BEGIN uit::ThreadTeam team; for (uit::thread_id_t thread_id = 0; thread_id < num_threads; ++thread_id) { team.Add([thread_id, &mesh](){
 
-  static std::latch sync_before{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
-  sync_before.arrive_and_wait();
+#define THREADED_END }); } team.Join();
 
-  for (size_t rep = 0; rep < 100; ++rep) node.GetOutput(0).TryPut(node_id);
+size_t num_threads;
 
-  static std::latch sync_after{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
-  sync_after.arrive_and_wait();
+// must be emplacedd
+static std::optional<std::barrier<>> barrier;
 
-  const MSG_T res = node.GetInput(0).GetCurrent();
+TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
-  REQUIRE( uit::safe_equal(res, uit::circular_index(node_id, num_nodes, -1)) );
+  auto [outlet] = uit::Source<Spec>{
+    std::in_place_type_t<Spec::ThreadDuct>{}
+  };
 
-  gatherer.Put(res);
+  REQUIRE( outlet.GetCurrent() == MSG_T{} );
 
-}
+} }
 
-TEST_CASE("Test ThreadDuct Connectivity") {
-
-  uit::ThreadTeam team;
+TEST_CASE("Unmatched gets") { REPEAT {
 
   uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(num_nodes),
+    uit::DyadicTopologyFactory{}(num_threads),
     uit::AssignSegregated<uit::thread_id_t>{}
   };
 
-  for (size_t i = 0; i < num_nodes; ++i) {
-    team.Add([=](){ check_connectivity(mesh.GetSubmesh(i)[0], i); });
-  }
+  THREADED_BEGIN {
 
-  team.Join();
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
-  auto res = gatherer.Gather();
+    for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
+      REQUIRE( input.GetCurrent() == MSG_T{} );
+    }
 
-  if (res) {
-    REQUIRE(
-      std::unordered_set(
-        std::begin(*res),
-        std::end(*res)
-      ).size() == res->size()
-    );
+    barrier->arrive_and_wait();
 
-    for (auto & val : *res) std::cout << "v: " << val << std::endl;
+    output.SurePut(42);
+    REQUIRE( input.GetNext() == 42 );
 
-  }
+    for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
+      REQUIRE( input.GetCurrent() == 42 );
+    }
 
-}
+  } THREADED_END
 
-void check_validity(uit::MeshNode<Spec> node, const size_t node_id) {
+} }
 
-  static std::latch sync_before{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
-  sync_before.arrive_and_wait();
-
-  MSG_T last{};
-  for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
-    node.GetOutput(0).TryPut(msg);
-    const MSG_T current = node.GetInput(0).GetCurrent();
-    REQUIRE( current >= 0 );
-    REQUIRE( current < 10 * std::kilo{}.num );
-    REQUIRE( last <= current );
-    last = current;
-  }
-
-  // all puts must be complete for next part of the test
-  static std::latch sync_after{uit::numeric_cast<std::ptrdiff_t>(num_nodes)};
-  sync_after.arrive_and_wait();
-
-  for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
-    REQUIRE( node.GetInput(0).GetCurrent() >= 0 );
-    REQUIRE( node.GetInput(0).GetCurrent() == node.GetInput(0).GetCurrent() );
-  }
-
-}
-
-TEST_CASE("Test ThreadDuct Validity") {
-
-  uit::ThreadTeam team;
+TEST_CASE("Unmatched puts") { REPEAT {
 
   uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(num_nodes),
+    uit::DyadicTopologyFactory{}(num_threads),
     uit::AssignSegregated<uit::thread_id_t>{}
   };
 
-  for (size_t i = 0; i < num_nodes; ++i) {
-    team.Add([=](){ check_validity(mesh.GetSubmesh(i)[0], i); });
-  }
+  THREADED_BEGIN {
 
-  team.Join();
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
+    for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(i);
+
+    REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
+
+  } THREADED_END
+
+} }
+
+TEST_CASE("Eventual flush-out") { REPEAT {
+
+  uit::Mesh<Spec> mesh{
+    uit::DyadicTopologyFactory{}(num_threads),
+    uit::AssignSegregated<uit::thread_id_t>{}
+  };
+
+  THREADED_BEGIN {
+
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
+
+    for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(0);
+
+    while ( !output.TryPut( 1 ) ) {
+      const auto res{ input.GetCurrent() }; // operational!
+      REQUIRE( std::unordered_set{0, 1}.count(res) );
+    }
+
+    while ( input.GetCurrent() != 1 ) {
+      const auto res{ input.GetCurrent() }; // operational!
+      REQUIRE( std::unordered_set{0, 1}.count(res) );
+    }
+
+    REQUIRE( input.GetCurrent() == 1 );
+
+  } THREADED_END
+
+} }
+
+
+TEST_CASE("Validity") { REPEAT {
+
+  uit::Mesh<Spec> mesh{
+    uit::DyadicTopologyFactory{}(num_threads),
+    uit::AssignSegregated<uit::thread_id_t>{}
+  };
+
+  THREADED_BEGIN {
+
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
+
+    int last{};
+    for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
+
+      output.TryPut(msg);
+
+      const MSG_T current = input.GetCurrent();
+      REQUIRE( current >= 0 );
+      REQUIRE( current < 10 * std::kilo{}.num );
+      REQUIRE( last <= current);
+
+      last = current;
+
+    }
+
+  } THREADED_END
+
+} }
+
+TEST_CASE("Ring Mesh connectivity") { REPEAT {
+
+  uit::Mesh<Spec> mesh{
+    uit::RingTopologyFactory{}(num_threads),
+    uit::AssignSegregated<uit::thread_id_t>{}
+  };
+
+  THREADED_BEGIN {
+
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
+
+    // check that everyone's connected properly
+    output.TryPut(uit::get_rank());
+
+    REQUIRE( input.GetNext() == uit::numeric_cast<MSG_T>(
+      uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+    ) );
+
+  } THREADED_END
+
+} }
+
+TEST_CASE("Ring Mesh sequential consistency") { REPEAT {
+
+  uit::Mesh<Spec> mesh{
+    uit::RingTopologyFactory{}(num_threads),
+    uit::AssignSegregated<uit::thread_id_t>{}
+  };
+
+  THREADED_BEGIN {
+
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
+
+    // long enough to check that buffer wraparound works properly
+    for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
+
+      barrier->arrive_and_wait();
+
+      output.SurePut(i);
+      REQUIRE(input.GetNext() == i);
+
+    }
+
+  } THREADED_END
+
+} }
+
+TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
+
+  uit::Mesh<Spec> mesh{
+    uit::RingTopologyFactory{}(num_threads),
+    uit::AssignSegregated<uit::thread_id_t>{}
+  };
+
+  THREADED_BEGIN {
+
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInputOrNullopt(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutputOrNullopt(0);
+
+    // check that everyone's connected properly
+    if (output) output->SurePut(uit::get_rank());
+
+    // did we get expected rank ID as message?
+    if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
+      // is odd process loop at end
+      REQUIRE( input->GetNext() == uit::get_rank());
+    } else if (input) {
+      // is consumer
+      REQUIRE(
+        input->GetNext() == uit::numeric_cast<int>(
+          uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+        )
+      );
+    } else REQUIRE( uit::get_rank() % 2 == 0 ); // is producer
+
+  } THREADED_END
+
+} }
+
+TEST_CASE("Producer-Consumer Mesh sequential consistency") { REPEAT {
+
+  uit::Mesh<Spec> mesh{
+    uit::RingTopologyFactory{}(num_threads),
+    uit::AssignSegregated<uit::thread_id_t>{}
+  };
+
+  THREADED_BEGIN {
+
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInputOrNullopt(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutputOrNullopt(0);
+
+    // long enough to check that buffer wraparound works properly
+    for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
+
+      if (output) output->SurePut(i);
+      if (input) REQUIRE( input->GetNext() == i );
+
+    }
+
+  } THREADED_END
+
+} }
+
+TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
+
+  uit::Mesh<Spec> mesh{
+    uit::DyadicTopologyFactory{}(num_threads),
+    uit::AssignSegregated<uit::thread_id_t>{}
+  };
+
+  THREADED_BEGIN {
+
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
+
+    // check that everyone's connected properly
+    output.SurePut(uit::get_rank());
+
+    // did we get expected rank ID as message?
+    if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
+      // is connected to self (is odd process loop at end)
+      REQUIRE( input.GetNext() == uit::get_rank() );
+    } else {
+      // is connected to neighbor
+      REQUIRE( input.GetNext() == uit::numeric_cast<int>(
+        uit::circular_index(
+          uit::get_rank(),
+          uit::get_nprocs(),
+          // is pointing forwards or backwards
+          (uit::get_rank() % 2) ? -1 : 1
+        )
+      ) );
+    }
+
+  } THREADED_END
+
+} }
+
+TEST_CASE("Dyadic Mesh sequential consistency") { REPEAT {
+
+  uit::Mesh<Spec> mesh{
+    uit::DyadicTopologyFactory{}(num_threads),
+    uit::AssignSegregated<uit::thread_id_t>{}
+  };
+
+  THREADED_BEGIN {
+
+    auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
+    auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
+
+    // long enough to check that buffer wraparound works properly
+    for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
+
+      barrier->arrive_and_wait();
+
+      output.SurePut(i);
+      REQUIRE( input.GetNext() == i );
+
+    }
+
+  } THREADED_END
+
+} }
+
+int main( int argc, char* argv[] ) {
+
+  Catch::Session session; // There must be exactly one instance
+
+  // Build a new parser on top of Catch's
+  using namespace Catch::clara;
+  session.cli(
+    // Get Catch's composite command line parser
+    session.cli()
+    // bind variable to a new option, with a hint string
+    | Opt( num_threads, "num_threads" )
+      // the option names it will respond to
+      ["-t"]["--num_threads"]
+      // description string for the help output
+      ("how many threds to test with?")
+  );
+
+  // Let Catch (using Clara) parse the command line
+  int returnCode = session.applyCommandLine( argc, argv );
+  if( returnCode != 0 ) return returnCode;
+
+  barrier.emplace( uit::numeric_cast<std::ptrdiff_t>(num_threads) );
+
+  return session.run();
 }

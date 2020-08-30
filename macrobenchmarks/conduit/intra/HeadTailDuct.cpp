@@ -1,5 +1,5 @@
 #include "conduit/ImplSpec.hpp"
-#include "conduit/thread/HeadTailDuct.hpp"
+#include "conduit/intra/HeadTailDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
   uit::HeadTailDuct

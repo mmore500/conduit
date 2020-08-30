@@ -3,8 +3,8 @@
 #include <atomic>
 
 #include "../impl/PendingDuct.hpp"
+#include "../../parallel/AlignedImplicit.hpp"
 #include "../../parallel/AlignedInherit.hpp"
-#include "../../parallel/RelaxedAtomic.hpp"
 
 namespace uit {
 
@@ -17,7 +17,7 @@ namespace uit {
 template<typename ImplSpec>
 class AtomicPendingDuct
 : public uit::internal::PendingDuct<
-  uit::AlignedInherit<uit::RelaxedAtomic<size_t>>,
+  uit::AlignedInherit<std::atomic<size_t>>,
   uit::AlignedImplicit<typename ImplSpec::T>,
   ImplSpec
 >

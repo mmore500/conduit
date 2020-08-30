@@ -83,28 +83,9 @@ class Inlet {
   /**
    * TODO.
    *
-   * @return TODO.
-   */
-  const T& Get() const { return duct->Get(); }
-
-  /**
-   * TODO.
-   *
    * @param val
    */
   void Put(const T& val) { duct->Put(val); }
-
-  /**
-   * TODO.
-   */
-  void ConsumeGets(const size_t n) {
-#ifndef NDEBUG
-    const uit::OccupancyGuard guard{caps.Get("ConsumeGets", 1)};
-#endif
-    duct->ConsumeGets(n);
-    ++successful_put_count;
-  }
-
 
 public:
 

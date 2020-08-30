@@ -59,18 +59,9 @@ public:
   /**
    * TODO.
    *
-   * @throws TODO.
-   */
-  [[noreturn]] size_t CountUnconsumedGets() {
-    emp_assert(false, "CountUnconsumedGets called on EmpAssertDuct");
-  }
-
-  /**
-   * TODO.
-   *
    * @param n TODO.
    */
-  [[noreturn]] size_t ConsumeGets(const size_t n) {
+  [[noreturn]] size_t TryConsumeGets(const size_t requested) {
     emp_assert(false, "ConsumeGets called on EmpAssertDuct");
   }
 

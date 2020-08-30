@@ -172,24 +172,14 @@ public:
   /**
    * TODO.
    *
-   * @return TODO.
-   */
-  size_t CountUnconsumedGets() {
-    return std::visit(
-      [](auto& arg) -> size_t { return arg.CountUnconsumedGets(); },
-      impl
-    );
-  }
-
-  /**
-   * TODO.
-   *
    * @param count maximum number of gets to consume.
    * @return number of gets actually consumed.
    */
-  size_t ConsumeGets(const size_t requested) {
+  size_t TryConsumeGets(const size_t requested) {
     return std::visit(
-      [requested](auto& arg) -> size_t { return arg.ConsumeGets(requested); },
+      [requested](auto& arg) -> size_t {
+        return arg.TryConsumeGets(requested);
+      },
       impl
     );
   }

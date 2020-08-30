@@ -53,18 +53,9 @@ public:
   /**
    * TODO.
    *
-   * @throws TODO.
-   */
-  size_t CountUnconsumedGets() {
-    throw "CountUnconsumedGets called on NopDuct";
-  }
-
-  /**
-   * TODO.
-   *
    * @param n TODO.
    */
-  size_t ConsumeGets(const size_t requested) { return 0; }
+  size_t TryConsumeGets(const size_t requested) { return 0; }
 
   /**
    * TODO.

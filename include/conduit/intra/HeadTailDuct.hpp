@@ -6,7 +6,6 @@
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../conduit/config.hpp"
-#include "../../parallel/AlignedImplicit.hpp"
 #include "../../parallel/OccupancyCaps.hpp"
 #include "../../parallel/OccupancyGuard.hpp"
 #include "../../utility/print_utils.hpp"
@@ -26,15 +25,26 @@ class HeadTailDuct {
   constexpr inline static size_t N{ImplSpec::N};
 
   // aligned implicit value initializes T
-  using buffer_t = emp::array<uit::AlignedImplicit<T>, N>;
+  using buffer_t = emp::array<T, N>;
 
-  uit::AlignedImplicit<size_t> head{0};
-  uit::AlignedImplicit<size_t> tail{0};
+  size_t head{};
+  size_t tail{};
   buffer_t buffer;
 
-#ifndef NDEBUG
-  mutable uit::OccupancyCaps caps;
-#endif
+  #ifndef NDEBUG
+    mutable uit::OccupancyCaps caps;
+  #endif
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t CountUnconsumedGets() const {
+    //TODO FIXME handle wraparound case?
+    emp_assert(tail <= head);
+    return head - tail;
+  }
 
 public:
 
@@ -49,11 +59,7 @@ public:
     #endif
     ++head;
     buffer[head % N] = val;
-    emp_assert(
-      CountUnconsumedGets() <= N,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      emp::to_string("CountUnconsumedGets(): ", CountUnconsumedGets())
-    );
+    emp_assert( CountUnconsumedGets() <= N );
   }
 
   /**
@@ -66,25 +72,13 @@ public:
   /**
    * TODO.
    *
-   * @return TODO.
-   */
-  size_t CountUnconsumedGets() const {
-    //TODO FIXME handle wraparound case?
-    emp_assert(tail <= head);
-    return head - tail;
-  }
-
-
-  /**
-   * TODO.
-   *
    * @param n TODO.
    */
-  size_t ConsumeGets(const size_t n) {
+  size_t TryConsumeGets(const size_t n) {
     #ifndef NDEBUG
       const uit::OccupancyGuard guard{caps.Get("ConsumeGets", 1)};
     #endif
-    const size_t num_consumed = std::min(CountUnconsumedGets(), n);
+    const size_t num_consumed = std::min( CountUnconsumedGets(), n );
     tail += num_consumed;
     return num_consumed;
   }

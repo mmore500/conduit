@@ -86,13 +86,6 @@ class Outlet {
   /**
    * TODO.
    *
-   * @return
-   */
-  size_t CountUnconsumedGets() { return duct->CountUnconsumedGets(); }
-
-  /**
-   * TODO.
-   *
    * @return TODO.
    */
   const T& Get() const { return duct->Get(); }
@@ -102,13 +95,11 @@ class Outlet {
    *
    * @param n TODO.
    */
-  void ConsumeGets(const size_t n) {
-  #ifndef NDEBUG
-    const OccupancyGuard guard{caps.Get("ConsumeGets", 1)};
-  #endif
-
-    Log( duct->ConsumeGets(n) );
-
+  size_t TryConsumeGets(const size_t n) {
+    #ifndef NDEBUG
+      const OccupancyGuard guard{caps.Get("TryConsumeGets", 1)};
+    #endif
+    return duct->TryConsumeGets(n);
   }
 
   /**
@@ -141,7 +132,7 @@ public:
     const OccupancyGuard guard{caps.Get("GetCurrent", 1)};
 #endif
 
-    ConsumeGets( std::numeric_limits<size_t>::max() );
+    Log(TryConsumeGets( std::numeric_limits<size_t>::max() ));
     return Get();
   }
 
@@ -156,8 +147,8 @@ public:
     #ifndef NDEBUG
       const OccupancyGuard guard{caps.Get("GetNext", 1)};
     #endif
-    while (CountUnconsumedGets() == 0);
-    ConsumeGets(1);
+    while (TryConsumeGets(1) == 0);
+    Log( 1 );
     return Get();
   }
 
@@ -172,8 +163,7 @@ public:
     #ifndef NDEBUG
       const OccupancyGuard guard{caps.Get("GetNextOrNullopt", 1)};
     #endif
-    if (CountUnconsumedGets()) {
-      ConsumeGets(1);
+    if (TryConsumeGets(1)) {
       return std::optional{ std::reference_wrapper{ Get() } };
     } else return std::nullopt;
   }

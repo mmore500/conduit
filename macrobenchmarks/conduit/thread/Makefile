@@ -1,4 +1,4 @@
-BENCH_NAMES := HeadTailDuct AtomicPendingDuct
+BENCH_NAMES := AtomicPendingDuct MoodyCamelDuct RigtorpDuct
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec

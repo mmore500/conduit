@@ -1,11 +1,11 @@
 #include "conduit/ImplSpec.hpp"
 #include "conduit/mock/ThrowDuct.hpp"
-#include "conduit/intra/HeadTailDuct.hpp"
+#include "conduit/thread/MoodyCamelDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
-  uit::HeadTailDuct,
-  uit::ThrowDuct,
+  uit::SerialPendingDuct,
+  uit::MoodyCamelDuct,
   uit::ThrowDuct
 >;
 
-#include "IntraDuct.hpp"
+#include "ThreadDuct.hpp"
