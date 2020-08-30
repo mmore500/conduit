@@ -32,16 +32,15 @@ public:
   /**
    * TODO.
    *
-   * @param val TODO.
    */
-  void Put(const T& val) { throw "Put called on ThrowDuct"; }
+  void Put(const T&) const { throw "Put called on ThrowDuct"; }
 
   /**
    * TODO.
    *
-   * @return TODO.
+   * @throws TODO.
    */
-  [[noreturn]] bool IsReadyForPut() {
+  [[noreturn]] bool IsReadyForPut() const {
     throw "IsReadyForPut called on ThrowDuct";
   }
 
@@ -50,14 +49,14 @@ public:
   *
   * @throws TODO.
    */
-  [[noreturn]] const T& Get() { throw "Get called on ThrowDuct"; }
+  [[noreturn]] const T& Get() const { throw "Get called on ThrowDuct"; }
 
   /**
    * TODO.
    *
-   * @param n TODO.
+   * @throws TODO.
    */
-  [[noreturn]] size_t TryConsumeGets(const size_t requested) {
+  [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on ThrowDuct";
   }
 

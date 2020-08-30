@@ -209,7 +209,7 @@ public:
     return pending_sends < N;
   }
 
-  [[noreturn]] size_t TryConsumeGets(const size_t requested) const {
+  [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on ImmediateSendDuct";
   }
 

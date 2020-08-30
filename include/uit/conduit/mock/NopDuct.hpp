@@ -34,7 +34,7 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) { ; }
+  void Put(const T&) { ; }
 
   /**
    * TODO.
@@ -46,16 +46,16 @@ public:
   /**
   * TODO.
   *
-  * @throws TODO.
+  * @return TODO.
    */
   const T& Get() { const static T val{}; return val; }
 
   /**
    * TODO.
    *
-   * @param n TODO.
+   * @return TODO.
    */
-  size_t TryConsumeGets(const size_t requested) { return 0; }
+  size_t TryConsumeGets(size_t) { return 0; }
 
   /**
    * TODO.

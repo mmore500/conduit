@@ -86,7 +86,7 @@ public:
    */
   bool IsReadyForPut() const { return true; }
 
-  [[noreturn]] size_t TryConsumeGets(const size_t requested) {
+  [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on BlockingSendDuct";
   }
 

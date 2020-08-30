@@ -34,34 +34,34 @@ public:
   /**
    * TODO.
    *
-   * @param val TODO.
+   * @throws TODO.
    */
-  void Put(const T& val) { emp_assert(false, "Put called on EmpAssertDuct"); }
+  void Put(const T&) const { emp_assert(false, "Put called on EmpAssertDuct"); }
 
   /**
    * TODO.
    *
-   * @return TODO.
+   * @throws TODO.
    */
-  [[noreturn]] bool IsReadyForPut() {
+  [[noreturn]] bool IsReadyForPut() const {
     emp_assert(false, "IsReadyForPut called on EmpAssertDuct");
   }
 
   /**
-  * TODO.
-  *
-  * @throws TODO.
+   * TODO.
+   *
+   * @throws TODO.
    */
-  [[noreturn]] const T& Get() {
+  [[noreturn]] const T& Get() const {
     emp_assert(false, "Get called on EmpAssertDuct");
   }
 
   /**
    * TODO.
    *
-   * @param n TODO.
+   * @throws TODO.
    */
-  [[noreturn]] size_t TryConsumeGets(const size_t requested) {
+  [[noreturn]] size_t TryConsumeGets(size_t) const {
     emp_assert(false, "ConsumeGets called on EmpAssertDuct");
   }
 

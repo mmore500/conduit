@@ -288,7 +288,7 @@ public:
     ) );
   }
 
-  [[noreturn]] void Put(const T& val) const { throw "Put called on IrecvDuct"; }
+  [[noreturn]] void Put(const T&) const { throw "Put called on IrecvDuct"; }
 
   [[noreturn]] bool IsReadyForPut() const {
     throw "IsReadyForPut called on IrecvDuct";

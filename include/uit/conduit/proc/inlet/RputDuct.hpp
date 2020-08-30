@@ -248,7 +248,7 @@ public:
     throw "CountUnconsumedGets called on RputDuct";
   }
 
-  [[noreturn]] size_t ConsumeGets(const size_t requested) const {
+  [[noreturn]] size_t ConsumeGets(size_t) const {
     throw "ConsumeGets called on RputDuct";
   }
 
