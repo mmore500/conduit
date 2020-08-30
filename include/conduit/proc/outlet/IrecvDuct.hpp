@@ -247,6 +247,16 @@ private:
     }();
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t CountUnconsumedGets() {
+    TryFulfillReceiveRequests();
+    return pending_gets;
+  }
+
 public:
 
   IrecvDuct(
@@ -269,7 +279,7 @@ public:
   }
 
   ~IrecvDuct() {
-    while ( CountUnconsumedGets() ) ConsumeGets( CountUnconsumedGets() );
+    while ( CountUnconsumedGets() ) TryConsumeGets( CountUnconsumedGets() );
     CancelOpenReceiveRequests();
     emp_assert( std::all_of(
       std::begin(receive_requests),
@@ -287,27 +297,19 @@ public:
   /**
    * TODO.
    *
-   * @return TODO.
-   */
-  size_t CountUnconsumedGets() {
-    TryFulfillReceiveRequests();
-    return pending_gets;
-  }
-
-  /**
-   * TODO.
-   *
    * @param num_requested TODO.
    * @return number items consumed.
    */
-  size_t ConsumeGets(const size_t num_requested) {
+  size_t TryConsumeGets(const size_t num_requested) {
 
     size_t requested_countdown{ num_requested };
     size_t batch_countdown{ CountUnconsumedGets() };
     bool full_batch = (batch_countdown == N - 1);
 
-    while ( batch_countdown-- && requested_countdown-- ) {
+    while ( batch_countdown && requested_countdown ) {
 
+      --batch_countdown;
+      --requested_countdown;
       --pending_gets;
       PostReceiveRequest();
 

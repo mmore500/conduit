@@ -209,11 +209,7 @@ public:
     return pending_sends < N;
   }
 
-  [[noreturn]] size_t CountUnconsumedGets() const {
-    throw "CountUnconsumedGets called on ImmediateSendDuct";
-  }
-
-  [[noreturn]] size_t ConsumeGets(const size_t requested) const {
+  [[noreturn]] size_t TryConsumeGets(const size_t requested) const {
     throw "ConsumeGets called on ImmediateSendDuct";
   }
 

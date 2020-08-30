@@ -86,11 +86,7 @@ public:
    */
   bool IsReadyForPut() const { return true; }
 
-  [[noreturn]] size_t CountUnconsumedGets() const {
-    throw "CountUnconsumedGets called on BlockingSendDuct";
-  }
-
-  [[noreturn]] size_t ConsumeGets(const size_t requested) {
+  [[noreturn]] size_t TryConsumeGets(const size_t requested) {
     throw "ConsumeGets called on BlockingSendDuct";
   }
 

@@ -48,6 +48,8 @@ private:
 
   T res{};
 
+  size_t CountUnconsumedGets() const { return 1; }
+
 public:
 
   WindowDuct(
@@ -87,9 +89,7 @@ public:
     throw "IsReadyForPut called on WindowDuct";
   }
 
-  size_t CountUnconsumedGets() const { return 1; }
-
-  size_t ConsumeGets(const size_t requested) const { return 1; }
+  size_t TryConsumeGets(const size_t requested) const { return 1; }
 
   const T& Get() {
     // TODO use atomics as counter?
