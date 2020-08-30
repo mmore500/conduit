@@ -96,7 +96,7 @@ void profile_thread_count(const size_t num_threads) {
 int main(int argc, char* argv[]) {
 
   int provided;
-  uit::verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided));
+  UIT_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided);
   emp_assert(provided >= MPI_THREAD_FUNNELED);
 
   // TODO

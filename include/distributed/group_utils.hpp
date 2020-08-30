@@ -37,12 +37,12 @@ MPI_Group make_group(
   ), to_string(ranks));
 
   MPI_Group res;
-  verify(MPI_Group_incl(
+  UIT_Group_incl(
     source, // MPI_Group group
     ranks.size(), // int n
     ranks.data(), // const int ranks[]
     &res // MPI_Group * newgroup
-  ));
+  );
   return res;
 }
 

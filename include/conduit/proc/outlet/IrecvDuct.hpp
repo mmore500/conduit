@@ -160,7 +160,7 @@ private:
     ++freshest_receive_pos;
 
     emp_assert( uit::test_null( receive_requests[freshest_receive_pos] ) );
-    uit::verify(MPI_Irecv(
+    UIT_Irecv(
       &buffer[freshest_receive_pos],
       sizeof(T),
       MPI_BYTE,
@@ -168,7 +168,7 @@ private:
       address.GetTag(),
       address.GetComm(),
       &receive_requests[freshest_receive_pos]
-    ));
+    );
     emp_assert( !uit::test_null( receive_requests[freshest_receive_pos] ) );
 
   }
@@ -176,8 +176,8 @@ private:
   void CancelReceiveRequest(const size_t pos) {
     emp_assert( !uit::test_null( receive_requests[pos] ) );
 
-    uit::verify(MPI_Cancel( &receive_requests[pos] ));
-    uit::verify(MPI_Request_free( &receive_requests[pos] ));
+    UIT_Cancel( &receive_requests[pos] );
+    UIT_Request_free( &receive_requests[pos] );
 
     emp_assert( uit::test_null( receive_requests[pos] ) );
   }
@@ -203,13 +203,13 @@ private:
     thread_local emp::array<int, N> out_indices; // ignored
     int received_count{};
 
-    uit::verify(MPI_Testsome(
+    UIT_Testsome(
       to - from, // int count
       &receive_requests[from], // MPI_Request array_of_requests[]
       &received_count, // int *outcount
       out_indices.data(), // int *indices
       MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
-    ));
+    );
 
     emp_assert( std::all_of(
       std::begin(receive_requests) + from,

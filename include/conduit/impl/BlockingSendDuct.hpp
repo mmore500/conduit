@@ -49,14 +49,14 @@ private:
 
   void PostSend() {
 
-    uit::verify(BlockingSendFunctor{}(
+    BlockingSendFunctor{}(
       &buffer[send_position],
       sizeof(T),
       MPI_BYTE,
       address.GetOutletProc(),
       address.GetTag(),
       address.GetComm()
-    ));
+    );
     ++send_position;
 
   }

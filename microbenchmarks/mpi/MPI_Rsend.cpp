@@ -41,14 +41,14 @@ static void MPI_Rsend(benchmark::State& state) {
     // add a send request
     requests.emplace_back();
     buffers.emplace_back();
-    uit::verify(MPI_Rsend(
+    UIT_Rsend(
       &buffers.back(), // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
       1, // int dest
       1, // int tag
       MPI_COMM_WORLD // MPI_Comm comm
-    ));
+    );
 
   }
 
@@ -74,7 +74,7 @@ static void post_fresh_recvs(
   for (size_t i = 0; i < buffer_size; ++i) {
     requests.emplace_back();
     buffers.emplace_back();
-    uit::verify(MPI_Irecv(
+    UIT_Irecv(
       &buffers.back(), // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -82,7 +82,7 @@ static void post_fresh_recvs(
       1, // int tag
       MPI_COMM_WORLD, // MPI_Comm comm
       &requests.back() // MPI_Request * request
-    ));
+    );
   }
 
   if (requests.size() > 2 * buffer_size) {
@@ -92,11 +92,11 @@ static void post_fresh_recvs(
       std::begin(requests),
       std::prev(std::end(requests), 2 * buffer_size)
     );
-    uit::verify(MPI_Waitall(
+    UIT_Waitall(
       contiguous.size(),
       contiguous.data(),
       MPI_STATUSES_IGNORE
-    ));
+    );
 
     requests.erase(
       std::begin(requests),
@@ -118,11 +118,11 @@ static void support() {
   post_fresh_recvs(requests, buffers);
 
   // signal setup is complete
-  uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+  UIT_Barrier(MPI_COMM_WORLD);
 
   // this barrier will signal when benchmarking is complete
   MPI_Request ibarrier_request;
-  uit::verify(MPI_Ibarrier(MPI_COMM_WORLD, &ibarrier_request));
+  UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
 
   // loop until benchmarking is complete
   while (!uit::test_completion(ibarrier_request)) {
@@ -154,14 +154,14 @@ int main(int argc, char** argv) {
     benchmark::Initialize(&argc, argv);
 
     // wait for support to complete setup
-    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+    UIT_Barrier(MPI_COMM_WORLD);
 
     benchmark::RunSpecifiedBenchmarks();
 
     // notify support that benchmarking is complete
     MPI_Request ibarrier_request;
-    uit::verify(MPI_Ibarrier(MPI_COMM_WORLD, &ibarrier_request));
-    uit::verify(MPI_Wait(&ibarrier_request, MPI_STATUSES_IGNORE));
+    UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
+    UIT_Wait(&ibarrier_request, MPI_STATUSES_IGNORE);
 
   } else {
 

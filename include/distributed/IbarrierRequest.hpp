@@ -2,6 +2,7 @@
 
 #include <mpi.h>
 
+#include "audited_routine_aliases.hpp"
 #include "mpi_utils.hpp"
 
 namespace uit {
@@ -20,7 +21,7 @@ public:
    * @param comm Set of MPI processes to participate in barrier.
    */
   IbarrierRequest(const MPI_Comm comm=MPI_COMM_WORLD) {
-    uit::verify(MPI_Ibarrier(comm, &request));
+    UIT_Ibarrier(comm, &request);
   }
 
   /**

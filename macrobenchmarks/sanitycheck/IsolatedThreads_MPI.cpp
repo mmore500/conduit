@@ -50,7 +50,7 @@ void profile_thread_count(const size_t num_threads) {
 int main(int argc, char* argv[]) {
 
   int provided;
-  uit::verify(MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided));
+  UIT_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);
   emp_assert(provided >= MPI_THREAD_FUNNELED);
 
   for (size_t threads = 1; threads <= uit::get_nproc(); threads *= 2) {

@@ -164,8 +164,8 @@ private:
   void CancelPendingPut() {
     emp_assert(!uit::test_null( put_requests[CalcStalestPutPos()] ));
 
-    uit::verify(MPI_Cancel( &put_requests[CalcStalestPutPos()] ));
-    uit::verify(MPI_Request_free( &put_requests[CalcStalestPutPos()] ));
+    UIT_Cancel( &put_requests[CalcStalestPutPos()] );
+    UIT_Request_free( &put_requests[CalcStalestPutPos()] );
 
     emp_assert(uit::test_null( put_requests[CalcStalestPutPos()] ));
 
@@ -194,7 +194,7 @@ public:
       back_end->GetWindowManager().Acquire(address.GetOutletProc(), 0);
 
       // we'll emp_assert later to make sure it actually completed
-      uit::verify(MPI_Irecv(
+      UIT_Irecv(
         &target_offset, // void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype
@@ -202,7 +202,7 @@ public:
         address.GetTag(), // int tag
         address.GetComm(), // MPI_Comm comm
         &target_offset_request // MPI_Request *request
-      ));
+      );
     }
 
     static const uit::WarnOnce warning{

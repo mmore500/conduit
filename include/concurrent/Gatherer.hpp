@@ -10,6 +10,7 @@
 
 #include "../containers/safe/deque.hpp"
 #include "../distributed/mpi_utils.hpp"
+#include "../distributed/audited_routine_aliases.hpp"
 
 namespace uit {
 
@@ -46,7 +47,7 @@ class Gatherer {
     const int count = items.size();
     emp::vector<int> res(get_nprocs());
 
-    verify(MPI_Gather(
+    UIT_Gather(
       &count, // const void *sendbuf,
       1, // int sendcount,
       MPI_INT, // MPI_Datatype sendtype,
@@ -55,7 +56,7 @@ class Gatherer {
       MPI_INT, // MPI_Datatype recvtype,
       root, // int root,
       comm // MPI_Comm comm
-    ));
+    );
 
     return res;
 
@@ -115,7 +116,7 @@ public:
     emp::vector<T> send_buffer( std::begin(items), std::end(items) );
 
     // do gather, contributed items are only delivered to root process
-    verify(MPI_Gatherv(
+    UIT_Gatherv(
       send_buffer.data(), // const void *sendbuf
       send_buffer.size(), // int sendcount
       mpi_type, // MPI_Datatype sendtype
@@ -125,7 +126,7 @@ public:
       mpi_type, // MPI_Datatype recvtype
       root, // int root
       comm // MPI_Comm comm
-    ));
+    );
 
     // if executing process is root, return gathered items
     return root == get_rank(comm)

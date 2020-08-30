@@ -153,7 +153,7 @@ public:
     }
 
     // ensure that RputDucts have received target offsets
-    verify(MPI_Barrier(comm));
+    UIT_Barrier(comm);
 
     emp_assert(IsInitialized());
   }

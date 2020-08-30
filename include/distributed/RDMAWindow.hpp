@@ -5,6 +5,7 @@
 
 #include <mpi.h>
 
+#include "audited_routine_aliases.hpp"
 #include "mpi_utils.hpp"
 
 namespace uit {
@@ -27,8 +28,8 @@ public:
 
   ~RDMAWindow() {
     if (IsInitialized()) {
-      uit::verify(MPI_Win_free(&window.value()));
-      uit::verify(MPI_Free_mem(buffer));
+      UIT_Win_free(&window.value());
+      UIT_Free_mem(buffer);
     }
   }
 
@@ -66,7 +67,7 @@ public:
 
     emp_assert(IsInitialized());
 
-    verify(MPI_Win_lock(
+    UIT_Win_lock(
       MPI_LOCK_EXCLUSIVE, // int lock_type
       // Indicates whether other processes may access the target window at the
       // same time (if MPI_LOCK_SHARED) or not (MPI_LOCK_EXCLUSIVE)
@@ -76,7 +77,7 @@ public:
       // Used to optimize this call; zero may be used as a default.
       window.value() // MPI_Win win
       // window object (handle)
-    ));
+    );
 
   }
 
@@ -84,7 +85,7 @@ public:
 
     emp_assert(IsInitialized());
 
-    verify(MPI_Win_lock(
+    UIT_Win_lock(
       MPI_LOCK_SHARED, // int lock_type
       // Indicates whether other processes may access the target window at the
       // same time (if MPI_LOCK_SHARED) or not (MPI_LOCK_EXCLUSIVE)
@@ -94,7 +95,7 @@ public:
       // Used to optimize this call; zero may be used as a default.
       window.value() // MPI_Win win
       // window object (handle)
-    ));
+    );
 
   }
 
@@ -102,12 +103,12 @@ public:
 
     emp_assert(IsInitialized());
 
-    verify(MPI_Win_unlock(
+    UIT_Win_unlock(
       local_rank, // int rank
       // rank of window (nonnegative integer)
       window.value() // MPI_Win win
       // window object (handle)
-    ));
+    );
 
   }
 
@@ -120,7 +121,7 @@ public:
 
     emp_assert(IsInitialized());
 
-    verify(MPI_Rput(
+    UIT_Rput(
       origin_addr, // const void *origin_addr
       sizeof(T), // int origin_count
       MPI_BYTE, // MPI_Datatype origin_datatype
@@ -131,7 +132,7 @@ public:
       MPI_BYTE, // MPI_Datatype target_datatype
       window, // MPI_Win win
       request // MPI_Request* request (handle)
-    ));
+    );
 
   }
 
@@ -141,16 +142,16 @@ public:
 
     local_rank = target;
 
-    uit::verify(MPI_Alloc_mem(
+    UIT_Alloc_mem(
       size,
       MPI_INFO_NULL,
       &buffer
-    ));
+    );
 
     window.emplace();
 
     // all procs must make this call
-    uit::verify(MPI_Win_create(
+    UIT_Win_create(
       buffer, // base: initial address of window (choice)
       size, // size: size of window in bytes (nonnegative integer)
       1, // disp_unit: local unit size for displacements, in bytes
@@ -158,10 +159,10 @@ public:
       MPI_INFO_NULL, // info: info argument (handle)
       comm, // comm: communicator (handle)
       &window.value() // win: window object returned by the call (handle)
-    ));
+    );
 
     // ensure that RputDucts have received target offsets
-    uit::verify(MPI_Barrier(comm));
+    UIT_Barrier(comm);
 
     emp_assert(IsInitialized());
 

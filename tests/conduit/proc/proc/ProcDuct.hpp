@@ -107,7 +107,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
     REQUIRE( input.GetCurrent() == MSG_T{} );
   }
 
-  uit::verify(MPI_Barrier( MPI_COMM_WORLD ));
+  UIT_Barrier( MPI_COMM_WORLD );
 
   output.SurePut(42);
   REQUIRE( input.GetNext() == 42 );
@@ -126,7 +126,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
 
-  uit::verify(MPI_Barrier( MPI_COMM_WORLD )); // todo why
+  UIT_Barrier( MPI_COMM_WORLD ); // todo why
 
 } }
 
@@ -148,7 +148,7 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
   REQUIRE( input.GetCurrent() == 1 );
 
-  uit::verify(MPI_Barrier( MPI_COMM_WORLD )); // todo why
+  UIT_Barrier( MPI_COMM_WORLD ); // todo why
 
 } }
 
@@ -170,7 +170,7 @@ TEST_CASE("Validity") { REPEAT {
 
   }
 
-  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+  UIT_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -185,7 +185,7 @@ TEST_CASE("Ring Mesh connectivity") { REPEAT {
     uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
   ) );
 
-  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+  UIT_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -196,13 +196,13 @@ TEST_CASE("Ring Mesh sequential consistency") { {
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
 
-    uit::verify( MPI_Barrier( MPI_COMM_WORLD ) );
+    UIT_Barrier( MPI_COMM_WORLD );
     output.SurePut(i);
     REQUIRE(input.GetNext() == i);
 
   }
 
-  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+  UIT_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -226,7 +226,7 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
     );
   } else REQUIRE( uit::get_rank() % 2 == 0 ); // is producer
 
-  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+  UIT_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -237,20 +237,20 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { {
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
 
-    uit::verify( MPI_Barrier( MPI_COMM_WORLD ) );
+    UIT_Barrier( MPI_COMM_WORLD );
     if (output) output->SurePut(i);
     if (input) REQUIRE( input->GetNext() == i );
 
   }
 
-  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+  UIT_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
 TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
-  uit::verify( MPI_Barrier(MPI_COMM_WORLD) );
+  UIT_Barrier(MPI_COMM_WORLD);
 
   // check that everyone's connected properly
   output.SurePut(uit::get_rank());
@@ -271,7 +271,7 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
     ) );
   }
 
-  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+  UIT_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -282,12 +282,12 @@ TEST_CASE("Dyadic Mesh sequential consistency") { {
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
 
-    uit::verify( MPI_Barrier( MPI_COMM_WORLD ) );
+    UIT_Barrier( MPI_COMM_WORLD );
     output.SurePut(i);
     REQUIRE( input.GetNext() == i );
 
   }
 
-  uit::verify( MPI_Barrier(MPI_COMM_WORLD) ); // todo why
+  UIT_Barrier(MPI_COMM_WORLD); // todo why
 
 } }

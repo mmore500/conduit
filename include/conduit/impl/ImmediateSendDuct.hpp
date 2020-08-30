@@ -121,7 +121,7 @@ private:
   void PostSend() {
     emp_assert( uit::test_null(send_requests[send_position]) );
 
-    uit::verify(ImmediateSendFunctor{}(
+    ImmediateSendFunctor{}(
       &buffer[send_position],
       sizeof(T),
       MPI_BYTE,
@@ -129,7 +129,7 @@ private:
       address.GetTag(),
       address.GetComm(),
       &send_requests[send_position]
-    ));
+    );
 
     ++send_position;
     ++pending_sends;
@@ -152,8 +152,8 @@ private:
   void CancelPendingSend() {
     emp_assert(!uit::test_null( send_requests[CalcStalestSendPos()] ));
 
-    uit::verify(MPI_Cancel( &send_requests[CalcStalestSendPos()] ));
-    uit::verify(MPI_Request_free(&send_requests[CalcStalestSendPos()]));
+    UIT_Cancel( &send_requests[CalcStalestSendPos()] );
+    UIT_Request_free( &send_requests[CalcStalestSendPos()] );
 
     emp_assert( uit::test_null( send_requests[CalcStalestSendPos()] ));
 

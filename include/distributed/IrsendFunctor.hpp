@@ -2,16 +2,14 @@
 
 #include <utility>
 
-#include <mpi.h>
+#include "audited_routine_aliases.hpp"
 
 namespace uit {
 
 struct IrsendFunctor {
 
   template<typename... Args>
-  int operator()(Args&&... args) {
-    return MPI_Irsend(std::forward<Args>(args)...);
-  }
+  void operator()(Args&&... args) { UIT_Irsend(std::forward<Args>(args)...); }
 
 };
 

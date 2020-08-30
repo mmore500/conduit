@@ -94,7 +94,7 @@ struct DuctMicrobenchRunner {
     StatTracker res;
 
     // wait for support to complete setup
-    if (state.thread_index == 0) uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+    if (state.thread_index == 0) UIT_Barrier(MPI_COMM_WORLD);
 
     // benchmark
     for (const auto _ : state) {
@@ -133,8 +133,8 @@ struct DuctMicrobenchRunner {
     // notify support that benchmarking is complete
     if (state.thread_index == 0) {
       MPI_Request ibarrier_request;
-      uit::verify(MPI_Ibarrier(MPI_COMM_WORLD, &ibarrier_request));
-      uit::verify(MPI_Wait(&ibarrier_request, MPI_STATUSES_IGNORE));
+      UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
+      UIT_Wait(&ibarrier_request, MPI_STATUSES_IGNORE);
     }
 
     return std::tuple{previously_sent_msg, res};
@@ -214,11 +214,11 @@ struct DuctMicrobenchRunner {
     submesh_t submesh { mesh.GetSubmesh(state.thread_index) };
 
     // signal setup is complete
-    uit::verify(MPI_Barrier(MPI_COMM_WORLD));
+    UIT_Barrier(MPI_COMM_WORLD);
 
     // this barrier will signal when benchmarking is complete
     MPI_Request ibarrier_request;
-    uit::verify(MPI_Ibarrier(MPI_COMM_WORLD, &ibarrier_request));
+    UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
 
     // loop until benchmarking is complete
     while (!uit::test_completion(ibarrier_request)) {

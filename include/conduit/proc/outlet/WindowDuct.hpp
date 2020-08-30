@@ -65,7 +65,7 @@ public:
   ) {
     if (address.GetOutletProc() == uit::get_rank(address.GetComm())) {
       MPI_Request req;
-      uit::verify(MPI_Isend(
+      UIT_Isend(
         &byte_offset, // const void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype
@@ -73,8 +73,8 @@ public:
         address.GetTag(), // int tag
         address.GetComm(), // MPI_Comm comm
         &req // MPI_Request * request
-      ));
-      MPI_Request_free(&req); //TODO test for completion in destructor?
+      );
+      UIT_Request_free(&req); //TODO test for completion in destructor?
     }
 
     static const uit::WarnOnce warning{
