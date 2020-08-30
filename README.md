@@ -331,7 +331,7 @@ mpiexec -n 2 ./a.out
 
 * Create your own topologies by writing a topology-generating method or loading a topology from file, perhaps generated via another tool like [NetworkX](https://networkx.github.io/documentation/stable/reference/readwrite/adjlist.html).
 * Define your own delegation functor to control how nodes are distributed between threads and processes.
-* Seamlessly write and build with your own intra-thread, inter-thread, or intra-thread duct implementations.
+* Seamlessly write and build with your own intra-thread, inter-thread, or inter-process duct implementations.
 
 Implementations of inter-process communication currently use the [Messgage Passing Interface (MPI)](https://www.mpi-forum.org/docs/) standard.
 
