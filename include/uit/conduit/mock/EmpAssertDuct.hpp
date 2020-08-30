@@ -67,11 +67,15 @@ public:
 
   /**
    * TODO.
+   *
+   * @returns TODO.
    */
   static std::string GetName() { return "EmpAssertDuct"; }
 
   /**
    * TODO.
+   *
+   * @returns TODO.
    */
   std::string ToString() const { return std::string{}; }
 

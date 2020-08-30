@@ -17,7 +17,7 @@ class RdmaBackEnd {
 
 public:
 
-  uit::RDMAWindowManager & GetWindowManager() {
+  uit::RDMAWindowManager& GetWindowManager() {
     return window_manager;
   }
 
