@@ -21,7 +21,7 @@ test: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
 # Test optimized version without debug features
-opt: FLAGS := -std=c++17 -march=native -pthread -DNDEBUG -O3 -Wno-unused-function -I../../../include/ -I../../../source/ -I../../../third-party/
+opt: FLAGS := -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I../../../include/ -I../../../source/ -I../../../third-party/
 opt: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
