@@ -45,15 +45,22 @@ bool is_root(MPI_Comm comm=MPI_COMM_WORLD) { return get_rank(comm) == 0; }
 
 bool is_multiprocess() { return get_nprocs() > 1; }
 
+int get_count(const MPI_Status& status, const MPI_Datatype& datatype) {
+  int res;
+  UIT_Get_count(
+    &status, // const MPI_Status * status: return status of receive operation
+    datatype, // MPI_Datatype datatype: datatype of each receive buffer element
+    &res // int *count: number of received elements (integer)
+  );
+  emp_assert( res != MPI_UNDEFINED );
+  return res;
+}
+
 std::string to_string(const MPI_Status & status) {
   std::stringstream ss;
   ss << format_member(
     "MPI_Get_count",
-    [&](){
-      int res;
-      MPI_Get_count(&status, MPI_BYTE, &res);
-      return res;
-    }()
+    uit::get_count(status, MPI_BYTE)
   ) << std::endl;
   ss << format_member(
     "MPI_Test_cancelled",

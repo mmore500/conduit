@@ -1,4 +1,4 @@
-BENCH_NAMES := SteppingRingImsgDuct SteppingRingIrmsgDuct
+BENCH_NAMES := CerealSteppingRingImsgDuct CerealSteppingRingIrmsgDuct SteppingRingImsgDuct SteppingRingIrmsgDuct
 
 SHELL := /bin/bash
 
