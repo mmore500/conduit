@@ -1,3 +1,6 @@
+# only build pull requests and merges to master or dev
+# adapted from https://stackoverflow.com/a/31882307
+if: (type = push AND branch IN (master, dev)) OR (type = pull_request AND NOT branch =~ /no-ci/)
 dist: xenial
 sudo: required
 services:
