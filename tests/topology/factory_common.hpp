@@ -5,9 +5,9 @@
 
 #include "../../third-party/Empirical/source/tools/keyname_utils.h"
 
-#include "utility/exec_utils.hpp"
-#include "utility/math_utils.hpp"
-#include "utility/stream_utils.hpp"
+#include "uit/utility/exec_utils.hpp"
+#include "uit/utility/math_utils.hpp"
+#include "uit/utility/stream_utils.hpp"
 
 const std::string dir = "assets/";
 

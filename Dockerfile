@@ -140,6 +140,7 @@ RUN \
     man \
     vim \
     nano \
+    emacs \
     htop \
     && \
   echo "installed creature comforts"
@@ -154,8 +155,20 @@ RUN \
     matplotlib  \
     python-slugify  \
     iterpop  \
+    exdown \
     && \
   echo "installed Python packages"
+
+RUN \
+  apt-get install -qq \
+    doxygen \
+    && \
+  echo "installed documentation dependencies"
+
+RUN \
+  pip3 install -r /opt/conduit/docs/requirements.txt \
+    && \
+  echo "installed documentation build requirements"
 
 RUN \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90 \

@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "topology/Topology.hpp"
+#include "uit/topology/Topology.hpp"
 
 TEST_CASE("Test Topology") {
 

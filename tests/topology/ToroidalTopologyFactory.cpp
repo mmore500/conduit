@@ -3,7 +3,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "topology/ToroidalTopologyFactory.hpp"
+#include "uit/topology/ToroidalTopologyFactory.hpp"
 #include "factory_common.hpp"
 
 /*

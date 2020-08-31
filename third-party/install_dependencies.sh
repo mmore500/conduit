@@ -1,8 +1,6 @@
 #!/bin/bash
 
-git submodule deinit -f .
-git submodule init
-git submodule update -f
+git submodule update --init --recursive
 
 ./install_benchmark.sh
 ./install_emsdk.sh

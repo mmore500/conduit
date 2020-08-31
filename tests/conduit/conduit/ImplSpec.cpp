@@ -1,12 +1,12 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "conduit/ImplSpec.hpp"
+#include "uit/conduit/ImplSpec.hpp"
 
 
-TEST_CASE("Test ImplSelector") {
+TEST_CASE("Test ImplSelect") {
 
-  uit::ImplSelector<>{};
+  uit::ImplSelect<>{};
 
 }
 

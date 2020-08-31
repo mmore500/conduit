@@ -4,9 +4,9 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "assign/AssignContiguously.hpp"
-#include "distributed/MultiprocessReporter.hpp"
-#include "distributed/MPIGuard.hpp"
+#include "uit/assign/AssignContiguously.hpp"
+#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/distributed/MPIGuard.hpp"
 
 const uit::MPIGuard guard;
 

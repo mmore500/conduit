@@ -23,8 +23,7 @@ CFLAGS_web_debug := $(CFLAGS_all) $(OFLAGS_web_debug) $(OFLAGS_web_all)
 
 default: $(PROJECT)
 native: $(PROJECT)
-web: $(PROJECT).js
-all: $(PROJECT) $(PROJECT).js
+web: $(PROJECT).js documentation-coverage-badge.json version-badge.json doto-badge.json
 
 omp: CFLAGS_nat := $(CFLAGS_nat) -fopenmp
 omp: $(PROJECT)
@@ -54,12 +53,29 @@ install-coverage-dependencies:
 cov: install-coverage-dependencies
 	cd tests && make cov
 
+documentation-coverage:
+	cd docs && make coverage
+
+documentation-coverage-badge.json: documentation-coverage
+	python3 ci/parse_documentation_coverage.py docs/_build/doc-coverage.json > web/documentation-coverage-badge.json
+
+version-badge.json:
+	python3 ci/parse_version.py .bumpversion.cfg > web/version-badge.json
+
+doto-badge.json:
+	python3 ci/parse_dotos.py $$(./ci/grep_dotos.sh) > web/doto-badge.json
+
 clean:
 	rm -f $(PROJECT) web/$(PROJECT).js web/*.js.map web/*.js.map *~ source/*.o web/*.wasm web/*.wast
 	rm -rf coverage_include
+	cd docs && make clean
 	cd macrobenchmarks && make clean
 	cd microbenchmarks && make clean
 	cd tests && make clean
+
+docs:
+	cd docs && make html
+
 
 macrobenchmark:
 	cd macrobenchmarks && make bench
@@ -69,18 +85,27 @@ microbenchmark:
 
 benchmark: macrobenchmark microbenchmark
 
+test-readme-snippets:
+	python3 ci/test_readme_snippets.py
+
 test-source: debug debug-web
 	$(MPIEXEC) -n 1 ./conduit | grep -q '>>> end <<<' && echo 'matched!' || exit 1
 	npm install
 	echo "const puppeteer = require('puppeteer'); var express = require('express'); var app = express(); app.use(express.static('web')); app.listen(3000); express.static.mime.types['wasm'] = 'application/wasm'; function sleep(millis) { return new Promise(resolve => setTimeout(resolve, millis)); } async function run() { const browser = await puppeteer.launch(); const page = await browser.newPage(); await page.goto('http://localhost:3000/conduit.html'); await sleep(1000); const html = await page.content(); console.log(html); browser.close(); process.exit(0); } run();" | node | tr -d '\n' | grep -q "Hello, browser!" && echo "matched!" || exit 1
 	echo "const puppeteer = require('puppeteer'); var express = require('express'); var app = express(); app.use(express.static('web')); app.listen(3000); express.static.mime.types['wasm'] = 'application/wasm'; function sleep(millis) { return new Promise(resolve => setTimeout(resolve, millis)); } async function run() { const browser = await puppeteer.launch(); const page = await browser.newPage(); page.on('console', msg => console.log(msg.text())); await page.goto('http://localhost:3000/conduit.html'); await sleep(1000); await page.content(); browser.close(); process.exit(0); } run();" | node | grep -q "Hello, console!" && echo "matched!"|| exit 1
 
-tests:
+test:
 	cd tests && make
+
+test-opt:
 	cd tests && make opt
+
+test-fulldebug:
 	cd tests && make fulldebug
 
-.PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov
+test-all: test test-opt test-fulldebug
+
+.PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov docs
 
 
 # Debugging information

@@ -9,16 +9,16 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "conduit/config.hpp"
-#include "distributed/MPIGuard.hpp"
-#include "distributed/MultiprocessReporter.hpp"
-#include "mesh/Mesh.hpp"
-#include "topology/RingTopologyFactory.hpp"
-#include "utility/assign_utils.hpp"
-#include "utility/CircularIndex.hpp"
-#include "utility/math_utils.hpp"
-#include "utility/numeric_cast.hpp"
-#include "utility/safe_compare.hpp"
+#include "uit/conduit/config.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mesh/Mesh.hpp"
+#include "uit/topology/RingTopologyFactory.hpp"
+#include "uit/utility/assign_utils.hpp"
+#include "uit/utility/CircularIndex.hpp"
+#include "uit/utility/math_utils.hpp"
+#include "uit/utility/numeric_cast.hpp"
+#include "uit/utility/safe_compare.hpp"
 
 #define MSG_T int
 #define num_nodes 4
@@ -31,7 +31,7 @@ TEST_CASE("Test IntraDuct Connectivity") {
 
   uit::Mesh<Spec> mesh{ uit::RingTopologyFactory{}(num_nodes) };
 
-  for (auto & node : mesh.GetSubmesh()) node.GetOutput(0).MaybePut(
+  for (auto & node : mesh.GetSubmesh()) node.GetOutput(0).TryPut(
     node.GetNodeID()
   );
 
@@ -51,7 +51,7 @@ TEST_CASE("Test IntraDuct Validity") {
   std::unordered_map<size_t, MSG_T> last;
   for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
     for (auto & node : mesh.GetSubmesh()) {
-      node.GetOutput(0).MaybePut(msg);
+      node.GetOutput(0).TryPut(msg);
       const MSG_T current = node.GetInput(0).GetCurrent();
       REQUIRE( current >= 0 );
       REQUIRE( current < 10 * std::kilo{}.num );

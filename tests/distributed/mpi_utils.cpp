@@ -6,11 +6,12 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "distributed/MPIGuard.hpp"
-#include "distributed/mpi_utils.hpp"
-#include "distributed/MultiprocessReporter.hpp"
-#include "utility/assign_utils.hpp"
-#include "utility/math_utils.hpp"
+#include "uit/distributed/MPIGuard.hpp"
+#include "uit/distributed/mpi_utils.hpp"
+#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/distributed/Request.hpp"
+#include "uit/utility/assign_utils.hpp"
+#include "uit/utility/math_utils.hpp"
 
 const uit::MPIGuard guard;
 
@@ -260,7 +261,7 @@ TEST_CASE("split_comm") {
 
   emp::vector<uit::proc_id_t> comm_ranks( uit::comm_size(every_other) );
 
-  uit::verify(MPI_Allgather(
+  UIT_Allgather(
     &my_rank, // const void *sendbuf
     1, // int sendcount
     MPI_INT, // MPI_Datatype sendtype
@@ -268,7 +269,7 @@ TEST_CASE("split_comm") {
     1, // int recvcount
     MPI_INT, // MPI_Datatype recvtype
     every_other // MPI_Comm comm
-  ));
+  );
 
   REQUIRE( std::all_of(
     std::begin(comm_ranks),
@@ -278,7 +279,7 @@ TEST_CASE("split_comm") {
 
   comm_ranks.resize( uit::comm_size(halves) );
 
-  uit::verify(MPI_Allgather(
+  UIT_Allgather(
     &my_rank, // const void *sendbuf
     1, // int sendcount
     MPI_INT, // MPI_Datatype sendtype
@@ -286,7 +287,7 @@ TEST_CASE("split_comm") {
     1, // int recvcount
     MPI_INT, // MPI_Datatype recvtype
     halves // MPI_Comm comm
-  ));
+  );
 
   REQUIRE( std::all_of(
     std::begin(comm_ranks),
@@ -325,5 +326,31 @@ TEST_CASE("combine_tag") {
 TEST_CASE("to_string") {
 
   REQUIRE(uit::to_string(MPI_COMM_WORLD) != "");
+
+}
+
+TEST_CASE("test_null") {
+
+  uit::Request req;
+
+  REQUIRE( uit::test_null(req) );
+
+  char buf;
+  UIT_Irecv(
+    &buf, // void *buf
+    1, // int count
+    MPI_BYTE, // MPI_Datatype datatype
+    MPI_ANY_SOURCE, // int source
+    MPI_ANY_TAG, // int tag
+    MPI_COMM_WORLD, // MPI_Comm comm
+    &req // MPI_Request *request
+  );
+
+  REQUIRE( !uit::test_null(req) );
+
+  UIT_Cancel(&req);
+  UIT_Request_free(&req);
+
+  REQUIRE( uit::test_null(req) );
 
 }

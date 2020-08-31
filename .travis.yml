@@ -1,3 +1,6 @@
+# only build pull requests and merges to master or dev
+# adapted from https://stackoverflow.com/a/31882307
+if: (type = push AND branch IN (master, dev)) OR (type = pull_request AND NOT branch =~ /no-ci/)
 dist: xenial
 sudo: required
 services:
@@ -5,20 +8,48 @@ services:
 jobs:
   include:
   - stage: Tests
-    name: OpenMPI Unit Tests
+    name: OpenMPI Unit Tests (debug mode)
     env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
-  - name: MPICH Unit Tests
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
+  - name: MPICH Unit Tests (debug mode)
     env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make tests"
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
+  - name: OpenMPI Unit Tests (fulldebug mode)
+    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
+  - name: MPICH Unit Debug Tests (fulldebug mode)
+    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
+  - name: OpenMPI Unit Tests (opt mode)
+    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
+  - name: MPICH Unit Debug Tests (opt mode)
+    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
   - name: Macrobenchmarks
     install:
     - docker build -t mmore500/conduit .
@@ -41,26 +72,30 @@ jobs:
     - docker ps -a
     script: docker run --cap-add=SYS_ADMIN mmore500/conduit /bin/bash -c "cd /opt/conduit
       && source third-party/emsdk/emsdk_env.sh && make test-source"
+  - name: Docs
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit
+      && make docs && make test-readme-snippets"
   - stage: Deploy
     name: GitHub Pages
+    if: (type = push AND branch IN (master))
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e GH_TOKEN -e TRAVIS_BUILD_NUMBER mmore500/conduit
+    - docker run -e GH_TOKEN -e TRAVIS_BUILD_NUMBER -e OSF_PASSWORD mmore500/conduit
       /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make
       web && ./ci/deploy_gh_pages.sh"
-    on:
-      branch: master
   - name: DockerHub
+    if: (type = push AND branch IN (master))
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker push mmore500/conduit
-    on:
-      branch: master
 env:
   global:
   - secure: oZPMB8k0E1/nnJ1LqPBqGu8XKRWnvC3TzWa/CBryfJetmK8iNXng7lTFZpaCGBfpPM+Zyota7E0VGT9GE2MZznb9NrSPqSRgvwGqySSS31mFGcA5vPMQVfL1vA2mswpdTCZjGGZ86KCbb14IapxnsQ44TZNvmsA2jX5PrK4hrysJYVcS4KPNicQ0X2EwSq2hTugbtzCn2bd9H971joabO19YdVl6LaBhkhvFVRR/rbD+FSNx6EkfR1DKMpA7LGCrNw+sUKBjul4Xc8jb9Wjhc2nbRpbMIx/qJFwdoBjXzqGPY6FpdFyrkX/dnn3d3OrZcEuckRa02tyAepXEQm8jWeBUgwNu6arZm9GpA58O06Tk/i605XCSn4IhCe90ssPZu6xubp45Tmduthla8AJOM0rfSOcv0/3twsE5fPC1mGsB/kocZcOokLldZzh98AtO90KTaNNFjFfD5B7h1W4EOcIh2y8/Po8lnJISLT9DzuZCdIXRIs+MjXm+bkV8r7td6WNntjVoZzCuR5q/iWr6YTp/SjGYaMJNBvLEBgdxg4tCM3VUNcLAiIqO8LsxGEUZOur1uSOIbJ//idzUVk0+gr6tlPnwh7ZwP+vVGnfOuV1bMK7cslgs4Keo4BYUDdbKYH7rhIcMZHKf0aWmK4cGV/OIDp6SAXW0vtOAEcokg0Q=

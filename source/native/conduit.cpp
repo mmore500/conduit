@@ -6,8 +6,8 @@
 #include <iostream>
 #include <chrono>
 
-#include "distributed/mpi_utils.hpp"
-#include "utility/TimeGuard.hpp"
+#include "uit/distributed/mpi_utils.hpp"
+#include "uit/utility/TimeGuard.hpp"
 
 #include "../config_utils.hpp"
 #include "../grid_utils.hpp"
