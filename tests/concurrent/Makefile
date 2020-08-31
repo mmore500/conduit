@@ -13,7 +13,7 @@ test-%: %.cpp
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
-		$(MPIEXEC) --bind-to none -n $$n ./$@.out; \
+		$(MPIEXEC) --bind-to none --oversubscribe -n $$n ./$@.out; \
 	done
 
 # Test in debug mode without pointer tracker
