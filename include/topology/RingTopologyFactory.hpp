@@ -97,6 +97,10 @@ struct RingTopologyFactory {
   Topology operator()(const size_t cardinality) const {
     return make_ring_topology(cardinality);
   }
+  uit::Topology operator()(const emp::vector<size_t> cardinality) const {
+    emp_assert(cardinality.size() == 1);
+    return make_ring_topology(cardinality.front());
+  }
   static std::string GetName() { return "Ring Topology"; }
 };
 
