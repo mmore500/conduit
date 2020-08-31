@@ -22,3 +22,6 @@
 [submodule "third-party/mimalloc"]
 	path = third-party/mimalloc
 	url = https://github.com/microsoft/mimalloc
+[submodule "third-party/metis"]
+	path = third-party/metis
+	url = https://github.com/KarypisLab/METIS.git
