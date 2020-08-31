@@ -1,8 +1,8 @@
 #pragma once
 
-#include "backend/MockBackEnd.hpp"
-#include "inlet/IsendDuct.hpp"
-#include "outlet/IrecvDuct.hpp"
+#include "../backend/MockBackEnd.hpp"
+#include "../inlet/put=dropping/RingIsendDuct.hpp"
+#include "../outlet/get=stepping/SteppingIrecvDuct.hpp"
 
 namespace uit {
 
@@ -13,10 +13,10 @@ namespace uit {
  * implementation details for the conduit framework.
  */
 template<typename ImplSpec>
-struct ImsgDuct {
+struct SteppingRingImsgDuct {
 
-  using InletImpl = uit::IsendDuct<ImplSpec>;
-  using OutletImpl = uit::IrecvDuct<ImplSpec>;
+  using InletImpl = uit::RingIsendDuct<ImplSpec>;
+  using OutletImpl = uit::SteppingIrecvDuct<ImplSpec>;
 
 };
 

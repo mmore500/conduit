@@ -6,20 +6,20 @@
 
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/InterProcAddress.hpp"
-#include "uit/conduit/proc/outlet/IrecvDuct.hpp"
+#include "uit/conduit/proc/outlet/get=stepping/SteppingIrecvDuct.hpp"
 #include "uit/distributed/MPIGuard.hpp"
 #include "uit/distributed/MultiprocessReporter.hpp"
 
 const uit::MPIGuard guard;
 
-TEST_CASE("Test IrecvDuct") {
+TEST_CASE("Test SteppingIrecvDuct") {
 
   using ImplSpec = uit::ImplSpec<char>;
-  using BackEnd = uit::IrecvDuct<ImplSpec>::BackEndImpl;
+  using BackEnd = uit::SteppingIrecvDuct<ImplSpec>::BackEndImpl;
 
   // TODO flesh out stub test
   uit::InterProcAddress address;
   std::shared_ptr<BackEnd> backing{ std::make_shared<BackEnd>() };
-  uit::IrecvDuct<ImplSpec>{ address, backing };
+  uit::SteppingIrecvDuct<ImplSpec>{ address, backing };
 
 }
