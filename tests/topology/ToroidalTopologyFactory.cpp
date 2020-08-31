@@ -4,6 +4,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "topology/ToroidalTopologyFactory.hpp"
+#include "factory_common.hpp"
+
 /*
 TEST_CASE("Test ToroidalTopologyFactory") {
 
@@ -20,13 +22,9 @@ TEST_CASE("Test ToroidalTopologyFactory") {
 }
 */
 TEST_CASE("Test file output") {
+  REQUIRE(test_all_adj(uit::ToroidalTopologyFactory{}));
 
-  // TODO flesh out stub test
-  uit::ToroidalTopologyFactory{}({3, 3}).PrintNodes();
-  std::cout << std::endl;
-  //uit::ToroidalTopologyFactory{}({5}).PrintEdges();
-
-
+/*
   std::ofstream file1;
   file1.open("1-torus-color.adj");
   auto topo2 = uit::ToroidalTopologyFactory{}({100});
@@ -53,5 +51,5 @@ TEST_CASE("Test file output") {
   file3.open("3-torus.adj");
   uit::ToroidalTopologyFactory{}({4, 4, 4}).PrintNodes(file3);
   file3.close();
-
+*/
 }
