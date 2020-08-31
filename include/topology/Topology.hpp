@@ -50,7 +50,6 @@ private:
       emp_assert(input_registry.count(input.GetEdgeID()) == 0);
       input_registry[input.GetEdgeID()] = node_id;
     }
-
   }
 
   void RegisterNodeOutputs(const node_id_t node_id, const uit::TopoNode& topo_node) {
@@ -146,6 +145,14 @@ public:
   /// Return nth node in topology
   /// @return const ref to nth node
   const TopoNode& operator[](size_t n) const { return topology[n]; }
+
+  void SetMap(const std::unordered_map<node_id_t, node_id_t>& map) {
+    index_map = uit::EnumeratedFunctor<node_id_t, node_id_t>(map);
+  }
+
+  node_id_t GetCanonicalNodeID(const node_id_t node_id) const {
+    return index_map(node_id);
+  }
 
   /// Return Compressed Sparse Row (CSR) representation of topology
   /// @return std::pair of vectors of int
