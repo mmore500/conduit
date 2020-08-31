@@ -8,7 +8,7 @@
 #include "../../third-party/Empirical/source/polyfill/span.h"
 
 #include "../utility/print_utils.hpp"
-#include "../utility/string_utils.hpp"
+#include "../utility/stream_utils.hpp"
 
 #include "TopoNodeInput.hpp"
 #include "TopoNodeOutput.hpp"
