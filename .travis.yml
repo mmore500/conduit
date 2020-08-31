@@ -1,3 +1,6 @@
+# only build pull requests and merges to master or dev
+# adapted from https://stackoverflow.com/a/31882307
+if: (type = push AND branch IN (master, dev)) OR (type = pull_request AND NOT branch =~ /no-ci/)
 dist: xenial
 sudo: required
 services:
@@ -77,8 +80,7 @@ jobs:
       && make docs && make test-readme-snippets"
   - stage: Deploy
     name: GitHub Pages
-    if: branch = master
-    name: GitHub Pages
+    if: (type = push AND branch IN (master))
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
@@ -87,7 +89,7 @@ jobs:
       /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make
       web && ./ci/deploy_gh_pages.sh"
   - name: DockerHub
-    if: branch = master
+    if: (type = push AND branch IN (master))
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
