@@ -26,7 +26,6 @@ struct AssignRandomly {
   { ; }
 
   RETURN_TYPE operator()(const size_t & node_id) {
-    emp_assert(node_id < ids.size());
     return ids[node_id % num_threads];
   }
 
