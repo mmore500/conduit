@@ -46,6 +46,13 @@ cov-%: %.cpp ../../third-party/Catch/single_include/catch2/catch.hpp
 	llvm-cov show ./$@.out -instr-profile=default.profdata > coverage_$@.txt
 	python ../../third-party/force-cover/fix_coverage.py coverage_$@.txt
 
+assets:
+	python scripts/make_dyadic.py
+	python scripts/make_loop.py
+	python scripts/make_procon.py
+	python scripts/make_ring.py
+	python scripts/make_toroidal.py
+
 clean:
 	rm -f *.out
 	rm -f *.o
