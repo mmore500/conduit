@@ -25,7 +25,7 @@ extern "C" {
 namespace uit {
 
 class Topology {
-  // todo:: public?
+public:
   using node_id_t = size_t;
   using edge_id_t = size_t;
   using topology_t = emp::vector<TopoNode>;
