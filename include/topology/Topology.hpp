@@ -241,9 +241,8 @@ public:
     }
   }
 
-  void PrintEdges(std::ostream& os = std::cout) const noexcept {
+  void PrintEdgeList(std::ostream& os = std::cout) const noexcept {
     // FIX THIS
-    // ALSO CHANGE NAME
     // node1 node2
     // node1 node3
     // etc
@@ -254,7 +253,7 @@ public:
     }
   }
 
-  void PrintNodes(std::ostream& os = std::cout) const noexcept {
+  void PrintAdjacencyList(std::ostream& os = std::cout) const noexcept {
     // CHANGE NAME
     for (size_t i = 0; i < topology.size(); ++i) {
       os << i << " " << GetNodeOutputs(topology[i]);
