@@ -31,12 +31,14 @@ public:
 private:
   // todo: change this to an unordered_map
   using topology_t = emp::vector<TopoNode>;
-
   topology_t topology;
 
   // unordered_maps of edge ids to node ids
   std::unordered_map<edge_id_t, node_id_t> input_registry;
   std::unordered_map<edge_id_t, node_id_t> output_registry;
+
+  // map of index to node_id
+  std::function<node_id_t(node_id_t)> index_map{uit::identity};
 
   void RegisterNode(const node_id_t node_id, const uit::TopoNode& topo_node) {
     RegisterNodeInputs(node_id, topo_node);
