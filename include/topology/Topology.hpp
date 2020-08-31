@@ -28,11 +28,12 @@ class Topology {
 public:
   using node_id_t = size_t;
   using edge_id_t = size_t;
+private:
   using topology_t = emp::vector<TopoNode>;
 
   topology_t topology;
 
-  // maps of edge ids to node ids
+  // unordered_maps of edge ids to node ids
   std::unordered_map<edge_id_t, node_id_t> input_registry;
   std::unordered_map<edge_id_t, node_id_t> output_registry;
 
