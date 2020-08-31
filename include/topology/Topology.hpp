@@ -284,7 +284,7 @@ public:
 
   std::string ToString() const noexcept {
     std::ostringstream oss;
-    PrintNodes(oss);
+    PrintAdjacencyList(oss);
     return oss.str();
   }
 };
