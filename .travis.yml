@@ -77,7 +77,8 @@ jobs:
       && make docs && make test-readme-snippets"
   - stage: Deploy
     name: GitHub Pages
-    if: branch = master
+    on:
+      branch: master
     name: GitHub Pages
     install:
     - docker build -t mmore500/conduit .
@@ -87,7 +88,8 @@ jobs:
       /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make
       web && ./ci/deploy_gh_pages.sh"
   - name: DockerHub
-    if: branch = master
+    on:
+      branch: master
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
