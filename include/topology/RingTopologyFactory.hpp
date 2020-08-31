@@ -102,6 +102,7 @@ struct RingTopologyFactory {
     return make_ring_topology(cardinality.front());
   }
   static std::string GetName() { return "Ring Topology"; }
+  std::string GetSimpleName() const { return "ring"; }
 };
 
 }

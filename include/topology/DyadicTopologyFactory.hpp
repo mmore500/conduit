@@ -53,6 +53,8 @@ struct DyadicTopologyFactory {
     return make_dyadic_topology(cardinality.front());
   }
   static std::string GetName() { return "Dyadic Topology"; }
+  // todo: rename GetSlug, look into making static
+  std::string GetSimpleName() const { return "dyadic"; }
 };
 
 }
