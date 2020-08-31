@@ -29,6 +29,7 @@ public:
   using node_id_t = size_t;
   using edge_id_t = size_t;
 private:
+  // todo: change this to an unordered_map
   using topology_t = emp::vector<TopoNode>;
 
   topology_t topology;
