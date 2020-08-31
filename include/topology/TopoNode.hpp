@@ -47,6 +47,16 @@ public:
     outputs.push_back(output_);
   }
 
+  void RemoveInput(const uit::TopoNodeInput& input_) {
+    inputs.erase(
+      std::remove(
+        inputs.begin(),
+        inputs.end(),
+        input_
+      ),
+      inputs.end()
+    );
+  }
   size_t GetNumInputs() const noexcept { return inputs.size(); }
 
   size_t GetNumOutputs() const noexcept { return outputs.size(); }
