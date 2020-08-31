@@ -130,7 +130,7 @@ public:
       // with MPI_Recv?, TODO factor in send_position offset?
       sizeof(T), // int target_count
       MPI_BYTE, // MPI_Datatype target_datatype
-      window, // MPI_Win win
+      window.value(), // MPI_Win win
       request // MPI_Request* request (handle)
     );
 
