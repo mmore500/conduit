@@ -25,7 +25,7 @@ clean-%: %
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(TEST_NAMES))
 	./script/fixup_and_validate.sh
-	python3 script/consolidate.py conduit/*/*.json
+	python3 script/consolidate.py $$(find conduit -name '*.json')
 	for f in *run_type=iteration*.csv; do \
 		python3 script/graph.py $$f; \
 	done
