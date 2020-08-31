@@ -256,7 +256,10 @@ public:
   void PrintAdjacencyList(std::ostream& os = std::cout) const noexcept {
     // CHANGE NAME
     for (size_t i = 0; i < topology.size(); ++i) {
-      os << i << " " << GetNodeOutputs(topology[i]);
+      os << i;
+      for (const auto& output : GetNodeOutputs(topology[i])) {
+        os << " " << output;
+      }
       os << std::endl;
     }
   }
