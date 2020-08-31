@@ -227,6 +227,8 @@ public:
     );
     // deal with return code
     uit::metis::verify(status);
+
+    return result;
   }
 
   void PrintEdgeList(std::ostream& os = std::cout) const noexcept {
