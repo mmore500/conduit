@@ -65,3 +65,5 @@ clean:
 	rm -f *.profraw
 	rm -f ./Coverage*
 	rm -rf ./temp
+	rm -f assets/*
+	rm -f staging/assets/*
