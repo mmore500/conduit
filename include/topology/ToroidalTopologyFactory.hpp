@@ -91,6 +91,8 @@ struct ToroidalTopologyFactory {
   uit::Topology operator()(const Dims& dim_cardinality) const {
     return make_toroidal_topology(dim_cardinality);
   }
+
   static std::string GetName() { return "Toroidal Topology"; }
+  std::string GetSimpleName() const { return "toroidal"; }
 };
 };
