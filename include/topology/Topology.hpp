@@ -282,6 +282,36 @@ public:
     }
   }
 
+  Topology GetSubTopology(const std::unordered_set<size_t>& node_ids) const {
+    emp::vector<uit::TopoNode> nodes;
+    std::unordered_map<node_id_t, node_id_t> translator;
+
+    // fill subtopology with all nodes in node_ids
+    for (const size_t i : node_ids) {
+      nodes.push_back(topology[i]);
+      translator[translator.size()] = i;
+    }
+
+    // todo: test without this
+    // fix subtopology to exclude nodes outside topo
+    for (auto& node : nodes) {
+      for (const auto& output : node.GetOutputs()) {
+        if (!node_ids.count(
+          output_registry.at(output.GetEdgeID())
+        )) node.RemoveOutput(output);
+      }
+      for (const auto& input : node.GetInputs()) {
+        if (node_ids.count(
+          input_registry.at(input.GetEdgeID())
+        )) node.RemoveInput(input);
+      }
+    }
+    // we are done
+    Topology subtopo(nodes);
+    subtopo.SetMap(translator);
+    return subtopo;
+  }
+
   std::string ToString() const noexcept {
     std::ostringstream oss;
     PrintAdjacencyList(oss);
