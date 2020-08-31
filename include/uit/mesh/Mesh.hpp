@@ -5,9 +5,9 @@
 
 #include <mpi.h>
 
+#include "../assign/AssignIntegrated.hpp"
 #include "../conduit/Duct.hpp"
 #include "../distributed/mpi_utils.hpp"
-#include "../utility/assign_utils.hpp"
 #include "../topology/Topology.hpp"
 
 #include "MeshNode.hpp"
