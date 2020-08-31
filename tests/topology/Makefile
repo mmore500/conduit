@@ -17,7 +17,7 @@ test-%: %.cpp
 	$(MPIEXEC) -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
-test: $(addprefix test-, $(TEST_NAMES))
+test: assets $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
 # Test optimized version without debug features
