@@ -18,6 +18,7 @@ extern "C" {
 }
 #include "../utility/EnumeratedFunctor.hpp"
 #include "../utility/identity.hpp"
+#include "metis_utils.hpp"
 #include "../utility/stream_utils.hpp"
 
 #include "TopoNode.hpp"
@@ -209,7 +210,7 @@ public:
     METIS_SetDefaultOptions(options);
 
     // call partitioning algorithm
-    auto status = METIS_PartGraphKway(
+    int status = METIS_PartGraphKway(
       &nodes, // number of vertices in the graph
       &n_cons, // number of balancing constraints.
       xadj.data(), // array of node indexes into adjacency[]
@@ -224,21 +225,8 @@ public:
       &volume, // edge-cut or total comm volume of the solution
       result.data() // partition vector of the graph
     );
-
     // deal with return code
-    switch(status) {
-      case METIS_OK:
-        break;
-      case METIS_ERROR_INPUT:
-        throw std::invalid_argument("Error in input.");
-        break;
-      case METIS_ERROR_MEMORY:
-        throw std::bad_alloc("Out of memory!!!");
-        break;
-      case METIS_ERROR:
-        throw std::runtime_error("Unspecified error.");
-        break;
-    }
+    uit::metis::verify(status);
   }
 
   void PrintEdgeList(std::ostream& os = std::cout) const noexcept {
