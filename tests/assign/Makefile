@@ -1,4 +1,4 @@
-TEST_NAMES := GenerateMetisAssignments
+TEST_NAMES := AssignContiguously AssignIntegrated AssignRandomly AssignRoundRobin AssignSegregated GenerateMetisAssignments
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
