@@ -16,8 +16,10 @@
 extern "C" {
 #include <metis.h>
 }
+#include "../utility/EnumeratedFunctor.hpp"
+#include "../utility/identity.hpp"
+#include "../utility/stream_utils.hpp"
 
-#include "../utility/string_utils.hpp"
 #include "TopoNode.hpp"
 
 namespace uit {
