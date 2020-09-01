@@ -78,11 +78,10 @@ public:
    * @param val TODO.
    */
   void Put(const T& val) {
-    buffer[send_position] = val;
     { // oarchive flushes on destruction
-      buffer[send_position % N].Reset();
+      buffer[send_position].Reset();
       cereal::BinaryOutputArchive oarchive(
-        buffer[send_position % N]
+        buffer[send_position]
       );
       oarchive(val);
     }
