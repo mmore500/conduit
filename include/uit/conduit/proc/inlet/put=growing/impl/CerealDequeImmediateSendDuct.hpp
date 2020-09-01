@@ -1,8 +1,9 @@
 #pragma once
 
 #include <algorithm>
-#include <array>
 #include <memory>
+#include <tuple>
+#include <utility>
 #include <stddef.h>
 
 #include <mpi.h>
@@ -13,6 +14,7 @@
 #include "../../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../../distributed/mpi_utils.hpp"
+#include "../../../../../distributed/Request.hpp"
 #include "../../../../../utility/CircularIndex.hpp"
 #include "../../../../../utility/identity.hpp"
 #include "../../../../../utility/print_utils.hpp"
@@ -30,8 +32,8 @@ namespace internal {
  * @tparam ImplSpec class with static and typedef members specifying
  * implementation details for the conduit framework.
  */
-template<typename BlockingSendFunctor, typename ImplSpec>
-class CerealBlockingSendDuct {
+template<typename ImmediateSendFunctor, typename ImplSpec>
+class CerealDequeImmediateSendDuct {
 
 public:
 
@@ -40,37 +42,65 @@ public:
 private:
 
   using T = typename ImplSpec::T;
-  constexpr inline static size_t N{ImplSpec::N};
 
-  using buffer_t = emp::array<emp::ContiguousStream, N>;
-  buffer_t buffer{};
-
-  using index_t = uit::CircularIndex<N>;
-  index_t send_position{};
+  // newest requests are pushed back, oldest requests are at front
+  std::deque<std::tuple<emp::ContiguousStream, uit::Request>> buffer;
 
   const uit::InterProcAddress address;
 
   void PostSend() {
+    emp_assert( uit::test_null(
+      std::get<uit::Request>(buffer.back())
+    ) );
 
-    BlockingSendFunctor{}(
-      buffer[send_position].GetData(),
-      buffer[send_position].GetSize(),
+    ImmediateSendFunctor{}(
+      std::get<emp::ContiguousStream>(buffer.back()).GetData(),
+      std::get<emp::ContiguousStream>(buffer.back()).GetSize(),
       MPI_BYTE,
       address.GetOutletProc(),
       address.GetTag(),
-      address.GetComm()
+      address.GetComm(),
+      &std::get<uit::Request>(buffer.back())
     );
-    ++send_position;
 
   }
 
+  bool TryFinalizeSend() {
+    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+
+    if (uit::test_completion( std::get<uit::Request>(buffer.front()) )) {
+      emp_assert( uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+      buffer.pop_front();
+      return true;
+    } else return false;
+
+  }
+
+  void CancelPendingSend() {
+    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+
+    UIT_Cancel( &std::get<uit::Request>(buffer.front()) );
+    UIT_Request_free( &std::get<uit::Request>(buffer.front()) );
+
+    emp_assert( uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+
+    buffer.pop_front();
+  }
+
+  void FlushFinalizedSends() { while (buffer.size() && TryFinalizeSend()); }
+
 public:
 
-  CerealBlockingSendDuct(
+  CerealDequeImmediateSendDuct(
     const uit::InterProcAddress& address_,
     std::shared_ptr<BackEndImpl> back_end
   ) : address(address_)
-  { ; }
+  { }
+
+  ~CerealDequeImmediateSendDuct() {
+    FlushFinalizedSends();
+    while (buffer.size()) CancelPendingSend();
+  }
 
   /**
    * TODO.
@@ -78,10 +108,12 @@ public:
    * @param val TODO.
    */
   void Put(const T& val) {
+    buffer.emplace_back();
+    emp_assert( uit::test_null( std::get<uit::Request>(buffer.back()) ) );
     { // oarchive flushes on destruction
-      buffer[send_position].Reset();
+      std::get<emp::ContiguousStream>(buffer.back()).Reset();
       cereal::BinaryOutputArchive oarchive(
-        buffer[send_position]
+        std::get<emp::ContiguousStream>(buffer.back())
       );
       oarchive(val);
     }
@@ -93,17 +125,17 @@ public:
    *
    * @return TODO.
    */
-  bool IsReadyForPut() const { return true; }
+  bool IsReadyForPut() { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    throw "ConsumeGets called on CerealBlockingSendDuct";
+    throw "ConsumeGets called on CerealDequeImmediateSendDuct";
   }
 
   [[noreturn]] const T& Get() const {
-    throw "Get called on CerealBlockingSendDuct";
+    throw "Get called on CerealDequeImmediateSendDuct";
   }
 
-  static std::string GetType() { return "CerealBlockingSendDuct"; }
+  static std::string GetType() { return "CerealDequeImmediateSendDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
@@ -111,7 +143,6 @@ public:
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
     ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
     ss << format_member("InterProcAddress address", address) << std::endl;
-    ss << format_member("size_t send_position", send_position);
     return ss.str();
   }
 

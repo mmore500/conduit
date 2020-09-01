@@ -198,9 +198,9 @@ public:
     emp_assert( pending_sends < N );
     emp_assert( uit::test_null( send_requests[send_position] ) );
     { // oarchive flushes on destruction
-      buffer[send_position % N].Reset();
+      buffer[send_position].Reset();
       cereal::BinaryOutputArchive oarchive(
-        buffer[send_position % N]
+        buffer[send_position]
       );
       oarchive(val);
     }
