@@ -1,13 +1,11 @@
 #pragma once
 
-#include <mutex>
+#include <deque>
 #include <stddef.h>
 
 #include "../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../third-party/Empirical/source/base/errors.h"
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
-#include "../../../../../third-party/readerwriterqueue/atomicops.h"
-#include "../../../../../third-party/readerwriterqueue/readerwriterqueue.h"
 
 #include "../../../utility/print_utils.hpp"
 
@@ -20,38 +18,26 @@ namespace uit {
  * implementation details for the conduit framework.
  */
 template<typename ImplSpec>
-class UnboundedMoodyCamelDuct {
+class DequeDuct {
 
   using T = typename ImplSpec::T;
-  constexpr inline static size_t N{ImplSpec::N};
 
-  moodycamel::ReaderWriterQueue<T> queue{N};
-
-  #ifndef NDEBUG
-    mutable uit::OccupancyCaps caps;
-  #endif
+  std::deque<T> queue{ T{} };
 
   size_t CountUnconsumedGets() const {
-    const size_t available = queue.size_approx();
+    const size_t available = queue.size();
     emp_assert( available );
     return available - 1;
   }
 
 public:
 
-  UnboundedMoodyCamelDuct() { queue.enqueue( T{} ); }
-
   /**
    * TODO.
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
-     queue.enqueue( val );
-  }
+  void Put(const T& val) { queue.push_back( val ); }
 
   /**
    * TODO.
@@ -66,12 +52,11 @@ public:
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("TryConsumeGets", 1)};
-    #endif
-
     const size_t num_consumed = std::min( requested, CountUnconsumedGets() );
-    for (size_t i = 0; i < num_consumed; ++i) queue.pop();
+    queue.erase(
+      std::begin(queue),
+      std::next(std::begin(queue), num_consumed)
+    );
     return num_consumed;
   }
 
@@ -80,14 +65,14 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return *queue.peek(); }
+  const T& Get() { return queue.front(); }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  static std::string GetType() { return "DynamicMoodyCamelDuct"; }
+  static std::string GetType() { return "DequeDuct"; }
 
   /**
    * TODO.

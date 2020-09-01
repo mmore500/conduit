@@ -67,7 +67,7 @@ public:
    */
   size_t TryConsumeGets(const size_t requested) {
     #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("ConsumeGets", 1)};
+      const uit::OccupancyGuard guard{caps.Get("TryConsumeGets", 1)};
     #endif
 
     const size_t num_consumed = std::min( requested, CountUnconsumedGets() );
