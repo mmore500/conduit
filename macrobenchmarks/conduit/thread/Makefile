@@ -1,4 +1,4 @@
-TEST_NAMES := accumulating put=dropping+get=stepping put=growing+get=stepping
+TEST_NAMES := accumulating put=dropping+get=stepping put=growing+get=skipping put=growing+get=stepping
 
 default: bench
 
