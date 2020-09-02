@@ -139,14 +139,17 @@ public:
     for (proc_id_t rank : GetSortedRanks()) {
 
       MPI_Comm dyad{
-        group_to_comm(
-          make_group({rank, get_rank(comm)}, comm_to_group(comm)),
+        uit::group_to_comm(
+          uit::make_group(
+            {rank, uit::get_rank(comm)},
+            uit::comm_to_group(comm)
+          ),
           comm
         )
       };
 
       windows.at(rank).Initialize(
-        translate_rank(rank, comm, dyad),
+        uit::translate_rank(rank, comm, dyad),
         dyad
       );
 
