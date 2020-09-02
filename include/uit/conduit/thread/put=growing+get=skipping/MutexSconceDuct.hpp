@@ -53,6 +53,19 @@ public:
   /**
    * TODO.
    *
+   * @param val TODO.
+   */
+  template<typename P>
+  bool TryPut(P&& val) {
+    const std::lock_guard guard{ mutex };
+    sconce = std::forward<P>(val);
+    ++updates_since_last_get;
+    return true;
+  }
+
+  /**
+   * TODO.
+   *
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {

@@ -47,19 +47,6 @@ class RigtorpDuct {
   /**
    * TODO.
    *
-   * @param val TODO.
-   */
-  void DoPut(const T& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
-    queue.push( val );
-    emp_assert(CountUnconsumedGets() <= N);
-  }
-
-  /**
-   * TODO.
-   *
    * @return TODO.
    */
   // TODO why N - 1?
@@ -75,7 +62,18 @@ public:
    * @param val TODO.
    */
   bool TryPut(const T& val) {
-    if (IsReadyForPut()) { DoPut(val); return true; }
+    if (IsReadyForPut()) { queue.push( val ); return true; }
+    else return false;
+  }
+
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  template<typename P>
+  bool TryPut(P&& val) {
+    if (IsReadyForPut()) { queue.push( std::forward<P>(val) ); return true; }
     else return false;
   }
 

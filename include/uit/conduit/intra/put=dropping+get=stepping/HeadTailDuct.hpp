@@ -63,6 +63,21 @@ class HeadTailDuct {
   /**
    * TODO.
    *
+   * @param val TODO.
+   */
+  template<typename P>
+  void DoPut(P&& val) {
+    #ifndef NDEBUG
+      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
+    #endif
+    ++head;
+    buffer[head % N] = std::forward<P>(val);
+    emp_assert( CountUnconsumedGets() <= N );
+  }
+
+  /**
+   * TODO.
+   *
    * @return TODO.
    */
   bool IsReadyForPut() const { return CountUnconsumedGets() < N; }
@@ -76,6 +91,17 @@ public:
    */
   bool TryPut(const T& val) {
     if (IsReadyForPut()) { DoPut(val); return true; }
+    else return false;
+  }
+
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  template<typename P>
+  bool TryPut(P&& val) {
+    if (IsReadyForPut()) { DoPut(std::forward<P>(val)); return true; }
     else return false;
   }
 

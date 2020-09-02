@@ -43,6 +43,18 @@ public:
   /**
    * TODO.
    *
+   * @param val TODO.
+   */
+  template<typename P>
+  bool TryPut(T&& val) {
+    sconce = std::forward<P>(val);
+    ++updates_since_last_get;
+    return true;
+  }
+
+  /**
+   * TODO.
+   *
    * @param requested TODO.
    */
   size_t TryConsumeGets(const size_t requested) {

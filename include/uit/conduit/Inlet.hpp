@@ -87,6 +87,14 @@ class Inlet {
    */
   bool DoTryPut(const T& val) { return duct->TryPut(val); }
 
+  /**
+   * TODO.
+   *
+   * @param val
+   */
+  template<typename P>
+  bool DoTryPut(P&& val) { return duct->TryPut(std::forward<P>(val)); }
+
 public:
 
   /**
@@ -128,6 +136,23 @@ public:
     #endif
 
     if ( DoTryPut(val) ) return true;
+    else { ++dropped_put_count; return false; }
+
+  }
+
+  // non-blocking
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  template<typename P>
+  bool TryPut(P&& val) {
+    #ifndef NDEBUG
+      const uit::OccupancyGuard guard{caps.Get("TryPut", 1)};
+    #endif
+
+    if ( DoTryPut(std::forward<P>(val)) ) return true;
     else { ++dropped_put_count; return false; }
 
   }

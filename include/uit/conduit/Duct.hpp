@@ -148,6 +148,20 @@ public:
   /**
    * TODO.
    *
+   * @param val TODO.
+   * @return TODO.
+   */
+  template<typename P>
+  bool TryPut(P&& val) {
+    return std::visit(
+      [&val](auto& arg) -> bool { return arg.TryPut(std::forward<P>(val)); },
+      impl
+    );
+  }
+
+  /**
+   * TODO.
+   *
    * @return TODO.
    */
   const T& Get() {

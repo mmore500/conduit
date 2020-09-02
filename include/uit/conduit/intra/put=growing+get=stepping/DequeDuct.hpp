@@ -42,6 +42,14 @@ public:
   /**
    * TODO.
    *
+   * @param val TODO.
+   */
+  template<typename P>
+  bool TryPut(P&& val) { queue.push_back( std::forward<P>(val) ); return true; }
+
+  /**
+   * TODO.
+   *
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {

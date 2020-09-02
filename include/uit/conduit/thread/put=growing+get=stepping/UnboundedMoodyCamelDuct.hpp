@@ -57,6 +57,20 @@ public:
   /**
    * TODO.
    *
+   * @param val TODO.
+   */
+  template<typename P>
+  bool TryPut(P&& val) {
+    #ifndef NDEBUG
+      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
+    #endif
+    queue.enqueue( std::forward<P>(val) );
+    return true;
+  }
+
+  /**
+   * TODO.
+   *
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {

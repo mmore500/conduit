@@ -57,6 +57,17 @@ class PendingDuct {
     emp_assert( pending_gets <= N );
   }
 
+  template<typename P>
+  void DoPut(P&& val) {
+    #ifndef NDEBUG
+      const OccupancyGuard guard{caps.Get("Put", 1)};
+    #endif
+    buffer[put_position] = std::forward<P>(val);
+    ++pending_gets;
+    ++put_position;
+    emp_assert( pending_gets <= N );
+  }
+
   /**
    * TODO.
    *
@@ -73,6 +84,17 @@ public:
    */
   bool TryPut(const T& val) {
     if (IsReadyForPut()) { DoPut(val); return true; }
+    else return false;
+  }
+
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  template<typename P>
+  bool Put(P&& val) {
+    if (IsReadyForPut()) { DoPut( std::forward<P>(val) ); return true; }
     else return false;
   }
 
