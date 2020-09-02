@@ -261,6 +261,8 @@ public:
 
   [[noreturn]] const T& Get() const { throw "Get called on RingRputDuct"; }
 
+  [[noreturn]] T& Get() { throw "Get called on RingRputDuct"; }
+
   static std::string GetType() { return "RingRputDuct"; }
 
   std::string ToString() const {

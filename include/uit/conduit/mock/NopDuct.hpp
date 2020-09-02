@@ -23,6 +23,8 @@ public:
   using OutletImpl = NopDuct<ImplSpec>;
   using BackEndImpl = uit::MockBackEnd<ImplSpec>;
 
+  T val{};
+
   /**
    * TODO.
    */
@@ -37,11 +39,18 @@ public:
   bool TryPut(const T&) { return false; }
 
   /**
-  * TODO.
-  *
-  * @return TODO.
+   * TODO.
+   *
+   * @return TODO.
    */
-  const T& Get() const { const static T val{}; return val; }
+  const T& Get() const { return val; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() { return val; }
 
   /**
    * TODO.

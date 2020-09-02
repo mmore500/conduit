@@ -111,6 +111,19 @@ private:
 
   }
 
+  void UpdateCache() const {
+    if (!cache.has_value()) {
+      cache.emplace();
+
+      uit::imemstream imemstream(
+        reinterpret_cast<const char*>(buffer[get_pos].data()),
+        buffer[get_pos].size()
+      );
+      cereal::BinaryInputArchive iarchive( imemstream );
+      iarchive( cache.value() );
+    }
+  }
+
 public:
 
   CerealRingIrecvDuct(
@@ -147,17 +160,17 @@ public:
    * @return TODO.
    */
   const T& Get() const {
-    if (!cache.has_value()) {
-      cache.emplace();
+    UpdateCache();
+    return cache.value();
+  }
 
-      uit::imemstream imemstream(
-        reinterpret_cast<const char*>(buffer[get_pos].data()),
-        buffer[get_pos].size()
-      );
-      cereal::BinaryInputArchive iarchive( imemstream );
-      iarchive( cache.value() );
-    }
-
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() {
+    UpdateCache();
     return cache.value();
   }
 

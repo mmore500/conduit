@@ -129,6 +129,10 @@ public:
     throw "Get called on CerealDequeImmediateSendDuct";
   }
 
+  [[noreturn]] T& Get() {
+    throw "Get called on CerealDequeImmediateSendDuct";
+  }
+
   static std::string GetType() { return "CerealDequeImmediateSendDuct"; }
 
   std::string ToString() const {

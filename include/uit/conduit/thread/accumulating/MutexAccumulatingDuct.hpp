@@ -69,6 +69,13 @@ public:
    *
    * @return TODO.
    */
+  T& Get() { return cache; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   static std::string GetType() { return "MutexAccumulatingDuct"; }
 
   /**

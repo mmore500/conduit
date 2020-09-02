@@ -249,6 +249,10 @@ public:
     throw "Get called on CerealRingImmediateSendDuct";
   }
 
+  [[noreturn]] T& Get() {
+    throw "Get called on CerealRingImmediateSendDuct";
+  }
+
   static std::string GetType() { return "CerealRingImmediateSendDuct"; }
 
   std::string ToString() const {

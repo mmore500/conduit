@@ -95,6 +95,13 @@ public:
    *
    * @return TODO.
    */
+  T& Get() { return *queue.peek(); }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   static std::string GetType() { return "DynamicMoodyCamelDuct"; }
 
   /**

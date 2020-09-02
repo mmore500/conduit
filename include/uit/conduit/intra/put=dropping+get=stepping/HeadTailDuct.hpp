@@ -131,6 +131,13 @@ public:
    *
    * @return TODO.
    */
+  T& Get() { return buffer[tail % N]; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   static std::string GetType() { return "HeadTailDuct"; }
 
   /**

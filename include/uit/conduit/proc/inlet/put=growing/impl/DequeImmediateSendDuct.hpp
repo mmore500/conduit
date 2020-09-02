@@ -123,6 +123,10 @@ public:
     throw "Get called on DequeImmediateSendDuct";
   }
 
+  [[noreturn]] T& Get() {
+    throw "Get called on DequeImmediateSendDuct";
+  }
+
   static std::string GetType() { return "DequeImmediateSendDuct"; }
 
   std::string ToString() const {

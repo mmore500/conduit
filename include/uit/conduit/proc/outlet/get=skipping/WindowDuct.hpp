@@ -109,6 +109,8 @@ public:
 
   const T& Get() const { return cache; }
 
+  T& Get() { return cache; }
+
   static std::string GetName() { return "WindowDuct"; }
 
   std::string ToString() const {

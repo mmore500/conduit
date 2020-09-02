@@ -137,6 +137,13 @@ public:
    *
    * @return TODO.
    */
+  T& Get() { LogRead(); return duct->Get(); }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   const T& JumpGet() {
 #ifndef NDEBUG
     const OccupancyGuard guard{caps.Get("JumpGet", 1)};

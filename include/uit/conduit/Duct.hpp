@@ -174,6 +174,18 @@ public:
   /**
    * TODO.
    *
+   * @return TODO.
+   */
+  T& Get() {
+    return std::visit(
+      [](auto& arg) -> T& { return arg.Get(); },
+      impl
+    );
+  }
+
+  /**
+   * TODO.
+   *
    * @param count maximum number of gets to consume.
    * @return number of gets actually consumed.
    */

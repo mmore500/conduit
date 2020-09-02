@@ -54,6 +54,15 @@ public:
    *
    * @throws TODO.
    */
+  [[noreturn]] T& Get() {
+    emp_assert(false, "Get called on EmpAssertDuct");
+  }
+
+  /**
+   * TODO.
+   *
+   * @throws TODO.
+   */
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     emp_assert(false, "ConsumeGets called on EmpAssertDuct");
   }

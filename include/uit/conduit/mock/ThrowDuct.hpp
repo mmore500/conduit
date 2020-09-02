@@ -46,6 +46,13 @@ public:
   [[noreturn]] const T& Get() const { throw "Get called on ThrowDuct"; }
 
   /**
+  * TODO.
+  *
+  * @throws TODO.
+   */
+  [[noreturn]] T& Get() { throw "Get called on ThrowDuct"; }
+
+  /**
    * TODO.
    *
    * @throws TODO.

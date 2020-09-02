@@ -179,6 +179,18 @@ public:
    * @return TODO.
    */
   const T& Get() const {
+    //TODO tidy up
+    const uit::CircularIndex<N> idx = receive_position - 1;
+    return buffer[idx];
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() {
+    //TODO tidy up
     const uit::CircularIndex<N> idx = receive_position - 1;
     return buffer[idx];
   }

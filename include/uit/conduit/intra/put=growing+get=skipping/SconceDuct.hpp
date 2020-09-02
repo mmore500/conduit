@@ -75,6 +75,13 @@ public:
    *
    * @return TODO.
    */
+  T& Get() { return sconce; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   static std::string GetType() { return "SconceDuct"; }
 
   /**

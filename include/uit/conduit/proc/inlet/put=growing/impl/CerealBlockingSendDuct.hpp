@@ -97,6 +97,10 @@ public:
     throw "Get called on CerealBlockingSendDuct";
   }
 
+  [[noreturn]] T& Get() {
+    throw "Get called on CerealBlockingSendDuct";
+  }
+
   static std::string GetType() { return "CerealBlockingSendDuct"; }
 
   std::string ToString() const {

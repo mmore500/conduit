@@ -327,6 +327,13 @@ public:
    */
   const T& Get() const { return buffer[CalcGetPosition()]; }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() { return buffer[CalcGetPosition()]; }
+
   static std::string GetName() { return "RingIrecvDuct"; }
 
   std::string ToString() const {

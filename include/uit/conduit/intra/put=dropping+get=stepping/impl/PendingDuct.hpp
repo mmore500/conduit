@@ -126,6 +126,13 @@ public:
    *
    * @return TODO.
    */
+  T& Get() { return buffer[get_position]; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   static std::string GetName() { return "PendingDuct"; }
 
   /**

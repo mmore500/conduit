@@ -87,6 +87,8 @@ public:
 
   [[noreturn]] const T& Get() const { throw "Get called on BlockingSendDuct"; }
 
+  [[noreturn]] T& Get() { throw "Get called on BlockingSendDuct"; }
+
   static std::string GetType() { return "BlockingSendDuct"; }
 
   std::string ToString() const {

@@ -239,6 +239,10 @@ public:
     throw "Get called on RingImmediateSendDuct";
   }
 
+  [[noreturn]] T& Get() {
+    throw "Get called on RingImmediateSendDuct";
+  }
+
   static std::string GetType() { return "RingImmediateSendDuct"; }
 
   std::string ToString() const {

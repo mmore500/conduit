@@ -73,6 +73,13 @@ public:
    *
    * @return TODO.
    */
+  T& Get() { return queue.front(); }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   static std::string GetType() { return "DequeDuct"; }
 
   /**
