@@ -14,7 +14,7 @@ namespace uit {
 // between each pair of procs?
 class RDMAWindow {
 
-  char * buffer;
+  char *buffer;
 
   std::optional<MPI_Win> window;
 
@@ -47,7 +47,7 @@ public:
 
   }
 
-  char * GetBytes(const size_t byte_offset) {
+  char *GetBytes(const size_t byte_offset) {
     emp_assert(IsInitialized());
 
     return std::next(

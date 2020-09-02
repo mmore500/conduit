@@ -61,7 +61,8 @@ public:
   , byte_offset(
     address.GetOutletProc() == uit::get_rank(address.GetComm())
       ? back_end->GetWindowManager().Acquire(
-        address.GetInletProc(), sizeof(T) /** N*/
+        address.GetInletProc(),
+        sizeof(T)
       ) : -1
   ) {
     if (address.GetOutletProc() == uit::get_rank(address.GetComm())) {
@@ -94,15 +95,16 @@ public:
     emp_assert( requested == std::numeric_limits<size_t>::max() );
 
     // lock own window
-    back_end->GetWindowManager().LockShared(address.GetInletProc());
+    back_end->GetWindowManager().LockShared( address.GetInletProc() );
     std::memcpy(
       &cache,
       back_end->GetWindowManager().GetBytes(
-        address.GetInletProc(), byte_offset /*+ sizeof(T) * n*/
+        address.GetInletProc(),
+        byte_offset
       ),
       sizeof(T)
     );
-    back_end->GetWindowManager().Unlock(address.GetInletProc());
+    back_end->GetWindowManager().Unlock( address.GetInletProc() );
 
     return 1;
   }
