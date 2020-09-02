@@ -36,7 +36,7 @@ TEST_CASE("Test IntraDuct Connectivity") {
   );
 
   for (auto & node : mesh.GetSubmesh()) {
-    const MSG_T res = node.GetInput(0).GetCurrent();
+    const MSG_T res = node.GetInput(0).JumpGet();
     REQUIRE(
       uit::safe_equal(res, uit::circular_index(node.GetNodeID(), num_nodes, -1))
     );
@@ -52,7 +52,7 @@ TEST_CASE("Test IntraDuct Validity") {
   for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
     for (auto & node : mesh.GetSubmesh()) {
       node.GetOutput(0).TryPut(msg);
-      const MSG_T current = node.GetInput(0).GetCurrent();
+      const MSG_T current = node.GetInput(0).JumpGet();
       REQUIRE( current >= 0 );
       REQUIRE( current < 10 * std::kilo{}.num );
       REQUIRE( last[node.GetNodeID()] <= current );
@@ -62,8 +62,8 @@ TEST_CASE("Test IntraDuct Validity") {
 
   for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
     for (auto & node : mesh.GetSubmesh()) {
-      REQUIRE( node.GetInput(0).GetCurrent() >= 0 );
-      REQUIRE( node.GetInput(0).GetCurrent() == node.GetInput(0).GetCurrent() );
+      REQUIRE( node.GetInput(0).JumpGet() >= 0 );
+      REQUIRE( node.GetInput(0).JumpGet() == node.GetInput(0).JumpGet() );
     }
   }
 

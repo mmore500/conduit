@@ -74,7 +74,7 @@ class Inlet {
   /// How many put operations have been performed?
   size_t successful_put_count{};
 
-  /// How many times has SurePut blocked?
+  /// How many times has Put blocked?
   size_t blocked_put_count{};
 
   // How many TryPut calls have dropped?
@@ -85,7 +85,7 @@ class Inlet {
    *
    * @param val
    */
-  bool TryPut(const T& val) { return duct->TryPut(val); }
+  bool DoTryPut(const T& val) { return duct->TryPut(val); }
 
 public:
 
@@ -104,13 +104,13 @@ public:
    *
    * @param val TODO.
    */
-  void SurePut(const T& val) {
+  void Put(const T& val) {
     #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("SurePut", 1)};
+      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
     #endif
 
     bool was_blocked{ false };
-    while (!TryPut(val)) was_blocked = true;
+    while (!DoTryPut(val)) was_blocked = true;
 
     blocked_put_count += was_blocked;
 
@@ -127,7 +127,7 @@ public:
       const uit::OccupancyGuard guard{caps.Get("TryPut", 1)};
     #endif
 
-    if ( TryPut(val) ) return true;
+    if ( DoTryPut(val) ) return true;
     else { ++dropped_put_count; return false; }
 
   }

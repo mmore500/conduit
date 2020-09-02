@@ -95,7 +95,7 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
     backend
   };
 
-  REQUIRE( outlet.GetCurrent() == MSG_T{} );
+  REQUIRE( outlet.JumpGet() == MSG_T{} );
 
 } }
 
@@ -104,16 +104,16 @@ TEST_CASE("Unmatched gets") { REPEAT {
   auto [input, output] = make_dyadic_bundle();
 
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
-    REQUIRE( input.GetCurrent() == MSG_T{} );
+    REQUIRE( input.JumpGet() == MSG_T{} );
   }
 
   UIT_Barrier( MPI_COMM_WORLD );
 
-  output.SurePut(42);
-  while( input.GetCurrent() != 42);
+  output.Put(42);
+  while( input.JumpGet() != 42);
 
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
-    REQUIRE( input.GetCurrent() == 42 );
+    REQUIRE( input.JumpGet() == 42 );
   }
 
 } }
@@ -124,7 +124,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(i);
 
-  REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
+  REQUIRE( input.JumpGet() <= 2 * DEFAULT_BUFFER );
 
   UIT_Barrier( MPI_COMM_WORLD ); // todo why
 
@@ -137,16 +137,16 @@ TEST_CASE("Eventual flush-out") { REPEAT {
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(0);
 
   while ( !output.TryPut( 1 ) ) {
-    const auto res{ input.GetCurrent() }; // operational!
+    const auto res{ input.JumpGet() }; // operational!
     REQUIRE( std::unordered_set{0, 1}.count(res) );
   }
 
-  while ( input.GetCurrent() != 1 ) {
-    const auto res{ input.GetCurrent() }; // operational!
+  while ( input.JumpGet() != 1 ) {
+    const auto res{ input.JumpGet() }; // operational!
     REQUIRE( std::unordered_set{0, 1}.count(res) );
   }
 
-  REQUIRE( input.GetCurrent() == 1 );
+  REQUIRE( input.JumpGet() == 1 );
 
   UIT_Barrier( MPI_COMM_WORLD ); // todo why
 
@@ -161,7 +161,7 @@ TEST_CASE("Validity") { REPEAT {
 
     output.TryPut(msg);
 
-    const MSG_T current = input.GetCurrent();
+    const MSG_T current = input.JumpGet();
     REQUIRE( current >= 0 );
     REQUIRE( current < 10 * std::kilo{}.num );
     REQUIRE( last <= current);

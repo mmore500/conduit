@@ -24,7 +24,7 @@ namespace uit {
  *
  *  - potentially-blocking, strictly-sequential of the next unread received
  *     transmission, or
- *  - non-blocking fetch of the latest received transmission via `GetCurrent`.
+ *  - non-blocking fetch of the latest received transmission via `JumpGet`.
  *
  * An `Outlet` holds a `std::shared_ptr` to a `Duct` object, which manages data
  * transmission to the `Outlet`.
@@ -75,7 +75,7 @@ class Outlet {
   static_assert(N > 0);
 
   /// How many times has outlet been read from?
-  size_t read_count{0};
+  mutable size_t read_count{0};
 
   /// How many times has current value changed?
   size_t revision_count{0};
@@ -86,20 +86,13 @@ class Outlet {
   /**
    * TODO.
    *
-   * @return TODO.
-   */
-  const T& Get() const { return duct->Get(); }
-
-  /**
-   * TODO.
-   *
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t n) {
     #ifndef NDEBUG
       const OccupancyGuard guard{caps.Get("TryConsumeGets", 1)};
     #endif
-    return duct->TryConsumeGets(n);
+    return LogStep( duct->TryConsumeGets(n) );
   }
 
   /**
@@ -107,11 +100,13 @@ class Outlet {
    *
    * @param n TODO.
    */
-  void Log(const size_t n) {
-    ++read_count;
+  size_t LogStep(const size_t n) {
     revision_count += (n > 0);
     net_flux += n;
+    return n;
   }
+
+  void LogRead() const { ++read_count; }
 
 public:
 
@@ -122,17 +117,31 @@ public:
     std::shared_ptr<duct_t> duct_
   ) : duct(duct_) { ; }
 
+  size_t TryStep(const size_t num_steps=1) {
+    return TryConsumeGets(num_steps);
+  }
+
+  size_t Jump() {
+    return TryConsumeGets( std::numeric_limits<size_t>::max() );
+  }
+
   /**
    * TODO.
    *
    * @return TODO.
    */
-  const T& GetCurrent() {
-#ifndef NDEBUG
-    const OccupancyGuard guard{caps.Get("GetCurrent", 1)};
-#endif
+  const T& Get() const { LogRead(); return duct->Get(); }
 
-    Log(TryConsumeGets( std::numeric_limits<size_t>::max() ));
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  const T& JumpGet() {
+#ifndef NDEBUG
+    const OccupancyGuard guard{caps.Get("JumpGet", 1)};
+#endif
+    Jump();
     return Get();
   }
 
@@ -147,10 +156,11 @@ public:
     #ifndef NDEBUG
       const OccupancyGuard guard{caps.Get("GetNext", 1)};
     #endif
-    while (TryConsumeGets(1) == 0);
-    Log( 1 );
+    while (TryStep() == 0);
     return Get();
   }
+
+
 
   /**
    * Get next if available.
@@ -163,7 +173,7 @@ public:
     #ifndef NDEBUG
       const OccupancyGuard guard{caps.Get("GetNextOrNullopt", 1)};
     #endif
-    if (TryConsumeGets(1)) {
+    if (TryStep()) {
       return std::optional{ std::reference_wrapper{ Get() } };
     } else return std::nullopt;
   }

@@ -61,7 +61,7 @@ struct DuctMicrobenchRunner {
     int epoch_counter{};
 
     // how many unique msgs have we received?
-    // (incremented if current GetCurernt differs from prev GetCurrent)
+    // (incremented if current GetCurernt differs from prev JumpGet)
     size_t unique_msg_counter{};
 
     // sum of differences between sequence stamps of sent
@@ -107,7 +107,7 @@ struct DuctMicrobenchRunner {
           output.TryPut(previously_sent_msg);
         }
         for (auto& input : node.GetInputs()) {
-          current_received_msg = input.GetCurrent();
+          current_received_msg = input.JumpGet();
         }
       }
       ++previously_sent_msg;
@@ -234,7 +234,7 @@ struct DuctMicrobenchRunner {
             output.TryPut(previously_sent_msg);
           }
           for (auto& input : node.GetInputs()) {
-            current_received_msg = input.GetCurrent();
+            current_received_msg = input.JumpGet();
           }
         }
         ++previously_sent_msg;

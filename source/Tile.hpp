@@ -62,7 +62,7 @@ public:
   size_t id;
 
   void Update() {
-    const char neighbor_state = input.GetCurrent();
+    const char neighbor_state = input.JumpGet();
     const char next_state = Transition(neighbor_state);
     SetState(next_state);
   }

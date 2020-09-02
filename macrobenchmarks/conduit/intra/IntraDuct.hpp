@@ -38,7 +38,7 @@ void do_work(
   for (size_t rep = 0; rep < 1e7; ++rep) {
     if (optional_output) optional_output->TryPut(uit::get_thread_id());
     if (optional_input) uit::do_not_optimize(
-      optional_input->GetCurrent()
+      optional_input->JumpGet()
     );
   }
 

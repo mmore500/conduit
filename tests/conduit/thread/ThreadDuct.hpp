@@ -49,7 +49,7 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
     std::in_place_type_t<Spec::ThreadDuct>{}
   };
 
-  REQUIRE( outlet.GetCurrent() == MSG_T{} );
+  REQUIRE( outlet.JumpGet() == MSG_T{} );
 
 } }
 
@@ -66,16 +66,16 @@ TEST_CASE("Unmatched gets") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
     for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
-      REQUIRE( input.GetCurrent() == MSG_T{} );
+      REQUIRE( input.JumpGet() == MSG_T{} );
     }
 
     barrier->arrive_and_wait();
 
-    output.SurePut(42);
+    output.Put(42);
     REQUIRE( input.GetNext() == 42 );
 
     for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
-      REQUIRE( input.GetCurrent() == 42 );
+      REQUIRE( input.JumpGet() == 42 );
     }
 
   } THREADED_END
@@ -96,7 +96,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
     for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(i);
 
-    REQUIRE( input.GetCurrent() <= 2 * DEFAULT_BUFFER );
+    REQUIRE( input.JumpGet() <= 2 * DEFAULT_BUFFER );
 
   } THREADED_END
 
@@ -117,16 +117,16 @@ TEST_CASE("Eventual flush-out") { REPEAT {
     for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(0);
 
     while ( !output.TryPut( 1 ) ) {
-      const auto res{ input.GetCurrent() }; // operational!
+      const auto res{ input.JumpGet() }; // operational!
       REQUIRE( std::unordered_set{0, 1}.count(res) );
     }
 
-    while ( input.GetCurrent() != 1 ) {
-      const auto res{ input.GetCurrent() }; // operational!
+    while ( input.JumpGet() != 1 ) {
+      const auto res{ input.JumpGet() }; // operational!
       REQUIRE( std::unordered_set{0, 1}.count(res) );
     }
 
-    REQUIRE( input.GetCurrent() == 1 );
+    REQUIRE( input.JumpGet() == 1 );
 
   } THREADED_END
 
@@ -150,7 +150,7 @@ TEST_CASE("Validity") { REPEAT {
 
       output.TryPut(msg);
 
-      const MSG_T current = input.GetCurrent();
+      const MSG_T current = input.JumpGet();
       REQUIRE( current >= 0 );
       REQUIRE( current < 10 * std::kilo{}.num );
       REQUIRE( last <= current);
@@ -203,7 +203,7 @@ TEST_CASE("Ring Mesh sequential consistency") { REPEAT {
 
       barrier->arrive_and_wait();
 
-      output.SurePut(i);
+      output.Put(i);
       REQUIRE(input.GetNext() == i);
 
     }
@@ -225,7 +225,7 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutputOrNullopt(0);
 
     // check that everyone's connected properly
-    if (output) output->SurePut(uit::get_rank());
+    if (output) output->Put(uit::get_rank());
 
     // did we get expected rank ID as message?
     if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
@@ -259,7 +259,7 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { REPEAT {
     // long enough to check that buffer wraparound works properly
     for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
 
-      if (output) output->SurePut(i);
+      if (output) output->Put(i);
       if (input) REQUIRE( input->GetNext() == i );
 
     }
@@ -281,7 +281,7 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
     // check that everyone's connected properly
-    output.SurePut(uit::get_rank());
+    output.Put(uit::get_rank());
 
     // did we get expected rank ID as message?
     if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
@@ -320,7 +320,7 @@ TEST_CASE("Dyadic Mesh sequential consistency") { REPEAT {
 
       barrier->arrive_and_wait();
 
-      output.SurePut(i);
+      output.Put(i);
       REQUIRE( input.GetNext() == i );
 
     }
