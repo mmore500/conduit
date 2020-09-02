@@ -96,7 +96,7 @@ public:
     // lock own window
     back_end->GetWindowManager().LockShared(address.GetInletProc());
     std::memcpy(
-      &res,
+      &cache,
       back_end->GetWindowManager().GetBytes(
         address.GetInletProc(), byte_offset /*+ sizeof(T) * n*/
       ),
