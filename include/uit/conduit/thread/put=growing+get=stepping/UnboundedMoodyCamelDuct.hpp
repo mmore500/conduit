@@ -46,19 +46,27 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  bool TryPut(const T& val) {
     #ifndef NDEBUG
       const uit::OccupancyGuard guard{caps.Get("Put", 1)};
     #endif
-     queue.enqueue( val );
+    queue.enqueue( val );
+    return true;
   }
 
   /**
    * TODO.
    *
-   * @return TODO.
+   * @param val TODO.
    */
-  bool IsReadyForPut() const { return true; }
+  template<typename P>
+  bool TryPut(P&& val) {
+    #ifndef NDEBUG
+      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
+    #endif
+    queue.enqueue( std::forward<P>(val) );
+    return true;
+  }
 
   /**
    * TODO.
@@ -80,7 +88,14 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return *queue.peek(); }
+  const T& Get() const { return *queue.peek(); }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() { return *queue.peek(); }
 
   /**
    * TODO.

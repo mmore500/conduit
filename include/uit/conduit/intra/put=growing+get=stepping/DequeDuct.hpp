@@ -37,14 +37,15 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) { queue.push_back( val ); }
+  bool TryPut(const T& val) { queue.push_back( val ); return true; }
 
   /**
    * TODO.
    *
-   * @return TODO.
+   * @param val TODO.
    */
-  bool IsReadyForPut() const { return true; }
+  template<typename P>
+  bool TryPut(P&& val) { queue.push_back( std::forward<P>(val) ); return true; }
 
   /**
    * TODO.
@@ -65,7 +66,14 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return queue.front(); }
+  const T& Get() const { return queue.front(); }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() { return queue.front(); }
 
   /**
    * TODO.

@@ -34,14 +34,23 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) { sconce = val; ++updates_since_last_get; }
+  bool TryPut(const T& val) {
+    sconce = val;
+    ++updates_since_last_get;
+    return true;
+  }
 
   /**
    * TODO.
    *
-   * @return TODO.
+   * @param val TODO.
    */
-  bool IsReadyForPut() const { return true; }
+  template<typename P>
+  bool TryPut(T&& val) {
+    sconce = std::forward<P>(val);
+    ++updates_since_last_get;
+    return true;
+  }
 
   /**
    * TODO.
@@ -59,7 +68,14 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return sconce; }
+  const T& Get() const { return sconce; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() { return sconce; }
 
   /**
    * TODO.

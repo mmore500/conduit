@@ -74,7 +74,7 @@ class Inlet {
   /// How many put operations have been performed?
   size_t successful_put_count{};
 
-  /// How many times has SurePut blocked?
+  /// How many times has Put blocked?
   size_t blocked_put_count{};
 
   // How many TryPut calls have dropped?
@@ -85,7 +85,15 @@ class Inlet {
    *
    * @param val
    */
-  void Put(const T& val) { duct->Put(val); }
+  bool DoTryPut(const T& val) { return duct->TryPut(val); }
+
+  /**
+   * TODO.
+   *
+   * @param val
+   */
+  template<typename P>
+  bool DoTryPut(P&& val) { return duct->TryPut(std::forward<P>(val)); }
 
 public:
 
@@ -104,15 +112,15 @@ public:
    *
    * @param val TODO.
    */
-  void SurePut(const T& val) {
+  void Put(const T& val) {
     #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("SurePut", 1)};
+      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
     #endif
 
-    blocked_put_count += !IsReadyForPut();
-    while (!IsReadyForPut());
+    bool was_blocked{ false };
+    while (!DoTryPut(val)) was_blocked = true;
 
-    Put(val);
+    blocked_put_count += was_blocked;
 
   }
 
@@ -127,23 +135,27 @@ public:
       const uit::OccupancyGuard guard{caps.Get("TryPut", 1)};
     #endif
 
-    if (!IsReadyForPut()) {
-      ++dropped_put_count;
-      return false;
-    }
-
-    Put(val);
-
-    return true;
+    if ( DoTryPut(val) ) return true;
+    else { ++dropped_put_count; return false; }
 
   }
 
+  // non-blocking
   /**
    * TODO.
    *
-   * @return TODO.
+   * @param val TODO.
    */
-  bool IsReadyForPut() { return duct->IsReadyForPut(); }
+  template<typename P>
+  bool TryPut(P&& val) {
+    #ifndef NDEBUG
+      const uit::OccupancyGuard guard{caps.Get("TryPut", 1)};
+    #endif
+
+    if ( DoTryPut(std::forward<P>(val)) ) return true;
+    else { ++dropped_put_count; return false; }
+
+  }
 
   /**
    * TODO.
@@ -217,7 +229,7 @@ public:
     ss << format_member(
       "size_t dropped_put_count",
       dropped_put_count
-    ) << std::endl;;
+    ) << std::endl;
     ss << format_member(
       "size_t blocked_put_count",
       blocked_put_count

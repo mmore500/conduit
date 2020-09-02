@@ -288,12 +288,8 @@ public:
     ) );
   }
 
-  [[noreturn]] void Put(const T&) const {
+  [[noreturn]] bool TryPut(const T&) const {
     throw "Put called on RingIrecvDuct";
-  }
-
-  [[noreturn]] bool IsReadyForPut() const {
-    throw "IsReadyForPut called on RingIrecvDuct";
   }
 
   /**
@@ -330,6 +326,13 @@ public:
    * @return TODO.
    */
   const T& Get() const { return buffer[CalcGetPosition()]; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() { return buffer[CalcGetPosition()]; }
 
   static std::string GetName() { return "RingIrecvDuct"; }
 

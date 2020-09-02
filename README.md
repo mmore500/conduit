@@ -94,10 +94,10 @@ int main() {
 
   // start a consumer thread
   team.Add( [&outlet](){
-    int prev{ outlet.GetCurrent() };
+    int prev{ outlet.JumpGet() };
     size_t update_counter{};
     for (size_t i = 0; i < std::mega{}.num; ++i) {
-      update_counter += std::exchange(prev, outlet.GetCurrent()) == prev;
+      update_counter += std::exchange(prev, outlet.JumpGet()) == prev;
     }
     std::cout << update_counter << " updates detected" << std::endl;
   } );
@@ -253,7 +253,7 @@ void send_task(
     auto& node = my_nodes[node_id];
 
     // send message
-    for (auto& output : node.GetOutputs()) output.SurePut( message );
+    for (auto& output : node.GetOutputs()) output.Put( message );
 
   }
 

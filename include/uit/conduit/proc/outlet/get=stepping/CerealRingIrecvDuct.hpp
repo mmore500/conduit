@@ -54,7 +54,7 @@ private:
 
   // cached unpacked value
   // initialize to value-constructed default
-  std::optional<T> curr{ std::in_place_t{} };
+  mutable std::optional<T> cache{ std::in_place_t{} };
 
   const uit::InterProcAddress address;
 
@@ -76,7 +76,7 @@ private:
     );
 
     // clear cached unpacked object
-    curr.reset();
+    cache.reset();
 
   }
 
@@ -111,6 +111,19 @@ private:
 
   }
 
+  void UpdateCache() const {
+    if (!cache.has_value()) {
+      cache.emplace();
+
+      uit::imemstream imemstream(
+        reinterpret_cast<const char*>(buffer[get_pos].data()),
+        buffer[get_pos].size()
+      );
+      cereal::BinaryInputArchive iarchive( imemstream );
+      iarchive( cache.value() );
+    }
+  }
+
 public:
 
   CerealRingIrecvDuct(
@@ -122,12 +135,8 @@ public:
     FlushPendingReceives();
   }
 
-  [[noreturn]] void Put(const T&) const {
+  [[noreturn]] bool TryPut(const T&) const {
     throw "Put called on CerealRingIrecvDuct";
-  }
-
-  [[noreturn]] bool IsReadyForPut() const {
-    throw "IsReadyForPut called on CerealRingIrecvDuct";
   }
 
   /**
@@ -150,18 +159,19 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() {
-    if (!curr.has_value()) {
-      curr.emplace();
+  const T& Get() const {
+    UpdateCache();
+    return cache.value();
+  }
 
-      uit::imemstream imemstream(
-        reinterpret_cast<const char*>(buffer[get_pos].data()),
-        buffer[get_pos].size()
-      );
-      cereal::BinaryInputArchive iarchive( imemstream );
-      iarchive( curr.value() );
-    }
-    return curr.value();
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() {
+    UpdateCache();
+    return cache.value();
   }
 
   static std::string GetName() { return "CerealRingIrecvDuct"; }

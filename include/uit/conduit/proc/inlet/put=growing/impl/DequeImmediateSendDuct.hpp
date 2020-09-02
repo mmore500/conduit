@@ -105,27 +105,25 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  bool TryPut(const T& val) {
     buffer.emplace_back(
       val,
       uit::Request{}
     );
     emp_assert( uit::test_null( std::get<uit::Request>(buffer.back()) ) );
     PostSend();
+    return true;
   }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on DequeImmediateSendDuct";
   }
 
   [[noreturn]] const T& Get() const {
+    throw "Get called on DequeImmediateSendDuct";
+  }
+
+  [[noreturn]] T& Get() {
     throw "Get called on DequeImmediateSendDuct";
   }
 

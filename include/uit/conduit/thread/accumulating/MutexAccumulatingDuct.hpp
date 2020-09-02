@@ -38,18 +38,12 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  bool TryPut(const T& val) {
     const std::lock_guard guard{ mutex };
     ++updates_since_last_get;
     accumulator += val;
+    return true;
   }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() const { return true; }
 
   /**
    * TODO.
@@ -69,6 +63,13 @@ public:
    * @return TODO.
    */
   const T& Get() const { return cache; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() { return cache; }
 
   /**
    * TODO.

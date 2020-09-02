@@ -23,6 +23,8 @@ public:
   using OutletImpl = NopDuct<ImplSpec>;
   using BackEndImpl = uit::MockBackEnd<ImplSpec>;
 
+  T val{};
+
   /**
    * TODO.
    */
@@ -34,21 +36,21 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T&) { ; }
+  bool TryPut(const T&) { return false; }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  bool IsReadyForPut() { return true; }
+  const T& Get() const { return val; }
 
   /**
-  * TODO.
-  *
-  * @return TODO.
+   * TODO.
+   *
+   * @return TODO.
    */
-  const T& Get() { const static T val{}; return val; }
+  T& Get() { return val; }
 
   /**
    * TODO.

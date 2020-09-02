@@ -44,6 +44,14 @@ class RigtorpDuct {
     return available - 1;
   }
 
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  // TODO why N - 1?
+  bool IsReadyForPut() const { return CountUnconsumedGets() < N - 1; }
+
 public:
 
   RigtorpDuct() { queue.push( T{} ); }
@@ -53,21 +61,21 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
-    queue.push( val );
-    emp_assert(CountUnconsumedGets() <= N);
+  bool TryPut(const T& val) {
+    if (IsReadyForPut()) { queue.push( val ); return true; }
+    else return false;
   }
 
   /**
    * TODO.
    *
-   * @return TODO.
+   * @param val TODO.
    */
-  // TODO why N - 1?
-  bool IsReadyForPut() const { return CountUnconsumedGets() < N - 1; }
+  template<typename P>
+  bool TryPut(P&& val) {
+    if (IsReadyForPut()) { queue.push( std::forward<P>(val) ); return true; }
+    else return false;
+  }
 
   /**
    * TODO.
@@ -90,7 +98,14 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return *queue.front(); }
+  const T& Get() const { return *queue.front(); }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() { return *queue.front(); }
 
   /**
    * TODO.

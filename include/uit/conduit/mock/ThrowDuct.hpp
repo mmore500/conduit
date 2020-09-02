@@ -32,16 +32,10 @@ public:
   /**
    * TODO.
    *
-   */
-  void Put(const T&) const { throw "Put called on ThrowDuct"; }
-
-  /**
-   * TODO.
-   *
    * @throws TODO.
    */
-  [[noreturn]] bool IsReadyForPut() const {
-    throw "IsReadyForPut called on ThrowDuct";
+  [[noreturn]] bool TryPut(const T&) const {
+    throw "TryPut called on ThrowDuct";
   }
 
   /**
@@ -50,6 +44,13 @@ public:
   * @throws TODO.
    */
   [[noreturn]] const T& Get() const { throw "Get called on ThrowDuct"; }
+
+  /**
+  * TODO.
+  *
+  * @throws TODO.
+   */
+  [[noreturn]] T& Get() { throw "Get called on ThrowDuct"; }
 
   /**
    * TODO.

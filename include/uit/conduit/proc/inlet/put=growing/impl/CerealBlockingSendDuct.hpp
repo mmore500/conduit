@@ -77,7 +77,7 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  bool TryPut(const T& val) {
     { // oarchive flushes on destruction
       buffer[send_position].Reset();
       cereal::BinaryOutputArchive oarchive(
@@ -86,20 +86,18 @@ public:
       oarchive(val);
     }
     PostSend();
+    return true;
   }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on CerealBlockingSendDuct";
   }
 
   [[noreturn]] const T& Get() const {
+    throw "Get called on CerealBlockingSendDuct";
+  }
+
+  [[noreturn]] T& Get() {
     throw "Get called on CerealBlockingSendDuct";
   }
 

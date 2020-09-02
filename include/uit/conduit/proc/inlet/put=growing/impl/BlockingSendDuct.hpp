@@ -75,23 +75,19 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  bool TryPut(const T& val) {
     buffer[send_position] = val;
     PostSend();
+    return true;
   }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on BlockingSendDuct";
   }
 
   [[noreturn]] const T& Get() const { throw "Get called on BlockingSendDuct"; }
+
+  [[noreturn]] T& Get() { throw "Get called on BlockingSendDuct"; }
 
   static std::string GetType() { return "BlockingSendDuct"; }
 

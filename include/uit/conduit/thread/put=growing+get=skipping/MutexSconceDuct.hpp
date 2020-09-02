@@ -43,18 +43,25 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  bool TryPut(const T& val) {
     const std::lock_guard guard{ mutex };
     sconce = val;
     ++updates_since_last_get;
+    return true;
   }
 
   /**
    * TODO.
    *
-   * @return TODO.
+   * @param val TODO.
    */
-  bool IsReadyForPut() const { return true; }
+  template<typename P>
+  bool TryPut(P&& val) {
+    const std::lock_guard guard{ mutex };
+    sconce = std::forward<P>(val);
+    ++updates_since_last_get;
+    return true;
+  }
 
   /**
    * TODO.
@@ -73,7 +80,14 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return cache; }
+  const T& Get() const { return cache; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() { return cache; }
 
   /**
    * TODO.
