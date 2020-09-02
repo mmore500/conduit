@@ -31,4 +31,14 @@ TEST_CASE("Test CircularIndex")
 
   REQUIRE ( (j-1) == 8 );
 
+  REQUIRE(uit::CircularIndex<10>(-1) == 9);
+
+  REQUIRE(uit::CircularIndex<10>{} - 1 == 9);
+
+  REQUIRE(uit::CircularIndex<10>{} - 2 == 8);
+
+  REQUIRE(uit::CircularIndex<10>{} + -1 == 9);
+
+  REQUIRE(uit::CircularIndex<10>{} + -2 == 8);
+
 }

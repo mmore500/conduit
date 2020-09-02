@@ -2,6 +2,8 @@
 
 #include <stddef.h>
 
+#include "math_utils.hpp"
+
 namespace uit {
 
 template<size_t N>
@@ -18,7 +20,7 @@ public:
   { ; }
 
   CircularIndex(int index_)
-  : index((index_%N + N)%N)
+  : index( uit::mod(index_, N) )
   { ; }
 
   operator size_t() const { return index; }

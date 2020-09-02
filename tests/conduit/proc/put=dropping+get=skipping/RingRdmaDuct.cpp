@@ -9,3 +9,4 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #include "../ProcDuct.hpp"
+#include "../SkippingProcDuct.hpp"

@@ -3,7 +3,7 @@
 #include "config.hpp"
 
 #include "intra/put=dropping+get=stepping/SerialPendingDuct.hpp"
-#include "proc/put=dropping+get=stepping/SteppingRingImsgDuct.hpp"
+#include "proc/put=dropping+get=stepping/RingRingImsgDuct.hpp"
 #include "thread/put=dropping+get=stepping/AtomicPendingDuct.hpp"
 
 namespace uit {
@@ -19,7 +19,7 @@ namespace uit {
 template<
   template<typename> typename IntraDuct_ = uit::SerialPendingDuct,
   template<typename> typename ThreadDuct_ = uit::AtomicPendingDuct,
-  template<typename> typename ProcDuct_ = uit::SteppingRingImsgDuct
+  template<typename> typename ProcDuct_ = uit::RingRingImsgDuct
 >
 struct ImplSelect {
 
