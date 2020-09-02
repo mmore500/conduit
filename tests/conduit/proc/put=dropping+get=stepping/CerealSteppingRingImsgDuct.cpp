@@ -5,7 +5,7 @@
 using ImplSel = uit::ImplSelect<
   uit::SerialPendingDuct,
   uit::ThrowDuct,
-  uit::SteppingRingImsgDuct
+  uit::CerealSteppingRingImsgDuct
 >;
 
 #include "../ProcDuct.hpp"
