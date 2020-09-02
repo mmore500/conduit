@@ -47,7 +47,7 @@ private:
   std::shared_ptr<BackEndImpl> back_end;
   const int byte_offset;
 
-  T res{};
+  T cache{};
 
   size_t CountUnconsumedGets() const { return 1; }
 
@@ -92,14 +92,6 @@ public:
 
   size_t TryConsumeGets(const size_t requested) const {
     emp_assert( requested == std::numeric_limits<size_t>::max() );
-    return 1;
-  }
-
-  const T& Get() {
-    // TODO use atomics as counter?
-    // TODO just do a RDMA Get or something on own window?
-    // TODO move this all into RDMAWindow and rely on intermittent calls there
-    // to get latest?
 
     // lock own window
     back_end->GetWindowManager().LockShared(address.GetInletProc());
@@ -112,8 +104,10 @@ public:
     );
     back_end->GetWindowManager().Unlock(address.GetInletProc());
 
-    return res;
+    return 1;
   }
+
+  const T& Get() const { return cache; }
 
   static std::string GetName() { return "WindowDuct"; }
 

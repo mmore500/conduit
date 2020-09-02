@@ -89,7 +89,7 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return *queue.peek(); }
+  const T& Get() const { return *queue.peek(); }
 
   /**
    * TODO.

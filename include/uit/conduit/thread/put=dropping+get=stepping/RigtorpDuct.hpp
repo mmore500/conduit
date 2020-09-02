@@ -98,7 +98,7 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return *queue.front(); }
+  const T& Get() const { return *queue.front(); }
 
   /**
    * TODO.

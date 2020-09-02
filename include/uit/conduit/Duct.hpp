@@ -164,7 +164,7 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() {
+  const T& Get() const {
     return std::visit(
       [](auto& arg) -> const T& { return arg.Get(); },
       impl

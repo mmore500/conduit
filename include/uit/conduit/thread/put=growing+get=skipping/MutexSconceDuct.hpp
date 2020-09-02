@@ -80,7 +80,7 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return cache; }
+  const T& Get() const { return cache; }
 
   /**
    * TODO.

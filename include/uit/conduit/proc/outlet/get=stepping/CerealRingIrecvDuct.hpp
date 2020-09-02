@@ -54,7 +54,7 @@ private:
 
   // cached unpacked value
   // initialize to value-constructed default
-  std::optional<T> curr{ std::in_place_t{} };
+  mutable std::optional<T> cache{ std::in_place_t{} };
 
   const uit::InterProcAddress address;
 
@@ -76,7 +76,7 @@ private:
     );
 
     // clear cached unpacked object
-    curr.reset();
+    cache.reset();
 
   }
 
@@ -146,18 +146,19 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() {
-    if (!curr.has_value()) {
-      curr.emplace();
+  const T& Get() const {
+    if (!cache.has_value()) {
+      cache.emplace();
 
       uit::imemstream imemstream(
         reinterpret_cast<const char*>(buffer[get_pos].data()),
         buffer[get_pos].size()
       );
       cereal::BinaryInputArchive iarchive( imemstream );
-      iarchive( curr.value() );
+      iarchive( cache.value() );
     }
-    return curr.value();
+
+    return cache.value();
   }
 
   static std::string GetName() { return "CerealRingIrecvDuct"; }

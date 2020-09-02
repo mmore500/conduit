@@ -41,7 +41,7 @@ public:
   *
   * @return TODO.
    */
-  const T& Get() { const static T val{}; return val; }
+  const T& Get() const { const static T val{}; return val; }
 
   /**
    * TODO.

@@ -69,7 +69,7 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() { return sconces[position]; }
+  const T& Get() const { return sconces[position]; }
 
   /**
    * TODO.
