@@ -175,7 +175,7 @@ public:
   // TODO rename GetNumEdges
   size_t GetEdgeCount() const { return nodes.GetEdgeCount(); }
 
-  using submesh_t = emp::vector<node_t>;;
+  using submesh_t = emp::vector<node_t>;
 
   submesh_t GetSubmesh(const thread_id_t tid=0) const {
     return GetSubmesh(tid, uit::get_proc_id(comm));

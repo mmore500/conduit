@@ -229,7 +229,7 @@ public:
     ss << format_member(
       "size_t dropped_put_count",
       dropped_put_count
-    ) << std::endl;;
+    ) << std::endl;
     ss << format_member(
       "size_t blocked_put_count",
       blocked_put_count

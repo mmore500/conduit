@@ -85,7 +85,7 @@ void profile_thread_count(const size_t num_threads) {
         std::begin(*res),
         std::end(*res),
         0.0
-      ) / std::size(*res) << std::endl;;
+      ) / std::size(*res) << std::endl;
 
     std::cout << "net milliseconds:" << duration.count() << std::endl;
 
