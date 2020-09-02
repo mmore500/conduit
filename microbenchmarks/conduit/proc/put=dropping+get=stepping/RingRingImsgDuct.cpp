@@ -1,10 +1,10 @@
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/conduit/proc/put=dropping+get=stepping/SteppingRingImsgDuct.hpp"
+#include "uit/conduit/proc/put=dropping+get=stepping/RingRingImsgDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
   uit::SerialPendingDuct,
   uit::AtomicPendingDuct,
-  uit::SteppingRingImsgDuct
+  uit::RingRingImsgDuct
 >;
 
 #include "../ProcDuct.hpp"

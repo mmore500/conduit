@@ -1,4 +1,4 @@
-TEST_NAMES := backend inlet outlet put=dropping+get=skipping put=dropping+get=stepping put=growing+get=stepping
+TEST_NAMES := backend inlet outlet put=dropping+get=skipping put=dropping+get=stepping put=growing+get=skipping put=growing+get=stepping
 default: test
 
 test-%: %

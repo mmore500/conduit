@@ -1,4 +1,4 @@
-TEST_NAMES := CerealSteppingRingImsgDuct SteppingRingImsgDuct #CerealSteppingRingImsgDuct SteppingRingIrmsgDuct
+TEST_NAMES := CerealRingRingImsgDuct RingRingImsgDuct #CerealRingRingImsgDuct RingRingIrmsgDuct
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/
 
