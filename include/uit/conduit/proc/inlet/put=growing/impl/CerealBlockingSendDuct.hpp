@@ -42,25 +42,20 @@ private:
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  using buffer_t = emp::array<emp::ContiguousStream, N>;
-  buffer_t buffer{};
-
-  using index_t = uit::CircularIndex<N>;
-  index_t send_position{};
+  emp::ContiguousStream buffer;
 
   const uit::InterProcAddress address;
 
   void PostSend() {
 
     BlockingSendFunctor{}(
-      buffer[send_position].GetData(),
-      buffer[send_position].GetSize(),
+      buffer.GetData(),
+      buffer.GetSize(),
       MPI_BYTE,
       address.GetOutletProc(),
       address.GetTag(),
       address.GetComm()
     );
-    ++send_position;
 
   }
 
@@ -79,10 +74,8 @@ public:
    */
   bool TryPut(const T& val) {
     { // oarchive flushes on destruction
-      buffer[send_position].Reset();
-      cereal::BinaryOutputArchive oarchive(
-        buffer[send_position]
-      );
+      buffer.Reset();
+      cereal::BinaryOutputArchive oarchive( buffer );
       oarchive(val);
     }
     PostSend();
@@ -107,9 +100,7 @@ public:
     std::stringstream ss;
     ss << GetType() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
     ss << format_member("InterProcAddress address", address) << std::endl;
-    ss << format_member("size_t send_position", send_position);
     return ss.str();
   }
 
