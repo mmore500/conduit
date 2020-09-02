@@ -85,7 +85,7 @@ class Inlet {
    *
    * @param val
    */
-  void Put(const T& val) { duct->Put(val); }
+  bool TryPut(const T& val) { return duct->TryPut(val); }
 
 public:
 
@@ -109,10 +109,10 @@ public:
       const uit::OccupancyGuard guard{caps.Get("SurePut", 1)};
     #endif
 
-    blocked_put_count += !IsReadyForPut();
-    while (!IsReadyForPut());
+    bool was_blocked{ false };
+    while (!TryPut(val)) was_blocked = true;
 
-    Put(val);
+    blocked_put_count += was_blocked;
 
   }
 
@@ -127,23 +127,10 @@ public:
       const uit::OccupancyGuard guard{caps.Get("TryPut", 1)};
     #endif
 
-    if (!IsReadyForPut()) {
-      ++dropped_put_count;
-      return false;
-    }
-
-    Put(val);
-
-    return true;
+    if ( TryPut(val) ) return true;
+    else { ++dropped_put_count; return false; }
 
   }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() { return duct->IsReadyForPut(); }
 
   /**
    * TODO.

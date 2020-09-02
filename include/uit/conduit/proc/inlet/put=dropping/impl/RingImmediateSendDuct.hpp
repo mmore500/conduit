@@ -174,6 +174,29 @@ private:
 
   void FlushFinalizedSends() { while (pending_sends && TryFinalizeSend()); }
 
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  void DoPut(const T& val) {
+    emp_assert( pending_sends < N );
+    emp_assert( uit::test_null(std::get<uit::Request>(buffer[send_position])) );
+    std::get<T>(buffer[send_position]) = val;
+    PostSend();
+    emp_assert( pending_sends <= N );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  bool IsReadyForPut() {
+    FlushFinalizedSends();
+    return pending_sends < N;
+  }
+
 public:
 
   RingImmediateSendDuct(
@@ -203,22 +226,9 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
-    emp_assert( pending_sends < N );
-    emp_assert( uit::test_null(std::get<uit::Request>(buffer[send_position])) );
-    std::get<T>(buffer[send_position]) = val;
-    PostSend();
-    emp_assert( pending_sends <= N );
-  }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() {
-    FlushFinalizedSends();
-    return pending_sends < N;
+  bool TryPut(const T& val) {
+    if (IsReadyForPut()) { DoPut(val); return true; }
+    else return false;
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {

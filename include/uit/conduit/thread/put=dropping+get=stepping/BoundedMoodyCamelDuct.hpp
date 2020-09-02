@@ -37,16 +37,12 @@ class BoundedMoodyCamelDuct {
     return available - 1;
   }
 
-public:
-
-  BoundedMoodyCamelDuct() { queue.enqueue( T{} ); }
-
   /**
    * TODO.
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  void DoPut(const T& val) {
     #ifndef NDEBUG
       const uit::OccupancyGuard guard{caps.Get("Put", 1)};
     #endif
@@ -59,6 +55,20 @@ public:
    * @return TODO.
    */
   bool IsReadyForPut() const { return CountUnconsumedGets() < N; }
+
+public:
+
+  BoundedMoodyCamelDuct() { queue.enqueue( T{} ); }
+
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  bool TryPut(const T& val) {
+    if (IsReadyForPut()) { DoPut(val); return true; }
+    else return false;
+  }
 
   /**
    * TODO.

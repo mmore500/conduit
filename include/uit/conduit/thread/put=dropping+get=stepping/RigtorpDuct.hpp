@@ -44,16 +44,12 @@ class RigtorpDuct {
     return available - 1;
   }
 
-public:
-
-  RigtorpDuct() { queue.push( T{} ); }
-
   /**
    * TODO.
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  void DoPut(const T& val) {
     #ifndef NDEBUG
       const uit::OccupancyGuard guard{caps.Get("Put", 1)};
     #endif
@@ -68,6 +64,20 @@ public:
    */
   // TODO why N - 1?
   bool IsReadyForPut() const { return CountUnconsumedGets() < N - 1; }
+
+public:
+
+  RigtorpDuct() { queue.push( T{} ); }
+
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  bool TryPut(const T& val) {
+    if (IsReadyForPut()) { DoPut(val); return true; }
+    else return false;
+  }
 
   /**
    * TODO.

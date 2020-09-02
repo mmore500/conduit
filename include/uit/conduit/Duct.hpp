@@ -135,24 +135,12 @@ public:
   /**
    * TODO.
    *
+   * @param val TODO.
    * @return TODO.
    */
-  void Put(const T& val) {
-    emp_assert(IsReadyForPut());
-    std::visit(
-      [&val](auto& arg){ arg.Put(val); },
-      impl
-    );
-  }
-
-  /**
-   * TODO.
-   *
-   * @return True if buffer capacity is available.
-   */
-  bool IsReadyForPut() {
+  bool TryPut(const T& val) {
     return std::visit(
-      [](auto& arg) -> bool { return arg.IsReadyForPut(); },
+      [&val](auto& arg) -> bool { return arg.TryPut(val); },
       impl
     );
   }

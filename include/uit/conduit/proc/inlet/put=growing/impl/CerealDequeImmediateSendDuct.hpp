@@ -107,7 +107,7 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  bool TryPut(const T& val) {
     buffer.emplace_back();
     emp_assert( uit::test_null( std::get<uit::Request>(buffer.back()) ) );
     { // oarchive flushes on destruction
@@ -118,14 +118,8 @@ public:
       oarchive(val);
     }
     PostSend();
+    return true;
   }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on CerealDequeImmediateSendDuct";

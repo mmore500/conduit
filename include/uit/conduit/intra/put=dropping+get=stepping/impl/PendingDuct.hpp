@@ -47,15 +47,7 @@ class PendingDuct {
    */
   size_t CountUnconsumedGets() const { return pending_gets; }
 
-
-public:
-
-  /**
-   * TODO.
-   *
-   * @param val TODO.
-   */
-  void Put(const T& val) {
+  void DoPut(const T& val) {
     #ifndef NDEBUG
       const OccupancyGuard guard{caps.Get("Put", 1)};
     #endif
@@ -71,6 +63,18 @@ public:
    * @return TODO.
    */
   bool IsReadyForPut() const { return pending_gets < N; }
+
+public:
+
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  bool TryPut(const T& val) {
+    if (IsReadyForPut()) { DoPut(val); return true; }
+    else return false;
+  }
 
   /**
    * TODO.

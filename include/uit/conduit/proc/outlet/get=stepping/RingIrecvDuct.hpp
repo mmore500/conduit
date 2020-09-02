@@ -288,12 +288,8 @@ public:
     ) );
   }
 
-  [[noreturn]] void Put(const T&) const {
+  [[noreturn]] bool TryPut(const T&) const {
     throw "Put called on RingIrecvDuct";
-  }
-
-  [[noreturn]] bool IsReadyForPut() const {
-    throw "IsReadyForPut called on RingIrecvDuct";
   }
 
   /**

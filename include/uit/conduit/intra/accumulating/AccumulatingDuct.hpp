@@ -35,17 +35,11 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
+  bool TryPut(const T& val) {
     ++updates_since_last_get;
     accumulator += val;
+    return true;
   }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() const { return true; }
 
   /**
    * TODO.

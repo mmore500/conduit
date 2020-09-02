@@ -151,8 +151,8 @@ public:
     ) );
   }
 
-  [[noreturn]] void Put(const T&) const {
-    throw "Put called on BlockIrecvDuct";
+  [[noreturn]] bool TryPut(const T&) const {
+    throw "TryPut called on BlockIrecvDuct";
   }
 
   [[noreturn]] bool IsReadyForPut() const {

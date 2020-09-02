@@ -175,6 +175,29 @@ private:
 
   void FlushFinalizedPuts() { while (pending_puts && TryFinalizePut()); }
 
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  void DoPut(const T& val) {
+    emp_assert( pending_puts < N );
+    emp_assert( uit::test_null( put_requests[put_position] ) );
+    buffer[put_position] = val;
+    PostPut();
+    emp_assert( pending_puts <= N );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  bool IsReadyForPut() {
+    FlushFinalizedPuts();
+    return pending_puts < N;
+  }
+
 public:
 
   RingRputDuct(
@@ -227,22 +250,9 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) {
-    emp_assert( pending_puts < N );
-    emp_assert( uit::test_null( put_requests[put_position] ) );
-    buffer[put_position] = val;
-    PostPut();
-    emp_assert( pending_puts <= N );
-  }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() {
-    FlushFinalizedPuts();
-    return pending_puts < N;
+  bool TryPut(const T& val) {
+    if (IsReadyForPut()) { DoPut(val); return true; }
+    else return false;
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {

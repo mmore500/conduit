@@ -34,14 +34,7 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T&) { ; }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() { return true; }
+  bool TryPut(const T&) { return false; }
 
   /**
   * TODO.

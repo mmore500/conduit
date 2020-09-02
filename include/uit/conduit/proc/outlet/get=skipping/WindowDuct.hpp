@@ -84,7 +84,7 @@ public:
 
   }
 
-  void Put(const T& val) { throw "Put called on WindowDuct"; }
+  [[noreturn]] bool TryPut(const T&) { throw "TryPut called on WindowDuct"; }
 
   [[noreturn]] bool IsReadyForPut() {
     throw "IsReadyForPut called on WindowDuct";

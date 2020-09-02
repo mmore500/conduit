@@ -36,15 +36,8 @@ public:
    *
    * @throws TODO.
    */
-  void Put(const T&) const { emp_assert(false, "Put called on EmpAssertDuct"); }
-
-  /**
-   * TODO.
-   *
-   * @throws TODO.
-   */
-  [[noreturn]] bool IsReadyForPut() const {
-    emp_assert(false, "IsReadyForPut called on EmpAssertDuct");
+  bool TryPut(const T&) const {
+    emp_assert(false, "TryPut called on EmpAssertDuct");
   }
 
   /**

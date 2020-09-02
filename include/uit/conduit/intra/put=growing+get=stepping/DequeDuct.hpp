@@ -37,14 +37,7 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) { queue.push_back( val ); }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() const { return true; }
+  bool TryPut(const T& val) { queue.push_back( val ); return true; }
 
   /**
    * TODO.

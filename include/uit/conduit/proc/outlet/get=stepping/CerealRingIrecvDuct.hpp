@@ -122,12 +122,8 @@ public:
     FlushPendingReceives();
   }
 
-  [[noreturn]] void Put(const T&) const {
+  [[noreturn]] bool TryPut(const T&) const {
     throw "Put called on CerealRingIrecvDuct";
-  }
-
-  [[noreturn]] bool IsReadyForPut() const {
-    throw "IsReadyForPut called on CerealRingIrecvDuct";
   }
 
   /**

@@ -34,14 +34,11 @@ public:
    *
    * @param val TODO.
    */
-  void Put(const T& val) { sconce = val; ++updates_since_last_get; }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  bool IsReadyForPut() const { return true; }
+  bool TryPut(const T& val) {
+    sconce = val;
+    ++updates_since_last_get;
+    return true;
+  }
 
   /**
    * TODO.
