@@ -90,7 +90,7 @@ public:
     throw "IsReadyForPut called on WindowDuct";
   }
 
-  size_t TryConsumeGets(const size_t requested) const {
+  size_t TryConsumeGets(const size_t requested) {
     emp_assert( requested == std::numeric_limits<size_t>::max() );
 
     // lock own window
