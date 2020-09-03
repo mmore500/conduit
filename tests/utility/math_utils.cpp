@@ -52,6 +52,28 @@ TEST_CASE("Test uit::circular_index") {
 
   REQUIRE( uit::circular_index(3, 1, -1) == 0 );
 
+  REQUIRE( uit::circular_index(0, 3, 0) == 0 );
+
+  REQUIRE( uit::circular_index(0, 3, 1) == 1 );
+
+  REQUIRE( uit::circular_index(0, 3, -1) == 2 );
+
+  REQUIRE( uit::circular_index(0, 3, 2) == 2 );
+
+  REQUIRE( uit::circular_index(2, 3, 8) == 1 );
+
+  REQUIRE( uit::circular_index(3, 5, 0) == 3);
+
+  REQUIRE( uit::circular_index(3, 5, 1) == 4 );
+
+  REQUIRE( uit::circular_index(3, 5, -1) == 2 );
+
+  REQUIRE( uit::circular_index(3, 5, 0) == 3 );
+
+  REQUIRE( uit::circular_index(3, 5, 4) == 2 );
+
+  REQUIRE( uit::circular_index(3, 5, -4) == 4 );
+
 }
 
 TEST_CASE("Test stoszt") {
