@@ -63,6 +63,10 @@ private:
       &std::get<uit::Request>(buffer.back())
     );
 
+    emp_assert( !uit::test_null(
+      std::get<uit::Request>(buffer.back())
+    ) );
+
   }
 
   bool TryFinalizeSend() {

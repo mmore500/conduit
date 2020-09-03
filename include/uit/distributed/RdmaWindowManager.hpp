@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <unordered_map>
 #include <thread>
 #include <set>
@@ -10,15 +11,15 @@
 
 #include "group_utils.hpp"
 #include "mpi_utils.hpp"
-#include "RDMAWindow.hpp"
+#include "RdmaWindow.hpp"
 
 namespace uit {
 
 // TODO is it possible to have a seperate window/communicator
 // between each pair of procs?
-class RDMAWindowManager {
+class RdmaWindowManager {
 
-  std::unordered_map<proc_id_t, RDMAWindow> windows{};
+  std::unordered_map<proc_id_t, RdmaWindow> windows{};
   mutable std::mutex mutex;
 
   std::set<proc_id_t> GetSortedRanks() {
@@ -45,7 +46,7 @@ class RDMAWindowManager {
 
 public:
 
-  ~RDMAWindowManager() {
+  ~RdmaWindowManager() {
     // sort ranks to prevent deadlock
     for (proc_id_t rank : GetSortedRanks()) {
       windows.erase(rank);
@@ -53,18 +54,21 @@ public:
   }
 
   // TODO cache line alignment?
-  size_t Acquire(const proc_id_t rank, const size_t num_bytes) {
+  size_t Acquire(
+    const proc_id_t rank,
+    const emp::vector<std::byte>& initial_bytes
+  ) {
 
     // make this call thread safe
     const std::lock_guard guard{mutex};
 
     emp_assert(!IsInitialized());
 
-    return windows[rank].Acquire(num_bytes);
+    return windows[rank].Acquire(initial_bytes);
 
   }
 
-  char * GetBytes(const proc_id_t rank, const size_t byte_offset) {
+  std::byte *GetBytes(const proc_id_t rank, const size_t byte_offset) {
     emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),
@@ -76,7 +80,7 @@ public:
 
   }
 
-  const MPI_Win & GetWindow(const proc_id_t rank) {
+  const MPI_Win& GetWindow(const proc_id_t rank) {
     emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),
@@ -116,10 +120,10 @@ public:
     return windows.at(rank).Unlock();
   }
 
-  template<typename T>
   void Rput(
     const proc_id_t rank,
-    const T *origin_addr,
+    const std::byte *origin_addr,
+    const size_t num_bytes,
     const MPI_Aint target_disp,
     MPI_Request *request
   ) {
@@ -129,7 +133,7 @@ public:
       rank,
       ToString()
     );
-    windows.at(rank).Rput<T>(origin_addr, target_disp, request);
+    windows.at(rank).Rput(origin_addr, num_bytes, target_disp, request);
   }
 
   void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {
@@ -139,14 +143,17 @@ public:
     for (proc_id_t rank : GetSortedRanks()) {
 
       MPI_Comm dyad{
-        group_to_comm(
-          make_group({rank, get_rank(comm)}, comm_to_group(comm)),
+        uit::group_to_comm(
+          uit::make_group(
+            {rank, uit::get_rank(comm)},
+            uit::comm_to_group(comm)
+          ),
           comm
         )
       };
 
       windows.at(rank).Initialize(
-        translate_rank(rank, comm, dyad),
+        uit::translate_comm_rank(rank, comm, dyad),
         dyad
       );
 
@@ -155,7 +162,7 @@ public:
     // ensure that RputDucts have received target offsets
     UIT_Barrier(comm);
 
-    emp_assert(IsInitialized());
+    emp_assert(windows.empty() || IsInitialized());
   }
 
   std::string ToString() {

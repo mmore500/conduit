@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../distributed/RDMAWindowManager.hpp"
+#include "../../../distributed/RdmaWindowManager.hpp"
 
 namespace uit {
 
@@ -13,11 +13,11 @@ namespace uit {
 template<typename ImplSpec>
 class RdmaBackEnd {
 
-  uit::RDMAWindowManager window_manager;
+  uit::RdmaWindowManager window_manager;
 
 public:
 
-  uit::RDMAWindowManager& GetWindowManager() {
+  uit::RdmaWindowManager& GetWindowManager() {
     return window_manager;
   }
 

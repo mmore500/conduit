@@ -1,4 +1,4 @@
-BENCH_NAMES := BlockRingImsgDuct BlockRingIrmsgDuct #RingRdmaDuct
+BENCH_NAMES := BlockRingImsgDuct BlockRingIrmsgDuct RingRdmaDuct
 
 SHELL := /bin/bash
 

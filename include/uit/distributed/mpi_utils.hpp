@@ -7,6 +7,8 @@
 
 #include <mpi.h>
 
+#include "../../../third-party/Empirical/source/base/array.h"
+
 #include "../utility/numeric_cast.hpp"
 #include "../utility/print_utils.hpp"
 
@@ -258,12 +260,10 @@ void do_successively(
   }
 }
 
-#ifndef MPICH_VERSION
-// apparently MPICH can't differentiate groups and comms?
-proc_id_t translate_rank(
+proc_id_t translate_group_rank(
   const proc_id_t rank,
   const MPI_Group& from,
-  const MPI_Group& to=comm_to_group(MPI_COMM_WORLD)
+  const MPI_Group& to=uit::comm_to_group(MPI_COMM_WORLD)
 ) {
   proc_id_t res;
   UIT_Group_translate_ranks(
@@ -275,14 +275,13 @@ proc_id_t translate_rank(
   );
   return res;
 }
-#endif
 
-proc_id_t translate_rank(
+proc_id_t translate_comm_rank(
   const proc_id_t rank,
   const MPI_Comm& from,
   const MPI_Comm& to=MPI_COMM_WORLD
 ) {
-  return translate_rank(rank, comm_to_group(from), comm_to_group(to));
+  return translate_group_rank(rank, comm_to_group(from), comm_to_group(to));
 }
 
 void init_multithread(int *argc, char ***argv) {
@@ -320,13 +319,26 @@ int combine_tag(const size_t a, const size_t b) {
 
 }
 
-std::string to_string(const MPI_Comm comm) {
+std::string get_name(const MPI_Comm& comm) {
   int len;
-  char data[MPI_MAX_OBJECT_NAME];
-  UIT_Comm_get_name(comm, data, &len);
-  return std::string{}.assign(data, len);
+  emp::array<char, MPI_MAX_OBJECT_NAME> buffer;
+  UIT_Comm_get_name(comm, buffer.data(), &len);
+  return std::string{}.assign(buffer.data(), len);
 }
 
+std::string comm_to_string(const MPI_Comm& comm) {
+  std::stringstream ss;
+  ss << format_member(
+    "uit::comm_size(comm)", uit::comm_size(comm)
+  ) << std::endl;
+  ss << format_member(
+    "uit::get_comm_ranks(comm)", uit::to_string(uit::get_comm_ranks(comm))
+  ) << std::endl;
+  ss << format_member(
+    "uit::get_name(comm)", uit::get_name(comm)
+  ) << std::endl;
+  return ss.str();
+}
 
 MPI_Comm duplicate_comm(const MPI_Comm comm) {
   MPI_Comm res;

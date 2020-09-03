@@ -8,12 +8,13 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/conduit/ImplSpec.hpp"
+#include "uit/conduit/Sink.hpp"
 #include "uit/conduit/Source.hpp"
 #include "uit/distributed/assign_utils.hpp"
 #include "uit/distributed/MPIGuard.hpp"
 #include "uit/distributed/mpi_utils.hpp"
 #include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/RDMAWindowManager.hpp"
+#include "uit/distributed/RdmaWindowManager.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/mesh/MeshNodeInput.hpp"
 #include "uit/mesh/MeshNodeOutput.hpp"
@@ -82,20 +83,49 @@ decltype(auto) make_ring_bundle() {
 
 }
 
+// TODO why doesn't this work with openmpi with RingRdmaDuct?
+// TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+//
+//   std::shared_ptr<Spec::ProcBackEnd> backend{
+//     std::make_shared<Spec::ProcBackEnd>()
+//   };
+//
+//   auto [outlet] = uit::Source<Spec>{
+//     std::in_place_type_t<Spec::ProcOutletDuct>{},
+//     uit::InterProcAddress{
+//       uit::get_rank(),
+//       uit::numeric_cast<int>(
+//         uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
+//       )
+//     },
+//     backend
+//   };
+//
+//   // corresponding sink
+//   uit::Sink<Spec>{
+//     std::in_place_type_t<Spec::ProcOutletDuct>{},
+//     uit::InterProcAddress{
+//       uit::get_rank(),
+//       uit::numeric_cast<int>(
+//         uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+//       )
+//     },
+//     backend
+//   };
+//
+//   backend->Initialize();
+//
+//   REQUIRE( outlet.Get() == MSG_T{} );
+//   REQUIRE( outlet.JumpGet() == MSG_T{} );
+//
+// } }
+
 TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
-  std::shared_ptr<Spec::ProcBackEnd> backend{
-    std::make_shared<Spec::ProcBackEnd>()
-  };
-  uit::InterProcAddress address{};
+  auto [input, output] = make_ring_bundle();
 
-  auto [outlet] = uit::Source<Spec>{
-    std::in_place_type_t<Spec::ProcOutletDuct>{},
-    address,
-    backend
-  };
-
-  REQUIRE( outlet.JumpGet() == MSG_T{} );
+  REQUIRE( input.Get() == MSG_T{} );
+  REQUIRE( input.JumpGet() == MSG_T{} );
 
 } }
 

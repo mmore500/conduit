@@ -1,6 +1,7 @@
 #pragma once
 
 #include <set>
+#include <sstream>
 
 #include <mpi.h>
 
@@ -44,6 +45,17 @@ MPI_Group make_group(
     &res // MPI_Group * newgroup
   );
   return res;
+}
+
+std::string group_to_string(const MPI_Group& group) {
+  std::stringstream ss;
+  ss << format_member(
+    "uit::group_size(group)", uit::group_size(group)
+  ) << std::endl;
+  ss << format_member(
+    "uit::get_group_ranks(group)", uit::to_string(uit::get_group_ranks(group))
+  ) << std::endl;
+  return ss.str();
 }
 
 } // namespace uit
