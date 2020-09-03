@@ -92,8 +92,8 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
     for (const auto& neighbor : neighbors) {
       const auto neighbor_node = uit::linear_encode(neighbor, dim_cardinality);
 
-      it->AddInput(node_edge_map[{neighbor_node, my_id}]);
-      it->AddOutput(node_edge_map[{my_id, neighbor_node}]);
+      it->AddInput(node_edge_map[{false, neighbor_node, my_id}]);
+      it->AddOutput(node_edge_map[{true, my_id, neighbor_node}]);
     }
   }
   return nodes;
