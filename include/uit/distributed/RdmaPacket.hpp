@@ -6,7 +6,7 @@
 namespace uit {
 
 template<typename T>
-class RDMAPacket {
+class RdmaPacket {
 
   static_assert(std::is_trivially_copyable<T>::value);
 
@@ -15,9 +15,9 @@ class RDMAPacket {
 
 public:
 
-  RDMAPacket() = default;
+  RdmaPacket() = default;
 
-  RDMAPacket(const T& data_, const size_t& epoch_)
+  RdmaPacket(const T& data_, const size_t& epoch_)
   : data(data_), epoch(epoch_)
   { ; }
 

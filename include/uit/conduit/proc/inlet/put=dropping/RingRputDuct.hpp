@@ -11,8 +11,8 @@
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../distributed/mpi_utils.hpp"
-#include "../../../../distributed/RDMAWindowManager.hpp"
-#include "../../../../distributed/RDMAPacket.hpp"
+#include "../../../../distributed/RdmaWindowManager.hpp"
+#include "../../../../distributed/RdmaPacket.hpp"
 #include "../../../../distributed/Request.hpp"
 #include "../../../../utility/CircularIndex.hpp"
 #include "../../../../utility/identity.hpp"
@@ -42,7 +42,7 @@ private:
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
-  using packet_t = uit::RDMAPacket<T>;
+  using packet_t = uit::RdmaPacket<T>;
 
   using buffer_t = emp::array<packet_t, N>;
   buffer_t buffer{};

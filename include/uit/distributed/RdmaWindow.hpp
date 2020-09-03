@@ -15,7 +15,7 @@ namespace uit {
 
 // TODO is it possible to have a seperate window/communicator
 // between each pair of procs?
-class RDMAWindow {
+class RdmaWindow {
 
   std::byte *buffer;
 
@@ -29,7 +29,7 @@ class RDMAWindow {
 
 public:
 
-  ~RDMAWindow() {
+  ~RdmaWindow() {
     if (IsInitialized()) {
       UIT_Win_free(&window.value());
       UIT_Free_mem(buffer);

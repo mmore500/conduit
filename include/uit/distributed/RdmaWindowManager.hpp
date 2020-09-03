@@ -11,15 +11,15 @@
 
 #include "group_utils.hpp"
 #include "mpi_utils.hpp"
-#include "RDMAWindow.hpp"
+#include "RdmaWindow.hpp"
 
 namespace uit {
 
 // TODO is it possible to have a seperate window/communicator
 // between each pair of procs?
-class RDMAWindowManager {
+class RdmaWindowManager {
 
-  std::unordered_map<proc_id_t, RDMAWindow> windows{};
+  std::unordered_map<proc_id_t, RdmaWindow> windows{};
   mutable std::mutex mutex;
 
   std::set<proc_id_t> GetSortedRanks() {
@@ -46,7 +46,7 @@ class RDMAWindowManager {
 
 public:
 
-  ~RDMAWindowManager() {
+  ~RdmaWindowManager() {
     // sort ranks to prevent deadlock
     for (proc_id_t rank : GetSortedRanks()) {
       windows.erase(rank);

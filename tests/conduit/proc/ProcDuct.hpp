@@ -14,7 +14,7 @@
 #include "uit/distributed/MPIGuard.hpp"
 #include "uit/distributed/mpi_utils.hpp"
 #include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/RDMAWindowManager.hpp"
+#include "uit/distributed/RdmaWindowManager.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/mesh/MeshNodeInput.hpp"
 #include "uit/mesh/MeshNodeOutput.hpp"
