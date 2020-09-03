@@ -1,7 +1,6 @@
 #pragma once
 
 #include <cmath>
-#include <deque>
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 
@@ -19,17 +18,13 @@ size_t linear_encode(const Point& p, const Dims& dims) {
     }
     return encoded;
 }
-
-Point linear_decode(size_t r, const Dims& len) {
-    std::deque<size_t> decoded;
-    for (auto it = std::rbegin(len); it != std::rend(len); ++it) {
-        decoded.push_front(r % (*it));
-        r /= (*it);
+Point linear_decode(size_t r, const Dims& dims) {
+    emp::vector<size_t> decoded;
+    for (size_t i = 0; i < dims.size(); ++i) {
+        decoded.push_back(r % dims[i]);
+        r /= dims[i];
     }
-    return Point(
-        decoded.begin(),
-        decoded.end()
-    );
+    return decoded;
 }
 
 // TODO: add a Hilbert curve variant
