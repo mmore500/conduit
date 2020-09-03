@@ -74,7 +74,7 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
   };
 
   // returns a vector containing all neighbors
-  auto get_neighbors = [&get_neighbor, &dim_cardinality](const Point& p) {
+  auto get_neighbors = [&get_neighbor](const Point& p) {
     emp::vector<Point> neighbors;
 
     for (size_t i = 0; i < p.size(); ++i) {
