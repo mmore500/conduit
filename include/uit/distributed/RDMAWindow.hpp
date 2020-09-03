@@ -17,7 +17,7 @@ namespace uit {
 // between each pair of procs?
 class RDMAWindow {
 
-  char *buffer;
+  std::byte *buffer;
 
   std::optional<MPI_Win> window;
 
@@ -55,11 +55,11 @@ public:
 
   }
 
-  char *GetBytes(const size_t byte_offset) {
+  std::byte *GetBytes(const size_t byte_offset) {
     emp_assert(IsInitialized());
 
     return std::next(
-      reinterpret_cast<char *>(buffer),
+      reinterpret_cast<std::byte *>(buffer),
       byte_offset
     );
 
@@ -195,7 +195,7 @@ public:
     ss << format_member("IsUninitialized()", emp::to_string(IsUninitialized()))
       << std::endl;
     // TODO add print function for MPI_Win
-    ss << format_member("char * buffer", static_cast<const void *>(buffer))
+    ss << format_member("std::byte *buffer", static_cast<const void *>(buffer))
       << std::endl;
     ss << format_member("GetSize()", GetSize()) << std::endl;
     ss << format_member("proc_id_t local_rank", local_rank);

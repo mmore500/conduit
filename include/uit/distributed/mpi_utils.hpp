@@ -7,6 +7,8 @@
 
 #include <mpi.h>
 
+#include "../../../third-party/Empirical/source/base/array.h"
+
 #include "../utility/numeric_cast.hpp"
 #include "../utility/print_utils.hpp"
 
@@ -319,9 +321,9 @@ int combine_tag(const size_t a, const size_t b) {
 
 std::string get_name(const MPI_Comm& comm) {
   int len;
-  char data[MPI_MAX_OBJECT_NAME];
-  UIT_Comm_get_name(comm, data, &len);
-  return std::string{}.assign(data, len);
+  emp::array<char, MPI_MAX_OBJECT_NAME> buffer;
+  UIT_Comm_get_name(comm, buffer.data(), &len);
+  return std::string{}.assign(buffer.data(), len);
 }
 
 std::string comm_to_string(const MPI_Comm& comm) {

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <unordered_map>
 #include <thread>
 #include <set>
@@ -67,7 +68,7 @@ public:
 
   }
 
-  char * GetBytes(const proc_id_t rank, const size_t byte_offset) {
+  std::byte *GetBytes(const proc_id_t rank, const size_t byte_offset) {
     emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),
@@ -79,7 +80,7 @@ public:
 
   }
 
-  const MPI_Win & GetWindow(const proc_id_t rank) {
+  const MPI_Win& GetWindow(const proc_id_t rank) {
     emp_assert(IsInitialized());
     emp_assert(
       windows.count(rank),

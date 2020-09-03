@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cstddef>
 #include <optional>
 #include <stddef.h>
 
@@ -46,7 +47,7 @@ private:
 
   size_t pending_gets{};
 
-  using buffer_t = emp::array<emp::vector<uit::Uninitialized<char>>, N>;
+  using buffer_t = emp::array<emp::vector<uit::Uninitialized<std::byte>>, N>;
   buffer_t buffer{};
 
   using index_t = uit::CircularIndex<N>;
