@@ -1,9 +1,12 @@
 #pragma once
 
 #include <optional>
+#include <cstddef>
 #include <stddef.h>
 
 #include <mpi.h>
+
+#include "../../../third-party/Empirical/source/base/vector.h"
 
 #include "audited_routine_aliases.hpp"
 #include "mpi_utils.hpp"
@@ -18,7 +21,7 @@ class RDMAWindow {
 
   std::optional<MPI_Win> window;
 
-  size_t size;
+  emp::vector<std::byte> initialization_bytes;
 
   // this is relative to the window communicator
   // rank where window is located
@@ -37,13 +40,18 @@ public:
 
   bool IsUninitialized() const { return !window.has_value(); }
 
-  // TODO cache line alignment?
-  size_t Acquire(const size_t num_bytes) {
+  // returns index
+  size_t Acquire(const emp::vector<std::byte>& initial_bytes) {
     emp_assert(IsUninitialized());
 
-    const size_t res = size;
-    size += num_bytes;
-    return res;
+    const size_t address = initialization_bytes.size();
+    initialization_bytes.insert(
+      std::end(initialization_bytes),
+      std::begin(initial_bytes),
+      std::end(initial_bytes)
+    );
+    // TODO cache line alignment?
+    return address;
 
   }
 
@@ -127,7 +135,6 @@ public:
       MPI_BYTE, // MPI_Datatype origin_datatype
       local_rank, // int target_rank
       target_disp, // MPI_Aint target_disp
-      // with MPI_Recv?, TODO factor in send_position offset?
       sizeof(T), // int target_count
       MPI_BYTE, // MPI_Datatype target_datatype
       window.value(), // MPI_Win win
@@ -143,9 +150,16 @@ public:
     local_rank = target;
 
     UIT_Alloc_mem(
-      size,
+      initialization_bytes.size(),
       MPI_INFO_NULL,
       &buffer
+    );
+
+    // initialize allocated memory
+    std::memcpy(
+      buffer,
+      initialization_bytes.data(),
+      initialization_bytes.size()
     );
 
     window.emplace();
@@ -153,9 +167,10 @@ public:
     // all procs must make this call
     UIT_Win_create(
       buffer, // base: initial address of window (choice)
-      size, // size: size of window in bytes (nonnegative integer)
+      initialization_bytes.size(), // size
+      // size of window in bytes (nonnegative integer)
       1, // disp_unit: local unit size for displacements, in bytes
-         //   (positive integer)
+      //   (positive integer)
       MPI_INFO_NULL, // info: info argument (handle)
       comm, // comm: communicator (handle)
       &window.value() // win: window object returned by the call (handle)
@@ -168,7 +183,7 @@ public:
 
   }
 
-  size_t GetSize() const { return size; }
+  size_t GetSize() const { return initialization_bytes.size(); }
 
   proc_id_t GetLocalRank() const { return local_rank; }
 
@@ -182,7 +197,7 @@ public:
     // TODO add print function for MPI_Win
     ss << format_member("char * buffer", static_cast<const void *>(buffer))
       << std::endl;
-    ss << format_member("size_t size", size) << std::endl;
+    ss << format_member("GetSize()", GetSize()) << std::endl;
     ss << format_member("proc_id_t local_rank", local_rank);
 
     return ss.str();

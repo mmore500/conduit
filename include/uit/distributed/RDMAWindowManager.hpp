@@ -53,14 +53,17 @@ public:
   }
 
   // TODO cache line alignment?
-  size_t Acquire(const proc_id_t rank, const size_t num_bytes) {
+  size_t Acquire(
+    const proc_id_t rank,
+    const emp::vector<std::byte>& initial_bytes
+  ) {
 
     // make this call thread safe
     const std::lock_guard guard{mutex};
 
     emp_assert(!IsInitialized());
 
-    return windows[rank].Acquire(num_bytes);
+    return windows[rank].Acquire(initial_bytes);
 
   }
 

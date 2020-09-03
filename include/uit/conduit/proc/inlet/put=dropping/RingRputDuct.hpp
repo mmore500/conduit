@@ -7,6 +7,7 @@
 #include <mpi.h>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../distributed/mpi_utils.hpp"
@@ -215,7 +216,10 @@ public:
 
     if (uit::get_rank(address.GetComm()) == address.GetInletProc()) {
       // make spoof call to ensure reciporical activation
-      back_end->GetWindowManager().Acquire(address.GetOutletProc(), 0);
+      back_end->GetWindowManager().Acquire(
+        address.GetOutletProc(),
+        emp::vector<std::byte>{}
+      );
 
       // we'll emp_assert later to make sure it actually completed
       UIT_Irecv(

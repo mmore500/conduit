@@ -8,6 +8,7 @@
 #include <mpi.h>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../distributed/mpi_utils.hpp"
@@ -42,12 +43,12 @@ private:
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
+  T cache{};
+
   const uit::InterProcAddress address;
 
   std::shared_ptr<BackEndImpl> back_end;
   const int byte_offset;
-
-  T cache{};
 
   size_t CountUnconsumedGets() const { return 1; }
 
@@ -62,7 +63,10 @@ public:
     address.GetOutletProc() == uit::get_rank(address.GetComm())
       ? back_end->GetWindowManager().Acquire(
         address.GetInletProc(),
-        sizeof(T)
+        emp::vector<std::byte>(
+          reinterpret_cast<std::byte*>(&cache),
+          reinterpret_cast<std::byte*>(&cache) + sizeof(T)
+        )
       ) : -1
   ) {
     if (address.GetOutletProc() == uit::get_rank(address.GetComm())) {
