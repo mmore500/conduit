@@ -12,6 +12,7 @@
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../distributed/mpi_utils.hpp"
+#include "../../../../distributed/RDMAPacket.hpp"
 #include "../../../../distributed/RDMAWindowManager.hpp"
 #include "../../../../utility/CircularIndex.hpp"
 #include "../../../../utility/identity.hpp"
@@ -43,7 +44,10 @@ private:
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  T cache{};
+  using packet_t = uit::RDMAPacket<T>;
+
+  packet_t cache{};
+  size_t cur_epoch{};
 
   const uit::InterProcAddress address;
 
@@ -65,7 +69,7 @@ public:
         address.GetInletProc(),
         emp::vector<std::byte>(
           reinterpret_cast<std::byte*>(&cache),
-          reinterpret_cast<std::byte*>(&cache) + sizeof(T)
+          reinterpret_cast<std::byte*>(&cache) + sizeof(packet_t)
         )
       ) : -1
   ) {
@@ -97,21 +101,27 @@ public:
     // lock own window
     back_end->GetWindowManager().LockShared( address.GetInletProc() );
     std::memcpy(
-      &cache,
+      reinterpret_cast<std::byte*>(&cache),
       back_end->GetWindowManager().GetBytes(
         address.GetInletProc(),
         byte_offset
       ),
-      sizeof(T)
+      sizeof(packet_t)
     );
     back_end->GetWindowManager().Unlock( address.GetInletProc() );
 
-    return 1;
+    emp_assert( cache.GetEpoch() >= cur_epoch , cache.GetEpoch(), cur_epoch );
+
+    const size_t elapsed_epochs = cache.GetEpoch() - cur_epoch;
+
+    cur_epoch = cache.GetEpoch();
+
+    return elapsed_epochs;
   }
 
-  const T& Get() const { return cache; }
+  const T& Get() const { return cache.GetData(); }
 
-  T& Get() { return cache; }
+  T& Get() { return cache.GetData(); }
 
   static std::string GetName() { return "WindowDuct"; }
 

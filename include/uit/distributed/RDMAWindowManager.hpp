@@ -120,10 +120,10 @@ public:
     return windows.at(rank).Unlock();
   }
 
-  template<typename T>
   void Rput(
     const proc_id_t rank,
-    const T *origin_addr,
+    const std::byte *origin_addr,
+    const size_t num_bytes,
     const MPI_Aint target_disp,
     MPI_Request *request
   ) {
@@ -133,7 +133,7 @@ public:
       rank,
       ToString()
     );
-    windows.at(rank).Rput<T>(origin_addr, target_disp, request);
+    windows.at(rank).Rput(origin_addr, num_bytes, target_disp, request);
   }
 
   void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {

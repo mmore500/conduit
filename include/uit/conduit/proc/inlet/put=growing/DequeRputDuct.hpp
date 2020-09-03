@@ -15,6 +15,7 @@
 
 #include "../../../../distributed/mpi_utils.hpp"
 #include "../../../../distributed/RDMAWindowManager.hpp"
+#include "../../../../distributed/RDMAPacket.hpp"
 #include "../../../../distributed/Request.hpp"
 #include "../../../../utility/CircularIndex.hpp"
 #include "../../../../utility/identity.hpp"
@@ -44,9 +45,12 @@ private:
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
+  using packet_t = uit::RDMAPacket<T>;
 
-  using buffer_t = std::deque<std::tuple<T, uit::Request>>;
+  using buffer_t = std::deque<std::tuple<packet_t, uit::Request>>;
   buffer_t buffer;
+
+  size_t epoch{};
 
   const uit::InterProcAddress address;
 
@@ -68,7 +72,8 @@ private:
 
     back_end->GetWindowManager().Rput(
       address.GetOutletProc(),
-      &std::get<T>(buffer.back()),
+      reinterpret_cast<const std::byte*>( &std::get<packet_t>(buffer.back()) ),
+      sizeof(packet_t),
       target_offset,
       &std::get<uit::Request>(buffer.back())
     );
@@ -146,7 +151,7 @@ public:
    */
   bool TryPut(const T& val) {
     buffer.emplace_back(
-      val,
+      packet_t(val, ++epoch),
       uit::Request{}
     );
     emp_assert( uit::test_null( std::get<uit::Request>(buffer.back()) ) );

@@ -120,9 +120,9 @@ public:
 
   }
 
-  template<typename T>
   void Rput(
-    const T *origin_addr,
+    const std::byte *origin_addr,
+    const size_t num_bytes,
     const MPI_Aint target_disp,
     MPI_Request *request
   ) {
@@ -131,11 +131,11 @@ public:
 
     UIT_Rput(
       origin_addr, // const void *origin_addr
-      sizeof(T), // int origin_count
+      num_bytes, // int origin_count
       MPI_BYTE, // MPI_Datatype origin_datatype
       local_rank, // int target_rank
       target_disp, // MPI_Aint target_disp
-      sizeof(T), // int target_count
+      num_bytes, // int target_count
       MPI_BYTE, // MPI_Datatype target_datatype
       window.value(), // MPI_Win win
       request // MPI_Request* request (handle)

@@ -12,6 +12,7 @@
 
 #include "../../../../distributed/mpi_utils.hpp"
 #include "../../../../distributed/RDMAWindowManager.hpp"
+#include "../../../../distributed/RDMAPacket.hpp"
 #include "../../../../distributed/Request.hpp"
 #include "../../../../utility/CircularIndex.hpp"
 #include "../../../../utility/identity.hpp"
@@ -41,11 +42,14 @@ private:
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
+  using packet_t = uit::RDMAPacket<T>;
 
-  using buffer_t = emp::array<T, N>;
+  using buffer_t = emp::array<packet_t, N>;
   buffer_t buffer{};
 
-  using index_t = CircularIndex<N>;
+  size_t epoch{};
+
+  using index_t = uit::CircularIndex<N>;
   index_t put_position{};
 
   emp::array<uit::Request, N> put_requests;
@@ -136,7 +140,8 @@ private:
 
     back_end->GetWindowManager().Rput(
       address.GetOutletProc(),
-      &buffer[put_position],
+      reinterpret_cast<const std::byte*>( &buffer[put_position] ),
+      sizeof(packet_t),
       target_offset,
       &put_requests[put_position]
     );
@@ -184,7 +189,7 @@ private:
   void DoPut(const T& val) {
     emp_assert( pending_puts < N );
     emp_assert( uit::test_null( put_requests[put_position] ) );
-    buffer[put_position] = val;
+    buffer[put_position] = packet_t(val, ++epoch);
     PostPut();
     emp_assert( pending_puts <= N );
   }
