@@ -1,4 +1,4 @@
-BENCH_NAMES := BlockMsgDuct BlockDequeImsgDuct DequeRdmaDuct #BlockRmsgDuct BlockDequeIrmsgDuct
+BENCH_NAMES := BlockMsgDuct DequeRdmaDuct #BlockDequeImsgDuct BlockDequeIrmsgDuct BlockRmsgDuct
 
 SHELL := /bin/bash
 
