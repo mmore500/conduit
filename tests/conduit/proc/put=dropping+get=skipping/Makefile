@@ -1,4 +1,4 @@
-TEST_NAMES := BlockRingImsgDuct #BlockRingIrmsgDuct RingRdmaDuct
+TEST_NAMES := BlockRingImsgDuct RingRdmaDuct #BlockRingIrmsgDuct
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/
 
