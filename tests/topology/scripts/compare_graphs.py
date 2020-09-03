@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 import networkx as nx
-import os
 import sys
 
 (exe, filename1, filename2) = sys.argv
