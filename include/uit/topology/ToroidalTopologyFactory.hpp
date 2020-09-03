@@ -7,35 +7,49 @@
 #include <tuple>
 #include <unordered_map>
 
-#include "../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/source/tools/tuple_utils.h"
 
 #include "TopoEdge.hpp"
 #include "Topology.hpp"
 #include "TopoNode.hpp"
-
-#include "../../third-party/Empirical/source/tools/tuple_utils.h"
 
 #include "../utility/mapping_utils.hpp"
 #include "../utility/math_utils.hpp"
 
 namespace uit {
 
+// TODO: MOVE TO ITS OWN FILE
 template <typename T>
 class UIDMap {
   using node_id_t = size_t;
-  using node_pair = std::tuple<T, T>;
+  using node_tuple = std::tuple<bool, T, T>;
 
-  std::unordered_map<
-    node_pair,
+  size_t counter{};
+
+  std::unordered_multimap<
+    node_tuple,
     size_t,
-    emp::TupleHash<T, T>
+    emp::TupleHash<bool, T, T>
   > map;
 
 public:
+  size_t operator[](const node_tuple& a) {
+    const auto& [is_output, from_node, to_node] = a;
+    const node_tuple complement{
+      !is_output,
+      from_node,
+      to_node
+    };
 
-  size_t operator[](const node_pair& a) {
-    if (!map.count(a)) map[a] = map.size();
-    return map.at(a);
+    if (map.count(complement)) {
+      const auto it = map.find(complement);
+      const auto [key, val] = *it;
+      map.erase(it);
+      return val;
+    } else {
+      return map.insert({a, counter++})->second;
+    }
   }
 };
 
