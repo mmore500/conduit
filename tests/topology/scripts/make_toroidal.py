@@ -3,7 +3,11 @@ import matplotlib.pyplot as plt
 from keyname import keyname as kn
 
 dims = [
-    [4, 5]
+    [2, 2],
+    [3, 3],
+    [4, 5],
+    [8, 8],
+    [9, 9]
 ]
 
 def make_filename(dims):

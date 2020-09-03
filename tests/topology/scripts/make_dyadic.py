@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from keyname import keyname as kn
 
-dims = [3, 10]
+dims = [3, 4, 7, 10]
 
 def make_filename(dim):
     return kn.pack({
@@ -18,7 +18,6 @@ for dim in dims:
     else:
         procon = [(i, i + 1) for i in range(0, dim, 2)]
 
-    print(procon)
     G_dyatic = nx.Graph(procon).to_directed()
 
     with open("assets/" + make_filename(dim), "w") as file:
