@@ -258,12 +258,10 @@ void do_successively(
   }
 }
 
-#ifndef MPICH_VERSION
-// apparently MPICH can't differentiate groups and comms?
-proc_id_t translate_rank(
+proc_id_t translate_group_rank(
   const proc_id_t rank,
   const MPI_Group& from,
-  const MPI_Group& to=comm_to_group(MPI_COMM_WORLD)
+  const MPI_Group& to=uit::comm_to_group(MPI_COMM_WORLD)
 ) {
   proc_id_t res;
   UIT_Group_translate_ranks(
@@ -275,14 +273,13 @@ proc_id_t translate_rank(
   );
   return res;
 }
-#endif
 
-proc_id_t translate_rank(
+proc_id_t translate_comm_rank(
   const proc_id_t rank,
   const MPI_Comm& from,
   const MPI_Comm& to=MPI_COMM_WORLD
 ) {
-  return translate_rank(rank, comm_to_group(from), comm_to_group(to));
+  return translate_group_rank(rank, comm_to_group(from), comm_to_group(to));
 }
 
 void init_multithread(int *argc, char ***argv) {

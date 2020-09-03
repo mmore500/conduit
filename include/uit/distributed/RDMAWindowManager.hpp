@@ -149,7 +149,7 @@ public:
       };
 
       windows.at(rank).Initialize(
-        uit::translate_rank(rank, comm, dyad),
+        uit::translate_comm_rank(rank, comm, dyad),
         dyad
       );
 
