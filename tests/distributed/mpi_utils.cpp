@@ -323,9 +323,9 @@ TEST_CASE("combine_tag") {
 
 }
 
-TEST_CASE("to_string") {
+TEST_CASE("comm_to_string") {
 
-  REQUIRE(uit::to_string(MPI_COMM_WORLD) != "");
+  REQUIRE(!uit::comm_to_string(MPI_COMM_WORLD).empty());
 
 }
 

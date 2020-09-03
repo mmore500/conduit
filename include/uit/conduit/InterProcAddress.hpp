@@ -46,7 +46,7 @@ public:
     ss << format_member("uit::proc_id_t outlet_proc", outlet_proc) << std::endl;
     ss << format_member("uit::proc_id_t inlet_proc", inlet_proc) << std::endl;
     ss << format_member("int tag", tag) << std::endl;
-    ss << format_member("MPI_Comm comm", uit::to_string(comm));
+    ss << format_member("MPI_Comm comm", uit::comm_to_string(comm));
 
     return ss.str();
   }

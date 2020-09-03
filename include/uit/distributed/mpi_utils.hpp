@@ -317,13 +317,26 @@ int combine_tag(const size_t a, const size_t b) {
 
 }
 
-std::string to_string(const MPI_Comm comm) {
+std::string get_name(const MPI_Comm& comm) {
   int len;
   char data[MPI_MAX_OBJECT_NAME];
   UIT_Comm_get_name(comm, data, &len);
   return std::string{}.assign(data, len);
 }
 
+std::string comm_to_string(const MPI_Comm& comm) {
+  std::stringstream ss;
+  ss << format_member(
+    "uit::comm_size(comm)", uit::comm_size(comm)
+  ) << std::endl;
+  ss << format_member(
+    "uit::get_comm_ranks(comm)", uit::to_string(uit::get_comm_ranks(comm))
+  ) << std::endl;
+  ss << format_member(
+    "uit::get_name(comm)", uit::get_name(comm)
+  ) << std::endl;
+  return ss.str();
+}
 
 MPI_Comm duplicate_comm(const MPI_Comm comm) {
   MPI_Comm res;
