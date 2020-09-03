@@ -86,18 +86,16 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
   };
 
   for (auto it = nodes.begin(); it != nodes.end(); ++it) {
-    const auto n = uit::linear_decode(it - nodes.begin(), dim_cardinality);
+    const size_t my_id = std::distance(nodes.begin(), it);
+    const auto n = uit::linear_decode(my_id, dim_cardinality);
     const auto neighbors = get_neighbors(n);
-
     for (const auto& neighbor : neighbors) {
-      auto neighbor_node = uit::linear_encode(neighbor, dim_cardinality);
-      size_t my_id = std::distance(nodes.begin(), it);
+      const auto neighbor_node = uit::linear_encode(neighbor, dim_cardinality);
 
       it->AddInput(node_edge_map[{neighbor_node, my_id}]);
       it->AddOutput(node_edge_map[{my_id, neighbor_node}]);
     }
   }
-
   return nodes;
 }
 
