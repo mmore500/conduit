@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../parallel/OccupancyCaps.hpp"
-#include "../parallel/OccupancyGuard.hpp"
+#include "OccupancyCaps.hpp"
+#include "OccupancyGuard.hpp"
 
 #ifdef UIT_AUDIT_OCCUPANCY
 

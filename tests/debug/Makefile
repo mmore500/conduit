@@ -1,9 +1,9 @@
-TEST_NAMES := AlignedImplicit AlignedInherit ParallelTimeoutBarrier RecursiveExclusiveLock RecursiveMutex RelaxedAtomic ThreadLocalChecker ThreadMap
-
-FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
+TEST_NAMES := OncePerThreadChecker
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
+
+FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
 
 default: test
 
@@ -24,7 +24,7 @@ opt: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++17 -g -pthread -march=native -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
 fulldebug: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 

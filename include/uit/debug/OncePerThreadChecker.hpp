@@ -1,8 +1,7 @@
 #pragma once
 
 #include "../utility/IsFirstExecutionChecker.hpp"
-
-#include "ThreadMap.hpp"
+#include "../parallel/ThreadMap.hpp"
 
 namespace uit {
 
