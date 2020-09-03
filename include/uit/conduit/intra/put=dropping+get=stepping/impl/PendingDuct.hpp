@@ -5,8 +5,7 @@
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../../../parallel/OccupancyCaps.hpp"
-#include "../../../../parallel/OccupancyGuard.hpp"
+#include "../../../../debug/occupancy_audit.hpp"
 #include "../../../../utility/CircularIndex.hpp"
 #include "../../../../utility/print_utils.hpp"
 
@@ -36,9 +35,7 @@ class PendingDuct {
   uit::CircularIndex<N> get_position{};
   buffer_t buffer{};
 
-  #ifndef NDEBUG
-    mutable uit::OccupancyCaps caps;
-  #endif
+  uit_occupancy_auditor;
 
   /**
    * TODO.
@@ -48,9 +45,7 @@ class PendingDuct {
   size_t CountUnconsumedGets() const { return pending_gets; }
 
   void DoPut(const T& val) {
-    #ifndef NDEBUG
-      const OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
+    uit_occupancy_audit(1);
     buffer[put_position] = val;
     ++pending_gets;
     ++put_position;
@@ -59,9 +54,7 @@ class PendingDuct {
 
   template<typename P>
   void DoPut(P&& val) {
-    #ifndef NDEBUG
-      const OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
+    uit_occupancy_audit(1);
     buffer[put_position] = std::forward<P>(val);
     ++pending_gets;
     ++put_position;
@@ -105,9 +98,7 @@ public:
    * @return num consumed.
    */
   size_t TryConsumeGets(const size_t requested) {
-    #ifndef NDEBUG
-      const OccupancyGuard guard{caps.Get("TryConsumeGets", 1)};
-    #endif
+    uit_occupancy_audit(1);
     const size_t num_consumed = std::min( requested, CountUnconsumedGets() );
     get_position += num_consumed;
     pending_gets -= num_consumed;

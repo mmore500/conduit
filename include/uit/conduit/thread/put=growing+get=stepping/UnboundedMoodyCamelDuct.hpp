@@ -9,6 +9,7 @@
 #include "../../../../../third-party/readerwriterqueue/atomicops.h"
 #include "../../../../../third-party/readerwriterqueue/readerwriterqueue.h"
 
+#include "../../../debug/occupancy_audit.hpp"
 #include "../../../utility/print_utils.hpp"
 
 namespace uit {
@@ -27,9 +28,7 @@ class UnboundedMoodyCamelDuct {
 
   moodycamel::ReaderWriterQueue<T> queue{N};
 
-  #ifndef NDEBUG
-    mutable uit::OccupancyCaps caps;
-  #endif
+  uit_occupancy_auditor;
 
   size_t CountUnconsumedGets() const {
     const size_t available = queue.size_approx();
@@ -47,9 +46,7 @@ public:
    * @param val TODO.
    */
   bool TryPut(const T& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
+    uit_occupancy_audit(1);
     queue.enqueue( val );
     return true;
   }
@@ -61,9 +58,7 @@ public:
    */
   template<typename P>
   bool TryPut(P&& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
+    uit_occupancy_audit(1);
     queue.enqueue( std::forward<P>(val) );
     return true;
   }
@@ -74,10 +69,7 @@ public:
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("TryConsumeGets", 1)};
-    #endif
-
+    uit_occupancy_audit(1);
     const size_t num_consumed = std::min( requested, CountUnconsumedGets() );
     for (size_t i = 0; i < num_consumed; ++i) queue.pop();
     return num_consumed;

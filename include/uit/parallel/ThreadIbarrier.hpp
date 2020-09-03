@@ -9,7 +9,8 @@
 
 #include "../../../third-party/Empirical/source/base/assert.h"
 
-#include "OncePerThreadChecker.hpp"
+#include "../debug/OncePerThreadChecker.hpp"
+
 #include "ThreadMap.hpp"
 
 namespace uit {

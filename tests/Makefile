@@ -1,4 +1,4 @@
-TEST_NAMES := concurrent conduit containers distributed mesh topology utility
+TEST_NAMES := concurrent conduit containers debug distributed mesh topology utility
 
 default: test
 

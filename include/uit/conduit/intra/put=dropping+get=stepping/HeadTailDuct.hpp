@@ -6,8 +6,7 @@
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../conduit/config.hpp"
-#include "../../../parallel/OccupancyCaps.hpp"
-#include "../../../parallel/OccupancyGuard.hpp"
+#include "../../../debug/occupancy_audit.hpp"
 #include "../../../utility/print_utils.hpp"
 
 namespace uit {
@@ -31,9 +30,7 @@ class HeadTailDuct {
   size_t tail{};
   buffer_t buffer;
 
-  #ifndef NDEBUG
-    mutable uit::OccupancyCaps caps;
-  #endif
+  uit_occupancy_auditor;
 
   /**
    * TODO.
@@ -52,9 +49,7 @@ class HeadTailDuct {
    * @param val TODO.
    */
   void DoPut(const T& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
+    uit_occupancy_audit(1);
     ++head;
     buffer[head % N] = val;
     emp_assert( CountUnconsumedGets() <= N );
@@ -67,9 +62,7 @@ class HeadTailDuct {
    */
   template<typename P>
   void DoPut(P&& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
+    uit_occupancy_audit(1);
     ++head;
     buffer[head % N] = std::forward<P>(val);
     emp_assert( CountUnconsumedGets() <= N );
@@ -111,9 +104,7 @@ public:
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t n) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("TryConsumeGets", 1)};
-    #endif
+    uit_occupancy_audit(1);
     const size_t num_consumed = std::min( CountUnconsumedGets(), n );
     tail += num_consumed;
     return num_consumed;

@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/parallel/OncePerThreadChecker.hpp"
+#include "uit/debug/OncePerThreadChecker.hpp"
 
 TEST_CASE("OncePerThreadChecker") {
 

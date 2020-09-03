@@ -6,8 +6,7 @@
 #include <unordered_set>
 
 #include "../utility/print_utils.hpp"
-
-#include "thread_utils.hpp"
+#include "../parallel/thread_utils.hpp"
 
 namespace uit {
 
