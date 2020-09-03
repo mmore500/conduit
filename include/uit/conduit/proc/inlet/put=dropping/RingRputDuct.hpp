@@ -233,10 +233,6 @@ public:
       );
     }
 
-    static const uit::WarnOnce warning{
-      "RingRputDuct is experimental and may be unreliable"
-    };
-
   }
 
   ~RingRputDuct() {

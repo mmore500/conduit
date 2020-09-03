@@ -83,10 +83,6 @@ public:
       UIT_Request_free(&req); //TODO test for completion in destructor?
     }
 
-    static const uit::WarnOnce warning{
-      "WindowDuct is experimental and may be unreliable"
-    };
-
   }
 
   [[noreturn]] bool TryPut(const T&) { throw "TryPut called on WindowDuct"; }
