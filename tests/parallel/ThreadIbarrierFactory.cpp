@@ -3,7 +3,7 @@
 
 #include "uit/parallel/ThreadIbarrierFactory.hpp"
 
-TEST_CASE("OncePerThreadChecker") {
+TEST_CASE("ThreadIbarrierFactory") {
 
   // TODO expand stub test
   uit::ThreadIbarrierFactory{42};
