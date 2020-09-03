@@ -161,7 +161,7 @@ public:
     // ensure that RputDucts have received target offsets
     UIT_Barrier(comm);
 
-    emp_assert(IsInitialized());
+    emp_assert(windows.empty() || IsInitialized());
   }
 
   std::string ToString() {
