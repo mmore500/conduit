@@ -9,6 +9,7 @@
 #include "../../../../../third-party/readerwriterqueue/atomicops.h"
 #include "../../../../../third-party/readerwriterqueue/readerwriterqueue.h"
 
+#include "../../../debug/occupancy_audit.hpp"
 #include "../../../utility/print_utils.hpp"
 
 namespace uit {
@@ -27,9 +28,7 @@ class BoundedMoodyCamelDuct {
 
   moodycamel::ReaderWriterQueue<T> queue{N};
 
-  #ifndef NDEBUG
-    mutable uit::OccupancyCaps caps;
-  #endif
+  uit_occupancy_auditor;
 
   size_t CountUnconsumedGets() const {
     const size_t available = queue.size_approx();
@@ -75,10 +74,7 @@ public:
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("TryConsumeGets", 1)};
-    #endif
-
+    uit_occupancy_audit(1);
     const size_t num_consumed = std::min( requested, CountUnconsumedGets() );
     for (size_t i = 0; i < num_consumed; ++i) queue.pop();
     return num_consumed;

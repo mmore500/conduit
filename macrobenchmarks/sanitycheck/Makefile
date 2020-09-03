@@ -35,11 +35,11 @@ debug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function  -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function  -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
 fulldebug: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 
-cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../include/ -I../../source/ -I../../third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
 cranky: $(addprefix bench-, $(BENCH_NAMES))
 	rm -rf bench*.out
 

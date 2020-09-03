@@ -7,9 +7,8 @@
 #include <stddef.h>
 #include <utility>
 
+#include "../debug/occupancy_audit.hpp"
 #include "../parallel/thread_utils.hpp"
-#include "../parallel/OccupancyCaps.hpp"
-#include "../parallel/OccupancyGuard.hpp"
 #include "../utility/CircularIndex.hpp"
 
 #include "config.hpp"
@@ -62,10 +61,6 @@ class Outlet {
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-#ifndef NDEBUG
-  OccupancyCaps caps;
-#endif
-
   using index_t = CircularIndex<N>;
 
   using duct_t = internal::Duct<ImplSpec>;
@@ -83,15 +78,15 @@ class Outlet {
   /// Total distance traversed through underlying buffer.
   size_t net_flux{0};
 
+  uit_occupancy_auditor;
+
   /**
    * TODO.
    *
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t n) {
-    #ifndef NDEBUG
-      const OccupancyGuard guard{caps.Get("TryConsumeGets", 1)};
-    #endif
+    uit_occupancy_audit(1);
     return LogStep( duct->TryConsumeGets(n) );
   }
 
@@ -145,9 +140,7 @@ public:
    * @return TODO.
    */
   const T& JumpGet() {
-#ifndef NDEBUG
-    const OccupancyGuard guard{caps.Get("JumpGet", 1)};
-#endif
+    uit_occupancy_audit(1);
     Jump();
     return Get();
   }
@@ -160,9 +153,7 @@ public:
    * @return TODO.
    */
   const T& GetNext() {
-    #ifndef NDEBUG
-      const OccupancyGuard guard{caps.Get("GetNext", 1)};
-    #endif
+    uit_occupancy_audit(1);
     while (TryStep() == 0);
     return Get();
   }
@@ -177,9 +168,7 @@ public:
    * @return TODO.
    */
   std::optional<std::reference_wrapper<const T>> GetNextOrNullopt() {
-    #ifndef NDEBUG
-      const OccupancyGuard guard{caps.Get("GetNextOrNullopt", 1)};
-    #endif
+    uit_occupancy_audit(1);
     if (TryStep()) {
       return std::optional{ std::reference_wrapper{ Get() } };
     } else return std::nullopt;

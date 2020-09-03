@@ -14,7 +14,7 @@ namespace uit {
 
 class OccupancyCaps {
 
-  std::unordered_map<std::string, OccupancyCap> lookup;
+  std::unordered_map<int, OccupancyCap> lookup;
   mutable std::mutex mutex;
 
 public:
@@ -23,24 +23,24 @@ public:
 
   OccupancyCaps(const OccupancyCaps&) { ; }
 
-  OccupancyCaps & operator=(const OccupancyCaps&) { return *this; }
+  OccupancyCaps& operator=(const OccupancyCaps&) { return *this; }
 
-  OccupancyCap & Get(
-    const std::string & name,
+  OccupancyCap& Get(
+    const int& line,
     const size_t maximum_occupancy=std::numeric_limits<size_t>::max()
   ) {
 
     const std::lock_guard guard{mutex};
 
-    if (!lookup.count(name)) {
+    if (!lookup.count(line)) {
       auto res = lookup.emplace(
         std::piecewise_construct,
-        std::tuple{name},
+        std::tuple{line},
         std::tuple{maximum_occupancy}
       );
       return res.first->second;
     } else {
-      auto & res = lookup.at(name);
+      auto & res = lookup.at(line);
       emp_assert(
         res.GetMaximumOccupancy() == maximum_occupancy,
         [](){ error_message_mutex.lock(); return "locked"; }(),

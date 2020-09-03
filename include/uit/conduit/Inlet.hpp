@@ -7,8 +7,7 @@
 #include <stddef.h>
 #include <utility>
 
-#include "../parallel/OccupancyCaps.hpp"
-#include "../parallel/OccupancyGuard.hpp"
+#include "../debug/occupancy_audit.hpp"
 #include "../utility/CircularIndex.hpp"
 #include "../utility/print_utils.hpp"
 
@@ -61,10 +60,6 @@ class Inlet {
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-#ifndef NDEBUG
-  uit::OccupancyCaps caps;
-#endif
-
   using index_t = uit::CircularIndex<N>;
 
   /// TODO.
@@ -79,6 +74,8 @@ class Inlet {
 
   // How many TryPut calls have dropped?
   size_t dropped_put_count{};
+
+  uit_occupancy_auditor;
 
   /**
    * TODO.
@@ -113,9 +110,7 @@ public:
    * @param val TODO.
    */
   void Put(const T& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("Put", 1)};
-    #endif
+    uit_occupancy_audit(1);
 
     bool was_blocked{ false };
     while (!DoTryPut(val)) was_blocked = true;
@@ -131,9 +126,7 @@ public:
    * @param val TODO.
    */
   bool TryPut(const T& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("TryPut", 1)};
-    #endif
+    uit_occupancy_audit(1);
 
     if ( DoTryPut(val) ) return true;
     else { ++dropped_put_count; return false; }
@@ -148,9 +141,7 @@ public:
    */
   template<typename P>
   bool TryPut(P&& val) {
-    #ifndef NDEBUG
-      const uit::OccupancyGuard guard{caps.Get("TryPut", 1)};
-    #endif
+    uit_occupancy_audit(1);
 
     if ( DoTryPut(std::forward<P>(val)) ) return true;
     else { ++dropped_put_count; return false; }
