@@ -10,26 +10,12 @@ using Dims = emp::vector<size_t>;
 
 namespace uit {
 
-size_t linear_encode(const Point& coords, const Dims& len) {
-    /* dims {a, b, c, d}
-    * {6, 4, 2, 1} -> 1 * bcd + 2 * cd + 4 * d + 6
-    *
-    * {w, x, y, z} -> w * bcd + x * cd + y * d + z = r0
-    * r0 % d = z
-    * r0 / d = w * bc + x * c + y = r1
-    * r1 % c = y
-    * r1 / c = w * b + x = r2
-    * r2 % b = x
-    * r2 / b = w
-    *
-    *
-    * r/d % c - z/d = y
-    *
-    */
-
-    size_t encoded{};
-    for (int i = coords.size() - 1; i >= 0; --i) {
-        encoded += std::pow(len[i], i) * coords[i];
+size_t linear_encode(const Point& p, const Dims& dims) {
+    size_t mx = 1;
+    size_t encoded = 0;
+    for (size_t i = 0; i < dims.size(); ++i) {
+        encoded += p[i] * mx;
+        mx *= dims[i];
     }
     return encoded;
 }
