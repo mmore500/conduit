@@ -84,7 +84,7 @@ public:
       uit::to_string(inputs)
     ) << std::endl;
     ss << format_member(
-      "emp::vector<uit::TopoNodeInput> inputs",
+      "emp::vector<uit::TopoNodeInput> outputs",
       uit::to_string(outputs)
     );
     return ss.str();
