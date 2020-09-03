@@ -9,6 +9,7 @@
 #include "../../../third-party/Empirical/source/base/vector.h"
 
 #include "audited_routine_aliases.hpp"
+#include "mpi_types.hpp"
 #include "mpi_utils.hpp"
 
 namespace uit {
@@ -139,6 +140,42 @@ public:
       MPI_BYTE, // MPI_Datatype target_datatype
       window.value(), // MPI_Win win
       request // MPI_Request* request (handle)
+    );
+
+  }
+
+  template<typename T>
+  void Accumulate(
+    const std::byte *origin_addr,
+    const size_t num_bytes,
+    const MPI_Aint target_disp
+  ) {
+
+    emp_assert(IsInitialized());
+
+    UIT_Accumulate(
+      // const void *origin_addr: initial address of buffer (choice)
+      origin_addr,
+      // int origin_count: number of entries in buffer (nonnegative integer)
+      num_bytes / sizeof(T),
+      // MPI_Datatype origin_datatype: datatype of each buffer entry (handle)
+      uit::datatype_from_type<T>(),
+      // int target_rank: rank of target (nonnegative integer)
+      local_rank,
+      // MPI_Aint target_disp
+      // displacement from start of window to beginning of target buffer
+      // (nonnegative integer)
+      target_disp,
+      // int target_count
+      // number of entries in target buffer (nonnegative integer)
+      num_bytes / sizeof(T),
+      // MPI_Datatype target_datatype
+      // datatype of each entry in target buffer (handle)
+      uit::datatype_from_type<T>(),
+      // MPI_Op op: predefined reduce operation (handle)
+      MPI_SUM,
+      // MPI_Win win: window object (handle)
+      window.value()
     );
 
   }
