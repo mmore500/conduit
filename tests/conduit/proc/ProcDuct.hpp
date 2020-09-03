@@ -8,6 +8,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/conduit/ImplSpec.hpp"
+#include "uit/conduit/Sink.hpp"
 #include "uit/conduit/Source.hpp"
 #include "uit/distributed/assign_utils.hpp"
 #include "uit/distributed/MPIGuard.hpp"
@@ -87,14 +88,33 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
   std::shared_ptr<Spec::ProcBackEnd> backend{
     std::make_shared<Spec::ProcBackEnd>()
   };
-  uit::InterProcAddress address{};
 
   auto [outlet] = uit::Source<Spec>{
     std::in_place_type_t<Spec::ProcOutletDuct>{},
-    address,
+    uit::InterProcAddress{
+      uit::get_rank(),
+      uit::numeric_cast<int>(
+        uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
+      )
+    },
     backend
   };
 
+  // corresponding sink
+  uit::Sink<Spec>{
+    std::in_place_type_t<Spec::ProcOutletDuct>{},
+    uit::InterProcAddress{
+      uit::get_rank(),
+      uit::numeric_cast<int>(
+        uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+      )
+    },
+    backend
+  };
+
+  backend->Initialize();
+
+  REQUIRE( outlet.Get() == MSG_T{} );
   REQUIRE( outlet.JumpGet() == MSG_T{} );
 
 } }
