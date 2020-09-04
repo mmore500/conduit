@@ -57,7 +57,7 @@ public:
   }
 
   std::byte *GetBytes(const size_t byte_offset) {
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     return std::next(
       reinterpret_cast<std::byte *>(buffer),
@@ -67,14 +67,14 @@ public:
   }
 
   const MPI_Win & GetWindow() {
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     return window.value();
   }
 
   void LockExclusive() {
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     UIT_Win_lock(
       MPI_LOCK_EXCLUSIVE, // int lock_type
@@ -92,7 +92,7 @@ public:
 
   void LockShared() {
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     UIT_Win_lock(
       MPI_LOCK_SHARED, // int lock_type
@@ -110,7 +110,7 @@ public:
 
   void Unlock() {
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     UIT_Win_unlock(
       local_rank, // int rank
@@ -128,7 +128,8 @@ public:
     MPI_Request *request
   ) {
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
+    emp_assert( *request );
 
     UIT_Rput(
       origin_addr, // const void *origin_addr
@@ -151,7 +152,7 @@ public:
     const MPI_Aint target_disp
   ) {
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     UIT_Accumulate(
       // const void *origin_addr: initial address of buffer (choice)
@@ -216,7 +217,7 @@ public:
     // ensure that RputDucts have received target offsets
     UIT_Barrier(comm);
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
   }
 

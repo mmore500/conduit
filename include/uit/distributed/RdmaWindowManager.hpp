@@ -109,6 +109,7 @@ public:
   ) {
     emp_assert( IsInitialized() );
     emp_assert( windows.count(rank) );
+    emp_assert( uit::test_null(*request) );
     windows.at(rank).Rput(origin_addr, num_bytes, target_disp, request);
   }
 
