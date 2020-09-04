@@ -61,7 +61,8 @@ private:
     // make sure that target offset has been received
     emp_assert( uit::test_completion(target_offset_request) );
 
-    back_end->GetWindowManager().LockExclusive( address.GetOutletProc() );
+    // TODO FIXME what kind of lock is needed?
+    back_end->GetWindowManager().LockShared( address.GetOutletProc() );
 
     back_end->GetWindowManager().Put(
       address.GetOutletProc(),
