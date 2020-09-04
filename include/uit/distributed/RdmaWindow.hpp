@@ -181,6 +181,45 @@ public:
 
   }
 
+  template<typename T>
+  void Raccumulate(
+    const std::byte *origin_addr,
+    const size_t num_bytes,
+    const MPI_Aint target_disp,
+    MPI_Request *request
+  ) {
+
+    emp_assert( IsInitialized() );
+
+    UIT_Raccumulate(
+      // const void *origin_addr: initial address of buffer (choice)
+      origin_addr,
+      // int origin_count: number of entries in buffer (nonnegative integer)
+      num_bytes / sizeof(T),
+      // MPI_Datatype origin_datatype: datatype of each buffer entry (handle)
+      uit::datatype_from_type<T>(),
+      // int target_rank: rank of target (nonnegative integer)
+      local_rank,
+      // MPI_Aint target_disp
+      // displacement from start of window to beginning of target buffer
+      // (nonnegative integer)
+      target_disp,
+      // int target_count
+      // number of entries in target buffer (nonnegative integer)
+      num_bytes / sizeof(T),
+      // MPI_Datatype target_datatype
+      // datatype of each entry in target buffer (handle)
+      uit::datatype_from_type<T>(),
+      // MPI_Op op: predefined reduce operation (handle)
+      MPI_SUM,
+      // MPI_Win win: window object (handle)
+      window.value(),
+      // MPI_Request* request:
+      request // RMA request (handle)
+    );
+
+  }
+
 
   void Initialize(const proc_id_t target, MPI_Comm comm=MPI_COMM_WORLD) {
     emp_assert(IsUninitialized());

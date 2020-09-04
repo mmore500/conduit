@@ -125,6 +125,22 @@ public:
     windows.at(rank).Accumulate<T>(origin_addr, num_bytes, target_disp);
   }
 
+  template<typename T>
+  void Raccumulate(
+    const proc_id_t rank,
+    const std::byte *origin_addr,
+    const size_t num_bytes,
+    const MPI_Aint target_disp,
+    MPI_Request *request
+  ) {
+    emp_assert( IsInitialized() );
+    emp_assert( windows.count(rank) );
+    emp_assert( uit::test_null(*request) );
+  windows.at(
+      rank
+    ).Raccumulate<T>(origin_addr, num_bytes, target_disp, request);
+  }
+
   void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {
     emp_assert(!IsInitialized());
 

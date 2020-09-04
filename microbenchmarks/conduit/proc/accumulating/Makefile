@@ -1,4 +1,4 @@
-BENCH_NAMES := AccumulateWithdrawingDuct
+BENCH_NAMES := AccumulateWithdrawingDuct RaccumulateWithdrawingDuct
 
 SHELL := /bin/bash
 
