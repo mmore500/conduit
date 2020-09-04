@@ -9,6 +9,7 @@
 #include "../../../third-party/Empirical/source/base/vector.h"
 
 #include "audited_routine_aliases.hpp"
+#include "mpi_types.hpp"
 #include "mpi_utils.hpp"
 
 namespace uit {
@@ -56,7 +57,7 @@ public:
   }
 
   std::byte *GetBytes(const size_t byte_offset) {
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     return std::next(
       reinterpret_cast<std::byte *>(buffer),
@@ -66,14 +67,14 @@ public:
   }
 
   const MPI_Win & GetWindow() {
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     return window.value();
   }
 
   void LockExclusive() {
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     UIT_Win_lock(
       MPI_LOCK_EXCLUSIVE, // int lock_type
@@ -91,7 +92,7 @@ public:
 
   void LockShared() {
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     UIT_Win_lock(
       MPI_LOCK_SHARED, // int lock_type
@@ -109,7 +110,7 @@ public:
 
   void Unlock() {
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
     UIT_Win_unlock(
       local_rank, // int rank
@@ -127,7 +128,8 @@ public:
     MPI_Request *request
   ) {
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
+    emp_assert( *request );
 
     UIT_Rput(
       origin_addr, // const void *origin_addr
@@ -139,6 +141,81 @@ public:
       MPI_BYTE, // MPI_Datatype target_datatype
       window.value(), // MPI_Win win
       request // MPI_Request* request (handle)
+    );
+
+  }
+
+  template<typename T>
+  void Accumulate(
+    const std::byte *origin_addr,
+    const size_t num_bytes,
+    const MPI_Aint target_disp
+  ) {
+
+    emp_assert( IsInitialized() );
+
+    UIT_Accumulate(
+      // const void *origin_addr: initial address of buffer (choice)
+      origin_addr,
+      // int origin_count: number of entries in buffer (nonnegative integer)
+      num_bytes / sizeof(T),
+      // MPI_Datatype origin_datatype: datatype of each buffer entry (handle)
+      uit::datatype_from_type<T>(),
+      // int target_rank: rank of target (nonnegative integer)
+      local_rank,
+      // MPI_Aint target_disp
+      // displacement from start of window to beginning of target buffer
+      // (nonnegative integer)
+      target_disp,
+      // int target_count
+      // number of entries in target buffer (nonnegative integer)
+      num_bytes / sizeof(T),
+      // MPI_Datatype target_datatype
+      // datatype of each entry in target buffer (handle)
+      uit::datatype_from_type<T>(),
+      // MPI_Op op: predefined reduce operation (handle)
+      MPI_SUM,
+      // MPI_Win win: window object (handle)
+      window.value()
+    );
+
+  }
+
+  template<typename T>
+  void Raccumulate(
+    const std::byte *origin_addr,
+    const size_t num_bytes,
+    const MPI_Aint target_disp,
+    MPI_Request *request
+  ) {
+
+    emp_assert( IsInitialized() );
+
+    UIT_Raccumulate(
+      // const void *origin_addr: initial address of buffer (choice)
+      origin_addr,
+      // int origin_count: number of entries in buffer (nonnegative integer)
+      num_bytes / sizeof(T),
+      // MPI_Datatype origin_datatype: datatype of each buffer entry (handle)
+      uit::datatype_from_type<T>(),
+      // int target_rank: rank of target (nonnegative integer)
+      local_rank,
+      // MPI_Aint target_disp
+      // displacement from start of window to beginning of target buffer
+      // (nonnegative integer)
+      target_disp,
+      // int target_count
+      // number of entries in target buffer (nonnegative integer)
+      num_bytes / sizeof(T),
+      // MPI_Datatype target_datatype
+      // datatype of each entry in target buffer (handle)
+      uit::datatype_from_type<T>(),
+      // MPI_Op op: predefined reduce operation (handle)
+      MPI_SUM,
+      // MPI_Win win: window object (handle)
+      window.value(),
+      // MPI_Request* request:
+      request // RMA request (handle)
     );
 
   }
@@ -179,7 +256,7 @@ public:
     // ensure that RputDucts have received target offsets
     UIT_Barrier(comm);
 
-    emp_assert(IsInitialized());
+    emp_assert( IsInitialized() );
 
   }
 
