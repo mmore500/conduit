@@ -1,4 +1,4 @@
-TEST_NAMES := group_utils IrsendFunctor IsendFunctor mpi_types mpi_utils MPIGuard Request RsendFunctor SendFunctor
+TEST_NAMES := group_utils mpi_types mpi_utils MPIGuard Request routine_functors
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec

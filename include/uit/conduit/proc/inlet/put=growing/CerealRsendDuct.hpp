@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../../mpi/RsendFunctor.hpp"
+#include "../../../../mpi/routine_functors.hpp"
 
 #include "impl/CerealBlockingSendDuct.hpp"
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../../mpi/IrsendFunctor.hpp"
+#include "../../../../mpi/routine_functors.hpp"
 
 #include "impl/DequeImmediateSendDuct.hpp"
 
