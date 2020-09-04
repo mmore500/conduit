@@ -100,6 +100,17 @@ public:
     return windows.at(rank).Unlock();
   }
 
+  void Put(
+    const proc_id_t rank,
+    const std::byte *origin_addr,
+    const size_t num_bytes,
+    const MPI_Aint target_disp
+  ) {
+    emp_assert( IsInitialized() );
+    emp_assert( windows.count(rank) );
+    windows.at(rank).Put(origin_addr, num_bytes, target_disp);
+  }
+
   void Rput(
     const proc_id_t rank,
     const std::byte *origin_addr,

@@ -1,4 +1,4 @@
-TEST_NAMES := BlockDequeImsgDuct BlockMsgDuct DequeRdmaDuct #BlockDequeIrmsgDuct BlockRmsgDuct
+TEST_NAMES := BlockDequeImsgDuct BlockMsgDuct DequeRdmaDuct PutRdmaDuct #BlockDequeIrmsgDuct BlockRmsgDuct
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/
 
@@ -11,7 +11,6 @@ test-%: %.cpp
 	echo "MPICXX" $(MPICXX)
 	echo "MPIEXEC" $(MPIEXEC)
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
-	# execute test
 	# TODO why does rdma hang with large proc counts on travis?
 	for n in $$(seq 2 4); do \
 		$(MPIEXEC) --bind-to none -n $$n ./$@.out || exit 1; \
