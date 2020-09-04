@@ -136,7 +136,7 @@ private:
     // TODO handle more than one at a time
     emp_assert( uit::test_null(put_requests[put_position]) );
 
-    // TODO FIXME what kind of lock is needed?
+    // TODO FIXME what kind of lock is needed here?
     back_end->GetWindowManager().LockShared( address.GetOutletProc() );
 
     back_end->GetWindowManager().Rput(

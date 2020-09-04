@@ -2,9 +2,6 @@
 
 #include <algorithm>
 #include <array>
-#include <deque>
-#include <memory>
-#include <tuple>
 #include <stddef.h>
 
 #include <mpi.h>
@@ -15,7 +12,7 @@
 
 #include "../../../../distributed/mpi_utils.hpp"
 #include "../../../../distributed/RdmaWindowManager.hpp"
-#include "../../../../distributed/RdmaPacket.hpp"
+#include "../../../../distributed/RdmaAccumulatorPacket.hpp"
 #include "../../../../distributed/Request.hpp"
 #include "../../../../utility/CircularIndex.hpp"
 #include "../../../../utility/identity.hpp"
@@ -35,7 +32,7 @@ namespace uit {
  * implementation details for the conduit framework.
  */
 template<typename ImplSpec>
-class DequeRputDuct {
+class AccumulateDuct {
 
 public:
 
@@ -45,12 +42,7 @@ private:
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
-  using packet_t = uit::RdmaPacket<T>;
-
-  using buffer_t = std::deque<std::tuple<packet_t, uit::Request>>;
-  buffer_t buffer;
-
-  size_t epoch{};
+  using packet_t = uit::RdmaAccumulatorPacket<T>;
 
   const uit::InterProcAddress address;
 
@@ -59,66 +51,31 @@ private:
   uit::Request target_offset_request;
   int target_offset;
 
-  void PostPut() {
-
-    // make sure that target offset has been received
-    emp_assert( uit::test_completion(target_offset_request) );
-
-    emp_assert( uit::test_null(
-      std::get<uit::Request>(buffer.back())
-    ) );
+  void DoAccumulate(const packet_t& packet) {
 
     // TODO FIXME what kind of lock is needed here?
     back_end->GetWindowManager().LockShared( address.GetOutletProc() );
 
-    back_end->GetWindowManager().Rput(
+    back_end->GetWindowManager().template Accumulate<T>(
       address.GetOutletProc(),
-      reinterpret_cast<const std::byte*>( &std::get<packet_t>(buffer.back()) ),
+      reinterpret_cast<const std::byte*>( &packet ),
       sizeof(packet_t),
-      target_offset,
-      &std::get<uit::Request>(buffer.back())
+      target_offset
     );
 
     back_end->GetWindowManager().Unlock( address.GetOutletProc() );
 
-    emp_assert( !uit::test_null(
-      std::get<uit::Request>(buffer.back())
-    ) );
-
   }
-
-  bool TryFinalizePut() {
-    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.front()) ) );
-
-    if (uit::test_completion( std::get<uit::Request>(buffer.front()) )) {
-      emp_assert( uit::test_null( std::get<uit::Request>(buffer.front()) ) );
-      buffer.pop_front();
-      return true;
-    } else return false;
-
-  }
-
-  void CancelPendingPut() {
-    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.front()) ) );
-
-    UIT_Cancel( &std::get<uit::Request>(buffer.front()) );
-    UIT_Request_free( &std::get<uit::Request>(buffer.front()) );
-
-    emp_assert( uit::test_null( std::get<uit::Request>(buffer.front()) ) );
-
-    buffer.pop_front();
-  }
-
-  void FlushFinalizedPuts() { while (buffer.size() && TryFinalizePut()); }
 
 public:
 
-  DequeRputDuct(
+  AccumulateDuct(
     const uit::InterProcAddress& address_,
     std::shared_ptr<BackEndImpl> back_end_
   ) : address(address_)
   , back_end(back_end_)
   {
+
     if (uit::get_rank(address.GetComm()) == address.GetInletProc()) {
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
@@ -140,35 +97,25 @@ public:
 
   }
 
-  ~DequeRputDuct() {
-    FlushFinalizedPuts();
-    while (buffer.size()) CancelPendingPut();
-  }
-
   /**
    * TODO.
    *
    * @param val TODO.
    */
   bool TryPut(const T& val) {
-    buffer.emplace_back(
-      packet_t(val, ++epoch),
-      uit::Request{}
-    );
-    emp_assert( uit::test_null( std::get<uit::Request>(buffer.back()) ) );
-    PostPut();
+    DoAccumulate( packet_t(val, 1) );
     return true;
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    throw "ConsumeGets called on DequeRputDuct";
+    throw "ConsumeGets called on AccumulateDuct";
   }
 
-  [[noreturn]] const T& Get() const { throw "Get called on DequeRputDuct"; }
+  [[noreturn]] const T& Get() const { throw "Get called on AccumulateDuct"; }
 
-  [[noreturn]] T& Get() { throw "Get called on DequeRputDuct"; }
+  [[noreturn]] T& Get() { throw "Get called on AccumulateDuct"; }
 
-  static std::string GetType() { return "DequeRputDuct"; }
+  static std::string GetType() { return "AccumulateDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
