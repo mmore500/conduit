@@ -7,11 +7,11 @@
 
 namespace uit {
 
-struct MPIGuard {
+struct MpiGuard {
 
-  MPIGuard() { uit::mpi_init(); }
+  MpiGuard() { uit::mpi_init(); }
 
-  ~MPIGuard() { UIT_Finalize(); }
+  ~MpiGuard() { UIT_Finalize(); }
 
 };
 

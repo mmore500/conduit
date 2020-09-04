@@ -6,10 +6,10 @@
 
 #include "uit/mpi/group_utils.hpp"
 #include "uit/mpi/mpi_utils.hpp"
-#include "uit/mpi/MPIGuard.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("make_group") {
 

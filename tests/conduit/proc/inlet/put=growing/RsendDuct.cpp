@@ -8,10 +8,10 @@
 #include "uit/conduit/InterProcAddress.hpp"
 #include "uit/conduit/proc/backend/MockBackEnd.hpp"
 #include "uit/conduit/proc/inlet/put=growing/RsendDuct.hpp"
-#include "uit/mpi/MPIGuard.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("Test RsendDuct") {
 

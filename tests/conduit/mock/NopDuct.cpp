@@ -7,11 +7,11 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/mock/NopDuct.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
-#include "uit/mpi/MPIGuard.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 
 #define MSG_T int
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("Test NopDuct") {
 

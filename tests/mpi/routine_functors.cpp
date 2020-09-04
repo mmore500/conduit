@@ -5,10 +5,10 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/mpi/routine_functors.hpp"
-#include "uit/mpi/MPIGuard.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("Test IrsendFunctor") {
 

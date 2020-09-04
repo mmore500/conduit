@@ -6,7 +6,7 @@
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("byte") { REQUIRE(uit::datatype_from_type<std::byte>() == MPI_BYTE); }
 

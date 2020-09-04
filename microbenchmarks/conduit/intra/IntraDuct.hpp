@@ -1,4 +1,4 @@
-#include "uit/mpi/MPIGuard.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 #include "uit/utility/ScopeGuard.hpp"
 
 #include "../DuctBenchmarkRegistration.hpp"
@@ -8,7 +8,7 @@ uit::ForEach<
   2
 > range{};
 
-const uit::MPIGuard mguard{};
+const uit::MpiGuard mguard{};
 
 const uit::ScopeGuard sguard{ [](){ range.item<1>(); } };
 

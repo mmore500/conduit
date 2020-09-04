@@ -10,7 +10,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/conduit/config.hpp"
-#include "uit/mpi/MPIGuard.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
@@ -28,7 +28,7 @@
 
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
