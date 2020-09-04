@@ -54,6 +54,7 @@ public:
     emp_assert( requested == std::numeric_limits<size_t>::max() );
     const std::lock_guard guard{ mutex };
     cache = std::exchange(accumulator, T{});
+    emp_assert( accumulator == T{} );
     return std::exchange( updates_since_last_get, 0 );
   }
 

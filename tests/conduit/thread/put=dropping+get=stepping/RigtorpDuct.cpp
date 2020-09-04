@@ -3,9 +3,11 @@
 #include "uit/conduit/thread/put=dropping+get=stepping/RigtorpDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
-  uit::SerialPendingDuct,
+  uit::RigtorpDuct,
   uit::RigtorpDuct,
   uit::ThrowDuct
 >;
 
 #include "../ThreadDuct.hpp"
+#include "../ValueThreadDuct.hpp"
+#include "../SteppingThreadDuct.hpp"

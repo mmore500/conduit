@@ -10,6 +10,7 @@
 
 #include "../../../parallel/RelaxedAtomic.hpp"
 #include "../../../utility/print_utils.hpp"
+#include "../../../utility/WarnOnce.hpp"
 
 namespace uit {
 
@@ -29,6 +30,12 @@ class AtomicSconceDuct {
   uit::RelaxedAtomic<size_t> updates_since_last_get;
 
 public:
+
+  AtomicSconceDuct() {
+    static const uit::WarnOnce warning{
+      "AtomicSconceDuct is experimental and may not be reliable"
+    };
+  }
 
   /**
    * TODO.
