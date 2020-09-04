@@ -9,3 +9,4 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #include "../IntraDuct.hpp"
+#include "../ValueIntraDuct.hpp"
