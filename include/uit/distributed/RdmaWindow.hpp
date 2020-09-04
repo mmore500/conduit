@@ -8,7 +8,7 @@
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 
-#include "../mpi/audited_routine_aliases.hpp"
+#include "../mpi/audited_routines.hpp"
 #include "../mpi/mpi_types.hpp"
 #include "../mpi/mpi_utils.hpp"
 

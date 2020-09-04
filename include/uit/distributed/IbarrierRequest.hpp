@@ -2,7 +2,7 @@
 
 #include <mpi.h>
 
-#include "../mpi/audited_routine_aliases.hpp"
+#include "../mpi/audited_routines.hpp"
 #include "../mpi/mpi_utils.hpp"
 
 namespace uit {
