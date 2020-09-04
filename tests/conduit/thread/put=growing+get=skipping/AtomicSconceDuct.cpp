@@ -3,10 +3,12 @@
 #include "uit/conduit/thread/put=growing+get=skipping/AtomicSconceDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
-  uit::SerialPendingDuct,
+  uit::AtomicSconceDuct,
   uit::AtomicSconceDuct,
   uit::ThrowDuct
 >;
 
-// TODO flesh out stub test
-int main(){ return 0; }
+#include "../ThreadDuct.hpp"
+// TODO FIXME fix segfault
+// #include "../ValueThreadDuct.hpp"
+// #include "../SkippingThreadDuct.hpp"

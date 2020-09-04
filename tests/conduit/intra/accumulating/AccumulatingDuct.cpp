@@ -5,5 +5,5 @@ using ImplSel = uit::ImplSelect<
   uit::AccumulatingDuct
 >;
 
-// TODO flesh out stub test
-int main() { return 0; }
+#include "../IntraDuct.hpp"
+#include "AccumulatingIntraDuct.hpp"
