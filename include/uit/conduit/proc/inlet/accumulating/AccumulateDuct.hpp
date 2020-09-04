@@ -53,7 +53,8 @@ private:
 
   void DoAccumulate(const packet_t& packet) {
 
-    back_end->GetWindowManager().LockExclusive( address.GetOutletProc() );
+    // TODO FIXME what kind of lock is needed here?
+    back_end->GetWindowManager().LockShared( address.GetOutletProc() );
 
     back_end->GetWindowManager().template Accumulate<T>(
       address.GetOutletProc(),
