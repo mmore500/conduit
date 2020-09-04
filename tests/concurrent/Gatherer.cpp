@@ -11,9 +11,9 @@
 #include "../../third-party/Empirical/source/base/vector.h"
 
 #include "uit/concurrent/Gatherer.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/mpi_utils.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
+#include "uit/mpi/MPIGuard.hpp"
+#include "uit/mpi/mpi_utils.hpp"
 #include "uit/utility/CircularIndex.hpp"
 #include "uit/utility/numeric_cast.hpp"
 #include "uit/parallel/ThreadTeam.hpp"

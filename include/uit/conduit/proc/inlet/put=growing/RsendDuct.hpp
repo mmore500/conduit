@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../../distributed/RsendFunctor.hpp"
+#include "../../../../mpi/RsendFunctor.hpp"
 
 #include "impl/BlockingSendDuct.hpp"
 

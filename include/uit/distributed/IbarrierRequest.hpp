@@ -2,8 +2,8 @@
 
 #include <mpi.h>
 
-#include "audited_routine_aliases.hpp"
-#include "mpi_utils.hpp"
+#include "../mpi/audited_routine_aliases.hpp"
+#include "../mpi/mpi_utils.hpp"
 
 namespace uit {
 

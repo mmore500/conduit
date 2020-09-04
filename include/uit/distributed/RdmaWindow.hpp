@@ -8,9 +8,9 @@
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 
-#include "audited_routine_aliases.hpp"
-#include "mpi_types.hpp"
-#include "mpi_utils.hpp"
+#include "../mpi/audited_routine_aliases.hpp"
+#include "../mpi/mpi_types.hpp"
+#include "../mpi/mpi_utils.hpp"
 
 namespace uit {
 

@@ -1,4 +1,4 @@
-#include "uit/distributed/MPIGuard.hpp"
+#include "uit/mpi/MPIGuard.hpp"
 #include "uit/utility/ScopeGuard.hpp"
 
 #include "../DuctBenchmarkRegistration.hpp"

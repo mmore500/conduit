@@ -4,8 +4,8 @@
 
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/Outlet.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/MPIGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
+#include "uit/mpi/MPIGuard.hpp"
 
 const uit::MPIGuard guard;
 

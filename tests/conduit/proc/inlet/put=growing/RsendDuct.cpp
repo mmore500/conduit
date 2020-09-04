@@ -8,8 +8,8 @@
 #include "uit/conduit/InterProcAddress.hpp"
 #include "uit/conduit/proc/backend/MockBackEnd.hpp"
 #include "uit/conduit/proc/inlet/put=growing/RsendDuct.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MPIGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 
 const uit::MPIGuard guard;
 

@@ -4,8 +4,8 @@
 #include <benchmark/benchmark.h>
 
 #include "uit/conduit/config.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/mpi_utils.hpp"
+#include "uit/mpi/MPIGuard.hpp"
+#include "uit/mpi/mpi_utils.hpp"
 #include "uit/utility/benchmark_utils.hpp"
 #include "uit/utility/ScopeGuard.hpp"
 

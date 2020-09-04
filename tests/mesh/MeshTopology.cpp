@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/distributed/MPIGuard.hpp"
+#include "uit/mpi/MPIGuard.hpp"
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/mesh/MeshTopology.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"

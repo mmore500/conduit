@@ -6,9 +6,9 @@
 
 #include "../utility/CountdownTimer.hpp"
 #include "../parallel/ThreadIbarrier.hpp"
+#include "../mpi/mpi_utils.hpp"
 
 #include "IbarrierRequest.hpp"
-#include "mpi_utils.hpp"
 
 namespace uit {
 

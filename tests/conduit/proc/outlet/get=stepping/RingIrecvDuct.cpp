@@ -7,8 +7,8 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/InterProcAddress.hpp"
 #include "uit/conduit/proc/outlet/get=stepping/RingIrecvDuct.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MPIGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 
 const uit::MPIGuard guard;
 

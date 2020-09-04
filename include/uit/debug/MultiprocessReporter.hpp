@@ -4,7 +4,7 @@
 
 #include "../../../third-party/Catch/single_include/catch2/catch.hpp"
 
-#include "mpi_utils.hpp"
+#include "../mpi/mpi_utils.hpp"
 
 namespace uit {
 

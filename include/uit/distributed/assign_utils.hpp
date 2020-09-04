@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mpi_utils.hpp"
+#include "../mpi/mpi_utils.hpp"
 
 namespace uit {
 

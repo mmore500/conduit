@@ -3,8 +3,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/concurrent/ThreadSafeIbarrierRequest.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MPIGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 
 const uit::MPIGuard guard;

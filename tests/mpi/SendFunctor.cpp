@@ -4,15 +4,15 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/distributed/IrsendFunctor.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/SendFunctor.hpp"
+#include "uit/mpi/MPIGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 
 const uit::MPIGuard guard;
 
-TEST_CASE("Test IrsendFunctor") {
+TEST_CASE("Test SendFunctor") {
 
   // TODO flesh out stub test
-  uit::IrsendFunctor{};
+  uit::SendFunctor{};
 
 }

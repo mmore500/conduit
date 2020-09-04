@@ -2,7 +2,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/distributed/MPIGuard.hpp"
+#include "uit/mpi/MPIGuard.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 #include "uit/topology/ProConTopologyFactory.hpp"

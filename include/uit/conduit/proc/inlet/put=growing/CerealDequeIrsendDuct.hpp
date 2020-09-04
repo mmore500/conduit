@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../../distributed/IrsendFunctor.hpp"
+#include "../../../../mpi/IrsendFunctor.hpp"
 
 #include "impl/CerealDequeImmediateSendDuct.hpp"
 

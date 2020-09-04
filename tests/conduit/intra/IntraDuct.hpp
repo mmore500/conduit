@@ -10,8 +10,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/conduit/config.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MPIGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 #include "uit/topology/DyadicTopologyFactory.hpp"

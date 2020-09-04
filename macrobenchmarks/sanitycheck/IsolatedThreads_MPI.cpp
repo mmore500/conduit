@@ -2,7 +2,7 @@
 
 #include <mpi.h>
 
-#include "uit/distributed/mpi_utils.hpp"
+#include "uit/mpi/mpi_utils.hpp"
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/mesh/Mesh.hpp"

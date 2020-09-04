@@ -188,7 +188,7 @@ Here's what the entire process looks like in code.
 #include <sstream>
 
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/distributed/MPIGuard.hpp"
+#include "uit/mpi/MPIGuard.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
