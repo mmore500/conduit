@@ -120,6 +120,27 @@ public:
 
   }
 
+  void Put(
+    const std::byte *origin_addr,
+    const size_t num_bytes,
+    const MPI_Aint target_disp
+  ) {
+
+    emp_assert( IsInitialized() );
+
+    UIT_Put(
+      origin_addr, // const void *origin_addr
+      num_bytes, // int origin_count
+      MPI_BYTE, // MPI_Datatype origin_datatype
+      local_rank, // int target_rank
+      target_disp, // MPI_Aint target_disp
+      num_bytes, // int target_count
+      MPI_BYTE, // MPI_Datatype target_datatype
+      window.value() // MPI_Win win
+    );
+
+  }
+
   void Rput(
     const std::byte *origin_addr,
     const size_t num_bytes,

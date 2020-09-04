@@ -1,4 +1,4 @@
-TEST_NAMES := CerealDequeIrsendDuct CerealDequeIsendDuct CerealRsendDuct CerealSendDuct DequeIrsendDuct DequeIsendDuct RsendDuct SendDuct
+TEST_NAMES := CerealDequeIrsendDuct CerealDequeIsendDuct CerealRsendDuct CerealSendDuct DequeIrsendDuct DequeIsendDuct PutDuct RsendDuct SendDuct
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../../include/ -I../../../../../source/ -I../../../../../third-party/
 
