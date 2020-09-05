@@ -12,7 +12,7 @@
 #include "uit/concurrent/Gatherer.hpp"
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/config.hpp"
-#include "uit/distributed/mpi_utils.hpp"
+#include "uit/mpi/mpi_utils.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/parallel/thread_utils.hpp"

@@ -3,10 +3,10 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/conduit/InterProcAddress.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MpiGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("Test InterProcAddress") {
 

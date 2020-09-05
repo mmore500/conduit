@@ -3,7 +3,7 @@
 #include <mpi.h>
 
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/distributed/mpi_utils.hpp"
+#include "uit/mpi/mpi_utils.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/polyfill/latch.hpp"
 #include "uit/parallel/ThreadTeam.hpp"

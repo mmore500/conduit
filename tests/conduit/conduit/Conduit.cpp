@@ -4,10 +4,10 @@
 
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/MPIGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("Test Conduit") {
 

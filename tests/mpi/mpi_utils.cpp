@@ -6,14 +6,14 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/mpi_utils.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/Request.hpp"
+#include "uit/mpi/MpiGuard.hpp"
+#include "uit/mpi/mpi_utils.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
+#include "uit/mpi/Request.hpp"
 #include "uit/utility/assign_utils.hpp"
 #include "uit/utility/math_utils.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("get_nprocs") {
 

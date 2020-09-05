@@ -5,10 +5,10 @@
 #include "uit/conduit/Duct.hpp"
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/Inlet.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MpiGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("Test Inlet") {
 

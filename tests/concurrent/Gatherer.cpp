@@ -11,16 +11,16 @@
 #include "../../third-party/Empirical/source/base/vector.h"
 
 #include "uit/concurrent/Gatherer.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/mpi_utils.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
+#include "uit/mpi/MpiGuard.hpp"
+#include "uit/mpi/mpi_utils.hpp"
 #include "uit/utility/CircularIndex.hpp"
 #include "uit/utility/numeric_cast.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/parallel/thread_utils.hpp"
 #include "uit/polyfill/barrier.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 constexpr size_t num_threads{ 2 };
 

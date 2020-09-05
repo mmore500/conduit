@@ -8,7 +8,7 @@
 #include "../../../third-party/Empirical/source/meta/TypePack.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../distributed/mpi_utils.hpp"
+#include "../mpi/mpi_utils.hpp"
 #include "../utility/print_utils.hpp"
 
 #include "config.hpp"

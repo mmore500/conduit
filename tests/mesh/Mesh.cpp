@@ -2,12 +2,12 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/distributed/MPIGuard.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 #include "uit/topology/ProConTopologyFactory.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("Test Mesh") {
 

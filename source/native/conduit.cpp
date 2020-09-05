@@ -6,7 +6,7 @@
 #include <iostream>
 #include <chrono>
 
-#include "uit/distributed/mpi_utils.hpp"
+#include "uit/mpi/mpi_utils.hpp"
 #include "uit/utility/TimeGuard.hpp"
 
 #include "../config_utils.hpp"

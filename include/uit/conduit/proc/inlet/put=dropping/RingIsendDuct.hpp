@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../../distributed/IsendFunctor.hpp"
+#include "../../../../mpi/routine_functors.hpp"
 
 #include "impl/RingImmediateSendDuct.hpp"
 

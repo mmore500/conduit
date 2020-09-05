@@ -11,9 +11,9 @@
 #include "uit/conduit/Sink.hpp"
 #include "uit/conduit/Source.hpp"
 #include "uit/distributed/assign_utils.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/mpi_utils.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MpiGuard.hpp"
+#include "uit/mpi/mpi_utils.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/distributed/RdmaWindowManager.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/mesh/MeshNodeInput.hpp"
@@ -24,7 +24,7 @@
 #include "uit/utility/CircularIndex.hpp"
 #include "uit/utility/math_utils.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;

@@ -11,7 +11,7 @@
 #include "../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../../../distributed/mpi_utils.hpp"
+#include "../../../../mpi/mpi_utils.hpp"
 #include "../../../../distributed/RdmaAccumulatorPacket.hpp"
 #include "../../../../distributed/RdmaWindowManager.hpp"
 #include "../../../../utility/CircularIndex.hpp"

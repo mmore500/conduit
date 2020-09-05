@@ -188,7 +188,7 @@ Here's what the entire process looks like in code.
 #include <sstream>
 
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/distributed/MPIGuard.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
@@ -236,7 +236,7 @@ struct Message {
 using Spec = uit::ImplSpec<Message>;
 
 // MPI initialization & finalization boilerplate
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 // first task each thread will execute
 void send_task(

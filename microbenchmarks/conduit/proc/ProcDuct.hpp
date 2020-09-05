@@ -1,4 +1,4 @@
-#include "uit/distributed/MPIGuard.hpp"
+#include "uit/mpi/MpiGuard.hpp"
 #include "uit/utility/ScopeGuard.hpp"
 
 #include "../DuctBenchmarkRegistration.hpp"
@@ -9,7 +9,7 @@ uit::ForEach<
 > range{};
 
 // initialize
-const uit::MPIGuard mpi_guard;
+const uit::MpiGuard mpi_guard;
 const uit::ScopeGuard register_benchmarks( [](){ range.item<1>(); } );
 
 int main(int argc, char** argv) {

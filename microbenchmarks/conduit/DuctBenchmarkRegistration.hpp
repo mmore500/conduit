@@ -15,7 +15,7 @@
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/config.hpp"
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/distributed/mpi_utils.hpp"
+#include "uit/mpi/mpi_utils.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 #include "uit/topology/DyadicTopologyFactory.hpp"

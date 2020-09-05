@@ -18,7 +18,7 @@
 #include "uit/concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/config.hpp"
-#include "uit/distributed/mpi_utils.hpp"
+#include "uit/mpi/mpi_utils.hpp"
 #include "uit/utility/CountdownIterator.hpp"
 #include "uit/utility/CountdownTimer.hpp"
 #include "uit/utility/CoarseClock.hpp"

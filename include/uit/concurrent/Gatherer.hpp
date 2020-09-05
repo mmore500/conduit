@@ -9,8 +9,8 @@
 #include "../../../third-party/Empirical/source/base/vector.h"
 
 #include "../containers/safe/deque.hpp"
-#include "../distributed/mpi_utils.hpp"
-#include "../distributed/audited_routine_aliases.hpp"
+#include "../mpi/mpi_utils.hpp"
+#include "../mpi/audited_routines.hpp"
 
 namespace uit {
 

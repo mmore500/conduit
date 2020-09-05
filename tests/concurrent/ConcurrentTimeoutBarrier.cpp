@@ -3,12 +3,12 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/concurrent/ConcurrentTimeoutBarrier.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MpiGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/parallel/ThreadIbarrierFactory.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 constexpr size_t num_threads{ 2 };
 

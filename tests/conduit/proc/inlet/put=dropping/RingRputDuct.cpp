@@ -7,10 +7,10 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/InterProcAddress.hpp"
 #include "uit/conduit/proc/inlet/put=dropping/RingRputDuct.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MpiGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 TEST_CASE("Test RingRputDuct") {
 

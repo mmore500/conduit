@@ -11,9 +11,9 @@
 #include "uit/conduit/Source.hpp"
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/concurrent/Gatherer.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/mpi_utils.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MpiGuard.hpp"
+#include "uit/mpi/mpi_utils.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/polyfill/barrier.hpp"
@@ -27,7 +27,7 @@
 #include "uit/utility/numeric_cast.hpp"
 #include "uit/utility/safe_compare.hpp"
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;

@@ -10,8 +10,8 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/mock/ThrowDuct.hpp"
 #include "uit/distributed/assign_utils.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
+#include "uit/mpi/MpiGuard.hpp"
+#include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/mesh/MeshNodeInput.hpp"
 #include "uit/mesh/MeshNodeOutput.hpp"
@@ -25,7 +25,7 @@
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
-const uit::MPIGuard guard;
+const uit::MpiGuard guard;
 
 
 decltype(auto) make_dyadic_bundle() {
