@@ -23,7 +23,7 @@
 
 #include "../../../InterProcAddress.hpp"
 
-#include "../../backend/MockBackEnd.hpp"
+#include "../../backend/RuntimeSizeBackEnd.hpp"
 
 namespace uit {
 
@@ -38,7 +38,7 @@ class VectorIprobeDuct {
 
 public:
 
-  using BackEndImpl = uit::MockBackEnd<ImplSpec>;
+  using BackEndImpl = uit::RuntimeSizeBackEnd<ImplSpec>;
 
 private:
 
@@ -47,15 +47,25 @@ private:
 
   size_t pending_gets{};
 
-  T buffer{};
-
   const uit::InterProcAddress address;
+
+  std::shared_ptr<BackEndImpl> back_end;
+
+  // most vexing parse
+  T buffer = T(
+    back_end->HasSize()
+    ? back_end->GetSize()
+    : 0
+  );
+
 
   void PerformReceive(const MPI_Status& status) {
     const int msg_len = uit::get_count(status, MPI_BYTE);
 
     emp_assert(msg_len % sizeof(typename T::value_type) == 0);
     buffer.resize(msg_len / sizeof(typename T::value_type));
+
+    emp_assert( !back_end->HasSize() || back_end->GetSize() == buffer.size() , back_end->GetSize(), buffer.size());
 
     UIT_Recv(
       buffer.data(), // void* buf: initial address of receive buffer
@@ -105,8 +115,10 @@ public:
 
   VectorIprobeDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<BackEndImpl> back_end
-  ) : address(address_) { }
+    std::shared_ptr<BackEndImpl> back_end_
+  ) : address(address_)
+  , back_end(back_end_)
+  { ; }
 
   ~VectorIprobeDuct() {
     FlushPendingReceives();

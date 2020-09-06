@@ -20,7 +20,7 @@
 
 #include "../../../../InterProcAddress.hpp"
 
-#include "../../../backend/MockBackEnd.hpp"
+#include "../../../backend/RuntimeSizeBackEnd.hpp"
 
 namespace uit {
 namespace internal {
@@ -36,7 +36,7 @@ class VectorRingImmediateSendDuct {
 
 public:
 
-  using BackEndImpl = uit::MockBackEnd<ImplSpec>;
+  using BackEndImpl = uit::RuntimeSizeBackEnd<ImplSpec>;
 
 private:
 
@@ -56,6 +56,8 @@ private:
   size_t pending_sends{};
 
   const uit::InterProcAddress address;
+
+  std::shared_ptr<BackEndImpl> back_end;
 
   /*
    * notes
@@ -125,6 +127,10 @@ private:
 
   void PostSend() {
     emp_assert( uit::test_null(std::get<uit::Request>(buffer[send_position])) );
+    emp_assert(
+      !back_end->HasSize()
+      || back_end->GetSize() == std::get<T>(buffer[send_position]).size()
+    );
 
     ImmediateSendFunctor{}(
       std::get<T>(buffer[send_position]).data(),
@@ -220,8 +226,9 @@ public:
 
   VectorRingImmediateSendDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<BackEndImpl> back_end
+    std::shared_ptr<BackEndImpl> back_end_
   ) : address(address_)
+  , back_end(back_end_)
   {
     emp_assert( std::all_of(
       std::begin(buffer),
@@ -250,6 +257,17 @@ public:
     else return false;
   }
 
+  /**
+   * TODO.
+   *
+   * @param val TODO.
+   */
+  template<typename P>
+  bool TryPut(P&& val) {
+    if (IsReadyForPut()) { DoPut(std::forward<P>(val)); return true; }
+    else return false;
+  }
+
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on VectorRingImmediateSendDuct";
   }
@@ -268,7 +286,6 @@ public:
     std::stringstream ss;
     ss << GetType() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
     ss << format_member("size_t pending_sends", pending_sends) << std::endl;
     ss << format_member("InterProcAddress address", address) << std::endl;
     ss << format_member("size_t send_position", send_position);
