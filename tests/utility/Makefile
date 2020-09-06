@@ -1,4 +1,4 @@
-TEST_NAMES := CircularIndex Curry IdentityWrapper imemstream IsFirstExecutionChecker math_utils NamedArrayElement safe_compare ScopeGuard Uninitialized ValueInitialized WarnOnce
+TEST_NAMES := CircularIndex Curry IdentityWrapper imemstream IsFirstExecutionChecker math_utils NamedArrayElement safe_compare ScopeGuard spector Uninitialized ValueInitialized WarnOnce
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../include/ -I../../source/ -I../../third-party/
 
