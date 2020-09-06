@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../backend/MockBackEnd.hpp"
-#include "../inlet/put=dropping/CerealRingIrsendDuct.hpp"
-#include "../outlet/get=stepping/CerealRingIrecvDuct.hpp"
+#include "../inlet/put=growing/CerealDequeIrsendDuct.hpp"
+#include "../outlet/get=stepping/CerealIprobeDuct.hpp"
 
 namespace uit {
 
@@ -13,10 +13,10 @@ namespace uit {
  * implementation details for the conduit framework.
  */
 template<typename ImplSpec>
-struct CerealRingRingIrmsgDuct {
+struct CerealDequeIrmsgDuct {
 
-  using InletImpl = uit::CerealRingIrsendDuct<ImplSpec>;
-  using OutletImpl = uit::CerealRingIrecvDuct<ImplSpec>;
+  using InletImpl = uit::CerealDequeIrsendDuct<ImplSpec>;
+  using OutletImpl = uit::CerealIprobeDuct<ImplSpec>;
 
 };
 

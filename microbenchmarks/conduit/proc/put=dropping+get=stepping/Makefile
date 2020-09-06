@@ -1,4 +1,4 @@
-BENCH_NAMES := RingRingImsgDuct RingRingIrmsgDuct #CerealRingRingImsgDuct CerealRingRingIrmsgDuct
+BENCH_NAMES := RingRingImsgDuct RingRingIrmsgDuct #CerealRingImsgDuct CerealRingIrmsgDuct
 
 SHELL := /bin/bash
 

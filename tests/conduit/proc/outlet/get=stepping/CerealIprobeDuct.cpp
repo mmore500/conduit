@@ -6,20 +6,20 @@
 
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/InterProcAddress.hpp"
-#include "uit/conduit/proc/outlet/get=stepping/CerealRingIrecvDuct.hpp"
+#include "uit/conduit/proc/outlet/get=stepping/CerealIprobeDuct.hpp"
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 
 const uit::MpiGuard guard;
 
-TEST_CASE("Test CerealRingIrecvDuct") {
+TEST_CASE("Test CerealIprobeDuct") {
 
   using ImplSpec = uit::ImplSpec<char>;
-  using BackEnd = uit::CerealRingIrecvDuct<ImplSpec>::BackEndImpl;
+  using BackEnd = uit::CerealIprobeDuct<ImplSpec>::BackEndImpl;
 
   // TODO flesh out stub test
   uit::InterProcAddress address;
   std::shared_ptr<BackEnd> backing{ std::make_shared<BackEnd>() };
-  uit::CerealRingIrecvDuct<ImplSpec>{ address, backing };
+  uit::CerealIprobeDuct<ImplSpec>{ address, backing };
 
 }

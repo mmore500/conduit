@@ -1,11 +1,11 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/mock/ThrowDuct.hpp"
-#include "uit/conduit/proc/put=growing+get=stepping/CerealRingMsgDuct.hpp"
+#include "uit/conduit/proc/put=growing+get=stepping/CerealDequeImsgDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
   uit::SerialPendingDuct,
   uit::ThrowDuct,
-  uit::CerealRingMsgDuct
+  uit::CerealDequeImsgDuct
 >;
 
 #include "../ProcDuct.hpp"

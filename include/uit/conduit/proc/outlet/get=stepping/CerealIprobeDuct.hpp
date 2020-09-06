@@ -34,7 +34,7 @@ namespace uit {
  * implementation details for the conduit framework.
  */
 template<typename ImplSpec>
-class CerealRingIrecvDuct {
+class CerealIprobeDuct {
 
 public:
 
@@ -47,11 +47,8 @@ private:
 
   size_t pending_gets{};
 
-  using buffer_t = emp::array<emp::vector<uit::Uninitialized<std::byte>>, N>;
+  using buffer_t = emp::vector<uit::Uninitialized<std::byte>>;
   buffer_t buffer{};
-
-  using index_t = uit::CircularIndex<N>;
-  index_t get_pos{};
 
   // cached unpacked value
   // initialize to value-constructed default
@@ -62,11 +59,10 @@ private:
   void PerformReceive(const MPI_Status& status) {
     const int msg_len = uit::get_count(status, MPI_BYTE);
 
-    ++get_pos;
-    buffer[get_pos].resize(msg_len);
+    buffer.resize(msg_len);
 
     UIT_Recv(
-      buffer[get_pos].data(), // void* buf: initial address of receive buffer
+      buffer.data(), // void* buf: initial address of receive buffer
       msg_len, // int count: maximum number of elements in receive buffer
       MPI_BYTE,// MPI_Datatype datatype
       // datatype of each receive buffer element
@@ -117,8 +113,8 @@ private:
       cache.emplace();
 
       uit::imemstream imemstream(
-        reinterpret_cast<const char*>(buffer[get_pos].data()),
-        buffer[get_pos].size()
+        reinterpret_cast<const char*>(buffer.data()),
+        buffer.size()
       );
       cereal::BinaryInputArchive iarchive( imemstream );
       iarchive( cache.value() );
@@ -127,17 +123,17 @@ private:
 
 public:
 
-  CerealRingIrecvDuct(
+  CerealIprobeDuct(
     const uit::InterProcAddress& address_,
     std::shared_ptr<BackEndImpl> back_end
   ) : address(address_) { }
 
-  ~CerealRingIrecvDuct() {
+  ~CerealIprobeDuct() {
     FlushPendingReceives();
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    throw "Put called on CerealRingIrecvDuct";
+    throw "Put called on CerealIprobeDuct";
   }
 
   /**
@@ -175,16 +171,13 @@ public:
     return cache.value();
   }
 
-  static std::string GetName() { return "CerealRingIrecvDuct"; }
+  static std::string GetName() { return "CerealIprobeDuct"; }
 
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("size_t pending_gets", pending_gets) << std::endl;
     ss << format_member("InterProcAddress address", address) << std::endl;
-    ss << format_member("size_t get_pos", get_pos);
     return ss.str();
   }
 

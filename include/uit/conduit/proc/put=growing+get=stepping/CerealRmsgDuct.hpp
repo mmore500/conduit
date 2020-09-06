@@ -2,7 +2,7 @@
 
 #include "../backend/MockBackEnd.hpp"
 #include "../inlet/put=growing/CerealRsendDuct.hpp"
-#include "../outlet/get=skipping/CerealBlockIrecvDuct.hpp"
+#include "../outlet/get=stepping/CerealIprobeDuct.hpp"
 
 namespace uit {
 
@@ -13,10 +13,10 @@ namespace uit {
  * implementation details for the conduit framework.
  */
 template<typename ImplSpec>
-struct SteppingRmsgDuct {
+struct CerealRmsgDuct {
 
   using InletImpl = uit::CerealRsendDuct<ImplSpec>;
-  using OutletImpl = uit::CerealBlockIrecvDuct<ImplSpec>;
+  using OutletImpl = uit::CerealIprobeDuct<ImplSpec>;
 
 };
 
