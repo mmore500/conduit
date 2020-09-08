@@ -1,10 +1,45 @@
 #pragma once
 
 #include <optional>
+#include <utility>
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 
 namespace uit {
+
+namespace internal {
+
+template<typename Key, typename T>
+class VectorMapIterator
+: public emp::vector<std::optional<std::pair<Key, T>>>::iterator {
+
+  using value_type = std::pair<Key, T>;
+  using parent_t = typename emp::vector<std::optional< value_type >>::iterator;
+
+public:
+
+  // inherit parent's constructors
+  using parent_t::parent_t;
+
+  const value_type* operator->() const { return *parent_t::operator->(); }
+
+  value_type* operator->() { return *parent_t::operator->(); }
+
+  const value_type& operator*() const& { return *parent_t::operator*(); }
+
+  const value_type& operator*() & { return *parent_t::operator*(); }
+
+  constexpr value_type&& operator*() && {
+    return std::move( *parent_t::operator*() );
+  }
+
+  constexpr const value_type&& operator*() const&& {
+    return std::move( *parent_t::operator*() );
+  }
+
+};
+
+} // namespace internal
 
 template<typename Key, typename T>
 class VectorMap {
@@ -14,6 +49,7 @@ public:
   using key_type = Key;
   using mapped_type = T;
   using value_type = std::pair<Key, T>;
+  using iterator = internal::VectorMapIterator<Key, T>;
 
 private:
 
@@ -48,22 +84,23 @@ public:
 
   decltype(auto) begin() {
     emp_assert( data.size() == size(), "data is not contiguous" );
-    return std::begin( data );
+    return iterator{ std::begin( data ) };
   }
 
   decltype(auto) end() {
     emp_assert( data.size() == size(), "data is not contiguous" );
-    return std::end( data );
+    return iterator{ std::end( data ) };
   }
 
   decltype(auto) cbegin() const {
     emp_assert( data.size() == size(), "data is not contiguous" );
-    return std::cbegin( data );
+    return iterator{ std::cbegin( data ) };
   }
 
   decltype(auto) cend() const {
     emp_assert( data.size() == size(), "data is not contiguous" );
-    return std::cend( data ); }
+    return iterator{ std::cend( data ) };
+  }
 
   size_t size() const { return num_items; }
 
