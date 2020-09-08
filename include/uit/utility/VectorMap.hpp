@@ -4,21 +4,21 @@
 
 namespace uit {
 
-template<typename T>
+template<typename Key, typename T>
 class VectorMap {
 
   emp::vector<T> data;
 
 public:
 
-  T& operator[](const size_t i) {
+  T& operator[](const Key i) {
     if (i >= data.size()) data.resize(i + 1);
     return at(i);
   }
 
-  T& at(const size_t i) { return data[i]; }
+  T& at(const Key i) { return data[i]; }
 
-  const T& at(const size_t i) const { return data[i]; }
+  const T& at(const Key i) const { return data[i]; }
 
 };
 
