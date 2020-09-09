@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>
+
 #include "../inlet/put=dropping/RingRputDuct.hpp"
 #include "../outlet/get=skipping/WindowDuct.hpp"
 
@@ -16,6 +18,13 @@ struct RingRdmaDuct {
 
   using InletImpl = uit::RingRputDuct<ImplSpec>;
   using OutletImpl = uit::WindowDuct<ImplSpec>;
+
+  static_assert(std::is_same<
+    typename InletImpl::BackEndImpl,
+    typename OutletImpl::BackEndImpl
+  >::value);
+
+  using BackEndImpl = typename InletImpl::BackEndImpl;
 
 };
 

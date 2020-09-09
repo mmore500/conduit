@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../backend/MockBackEnd.hpp"
+#include <type_traits>
+
 #include "../inlet/accumulating/AccumulateDuct.hpp"
 #include "../outlet/accumulating/WithdrawingWindowDuct.hpp"
 
@@ -17,6 +18,13 @@ struct AccumulateWithdrawingDuct {
 
   using InletImpl = uit::AccumulateDuct<ImplSpec>;
   using OutletImpl = uit::WithdrawingWindowDuct<ImplSpec>;
+
+  static_assert(std::is_same<
+    typename InletImpl::BackEndImpl,
+    typename OutletImpl::BackEndImpl
+  >::value);
+
+  using BackEndImpl = typename InletImpl::BackEndImpl;
 
 };
 

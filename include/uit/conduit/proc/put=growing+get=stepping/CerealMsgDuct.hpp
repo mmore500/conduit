@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>
+
 #include "../inlet/put=growing/SendDuct.hpp"
 #include "../outlet/get=stepping/CerealIprobeDuct.hpp"
 
@@ -16,6 +18,13 @@ struct CerealMsgDuct {
 
   using InletImpl = uit::SendDuct<ImplSpec>;
   using OutletImpl = uit::CerealIprobeDuct<ImplSpec>;
+
+  static_assert(std::is_same<
+    typename InletImpl::BackEndImpl,
+    typename OutletImpl::BackEndImpl
+  >::value);
+
+  using BackEndImpl = typename InletImpl::BackEndImpl;
 
 };
 

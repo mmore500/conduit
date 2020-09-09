@@ -1,5 +1,7 @@
 #pragma once
 
+#include <type_traits>
+
 #include "../inlet/put=dropping/VectorRingIsendDuct.hpp"
 #include "../outlet/get=skipping/VectorBlockIrecvDuct.hpp"
 
@@ -16,6 +18,13 @@ struct VectorBlockRingImsgDuct {
 
   using InletImpl = uit::VectorRingIsendDuct<ImplSpec>;
   using OutletImpl = uit::VectorBlockIrecvDuct<ImplSpec>;
+
+  static_assert(std::is_same<
+    typename InletImpl::BackEndImpl,
+    typename OutletImpl::BackEndImpl
+  >::value);
+
+  using BackEndImpl = typename InletImpl::BackEndImpl;
 
 };
 

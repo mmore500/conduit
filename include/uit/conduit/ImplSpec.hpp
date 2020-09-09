@@ -68,6 +68,9 @@ public:
   using ProcOutletDuct = typename ImplSelect::template
     ProcDuct<THIS_T>::OutletImpl;
 
+  /// TODO.
+  using ProcBackEnd = typename ImplSelect::template
+    ProcDuct<THIS_T>::BackEndImpl;
 
   // TODO add static ToString
 
@@ -84,27 +87,12 @@ public:
  * implementations to use for intra-thread, inter-thread, and inter-process
  * transmission.
  *
- * @note The type `T_` should be *TriviallyCopyable*.
  */
 template<
   typename T,
   size_t N=DEFAULT_BUFFER,
   typename ImplSelect=uit::ImplSelect<>
 >
-class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect> {
-
-  using parent_t = internal::ImplSpecKernel<T, N, ImplSelect>;
-
-  static_assert(std::is_same<
-    typename parent_t::ProcInletDuct::BackEndImpl,
-    typename parent_t::ProcOutletDuct::BackEndImpl
-  >::value);
-
-public:
-
-  // TODO.
-  using ProcBackEnd = typename parent_t::ProcInletDuct::BackEndImpl;
-
-};
+class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect> { };
 
 } // namespace uit
