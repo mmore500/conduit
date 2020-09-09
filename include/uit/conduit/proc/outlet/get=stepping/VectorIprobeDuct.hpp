@@ -65,7 +65,7 @@ private:
     emp_assert(msg_len % sizeof(typename T::value_type) == 0);
     buffer.resize(msg_len / sizeof(typename T::value_type));
 
-    emp_assert( !back_end->HasSize() || back_end->GetSize() == buffer.size() , back_end->GetSize(), buffer.size());
+    emp_assert( !back_end->HasSize() || back_end->GetSize() == buffer.size() );
 
     UIT_Recv(
       buffer.data(), // void* buf: initial address of receive buffer

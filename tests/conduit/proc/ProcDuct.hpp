@@ -1,5 +1,6 @@
 #include <ratio>
 #include <thread>
+#include <type_traits>
 
 #include <mpi.h>
 
@@ -21,8 +22,10 @@
 #include "uit/topology/DyadicTopologyFactory.hpp"
 #include "uit/topology/ProConTopologyFactory.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
+#include "uit/utility/assign_utils.hpp"
 #include "uit/utility/CircularIndex.hpp"
 #include "uit/utility/math_utils.hpp"
+#include "uit/utility/numeric_cast.hpp"
 
 const uit::MpiGuard guard;
 
@@ -80,6 +83,42 @@ decltype(auto) make_ring_bundle() {
   REQUIRE( bundles.size() == 1);
 
   return std::tuple{ bundles[0].GetInput(0), bundles[0].GetOutput(0) };
+
+}
+
+// p_1 -> p_2 -> ... -> p_n -> p_1 -> p_2 -> ... -> p_n -> p_1
+decltype(auto) make_coiled_bundle() {
+  uit::Mesh<Spec> mesh{
+    uit::RingTopologyFactory{}(uit::get_nprocs() * 2),
+    uit::AssignIntegrated<uit::thread_id_t>{},
+    uit::AssignRoundRobin<uit::proc_id_t>{
+      uit::numeric_cast<size_t>( uit::get_nprocs() )
+    }
+  };
+
+  auto bundles = mesh.GetSubmesh();
+
+  REQUIRE( bundles.size() == 2);
+
+  std::decay<decltype(bundles[0].GetInputs())>::type inputs;
+  for (const auto& bundle : bundles) {
+    inputs.insert(
+      std::end(inputs),
+      std::begin(bundle.GetInputs()),
+      std::end(bundle.GetInputs())
+    );
+  }
+
+  std::decay<decltype(bundles[0].GetOutputs())>::type outputs;
+  for (const auto& bundle : bundles) {
+    outputs.insert(
+      std::end(outputs),
+      std::begin(bundle.GetOutputs()),
+      std::end(bundle.GetOutputs())
+    );
+  }
+
+  return std::tuple{ inputs, outputs };
 
 }
 
@@ -197,6 +236,30 @@ TEST_CASE("Validity") { REPEAT {
     REQUIRE( last <= current);
 
     last = current;
+
+  }
+
+  UIT_Barrier(MPI_COMM_WORLD); // todo why
+
+} }
+
+TEST_CASE("Multi-bridge Validity") { REPEAT {
+
+  auto [inputs, outputs] = make_coiled_bundle();
+
+  std::unordered_map<size_t, int> last_map{};
+  for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
+
+    for (auto& output : outputs) output.TryPut(msg);
+
+    for (size_t i = 0; i < inputs.size(); ++i) {
+      const MSG_T current = inputs[i].JumpGet();
+      REQUIRE( current >= 0 );
+      REQUIRE( current < 10 * std::kilo{}.num );
+      REQUIRE( last_map[i] <= current);
+
+      last_map[i] = current;
+    }
 
   }
 
