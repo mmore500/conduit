@@ -93,8 +93,8 @@ public:
     throw "TryPut called on WithdrawingWindowDuct";
   }
 
-  [[noreturn]] bool IsReadyForPut() {
-    throw "IsReadyForPut called on WithdrawingWindowDuct";
+  [[noreturn]] void Flush() const {
+    throw "Flush called on WithdrawingWindowDuct";
   }
 
   size_t TryConsumeGets(const size_t requested) {

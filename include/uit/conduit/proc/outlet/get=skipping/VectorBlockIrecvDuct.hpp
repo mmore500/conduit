@@ -165,8 +165,8 @@ public:
     throw "TryPut called on VectorBlockIrecvDuct";
   }
 
-  [[noreturn]] bool IsReadyForPut() const {
-    throw "IsReadyForPut called on VectorBlockIrecvDuct";
+  [[noreturn]] void Flush() const {
+    throw "Flush called on VectorBlockIrecvDuct";
   }
 
   /**

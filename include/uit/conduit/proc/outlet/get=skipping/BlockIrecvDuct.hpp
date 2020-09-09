@@ -155,9 +155,7 @@ public:
     throw "TryPut called on BlockIrecvDuct";
   }
 
-  [[noreturn]] bool IsReadyForPut() const {
-    throw "IsReadyForPut called on BlockIrecvDuct";
-  }
+  [[noreturn]] void Flush() const { throw "Flush called on BlockIrecvDuct"; }
 
   /**
    * TODO.

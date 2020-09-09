@@ -123,6 +123,12 @@ public:
     return true;
   }
 
+  /**
+   * TODO.
+   *
+   */
+  void Flush() const { ; }
+
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on RaccumulateDuct";
   }

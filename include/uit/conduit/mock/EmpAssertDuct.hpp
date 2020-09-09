@@ -36,8 +36,16 @@ public:
    *
    * @throws TODO.
    */
-  bool TryPut(const T&) const {
+  [[noreturn]] bool TryPut(const T&) const {
     emp_assert(false, "TryPut called on EmpAssertDuct");
+  }
+
+  /**
+   * TODO.
+   *
+   */
+  [[noreturn]] void Flush() const {
+    emp_assert(false, "Flush called on EmpAssertDuct");
   }
 
   /**

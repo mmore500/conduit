@@ -94,6 +94,12 @@ public:
   /**
    * TODO.
    *
+   */
+  void Flush() const { ; }
+
+  /**
+   * TODO.
+   *
    * @param requested.
    * @return num consumed.
    */

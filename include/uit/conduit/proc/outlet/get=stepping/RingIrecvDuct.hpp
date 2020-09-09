@@ -295,6 +295,12 @@ public:
   /**
    * TODO.
    *
+   */
+  [[noreturn]] void Flush() const { throw "Flush called on RingIrecvDuct"; }
+
+  /**
+   * TODO.
+   *
    * @param num_requested TODO.
    * @return number items consumed.
    */

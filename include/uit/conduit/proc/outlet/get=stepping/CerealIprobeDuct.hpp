@@ -136,6 +136,8 @@ public:
     throw "Put called on CerealIprobeDuct";
   }
 
+  [[noreturn]] void Flush() const { throw "Flush called on CerealIprobeDuct"; }
+
   /**
    * TODO.
    *

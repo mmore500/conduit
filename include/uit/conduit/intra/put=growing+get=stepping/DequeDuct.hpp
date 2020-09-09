@@ -50,6 +50,12 @@ public:
   /**
    * TODO.
    *
+   */
+  void Flush() const { ; }
+
+  /**
+   * TODO.
+   *
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {
