@@ -15,13 +15,23 @@ TEST_CASE("VectorMap") {
 
   map[1] = "howdy";
   REQUIRE( map[1] == "howdy" );
-  REQUIRE( map[2] == "" );
 
   map[4] = "cowsay";
   REQUIRE( map.at(4) == "cowsay" );
   REQUIRE( map[4] == "cowsay" );
 
+  REQUIRE( map.at(1) == "howdy" );
   REQUIRE( map[1] == "howdy" );
-  REQUIRE( map[2] == "" );
+
+  map[0] = "apple";
+  map[3] = "orange";
+
+  std::string res;
+
+  for (auto& [__, val] : map) res.append(val);
+
+  for (const auto& [__, val] : map) res.append(val);
+
+  REQUIRE( res == "applehowdyorangecowsayapplehowdyorangecowsay" );
 
 }
