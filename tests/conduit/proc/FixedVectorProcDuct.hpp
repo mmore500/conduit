@@ -45,10 +45,12 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
   auto [outlet] = uit::Source<Spec>{
     std::in_place_type_t<Spec::ProcOutletDuct>{},
     uit::InterProcAddress{
-      uit::get_rank(), // outlet
+      uit::get_rank(), // outlet proc
       uit::numeric_cast<int>(
         uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
-      ), // inlet
+      ), // inlet proc
+      0, // outlet thread
+      0, // inlet thread
       tag // tag
     },
     backend
@@ -60,8 +62,10 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
     uit::InterProcAddress{
       uit::numeric_cast<int>(
         uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
-      ), // outlet
-      uit::get_rank(), // inlet
+      ), // outlet proc
+      uit::get_rank(), // inlet proc
+      0, // outlet thread
+      0, // inlet thread
       tag++ // tag
     },
     backend
@@ -83,10 +87,12 @@ TEST_CASE("Is transmission reliable?") { REPEAT {
   auto [outlet] = uit::Source<Spec>{
     std::in_place_type_t<Spec::ProcOutletDuct>{},
     uit::InterProcAddress{
-      uit::get_rank(), // outlet
+      uit::get_rank(), // outlet proc
       uit::numeric_cast<int>(
         uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
-      ), // inlet
+      ), // inlet proc
+      0, // outlet thread
+      0, // inlet thread
       tag // tag
     },
     backend
@@ -98,8 +104,10 @@ TEST_CASE("Is transmission reliable?") { REPEAT {
     uit::InterProcAddress{
       uit::numeric_cast<int>(
         uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
-      ), // outlet
-      uit::get_rank(), // inlet
+      ), // outlet proc
+      uit::get_rank(), // inlet proc
+      0,
+      0,
       tag++ // tag
     },
     backend
