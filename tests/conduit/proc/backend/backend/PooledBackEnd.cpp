@@ -5,14 +5,14 @@
 
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/proc/backend/PooledBackEnd.hpp"
-#include "uit/conduit/proc/put=dropping+get=skipping/VectorBlockRingImsgDuct.hpp"
+#include "uit/conduit/proc/put=dropping+get=skipping/inlet=VectorRingIsend+outlet=VectorBlockIrecv_IvriOvbiDuct.hpp"
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 
 const uit::MpiGuard guard;
 
 template<typename ImplSpec>
-using PoolDuct = uit::VectorBlockRingImsgDuct<ImplSpec>;
+using PoolDuct = uit::IvriOvbiDuct<ImplSpec>;
 
 TEST_CASE("Test PooledBackEnd") {
 

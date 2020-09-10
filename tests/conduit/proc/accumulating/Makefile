@@ -1,4 +1,4 @@
-TEST_NAMES := AccumulateWithdrawingDuct RaccumulateWithdrawingDuct
+TEST_NAMES := inlet=Accumulate+outlet=WithdrawingWindow_IaOwwDuct inlet=Raccumulate+outlet=WithdrawingWindow_IrOwwDuct
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/
 

@@ -1,4 +1,4 @@
-TEST_NAMES := BlockDequeImsgDuct BlockMsgDuct DequeRdmaDuct PutRdmaDuct #BlockDequeIrmsgDuct BlockRmsgDuct
+TEST_NAMES := inlet=DequeIsend+outlet=BlockIrecv_IdiObiDuct inlet=Send+outlet=BlockIrecv_IsObiDuct inlet=DequeRput+outlet=Window_IdrOwDuct inlet=Put+outlet=Window_IpOwDuct #inlet=DequeIrsend+outlet=BlockIrecv_IdirObiDuct inlet=Rsend+outlet=BlockIrecv_IrObiDuct
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/
 

@@ -1,4 +1,4 @@
-TEST_NAMES := CerealRingImsgDuct RingRingImsgDuct VectorRingImsgDuct #CerealRingIrmsgDuct PooledRingImsgDuct RingRingIrmsgDuct VectorRingIrmsgDuct
+TEST_NAMES := inlet=CerealRingIsend+outlet=CerealIprobe_IcriOciDuct inlet=RingIsend+outlet=RingIrecv_IriOriDuct inlet=VectorRingIsend+outlet=VectorIprobe_IvriOviDuct #inlet=CerealRingIsend+outlet=CerealIprobe_IcriOciDuct pooled+inlet=VectorRingIsend+outlet=VectorIprobe_PooledIvriOviDuct inlet=RingIrsend+outlet=RingIrecv_IrirOriDuct inlet=VectorRingIrsend+outlet=VectorIprobe_IvrirOviDuct
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/
 

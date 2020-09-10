@@ -1,4 +1,4 @@
-BENCH_NAMES := BlockMsgDuct DequeRdmaDuct PutRdmaDuct #BlockDequeImsgDuct BlockRmsgDuct BlockDequeIrmsgDuct
+BENCH_NAMES := inlet=Send+outlet=BlockIrecv_IsObiDuct inlet=DequeRput+outlet=Window_IdrOwDuct inlet=Put+outlet=Window_IpOwDuct #inlet=DequeIsend+outlet=BlockIrecv_IdiObiDuct inlet=Rsend+outlet=BlockIrecv_IrObiDuct inlet=DequeIrsend+outlet=BlockIrecv_IdirObiDuct
 
 SHELL := /bin/bash
 

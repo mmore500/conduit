@@ -5,7 +5,7 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/proc/backend/impl/OutletMemoryPool.hpp"
 #include "uit/conduit/proc/backend/impl/PoolSpec.hpp"
-#include "uit/conduit/proc/put=dropping+get=skipping/VectorBlockRingImsgDuct.hpp"
+#include "uit/conduit/proc/put=dropping+get=skipping/inlet=VectorRingIsend+outlet=VectorBlockIrecv_IvriOvbiDuct.hpp"
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 
@@ -16,7 +16,7 @@ TEST_CASE("Test OutletMemoryPool") {
   // TODO flesh out stub test
   using PoolSpec_t = uit::PoolSpec<
     uit::ImplSpec<char>,
-    uit::VectorBlockRingImsgDuct
+    uit::IvriOvbiDuct
   >;
   uit::OutletMemoryPool<PoolSpec_t>{};
 

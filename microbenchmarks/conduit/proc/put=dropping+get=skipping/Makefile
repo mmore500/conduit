@@ -1,4 +1,4 @@
-BENCH_NAMES := BlockRingImsgDuct BlockRingIrmsgDuct RingRdmaDuct
+BENCH_NAMES := inlet=RingIsend+outlet=BlockIrecv_IriObiDuct inlet=RingIrsend+outlet=BlockIrecv_IrirObiDuct inlet=RingRput+outlet=Window_IrrOwDuct
 
 SHELL := /bin/bash
 
