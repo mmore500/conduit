@@ -40,22 +40,7 @@ private:
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  T buffer{};
-
   const uit::InterProcAddress address;
-
-  void PostSend() {
-
-    BlockingSendFunctor{}(
-      &buffer,
-      sizeof(T),
-      MPI_BYTE,
-      address.GetOutletProc(),
-      address.GetTag(),
-      address.GetComm()
-    );
-
-  }
 
 public:
 
@@ -71,8 +56,16 @@ public:
    * @param val TODO.
    */
   bool TryPut(const T& val) {
-    buffer = val;
-    PostSend();
+
+    BlockingSendFunctor{}(
+      &val,
+      sizeof(T),
+      MPI_BYTE,
+      address.GetOutletProc(),
+      address.GetTag(),
+      address.GetComm()
+    );
+
     return true;
   }
 
@@ -96,7 +89,6 @@ public:
     std::stringstream ss;
     ss << GetType() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("T buffer", buffer) << std::endl;
     ss << format_member("InterProcAddress address", address) << std::endl;
     return ss.str();
   }
