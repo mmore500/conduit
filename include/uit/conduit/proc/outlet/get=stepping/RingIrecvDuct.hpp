@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <memory>
 #include <stddef.h>
 
 #include <mpi.h>
@@ -9,11 +10,11 @@
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../debug/err_audit.hpp"
 #include "../../../../mpi/mpi_utils.hpp"
-#include "../../../../mpi/Request.hpp"
-#include "../../../../utility/CircularIndex.hpp"
-#include "../../../../utility/identity.hpp"
+#include "../../../../utility/MirroredRingBuffer.hpp"
 #include "../../../../utility/print_utils.hpp"
+#include "../../../../utility/RingBuffer.hpp"
 
 #include "../../../InterProcAddress.hpp"
 
@@ -39,212 +40,98 @@ private:
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  size_t pending_gets{};
-
-  using buffer_t = emp::array<T, N>;
-  buffer_t buffer{};
-
-  emp::array<uit::Request, N> receive_requests;
-
-  // skip first to allow for default-constructed initial get
-  using index_t = uit::CircularIndex<N>;
-  index_t freshest_receive_pos{};
+  // one extra in the data buffer to hold the current get
+  uit::RingBuffer<T, N + 1> data;
+  // TODO a ring buffer where requests are copied to be contiguous
+  // might be more efficient w.r.t. caching
+  uit::MirroredRingBuffer<MPI_Request, N> requests;
 
   const uit::InterProcAddress address;
 
-
-  /*
-   * notes
-   *
-   * key:
-   * - R = open receive request
-   * - P = pending get
-   *
-   * - G = current get position
-   * - S = stalest receive position
-   * - F = freshest receive position (1 before where next Request will go)
-   *
-   * initial state:
-   * ```
-   * : G : S :                           : F :
-   * |   | R | R | R | R | R | R | R | R | R |
-   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
-   * ```
-   *
-   * one receive fulfilled:
-   * ```
-   * : G :   : S :                       : F :
-   * |   | P | R | R | R | R | R | R | R | R |
-   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
-   * ```
-   *
-   * another receive fulfilled:
-   * ```
-   * : G :       : S :                   : F :
-   * |   | P | P | R | R | R | R | R | R | R |
-   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
-   * ```
-   *
-   * one get consumed:
-   * ```
-   * : F : G :   : S :
-   * | R |   | P | R | R | R | R | R | R | R |
-   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
-   * ```
-   *
-   * another get consumed:
-   * ```
-   *     : F : G : S :
-   * | R | R |   | R | R | R | R | R | R | R |
-   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
-   * ```
-   *
-   * possible almost maxed-out pending gets state:
-   * ```
-   *                                     : S :
-   * : G :                               : F :
-   * |   | P | P | P | P | P | P | P | P | R |
-   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
-   * ```
-   *
-   * another possible almost maxed-out pending gets state:
-   * ```
-   * : S :
-   * : F : G :
-   * | R |   | P | P | P | P | P | P | P | P |
-   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
-   * ```
-   *
-   * possible maxed-out pending gets state:
-   * ```
-   * : S :
-   * : G :                               : F :
-   * |   | P | P | P | P | P | P | P | P | P |
-   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
-   * ```
-   *
-   * another possible maxed-out pending gets state:
-   * ```
-   *     : S :
-   * : F : G :
-   * | P |   | P | P | P | P | P | P | P | P |
-   * | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | N
-   * ```
-   *
-   *
-   * want to test requests from `S` to `F`
-   * 1. no requests available
-   *  - true if `pending_gets == N - 1`
-   *  - return 0
-   * 2. contiguous requests case
-   *  - true if `S <= F` and requests are available
-   *  - test from `S` to `F + 1` (non-inclusive)
-   * 3. wraparound requests case
-   *  - true if `F > S` and requests are available
-   *  - test from `S` to `N` (non-inclusive)
-   *  - if `result == N - S` then test from `0 to F + 1` (non-inclusive)
-   */
-
-  index_t CalcGetPosition() const { return freshest_receive_pos + 1; }
-
-  index_t CalcStalestReceivePos() const {
-    return CalcGetPosition() + pending_gets + 1;
-  }
-
-  bool ReceiveRequestsAreContiguous() const {
-    emp_assert( pending_gets < N - 1 );
-    return CalcStalestReceivePos() <= freshest_receive_pos;
-  }
-
   void PostReceiveRequest() {
-    ++freshest_receive_pos;
+    uit::err_audit(!
+      data.PushHead()
+    );
+    uit::err_audit(!
+      requests.PushHead( MPI_REQUEST_NULL )
+    );
 
-    emp_assert( uit::test_null( receive_requests[freshest_receive_pos] ) );
+    emp_assert( uit::test_null( requests.GetHead() ) );
     UIT_Irecv(
-      &buffer[freshest_receive_pos],
+      &data.GetHead(),
       sizeof(T),
       MPI_BYTE,
       address.GetInletProc(),
       address.GetTag(),
       address.GetComm(),
-      &receive_requests[freshest_receive_pos]
+      requests.GetHeadPtr()
     );
-    emp_assert( !uit::test_null( receive_requests[freshest_receive_pos] ) );
+    emp_assert( !uit::test_null( requests.GetHead() ) );
 
   }
 
-  void CancelReceiveRequest(const size_t pos) {
-    emp_assert( !uit::test_null( receive_requests[pos] ) );
+  void CancelReceiveRequest() {
+    emp_assert( !uit::test_null( requests.GetTail() ) );
 
-    UIT_Cancel( &receive_requests[pos] );
-    UIT_Request_free( &receive_requests[pos] );
+    UIT_Cancel(  requests.GetTailPtr() );
+    UIT_Request_free( requests.GetTailPtr() );
 
-    emp_assert( uit::test_null( receive_requests[pos] ) );
+    emp_assert( uit::test_null( requests.GetTail() ) );
+
+    uit::err_audit(!  data.PopTail()  );
+    uit::err_audit(!  requests.PopTail()  );
+
   }
 
   void CancelOpenReceiveRequests() {
-    for (
-      index_t idx = CalcStalestReceivePos();
-      idx != CalcGetPosition();
-      ++idx
-    ) CancelReceiveRequest(idx);
+    while ( requests.GetSize() ) CancelReceiveRequest();
   }
 
-  // to is non-inclusive
-  size_t TestRequests(const size_t from, const size_t to, const int context) {
-    emp_assert(from <= to);
-    emp_assert(to - from < N);
+  // returns number of requests fulfilled
+  size_t TestRequests() {
+
+    // MPICH Testsome returns negative outcount for zero count calls
+    // so let's boogie out early to avoid drama
+    if (requests.GetSize() == 0) return 0;
+
     emp_assert( std::none_of(
-      std::begin(receive_requests) + from,
-      std::begin(receive_requests) + to,
+      requests.GetTailPtr(),
+      requests.GetPastHeadPtr(),
       [](const auto& req){ return uit::test_null( req ); }
     ) );
 
     thread_local emp::array<int, N> out_indices; // ignored
-    int received_count{};
+    int num_received{};
 
     UIT_Testsome(
-      to - from, // int count
-      &receive_requests[from], // MPI_Request array_of_requests[]
-      &received_count, // int *outcount
+      requests.GetSize(), // int count
+      requests.GetTailPtr(), // MPI_Request array_of_requests[]
+      &num_received, // int *outcount
       out_indices.data(), // int *indices
       MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
     );
 
+    emp_assert( num_received >= 0 );
+    emp_assert( static_cast<size_t>(num_received) <= requests.GetSize() );
+
     emp_assert( std::all_of(
-      std::begin(receive_requests) + from,
-      std::begin(receive_requests) + received_count,
+      requests.GetTailPtr(),
+      requests.GetTailPtr() + num_received,
+      [](const auto& req){ return uit::test_null( req ); }
+    ) );
+    emp_assert( std::none_of(
+      requests.GetTailPtr() + num_received,
+      requests.GetPastHeadPtr(),
       [](const auto& req){ return uit::test_null( req ); }
     ) );
 
-    return received_count;
+    return num_received;
   }
 
-  // returns number of requests fulfilled
   void TryFulfillReceiveRequests() {
-    pending_gets += [this]() -> size_t {
-
-      if ( pending_gets == N - 1 ) {
-        return 0;
-      } else if ( ReceiveRequestsAreContiguous() ) {
-        return TestRequests(
-          CalcStalestReceivePos(),
-          static_cast<size_t>(freshest_receive_pos) + 1,
-          0
-        );
-      } else {
-        size_t res = TestRequests( CalcStalestReceivePos(), N, 1 );
-
-        if ( res == N - CalcStalestReceivePos() ) res += TestRequests(
-          0,
-          static_cast<size_t>(freshest_receive_pos) + 1,
-          2
-        );
-
-        return res;
-      }
-
-    }();
+    const size_t num_received = TestRequests();
+    const size_t res = requests.PopTail(num_received);
+    emp_assert( res == num_received );
   }
 
   /**
@@ -254,7 +141,7 @@ private:
    */
   size_t CountUnconsumedGets() {
     TryFulfillReceiveRequests();
-    return pending_gets;
+    return data.GetSize() - requests.GetSize() - 1;
   }
 
 public:
@@ -264,16 +151,11 @@ public:
     std::shared_ptr<BackEndImpl> back_end
   ) : address(address_) {
 
-    emp_assert( std::all_of(
-      std::begin(buffer),
-      std::end(buffer),
-      [](const auto& val){ return val == T{}; }
-    ) );
-
-    for (size_t i = 1; i < N; ++i) PostReceiveRequest();
+    data.PushHead( T{} ); // value-initialized initial Get item
+    for (size_t i = 0; i < N; ++i) PostReceiveRequest();
     emp_assert( std::none_of(
-      std::next(std::begin(receive_requests)),
-      std::end(receive_requests),
+      requests.GetTailPtr(),
+      requests.GetPastHeadPtr(),
       [](const auto& req){ return uit::test_null( req ); }
     ) );
   }
@@ -281,15 +163,10 @@ public:
   ~RingIrecvDuct() {
     while ( CountUnconsumedGets() ) TryConsumeGets( CountUnconsumedGets() );
     CancelOpenReceiveRequests();
-    emp_assert( std::all_of(
-      std::begin(receive_requests),
-      std::end(receive_requests),
-      [](const auto& req){ return uit::test_null( req ); }
-    ) );
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    throw "Put called on RingIrecvDuct";
+    throw "TryPut called on RingIrecvDuct";
   }
 
   /**
@@ -308,22 +185,23 @@ public:
 
     size_t requested_countdown{ num_requested };
     size_t batch_countdown{ CountUnconsumedGets() };
-    bool full_batch = (batch_countdown == N - 1);
+    bool full_batch = (batch_countdown == N);
 
     while ( batch_countdown && requested_countdown ) {
 
       --batch_countdown;
       --requested_countdown;
-      --pending_gets;
+      uit::err_audit(!   data.PopTail()   );
       PostReceiveRequest();
 
       if (full_batch && batch_countdown == 0) {
         batch_countdown = CountUnconsumedGets();
-        full_batch = (batch_countdown == N - 1);
+        full_batch = (batch_countdown == N);
       }
     }
 
-    return num_requested - requested_countdown;
+    const size_t num_consumed = num_requested - requested_countdown;
+    return num_consumed;
   }
 
   /**
@@ -331,14 +209,14 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() const { return buffer[CalcGetPosition()]; }
+  const T& Get() const { return data.GetTail(); }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  T& Get() { return buffer[CalcGetPosition()]; }
+  T& Get() { return data.GetTail(); }
 
   static std::string GetName() { return "RingIrecvDuct"; }
 
@@ -346,10 +224,7 @@ public:
     std::stringstream ss;
     ss << GetName() << std::endl;
     ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("size_t pending_gets", pending_gets) << std::endl;
     ss << format_member("InterProcAddress address", address) << std::endl;
-    ss << format_member("size_t freshest_receive_pos", freshest_receive_pos);
     return ss.str();
   }
 

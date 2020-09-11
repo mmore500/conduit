@@ -21,7 +21,15 @@ public:
 
   size_t GetSize() const { return num_items; }
 
-  bool PushHead(const T& t=T{}) {
+  bool PushHead() {
+    if (GetSize() == N) return false;
+    else {
+      ++num_items;
+      return true;
+    }
+  }
+
+  bool PushHead(const T& t) {
     if (GetSize() == N) return false;
     else {
       Get(num_items) = t;
@@ -62,6 +70,8 @@ public:
     emp_assert( GetSize() );
     return Get( GetSize() - 1 );
   }
+
+  T& GetTail() { return Get(0); }
 
   const T& GetTail() const { return Get(0); }
 
