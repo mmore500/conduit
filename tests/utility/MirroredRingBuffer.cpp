@@ -17,10 +17,10 @@ TEST_CASE("Test MirroredRingBuffer") {
 
     for (size_t i = 0; i < buff_size; ++i) {
       REQUIRE( buff.GetSize() == i );
-      REQUIRE( buff.Put(rep + i) );
+      REQUIRE( buff.PushHead(rep + i) );
     }
     REQUIRE( buff.GetSize() == buff_size );
-    REQUIRE( !buff.Put(0) );
+    REQUIRE( !buff.PushHead(0) );
 
     for (size_t i = 0; i < buff_size; ++i) {
       REQUIRE( buff.Get(i) == rep + i );
@@ -42,11 +42,11 @@ TEST_CASE("Test MirroredRingBuffer") {
 
     for (size_t i = 0; i < buff_size; ++i) {
       REQUIRE( buff.GetSize() == buff_size - i );
-      REQUIRE( buff.Pop() );
+      REQUIRE( buff.PopTail() );
     }
 
     REQUIRE( buff.GetSize() == 0 );
-    REQUIRE( !buff.Pop() );
+    REQUIRE( !buff.PopTail() );
   }
 
 }

@@ -24,11 +24,11 @@ class MirroredRingBuffer {
     uit::div_ceil(N * sizeof(T), getpagesize()) * getpagesize()
   ) };
   const size_t allocation_size { 2 * byte_size };
-  const int fd { fileno( tmpfile() ) };
+  const int file_descriptor { fileno( tmpfile() ) };
   std::byte *buffer;
 
-  std::byte *head;
   std::byte *tail;
+  size_t num_items{};
 
 public:
 
@@ -37,7 +37,7 @@ public:
     emp_assert( byte_size % getpagesize() == 0 );
 
     uit::err_audit(ftruncate(
-      fd, // int fd
+      file_descriptor, // int fd
       byte_size // off_t length
     ));
 
@@ -59,7 +59,7 @@ public:
       byte_size, // size_t length
       PROT_READ | PROT_WRITE, // int prot
       MAP_SHARED | MAP_FIXED, // int flags
-      fd, // int fd
+      file_descriptor, // int fd
       0 // off_t offset
     ); emp_assert( res != MAP_FAILED ); }
 
@@ -69,12 +69,11 @@ public:
       byte_size, // size_t length
       PROT_READ | PROT_WRITE, // int prot
       MAP_SHARED | MAP_FIXED, // int flags
-      fd, // int fd
+      file_descriptor, // int fd
       0 // off_t offset
     ); emp_assert( res != MAP_FAILED ); }
 
-    // point head and tail to beginning of buffer
-    head = buffer;
+    // point tail beginning of buffer
     tail = buffer;
 
   }
@@ -86,64 +85,69 @@ public:
     ));
   }
 
-  std::byte* step_pointer(std::byte* curr) const {
-    curr += sizeof(T);
+  std::byte* step_pointer(std::byte* curr, size_t num_steps=1) const {
+    emp_assert( num_steps <= N );
+    curr += num_steps * sizeof(T);
     // wraparound if off the end
     curr -= (std::distance(buffer, curr) / byte_size) * byte_size;
+    emp_assert( std::distance(buffer, curr) >= 0 );
+    emp_assert( static_cast<size_t>(std::distance(buffer, curr)) < byte_size );
     return curr;
   }
 
-  size_t GetSize() const {
-    return head >= tail
-      ? std::distance(tail, head) / sizeof(T)
-      : (byte_size - std::distance(head, tail)) / sizeof(T); // wraparound case
-  }
+  size_t GetSize() const { return num_items; }
 
-  bool Put(const T& t) {
+  bool PushHead(const T& t=T{}) {
     if (GetSize() == N) return false;
     else {
-      std::memcpy(head, &t, sizeof(T));
-      head = step_pointer(head);
+      std::memcpy( GetPastHeadPtr(), &t, sizeof(T) );
+      ++num_items;
       return true;
     }
   }
 
-  bool Pop() {
-    if (GetSize()) {
-      tail = step_pointer(tail);
-      return true;
-    } else return false;
+  size_t PopTail(const size_t n=1) {
+    const size_t num_popped = std::min(n, GetSize());
+    tail = step_pointer(tail, num_popped);
+    num_items -= num_popped;
+    return num_popped;
   }
 
-  void Fill(const T& t=T{}) { while( Put(t) ); }
+  void Fill(const T& t=T{}) { while( PushHead(t) ); }
 
-  std::byte* GetHeadPtr() { return head; }
+  T* GetPastHeadPtr() { return GetTailPtr() + GetSize(); }
 
-  std::byte* GetTailPtr() { return tail; }
+  const T* GetPastHeadPtr() const { return GetTailPtr() + GetSize(); }
 
-  const std::byte* GetHeadPtr() const { return head; }
-
-  const std::byte* GetTailPtr() const { return tail; }
-
-  T GetHead() const {
+  T* GetHeadPtr() {
     emp_assert( GetSize() );
-    T res;
-    std::memcpy( &res, head, sizeof(T) );
-    return res;
+    return GetPastHeadPtr() - 1;
   }
 
-  T GetTail() const {
+  const T* GetHeadPtr() const {
     emp_assert( GetSize() );
-    T res;
-    std::memcpy( &res, tail, sizeof(T) );
-    return res;
+    return GetPastHeadPtr() - 1;
   }
+
+  T* GetTailPtr() { return reinterpret_cast<T*>(tail); }
+
+  const T* GetTailPtr() const { return reinterpret_cast<const T*>(tail); }
 
   T Get(const size_t i) const {
     emp_assert( i < GetSize() );
     T res;
-    std::memcpy( &res, tail + i * sizeof(T), sizeof(T) );
+    std::memcpy( &res, GetTailPtr() + i, sizeof(T) );
     return res;
+  }
+
+  T GetHead() const {
+    emp_assert( GetSize() );
+    return Get( GetSize() - 1 );
+  }
+
+  T GetTail() const {
+    emp_assert( GetSize() );
+    return Get(0);
   }
 
 };

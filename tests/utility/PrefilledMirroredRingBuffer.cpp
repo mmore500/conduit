@@ -15,7 +15,7 @@ TEST_CASE("Test PrefilledMirroredRingBuffer") {
 
   do {
     if ( buff.GetSize() ) REQUIRE(buff.GetTail() == 0);
-  } while( buff.Pop() );
+  } while( buff.PopTail() );
 
 
 }
