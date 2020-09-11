@@ -1,4 +1,4 @@
-BENCH_NAMES := inlet=Send+outlet=RingIrecv_IsOriDuct inlet=CerealDequeIrsend+outlet=CerealIprobe_IcdirOciDuct #inlet=CerealRsend+outlet=CerealIprobe_IcrOciDuct inlet=Rsend+outlet=RingIrecv_IrOri inlet=DequeIsend+outlet=RingIrecv_IdiOriDuct inlet=DequeIrsend+outlet=RingIrecv_IdirOriDuct inlet=CerealDequeIsend+outlet=CerealIprobe_IcdiOciDuct inlet=CerealDequeIrsend+outlet=CerealIprobe_IcdirOciDuct
+BENCH_NAMES := inlet=Send+outlet=RingIrecv_IsOriDuct  #inlet=CerealRsend+outlet=CerealIprobe_IcrOciDuct inlet=Rsend+outlet=RingIrecv_IrOri inlet=DequeIsend+outlet=RingIrecv_IdiOriDuct inlet=DequeIrsend+outlet=RingIrecv_IdirOriDuct inlet=CerealDequeIsend+outlet=CerealIprobe_IcdiOciDuct inlet=CerealDequeIrsend+outlet=CerealIprobe_IcdirOciDuct inlet=CerealDequeIrsend+outlet=CerealIprobe_IcdirOciDuct
 
 SHELL := /bin/bash
 
