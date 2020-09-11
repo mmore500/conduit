@@ -1,4 +1,7 @@
-TEST_NAMES := thread intra
+TEST_NAMES := \
+	thread \
+	intra \
+
 
 default: bench
 

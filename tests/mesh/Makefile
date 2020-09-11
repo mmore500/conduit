@@ -1,4 +1,10 @@
-TEST_NAMES := Mesh MeshNode MeshNodeInput MeshNodeOutput MeshTopology
+TEST_NAMES := \
+	Mesh \
+	MeshNode \
+	MeshNodeInput \
+	MeshNodeOutput \
+	MeshTopology \
+
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec

@@ -1,4 +1,6 @@
-TEST_NAMES := OncePerThreadChecker
+TEST_NAMES := \
+	OncePerThreadChecker \
+
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec

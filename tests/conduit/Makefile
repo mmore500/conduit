@@ -1,4 +1,10 @@
-TEST_NAMES := proc thread conduit intra mock
+TEST_NAMES := \
+	proc \
+	thread \
+	conduit \
+	intra \
+	mock \
+
 
 default: test
 

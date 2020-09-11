@@ -1,4 +1,13 @@
-BENCH_NAMES := MPI_Isend MPI_Irsend MPI_Rsend MPI_Send MPI_Test MPI_Testall MPI_Testsome MPI_Irecv
+BENCH_NAMES := \
+	MPI_Isend \
+	MPI_Irsend \
+	MPI_Rsend \
+	MPI_Send \
+	MPI_Test \
+	MPI_Testall \
+	MPI_Testsome \
+	MPI_Irecv \
+
 
 SHELL := /bin/bash
 

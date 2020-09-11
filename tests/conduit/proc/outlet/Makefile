@@ -1,4 +1,8 @@
-TEST_NAMES := get=skipping get=stepping templated
+TEST_NAMES := \
+	get=skipping \
+	get=stepping \
+	templated \
+
 
 default: test
 

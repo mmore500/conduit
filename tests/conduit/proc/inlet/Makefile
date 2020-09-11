@@ -1,4 +1,9 @@
-TEST_NAMES := accumulating put=dropping put=growing templated
+TEST_NAMES := \
+	accumulating \
+	put=dropping \
+	put=growing \
+	templated \
+
 
 default: test
 

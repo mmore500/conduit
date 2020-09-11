@@ -1,4 +1,6 @@
-TEST_NAMES := safe
+TEST_NAMES := \
+	safe \
+
 
 default: test
 

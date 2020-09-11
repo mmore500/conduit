@@ -1,4 +1,6 @@
-TEST_NAMES := DistributedTimeoutBarrier
+TEST_NAMES := \
+	DistributedTimeoutBarrier \
+
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec

@@ -1,4 +1,7 @@
-TEST_NAMES := conduit mpi
+TEST_NAMES := \
+	conduit \
+	mpi \
+
 
 VERSION := $$(git describe --dirty --always)
 

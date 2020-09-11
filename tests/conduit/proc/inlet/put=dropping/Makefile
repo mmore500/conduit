@@ -1,4 +1,12 @@
-TEST_NAMES := CerealRingIrsendDuct CerealRingIsendDuct RingIrsendDuct RingIsendDuct RingRputDuct VectorRingIrsendDuct VectorRingIsendDuct
+TEST_NAMES := \
+	CerealRingIrsendDuct \
+	CerealRingIsendDuct \
+	RingIrsendDuct \
+	RingIsendDuct \
+	RingRputDuct \
+	VectorRingIrsendDuct \
+	VectorRingIsendDuct \
+
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../../include/ -I../../../../../source/ -I../../../../../third-party/
 

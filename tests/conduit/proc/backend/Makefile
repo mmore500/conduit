@@ -1,4 +1,7 @@
-TEST_NAMES := backend impl
+TEST_NAMES := \
+	backend \
+	impl \
+
 
 default: test
 
