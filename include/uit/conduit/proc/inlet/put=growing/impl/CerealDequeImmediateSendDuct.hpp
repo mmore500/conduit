@@ -49,9 +49,7 @@ private:
   const uit::InterProcAddress address;
 
   void PostSend() {
-    emp_assert( uit::test_null(
-      std::get<uit::Request>(buffer.back())
-    ) );
+    emp_assert( uit::test_null( std::get<uit::Request>(buffer.back()) ) );
 
     ImmediateSendFunctor{}(
       std::get<emp::ContiguousStream>(buffer.back()).GetData(),
@@ -63,10 +61,7 @@ private:
       &std::get<uit::Request>(buffer.back())
     );
 
-    emp_assert( !uit::test_null(
-      std::get<uit::Request>(buffer.back())
-    ) );
-
+    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.back()) ) );
   }
 
   bool TryFinalizeSend() {
