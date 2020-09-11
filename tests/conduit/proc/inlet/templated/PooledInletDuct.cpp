@@ -7,7 +7,7 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/InterProcAddress.hpp"
 #include "uit/conduit/proc/inlet/templated/PooledInletDuct.hpp"
-#include "uit/conduit/proc/put=dropping+get=skipping/inlet=VectorRingIsend+outlet=VectorBlockIrecv_IvriOvbiDuct.hpp"
+#include "uit/conduit/proc/put=dropping+get=skipping+type=span/inlet=VectorRingIsend+outlet=VectorBlockIrecv_IvriOvbiDuct.hpp"
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 

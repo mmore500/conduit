@@ -2,9 +2,9 @@
 
 #include "config.hpp"
 
-#include "intra/put=dropping+get=stepping/SerialPendingDuct.hpp"
-#include "proc/put=dropping+get=stepping/inlet=RingIsend+outlet=RingIrecv_IriOriDuct.hpp"
-#include "thread/put=dropping+get=stepping/AtomicPendingDuct.hpp"
+#include "intra/put=dropping+get=stepping+type=any/SerialPendingDuct.hpp"
+#include "proc/put=dropping+get=stepping+type=trivial/inlet=RingIsend+outlet=RingIrecv_IriOriDuct.hpp"
+#include "thread/put=dropping+get=stepping+type=any/AtomicPendingDuct.hpp"
 
 namespace uit {
 

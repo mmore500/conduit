@@ -1,12 +1,16 @@
 TEST_NAMES := \
-	accumulating \
+	accumulating+type=fundamental \
 	backend \
 	inlet \
 	outlet \
-	put=dropping+get=skipping \
-	put=dropping+get=stepping \
-	put=growing+get=skipping \
-	put=growing+get=stepping \
+	put=dropping+get=skipping+type=span \
+	put=dropping+get=skipping+type=trivial \
+	put=dropping+get=stepping+type=cereal \
+	put=dropping+get=stepping+type=span \
+	put=dropping+get=stepping+type=trivial \
+	put=growing+get=skipping+type=trivial \
+	put=growing+get=stepping+type=cereal \
+	put=growing+get=stepping+type=trivial \
 
 
 default: test

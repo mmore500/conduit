@@ -1,6 +1,10 @@
 TEST_NAMES := \
-	get=skipping \
-	get=stepping \
+	accumulating+type=fundamental \
+	get=skipping+type=span \
+	get=skipping+type=trivial \
+	get=stepping+type=cereal \
+	get=stepping+type=span \
+	get=stepping+type=trivial \
 	templated \
 
 
