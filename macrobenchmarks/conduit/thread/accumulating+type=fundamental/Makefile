@@ -1,5 +1,5 @@
 BENCH_NAMES := \
-	AtomicAccumulatingDuct \
+	f\:\:AtomicAccumulatingDuct \
 
 
 MPICXX ?= mpic++

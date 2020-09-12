@@ -5,7 +5,7 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/proc/backend/impl/InletMemoryPool.hpp"
 #include "uit/conduit/proc/backend/impl/PoolSpec.hpp"
-#include "uit/conduit/proc/put=dropping+get=skipping+type=span/inlet=VectorRingIsend+outlet=VectorBlockIrecv_IvriOvbiDuct.hpp"
+#include "uit/conduit/proc/put=dropping+get=skipping+type=span/inlet=RingIsend+outlet=BlockIrecv_s::IriObiDuct.hpp"
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 
@@ -16,7 +16,7 @@ TEST_CASE("Test InletMemoryPool") {
   // TODO flesh out stub test
   using PoolSpec_t = uit::PoolSpec<
     uit::ImplSpec<char>,
-    uit::IvriOvbiDuct
+    uit::s::IriObiDuct
   >;
   uit::InletMemoryPool<PoolSpec_t>{};
 

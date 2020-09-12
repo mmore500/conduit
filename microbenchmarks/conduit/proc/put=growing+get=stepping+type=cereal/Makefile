@@ -1,8 +1,8 @@
 BENCH_NAMES := \
-  #inlet=CerealRsend+outlet=CerealIprobe_IcrOciDuct \
-	inlet=CerealDequeIsend+outlet=CerealIprobe_IcdiOciDuct \
-	inlet=CerealDequeIrsend+outlet=CerealIprobe_IcdirOciDuct \
-	inlet=CerealDequeIrsend+outlet=CerealIprobe_IcdirOciDuct \
+  #inlet=Rsend+outlet=Iprobe_c\:\:IrOiDuct \
+	inlet=DequeIsend+outlet=Iprobe_c\:\:IdiOiDuct \
+	inlet=DequeIrsend+outlet=Iprobe_c\:\:IdirOiDuct \
+	inlet=DequeIrsend+outlet=Iprobe_c\:\:IdirOiDuct \
 
 
 SHELL := /bin/bash

@@ -2,9 +2,9 @@
 
 #include "config.hpp"
 
-#include "intra/put=dropping+get=stepping+type=any/SerialPendingDuct.hpp"
-#include "proc/put=dropping+get=stepping+type=trivial/inlet=RingIsend+outlet=RingIrecv_IriOriDuct.hpp"
-#include "thread/put=dropping+get=stepping+type=any/AtomicPendingDuct.hpp"
+#include "intra/put=dropping+get=stepping+type=any/a::SerialPendingDuct.hpp"
+#include "proc/put=dropping+get=stepping+type=trivial/inlet=RingIsend+outlet=RingIrecv_t::IriOriDuct.hpp"
+#include "thread/put=dropping+get=stepping+type=any/a::AtomicPendingDuct.hpp"
 
 namespace uit {
 
@@ -17,9 +17,9 @@ namespace uit {
  * @tparam ProcDuct_ Implementation to use for inter-process transmission
  */
 template<
-  template<typename> typename IntraDuct_ = uit::SerialPendingDuct,
-  template<typename> typename ThreadDuct_ = uit::AtomicPendingDuct,
-  template<typename> typename ProcDuct_ = uit::IriOriDuct
+  template<typename> typename IntraDuct_ = uit::a::SerialPendingDuct,
+  template<typename> typename ThreadDuct_ = uit::a::AtomicPendingDuct,
+  template<typename> typename ProcDuct_ = uit::t::IriOriDuct
 >
 struct ImplSelect {
 

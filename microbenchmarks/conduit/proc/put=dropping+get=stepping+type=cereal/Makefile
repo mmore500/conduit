@@ -1,6 +1,6 @@
 BENCH_NAMES := \
-	#inlet=CerealRingIsend+outlet=CerealIprobe_IcriOci \
-	inlet=CerealringIrsend+outlet=CerealIprobe_IcrirOciDuct \
+	#inlet=RingIsend+outlet=Iprobe_c\:\:IriOi \
+	inlet=RingIrsend+outlet=Iprobe_c\:\:IrirOiDuct \
 
 
 SHELL := /bin/bash

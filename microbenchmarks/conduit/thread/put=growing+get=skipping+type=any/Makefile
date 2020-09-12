@@ -1,6 +1,6 @@
 BENCH_NAMES := \
-	AtomicSconceDuct \
-	MutexSconceDuct \
+	a\:\:AtomicSconceDuct \
+	a\:\:MutexSconceDuct \
 
 
 MPICXX ?= mpic++

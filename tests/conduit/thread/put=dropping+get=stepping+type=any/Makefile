@@ -1,7 +1,7 @@
 TEST_NAMES := \
-	AtomicPendingDuct \
-	BoundedMoodyCamelDuct \
-	RigtorpDuct \
+	a\:\:AtomicPendingDuct \
+	a\:\:BoundedMoodyCamelDuct \
+	a\:\:RigtorpDuct \
 
 
 MPICXX ?= mpic++

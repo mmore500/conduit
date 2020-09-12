@@ -1,5 +1,5 @@
 BENCH_NAMES := \
-	DequeDuct \
+	a\:\:DequeDuct \
 
 
 MPICXX ?= mpic++

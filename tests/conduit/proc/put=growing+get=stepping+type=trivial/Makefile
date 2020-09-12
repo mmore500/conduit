@@ -1,8 +1,8 @@
 TEST_NAMES := \
-	inlet=DequeIsend+outlet=RingIrecv_IdiOriDuct \
-	#inlet=Rsend+outlet=RingIrecv+IrOri \
-	inlet=Send+outlet=RingIrecv_IsOriDuct \
-	inlet=DequeIrsend+outlet=RingIrecv_IdirOriDuct \
+	inlet=DequeIsend+outlet=RingIrecv_t\:\:IdiOriDuct \
+	#inlet=Rsend+outlet=RingIrecv_t\:\:IrOri \
+	inlet=Send+outlet=RingIrecv_t\:\:IsOriDuct \
+	inlet=DequeIrsend+outlet=RingIrecv_t\:\:IdirOriDuct \
 
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/

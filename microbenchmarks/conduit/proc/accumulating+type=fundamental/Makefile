@@ -1,6 +1,6 @@
 BENCH_NAMES := \
-	inlet=Accumulate+outlet=WithdrawingWindow_IaOwwDuct \
-	inlet=Raccumulate+outlet=WithdrawingWindow_IrOwwDuct \
+	inlet=Accumulate+outlet=WithdrawingWindow_f\:\:IaOwwDuct \
+	inlet=Raccumulate+outlet=WithdrawingWindow_f\:\:IrOwwDuct \
 
 
 SHELL := /bin/bash

@@ -1,7 +1,7 @@
 BENCH_NAMES := \
-  #inlet=Rsend+outlet=RingIrecv_IrOri \
-	inlet=DequeIsend+outlet=RingIrecv_IdiOriDuct \
-	inlet=DequeIrsend+outlet=RingIrecv_IdirOriDuct \
+  #inlet=Rsend+outlet=RingIrecv_t\:\:IrOri \
+	inlet=DequeIsend+outlet=RingIrecv_t\:\:IdiOriDuct \
+	inlet=DequeIrsend+outlet=RingIrecv_t\:\:IdirOriDuct \
 
 
 SHELL := /bin/bash

@@ -7,7 +7,7 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/InterProcAddress.hpp"
 #include "uit/conduit/proc/inlet/templated/PooledInletDuct.hpp"
-#include "uit/conduit/proc/put=dropping+get=skipping+type=span/inlet=VectorRingIsend+outlet=VectorBlockIrecv_IvriOvbiDuct.hpp"
+#include "uit/conduit/proc/put=dropping+get=skipping+type=span/inlet=RingIsend+outlet=BlockIrecv_s::IriObiDuct.hpp"
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/debug/MultiprocessReporter.hpp"
 
@@ -17,7 +17,7 @@ TEST_CASE("Test PooledInletDuct") {
 
   using ImplSpec = uit::ImplSpec<char>;
   using BackEnd = uit::PooledInletDuct<
-    uit::IvriOvbiDuct,
+    uit::s::IriObiDuct,
     ImplSpec
   >::BackEndImpl;
 
@@ -25,7 +25,7 @@ TEST_CASE("Test PooledInletDuct") {
   uit::InterProcAddress address;
   std::shared_ptr<BackEnd> backing{ std::make_shared<BackEnd>() };
   uit::PooledInletDuct<
-    uit::IvriOvbiDuct,
+    uit::s::IriObiDuct,
     ImplSpec
   >{ address, backing };
 

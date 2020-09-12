@@ -1,7 +1,7 @@
 TEST_NAMES := \
-	inlet=RingIsend+outlet=BlockIrecv_IriObiDuct \
-	inlet=RingRput+outlet=Window_IrrOwDuct \
-	#pooled+inlet=VectorRingIsend+outlet=VectorBlockIrecv_PooledIvriOvbiDuct \
+	inlet=RingIsend+outlet=BlockIrecv_t\:\:IriObiDuct \
+	inlet=RingRput+outlet=Window_t\:\:IrrOwDuct \
+	#pooled+inlet=RingIsend+outlet=BlockIrecv_t\:\:PooledIriObiDuct \
 
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/

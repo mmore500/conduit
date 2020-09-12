@@ -1,6 +1,6 @@
 BENCH_NAMES := \
-	HeadTailDuct \
-	SerialPendingDuct \
+	a\:\:HeadTailDuct \
+	a\:\:SerialPendingDuct \
 
 
 MPICXX ?= mpic++

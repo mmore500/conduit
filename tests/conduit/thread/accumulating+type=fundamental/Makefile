@@ -1,5 +1,5 @@
 TEST_NAMES := \
-	AtomicAccumulatingDuct \
+	f\:\:AtomicAccumulatingDuct \
 
 
 MPICXX ?= mpic++

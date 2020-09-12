@@ -1,8 +1,8 @@
 TEST_NAMES := \
-	CerealDequeIrsendDuct \
-	CerealDequeIsendDuct \
-	CerealRsendDuct \
-	CerealSendDuct \
+	c\:\:DequeIrsendDuct \
+	c\:\:DequeIsendDuct \
+	c\:\:RsendDuct \
+	c\:\:SendDuct \
 
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../../include/ -I../../../../../source/ -I../../../../../third-party/

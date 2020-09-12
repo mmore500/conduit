@@ -1,8 +1,8 @@
 TEST_NAMES := \
-	inlet=CerealDequeIsend+outlet=CerealIprobe_IcdiOciDuct \
-	inlet=CerealSend+outlet=CerealIprobe_IcsOciDuct \
-	#inlet=CerealDequeIrsend+outlet=CerealIprobe_IcdirOciDuct \
-	inlet=CerealRsend+outlet=CerealIprobe_IcrOciDuct \
+	inlet=DequeIsend+outlet=Iprobe_c\:\:IdiOiDuct \
+	inlet=Send+outlet=Iprobe_c\:\:IsOiDuct \
+	#inlet=DequeIrsend+outlet=Iprobe_c\:\:IdirOiDuct \
+	inlet=Rsend+outlet=Iprobe_c\:\:IrOiDuct \
 
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/

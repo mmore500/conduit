@@ -1,6 +1,6 @@
 TEST_NAMES := \
-	#inlet=Accumulate+outlet=WithdrawingWindow_IaOwwDuct \
-	inlet=Raccumulate+outlet=WithdrawingWindow_IrOwwDuct \
+	#inlet=Accumulate+outlet=WithdrawingWindow_f\:\:IaOwwDuct \
+	inlet=Raccumulate+outlet=WithdrawingWindow_f\:\:IrOwwDuct \
 
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/

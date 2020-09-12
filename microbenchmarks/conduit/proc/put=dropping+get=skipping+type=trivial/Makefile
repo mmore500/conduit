@@ -1,7 +1,7 @@
 BENCH_NAMES := \
-	inlet=RingIsend+outlet=BlockIrecv_IriObiDuct \
-	inlet=RingIrsend+outlet=BlockIrecv_IrirObiDuct \
-	inlet=RingRput+outlet=Window_IrrOwDuct \
+	inlet=RingIsend+outlet=BlockIrecv_t\:\:IriObiDuct \
+	inlet=RingIrsend+outlet=BlockIrecv_t\:\:IrirObiDuct \
+	inlet=RingRput+outlet=Window_t\:\:IrrOwDuct \
 
 
 SHELL := /bin/bash

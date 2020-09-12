@@ -1,6 +1,6 @@
 BENCH_NAMES := \
-	inlet=RingIsend+outlet=RingIrecv_IriOriDuct \
-	inlet=RingIrsend+outlet=RingIrecv_IrirOriDuct \
+	inlet=RingIsend+outlet=RingIrecv_t\:\:IriOriDuct \
+	inlet=RingIrsend+outlet=RingIrecv_t\:\:IrirOriDuct \
 
 
 SHELL := /bin/bash

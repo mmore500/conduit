@@ -1,5 +1,5 @@
 BENCH_NAMES := \
-	#UnboundedMoodyCamelDuct \
+	#a\:\:UnboundedMoodyCamelDuct \
 
 
 MPICXX ?= mpic++

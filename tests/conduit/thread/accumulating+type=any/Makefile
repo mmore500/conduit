@@ -1,5 +1,5 @@
 TEST_NAMES := \
-	MutexAccumulatingDuct \
+	a\:\:MutexAccumulatingDuct \
 
 
 MPICXX ?= mpic++

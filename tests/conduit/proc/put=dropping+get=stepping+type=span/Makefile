@@ -1,6 +1,6 @@
 TEST_NAMES := \
-	inlet=VectorRingIsend+outlet=VectorIprobe_IvriOviDuct \
-	#inlet=VectorRingIrsend+outlet=VectorIprobe_IvrirOviDuct \
+	inlet=RingIsend+outlet=Iprobe_s\:\:IriOiDuct \
+	#inlet=RingIrsend+outlet=Iprobe_s\:\:IrirOiDuct \
 
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/

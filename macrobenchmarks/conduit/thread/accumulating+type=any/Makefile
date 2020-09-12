@@ -1,5 +1,5 @@
 BENCH_NAMES := \
-	MutexAccumulatingDuct \
+	a\:\:MutexAccumulatingDuct \
 
 
 MPICXX ?= mpic++
