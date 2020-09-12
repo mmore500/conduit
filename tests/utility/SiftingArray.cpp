@@ -16,6 +16,8 @@ TEST_CASE("Test SiftingArray") {
   for (size_t i = 0; i < buff_size; ++i) {
     REQUIRE( buff.GetSize() == i );
     buff.PushBack( i );
+    REQUIRE( buff.Front() == 0 );
+    REQUIRE( buff.Back() == i );
     REQUIRE( buff.Get( i ) == i );
   }
 

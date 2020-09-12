@@ -64,6 +64,14 @@ public:
     return data[i];
   }
 
+  T& Front() { emp_assert( num_items ); return Get(0); }
+
+  const T& Front() const { emp_assert( num_items ); return Get(0); }
+
+  T& Back() { emp_assert( num_items ); return Get(num_items - 1); }
+
+  const T& Back() const { emp_assert( num_items ); return Get(num_items - 1); }
+
   void PushBack(const T& val=T{}) {
     emp_assert( num_items < N );
     ++num_items;
