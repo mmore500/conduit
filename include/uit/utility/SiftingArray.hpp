@@ -85,6 +85,13 @@ public:
     Get(num_items - 1) = std::forward<P>(val);
   }
 
+  bool PopBack() {
+    if ( GetSize() ) {
+      --num_items;
+      return true;
+    } else return false;
+  }
+
   T* begin() { return data.data(); }
 
   const T* begin() const { return data.data(); }
