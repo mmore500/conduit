@@ -11,6 +11,7 @@ TEST_NAMES := \
 	RingBuffer \
 	safe_compare \
 	ScopeGuard \
+	SiftingArray \
 	spector \
 	Uninitialized \
 	ValueInitialized \
