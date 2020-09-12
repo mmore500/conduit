@@ -128,7 +128,7 @@ public:
    * TODO.
    *
    */
-  void Flush() const { ; }
+  bool Flush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on RaccumulateDuct";

@@ -65,7 +65,7 @@ public:
     throw "TryPut called on PooledOutletDuct";
   }
 
-  [[noreturn]] void Flush() const {
+  [[noreturn]] bool Flush() const {
     throw "Flush called on PooledOutletDuct";
   }
 
