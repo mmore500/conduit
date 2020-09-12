@@ -12,7 +12,7 @@
 
 #include "../../../../debug/err_audit.hpp"
 #include "../../../../mpi/mpi_utils.hpp"
-#include "../../../../utility/MirroredRingBuffer.hpp"
+#include "../../../../utility/SiftingArray.hpp"
 #include "../../../../utility/print_utils.hpp"
 #include "../../../../utility/RingBuffer.hpp"
 
@@ -43,9 +43,7 @@ private:
 
   // one extra in the data buffer to hold the current get
   uit::RingBuffer<T, N + 1> data;
-  // TODO a ring buffer where requests are copied to be contiguous
-  // might be more efficient w.r.t. caching
-  uit::MirroredRingBuffer<MPI_Request, N> requests;
+  uit::SiftingArray<MPI_Request, N> requests;
 
   const uit::InterProcAddress address;
 
@@ -53,11 +51,9 @@ private:
     uit::err_audit(!
       data.PushHead()
     );
-    uit::err_audit(!
-      requests.PushHead( MPI_REQUEST_NULL )
-    );
+    requests.PushBack( MPI_REQUEST_NULL );
 
-    emp_assert( uit::test_null( requests.GetHead() ) );
+    emp_assert( uit::test_null( requests.Back() ) );
     UIT_Irecv(
       &data.GetHead(),
       sizeof(T),
@@ -65,22 +61,22 @@ private:
       address.GetInletProc(),
       address.GetTag(),
       address.GetComm(),
-      requests.GetHeadPtr()
+      &requests.Back()
     );
-    emp_assert( !uit::test_null( requests.GetHead() ) );
+    emp_assert( !uit::test_null( requests.Back() ) );
 
   }
 
   void CancelReceiveRequest() {
-    emp_assert( !uit::test_null( requests.GetTail() ) );
+    emp_assert( !uit::test_null( requests.Back() ) );
 
-    UIT_Cancel(  requests.GetTailPtr() );
-    UIT_Request_free( requests.GetTailPtr() );
+    UIT_Cancel(  &requests.Back() );
+    UIT_Request_free( &requests.Back() );
 
-    emp_assert( uit::test_null( requests.GetTail() ) );
+    emp_assert( uit::test_null( requests.Back() ) );
 
     uit::err_audit(!  data.PopTail()  );
-    uit::err_audit(!  requests.PopTail()  );
+    uit::err_audit(!  requests.PopBack()  );
 
   }
 
@@ -88,25 +84,24 @@ private:
     while ( requests.GetSize() ) CancelReceiveRequest();
   }
 
-  // returns number of requests fulfilled
-  size_t TestRequests() {
+  void TestRequests() {
 
     // MPICH Testsome returns negative outcount for zero count calls
     // so let's boogie out early to avoid drama
-    if (requests.GetSize() == 0) return 0;
+    if (requests.GetSize() == 0) return;
 
     emp_assert( std::none_of(
-      requests.GetTailPtr(),
-      requests.GetPastHeadPtr(),
+      std::begin(requests),
+      std::end(requests),
       [](const auto& req){ return uit::test_null( req ); }
     ) );
 
     thread_local emp::array<int, N> out_indices; // ignored
-    int num_received{};
+    int num_received; // ignored
 
     UIT_Testsome(
       requests.GetSize(), // int count
-      requests.GetTailPtr(), // MPI_Request array_of_requests[]
+      requests.GetData(), // MPI_Request array_of_requests[]
       &num_received, // int *outcount
       out_indices.data(), // int *indices
       MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
@@ -115,24 +110,13 @@ private:
     emp_assert( num_received >= 0 );
     emp_assert( static_cast<size_t>(num_received) <= requests.GetSize() );
 
-    emp_assert( std::all_of(
-      requests.GetTailPtr(),
-      requests.GetTailPtr() + num_received,
-      [](const auto& req){ return uit::test_null( req ); }
-    ) );
-    emp_assert( std::none_of(
-      requests.GetTailPtr() + num_received,
-      requests.GetPastHeadPtr(),
-      [](const auto& req){ return uit::test_null( req ); }
-    ) );
-
-    return num_received;
   }
 
   void TryFulfillReceiveRequests() {
-    const size_t num_received = TestRequests();
-    const size_t res = requests.PopTail(num_received);
-    emp_assert( res == num_received );
+    TestRequests();
+    requests.SiftByValue(
+      [](const auto& request){ return request != MPI_REQUEST_NULL; }
+    );
   }
 
   /**
@@ -155,8 +139,8 @@ public:
     data.PushHead( T{} ); // value-initialized initial Get item
     for (size_t i = 0; i < N; ++i) PostReceiveRequest();
     emp_assert( std::none_of(
-      requests.GetTailPtr(),
-      requests.GetPastHeadPtr(),
+      std::begin(requests),
+      std::end(requests),
       [](const auto& req){ return uit::test_null( req ); }
     ) );
   }

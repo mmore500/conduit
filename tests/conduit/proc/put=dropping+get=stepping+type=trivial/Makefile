@@ -1,6 +1,6 @@
 TEST_NAMES := \
-	#inlet=RingIrsend+outlet=RingIrecv_t\:\:IrirOriDuct \
 	inlet=RingIsend+outlet=RingIrecv_t\:\:IriOriDuct \
+	#inlet=RingIrsend+outlet=RingIrecv_t\:\:IrirOriDuct \
 	pooled+inlet=RingIsend+outlet=Iprobe_t\:\:PooledIriOiDuct \
 
 
