@@ -1,4 +1,12 @@
-TEST_NAMES := accumulating put=dropping put=growing
+TEST_NAMES := \
+	accumulating+type=fundamental \
+	put=dropping+type=cereal\
+	put=dropping+type=span \
+	put=dropping+type=trivial \
+	put=growing+type=cereal \
+	put=growing+type=trivial \
+	templated \
+
 
 default: test
 

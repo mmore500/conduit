@@ -41,6 +41,12 @@ public:
   /**
    * TODO.
    *
+   */
+  void Flush() const { ; }
+
+  /**
+   * TODO.
+   *
    * @return TODO.
    */
   const T& Get() const { return val; }

@@ -1,4 +1,9 @@
-TEST_NAMES := deque list unordered_map vector
+TEST_NAMES := \
+	deque \
+	list \
+	unordered_map \
+	vector \
+
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../include/ -I../../../source/ -I../../../third-party/
 

@@ -162,6 +162,12 @@ public:
   /**
    * TODO.
    *
+   */
+  void Flush() { std::visit( [](auto& arg){ arg.Flush(); }, impl); }
+
+  /**
+   * TODO.
+   *
    * @return TODO.
    */
   const T& Get() const {

@@ -1,4 +1,14 @@
-TEST_NAMES := concurrent conduit containers debug distributed mesh mpi topology utility
+TEST_NAMES := \
+	concurrent \
+	conduit \
+	containers \
+	debug \
+	distributed \
+	mesh \
+	mpi \
+	topology \
+	utility \
+
 
 default: test
 

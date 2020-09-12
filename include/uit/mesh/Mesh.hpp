@@ -109,9 +109,11 @@ class Mesh {
     // assert that generated tags are unique
     emp_assert( tag_checker.insert(tag).second );
 
-    const InterProcAddress addr{
+    const uit::InterProcAddress addr{
       outlet_proc_id,
       inlet_proc_id,
+      thread_assignment(outlet_node_id),
+      thread_assignment(inlet_node_id),
       tag,
       comm
     };
@@ -136,6 +138,8 @@ class Mesh {
     const uit::InterProcAddress addr{
       outlet_proc_id,
       inlet_proc_id,
+      thread_assignment(outlet_node_id),
+      thread_assignment(inlet_node_id),
       uit::combine_tag(mesh_id, output.GetEdgeID()),
       comm
     };

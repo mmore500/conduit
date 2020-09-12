@@ -1,4 +1,10 @@
-TEST_NAMES := accumulating put=dropping+get=stepping put=growing+get=skipping put=growing+get=stepping
+TEST_NAMES := \
+	accumulating+type=any \
+	accumulating+type=fundamental \
+	put=dropping+get=stepping+type=any \
+	put=growing+get=skipping+type=any \
+	put=growing+get=stepping+type=any \
+
 
 default: test
 

@@ -2,9 +2,9 @@
 
 #include "config.hpp"
 
-#include "intra/put=dropping+get=stepping/SerialPendingDuct.hpp"
-#include "proc/put=dropping+get=stepping/RingRingImsgDuct.hpp"
-#include "thread/put=dropping+get=stepping/AtomicPendingDuct.hpp"
+#include "intra/put=dropping+get=stepping+type=any/a::SerialPendingDuct.hpp"
+#include "proc/put=dropping+get=stepping+type=trivial/inlet=RingIsend+outlet=RingIrecv_t::IriOriDuct.hpp"
+#include "thread/put=dropping+get=stepping+type=any/a::AtomicPendingDuct.hpp"
 
 namespace uit {
 
@@ -17,9 +17,9 @@ namespace uit {
  * @tparam ProcDuct_ Implementation to use for inter-process transmission
  */
 template<
-  template<typename> typename IntraDuct_ = uit::SerialPendingDuct,
-  template<typename> typename ThreadDuct_ = uit::AtomicPendingDuct,
-  template<typename> typename ProcDuct_ = uit::RingRingImsgDuct
+  template<typename> typename IntraDuct_ = uit::a::SerialPendingDuct,
+  template<typename> typename ThreadDuct_ = uit::a::AtomicPendingDuct,
+  template<typename> typename ProcDuct_ = uit::t::IriOriDuct
 >
 struct ImplSelect {
 
@@ -68,6 +68,9 @@ public:
   using ProcOutletDuct = typename ImplSelect::template
     ProcDuct<THIS_T>::OutletImpl;
 
+  /// TODO.
+  using ProcBackEnd = typename ImplSelect::template
+    ProcDuct<THIS_T>::BackEndImpl;
 
   // TODO add static ToString
 
@@ -84,27 +87,12 @@ public:
  * implementations to use for intra-thread, inter-thread, and inter-process
  * transmission.
  *
- * @note The type `T_` should be *TriviallyCopyable*.
  */
 template<
   typename T,
   size_t N=DEFAULT_BUFFER,
   typename ImplSelect=uit::ImplSelect<>
 >
-class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect> {
-
-  using parent_t = internal::ImplSpecKernel<T, N, ImplSelect>;
-
-  static_assert(std::is_same<
-    typename parent_t::ProcInletDuct::BackEndImpl,
-    typename parent_t::ProcOutletDuct::BackEndImpl
-  >::value);
-
-public:
-
-  // TODO.
-  using ProcBackEnd = typename parent_t::ProcInletDuct::BackEndImpl;
-
-};
+class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect> { };
 
 } // namespace uit

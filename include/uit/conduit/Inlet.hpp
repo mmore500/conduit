@@ -151,6 +151,12 @@ public:
   /**
    * TODO.
    *
+   */
+  void Flush() { duct->Flush(); }
+
+  /**
+   * TODO.
+   *
    * @return TODO.
    */
   size_t GetSuccessfulPutCount() const { return successful_put_count; }

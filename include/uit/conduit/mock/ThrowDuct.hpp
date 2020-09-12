@@ -39,6 +39,12 @@ public:
   }
 
   /**
+   * TODO.
+   *
+   */
+  [[noreturn]] void Flush() const { throw "Flush called on ThrowDuct"; }
+
+  /**
   * TODO.
   *
   * @throws TODO.
