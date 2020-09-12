@@ -163,7 +163,12 @@ public:
    * TODO.
    *
    */
-  void Flush() { std::visit( [](auto& arg){ arg.Flush(); }, impl); }
+  bool Flush() {
+    return std::visit(
+      [](auto& arg) -> bool { return arg.Flush(); },
+      impl
+    );
+  }
 
   /**
    * TODO.

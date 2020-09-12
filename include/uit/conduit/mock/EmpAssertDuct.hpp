@@ -44,7 +44,7 @@ public:
    * TODO.
    *
    */
-  [[noreturn]] void Flush() const {
+  [[noreturn]] bool Flush() const {
     emp_assert(false, "Flush called on EmpAssertDuct");
   }
 

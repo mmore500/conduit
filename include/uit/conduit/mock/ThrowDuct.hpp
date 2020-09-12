@@ -42,7 +42,7 @@ public:
    * TODO.
    *
    */
-  [[noreturn]] void Flush() const { throw "Flush called on ThrowDuct"; }
+  [[noreturn]] bool Flush() const { throw "Flush called on ThrowDuct"; }
 
   /**
   * TODO.

@@ -78,7 +78,7 @@ public:
    * TODO.
    *
    */
-  void Flush() { ; }
+  bool Flush() { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on PooledInletDuct";

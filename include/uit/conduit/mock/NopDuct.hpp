@@ -42,7 +42,7 @@ public:
    * TODO.
    *
    */
-  void Flush() const { ; }
+  bool Flush() const { return true; }
 
   /**
    * TODO.
