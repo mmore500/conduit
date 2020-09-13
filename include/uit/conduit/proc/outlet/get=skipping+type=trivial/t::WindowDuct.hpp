@@ -92,7 +92,7 @@ public:
 
   [[noreturn]] bool TryPut(const T&) { throw "TryPut called on WindowDuct"; }
 
-  [[noreturn]] bool Flush() const { throw "Flush called on WindowDuct"; }
+  [[noreturn]] bool TryFlush() const { throw "Flush called on WindowDuct"; }
 
   size_t TryConsumeGets(const size_t requested) {
     emp_assert( requested == std::numeric_limits<size_t>::max() );

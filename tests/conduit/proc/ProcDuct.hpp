@@ -179,7 +179,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
   UIT_Barrier( MPI_COMM_WORLD );
 
   output.Put(42);
-  output.Flush();
+  output.TryFlush();
   while( input.JumpGet() != 42);
 
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) {
@@ -196,7 +196,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   REQUIRE( input.JumpGet() <= 2 * DEFAULT_BUFFER );
 
-  output.Flush();
+  output.TryFlush();
 
   REQUIRE( input.JumpGet() <= 2 * DEFAULT_BUFFER );
 
@@ -210,14 +210,14 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
   for (MSG_T i = 0; i <= 2 * DEFAULT_BUFFER; ++i) output.TryPut(0);
 
-  output.Flush();
+  output.TryFlush();
 
   while ( !output.TryPut( 1 ) ) {
     const auto res{ input.JumpGet() }; // operational!
     REQUIRE( std::unordered_set{0, 1}.count(res) );
   }
 
-  output.Flush();
+  output.TryFlush();
 
   while ( input.JumpGet() != 1 ) {
     const auto res{ input.JumpGet() }; // operational!
@@ -238,7 +238,7 @@ TEST_CASE("Validity") { REPEAT {
   for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
 
     output.TryPut(msg);
-    output.Flush();
+    output.TryFlush();
 
     const MSG_T current = input.JumpGet();
     REQUIRE( current >= 0 );
@@ -262,7 +262,7 @@ TEST_CASE("Multi-bridge Validity") { REPEAT {
 
     for (auto& output : outputs) {
       output.TryPut(msg);
-      output.Flush();
+      output.TryFlush();
     }
 
     for (size_t i = 0; i < inputs.size(); ++i) {

@@ -94,7 +94,7 @@ public:
     throw "TryPut called on WithdrawingWindowDuct";
   }
 
-  [[noreturn]] bool Flush() const {
+  [[noreturn]] bool TryFlush() const {
     throw "Flush called on WithdrawingWindowDuct";
   }
 

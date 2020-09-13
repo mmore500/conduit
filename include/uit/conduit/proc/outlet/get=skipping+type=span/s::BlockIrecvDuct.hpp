@@ -166,7 +166,7 @@ public:
     throw "TryPut called on BlockIrecvDuct";
   }
 
-  [[noreturn]] bool Flush() const {
+  [[noreturn]] bool TryFlush() const {
     throw "Flush called on BlockIrecvDuct";
   }
 

@@ -163,9 +163,9 @@ public:
    * TODO.
    *
    */
-  bool Flush() {
+  bool TryFlush() {
     return std::visit(
-      [](auto& arg) -> bool { return arg.Flush(); },
+      [](auto& arg) -> bool { return arg.TryFlush(); },
       impl
     );
   }

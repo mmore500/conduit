@@ -87,7 +87,7 @@ public:
    * TODO.
    *
    */
-  bool Flush() {
+  bool TryFlush() {
     if ( buffer.size() ) return inlet.TryPut( std::move(buffer) );
     else return true;
   }

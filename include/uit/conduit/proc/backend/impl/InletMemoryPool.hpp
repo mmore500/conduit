@@ -37,15 +37,13 @@ class InletMemoryPool {
 
   using value_type = typename PoolSpec::T::value_type;
 
-  void Flush() {
-    if ( ++flush_counter == addresses.size() ) {
-      flush_counter = 0;
-      put_status = inlet->TryPut( std::move(buffer) );
-      buffer.resize( addresses.size() );
-      #ifndef NDEBUG
-        index_checker.clear();
-      #endif
-    }
+  void FlushPool() {
+    flush_counter = 0;
+    put_status = inlet->TryPut( std::move(buffer) );
+    buffer.resize( addresses.size() );
+    #ifndef NDEBUG
+      index_checker.clear();
+    #endif
   }
 
   void CheckCallingProc() const {
@@ -86,7 +84,7 @@ public:
 
     const bool res = put_status;
 
-    Flush();
+    if ( ++flush_counter == addresses.size() ) FlushPool();
 
     return res;
 

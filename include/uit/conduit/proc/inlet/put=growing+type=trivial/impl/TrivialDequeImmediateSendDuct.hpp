@@ -119,7 +119,7 @@ public:
    * TODO.
    *
    */
-  bool Flush() const { return true; }
+  bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on TrivialDequeImmediateSendDuct";

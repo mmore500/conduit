@@ -152,7 +152,7 @@ public:
    * TODO.
    *
    */
-  bool Flush() { return duct->Flush(); }
+  bool TryFlush() { return duct->TryFlush(); }
 
   /**
    * TODO.
