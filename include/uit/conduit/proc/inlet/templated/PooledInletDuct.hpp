@@ -78,7 +78,7 @@ public:
    * TODO.
    *
    */
-  bool TryFlush() { return true; }
+  bool TryFlush() { return back_end->get().TryFlush(); }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on PooledInletDuct";

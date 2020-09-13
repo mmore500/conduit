@@ -26,24 +26,25 @@ class InletMemoryPool {
 
   // incremented every time TryPut is called
   // then reset to zero once every member of the pool has called
-  size_t flush_counter{};
+  size_t pending_put_counter{};
   // did the most recent put request succeed?
   // (can we put new entries in the buffer?)
-  bool put_status{ true };
+  bool last_put_status{ true };
 
   #ifndef NDEBUG
-    std::unordered_set<size_t> index_checker;
+    std::unordered_set<size_t> put_index_checker;
   #endif
 
   using value_type = typename PoolSpec::T::value_type;
 
-  void FlushPool() {
-    flush_counter = 0;
-    put_status = inlet->TryPut( std::move(buffer) );
+  bool PutPool() {
+    pending_put_counter = 0;
+    const bool res = inlet->TryPut( std::move(buffer) );
     buffer.resize( addresses.size() );
     #ifndef NDEBUG
-      index_checker.clear();
+      put_index_checker.clear();
     #endif
+    return res;
   }
 
   void CheckCallingProc() const {
@@ -77,17 +78,26 @@ public:
     emp_assert( IsInitialized() );
     CheckCallingProc();
 
-    if (put_status) {
+    if ( last_put_status ) {
       buffer[index] = val;
-      emp_assert( index_checker.insert(index).second );
+      emp_assert( put_index_checker.insert(index).second );
     }
 
-    const bool res = put_status;
+    const bool res = last_put_status;
 
-    if ( ++flush_counter == addresses.size() ) FlushPool();
+    if ( ++pending_put_counter == addresses.size() ) {
+      last_put_status = PutPool();
+    }
 
     return res;
 
+  }
+
+  bool TryFlush() {
+    emp_assert( IsInitialized() );
+    CheckCallingProc();
+
+    return inlet->TryFlush();
   }
 
   /// Call after all members have requested a position in the pool.
