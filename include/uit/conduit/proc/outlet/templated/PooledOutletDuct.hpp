@@ -76,7 +76,6 @@ public:
    * @return number items consumed.
    */
   size_t TryConsumeGets(const size_t num_requested) {
-    emp_assert( num_requested == std::numeric_limits<size_t>::max() );
 
     if (!pool.has_value()) SetupPool();
     return pool->get().TryConsumeGets(num_requested, address);

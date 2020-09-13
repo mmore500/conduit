@@ -16,6 +16,7 @@ public:
 
   using T = emp::vector<typename ImplSpec::T>;
   constexpr inline static size_t N{ ImplSpec::N };
+  constexpr inline static size_t B{ ImplSpec::B };
 
   using IntraDuct = uit::ThrowDuct<THIS_T>;
   using ThreadDuct = uit::ThrowDuct<THIS_T>;

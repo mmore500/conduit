@@ -1,4 +1,5 @@
 TEST_NAMES := \
+	BufferedOutletDuct \
 	PooledOutletDuct \
 
 

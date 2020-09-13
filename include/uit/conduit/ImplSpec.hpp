@@ -38,13 +38,14 @@ namespace internal {
 
 template<
   typename T_,
-  size_t N_=DEFAULT_BUFFER,
-  typename ImplSelect=uit::ImplSelect<>
+  size_t N_,
+  typename ImplSelect,
+  size_t B_
 >
 class ImplSpecKernel {
 
   /// TODO.
-  using THIS_T = ImplSpecKernel<T_, N_, ImplSelect>;
+  using THIS_T = ImplSpecKernel<T_, N_, ImplSelect, B_>;
 
 public:
 
@@ -53,6 +54,10 @@ public:
 
   /// TODO.
   constexpr inline static size_t N{ N_ };
+
+  /// TODO.
+  /// TODO.
+  constexpr inline static size_t B{ B_ };
 
   /// TODO.
   using IntraDuct = typename ImplSelect::template IntraDuct<THIS_T>;
@@ -91,8 +96,9 @@ public:
 template<
   typename T,
   size_t N=DEFAULT_BUFFER,
-  typename ImplSelect=uit::ImplSelect<>
+  typename ImplSelect=uit::ImplSelect<>,
+  size_t B=std::numeric_limits<size_t>::max()
 >
-class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect> { };
+class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect, B> { };
 
 } // namespace uit
