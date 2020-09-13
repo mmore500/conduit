@@ -65,10 +65,12 @@ private:
     do {
 
       emp_assert( !outlet.Get().empty() );
-      emp_assert( std::distance( current, std::end(outlet.Get()) ) >= 0 );
+      emp_assert(std::distance(std::next(current),std::end(outlet.Get())) >= 0);
 
       const size_t cur_step = std::min(
-        static_cast<size_t>( std::distance( current, std::end(outlet.Get()) ) ),
+        static_cast<size_t>(
+          std::distance( std::next(current), std::end(outlet.Get()) )
+        ),
         num_requested_countdown
       );
       current += cur_step;
@@ -77,7 +79,12 @@ private:
     } while(
       num_requested_countdown
       && outlet.TryConsumeGets( 1 )
-      && [this](){ current = std::begin(outlet.Get()); return true; }()
+      && [this, &num_requested_countdown](){
+        current = std::begin(outlet.Get());
+        --num_requested_countdown;
+        return true;
+      }()
+      && num_requested_countdown
     );
 
     return num_requested - num_requested_countdown;

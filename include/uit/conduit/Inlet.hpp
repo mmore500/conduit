@@ -157,6 +157,12 @@ public:
   /**
    * TODO.
    *
+   */
+  void Flush() { while( !TryFlush() ); }
+
+  /**
+   * TODO.
+   *
    * @return TODO.
    */
   size_t GetSuccessfulPutCount() const { return successful_put_count; }

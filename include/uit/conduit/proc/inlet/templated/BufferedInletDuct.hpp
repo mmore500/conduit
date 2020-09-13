@@ -88,7 +88,11 @@ public:
    *
    */
   bool TryFlush() {
-    if ( buffer.size() ) return inlet.TryPut( std::move(buffer) );
+    if ( buffer.size() ) {
+      const bool res = inlet.TryPut( std::move(buffer) );
+      buffer.clear();
+      return res;
+    }
     else return true;
   }
 

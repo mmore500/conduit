@@ -1,5 +1,4 @@
 TEST_NAMES := \
-	buffered+inlet=RingIsend+outlet=BlockIrecv_t\:\:BufferedIriObiDuct \
 	inlet=RingIsend+outlet=BlockIrecv_t\:\:IriObiDuct \
 	inlet=RingRput+outlet=Window_t\:\:IrrOwDuct \
 	#pooled+inlet=RingIsend+outlet=BlockIrecv_t\:\:PooledIriObiDuct \

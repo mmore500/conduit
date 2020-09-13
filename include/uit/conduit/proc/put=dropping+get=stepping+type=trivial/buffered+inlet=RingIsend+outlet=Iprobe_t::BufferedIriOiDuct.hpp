@@ -17,7 +17,7 @@ namespace t {
  * implementation details for the conduit framework.
  */
 template<typename ImplSpec>
-class BufferedIriObiDuct {
+class BufferedIriOiDuct {
 
   template<typename Spec>
   using BackingDuct = uit::s::IriOiDuct<Spec>;
