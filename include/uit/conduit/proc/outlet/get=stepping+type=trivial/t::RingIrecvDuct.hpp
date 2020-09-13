@@ -158,7 +158,7 @@ public:
    * TODO.
    *
    */
-  [[noreturn]] void Flush() const { throw "Flush called on RingIrecvDuct"; }
+  [[noreturn]] bool Flush() const { throw "Flush called on RingIrecvDuct"; }
 
   /**
    * TODO.

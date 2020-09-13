@@ -45,8 +45,6 @@ private:
   using buffer_t = uit::RingBuffer<std::tuple<T, uit::Request>, N>;
   buffer_t buffer{};
 
-  size_t pending_sends{};
-
   const uit::InterProcAddress address;
 
   void PostSendRequest() {
@@ -123,7 +121,7 @@ public:
 
   ~TrivialRingImmediateSendDuct() {
     FlushFinalizedSends();
-    while (pending_sends) CancelPendingSend();
+    while ( buffer.GetSize() ) CancelPendingSend();
   }
 
   /**
@@ -139,7 +137,7 @@ public:
   /**
    * TODO.
    */
-  void Flush() const { ; }
+  bool Flush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on TrivialRingImmediateSendDuct";

@@ -133,7 +133,7 @@ public:
    * TODO.
    *
    */
-  [[noreturn]] void Flush() const { throw "Flush called on IprobeDuct"; }
+  [[noreturn]] bool Flush() const { throw "Flush called on IprobeDuct"; }
 
   /**
    * TODO.
