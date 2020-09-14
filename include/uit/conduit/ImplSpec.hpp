@@ -8,6 +8,15 @@
 
 namespace uit {
 
+template<typename Spec>
+using DefaultIntraDuct = uit::a::SerialPendingDuct<Spec>;
+
+template<typename Spec>
+using DefaultThreadDuct = uit::a::AtomicPendingDuct<Spec>;
+
+template<typename Spec>
+using DefaultProcDuct = uit::t::IriOriDuct<Spec>;
+
 /**
  * Specifies the `Duct` implementations to be used for intra-thread, inter-
  * thread, and inter-process transmission.
@@ -17,9 +26,9 @@ namespace uit {
  * @tparam ProcDuct_ Implementation to use for inter-process transmission
  */
 template<
-  template<typename> typename IntraDuct_ = uit::a::SerialPendingDuct,
-  template<typename> typename ThreadDuct_ = uit::a::AtomicPendingDuct,
-  template<typename> typename ProcDuct_ = uit::t::IriOriDuct
+  template<typename> typename IntraDuct_ = uit::DefaultIntraDuct,
+  template<typename> typename ThreadDuct_ = uit::DefaultThreadDuct,
+  template<typename> typename ProcDuct_ = uit::DefaultProcDuct
 >
 struct ImplSelect {
 
