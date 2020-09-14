@@ -231,6 +231,8 @@ public:
     return duct->GetUID();
   }
 
+  bool CanStep() const { return duct->CanStep(); }
+
   /**
    * TODO.
    *

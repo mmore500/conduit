@@ -89,6 +89,8 @@ public:
    */
   static std::string GetType() { return "DequeDuct"; }
 
+  static constexpr bool CanStep() { return true; }
+
   /**
    * TODO.
    *

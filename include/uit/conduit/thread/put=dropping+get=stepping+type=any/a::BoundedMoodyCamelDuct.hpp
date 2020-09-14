@@ -102,6 +102,8 @@ public:
    */
   static std::string GetType() { return "BoundedMoodyCamelDuct"; }
 
+  static constexpr bool CanStep() { return true; }
+
   /**
    * TODO.
    *

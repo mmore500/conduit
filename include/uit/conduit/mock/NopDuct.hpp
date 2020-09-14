@@ -70,6 +70,8 @@ public:
    */
   static std::string GetName() { return "NopDuct"; }
 
+  static constexpr bool CanStep() { return true; }
+
   /**
    * TODO.
    */

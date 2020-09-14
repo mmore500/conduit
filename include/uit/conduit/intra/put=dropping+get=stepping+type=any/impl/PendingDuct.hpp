@@ -132,6 +132,8 @@ public:
    */
   static std::string GetName() { return "PendingDuct"; }
 
+  static constexpr bool CanStep() { return true; }
+
   /**
    * TODO.
    *

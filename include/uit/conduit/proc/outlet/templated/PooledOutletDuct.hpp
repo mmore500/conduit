@@ -104,6 +104,10 @@ public:
 
   static std::string GetName() { return "PooledOutletDuct"; }
 
+  static constexpr bool CanStep() {
+    return BackingDuct<ImplSpec>::OutletImpl::CanStep();
+  }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;

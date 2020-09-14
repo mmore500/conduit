@@ -82,6 +82,8 @@ public:
    */
   static std::string GetName() { return "EmpAssertDuct"; }
 
+  static constexpr bool CanStep() { return false; }
+
   /**
    * TODO.
    *

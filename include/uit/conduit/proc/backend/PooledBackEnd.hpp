@@ -200,6 +200,8 @@ public:
     return pool;
   }
 
+  constexpr static bool CanStep() { return outlet_pool_t::CanStep(); }
+
 };
 
 } // namespace uit

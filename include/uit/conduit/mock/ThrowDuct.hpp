@@ -72,6 +72,8 @@ public:
    */
   static std::string GetName() { return "ThrowDuct"; }
 
+  static constexpr bool CanStep() { return false; }
+
   /**
    * TODO.
    */

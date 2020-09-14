@@ -136,6 +136,8 @@ public:
 
   static std::string GetName() { return "BufferedOutletDuct"; }
 
+  static constexpr bool CanStep() { return BackingOutlet::CanStep(); }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;

@@ -91,6 +91,8 @@ public:
    */
   static std::string GetType() { return "SconceDuct"; }
 
+  static constexpr bool CanStep() { return false; }
+
   /**
    * TODO.
    *

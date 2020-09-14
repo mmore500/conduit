@@ -124,6 +124,8 @@ public:
 
   static std::string GetName() { return "WindowDuct"; }
 
+  static constexpr bool CanStep() { return false; }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;

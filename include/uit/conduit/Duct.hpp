@@ -228,6 +228,13 @@ public:
    */
   uid_t GetUID() const { return reinterpret_cast<uid_t>(this); }
 
+  bool CanStep() const {
+    return std::visit(
+      [](auto& arg) -> bool { return decltype(arg)::CanStep(); },
+      impl
+    );
+  }
+
   /**
    * TODO.
    *

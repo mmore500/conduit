@@ -97,6 +97,8 @@ public:
    */
   static std::string GetType() { return "DynamicMoodyCamelDuct"; }
 
+  static constexpr bool CanStep() { return true; }
+
   /**
    * TODO.
    *

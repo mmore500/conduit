@@ -145,6 +145,8 @@ public:
 
   }
 
+  constexpr static bool CanStep() { return PoolSpec::OutletImpl::CanStep(); }
+
 };
 
 } // namespace uit

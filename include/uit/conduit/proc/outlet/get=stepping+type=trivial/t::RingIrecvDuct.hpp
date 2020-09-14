@@ -221,6 +221,8 @@ public:
 
   static std::string GetName() { return "RingIrecvDuct"; }
 
+  static constexpr bool CanStep() { return true; }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;
