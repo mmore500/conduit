@@ -13,6 +13,7 @@ TEST_NAMES := \
 	ScopeGuard \
 	spector \
 	Uninitialized \
+	upper_uniquify \
 	ValueInitialized \
 	VectorMap \
 	WarnOnce \
