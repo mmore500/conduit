@@ -17,10 +17,10 @@ public:
   using input_t = uit::MeshNodeInput<ImplSpec>;
   using output_t = uit::MeshNodeOutput<ImplSpec>;
 
-private:
   using inputs_t = emp::vector<input_t>;
   using outputs_t = emp::vector<output_t>;
 
+private:
   inputs_t inputs;
   outputs_t outputs;
 
