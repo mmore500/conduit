@@ -1,4 +1,5 @@
 TEST_NAMES := \
+	AggregatedInletDuct \
 	BufferedInletDuct \
 	PooledInletDuct \
 

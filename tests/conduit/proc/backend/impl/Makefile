@@ -1,5 +1,8 @@
 TEST_NAMES := \
+	AggregatorSpec \
+	InletMemoryAggregator \
 	InletMemoryPool \
+	OutletMemoryAggregator \
 	OutletMemoryPool \
 	PoolSpec \
 

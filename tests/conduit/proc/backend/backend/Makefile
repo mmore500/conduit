@@ -1,4 +1,5 @@
 TEST_NAMES := \
+	AggregatedBackEnd \
 	MockBackEnd \
 	PooledBackEnd \
 	RdmaBackEnd \
