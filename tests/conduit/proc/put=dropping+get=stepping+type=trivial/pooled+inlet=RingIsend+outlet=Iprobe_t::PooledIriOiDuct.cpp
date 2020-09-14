@@ -1,12 +1,12 @@
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/conduit/mock/ThrowDuct.hpp"
-#include "uit/conduit/proc/put=dropping+get=stepping+type=trivial/PooledRingImsgDuct.hpp"
+#include "uit/conduit/proc/put=dropping+get=stepping+type=trivial/pooled+inlet=RingIsend+outlet=Iprobe_t::PooledIriOiDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
   uit::a::SerialPendingDuct,
   uit::ThrowDuct,
-  uit::t::PooledIvriOviDuct
+  uit::t::PooledIriOiDuct
 >;
 
 #include "../ProcDuct.hpp"
-#include "../SkippingProcDuct.hpp"
+#include "../SteppingProcDuct.hpp"

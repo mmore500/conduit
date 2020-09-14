@@ -14,10 +14,10 @@ const uit::MpiGuard guard;
 TEST_CASE("Test InletMemoryPool") {
 
   // TODO flesh out stub test
-  using PoolSpec_t = uit::PoolSpec<
+  using PoolSpec = uit::PoolSpec<
     uit::ImplSpec<char>,
     uit::s::IriObiDuct
   >;
-  uit::InletMemoryPool<PoolSpec_t>{};
+  uit::InletMemoryPool<PoolSpec>{};
 
 }

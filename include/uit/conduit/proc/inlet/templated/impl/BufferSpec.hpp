@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../../../../../../../third-party/Empirical/source/base/vector.h"
+
 #include "../../../../mock/ThrowDuct.hpp"
 
 namespace uit {

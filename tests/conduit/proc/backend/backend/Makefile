@@ -1,5 +1,6 @@
 TEST_NAMES := \
 	MockBackEnd \
+	PooledBackEnd \
 	RdmaBackEnd \
 	RuntimeSizeBackEnd \
 

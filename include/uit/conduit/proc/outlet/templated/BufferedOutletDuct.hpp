@@ -10,9 +10,6 @@
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../mpi/mpi_utils.hpp"
-#include "../../../../mpi/Request.hpp"
-#include "../../../../utility/CircularIndex.hpp"
-#include "../../../../utility/identity.hpp"
 #include "../../../../utility/ScopeGuard.hpp"
 #include "../../../../utility/print_utils.hpp"
 

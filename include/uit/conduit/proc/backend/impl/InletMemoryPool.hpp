@@ -38,12 +38,16 @@ class InletMemoryPool {
   using value_type = typename PoolSpec::T::value_type;
 
   bool PutPool() {
+    emp_assert( IsInitialized() );
+
     pending_put_counter = 0;
-    const bool res = inlet->TryPut( std::move(buffer) );
-    buffer.resize( addresses.size() );
     #ifndef NDEBUG
       put_index_checker.clear();
     #endif
+
+    const bool res = inlet->TryPut( std::move(buffer) );
+    buffer.resize( addresses.size() );
+
     return res;
   }
 
@@ -92,6 +96,8 @@ public:
     return res;
 
   }
+
+  // TODO add move overload?
 
   bool TryFlush() {
     emp_assert( IsInitialized() );

@@ -37,15 +37,16 @@ class OutletMemoryPool {
   void DoTryConsumeGets(const size_t requested) {
     current_request = requested;
     current_num_consumed = outlet->TryStep(requested);
+
+    emp_assert( std::all_of(
+      std::begin(address_checker),
+      std::end(address_checker),
+      [this](const auto& addr){
+        return address_checker.begin()->GetOutletThread()
+          == addr.GetOutletThread();
+      }
+    ) );
     #ifndef NDEBUG
-      emp_assert( std::all_of(
-        std::begin(address_checker),
-        std::end(address_checker),
-        [this](const auto& addr){
-          return address_checker.begin()->GetOutletThread()
-            == addr.GetOutletThread();
-        }
-      ) );
       address_checker.clear();
     #endif
   }
