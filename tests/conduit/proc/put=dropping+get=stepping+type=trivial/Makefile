@@ -1,5 +1,4 @@
 TEST_NAMES := \
-	aggregated+inlet=RingIsend+outlet=Iprobe_t\:\:AggregatedIriOiDuct \
 	buffered+inlet=RingIsend+outlet=Iprobe_t\:\:BufferedIriOiDuct \
 	#inlet=RingIrsend+outlet=RingIrecv_t\:\:IrirOriDuct \
 	inlet=RingIsend+outlet=RingIrecv_t\:\:IriOriDuct \

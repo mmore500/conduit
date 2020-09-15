@@ -5,10 +5,10 @@
 #include "../inlet/templated/AggregatedInletDuct.hpp"
 #include "../outlet/templated/AggregatedOutletDuct.hpp"
 
-#include "../put=dropping+get=stepping+type=cereal/inlet=RingIsend+outlet=Iprobe_c::IriOiDuct.hpp"
+#include "inlet=RingIsend+outlet=Iprobe_c::IriOiDuct.hpp"
 
 namespace uit {
-namespace t {
+namespace c {
 
 /**
  * TODO
