@@ -3,6 +3,7 @@ TEST_NAMES := \
 	mpi_types \
 	mpi_utils \
 	MpiGuard  \
+	MpiMultithreadGuard  \
 	Request  \
 	routine_functors \
 
