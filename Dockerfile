@@ -84,6 +84,7 @@ RUN \
     python-h5py \
     python3-h5py \
     slurm-client \
+    multitail \
     && \
   echo "installed hpc dependencies"
 

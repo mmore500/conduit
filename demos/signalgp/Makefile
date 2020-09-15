@@ -11,7 +11,6 @@ CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -I$(TO_ROOT)/include/ -Iincl
 MPICXX := mpic++
 CFLAGS_nat := -O3 -DNDEBUG -march=native $(CFLAGS_all)
 CFLAGS_nat_debug := -g $(CFLAGS_all)
-MPIEXEC ?= mpiexec
 
 # Emscripten compiler information
 CXX_web := emcc
@@ -36,7 +35,7 @@ debug-web: $(PROJECT).js
 web-debug: debug-web
 
 test: debug
-	$(MPIEXEC) -n 2 ./$(PROJECT)
+	$(TO_ROOT)/script/uitexec -n 2 $(TO_ROOT)/script/uitwrap ./$(PROJECT) | cat
 
 $(PROJECT):	source/native.cpp
 	$(MPICXX) $(CFLAGS_nat) source/native.cpp -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
