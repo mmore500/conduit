@@ -1,11 +1,9 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	inlet=DequeIsend+outlet=RingIrecv_t\:\:IdiOriDuct \
-	#inlet=Rsend+outlet=RingIrecv_t\:\:IrOri \
-	inlet=Send+outlet=RingIrecv_t\:\:IsOriDuct \
-	inlet=DequeIrsend+outlet=RingIrecv_t\:\:IdirOriDuct \
-
+TEST_NAMES += inlet=DequeIsend+outlet=RingIrecv_t\:\:IdiOriDuct
+#TEST_NAMES += inlet=Rsend+outlet=RingIrecv_t\:\:IrOri
+#TEST_NAMES += inlet=Send+outlet=RingIrecv_t\:\:IsOriDuct
+#TEST_NAMES += inlet=DequeIrsend+outlet=RingIrecv_t\:\:IdirOriDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

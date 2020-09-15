@@ -1,11 +1,9 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	c\:\:DequeIrsendDuct \
-	c\:\:DequeIsendDuct \
-	c\:\:RsendDuct \
-	c\:\:SendDuct \
-
+TEST_NAMES += c\:\:DequeIrsendDuct
+TEST_NAMES += c\:\:DequeIsendDuct
+TEST_NAMES += c\:\:RsendDuct
+TEST_NAMES += c\:\:SendDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

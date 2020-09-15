@@ -1,12 +1,10 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	Mesh \
-	MeshNode \
-	MeshNodeInput \
-	MeshNodeOutput \
-	MeshTopology \
-
+TEST_NAMES += Mesh
+TEST_NAMES += MeshNode
+TEST_NAMES += MeshNodeInput
+TEST_NAMES += MeshNodeOutput
+TEST_NAMES += MeshTopology
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

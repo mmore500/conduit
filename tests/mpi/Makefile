@@ -1,13 +1,12 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	group_utils \
-	mpi_types \
-	mpi_utils \
-	MpiGuard  \
-	MpiMultithreadGuard  \
-	Request  \
-	routine_functors \
+TEST_NAMES += group_utils
+TEST_NAMES += mpi_types
+TEST_NAMES += mpi_utils
+TEST_NAMES += MpiGuard
+TEST_NAMES += MpiMultithreadGuard
+TEST_NAMES += Request
+TEST_NAMES += routine_functors
 
 
 TO_ROOT := $(shell git rev-parse --show-cdup)

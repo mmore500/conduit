@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	OncePerThreadChecker \
-
+TEST_NAMES += OncePerThreadChecker
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

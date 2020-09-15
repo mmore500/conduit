@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-BENCH_NAMES := \
-	a\:\:AccumulatingDuct \
-
+BENCH_NAMES += a\:\:AccumulatingDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

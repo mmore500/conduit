@@ -1,16 +1,14 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	concurrent \
-	conduit \
-	containers \
-	debug \
-	distributed \
-	mesh \
-	mpi \
-	topology \
-	utility \
-
+TEST_NAMES += concurrent
+TEST_NAMES += conduit
+TEST_NAMES += containers
+TEST_NAMES += debug
+TEST_NAMES += distributed
+TEST_NAMES += mesh
+TEST_NAMES += mpi
+TEST_NAMES += topology
+TEST_NAMES += utility
 
 default: test
 

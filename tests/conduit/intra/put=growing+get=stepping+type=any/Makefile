@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	a\:\:DequeDuct \
-
+TEST_NAMES += a\:\:DequeDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

@@ -1,7 +1,6 @@
 SHELL := /bin/bash
 
-BENCH_NAMES := \
-	#a\:\:UnboundedMoodyCamelDuct \
+BENCH_NAMES += a\:\:UnboundedMoodyCamelDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

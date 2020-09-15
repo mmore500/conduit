@@ -1,13 +1,11 @@
 SHELL := /bin/bash
 
-BENCH_NAMES := \
-	inlet=Send+outlet=BlockIrecv_t\:\:IsObiDuct \
-	inlet=DequeRput+outlet=Window_t\:\:IdrOwDuct \
-	inlet=Put+outlet=Window_t\:\:IpOwDuct \
-	#inlet=DequeIsend+outlet=BlockIrecv_t\:\:IdiObiDuct \
-	inlet=Rsend+outlet=BlockIrecv_t\:\:IrObiDuct \
-	inlet=DequeIrsend+outlet=BlockIrecv_t\:\:IdirObiDuct \
-
+BENCH_NAMES += inlet=Send+outlet=BlockIrecv_t\:\:IsObiDuct
+BENCH_NAMES += inlet=DequeRput+outlet=Window_t\:\:IdrOwDuct
+BENCH_NAMES += inlet=Put+outlet=Window_t\:\:IpOwDuct
+#BENCH_NAMES += inlet=DequeIsend+outlet=BlockIrecv_t\:\:IdiObiDuct
+#BENCH_NAMES += inlet=Rsend+outlet=BlockIrecv_t\:\:IrObiDuct
+#BENCH_NAMES += inlet=DequeIrsend+outlet=BlockIrecv_t\:\:IdirObiDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

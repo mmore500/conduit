@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	s\:\:BlockIrecvDuct \
-
+TEST_NAMES += s\:\:BlockIrecvDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

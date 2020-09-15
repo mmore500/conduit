@@ -1,16 +1,14 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	DyadicTopologyFactory \
-	RingTopologyFactory \
-	TopoNode \
-	LoopTopologyFactory \
-	TopoEdge \
-	TopoNodeInput \
-	ProConTopologyFactory \
-	Topology \
-	TopoNodeOutput \
-
+TEST_NAMES += DyadicTopologyFactory
+TEST_NAMES += RingTopologyFactory
+TEST_NAMES += TopoNode
+TEST_NAMES += LoopTopologyFactory
+TEST_NAMES += TopoEdge
+TEST_NAMES += TopoNodeInput
+TEST_NAMES += ProConTopologyFactory
+TEST_NAMES += Topology
+TEST_NAMES += TopoNodeOutput
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

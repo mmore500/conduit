@@ -1,12 +1,10 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	proc \
-	thread \
-	conduit \
-	intra \
-	mock \
-
+TEST_NAMES += proc
+TEST_NAMES += thread
+TEST_NAMES += conduit
+TEST_NAMES += intra
+TEST_NAMES += mock
 
 default: test
 

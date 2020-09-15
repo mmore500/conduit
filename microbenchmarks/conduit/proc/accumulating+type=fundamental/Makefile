@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-BENCH_NAMES := \
-	inlet=Accumulate+outlet=WithdrawingWindow_f\:\:IaOwwDuct \
-	inlet=Raccumulate+outlet=WithdrawingWindow_f\:\:IrOwwDuct \
-
+BENCH_NAMES += inlet=Accumulate+outlet=WithdrawingWindow_f\:\:IaOwwDuct
+BENCH_NAMES += inlet=Raccumulate+outlet=WithdrawingWindow_f\:\:IrOwwDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

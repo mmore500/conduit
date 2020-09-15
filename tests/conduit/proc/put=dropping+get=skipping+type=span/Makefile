@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	#inlet=RingIrend+outlet=BlockIrecv_s\:\:IrirObiDuct \
-	inlet=RingIrsend+outlet=BlockIrecv_s\:\:IrirObiDuct \
-
+#TEST_NAMES += inlet=RingIrend+outlet=BlockIrecv_s\:\:IrirObiDuct
+#TEST_NAMES += inlet=RingIrsend+outlet=BlockIrecv_s\:\:IrirObiDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

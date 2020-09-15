@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	a\:\:AtomicSconceDuct \
-	a\:\:MutexSconceDuct \
-
+TEST_NAMES += a\:\:AtomicSconceDuct
+TEST_NAMES += a\:\:MutexSconceDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

@@ -1,11 +1,9 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	accumulating+type=any \
-	put=dropping+get=stepping+type=any \
-	put=growing+get=skipping+type=any \
-	put=growing+get=stepping+type=any \
-
+TEST_NAMES += accumulating+type=any
+TEST_NAMES += put=dropping+get=stepping+type=any
+TEST_NAMES += put=growing+get=skipping+type=any
+TEST_NAMES += put=growing+get=stepping+type=any
 
 default: test
 

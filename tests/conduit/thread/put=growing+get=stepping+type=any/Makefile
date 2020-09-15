@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	a\:\:UnboundedMoodyCamelDuct \
-
+TEST_NAMES += a\:\:UnboundedMoodyCamelDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

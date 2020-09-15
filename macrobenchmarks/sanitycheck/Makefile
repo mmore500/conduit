@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-BENCH_NAMES := \
-	IsolatedThreads_MPI \
-	IsolatedThreads_NoMPI \
-
+BENCH_NAMES += IsolatedThreads_MPI
+BENCH_NAMES += IsolatedThreads_NoMPI
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

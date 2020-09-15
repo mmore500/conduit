@@ -1,15 +1,13 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	Conduit \
-	Duct \
-	ImplSpec \
-	Inlet \
-	InterProcAddress \
-	Outlet \
-	Sink \
-	Source \
-
+TEST_NAMES += Conduit
+TEST_NAMES += Duct
+TEST_NAMES += ImplSpec
+TEST_NAMES += Inlet
+TEST_NAMES += InterProcAddress
+TEST_NAMES += Outlet
+TEST_NAMES += Sink
+TEST_NAMES += Source
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

@@ -1,13 +1,11 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	AggregatorSpec \
-	InletMemoryAggregator \
-	InletMemoryPool \
-	OutletMemoryAggregator \
-	OutletMemoryPool \
-	PoolSpec \
-
+TEST_NAMES += AggregatorSpec
+TEST_NAMES += InletMemoryAggregator
+TEST_NAMES += InletMemoryPool
+TEST_NAMES += OutletMemoryAggregator
+TEST_NAMES += OutletMemoryPool
+TEST_NAMES += PoolSpec
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

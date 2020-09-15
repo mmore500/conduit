@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	a\:\:SconceDuct \
-
+TEST_NAMES += a\:\:SconceDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

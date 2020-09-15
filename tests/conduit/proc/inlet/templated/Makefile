@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	impl \
-	templated \
-
+TEST_NAMES += impl
+TEST_NAMES += templated
 
 default: test
 

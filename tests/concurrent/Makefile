@@ -1,10 +1,8 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	ConcurrentTimeoutBarrier \
-	Gatherer \
-	ThreadSafeIbarrierRequest \
-
+TEST_NAMES += ConcurrentTimeoutBarrier
+TEST_NAMES += Gatherer
+TEST_NAMES += ThreadSafeIbarrierRequest
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

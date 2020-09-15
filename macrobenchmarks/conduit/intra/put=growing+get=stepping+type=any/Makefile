@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-BENCH_NAMES := \
-	a\:\:DequeDuct \
-
+BENCH_NAMES += a\:\:DequeDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

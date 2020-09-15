@@ -1,8 +1,7 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	thread \
-	intra \
+BENCH_NAMES += thread
+BENCH_NAMES += intra
 
 
 default: bench

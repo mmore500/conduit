@@ -1,14 +1,12 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	accumulating+type=fundamental \
+TEST_NAMES += accumulating+type=fundamental
 	put=dropping+type=cereal\
-	put=dropping+type=span \
-	put=dropping+type=trivial \
-	put=growing+type=cereal \
-	put=growing+type=trivial \
-	templated \
-
+TEST_NAMES += put=dropping+type=span
+TEST_NAMES += put=dropping+type=trivial
+TEST_NAMES += put=growing+type=cereal
+TEST_NAMES += put=growing+type=trivial
+TEST_NAMES += templated
 
 default: test
 

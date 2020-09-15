@@ -1,10 +1,8 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	AggregatedInletDuct \
-	BufferedInletDuct \
-	PooledInletDuct \
-
+TEST_NAMES += AggregatedInletDuct
+TEST_NAMES += BufferedInletDuct
+TEST_NAMES += PooledInletDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

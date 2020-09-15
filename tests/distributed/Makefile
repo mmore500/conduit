@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	DistributedTimeoutBarrier \
-
+TEST_NAMES += DistributedTimeoutBarrier
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

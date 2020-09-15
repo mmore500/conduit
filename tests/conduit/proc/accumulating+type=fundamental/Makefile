@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	#inlet=Accumulate+outlet=WithdrawingWindow_f\:\:IaOwwDuct \
-	inlet=Raccumulate+outlet=WithdrawingWindow_f\:\:IrOwwDuct \
-
+#TEST_NAMES += inlet=Accumulate+outlet=WithdrawingWindow_f\:\:IaOwwDuct
+#TEST_NAMES += inlet=Raccumulate+outlet=WithdrawingWindow_f\:\:IrOwwDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

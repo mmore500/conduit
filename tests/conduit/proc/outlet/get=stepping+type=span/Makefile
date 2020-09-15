@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	s\:\:IprobeDuct \
-
+TEST_NAMES += s\:\:IprobeDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

@@ -1,24 +1,23 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	CircularIndex \
-	Curry \
-	IdentityWrapper \
-	imemstream \
-	IsFirstExecutionChecker \
-	math_utils \
-	MirroredRingBuffer \
-	NamedArrayElement \
-	PrefilledMirroredRingBuffer \
-	RingBuffer \
-	safe_compare \
-	ScopeGuard \
-	spector \
-	Uninitialized \
-	upper_uniquify \
-	ValueInitialized \
-	VectorMap \
-	WarnOnce \
+TEST_NAMES += CircularIndex
+TEST_NAMES +=	Curry
+TEST_NAMES +=	IdentityWrapper
+TEST_NAMES +=	imemstream
+TEST_NAMES +=	IsFirstExecutionChecker
+TEST_NAMES +=	math_utils
+TEST_NAMES +=	MirroredRingBuffer
+TEST_NAMES +=	NamedArrayElement
+TEST_NAMES +=	PrefilledMirroredRingBuffer
+TEST_NAMES +=	RingBuffer
+TEST_NAMES +=	safe_compare
+TEST_NAMES +=	ScopeGuard
+TEST_NAMES +=	spector
+TEST_NAMES +=	Uninitialized
+TEST_NAMES +=	upper_uniquify
+TEST_NAMES +=	ValueInitialized
+TEST_NAMES +=	VectorMap
+TEST_NAMES +=	WarnOnce
 
 
 TO_ROOT := $(shell git rev-parse --show-cdup)

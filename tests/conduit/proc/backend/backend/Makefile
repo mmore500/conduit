@@ -1,12 +1,10 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	AggregatedBackEnd \
-	MockBackEnd \
-	PooledBackEnd \
-	RdmaBackEnd \
-	RuntimeSizeBackEnd \
-
+TEST_NAMES += AggregatedBackEnd
+TEST_NAMES += MockBackEnd
+TEST_NAMES += PooledBackEnd
+TEST_NAMES += RdmaBackEnd
+TEST_NAMES += RuntimeSizeBackEnd
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

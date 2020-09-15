@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	s\:\:RingIrsendDuct \
-	s\:\:RingIsendDuct \
-
+TEST_NAMES += s\:\:RingIrsendDuct
+TEST_NAMES += s\:\:RingIsendDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

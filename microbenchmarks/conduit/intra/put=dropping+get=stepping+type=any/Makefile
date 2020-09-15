@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-BENCH_NAMES := \
-	a\:\:HeadTailDuct \
-	a\:\:SerialPendingDuct \
-
+BENCH_NAMES += a\:\:HeadTailDuct
+BENCH_NAMES += a\:\:SerialPendingDucts
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

@@ -1,11 +1,9 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	deque \
-	list \
-	unordered_map \
-	vector \
-
+TEST_NAMES += deque
+TEST_NAMES += list
+TEST_NAMES += unordered_map
+TEST_NAMES += vector
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

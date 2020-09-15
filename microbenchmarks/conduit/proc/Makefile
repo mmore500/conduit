@@ -1,14 +1,12 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	accumulating+type=fundamental \
-	put=dropping+get=skipping+type=trivial \
-	put=dropping+get=stepping+type=cereal \
-	put=dropping+get=stepping+type=trivial \
-	put=growing+get=skipping+type=trivial \
-	put=growing+get=stepping+type=cereal \
-	put=growing+get=stepping+type=trivial \
-
+BENCH_NAMES += accumulating+type=fundamental
+BENCH_NAMES += put=dropping+get=skipping+type=trivial
+BENCH_NAMES += put=dropping+get=stepping+type=cereal
+BENCH_NAMES += put=dropping+get=stepping+type=trivial
+BENCH_NAMES += put=growing+get=skipping+type=trivial
+BENCH_NAMES += put=growing+get=stepping+type=cereal
+BENCH_NAMES += put=growing+get=stepping+type=trivial
 
 default: bench
 
@@ -31,17 +29,17 @@ clean-%: %
 	cd $< && make clean
 
 # Test in debug mode without pointer tracker
-bench: $(addprefix bench-, $(TEST_NAMES))
+bench: $(addprefix bench-, $(BENCH_NAMES))
 
-build: $(addprefix build-, $(TEST_NAMES))
+build: $(addprefix build-, $(BENCH_NAMES))
 
-opt: $(addprefix opt-, $(TEST_NAMES))
+opt: $(addprefix opt-, $(BENCH_NAMES))
 
-fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
+fulldebug: $(addprefix fulldebug-, $(BENCH_NAMES))
 
-cranky: $(addprefix cranky-, $(TEST_NAMES))
+cranky: $(addprefix cranky-, $(BENCH_NAMES))
 
-clean: $(addprefix clean-, $(TEST_NAMES))
+clean: $(addprefix clean-, $(BENCH_NAMES))
 	rm -f *.out
 	rm -f *.o
 	rm -f *.gcda

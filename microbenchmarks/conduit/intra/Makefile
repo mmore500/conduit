@@ -1,11 +1,9 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	accumulating+type=any \
-	put=dropping+get=stepping+type=any \
-	put=growing+get=skipping+type=any \
-	put=growing+get=stepping+type=any \
-
+BENCH_NAMES += accumulating+type=any
+BENCH_NAMES += put=dropping+get=stepping+type=any
+BENCH_NAMES += put=growing+get=skipping+type=any
+BENCH_NAMES += put=growing+get=stepping+type=any
 
 default: bench
 
@@ -28,17 +26,17 @@ clean-%: %
 	cd $< && make clean
 
 # Test in debug mode without pointer tracker
-bench: $(addprefix bench-, $(TEST_NAMES))
+bench: $(addprefix bench-, $(BENCH_NAMES))
 
-build: $(addprefix build-, $(TEST_NAMES))
+build: $(addprefix build-, $(BENCH_NAMES))
 
-opt: $(addprefix opt-, $(TEST_NAMES))
+opt: $(addprefix opt-, $(BENCH_NAMES))
 
-fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
+fulldebug: $(addprefix fulldebug-, $(BENCH_NAMES))
 
-cranky: $(addprefix cranky-, $(TEST_NAMES))
+cranky: $(addprefix cranky-, $(BENCH_NAMES))
 
-clean: $(addprefix clean-, $(TEST_NAMES))
+clean: $(addprefix clean-, $(BENCH_NAMES))
 	rm -f *.out
 	rm -f *.o
 	rm -f *.gcda

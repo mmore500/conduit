@@ -1,10 +1,8 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	EmpAssertDuct \
-	NopDuct \
-	ThrowDuct \
-
+TEST_NAMES += EmpAssertDuct
+TEST_NAMES += NopDuct
+TEST_NAMES += ThrowDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

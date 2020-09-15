@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	BufferSpec \
-
+TEST_NAMES += BufferSpec
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

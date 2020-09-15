@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	f\:\:WithdrawingWindowDuct \
-
+TEST_NAMES += f\:\:WithdrawingWindowDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

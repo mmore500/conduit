@@ -1,19 +1,17 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	accumulating+type=fundamental \
-	backend \
-	inlet \
-	outlet \
-	put=dropping+get=skipping+type=span \
-	put=dropping+get=skipping+type=trivial \
-	put=dropping+get=stepping+type=cereal \
-	put=dropping+get=stepping+type=span \
-	put=dropping+get=stepping+type=trivial \
-	put=growing+get=skipping+type=trivial \
-	put=growing+get=stepping+type=cereal \
-	put=growing+get=stepping+type=trivial \
-
+TEST_NAMES += accumulating+type=fundamental
+TEST_NAMES += backend
+TEST_NAMES += inlet
+TEST_NAMES += outlet
+TEST_NAMES += put=dropping+get=skipping+type=span
+TEST_NAMES += put=dropping+get=skipping+type=trivial
+TEST_NAMES += put=dropping+get=stepping+type=cereal
+TEST_NAMES += put=dropping+get=stepping+type=span
+TEST_NAMES += put=dropping+get=stepping+type=trivial
+TEST_NAMES += put=growing+get=skipping+type=trivial
+TEST_NAMES += put=growing+get=stepping+type=cereal
+TEST_NAMES += put=growing+get=stepping+type=trivial
 
 default: test
 

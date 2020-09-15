@@ -1,10 +1,8 @@
 SHELL := /bin/bash
 
-BENCH_NAMES := \
-	inlet=RingIsend+outlet=BlockIrecv_t\:\:IriObiDuct \
-	inlet=RingIrsend+outlet=BlockIrecv_t\:\:IrirObiDuct \
-	inlet=RingRput+outlet=Window_t\:\:IrrOwDuct \
-
+BENCH_NAMES += inlet=RingIsend+outlet=BlockIrecv_t\:\:IriObiDuct
+BENCH_NAMES += inlet=RingIrsend+outlet=BlockIrecv_t\:\:IrirObiDuct
+BENCH_NAMES += inlet=RingRput+outlet=Window_t\:\:IrrOwDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

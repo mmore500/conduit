@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	backend \
-	impl \
-
+TEST_NAMES += backend
+TEST_NAMES += impl
 
 default: test
 

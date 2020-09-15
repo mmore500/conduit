@@ -1,9 +1,8 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	inlet=RingIsend+outlet=BlockIrecv_t\:\:IriObiDuct \
-	inlet=RingRput+outlet=Window_t\:\:IrrOwDuct \
-	#pooled+inlet=RingIsend+outlet=BlockIrecv_t\:\:PooledIriObiDuct \
+TEST_NAMES += inlet=RingIsend+outlet=BlockIrecv_t\:\:IriObiDuct
+TEST_NAMES += inlet=RingRput+outlet=Window_t\:\:IrrOwDuct
+#TEST_NAMES += pooled+inlet=RingIsend+outlet=BlockIrecv_t\:\:PooledIriObiDuct
 
 
 TO_ROOT := $(shell git rev-parse --show-cdup)

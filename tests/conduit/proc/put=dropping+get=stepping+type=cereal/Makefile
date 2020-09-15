@@ -1,10 +1,8 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	aggregated+inlet=RingIsend+outlet=Iprobe_c\:\:AggregatedIriOiDuct \
-	inlet=RingIsend+outlet=Iprobe_c\:\:IriOiDuct \
-	#inlet=RingIsend+outlet=Iprobe_c\:\:IriOiDuct \
-
+TEST_NAMES += aggregated+inlet=RingIsend+outlet=Iprobe_c\:\:AggregatedIriOiDuct
+TEST_NAMES += inlet=RingIsend+outlet=Iprobe_c\:\:IriOiDuct
+#TEST_NAMES += inlet=RingIsend+outlet=Iprobe_c\:\:IriOiDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

@@ -1,9 +1,7 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	a\:\:HeadTailDuct \
-	a\:\:SerialPendingDuct \
-
+TEST_NAMES += a\:\:HeadTailDuct
+TEST_NAMES += a\:\:SerialPendingDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

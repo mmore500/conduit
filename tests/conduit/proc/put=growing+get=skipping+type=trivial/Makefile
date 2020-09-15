@@ -1,13 +1,11 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	inlet=DequeIsend+outlet=BlockIrecv_t\:\:IdiObiDuct \
-	inlet=Send+outlet=BlockIrecv_t\:\:IsObiDuct \
-	#inlet=DequeRput+outlet=Window_t\:\:IdrOwDuct \
-	inlet=Put+outlet=Window_t\:\:IpOwDuct \
-	inlet=DequeIrsend+outlet=BlockIrecv_t\:\:IdirObiDuct \
-	inlet=Rsend+outlet=BlockIrecv_t\:\:IrObiDuct \
-
+TEST_NAMES += inlet=DequeIsend+outlet=BlockIrecv_t\:\:IdiObiDuct
+TEST_NAMES += inlet=Send+outlet=BlockIrecv_t\:\:IsObiDuct
+#TEST_NAMES += inlet=DequeRput+outlet=Window_t\:\:IdrOwDuct
+#TEST_NAMES += inlet=Put+outlet=Window_t\:\:IpOwDuct
+#TEST_NAMES += inlet=DequeIrsend+outlet=BlockIrecv_t\:\:IdirObiDuct
+#TEST_NAMES += inlet=Rsend+outlet=BlockIrecv_t\:\:IrObiDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

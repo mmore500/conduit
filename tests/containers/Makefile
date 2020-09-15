@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	safe \
-
+TEST_NAMES += safe
 
 default: test
 

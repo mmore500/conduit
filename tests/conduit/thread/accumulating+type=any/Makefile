@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	a\:\:MutexAccumulatingDuct \
-
+TEST_NAMES += a\:\:MutexAccumulatingDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

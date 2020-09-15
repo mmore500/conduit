@@ -1,15 +1,13 @@
 SHELL := /bin/bash
 
-TEST_NAMES := \
-	AlignedImplicit \
-	AlignedInherit \
-	ParallelTimeoutBarrier \
-	RecursiveExclusiveLock \
-	RecursiveMutex \
-	RelaxedAtomic \
-	ThreadLocalChecker \
-	ThreadMap \
-
+TEST_NAMES += AlignedImplicit
+TEST_NAMES += AlignedInherit
+TEST_NAMES += ParallelTimeoutBarrier
+TEST_NAMES += RecursiveExclusiveLock
+TEST_NAMES += RecursiveMutex
+TEST_NAMES += RelaxedAtomic
+TEST_NAMES += ThreadLocalChecker
+TEST_NAMES += ThreadMap
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

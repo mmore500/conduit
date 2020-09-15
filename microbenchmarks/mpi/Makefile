@@ -1,15 +1,13 @@
 SHELL := /bin/bash
 
-BENCH_NAMES := \
-	MPI_Isend \
-	MPI_Irsend \
-	MPI_Rsend \
-	MPI_Send \
-	MPI_Test \
-	MPI_Testall \
-	MPI_Testsome \
-	MPI_Irecv \
-
+BENCH_NAMES += MPI_Isend
+BENCH_NAMES += MPI_Irsend
+BENCH_NAMES += MPI_Rsend
+BENCH_NAMES += MPI_Send
+BENCH_NAMES += MPI_Test
+BENCH_NAMES += MPI_Testall
+BENCH_NAMES += MPI_Testsome
+BENCH_NAMES += MPI_Irecv
 
 FLAGS = -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function/ -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
