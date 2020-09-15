@@ -45,14 +45,17 @@ template<typename RETURN_TYPE>
 struct AssignRoundRobin {
 
   const size_t num_threads;
+  const size_t chunk;
 
   AssignRoundRobin(
-    const size_t num_threads_
+    const size_t num_threads_,
+    const size_t chunk_=1
   ) : num_threads(num_threads_)
+  , chunk(chunk_)
   { ; }
 
   RETURN_TYPE operator()(const size_t & node_id) {
-    return node_id % num_threads;
+    return node_id / chunk % num_threads;
   }
 
 };
