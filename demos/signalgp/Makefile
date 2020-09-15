@@ -1,6 +1,8 @@
+SHELL := /bin/bash
+
 # Project-specific settings
-PROJECT := signalgp
-UIT_DIR := ../../include/
+PROJECT := $(basename $PWD)
+TO_ROOT := $(shell git rev-parse --show-cdup)
 
 # Flags to use regardless of compiler
 CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -I$(UIT_DIR) -Iinclude/ -fopenmp

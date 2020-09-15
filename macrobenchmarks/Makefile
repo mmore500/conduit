@@ -1,4 +1,8 @@
-TEST_NAMES := conduit sanitycheck
+SHELL := /bin/bash
+
+TEST_NAMES := \
+	conduit \
+	sanitycheck \
 
 default: bench
 

@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 TEST_NAMES := \
 	accumulating+type=any \
 	put=dropping+get=stepping+type=any \

@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 # Project-specific settings
 PROJECT := conduit
 EMP_DIR := third-party/Empirical/source

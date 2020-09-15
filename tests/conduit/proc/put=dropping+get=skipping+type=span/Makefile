@@ -1,9 +1,13 @@
+SHELL := /bin/bash
+
 TEST_NAMES := \
 	#inlet=RingIrend+outlet=BlockIrecv_s\:\:IrirObiDuct \
 	inlet=RingIrsend+outlet=BlockIrecv_s\:\:IrirObiDuct \
 
 
-FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/
+TO_ROOT := $(shell git rev-parse --show-cdup)
+
+FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
@@ -25,20 +29,20 @@ test: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
 # Test optimized version without debug features
-opt: FLAGS := -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I../../../../include/ -I../../../../source/ -I../../../../third-party/
+opt: FLAGS := -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 opt: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../../../include/ -I../../../../source/ -I../../../../third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
 fulldebug: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
-cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../../../include/ -I../../../../source/ -I../../../../third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
 cranky: $(addprefix test-, $(TEST_NAMES))
 	rm -rf test*.out
 
-cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../../../coverage_include/ -I../../../../source -I../../../../third-party/ -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
+cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/coverage_include/ -I$(TO_ROOT)/third-party/ -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
 cov: $(addprefix cov-, $(TEST_NAMES))
 
 cov-%: %.cpp
@@ -48,7 +52,7 @@ cov-%: %.cpp
 	./$@.out
 	llvm-profdata merge default.profraw -o default.profdata
 	llvm-cov show ./$@.out -instr-profile=default.profdata > coverage_$@.txt
-	python ../../../../third-party/force-cover/fix_coverage.py coverage_$@.txt
+	python $(TO_ROOT)/third-party/force-cover/fix_coverage.py coverage_$@.txt
 
 clean:
 	rm -f *.out
