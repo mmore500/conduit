@@ -299,15 +299,6 @@ TEST_CASE("split_comm") {
 
 }
 
-TEST_CASE("do_successively") {
-
-  uit::do_successively(
-    [=](){ std::cout << "hello" << std::endl; },
-    uit::print_separator
-  );
-
-}
-
 TEST_CASE("comm_to_string") {
 
   REQUIRE(!uit::comm_to_string(MPI_COMM_WORLD).empty());
