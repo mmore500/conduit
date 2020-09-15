@@ -8,6 +8,7 @@
 #include <mpi.h>
 
 #include "../../../third-party/Empirical/source/base/array.h"
+#include "../../../third-party/Empirical/source/base/errors.h"
 
 #include "../utility/numeric_cast.hpp"
 #include "../utility/print_utils.hpp"
@@ -284,15 +285,17 @@ proc_id_t translate_comm_rank(
   return translate_group_rank(rank, comm_to_group(from), comm_to_group(to));
 }
 
-void init_multithread(int *argc, char ***argv) {
+void mpi_init_multithread(int *argc, char ***argv) {
   int res{};
   UIT_Init_thread(argc, argv, MPI_THREAD_MULTIPLE, &res);
-  assert(res >= MPI_THREAD_MULTIPLE);
+  if (res < MPI_THREAD_MULTIPLE) emp::NotifyWarning(
+    "MPI implementation may not provide full multithread support."
+  );
 }
 
-void init_multithread() {
+void mpi_init_multithread() {
   int argc{};
-  init_multithread(&argc, nullptr);
+  mpi_init_multithread(&argc, nullptr);
 }
 
 void mpi_init() {
