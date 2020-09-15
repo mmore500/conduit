@@ -9,6 +9,7 @@
 #include "../conduit/InterProcAddress.hpp"
 #include "../mpi/mpi_utils.hpp"
 #include "../utility/assign_utils.hpp"
+#include "../utility/math_utils.hpp"
 #include "../topology/Topology.hpp"
 
 #include "MeshNode.hpp"
@@ -105,7 +106,7 @@ class Mesh {
     const uit::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
 
     static std::unordered_set<int> tag_checker;
-    const int tag = uit::combine_tag(mesh_id, input.GetEdgeID());
+    const int tag = uit::sidebyside_hash(mesh_id, input.GetEdgeID());
 
     // assert that generated tags are unique
     emp_assert( tag_checker.insert(tag).second );
@@ -141,7 +142,7 @@ class Mesh {
       inlet_proc_id,
       thread_assignment(outlet_node_id),
       thread_assignment(inlet_node_id),
-      uit::combine_tag(mesh_id, output.GetEdgeID()),
+      uit::sidebyside_hash(mesh_id, output.GetEdgeID()),
       comm
     };
 

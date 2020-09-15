@@ -286,3 +286,18 @@ TEST_CASE("difference") {
   }
 
 }
+
+TEST_CASE("sidebyside_hash") {
+
+  std::unordered_set<int> results;
+
+  constexpr int n = 100;
+  for (size_t a = 0; a < n; ++a) {
+    for (size_t b = 0; b < n; ++b) {
+      results.insert(uit::sidebyside_hash(a, b));
+    }
+  }
+
+  REQUIRE(results.size() == n * n);
+
+}
