@@ -85,6 +85,19 @@ std::string format_member<int>(
 }
 
 template<>
+std::string format_member<bool>(
+  const std::string & name,
+  const bool& member
+) {
+  std::stringstream ss;
+  ss << name << ":" << std::endl;
+  ss << apply_indent(
+    std::to_string(member)
+  );
+  return ss.str();
+}
+
+template<>
 std::string format_member<const void *>(
   const std::string & name,
   const void* const& member
