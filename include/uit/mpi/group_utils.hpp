@@ -28,14 +28,14 @@ MPI_Group make_group(
   emp_assert(std::set<proc_id_t>(
     std::begin(ranks),
     std::end(ranks)
-  ).size() == ranks.size(), to_string(ranks));
+  ).size() == ranks.size(), uit::to_string(ranks));
   emp_assert(std::all_of(
     std::begin(ranks),
     std::end(ranks),
     [&](const auto & rank){
-      return safe_less(rank, group_size(source)) && rank >= 0;
+      return uit::safe_less(rank, uit::group_size(source)) && rank >= 0;
     }
-  ), to_string(ranks));
+  ), uit::to_string(ranks));
 
   MPI_Group res;
   UIT_Group_incl(
