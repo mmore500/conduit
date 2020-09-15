@@ -1,11 +1,11 @@
 SHELL := /bin/bash
 
 # Project-specific settings
-PROJECT := $(basename $PWD)
+PROJECT := $(shell basename $$PWD)
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
 # Flags to use regardless of compiler
-CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -I$(UIT_DIR) -Iinclude/ -fopenmp
+CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -I$(TO_ROOT)/include/ -Iinclude/
 
 # Native compiler information
 MPICXX := mpic++
