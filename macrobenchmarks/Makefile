@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
-BENCH_NAMES += conduit
-BENCH_NAMES += sanitycheck
+TARGET_NAMES += conduit
+TARGET_NAMES += sanitycheck
 
 default: bench
 
@@ -24,17 +24,17 @@ clean-%: %
 	cd $< && make clean
 
 # Test in debug mode without pointer tracker
-bench: $(addprefix bench-, $(BENCH_NAMES))
+bench: $(addprefix bench-, $(TARGET_NAMES))
 
-build: $(addprefix build-, $(BENCH_NAMES))
+build: $(addprefix build-, $(TARGET_NAMES))
 
-opt: $(addprefix opt-, $(BENCH_NAMES))
+opt: $(addprefix opt-, $(TARGET_NAMES))
 
-fulldebug: $(addprefix fulldebug-, $(BENCH_NAMES))
+fulldebug: $(addprefix fulldebug-, $(TARGET_NAMES))
 
-cranky: $(addprefix cranky-, $(BENCH_NAMES))
+cranky: $(addprefix cranky-, $(TARGET_NAMES))
 
-clean: $(addprefix clean-, $(BENCH_NAMES))
+clean: $(addprefix clean-, $(TARGET_NAMES))
 	rm -f *.out
 	rm -f *.o
 	rm -f *.gcda

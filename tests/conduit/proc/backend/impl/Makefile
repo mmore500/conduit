@@ -1,11 +1,11 @@
 SHELL := /bin/bash
 
-TEST_NAMES += AggregatorSpec
-TEST_NAMES += InletMemoryAggregator
-TEST_NAMES += InletMemoryPool
-TEST_NAMES += OutletMemoryAggregator
-TEST_NAMES += OutletMemoryPool
-TEST_NAMES += PoolSpec
+TARGET_NAMES += AggregatorSpec
+TARGET_NAMES += InletMemoryAggregator
+TARGET_NAMES += InletMemoryPool
+TARGET_NAMES += OutletMemoryAggregator
+TARGET_NAMES += OutletMemoryPool
+TARGET_NAMES += PoolSpec
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
@@ -26,25 +26,25 @@ test-%: %.cpp
 	done
 
 # Test in debug mode without pointer tracker
-test: $(addprefix test-, $(TEST_NAMES))
+test: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
 # Test optimized version without debug features
 opt: FLAGS := -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
-opt: $(addprefix test-, $(TEST_NAMES))
+opt: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
 # Test in debug mode with pointer tracking
 fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
-fulldebug: $(addprefix test-, $(TEST_NAMES))
+fulldebug: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
 cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
-cranky: $(addprefix test-, $(TEST_NAMES))
+cranky: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
 cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/coverage_include/ -I$(TO_ROOT)/third-party/ -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
-cov: $(addprefix cov-, $(TEST_NAMES))
+cov: $(addprefix cov-, $(TARGET_NAMES))
 
 cov-%: %.cpp
 	export OMPI_CXX=clang++ && $(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
