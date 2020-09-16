@@ -12,7 +12,6 @@
 
 #include "../../../../../mpi/mpi_utils.hpp"
 #include "../../../../../nonce/CircularIndex.hpp"
-#include "../../../../../utility/identity.hpp"
 #include "../../../../../utility/print_utils.hpp"
 
 #include "../../../../InterProcAddress.hpp"

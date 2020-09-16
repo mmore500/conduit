@@ -15,7 +15,6 @@
 #include "../../../../distributed/RdmaPacket.hpp"
 #include "../../../../distributed/RdmaWindowManager.hpp"
 #include "../../../../nonce/CircularIndex.hpp"
-#include "../../../../utility/identity.hpp"
 #include "../../../../utility/print_utils.hpp"
 #include "../../../../debug/WarnOnce.hpp"
 
