@@ -1,13 +1,9 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += CircularIndex
-TARGET_NAMES += imemstream
-TARGET_NAMES += NamedArrayElement
-TARGET_NAMES += ScopeGuard
-TARGET_NAMES += spector
-TARGET_NAMES += Uninitialized
-TARGET_NAMES += upper_uniquify
-TARGET_NAMES += ValueInitialized
+TARGET_NAMES += MirroredRingBuffer
+TARGET_NAMES += RingBuffer
+TARGET_NAMES += SiftingArray
+TARGET_NAMES += VectorMap
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

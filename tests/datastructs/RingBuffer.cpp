@@ -4,7 +4,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/RingBuffer.hpp"
+#include "uit/datastructs/RingBuffer.hpp"
 
 TEST_CASE("Test RingBuffer") {
 

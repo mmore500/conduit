@@ -4,7 +4,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/MirroredRingBuffer.hpp"
+#include "uit/datastructs/MirroredRingBuffer.hpp"
 
 TEST_CASE("Test MirroredRingBuffer") {
 

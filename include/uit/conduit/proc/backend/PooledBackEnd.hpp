@@ -2,7 +2,7 @@
 
 #include "../../../../../third-party/Empirical/source/base/vector.h"
 
-#include "../../../utility/VectorMap.hpp"
+#include "../../../datastructs/VectorMap.hpp"
 
 #include "../../InterProcAddress.hpp"
 

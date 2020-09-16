@@ -4,7 +4,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/SiftingArray.hpp"
+#include "uit/datastructs/SiftingArray.hpp"
 
 TEST_CASE("Test SiftingArray") {
 

@@ -17,7 +17,7 @@
 #include "../../../../../mpi/Request.hpp"
 #include "../../../../../utility/CircularIndex.hpp"
 #include "../../../../../utility/print_utils.hpp"
-#include "../../../../../utility/RingBuffer.hpp"
+#include "../../../../../datastructs/RingBuffer.hpp"
 
 #include "../../../../InterProcAddress.hpp"
 

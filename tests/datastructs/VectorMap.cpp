@@ -4,7 +4,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/VectorMap.hpp"
+#include "uit/datastructs/VectorMap.hpp"
 
 TEST_CASE("VectorMap") {
 
