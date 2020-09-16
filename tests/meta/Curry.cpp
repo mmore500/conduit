@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/Curry.hpp"
+#include "uit/meta/Curry.hpp"
 
 class CountUpA {
   inline static size_t counter{};

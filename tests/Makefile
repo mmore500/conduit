@@ -8,6 +8,7 @@ TARGET_NAMES += countdown
 TARGET_NAMES += debug
 TARGET_NAMES += distributed
 TARGET_NAMES += mesh
+TARGET_NAMES += meta
 TARGET_NAMES += mpi
 TARGET_NAMES += topology
 TARGET_NAMES += utility

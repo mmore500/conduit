@@ -2,14 +2,15 @@
 
 #include <type_traits>
 
-#include "common_signed_t.hpp"
+#include "../meta/common_signed_t.hpp"
 
 // adapted from https://stackoverflow.com/a/63436491
 
 namespace uit {
 
 template <typename Dividend, typename Divisor>
-constexpr common_signed_t<Dividend, Divisor> div_ceil(Dividend x, Divisor y)
+constexpr uit::common_signed_t<Dividend, Divisor>
+div_ceil(Dividend x, Divisor y)
 {
     if constexpr (std::is_unsigned_v<Dividend> && std::is_unsigned_v<Divisor>) {
         // quotient is always positive
@@ -32,7 +33,8 @@ constexpr common_signed_t<Dividend, Divisor> div_ceil(Dividend x, Divisor y)
 }
 
 template <typename Dividend, typename Divisor>
-constexpr common_signed_t<Dividend, Divisor> div_floor(Dividend x, Divisor y)
+constexpr uit::common_signed_t<Dividend, Divisor>
+div_floor(Dividend x, Divisor y)
 {
     if constexpr (std::is_unsigned_v<Dividend> && std::is_unsigned_v<Divisor>) {
         // quotient is never negative
@@ -61,7 +63,8 @@ constexpr signed char sgn(Int n)
 }
 
 template <typename Dividend, typename Divisor>
-constexpr common_signed_t<Dividend, Divisor> div_up(Dividend x, Divisor y)
+constexpr uit::common_signed_t<Dividend, Divisor>
+div_up(Dividend x, Divisor y)
 {
     if constexpr (std::is_unsigned_v<Dividend> && std::is_unsigned_v<Divisor>) {
         // sgn is always 1
