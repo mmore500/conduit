@@ -131,7 +131,7 @@ public:
 
     // if executing process is root, return gathered items
     return root == get_rank(comm)
-      ? emp::optional{res}
+      ? emp::optional<emp::vector<T>>{ res }
       : std::nullopt;
 
   }

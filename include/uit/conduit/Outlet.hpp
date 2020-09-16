@@ -162,6 +162,8 @@ public:
 
 
 
+  using optional_ref_t = emp::optional<std::reference_wrapper<const T>>;
+
   /**
    * Get next if available.
    *
@@ -169,11 +171,11 @@ public:
    *
    * @return TODO.
    */
-  emp::optional<std::reference_wrapper<const T>> GetNextOrNullopt() {
+   optional_ref_t GetNextOrNullopt() {
     uit_occupancy_audit(1);
-    if (TryStep()) {
-      return emp::optional{ std::reference_wrapper{ Get() } };
-    } else return std::nullopt;
+    return TryStep()
+      ? optional_ref_t{ std::reference_wrapper{ Get() } }
+      : std::nullopt;
   }
 
   /**
