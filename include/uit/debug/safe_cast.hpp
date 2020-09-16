@@ -9,7 +9,7 @@ namespace uit {
 
 // adapted from https://stackoverflow.com/a/49658950
 template<typename Dst, typename Src>
-inline Dst numeric_cast(Src value)
+inline Dst safe_cast(Src value)
 {
     typedef std::numeric_limits<Dst> DstLim;
     typedef std::numeric_limits<Src> SrcLim;

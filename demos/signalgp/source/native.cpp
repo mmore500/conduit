@@ -9,7 +9,7 @@
 #include "uit/mpi/MpiMultithreadGuard.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/utility/assign_utils.hpp"
-#include "uit/utility/numeric_cast.hpp"
+#include "uit/utility/safe_cast.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 
 #include "Job.hpp"
@@ -17,7 +17,7 @@
 const uit::MpiMultithreadGuard guard{};
 
 constexpr size_t num_threads = 2;
-const size_t num_procs = uit::numeric_cast<size_t>( uit::get_nprocs() );
+const size_t num_procs = uit::safe_cast<size_t>( uit::get_nprocs() );
 
 constexpr size_t nodes_per_job = 1;
 const size_t num_nodes = num_procs * num_threads * nodes_per_job;

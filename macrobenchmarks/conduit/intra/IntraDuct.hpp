@@ -11,9 +11,9 @@
 #include "uit/parallel/thread_utils.hpp"
 #include "uit/polyfill/latch.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
-#include "uit/utility/benchmark_utils.hpp"
+#include "uit/debug/benchmark_utils.hpp"
 #include "uit/utility/CircularIndex.hpp"
-#include "uit/utility/numeric_cast.hpp"
+#include "uit/utility/safe_cast.hpp"
 #include "uit/utility/TimeGuard.hpp"
 
 #define MESSAGE_T int
@@ -61,7 +61,7 @@ void profile_thread_count(const size_t num_threads) {
 
   std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
-  std::latch latch{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
+  std::latch latch{uit::safe_cast<std::ptrdiff_t>(num_threads)};
   for (uit::thread_id_t i = 0; i < num_threads; ++i) {
     team.Add(
       [i, &latch, &gatherer, &mesh](){

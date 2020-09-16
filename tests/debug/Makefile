@@ -1,6 +1,8 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += IsFirstExecutionChecker
 TARGET_NAMES += OncePerThreadChecker
+TARGET_NAMES += safe_compare
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

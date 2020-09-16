@@ -8,7 +8,7 @@
 #include "../debug/err_audit.hpp"
 
 #include "divide_utils.hpp"
-#include "numeric_cast.hpp"
+#include "safe_cast.hpp"
 
 // adapted from https://medium.com/@abhinavagarwal1996/a-fast-circular-ring-buffer-4d102ef4d4a3
 // see also https://lo.calho.st/posts/black-magic-buffer/
@@ -20,7 +20,7 @@ namespace uit {
 template<typename T, size_t N>
 class MirroredRingBuffer {
 
-  const size_t byte_size { uit::numeric_cast<size_t>(
+  const size_t byte_size { uit::safe_cast<size_t>(
     uit::div_ceil(N * sizeof(T), getpagesize()) * getpagesize()
   ) };
   const size_t allocation_size { 2 * byte_size };

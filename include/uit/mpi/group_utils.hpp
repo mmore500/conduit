@@ -10,7 +10,7 @@
 
 #include "../utility/math_utils.hpp"
 #include "../utility/print_utils.hpp"
-#include "../utility/safe_compare.hpp"
+#include "../debug/safe_compare.hpp"
 
 #include "audited_routines.hpp"
 #include "proc_id_t.hpp"

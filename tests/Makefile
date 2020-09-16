@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += chrono
 TARGET_NAMES += concurrent
 TARGET_NAMES += conduit
 TARGET_NAMES += containers

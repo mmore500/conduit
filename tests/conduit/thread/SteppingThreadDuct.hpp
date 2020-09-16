@@ -13,7 +13,7 @@ TEST_CASE("Ring Mesh connectivity") { REPEAT {
     // check that everyone's connected properly
     output.TryPut(uit::get_rank());
 
-    REQUIRE( input.GetNext() == uit::numeric_cast<MSG_T>(
+    REQUIRE( input.GetNext() == uit::safe_cast<MSG_T>(
       uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
     ) );
 
@@ -69,7 +69,7 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
     } else if (input) {
       // is consumer
       REQUIRE(
-        input->GetNext() == uit::numeric_cast<int>(
+        input->GetNext() == uit::safe_cast<int>(
           uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
         )
       );
@@ -124,7 +124,7 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
       REQUIRE( input.GetNext() == uit::get_rank() );
     } else {
       // is connected to neighbor
-      REQUIRE( input.GetNext() == uit::numeric_cast<int>(
+      REQUIRE( input.GetNext() == uit::safe_cast<int>(
         uit::circular_index(
           uit::get_rank(),
           uit::get_nprocs(),

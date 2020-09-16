@@ -20,7 +20,7 @@
 #include "../../../../utility/CircularIndex.hpp"
 #include "../../../../utility/identity.hpp"
 #include "../../../../utility/print_utils.hpp"
-#include "../../../../utility/WarnOnce.hpp"
+#include "../../../../debug/WarnOnce.hpp"
 
 #include "../../../InterProcAddress.hpp"
 

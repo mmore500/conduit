@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/IsFirstExecutionChecker.hpp"
+#include "uit/debug/IsFirstExecutionChecker.hpp"
 
 TEST_CASE("IsFirstExecutionChecker") {
 

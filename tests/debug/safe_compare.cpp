@@ -3,7 +3,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/safe_compare.hpp"
+#include "uit/debug/safe_compare.hpp"
 
 
 TEST_CASE("Test safe_less<signed, signed>") {

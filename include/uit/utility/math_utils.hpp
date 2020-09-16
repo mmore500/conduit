@@ -7,14 +7,14 @@
 
 #include "../../../third-party/Empirical/source/tools/math.h"
 
-#include "numeric_cast.hpp"
+#include "safe_cast.hpp"
 
 namespace uit {
 
 size_t mod(int in_val, const size_t mod_val) {
   emp_assert(mod_val > 0);
   const int signed_mod_val = std::min(
-    numeric_cast<size_t>(std::numeric_limits<int>::max()),
+    safe_cast<size_t>(std::numeric_limits<int>::max()),
     mod_val
   );
   in_val %= signed_mod_val;
@@ -67,7 +67,7 @@ int sidebyside_hash(const size_t a, const size_t b) {
 
   const auto res = top_bits | bottom_bits;
 
-  return uit::numeric_cast<int>(res.to_ullong());
+  return uit::safe_cast<int>(res.to_ullong());
 
 }
 

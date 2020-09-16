@@ -9,7 +9,7 @@
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../../../utility/WarnOnce.hpp"
+#include "../../../../debug/WarnOnce.hpp"
 #include "../../../../mpi/mpi_utils.hpp"
 #include "../../../../mpi/Request.hpp"
 #include "../../../../utility/CircularIndex.hpp"

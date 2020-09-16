@@ -16,10 +16,10 @@
 #include "uit/mesh/Mesh.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/parallel/thread_utils.hpp"
-#include "uit/utility/benchmark_utils.hpp"
+#include "uit/debug/benchmark_utils.hpp"
 #include "uit/utility/CircularIndex.hpp"
 #include "uit/utility/ForEach.hpp"
-#include "uit/utility/numeric_cast.hpp"
+#include "uit/utility/safe_cast.hpp"
 #include "uit/utility/TimeGuard.hpp"
 
 template<

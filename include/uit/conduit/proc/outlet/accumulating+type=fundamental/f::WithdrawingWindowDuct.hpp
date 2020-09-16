@@ -17,8 +17,8 @@
 #include "../../../../utility/CircularIndex.hpp"
 #include "../../../../utility/identity.hpp"
 #include "../../../../utility/print_utils.hpp"
-#include "../../../../utility/safe_compare.hpp"
-#include "../../../../utility/WarnOnce.hpp"
+#include "../../../../debug/safe_compare.hpp"
+#include "../../../../debug/WarnOnce.hpp"
 
 #include "../../../config.hpp"
 #include "../../../InterProcAddress.hpp"
