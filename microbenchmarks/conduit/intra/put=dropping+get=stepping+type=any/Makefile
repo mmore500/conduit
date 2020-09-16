@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += a\:\:HeadTailDuct
-TARGET_NAMES += a\:\:SerialPendingDucts
+TARGET_NAMES += a\:\:SerialPendingDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
