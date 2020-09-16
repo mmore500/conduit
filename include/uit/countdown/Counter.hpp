@@ -7,11 +7,11 @@
 
 #include "../utility/chrono_utils.hpp"
 
-#include "CountdownWrapper.hpp"
+#include "impl/CountdownIterator.hpp"
 
 namespace uit {
 
-class CountdownIterator {
+class Counter {
 
   const size_t duration;
 
@@ -19,10 +19,10 @@ class CountdownIterator {
 
 public:
 
-  using iterator = uit::CountdownWrapper<CountdownIterator>;
+  using iterator = uit::CountdownIterator<Counter>;
   using elapsed_t = size_t;
 
-  CountdownIterator(
+  Counter(
     const size_t duration_=std::numeric_limits<size_t>::max()
   ) : duration{duration_}
   { ; }
@@ -48,7 +48,7 @@ public:
     return static_cast<double>(GetElapsed()) / static_cast<double>(duration);
   }
 
-  CountdownIterator& operator++() { Step(); return *this; }
+  Counter& operator++() { Step(); return *this; }
 
   iterator begin() { return { *this }; }
 

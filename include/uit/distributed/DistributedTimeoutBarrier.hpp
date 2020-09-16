@@ -4,7 +4,7 @@
 
 #include <mpi.h>
 
-#include "../countdown/CountdownTimer.hpp"
+#include "../countdown/Timer.hpp"
 #include "../mpi/mpi_utils.hpp"
 #include "../parallel/ThreadIbarrier.hpp"
 
@@ -18,7 +18,7 @@ namespace uit {
  * @tparam Timer_T class to manage timeout check.
  */
 // TODO is Ibarrier request leaked?
-template<typename Timer_T=uit::CountdownTimer<>>
+template<typename Timer_T=uit::Timer<>>
 class DistributedTimeoutBarrier {
 
   /// manages state of MPI Ibarrier call

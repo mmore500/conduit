@@ -9,14 +9,14 @@
 #include "../utility/chrono_utils.hpp"
 #include "../utility/CoarseClock.hpp"
 
-#include "CountdownWrapper.hpp"
+#include "impl/CountdownIterator.hpp"
 
 namespace uit {
 
 template<typename CountdownType>
-class CountdownProgressBar : public CountdownType {
+class ProgressBar : public CountdownType {
 
-  using this_t = uit::CountdownProgressBar<CountdownType>;
+  using this_t = uit::ProgressBar<CountdownType>;
   using parent_t = CountdownType;
 
   const size_t bar_width{ 50 };
@@ -94,20 +94,20 @@ class CountdownProgressBar : public CountdownType {
 public:
 
   template<typename ...Args>
-  CountdownProgressBar(std::ostream& os_, Args&&... args)
+  ProgressBar(std::ostream& os_, Args&&... args)
   : parent_t(std::forward<Args>(args)...)
   , os(os_) {
     Draw();
   }
 
   template<typename ...Args>
-  CountdownProgressBar(Args&&... args)
+  ProgressBar(Args&&... args)
   : parent_t(std::forward<Args>(args)...)
   , os(std::cout) {
     Draw();
   }
 
-  ~CountdownProgressBar() {
+  ~ProgressBar() {
     Draw();
     os << std::endl;
   }
@@ -140,7 +140,7 @@ public:
     return *this;
   }
 
-  using iterator = uit::CountdownWrapper<this_t>;
+  using iterator = uit::CountdownIterator<this_t>;
 
   iterator begin() { return iterator{ *this }; }
 

@@ -5,8 +5,8 @@
 
 #include "../third-party/Empirical/source/tools/NullStream.h"
 
-#include "uit/countdown/CountdownProgressBar.hpp"
-#include "uit/countdown/CountdownTimer.hpp"
+#include "uit/countdown/ProgressBar.hpp"
+#include "uit/countdown/Timer.hpp"
 #include "uit/utility/CoarseClock.hpp"
 
 #include "CellCollection.hpp"
@@ -15,8 +15,8 @@ class Job {
 
   CellCollection collection;
 
-  using timer_t = uit::CountdownTimer<std::chrono::seconds, uit::CoarseClock>;
-  using bar_t = uit::CountdownProgressBar<timer_t>;
+  using timer_t = uit::Timer<std::chrono::seconds, uit::CoarseClock>;
+  using bar_t = uit::ProgressBar<timer_t>;
 
   static inline emp::NullStream ns;
 

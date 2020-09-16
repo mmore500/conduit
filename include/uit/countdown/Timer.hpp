@@ -6,7 +6,7 @@
 
 #include "../utility/chrono_utils.hpp"
 
-#include "CountdownWrapper.hpp"
+#include "impl/CountdownIterator.hpp"
 
 namespace uit {
 
@@ -14,7 +14,7 @@ template<
   typename Duration_T=std::chrono::duration<double, std::ratio<1>>,
   typename Clock_T=std::chrono::steady_clock
 >
-class CountdownTimer {
+class Timer {
 
   const Duration_T duration;
 
@@ -25,10 +25,10 @@ class CountdownTimer {
 
 public:
 
-  using iterator = uit::CountdownWrapper<CountdownTimer>;
+  using iterator = uit::CountdownIterator<Timer>;
   using elapsed_t = Duration_T;
 
-  CountdownTimer(
+  Timer(
     const Duration_T& duration_=infinite_duration,
     const size_t refresh_freq=1
   ) : duration(duration_)
@@ -67,7 +67,7 @@ public:
     );
   }
 
-  CountdownTimer& operator++() { return *this; }
+  Timer& operator++() { return *this; }
 
   iterator begin() { return { *this }; }
 

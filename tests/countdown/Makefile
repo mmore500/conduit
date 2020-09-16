@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += CountdownProgressBar
+TARGET_NAMES += ProgressBar
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

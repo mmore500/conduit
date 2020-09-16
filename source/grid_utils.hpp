@@ -16,8 +16,8 @@
 
 #include "uit/concurrent/Gatherer.hpp"
 #include "uit/concurrent/ConcurrentTimeoutBarrier.hpp"
-#include "uit/countdown/CountdownIterator.hpp"
-#include "uit/countdown/CountdownTimer.hpp"
+#include "uit/countdown/Counter.hpp"
+#include "uit/countdown/Timer.hpp"
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/config.hpp"
 #include "uit/mpi/mpi_utils.hpp"
@@ -123,10 +123,10 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       ? checkout_chunk(source)
       : source;
 
-    uit::CountdownTimer<std::chrono::seconds, uit::CoarseClock> timer{
+    uit::Timer<std::chrono::seconds, uit::CoarseClock> timer{
       std::chrono::seconds{num_seconds}
     };
-    uit::CountdownIterator counter{num_updates};
+    uit::Counter counter{num_updates};
 
     // synchronize once after thread creation and MPI spinup
     if (!synchronous) {
