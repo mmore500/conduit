@@ -1,12 +1,12 @@
-TEST_NAMES := \
-	accumulating+type=fundamental \
-	put=dropping+type=cereal\
-	put=dropping+type=span \
-	put=dropping+type=trivial \
-	put=growing+type=cereal \
-	put=growing+type=trivial \
-	templated \
+SHELL := /bin/bash
 
+TARGET_NAMES += accumulating+type=fundamental
+	put=dropping+type=cereal\
+TARGET_NAMES += put=dropping+type=span
+TARGET_NAMES += put=dropping+type=trivial
+TARGET_NAMES += put=growing+type=cereal
+TARGET_NAMES += put=growing+type=trivial
+TARGET_NAMES += templated
 
 default: test
 
@@ -29,17 +29,17 @@ clean-%: %
 	cd $< && make clean
 
 # Test in debug mode without pointer tracker
-test: $(addprefix test-, $(TEST_NAMES))
+test: $(addprefix test-, $(TARGET_NAMES))
 
-opt: $(addprefix opt-, $(TEST_NAMES))
+opt: $(addprefix opt-, $(TARGET_NAMES))
 
-fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
+fulldebug: $(addprefix fulldebug-, $(TARGET_NAMES))
 
-cranky: $(addprefix cranky-, $(TEST_NAMES))
+cranky: $(addprefix cranky-, $(TARGET_NAMES))
 
-cov: $(addprefix cov-, $(TEST_NAMES))
+cov: $(addprefix cov-, $(TARGET_NAMES))
 
-clean: $(addprefix clean-, $(TEST_NAMES))
+clean: $(addprefix clean-, $(TARGET_NAMES))
 	rm -f *.out
 	rm -f *.o
 	rm -f *.gcda

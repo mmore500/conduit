@@ -7,6 +7,8 @@
 #include <stddef.h>
 #include <utility>
 
+#include "../../../third-party/Empirical/source/base/optional.h"
+
 #include "../debug/occupancy_audit.hpp"
 #include "../parallel/thread_utils.hpp"
 #include "../utility/CircularIndex.hpp"
@@ -160,6 +162,8 @@ public:
 
 
 
+  using optional_ref_t = emp::optional<std::reference_wrapper<const T>>;
+
   /**
    * Get next if available.
    *
@@ -167,11 +171,11 @@ public:
    *
    * @return TODO.
    */
-  std::optional<std::reference_wrapper<const T>> GetNextOrNullopt() {
+   optional_ref_t GetNextOrNullopt() {
     uit_occupancy_audit(1);
-    if (TryStep()) {
-      return std::optional{ std::reference_wrapper{ Get() } };
-    } else return std::nullopt;
+    return TryStep()
+      ? optional_ref_t{ std::reference_wrapper{ Get() } }
+      : std::nullopt;
   }
 
   /**
@@ -230,6 +234,8 @@ public:
   typename duct_t::uid_t GetDuctUID() const {
     return duct->GetUID();
   }
+
+  bool CanStep() const { return duct->CanStep(); }
 
   /**
    * TODO.

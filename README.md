@@ -324,7 +324,7 @@ Now compile and run.
 
 ```sh
 mpic++ --std=c++17 -O3 -DNDEBUG -Iinclude/ high.cpp -lpthread
-mpiexec -n 2 ./a.out
+script/uitexec -n 2 script/uitwrap ./a.out | cat
 ```
 
 ## Extensibility

@@ -80,6 +80,8 @@ public:
    */
   static std::string GetType() { return "MutexAccumulatingDuct"; }
 
+  static constexpr bool CanStep() { return false; }
+
   /**
    * TODO.
    *

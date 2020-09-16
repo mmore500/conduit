@@ -8,12 +8,10 @@
 #include <mpi.h>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/optional.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../mpi/mpi_utils.hpp"
-#include "../../../../mpi/Request.hpp"
-#include "../../../../utility/CircularIndex.hpp"
-#include "../../../../utility/identity.hpp"
 #include "../../../../utility/print_utils.hpp"
 
 #include "../../../InterProcAddress.hpp"
@@ -44,7 +42,7 @@ private:
   std::shared_ptr<BackEndImpl> back_end;
 
   using pool_t = typename BackEndImpl::outlet_pool_t;
-  std::optional<std::reference_wrapper<pool_t>> pool;
+  emp::optional<std::reference_wrapper<pool_t>> pool;
   size_t pool_index;
 
   void SetupPool() {
@@ -65,7 +63,7 @@ public:
     throw "TryPut called on PooledOutletDuct";
   }
 
-  [[noreturn]] bool Flush() const {
+  [[noreturn]] bool TryFlush() const {
     throw "Flush called on PooledOutletDuct";
   }
 
@@ -76,7 +74,6 @@ public:
    * @return number items consumed.
    */
   size_t TryConsumeGets(const size_t num_requested) {
-    emp_assert( num_requested == std::numeric_limits<size_t>::max() );
 
     if (!pool.has_value()) SetupPool();
     return pool->get().TryConsumeGets(num_requested, address);
@@ -104,6 +101,10 @@ public:
   }
 
   static std::string GetName() { return "PooledOutletDuct"; }
+
+  static constexpr bool CanStep() {
+    return BackingDuct<ImplSpec>::OutletImpl::CanStep();
+  }
 
   std::string ToString() const {
     std::stringstream ss;

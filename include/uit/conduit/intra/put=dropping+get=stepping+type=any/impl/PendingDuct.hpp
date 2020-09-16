@@ -95,7 +95,7 @@ public:
    * TODO.
    *
    */
-  bool Flush() const { return true; }
+  bool TryFlush() const { return true; }
 
   /**
    * TODO.
@@ -131,6 +131,8 @@ public:
    * @return TODO.
    */
   static std::string GetName() { return "PendingDuct"; }
+
+  static constexpr bool CanStep() { return true; }
 
   /**
    * TODO.

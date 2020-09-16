@@ -52,4 +52,23 @@ size_t difference(const size_t a, const size_t b) {
   return std::max(a, b) - std::min(a, b);
 }
 
+int sidebyside_hash(const size_t a, const size_t b) {
+
+  // half of non-sign int bits
+  const size_t int_bits = sizeof(int) * 8;
+  const size_t each_bits = (int_bits - 1) / 2;
+
+  // bounds checking
+  emp_assert(std::bitset<each_bits>(a).to_ullong() == a);
+  emp_assert(std::bitset<each_bits>(b).to_ullong() == b);
+
+  const auto bottom_bits = std::bitset<int_bits>(a);
+  const auto top_bits = std::bitset<int_bits>(b) << each_bits;
+
+  const auto res = top_bits | bottom_bits;
+
+  return uit::numeric_cast<int>(res.to_ullong());
+
+}
+
 } // namespace uit

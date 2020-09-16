@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 # Project-specific settings
 PROJECT := conduit
 EMP_DIR := third-party/Empirical/source
@@ -69,6 +71,7 @@ clean:
 	rm -f $(PROJECT) web/$(PROJECT).js web/*.js.map web/*.js.map *~ source/*.o web/*.wasm web/*.wast
 	rm -rf coverage_include
 	cd docs && make clean
+	cd demos && make clean
 	cd macrobenchmarks && make clean
 	cd microbenchmarks && make clean
 	cd tests && make clean
@@ -76,6 +79,8 @@ clean:
 docs:
 	cd docs && make html
 
+demos:
+	cd demos && make
 
 macrobenchmark:
 	cd macrobenchmarks && make bench

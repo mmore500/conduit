@@ -2,10 +2,10 @@
 
 #include <algorithm>
 #include <mutex>
-#include <optional>
 #include <set>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/optional.h"
 
 #include "../../../InterProcAddress.hpp"
 #include "../../../Inlet.hpp"
@@ -19,33 +19,36 @@ class InletMemoryPool {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  std::optional<uit::Inlet<PoolSpec>> inlet;
+  emp::optional<uit::Inlet<PoolSpec>> inlet;
 
   using T = typename PoolSpec::T;
   T buffer{};
 
   // incremented every time TryPut is called
   // then reset to zero once every member of the pool has called
-  size_t flush_counter{};
+  size_t pending_put_counter{};
   // did the most recent put request succeed?
   // (can we put new entries in the buffer?)
-  bool put_status{ true };
+  bool last_put_status{ true };
 
   #ifndef NDEBUG
-    std::unordered_set<size_t> index_checker;
+    std::unordered_set<size_t> put_index_checker;
   #endif
 
   using value_type = typename PoolSpec::T::value_type;
 
-  void Flush() {
-    if ( ++flush_counter == addresses.size() ) {
-      flush_counter = 0;
-      put_status = inlet->TryPut( std::move(buffer) );
-      buffer.resize( addresses.size() );
-      #ifndef NDEBUG
-        index_checker.clear();
-      #endif
-    }
+  bool PutPool() {
+    emp_assert( IsInitialized() );
+
+    pending_put_counter = 0;
+    #ifndef NDEBUG
+      put_index_checker.clear();
+    #endif
+
+    const bool res = inlet->TryPut( std::move(buffer) );
+    buffer.resize( addresses.size() );
+
+    return res;
   }
 
   void CheckCallingProc() const {
@@ -79,17 +82,28 @@ public:
     emp_assert( IsInitialized() );
     CheckCallingProc();
 
-    if (put_status) {
+    if ( last_put_status ) {
       buffer[index] = val;
-      emp_assert( index_checker.insert(index).second );
+      emp_assert( put_index_checker.insert(index).second );
     }
 
-    const bool res = put_status;
+    const bool res = last_put_status;
 
-    Flush();
+    if ( ++pending_put_counter == addresses.size() ) {
+      last_put_status = PutPool();
+    }
 
     return res;
 
+  }
+
+  // TODO add move overload?
+
+  bool TryFlush() {
+    emp_assert( IsInitialized() );
+    CheckCallingProc();
+
+    return inlet->TryFlush();
   }
 
   /// Call after all members have requested a position in the pool.

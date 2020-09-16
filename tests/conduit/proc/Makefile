@@ -1,17 +1,17 @@
-TEST_NAMES := \
-	accumulating+type=fundamental \
-	backend \
-	inlet \
-	outlet \
-	put=dropping+get=skipping+type=span \
-	put=dropping+get=skipping+type=trivial \
-	put=dropping+get=stepping+type=cereal \
-	put=dropping+get=stepping+type=span \
-	put=dropping+get=stepping+type=trivial \
-	put=growing+get=skipping+type=trivial \
-	put=growing+get=stepping+type=cereal \
-	put=growing+get=stepping+type=trivial \
+SHELL := /bin/bash
 
+TARGET_NAMES += accumulating+type=fundamental
+TARGET_NAMES += backend
+TARGET_NAMES += inlet
+TARGET_NAMES += outlet
+TARGET_NAMES += put=dropping+get=skipping+type=span
+TARGET_NAMES += put=dropping+get=skipping+type=trivial
+TARGET_NAMES += put=dropping+get=stepping+type=cereal
+TARGET_NAMES += put=dropping+get=stepping+type=span
+TARGET_NAMES += put=dropping+get=stepping+type=trivial
+TARGET_NAMES += put=growing+get=skipping+type=trivial
+TARGET_NAMES += put=growing+get=stepping+type=cereal
+TARGET_NAMES += put=growing+get=stepping+type=trivial
 
 default: test
 
@@ -34,17 +34,17 @@ clean-%: %
 	cd $< && make clean
 
 # Test in debug mode without pointer tracker
-test: $(addprefix test-, $(TEST_NAMES))
+test: $(addprefix test-, $(TARGET_NAMES))
 
-opt: $(addprefix opt-, $(TEST_NAMES))
+opt: $(addprefix opt-, $(TARGET_NAMES))
 
-fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
+fulldebug: $(addprefix fulldebug-, $(TARGET_NAMES))
 
-cranky: $(addprefix cranky-, $(TEST_NAMES))
+cranky: $(addprefix cranky-, $(TARGET_NAMES))
 
-cov: $(addprefix cov-, $(TEST_NAMES))
+cov: $(addprefix cov-, $(TARGET_NAMES))
 
-clean: $(addprefix clean-, $(TEST_NAMES))
+clean: $(addprefix clean-, $(TARGET_NAMES))
 	rm -f *.out
 	rm -f *.o
 	rm -f *.gcda

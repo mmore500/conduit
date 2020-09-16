@@ -2,10 +2,10 @@
 
 #include <algorithm>
 #include <mutex>
-#include <optional>
 #include <set>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/optional.h"
 
 #include "../../../InterProcAddress.hpp"
 #include "../../../Outlet.hpp"
@@ -19,7 +19,7 @@ class OutletMemoryPool {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  std::optional<uit::Outlet<PoolSpec>> outlet;
+  emp::optional<uit::Outlet<PoolSpec>> outlet;
 
   // incremented every time TryConsumeGets is called
   // then reset to zero once every member of the pool has called
@@ -37,15 +37,16 @@ class OutletMemoryPool {
   void DoTryConsumeGets(const size_t requested) {
     current_request = requested;
     current_num_consumed = outlet->TryStep(requested);
+
+    emp_assert( std::all_of(
+      std::begin(address_checker),
+      std::end(address_checker),
+      [this](const auto& addr){
+        return address_checker.begin()->GetOutletThread()
+          == addr.GetOutletThread();
+      }
+    ) );
     #ifndef NDEBUG
-      emp_assert( std::all_of(
-        std::begin(address_checker),
-        std::end(address_checker),
-        [this](const auto& addr){
-          return address_checker.begin()->GetOutletThread()
-            == addr.GetOutletThread();
-        }
-      ) );
       address_checker.clear();
     #endif
   }
@@ -144,6 +145,8 @@ public:
     outlet = source.GetOutlet();
 
   }
+
+  constexpr static bool CanStep() { return PoolSpec::OutletImpl::CanStep(); }
 
 };
 

@@ -94,7 +94,7 @@ public:
     throw "TryPut called on WithdrawingWindowDuct";
   }
 
-  [[noreturn]] bool Flush() const {
+  [[noreturn]] bool TryFlush() const {
     throw "Flush called on WithdrawingWindowDuct";
   }
 
@@ -140,6 +140,8 @@ public:
   T& Get() { return cache.data; }
 
   static std::string GetName() { return "WithdrawingWindowDuct"; }
+
+  static constexpr bool CanStep() { return false; }
 
   std::string ToString() const {
     std::stringstream ss;

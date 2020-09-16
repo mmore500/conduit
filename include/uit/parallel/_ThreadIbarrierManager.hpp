@@ -26,7 +26,7 @@ class ThreadIbarrierManager
 
   std::mutex flush_mutex;
 
-  void Flush() {
+  void TryFlush() {
 
     // prevent double-popping race condition
     const std::lock_guard guard{ flush_mutex };
@@ -65,7 +65,7 @@ public:
     emp_assert(position != std::end(latches));
     emp_assert(!position->TryWait());
 
-    Flush();
+    TryFlush();
 
     return ThreadIbarrier{
       shared_from_this(),

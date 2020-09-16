@@ -1,11 +1,10 @@
 #pragma once
 
-#include <optional>
-#include <cstddef>
 #include <stddef.h>
 
 #include <mpi.h>
 
+#include "../../../third-party/Empirical/source/base/optional.h"
 #include "../../../third-party/Empirical/source/base/vector.h"
 
 #include "../mpi/audited_routines.hpp"
@@ -20,7 +19,7 @@ class RdmaWindow {
 
   std::byte *buffer;
 
-  std::optional<MPI_Win> window;
+  emp::optional<MPI_Win> window;
 
   emp::vector<std::byte> initialization_bytes;
 

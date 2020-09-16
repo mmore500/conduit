@@ -25,18 +25,18 @@ struct AssignSegregated {
 template<typename RETURN_TYPE>
 struct AssignContiguously {
 
-  const size_t num_threads;
-  const size_t num_nodes;
+  const size_t num_groups;
+  const size_t num_items;
 
   AssignContiguously(
-    const size_t num_threads_,
-    const size_t num_nodes_
-  ) : num_threads(num_threads_)
-  , num_nodes(num_nodes_)
+    const size_t num_groups_,
+    const size_t num_items_
+  ) : num_groups(num_groups_)
+  , num_items(num_items_)
   { ; }
 
   RETURN_TYPE operator()(const size_t & node_id) {
-    return (node_id * num_threads / num_nodes) % num_threads;
+    return (node_id * num_groups / num_items) % num_groups;
   }
 
 };
@@ -44,15 +44,18 @@ struct AssignContiguously {
 template<typename RETURN_TYPE>
 struct AssignRoundRobin {
 
-  const size_t num_threads;
+  const size_t num_groups;
+  const size_t chunk;
 
   AssignRoundRobin(
-    const size_t num_threads_
-  ) : num_threads(num_threads_)
+    const size_t num_groups_,
+    const size_t chunk_=1
+  ) : num_groups(num_groups_)
+  , chunk(chunk_)
   { ; }
 
   RETURN_TYPE operator()(const size_t & node_id) {
-    return node_id % num_threads;
+    return node_id / chunk % num_groups;
   }
 
 };

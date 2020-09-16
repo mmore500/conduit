@@ -52,7 +52,7 @@ public:
    * TODO.
    *
    */
-  bool Flush() const { return true; }
+  bool TryFlush() const { return true; }
 
   /**
    * TODO.
@@ -88,6 +88,8 @@ public:
    * @return TODO.
    */
   static std::string GetType() { return "DequeDuct"; }
+
+  static constexpr bool CanStep() { return true; }
 
   /**
    * TODO.

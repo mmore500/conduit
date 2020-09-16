@@ -1,4 +1,5 @@
 #include <limits>
+#include <unordered_set>
 
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
@@ -284,5 +285,20 @@ TEST_CASE("difference") {
       REQUIRE(uit::difference(i, i) == 0);
     }
   }
+
+}
+
+TEST_CASE("sidebyside_hash") {
+
+  std::unordered_set<int> results;
+
+  constexpr int n = 100;
+  for (size_t a = 0; a < n; ++a) {
+    for (size_t b = 0; b < n; ++b) {
+      results.insert(uit::sidebyside_hash(a, b));
+    }
+  }
+
+  REQUIRE(results.size() == n * n);
 
 }

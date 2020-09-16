@@ -75,6 +75,9 @@ public:
    */
   static std::string GetType() { return "AtomicAccumulatingDuct"; }
 
+  static constexpr bool CanStep() { return false; }
+
+
   /**
    * TODO.
    *

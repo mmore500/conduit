@@ -39,6 +39,14 @@ proc_id_t get_proc_id(const MPI_Comm& comm=MPI_COMM_WORLD) {
   return get_rank(comm);
 }
 
+MPI_Group comm_to_group(const MPI_Comm & comm){
+  MPI_Group group;
+  UIT_Comm_group(
+    comm, // MPI_Comm comm
+    &group // MPI_Group* group
+  );
+  return group;
+}
 
 std::string get_name(const MPI_Comm& comm) {
   int len;

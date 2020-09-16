@@ -158,7 +158,7 @@ public:
    * TODO.
    *
    */
-  [[noreturn]] bool Flush() const { throw "Flush called on RingIrecvDuct"; }
+  [[noreturn]] bool TryFlush() const { throw "Flush called on RingIrecvDuct"; }
 
   /**
    * TODO.
@@ -204,6 +204,8 @@ public:
   T& Get() { return data.GetTail(); }
 
   static std::string GetName() { return "RingIrecvDuct"; }
+
+  static constexpr bool CanStep() { return true; }
 
   std::string ToString() const {
     std::stringstream ss;

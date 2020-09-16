@@ -1,7 +1,10 @@
 #pragma once
 
-#include <mpi.h>
 #include <mutex>
+
+#include <mpi.h>
+
+#include "../../../third-party/Empirical/source/base/optional.h"
 
 #include "../distributed/IbarrierRequest.hpp"
 
@@ -13,7 +16,7 @@ namespace uit {
 class ThreadSafeIbarrierRequest {
 
   /// Request handle corresponding to Ibarrier call.
-  std::optional<uit::IbarrierRequest> request{ std::nullopt };
+  emp::optional<uit::IbarrierRequest> request{ std::nullopt };
 
   static inline std::mutex mutex{};
 

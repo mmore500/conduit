@@ -8,12 +8,10 @@
 #include <mpi.h>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/optional.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../mpi/mpi_utils.hpp"
-#include "../../../../mpi/Request.hpp"
-#include "../../../../utility/CircularIndex.hpp"
-#include "../../../../utility/identity.hpp"
 #include "../../../../utility/print_utils.hpp"
 
 #include "../../../InterProcAddress.hpp"
@@ -47,7 +45,7 @@ private:
   std::shared_ptr<BackEndImpl> back_end;
 
   using pool_t = typename BackEndImpl::inlet_pool_t;
-  std::optional<std::reference_wrapper<pool_t>> pool;
+  emp::optional<std::reference_wrapper<pool_t>> pool;
   size_t pool_index;
 
   void SetupPool() {
@@ -78,7 +76,7 @@ public:
    * TODO.
    *
    */
-  void Flush() { ; }
+  bool TryFlush() { return pool->get().TryFlush(); }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on PooledInletDuct";

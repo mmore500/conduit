@@ -163,9 +163,9 @@ public:
    * TODO.
    *
    */
-  bool Flush() {
+  bool TryFlush() {
     return std::visit(
-      [](auto& arg) -> bool { return arg.Flush(); },
+      [](auto& arg) -> bool { return arg.TryFlush(); },
       impl
     );
   }
@@ -227,6 +227,13 @@ public:
    * @return TODO.
    */
   uid_t GetUID() const { return reinterpret_cast<uid_t>(this); }
+
+  bool CanStep() const {
+    return std::visit(
+      [](auto& arg) -> bool { return decltype(arg)::CanStep(); },
+      impl
+    );
+  }
 
   /**
    * TODO.

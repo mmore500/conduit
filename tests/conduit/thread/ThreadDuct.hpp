@@ -7,6 +7,7 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #define CATCH_CONFIG_RUNNER
 #include "Catch/single_include/catch2/catch.hpp"
+#include "Empirical/source/base/optional.h"
 
 #include "uit/conduit/Source.hpp"
 #include "uit/conduit/ImplSpec.hpp"
@@ -41,7 +42,7 @@ using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 size_t num_threads;
 
 // must be emplacedd
-static std::optional<std::barrier<>> barrier;
+static emp::optional<std::barrier<>> barrier;
 
 TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 

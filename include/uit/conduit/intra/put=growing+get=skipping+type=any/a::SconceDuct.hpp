@@ -57,7 +57,7 @@ public:
    * TODO.
    *
    */
-  bool Flush() const { return true; }
+  bool TryFlush() const { return true; }
 
   /**
    * TODO.
@@ -90,6 +90,8 @@ public:
    * @return TODO.
    */
   static std::string GetType() { return "SconceDuct"; }
+
+  static constexpr bool CanStep() { return false; }
 
   /**
    * TODO.

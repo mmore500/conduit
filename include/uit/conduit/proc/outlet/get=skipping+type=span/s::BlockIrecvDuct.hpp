@@ -166,7 +166,7 @@ public:
     throw "TryPut called on BlockIrecvDuct";
   }
 
-  [[noreturn]] bool Flush() const {
+  [[noreturn]] bool TryFlush() const {
     throw "Flush called on BlockIrecvDuct";
   }
 
@@ -211,6 +211,8 @@ public:
   }
 
   static std::string GetName() { return "BlockIrecvDuct"; }
+
+  static constexpr bool CanStep() { return false; }
 
   std::string ToString() const {
     std::stringstream ss;

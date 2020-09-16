@@ -1,18 +1,18 @@
-BENCH_NAMES := \
-	inlet=Send+outlet=BlockIrecv_t\:\:IsObiDuct \
-	inlet=DequeRput+outlet=Window_t\:\:IdrOwDuct \
-	inlet=Put+outlet=Window_t\:\:IpOwDuct \
-	#inlet=DequeIsend+outlet=BlockIrecv_t\:\:IdiObiDuct \
-	inlet=Rsend+outlet=BlockIrecv_t\:\:IrObiDuct \
-	inlet=DequeIrsend+outlet=BlockIrecv_t\:\:IdirObiDuct \
-
-
 SHELL := /bin/bash
+
+TARGET_NAMES += inlet=Send+outlet=BlockIrecv_t\:\:IsObiDuct
+TARGET_NAMES += inlet=DequeRput+outlet=Window_t\:\:IdrOwDuct
+TARGET_NAMES += inlet=Put+outlet=Window_t\:\:IpOwDuct
+#TARGET_NAMES += inlet=DequeIsend+outlet=BlockIrecv_t\:\:IdiObiDuct
+#TARGET_NAMES += inlet=Rsend+outlet=BlockIrecv_t\:\:IrObiDuct
+#TARGET_NAMES += inlet=DequeIrsend+outlet=BlockIrecv_t\:\:IdirObiDuct
+
+TO_ROOT := $(shell git rev-parse --show-cdup)
+
+FLAGS = -std=c++17 -g -pthread -march=native -DNDEBUG -O3 -Wno-unused-function/ -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
 MPICXX ?= mpic++
 MPIEXEC ?= mpiexec
-
-FLAGS = -std=c++17 -g -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I../../../../source/ -I../../../../include/ -I../../../../third-party/
 
 default: bench
 
@@ -30,27 +30,27 @@ bench-%: %.cpp
 
 
 # Test in debug mode without pointer tracker
-bench: $(addprefix bench-, $(BENCH_NAMES))
+bench: $(addprefix bench-, $(TARGET_NAMES))
 	rm -rf bench*.out
 
 build-%: %.cpp
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
-build: $(addprefix build-, $(BENCH_NAMES))
+build: $(addprefix build-, $(TARGET_NAMES))
 
 # Test optimized version without debug features
-debug: FLAGS := -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I../../../../include/ -I../../../../source/ -I../../../../third-party/ -g
-debug: $(addprefix bench-, $(BENCH_NAMES))
+debug: FLAGS := -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -g
+debug: $(addprefix bench-, $(TARGET_NAMES))
 	rm -rf bench*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function  -I../../../../include/ -I../../../../source/ -I../../../../third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -g # -Wmisleading-indentation
-fulldebug: $(addprefix bench-, $(BENCH_NAMES))
+fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function  -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -g # -Wmisleading-indentation
+fulldebug: $(addprefix bench-, $(TARGET_NAMES))
 	rm -rf bench*.out
 
-cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I../../../../include/ -I../../../../source/ -I../../../../third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
-cranky: $(addprefix bench-, $(BENCH_NAMES))
+cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: $(addprefix bench-, $(TARGET_NAMES))
 	rm -rf bench*.out
 
 clean:

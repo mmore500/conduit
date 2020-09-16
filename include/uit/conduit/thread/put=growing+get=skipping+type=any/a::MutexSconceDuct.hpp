@@ -97,6 +97,8 @@ public:
    */
   static std::string GetType() { return "MutexSconceDuct"; }
 
+  static constexpr bool CanStep() { return false; }
+
   /**
    * TODO.
    *

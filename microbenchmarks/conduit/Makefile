@@ -1,8 +1,8 @@
-TEST_NAMES := \
-	thread \
-	intra \
-	proc \
+SHELL := /bin/bash
 
+TARGET_NAMES += thread
+TARGET_NAMES += intra
+TARGET_NAMES += proc
 
 default: bench
 
@@ -25,17 +25,17 @@ clean-%: %
 	cd $< && make clean
 
 # Test in debug mode without pointer tracker
-bench: $(addprefix bench-, $(TEST_NAMES))
+bench: $(addprefix bench-, $(TARGET_NAMES))
 
-build: $(addprefix build-, $(TEST_NAMES))
+build: $(addprefix build-, $(TARGET_NAMES))
 
-opt: $(addprefix opt-, $(TEST_NAMES))
+opt: $(addprefix opt-, $(TARGET_NAMES))
 
-fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
+fulldebug: $(addprefix fulldebug-, $(TARGET_NAMES))
 
-cranky: $(addprefix cranky-, $(TEST_NAMES))
+cranky: $(addprefix cranky-, $(TARGET_NAMES))
 
-clean: $(addprefix clean-, $(TEST_NAMES))
+clean: $(addprefix clean-, $(TARGET_NAMES))
 	rm -f *.out
 	rm -f *.o
 	rm -f *.gcda

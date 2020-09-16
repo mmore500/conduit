@@ -111,6 +111,8 @@ public:
    */
   static std::string GetType() { return "RigtorpDuct"; }
 
+  static constexpr bool CanStep() { return true; }
+
   /**
    * TODO.
    *

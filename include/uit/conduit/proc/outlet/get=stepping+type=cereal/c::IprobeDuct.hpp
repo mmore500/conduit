@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <array>
 #include <cstddef>
-#include <optional>
 #include <stddef.h>
 
 #include <mpi.h>
@@ -11,6 +10,7 @@
 #include "../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../../third-party/Empirical/source/base/vector.h"
+#include "../../../../../../third-party/Empirical/source/base/optional.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../mpi/mpi_utils.hpp"
@@ -53,7 +53,7 @@ private:
 
   // cached unpacked value
   // initialize to value-constructed default
-  mutable std::optional<T> cache{ std::in_place_t{} };
+  mutable emp::optional<T> cache{ std::in_place_t{} };
 
   const uit::InterProcAddress address;
 
@@ -137,7 +137,7 @@ public:
     throw "Put called on IprobeDuct";
   }
 
-  [[noreturn]] bool Flush() const { throw "Flush called on IprobeDuct"; }
+  [[noreturn]] bool TryFlush() const { throw "Flush called on IprobeDuct"; }
 
   /**
    * TODO.
@@ -175,6 +175,8 @@ public:
   }
 
   static std::string GetName() { return "IprobeDuct"; }
+
+  static constexpr bool CanStep() { return true; }
 
   std::string ToString() const {
     std::stringstream ss;

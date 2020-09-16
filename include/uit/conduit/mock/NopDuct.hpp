@@ -42,7 +42,7 @@ public:
    * TODO.
    *
    */
-  bool Flush() const { return true; }
+  bool TryFlush() const { return true; }
 
   /**
    * TODO.
@@ -69,6 +69,8 @@ public:
    * TODO.
    */
   static std::string GetName() { return "NopDuct"; }
+
+  static constexpr bool CanStep() { return true; }
 
   /**
    * TODO.

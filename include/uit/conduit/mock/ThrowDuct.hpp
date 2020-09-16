@@ -42,7 +42,7 @@ public:
    * TODO.
    *
    */
-  [[noreturn]] bool Flush() const { throw "Flush called on ThrowDuct"; }
+  [[noreturn]] bool TryFlush() const { throw "Flush called on ThrowDuct"; }
 
   /**
   * TODO.
@@ -71,6 +71,8 @@ public:
    * TODO.
    */
   static std::string GetName() { return "ThrowDuct"; }
+
+  static constexpr bool CanStep() { return false; }
 
   /**
    * TODO.

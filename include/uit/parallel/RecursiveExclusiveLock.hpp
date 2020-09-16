@@ -1,7 +1,8 @@
 #pragma once
 
 #include <shared_mutex>
-#include <optional>
+
+#include "../../../third-party/Empirical/source/base/optional.h"
 
 #include "RecursiveMutex.hpp"
 #include "thread_utils.hpp"
@@ -11,7 +12,7 @@ namespace uit {
 class RecursiveExclusiveLock {
 
   uit::RecursiveMutex& mutex;
-  std::optional<std::unique_lock<std::shared_mutex>> lock;
+  emp::optional<std::unique_lock<std::shared_mutex>> lock;
 
 public:
 

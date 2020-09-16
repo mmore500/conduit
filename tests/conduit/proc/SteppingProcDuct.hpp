@@ -4,6 +4,7 @@ TEST_CASE("Ring Mesh connectivity") { REPEAT {
 
   // check that everyone's connected properly
   output.TryPut(uit::get_rank());
+  output.TryFlush();
 
   REQUIRE( input.GetNext() == uit::numeric_cast<MSG_T>(
     uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
@@ -22,6 +23,7 @@ TEST_CASE("Ring Mesh sequential consistency") { {
 
     UIT_Barrier( MPI_COMM_WORLD );
     output.Put(i);
+    output.Flush();
     REQUIRE(input.GetNext() == i);
 
   }
@@ -35,7 +37,10 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
   auto [input, output] = make_producer_consumer_bundle();
 
   // check that everyone's connected properly
-  if (output) output->Put(uit::get_rank());
+  if (output) {
+    output->Put(uit::get_rank());
+    output->Flush();
+  }
 
   // did we get expected rank ID as message?
   if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
@@ -62,7 +67,10 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { {
   for (MSG_T i = 1; i <= 2 * DEFAULT_BUFFER; ++i) {
 
     UIT_Barrier( MPI_COMM_WORLD );
-    if (output) output->Put(i);
+    if (output) {
+      output->Put(i);
+      output->Flush();
+    }
     if (input) REQUIRE( input->GetNext() == i );
 
   }
@@ -78,6 +86,7 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
 
   // check that everyone's connected properly
   output.Put(uit::get_rank());
+  output.Flush();
 
   // did we get expected rank ID as message?
   if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
@@ -108,6 +117,7 @@ TEST_CASE("Dyadic Mesh sequential consistency") { {
 
     UIT_Barrier( MPI_COMM_WORLD );
     output.Put(i);
+    output.Flush();
     REQUIRE( input.GetNext() == i );
 
   }

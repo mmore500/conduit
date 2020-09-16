@@ -299,30 +299,6 @@ TEST_CASE("split_comm") {
 
 }
 
-TEST_CASE("do_successively") {
-
-  uit::do_successively(
-    [=](){ std::cout << "hello" << std::endl; },
-    uit::print_separator
-  );
-
-}
-
-TEST_CASE("combine_tag") {
-
-  std::unordered_set<int> results;
-
-  constexpr int n = 100;
-  for (size_t a = 0; a < n; ++a) {
-    for (size_t b = 0; b < n; ++b) {
-      results.insert(uit::combine_tag(a, b));
-    }
-  }
-
-  REQUIRE(results.size() == n * n);
-
-}
-
 TEST_CASE("comm_to_string") {
 
   REQUIRE(!uit::comm_to_string(MPI_COMM_WORLD).empty());
