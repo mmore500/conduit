@@ -6,7 +6,7 @@
 
 #include "../../../third-party/Empirical/source/base/array.h"
 
-#include "CircularIndex.hpp"
+#include "../nonce/CircularIndex.hpp"
 
 namespace uit {
 
