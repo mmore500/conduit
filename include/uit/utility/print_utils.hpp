@@ -7,8 +7,6 @@
 
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "identity.hpp"
-
 // TODO be clever and use fewer overloads
 
 namespace uit {

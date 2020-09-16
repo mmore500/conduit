@@ -2,7 +2,7 @@
 
 #include <utility>
 
-namespace uit {
+namespace std {
 
 // TODO cpp20
 // adpated from https://codereview.stackexchange.com/q/134627
