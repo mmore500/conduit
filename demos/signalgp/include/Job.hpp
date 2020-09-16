@@ -31,7 +31,7 @@ public:
 
   Job(const submesh_t& submesh)
   : collection(submesh) {
-    for ( auto __ : timer ) {
+    for ( const auto __ : timer ) {
       ++iteration_counter;
       collection.Update();
     }
