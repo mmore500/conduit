@@ -12,7 +12,6 @@ TARGET_NAMES += Uninitialized
 TARGET_NAMES += upper_uniquify
 TARGET_NAMES += ValueInitialized
 TARGET_NAMES += VectorMap
-TARGET_NAMES += WarnOnce
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
