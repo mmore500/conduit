@@ -11,7 +11,7 @@
 #include "uit/polyfill/latch.hpp"
 #include "uit/debug/benchmark_utils.hpp"
 #include "uit/utility/CircularIndex.hpp"
-#include "uit/utility/safe_cast.hpp"
+#include "uit/debug/safe_cast.hpp"
 #include "uit/utility/TimeGuard.hpp"
 
 #define MESSAGE_T int

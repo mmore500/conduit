@@ -7,7 +7,7 @@
 
 #include "../../../third-party/Empirical/source/tools/math.h"
 
-#include "safe_cast.hpp"
+#include "../debug/safe_cast.hpp"
 
 namespace uit {
 

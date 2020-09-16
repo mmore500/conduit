@@ -18,7 +18,7 @@
 #include "uit/utility/assign_utils.hpp"
 #include "uit/utility/CircularIndex.hpp"
 #include "uit/utility/math_utils.hpp"
-#include "uit/utility/safe_cast.hpp"
+#include "uit/debug/safe_cast.hpp"
 #include "uit/debug/safe_compare.hpp"
 
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)

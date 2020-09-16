@@ -6,9 +6,9 @@
 #include "../../../third-party/Empirical/source/polyfill/span.h"
 
 #include "../debug/err_audit.hpp"
+#include "../debug/safe_cast.hpp"
 
 #include "divide_utils.hpp"
-#include "safe_cast.hpp"
 
 // adapted from https://medium.com/@abhinavagarwal1996/a-fast-circular-ring-buffer-4d102ef4d4a3
 // see also https://lo.calho.st/posts/black-magic-buffer/

@@ -25,7 +25,7 @@
 #include "uit/debug/benchmark_utils.hpp"
 #include "uit/utility/CircularIndex.hpp"
 #include "uit/utility/math_utils.hpp"
-#include "uit/utility/safe_cast.hpp"
+#include "uit/debug/safe_cast.hpp"
 #include "uit/debug/safe_compare.hpp"
 
 const uit::MpiGuard guard;

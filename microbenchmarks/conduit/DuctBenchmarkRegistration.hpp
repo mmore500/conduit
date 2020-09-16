@@ -24,7 +24,7 @@
 #include "uit/utility/CircularIndex.hpp"
 #include "uit/meta/Curry.hpp"
 #include "uit/meta/ForEach.hpp"
-#include "uit/utility/safe_cast.hpp"
+#include "uit/debug/safe_cast.hpp"
 #include "uit/utility/stats_utils.hpp"
 #include "uit/utility/TimeGuard.hpp"
 #include "uit/parallel/ThreadTeam.hpp"

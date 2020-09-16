@@ -9,7 +9,7 @@
 #include "uit/mpi/MpiMultithreadGuard.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/utility/assign_utils.hpp"
-#include "uit/utility/safe_cast.hpp"
+#include "uit/debug/safe_cast.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 
 #include "Job.hpp"

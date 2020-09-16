@@ -15,7 +15,7 @@
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/mpi/mpi_utils.hpp"
 #include "uit/utility/CircularIndex.hpp"
-#include "uit/utility/safe_cast.hpp"
+#include "uit/debug/safe_cast.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/parallel/thread_utils.hpp"
 #include "uit/polyfill/barrier.hpp"

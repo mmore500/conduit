@@ -10,7 +10,7 @@
 #include "../../../third-party/Empirical/source/base/array.h"
 #include "../../../third-party/Empirical/source/base/errors.h"
 
-#include "../utility/safe_cast.hpp"
+#include "../debug/safe_cast.hpp"
 #include "../utility/print_utils.hpp"
 
 #include "audited_routines.hpp"
