@@ -10,7 +10,7 @@
 #include "uit/parallel/thread_utils.hpp"
 #include "uit/polyfill/latch.hpp"
 #include "uit/debug/benchmark_utils.hpp"
-#include "uit/utility/CircularIndex.hpp"
+#include "uit/nonce/CircularIndex.hpp"
 #include "uit/debug/safe_cast.hpp"
 #include "uit/utility/TimeGuard.hpp"
 

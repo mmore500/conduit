@@ -11,7 +11,7 @@
 
 #include "../debug/occupancy_audit.hpp"
 #include "../parallel/thread_utils.hpp"
-#include "../utility/CircularIndex.hpp"
+#include "../nonce/CircularIndex.hpp"
 
 #include "config.hpp"
 #include "Duct.hpp"

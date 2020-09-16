@@ -24,7 +24,7 @@
 #include "uit/topology/DyadicTopologyFactory.hpp"
 #include "uit/topology/ProConTopologyFactory.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
-#include "uit/utility/CircularIndex.hpp"
+#include "uit/nonce/CircularIndex.hpp"
 #include "uit/math/math_utils.hpp"
 
 const uit::MpiGuard guard;

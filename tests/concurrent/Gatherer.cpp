@@ -14,7 +14,7 @@
 #include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/mpi/mpi_utils.hpp"
-#include "uit/utility/CircularIndex.hpp"
+#include "uit/nonce/CircularIndex.hpp"
 #include "uit/debug/safe_cast.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/parallel/thread_utils.hpp"

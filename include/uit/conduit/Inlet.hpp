@@ -8,7 +8,7 @@
 #include <utility>
 
 #include "../debug/occupancy_audit.hpp"
-#include "../utility/CircularIndex.hpp"
+#include "../nonce/CircularIndex.hpp"
 #include "../utility/print_utils.hpp"
 
 #include "config.hpp"

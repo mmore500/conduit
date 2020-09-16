@@ -16,7 +16,7 @@
 #include "uit/topology/RingTopologyFactory.hpp"
 #include "uit/topology/DyadicTopologyFactory.hpp"
 #include "uit/utility/assign_utils.hpp"
-#include "uit/utility/CircularIndex.hpp"
+#include "uit/nonce/CircularIndex.hpp"
 #include "uit/math/math_utils.hpp"
 #include "uit/debug/safe_cast.hpp"
 #include "uit/debug/safe_compare.hpp"

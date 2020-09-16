@@ -21,7 +21,7 @@
 #include "uit/topology/DyadicTopologyFactory.hpp"
 #include "uit/topology/ProConTopologyFactory.hpp"
 #include "uit/debug/benchmark_utils.hpp"
-#include "uit/utility/CircularIndex.hpp"
+#include "uit/nonce/CircularIndex.hpp"
 #include "uit/meta/Curry.hpp"
 #include "uit/meta/ForEach.hpp"
 #include "uit/debug/safe_cast.hpp"

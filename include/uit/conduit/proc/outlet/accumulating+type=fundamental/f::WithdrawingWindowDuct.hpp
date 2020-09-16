@@ -14,7 +14,7 @@
 #include "../../../../mpi/mpi_utils.hpp"
 #include "../../../../distributed/RdmaAccumulatorPacket.hpp"
 #include "../../../../distributed/RdmaWindowManager.hpp"
-#include "../../../../utility/CircularIndex.hpp"
+#include "../../../../nonce/CircularIndex.hpp"
 #include "../../../../utility/identity.hpp"
 #include "../../../../utility/print_utils.hpp"
 #include "../../../../debug/safe_compare.hpp"

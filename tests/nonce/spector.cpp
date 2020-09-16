@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/spector.hpp"
+#include "uit/nonce/spector.hpp"
 
 TEST_CASE("Test spector as vector") {
 
