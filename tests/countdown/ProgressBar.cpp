@@ -3,7 +3,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/CoarseClock.hpp"
+#include "uit/chrono/CoarseClock.hpp"
 #include "uit/countdown/ProgressBar.hpp"
 #include "uit/countdown/Timer.hpp"
 #include "uit/countdown/Counter.hpp"

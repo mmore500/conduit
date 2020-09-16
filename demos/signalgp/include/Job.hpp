@@ -7,7 +7,7 @@
 
 #include "uit/countdown/ProgressBar.hpp"
 #include "uit/countdown/Timer.hpp"
-#include "uit/utility/CoarseClock.hpp"
+#include "uit/chrono/CoarseClock.hpp"
 
 #include "CellCollection.hpp"
 

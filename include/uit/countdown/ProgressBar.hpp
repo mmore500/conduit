@@ -6,8 +6,8 @@
 #include <sstream>
 #include <string>
 
-#include "../utility/chrono_utils.hpp"
-#include "../utility/CoarseClock.hpp"
+#include "../chrono/chrono_utils.hpp"
+#include "../chrono/CoarseClock.hpp"
 
 #include "impl/CountdownIterator.hpp"
 

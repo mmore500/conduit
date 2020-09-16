@@ -5,7 +5,7 @@
 #include <limits>
 #include <stddef.h>
 
-#include "../utility/chrono_utils.hpp"
+#include "../chrono/chrono_utils.hpp"
 
 #include "impl/CountdownIterator.hpp"
 

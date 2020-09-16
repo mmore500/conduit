@@ -14,6 +14,7 @@
 #include "../third-party/Empirical/source/data/DataFile.h"
 #include "../third-party/Empirical/source/tools/keyname_utils.h"
 
+#include "uit/chrono/CoarseClock.hpp"
 #include "uit/concurrent/Gatherer.hpp"
 #include "uit/concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "uit/countdown/Counter.hpp"
@@ -22,7 +23,6 @@
 #include "uit/conduit/config.hpp"
 #include "uit/debug/safe_cast.hpp"
 #include "uit/mpi/mpi_utils.hpp"
-#include "uit/utility/CoarseClock.hpp"
 #include "uit/utility/math_utils.hpp"
 #include "uit/debug/safe_compare.hpp"
 #include "uit/mesh/Mesh.hpp"
