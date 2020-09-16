@@ -1,8 +1,8 @@
 #pragma once
 
-#include <optional>
 #include <stddef.h>
 
+#include "../../../third-party/Empirical/source/base/optional.h"
 #include "../../../third-party/Empirical/source/base/vector.h"
 
 #include "MeshNodeInput.hpp"
@@ -68,12 +68,12 @@ public:
 
   bool HasOutput(const size_t i) const { return i < GetNumOutputs(); }
 
-  std::optional<input_t> GetInputOrNullopt(const size_t i) const {
-    return HasInput(i) ? std::optional<input_t>{GetInput(i)} : std::nullopt;
+  emp::optional<input_t> GetInputOrNullopt(const size_t i) const {
+    return HasInput(i) ? emp::optional<input_t>{GetInput(i)} : std::nullopt;
   }
 
-  std::optional<output_t> GetOutputOrNullopt(const size_t i) const {
-    return HasOutput(i) ? std::optional<output_t>{GetOutput(i)} : std::nullopt;
+  emp::optional<output_t> GetOutputOrNullopt(const size_t i) const {
+    return HasOutput(i) ? emp::optional<output_t>{GetOutput(i)} : std::nullopt;
   }
 
 };

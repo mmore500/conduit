@@ -7,6 +7,8 @@
 #include <stddef.h>
 #include <utility>
 
+#include "../../../third-party/Empirical/source/base/optional.h"
+
 #include "../debug/occupancy_audit.hpp"
 #include "../parallel/thread_utils.hpp"
 #include "../utility/CircularIndex.hpp"
@@ -167,10 +169,10 @@ public:
    *
    * @return TODO.
    */
-  std::optional<std::reference_wrapper<const T>> GetNextOrNullopt() {
+  emp::optional<std::reference_wrapper<const T>> GetNextOrNullopt() {
     uit_occupancy_audit(1);
     if (TryStep()) {
-      return std::optional{ std::reference_wrapper{ Get() } };
+      return emp::optional{ std::reference_wrapper{ Get() } };
     } else return std::nullopt;
   }
 

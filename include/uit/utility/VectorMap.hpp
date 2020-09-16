@@ -2,9 +2,9 @@
 
 #include <functional>
 #include <memory>
-#include <optional>
 #include <utility>
 
+#include "../../../third-party/Empirical/source/base/optional.h"
 #include "../../../third-party/Empirical/source/base/vector.h"
 
 namespace uit {
@@ -76,7 +76,7 @@ public:
   using mapped_type = T;
   using value_type = std::pair<const Key, T>;
 private:
-  using container_t = emp::vector< std::optional< value_type > >;
+  using container_t = emp::vector< emp::optional< value_type > >;
 public:
   using difference_type = typename container_t::difference_type;
   using size_type = typename container_t::size_type;
@@ -96,10 +96,10 @@ private:
 
   size_t num_items{};
 
-  std::optional<emp::vector<std::reference_wrapper<
+  emp::optional<emp::vector<std::reference_wrapper<
     value_type
   >>> view;
-  mutable std::optional<emp::vector<std::reference_wrapper<
+  mutable emp::optional<emp::vector<std::reference_wrapper<
     const value_type
   >>> const_view;
 

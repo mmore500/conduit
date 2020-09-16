@@ -2,10 +2,10 @@
 
 #include <algorithm>
 #include <mutex>
-#include <optional>
 #include <set>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/optional.h"
 
 #include "../../../../utility/upper_uniquify.hpp"
 
@@ -21,7 +21,7 @@ class OutletMemoryAggregator {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  std::optional<uit::Outlet<AggregatorSpec>> outlet;
+  emp::optional<uit::Outlet<AggregatorSpec>> outlet;
 
   // multimap of index -> value_type
   using T = typename AggregatorSpec::T;

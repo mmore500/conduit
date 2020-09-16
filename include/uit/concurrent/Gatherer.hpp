@@ -7,6 +7,7 @@
 #include <mpi.h>
 
 #include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/source/base/optional.h"
 
 #include "../containers/safe/deque.hpp"
 #include "../mpi/mpi_utils.hpp"
@@ -92,7 +93,7 @@ public:
    * @note All processes within @comm must make this call simultaneously.
    * @note Only a single thread from each process should make this call.
    */
-  std::optional<emp::vector<T>> Gather(const int root=0) {
+  emp::optional<emp::vector<T>> Gather(const int root=0) {
 
     const emp::vector<int> counts = GatherCounts(root);
 
@@ -130,7 +131,7 @@ public:
 
     // if executing process is root, return gathered items
     return root == get_rank(comm)
-      ? std::optional{res}
+      ? emp::optional{res}
       : std::nullopt;
 
   }

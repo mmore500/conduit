@@ -3,13 +3,14 @@
 #include <sstream>
 #include <string>
 
+#include "../../../third-party/Empirical/source/base/optional.h"
 #include "../../../third-party/Empirical/source/base/vector.h"
 
 #include "Cell.hpp"
 
 class CellCollection {
 
-  emp::vector<std::optional<Cell>> cells;
+  emp::vector<emp::optional<Cell>> cells;
 
 public:
 

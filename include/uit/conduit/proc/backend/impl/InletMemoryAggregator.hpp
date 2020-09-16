@@ -2,10 +2,10 @@
 
 #include <algorithm>
 #include <mutex>
-#include <optional>
 #include <set>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/optional.h"
 
 #include "../../../InterProcAddress.hpp"
 #include "../../../Inlet.hpp"
@@ -19,7 +19,7 @@ class InletMemoryAggregator {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  std::optional<uit::Inlet<AggregatorSpec>> inlet;
+  emp::optional<uit::Inlet<AggregatorSpec>> inlet;
 
   // multimap of tag -> data
   using T = typename AggregatorSpec::T;

@@ -2,10 +2,10 @@
 
 #include <algorithm>
 #include <mutex>
-#include <optional>
 #include <set>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/optional.h"
 
 #include "../../../InterProcAddress.hpp"
 #include "../../../Outlet.hpp"
@@ -19,7 +19,7 @@ class OutletMemoryPool {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  std::optional<uit::Outlet<PoolSpec>> outlet;
+  emp::optional<uit::Outlet<PoolSpec>> outlet;
 
   // incremented every time TryConsumeGets is called
   // then reset to zero once every member of the pool has called

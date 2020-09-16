@@ -8,6 +8,7 @@
 #include <mpi.h>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/optional.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../mpi/mpi_utils.hpp"
@@ -44,7 +45,7 @@ private:
   std::shared_ptr<BackEndImpl> back_end;
 
   using aggregator_t = typename BackEndImpl::inlet_aggregator_t;
-  std::optional<std::reference_wrapper<aggregator_t>> aggregator;
+  emp::optional<std::reference_wrapper<aggregator_t>> aggregator;
 
   void SetupAggregator() {
     aggregator = back_end->GetInletAggregator(address);
