@@ -3,7 +3,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/upper_uniquify.hpp"
+#include "uit/algorithm/upper_uniquify.hpp"
 
 TEST_CASE("Test upper_uniquify")
 {

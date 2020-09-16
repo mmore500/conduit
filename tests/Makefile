@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += algorithm
 TARGET_NAMES += chrono
 TARGET_NAMES += concurrent
 TARGET_NAMES += conduit
