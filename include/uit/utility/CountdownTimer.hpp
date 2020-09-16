@@ -5,6 +5,7 @@
 #include <stddef.h>
 
 #include "chrono_utils.hpp"
+#include "CountdownWrapper.hpp"
 
 namespace uit {
 
@@ -16,14 +17,16 @@ class CountdownTimer {
 
   const Duration_T duration;
 
-  const std::chrono::time_point<std::chrono::steady_clock> start{
-    std::chrono::steady_clock::now()
-  };
+  const std::chrono::time_point<Clock_T> start{ Clock_T::now() };
 
   const size_t refresh_freq;
   mutable size_t refresh_counter{0};
 
 public:
+
+  using iterator = uit::CountdownWrapper<CountdownTimer>;
+  using elapsed_t = Duration_T;
+
   CountdownTimer(
     const Duration_T& duration_=infinite_duration,
     const size_t refresh_freq=1
@@ -45,7 +48,7 @@ public:
 
   Duration_T GetElapsed() const {
     return std::chrono::duration_cast<Duration_T>(
-      std::chrono::steady_clock::now() - start
+      Clock_T::now() - start
     );
   }
 
@@ -55,6 +58,19 @@ public:
       Duration_T{0}
     );
   }
+
+  double GetFractionComplete() const {
+    return (
+      static_cast<double>( GetElapsed().count() )
+      / static_cast<double>( duration.count() )
+    );
+  }
+
+  CountdownTimer& operator++() { return *this; }
+
+  iterator begin() { return { *this }; }
+
+  iterator end() { return {}; }
 
 };
 

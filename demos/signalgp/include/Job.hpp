@@ -3,6 +3,9 @@
 #include <sstream>
 #include <string>
 
+#include "../third-party/Empirical/source/tools/NullStream.h"
+
+#include "uit/utility/CountdownProgressBar.hpp"
 #include "uit/utility/CountdownTimer.hpp"
 #include "uit/utility/CoarseClock.hpp"
 
@@ -12,8 +15,14 @@ class Job {
 
   CellCollection collection;
 
-  uit::CountdownTimer<std::chrono::seconds, uit::CoarseClock> timer{
-    std::chrono::seconds{20}
+  using timer_t = uit::CountdownTimer<std::chrono::seconds, uit::CoarseClock>;
+  using bar_t = uit::CountdownProgressBar<timer_t>;
+
+  static inline emp::NullStream ns;
+
+  bar_t timer{
+    uit::is_root() ? std::cout : ns,
+    std::chrono::seconds{ 20 }
   };
 
   size_t iteration_counter{};
@@ -22,7 +31,7 @@ public:
 
   Job(const submesh_t& submesh)
   : collection(submesh) {
-    while( !timer.IsComplete() ) {
+    for ( auto __ : timer ) {
       ++iteration_counter;
       collection.Update();
     }

@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += CircularIndex
+TARGET_NAMES += CountdownProgressBar
 TARGET_NAMES +=	Curry
 TARGET_NAMES +=	IdentityWrapper
 TARGET_NAMES +=	imemstream
