@@ -23,7 +23,7 @@
 #include "uit/conduit/config.hpp"
 #include "uit/debug/safe_cast.hpp"
 #include "uit/mpi/mpi_utils.hpp"
-#include "uit/utility/math_utils.hpp"
+#include "uit/math/math_utils.hpp"
 #include "uit/debug/safe_compare.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/parallel/ThreadIbarrierFactory.hpp"

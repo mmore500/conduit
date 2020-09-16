@@ -2,7 +2,7 @@
 
 #include <stddef.h>
 
-#include "math_utils.hpp"
+#include "../math/math_utils.hpp"
 
 namespace uit {
 

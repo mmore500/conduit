@@ -7,6 +7,7 @@ TARGET_NAMES += containers
 TARGET_NAMES += countdown
 TARGET_NAMES += debug
 TARGET_NAMES += distributed
+TARGET_NAMES += math
 TARGET_NAMES += mesh
 TARGET_NAMES += meta
 TARGET_NAMES += mpi

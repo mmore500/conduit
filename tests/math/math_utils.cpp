@@ -4,7 +4,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/math_utils.hpp"
+#include "uit/math/math_utils.hpp"
 
 TEST_CASE("Test mod") {
 

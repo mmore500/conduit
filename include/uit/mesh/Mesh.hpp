@@ -9,7 +9,7 @@
 #include "../conduit/InterProcAddress.hpp"
 #include "../mpi/mpi_utils.hpp"
 #include "../utility/assign_utils.hpp"
-#include "../utility/math_utils.hpp"
+#include "../math/math_utils.hpp"
 #include "../topology/Topology.hpp"
 
 #include "MeshNode.hpp"
