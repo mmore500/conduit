@@ -4,7 +4,7 @@
 
 #include <benchmark/benchmark.h>
 
-#include "stats_utils.hpp"
+#include "../math/stats_utils.hpp"
 
 namespace uit {
 
