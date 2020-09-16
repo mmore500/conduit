@@ -2,7 +2,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/Uninitialized.hpp"
+#include "uit/initialization/Uninitialized.hpp"
 
 TEST_CASE("Test Uninitialized") {
 

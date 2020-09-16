@@ -19,7 +19,7 @@
 #include "../../../../utility/identity.hpp"
 #include "../../../../utility/imemstream.hpp"
 #include "../../../../utility/print_utils.hpp"
-#include "../../../../utility/Uninitialized.hpp"
+#include "../../../../initialization/Uninitialized.hpp"
 
 #include "../../../InterProcAddress.hpp"
 

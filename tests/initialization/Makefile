@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += imemstream
-TARGET_NAMES += NamedArrayElement
+TARGET_NAMES += Uninitialized
+TARGET_NAMES += ValueInitialized
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
