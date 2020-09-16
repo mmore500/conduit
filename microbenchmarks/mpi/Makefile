@@ -9,6 +9,8 @@ TARGET_NAMES += MPI_Testall
 TARGET_NAMES += MPI_Testsome
 TARGET_NAMES += MPI_Irecv
 
+TO_ROOT := $(shell git rev-parse --show-cdup)
+
 FLAGS = -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function/ -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
 MPICXX ?= mpic++
