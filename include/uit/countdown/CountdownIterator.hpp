@@ -5,7 +5,8 @@
 #include <limits>
 #include <stddef.h>
 
-#include "chrono_utils.hpp"
+#include "../utility/chrono_utils.hpp"
+
 #include "CountdownWrapper.hpp"
 
 namespace uit {

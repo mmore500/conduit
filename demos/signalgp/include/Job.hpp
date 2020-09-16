@@ -5,8 +5,8 @@
 
 #include "../third-party/Empirical/source/tools/NullStream.h"
 
-#include "uit/utility/CountdownProgressBar.hpp"
-#include "uit/utility/CountdownTimer.hpp"
+#include "uit/countdown/CountdownProgressBar.hpp"
+#include "uit/countdown/CountdownTimer.hpp"
 #include "uit/utility/CoarseClock.hpp"
 
 #include "CellCollection.hpp"

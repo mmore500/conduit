@@ -4,7 +4,7 @@
 
 #include <mpi.h>
 
-#include "../utility/CountdownTimer.hpp"
+#include "../countdown/CountdownTimer.hpp"
 
 #include "ThreadIbarrier.hpp"
 

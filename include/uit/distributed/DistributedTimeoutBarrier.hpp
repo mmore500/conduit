@@ -4,9 +4,9 @@
 
 #include <mpi.h>
 
-#include "../utility/CountdownTimer.hpp"
-#include "../parallel/ThreadIbarrier.hpp"
+#include "../countdown/CountdownTimer.hpp"
 #include "../mpi/mpi_utils.hpp"
+#include "../parallel/ThreadIbarrier.hpp"
 
 #include "IbarrierRequest.hpp"
 

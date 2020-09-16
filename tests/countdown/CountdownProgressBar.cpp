@@ -3,10 +3,10 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/utility/CoarseClock.hpp"
-#include "uit/utility/CountdownProgressBar.hpp"
-#include "uit/utility/CountdownTimer.hpp"
-#include "uit/utility/CountdownIterator.hpp"
+#include "uit/countdown/CoarseClock.hpp"
+#include "uit/countdown/CountdownProgressBar.hpp"
+#include "uit/countdown/CountdownTimer.hpp"
+#include "uit/countdown/CountdownIterator.hpp"
 
 TEST_CASE("Test CountdownProgresBar<CountdownIterator>") {
 

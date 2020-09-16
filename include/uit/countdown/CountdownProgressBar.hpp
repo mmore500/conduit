@@ -6,8 +6,9 @@
 #include <sstream>
 #include <string>
 
-#include "chrono_utils.hpp"
-#include "CoarseClock.hpp"
+#include "../utility/chrono_utils.hpp"
+#include "../utility/CoarseClock.hpp"
+
 #include "CountdownWrapper.hpp"
 
 namespace uit {
