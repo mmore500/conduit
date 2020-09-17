@@ -110,7 +110,7 @@ test-fulldebug:
 
 test-all: test test-opt test-fulldebug
 
-.PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov docs
+.PHONY: clean test serve native web install-coverage-dependencies macrobenchmark microbenchmark benchmark tests cov docs demos
 
 
 # Debugging information
