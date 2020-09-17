@@ -54,7 +54,7 @@ private:
     requests.PushBack( MPI_REQUEST_NULL );
 
     emp_assert( uitsl::test_null( requests.Back() ) );
-    UIT_Irecv(
+    UITSL_Irecv(
       &data.GetHead(),
       sizeof(T),
       MPI_BYTE,
@@ -70,8 +70,8 @@ private:
   void CancelReceiveRequest() {
     emp_assert( !uitsl::test_null( requests.Back() ) );
 
-    UIT_Cancel(  &requests.Back() );
-    UIT_Request_free( &requests.Back() );
+    UITSL_Cancel(  &requests.Back() );
+    UITSL_Request_free( &requests.Back() );
 
     emp_assert( uitsl::test_null( requests.Back() ) );
 
@@ -99,7 +99,7 @@ private:
     thread_local emp::array<int, N> out_indices; // ignored
     int num_received; // ignored
 
-    UIT_Testsome(
+    UITSL_Testsome(
       requests.GetSize(), // int count
       requests.GetData(), // MPI_Request array_of_requests[]
       &num_received, // int *outcount

@@ -40,7 +40,7 @@ static void MPI_Rsend(benchmark::State& state) {
     // add a send request
     requests.emplace_back();
     buffers.emplace_back();
-    UIT_Rsend(
+    UITSL_Rsend(
       &buffers.back(), // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -73,7 +73,7 @@ static void post_fresh_recvs(
   for (size_t i = 0; i < buffer_size; ++i) {
     requests.emplace_back();
     buffers.emplace_back();
-    UIT_Irecv(
+    UITSL_Irecv(
       &buffers.back(), // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -91,7 +91,7 @@ static void post_fresh_recvs(
       std::begin(requests),
       std::prev(std::end(requests), 2 * buffer_size)
     );
-    UIT_Waitall(
+    UITSL_Waitall(
       contiguous.size(),
       contiguous.data(),
       MPI_STATUSES_IGNORE
@@ -117,11 +117,11 @@ static void support() {
   post_fresh_recvs(requests, buffers);
 
   // signal setup is complete
-  UIT_Barrier(MPI_COMM_WORLD);
+  UITSL_Barrier(MPI_COMM_WORLD);
 
   // this barrier will signal when benchmarking is complete
   MPI_Request ibarrier_request;
-  UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
+  UITSL_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
 
   // loop until benchmarking is complete
   while (!uitsl::test_completion(ibarrier_request)) {
@@ -153,14 +153,14 @@ int main(int argc, char** argv) {
     benchmark::Initialize(&argc, argv);
 
     // wait for support to complete setup
-    UIT_Barrier(MPI_COMM_WORLD);
+    UITSL_Barrier(MPI_COMM_WORLD);
 
     benchmark::RunSpecifiedBenchmarks();
 
     // notify support that benchmarking is complete
     MPI_Request ibarrier_request;
-    UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
-    UIT_Wait(&ibarrier_request, MPI_STATUSES_IGNORE);
+    UITSL_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
+    UITSL_Wait(&ibarrier_request, MPI_STATUSES_IGNORE);
 
   } else {
 

@@ -10,7 +10,7 @@ namespace uitsl {
 struct AbortFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Abort(std::forward<Args>(args)...);
+    UITSL_Abort(std::forward<Args>(args)...);
   }
 };
 
@@ -18,7 +18,7 @@ struct AbortFunctor {
 struct AccumulateFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Accumulate(std::forward<Args>(args)...);
+    UITSL_Accumulate(std::forward<Args>(args)...);
   }
 };
 
@@ -26,7 +26,7 @@ struct AccumulateFunctor {
 struct Add_error_classFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Add_error_class(std::forward<Args>(args)...);
+    UITSL_Add_error_class(std::forward<Args>(args)...);
   }
 };
 
@@ -34,7 +34,7 @@ struct Add_error_classFunctor {
 struct Add_error_codeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Add_error_code(std::forward<Args>(args)...);
+    UITSL_Add_error_code(std::forward<Args>(args)...);
   }
 };
 
@@ -42,7 +42,7 @@ struct Add_error_codeFunctor {
 struct Add_error_stringFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Add_error_string(std::forward<Args>(args)...);
+    UITSL_Add_error_string(std::forward<Args>(args)...);
   }
 };
 
@@ -50,7 +50,7 @@ struct Add_error_stringFunctor {
 struct AddressFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Address(std::forward<Args>(args)...);
+    UITSL_Address(std::forward<Args>(args)...);
   }
 };
 
@@ -58,7 +58,7 @@ struct AddressFunctor {
 struct AllgatherFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Allgather(std::forward<Args>(args)...);
+    UITSL_Allgather(std::forward<Args>(args)...);
   }
 };
 
@@ -66,7 +66,7 @@ struct AllgatherFunctor {
 struct AllgathervFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Allgatherv(std::forward<Args>(args)...);
+    UITSL_Allgatherv(std::forward<Args>(args)...);
   }
 };
 
@@ -74,7 +74,7 @@ struct AllgathervFunctor {
 struct Alloc_memFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Alloc_mem(std::forward<Args>(args)...);
+    UITSL_Alloc_mem(std::forward<Args>(args)...);
   }
 };
 
@@ -82,7 +82,7 @@ struct Alloc_memFunctor {
 struct AllreduceFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Allreduce(std::forward<Args>(args)...);
+    UITSL_Allreduce(std::forward<Args>(args)...);
   }
 };
 
@@ -90,7 +90,7 @@ struct AllreduceFunctor {
 struct AlltoallFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Alltoall(std::forward<Args>(args)...);
+    UITSL_Alltoall(std::forward<Args>(args)...);
   }
 };
 
@@ -98,7 +98,7 @@ struct AlltoallFunctor {
 struct AlltoallvFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Alltoallv(std::forward<Args>(args)...);
+    UITSL_Alltoallv(std::forward<Args>(args)...);
   }
 };
 
@@ -106,7 +106,7 @@ struct AlltoallvFunctor {
 struct AlltoallwFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Alltoallw(std::forward<Args>(args)...);
+    UITSL_Alltoallw(std::forward<Args>(args)...);
   }
 };
 
@@ -114,7 +114,7 @@ struct AlltoallwFunctor {
 struct Attr_deleteFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Attr_delete(std::forward<Args>(args)...);
+    UITSL_Attr_delete(std::forward<Args>(args)...);
   }
 };
 
@@ -122,7 +122,7 @@ struct Attr_deleteFunctor {
 struct Attr_getFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Attr_get(std::forward<Args>(args)...);
+    UITSL_Attr_get(std::forward<Args>(args)...);
   }
 };
 
@@ -130,7 +130,7 @@ struct Attr_getFunctor {
 struct Attr_putFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Attr_put(std::forward<Args>(args)...);
+    UITSL_Attr_put(std::forward<Args>(args)...);
   }
 };
 
@@ -138,7 +138,7 @@ struct Attr_putFunctor {
 struct BarrierFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Barrier(std::forward<Args>(args)...);
+    UITSL_Barrier(std::forward<Args>(args)...);
   }
 };
 
@@ -146,7 +146,7 @@ struct BarrierFunctor {
 struct BcastFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Bcast(std::forward<Args>(args)...);
+    UITSL_Bcast(std::forward<Args>(args)...);
   }
 };
 
@@ -154,7 +154,7 @@ struct BcastFunctor {
 struct BsendFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Bsend(std::forward<Args>(args)...);
+    UITSL_Bsend(std::forward<Args>(args)...);
   }
 };
 
@@ -162,7 +162,7 @@ struct BsendFunctor {
 struct Bsend_initFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Bsend_init(std::forward<Args>(args)...);
+    UITSL_Bsend_init(std::forward<Args>(args)...);
   }
 };
 
@@ -170,7 +170,7 @@ struct Bsend_initFunctor {
 struct Buffer_attachFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Buffer_attach(std::forward<Args>(args)...);
+    UITSL_Buffer_attach(std::forward<Args>(args)...);
   }
 };
 
@@ -178,7 +178,7 @@ struct Buffer_attachFunctor {
 struct Buffer_detachFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Buffer_detach(std::forward<Args>(args)...);
+    UITSL_Buffer_detach(std::forward<Args>(args)...);
   }
 };
 
@@ -186,7 +186,7 @@ struct Buffer_detachFunctor {
 struct CancelFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Cancel(std::forward<Args>(args)...);
+    UITSL_Cancel(std::forward<Args>(args)...);
   }
 };
 
@@ -194,7 +194,7 @@ struct CancelFunctor {
 struct Cart_coordsFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Cart_coords(std::forward<Args>(args)...);
+    UITSL_Cart_coords(std::forward<Args>(args)...);
   }
 };
 
@@ -202,7 +202,7 @@ struct Cart_coordsFunctor {
 struct Cart_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Cart_create(std::forward<Args>(args)...);
+    UITSL_Cart_create(std::forward<Args>(args)...);
   }
 };
 
@@ -210,7 +210,7 @@ struct Cart_createFunctor {
 struct Cart_getFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Cart_get(std::forward<Args>(args)...);
+    UITSL_Cart_get(std::forward<Args>(args)...);
   }
 };
 
@@ -218,7 +218,7 @@ struct Cart_getFunctor {
 struct Cart_mapFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Cart_map(std::forward<Args>(args)...);
+    UITSL_Cart_map(std::forward<Args>(args)...);
   }
 };
 
@@ -226,7 +226,7 @@ struct Cart_mapFunctor {
 struct Cart_rankFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Cart_rank(std::forward<Args>(args)...);
+    UITSL_Cart_rank(std::forward<Args>(args)...);
   }
 };
 
@@ -234,7 +234,7 @@ struct Cart_rankFunctor {
 struct Cart_shiftFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Cart_shift(std::forward<Args>(args)...);
+    UITSL_Cart_shift(std::forward<Args>(args)...);
   }
 };
 
@@ -242,7 +242,7 @@ struct Cart_shiftFunctor {
 struct Cart_subFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Cart_sub(std::forward<Args>(args)...);
+    UITSL_Cart_sub(std::forward<Args>(args)...);
   }
 };
 
@@ -250,7 +250,7 @@ struct Cart_subFunctor {
 struct Cartdim_getFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Cartdim_get(std::forward<Args>(args)...);
+    UITSL_Cartdim_get(std::forward<Args>(args)...);
   }
 };
 
@@ -258,7 +258,7 @@ struct Cartdim_getFunctor {
 struct Close_portFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Close_port(std::forward<Args>(args)...);
+    UITSL_Close_port(std::forward<Args>(args)...);
   }
 };
 
@@ -266,7 +266,7 @@ struct Close_portFunctor {
 struct Comm_acceptFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_accept(std::forward<Args>(args)...);
+    UITSL_Comm_accept(std::forward<Args>(args)...);
   }
 };
 
@@ -274,7 +274,7 @@ struct Comm_acceptFunctor {
 struct Comm_call_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_call_errhandler(std::forward<Args>(args)...);
+    UITSL_Comm_call_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -282,7 +282,7 @@ struct Comm_call_errhandlerFunctor {
 struct Comm_compareFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_compare(std::forward<Args>(args)...);
+    UITSL_Comm_compare(std::forward<Args>(args)...);
   }
 };
 
@@ -290,7 +290,7 @@ struct Comm_compareFunctor {
 struct Comm_connectFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_connect(std::forward<Args>(args)...);
+    UITSL_Comm_connect(std::forward<Args>(args)...);
   }
 };
 
@@ -298,7 +298,7 @@ struct Comm_connectFunctor {
 struct Comm_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_create(std::forward<Args>(args)...);
+    UITSL_Comm_create(std::forward<Args>(args)...);
   }
 };
 
@@ -306,7 +306,7 @@ struct Comm_createFunctor {
 struct Comm_create_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_create_errhandler(std::forward<Args>(args)...);
+    UITSL_Comm_create_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -314,7 +314,7 @@ struct Comm_create_errhandlerFunctor {
 struct Comm_create_groupFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_create_group(std::forward<Args>(args)...);
+    UITSL_Comm_create_group(std::forward<Args>(args)...);
   }
 };
 
@@ -322,7 +322,7 @@ struct Comm_create_groupFunctor {
 struct Comm_create_keyvalFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_create_keyval(std::forward<Args>(args)...);
+    UITSL_Comm_create_keyval(std::forward<Args>(args)...);
   }
 };
 
@@ -330,7 +330,7 @@ struct Comm_create_keyvalFunctor {
 struct Comm_delete_attrFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_delete_attr(std::forward<Args>(args)...);
+    UITSL_Comm_delete_attr(std::forward<Args>(args)...);
   }
 };
 
@@ -338,7 +338,7 @@ struct Comm_delete_attrFunctor {
 struct Comm_disconnectFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_disconnect(std::forward<Args>(args)...);
+    UITSL_Comm_disconnect(std::forward<Args>(args)...);
   }
 };
 
@@ -346,7 +346,7 @@ struct Comm_disconnectFunctor {
 struct Comm_dupFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_dup(std::forward<Args>(args)...);
+    UITSL_Comm_dup(std::forward<Args>(args)...);
   }
 };
 
@@ -354,7 +354,7 @@ struct Comm_dupFunctor {
 struct Comm_dup_with_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_dup_with_info(std::forward<Args>(args)...);
+    UITSL_Comm_dup_with_info(std::forward<Args>(args)...);
   }
 };
 
@@ -362,7 +362,7 @@ struct Comm_dup_with_infoFunctor {
 struct Comm_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_free(std::forward<Args>(args)...);
+    UITSL_Comm_free(std::forward<Args>(args)...);
   }
 };
 
@@ -370,7 +370,7 @@ struct Comm_freeFunctor {
 struct Comm_free_keyvalFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_free_keyval(std::forward<Args>(args)...);
+    UITSL_Comm_free_keyval(std::forward<Args>(args)...);
   }
 };
 
@@ -378,7 +378,7 @@ struct Comm_free_keyvalFunctor {
 struct Comm_get_attrFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_get_attr(std::forward<Args>(args)...);
+    UITSL_Comm_get_attr(std::forward<Args>(args)...);
   }
 };
 
@@ -386,7 +386,7 @@ struct Comm_get_attrFunctor {
 struct Comm_get_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_get_errhandler(std::forward<Args>(args)...);
+    UITSL_Comm_get_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -394,7 +394,7 @@ struct Comm_get_errhandlerFunctor {
 struct Comm_get_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_get_info(std::forward<Args>(args)...);
+    UITSL_Comm_get_info(std::forward<Args>(args)...);
   }
 };
 
@@ -402,7 +402,7 @@ struct Comm_get_infoFunctor {
 struct Comm_get_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_get_name(std::forward<Args>(args)...);
+    UITSL_Comm_get_name(std::forward<Args>(args)...);
   }
 };
 
@@ -410,7 +410,7 @@ struct Comm_get_nameFunctor {
 struct Comm_get_parentFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_get_parent(std::forward<Args>(args)...);
+    UITSL_Comm_get_parent(std::forward<Args>(args)...);
   }
 };
 
@@ -418,7 +418,7 @@ struct Comm_get_parentFunctor {
 struct Comm_groupFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_group(std::forward<Args>(args)...);
+    UITSL_Comm_group(std::forward<Args>(args)...);
   }
 };
 
@@ -426,7 +426,7 @@ struct Comm_groupFunctor {
 struct Comm_idupFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_idup(std::forward<Args>(args)...);
+    UITSL_Comm_idup(std::forward<Args>(args)...);
   }
 };
 
@@ -434,7 +434,7 @@ struct Comm_idupFunctor {
 struct Comm_joinFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_join(std::forward<Args>(args)...);
+    UITSL_Comm_join(std::forward<Args>(args)...);
   }
 };
 
@@ -442,7 +442,7 @@ struct Comm_joinFunctor {
 struct Comm_rankFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_rank(std::forward<Args>(args)...);
+    UITSL_Comm_rank(std::forward<Args>(args)...);
   }
 };
 
@@ -450,7 +450,7 @@ struct Comm_rankFunctor {
 struct Comm_remote_groupFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_remote_group(std::forward<Args>(args)...);
+    UITSL_Comm_remote_group(std::forward<Args>(args)...);
   }
 };
 
@@ -458,7 +458,7 @@ struct Comm_remote_groupFunctor {
 struct Comm_remote_sizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_remote_size(std::forward<Args>(args)...);
+    UITSL_Comm_remote_size(std::forward<Args>(args)...);
   }
 };
 
@@ -466,7 +466,7 @@ struct Comm_remote_sizeFunctor {
 struct Comm_set_attrFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_set_attr(std::forward<Args>(args)...);
+    UITSL_Comm_set_attr(std::forward<Args>(args)...);
   }
 };
 
@@ -474,7 +474,7 @@ struct Comm_set_attrFunctor {
 struct Comm_set_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_set_errhandler(std::forward<Args>(args)...);
+    UITSL_Comm_set_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -482,7 +482,7 @@ struct Comm_set_errhandlerFunctor {
 struct Comm_set_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_set_info(std::forward<Args>(args)...);
+    UITSL_Comm_set_info(std::forward<Args>(args)...);
   }
 };
 
@@ -490,7 +490,7 @@ struct Comm_set_infoFunctor {
 struct Comm_set_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_set_name(std::forward<Args>(args)...);
+    UITSL_Comm_set_name(std::forward<Args>(args)...);
   }
 };
 
@@ -498,7 +498,7 @@ struct Comm_set_nameFunctor {
 struct Comm_sizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_size(std::forward<Args>(args)...);
+    UITSL_Comm_size(std::forward<Args>(args)...);
   }
 };
 
@@ -506,7 +506,7 @@ struct Comm_sizeFunctor {
 struct Comm_spawnFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_spawn(std::forward<Args>(args)...);
+    UITSL_Comm_spawn(std::forward<Args>(args)...);
   }
 };
 
@@ -514,7 +514,7 @@ struct Comm_spawnFunctor {
 struct Comm_spawn_multipleFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_spawn_multiple(std::forward<Args>(args)...);
+    UITSL_Comm_spawn_multiple(std::forward<Args>(args)...);
   }
 };
 
@@ -522,7 +522,7 @@ struct Comm_spawn_multipleFunctor {
 struct Comm_splitFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_split(std::forward<Args>(args)...);
+    UITSL_Comm_split(std::forward<Args>(args)...);
   }
 };
 
@@ -530,7 +530,7 @@ struct Comm_splitFunctor {
 struct Comm_split_typeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_split_type(std::forward<Args>(args)...);
+    UITSL_Comm_split_type(std::forward<Args>(args)...);
   }
 };
 
@@ -538,7 +538,7 @@ struct Comm_split_typeFunctor {
 struct Comm_test_interFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Comm_test_inter(std::forward<Args>(args)...);
+    UITSL_Comm_test_inter(std::forward<Args>(args)...);
   }
 };
 
@@ -546,7 +546,7 @@ struct Comm_test_interFunctor {
 struct Compare_and_swapFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Compare_and_swap(std::forward<Args>(args)...);
+    UITSL_Compare_and_swap(std::forward<Args>(args)...);
   }
 };
 
@@ -554,7 +554,7 @@ struct Compare_and_swapFunctor {
 struct Dims_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Dims_create(std::forward<Args>(args)...);
+    UITSL_Dims_create(std::forward<Args>(args)...);
   }
 };
 
@@ -562,7 +562,7 @@ struct Dims_createFunctor {
 struct Dist_graph_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Dist_graph_create(std::forward<Args>(args)...);
+    UITSL_Dist_graph_create(std::forward<Args>(args)...);
   }
 };
 
@@ -570,7 +570,7 @@ struct Dist_graph_createFunctor {
 struct Dist_graph_create_adjacentFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Dist_graph_create_adjacent(std::forward<Args>(args)...);
+    UITSL_Dist_graph_create_adjacent(std::forward<Args>(args)...);
   }
 };
 
@@ -578,7 +578,7 @@ struct Dist_graph_create_adjacentFunctor {
 struct Dist_graph_neighborsFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Dist_graph_neighbors(std::forward<Args>(args)...);
+    UITSL_Dist_graph_neighbors(std::forward<Args>(args)...);
   }
 };
 
@@ -586,7 +586,7 @@ struct Dist_graph_neighborsFunctor {
 struct Dist_graph_neighbors_countFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Dist_graph_neighbors_count(std::forward<Args>(args)...);
+    UITSL_Dist_graph_neighbors_count(std::forward<Args>(args)...);
   }
 };
 
@@ -594,7 +594,7 @@ struct Dist_graph_neighbors_countFunctor {
 struct Errhandler_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Errhandler_create(std::forward<Args>(args)...);
+    UITSL_Errhandler_create(std::forward<Args>(args)...);
   }
 };
 
@@ -602,7 +602,7 @@ struct Errhandler_createFunctor {
 struct Errhandler_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Errhandler_free(std::forward<Args>(args)...);
+    UITSL_Errhandler_free(std::forward<Args>(args)...);
   }
 };
 
@@ -610,7 +610,7 @@ struct Errhandler_freeFunctor {
 struct Errhandler_getFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Errhandler_get(std::forward<Args>(args)...);
+    UITSL_Errhandler_get(std::forward<Args>(args)...);
   }
 };
 
@@ -618,7 +618,7 @@ struct Errhandler_getFunctor {
 struct Errhandler_setFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Errhandler_set(std::forward<Args>(args)...);
+    UITSL_Errhandler_set(std::forward<Args>(args)...);
   }
 };
 
@@ -626,7 +626,7 @@ struct Errhandler_setFunctor {
 struct Error_classFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Error_class(std::forward<Args>(args)...);
+    UITSL_Error_class(std::forward<Args>(args)...);
   }
 };
 
@@ -634,7 +634,7 @@ struct Error_classFunctor {
 struct Error_stringFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Error_string(std::forward<Args>(args)...);
+    UITSL_Error_string(std::forward<Args>(args)...);
   }
 };
 
@@ -642,7 +642,7 @@ struct Error_stringFunctor {
 struct ExscanFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Exscan(std::forward<Args>(args)...);
+    UITSL_Exscan(std::forward<Args>(args)...);
   }
 };
 
@@ -650,7 +650,7 @@ struct ExscanFunctor {
 struct Fetch_and_opFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Fetch_and_op(std::forward<Args>(args)...);
+    UITSL_Fetch_and_op(std::forward<Args>(args)...);
   }
 };
 
@@ -658,7 +658,7 @@ struct Fetch_and_opFunctor {
 struct File_c2fFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_c2f(std::forward<Args>(args)...);
+    UITSL_File_c2f(std::forward<Args>(args)...);
   }
 };
 
@@ -666,7 +666,7 @@ struct File_c2fFunctor {
 struct File_call_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_call_errhandler(std::forward<Args>(args)...);
+    UITSL_File_call_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -674,7 +674,7 @@ struct File_call_errhandlerFunctor {
 struct File_closeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_close(std::forward<Args>(args)...);
+    UITSL_File_close(std::forward<Args>(args)...);
   }
 };
 
@@ -682,7 +682,7 @@ struct File_closeFunctor {
 struct File_create_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_create_errhandler(std::forward<Args>(args)...);
+    UITSL_File_create_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -690,7 +690,7 @@ struct File_create_errhandlerFunctor {
 struct File_deleteFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_delete(std::forward<Args>(args)...);
+    UITSL_File_delete(std::forward<Args>(args)...);
   }
 };
 
@@ -698,7 +698,7 @@ struct File_deleteFunctor {
 struct File_f2cFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_f2c(std::forward<Args>(args)...);
+    UITSL_File_f2c(std::forward<Args>(args)...);
   }
 };
 
@@ -706,7 +706,7 @@ struct File_f2cFunctor {
 struct File_get_amodeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_amode(std::forward<Args>(args)...);
+    UITSL_File_get_amode(std::forward<Args>(args)...);
   }
 };
 
@@ -714,7 +714,7 @@ struct File_get_amodeFunctor {
 struct File_get_atomicityFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_atomicity(std::forward<Args>(args)...);
+    UITSL_File_get_atomicity(std::forward<Args>(args)...);
   }
 };
 
@@ -722,7 +722,7 @@ struct File_get_atomicityFunctor {
 struct File_get_byte_offsetFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_byte_offset(std::forward<Args>(args)...);
+    UITSL_File_get_byte_offset(std::forward<Args>(args)...);
   }
 };
 
@@ -730,7 +730,7 @@ struct File_get_byte_offsetFunctor {
 struct File_get_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_errhandler(std::forward<Args>(args)...);
+    UITSL_File_get_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -738,7 +738,7 @@ struct File_get_errhandlerFunctor {
 struct File_get_groupFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_group(std::forward<Args>(args)...);
+    UITSL_File_get_group(std::forward<Args>(args)...);
   }
 };
 
@@ -746,7 +746,7 @@ struct File_get_groupFunctor {
 struct File_get_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_info(std::forward<Args>(args)...);
+    UITSL_File_get_info(std::forward<Args>(args)...);
   }
 };
 
@@ -754,7 +754,7 @@ struct File_get_infoFunctor {
 struct File_get_positionFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_position(std::forward<Args>(args)...);
+    UITSL_File_get_position(std::forward<Args>(args)...);
   }
 };
 
@@ -762,7 +762,7 @@ struct File_get_positionFunctor {
 struct File_get_position_sharedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_position_shared(std::forward<Args>(args)...);
+    UITSL_File_get_position_shared(std::forward<Args>(args)...);
   }
 };
 
@@ -770,7 +770,7 @@ struct File_get_position_sharedFunctor {
 struct File_get_sizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_size(std::forward<Args>(args)...);
+    UITSL_File_get_size(std::forward<Args>(args)...);
   }
 };
 
@@ -778,7 +778,7 @@ struct File_get_sizeFunctor {
 struct File_get_type_extentFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_type_extent(std::forward<Args>(args)...);
+    UITSL_File_get_type_extent(std::forward<Args>(args)...);
   }
 };
 
@@ -786,7 +786,7 @@ struct File_get_type_extentFunctor {
 struct File_get_viewFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_get_view(std::forward<Args>(args)...);
+    UITSL_File_get_view(std::forward<Args>(args)...);
   }
 };
 
@@ -794,7 +794,7 @@ struct File_get_viewFunctor {
 struct File_ireadFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iread(std::forward<Args>(args)...);
+    UITSL_File_iread(std::forward<Args>(args)...);
   }
 };
 
@@ -802,7 +802,7 @@ struct File_ireadFunctor {
 struct File_iread_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iread_all(std::forward<Args>(args)...);
+    UITSL_File_iread_all(std::forward<Args>(args)...);
   }
 };
 
@@ -810,7 +810,7 @@ struct File_iread_allFunctor {
 struct File_iread_atFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iread_at(std::forward<Args>(args)...);
+    UITSL_File_iread_at(std::forward<Args>(args)...);
   }
 };
 
@@ -818,7 +818,7 @@ struct File_iread_atFunctor {
 struct File_iread_at_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iread_at_all(std::forward<Args>(args)...);
+    UITSL_File_iread_at_all(std::forward<Args>(args)...);
   }
 };
 
@@ -826,7 +826,7 @@ struct File_iread_at_allFunctor {
 struct File_iread_sharedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iread_shared(std::forward<Args>(args)...);
+    UITSL_File_iread_shared(std::forward<Args>(args)...);
   }
 };
 
@@ -834,7 +834,7 @@ struct File_iread_sharedFunctor {
 struct File_iwriteFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iwrite(std::forward<Args>(args)...);
+    UITSL_File_iwrite(std::forward<Args>(args)...);
   }
 };
 
@@ -842,7 +842,7 @@ struct File_iwriteFunctor {
 struct File_iwrite_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iwrite_all(std::forward<Args>(args)...);
+    UITSL_File_iwrite_all(std::forward<Args>(args)...);
   }
 };
 
@@ -850,7 +850,7 @@ struct File_iwrite_allFunctor {
 struct File_iwrite_atFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iwrite_at(std::forward<Args>(args)...);
+    UITSL_File_iwrite_at(std::forward<Args>(args)...);
   }
 };
 
@@ -858,7 +858,7 @@ struct File_iwrite_atFunctor {
 struct File_iwrite_at_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iwrite_at_all(std::forward<Args>(args)...);
+    UITSL_File_iwrite_at_all(std::forward<Args>(args)...);
   }
 };
 
@@ -866,7 +866,7 @@ struct File_iwrite_at_allFunctor {
 struct File_iwrite_sharedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_iwrite_shared(std::forward<Args>(args)...);
+    UITSL_File_iwrite_shared(std::forward<Args>(args)...);
   }
 };
 
@@ -874,7 +874,7 @@ struct File_iwrite_sharedFunctor {
 struct File_openFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_open(std::forward<Args>(args)...);
+    UITSL_File_open(std::forward<Args>(args)...);
   }
 };
 
@@ -882,7 +882,7 @@ struct File_openFunctor {
 struct File_preallocateFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_preallocate(std::forward<Args>(args)...);
+    UITSL_File_preallocate(std::forward<Args>(args)...);
   }
 };
 
@@ -890,7 +890,7 @@ struct File_preallocateFunctor {
 struct File_readFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read(std::forward<Args>(args)...);
+    UITSL_File_read(std::forward<Args>(args)...);
   }
 };
 
@@ -898,7 +898,7 @@ struct File_readFunctor {
 struct File_read_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_all(std::forward<Args>(args)...);
+    UITSL_File_read_all(std::forward<Args>(args)...);
   }
 };
 
@@ -906,7 +906,7 @@ struct File_read_allFunctor {
 struct File_read_all_beginFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_all_begin(std::forward<Args>(args)...);
+    UITSL_File_read_all_begin(std::forward<Args>(args)...);
   }
 };
 
@@ -914,7 +914,7 @@ struct File_read_all_beginFunctor {
 struct File_read_all_endFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_all_end(std::forward<Args>(args)...);
+    UITSL_File_read_all_end(std::forward<Args>(args)...);
   }
 };
 
@@ -922,7 +922,7 @@ struct File_read_all_endFunctor {
 struct File_read_atFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_at(std::forward<Args>(args)...);
+    UITSL_File_read_at(std::forward<Args>(args)...);
   }
 };
 
@@ -930,7 +930,7 @@ struct File_read_atFunctor {
 struct File_read_at_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_at_all(std::forward<Args>(args)...);
+    UITSL_File_read_at_all(std::forward<Args>(args)...);
   }
 };
 
@@ -938,7 +938,7 @@ struct File_read_at_allFunctor {
 struct File_read_at_all_beginFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_at_all_begin(std::forward<Args>(args)...);
+    UITSL_File_read_at_all_begin(std::forward<Args>(args)...);
   }
 };
 
@@ -946,7 +946,7 @@ struct File_read_at_all_beginFunctor {
 struct File_read_at_all_endFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_at_all_end(std::forward<Args>(args)...);
+    UITSL_File_read_at_all_end(std::forward<Args>(args)...);
   }
 };
 
@@ -954,7 +954,7 @@ struct File_read_at_all_endFunctor {
 struct File_read_orderedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_ordered(std::forward<Args>(args)...);
+    UITSL_File_read_ordered(std::forward<Args>(args)...);
   }
 };
 
@@ -962,7 +962,7 @@ struct File_read_orderedFunctor {
 struct File_read_ordered_beginFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_ordered_begin(std::forward<Args>(args)...);
+    UITSL_File_read_ordered_begin(std::forward<Args>(args)...);
   }
 };
 
@@ -970,7 +970,7 @@ struct File_read_ordered_beginFunctor {
 struct File_read_ordered_endFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_ordered_end(std::forward<Args>(args)...);
+    UITSL_File_read_ordered_end(std::forward<Args>(args)...);
   }
 };
 
@@ -978,7 +978,7 @@ struct File_read_ordered_endFunctor {
 struct File_read_sharedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_read_shared(std::forward<Args>(args)...);
+    UITSL_File_read_shared(std::forward<Args>(args)...);
   }
 };
 
@@ -986,7 +986,7 @@ struct File_read_sharedFunctor {
 struct File_seekFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_seek(std::forward<Args>(args)...);
+    UITSL_File_seek(std::forward<Args>(args)...);
   }
 };
 
@@ -994,7 +994,7 @@ struct File_seekFunctor {
 struct File_seek_sharedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_seek_shared(std::forward<Args>(args)...);
+    UITSL_File_seek_shared(std::forward<Args>(args)...);
   }
 };
 
@@ -1002,7 +1002,7 @@ struct File_seek_sharedFunctor {
 struct File_set_atomicityFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_set_atomicity(std::forward<Args>(args)...);
+    UITSL_File_set_atomicity(std::forward<Args>(args)...);
   }
 };
 
@@ -1010,7 +1010,7 @@ struct File_set_atomicityFunctor {
 struct File_set_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_set_errhandler(std::forward<Args>(args)...);
+    UITSL_File_set_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -1018,7 +1018,7 @@ struct File_set_errhandlerFunctor {
 struct File_set_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_set_info(std::forward<Args>(args)...);
+    UITSL_File_set_info(std::forward<Args>(args)...);
   }
 };
 
@@ -1026,7 +1026,7 @@ struct File_set_infoFunctor {
 struct File_set_sizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_set_size(std::forward<Args>(args)...);
+    UITSL_File_set_size(std::forward<Args>(args)...);
   }
 };
 
@@ -1034,7 +1034,7 @@ struct File_set_sizeFunctor {
 struct File_set_viewFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_set_view(std::forward<Args>(args)...);
+    UITSL_File_set_view(std::forward<Args>(args)...);
   }
 };
 
@@ -1042,7 +1042,7 @@ struct File_set_viewFunctor {
 struct File_syncFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_sync(std::forward<Args>(args)...);
+    UITSL_File_sync(std::forward<Args>(args)...);
   }
 };
 
@@ -1050,7 +1050,7 @@ struct File_syncFunctor {
 struct File_writeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write(std::forward<Args>(args)...);
+    UITSL_File_write(std::forward<Args>(args)...);
   }
 };
 
@@ -1058,7 +1058,7 @@ struct File_writeFunctor {
 struct File_write_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_all(std::forward<Args>(args)...);
+    UITSL_File_write_all(std::forward<Args>(args)...);
   }
 };
 
@@ -1066,7 +1066,7 @@ struct File_write_allFunctor {
 struct File_write_all_beginFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_all_begin(std::forward<Args>(args)...);
+    UITSL_File_write_all_begin(std::forward<Args>(args)...);
   }
 };
 
@@ -1074,7 +1074,7 @@ struct File_write_all_beginFunctor {
 struct File_write_all_endFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_all_end(std::forward<Args>(args)...);
+    UITSL_File_write_all_end(std::forward<Args>(args)...);
   }
 };
 
@@ -1082,7 +1082,7 @@ struct File_write_all_endFunctor {
 struct File_write_atFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_at(std::forward<Args>(args)...);
+    UITSL_File_write_at(std::forward<Args>(args)...);
   }
 };
 
@@ -1090,7 +1090,7 @@ struct File_write_atFunctor {
 struct File_write_at_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_at_all(std::forward<Args>(args)...);
+    UITSL_File_write_at_all(std::forward<Args>(args)...);
   }
 };
 
@@ -1098,7 +1098,7 @@ struct File_write_at_allFunctor {
 struct File_write_at_all_beginFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_at_all_begin(std::forward<Args>(args)...);
+    UITSL_File_write_at_all_begin(std::forward<Args>(args)...);
   }
 };
 
@@ -1106,7 +1106,7 @@ struct File_write_at_all_beginFunctor {
 struct File_write_at_all_endFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_at_all_end(std::forward<Args>(args)...);
+    UITSL_File_write_at_all_end(std::forward<Args>(args)...);
   }
 };
 
@@ -1114,7 +1114,7 @@ struct File_write_at_all_endFunctor {
 struct File_write_orderedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_ordered(std::forward<Args>(args)...);
+    UITSL_File_write_ordered(std::forward<Args>(args)...);
   }
 };
 
@@ -1122,7 +1122,7 @@ struct File_write_orderedFunctor {
 struct File_write_ordered_beginFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_ordered_begin(std::forward<Args>(args)...);
+    UITSL_File_write_ordered_begin(std::forward<Args>(args)...);
   }
 };
 
@@ -1130,7 +1130,7 @@ struct File_write_ordered_beginFunctor {
 struct File_write_ordered_endFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_ordered_end(std::forward<Args>(args)...);
+    UITSL_File_write_ordered_end(std::forward<Args>(args)...);
   }
 };
 
@@ -1138,7 +1138,7 @@ struct File_write_ordered_endFunctor {
 struct File_write_sharedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_File_write_shared(std::forward<Args>(args)...);
+    UITSL_File_write_shared(std::forward<Args>(args)...);
   }
 };
 
@@ -1146,7 +1146,7 @@ struct File_write_sharedFunctor {
 struct FinalizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Finalize(std::forward<Args>(args)...);
+    UITSL_Finalize(std::forward<Args>(args)...);
   }
 };
 
@@ -1154,7 +1154,7 @@ struct FinalizeFunctor {
 struct FinalizedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Finalized(std::forward<Args>(args)...);
+    UITSL_Finalized(std::forward<Args>(args)...);
   }
 };
 
@@ -1162,7 +1162,7 @@ struct FinalizedFunctor {
 struct Free_memFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Free_mem(std::forward<Args>(args)...);
+    UITSL_Free_mem(std::forward<Args>(args)...);
   }
 };
 
@@ -1170,7 +1170,7 @@ struct Free_memFunctor {
 struct GatherFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Gather(std::forward<Args>(args)...);
+    UITSL_Gather(std::forward<Args>(args)...);
   }
 };
 
@@ -1178,7 +1178,7 @@ struct GatherFunctor {
 struct GathervFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Gatherv(std::forward<Args>(args)...);
+    UITSL_Gatherv(std::forward<Args>(args)...);
   }
 };
 
@@ -1186,7 +1186,7 @@ struct GathervFunctor {
 struct GetFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Get(std::forward<Args>(args)...);
+    UITSL_Get(std::forward<Args>(args)...);
   }
 };
 
@@ -1194,7 +1194,7 @@ struct GetFunctor {
 struct Get_accumulateFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Get_accumulate(std::forward<Args>(args)...);
+    UITSL_Get_accumulate(std::forward<Args>(args)...);
   }
 };
 
@@ -1202,7 +1202,7 @@ struct Get_accumulateFunctor {
 struct Get_addressFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Get_address(std::forward<Args>(args)...);
+    UITSL_Get_address(std::forward<Args>(args)...);
   }
 };
 
@@ -1210,7 +1210,7 @@ struct Get_addressFunctor {
 struct Get_countFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Get_count(std::forward<Args>(args)...);
+    UITSL_Get_count(std::forward<Args>(args)...);
   }
 };
 
@@ -1218,7 +1218,7 @@ struct Get_countFunctor {
 struct Get_elementsFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Get_elements(std::forward<Args>(args)...);
+    UITSL_Get_elements(std::forward<Args>(args)...);
   }
 };
 
@@ -1226,7 +1226,7 @@ struct Get_elementsFunctor {
 struct Get_elements_xFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Get_elements_x(std::forward<Args>(args)...);
+    UITSL_Get_elements_x(std::forward<Args>(args)...);
   }
 };
 
@@ -1234,7 +1234,7 @@ struct Get_elements_xFunctor {
 struct Get_library_versionFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Get_library_version(std::forward<Args>(args)...);
+    UITSL_Get_library_version(std::forward<Args>(args)...);
   }
 };
 
@@ -1242,7 +1242,7 @@ struct Get_library_versionFunctor {
 struct Get_processor_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Get_processor_name(std::forward<Args>(args)...);
+    UITSL_Get_processor_name(std::forward<Args>(args)...);
   }
 };
 
@@ -1250,7 +1250,7 @@ struct Get_processor_nameFunctor {
 struct Get_versionFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Get_version(std::forward<Args>(args)...);
+    UITSL_Get_version(std::forward<Args>(args)...);
   }
 };
 
@@ -1258,7 +1258,7 @@ struct Get_versionFunctor {
 struct Graph_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Graph_create(std::forward<Args>(args)...);
+    UITSL_Graph_create(std::forward<Args>(args)...);
   }
 };
 
@@ -1266,7 +1266,7 @@ struct Graph_createFunctor {
 struct Graph_getFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Graph_get(std::forward<Args>(args)...);
+    UITSL_Graph_get(std::forward<Args>(args)...);
   }
 };
 
@@ -1274,7 +1274,7 @@ struct Graph_getFunctor {
 struct Graph_mapFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Graph_map(std::forward<Args>(args)...);
+    UITSL_Graph_map(std::forward<Args>(args)...);
   }
 };
 
@@ -1282,7 +1282,7 @@ struct Graph_mapFunctor {
 struct Graph_neighborsFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Graph_neighbors(std::forward<Args>(args)...);
+    UITSL_Graph_neighbors(std::forward<Args>(args)...);
   }
 };
 
@@ -1290,7 +1290,7 @@ struct Graph_neighborsFunctor {
 struct Graph_neighbors_countFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Graph_neighbors_count(std::forward<Args>(args)...);
+    UITSL_Graph_neighbors_count(std::forward<Args>(args)...);
   }
 };
 
@@ -1298,7 +1298,7 @@ struct Graph_neighbors_countFunctor {
 struct Graphdims_getFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Graphdims_get(std::forward<Args>(args)...);
+    UITSL_Graphdims_get(std::forward<Args>(args)...);
   }
 };
 
@@ -1306,7 +1306,7 @@ struct Graphdims_getFunctor {
 struct Grequest_completeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Grequest_complete(std::forward<Args>(args)...);
+    UITSL_Grequest_complete(std::forward<Args>(args)...);
   }
 };
 
@@ -1314,7 +1314,7 @@ struct Grequest_completeFunctor {
 struct Grequest_startFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Grequest_start(std::forward<Args>(args)...);
+    UITSL_Grequest_start(std::forward<Args>(args)...);
   }
 };
 
@@ -1322,7 +1322,7 @@ struct Grequest_startFunctor {
 struct Group_compareFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_compare(std::forward<Args>(args)...);
+    UITSL_Group_compare(std::forward<Args>(args)...);
   }
 };
 
@@ -1330,7 +1330,7 @@ struct Group_compareFunctor {
 struct Group_differenceFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_difference(std::forward<Args>(args)...);
+    UITSL_Group_difference(std::forward<Args>(args)...);
   }
 };
 
@@ -1338,7 +1338,7 @@ struct Group_differenceFunctor {
 struct Group_exclFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_excl(std::forward<Args>(args)...);
+    UITSL_Group_excl(std::forward<Args>(args)...);
   }
 };
 
@@ -1346,7 +1346,7 @@ struct Group_exclFunctor {
 struct Group_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_free(std::forward<Args>(args)...);
+    UITSL_Group_free(std::forward<Args>(args)...);
   }
 };
 
@@ -1354,7 +1354,7 @@ struct Group_freeFunctor {
 struct Group_inclFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_incl(std::forward<Args>(args)...);
+    UITSL_Group_incl(std::forward<Args>(args)...);
   }
 };
 
@@ -1362,7 +1362,7 @@ struct Group_inclFunctor {
 struct Group_intersectionFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_intersection(std::forward<Args>(args)...);
+    UITSL_Group_intersection(std::forward<Args>(args)...);
   }
 };
 
@@ -1370,7 +1370,7 @@ struct Group_intersectionFunctor {
 struct Group_range_exclFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_range_excl(std::forward<Args>(args)...);
+    UITSL_Group_range_excl(std::forward<Args>(args)...);
   }
 };
 
@@ -1378,7 +1378,7 @@ struct Group_range_exclFunctor {
 struct Group_range_inclFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_range_incl(std::forward<Args>(args)...);
+    UITSL_Group_range_incl(std::forward<Args>(args)...);
   }
 };
 
@@ -1386,7 +1386,7 @@ struct Group_range_inclFunctor {
 struct Group_rankFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_rank(std::forward<Args>(args)...);
+    UITSL_Group_rank(std::forward<Args>(args)...);
   }
 };
 
@@ -1394,7 +1394,7 @@ struct Group_rankFunctor {
 struct Group_sizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_size(std::forward<Args>(args)...);
+    UITSL_Group_size(std::forward<Args>(args)...);
   }
 };
 
@@ -1402,7 +1402,7 @@ struct Group_sizeFunctor {
 struct Group_translate_ranksFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_translate_ranks(std::forward<Args>(args)...);
+    UITSL_Group_translate_ranks(std::forward<Args>(args)...);
   }
 };
 
@@ -1410,7 +1410,7 @@ struct Group_translate_ranksFunctor {
 struct Group_unionFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Group_union(std::forward<Args>(args)...);
+    UITSL_Group_union(std::forward<Args>(args)...);
   }
 };
 
@@ -1418,7 +1418,7 @@ struct Group_unionFunctor {
 struct IallgatherFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Iallgather(std::forward<Args>(args)...);
+    UITSL_Iallgather(std::forward<Args>(args)...);
   }
 };
 
@@ -1426,7 +1426,7 @@ struct IallgatherFunctor {
 struct IallgathervFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Iallgatherv(std::forward<Args>(args)...);
+    UITSL_Iallgatherv(std::forward<Args>(args)...);
   }
 };
 
@@ -1434,7 +1434,7 @@ struct IallgathervFunctor {
 struct IallreduceFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Iallreduce(std::forward<Args>(args)...);
+    UITSL_Iallreduce(std::forward<Args>(args)...);
   }
 };
 
@@ -1442,7 +1442,7 @@ struct IallreduceFunctor {
 struct IalltoallFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ialltoall(std::forward<Args>(args)...);
+    UITSL_Ialltoall(std::forward<Args>(args)...);
   }
 };
 
@@ -1450,7 +1450,7 @@ struct IalltoallFunctor {
 struct IalltoallvFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ialltoallv(std::forward<Args>(args)...);
+    UITSL_Ialltoallv(std::forward<Args>(args)...);
   }
 };
 
@@ -1458,7 +1458,7 @@ struct IalltoallvFunctor {
 struct IalltoallwFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ialltoallw(std::forward<Args>(args)...);
+    UITSL_Ialltoallw(std::forward<Args>(args)...);
   }
 };
 
@@ -1466,7 +1466,7 @@ struct IalltoallwFunctor {
 struct IbarrierFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ibarrier(std::forward<Args>(args)...);
+    UITSL_Ibarrier(std::forward<Args>(args)...);
   }
 };
 
@@ -1474,7 +1474,7 @@ struct IbarrierFunctor {
 struct IbcastFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ibcast(std::forward<Args>(args)...);
+    UITSL_Ibcast(std::forward<Args>(args)...);
   }
 };
 
@@ -1482,7 +1482,7 @@ struct IbcastFunctor {
 struct IbsendFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ibsend(std::forward<Args>(args)...);
+    UITSL_Ibsend(std::forward<Args>(args)...);
   }
 };
 
@@ -1490,7 +1490,7 @@ struct IbsendFunctor {
 struct IexscanFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Iexscan(std::forward<Args>(args)...);
+    UITSL_Iexscan(std::forward<Args>(args)...);
   }
 };
 
@@ -1498,7 +1498,7 @@ struct IexscanFunctor {
 struct IgatherFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Igather(std::forward<Args>(args)...);
+    UITSL_Igather(std::forward<Args>(args)...);
   }
 };
 
@@ -1506,7 +1506,7 @@ struct IgatherFunctor {
 struct IgathervFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Igatherv(std::forward<Args>(args)...);
+    UITSL_Igatherv(std::forward<Args>(args)...);
   }
 };
 
@@ -1514,7 +1514,7 @@ struct IgathervFunctor {
 struct ImprobeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Improbe(std::forward<Args>(args)...);
+    UITSL_Improbe(std::forward<Args>(args)...);
   }
 };
 
@@ -1522,7 +1522,7 @@ struct ImprobeFunctor {
 struct ImrecvFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Imrecv(std::forward<Args>(args)...);
+    UITSL_Imrecv(std::forward<Args>(args)...);
   }
 };
 
@@ -1530,7 +1530,7 @@ struct ImrecvFunctor {
 struct Ineighbor_allgatherFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ineighbor_allgather(std::forward<Args>(args)...);
+    UITSL_Ineighbor_allgather(std::forward<Args>(args)...);
   }
 };
 
@@ -1538,7 +1538,7 @@ struct Ineighbor_allgatherFunctor {
 struct Ineighbor_allgathervFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ineighbor_allgatherv(std::forward<Args>(args)...);
+    UITSL_Ineighbor_allgatherv(std::forward<Args>(args)...);
   }
 };
 
@@ -1546,7 +1546,7 @@ struct Ineighbor_allgathervFunctor {
 struct Ineighbor_alltoallFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ineighbor_alltoall(std::forward<Args>(args)...);
+    UITSL_Ineighbor_alltoall(std::forward<Args>(args)...);
   }
 };
 
@@ -1554,7 +1554,7 @@ struct Ineighbor_alltoallFunctor {
 struct Ineighbor_alltoallvFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ineighbor_alltoallv(std::forward<Args>(args)...);
+    UITSL_Ineighbor_alltoallv(std::forward<Args>(args)...);
   }
 };
 
@@ -1562,7 +1562,7 @@ struct Ineighbor_alltoallvFunctor {
 struct Ineighbor_alltoallwFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ineighbor_alltoallw(std::forward<Args>(args)...);
+    UITSL_Ineighbor_alltoallw(std::forward<Args>(args)...);
   }
 };
 
@@ -1570,7 +1570,7 @@ struct Ineighbor_alltoallwFunctor {
 struct Info_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Info_create(std::forward<Args>(args)...);
+    UITSL_Info_create(std::forward<Args>(args)...);
   }
 };
 
@@ -1578,7 +1578,7 @@ struct Info_createFunctor {
 struct Info_deleteFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Info_delete(std::forward<Args>(args)...);
+    UITSL_Info_delete(std::forward<Args>(args)...);
   }
 };
 
@@ -1586,7 +1586,7 @@ struct Info_deleteFunctor {
 struct Info_dupFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Info_dup(std::forward<Args>(args)...);
+    UITSL_Info_dup(std::forward<Args>(args)...);
   }
 };
 
@@ -1594,7 +1594,7 @@ struct Info_dupFunctor {
 struct Info_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Info_free(std::forward<Args>(args)...);
+    UITSL_Info_free(std::forward<Args>(args)...);
   }
 };
 
@@ -1602,7 +1602,7 @@ struct Info_freeFunctor {
 struct Info_getFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Info_get(std::forward<Args>(args)...);
+    UITSL_Info_get(std::forward<Args>(args)...);
   }
 };
 
@@ -1610,7 +1610,7 @@ struct Info_getFunctor {
 struct Info_get_nkeysFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Info_get_nkeys(std::forward<Args>(args)...);
+    UITSL_Info_get_nkeys(std::forward<Args>(args)...);
   }
 };
 
@@ -1618,7 +1618,7 @@ struct Info_get_nkeysFunctor {
 struct Info_get_nthkeyFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Info_get_nthkey(std::forward<Args>(args)...);
+    UITSL_Info_get_nthkey(std::forward<Args>(args)...);
   }
 };
 
@@ -1626,7 +1626,7 @@ struct Info_get_nthkeyFunctor {
 struct Info_get_valuelenFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Info_get_valuelen(std::forward<Args>(args)...);
+    UITSL_Info_get_valuelen(std::forward<Args>(args)...);
   }
 };
 
@@ -1634,7 +1634,7 @@ struct Info_get_valuelenFunctor {
 struct Info_setFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Info_set(std::forward<Args>(args)...);
+    UITSL_Info_set(std::forward<Args>(args)...);
   }
 };
 
@@ -1642,7 +1642,7 @@ struct Info_setFunctor {
 struct InitFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Init(std::forward<Args>(args)...);
+    UITSL_Init(std::forward<Args>(args)...);
   }
 };
 
@@ -1650,7 +1650,7 @@ struct InitFunctor {
 struct Init_threadFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Init_thread(std::forward<Args>(args)...);
+    UITSL_Init_thread(std::forward<Args>(args)...);
   }
 };
 
@@ -1658,7 +1658,7 @@ struct Init_threadFunctor {
 struct InitializedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Initialized(std::forward<Args>(args)...);
+    UITSL_Initialized(std::forward<Args>(args)...);
   }
 };
 
@@ -1666,7 +1666,7 @@ struct InitializedFunctor {
 struct Intercomm_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Intercomm_create(std::forward<Args>(args)...);
+    UITSL_Intercomm_create(std::forward<Args>(args)...);
   }
 };
 
@@ -1674,7 +1674,7 @@ struct Intercomm_createFunctor {
 struct Intercomm_mergeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Intercomm_merge(std::forward<Args>(args)...);
+    UITSL_Intercomm_merge(std::forward<Args>(args)...);
   }
 };
 
@@ -1682,7 +1682,7 @@ struct Intercomm_mergeFunctor {
 struct IprobeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Iprobe(std::forward<Args>(args)...);
+    UITSL_Iprobe(std::forward<Args>(args)...);
   }
 };
 
@@ -1690,7 +1690,7 @@ struct IprobeFunctor {
 struct IrecvFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Irecv(std::forward<Args>(args)...);
+    UITSL_Irecv(std::forward<Args>(args)...);
   }
 };
 
@@ -1698,7 +1698,7 @@ struct IrecvFunctor {
 struct IreduceFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ireduce(std::forward<Args>(args)...);
+    UITSL_Ireduce(std::forward<Args>(args)...);
   }
 };
 
@@ -1706,7 +1706,7 @@ struct IreduceFunctor {
 struct Ireduce_scatterFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ireduce_scatter(std::forward<Args>(args)...);
+    UITSL_Ireduce_scatter(std::forward<Args>(args)...);
   }
 };
 
@@ -1714,7 +1714,7 @@ struct Ireduce_scatterFunctor {
 struct Ireduce_scatter_blockFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ireduce_scatter_block(std::forward<Args>(args)...);
+    UITSL_Ireduce_scatter_block(std::forward<Args>(args)...);
   }
 };
 
@@ -1722,7 +1722,7 @@ struct Ireduce_scatter_blockFunctor {
 struct IrsendFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Irsend(std::forward<Args>(args)...);
+    UITSL_Irsend(std::forward<Args>(args)...);
   }
 };
 
@@ -1730,7 +1730,7 @@ struct IrsendFunctor {
 struct Is_thread_mainFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Is_thread_main(std::forward<Args>(args)...);
+    UITSL_Is_thread_main(std::forward<Args>(args)...);
   }
 };
 
@@ -1738,7 +1738,7 @@ struct Is_thread_mainFunctor {
 struct IscanFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Iscan(std::forward<Args>(args)...);
+    UITSL_Iscan(std::forward<Args>(args)...);
   }
 };
 
@@ -1746,7 +1746,7 @@ struct IscanFunctor {
 struct IscatterFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Iscatter(std::forward<Args>(args)...);
+    UITSL_Iscatter(std::forward<Args>(args)...);
   }
 };
 
@@ -1754,7 +1754,7 @@ struct IscatterFunctor {
 struct IscattervFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Iscatterv(std::forward<Args>(args)...);
+    UITSL_Iscatterv(std::forward<Args>(args)...);
   }
 };
 
@@ -1762,7 +1762,7 @@ struct IscattervFunctor {
 struct IsendFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Isend(std::forward<Args>(args)...);
+    UITSL_Isend(std::forward<Args>(args)...);
   }
 };
 
@@ -1770,7 +1770,7 @@ struct IsendFunctor {
 struct IssendFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Issend(std::forward<Args>(args)...);
+    UITSL_Issend(std::forward<Args>(args)...);
   }
 };
 
@@ -1778,7 +1778,7 @@ struct IssendFunctor {
 struct Keyval_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Keyval_create(std::forward<Args>(args)...);
+    UITSL_Keyval_create(std::forward<Args>(args)...);
   }
 };
 
@@ -1786,7 +1786,7 @@ struct Keyval_createFunctor {
 struct Keyval_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Keyval_free(std::forward<Args>(args)...);
+    UITSL_Keyval_free(std::forward<Args>(args)...);
   }
 };
 
@@ -1794,7 +1794,7 @@ struct Keyval_freeFunctor {
 struct Lookup_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Lookup_name(std::forward<Args>(args)...);
+    UITSL_Lookup_name(std::forward<Args>(args)...);
   }
 };
 
@@ -1802,7 +1802,7 @@ struct Lookup_nameFunctor {
 struct MprobeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Mprobe(std::forward<Args>(args)...);
+    UITSL_Mprobe(std::forward<Args>(args)...);
   }
 };
 
@@ -1810,7 +1810,7 @@ struct MprobeFunctor {
 struct MrecvFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Mrecv(std::forward<Args>(args)...);
+    UITSL_Mrecv(std::forward<Args>(args)...);
   }
 };
 
@@ -1818,7 +1818,7 @@ struct MrecvFunctor {
 struct Neighbor_allgatherFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Neighbor_allgather(std::forward<Args>(args)...);
+    UITSL_Neighbor_allgather(std::forward<Args>(args)...);
   }
 };
 
@@ -1826,7 +1826,7 @@ struct Neighbor_allgatherFunctor {
 struct Neighbor_allgathervFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Neighbor_allgatherv(std::forward<Args>(args)...);
+    UITSL_Neighbor_allgatherv(std::forward<Args>(args)...);
   }
 };
 
@@ -1834,7 +1834,7 @@ struct Neighbor_allgathervFunctor {
 struct Neighbor_alltoallFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Neighbor_alltoall(std::forward<Args>(args)...);
+    UITSL_Neighbor_alltoall(std::forward<Args>(args)...);
   }
 };
 
@@ -1842,7 +1842,7 @@ struct Neighbor_alltoallFunctor {
 struct Neighbor_alltoallvFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Neighbor_alltoallv(std::forward<Args>(args)...);
+    UITSL_Neighbor_alltoallv(std::forward<Args>(args)...);
   }
 };
 
@@ -1850,7 +1850,7 @@ struct Neighbor_alltoallvFunctor {
 struct Neighbor_alltoallwFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Neighbor_alltoallw(std::forward<Args>(args)...);
+    UITSL_Neighbor_alltoallw(std::forward<Args>(args)...);
   }
 };
 
@@ -1858,7 +1858,7 @@ struct Neighbor_alltoallwFunctor {
 struct Op_commuteFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Op_commute(std::forward<Args>(args)...);
+    UITSL_Op_commute(std::forward<Args>(args)...);
   }
 };
 
@@ -1866,7 +1866,7 @@ struct Op_commuteFunctor {
 struct Op_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Op_create(std::forward<Args>(args)...);
+    UITSL_Op_create(std::forward<Args>(args)...);
   }
 };
 
@@ -1874,7 +1874,7 @@ struct Op_createFunctor {
 struct Op_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Op_free(std::forward<Args>(args)...);
+    UITSL_Op_free(std::forward<Args>(args)...);
   }
 };
 
@@ -1882,7 +1882,7 @@ struct Op_freeFunctor {
 struct Open_portFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Open_port(std::forward<Args>(args)...);
+    UITSL_Open_port(std::forward<Args>(args)...);
   }
 };
 
@@ -1890,7 +1890,7 @@ struct Open_portFunctor {
 struct PackFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Pack(std::forward<Args>(args)...);
+    UITSL_Pack(std::forward<Args>(args)...);
   }
 };
 
@@ -1898,7 +1898,7 @@ struct PackFunctor {
 struct Pack_externalFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Pack_external(std::forward<Args>(args)...);
+    UITSL_Pack_external(std::forward<Args>(args)...);
   }
 };
 
@@ -1906,7 +1906,7 @@ struct Pack_externalFunctor {
 struct Pack_external_sizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Pack_external_size(std::forward<Args>(args)...);
+    UITSL_Pack_external_size(std::forward<Args>(args)...);
   }
 };
 
@@ -1914,7 +1914,7 @@ struct Pack_external_sizeFunctor {
 struct Pack_sizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Pack_size(std::forward<Args>(args)...);
+    UITSL_Pack_size(std::forward<Args>(args)...);
   }
 };
 
@@ -1922,7 +1922,7 @@ struct Pack_sizeFunctor {
 struct PcontrolFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Pcontrol(std::forward<Args>(args)...);
+    UITSL_Pcontrol(std::forward<Args>(args)...);
   }
 };
 
@@ -1930,7 +1930,7 @@ struct PcontrolFunctor {
 struct ProbeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Probe(std::forward<Args>(args)...);
+    UITSL_Probe(std::forward<Args>(args)...);
   }
 };
 
@@ -1938,7 +1938,7 @@ struct ProbeFunctor {
 struct Publish_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Publish_name(std::forward<Args>(args)...);
+    UITSL_Publish_name(std::forward<Args>(args)...);
   }
 };
 
@@ -1946,7 +1946,7 @@ struct Publish_nameFunctor {
 struct PutFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Put(std::forward<Args>(args)...);
+    UITSL_Put(std::forward<Args>(args)...);
   }
 };
 
@@ -1954,7 +1954,7 @@ struct PutFunctor {
 struct Query_threadFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Query_thread(std::forward<Args>(args)...);
+    UITSL_Query_thread(std::forward<Args>(args)...);
   }
 };
 
@@ -1962,7 +1962,7 @@ struct Query_threadFunctor {
 struct RaccumulateFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Raccumulate(std::forward<Args>(args)...);
+    UITSL_Raccumulate(std::forward<Args>(args)...);
   }
 };
 
@@ -1970,7 +1970,7 @@ struct RaccumulateFunctor {
 struct RecvFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Recv(std::forward<Args>(args)...);
+    UITSL_Recv(std::forward<Args>(args)...);
   }
 };
 
@@ -1978,7 +1978,7 @@ struct RecvFunctor {
 struct Recv_initFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Recv_init(std::forward<Args>(args)...);
+    UITSL_Recv_init(std::forward<Args>(args)...);
   }
 };
 
@@ -1986,7 +1986,7 @@ struct Recv_initFunctor {
 struct ReduceFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Reduce(std::forward<Args>(args)...);
+    UITSL_Reduce(std::forward<Args>(args)...);
   }
 };
 
@@ -1994,7 +1994,7 @@ struct ReduceFunctor {
 struct Reduce_localFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Reduce_local(std::forward<Args>(args)...);
+    UITSL_Reduce_local(std::forward<Args>(args)...);
   }
 };
 
@@ -2002,7 +2002,7 @@ struct Reduce_localFunctor {
 struct Reduce_scatterFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Reduce_scatter(std::forward<Args>(args)...);
+    UITSL_Reduce_scatter(std::forward<Args>(args)...);
   }
 };
 
@@ -2010,7 +2010,7 @@ struct Reduce_scatterFunctor {
 struct Reduce_scatter_blockFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Reduce_scatter_block(std::forward<Args>(args)...);
+    UITSL_Reduce_scatter_block(std::forward<Args>(args)...);
   }
 };
 
@@ -2018,7 +2018,7 @@ struct Reduce_scatter_blockFunctor {
 struct Register_datarepFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Register_datarep(std::forward<Args>(args)...);
+    UITSL_Register_datarep(std::forward<Args>(args)...);
   }
 };
 
@@ -2026,7 +2026,7 @@ struct Register_datarepFunctor {
 struct Request_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Request_free(std::forward<Args>(args)...);
+    UITSL_Request_free(std::forward<Args>(args)...);
   }
 };
 
@@ -2034,7 +2034,7 @@ struct Request_freeFunctor {
 struct Request_get_statusFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Request_get_status(std::forward<Args>(args)...);
+    UITSL_Request_get_status(std::forward<Args>(args)...);
   }
 };
 
@@ -2042,7 +2042,7 @@ struct Request_get_statusFunctor {
 struct RgetFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Rget(std::forward<Args>(args)...);
+    UITSL_Rget(std::forward<Args>(args)...);
   }
 };
 
@@ -2050,7 +2050,7 @@ struct RgetFunctor {
 struct Rget_accumulateFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Rget_accumulate(std::forward<Args>(args)...);
+    UITSL_Rget_accumulate(std::forward<Args>(args)...);
   }
 };
 
@@ -2058,7 +2058,7 @@ struct Rget_accumulateFunctor {
 struct RputFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Rput(std::forward<Args>(args)...);
+    UITSL_Rput(std::forward<Args>(args)...);
   }
 };
 
@@ -2066,7 +2066,7 @@ struct RputFunctor {
 struct RsendFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Rsend(std::forward<Args>(args)...);
+    UITSL_Rsend(std::forward<Args>(args)...);
   }
 };
 
@@ -2074,7 +2074,7 @@ struct RsendFunctor {
 struct Rsend_initFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Rsend_init(std::forward<Args>(args)...);
+    UITSL_Rsend_init(std::forward<Args>(args)...);
   }
 };
 
@@ -2082,7 +2082,7 @@ struct Rsend_initFunctor {
 struct ScanFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Scan(std::forward<Args>(args)...);
+    UITSL_Scan(std::forward<Args>(args)...);
   }
 };
 
@@ -2090,7 +2090,7 @@ struct ScanFunctor {
 struct ScatterFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Scatter(std::forward<Args>(args)...);
+    UITSL_Scatter(std::forward<Args>(args)...);
   }
 };
 
@@ -2098,7 +2098,7 @@ struct ScatterFunctor {
 struct ScattervFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Scatterv(std::forward<Args>(args)...);
+    UITSL_Scatterv(std::forward<Args>(args)...);
   }
 };
 
@@ -2106,7 +2106,7 @@ struct ScattervFunctor {
 struct SendFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Send(std::forward<Args>(args)...);
+    UITSL_Send(std::forward<Args>(args)...);
   }
 };
 
@@ -2114,7 +2114,7 @@ struct SendFunctor {
 struct Send_initFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Send_init(std::forward<Args>(args)...);
+    UITSL_Send_init(std::forward<Args>(args)...);
   }
 };
 
@@ -2122,7 +2122,7 @@ struct Send_initFunctor {
 struct SendrecvFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Sendrecv(std::forward<Args>(args)...);
+    UITSL_Sendrecv(std::forward<Args>(args)...);
   }
 };
 
@@ -2130,7 +2130,7 @@ struct SendrecvFunctor {
 struct Sendrecv_replaceFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Sendrecv_replace(std::forward<Args>(args)...);
+    UITSL_Sendrecv_replace(std::forward<Args>(args)...);
   }
 };
 
@@ -2138,7 +2138,7 @@ struct Sendrecv_replaceFunctor {
 struct SsendFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ssend(std::forward<Args>(args)...);
+    UITSL_Ssend(std::forward<Args>(args)...);
   }
 };
 
@@ -2146,7 +2146,7 @@ struct SsendFunctor {
 struct Ssend_initFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Ssend_init(std::forward<Args>(args)...);
+    UITSL_Ssend_init(std::forward<Args>(args)...);
   }
 };
 
@@ -2154,7 +2154,7 @@ struct Ssend_initFunctor {
 struct StartFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Start(std::forward<Args>(args)...);
+    UITSL_Start(std::forward<Args>(args)...);
   }
 };
 
@@ -2162,7 +2162,7 @@ struct StartFunctor {
 struct StartallFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Startall(std::forward<Args>(args)...);
+    UITSL_Startall(std::forward<Args>(args)...);
   }
 };
 
@@ -2170,7 +2170,7 @@ struct StartallFunctor {
 struct Status_set_cancelledFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Status_set_cancelled(std::forward<Args>(args)...);
+    UITSL_Status_set_cancelled(std::forward<Args>(args)...);
   }
 };
 
@@ -2178,7 +2178,7 @@ struct Status_set_cancelledFunctor {
 struct Status_set_elementsFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Status_set_elements(std::forward<Args>(args)...);
+    UITSL_Status_set_elements(std::forward<Args>(args)...);
   }
 };
 
@@ -2186,7 +2186,7 @@ struct Status_set_elementsFunctor {
 struct Status_set_elements_xFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Status_set_elements_x(std::forward<Args>(args)...);
+    UITSL_Status_set_elements_x(std::forward<Args>(args)...);
   }
 };
 
@@ -2194,7 +2194,7 @@ struct Status_set_elements_xFunctor {
 struct T_category_changedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_category_changed(std::forward<Args>(args)...);
+    UITSL_T_category_changed(std::forward<Args>(args)...);
   }
 };
 
@@ -2202,7 +2202,7 @@ struct T_category_changedFunctor {
 struct T_category_get_categoriesFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_category_get_categories(std::forward<Args>(args)...);
+    UITSL_T_category_get_categories(std::forward<Args>(args)...);
   }
 };
 
@@ -2210,7 +2210,7 @@ struct T_category_get_categoriesFunctor {
 struct T_category_get_cvarsFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_category_get_cvars(std::forward<Args>(args)...);
+    UITSL_T_category_get_cvars(std::forward<Args>(args)...);
   }
 };
 
@@ -2218,7 +2218,7 @@ struct T_category_get_cvarsFunctor {
 struct T_category_get_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_category_get_info(std::forward<Args>(args)...);
+    UITSL_T_category_get_info(std::forward<Args>(args)...);
   }
 };
 
@@ -2226,7 +2226,7 @@ struct T_category_get_infoFunctor {
 struct T_category_get_numFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_category_get_num(std::forward<Args>(args)...);
+    UITSL_T_category_get_num(std::forward<Args>(args)...);
   }
 };
 
@@ -2234,7 +2234,7 @@ struct T_category_get_numFunctor {
 struct T_category_get_pvarsFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_category_get_pvars(std::forward<Args>(args)...);
+    UITSL_T_category_get_pvars(std::forward<Args>(args)...);
   }
 };
 
@@ -2242,7 +2242,7 @@ struct T_category_get_pvarsFunctor {
 struct T_cvar_get_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_cvar_get_info(std::forward<Args>(args)...);
+    UITSL_T_cvar_get_info(std::forward<Args>(args)...);
   }
 };
 
@@ -2250,7 +2250,7 @@ struct T_cvar_get_infoFunctor {
 struct T_cvar_get_numFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_cvar_get_num(std::forward<Args>(args)...);
+    UITSL_T_cvar_get_num(std::forward<Args>(args)...);
   }
 };
 
@@ -2258,7 +2258,7 @@ struct T_cvar_get_numFunctor {
 struct T_cvar_handle_allocFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_cvar_handle_alloc(std::forward<Args>(args)...);
+    UITSL_T_cvar_handle_alloc(std::forward<Args>(args)...);
   }
 };
 
@@ -2266,7 +2266,7 @@ struct T_cvar_handle_allocFunctor {
 struct T_cvar_handle_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_cvar_handle_free(std::forward<Args>(args)...);
+    UITSL_T_cvar_handle_free(std::forward<Args>(args)...);
   }
 };
 
@@ -2274,7 +2274,7 @@ struct T_cvar_handle_freeFunctor {
 struct T_cvar_readFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_cvar_read(std::forward<Args>(args)...);
+    UITSL_T_cvar_read(std::forward<Args>(args)...);
   }
 };
 
@@ -2282,7 +2282,7 @@ struct T_cvar_readFunctor {
 struct T_cvar_writeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_cvar_write(std::forward<Args>(args)...);
+    UITSL_T_cvar_write(std::forward<Args>(args)...);
   }
 };
 
@@ -2290,7 +2290,7 @@ struct T_cvar_writeFunctor {
 struct T_enum_get_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_enum_get_info(std::forward<Args>(args)...);
+    UITSL_T_enum_get_info(std::forward<Args>(args)...);
   }
 };
 
@@ -2298,7 +2298,7 @@ struct T_enum_get_infoFunctor {
 struct T_enum_get_itemFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_enum_get_item(std::forward<Args>(args)...);
+    UITSL_T_enum_get_item(std::forward<Args>(args)...);
   }
 };
 
@@ -2306,7 +2306,7 @@ struct T_enum_get_itemFunctor {
 struct T_finalizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_finalize(std::forward<Args>(args)...);
+    UITSL_T_finalize(std::forward<Args>(args)...);
   }
 };
 
@@ -2314,7 +2314,7 @@ struct T_finalizeFunctor {
 struct T_init_threadFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_init_thread(std::forward<Args>(args)...);
+    UITSL_T_init_thread(std::forward<Args>(args)...);
   }
 };
 
@@ -2322,7 +2322,7 @@ struct T_init_threadFunctor {
 struct T_pvar_get_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_get_info(std::forward<Args>(args)...);
+    UITSL_T_pvar_get_info(std::forward<Args>(args)...);
   }
 };
 
@@ -2330,7 +2330,7 @@ struct T_pvar_get_infoFunctor {
 struct T_pvar_get_numFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_get_num(std::forward<Args>(args)...);
+    UITSL_T_pvar_get_num(std::forward<Args>(args)...);
   }
 };
 
@@ -2338,7 +2338,7 @@ struct T_pvar_get_numFunctor {
 struct T_pvar_handle_allocFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_handle_alloc(std::forward<Args>(args)...);
+    UITSL_T_pvar_handle_alloc(std::forward<Args>(args)...);
   }
 };
 
@@ -2346,7 +2346,7 @@ struct T_pvar_handle_allocFunctor {
 struct T_pvar_handle_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_handle_free(std::forward<Args>(args)...);
+    UITSL_T_pvar_handle_free(std::forward<Args>(args)...);
   }
 };
 
@@ -2354,7 +2354,7 @@ struct T_pvar_handle_freeFunctor {
 struct T_pvar_readFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_read(std::forward<Args>(args)...);
+    UITSL_T_pvar_read(std::forward<Args>(args)...);
   }
 };
 
@@ -2362,7 +2362,7 @@ struct T_pvar_readFunctor {
 struct T_pvar_readresetFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_readreset(std::forward<Args>(args)...);
+    UITSL_T_pvar_readreset(std::forward<Args>(args)...);
   }
 };
 
@@ -2370,7 +2370,7 @@ struct T_pvar_readresetFunctor {
 struct T_pvar_resetFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_reset(std::forward<Args>(args)...);
+    UITSL_T_pvar_reset(std::forward<Args>(args)...);
   }
 };
 
@@ -2378,7 +2378,7 @@ struct T_pvar_resetFunctor {
 struct T_pvar_session_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_session_create(std::forward<Args>(args)...);
+    UITSL_T_pvar_session_create(std::forward<Args>(args)...);
   }
 };
 
@@ -2386,7 +2386,7 @@ struct T_pvar_session_createFunctor {
 struct T_pvar_session_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_session_free(std::forward<Args>(args)...);
+    UITSL_T_pvar_session_free(std::forward<Args>(args)...);
   }
 };
 
@@ -2394,7 +2394,7 @@ struct T_pvar_session_freeFunctor {
 struct T_pvar_startFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_start(std::forward<Args>(args)...);
+    UITSL_T_pvar_start(std::forward<Args>(args)...);
   }
 };
 
@@ -2402,7 +2402,7 @@ struct T_pvar_startFunctor {
 struct T_pvar_stopFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_stop(std::forward<Args>(args)...);
+    UITSL_T_pvar_stop(std::forward<Args>(args)...);
   }
 };
 
@@ -2410,7 +2410,7 @@ struct T_pvar_stopFunctor {
 struct T_pvar_writeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_T_pvar_write(std::forward<Args>(args)...);
+    UITSL_T_pvar_write(std::forward<Args>(args)...);
   }
 };
 
@@ -2418,7 +2418,7 @@ struct T_pvar_writeFunctor {
 struct TestFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Test(std::forward<Args>(args)...);
+    UITSL_Test(std::forward<Args>(args)...);
   }
 };
 
@@ -2426,7 +2426,7 @@ struct TestFunctor {
 struct Test_cancelledFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Test_cancelled(std::forward<Args>(args)...);
+    UITSL_Test_cancelled(std::forward<Args>(args)...);
   }
 };
 
@@ -2434,7 +2434,7 @@ struct Test_cancelledFunctor {
 struct TestallFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Testall(std::forward<Args>(args)...);
+    UITSL_Testall(std::forward<Args>(args)...);
   }
 };
 
@@ -2442,7 +2442,7 @@ struct TestallFunctor {
 struct TestanyFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Testany(std::forward<Args>(args)...);
+    UITSL_Testany(std::forward<Args>(args)...);
   }
 };
 
@@ -2450,7 +2450,7 @@ struct TestanyFunctor {
 struct TestsomeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Testsome(std::forward<Args>(args)...);
+    UITSL_Testsome(std::forward<Args>(args)...);
   }
 };
 
@@ -2458,7 +2458,7 @@ struct TestsomeFunctor {
 struct Topo_testFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Topo_test(std::forward<Args>(args)...);
+    UITSL_Topo_test(std::forward<Args>(args)...);
   }
 };
 
@@ -2466,7 +2466,7 @@ struct Topo_testFunctor {
 struct Type_commitFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_commit(std::forward<Args>(args)...);
+    UITSL_Type_commit(std::forward<Args>(args)...);
   }
 };
 
@@ -2474,7 +2474,7 @@ struct Type_commitFunctor {
 struct Type_contiguousFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_contiguous(std::forward<Args>(args)...);
+    UITSL_Type_contiguous(std::forward<Args>(args)...);
   }
 };
 
@@ -2482,7 +2482,7 @@ struct Type_contiguousFunctor {
 struct Type_create_darrayFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_create_darray(std::forward<Args>(args)...);
+    UITSL_Type_create_darray(std::forward<Args>(args)...);
   }
 };
 
@@ -2490,7 +2490,7 @@ struct Type_create_darrayFunctor {
 struct Type_create_hindexedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_create_hindexed(std::forward<Args>(args)...);
+    UITSL_Type_create_hindexed(std::forward<Args>(args)...);
   }
 };
 
@@ -2498,7 +2498,7 @@ struct Type_create_hindexedFunctor {
 struct Type_create_hindexed_blockFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_create_hindexed_block(std::forward<Args>(args)...);
+    UITSL_Type_create_hindexed_block(std::forward<Args>(args)...);
   }
 };
 
@@ -2506,7 +2506,7 @@ struct Type_create_hindexed_blockFunctor {
 struct Type_create_hvectorFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_create_hvector(std::forward<Args>(args)...);
+    UITSL_Type_create_hvector(std::forward<Args>(args)...);
   }
 };
 
@@ -2514,7 +2514,7 @@ struct Type_create_hvectorFunctor {
 struct Type_create_indexed_blockFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_create_indexed_block(std::forward<Args>(args)...);
+    UITSL_Type_create_indexed_block(std::forward<Args>(args)...);
   }
 };
 
@@ -2522,7 +2522,7 @@ struct Type_create_indexed_blockFunctor {
 struct Type_create_keyvalFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_create_keyval(std::forward<Args>(args)...);
+    UITSL_Type_create_keyval(std::forward<Args>(args)...);
   }
 };
 
@@ -2530,7 +2530,7 @@ struct Type_create_keyvalFunctor {
 struct Type_create_resizedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_create_resized(std::forward<Args>(args)...);
+    UITSL_Type_create_resized(std::forward<Args>(args)...);
   }
 };
 
@@ -2538,7 +2538,7 @@ struct Type_create_resizedFunctor {
 struct Type_create_structFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_create_struct(std::forward<Args>(args)...);
+    UITSL_Type_create_struct(std::forward<Args>(args)...);
   }
 };
 ;
@@ -2546,7 +2546,7 @@ struct Type_create_structFunctor {
 struct Type_create_subarrayFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_create_subarray(std::forward<Args>(args)...);
+    UITSL_Type_create_subarray(std::forward<Args>(args)...);
   }
 };
 
@@ -2554,7 +2554,7 @@ struct Type_create_subarrayFunctor {
 struct Type_delete_attrFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_delete_attr(std::forward<Args>(args)...);
+    UITSL_Type_delete_attr(std::forward<Args>(args)...);
   }
 };
 
@@ -2562,7 +2562,7 @@ struct Type_delete_attrFunctor {
 struct Type_dupFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_dup(std::forward<Args>(args)...);
+    UITSL_Type_dup(std::forward<Args>(args)...);
   }
 };
 
@@ -2570,7 +2570,7 @@ struct Type_dupFunctor {
 struct Type_extentFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_extent(std::forward<Args>(args)...);
+    UITSL_Type_extent(std::forward<Args>(args)...);
   }
 };
 
@@ -2578,7 +2578,7 @@ struct Type_extentFunctor {
 struct Type_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_free(std::forward<Args>(args)...);
+    UITSL_Type_free(std::forward<Args>(args)...);
   }
 };
 
@@ -2586,7 +2586,7 @@ struct Type_freeFunctor {
 struct Type_free_keyvalFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_free_keyval(std::forward<Args>(args)...);
+    UITSL_Type_free_keyval(std::forward<Args>(args)...);
   }
 };
 
@@ -2594,7 +2594,7 @@ struct Type_free_keyvalFunctor {
 struct Type_get_attrFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_get_attr(std::forward<Args>(args)...);
+    UITSL_Type_get_attr(std::forward<Args>(args)...);
   }
 };
 
@@ -2602,7 +2602,7 @@ struct Type_get_attrFunctor {
 struct Type_get_contentsFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_get_contents(std::forward<Args>(args)...);
+    UITSL_Type_get_contents(std::forward<Args>(args)...);
   }
 };
 
@@ -2610,7 +2610,7 @@ struct Type_get_contentsFunctor {
 struct Type_get_envelopeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_get_envelope(std::forward<Args>(args)...);
+    UITSL_Type_get_envelope(std::forward<Args>(args)...);
   }
 };
 
@@ -2618,7 +2618,7 @@ struct Type_get_envelopeFunctor {
 struct Type_get_extentFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_get_extent(std::forward<Args>(args)...);
+    UITSL_Type_get_extent(std::forward<Args>(args)...);
   }
 };
 
@@ -2626,7 +2626,7 @@ struct Type_get_extentFunctor {
 struct Type_get_extent_xFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_get_extent_x(std::forward<Args>(args)...);
+    UITSL_Type_get_extent_x(std::forward<Args>(args)...);
   }
 };
 
@@ -2634,7 +2634,7 @@ struct Type_get_extent_xFunctor {
 struct Type_get_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_get_name(std::forward<Args>(args)...);
+    UITSL_Type_get_name(std::forward<Args>(args)...);
   }
 };
 
@@ -2642,7 +2642,7 @@ struct Type_get_nameFunctor {
 struct Type_get_true_extentFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_get_true_extent(std::forward<Args>(args)...);
+    UITSL_Type_get_true_extent(std::forward<Args>(args)...);
   }
 };
 
@@ -2650,7 +2650,7 @@ struct Type_get_true_extentFunctor {
 struct Type_get_true_extent_xFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_get_true_extent_x(std::forward<Args>(args)...);
+    UITSL_Type_get_true_extent_x(std::forward<Args>(args)...);
   }
 };
 
@@ -2658,7 +2658,7 @@ struct Type_get_true_extent_xFunctor {
 struct Type_hindexedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_hindexed(std::forward<Args>(args)...);
+    UITSL_Type_hindexed(std::forward<Args>(args)...);
   }
 };
 
@@ -2666,7 +2666,7 @@ struct Type_hindexedFunctor {
 struct Type_hvectorFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_hvector(std::forward<Args>(args)...);
+    UITSL_Type_hvector(std::forward<Args>(args)...);
   }
 };
 
@@ -2674,7 +2674,7 @@ struct Type_hvectorFunctor {
 struct Type_indexedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_indexed(std::forward<Args>(args)...);
+    UITSL_Type_indexed(std::forward<Args>(args)...);
   }
 };
 
@@ -2682,7 +2682,7 @@ struct Type_indexedFunctor {
 struct Type_lbFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_lb(std::forward<Args>(args)...);
+    UITSL_Type_lb(std::forward<Args>(args)...);
   }
 };
 
@@ -2690,7 +2690,7 @@ struct Type_lbFunctor {
 struct Type_match_sizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_match_size(std::forward<Args>(args)...);
+    UITSL_Type_match_size(std::forward<Args>(args)...);
   }
 };
 
@@ -2698,7 +2698,7 @@ struct Type_match_sizeFunctor {
 struct Type_set_attrFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_set_attr(std::forward<Args>(args)...);
+    UITSL_Type_set_attr(std::forward<Args>(args)...);
   }
 };
 
@@ -2706,7 +2706,7 @@ struct Type_set_attrFunctor {
 struct Type_set_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_set_name(std::forward<Args>(args)...);
+    UITSL_Type_set_name(std::forward<Args>(args)...);
   }
 };
 
@@ -2714,7 +2714,7 @@ struct Type_set_nameFunctor {
 struct Type_sizeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_size(std::forward<Args>(args)...);
+    UITSL_Type_size(std::forward<Args>(args)...);
   }
 };
 
@@ -2722,7 +2722,7 @@ struct Type_sizeFunctor {
 struct Type_size_xFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_size_x(std::forward<Args>(args)...);
+    UITSL_Type_size_x(std::forward<Args>(args)...);
   }
 };
 
@@ -2730,7 +2730,7 @@ struct Type_size_xFunctor {
 struct Type_structFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_struct(std::forward<Args>(args)...);
+    UITSL_Type_struct(std::forward<Args>(args)...);
   }
 };
 ;
@@ -2738,7 +2738,7 @@ struct Type_structFunctor {
 struct Type_ubFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_ub(std::forward<Args>(args)...);
+    UITSL_Type_ub(std::forward<Args>(args)...);
   }
 };
 
@@ -2746,7 +2746,7 @@ struct Type_ubFunctor {
 struct Type_vectorFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Type_vector(std::forward<Args>(args)...);
+    UITSL_Type_vector(std::forward<Args>(args)...);
   }
 };
 
@@ -2754,7 +2754,7 @@ struct Type_vectorFunctor {
 struct UnpackFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Unpack(std::forward<Args>(args)...);
+    UITSL_Unpack(std::forward<Args>(args)...);
   }
 };
 
@@ -2762,7 +2762,7 @@ struct UnpackFunctor {
 struct Unpack_externalFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Unpack_external(std::forward<Args>(args)...);
+    UITSL_Unpack_external(std::forward<Args>(args)...);
   }
 };
 
@@ -2770,7 +2770,7 @@ struct Unpack_externalFunctor {
 struct Unpublish_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Unpublish_name(std::forward<Args>(args)...);
+    UITSL_Unpublish_name(std::forward<Args>(args)...);
   }
 };
 
@@ -2778,7 +2778,7 @@ struct Unpublish_nameFunctor {
 struct WaitFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Wait(std::forward<Args>(args)...);
+    UITSL_Wait(std::forward<Args>(args)...);
   }
 };
 
@@ -2786,7 +2786,7 @@ struct WaitFunctor {
 struct WaitallFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Waitall(std::forward<Args>(args)...);
+    UITSL_Waitall(std::forward<Args>(args)...);
   }
 };
 
@@ -2794,7 +2794,7 @@ struct WaitallFunctor {
 struct WaitanyFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Waitany(std::forward<Args>(args)...);
+    UITSL_Waitany(std::forward<Args>(args)...);
   }
 };
 
@@ -2802,7 +2802,7 @@ struct WaitanyFunctor {
 struct WaitsomeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Waitsome(std::forward<Args>(args)...);
+    UITSL_Waitsome(std::forward<Args>(args)...);
   }
 };
 
@@ -2810,7 +2810,7 @@ struct WaitsomeFunctor {
 struct Win_allocateFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_allocate(std::forward<Args>(args)...);
+    UITSL_Win_allocate(std::forward<Args>(args)...);
   }
 };
 
@@ -2818,7 +2818,7 @@ struct Win_allocateFunctor {
 struct Win_allocate_sharedFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_allocate_shared(std::forward<Args>(args)...);
+    UITSL_Win_allocate_shared(std::forward<Args>(args)...);
   }
 };
 
@@ -2826,7 +2826,7 @@ struct Win_allocate_sharedFunctor {
 struct Win_attachFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_attach(std::forward<Args>(args)...);
+    UITSL_Win_attach(std::forward<Args>(args)...);
   }
 };
 
@@ -2834,7 +2834,7 @@ struct Win_attachFunctor {
 struct Win_call_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_call_errhandler(std::forward<Args>(args)...);
+    UITSL_Win_call_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -2842,7 +2842,7 @@ struct Win_call_errhandlerFunctor {
 struct Win_completeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_complete(std::forward<Args>(args)...);
+    UITSL_Win_complete(std::forward<Args>(args)...);
   }
 };
 
@@ -2850,7 +2850,7 @@ struct Win_completeFunctor {
 struct Win_createFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_create(std::forward<Args>(args)...);
+    UITSL_Win_create(std::forward<Args>(args)...);
   }
 };
 
@@ -2858,7 +2858,7 @@ struct Win_createFunctor {
 struct Win_create_dynamicFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_create_dynamic(std::forward<Args>(args)...);
+    UITSL_Win_create_dynamic(std::forward<Args>(args)...);
   }
 };
 
@@ -2866,7 +2866,7 @@ struct Win_create_dynamicFunctor {
 struct Win_create_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_create_errhandler(std::forward<Args>(args)...);
+    UITSL_Win_create_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -2874,7 +2874,7 @@ struct Win_create_errhandlerFunctor {
 struct Win_create_keyvalFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_create_keyval(std::forward<Args>(args)...);
+    UITSL_Win_create_keyval(std::forward<Args>(args)...);
   }
 };
 
@@ -2882,7 +2882,7 @@ struct Win_create_keyvalFunctor {
 struct Win_delete_attrFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_delete_attr(std::forward<Args>(args)...);
+    UITSL_Win_delete_attr(std::forward<Args>(args)...);
   }
 };
 
@@ -2890,7 +2890,7 @@ struct Win_delete_attrFunctor {
 struct Win_detachFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_detach(std::forward<Args>(args)...);
+    UITSL_Win_detach(std::forward<Args>(args)...);
   }
 };
 
@@ -2898,7 +2898,7 @@ struct Win_detachFunctor {
 struct Win_fenceFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_fence(std::forward<Args>(args)...);
+    UITSL_Win_fence(std::forward<Args>(args)...);
   }
 };
 
@@ -2906,7 +2906,7 @@ struct Win_fenceFunctor {
 struct Win_flushFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_flush(std::forward<Args>(args)...);
+    UITSL_Win_flush(std::forward<Args>(args)...);
   }
 };
 
@@ -2914,7 +2914,7 @@ struct Win_flushFunctor {
 struct Win_flush_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_flush_all(std::forward<Args>(args)...);
+    UITSL_Win_flush_all(std::forward<Args>(args)...);
   }
 };
 
@@ -2922,7 +2922,7 @@ struct Win_flush_allFunctor {
 struct Win_flush_localFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_flush_local(std::forward<Args>(args)...);
+    UITSL_Win_flush_local(std::forward<Args>(args)...);
   }
 };
 
@@ -2930,7 +2930,7 @@ struct Win_flush_localFunctor {
 struct Win_flush_local_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_flush_local_all(std::forward<Args>(args)...);
+    UITSL_Win_flush_local_all(std::forward<Args>(args)...);
   }
 };
 
@@ -2938,7 +2938,7 @@ struct Win_flush_local_allFunctor {
 struct Win_freeFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_free(std::forward<Args>(args)...);
+    UITSL_Win_free(std::forward<Args>(args)...);
   }
 };
 
@@ -2946,7 +2946,7 @@ struct Win_freeFunctor {
 struct Win_free_keyvalFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_free_keyval(std::forward<Args>(args)...);
+    UITSL_Win_free_keyval(std::forward<Args>(args)...);
   }
 };
 
@@ -2954,7 +2954,7 @@ struct Win_free_keyvalFunctor {
 struct Win_get_attrFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_get_attr(std::forward<Args>(args)...);
+    UITSL_Win_get_attr(std::forward<Args>(args)...);
   }
 };
 
@@ -2962,7 +2962,7 @@ struct Win_get_attrFunctor {
 struct Win_get_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_get_errhandler(std::forward<Args>(args)...);
+    UITSL_Win_get_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -2970,7 +2970,7 @@ struct Win_get_errhandlerFunctor {
 struct Win_get_groupFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_get_group(std::forward<Args>(args)...);
+    UITSL_Win_get_group(std::forward<Args>(args)...);
   }
 };
 
@@ -2978,7 +2978,7 @@ struct Win_get_groupFunctor {
 struct Win_get_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_get_info(std::forward<Args>(args)...);
+    UITSL_Win_get_info(std::forward<Args>(args)...);
   }
 };
 
@@ -2986,7 +2986,7 @@ struct Win_get_infoFunctor {
 struct Win_get_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_get_name(std::forward<Args>(args)...);
+    UITSL_Win_get_name(std::forward<Args>(args)...);
   }
 };
 
@@ -2994,7 +2994,7 @@ struct Win_get_nameFunctor {
 struct Win_lockFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_lock(std::forward<Args>(args)...);
+    UITSL_Win_lock(std::forward<Args>(args)...);
   }
 };
 
@@ -3002,7 +3002,7 @@ struct Win_lockFunctor {
 struct Win_lock_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_lock_all(std::forward<Args>(args)...);
+    UITSL_Win_lock_all(std::forward<Args>(args)...);
   }
 };
 
@@ -3010,7 +3010,7 @@ struct Win_lock_allFunctor {
 struct Win_postFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_post(std::forward<Args>(args)...);
+    UITSL_Win_post(std::forward<Args>(args)...);
   }
 };
 
@@ -3018,7 +3018,7 @@ struct Win_postFunctor {
 struct Win_set_attrFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_set_attr(std::forward<Args>(args)...);
+    UITSL_Win_set_attr(std::forward<Args>(args)...);
   }
 };
 
@@ -3026,7 +3026,7 @@ struct Win_set_attrFunctor {
 struct Win_set_errhandlerFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_set_errhandler(std::forward<Args>(args)...);
+    UITSL_Win_set_errhandler(std::forward<Args>(args)...);
   }
 };
 
@@ -3034,7 +3034,7 @@ struct Win_set_errhandlerFunctor {
 struct Win_set_infoFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_set_info(std::forward<Args>(args)...);
+    UITSL_Win_set_info(std::forward<Args>(args)...);
   }
 };
 
@@ -3042,7 +3042,7 @@ struct Win_set_infoFunctor {
 struct Win_set_nameFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_set_name(std::forward<Args>(args)...);
+    UITSL_Win_set_name(std::forward<Args>(args)...);
   }
 };
 
@@ -3050,7 +3050,7 @@ struct Win_set_nameFunctor {
 struct Win_shared_queryFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_shared_query(std::forward<Args>(args)...);
+    UITSL_Win_shared_query(std::forward<Args>(args)...);
   }
 };
 
@@ -3058,7 +3058,7 @@ struct Win_shared_queryFunctor {
 struct Win_startFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_start(std::forward<Args>(args)...);
+    UITSL_Win_start(std::forward<Args>(args)...);
   }
 };
 
@@ -3066,7 +3066,7 @@ struct Win_startFunctor {
 struct Win_syncFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_sync(std::forward<Args>(args)...);
+    UITSL_Win_sync(std::forward<Args>(args)...);
   }
 };
 
@@ -3074,7 +3074,7 @@ struct Win_syncFunctor {
 struct Win_testFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_test(std::forward<Args>(args)...);
+    UITSL_Win_test(std::forward<Args>(args)...);
   }
 };
 
@@ -3082,7 +3082,7 @@ struct Win_testFunctor {
 struct Win_unlockFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_unlock(std::forward<Args>(args)...);
+    UITSL_Win_unlock(std::forward<Args>(args)...);
   }
 };
 
@@ -3090,7 +3090,7 @@ struct Win_unlockFunctor {
 struct Win_unlock_allFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_unlock_all(std::forward<Args>(args)...);
+    UITSL_Win_unlock_all(std::forward<Args>(args)...);
   }
 };
 
@@ -3098,7 +3098,7 @@ struct Win_unlock_allFunctor {
 struct Win_waitFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
-    UIT_Win_wait(std::forward<Args>(args)...);
+    UITSL_Win_wait(std::forward<Args>(args)...);
   }
 };
 

@@ -77,8 +77,8 @@ private:
   void CancelPendingSend() {
     emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
-    UIT_Cancel( &std::get<uitsl::Request>(buffer.front()) );
-    UIT_Request_free( &std::get<uitsl::Request>(buffer.front()) );
+    UITSL_Cancel( &std::get<uitsl::Request>(buffer.front()) );
+    UITSL_Request_free( &std::get<uitsl::Request>(buffer.front()) );
 
     emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 

@@ -11,7 +11,7 @@ struct MpiGuard {
 
   MpiGuard() { uitsl::mpi_init(); }
 
-  ~MpiGuard() { UIT_Finalize(); }
+  ~MpiGuard() { UITSL_Finalize(); }
 
 };
 

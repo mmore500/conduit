@@ -30,7 +30,7 @@ void do_successively(
       before_task(rank);
       task();
     }
-    UIT_Barrier(comm);
+    UITSL_Barrier(comm);
   }
 }
 

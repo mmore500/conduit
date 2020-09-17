@@ -79,7 +79,7 @@ class Outlet {
   /// Total distance traversed through underlying buffer.
   size_t net_flux{0};
 
-  uit_occupancy_auditor;
+  uitsl_occupancy_auditor;
 
   /**
    * TODO.
@@ -87,7 +87,7 @@ class Outlet {
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t n) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     return LogStep( duct->TryConsumeGets(n) );
   }
 
@@ -141,7 +141,7 @@ public:
    * @return TODO.
    */
   const T& JumpGet() {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     Jump();
     return Get();
   }
@@ -154,7 +154,7 @@ public:
    * @return TODO.
    */
   const T& GetNext() {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     while (TryStep() == 0);
     return Get();
   }
@@ -171,7 +171,7 @@ public:
    * @return TODO.
    */
    optional_ref_t GetNextOrNullopt() {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     return TryStep()
       ? optional_ref_t{ std::reference_wrapper{ Get() } }
       : std::nullopt;

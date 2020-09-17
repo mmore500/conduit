@@ -11,7 +11,7 @@ struct MpiMultithreadGuard {
 
   MpiMultithreadGuard() { uitsl::mpi_init_multithread(); }
 
-  ~MpiMultithreadGuard() { UIT_Finalize(); }
+  ~MpiMultithreadGuard() { UITSL_Finalize(); }
 
 };
 

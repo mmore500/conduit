@@ -177,7 +177,7 @@ public:
     }
 
     // ensure that RputDucts have received target offsets
-    UIT_Barrier(comm);
+    UITSL_Barrier(comm);
 
     emp_assert(windows.empty() || IsInitialized());
   }

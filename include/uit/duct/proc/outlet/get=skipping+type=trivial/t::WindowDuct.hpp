@@ -74,7 +74,7 @@ public:
   ) {
     if (address.GetOutletProc() == uitsl::get_rank(address.GetComm())) {
       MPI_Request req;
-      UIT_Isend(
+      UITSL_Isend(
         &byte_offset, // const void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype
@@ -83,7 +83,7 @@ public:
         address.GetComm(), // MPI_Comm comm
         &req // MPI_Request * request
       );
-      UIT_Request_free(&req); //TODO test for completion in destructor?
+      UITSL_Request_free(&req); //TODO test for completion in destructor?
     }
 
   }

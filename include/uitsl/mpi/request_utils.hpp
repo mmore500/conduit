@@ -10,7 +10,7 @@ namespace uitsl {
 bool test_completion(const MPI_Request& request) {
   int flag{};
   // on MPI spec, request is listed as an input param but not taken as const ptr
-  UIT_Test(
+  UITSL_Test(
     const_cast<MPI_Request*>(&request), // MPI_Request * request
     &flag, // int *flag
     MPI_STATUS_IGNORE // MPI_Status * status

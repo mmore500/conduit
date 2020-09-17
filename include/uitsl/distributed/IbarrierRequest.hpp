@@ -21,7 +21,7 @@ public:
    * @param comm Set of MPI processes to participate in barrier.
    */
   IbarrierRequest(const MPI_Comm comm=MPI_COMM_WORLD) {
-    UIT_Ibarrier(comm, &request);
+    UITSL_Ibarrier(comm, &request);
   }
 
   /**

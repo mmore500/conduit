@@ -129,6 +129,6 @@ TEST_CASE("Is transmission reliable?") { REPEAT {
 
   REQUIRE( outlet.Get() == MSG_T{30} );
 
-  UIT_Barrier( MPI_COMM_WORLD );
+  UITSL_Barrier( MPI_COMM_WORLD );
 
 } }

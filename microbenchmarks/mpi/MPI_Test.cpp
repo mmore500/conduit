@@ -18,7 +18,7 @@ static void MPI_Test_nopending(benchmark::State& state) {
   MPI_Request request;
   int buffer{};
 
-  UIT_Irecv(
+  UITSL_Irecv(
     &buffer, // const void *buf
     1, // int count
     MPI_INT, // MPI_Datatype datatype
@@ -33,7 +33,7 @@ static void MPI_Test_nopending(benchmark::State& state) {
 
     int flag{};
 
-    UIT_Test(
+    UITSL_Test(
       &request,
       &flag,
       MPI_STATUS_IGNORE
@@ -53,7 +53,7 @@ static void MPI_Test_nopending(benchmark::State& state) {
   });
 
   // clean up
-  UIT_Cancel(&request);
+  UITSL_Cancel(&request);
 
 }
 
@@ -64,7 +64,7 @@ static void MPI_Test_onepending(benchmark::State& state) {
   int recv_buffer{};
   int send_buffer{};
 
-  UIT_Irecv(
+  UITSL_Irecv(
     &recv_buffer, // const void *buf
     1, // int count
     MPI_INT, // MPI_Datatype datatype
@@ -74,7 +74,7 @@ static void MPI_Test_onepending(benchmark::State& state) {
     &request // MPI_Request * request
   );
 
-  UIT_Send(
+  UITSL_Send(
     &send_buffer, // const void *buf
     1, // int count
     MPI_INT, // MPI_Datatype datatype
@@ -88,7 +88,7 @@ static void MPI_Test_onepending(benchmark::State& state) {
 
     int flag{};
 
-    UIT_Test(
+    UITSL_Test(
       &request,
       &flag,
       MPI_STATUS_IGNORE
@@ -97,7 +97,7 @@ static void MPI_Test_onepending(benchmark::State& state) {
   }
 
   // clean up
-  UIT_Wait(&request, MPI_STATUS_IGNORE);
+  UITSL_Wait(&request, MPI_STATUS_IGNORE);
 
 }
 
@@ -108,7 +108,7 @@ static void MPI_Test_manypending(benchmark::State& state) {
   int recv_buffer{};
   int send_buffer{};
 
-  UIT_Irecv(
+  UITSL_Irecv(
     &recv_buffer, // const void *buf
     1, // int count
     MPI_INT, // MPI_Datatype datatype
@@ -120,7 +120,7 @@ static void MPI_Test_manypending(benchmark::State& state) {
 
   for (size_t i = 0; i < uit::DEFAULT_BUFFER; ++i) {
     MPI_Request send_request;
-    UIT_Isend(
+    UITSL_Isend(
       &send_buffer, // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -136,7 +136,7 @@ static void MPI_Test_manypending(benchmark::State& state) {
 
     int flag{};
 
-    UIT_Test(
+    UITSL_Test(
       &request,
       &flag,
       MPI_STATUS_IGNORE
@@ -146,7 +146,7 @@ static void MPI_Test_manypending(benchmark::State& state) {
 
   // clean up
   for (size_t i = 0; i < uit::DEFAULT_BUFFER - 1; ++i) {
-    UIT_Irecv(
+    UITSL_Irecv(
       &recv_buffer, // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -157,7 +157,7 @@ static void MPI_Test_manypending(benchmark::State& state) {
     );
 
 
-    UIT_Wait(&request, MPI_STATUS_IGNORE);
+    UITSL_Wait(&request, MPI_STATUS_IGNORE);
   }
 
 }

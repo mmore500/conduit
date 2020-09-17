@@ -30,7 +30,7 @@ class HeadTailDuct {
   size_t tail{};
   buffer_t buffer;
 
-  uit_occupancy_auditor;
+  uitsl_occupancy_auditor;
 
   /**
    * TODO.
@@ -49,7 +49,7 @@ class HeadTailDuct {
    * @param val TODO.
    */
   void DoPut(const T& val) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     ++head;
     buffer[head % N] = val;
     emp_assert( CountUnconsumedGets() <= N );
@@ -62,7 +62,7 @@ class HeadTailDuct {
    */
   template<typename P>
   void DoPut(P&& val) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     ++head;
     buffer[head % N] = std::forward<P>(val);
     emp_assert( CountUnconsumedGets() <= N );
@@ -110,7 +110,7 @@ public:
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t n) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     const size_t num_consumed = std::min( CountUnconsumedGets(), n );
     tail += num_consumed;
     return num_consumed;

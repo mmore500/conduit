@@ -48,7 +48,7 @@ class Gatherer {
     const int count = items.size();
     emp::vector<int> res(get_nprocs());
 
-    UIT_Gather(
+    UITSL_Gather(
       &count, // const void *sendbuf,
       1, // int sendcount,
       MPI_INT, // MPI_Datatype sendtype,
@@ -117,7 +117,7 @@ public:
     emp::vector<T> send_buffer( std::begin(items), std::end(items) );
 
     // do gather, contributed items are only delivered to root process
-    UIT_Gatherv(
+    UITSL_Gatherv(
       send_buffer.data(), // const void *sendbuf
       send_buffer.size(), // int sendcount
       mpi_type, // MPI_Datatype sendtype

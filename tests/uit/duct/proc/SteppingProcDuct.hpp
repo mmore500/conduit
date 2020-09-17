@@ -10,7 +10,7 @@ TEST_CASE("Ring Mesh connectivity") { REPEAT {
     uitsl::circular_index(uitsl::get_rank(), uitsl::get_nprocs(), -1)
   ) );
 
-  UIT_Barrier(MPI_COMM_WORLD); // todo why
+  UITSL_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -21,14 +21,14 @@ TEST_CASE("Ring Mesh sequential consistency") { {
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
 
-    UIT_Barrier( MPI_COMM_WORLD );
+    UITSL_Barrier( MPI_COMM_WORLD );
     output.Put(i);
     output.Flush();
     REQUIRE(input.GetNext() == i);
 
   }
 
-  UIT_Barrier(MPI_COMM_WORLD); // todo why
+  UITSL_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -55,7 +55,7 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
     );
   } else REQUIRE( uitsl::get_rank() % 2 == 0 ); // is producer
 
-  UIT_Barrier(MPI_COMM_WORLD); // todo why
+  UITSL_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -66,7 +66,7 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { {
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
 
-    UIT_Barrier( MPI_COMM_WORLD );
+    UITSL_Barrier( MPI_COMM_WORLD );
     if (output) {
       output->Put(i);
       output->Flush();
@@ -75,14 +75,14 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { {
 
   }
 
-  UIT_Barrier(MPI_COMM_WORLD); // todo why
+  UITSL_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
 TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
-  UIT_Barrier(MPI_COMM_WORLD);
+  UITSL_Barrier(MPI_COMM_WORLD);
 
   // check that everyone's connected properly
   output.Put(uitsl::get_rank());
@@ -104,7 +104,7 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
     ) );
   }
 
-  UIT_Barrier(MPI_COMM_WORLD); // todo why
+  UITSL_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -115,13 +115,13 @@ TEST_CASE("Dyadic Mesh sequential consistency") { {
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
 
-    UIT_Barrier( MPI_COMM_WORLD );
+    UITSL_Barrier( MPI_COMM_WORLD );
     output.Put(i);
     output.Flush();
     REQUIRE( input.GetNext() == i );
 
   }
 
-  UIT_Barrier(MPI_COMM_WORLD); // todo why
+  UITSL_Barrier(MPI_COMM_WORLD); // todo why
 
 } }

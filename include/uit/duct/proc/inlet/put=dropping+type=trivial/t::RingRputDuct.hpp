@@ -172,8 +172,8 @@ private:
   void CancelPendingPut() {
     emp_assert(!uitsl::test_null( put_requests[CalcStalestPutPos()] ));
 
-    UIT_Cancel( &put_requests[CalcStalestPutPos()] );
-    UIT_Request_free( &put_requests[CalcStalestPutPos()] );
+    UITSL_Cancel( &put_requests[CalcStalestPutPos()] );
+    UITSL_Request_free( &put_requests[CalcStalestPutPos()] );
 
     emp_assert(uitsl::test_null( put_requests[CalcStalestPutPos()] ));
 
@@ -228,7 +228,7 @@ public:
       );
 
       // we'll emp_assert later to make sure it actually completed
-      UIT_Irecv(
+      UITSL_Irecv(
         &target_offset, // void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype

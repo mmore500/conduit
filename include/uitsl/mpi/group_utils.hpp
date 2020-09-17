@@ -30,12 +30,12 @@ MPI_Group intersect_groups(emp::vector<MPI_Group> groups) {
   for ( ; groups.size(); groups.pop_back()) {
 
     MPI_Group temp;
-    UIT_Group_intersection(
+    UITSL_Group_intersection(
       res, // MPI_Group group1,
       groups.back(), // MPI_Group group2,
       &temp // MPI_Group* newgroup
     );
-    UIT_Group_free(
+    UITSL_Group_free(
       &res // MPI_Group* group
     );
     res = temp;
@@ -55,12 +55,12 @@ MPI_Group combine_groups(emp::vector<MPI_Group> groups) {
   for ( ; groups.size(); groups.pop_back()) {
 
     MPI_Group temp;
-    UIT_Group_union(
+    UITSL_Group_union(
       res, // MPI_Group group1
       groups.back(), // MPI_Group group2
       &temp // MPI_Group* newgroup
     );
-    UIT_Group_free(
+    UITSL_Group_free(
       &res // MPI_Group* group
     );
     res = temp;
@@ -77,7 +77,7 @@ MPI_Group subtract_groups(
 
   MPI_Group res;
 
-  UIT_Group_difference(
+  UITSL_Group_difference(
     minuend, // MPI_Group group1
     subtrahend, // MPI_Group group2
     &res // MPI_Group * newgroup
@@ -89,7 +89,7 @@ MPI_Group subtract_groups(
 
 size_t group_size(const MPI_Group & group) {
   int res;
-  UIT_Group_size(
+  UITSL_Group_size(
     group, // MPI_Group group
     &res // int *size
   );
@@ -102,7 +102,7 @@ MPI_Comm group_to_comm(
   const MPI_Comm & comm=MPI_COMM_WORLD
 ) {
   MPI_Comm res;
-  UIT_Comm_create_group(
+  UITSL_Comm_create_group(
     comm, // MPI_Comm comm
     group, // MPI_Group group
     0, // int tag TODO is this important?
@@ -133,7 +133,7 @@ MPI_Group make_group(
   ), uitsl::to_string(ranks));
 
   MPI_Group res;
-  UIT_Group_incl(
+  UITSL_Group_incl(
     source, // MPI_Group group
     ranks.size(), // int n
     ranks.data(), // const int ranks[]
@@ -148,7 +148,7 @@ proc_id_t translate_group_rank(
   const MPI_Group& to=uitsl::comm_to_group(MPI_COMM_WORLD)
 ) {
   proc_id_t res;
-  UIT_Group_translate_ranks(
+  UITSL_Group_translate_ranks(
     from, // MPI_Group group1
     1, // int n
     &rank, // const int ranks1[]
@@ -168,7 +168,7 @@ emp::vector<proc_id_t> get_group_ranks(const MPI_Group& group) {
   );
 
   emp::vector<proc_id_t> within_world_ranks(within_group_ranks.size());
-  UIT_Group_translate_ranks(
+  UITSL_Group_translate_ranks(
     group, // MPI_Group group1
     within_group_ranks.size(), // int n
     within_group_ranks.data(), // const int ranks1[]

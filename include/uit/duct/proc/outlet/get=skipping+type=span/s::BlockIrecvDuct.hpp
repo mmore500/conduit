@@ -60,7 +60,7 @@ private:
 
     buffer[receive_position].resize( back_end->GetSize() );
 
-    UIT_Irecv(
+    UITSL_Irecv(
       buffer[receive_position].data(),
       back_end->GetSize() * sizeof( typename T::value_type ),
       MPI_BYTE,
@@ -76,8 +76,8 @@ private:
   void CancelReceiveRequest(const size_t pos) {
     emp_assert( !uitsl::test_null( receive_requests[pos] ) );
 
-    UIT_Cancel( &receive_requests[pos] );
-    UIT_Request_free( &receive_requests[pos] );
+    UITSL_Cancel( &receive_requests[pos] );
+    UITSL_Request_free( &receive_requests[pos] );
 
     emp_assert( uitsl::test_null( receive_requests[pos] ) );
   }
@@ -98,7 +98,7 @@ private:
     int count{};
     thread_local emp::array<int, N> out_indices; // ignored
 
-    UIT_Testsome(
+    UITSL_Testsome(
       N, // int count
       &receive_requests[0], // MPI_Request array_of_requests[]
       &count, // int *outcount

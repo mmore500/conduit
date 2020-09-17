@@ -17,7 +17,7 @@ namespace uitsl {
 
 int get_nprocs(const MPI_Comm& comm=MPI_COMM_WORLD) {
   int res;
-  UIT_Comm_size(
+  UITSL_Comm_size(
     comm,
     &res
   );
@@ -27,7 +27,7 @@ int get_nprocs(const MPI_Comm& comm=MPI_COMM_WORLD) {
 //TODO replace with get_proc_id
 proc_id_t get_rank(const MPI_Comm& comm=MPI_COMM_WORLD) {
   int res;
-  UIT_Comm_rank(
+  UITSL_Comm_rank(
     comm,
     &res
   );
@@ -41,7 +41,7 @@ proc_id_t get_proc_id(const MPI_Comm& comm=MPI_COMM_WORLD) {
 
 MPI_Group comm_to_group(const MPI_Comm & comm){
   MPI_Group group;
-  UIT_Comm_group(
+  UITSL_Comm_group(
     comm, // MPI_Comm comm
     &group // MPI_Group* group
   );
@@ -51,13 +51,13 @@ MPI_Group comm_to_group(const MPI_Comm & comm){
 std::string get_name(const MPI_Comm& comm) {
   int len;
   emp::array<char, MPI_MAX_OBJECT_NAME> buffer;
-  UIT_Comm_get_name(comm, buffer.data(), &len);
+  UITSL_Comm_get_name(comm, buffer.data(), &len);
   return std::string{}.assign(buffer.data(), len);
 }
 
 MPI_Comm duplicate_comm(const MPI_Comm& comm) {
   MPI_Comm res;
-  UIT_Comm_dup(
+  UITSL_Comm_dup(
     comm,
     &res
   );
