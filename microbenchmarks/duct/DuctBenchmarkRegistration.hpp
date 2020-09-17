@@ -13,15 +13,9 @@
 #include "../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "uitsl/chrono/TimeGuard.hpp"
-#include "uit/conduit/Conduit.hpp"
-#include "uit/config/ImplSpec.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
-#include "uit/mesh/Mesh.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
-#include "uit/topology/DyadicTopologyFactory.hpp"
-#include "uit/topology/ProConTopologyFactory.hpp"
 #include "uitsl/math/stats_utils.hpp"
 #include "uitsl/meta/Curry.hpp"
 #include "uitsl/meta/ForEach.hpp"
@@ -29,6 +23,14 @@
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/parallel/thread_utils.hpp"
 #include "uitsl/polyfill/barrier.hpp"
+
+#include "uit/conduit/Conduit.hpp"
+#include "uit/config/ImplSpec.hpp"
+#include "uit/mesh/Mesh.hpp"
+#include "uit/topology/RingTopologyFactory.hpp"
+#include "uit/topology/DyadicTopologyFactory.hpp"
+#include "uit/topology/ProConTopologyFactory.hpp"
+
 
 #include "DuctBenchmarkRunner.hpp"
 

@@ -8,6 +8,8 @@
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/nonce/ScopeGuard.hpp"
 
+#include "uit/config/ImplSpec.hpp"
+
 const uitsl::MpiGuard guard;
 
 constexpr size_t buffer_size{ uit::DEFAULT_BUFFER };
