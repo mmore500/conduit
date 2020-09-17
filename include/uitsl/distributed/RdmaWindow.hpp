@@ -31,8 +31,8 @@ public:
 
   ~RdmaWindow() {
     if (IsInitialized()) {
-      UIT_Win_free(&window.value());
-      UIT_Free_mem(buffer);
+      UITSL_Win_free(&window.value());
+      UITSL_Free_mem(buffer);
     }
   }
 
@@ -75,7 +75,7 @@ public:
 
     emp_assert( IsInitialized() );
 
-    UIT_Win_lock(
+    UITSL_Win_lock(
       MPI_LOCK_EXCLUSIVE, // int lock_type
       // Indicates whether other processes may access the target window at the
       // same time (if MPI_LOCK_SHARED) or not (MPI_LOCK_EXCLUSIVE)
@@ -93,7 +93,7 @@ public:
 
     emp_assert( IsInitialized() );
 
-    UIT_Win_lock(
+    UITSL_Win_lock(
       MPI_LOCK_SHARED, // int lock_type
       // Indicates whether other processes may access the target window at the
       // same time (if MPI_LOCK_SHARED) or not (MPI_LOCK_EXCLUSIVE)
@@ -111,7 +111,7 @@ public:
 
     emp_assert( IsInitialized() );
 
-    UIT_Win_unlock(
+    UITSL_Win_unlock(
       local_rank, // int rank
       // rank of window (nonnegative integer)
       window.value() // MPI_Win win
@@ -128,7 +128,7 @@ public:
 
     emp_assert( IsInitialized() );
 
-    UIT_Put(
+    UITSL_Put(
       origin_addr, // const void *origin_addr
       num_bytes, // int origin_count
       MPI_BYTE, // MPI_Datatype origin_datatype
@@ -151,7 +151,7 @@ public:
     emp_assert( IsInitialized() );
     emp_assert( *request );
 
-    UIT_Rput(
+    UITSL_Rput(
       origin_addr, // const void *origin_addr
       num_bytes, // int origin_count
       MPI_BYTE, // MPI_Datatype origin_datatype
@@ -174,7 +174,7 @@ public:
 
     emp_assert( IsInitialized() );
 
-    UIT_Accumulate(
+    UITSL_Accumulate(
       // const void *origin_addr: initial address of buffer (choice)
       origin_addr,
       // int origin_count: number of entries in buffer (nonnegative integer)
@@ -211,7 +211,7 @@ public:
 
     emp_assert( IsInitialized() );
 
-    UIT_Raccumulate(
+    UITSL_Raccumulate(
       // const void *origin_addr: initial address of buffer (choice)
       origin_addr,
       // int origin_count: number of entries in buffer (nonnegative integer)
@@ -246,7 +246,7 @@ public:
 
     local_rank = target;
 
-    UIT_Alloc_mem(
+    UITSL_Alloc_mem(
       initialization_bytes.size(),
       MPI_INFO_NULL,
       &buffer
@@ -262,7 +262,7 @@ public:
     window.emplace();
 
     // all procs must make this call
-    UIT_Win_create(
+    UITSL_Win_create(
       buffer, // base: initial address of window (choice)
       initialization_bytes.size(), // size
       // size of window in bytes (nonnegative integer)
@@ -274,7 +274,7 @@ public:
     );
 
     // ensure that RputDucts have received target offsets
-    UIT_Barrier(comm);
+    UITSL_Barrier(comm);
 
     emp_assert( IsInitialized() );
 

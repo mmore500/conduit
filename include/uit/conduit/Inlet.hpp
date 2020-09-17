@@ -74,7 +74,7 @@ class Inlet {
   // How many TryPut calls have dropped?
   size_t dropped_put_count{};
 
-  uit_occupancy_auditor;
+  uitsl_occupancy_auditor;
 
   /**
    * TODO.
@@ -109,7 +109,7 @@ public:
    * @param val TODO.
    */
   void Put(const T& val) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
 
     bool was_blocked{ false };
     while (!DoTryPut(val)) was_blocked = true;
@@ -125,7 +125,7 @@ public:
    * @param val TODO.
    */
   bool TryPut(const T& val) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
 
     if ( DoTryPut(val) ) return true;
     else { ++dropped_put_count; return false; }
@@ -140,7 +140,7 @@ public:
    */
   template<typename P>
   bool TryPut(P&& val) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
 
     if ( DoTryPut(std::forward<P>(val)) ) return true;
     else { ++dropped_put_count; return false; }

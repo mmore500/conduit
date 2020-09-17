@@ -261,7 +261,7 @@ TEST_CASE("split_comm") {
 
   emp::vector<uitsl::proc_id_t> comm_ranks( uitsl::comm_size(every_other) );
 
-  UIT_Allgather(
+  UITSL_Allgather(
     &my_rank, // const void *sendbuf
     1, // int sendcount
     MPI_INT, // MPI_Datatype sendtype
@@ -279,7 +279,7 @@ TEST_CASE("split_comm") {
 
   comm_ranks.resize( uitsl::comm_size(halves) );
 
-  UIT_Allgather(
+  UITSL_Allgather(
     &my_rank, // const void *sendbuf
     1, // int sendcount
     MPI_INT, // MPI_Datatype sendtype
@@ -312,7 +312,7 @@ TEST_CASE("test_null") {
   REQUIRE( uitsl::test_null(req) );
 
   char buf;
-  UIT_Irecv(
+  UITSL_Irecv(
     &buf, // void *buf
     1, // int count
     MPI_BYTE, // MPI_Datatype datatype
@@ -324,8 +324,8 @@ TEST_CASE("test_null") {
 
   REQUIRE( !uitsl::test_null(req) );
 
-  UIT_Cancel(&req);
-  UIT_Request_free(&req);
+  UITSL_Cancel(&req);
+  UITSL_Request_free(&req);
 
   REQUIRE( uitsl::test_null(req) );
 

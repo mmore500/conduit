@@ -35,7 +35,7 @@ class PendingDuct {
   uitsl::CircularIndex<N> get_position{};
   buffer_t buffer{};
 
-  uit_occupancy_auditor;
+  uitsl_occupancy_auditor;
 
   /**
    * TODO.
@@ -45,7 +45,7 @@ class PendingDuct {
   size_t CountUnconsumedGets() const { return pending_gets; }
 
   void DoPut(const T& val) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     buffer[put_position] = val;
     ++pending_gets;
     ++put_position;
@@ -54,7 +54,7 @@ class PendingDuct {
 
   template<typename P>
   void DoPut(P&& val) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     buffer[put_position] = std::forward<P>(val);
     ++pending_gets;
     ++put_position;
@@ -104,7 +104,7 @@ public:
    * @return num consumed.
    */
   size_t TryConsumeGets(const size_t requested) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     const size_t num_consumed = std::min( requested, CountUnconsumedGets() );
     get_position += num_consumed;
     pending_gets -= num_consumed;

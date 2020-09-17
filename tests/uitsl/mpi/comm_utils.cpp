@@ -44,7 +44,7 @@ TEST_CASE("split_comm") {
 
   emp::vector<uitsl::proc_id_t> comm_ranks( uitsl::comm_size(every_other) );
 
-  UIT_Allgather(
+  UITSL_Allgather(
     &my_rank, // const void *sendbuf
     1, // int sendcount
     MPI_INT, // MPI_Datatype sendtype
@@ -62,7 +62,7 @@ TEST_CASE("split_comm") {
 
   comm_ranks.resize( uitsl::comm_size(halves) );
 
-  UIT_Allgather(
+  UITSL_Allgather(
     &my_rank, // const void *sendbuf
     1, // int sendcount
     MPI_INT, // MPI_Datatype sendtype

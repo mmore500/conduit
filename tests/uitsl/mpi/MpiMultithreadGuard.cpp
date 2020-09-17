@@ -29,7 +29,7 @@ TEST_CASE("Test MpiMultithreadGuard") {
       const int sendbuf{ thread };
       int recvbuf{};
 
-      UIT_Sendrecv(
+      UITSL_Sendrecv(
         &sendbuf, // sendbuf: initial address of send buffer
         1, // sendcount: number of elements in send buffer
         MPI_INT, // sendtype: type of elements in send buffer

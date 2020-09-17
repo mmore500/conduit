@@ -29,7 +29,7 @@ class UnboundedMoodyCamelDuct {
 
   moodycamel::ReaderWriterQueue<T> queue{N};
 
-  uit_occupancy_auditor;
+  uitsl_occupancy_auditor;
 
   size_t CountUnconsumedGets() const {
     const size_t available = queue.size_approx();
@@ -47,7 +47,7 @@ public:
    * @param val TODO.
    */
   bool TryPut(const T& val) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     queue.enqueue( val );
     return true;
   }
@@ -59,7 +59,7 @@ public:
    */
   template<typename P>
   bool TryPut(P&& val) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     queue.enqueue( std::forward<P>(val) );
     return true;
   }
@@ -70,7 +70,7 @@ public:
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {
-    uit_occupancy_audit(1);
+    uitsl_occupancy_audit(1);
     const size_t num_consumed = std::min( requested, CountUnconsumedGets() );
     for (size_t i = 0; i < num_consumed; ++i) queue.pop();
     return num_consumed;

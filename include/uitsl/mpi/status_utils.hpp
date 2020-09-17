@@ -15,7 +15,7 @@ namespace uitsl {
 
 int get_count(const MPI_Status& status, const MPI_Datatype& datatype) {
   int res;
-  UIT_Get_count(
+  UITSL_Get_count(
     &status, // const MPI_Status * status: return status of receive operation
     datatype, // MPI_Datatype datatype: datatype of each receive buffer element
     &res // int *count: number of received elements (integer)
@@ -26,7 +26,7 @@ int get_count(const MPI_Status& status, const MPI_Datatype& datatype) {
 
 bool test_cancelled(const MPI_Status& status) {
   int res;
-  UIT_Test_cancelled(&status, &res);
+  UITSL_Test_cancelled(&status, &res);
   return res;
 }
 

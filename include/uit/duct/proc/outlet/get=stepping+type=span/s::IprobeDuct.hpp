@@ -67,7 +67,7 @@ private:
 
     emp_assert( !back_end->HasSize() || back_end->GetSize() == buffer.size() );
 
-    UIT_Recv(
+    UITSL_Recv(
       buffer.data(), // void* buf: initial address of receive buffer
       msg_len, // int count: maximum number of elements in receive buffer
       MPI_BYTE,// MPI_Datatype datatype
@@ -84,7 +84,7 @@ private:
 
     MPI_Status status;
     int flag{};
-    UIT_Iprobe(
+    UITSL_Iprobe(
       address.GetInletProc(), // int source
       // source rank, or MPI_ANY_SOURCE (integer)
       address.GetTag(), // int tag: tag value or MPI_ANY_TAG (integer)

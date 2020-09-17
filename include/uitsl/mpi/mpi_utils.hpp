@@ -24,7 +24,7 @@ namespace uitsl {
 
 void mpi_init_multithread(int *argc, char ***argv) {
   int res{};
-  UIT_Init_thread(argc, argv, MPI_THREAD_MULTIPLE, &res);
+  UITSL_Init_thread(argc, argv, MPI_THREAD_MULTIPLE, &res);
   if (res < MPI_THREAD_MULTIPLE) emp::NotifyWarning(
     "MPI implementation may not provide full multithread support."
   );
@@ -37,7 +37,7 @@ void mpi_init_multithread() {
 
 void mpi_init() {
   int argc{};
-  UIT_Init(&argc, nullptr);
+  UITSL_Init(&argc, nullptr);
 }
 
 } // namespace uitsl

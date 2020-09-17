@@ -176,7 +176,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
     REQUIRE( input.JumpGet() == MSG_T{} );
   }
 
-  UIT_Barrier( MPI_COMM_WORLD );
+  UITSL_Barrier( MPI_COMM_WORLD );
 
   output.Put(42);
   output.TryFlush();
@@ -200,7 +200,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   REQUIRE( input.JumpGet() <= 2 * uit::DEFAULT_BUFFER );
 
-  UIT_Barrier( MPI_COMM_WORLD ); // todo why
+  UITSL_Barrier( MPI_COMM_WORLD ); // todo why
 
 } }
 
@@ -226,7 +226,7 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
   REQUIRE( input.JumpGet() == 1 );
 
-  UIT_Barrier( MPI_COMM_WORLD ); // todo why
+  UITSL_Barrier( MPI_COMM_WORLD ); // todo why
 
 } }
 
@@ -249,7 +249,7 @@ TEST_CASE("Validity") { REPEAT {
 
   }
 
-  UIT_Barrier(MPI_COMM_WORLD); // todo why
+  UITSL_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
 
@@ -276,6 +276,6 @@ TEST_CASE("Multi-bridge Validity") { REPEAT {
 
   }
 
-  UIT_Barrier(MPI_COMM_WORLD); // todo why
+  UITSL_Barrier(MPI_COMM_WORLD); // todo why
 
 } }

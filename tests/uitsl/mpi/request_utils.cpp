@@ -22,7 +22,7 @@ TEST_CASE("test_null") {
   REQUIRE( uitsl::test_null(req) );
 
   char buf;
-  UIT_Irecv(
+  UITSL_Irecv(
     &buf, // void *buf
     1, // int count
     MPI_BYTE, // MPI_Datatype datatype
@@ -34,8 +34,8 @@ TEST_CASE("test_null") {
 
   REQUIRE( !uitsl::test_null(req) );
 
-  UIT_Cancel(&req);
-  UIT_Request_free(&req);
+  UITSL_Cancel(&req);
+  UITSL_Request_free(&req);
 
   REQUIRE( uitsl::test_null(req) );
 

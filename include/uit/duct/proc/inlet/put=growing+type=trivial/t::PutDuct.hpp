@@ -92,7 +92,7 @@ public:
       );
 
       // we'll emp_assert later to make sure it actually completed
-      UIT_Irecv(
+      UITSL_Irecv(
         &target_offset, // void *buf
         1, // int count
         MPI_INT, // MPI_Datatype datatype
