@@ -15,8 +15,8 @@ struct NamedArray {
 
     double m_array[2];
 
-    uit::NamedArrayElement<0, double> foo;
-    uit::NamedArrayElement<1, double> bar;
+    uitsl::NamedArrayElement<0, double> foo;
+    uitsl::NamedArrayElement<1, double> bar;
 
   };
 

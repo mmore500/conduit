@@ -3,7 +3,7 @@
 #include <shared_mutex>
 #include <unordered_map>
 
-namespace uit {
+namespace uitsl {
 namespace safe {
 
 template<
@@ -473,4 +473,4 @@ public:
 };
 
 } // namespace safe
-} // namespace uit
+} // namespace uitsl

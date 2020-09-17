@@ -11,7 +11,7 @@
 
 #include "ThreadSafeIbarrierRequest.hpp"
 
-namespace uit {
+namespace uitsl {
 
 /**
  * Block until all threads on all processes reach the barrier,
@@ -20,12 +20,12 @@ namespace uit {
  * @tparam Timer_T class to manage timeout check.
  */
 // TODO is Ibarrier request leaked?
-template<typename Timer_T=uit::Timer<>>
+template<typename Timer_T=uitsl::Timer<>>
 class ConcurrentTimeoutBarrier {
 
   /// manages state of MPI Ibarrier call
   // TODO this won't work properly with different thread counts per process
-  uit::ThreadSafeIbarrierRequest proc_barrier;
+  uitsl::ThreadSafeIbarrierRequest proc_barrier;
 
 public:
 
@@ -34,16 +34,16 @@ public:
    * or a timeout expires.
    */
   ConcurrentTimeoutBarrier(
-    const uit::ThreadIbarrier& thread_barrier,
+    const uitsl::ThreadIbarrier& thread_barrier,
     const Timer_T& timer=Timer_T{},
     const MPI_Comm comm=MPI_COMM_WORLD
   ) : proc_barrier(comm) {
 
-    uit::ParallelTimeoutBarrier{thread_barrier, timer};
+    uitsl::ParallelTimeoutBarrier{thread_barrier, timer};
     while (!proc_barrier.IsComplete() && !timer.IsComplete());
 
   }
 
 };
 
-} // namespace uit
+} // namespace uitsl

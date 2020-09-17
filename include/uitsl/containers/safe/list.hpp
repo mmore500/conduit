@@ -3,7 +3,7 @@
 #include <list>
 #include <shared_mutex>
 
-namespace uit {
+namespace uitsl {
 namespace safe {
 
 template<class T, class Allocator = std::allocator<T>>
@@ -338,4 +338,4 @@ public:
 };
 
 } // namespace safe
-} // namespace uit
+} // namespace uitsl

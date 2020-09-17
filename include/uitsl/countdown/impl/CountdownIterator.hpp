@@ -2,7 +2,7 @@
 
 #include <experimental/memory>
 
-namespace uit {
+namespace uitsl {
 
 template<typename CountdownType>
 class CountdownIterator {
@@ -28,4 +28,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

@@ -46,7 +46,7 @@ struct RegisterBenchmarks {
     const std::string name{ emp::to_string(
       MeshFactory::GetName(),
       "/nodes:",
-      NumThreadsType{}() * uit::get_nprocs()
+      NumThreadsType{}() * uitsl::get_nprocs()
     ) };
 
     auto res = benchmark::RegisterBenchmark(
@@ -71,11 +71,11 @@ struct RegisterBenchmarks {
     );
 
     res->Threads(NumThreadsType{}());
-    uit::report_confidence(res);
+    uitsl::report_confidence(res);
 
     // need to guarantee a fixed number of stop/starts for the
     // MPI barriers to sync up correctly
-    if (uit::is_multiprocess()) res->Iterations(100 * std::kilo{}.num);
+    if (uitsl::is_multiprocess()) res->Iterations(100 * std::kilo{}.num);
   }
 
 };
@@ -93,9 +93,9 @@ struct ThreadCountPayload {
     >;
 
     using benchmarks_t = typename factories_t::wrap<
-      uit::Curry<
+      uitsl::Curry<
         RegisterBenchmarks,
-        uit::ValType<NumThreads>
+        uitsl::ValType<NumThreads>
       >::template curried
     >;
 

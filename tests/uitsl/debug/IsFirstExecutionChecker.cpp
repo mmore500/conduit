@@ -6,7 +6,7 @@
 
 TEST_CASE("IsFirstExecutionChecker") {
 
-  uit::IsFirstExecutionChecker checker;
+  uitsl::IsFirstExecutionChecker checker;
   checker.Check();
 
 }

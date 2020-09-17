@@ -31,8 +31,8 @@ class PendingDuct {
   using buffer_t = emp::array<BufferElementType, N>;
 
   PendingType pending_gets{};
-  uit::CircularIndex<N> put_position{1};
-  uit::CircularIndex<N> get_position{};
+  uitsl::CircularIndex<N> put_position{1};
+  uitsl::CircularIndex<N> get_position{};
   buffer_t buffer{};
 
   uit_occupancy_auditor;
@@ -142,10 +142,10 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("pending_t pending_gets", pending_gets);
-    ss << format_member("pending_t get_position", get_position);
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("buffer_t buffer", buffer[0]) << std::endl;
+    ss << uitsl::format_member("pending_t pending_gets", pending_gets);
+    ss << uitsl::format_member("pending_t get_position", get_position);
     return ss.str();
   }
 

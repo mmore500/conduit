@@ -8,7 +8,7 @@
 #include "../utility/print_utils.hpp"
 #include "../parallel/thread_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 class OccupancyCap {
 
@@ -69,4 +69,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

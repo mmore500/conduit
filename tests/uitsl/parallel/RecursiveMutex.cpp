@@ -6,6 +6,6 @@
 TEST_CASE("RecursiveMutex") {
 
   // TODO expand stub test
-  uit::RecursiveMutex{};
+  uitsl::RecursiveMutex{};
 
 }

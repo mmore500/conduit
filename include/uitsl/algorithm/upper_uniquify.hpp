@@ -3,7 +3,7 @@
 #include <map>
 #include <utility>
 
-namespace uit {
+namespace uitsl {
 
 template<typename Key, typename T>
 void upper_uniquify(std::multimap<Key, T>& map) {
@@ -26,4 +26,4 @@ void upper_uniquify(std::multimap<Key, T>& map) {
 
 }
 
-} // namespace uit
+} // namespace uitsl

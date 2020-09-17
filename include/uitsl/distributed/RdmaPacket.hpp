@@ -3,7 +3,7 @@
 #include <tuple>
 #include <type_traits>
 
-namespace uit {
+namespace uitsl {
 
 template<typename T>
 class RdmaPacket {
@@ -29,4 +29,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

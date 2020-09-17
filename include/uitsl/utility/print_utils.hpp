@@ -9,7 +9,7 @@
 
 // TODO be clever and use fewer overloads
 
-namespace uit {
+namespace uitsl {
 
 std::mutex error_message_mutex;
 
@@ -28,7 +28,7 @@ std::string format_member(
 ) {
   std::stringstream ss;
   ss << name << ":" << std::endl;
-  ss << apply_indent(member.ToString());
+  ss << uitsl::apply_indent(member.ToString());
   return ss.str();
 }
 
@@ -120,4 +120,4 @@ std::string to_string(const T & container) {
   return emp::join_on(res, ", ");
 }
 
-} // namespace uit
+} // namespace uitsl

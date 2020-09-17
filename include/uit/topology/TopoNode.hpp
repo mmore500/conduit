@@ -37,13 +37,13 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member(
+    ss << uitsl::format_member(
       "emp::vector<uit::TopoNodeInput> inputs",
-      uit::to_string(inputs)
+      uitsl::to_string(inputs)
     ) << std::endl;
-    ss << format_member(
+    ss << uitsl::format_member(
       "emp::vector<uit::TopoNodeInput> inputs",
-      uit::to_string(outputs)
+      uitsl::to_string(outputs)
     );
     return ss.str();
   }

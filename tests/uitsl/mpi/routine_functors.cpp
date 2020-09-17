@@ -8,32 +8,32 @@
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("Test IrsendFunctor") {
 
   // TODO flesh out stub test
-  uit::IrsendFunctor{};
+  uitsl::IrsendFunctor{};
 
 }
 
 TEST_CASE("Test IsendFunctor") {
 
   // TODO flesh out stub test
-  uit::IsendFunctor{};
+  uitsl::IsendFunctor{};
 
 }
 
 TEST_CASE("Test RsendFunctor") {
 
   // TODO flesh out stub test
-  uit::RsendFunctor{};
+  uitsl::RsendFunctor{};
 
 }
 
 TEST_CASE("Test SendFunctor") {
 
   // TODO flesh out stub test
-  uit::SendFunctor{};
+  uitsl::SendFunctor{};
 
 }

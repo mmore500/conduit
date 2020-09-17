@@ -6,7 +6,7 @@
 TEST_CASE("ThreadLocalChecker") {
 
   // TODO expand stub test
-  uit::ThreadLocalChecker checker;
+  uitsl::ThreadLocalChecker checker;
   checker.Check();
 
 }

@@ -15,13 +15,13 @@
 
 // TODO fix undefined behavior
 
-namespace uit {
+namespace uitsl {
 
 template<typename T, size_t N>
 class MirroredRingBuffer {
 
-  const size_t byte_size { uit::safe_cast<size_t>(
-    uit::div_ceil(N * sizeof(T), getpagesize()) * getpagesize()
+  const size_t byte_size { uitsl::safe_cast<size_t>(
+    uitsl::div_ceil(N * sizeof(T), getpagesize()) * getpagesize()
   ) };
   const size_t allocation_size { 2 * byte_size };
   const int file_descriptor { fileno( tmpfile() ) };
@@ -36,7 +36,7 @@ public:
 
     emp_assert( byte_size % getpagesize() == 0 );
 
-    uit::err_audit(ftruncate(
+    uitsl::err_audit(ftruncate(
       file_descriptor, // int fd
       byte_size // off_t length
     ));
@@ -79,7 +79,7 @@ public:
   }
 
   ~MirroredRingBuffer() {
-    uit::err_audit(munmap(
+    uitsl::err_audit(munmap(
       buffer, // void *addr
       allocation_size // size_t length
     ));
@@ -152,4 +152,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

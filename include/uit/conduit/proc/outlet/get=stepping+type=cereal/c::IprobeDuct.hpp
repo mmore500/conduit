@@ -47,7 +47,7 @@ private:
 
   size_t pending_gets{};
 
-  using buffer_t = emp::vector<uit::Uninitialized<std::byte>>;
+  using buffer_t = emp::vector<uitsl::Uninitialized<std::byte>>;
   buffer_t buffer{};
 
   // cached unpacked value
@@ -57,7 +57,7 @@ private:
   const uit::InterProcAddress address;
 
   void PerformReceive(const MPI_Status& status) {
-    const int msg_len = uit::get_count(status, MPI_BYTE);
+    const int msg_len = uitsl::get_count(status, MPI_BYTE);
 
     buffer.resize(msg_len);
 
@@ -112,7 +112,7 @@ private:
     if (!cache.has_value()) {
       cache.emplace();
 
-      uit::imemstream imemstream(
+      uitsl::imemstream imemstream(
         reinterpret_cast<const char*>(buffer.data()),
         buffer.size()
       );
@@ -180,8 +180,8 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("InterProcAddress address", address) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
     return ss.str();
   }
 

@@ -7,13 +7,13 @@
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 constexpr size_t num_threads{ 2 };
 
 void do_work() {
 
-  const uit::ThreadSafeIbarrierRequest barrier;
+  const uitsl::ThreadSafeIbarrierRequest barrier;
   while( !barrier.IsComplete() );
   REQUIRE( barrier.IsComplete() );
 
@@ -22,7 +22,7 @@ void do_work() {
 
 TEST_CASE("Test ThreadSafeIbarrierRequest") {
 
-  uit::ThreadTeam team;
+  uitsl::ThreadTeam team;
 
   team.Add(do_work);
   team.Add(do_work);

@@ -10,7 +10,7 @@
 
 #include "IbarrierRequest.hpp"
 
-namespace uit {
+namespace uitsl {
 
 /**
  * Block until all processes reach the barrier or a timeout is exceeded.
@@ -18,11 +18,11 @@ namespace uit {
  * @tparam Timer_T class to manage timeout check.
  */
 // TODO is Ibarrier request leaked?
-template<typename Timer_T=uit::Timer<>>
+template<typename Timer_T=uitsl::Timer<>>
 class DistributedTimeoutBarrier {
 
   /// manages state of MPI Ibarrier call
-  uit::IbarrierRequest proc_barrier;
+  uitsl::IbarrierRequest proc_barrier;
 
 public:
 
@@ -40,4 +40,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

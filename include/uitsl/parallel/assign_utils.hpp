@@ -2,14 +2,14 @@
 
 #include "thread_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 struct AssignAvailableThreads {
 
-  uit::thread_id_t operator()(const size_t & node_id) {
-    return node_id % uit::get_nproc();
+  uitsl::thread_id_t operator()(const size_t & node_id) {
+    return node_id % uitsl::get_nproc();
   }
 
 };
 
-} // namespace uit
+} // namespace uitsl

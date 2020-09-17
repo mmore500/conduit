@@ -5,7 +5,7 @@
 #include "../../../third-party/Empirical/source/base/vector.h"
 #include "../../../third-party/Empirical/source/data/DataNode.h"
 
-namespace uit {
+namespace uitsl {
 
 double sample_mean_with_replacement(
   emp::Random & rand,
@@ -49,4 +49,4 @@ std::tuple<double, double> bootstrap(
 
 }
 
-} // namespace uit
+} // namespace uitsl

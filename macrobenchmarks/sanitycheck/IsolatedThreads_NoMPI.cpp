@@ -18,11 +18,11 @@
 
 void do_work(std::latch & latch) {
 
-  std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
+  std::chrono::milliseconds duration; { const uitsl::TimeGuard guard{duration};
 
   latch.arrive_and_wait();
 
-  uit::do_compute_work(1e7);
+  uitsl::do_compute_work(1e7);
 
   } // close TimeGuard
 
@@ -30,11 +30,11 @@ void do_work(std::latch & latch) {
 
 void profile_thread_count(const size_t num_threads) {
 
-  uit::ThreadTeam team;
+  uitsl::ThreadTeam team;
 
-  std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
+  std::chrono::milliseconds duration; { const uitsl::TimeGuard guard{duration};
 
-  std::latch latch{uit::safe_cast<std::ptrdiff_t>(num_threads)};
+  std::latch latch{uitsl::safe_cast<std::ptrdiff_t>(num_threads)};
   for (size_t i = 0; i < num_threads; ++i) {
     team.Add( [&latch](){ do_work(latch); } );
   }
@@ -49,7 +49,7 @@ void profile_thread_count(const size_t num_threads) {
 
 int main(int argc, char* argv[]) {
 
-  for (size_t threads = 1; threads <= uit::get_nproc(); threads *= 2) {
+  for (size_t threads = 1; threads <= uitsl::get_nproc(); threads *= 2) {
     profile_thread_count(threads);
   }
 

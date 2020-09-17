@@ -2,7 +2,7 @@
 
 #include "cache_line.hpp"
 
-namespace uit {
+namespace uitsl {
 
 template <typename T>
 class alignas(CACHE_LINE_SIZE) AlignedInherit : public T {
@@ -17,4 +17,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

@@ -9,7 +9,7 @@
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("Test OutletMemoryAggregator") {
 

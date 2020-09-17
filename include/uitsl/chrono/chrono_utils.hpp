@@ -4,7 +4,7 @@
 #include <iomanip>
 #include <limits>
 
-namespace uit {
+namespace uitsl {
 
 std::chrono::duration<double> infinite_duration {
   std::numeric_limits<double>::infinity()
@@ -49,7 +49,7 @@ std::string beautify_duration(std::chrono::seconds input_seconds) {
     return ss.str();
 }
 
-} // namespace uit
+} // namespace uitsl
 
 // std::chrono::duration<int> zero_duration {
 //   0

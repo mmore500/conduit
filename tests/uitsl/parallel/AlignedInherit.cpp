@@ -8,6 +8,6 @@
 TEST_CASE("AlignedInherit") {
 
   // TODO flesh out stub test
-  uit::AlignedInherit<std::string>{};
+  uitsl::AlignedInherit<std::string>{};
 
 }

@@ -8,13 +8,13 @@
 
 #include "../nonce/CircularIndex.hpp"
 
-namespace uit {
+namespace uitsl {
 
 template<typename T, size_t N>
 class RingBuffer {
 
   emp::array<T, N> buffer{};
-  uit::CircularIndex<N> tail{};
+  uitsl::CircularIndex<N> tail{};
   size_t num_items{};
 
 public:
@@ -77,4 +77,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

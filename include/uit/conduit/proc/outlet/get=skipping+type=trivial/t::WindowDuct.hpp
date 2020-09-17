@@ -44,7 +44,7 @@ private:
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  using packet_t = uit::RdmaPacket<T>;
+  using packet_t = uitsl::RdmaPacket<T>;
 
   packet_t cache{};
   size_t cur_epoch{};
@@ -64,7 +64,7 @@ public:
   ) : address(address_)
   , back_end(back_end_)
   , byte_offset(
-    address.GetOutletProc() == uit::get_rank(address.GetComm())
+    address.GetOutletProc() == uitsl::get_rank(address.GetComm())
       ? back_end->GetWindowManager().Acquire(
         address.GetInletProc(),
         emp::vector<std::byte>(
@@ -73,7 +73,7 @@ public:
         )
       ) : -1
   ) {
-    if (address.GetOutletProc() == uit::get_rank(address.GetComm())) {
+    if (address.GetOutletProc() == uitsl::get_rank(address.GetComm())) {
       MPI_Request req;
       UIT_Isend(
         &byte_offset, // const void *buf
@@ -128,8 +128,8 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("int get_rank()", get_rank()) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("int uitsl::get_rank()", uitsl::get_rank()) << std::endl;
     return ss.str();
   }
 

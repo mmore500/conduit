@@ -63,7 +63,7 @@ class Outlet {
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  using index_t = CircularIndex<N>;
+  using index_t = uitsl::CircularIndex<N>;
 
   using duct_t = internal::Duct<ImplSpec>;
   std::shared_ptr<duct_t> duct;
@@ -244,10 +244,10 @@ public:
    */
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member("std::shared_ptr<duct_t> duct", *duct) << std::endl;
-    ss << format_member("size_t read_count", read_count) << std::endl;
-    ss << format_member("size_t revision_count", revision_count) << std::endl;
-    ss << format_member("size_t net_flux", net_flux);
+    ss << uitsl::format_member("std::shared_ptr<duct_t> duct", *duct) << std::endl;
+    ss << uitsl::format_member("size_t read_count", read_count) << std::endl;
+    ss << uitsl::format_member("size_t revision_count", revision_count) << std::endl;
+    ss << uitsl::format_member("size_t net_flux", net_flux);
     return ss.str();
   }
 

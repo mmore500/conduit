@@ -4,7 +4,7 @@
 
 #include "../math/math_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 template<size_t N>
 class CircularIndex {
@@ -20,7 +20,7 @@ public:
   { ; }
 
   CircularIndex(int index_)
-  : index( uit::mod(index_, N) )
+  : index( uitsl::mod(index_, N) )
   { ; }
 
   operator size_t() const { return index; }
@@ -99,4 +99,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

@@ -42,24 +42,24 @@ private:
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
-  using packet_t = uit::RdmaPacket<T>;
+  using packet_t = uitsl::RdmaPacket<T>;
 
   using buffer_t = emp::array<packet_t, N>;
   buffer_t buffer{};
 
   size_t epoch{};
 
-  using index_t = uit::CircularIndex<N>;
+  using index_t = uitsl::CircularIndex<N>;
   index_t put_position{};
 
-  emp::array<uit::Request, N> put_requests;
+  emp::array<uitsl::Request, N> put_requests;
   size_t pending_puts{};
 
   const uit::InterProcAddress address;
 
   std::shared_ptr<BackEndImpl> back_end;
 
-  uit::Request target_offset_request;
+  uitsl::Request target_offset_request;
   int target_offset;
 
   /*
@@ -131,10 +131,10 @@ private:
   void PostPut() {
 
     // make sure that target offset has been received
-    emp_assert( uit::test_completion(target_offset_request) );
+    emp_assert( uitsl::test_completion(target_offset_request) );
 
     // TODO handle more than one at a time
-    emp_assert( uit::test_null(put_requests[put_position]) );
+    emp_assert( uitsl::test_null(put_requests[put_position]) );
 
     // TODO FIXME what kind of lock is needed here?
     back_end->GetWindowManager().LockShared( address.GetOutletProc() );
@@ -149,7 +149,7 @@ private:
 
     back_end->GetWindowManager().Unlock( address.GetOutletProc() );
 
-    emp_assert( !uit::test_null(put_requests[put_position]) );
+    emp_assert( !uitsl::test_null(put_requests[put_position]) );
 
     ++put_position;
     ++pending_puts;
@@ -159,23 +159,23 @@ private:
   index_t CalcStalestPutPos() const { return put_position - pending_puts; }
 
   bool TryFinalizePut() {
-    emp_assert( !uit::test_null(put_requests[CalcStalestPutPos()]) );
+    emp_assert( !uitsl::test_null(put_requests[CalcStalestPutPos()]) );
 
-    if (uit::test_completion( put_requests[CalcStalestPutPos()] )) {
+    if (uitsl::test_completion( put_requests[CalcStalestPutPos()] )) {
       --pending_puts;
-      emp_assert( uit::test_null(put_requests[CalcStalestPutPos() - 1]) );
+      emp_assert( uitsl::test_null(put_requests[CalcStalestPutPos() - 1]) );
       return true;
     } else return false;
 
   }
 
   void CancelPendingPut() {
-    emp_assert(!uit::test_null( put_requests[CalcStalestPutPos()] ));
+    emp_assert(!uitsl::test_null( put_requests[CalcStalestPutPos()] ));
 
     UIT_Cancel( &put_requests[CalcStalestPutPos()] );
     UIT_Request_free( &put_requests[CalcStalestPutPos()] );
 
-    emp_assert(uit::test_null( put_requests[CalcStalestPutPos()] ));
+    emp_assert(uitsl::test_null( put_requests[CalcStalestPutPos()] ));
 
     --pending_puts;
   }
@@ -189,7 +189,7 @@ private:
    */
   void DoPut(const T& val) {
     emp_assert( pending_puts < N );
-    emp_assert( uit::test_null( put_requests[put_position] ) );
+    emp_assert( uitsl::test_null( put_requests[put_position] ) );
     buffer[put_position] = packet_t(val, ++epoch);
     PostPut();
     emp_assert( pending_puts <= N );
@@ -217,10 +217,10 @@ public:
     emp_assert( std::all_of(
       std::begin(put_requests),
       std::end(put_requests),
-      [](const auto& req){ return uit::test_null( req ); }
+      [](const auto& req){ return uitsl::test_null( req ); }
     ) );
 
-    if (uit::get_rank(address.GetComm()) == address.GetInletProc()) {
+    if (uitsl::get_rank(address.GetComm()) == address.GetInletProc()) {
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
@@ -247,7 +247,7 @@ public:
     emp_assert( std::all_of(
       std::begin(put_requests),
       std::end(put_requests),
-      [](const auto& req){ return uit::test_null( req ); }
+      [](const auto& req){ return uitsl::test_null( req ); }
     ) );
   }
 
@@ -280,11 +280,11 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("size_t pending_puts", pending_puts) << std::endl;
-    ss << format_member("InterProcAddress address", address) << std::endl;
-    ss << format_member("size_t put_position", put_position);
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("buffer_t buffer", buffer[0]) << std::endl;
+    ss << uitsl::format_member("size_t pending_puts", pending_puts) << std::endl;
+    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
+    ss << uitsl::format_member("size_t put_position", put_position);
     return ss.str();
   }
 

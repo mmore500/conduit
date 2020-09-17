@@ -53,7 +53,7 @@ class OutletMemoryPool {
 
   void CheckCallingProc() const {
     const auto& rep = *addresses.begin();
-    emp_assert( rep.GetOutletProc() == uit::get_rank( rep.GetComm() ) );
+    emp_assert( rep.GetOutletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
 public:

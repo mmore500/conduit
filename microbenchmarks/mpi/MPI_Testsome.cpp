@@ -9,7 +9,7 @@
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/nonce/ScopeGuard.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 constexpr size_t buffer_size{ DEFAULT_BUFFER };
 
@@ -53,7 +53,7 @@ static void MPI_Testsome_nopending(benchmark::State& state) {
     {
       "Processes",
       benchmark::Counter(
-        uit::get_nprocs(),
+        uitsl::get_nprocs(),
         benchmark::Counter::kAvgThreads
       )
     }
@@ -114,7 +114,7 @@ static void MPI_Testsome_onepending(benchmark::State& state) {
 
   // clean up
   for (auto& request : recv_requests) {
-    if (!uit::test_completion(request)) UIT_Cancel(&request);
+    if (!uitsl::test_completion(request)) UIT_Cancel(&request);
   }
 
 }
@@ -171,7 +171,7 @@ static void MPI_Testsome_somepending(benchmark::State& state) {
 
   // clean up
   for (auto& request : recv_requests) {
-    if (!uit::test_completion(request)) UIT_Cancel(&request);
+    if (!uitsl::test_completion(request)) UIT_Cancel(&request);
   }
 
 }
@@ -228,7 +228,7 @@ static void MPI_Testsome_manypending(benchmark::State& state) {
 
   // clean up
   for (auto& request : recv_requests) {
-    if (!uit::test_completion(request)) UIT_Cancel(&request);
+    if (!uitsl::test_completion(request)) UIT_Cancel(&request);
   }
 
 }
@@ -284,7 +284,7 @@ static void MPI_Testsome_manymanypending(benchmark::State& state) {
 
   // clean up
   for (auto& request : recv_requests) {
-    if (!uit::test_completion(request)) UIT_Cancel(&request);
+    if (!uitsl::test_completion(request)) UIT_Cancel(&request);
   }
 
   for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
@@ -305,37 +305,37 @@ static void MPI_Testsome_manymanypending(benchmark::State& state) {
 }
 
 // register benchmarks
-const uit::ScopeGuard registration{[](){
+const uitsl::ScopeGuard registration{[](){
 
-  uit::report_confidence(
+  uitsl::report_confidence(
     benchmark::RegisterBenchmark(
       "MPI_Testsome_nopending",
       MPI_Testsome_nopending
     )
   );
 
-  uit::report_confidence(
+  uitsl::report_confidence(
     benchmark::RegisterBenchmark(
       "MPI_Testsome_onepending",
       MPI_Testsome_onepending
     )
   );
 
-  uit::report_confidence(
+  uitsl::report_confidence(
     benchmark::RegisterBenchmark(
       "MPI_Testsome_somepending",
       MPI_Testsome_somepending
     )
   );
 
-  uit::report_confidence(
+  uitsl::report_confidence(
     benchmark::RegisterBenchmark(
       "MPI_Testsome_manypending",
       MPI_Testsome_manypending
     )
   );
 
-  uit::report_confidence(
+  uitsl::report_confidence(
     benchmark::RegisterBenchmark(
       "MPI_Testsome_manymanypending",
       MPI_Testsome_manymanypending
@@ -346,7 +346,7 @@ const uit::ScopeGuard registration{[](){
 int main(int argc, char** argv) {
 
   // only root runs benchmark
-  if (uit::is_root()) {
+  if (uitsl::is_root()) {
 
     benchmark::Initialize(&argc, argv);
 

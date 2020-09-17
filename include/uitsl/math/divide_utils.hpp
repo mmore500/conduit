@@ -6,10 +6,10 @@
 
 // adapted from https://stackoverflow.com/a/63436491
 
-namespace uit {
+namespace uitsl {
 
 template <typename Dividend, typename Divisor>
-constexpr uit::common_signed_t<Dividend, Divisor>
+constexpr uitsl::common_signed_t<Dividend, Divisor>
 div_ceil(Dividend x, Divisor y)
 {
     if constexpr (std::is_unsigned_v<Dividend> && std::is_unsigned_v<Divisor>) {
@@ -33,7 +33,7 @@ div_ceil(Dividend x, Divisor y)
 }
 
 template <typename Dividend, typename Divisor>
-constexpr uit::common_signed_t<Dividend, Divisor>
+constexpr uitsl::common_signed_t<Dividend, Divisor>
 div_floor(Dividend x, Divisor y)
 {
     if constexpr (std::is_unsigned_v<Dividend> && std::is_unsigned_v<Divisor>) {
@@ -63,7 +63,7 @@ constexpr signed char sgn(Int n)
 }
 
 template <typename Dividend, typename Divisor>
-constexpr uit::common_signed_t<Dividend, Divisor>
+constexpr uitsl::common_signed_t<Dividend, Divisor>
 div_up(Dividend x, Divisor y)
 {
     if constexpr (std::is_unsigned_v<Dividend> && std::is_unsigned_v<Divisor>) {
@@ -86,4 +86,4 @@ div_up(Dividend x, Divisor y)
     }
 }
 
-} // namespace uit
+} // namespace uitsl

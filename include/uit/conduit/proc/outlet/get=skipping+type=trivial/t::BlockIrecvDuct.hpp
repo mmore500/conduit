@@ -42,15 +42,15 @@ private:
   using buffer_t = emp::array<T, N>;
   buffer_t buffer{};
 
-  emp::array<uit::Request, N> receive_requests;
+  emp::array<uitsl::Request, N> receive_requests;
 
-  using index_t = uit::CircularIndex<N>;
+  using index_t = uitsl::CircularIndex<N>;
   index_t receive_position{1};
 
   const uit::InterProcAddress address;
 
   void PostReceiveRequest() {
-    emp_assert( uit::test_null( receive_requests[receive_position] ) );
+    emp_assert( uitsl::test_null( receive_requests[receive_position] ) );
     UIT_Irecv(
       &buffer[receive_position],
       sizeof(T),
@@ -60,17 +60,17 @@ private:
       address.GetComm(),
       &receive_requests[receive_position]
     );
-    emp_assert( !uit::test_null( receive_requests[receive_position] ) );
+    emp_assert( !uitsl::test_null( receive_requests[receive_position] ) );
     ++receive_position;
   }
 
   void CancelReceiveRequest(const size_t pos) {
-    emp_assert( !uit::test_null( receive_requests[pos] ) );
+    emp_assert( !uitsl::test_null( receive_requests[pos] ) );
 
     UIT_Cancel( &receive_requests[pos] );
     UIT_Request_free( &receive_requests[pos] );
 
-    emp_assert( uit::test_null( receive_requests[pos] ) );
+    emp_assert( uitsl::test_null( receive_requests[pos] ) );
   }
 
   void CancelAllReceiveRequests() {
@@ -83,7 +83,7 @@ private:
     emp_assert( std::none_of(
       std::begin(receive_requests),
       std::end(receive_requests),
-      [](const auto& req){ return uit::test_null( req ); }
+      [](const auto& req){ return uitsl::test_null( req ); }
     ) );
 
     int count{};
@@ -101,7 +101,7 @@ private:
     emp_assert( std::none_of(
       std::begin(receive_requests),
       std::end(receive_requests),
-      [](const auto& req){ return uit::test_null( req ); }
+      [](const auto& req){ return uitsl::test_null( req ); }
     ) );
 
     emp_assert(count >= 0);
@@ -137,7 +137,7 @@ public:
     emp_assert( std::none_of(
       std::begin(receive_requests),
       std::end(receive_requests),
-      [](const auto& req){ return uit::test_null( req ); }
+      [](const auto& req){ return uitsl::test_null( req ); }
     ) );
   }
 
@@ -147,7 +147,7 @@ public:
     emp_assert( std::all_of(
       std::begin(receive_requests),
       std::end(receive_requests),
-      [](const auto& req){ return uit::test_null( req ); }
+      [](const auto& req){ return uitsl::test_null( req ); }
     ) );
   }
 
@@ -178,7 +178,7 @@ public:
    */
   const T& Get() const {
     //TODO tidy up
-    const uit::CircularIndex<N> idx = receive_position - 1;
+    const uitsl::CircularIndex<N> idx = receive_position - 1;
     return buffer[idx];
   }
 
@@ -189,7 +189,7 @@ public:
    */
   T& Get() {
     //TODO tidy up
-    const uit::CircularIndex<N> idx = receive_position - 1;
+    const uitsl::CircularIndex<N> idx = receive_position - 1;
     return buffer[idx];
   }
 
@@ -200,10 +200,10 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("InterProcAddress address", address) << std::endl;
-    ss << format_member("size_t receive_position", receive_position);
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("buffer_t buffer", buffer[0]) << std::endl;
+    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
+    ss << uitsl::format_member("size_t receive_position", receive_position);
     return ss.str();
   }
 

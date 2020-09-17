@@ -7,6 +7,6 @@
 TEST_CASE("imemstream") {
 
   // TODO flesh out stub tests
-  uit::imemstream{ nullptr, 0 };
+  uitsl::imemstream{ nullptr, 0 };
 
 }

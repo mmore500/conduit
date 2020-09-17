@@ -13,7 +13,7 @@
 #include "uitsl/utility/assign_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("get_nprocs") {
 
@@ -65,55 +65,55 @@ TEST_CASE("group_to_comm") {
 
 TEST_CASE("intersect_groups") {
 
-  const int my_rank{ uit::get_rank() };
+  const int my_rank{ uitsl::get_rank() };
 
-  const int num_ranks{ uit::get_nprocs() };
+  const int num_ranks{ uitsl::get_nprocs() };
 
-  const MPI_Group every_other{ uit::comm_to_group(
-    uit::split_comm(uit::AssignRoundRobin<uit::proc_id_t>{2})
+  const MPI_Group every_other{ uitsl::comm_to_group(
+    uitsl::split_comm(uitsl::AssignRoundRobin<uitsl::proc_id_t>{2})
   ) };
-  const MPI_Group halves{ uit::comm_to_group(
-    uit::split_comm(uit::AssignContiguously<uit::proc_id_t>{
+  const MPI_Group halves{ uitsl::comm_to_group(
+    uitsl::split_comm(uitsl::AssignContiguously<uitsl::proc_id_t>{
       2,
-      uit::safe_cast<size_t>(num_ranks)
+      uitsl::safe_cast<size_t>(num_ranks)
     })
   ) };
-  const MPI_Group quarters{ uit::comm_to_group(
-    uit::split_comm(uit::AssignContiguously<uit::proc_id_t>{
+  const MPI_Group quarters{ uitsl::comm_to_group(
+    uitsl::split_comm(uitsl::AssignContiguously<uitsl::proc_id_t>{
       4,
-      uit::safe_cast<size_t>(num_ranks)
+      uitsl::safe_cast<size_t>(num_ranks)
     })
   ) };
 
   REQUIRE(
-    uit::group_size(uit::intersect_groups({halves, quarters}))
-      == uit::group_size(quarters)
+    uitsl::group_size(uitsl::intersect_groups({halves, quarters}))
+      == uitsl::group_size(quarters)
   );
 
   if (num_ranks >= 4) REQUIRE(
-    uit::group_size(uit::intersect_groups({halves, every_other}))
-      < uit::group_size(halves)
+    uitsl::group_size(uitsl::intersect_groups({halves, every_other}))
+      < uitsl::group_size(halves)
   );
 
   if (num_ranks >= 4) REQUIRE(
-    uit::group_size(uit::intersect_groups({halves, every_other}))
-      < uit::group_size(every_other)
+    uitsl::group_size(uitsl::intersect_groups({halves, every_other}))
+      < uitsl::group_size(every_other)
   );
 
-  const emp::vector<uit::proc_id_t> halves_quarters_ranks(
-    uit::get_group_ranks(uit::intersect_groups({halves, quarters}))
+  const emp::vector<uitsl::proc_id_t> halves_quarters_ranks(
+    uitsl::get_group_ranks(uitsl::intersect_groups({halves, quarters}))
   );
 
   REQUIRE( std::all_of(
     std::begin(halves_quarters_ranks),
     std::end(halves_quarters_ranks),
     [=](const auto & rank){
-      return uit::AssignContiguously<uit::proc_id_t>{
+      return uitsl::AssignContiguously<uitsl::proc_id_t>{
         2,
-        uit::safe_cast<size_t>(num_ranks)
-      }(rank) == uit::AssignContiguously<uit::proc_id_t>{
+        uitsl::safe_cast<size_t>(num_ranks)
+      }(rank) == uitsl::AssignContiguously<uitsl::proc_id_t>{
         2,
-        uit::safe_cast<size_t>(num_ranks)
+        uitsl::safe_cast<size_t>(num_ranks)
       }(my_rank);
     }
   ) );
@@ -122,25 +122,25 @@ TEST_CASE("intersect_groups") {
     std::begin(halves_quarters_ranks),
     std::end(halves_quarters_ranks),
     [=](const auto & rank){
-      return uit::AssignContiguously<uit::proc_id_t>{
+      return uitsl::AssignContiguously<uitsl::proc_id_t>{
         4,
-        uit::safe_cast<size_t>(num_ranks)
-      }(rank) == uit::AssignContiguously<uit::proc_id_t>{
+        uitsl::safe_cast<size_t>(num_ranks)
+      }(rank) == uitsl::AssignContiguously<uitsl::proc_id_t>{
         4,
-        uit::safe_cast<size_t>(num_ranks)
+        uitsl::safe_cast<size_t>(num_ranks)
       }(my_rank);
     }
   ) );
 
-  const emp::vector<uit::proc_id_t> halves_every_other_ranks(
-    uit::get_group_ranks(uit::intersect_groups({every_other, halves}))
+  const emp::vector<uitsl::proc_id_t> halves_every_other_ranks(
+    uitsl::get_group_ranks(uitsl::intersect_groups({every_other, halves}))
   );
 
   REQUIRE( std::all_of(
     std::begin(halves_every_other_ranks),
     std::end(halves_every_other_ranks),
     [=](const auto & rank){
-      return uit::AssignRoundRobin<uit::proc_id_t>{2}(rank) == uit::AssignRoundRobin<uit::proc_id_t>{2}(my_rank);
+      return uitsl::AssignRoundRobin<uitsl::proc_id_t>{2}(rank) == uitsl::AssignRoundRobin<uitsl::proc_id_t>{2}(my_rank);
     }
   ) );
 
@@ -148,12 +148,12 @@ TEST_CASE("intersect_groups") {
     std::begin(halves_every_other_ranks),
     std::end(halves_every_other_ranks),
     [=](const auto & rank){
-      return uit::AssignContiguously<uit::proc_id_t>{
+      return uitsl::AssignContiguously<uitsl::proc_id_t>{
         2,
-        uit::safe_cast<size_t>(num_ranks)
-      }(rank) == uit::AssignContiguously<uit::proc_id_t>{
+        uitsl::safe_cast<size_t>(num_ranks)
+      }(rank) == uitsl::AssignContiguously<uitsl::proc_id_t>{
         2,
-        uit::safe_cast<size_t>(num_ranks)
+        uitsl::safe_cast<size_t>(num_ranks)
       }(my_rank);
     }
   ) );
@@ -163,45 +163,45 @@ TEST_CASE("intersect_groups") {
 
 TEST_CASE("combine_groups") {
 
-  const uit::proc_id_t my_rank{ uit::get_rank() };
+  const uitsl::proc_id_t my_rank{ uitsl::get_rank() };
 
-  const uit::proc_id_t num_ranks{ uit::get_nprocs() };
+  const uitsl::proc_id_t num_ranks{ uitsl::get_nprocs() };
 
-  const MPI_Group every_other{ uit::comm_to_group(
-    uit::split_comm(uit::AssignRoundRobin<uit::proc_id_t>{2})
+  const MPI_Group every_other{ uitsl::comm_to_group(
+    uitsl::split_comm(uitsl::AssignRoundRobin<uitsl::proc_id_t>{2})
   ) };
-  const MPI_Group halves{ uit::comm_to_group(
-    uit::split_comm(uit::AssignContiguously<uit::proc_id_t>{
+  const MPI_Group halves{ uitsl::comm_to_group(
+    uitsl::split_comm(uitsl::AssignContiguously<uitsl::proc_id_t>{
       2,
-      uit::safe_cast<size_t>(num_ranks)
+      uitsl::safe_cast<size_t>(num_ranks)
     })
   ) };
-  const MPI_Group quarters{ uit::comm_to_group(
-    uit::split_comm(uit::AssignContiguously<uit::proc_id_t>{
+  const MPI_Group quarters{ uitsl::comm_to_group(
+    uitsl::split_comm(uitsl::AssignContiguously<uitsl::proc_id_t>{
       4,
-      uit::safe_cast<size_t>(num_ranks)
+      uitsl::safe_cast<size_t>(num_ranks)
     })
   ) };
 
   REQUIRE(
-    uit::group_size(uit::combine_groups({halves, quarters}))
-      == uit::group_size(halves)
+    uitsl::group_size(uitsl::combine_groups({halves, quarters}))
+      == uitsl::group_size(halves)
   );
 
   if (num_ranks >= 4) REQUIRE(
-    uit::group_size(uit::combine_groups({halves, every_other}))
-      > uit::group_size(halves)
+    uitsl::group_size(uitsl::combine_groups({halves, every_other}))
+      > uitsl::group_size(halves)
   );
 
-  const emp::vector<uit::proc_id_t> group_ranks(uit:: get_group_ranks(
-    uit::combine_groups({halves, every_other})
+  const emp::vector<uitsl::proc_id_t> group_ranks(uitsl::get_group_ranks(
+    uitsl::combine_groups({halves, every_other})
   ) );
 
   if (num_ranks >= 4) REQUIRE( std::any_of(
     std::begin(group_ranks),
     std::end(group_ranks),
     [my_rank](const auto & rank){
-      return uit::AssignRoundRobin<uit::proc_id_t>{2}(rank) != uit::AssignRoundRobin<uit::proc_id_t>{2}(my_rank);
+      return uitsl::AssignRoundRobin<uitsl::proc_id_t>{2}(rank) != uitsl::AssignRoundRobin<uitsl::proc_id_t>{2}(my_rank);
     }
   ) );
 
@@ -209,7 +209,7 @@ TEST_CASE("combine_groups") {
     std::begin(group_ranks),
     std::end(group_ranks),
     [my_rank](const auto & rank){
-      return uit::AssignRoundRobin<uit::proc_id_t>{2}(rank) == uit::AssignRoundRobin<uit::proc_id_t>{2}(my_rank);
+      return uitsl::AssignRoundRobin<uitsl::proc_id_t>{2}(rank) == uitsl::AssignRoundRobin<uitsl::proc_id_t>{2}(my_rank);
     }
   ) );
 
@@ -241,25 +241,25 @@ TEST_CASE("comm_size") {
 
 TEST_CASE("split_comm") {
 
-  const uit::proc_id_t my_rank{ uit::get_rank() };
+  const uitsl::proc_id_t my_rank{ uitsl::get_rank() };
 
-  const uit::proc_id_t num_ranks{ uit::get_nprocs() };
+  const uitsl::proc_id_t num_ranks{ uitsl::get_nprocs() };
 
   // TODO refactor to use assign_utils
   const MPI_Comm every_other{
-    uit::split_comm([](const uit::proc_id_t rank){ return rank%2 == 0; })
+    uitsl::split_comm([](const uitsl::proc_id_t rank){ return rank%2 == 0; })
   };
   const MPI_Comm halves{
-    uit::split_comm([=](const uit::proc_id_t rank){
+    uitsl::split_comm([=](const uitsl::proc_id_t rank){
       return rank * 2 / num_ranks;
     })
   };
 
   REQUIRE(
-    uit::difference(uit::comm_size(every_other), uit::comm_size(halves)) <= 1
+    uitsl::difference(uitsl::comm_size(every_other), uitsl::comm_size(halves)) <= 1
   );
 
-  emp::vector<uit::proc_id_t> comm_ranks( uit::comm_size(every_other) );
+  emp::vector<uitsl::proc_id_t> comm_ranks( uitsl::comm_size(every_other) );
 
   UIT_Allgather(
     &my_rank, // const void *sendbuf
@@ -277,7 +277,7 @@ TEST_CASE("split_comm") {
     [my_rank](const auto & rank){ return rank % 2 == my_rank % 2; }
   ) );
 
-  comm_ranks.resize( uit::comm_size(halves) );
+  comm_ranks.resize( uitsl::comm_size(halves) );
 
   UIT_Allgather(
     &my_rank, // const void *sendbuf
@@ -301,15 +301,15 @@ TEST_CASE("split_comm") {
 
 TEST_CASE("comm_to_string") {
 
-  REQUIRE(!uit::comm_to_string(MPI_COMM_WORLD).empty());
+  REQUIRE(!uitsl::comm_to_string(MPI_COMM_WORLD).empty());
 
 }
 
 TEST_CASE("test_null") {
 
-  uit::Request req;
+  uitsl::Request req;
 
-  REQUIRE( uit::test_null(req) );
+  REQUIRE( uitsl::test_null(req) );
 
   char buf;
   UIT_Irecv(
@@ -322,11 +322,11 @@ TEST_CASE("test_null") {
     &req // MPI_Request *request
   );
 
-  REQUIRE( !uit::test_null(req) );
+  REQUIRE( !uitsl::test_null(req) );
 
   UIT_Cancel(&req);
   UIT_Request_free(&req);
 
-  REQUIRE( uit::test_null(req) );
+  REQUIRE( uitsl::test_null(req) );
 
 }

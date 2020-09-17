@@ -9,7 +9,7 @@
 
 #include "impl/CountdownIterator.hpp"
 
-namespace uit {
+namespace uitsl {
 
 class Counter {
 
@@ -19,7 +19,7 @@ class Counter {
 
 public:
 
-  using iterator = uit::CountdownIterator<Counter>;
+  using iterator = uitsl::CountdownIterator<Counter>;
   using elapsed_t = size_t;
 
   Counter(
@@ -56,4 +56,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

@@ -11,17 +11,17 @@
 
 #include "thread_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 template<typename T>
 class ThreadMap {
 
-  uit::safe::unordered_map<uit::thread_id_t, T> map;
+  uitsl::safe::unordered_map<uitsl::thread_id_t, T> map;
 
 public:
 
   T& GetWithDefault(const T& default_=T{}) {
-    const uit::thread_id_t thread_id{ uit::get_thread_id() };
+    const uitsl::thread_id_t thread_id{ uitsl::get_thread_id() };
 
     if (map.count(thread_id) == 0) map.emplace(thread_id, default_);
 
@@ -33,11 +33,11 @@ public:
   std::string ToString() {
     std::stringstream ss;
     for (const auto & [k, v] : map) {
-      ss << format_member(emp::to_string("thread ", k), v) << std::endl;
+      ss << uitsl::format_member(emp::to_string("thread ", k), v) << std::endl;
     }
     return ss.str();
   }
 
 };
 
-} // namespace uit
+} // namespace uitsl

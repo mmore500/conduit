@@ -15,7 +15,7 @@
 #include "audited_routines.hpp"
 #include "proc_id_t.hpp"
 
-namespace uit {
+namespace uitsl {
 
 // predeclaration
 MPI_Group comm_to_group(const MPI_Comm &);
@@ -113,7 +113,7 @@ MPI_Comm group_to_comm(
 
 MPI_Group make_group(
   emp::vector<proc_id_t> ranks,
-  const MPI_Group source=uit::comm_to_group(MPI_COMM_WORLD)
+  const MPI_Group source=uitsl::comm_to_group(MPI_COMM_WORLD)
 ) {
 
   std::sort(std::begin(ranks), std::end(ranks));
@@ -123,14 +123,14 @@ MPI_Group make_group(
   emp_assert(std::set<proc_id_t>(
     std::begin(ranks),
     std::end(ranks)
-  ).size() == ranks.size(), uit::to_string(ranks));
+  ).size() == ranks.size(), uitsl::to_string(ranks));
   emp_assert(std::all_of(
     std::begin(ranks),
     std::end(ranks),
     [&](const auto & rank){
-      return uit::safe_less(rank, uit::group_size(source)) && rank >= 0;
+      return uitsl::safe_less(rank, uitsl::group_size(source)) && rank >= 0;
     }
-  ), uit::to_string(ranks));
+  ), uitsl::to_string(ranks));
 
   MPI_Group res;
   UIT_Group_incl(
@@ -145,7 +145,7 @@ MPI_Group make_group(
 proc_id_t translate_group_rank(
   const proc_id_t rank,
   const MPI_Group& from,
-  const MPI_Group& to=uit::comm_to_group(MPI_COMM_WORLD)
+  const MPI_Group& to=uitsl::comm_to_group(MPI_COMM_WORLD)
 ) {
   proc_id_t res;
   UIT_Group_translate_ranks(
@@ -182,13 +182,13 @@ emp::vector<proc_id_t> get_group_ranks(const MPI_Group& group) {
 
 std::string group_to_string(const MPI_Group& group) {
   std::stringstream ss;
-  ss << format_member(
-    "uit::group_size(group)", uit::group_size(group)
+  ss << uitsl::format_member(
+    "uitsl::group_size(group)", uitsl::group_size(group)
   ) << std::endl;
-  ss << format_member(
-    "uit::get_group_ranks(group)", uit::to_string(uit::get_group_ranks(group))
+  ss << uitsl::format_member(
+    "uitsl::get_group_ranks(group)", uitsl::to_string(uitsl::get_group_ranks(group))
   ) << std::endl;
   return ss.str();
 }
 
-} // namespace uit
+} // namespace uitsl

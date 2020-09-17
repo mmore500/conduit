@@ -9,7 +9,7 @@
 TEST_CASE("Test SiftingArray") {
 
   constexpr size_t buff_size{ 10 };
-  uit::SiftingArray<size_t, buff_size> buff;
+  uitsl::SiftingArray<size_t, buff_size> buff;
 
   REQUIRE( buff.GetSize() == 0 );
 

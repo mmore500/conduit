@@ -2,7 +2,7 @@
 
 #include <atomic>
 
-namespace uit {
+namespace uitsl {
 
 template <typename T>
 class RelaxedAtomic : public std::atomic<T> {
@@ -53,4 +53,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

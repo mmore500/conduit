@@ -1,6 +1,6 @@
 #pragma once
 
-namespace uit {
+namespace uitsl {
 
 template<typename T>
 class IdentityWrapper : public T {
@@ -11,4 +11,4 @@ class IdentityWrapper : public T {
 
 };
 
-} // namespace uit
+} // namespace uitsl

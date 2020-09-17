@@ -13,7 +13,7 @@
 #include "../mpi/mpi_utils.hpp"
 #include "../mpi/audited_routines.hpp"
 
-namespace uit {
+namespace uitsl {
 
 /**
  * Gather data items from across threads and processes.
@@ -29,7 +29,7 @@ template<typename T>
 class Gatherer {
 
   /// Data items submitted from threads in the executing process.
-  uit::safe::deque<T> items;
+  uitsl::safe::deque<T> items;
 
   /// MPI datatype corresponding to @T.
   // TODO use template metaprogramming to automatically deduce this
@@ -138,4 +138,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

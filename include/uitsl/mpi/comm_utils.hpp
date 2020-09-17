@@ -13,7 +13,7 @@
 #include "group_utils.hpp"
 #include "proc_id_t.hpp"
 
-namespace uit {
+namespace uitsl {
 
 int get_nprocs(const MPI_Comm& comm=MPI_COMM_WORLD) {
   int res;
@@ -87,7 +87,7 @@ MPI_Comm split_comm(
 }
 
 emp::vector<proc_id_t> get_comm_ranks(const MPI_Comm& comm) {
-  return uit::get_group_ranks(uit::comm_to_group(comm));
+  return uitsl::get_group_ranks(uitsl::comm_to_group(comm));
 }
 
 proc_id_t translate_comm_rank(
@@ -95,31 +95,31 @@ proc_id_t translate_comm_rank(
   const MPI_Comm& from,
   const MPI_Comm& to=MPI_COMM_WORLD
 ) {
-  return uit::translate_group_rank(
-    rank, uit::comm_to_group(from), uit::comm_to_group(to)
+  return uitsl::translate_group_rank(
+    rank, uitsl::comm_to_group(from), uitsl::comm_to_group(to)
   );
 }
 
 bool is_multiprocess(const MPI_Comm& comm=MPI_COMM_WORLD) {
-  return uit::get_nprocs(comm) > 1;
+  return uitsl::get_nprocs(comm) > 1;
 }
 
 bool is_root(const MPI_Comm& comm=MPI_COMM_WORLD) {
-  return uit::get_rank(comm) == 0;
+  return uitsl::get_rank(comm) == 0;
 }
 
 std::string comm_to_string(const MPI_Comm& comm) {
   std::stringstream ss;
-  ss << uit::format_member(
-    "uit::comm_size(comm)", uit::comm_size(comm)
+  ss << uitsl::format_member(
+    "uitsl::comm_size(comm)", uitsl::comm_size(comm)
   ) << std::endl;
-  ss << uit::format_member(
-    "uit::get_comm_ranks(comm)", uit::to_string(uit::get_comm_ranks(comm))
+  ss << uitsl::format_member(
+    "uitsl::get_comm_ranks(comm)", uitsl::to_string(uitsl::get_comm_ranks(comm))
   ) << std::endl;
-  ss << uit::format_member(
-    "uit::get_name(comm)", uit::get_name(comm)
+  ss << uitsl::format_member(
+    "uitsl::get_name(comm)", uitsl::get_name(comm)
   ) << std::endl;
   return ss.str();
 }
 
-} // namespace uit
+} // namespace uitsl

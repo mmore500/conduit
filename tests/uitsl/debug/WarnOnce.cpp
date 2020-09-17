@@ -6,6 +6,6 @@
 
 TEST_CASE("WarnOnce") {
 
-  static const uit::WarnOnce warning{"howdy"};
+  static const uitsl::WarnOnce warning{"howdy"};
 
 }

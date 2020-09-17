@@ -28,7 +28,7 @@
 
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 

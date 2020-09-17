@@ -6,6 +6,6 @@
 TEST_CASE("AlignedImplicit") {
 
   // TODO flesh out stub test
-  uit::AlignedImplicit<size_t>{};
+  uitsl::AlignedImplicit<size_t>{};
 
 }

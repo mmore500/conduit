@@ -4,7 +4,7 @@
 
 #include "thread_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 class RecursiveExclusiveLock;
 
@@ -13,20 +13,20 @@ class RecursiveMutex {
   friend class uit::RecursiveExclusiveLock;
 
   std::shared_mutex mutex;
-  uit::thread_id_t mutex_owner{ uit::max_thread };
+  uitsl::thread_id_t mutex_owner{ uitsl::max_thread };
 
   void RegisterThreadOwnership() {
-    emp_assert(mutex_owner == uit::max_thread);
-    mutex_owner = uit::get_thread_id();
+    emp_assert(mutex_owner == uitsl::max_thread);
+    mutex_owner = uitsl::get_thread_id();
   }
 
   void DeregisterThreadOwnership() {
-    emp_assert(mutex_owner != uit::max_thread);
-    mutex_owner = uit::max_thread;
+    emp_assert(mutex_owner != uitsl::max_thread);
+    mutex_owner = uitsl::max_thread;
   }
 
   bool HasThreadOwnership() const {
-    return mutex_owner == uit::get_thread_id();
+    return mutex_owner == uitsl::get_thread_id();
   }
 
 public:
@@ -35,4 +35,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

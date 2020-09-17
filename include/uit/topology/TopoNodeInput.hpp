@@ -20,7 +20,7 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member(
+    ss << uitsl::format_member(
       "size_t edge_id",
       edge_id
     );

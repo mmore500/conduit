@@ -6,10 +6,10 @@
 #ifdef UIT_AUDIT_OCCUPANCY
 
   #define uit_occupancy_auditor \
-    uit::OccupancyCaps __uit_occupancy_auditor__
+    uitsl::OccupancyCaps __uit_occupancy_auditor__
 
   #define uit_occupancy_audit(count) \
-    const uit::OccupancyGuard guard{ \
+    const uitsl::OccupancyGuard guard{ \
       __uit_occupancy_auditor__.Get(__LINE__, count) \
     }
 

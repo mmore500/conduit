@@ -14,7 +14,7 @@
 
 #include "RdmaWindow.hpp"
 
-namespace uit {
+namespace uitsl {
 
 // TODO is it possible to have a seperate window/communicator
 // between each pair of procs?
@@ -121,7 +121,7 @@ public:
   ) {
     emp_assert( IsInitialized() );
     emp_assert( windows.count(rank) );
-    emp_assert( uit::test_null(*request) );
+    emp_assert( uitsl::test_null(*request) );
     windows.at(rank).Rput(origin_addr, num_bytes, target_disp, request);
   }
 
@@ -147,7 +147,7 @@ public:
   ) {
     emp_assert( IsInitialized() );
     emp_assert( windows.count(rank) );
-    emp_assert( uit::test_null(*request) );
+    emp_assert( uitsl::test_null(*request) );
   windows.at(
       rank
     ).Raccumulate<T>(origin_addr, num_bytes, target_disp, request);
@@ -160,17 +160,17 @@ public:
     for (proc_id_t rank : GetSortedRanks()) {
 
       MPI_Comm dyad{
-        uit::group_to_comm(
-          uit::make_group(
-            {rank, uit::get_rank(comm)},
-            uit::comm_to_group(comm)
+        uitsl::group_to_comm(
+          uitsl::make_group(
+            {rank, uitsl::get_rank(comm)},
+            uitsl::comm_to_group(comm)
           ),
           comm
         )
       };
 
       windows.at(rank).Initialize(
-        uit::translate_comm_rank(rank, comm, dyad),
+        uitsl::translate_comm_rank(rank, comm, dyad),
         dyad
       );
 
@@ -185,11 +185,11 @@ public:
   std::string ToString() {
 
     std::stringstream ss;
-    ss << format_member("windows.size()", windows.size()) << std::endl;
+    ss << uitsl::format_member("windows.size()", windows.size()) << std::endl;
 
     for (proc_id_t rank : GetSortedRanks()) {
-      ss << format_member("rank", rank) << std::endl;
-      ss << format_member("window", windows.at(rank).ToString()) << std::endl;
+      ss << uitsl::format_member("rank", rank) << std::endl;
+      ss << uitsl::format_member("window", windows.at(rank).ToString()) << std::endl;
     }
 
     return ss.str();
@@ -198,4 +198,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

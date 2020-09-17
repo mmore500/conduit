@@ -10,7 +10,7 @@ TEST_CASE("Test Sequential Completeness") {
     sizes.push_back(i);
   }
 
-  if ( uit::is_root() ) {
+  if ( uitsl::is_root() ) {
     REQUIRE( std::set<int>(std::begin(sizes), std::end(sizes)).size() == 1 );
   }
 

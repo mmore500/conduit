@@ -8,7 +8,7 @@
 TEST_CASE("unordered_map") {
 
   // TODO expand stub test
-  uit::safe::unordered_map<std::string, size_t> map;
+  uitsl::safe::unordered_map<std::string, size_t> map;
 
   REQUIRE(map.count("hello") == 0);
 

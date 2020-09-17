@@ -2,7 +2,7 @@
 
 #include <utility>
 
-namespace uit {
+namespace uitsl {
 
 template<typename T>
 class Uninitialized {
@@ -31,4 +31,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

@@ -58,7 +58,7 @@ class InletMemoryAggregator {
 
   void CheckCallingProc() const {
     [[maybe_unused]] const auto& rep = *addresses.begin();
-    emp_assert( rep.GetInletProc() == uit::get_rank( rep.GetComm() ) );
+    emp_assert( rep.GetInletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
 public:

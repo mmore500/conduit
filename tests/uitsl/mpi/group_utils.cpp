@@ -9,22 +9,22 @@
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("make_group") {
 
-  if (uit::get_rank()) {
+  if (uitsl::get_rank()) {
     const MPI_Group dyad{
-      uit::make_group({0, uit::get_rank()})
+      uitsl::make_group({0, uitsl::get_rank()})
     };
-    uit::group_to_comm(dyad);
+    uitsl::group_to_comm(dyad);
   } else {
 
-    for (uit::proc_id_t target = 1; target < uit::get_nprocs(); ++target) {
+    for (uitsl::proc_id_t target = 1; target < uitsl::get_nprocs(); ++target) {
       const MPI_Group dyad{
-        uit::make_group({0, target})
+        uitsl::make_group({0, target})
       };
-      uit::group_to_comm(dyad);
+      uitsl::group_to_comm(dyad);
     }
 
   }

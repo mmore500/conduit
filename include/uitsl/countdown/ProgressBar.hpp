@@ -11,12 +11,12 @@
 
 #include "impl/CountdownIterator.hpp"
 
-namespace uit {
+namespace uitsl {
 
 template<typename CountdownType>
 class ProgressBar : public CountdownType {
 
-  using this_t = uit::ProgressBar<CountdownType>;
+  using this_t = uitsl::ProgressBar<CountdownType>;
   using parent_t = CountdownType;
 
   const size_t bar_width{ 50 };
@@ -29,7 +29,7 @@ class ProgressBar : public CountdownType {
 
   std::ostream& os;
 
-  using clock_t = uit::CoarseClock;
+  using clock_t = uitsl::CoarseClock;
 
   const decltype(clock_t::now()) start_time = clock_t::now();
 
@@ -76,17 +76,17 @@ class ProgressBar : public CountdownType {
     };
 
     ss << "[";
-    ss << fixup( uit::beautify_duration(std::chrono::seconds{
+    ss << fixup( uitsl::beautify_duration(std::chrono::seconds{
       static_cast<int>( elapsed )
     } ) );
     ss << "<";
-    ss <<  fixup( uit::beautify_duration( std::chrono::seconds{ remaining } ) );
+    ss <<  fixup( uitsl::beautify_duration( std::chrono::seconds{ remaining } ) );
     ss << "]";
   }
 
   decltype(auto) GetElapsedTime() const {
       return std::chrono::duration_cast<std::chrono::seconds>(
-        uit::CoarseClock::now() - start_time
+        uitsl::CoarseClock::now() - start_time
       );
     }
 
@@ -140,7 +140,7 @@ public:
     return *this;
   }
 
-  using iterator = uit::CountdownIterator<this_t>;
+  using iterator = uitsl::CountdownIterator<this_t>;
 
   iterator begin() { return iterator{ *this }; }
 
@@ -148,4 +148,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

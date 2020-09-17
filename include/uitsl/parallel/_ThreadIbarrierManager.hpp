@@ -10,17 +10,17 @@
 #include "ThreadIbarrier.hpp"
 #include "ThreadMap.hpp"
 
-namespace uit {
+namespace uitsl {
 namespace internal {
 
 class ThreadIbarrierManager
 : public std::enable_shared_from_this<ThreadIbarrierManager>
 {
 
-  using latches_t = uit::safe::list<internal::SharedLatch>;
+  using latches_t = uitsl::safe::list<internal::SharedLatch>;
   latches_t latches;
 
-  uit::ThreadMap<latches_t::iterator> thread_positions;
+  uitsl::ThreadMap<latches_t::iterator> thread_positions;
 
   size_t expected;
 
@@ -44,7 +44,7 @@ public:
   : expected(expected_)
   { ; }
 
-  uit::ThreadIbarrier MakeBarrier() {
+  uitsl::ThreadIbarrier MakeBarrier() {
 
     // race condition where multiple latches are appended is okay
     if (latches.empty()) latches.emplace_back(expected);
@@ -77,4 +77,4 @@ public:
 };
 
 } // namespace internal
-} // namespace uit
+} // namespace uitsl

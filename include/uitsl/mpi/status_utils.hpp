@@ -11,7 +11,7 @@
 
 #include "audited_routines.hpp"
 
-namespace uit {
+namespace uitsl {
 
 int get_count(const MPI_Status& status, const MPI_Datatype& datatype) {
   int res;
@@ -32,27 +32,27 @@ bool test_cancelled(const MPI_Status& status) {
 
 std::string to_string(const MPI_Status& status) {
   std::stringstream ss;
-  ss << uit::format_member(
+  ss << uitsl::format_member(
     "MPI_Get_count",
-    uit::get_count(status, MPI_BYTE)
+    uitsl::get_count(status, MPI_BYTE)
   ) << std::endl;
-  ss << uit::format_member(
+  ss << uitsl::format_member(
     "MPI_Test_cancelled",
-    uit::test_cancelled(status)
+    uitsl::test_cancelled(status)
   ) << std::endl;
-  ss << uit::format_member(
+  ss << uitsl::format_member(
     "int MPI_SOURCE",
     (int) status.MPI_SOURCE
   ) << std::endl;
-  ss << uit::format_member(
+  ss << uitsl::format_member(
     "int MPI_TAG",
     (int) status.MPI_TAG
   ) << std::endl;
-  ss << uit::format_member(
+  ss << uitsl::format_member(
     "int MPI_ERROR",
     (int) status.MPI_ERROR
   );
   return ss.str();
 }
 
-} // namespace uit
+} // namespace uitsl

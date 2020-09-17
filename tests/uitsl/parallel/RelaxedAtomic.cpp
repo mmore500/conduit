@@ -6,6 +6,6 @@
 TEST_CASE("RelaxedAtomic") {
 
   // TODO flesh out stub test
-  uit::RelaxedAtomic<size_t>{};
+  uitsl::RelaxedAtomic<size_t>{};
 
 }

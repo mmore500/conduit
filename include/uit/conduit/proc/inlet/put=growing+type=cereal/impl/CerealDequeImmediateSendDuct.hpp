@@ -43,12 +43,12 @@ private:
   using T = typename ImplSpec::T;
 
   // newest requests are pushed back, oldest requests are at front
-  std::deque<std::tuple<emp::ContiguousStream, uit::Request>> buffer;
+  std::deque<std::tuple<emp::ContiguousStream, uitsl::Request>> buffer;
 
   const uit::InterProcAddress address;
 
   void PostSend() {
-    emp_assert( uit::test_null( std::get<uit::Request>(buffer.back()) ) );
+    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
 
     ImmediateSendFunctor{}(
       std::get<emp::ContiguousStream>(buffer.back()).GetData(),
@@ -57,17 +57,17 @@ private:
       address.GetOutletProc(),
       address.GetTag(),
       address.GetComm(),
-      &std::get<uit::Request>(buffer.back())
+      &std::get<uitsl::Request>(buffer.back())
     );
 
-    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.back()) ) );
+    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
   }
 
   bool TryFinalizeSend() {
-    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
-    if (uit::test_completion( std::get<uit::Request>(buffer.front()) )) {
-      emp_assert( uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+    if (uitsl::test_completion( std::get<uitsl::Request>(buffer.front()) )) {
+      emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
       buffer.pop_front();
       return true;
     } else return false;
@@ -75,12 +75,12 @@ private:
   }
 
   void CancelPendingSend() {
-    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
-    UIT_Cancel( &std::get<uit::Request>(buffer.front()) );
-    UIT_Request_free( &std::get<uit::Request>(buffer.front()) );
+    UIT_Cancel( &std::get<uitsl::Request>(buffer.front()) );
+    UIT_Request_free( &std::get<uitsl::Request>(buffer.front()) );
 
-    emp_assert( uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     buffer.pop_front();
   }
@@ -107,7 +107,7 @@ public:
    */
   bool TryPut(const T& val) {
     buffer.emplace_back();
-    emp_assert( uit::test_null( std::get<uit::Request>(buffer.back()) ) );
+    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
     { // oarchive flushes on destruction
       std::get<emp::ContiguousStream>(buffer.back()).Reset();
       cereal::BinaryOutputArchive oarchive(
@@ -142,9 +142,9 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("InterProcAddress address", address) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("buffer_t buffer", buffer[0]) << std::endl;
+    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
     return ss.str();
   }
 

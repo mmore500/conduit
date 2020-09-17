@@ -60,7 +60,7 @@ private:
 
 
   void PerformReceive(const MPI_Status& status) {
-    const int msg_len = uit::get_count(status, MPI_BYTE);
+    const int msg_len = uitsl::get_count(status, MPI_BYTE);
 
     emp_assert(msg_len % sizeof(typename T::value_type) == 0);
     buffer.resize(msg_len / sizeof(typename T::value_type));
@@ -170,8 +170,8 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("InterProcAddress address", address) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
     return ss.str();
   }
 

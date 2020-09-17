@@ -6,7 +6,7 @@
 
 TEST_CASE("IdentityWrapper") {
 
-  uit::IdentityWrapper<std::string> wrapped{"present"};
+  uitsl::IdentityWrapper<std::string> wrapped{"present"};
   REQUIRE(wrapped == "present");
   REQUIRE(wrapped.size() == 7);
 

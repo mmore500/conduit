@@ -7,7 +7,7 @@
 
 #include "../mpi/mpi_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 void print_separator(const proc_id_t rank) {
   std::cout << "======================" << std::endl;
@@ -25,8 +25,8 @@ void do_successively(
   BeforeTaskFunction&& before_task=[](const proc_id_t rank){},
   MPI_Comm comm=MPI_COMM_WORLD
 ) {
-  for (proc_id_t rank = 0; rank < uit::get_nprocs(comm); ++rank) {
-    if (rank == uit::get_rank(comm)) {
+  for (proc_id_t rank = 0; rank < uitsl::get_nprocs(comm); ++rank) {
+    if (rank == uitsl::get_rank(comm)) {
       before_task(rank);
       task();
     }
@@ -34,4 +34,4 @@ void do_successively(
   }
 }
 
-} // namespace uit
+} // namespace uitsl

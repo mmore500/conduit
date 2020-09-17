@@ -5,14 +5,14 @@
 #include "mpi_utils.hpp"
 #include "audited_routines.hpp"
 
-namespace uit {
+namespace uitsl {
 
 struct MpiGuard {
 
-  MpiGuard() { uit::mpi_init(); }
+  MpiGuard() { uitsl::mpi_init(); }
 
   ~MpiGuard() { UIT_Finalize(); }
 
 };
 
-} // namespace uit
+} // namespace uitsl

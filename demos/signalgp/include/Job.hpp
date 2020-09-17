@@ -15,13 +15,13 @@ class Job {
 
   CellCollection collection;
 
-  using timer_t = uit::Timer<std::chrono::seconds, uit::CoarseClock>;
-  using bar_t = uit::ProgressBar<timer_t>;
+  using timer_t = uitsl::Timer<std::chrono::seconds, uitsl::CoarseClock>;
+  using bar_t = uitsl::ProgressBar<timer_t>;
 
   static inline emp::NullStream ns;
 
   bar_t timer{
-    uit::is_root() ? std::cout : ns,
+    uitsl::is_root() ? std::cout : ns,
     std::chrono::seconds{ 20 }
   };
 

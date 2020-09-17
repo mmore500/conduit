@@ -8,7 +8,7 @@
 
 #include "impl/CountdownIterator.hpp"
 
-namespace uit {
+namespace uitsl {
 
 template<
   typename Duration_T=std::chrono::duration<double, std::ratio<1>>,
@@ -25,7 +25,7 @@ class Timer {
 
 public:
 
-  using iterator = uit::CountdownIterator<Timer>;
+  using iterator = uitsl::CountdownIterator<Timer>;
   using elapsed_t = Duration_T;
 
   Timer(
@@ -75,4 +75,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

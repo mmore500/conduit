@@ -28,14 +28,14 @@
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num ; ++rep)
 
-#define THREADED_BEGIN uit::ThreadTeam team; for (uit::thread_id_t thread_id = 0; thread_id < num_threads; ++thread_id) { team.Add([thread_id, &mesh](){
+#define THREADED_BEGIN uitsl::ThreadTeam team; for (uitsl::thread_id_t thread_id = 0; thread_id < num_threads; ++thread_id) { team.Add([thread_id, &mesh](){
 
 #define THREADED_END }); } team.Join();
 
@@ -58,7 +58,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::DyadicTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {
@@ -78,7 +78,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::DyadicTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {
@@ -115,7 +115,7 @@ int main( int argc, char* argv[] ) {
   int returnCode = session.applyCommandLine( argc, argv );
   if( returnCode != 0 ) return returnCode;
 
-  barrier.emplace( uit::safe_cast<std::ptrdiff_t>(num_threads) );
+  barrier.emplace( uitsl::safe_cast<std::ptrdiff_t>(num_threads) );
 
   return session.run();
 }

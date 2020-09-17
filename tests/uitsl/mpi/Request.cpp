@@ -8,11 +8,11 @@
 #include "uitsl/mpi/Request.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("Test Request") {
 
-  uit::Request request;
+  uitsl::Request request;
   REQUIRE( request == MPI_REQUEST_NULL );
 
 }

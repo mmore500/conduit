@@ -5,7 +5,7 @@
 #include "../mpi/audited_routines.hpp"
 #include "../mpi/mpi_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 /**
  * Post a MPI Ibarrier and easily test for its completion.
@@ -29,8 +29,8 @@ public:
    *
    * @returns true if all processes have reached barrier.
    */
-  bool IsComplete() const { return uit::test_completion(request); }
+  bool IsComplete() const { return uitsl::test_completion(request); }
 
 };
 
-} // namespace uit
+} // namespace uitsl

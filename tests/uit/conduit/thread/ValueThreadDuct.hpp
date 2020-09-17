@@ -2,7 +2,7 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::DyadicTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {
@@ -33,7 +33,7 @@ TEST_CASE("Validity") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::DyadicTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {

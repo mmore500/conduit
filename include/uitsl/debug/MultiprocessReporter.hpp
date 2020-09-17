@@ -6,7 +6,7 @@
 
 #include "../mpi/mpi_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 class MultiprocessReporter : public Catch::ConsoleReporter {
 
@@ -19,11 +19,11 @@ public:
 
   void testRunEnded(Catch::TestRunStats const& testRunStats) override {
 
-    if(uit::is_root() || !testRunStats.totals.testCases.allPassed()) {
+    if(uitsl::is_root() || !testRunStats.totals.testCases.allPassed()) {
       const std::string message{ emp::to_string(
         "\x1B[35m",
         "Processes: ",
-        uit::get_nprocs(),
+        uitsl::get_nprocs(),
         "\033[0m\n"
       ) };
       printf("%s", message.c_str());
@@ -36,4 +36,4 @@ public:
 
 CATCH_REGISTER_REPORTER ("multiprocess", MultiprocessReporter)
 
-} // namespace uit
+} // namespace uitsl

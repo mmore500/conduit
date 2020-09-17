@@ -102,7 +102,7 @@ class OutletMemoryAggregator {
 
     buffer.merge( outlet->Get() );
 
-    uit::upper_uniquify( buffer );
+    uitsl::upper_uniquify( buffer );
 
     return approx_steps;
 
@@ -110,7 +110,7 @@ class OutletMemoryAggregator {
 
   void CheckCallingProc() const {
     [[maybe_unused]] const auto& rep = *addresses.begin();
-    emp_assert( rep.GetOutletProc() == uit::get_rank( rep.GetComm() ) );
+    emp_assert( rep.GetOutletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
 public:

@@ -146,10 +146,10 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << format_member("size_t head", head);
-    ss << format_member("size_t tail", tail);
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("buffer_t buffer", buffer[0]) << std::endl;
+    ss << uitsl::format_member("size_t head", head);
+    ss << uitsl::format_member("size_t tail", tail);
     return ss.str();
   }
 

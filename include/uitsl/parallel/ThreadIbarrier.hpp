@@ -13,7 +13,7 @@
 
 #include "ThreadMap.hpp"
 
-namespace uit {
+namespace uitsl {
 
 namespace internal {
 
@@ -26,7 +26,7 @@ class SharedLatch {
 
   mutable std::shared_mutex mutex{};
 
-  uit::OncePerThreadChecker checker;
+  uitsl::OncePerThreadChecker checker;
 
 public:
 
@@ -88,4 +88,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

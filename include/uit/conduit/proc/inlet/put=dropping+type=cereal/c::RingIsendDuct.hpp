@@ -16,14 +16,14 @@ namespace c {
 template<typename ImplSpec>
 class RingIsendDuct
 : public uit::internal::CerealRingImmediateSendDuct<
-  uit::IsendFunctor,
+  uitsl::IsendFunctor,
   ImplSpec
 > {
 
   // inherit parent's constructors
   // adapted from https://stackoverflow.com/a/434784
   using parent_t = uit::internal::CerealRingImmediateSendDuct<
-    uit::IsendFunctor,
+    uitsl::IsendFunctor,
     ImplSpec
   >;
   using parent_t::parent_t;

@@ -8,7 +8,7 @@
 
 #include "../distributed/IbarrierRequest.hpp"
 
-namespace uit {
+namespace uitsl {
 
 /**
  * Post a MPI Ibarrier and easily test for its completion.
@@ -16,7 +16,7 @@ namespace uit {
 class ThreadSafeIbarrierRequest {
 
   /// Request handle corresponding to Ibarrier call.
-  emp::optional<uit::IbarrierRequest> request{ std::nullopt };
+  emp::optional<uitsl::IbarrierRequest> request{ std::nullopt };
 
   static inline std::mutex mutex{};
 
@@ -42,4 +42,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

@@ -12,7 +12,7 @@ TEST_CASE("Test upper_uniquify")
     {1, 0}, {1, 1}, {2, 0}, {1, 2}, {3, 0}, {3, 1}
   };
 
-  uit::upper_uniquify( target );
+  uitsl::upper_uniquify( target );
 
   REQUIRE( target.size() == 3 );
 

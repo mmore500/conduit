@@ -4,7 +4,7 @@
 #include <type_traits>
 // TODO generalize
 
-namespace uit {
+namespace uitsl {
 
 #include <assert.h>
 #include <vector>
@@ -40,4 +40,4 @@ using Curry = CurryTypes<Input, Specified>;
 template<auto x>
 using ValType=std::integral_constant<decltype(x), x>;
 
-} // namespace uit
+} // namespace uitsl

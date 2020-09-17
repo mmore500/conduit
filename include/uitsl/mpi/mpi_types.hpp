@@ -4,7 +4,7 @@
 
 #include <mpi.h>
 
-namespace uit {
+namespace uitsl {
 
   // adapted from from https://forum.hdfgroup.org/t/templatized-instantiation-of-h5-native-xxx-types/4168/2
   MPI_Datatype datatype_from_type_t( char ) { return MPI_CHAR; }
@@ -85,4 +85,4 @@ namespace uit {
   template <typename T>
   MPI_Datatype datatype_from_type() { return datatype_from_type_t( T{} ); }
 
-} // namespace uit
+} // namespace uitsl

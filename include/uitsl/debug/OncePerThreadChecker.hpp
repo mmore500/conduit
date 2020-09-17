@@ -3,11 +3,11 @@
 #include "../debug/IsFirstExecutionChecker.hpp"
 #include "../parallel/ThreadMap.hpp"
 
-namespace uit {
+namespace uitsl {
 
 class OncePerThreadChecker {
 
-  uit::ThreadMap<uit::IsFirstExecutionChecker> map;
+  uitsl::ThreadMap<uitsl::IsFirstExecutionChecker> map;
 
 public:
 
@@ -15,4 +15,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

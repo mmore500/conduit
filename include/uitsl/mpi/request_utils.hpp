@@ -5,7 +5,7 @@
 #include "audited_routines.hpp"
 #include "mpi_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 bool test_completion(const MPI_Request& request) {
   int flag{};
@@ -22,4 +22,4 @@ bool test_null(const MPI_Request& request) {
   return request == MPI_REQUEST_NULL;
 }
 
-} // namespace uit
+} // namespace uitsl

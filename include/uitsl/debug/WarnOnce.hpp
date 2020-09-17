@@ -2,7 +2,7 @@
 
 #include "../../../third-party/Empirical/source/base/errors.h"
 
-namespace uit {
+namespace uitsl {
 
 class WarnOnce {
 
@@ -14,4 +14,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

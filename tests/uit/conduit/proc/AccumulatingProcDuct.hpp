@@ -25,15 +25,15 @@
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 
 decltype(auto) make_dyadic_bundle() {
 
   uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(uit::get_nprocs()),
-    uit::AssignIntegrated<uit::thread_id_t>{},
-    uit::AssignAvailableProcs{}
+    uit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
+    uitsl::AssignIntegrated<uitsl::thread_id_t>{},
+    uitsl::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh();
@@ -46,9 +46,9 @@ decltype(auto) make_dyadic_bundle() {
 decltype(auto) make_producer_consumer_bundle() {
 
   uit::Mesh<Spec> mesh{
-    uit::ProConTopologyFactory{}(uit::get_nprocs()),
-    uit::AssignIntegrated<uit::thread_id_t>{},
-    uit::AssignAvailableProcs{}
+    uit::ProConTopologyFactory{}(uitsl::get_nprocs()),
+    uitsl::AssignIntegrated<uitsl::thread_id_t>{},
+    uitsl::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh(0);
@@ -67,9 +67,9 @@ decltype(auto) make_producer_consumer_bundle() {
 
 decltype(auto) make_ring_bundle() {
   uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(uit::get_nprocs()),
-    uit::AssignIntegrated<uit::thread_id_t>{},
-    uit::AssignAvailableProcs{}
+    uit::RingTopologyFactory{}(uitsl::get_nprocs()),
+    uitsl::AssignIntegrated<uitsl::thread_id_t>{},
+    uitsl::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh();

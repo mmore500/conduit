@@ -13,11 +13,11 @@ namespace uit {
 template<typename ImplSpec>
 class RdmaBackEnd {
 
-  uit::RdmaWindowManager window_manager;
+  uitsl::RdmaWindowManager window_manager;
 
 public:
 
-  uit::RdmaWindowManager& GetWindowManager() {
+  uitsl::RdmaWindowManager& GetWindowManager() {
     return window_manager;
   }
 

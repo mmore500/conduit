@@ -3,7 +3,7 @@
 #include <functional>
 #include <stddef.h>
 
-namespace uit {
+namespace uitsl {
 
 template<typename RETURN_TYPE>
 struct AssignIntegrated {
@@ -60,7 +60,7 @@ struct AssignRoundRobin {
 
 };
 
-} // namespace uit
+} // namespace uitsl
 // TODO assign_randomly
 // make a vector of IDs, shuffle it, capture it,
 // then return result of indexing into it
