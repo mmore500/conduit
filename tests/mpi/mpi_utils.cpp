@@ -11,7 +11,7 @@
 #include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/mpi/Request.hpp"
 #include "uit/utility/assign_utils.hpp"
-#include "uit/utility/math_utils.hpp"
+#include "uit/math/math_utils.hpp"
 
 const uit::MpiGuard guard;
 
@@ -75,13 +75,13 @@ TEST_CASE("intersect_groups") {
   const MPI_Group halves{ uit::comm_to_group(
     uit::split_comm(uit::AssignContiguously<uit::proc_id_t>{
       2,
-      uit::numeric_cast<size_t>(num_ranks)
+      uit::safe_cast<size_t>(num_ranks)
     })
   ) };
   const MPI_Group quarters{ uit::comm_to_group(
     uit::split_comm(uit::AssignContiguously<uit::proc_id_t>{
       4,
-      uit::numeric_cast<size_t>(num_ranks)
+      uit::safe_cast<size_t>(num_ranks)
     })
   ) };
 
@@ -110,10 +110,10 @@ TEST_CASE("intersect_groups") {
     [=](const auto & rank){
       return uit::AssignContiguously<uit::proc_id_t>{
         2,
-        uit::numeric_cast<size_t>(num_ranks)
+        uit::safe_cast<size_t>(num_ranks)
       }(rank) == uit::AssignContiguously<uit::proc_id_t>{
         2,
-        uit::numeric_cast<size_t>(num_ranks)
+        uit::safe_cast<size_t>(num_ranks)
       }(my_rank);
     }
   ) );
@@ -124,10 +124,10 @@ TEST_CASE("intersect_groups") {
     [=](const auto & rank){
       return uit::AssignContiguously<uit::proc_id_t>{
         4,
-        uit::numeric_cast<size_t>(num_ranks)
+        uit::safe_cast<size_t>(num_ranks)
       }(rank) == uit::AssignContiguously<uit::proc_id_t>{
         4,
-        uit::numeric_cast<size_t>(num_ranks)
+        uit::safe_cast<size_t>(num_ranks)
       }(my_rank);
     }
   ) );
@@ -150,10 +150,10 @@ TEST_CASE("intersect_groups") {
     [=](const auto & rank){
       return uit::AssignContiguously<uit::proc_id_t>{
         2,
-        uit::numeric_cast<size_t>(num_ranks)
+        uit::safe_cast<size_t>(num_ranks)
       }(rank) == uit::AssignContiguously<uit::proc_id_t>{
         2,
-        uit::numeric_cast<size_t>(num_ranks)
+        uit::safe_cast<size_t>(num_ranks)
       }(my_rank);
     }
   ) );
@@ -173,13 +173,13 @@ TEST_CASE("combine_groups") {
   const MPI_Group halves{ uit::comm_to_group(
     uit::split_comm(uit::AssignContiguously<uit::proc_id_t>{
       2,
-      uit::numeric_cast<size_t>(num_ranks)
+      uit::safe_cast<size_t>(num_ranks)
     })
   ) };
   const MPI_Group quarters{ uit::comm_to_group(
     uit::split_comm(uit::AssignContiguously<uit::proc_id_t>{
       4,
-      uit::numeric_cast<size_t>(num_ranks)
+      uit::safe_cast<size_t>(num_ranks)
     })
   ) };
 

@@ -14,8 +14,8 @@
 #include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/mpi/mpi_utils.hpp"
-#include "uit/utility/CircularIndex.hpp"
-#include "uit/utility/numeric_cast.hpp"
+#include "uit/nonce/CircularIndex.hpp"
+#include "uit/debug/safe_cast.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/parallel/thread_utils.hpp"
 #include "uit/polyfill/barrier.hpp"
@@ -28,7 +28,7 @@ uit::Gatherer<int> gather(MPI_INT);
 
 void do_work() {
 
-  static std::barrier barrier{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
+  static std::barrier barrier{uit::safe_cast<std::ptrdiff_t>(num_threads)};
 
   barrier.arrive_and_wait();
 

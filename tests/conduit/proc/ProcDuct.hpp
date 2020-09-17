@@ -23,9 +23,9 @@
 #include "uit/topology/ProConTopologyFactory.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 #include "uit/utility/assign_utils.hpp"
-#include "uit/utility/CircularIndex.hpp"
-#include "uit/utility/math_utils.hpp"
-#include "uit/utility/numeric_cast.hpp"
+#include "uit/nonce/CircularIndex.hpp"
+#include "uit/math/math_utils.hpp"
+#include "uit/debug/safe_cast.hpp"
 
 const uit::MpiGuard guard;
 
@@ -92,7 +92,7 @@ decltype(auto) make_coiled_bundle() {
     uit::RingTopologyFactory{}(uit::get_nprocs() * 2),
     uit::AssignIntegrated<uit::thread_id_t>{},
     uit::AssignRoundRobin<uit::proc_id_t>{
-      uit::numeric_cast<size_t>( uit::get_nprocs() )
+      uit::safe_cast<size_t>( uit::get_nprocs() )
     }
   };
 
@@ -133,7 +133,7 @@ decltype(auto) make_coiled_bundle() {
 //     std::in_place_type_t<Spec::ProcOutletDuct>{},
 //     uit::InterProcAddress{
 //       uit::get_rank(),
-//       uit::numeric_cast<int>(
+//       uit::safe_cast<int>(
 //         uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
 //       )
 //     },
@@ -145,7 +145,7 @@ decltype(auto) make_coiled_bundle() {
 //     std::in_place_type_t<Spec::ProcOutletDuct>{},
 //     uit::InterProcAddress{
 //       uit::get_rank(),
-//       uit::numeric_cast<int>(
+//       uit::safe_cast<int>(
 //         uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
 //       )
 //     },

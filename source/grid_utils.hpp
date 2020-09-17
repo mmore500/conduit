@@ -14,17 +14,17 @@
 #include "../third-party/Empirical/source/data/DataFile.h"
 #include "../third-party/Empirical/source/tools/keyname_utils.h"
 
+#include "uit/chrono/CoarseClock.hpp"
 #include "uit/concurrent/Gatherer.hpp"
 #include "uit/concurrent/ConcurrentTimeoutBarrier.hpp"
+#include "uit/countdown/Counter.hpp"
+#include "uit/countdown/Timer.hpp"
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/config.hpp"
+#include "uit/debug/safe_cast.hpp"
 #include "uit/mpi/mpi_utils.hpp"
-#include "uit/utility/CountdownIterator.hpp"
-#include "uit/utility/CountdownTimer.hpp"
-#include "uit/utility/CoarseClock.hpp"
-#include "uit/utility/math_utils.hpp"
-#include "uit/utility/numeric_cast.hpp"
-#include "uit/utility/safe_compare.hpp"
+#include "uit/math/math_utils.hpp"
+#include "uit/debug/safe_compare.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/parallel/ThreadIbarrierFactory.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
@@ -109,8 +109,8 @@ double run_grid(grid_t & grid, const config_t & cfg) {
     update_chunk(chunk, verbose, shuffle_tile_evaluation, resistance);
   };
 
-  std::latch latch{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
-  std::barrier barrier{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
+  std::latch latch{uit::safe_cast<std::ptrdiff_t>(num_threads)};
+  std::barrier barrier{uit::safe_cast<std::ptrdiff_t>(num_threads)};
   uit::ThreadIbarrierFactory factory{ num_threads };
 
   uit::Gatherer<int> gatherer(MPI_INT);
@@ -123,10 +123,10 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       ? checkout_chunk(source)
       : source;
 
-    uit::CountdownTimer<std::chrono::seconds, uit::CoarseClock> timer{
+    uit::Timer<std::chrono::seconds, uit::CoarseClock> timer{
       std::chrono::seconds{num_seconds}
     };
-    uit::CountdownIterator counter{num_updates};
+    uit::Counter counter{num_updates};
 
     // synchronize once after thread creation and MPI spinup
     if (!synchronous) {
@@ -152,7 +152,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
 
     if (checkout_memory) checkin_chunk(source, chunk);
 
-    gatherer.Put(uit::numeric_cast<int>(
+    gatherer.Put(uit::safe_cast<int>(
       counter.GetElapsed() / (
         num_seconds
         ?: std::chrono::duration_cast<std::chrono::duration<double>>(

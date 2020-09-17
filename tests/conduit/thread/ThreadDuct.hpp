@@ -22,11 +22,11 @@
 #include "uit/topology/ProConTopologyFactory.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 #include "uit/utility/assign_utils.hpp"
-#include "uit/utility/benchmark_utils.hpp"
-#include "uit/utility/CircularIndex.hpp"
-#include "uit/utility/math_utils.hpp"
-#include "uit/utility/numeric_cast.hpp"
-#include "uit/utility/safe_compare.hpp"
+#include "uit/debug/benchmark_utils.hpp"
+#include "uit/nonce/CircularIndex.hpp"
+#include "uit/math/math_utils.hpp"
+#include "uit/debug/safe_cast.hpp"
+#include "uit/debug/safe_compare.hpp"
 
 const uit::MpiGuard guard;
 
@@ -115,7 +115,7 @@ int main( int argc, char* argv[] ) {
   int returnCode = session.applyCommandLine( argc, argv );
   if( returnCode != 0 ) return returnCode;
 
-  barrier.emplace( uit::numeric_cast<std::ptrdiff_t>(num_threads) );
+  barrier.emplace( uit::safe_cast<std::ptrdiff_t>(num_threads) );
 
   return session.run();
 }

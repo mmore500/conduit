@@ -11,7 +11,7 @@
 #include "uit/debug/MultiprocessReporter.hpp"
 #include "uit/mpi/Request.hpp"
 #include "uit/utility/assign_utils.hpp"
-#include "uit/utility/math_utils.hpp"
+#include "uit/math/math_utils.hpp"
 
 const uit::MpiGuard guard;
 

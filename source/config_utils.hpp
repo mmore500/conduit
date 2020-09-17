@@ -10,7 +10,7 @@
 #include "../third-party/Empirical/source/tools/string_utils.h"
 
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/utility/math_utils.hpp"
+#include "uit/math/math_utils.hpp"
 
 #include "State.hpp"
 

@@ -10,7 +10,7 @@
 
 #include "../../../parallel/RelaxedAtomic.hpp"
 #include "../../../utility/print_utils.hpp"
-#include "../../../utility/WarnOnce.hpp"
+#include "../../../debug/WarnOnce.hpp"
 
 namespace uit {
 namespace a {

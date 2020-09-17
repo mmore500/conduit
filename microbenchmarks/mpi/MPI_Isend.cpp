@@ -6,8 +6,8 @@
 #include "uit/conduit/config.hpp"
 #include "uit/mpi/MpiGuard.hpp"
 #include "uit/mpi/mpi_utils.hpp"
-#include "uit/utility/benchmark_utils.hpp"
-#include "uit/utility/ScopeGuard.hpp"
+#include "uit/debug/benchmark_utils.hpp"
+#include "uit/nonce/ScopeGuard.hpp"
 
 const uit::MpiGuard guard;
 

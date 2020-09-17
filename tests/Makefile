@@ -1,12 +1,19 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += algorithm
+TARGET_NAMES += chrono
 TARGET_NAMES += concurrent
 TARGET_NAMES += conduit
 TARGET_NAMES += containers
+TARGET_NAMES += countdown
+TARGET_NAMES += datastructs
 TARGET_NAMES += debug
 TARGET_NAMES += distributed
+TARGET_NAMES += math
 TARGET_NAMES += mesh
+TARGET_NAMES += meta
 TARGET_NAMES += mpi
+TARGET_NAMES += nonce
 TARGET_NAMES += topology
 TARGET_NAMES += utility
 

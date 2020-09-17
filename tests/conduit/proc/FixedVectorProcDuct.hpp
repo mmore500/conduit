@@ -24,8 +24,8 @@
 #include "uit/topology/DyadicTopologyFactory.hpp"
 #include "uit/topology/ProConTopologyFactory.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
-#include "uit/utility/CircularIndex.hpp"
-#include "uit/utility/math_utils.hpp"
+#include "uit/nonce/CircularIndex.hpp"
+#include "uit/math/math_utils.hpp"
 
 const uit::MpiGuard guard;
 
@@ -46,7 +46,7 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
     std::in_place_type_t<Spec::ProcOutletDuct>{},
     uit::InterProcAddress{
       uit::get_rank(), // outlet proc
-      uit::numeric_cast<int>(
+      uit::safe_cast<int>(
         uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
       ), // inlet proc
       0, // outlet thread
@@ -60,7 +60,7 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
   uit::Sink<Spec>{
     std::in_place_type_t<Spec::ProcInletDuct>{},
     uit::InterProcAddress{
-      uit::numeric_cast<int>(
+      uit::safe_cast<int>(
         uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
       ), // outlet proc
       uit::get_rank(), // inlet proc
@@ -88,7 +88,7 @@ TEST_CASE("Is transmission reliable?") { REPEAT {
     std::in_place_type_t<Spec::ProcOutletDuct>{},
     uit::InterProcAddress{
       uit::get_rank(), // outlet proc
-      uit::numeric_cast<int>(
+      uit::safe_cast<int>(
         uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
       ), // inlet proc
       0, // outlet thread
@@ -102,7 +102,7 @@ TEST_CASE("Is transmission reliable?") { REPEAT {
   auto [inlet] = uit::Sink<Spec>{
     std::in_place_type_t<Spec::ProcInletDuct>{},
     uit::InterProcAddress{
-      uit::numeric_cast<int>(
+      uit::safe_cast<int>(
         uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
       ), // outlet proc
       uit::get_rank(), // inlet proc

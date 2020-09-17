@@ -2,20 +2,20 @@
 
 #include <mpi.h>
 
+#include "uit/chrono/TimeGuard.hpp"
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/config.hpp"
 #include "uit/conduit/ImplSpec.hpp"
 #include "uit/concurrent/Gatherer.hpp"
+#include "uit/debug/benchmark_utils.hpp"
+#include "uit/debug/safe_cast.hpp"
 #include "uit/mpi/mpi_utils.hpp"
 #include "uit/mesh/Mesh.hpp"
+#include "uit/nonce/CircularIndex.hpp"
 #include "uit/parallel/ThreadTeam.hpp"
 #include "uit/parallel/thread_utils.hpp"
 #include "uit/polyfill/latch.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
-#include "uit/utility/benchmark_utils.hpp"
-#include "uit/utility/CircularIndex.hpp"
-#include "uit/utility/numeric_cast.hpp"
-#include "uit/utility/TimeGuard.hpp"
 
 #define MESSAGE_T int
 
@@ -62,7 +62,7 @@ void profile_thread_count(const size_t num_threads) {
 
   std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
 
-  std::latch latch{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
+  std::latch latch{uit::safe_cast<std::ptrdiff_t>(num_threads)};
   for (uit::thread_id_t i = 0; i < num_threads; ++i) {
     team.Add(
       [i, &latch, &gatherer, &mesh](){

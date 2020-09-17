@@ -10,7 +10,7 @@
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../mpi/mpi_utils.hpp"
-#include "../../../../utility/ScopeGuard.hpp"
+#include "../../../../nonce/ScopeGuard.hpp"
 #include "../../../../utility/print_utils.hpp"
 
 #include "../../../InterProcAddress.hpp"

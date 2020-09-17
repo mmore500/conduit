@@ -15,11 +15,10 @@
 
 #include "../../../../mpi/mpi_utils.hpp"
 #include "../../../../mpi/Request.hpp"
-#include "../../../../utility/CircularIndex.hpp"
-#include "../../../../utility/identity.hpp"
+#include "../../../../nonce/CircularIndex.hpp"
 #include "../../../../utility/imemstream.hpp"
 #include "../../../../utility/print_utils.hpp"
-#include "../../../../utility/Uninitialized.hpp"
+#include "../../../../initialization/Uninitialized.hpp"
 
 #include "../../../InterProcAddress.hpp"
 

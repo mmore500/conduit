@@ -1,25 +1,7 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += CircularIndex
-TARGET_NAMES += CountdownProgressBar
-TARGET_NAMES += Curry
-TARGET_NAMES += IdentityWrapper
 TARGET_NAMES += imemstream
-TARGET_NAMES += IsFirstExecutionChecker
-TARGET_NAMES += math_utils
-TARGET_NAMES += MirroredRingBuffer
 TARGET_NAMES += NamedArrayElement
-TARGET_NAMES += PrefilledMirroredRingBuffer
-TARGET_NAMES += RingBuffer
-TARGET_NAMES += safe_compare
-TARGET_NAMES += ScopeGuard
-TARGET_NAMES += spector
-TARGET_NAMES += Uninitialized
-TARGET_NAMES += upper_uniquify
-TARGET_NAMES += ValueInitialized
-TARGET_NAMES += VectorMap
-TARGET_NAMES += WarnOnce
-
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

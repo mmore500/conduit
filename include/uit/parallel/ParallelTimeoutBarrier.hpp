@@ -4,7 +4,7 @@
 
 #include <mpi.h>
 
-#include "../utility/CountdownTimer.hpp"
+#include "../countdown/Timer.hpp"
 
 #include "ThreadIbarrier.hpp"
 
@@ -15,7 +15,7 @@ namespace uit {
  *
  * @tparam Timer_T class to manage timeout check.
  */
-template<typename Timer_T=uit::CountdownTimer<>>
+template<typename Timer_T=uit::Timer<>>
 class ParallelTimeoutBarrier {
 
 public:

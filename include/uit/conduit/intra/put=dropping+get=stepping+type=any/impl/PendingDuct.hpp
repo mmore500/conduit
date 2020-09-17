@@ -6,7 +6,7 @@
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../debug/occupancy_audit.hpp"
-#include "../../../../utility/CircularIndex.hpp"
+#include "../../../../nonce/CircularIndex.hpp"
 #include "../../../../utility/print_utils.hpp"
 
 namespace uit {
