@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += conduit
+TARGET_NAMES += duct
 TARGET_NAMES += sanitycheck
 
 default: bench

@@ -3,7 +3,6 @@
 #include <mpi.h>
 #include <benchmark/benchmark.h>
 
-#include "uit/conduit/config.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
@@ -11,7 +10,7 @@
 
 const uitsl::MpiGuard guard;
 
-constexpr size_t buffer_size{ DEFAULT_BUFFER };
+constexpr size_t buffer_size{ uit::DEFAULT_BUFFER };
 
 static void MPI_Test_nopending(benchmark::State& state) {
 
@@ -119,7 +118,7 @@ static void MPI_Test_manypending(benchmark::State& state) {
     &request // MPI_Request * request
   );
 
-  for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER; ++i) {
     MPI_Request send_request;
     UIT_Isend(
       &send_buffer, // const void *buf
@@ -146,7 +145,7 @@ static void MPI_Test_manypending(benchmark::State& state) {
   }
 
   // clean up
-  for (size_t i = 0; i < DEFAULT_BUFFER - 1; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER - 1; ++i) {
     UIT_Irecv(
       &recv_buffer, // const void *buf
       1, // int count

@@ -3,7 +3,6 @@
 #include <mpi.h>
 #include <benchmark/benchmark.h>
 
-#include "uit/conduit/config.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
@@ -11,7 +10,7 @@
 
 const uitsl::MpiGuard guard;
 
-constexpr size_t buffer_size{ DEFAULT_BUFFER };
+constexpr size_t buffer_size{ uit::DEFAULT_BUFFER };
 
 static void MPI_Irecv(benchmark::State& state) {
 

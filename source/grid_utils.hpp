@@ -20,7 +20,6 @@
 #include "uitsl/countdown/Counter.hpp"
 #include "uitsl/countdown/Timer.hpp"
 #include "uit/conduit/Conduit.hpp"
-#include "uit/conduit/config.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/math/math_utils.hpp"

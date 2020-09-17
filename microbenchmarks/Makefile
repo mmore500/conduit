@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += conduit
+TARGET_NAMES += duct
 TARGET_NAMES += mpi
 
 VERSION := $$(git describe --dirty --always)
@@ -28,7 +28,7 @@ clean-%: %
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(TARGET_NAMES))
 	./script/fixup_and_validate.sh
-	python3 script/consolidate.py $$(find conduit -name '*.json')
+	python3 script/consolidate.py $$(find duct -name '*.json')
 	for f in *run_type=iteration*.csv; do \
 		python3 script/graph.py $$f; \
 	done

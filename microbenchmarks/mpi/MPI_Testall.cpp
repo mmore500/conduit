@@ -3,7 +3,6 @@
 #include <mpi.h>
 #include <benchmark/benchmark.h>
 
-#include "uit/conduit/config.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
@@ -11,15 +10,15 @@
 
 const uitsl::MpiGuard guard;
 
-constexpr size_t buffer_size{ DEFAULT_BUFFER };
+constexpr size_t buffer_size{ uit::DEFAULT_BUFFER };
 
 static void MPI_Testall_nopending(benchmark::State& state) {
 
   // set up
-  emp::vector<MPI_Request> requests(DEFAULT_BUFFER);
-  emp::vector<int> buffers(DEFAULT_BUFFER);
+  emp::vector<MPI_Request> requests(uit::DEFAULT_BUFFER);
+  emp::vector<int> buffers(uit::DEFAULT_BUFFER);
 
-  for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER; ++i) {
     UIT_Irecv(
       &buffers[i], // const void *buf
       1, // int count
@@ -64,10 +63,10 @@ static void MPI_Testall_nopending(benchmark::State& state) {
 static void MPI_Testall_onepending(benchmark::State& state) {
 
   // set up
-  emp::vector<MPI_Request> recv_requests(DEFAULT_BUFFER);
-  emp::vector<int> recv_buffers(DEFAULT_BUFFER);
+  emp::vector<MPI_Request> recv_requests(uit::DEFAULT_BUFFER);
+  emp::vector<int> recv_buffers(uit::DEFAULT_BUFFER);
 
-  for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER; ++i) {
     UIT_Irecv(
       &recv_buffers[i], // const void *buf
       1, // int count
@@ -116,10 +115,10 @@ static void MPI_Testall_onepending(benchmark::State& state) {
 static void MPI_Testall_somepending(benchmark::State& state) {
 
   // set up
-  emp::vector<MPI_Request> recv_requests(DEFAULT_BUFFER);
-  emp::vector<int> recv_buffers(DEFAULT_BUFFER);
+  emp::vector<MPI_Request> recv_requests(uit::DEFAULT_BUFFER);
+  emp::vector<int> recv_buffers(uit::DEFAULT_BUFFER);
 
-  for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER; ++i) {
     UIT_Irecv(
       &recv_buffers[i], // const void *buf
       1, // int count
@@ -131,7 +130,7 @@ static void MPI_Testall_somepending(benchmark::State& state) {
     );
   }
 
-  for (size_t i = 0; i < DEFAULT_BUFFER/2; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER/2; ++i) {
     MPI_Request send_request;
     int send_buffer{};
     UIT_Isend(
@@ -170,10 +169,10 @@ static void MPI_Testall_somepending(benchmark::State& state) {
 static void MPI_Testall_manypending(benchmark::State& state) {
 
   // set up
-  emp::vector<MPI_Request> recv_requests(DEFAULT_BUFFER);
-  emp::vector<int> recv_buffers(DEFAULT_BUFFER);
+  emp::vector<MPI_Request> recv_requests(uit::DEFAULT_BUFFER);
+  emp::vector<int> recv_buffers(uit::DEFAULT_BUFFER);
 
-  for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER; ++i) {
     UIT_Irecv(
       &recv_buffers[i], // const void *buf
       1, // int count
@@ -185,7 +184,7 @@ static void MPI_Testall_manypending(benchmark::State& state) {
     );
   }
 
-  for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER; ++i) {
     MPI_Request send_request;
     int send_buffer{};
     UIT_Isend(
@@ -224,10 +223,10 @@ static void MPI_Testall_manypending(benchmark::State& state) {
 static void MPI_Testall_manymanypending(benchmark::State& state) {
 
   // set up
-  emp::vector<MPI_Request> recv_requests(DEFAULT_BUFFER);
-  emp::vector<int> recv_buffers(DEFAULT_BUFFER);
+  emp::vector<MPI_Request> recv_requests(uit::DEFAULT_BUFFER);
+  emp::vector<int> recv_buffers(uit::DEFAULT_BUFFER);
 
-  for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER; ++i) {
     UIT_Irecv(
       &recv_buffers[i], // const void *buf
       1, // int count
@@ -240,7 +239,7 @@ static void MPI_Testall_manymanypending(benchmark::State& state) {
   }
 
   int send_buffer{};
-  for (size_t i = 0; i < DEFAULT_BUFFER*2; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER*2; ++i) {
     MPI_Request send_request;
     UIT_Isend(
       &send_buffer, // const void *buf
@@ -272,7 +271,7 @@ static void MPI_Testall_manymanypending(benchmark::State& state) {
     if (!uitsl::test_completion(request)) UIT_Cancel(&request);
   }
 
-  for (size_t i = 0; i < DEFAULT_BUFFER; ++i) {
+  for (size_t i = 0; i < uit::DEFAULT_BUFFER; ++i) {
     MPI_Request request;
     int buffer{};
     UIT_Irecv(

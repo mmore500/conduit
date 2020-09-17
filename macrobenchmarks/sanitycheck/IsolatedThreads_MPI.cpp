@@ -4,7 +4,7 @@
 
 #include "uitsl/chrono/TimeGuard.hpp"
 #include "uit/conduit/Conduit.hpp"
-#include "uit/conduit/ImplSpec.hpp"
+#include "uit/config/ImplSpec.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uit/mesh/Mesh.hpp"
