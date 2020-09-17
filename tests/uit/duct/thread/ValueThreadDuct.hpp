@@ -10,7 +10,7 @@ TEST_CASE("Eventual flush-out") { REPEAT {
     auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
-    for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(0);
+    for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(0);
 
     while ( !output.TryPut( 1 ) ) {
       const auto res{ input.JumpGet() }; // operational!

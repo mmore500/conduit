@@ -94,7 +94,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
-  for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
   }
 
@@ -115,7 +115,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
-  for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(1);
+  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(1);
 
   UITSL_Barrier( MPI_COMM_WORLD ); // todo why
 

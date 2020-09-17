@@ -28,7 +28,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
   uit::Mesh<Spec> mesh{ uit::DyadicTopologyFactory{}(num_nodes) };
 
   for (auto & node : mesh.GetSubmesh()) {
-    for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) node.GetOutput(0).TryPut(1);
+    for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) node.GetOutput(0).TryPut(1);
   }
 
 } }
