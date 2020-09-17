@@ -48,7 +48,7 @@ namespace internal {
  * implementations are themselves modular and may be specified via the
  * `ImplSpec` template paramater. You can find available intra-thread,
  * inter-thread, and inter-process implementations within the
- * `include/duct/intra`, `include/duct/thread`, and `include/duct/proc`
+ * `include/ducts/intra`, `include/ducts/thread`, and `include/ducts/proc`
  * directories, respectively. You may also supply your own implementations so
  * long as they satisfy the method signatures within this class that are
  * forwarded to the `std::variant`'s active implementation.

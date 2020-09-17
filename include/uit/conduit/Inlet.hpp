@@ -11,7 +11,7 @@
 #include "../../uitsl/nonce/CircularIndex.hpp"
 #include "../../uitsl/utility/print_utils.hpp"
 
-#include "../duct/Duct.hpp"
+#include "../ducts/Duct.hpp"
 
 namespace uit {
 
@@ -30,7 +30,7 @@ namespace uit {
  * example to provide thread-safe or process-safe transmission.
  *
  * - `EmplaceDuct` emplaces a new transmission implementation within
- *   the  existing `Duct` object. (See `include/duct/Duct.hpp` for details.)
+ *   the  existing `Duct` object. (See `include/ducts/Duct.hpp` for details.)
  * - `SplitDuct` makes a new `Duct` and points the `Inlet`'s `std::shared_ptr`
  *   to that `Duct`.
  *

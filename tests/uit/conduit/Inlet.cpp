@@ -2,7 +2,7 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/duct/Duct.hpp"
+#include "uit/ducts/Duct.hpp"
 #include "uit/config/ImplSpec.hpp"
 #include "uit/conduit/Inlet.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"

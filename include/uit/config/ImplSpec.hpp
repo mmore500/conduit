@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../duct/intra/put=dropping+get=stepping+type=any/a::SerialPendingDuct.hpp"
-#include "../duct/proc/put=dropping+get=stepping+type=trivial/inlet=RingIsend+outlet=RingIrecv_t::IriOriDuct.hpp"
-#include "../duct/thread/put=dropping+get=stepping+type=any/a::AtomicPendingDuct.hpp"
+#include "../ducts/intra/put=dropping+get=stepping+type=any/a::SerialPendingDuct.hpp"
+#include "../ducts/proc/put=dropping+get=stepping+type=trivial/inlet=RingIsend+outlet=RingIrecv_t::IriOriDuct.hpp"
+#include "../ducts/thread/put=dropping+get=stepping+type=any/a::AtomicPendingDuct.hpp"
 
 namespace uit {
 

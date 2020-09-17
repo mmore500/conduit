@@ -4,7 +4,7 @@
 #include <memory>
 #include <stddef.h>
 
-#include "../duct/Duct.hpp"
+#include "../ducts/Duct.hpp"
 
 #include "Outlet.hpp"
 

@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include <utility>
 
-#include "../duct/Duct.hpp"
+#include "../ducts/Duct.hpp"
 
 #include "Inlet.hpp"
 

@@ -5,7 +5,7 @@
 
 #include <mpi.h>
 
-#include "../duct/Duct.hpp"
+#include "../ducts/Duct.hpp"
 #include "../conduit/../config/InterProcAddress.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"

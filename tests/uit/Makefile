@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 TARGET_NAMES += conduit
 TARGET_NAMES += config
-TARGET_NAMES += duct
+TARGET_NAMES += ducts
 TARGET_NAMES += mesh
 TARGET_NAMES += topology
 
