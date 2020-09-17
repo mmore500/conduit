@@ -9,8 +9,8 @@
 #include "../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../../../mpi/mpi_utils.hpp"
-#include "../../../../utility/print_utils.hpp"
+#include "../../../../../uitsl/mpi/mpi_utils.hpp"
+#include "../../../../../uitsl/utility/print_utils.hpp"
 
 #include "../../../InterProcAddress.hpp"
 

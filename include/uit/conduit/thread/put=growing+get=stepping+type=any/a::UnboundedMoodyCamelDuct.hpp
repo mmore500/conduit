@@ -9,8 +9,8 @@
 #include "../../../../../third-party/readerwriterqueue/atomicops.h"
 #include "../../../../../third-party/readerwriterqueue/readerwriterqueue.h"
 
-#include "../../../debug/occupancy_audit.hpp"
-#include "../../../utility/print_utils.hpp"
+#include "../../../../uitsl/debug/occupancy_audit.hpp"
+#include "../../../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
 namespace a {

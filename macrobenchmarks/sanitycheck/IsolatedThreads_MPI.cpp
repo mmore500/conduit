@@ -2,17 +2,17 @@
 
 #include <mpi.h>
 
-#include "uit/chrono/TimeGuard.hpp"
+#include "uitsl/chrono/TimeGuard.hpp"
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/debug/benchmark_utils.hpp"
-#include "uit/debug/safe_cast.hpp"
+#include "uitsl/debug/benchmark_utils.hpp"
+#include "uitsl/debug/safe_cast.hpp"
 #include "uit/mesh/Mesh.hpp"
-#include "uit/mpi/mpi_utils.hpp"
-#include "uit/nonce/CircularIndex.hpp"
-#include "uit/parallel/ThreadTeam.hpp"
-#include "uit/parallel/thread_utils.hpp"
-#include "uit/polyfill/latch.hpp"
+#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/nonce/CircularIndex.hpp"
+#include "uitsl/parallel/ThreadTeam.hpp"
+#include "uitsl/parallel/thread_utils.hpp"
+#include "uitsl/polyfill/latch.hpp"
 
 #define MESSAGE_T int
 

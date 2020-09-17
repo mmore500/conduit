@@ -1,6 +1,6 @@
-#include "uit/meta/ForEach.hpp"
-#include "uit/mpi/MpiGuard.hpp"
-#include "uit/nonce/ScopeGuard.hpp"
+#include "uitsl/meta/ForEach.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/nonce/ScopeGuard.hpp"
 
 #include "../DuctBenchmarkRegistration.hpp"
 

@@ -8,9 +8,9 @@
 
 #include "../conduit/Conduit.hpp"
 #include "../conduit/Duct.hpp"
-#include "../mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../topology/Topology.hpp"
-#include "../utility/assign_utils.hpp"
+#include "../../uitsl/utility/assign_utils.hpp"
 
 #include "MeshNode.hpp"
 

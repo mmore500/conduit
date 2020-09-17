@@ -8,9 +8,9 @@
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
 #include "../../../../../third-party/SPSCQueue/include/rigtorp/SPSCQueue.h"
 
-#include "../../../debug/occupancy_audit.hpp"
-#include "../../../parallel/RelaxedAtomic.hpp"
-#include "../../../utility/print_utils.hpp"
+#include "../../../../uitsl/debug/occupancy_audit.hpp"
+#include "../../../../uitsl/parallel/RelaxedAtomic.hpp"
+#include "../../../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
 namespace a {

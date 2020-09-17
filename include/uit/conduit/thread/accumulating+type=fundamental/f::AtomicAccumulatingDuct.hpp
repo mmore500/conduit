@@ -8,8 +8,8 @@
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../conduit/config.hpp"
-#include "../../../parallel/RelaxedAtomic.hpp"
-#include "../../../utility/print_utils.hpp"
+#include "../../../../uitsl/parallel/RelaxedAtomic.hpp"
+#include "../../../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
 namespace f {

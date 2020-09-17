@@ -9,9 +9,9 @@
 
 #include "../../../third-party/Empirical/source/base/optional.h"
 
-#include "../debug/occupancy_audit.hpp"
-#include "../parallel/thread_utils.hpp"
-#include "../nonce/CircularIndex.hpp"
+#include "../../uitsl/debug/occupancy_audit.hpp"
+#include "../../uitsl/parallel/thread_utils.hpp"
+#include "../../uitsl/nonce/CircularIndex.hpp"
 
 #include "config.hpp"
 #include "Duct.hpp"

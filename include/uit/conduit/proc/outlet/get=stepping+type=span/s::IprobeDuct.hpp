@@ -13,12 +13,12 @@
 #include "../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../../../mpi/mpi_utils.hpp"
-#include "../../../../mpi/Request.hpp"
-#include "../../../../nonce/CircularIndex.hpp"
-#include "../../../../utility/imemstream.hpp"
-#include "../../../../utility/print_utils.hpp"
-#include "../../../../initialization/Uninitialized.hpp"
+#include "../../../../../uitsl/mpi/mpi_utils.hpp"
+#include "../../../../../uitsl/mpi/Request.hpp"
+#include "../../../../../uitsl/nonce/CircularIndex.hpp"
+#include "../../../../../uitsl/utility/imemstream.hpp"
+#include "../../../../../uitsl/utility/print_utils.hpp"
+#include "../../../../../uitsl/initialization/Uninitialized.hpp"
 
 #include "../../../InterProcAddress.hpp"
 

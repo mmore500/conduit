@@ -4,8 +4,8 @@
 
 #include <mpi.h>
 
-#include "../mpi/mpi_utils.hpp"
-#include "../parallel/thread_utils.hpp"
+#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/parallel/thread_utils.hpp"
 
 namespace uit {
 

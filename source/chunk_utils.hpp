@@ -1,7 +1,7 @@
 #pragma once
 
 #include "uit/conduit/Duct.hpp"
-#include "uit/debug/benchmark_utils.hpp"
+#include "uitsl/debug/benchmark_utils.hpp"
 
 #include "grid_utils.hpp"
 #include "State.hpp"

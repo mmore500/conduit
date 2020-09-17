@@ -7,7 +7,7 @@
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../../third-party/Empirical/source/base/optional.h"
 
-#include "../../../../algorithm/upper_uniquify.hpp"
+#include "../../../../../uitsl/algorithm/upper_uniquify.hpp"
 
 #include "../../../InterProcAddress.hpp"
 #include "../../../Outlet.hpp"

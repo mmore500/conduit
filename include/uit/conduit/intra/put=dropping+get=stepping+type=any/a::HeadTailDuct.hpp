@@ -6,8 +6,8 @@
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../conduit/config.hpp"
-#include "../../../debug/occupancy_audit.hpp"
-#include "../../../utility/print_utils.hpp"
+#include "../../../../uitsl/debug/occupancy_audit.hpp"
+#include "../../../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
 namespace a {

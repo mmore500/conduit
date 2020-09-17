@@ -71,7 +71,7 @@ Here's an example of how this works in code.
 
 #include "uit/conduit/Conduit.hpp"
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/parallel/ThreadTeam.hpp"
+#include "uitsl/parallel/ThreadTeam.hpp"
 
 // use int as message type
 using Spec = uit::ImplSpec<int>;
@@ -188,9 +188,9 @@ Here's what the entire process looks like in code.
 #include <sstream>
 
 #include "uit/conduit/ImplSpec.hpp"
-#include "uit/mpi/MpiGuard.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
 #include "uit/mesh/Mesh.hpp"
-#include "uit/parallel/ThreadTeam.hpp"
+#include "uitsl/parallel/ThreadTeam.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 
 const size_t num_nodes = 5; // five nodes in our topology

@@ -2,7 +2,7 @@
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 
-#include "../utility/print_utils.hpp"
+#include "../../uitsl/utility/print_utils.hpp"
 
 #include "TopoNodeInput.hpp"
 #include "TopoNodeOutput.hpp"

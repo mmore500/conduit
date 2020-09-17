@@ -5,9 +5,9 @@
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../../../debug/occupancy_audit.hpp"
-#include "../../../../nonce/CircularIndex.hpp"
-#include "../../../../utility/print_utils.hpp"
+#include "../../../../../uitsl/debug/occupancy_audit.hpp"
+#include "../../../../../uitsl/nonce/CircularIndex.hpp"
+#include "../../../../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
 namespace internal {

@@ -4,10 +4,10 @@
 #include <benchmark/benchmark.h>
 
 #include "uit/conduit/config.hpp"
-#include "uit/mpi/MpiGuard.hpp"
-#include "uit/mpi/mpi_utils.hpp"
-#include "uit/debug/benchmark_utils.hpp"
-#include "uit/nonce/ScopeGuard.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/debug/benchmark_utils.hpp"
+#include "uitsl/nonce/ScopeGuard.hpp"
 
 const uit::MpiGuard guard;
 

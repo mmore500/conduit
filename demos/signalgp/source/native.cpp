@@ -3,13 +3,13 @@
 #include <map>
 #include <sstream>
 
-#include "uit/distributed/assign_utils.hpp"
-#include "uit/distributed/do_successively.hpp"
-#include "uit/containers/safe/unordered_map.hpp"
-#include "uit/mpi/MpiMultithreadGuard.hpp"
-#include "uit/parallel/ThreadTeam.hpp"
-#include "uit/utility/assign_utils.hpp"
-#include "uit/debug/safe_cast.hpp"
+#include "uitsl/distributed/assign_utils.hpp"
+#include "uitsl/distributed/do_successively.hpp"
+#include "uitsl/containers/safe/unordered_map.hpp"
+#include "uitsl/mpi/MpiMultithreadGuard.hpp"
+#include "uitsl/parallel/ThreadTeam.hpp"
+#include "uitsl/utility/assign_utils.hpp"
+#include "uitsl/debug/safe_cast.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 
 #include "Job.hpp"

@@ -8,9 +8,9 @@
 #include "../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../../parallel/RelaxedAtomic.hpp"
-#include "../../../utility/print_utils.hpp"
-#include "../../../debug/WarnOnce.hpp"
+#include "../../../../uitsl/parallel/RelaxedAtomic.hpp"
+#include "../../../../uitsl/utility/print_utils.hpp"
+#include "../../../../uitsl/debug/WarnOnce.hpp"
 
 namespace uit {
 namespace a {
