@@ -70,7 +70,7 @@ Here's an example of how this works in code.
 #include <utility>
 
 #include "uit/fixtures/Conduit.hpp"
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 
 // use int as message type
@@ -187,7 +187,7 @@ Here's what the entire process looks like in code.
 #include <tuple>
 #include <sstream>
 
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"

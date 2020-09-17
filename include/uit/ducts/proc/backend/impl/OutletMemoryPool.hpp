@@ -9,7 +9,7 @@
 
 #include "../../../../spouts/Outlet.hpp"
 #include "../../../../fixtures/Source.hpp"
-#include "../../../../config/InterProcAddress.hpp"
+#include "../../../../setup/InterProcAddress.hpp"
 
 namespace uit {
 

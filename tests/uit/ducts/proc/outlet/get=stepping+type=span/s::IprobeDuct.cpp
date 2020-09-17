@@ -6,8 +6,8 @@
 
 #include "Empirical/source/base/vector.h"
 
-#include "uit/config/ImplSpec.hpp"
-#include "uit/conduit/../config/InterProcAddress.hpp"
+#include "uit/setup/ImplSpec.hpp"
+#include "uit/setup/InterProcAddress.hpp"
 #include "uit/ducts/proc/outlet/get=stepping+type=span/s::IprobeDuct.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"

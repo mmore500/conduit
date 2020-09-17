@@ -3,7 +3,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/ducts/Duct.hpp"
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 

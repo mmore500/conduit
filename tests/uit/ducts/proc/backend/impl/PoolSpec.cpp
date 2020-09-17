@@ -3,7 +3,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 #include "Empirical/source/base/vector.h"
 
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uit/ducts/proc/backend/impl/PoolSpec.hpp"
 #include "uit/ducts/proc/put=dropping+get=skipping+type=span/inlet=RingIsend+outlet=BlockIrecv_s::IriObiDuct.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"

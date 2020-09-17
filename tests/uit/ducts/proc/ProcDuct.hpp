@@ -19,7 +19,7 @@
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uit/fixtures/Sink.hpp"
 #include "uit/fixtures/Source.hpp"
 #include "uit/mesh/Mesh.hpp"

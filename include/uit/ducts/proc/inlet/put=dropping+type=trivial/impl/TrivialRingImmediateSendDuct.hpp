@@ -17,7 +17,7 @@
 #include "../../../../../../uitsl/utility/print_utils.hpp"
 #include "../../../../../../uitsl/datastructs/RingBuffer.hpp"
 
-#include "../../../../../config/InterProcAddress.hpp"
+#include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../../backend/MockBackEnd.hpp"
 

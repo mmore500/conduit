@@ -4,8 +4,8 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/config/ImplSpec.hpp"
-#include "uit/conduit/../config/InterProcAddress.hpp"
+#include "uit/setup/ImplSpec.hpp"
+#include "uit/setup/InterProcAddress.hpp"
 #include "uit/ducts/proc/outlet/templated/BufferedOutletDuct.hpp"
 #include "uit/ducts/proc/put=dropping+get=stepping+type=span/inlet=RingIsend+outlet=Iprobe_s::IriOiDuct.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"

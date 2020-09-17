@@ -1,4 +1,4 @@
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uit/ducts/intra/accumulating+type=any/a::AccumulatingDuct.hpp"
 #include "uit/ducts/mock/ThrowDuct.hpp"
 #include "uit/ducts/proc/accumulating/inlet=Accumulate+outlet=WithdrawingWindow_f::IaOwwDuct.hpp"

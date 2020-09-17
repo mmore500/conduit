@@ -13,7 +13,7 @@
 #include "../../../../../uitsl/nonce/ScopeGuard.hpp"
 #include "../../../../../uitsl/utility/print_utils.hpp"
 
-#include "../../../../config/InterProcAddress.hpp"
+#include "../../../../setup/InterProcAddress.hpp"
 
 #include "../../inlet/templated/impl/BufferSpec.hpp"
 

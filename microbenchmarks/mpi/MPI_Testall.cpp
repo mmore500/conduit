@@ -8,7 +8,7 @@
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/nonce/ScopeGuard.hpp"
 
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 
 const uitsl::MpiGuard guard;
 

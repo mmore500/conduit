@@ -1,4 +1,4 @@
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uit/ducts/intra/accumulating+type=any/a::AccumulatingDuct.hpp"
 
 using ImplSel = uit::ImplSelect<
