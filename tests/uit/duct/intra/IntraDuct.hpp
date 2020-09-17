@@ -11,14 +11,16 @@
 
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
-#include "uit/mesh/Mesh.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
-#include "uit/topology/DyadicTopologyFactory.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
+
+#include "uit/config/ImplSpec.hpp"
+#include "uit/mesh/Mesh.hpp"
+#include "uit/topology/RingTopologyFactory.hpp"
+#include "uit/topology/DyadicTopologyFactory.hpp"
 
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
 

@@ -8,24 +8,25 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
+#include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/debug/safe_cast.hpp"
+#include "uitsl/distributed/assign_utils.hpp"
+#include "uitsl/distributed/RdmaWindowManager.hpp"
+#include "uitsl/math/math_utils.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/nonce/CircularIndex.hpp"
+#include "uitsl/utility/assign_utils.hpp"
+
 #include "uit/config/ImplSpec.hpp"
 #include "uit/conduit/Sink.hpp"
 #include "uit/conduit/Source.hpp"
-#include "uitsl/distributed/assign_utils.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
-#include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/mesh/MeshNodeInput.hpp"
 #include "uit/mesh/MeshNodeOutput.hpp"
 #include "uit/topology/DyadicTopologyFactory.hpp"
 #include "uit/topology/ProConTopologyFactory.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
-#include "uitsl/utility/assign_utils.hpp"
-#include "uitsl/nonce/CircularIndex.hpp"
-#include "uitsl/math/math_utils.hpp"
-#include "uitsl/debug/safe_cast.hpp"
 
 const uitsl::MpiGuard guard;
 

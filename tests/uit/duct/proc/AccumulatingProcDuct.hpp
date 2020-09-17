@@ -7,11 +7,12 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/config/ImplSpec.hpp"
-#include "uit/duct/mock/ThrowDuct.hpp"
+#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/distributed/assign_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
+
+#include "uit/config/ImplSpec.hpp"
+#include "uit/duct/mock/ThrowDuct.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/mesh/MeshNodeInput.hpp"
 #include "uit/mesh/MeshNodeOutput.hpp"
