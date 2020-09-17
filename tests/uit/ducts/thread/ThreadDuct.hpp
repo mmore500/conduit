@@ -23,7 +23,7 @@
 #include "uitsl/utility/assign_utils.hpp"
 
 #include "uit/config/ImplSpec.hpp"
-#include "uit/conduit/Source.hpp"
+#include "uit/fixtures/Source.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/topology/DyadicTopologyFactory.hpp"
 #include "uit/topology/ProConTopologyFactory.hpp"

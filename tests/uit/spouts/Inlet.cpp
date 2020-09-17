@@ -2,19 +2,19 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
+#include "uit/ducts/Duct.hpp"
 #include "uit/config/ImplSpec.hpp"
-#include "uit/conduit/Sink.hpp"
+#include "uit/spouts/Inlet.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 
 const uitsl::MpiGuard guard;
 
-TEST_CASE("Test Sink") {
+TEST_CASE("Test Inlet") {
 
-  // TODO flesh out stub test
-  uit::Sink<uit::ImplSpec<char>> sink;
-  sink.get<0>();
-
-  [[maybe_unused]] auto& [inlet] = sink;
+  using Spec = uit::ImplSpec<char>;
+  uit::Inlet<Spec>{
+    std::make_shared<uit::internal::Duct<Spec>>()
+  };
 
 }

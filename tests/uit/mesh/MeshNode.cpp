@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/conduit/Conduit.hpp"
+#include "uit/fixtures/Conduit.hpp"
 #include "uit/config/ImplSpec.hpp"
 #include "uit/mesh/MeshNode.hpp"
 

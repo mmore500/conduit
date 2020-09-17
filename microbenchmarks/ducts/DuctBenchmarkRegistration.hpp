@@ -24,7 +24,7 @@
 #include "uitsl/parallel/thread_utils.hpp"
 #include "uitsl/polyfill/barrier.hpp"
 
-#include "uit/conduit/Conduit.hpp"
+#include "uit/fixtures/Conduit.hpp"
 #include "uit/config/ImplSpec.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"

@@ -3,8 +3,8 @@
 #include <assert.h>
 #include <sstream>
 
-#include "uit/conduit/Inlet.hpp"
-#include "uit/conduit/Outlet.hpp"
+#include "uit/spouts/Inlet.hpp"
+#include "uit/spouts/Outlet.hpp"
 #include "uitsl/utility/print_utils.hpp"
 
 #include "config_utils.hpp"

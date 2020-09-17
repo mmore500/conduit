@@ -5,9 +5,8 @@
 #include <utility>
 
 #include "../ducts/Duct.hpp"
-
-#include "Inlet.hpp"
-#include "Outlet.hpp"
+#include "../spouts/Inlet.hpp"
+#include "../spouts/Outlet.hpp"
 
 namespace uit {
 

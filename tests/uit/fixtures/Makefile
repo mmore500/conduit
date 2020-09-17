@@ -1,8 +1,6 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += Conduit
-TARGET_NAMES += Inlet
-TARGET_NAMES += Outlet
 TARGET_NAMES += Sink
 TARGET_NAMES += Source
 

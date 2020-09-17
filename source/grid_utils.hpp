@@ -19,7 +19,7 @@
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "uitsl/countdown/Counter.hpp"
 #include "uitsl/countdown/Timer.hpp"
-#include "uit/conduit/Conduit.hpp"
+#include "uit/fixtures/Conduit.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/math/math_utils.hpp"

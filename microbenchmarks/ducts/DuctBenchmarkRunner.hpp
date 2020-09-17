@@ -10,7 +10,7 @@
 #include <benchmark/benchmark.h>
 
 #include "uitsl/concurrent/Gatherer.hpp"
-#include "uit/conduit/Conduit.hpp"
+#include "uit/fixtures/Conduit.hpp"
 #include "uitsl/chrono/TimeGuard.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"

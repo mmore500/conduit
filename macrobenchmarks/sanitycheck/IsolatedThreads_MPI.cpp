@@ -3,7 +3,7 @@
 #include <mpi.h>
 
 #include "uitsl/chrono/TimeGuard.hpp"
-#include "uit/conduit/Conduit.hpp"
+#include "uit/fixtures/Conduit.hpp"
 #include "uit/config/ImplSpec.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"

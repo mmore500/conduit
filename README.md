@@ -69,7 +69,7 @@ Here's an example of how this works in code.
 #include <ratio>
 #include <utility>
 
-#include "uit/conduit/Conduit.hpp"
+#include "uit/fixtures/Conduit.hpp"
 #include "uit/config/ImplSpec.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 

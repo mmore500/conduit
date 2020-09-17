@@ -2,7 +2,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/config/ImplSpec.hpp"
-#include "uit/conduit/Source.hpp"
+#include "uit/fixtures/Source.hpp"
 #include "uit/mesh/MeshNodeInput.hpp"
 
 TEST_CASE("Test MeshNodeInput") {

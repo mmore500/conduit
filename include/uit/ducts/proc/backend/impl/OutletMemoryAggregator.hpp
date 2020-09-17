@@ -9,8 +9,8 @@
 
 #include "../../../../../uitsl/algorithm/upper_uniquify.hpp"
 
-#include "../../../../conduit/Outlet.hpp"
-#include "../../../../conduit/Source.hpp"
+#include "../../../../spouts/Outlet.hpp"
+#include "../../../../fixtures/Source.hpp"
 #include "../../../../config/InterProcAddress.hpp"
 
 namespace uit {

@@ -6,7 +6,7 @@
 
 #include <mpi.h>
 
-#include "../conduit/Conduit.hpp"
+#include "../fixtures/Conduit.hpp"
 #include "../ducts/Duct.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../topology/Topology.hpp"

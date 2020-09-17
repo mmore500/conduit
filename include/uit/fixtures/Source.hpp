@@ -5,8 +5,7 @@
 #include <stddef.h>
 
 #include "../ducts/Duct.hpp"
-
-#include "Outlet.hpp"
+#include "../spouts/Outlet.hpp"
 
 namespace uit {
 

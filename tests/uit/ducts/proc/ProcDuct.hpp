@@ -20,8 +20,8 @@
 #include "uitsl/utility/assign_utils.hpp"
 
 #include "uit/config/ImplSpec.hpp"
-#include "uit/conduit/Sink.hpp"
-#include "uit/conduit/Source.hpp"
+#include "uit/fixtures/Sink.hpp"
+#include "uit/fixtures/Source.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/mesh/MeshNodeInput.hpp"
 #include "uit/mesh/MeshNodeOutput.hpp"

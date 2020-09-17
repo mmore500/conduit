@@ -3,7 +3,7 @@
 #include <memory>
 #include <stddef.h>
 
-#include "../conduit/Inlet.hpp"
+#include "../spouts/Inlet.hpp"
 
 namespace uit {
 
