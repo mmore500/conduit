@@ -19,7 +19,7 @@ TEST_CASE("Ring Mesh sequential consistency") { {
   auto [input, output] = make_ring_bundle();
 
   // long enough to check that buffer wraparound works properly
-  for (MSG_T i = 1; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+  for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
 
     UITSL_Barrier( MPI_COMM_WORLD );
     output.Put(i);
@@ -64,7 +64,7 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { {
   auto [input, output] = make_producer_consumer_bundle();
 
   // long enough to check that buffer wraparound works properly
-  for (MSG_T i = 1; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+  for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
 
     UITSL_Barrier( MPI_COMM_WORLD );
     if (output) {
@@ -113,7 +113,7 @@ TEST_CASE("Dyadic Mesh sequential consistency") { {
   auto [input, output] = make_dyadic_bundle();
 
   // long enough to check that buffer wraparound works properly
-  for (MSG_T i = 1; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+  for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
 
     UITSL_Barrier( MPI_COMM_WORLD );
     output.Put(i);

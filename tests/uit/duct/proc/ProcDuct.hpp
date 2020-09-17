@@ -10,6 +10,7 @@
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/debug/safe_cast.hpp"
+#include "uitsl/debug/safe_compare.hpp"
 #include "uitsl/distributed/assign_utils.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uitsl/math/math_utils.hpp"

@@ -67,7 +67,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
     auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
-    for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+    for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
       REQUIRE( input.JumpGet() == MSG_T{} );
     }
 
@@ -87,7 +87,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
     auto input = mesh.GetSubmesh(thread_id)[0].GetInput(0);
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
-    for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(i);
+    for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(i);
 
     REQUIRE( input.JumpGet() <= (2 * uit::DEFAULT_BUFFER) * (2 * uit::DEFAULT_BUFFER) );
 

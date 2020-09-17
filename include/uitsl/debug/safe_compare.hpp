@@ -58,9 +58,13 @@ inline bool safe_less(I x, J y) {
 }
 
 template <typename I, typename J>
-inline bool safe_greater(I x, J y) {
-  return safe_less<J, I>(y, x);
-}
+inline bool safe_greater(I x, J y) { return safe_less<J, I>(y, x); }
+
+template <typename I, typename J>
+inline bool safe_leq(I x, J y) { return !safe_greater<I, J>(x, y); }
+
+template <typename I, typename J>
+inline bool safe_geq(I x, J y) { return !safe_less<I, J>(x, y); }
 
 template <typename I, typename J>
 inline bool safe_equal(I x, J y) {

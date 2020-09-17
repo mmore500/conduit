@@ -34,7 +34,7 @@ TEST_CASE("Ring Mesh sequential consistency") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
     // long enough to check that buffer wraparound works properly
-    for (MSG_T i = 1; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+    for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
 
       barrier->arrive_and_wait();
 
@@ -92,7 +92,7 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutputOrNullopt(0);
 
     // long enough to check that buffer wraparound works properly
-    for (MSG_T i = 1; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+    for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
 
       if (output) output->Put(i);
       if (input) REQUIRE( input->GetNext() == i );
@@ -151,7 +151,7 @@ TEST_CASE("Dyadic Mesh sequential consistency") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
     // long enough to check that buffer wraparound works properly
-    for (MSG_T i = 1; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+    for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
 
       barrier->arrive_and_wait();
 
