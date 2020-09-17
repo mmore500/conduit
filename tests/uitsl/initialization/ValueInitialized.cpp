@@ -6,14 +6,14 @@
 
 TEST_CASE("Test ValueInitialized") {
 
-  uit::ValueInitialized<int> val1;
+  uitsl::ValueInitialized<int> val1;
   REQUIRE( val1 == 0 );
   REQUIRE( *(&val1) == 0 );
   val1 = 10;
   REQUIRE( val1 == 10 );
   REQUIRE( *(&val1) == 10 );
 
-  uit::ValueInitialized<double> val2;
+  uitsl::ValueInitialized<double> val2;
   REQUIRE( val2 == 0.0 );
   REQUIRE( *(&val2) == 0.0 );
   val2 = -10.0;

@@ -10,7 +10,7 @@
 
 #include "OccupancyCap.hpp"
 
-namespace uit {
+namespace uitsl {
 
 class OccupancyCaps {
 
@@ -54,4 +54,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

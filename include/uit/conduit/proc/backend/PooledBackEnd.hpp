@@ -38,19 +38,19 @@ public:
 private:
 
   // thread_id of caller -> proc_id of target -> inlet pool
-  uit::VectorMap<
-    uit::thread_id_t,
-    uit::VectorMap<
-      uit::proc_id_t,
+  uitsl::VectorMap<
+    uitsl::thread_id_t,
+    uitsl::VectorMap<
+      uitsl::proc_id_t,
       inlet_pool_t
     >
   > inlet_pools;
 
   // thread_id of caller -> proc_id of target -> outlet pool
-  uit::VectorMap<
-    uit::thread_id_t,
-    uit::VectorMap<
-      uit::proc_id_t,
+  uitsl::VectorMap<
+    uitsl::thread_id_t,
+    uitsl::VectorMap<
+      uitsl::proc_id_t,
       outlet_pool_t
     >
   > outlet_pools;

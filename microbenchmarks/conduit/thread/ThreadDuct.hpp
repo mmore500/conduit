@@ -5,15 +5,15 @@
 #include "../DuctBenchmarkRegistration.hpp"
 
 // sample doubling thread counts
-uit::ForEach<
+uitsl::ForEach<
   ThreadCountPayload,
   128,
   2,
   std::multiplies<size_t>
 > range{};
 
-const uit::MpiGuard mguard;
+const uitsl::MpiGuard mguard;
 
-const uit::ScopeGuard sguard{ [](){ range.item<1>(); } };
+const uitsl::ScopeGuard sguard{ [](){ range.item<1>(); } };
 
 BENCHMARK_MAIN();

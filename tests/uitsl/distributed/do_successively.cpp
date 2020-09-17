@@ -8,11 +8,11 @@
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("test do_successively") {
 
-  uit::do_successively(
+  uitsl::do_successively(
     [=](){ std::cout << "hello" << std::endl; },
     uit::print_separator
   );

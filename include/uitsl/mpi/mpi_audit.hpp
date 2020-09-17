@@ -4,7 +4,7 @@
 
 #include "../../../third-party/Empirical/source/base/assert.h"
 
-namespace uit {
+namespace uitsl {
 
 inline void mpi_audit(const int err) {
 
@@ -186,4 +186,4 @@ inline void mpi_audit(const int err) {
 
 }
 
-} // namespace uit
+} // namespace uitsl

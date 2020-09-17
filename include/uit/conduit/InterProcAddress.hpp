@@ -17,20 +17,20 @@ namespace uit {
  */
 class InterProcAddress {
 
-  uit::proc_id_t outlet_proc;
-  uit::proc_id_t inlet_proc;
-  uit::thread_id_t outlet_thread;
-  uit::thread_id_t inlet_thread;
+  uitsl::proc_id_t outlet_proc;
+  uitsl::proc_id_t inlet_proc;
+  uitsl::thread_id_t outlet_thread;
+  uitsl::thread_id_t inlet_thread;
   int tag;
   MPI_Comm comm;
 
 public:
 
   InterProcAddress(
-    const uit::proc_id_t outlet_proc_=0,
-    const uit::proc_id_t inlet_proc_=0,
-    const uit::thread_id_t outlet_thread_=0,
-    const uit::thread_id_t inlet_thread_=0,
+    const uitsl::proc_id_t outlet_proc_=0,
+    const uitsl::proc_id_t inlet_proc_=0,
+    const uitsl::thread_id_t outlet_thread_=0,
+    const uitsl::thread_id_t inlet_thread_=0,
     const int tag_=0,
     const MPI_Comm comm_=MPI_COMM_WORLD
   ) : outlet_proc(outlet_proc_)
@@ -41,13 +41,13 @@ public:
   , comm(comm_)
   { ; }
 
-  uit::proc_id_t GetOutletProc() const { return outlet_proc; }
+  uitsl::proc_id_t GetOutletProc() const { return outlet_proc; }
 
-  uit::proc_id_t GetInletProc() const { return inlet_proc; }
+  uitsl::proc_id_t GetInletProc() const { return inlet_proc; }
 
-  uit::thread_id_t GetOutletThread() const { return outlet_thread; }
+  uitsl::thread_id_t GetOutletThread() const { return outlet_thread; }
 
-  uit::thread_id_t GetInletThread() const { return inlet_thread; }
+  uitsl::thread_id_t GetInletThread() const { return inlet_thread; }
 
   int GetTag() const { return tag; }
 
@@ -96,18 +96,18 @@ public:
   std::string ToString() const {
 
     std::stringstream ss;
-    ss << format_member("uit::proc_id_t outlet_proc", outlet_proc) << std::endl;
-    ss << format_member("uit::proc_id_t inlet_proc", inlet_proc) << std::endl;
-    ss << format_member(
-      "uit::thread_id_t outlet_thread",
+    ss << uitsl::format_member("uitsl::proc_id_t outlet_proc", outlet_proc) << std::endl;
+    ss << uitsl::format_member("uitsl::proc_id_t inlet_proc", inlet_proc) << std::endl;
+    ss << uitsl::format_member(
+      "uitsl::thread_id_t outlet_thread",
       outlet_thread
     ) << std::endl;
-    ss << format_member(
-      "uit::thread_id_t inlet_thread",
+    ss << uitsl::format_member(
+      "uitsl::thread_id_t inlet_thread",
       inlet_thread
     ) << std::endl;
-    ss << format_member("int tag", tag) << std::endl;
-    ss << format_member("MPI_Comm comm", uit::comm_to_string(comm));
+    ss << uitsl::format_member("int tag", tag) << std::endl;
+    ss << uitsl::format_member("MPI_Comm comm", uitsl::comm_to_string(comm));
 
     return ss.str();
   }

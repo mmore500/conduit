@@ -8,7 +8,7 @@ TEST_CASE("ParallelTimeoutBarrier") {
 
   // TODO expand stub test
   const size_t num_threads{ 1 };
-  static uit::ThreadIbarrierFactory factory{ num_threads };
-  uit::ParallelTimeoutBarrier{ factory.MakeBarrier() };
+  static uitsl::ThreadIbarrierFactory factory{ num_threads };
+  uitsl::ParallelTimeoutBarrier{ factory.MakeBarrier() };
 
 }

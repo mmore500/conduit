@@ -4,7 +4,7 @@
 
 #include "../utility/NamedArrayElement.hpp"
 
-namespace uit {
+namespace uitsl {
 
 template<typename T>
 struct RdmaAccumulatorPacket {
@@ -31,4 +31,4 @@ struct RdmaAccumulatorPacket {
 
 };
 
-} // namespace uit
+} // namespace uitsl

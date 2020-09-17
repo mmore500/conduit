@@ -7,7 +7,7 @@
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("Test Source") {
 

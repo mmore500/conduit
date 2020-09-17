@@ -13,7 +13,7 @@
 #include "uitsl/utility/assign_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("comm_size") {
 
@@ -24,25 +24,25 @@ TEST_CASE("comm_size") {
 
 TEST_CASE("split_comm") {
 
-  const uit::proc_id_t my_rank{ uit::get_rank() };
+  const uitsl::proc_id_t my_rank{ uitsl::get_rank() };
 
-  const uit::proc_id_t num_ranks{ uit::get_nprocs() };
+  const uitsl::proc_id_t num_ranks{ uitsl::get_nprocs() };
 
   // TODO refactor to use assign_utils
   const MPI_Comm every_other{
-    uit::split_comm([](const uit::proc_id_t rank){ return rank%2 == 0; })
+    uitsl::split_comm([](const uitsl::proc_id_t rank){ return rank%2 == 0; })
   };
   const MPI_Comm halves{
-    uit::split_comm([=](const uit::proc_id_t rank){
+    uitsl::split_comm([=](const uitsl::proc_id_t rank){
       return rank * 2 / num_ranks;
     })
   };
 
   REQUIRE(
-    uit::difference(uit::comm_size(every_other), uit::comm_size(halves)) <= 1
+    uitsl::difference(uitsl::comm_size(every_other), uitsl::comm_size(halves)) <= 1
   );
 
-  emp::vector<uit::proc_id_t> comm_ranks( uit::comm_size(every_other) );
+  emp::vector<uitsl::proc_id_t> comm_ranks( uitsl::comm_size(every_other) );
 
   UIT_Allgather(
     &my_rank, // const void *sendbuf
@@ -60,7 +60,7 @@ TEST_CASE("split_comm") {
     [my_rank](const auto & rank){ return rank % 2 == my_rank % 2; }
   ) );
 
-  comm_ranks.resize( uit::comm_size(halves) );
+  comm_ranks.resize( uitsl::comm_size(halves) );
 
   UIT_Allgather(
     &my_rank, // const void *sendbuf
@@ -84,6 +84,6 @@ TEST_CASE("split_comm") {
 
 TEST_CASE("comm_to_string") {
 
-  REQUIRE(!uit::comm_to_string(MPI_COMM_WORLD).empty());
+  REQUIRE(!uitsl::comm_to_string(MPI_COMM_WORLD).empty());
 
 }

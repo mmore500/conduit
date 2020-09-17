@@ -2,7 +2,7 @@
 
 #include <functional>
 
-namespace uit {
+namespace uitsl {
 
 class ScopeGuard {
 
@@ -19,4 +19,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

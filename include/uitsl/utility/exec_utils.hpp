@@ -7,7 +7,7 @@
 
 #include "../../../third-party/Empirical/source/base/array.h"
 
-namespace uit {
+namespace uitsl {
 
 // adapted from https://stackoverflow.com/a/478960
 std::string exec(const char* cmd) {
@@ -23,4 +23,4 @@ std::string exec(const char* cmd) {
     return result;
 }
 
-} // namespace uit
+} // namespace uitsl

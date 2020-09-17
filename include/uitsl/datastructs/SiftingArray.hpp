@@ -8,7 +8,7 @@
 #include "../../../third-party/Empirical/source/base/assert.h"
 #include "../../../third-party/Empirical/source/base/array.h"
 
-namespace uit {
+namespace uitsl {
 
 template<typename T, size_t N>
 class SiftingArray {

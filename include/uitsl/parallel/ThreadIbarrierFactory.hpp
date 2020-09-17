@@ -6,7 +6,7 @@
 #include "_ThreadIbarrierManager.hpp"
 #include "ThreadIbarrier.hpp"
 
-namespace uit {
+namespace uitsl {
 
 class ThreadIbarrierFactory {
 
@@ -18,8 +18,8 @@ public:
   : manager(std::make_shared<internal::ThreadIbarrierManager>(expected))
   { ; }
 
-  uit::ThreadIbarrier MakeBarrier() { return manager->MakeBarrier(); }
+  uitsl::ThreadIbarrier MakeBarrier() { return manager->MakeBarrier(); }
 
 };
 
-} // namespace uit
+} // namespace uitsl

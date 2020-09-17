@@ -42,21 +42,21 @@ private:
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
-  using packet_t = uit::RdmaAccumulatorPacket<T>;
+  using packet_t = uitsl::RdmaAccumulatorPacket<T>;
 
-  uit::Request request{};
+  uitsl::Request request{};
   packet_t buffer{};
 
   const uit::InterProcAddress address;
 
   std::shared_ptr<BackEndImpl> back_end;
 
-  uit::Request target_offset_request;
+  uitsl::Request target_offset_request;
   int target_offset;
 
   void DoPostAccumulate() {
 
-    emp_assert( uit::test_null( request ) );
+    emp_assert( uitsl::test_null( request ) );
 
     // TODO FIXME what kind of lock is needed here?
     back_end->GetWindowManager().LockShared( address.GetOutletProc() );
@@ -71,14 +71,14 @@ private:
 
     back_end->GetWindowManager().Unlock( address.GetOutletProc() );
 
-    emp_assert( !uit::test_null( request ) );
+    emp_assert( !uitsl::test_null( request ) );
 
     buffer = packet_t{};
 
   }
 
   void TryPostAccumulate() {
-    if (uit::test_completion( request )) DoPostAccumulate();
+    if (uitsl::test_completion( request )) DoPostAccumulate();
   }
 
 public:
@@ -90,7 +90,7 @@ public:
   , back_end(back_end_)
   {
 
-    if (uit::get_rank(address.GetComm()) == address.GetInletProc()) {
+    if (uitsl::get_rank(address.GetComm()) == address.GetInletProc()) {
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
@@ -142,8 +142,8 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("InterProcAddress address", address) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
     return ss.str();
   }
 

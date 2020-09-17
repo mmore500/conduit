@@ -10,7 +10,7 @@
 
 TEST_CASE("Test CountdownProgresBar<Counter>") {
 
-  using bar_t = uit::ProgressBar<uit::Counter>;
+  using bar_t = uitsl::ProgressBar<uitsl::Counter>;
 
   for ( [[maybe_unused]] auto it : bar_t{ std::mega{}.num })
     ;
@@ -19,11 +19,11 @@ TEST_CASE("Test CountdownProgresBar<Counter>") {
 
 TEST_CASE("Test CountdownProgresBar<Timer>") {
 
-  using timer_t = uit::Timer<
+  using timer_t = uitsl::Timer<
     std::chrono::duration<double, std::ratio<1>>,
-    uit::CoarseClock
+    uitsl::CoarseClock
   >;
-  using bar_t = uit::ProgressBar<timer_t>;
+  using bar_t = uitsl::ProgressBar<timer_t>;
 
   for ( [[maybe_unused]] auto it : bar_t{ std::chrono::seconds{3} })
     ;

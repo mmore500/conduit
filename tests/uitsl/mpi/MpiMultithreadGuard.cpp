@@ -9,20 +9,20 @@
 #include "uitsl/mpi/MpiMultithreadGuard.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 
-const uit::MpiMultithreadGuard guard;
+const uitsl::MpiMultithreadGuard guard;
 
 TEST_CASE("Test MpiMultithreadGuard") {
 
-  uit::ThreadTeam team;
+  uitsl::ThreadTeam team;
   for (int thread = 0; thread < 4; ++thread) {
     team.Add([thread](){
 
-      const int proc_id = uit::get_proc_id();
+      const int proc_id = uitsl::get_proc_id();
       // 0 <-> 1, 2 <-> 3, etc.
       const int target_rank = (
         proc_id
         // in odd case, last process needs to connect to itself
-        + ( proc_id % 2 == 0 && proc_id < uit::get_nprocs() - 1 )
+        + ( proc_id % 2 == 0 && proc_id < uitsl::get_nprocs() - 1 )
         - ( proc_id % 2 == 1 )
       );
 

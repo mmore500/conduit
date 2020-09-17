@@ -85,7 +85,7 @@ int main() {
 
   auto& [inlet, outlet] = conduit;
 
-  uit::ThreadTeam team;
+  uitsl::ThreadTeam team;
 
   // start a producer thread
   team.Add( [&inlet](){
@@ -202,8 +202,8 @@ const size_t num_threads = 2; // two threads per process
 struct Message {
 
   size_t node_id{};
-  uit::thread_id_t thread_id{};
-  uit::proc_id_t proc_id{};
+  uitsl::thread_id_t thread_id{};
+  uitsl::proc_id_t proc_id{};
 
   bool operator==(const Message& other) const {
     return std::tuple{
@@ -220,7 +220,7 @@ struct Message {
   std::string ToString() const {
 
     std::stringstream ss;
-    ss << "p" << uit::get_proc_id();
+    ss << "p" << uitsl::get_proc_id();
     ss << " / ";
     ss << "t" << thread_id;
     ss << " / ";
@@ -236,11 +236,11 @@ struct Message {
 using Spec = uit::ImplSpec<Message>;
 
 // MPI initialization & finalization boilerplate
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 // first task each thread will execute
 void send_task(
-  const uit::thread_id_t thread_id,
+  const uitsl::thread_id_t thread_id,
   uit::Mesh<Spec>::submesh_t& my_nodes
 ) {
 
@@ -248,7 +248,7 @@ void send_task(
   // sending node, thread, and process so we can check how things are connected
   for (size_t node_id = 0; node_id < my_nodes.size(); ++node_id) {
 
-    const Message message{ node_id, thread_id, uit::get_proc_id() };
+    const Message message{ node_id, thread_id, uitsl::get_proc_id() };
 
     auto& node = my_nodes[node_id];
 
@@ -261,7 +261,7 @@ void send_task(
 
 // second task each thread will execute
 void receive_task(
-  const uit::thread_id_t thread_id,
+  const uitsl::thread_id_t thread_id,
   uit::Mesh<Spec>::submesh_t& my_nodes
 ) {
 
@@ -270,7 +270,7 @@ void receive_task(
   for (size_t node_id = 0; node_id < my_nodes.size(); ++node_id) {
 
     // for convenience of printing who I am
-    const Message my_info{ node_id, thread_id, uit::get_proc_id() };
+    const Message my_info{ node_id, thread_id, uitsl::get_proc_id() };
 
     auto& node = my_nodes[node_id];
 
@@ -284,7 +284,7 @@ void receive_task(
 }
 
 // make each thread execute send_task then receive_&ask
-void thread_job(const uit::thread_id_t thread_id, uit::Mesh<Spec>& mesh) {
+void thread_job(const uitsl::thread_id_t thread_id, uit::Mesh<Spec>& mesh) {
 
   // get nodes that this thread on this process are responsible for
   auto my_nodes = mesh.GetSubmesh(thread_id);
@@ -301,14 +301,14 @@ int main() {
     // how should nodes be connected?
     uit::RingTopologyFactory{}(num_nodes),
     // how should nodes be assigned to threads?
-    uit::AssignRoundRobin<uit::thread_id_t>{num_threads},
+    uitsl::AssignRoundRobin<uitsl::thread_id_t>{num_threads},
     // how should nodes be assigned to processes?
-    uit::AssignContiguously<uit::proc_id_t>{num_procs, num_nodes}
+    uitsl::AssignContiguously<uitsl::proc_id_t>{num_procs, num_nodes}
   };
 
   // kick off threads
-  uit::ThreadTeam team;
-  for (uit::thread_id_t tid = 0; tid < num_threads; ++tid) {
+  uitsl::ThreadTeam team;
+  for (uitsl::thread_id_t tid = 0; tid < num_threads; ++tid) {
     team.Add([tid, &mesh](){ thread_job(tid, mesh); });
   }
 

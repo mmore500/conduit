@@ -5,7 +5,7 @@
 
 #include "../../../third-party/Empirical/source/tools/math.h"
 
-namespace uit {
+namespace uitsl {
 
 namespace internal {
 
@@ -67,4 +67,4 @@ inline bool safe_equal(I x, J y) {
   return !safe_less<I, J>(x, y) && !safe_greater<I, J>(x, y);
 }
 
-} // namespace uit
+} // namespace uitsl

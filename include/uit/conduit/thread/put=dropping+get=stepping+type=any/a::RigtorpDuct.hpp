@@ -29,7 +29,7 @@ class RigtorpDuct {
 
   rigtorp::SPSCQueue<T> queue{N};
 
-  using pending_t = uit::RelaxedAtomic<size_t>;
+  using pending_t = uitsl::RelaxedAtomic<size_t>;
 
   uit_occupancy_auditor;
 
@@ -121,7 +121,7 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
     return ss.str();
   }
 

@@ -2,7 +2,7 @@ TEST_CASE("Ring Mesh connectivity") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::RingTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {
@@ -11,10 +11,10 @@ TEST_CASE("Ring Mesh connectivity") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
     // check that everyone's connected properly
-    output.TryPut(uit::get_rank());
+    output.TryPut(uitsl::get_rank());
 
-    REQUIRE( input.GetNext() == uit::safe_cast<MSG_T>(
-      uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+    REQUIRE( input.GetNext() == uitsl::safe_cast<MSG_T>(
+      uitsl::circular_index(uitsl::get_rank(), uitsl::get_nprocs(), -1)
     ) );
 
   } THREADED_END
@@ -25,7 +25,7 @@ TEST_CASE("Ring Mesh sequential consistency") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::RingTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {
@@ -51,7 +51,7 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::RingTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {
@@ -60,20 +60,20 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutputOrNullopt(0);
 
     // check that everyone's connected properly
-    if (output) output->Put(uit::get_rank());
+    if (output) output->Put(uitsl::get_rank());
 
     // did we get expected rank ID as message?
-    if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
+    if (uitsl::get_nprocs() % 2 && uitsl::get_rank() + 1 == uitsl::get_nprocs()) {
       // is odd process loop at end
-      REQUIRE( input->GetNext() == uit::get_rank());
+      REQUIRE( input->GetNext() == uitsl::get_rank());
     } else if (input) {
       // is consumer
       REQUIRE(
-        input->GetNext() == uit::safe_cast<int>(
-          uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+        input->GetNext() == uitsl::safe_cast<int>(
+          uitsl::circular_index(uitsl::get_rank(), uitsl::get_nprocs(), -1)
         )
       );
-    } else REQUIRE( uit::get_rank() % 2 == 0 ); // is producer
+    } else REQUIRE( uitsl::get_rank() % 2 == 0 ); // is producer
 
   } THREADED_END
 
@@ -83,7 +83,7 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::RingTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {
@@ -107,7 +107,7 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::DyadicTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {
@@ -116,20 +116,20 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
     // check that everyone's connected properly
-    output.Put(uit::get_rank());
+    output.Put(uitsl::get_rank());
 
     // did we get expected rank ID as message?
-    if (uit::get_nprocs() % 2 && uit::get_rank() + 1 == uit::get_nprocs()) {
+    if (uitsl::get_nprocs() % 2 && uitsl::get_rank() + 1 == uitsl::get_nprocs()) {
       // is connected to self (is odd process loop at end)
-      REQUIRE( input.GetNext() == uit::get_rank() );
+      REQUIRE( input.GetNext() == uitsl::get_rank() );
     } else {
       // is connected to neighbor
-      REQUIRE( input.GetNext() == uit::safe_cast<int>(
-        uit::circular_index(
-          uit::get_rank(),
-          uit::get_nprocs(),
+      REQUIRE( input.GetNext() == uitsl::safe_cast<int>(
+        uitsl::circular_index(
+          uitsl::get_rank(),
+          uitsl::get_nprocs(),
           // is pointing forwards or backwards
-          (uit::get_rank() % 2) ? -1 : 1
+          (uitsl::get_rank() % 2) ? -1 : 1
         )
       ) );
     }
@@ -142,7 +142,7 @@ TEST_CASE("Dyadic Mesh sequential consistency") { REPEAT {
 
   uit::Mesh<Spec> mesh{
     uit::DyadicTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
   THREADED_BEGIN {

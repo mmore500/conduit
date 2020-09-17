@@ -242,15 +242,15 @@ public:
    */
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member(
-      "uit::get_proc_id()",
-      uit::get_proc_id()
+    ss << uitsl::format_member(
+      "uitsl::get_proc_id()",
+      uitsl::get_proc_id()
     ) << std::endl;
-    ss << format_member(
+    ss << uitsl::format_member(
       "GetUID()",
       GetUID()
     ) << std::endl;
-    ss << format_member(
+    ss << uitsl::format_member(
       "std::variant impl",
       std::visit(
         [](auto& arg) -> std::string { return arg.ToString(); },

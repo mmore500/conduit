@@ -12,7 +12,7 @@
 // clang: https://quick-bench.com/q/wq_AmWxlB370-9kWRvqYOW9s094
 // ~280x faster than std::chrono clocks
 
-namespace uit {
+namespace uitsl {
 
 struct CoarseClock {
 
@@ -43,4 +43,4 @@ struct CoarseClock {
 
 };
 
-} // namespace uit
+} // namespace uitsl

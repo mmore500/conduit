@@ -5,7 +5,7 @@
 
 TEST_CASE("Test CircularIndex")
 {
-  uit::CircularIndex<10> i;
+  uitsl::CircularIndex<10> i;
 
   REQUIRE( i == 0 );
 
@@ -17,7 +17,7 @@ TEST_CASE("Test CircularIndex")
 
   REQUIRE ( (i += 8) == 0 );
 
-  uit::CircularIndex<10> j(i);
+  uitsl::CircularIndex<10> j(i);
 
   REQUIRE( j == 0 );
 
@@ -31,14 +31,14 @@ TEST_CASE("Test CircularIndex")
 
   REQUIRE ( (j-1) == 8 );
 
-  REQUIRE(uit::CircularIndex<10>(-1) == 9);
+  REQUIRE(uitsl::CircularIndex<10>(-1) == 9);
 
-  REQUIRE(uit::CircularIndex<10>{} - 1 == 9);
+  REQUIRE(uitsl::CircularIndex<10>{} - 1 == 9);
 
-  REQUIRE(uit::CircularIndex<10>{} - 2 == 8);
+  REQUIRE(uitsl::CircularIndex<10>{} - 2 == 8);
 
-  REQUIRE(uit::CircularIndex<10>{} + -1 == 9);
+  REQUIRE(uitsl::CircularIndex<10>{} + -1 == 9);
 
-  REQUIRE(uit::CircularIndex<10>{} + -2 == 8);
+  REQUIRE(uitsl::CircularIndex<10>{} + -2 == 8);
 
 }

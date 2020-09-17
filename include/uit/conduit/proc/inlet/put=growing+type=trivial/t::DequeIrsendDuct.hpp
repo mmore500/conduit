@@ -16,14 +16,14 @@ namespace t {
 template<typename ImplSpec>
 class DequeIrsendDuct
 : public uit::internal::TrivialDequeImmediateSendDuct<
-  uit::IrsendFunctor,
+  uitsl::IrsendFunctor,
   ImplSpec
 > {
 
   // inherit parent's constructors
   // adapted from https://stackoverflow.com/a/434784
   using parent_t = uit::internal::TrivialDequeImmediateSendDuct<
-    uit::IrsendFunctor,
+    uitsl::IrsendFunctor,
     ImplSpec
   >;
   using parent_t::parent_t;

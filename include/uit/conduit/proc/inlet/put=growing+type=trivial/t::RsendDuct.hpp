@@ -16,14 +16,14 @@ namespace t {
 template<typename ImplSpec>
 class RsendDuct
 : public uit::internal::TrivialBlockingSendDuct<
-  uit::RsendFunctor,
+  uitsl::RsendFunctor,
   ImplSpec
 > {
 
   // inherit parent's constructors
   // adapted from https://stackoverflow.com/a/434784
   using parent_t = uit::internal::TrivialBlockingSendDuct<
-    uit::RsendFunctor,
+    uitsl::RsendFunctor,
     ImplSpec
   >;
   using parent_t::parent_t;

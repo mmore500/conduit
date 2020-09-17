@@ -8,7 +8,7 @@
 
 TEST_CASE("VectorMap") {
 
-  uit::VectorMap<size_t, std::string> map;
+  uitsl::VectorMap<size_t, std::string> map;
 
   REQUIRE( map[2] == "");
   REQUIRE( map.at(2) == "");

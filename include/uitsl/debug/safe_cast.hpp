@@ -5,7 +5,7 @@
 
 #include "safe_compare.hpp"
 
-namespace uit {
+namespace uitsl {
 
 // adapted from https://stackoverflow.com/a/49658950
 template<typename Dst, typename Src>
@@ -64,4 +64,4 @@ inline Dst safe_cast(Src value)
     return static_cast<Dst>(value);
 }
 
-} // namespace uit
+} // namespace uitsl

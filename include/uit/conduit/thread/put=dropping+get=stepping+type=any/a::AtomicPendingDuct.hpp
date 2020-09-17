@@ -20,8 +20,8 @@ namespace a {
 template<typename ImplSpec>
 class AtomicPendingDuct
 : public uit::internal::PendingDuct<
-  uit::AlignedInherit<std::atomic<size_t>>,
-  uit::AlignedImplicit<typename ImplSpec::T>,
+  uitsl::AlignedInherit<std::atomic<size_t>>,
+  uitsl::AlignedImplicit<typename ImplSpec::T>,
   ImplSpec
 >
 {

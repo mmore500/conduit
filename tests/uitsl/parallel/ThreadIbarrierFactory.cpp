@@ -6,6 +6,6 @@
 TEST_CASE("ThreadIbarrierFactory") {
 
   // TODO expand stub test
-  uit::ThreadIbarrierFactory{42};
+  uitsl::ThreadIbarrierFactory{42};
 
 }

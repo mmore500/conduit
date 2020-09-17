@@ -5,7 +5,7 @@
 #include "../../../third-party/Empirical/source/base/vector.h"
 #include "../../../third-party/Empirical/source/polyfill/span.h"
 
-namespace uit {
+namespace uitsl {
 
 template<typename T>
 class spector {
@@ -144,4 +144,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

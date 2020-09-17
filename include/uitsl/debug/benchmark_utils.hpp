@@ -6,7 +6,7 @@
 
 #include "../math/stats_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 // adapted from Google Benchmark
 // https://github.com/google/benchmark/blob/37177a84b7e8d33696ea1e1854513cb0de3b4dc3/include/benchmark/benchmark.h#L307
@@ -74,4 +74,4 @@ benchmark::internal::Benchmark* report_confidence(
   );
 }
 
-} // namespace uit
+} // namespace uitsl

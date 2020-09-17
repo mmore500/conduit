@@ -32,27 +32,27 @@ struct DuctMicrobenchRunner {
   using submesh_t = typename uit::Mesh<ImplSpec>::submesh_t;
 
   uit::Mesh<ImplSpec> mesh{
-    MeshFactory{}(NumThreadsType{}() * uit::get_nprocs()),
-    [](const uit::thread_id_t tid) {
+    MeshFactory{}(NumThreadsType{}() * uitsl::get_nprocs()),
+    [](const uitsl::thread_id_t tid) {
       // single proc: all nodes assigned to unique thread
       // multi proc: all nodes assigned to thread 0
-      return uit::is_multiprocess()
-        ? uit::AssignIntegrated<uit::thread_id_t>{}(tid)
-        : uit::AssignSegregated<uit::thread_id_t>{}(tid)
+      return uitsl::is_multiprocess()
+        ? uitsl::AssignIntegrated<uitsl::thread_id_t>{}(tid)
+        : uitsl::AssignSegregated<uitsl::thread_id_t>{}(tid)
       ;
     },
-    [](const uit::proc_id_t pid) {
+    [](const uitsl::proc_id_t pid) {
       // single proc: all nodes assigned to proc 0
       // multi proc: all nodes assigned to different proc
-      return uit::is_multiprocess()
-        ? uit::AssignSegregated<uit::proc_id_t>{}(pid)
-        : uit::AssignIntegrated<uit::proc_id_t>{}(pid)
+      return uitsl::is_multiprocess()
+        ? uitsl::AssignSegregated<uitsl::proc_id_t>{}(pid)
+        : uitsl::AssignIntegrated<uitsl::proc_id_t>{}(pid)
       ;
     }
   };
 
   // infrastructure to gather latency readings from support processes
-  uit::Gatherer<long long int> latency_gatherer{MPI_INT};
+  uitsl::Gatherer<long long int> latency_gatherer{MPI_INT};
 
   struct StatTracker {
     // how many send/receive cycles elapsed during the benchmark?
@@ -74,7 +74,7 @@ struct DuctMicrobenchRunner {
 
     // only root process runs benchmark
     // other procs just pump their conduits until benchmark concludes
-    if (uit::is_root()) {
+    if (uitsl::is_root()) {
       auto [last_sent_msg, res] = DoBenchmark(state);
       LogResult(state, res);
     } else {
@@ -145,7 +145,7 @@ struct DuctMicrobenchRunner {
 
     // gather latency measurements from other procs
     // TODO the multiproc latency measurement seems broken
-    if (uit::is_multiprocess()) {
+    if (uitsl::is_multiprocess()) {
       latency_gatherer.Put(res.net_latency);
       const auto gathered = latency_gatherer.Gather();
       if (gathered) {
@@ -197,7 +197,7 @@ struct DuctMicrobenchRunner {
       {
         "Processes",
         benchmark::Counter(
-          uit::get_nprocs(),
+          uitsl::get_nprocs(),
           benchmark::Counter::kAvgThreads
         )
       }
@@ -220,7 +220,7 @@ struct DuctMicrobenchRunner {
     UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
 
     // loop until benchmarking is complete
-    while (!uit::test_completion(ibarrier_request)) {
+    while (!uitsl::test_completion(ibarrier_request)) {
 
       // check if benchmarking complete intermittently
       for (size_t i = 0; i < 100; ++i) {

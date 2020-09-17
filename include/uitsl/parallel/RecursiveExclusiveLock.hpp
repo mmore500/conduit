@@ -7,16 +7,16 @@
 #include "RecursiveMutex.hpp"
 #include "thread_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 class RecursiveExclusiveLock {
 
-  uit::RecursiveMutex& mutex;
+  uitsl::RecursiveMutex& mutex;
   emp::optional<std::unique_lock<std::shared_mutex>> lock;
 
 public:
 
-  RecursiveExclusiveLock(uit::RecursiveMutex& mutex_)
+  RecursiveExclusiveLock(uitsl::RecursiveMutex& mutex_)
   : mutex(mutex_)
   {
     if (not mutex.HasThreadOwnership()) {
@@ -29,4 +29,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

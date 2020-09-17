@@ -9,7 +9,7 @@
 TEST_CASE("Test RingBuffer") {
 
   constexpr size_t buff_size{ 10 };
-  uit::RingBuffer<size_t, buff_size> buff;
+  uitsl::RingBuffer<size_t, buff_size> buff;
 
   for (size_t rep = 0; rep < std::mega{}.num; ++rep) {
 

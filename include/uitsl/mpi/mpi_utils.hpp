@@ -20,7 +20,7 @@
 #include "request_utils.hpp"
 #include "status_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 void mpi_init_multithread(int *argc, char ***argv) {
   int res{};
@@ -40,4 +40,4 @@ void mpi_init() {
   UIT_Init(&argc, nullptr);
 }
 
-} // namespace uit
+} // namespace uitsl

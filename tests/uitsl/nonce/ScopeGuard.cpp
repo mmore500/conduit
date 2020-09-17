@@ -11,7 +11,7 @@ TEST_CASE("Test ScopeGuard with default OnDestruct")
   REQUIRE( i == 0 );
 
   {
-  const uit::ScopeGuard guard{ [&](){++i;} };
+  const uitsl::ScopeGuard guard{ [&](){++i;} };
   REQUIRE( i == 1 );
   }
 
@@ -27,7 +27,7 @@ TEST_CASE("Test ScopeGuard with custom OnDestruct")
   REQUIRE( i == 0 );
 
   {
-  const uit::ScopeGuard guard{ [&](){++i;}, [&](){--i;} };
+  const uitsl::ScopeGuard guard{ [&](){++i;}, [&](){--i;} };
   REQUIRE( i == 1 );
   }
 

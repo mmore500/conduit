@@ -2,7 +2,7 @@
 
 #include <mpi.h>
 
-namespace uit {
+namespace uitsl {
 
 class Request {
 
@@ -20,4 +20,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

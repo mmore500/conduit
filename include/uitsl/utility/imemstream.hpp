@@ -3,7 +3,7 @@
 #include <streambuf>
 #include <istream>
 
-namespace uit {
+namespace uitsl {
 
 // adapted from https://stackoverflow.com/a/13059195
 
@@ -21,4 +21,4 @@ struct imemstream: virtual membuf, std::istream {
   }
 };
 
-} // namespace uit
+} // namespace uitsl

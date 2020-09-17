@@ -8,7 +8,7 @@
 TEST_CASE("vector") {
 
   // TODO expand stub test
-  uit::safe::vector<std::string> vector;
+  uitsl::safe::vector<std::string> vector;
 
   REQUIRE(vector.empty());
   vector.push_back("hello");

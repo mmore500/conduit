@@ -42,18 +42,18 @@ private:
   constexpr inline static size_t N{ImplSpec::N};
 
   // one extra in the data buffer to hold the current get
-  uit::RingBuffer<T, N + 1> data;
-  uit::SiftingArray<MPI_Request, N> requests;
+  uitsl::RingBuffer<T, N + 1> data;
+  uitsl::SiftingArray<MPI_Request, N> requests;
 
   const uit::InterProcAddress address;
 
   void PostReceiveRequest() {
-    uit::err_audit(!
+    uitsl::err_audit(!
       data.PushHead()
     );
     requests.PushBack( MPI_REQUEST_NULL );
 
-    emp_assert( uit::test_null( requests.Back() ) );
+    emp_assert( uitsl::test_null( requests.Back() ) );
     UIT_Irecv(
       &data.GetHead(),
       sizeof(T),
@@ -63,20 +63,20 @@ private:
       address.GetComm(),
       &requests.Back()
     );
-    emp_assert( !uit::test_null( requests.Back() ) );
+    emp_assert( !uitsl::test_null( requests.Back() ) );
 
   }
 
   void CancelReceiveRequest() {
-    emp_assert( !uit::test_null( requests.Back() ) );
+    emp_assert( !uitsl::test_null( requests.Back() ) );
 
     UIT_Cancel(  &requests.Back() );
     UIT_Request_free( &requests.Back() );
 
-    emp_assert( uit::test_null( requests.Back() ) );
+    emp_assert( uitsl::test_null( requests.Back() ) );
 
-    uit::err_audit(!  data.PopTail()  );
-    uit::err_audit(!  requests.PopBack()  );
+    uitsl::err_audit(!  data.PopTail()  );
+    uitsl::err_audit(!  requests.PopBack()  );
 
   }
 
@@ -93,7 +93,7 @@ private:
     emp_assert( std::none_of(
       std::begin(requests),
       std::end(requests),
-      [](const auto& req){ return uit::test_null( req ); }
+      [](const auto& req){ return uitsl::test_null( req ); }
     ) );
 
     thread_local emp::array<int, N> out_indices; // ignored
@@ -141,7 +141,7 @@ public:
     emp_assert( std::none_of(
       std::begin(requests),
       std::end(requests),
-      [](const auto& req){ return uit::test_null( req ); }
+      [](const auto& req){ return uitsl::test_null( req ); }
     ) );
   }
 
@@ -176,7 +176,7 @@ public:
 
       --batch_countdown;
       --requested_countdown;
-      uit::err_audit(!   data.PopTail()   );
+      uitsl::err_audit(!   data.PopTail()   );
       PostReceiveRequest();
 
       if (full_batch && batch_countdown == 0) {
@@ -210,8 +210,8 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("InterProcAddress address", address) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
     return ss.str();
   }
 

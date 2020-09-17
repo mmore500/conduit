@@ -112,7 +112,7 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
     return ss.str();
   }
 

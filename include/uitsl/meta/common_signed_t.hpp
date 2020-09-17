@@ -4,7 +4,7 @@
 
 #include <type_traits>
 
-namespace uit {
+namespace uitsl {
 
 /**
  * Similar to std::common_type_t<A, B>, but if A or B are signed, the result will also be signed.
@@ -17,4 +17,4 @@ using common_signed_t =
                        std::common_type_t<A, B>,
                        std::common_type_t<std::make_signed_t<A>, std::make_signed_t<B>>>;
 
-} // namespace uit
+} // namespace uitsl

@@ -2,14 +2,14 @@
 
 #include "../mpi/mpi_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 struct AssignAvailableProcs {
 
-  uit::proc_id_t operator()(const size_t & node_id) {
-    return node_id % uit::get_nprocs();
+  uitsl::proc_id_t operator()(const size_t & node_id) {
+    return node_id % uitsl::get_nprocs();
   }
 
 };
 
-} // namespace uit
+} // namespace uitsl

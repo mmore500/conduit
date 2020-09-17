@@ -9,7 +9,7 @@
 TEST_CASE("Test MirroredRingBuffer") {
 
   constexpr size_t buff_size{ 10 };
-  uit::MirroredRingBuffer<size_t, buff_size> buff;
+  uitsl::MirroredRingBuffer<size_t, buff_size> buff;
 
   for (size_t rep = 0; rep < std::mega{}.num; ++rep) {
 

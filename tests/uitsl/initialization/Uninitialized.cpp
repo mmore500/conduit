@@ -6,12 +6,12 @@
 
 TEST_CASE("Test Uninitialized") {
 
-  uit::Uninitialized<int> val1;
+  uitsl::Uninitialized<int> val1;
   val1 = 10;
   REQUIRE( val1 == 10 );
   REQUIRE( *(&val1) == 10 );
 
-  uit::Uninitialized<double> val2;
+  uitsl::Uninitialized<double> val2;
   val2 = -10.0;
   REQUIRE( val2 == -10.0 );
   REQUIRE( *(&val2) == -10.0 );

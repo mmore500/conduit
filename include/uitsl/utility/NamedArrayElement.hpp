@@ -1,6 +1,6 @@
 #pragma once
 
-namespace uit {
+namespace uitsl {
 
 // adapted from http://cplusplus.bordoon.com/namedArrayElements.html
 
@@ -31,4 +31,4 @@ struct NamedArrayElement {
 
 };
 
-} // namespace uit
+} // namespace uitsl

@@ -9,7 +9,7 @@
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 template<typename ImplSpec>
 using AggregatorDuct = uit::c::IriOiDuct<ImplSpec>;

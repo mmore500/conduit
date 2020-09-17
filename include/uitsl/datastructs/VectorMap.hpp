@@ -7,7 +7,7 @@
 #include "../../../third-party/Empirical/source/base/optional.h"
 #include "../../../third-party/Empirical/source/base/vector.h"
 
-namespace uit {
+namespace uitsl {
 
 namespace internal {
 
@@ -197,4 +197,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

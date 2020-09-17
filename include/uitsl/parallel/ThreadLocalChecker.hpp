@@ -6,19 +6,19 @@
 
 #include "thread_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 class ThreadLocalChecker {
 
-  uit::thread_id_t thread_id{ uit::get_thread_id() };
+  uitsl::thread_id_t thread_id{ uitsl::get_thread_id() };
 
 public:
 
   ThreadLocalChecker()
   { ; }
 
-  void Check() { emp_assert( thread_id == uit::get_thread_id() ); }
+  void Check() { emp_assert( thread_id == uitsl::get_thread_id() ); }
 
 };
 
-} // namespace uit
+} // namespace uitsl

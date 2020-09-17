@@ -28,12 +28,12 @@ class AtomicSconceDuct {
 
   emp::array<T, 2> sconces{};
   std::atomic<size_t> position{};
-  uit::RelaxedAtomic<size_t> updates_since_last_get;
+  uitsl::RelaxedAtomic<size_t> updates_since_last_get;
 
 public:
 
   AtomicSconceDuct() {
-    static const uit::WarnOnce warning{
+    static const uitsl::WarnOnce warning{
       "AtomicSconceDuct is experimental and may not be reliable"
     };
   }
@@ -103,7 +103,7 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
     return ss.str();
   }
 

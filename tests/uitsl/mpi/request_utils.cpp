@@ -13,13 +13,13 @@
 #include "uitsl/utility/assign_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("test_null") {
 
-  uit::Request req;
+  uitsl::Request req;
 
-  REQUIRE( uit::test_null(req) );
+  REQUIRE( uitsl::test_null(req) );
 
   char buf;
   UIT_Irecv(
@@ -32,11 +32,11 @@ TEST_CASE("test_null") {
     &req // MPI_Request *request
   );
 
-  REQUIRE( !uit::test_null(req) );
+  REQUIRE( !uitsl::test_null(req) );
 
   UIT_Cancel(&req);
   UIT_Request_free(&req);
 
-  REQUIRE( uit::test_null(req) );
+  REQUIRE( uitsl::test_null(req) );
 
 }

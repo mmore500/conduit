@@ -16,14 +16,14 @@ namespace c {
 template<typename ImplSpec>
 class SendDuct
 : public uit::internal::CerealBlockingSendDuct<
-  uit::SendFunctor,
+  uitsl::SendFunctor,
   ImplSpec
 > {
 
   // inherit parent's constructors
   // adapted from https://stackoverflow.com/a/434784
   using parent_t = uit::internal::CerealBlockingSendDuct<
-    uit::SendFunctor,
+    uitsl::SendFunctor,
     ImplSpec
   >;
   using parent_t::parent_t;

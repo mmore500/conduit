@@ -5,14 +5,14 @@
 #include "mpi_utils.hpp"
 #include "audited_routines.hpp"
 
-namespace uit {
+namespace uitsl {
 
 struct MpiMultithreadGuard {
 
-  MpiMultithreadGuard() { uit::mpi_init_multithread(); }
+  MpiMultithreadGuard() { uitsl::mpi_init_multithread(); }
 
   ~MpiMultithreadGuard() { UIT_Finalize(); }
 
 };
 
-} // namespace uit
+} // namespace uitsl

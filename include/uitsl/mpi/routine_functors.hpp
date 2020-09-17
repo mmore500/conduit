@@ -4,7 +4,7 @@
 
 #include "audited_routines.hpp"
 
-namespace uit {
+namespace uitsl {
 
 /// Wraps corresponding MPI* call in a functor.
 struct AbortFunctor {

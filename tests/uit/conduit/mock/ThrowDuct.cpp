@@ -11,7 +11,7 @@
 
 #define MSG_T int
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("Test ThrowDuct") {
 

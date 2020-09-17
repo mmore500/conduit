@@ -27,7 +27,7 @@
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
@@ -37,9 +37,9 @@ using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
 decltype(auto) make_dyadic_bundle() {
 
   uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(uit::get_nprocs()),
-    uit::AssignIntegrated<uit::thread_id_t>{},
-    uit::AssignAvailableProcs{}
+    uit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
+    uitsl::AssignIntegrated<uitsl::thread_id_t>{},
+    uitsl::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh();
@@ -52,9 +52,9 @@ decltype(auto) make_dyadic_bundle() {
 decltype(auto) make_producer_consumer_bundle() {
 
   uit::Mesh<Spec> mesh{
-    uit::ProConTopologyFactory{}(uit::get_nprocs()),
-    uit::AssignIntegrated<uit::thread_id_t>{},
-    uit::AssignAvailableProcs{}
+    uit::ProConTopologyFactory{}(uitsl::get_nprocs()),
+    uitsl::AssignIntegrated<uitsl::thread_id_t>{},
+    uitsl::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh(0);
@@ -73,9 +73,9 @@ decltype(auto) make_producer_consumer_bundle() {
 
 decltype(auto) make_ring_bundle() {
   uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(uit::get_nprocs()),
-    uit::AssignIntegrated<uit::thread_id_t>{},
-    uit::AssignAvailableProcs{}
+    uit::RingTopologyFactory{}(uitsl::get_nprocs()),
+    uitsl::AssignIntegrated<uitsl::thread_id_t>{},
+    uitsl::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh();
@@ -89,10 +89,10 @@ decltype(auto) make_ring_bundle() {
 // p_1 -> p_2 -> ... -> p_n -> p_1 -> p_2 -> ... -> p_n -> p_1
 decltype(auto) make_coiled_bundle() {
   uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(uit::get_nprocs() * 2),
-    uit::AssignIntegrated<uit::thread_id_t>{},
-    uit::AssignRoundRobin<uit::proc_id_t>{
-      uit::safe_cast<size_t>( uit::get_nprocs() )
+    uit::RingTopologyFactory{}(uitsl::get_nprocs() * 2),
+    uitsl::AssignIntegrated<uitsl::thread_id_t>{},
+    uitsl::AssignRoundRobin<uitsl::proc_id_t>{
+      uitsl::safe_cast<size_t>( uitsl::get_nprocs() )
     }
   };
 
@@ -132,9 +132,9 @@ decltype(auto) make_coiled_bundle() {
 //   auto [outlet] = uit::Source<Spec>{
 //     std::in_place_type_t<Spec::ProcOutletDuct>{},
 //     uit::InterProcAddress{
-//       uit::get_rank(),
-//       uit::safe_cast<int>(
-//         uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
+//       uitsl::get_rank(),
+//       uitsl::safe_cast<int>(
+//         uitsl::circular_index(uitsl::get_rank(), uitsl::get_nprocs(), 1)
 //       )
 //     },
 //     backend
@@ -144,9 +144,9 @@ decltype(auto) make_coiled_bundle() {
 //   uit::Sink<Spec>{
 //     std::in_place_type_t<Spec::ProcOutletDuct>{},
 //     uit::InterProcAddress{
-//       uit::get_rank(),
-//       uit::safe_cast<int>(
-//         uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+//       uitsl::get_rank(),
+//       uitsl::safe_cast<int>(
+//         uitsl::circular_index(uitsl::get_rank(), uitsl::get_nprocs(), -1)
 //       )
 //     },
 //     backend

@@ -6,7 +6,7 @@
 #include "uit/mesh/MeshTopology.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("Test MeshTopology") {
 

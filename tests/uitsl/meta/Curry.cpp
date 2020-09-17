@@ -55,7 +55,7 @@ TEST_CASE("Test Curry just typenames") {
   REQUIRE( CountUpB::GetCount() == 0 );
   REQUIRE( CountUpC::GetCount() == 0 );
 
-  uit::Curry<TwoHolder, CountUpA>::template curried<CountUpB>{};
+  uitsl::Curry<TwoHolder, CountUpA>::template curried<CountUpB>{};
 
   REQUIRE( CountUpA::GetCount() == 1 );
   REQUIRE( CountUpB::GetCount() == 1 );
@@ -65,8 +65,8 @@ TEST_CASE("Test Curry just typenames") {
   CountUpB::ResetCount();
   CountUpC::ResetCount();
 
-  uit::Curry<
-    uit::Curry<
+  uitsl::Curry<
+    uitsl::Curry<
       ThreeHolder,
       CountUpA
     >::template curried,
@@ -101,7 +101,7 @@ struct TripleHolder {
 
 TEST_CASE("Test Curry just types") {
 
-  uit::CurryValues<
+  uitsl::CurryValues<
     DoubleHolder,
     2
   >::template curried<1> double_holder{};
@@ -109,7 +109,7 @@ TEST_CASE("Test Curry just types") {
   REQUIRE( double_holder.x == 1 );
   REQUIRE( double_holder.y == 2 );
 
-    uit::CurryValues<
+    uitsl::CurryValues<
       TripleHolder,
       99
     >::template curried<-100, 'a'> triple_holder{};
@@ -144,9 +144,9 @@ TEST_CASE("Test Curry mixed") {
   REQUIRE( CountUpB::GetCount() == 0 );
   REQUIRE( CountUpC::GetCount() == 0 );
 
-  uit::Curry<
+  uitsl::Curry<
     MixedHolderTypeTemplate,
-    uit::ValType<2u>
+    uitsl::ValType<2u>
   >::template curried<CountUpA> a{};
 
   REQUIRE( CountUpA::GetCount() == 1 );

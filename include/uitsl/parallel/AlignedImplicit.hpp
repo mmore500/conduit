@@ -4,7 +4,7 @@
 
 #include "cache_line.hpp"
 
-namespace uit {
+namespace uitsl {
 
 template <typename T>
 class alignas(CACHE_LINE_SIZE) AlignedImplicit {
@@ -27,4 +27,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

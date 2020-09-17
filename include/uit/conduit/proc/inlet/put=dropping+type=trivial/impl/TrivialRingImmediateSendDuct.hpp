@@ -42,14 +42,14 @@ private:
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  using buffer_t = uit::RingBuffer<std::tuple<T, uit::Request>, N>;
+  using buffer_t = uitsl::RingBuffer<std::tuple<T, uitsl::Request>, N>;
   buffer_t buffer{};
 
   const uit::InterProcAddress address;
 
   void PostSendRequest() {
 
-    emp_assert( uit::test_null( std::get<uit::Request>( buffer.GetHead() ) ) );
+    emp_assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetHead() ) ) );
     ImmediateSendFunctor{}(
       &std::get<T>( buffer.GetHead() ),
       sizeof(T),
@@ -57,31 +57,31 @@ private:
       address.GetOutletProc(),
       address.GetTag(),
       address.GetComm(),
-      &std::get<uit::Request>( buffer.GetHead() )
+      &std::get<uitsl::Request>( buffer.GetHead() )
     );
-    emp_assert(!uit::test_null(std::get<uit::Request>( buffer.GetHead() )));
+    emp_assert(!uitsl::test_null(std::get<uitsl::Request>( buffer.GetHead() )));
 
   }
 
   bool TryFinalizeSend() {
-    emp_assert( !uit::test_null( std::get<uit::Request>( buffer.GetTail() ) ) );
+    emp_assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
-    if (uit::test_completion( std::get<uit::Request>( buffer.GetTail() ) )) {
-      emp_assert( uit::test_null( std::get<uit::Request>(buffer.GetTail()) ) );
-      uit::err_audit(!   buffer.PopTail()   );
+    if (uitsl::test_completion( std::get<uitsl::Request>( buffer.GetTail() ) )) {
+      emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.GetTail()) ) );
+      uitsl::err_audit(!   buffer.PopTail()   );
       return true;
     } else return false;
   }
 
   void CancelPendingSend() {
-    emp_assert( !uit::test_null( std::get<uit::Request>( buffer.GetTail() ) ) );
+    emp_assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
-    UIT_Cancel( &std::get<uit::Request>( buffer.GetTail() ) );
-    UIT_Request_free( &std::get<uit::Request>( buffer.GetTail() ) );
+    UIT_Cancel( &std::get<uitsl::Request>( buffer.GetTail() ) );
+    UIT_Request_free( &std::get<uitsl::Request>( buffer.GetTail() ) );
 
-    emp_assert( uit::test_null( std::get<uit::Request>( buffer.GetTail() ) ) );
+    emp_assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
-    uit::err_audit(!   buffer.PopTail()   );
+    uitsl::err_audit(!   buffer.PopTail()   );
   }
 
   void FlushFinalizedSends() { while (buffer.GetSize() && TryFinalizeSend()); }
@@ -94,7 +94,7 @@ private:
   void DoPut(const T& val) {
     emp_assert( buffer.GetSize() < N );
 
-    uit::err_audit(!   buffer.PushHead()   );
+    uitsl::err_audit(!   buffer.PushHead()   );
 
     std::get<T>( buffer.GetHead() ) = val;
 
@@ -156,8 +156,8 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("InterProcAddress address", address) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
     return ss.str();
   }
 

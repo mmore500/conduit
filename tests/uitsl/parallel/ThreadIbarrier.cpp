@@ -7,10 +7,10 @@
 
 TEST_CASE("ThreadIbarrier satisfied serial") {
 
-  uit::ThreadIbarrierFactory factory{1};
+  uitsl::ThreadIbarrierFactory factory{1};
 
-  uit::ThreadIbarrier first{ factory.MakeBarrier() };
-  uit::ThreadIbarrier second{ factory.MakeBarrier() };
+  uitsl::ThreadIbarrier first{ factory.MakeBarrier() };
+  uitsl::ThreadIbarrier second{ factory.MakeBarrier() };
   REQUIRE(first.IsComplete());
   REQUIRE(second.IsComplete());
 
@@ -18,9 +18,9 @@ TEST_CASE("ThreadIbarrier satisfied serial") {
 
 TEST_CASE("ThreadIbarrier unsatisfied") {
 
-  uit::ThreadIbarrierFactory factory{2};
-  uit::ThreadIbarrier first{ factory.MakeBarrier() };
-  uit::ThreadIbarrier second{ factory.MakeBarrier() };
+  uitsl::ThreadIbarrierFactory factory{2};
+  uitsl::ThreadIbarrier first{ factory.MakeBarrier() };
+  uitsl::ThreadIbarrier second{ factory.MakeBarrier() };
   REQUIRE(!first.IsComplete());
   REQUIRE(!second.IsComplete());
 
@@ -30,13 +30,13 @@ TEST_CASE("ThreadIbarrier satisfied parallel") {
 
   for (size_t thread_count = 1; thread_count <= 16; ++thread_count) {
     std::cout << "thread_count: " << thread_count << std::endl;
-    uit::ThreadIbarrierFactory factory{thread_count};
-    uit::ThreadTeam team;
+    uitsl::ThreadIbarrierFactory factory{thread_count};
+    uitsl::ThreadTeam team;
     for (size_t thread = 0; thread < thread_count; ++thread) {
       team.Add([&factory](){
         for (size_t rep = 0; rep < 100; ++rep) {
-          uit::ThreadIbarrier first{ factory.MakeBarrier() };
-          uit::ThreadIbarrier second{ factory.MakeBarrier() };
+          uitsl::ThreadIbarrier first{ factory.MakeBarrier() };
+          uitsl::ThreadIbarrier second{ factory.MakeBarrier() };
           while(!first.IsComplete());
           REQUIRE( first.IsComplete() );
           while(!second.IsComplete());

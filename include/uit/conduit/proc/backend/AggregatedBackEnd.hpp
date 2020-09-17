@@ -39,19 +39,19 @@ public:
 private:
 
   // thread_id of caller -> proc_id of target -> inlet aggregator
-  uit::VectorMap<
-    uit::thread_id_t,
-    uit::VectorMap<
-      uit::proc_id_t,
+  uitsl::VectorMap<
+    uitsl::thread_id_t,
+    uitsl::VectorMap<
+      uitsl::proc_id_t,
       inlet_aggregator_t
     >
   > inlet_aggregators;
 
   // thread_id of caller -> proc_id of target -> outlet aggregator
-  uit::VectorMap<
-    uit::thread_id_t,
-    uit::VectorMap<
-      uit::proc_id_t,
+  uitsl::VectorMap<
+    uitsl::thread_id_t,
+    uitsl::VectorMap<
+      uitsl::proc_id_t,
       outlet_aggregator_t
     >
   > outlet_aggregators;

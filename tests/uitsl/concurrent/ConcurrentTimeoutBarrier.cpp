@@ -8,22 +8,22 @@
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 constexpr size_t num_threads{ 2 };
 
 void do_work() {
 
-  static uit::ThreadIbarrierFactory factory{ num_threads };
+  static uitsl::ThreadIbarrierFactory factory{ num_threads };
 
-  const uit::ConcurrentTimeoutBarrier barrier{ factory.MakeBarrier() };
+  const uitsl::ConcurrentTimeoutBarrier barrier{ factory.MakeBarrier() };
 
 }
 
 
 TEST_CASE("Test ConcurrentTimeoutBarrier") {
 
-  uit::ThreadTeam team;
+  uitsl::ThreadTeam team;
 
   team.Add(do_work);
   team.Add(do_work);

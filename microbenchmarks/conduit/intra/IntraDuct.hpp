@@ -4,13 +4,13 @@
 
 #include "../DuctBenchmarkRegistration.hpp"
 
-uit::ForEach<
+uitsl::ForEach<
   ThreadCountPayload,
   2
 > range{};
 
-const uit::MpiGuard mguard{};
+const uitsl::MpiGuard mguard{};
 
-const uit::ScopeGuard sguard{ [](){ range.item<1>(); } };
+const uitsl::ScopeGuard sguard{ [](){ range.item<1>(); } };
 
 BENCHMARK_MAIN();

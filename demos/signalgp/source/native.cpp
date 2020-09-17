@@ -14,34 +14,34 @@
 
 #include "Job.hpp"
 
-const uit::MpiMultithreadGuard guard{};
+const uitsl::MpiMultithreadGuard guard{};
 
 constexpr size_t num_threads = 2;
-const size_t num_procs = uit::safe_cast<size_t>( uit::get_nprocs() );
+const size_t num_procs = uitsl::safe_cast<size_t>( uitsl::get_nprocs() );
 
 constexpr size_t nodes_per_job = 1;
 const size_t num_nodes = num_procs * num_threads * nodes_per_job;
 
 int main() {
 
-  if ( uit::is_root() ) std::cout << ">>> begin <<<" << std::endl << std::endl;
+  if ( uitsl::is_root() ) std::cout << ">>> begin <<<" << std::endl << std::endl;
 
   uit::Mesh<ImplSpec> mesh{
     uit::RingTopologyFactory{}( num_nodes ),
-    uit::AssignRoundRobin<uit::thread_id_t>{ num_threads, nodes_per_job },
-    uit::AssignContiguously<uit::proc_id_t>{ num_procs, num_nodes }
+    uitsl::AssignRoundRobin<uitsl::thread_id_t>{ num_threads, nodes_per_job },
+    uitsl::AssignContiguously<uitsl::proc_id_t>{ num_procs, num_nodes }
   };
 
-  uit::safe::unordered_map<size_t, std::string> res;
+  uitsl::safe::unordered_map<size_t, std::string> res;
 
-  uit::ThreadTeam team;
+  uitsl::ThreadTeam team;
   for (size_t thread = 0; thread < num_threads; ++thread) team.Add(
     [&mesh, &res, thread](){
       Job job{ mesh.GetSubmesh(thread) };
 
       std::stringstream ss;
 
-      ss << "process " << uit::get_proc_id() << std::endl;
+      ss << "process " << uitsl::get_proc_id() << std::endl;
       ss << "thread " << thread << std::endl;
       ss << job.ToString() << std::endl;
 
@@ -51,7 +51,7 @@ int main() {
   );
   team.Join();
 
-  uit::do_successively(
+  uitsl::do_successively(
     [&](){
       for (const auto& [k, v] : std::map{ std::begin(res), std::end(res) }) {
         std::cout << v;
@@ -61,7 +61,7 @@ int main() {
   );
 
 
-  if ( uit::is_root() ) std::cout << ">>> end <<<" << std::endl;
+  if ( uitsl::is_root() ) std::cout << ">>> end <<<" << std::endl;
 
   return 0;
 }

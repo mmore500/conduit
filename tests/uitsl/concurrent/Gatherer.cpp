@@ -20,26 +20,26 @@
 #include "uitsl/parallel/thread_utils.hpp"
 #include "uitsl/polyfill/barrier.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 constexpr size_t num_threads{ 2 };
 
-uit::Gatherer<int> gather(MPI_INT);
+uitsl::Gatherer<int> gather(MPI_INT);
 
 void do_work() {
 
-  static std::barrier barrier{uit::safe_cast<std::ptrdiff_t>(num_threads)};
+  static std::barrier barrier{uitsl::safe_cast<std::ptrdiff_t>(num_threads)};
 
   barrier.arrive_and_wait();
 
-  gather.Put(uit::get_thread_id() + num_threads * uit::get_proc_id());
+  gather.Put(uitsl::get_thread_id() + num_threads * uitsl::get_proc_id());
 
 }
 
 
 TEST_CASE("Test Gatherer") {
 
-  uit::ThreadTeam team;
+  uitsl::ThreadTeam team;
 
   team.Add(do_work);
   team.Add(do_work);
@@ -48,10 +48,10 @@ TEST_CASE("Test Gatherer") {
 
   const auto res = gather.Gather();
 
-  if (uit::is_root()) REQUIRE( res );
+  if (uitsl::is_root()) REQUIRE( res );
 
   if (res) {
-    emp::vector<int> target(num_threads * uit::get_nprocs());
+    emp::vector<int> target(num_threads * uitsl::get_nprocs());
     std::iota(std::begin(target), std::end(target), 0);
 
     REQUIRE(

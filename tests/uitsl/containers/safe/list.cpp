@@ -8,7 +8,7 @@
 TEST_CASE("deque") {
 
   // TODO expand stub test
-  uit::safe::list<std::string> list;
+  uitsl::safe::list<std::string> list;
 
   REQUIRE(list.empty());
   list.push_back("hello");

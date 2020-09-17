@@ -34,13 +34,13 @@ class Tile {
       case '_':
         return '_';
       default:
-        uit::error_message_mutex.lock();
+        uitsl::error_message_mutex.lock();
         std::cerr
-          << uit::format_member("neighbor_state", neighbor_state)
+          << uitsl::format_member("neighbor_state", neighbor_state)
           << std::endl;
-        std::cerr << uit::format_member("prev Tile", *prev) << std::endl;
-        std::cerr << uit::format_member("this Tile", *this) << std::endl;
-        std::cerr << uit::format_member("next Tile", *next) << std::endl;
+        std::cerr << uitsl::format_member("prev Tile", *prev) << std::endl;
+        std::cerr << uitsl::format_member("this Tile", *this) << std::endl;
+        std::cerr << uitsl::format_member("next Tile", *next) << std::endl;
         throw "bad Transition on Tile";
     }
 
@@ -90,10 +90,10 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << uit::format_member("id", id) << std::endl;
-    ss << uit::format_member("State state", state) << std::endl;
-    ss << uit::format_member("Outlet<Spec> input", input) << std::endl;
-    ss << uit::format_member("Inlet<Spec> output", output);
+    ss << uitsl::format_member("id", id) << std::endl;
+    ss << uitsl::format_member("State state", state) << std::endl;
+    ss << uitsl::format_member("Outlet<Spec> input", input) << std::endl;
+    ss << uitsl::format_member("Inlet<Spec> output", output);
     return ss.str();
   }
 

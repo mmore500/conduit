@@ -6,7 +6,7 @@
 TEST_CASE("OncePerThreadChecker") {
 
   // TODO expand stub test
-  uit::OncePerThreadChecker checker;
+  uitsl::OncePerThreadChecker checker;
   checker.Check();
 
 }

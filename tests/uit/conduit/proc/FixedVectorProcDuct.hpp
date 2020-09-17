@@ -27,7 +27,7 @@
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/math/math_utils.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 using MSG_T = emp::vector<int>;
 using Spec = uit::ImplSpec<MSG_T, DEFAULT_BUFFER, ImplSel>;
@@ -45,9 +45,9 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
   auto [outlet] = uit::Source<Spec>{
     std::in_place_type_t<Spec::ProcOutletDuct>{},
     uit::InterProcAddress{
-      uit::get_rank(), // outlet proc
-      uit::safe_cast<int>(
-        uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+      uitsl::get_rank(), // outlet proc
+      uitsl::safe_cast<int>(
+        uitsl::circular_index(uitsl::get_rank(), uitsl::get_nprocs(), -1)
       ), // inlet proc
       0, // outlet thread
       0, // inlet thread
@@ -60,10 +60,10 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
   uit::Sink<Spec>{
     std::in_place_type_t<Spec::ProcInletDuct>{},
     uit::InterProcAddress{
-      uit::safe_cast<int>(
-        uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
+      uitsl::safe_cast<int>(
+        uitsl::circular_index(uitsl::get_rank(), uitsl::get_nprocs(), 1)
       ), // outlet proc
-      uit::get_rank(), // inlet proc
+      uitsl::get_rank(), // inlet proc
       0, // outlet thread
       0, // inlet thread
       tag++ // tag
@@ -87,9 +87,9 @@ TEST_CASE("Is transmission reliable?") { REPEAT {
   auto [outlet] = uit::Source<Spec>{
     std::in_place_type_t<Spec::ProcOutletDuct>{},
     uit::InterProcAddress{
-      uit::get_rank(), // outlet proc
-      uit::safe_cast<int>(
-        uit::circular_index(uit::get_rank(), uit::get_nprocs(), -1)
+      uitsl::get_rank(), // outlet proc
+      uitsl::safe_cast<int>(
+        uitsl::circular_index(uitsl::get_rank(), uitsl::get_nprocs(), -1)
       ), // inlet proc
       0, // outlet thread
       0, // inlet thread
@@ -102,10 +102,10 @@ TEST_CASE("Is transmission reliable?") { REPEAT {
   auto [inlet] = uit::Sink<Spec>{
     std::in_place_type_t<Spec::ProcInletDuct>{},
     uit::InterProcAddress{
-      uit::safe_cast<int>(
-        uit::circular_index(uit::get_rank(), uit::get_nprocs(), 1)
+      uitsl::safe_cast<int>(
+        uitsl::circular_index(uitsl::get_rank(), uitsl::get_nprocs(), 1)
       ), // outlet proc
-      uit::get_rank(), // inlet proc
+      uitsl::get_rank(), // inlet proc
       0,
       0,
       tag++ // tag

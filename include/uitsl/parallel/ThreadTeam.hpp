@@ -7,7 +7,7 @@
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 
-namespace uit {
+namespace uitsl {
 
 class ThreadTeam {
 
@@ -33,4 +33,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

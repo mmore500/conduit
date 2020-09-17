@@ -42,7 +42,7 @@ private:
   using BackingOutlet = typename BackingDuct<BufferSpec>::OutletImpl;
   BackingOutlet outlet;
 
-  const uit::ScopeGuard guard{ [this](){ outlet.Get().emplace_back(); } };
+  const uitsl::ScopeGuard guard{ [this](){ outlet.Get().emplace_back(); } };
   using current_t = typename BufferSpec::T::iterator;
   current_t current{ std::begin(outlet.Get()) };
 
@@ -138,7 +138,7 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetName() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
     return ss.str();
   }
 

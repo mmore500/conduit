@@ -45,9 +45,9 @@ private:
 
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
-  using packet_t = uit::RdmaPacket<T>;
+  using packet_t = uitsl::RdmaPacket<T>;
 
-  using buffer_t = std::deque<std::tuple<packet_t, uit::Request>>;
+  using buffer_t = std::deque<std::tuple<packet_t, uitsl::Request>>;
   buffer_t buffer;
 
   size_t epoch{};
@@ -56,16 +56,16 @@ private:
 
   std::shared_ptr<BackEndImpl> back_end;
 
-  uit::Request target_offset_request;
+  uitsl::Request target_offset_request;
   int target_offset;
 
   void PostPut() {
 
     // make sure that target offset has been received
-    emp_assert( uit::test_completion(target_offset_request) );
+    emp_assert( uitsl::test_completion(target_offset_request) );
 
-    emp_assert( uit::test_null(
-      std::get<uit::Request>(buffer.back())
+    emp_assert( uitsl::test_null(
+      std::get<uitsl::Request>(buffer.back())
     ) );
 
     // TODO FIXME what kind of lock is needed here?
@@ -76,22 +76,22 @@ private:
       reinterpret_cast<const std::byte*>( &std::get<packet_t>(buffer.back()) ),
       sizeof(packet_t),
       target_offset,
-      &std::get<uit::Request>(buffer.back())
+      &std::get<uitsl::Request>(buffer.back())
     );
 
     back_end->GetWindowManager().Unlock( address.GetOutletProc() );
 
-    emp_assert( !uit::test_null(
-      std::get<uit::Request>(buffer.back())
+    emp_assert( !uitsl::test_null(
+      std::get<uitsl::Request>(buffer.back())
     ) );
 
   }
 
   bool TryFinalizePut() {
-    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
-    if (uit::test_completion( std::get<uit::Request>(buffer.front()) )) {
-      emp_assert( uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+    if (uitsl::test_completion( std::get<uitsl::Request>(buffer.front()) )) {
+      emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
       buffer.pop_front();
       return true;
     } else return false;
@@ -99,12 +99,12 @@ private:
   }
 
   void CancelPendingPut() {
-    emp_assert( !uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
-    UIT_Cancel( &std::get<uit::Request>(buffer.front()) );
-    UIT_Request_free( &std::get<uit::Request>(buffer.front()) );
+    UIT_Cancel( &std::get<uitsl::Request>(buffer.front()) );
+    UIT_Request_free( &std::get<uitsl::Request>(buffer.front()) );
 
-    emp_assert( uit::test_null( std::get<uit::Request>(buffer.front()) ) );
+    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     buffer.pop_front();
   }
@@ -119,7 +119,7 @@ public:
   ) : address(address_)
   , back_end(back_end_)
   {
-    if (uit::get_rank(address.GetComm()) == address.GetInletProc()) {
+    if (uitsl::get_rank(address.GetComm()) == address.GetInletProc()) {
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
@@ -153,9 +153,9 @@ public:
   bool TryPut(const T& val) {
     buffer.emplace_back(
       packet_t(val, ++epoch),
-      uit::Request{}
+      uitsl::Request{}
     );
-    emp_assert( uit::test_null( std::get<uit::Request>(buffer.back()) ) );
+    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
     PostPut();
     return true;
   }
@@ -179,8 +179,8 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << GetType() << std::endl;
-    ss << format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << format_member("InterProcAddress address", address) << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
     return ss.str();
   }
 

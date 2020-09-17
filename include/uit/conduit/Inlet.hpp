@@ -60,7 +60,7 @@ class Inlet {
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
-  using index_t = uit::CircularIndex<N>;
+  using index_t = uitsl::CircularIndex<N>;
 
   /// TODO.
   using duct_t = internal::Duct<ImplSpec>;
@@ -224,16 +224,16 @@ public:
    */
   std::string ToString() const {
     std::stringstream ss;
-    ss << format_member("duct_t duct", *duct) << std::endl;
-    ss << format_member(
+    ss << uitsl::format_member("duct_t duct", *duct) << std::endl;
+    ss << uitsl::format_member(
       "size_t successful_put_count",
       successful_put_count
     ) << std::endl;
-    ss << format_member(
+    ss << uitsl::format_member(
       "size_t dropped_put_count",
       dropped_put_count
     ) << std::endl;
-    ss << format_member(
+    ss << uitsl::format_member(
       "size_t blocked_put_count",
       blocked_put_count
     );

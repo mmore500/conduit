@@ -11,7 +11,7 @@
 #include "../mpi/mpi_types.hpp"
 #include "../mpi/mpi_utils.hpp"
 
-namespace uit {
+namespace uitsl {
 
 // TODO is it possible to have a seperate window/communicator
 // between each pair of procs?
@@ -180,7 +180,7 @@ public:
       // int origin_count: number of entries in buffer (nonnegative integer)
       num_bytes / sizeof(T),
       // MPI_Datatype origin_datatype: datatype of each buffer entry (handle)
-      uit::datatype_from_type<T>(),
+      uitsl::datatype_from_type<T>(),
       // int target_rank: rank of target (nonnegative integer)
       local_rank,
       // MPI_Aint target_disp
@@ -192,7 +192,7 @@ public:
       num_bytes / sizeof(T),
       // MPI_Datatype target_datatype
       // datatype of each entry in target buffer (handle)
-      uit::datatype_from_type<T>(),
+      uitsl::datatype_from_type<T>(),
       // MPI_Op op: predefined reduce operation (handle)
       MPI_SUM,
       // MPI_Win win: window object (handle)
@@ -217,7 +217,7 @@ public:
       // int origin_count: number of entries in buffer (nonnegative integer)
       num_bytes / sizeof(T),
       // MPI_Datatype origin_datatype: datatype of each buffer entry (handle)
-      uit::datatype_from_type<T>(),
+      uitsl::datatype_from_type<T>(),
       // int target_rank: rank of target (nonnegative integer)
       local_rank,
       // MPI_Aint target_disp
@@ -229,7 +229,7 @@ public:
       num_bytes / sizeof(T),
       // MPI_Datatype target_datatype
       // datatype of each entry in target buffer (handle)
-      uit::datatype_from_type<T>(),
+      uitsl::datatype_from_type<T>(),
       // MPI_Op op: predefined reduce operation (handle)
       MPI_SUM,
       // MPI_Win win: window object (handle)
@@ -287,15 +287,15 @@ public:
   std::string ToString() const {
 
     std::stringstream ss;
-    ss << format_member("IsInitialized()", emp::to_string(IsInitialized()))
+    ss << uitsl::format_member("IsInitialized()", emp::to_string(IsInitialized()))
       << std::endl;
-    ss << format_member("IsUninitialized()", emp::to_string(IsUninitialized()))
+    ss << uitsl::format_member("IsUninitialized()", emp::to_string(IsUninitialized()))
       << std::endl;
     // TODO add print function for MPI_Win
-    ss << format_member("std::byte *buffer", static_cast<const void *>(buffer))
+    ss << uitsl::format_member("std::byte *buffer", static_cast<const void *>(buffer))
       << std::endl;
-    ss << format_member("GetSize()", GetSize()) << std::endl;
-    ss << format_member("proc_id_t local_rank", local_rank);
+    ss << uitsl::format_member("GetSize()", GetSize()) << std::endl;
+    ss << uitsl::format_member("proc_id_t local_rank", local_rank);
 
     return ss.str();
 
@@ -304,4 +304,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

@@ -7,7 +7,7 @@
 #include "uit/topology/RingTopologyFactory.hpp"
 #include "uit/topology/ProConTopologyFactory.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 TEST_CASE("Test Mesh") {
 

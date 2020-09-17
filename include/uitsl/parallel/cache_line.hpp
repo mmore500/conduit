@@ -3,7 +3,7 @@
 #include <new>
 #include <stddef.h>
 
-namespace uit {
+namespace uitsl {
 
 #ifdef __cpp_lib_hardware_interference_size
   static constexpr size_t CACHE_LINE_SIZE =
@@ -12,4 +12,4 @@ namespace uit {
   static constexpr size_t CACHE_LINE_SIZE = 64;
 #endif
 
-} // namespace uit
+} // namespace uitsl

@@ -8,14 +8,14 @@
 
 #include "ThreadIbarrier.hpp"
 
-namespace uit {
+namespace uitsl {
 
 /**
  * Block until all threads reach the barrier or a timeout is exceeded.
  *
  * @tparam Timer_T class to manage timeout check.
  */
-template<typename Timer_T=uit::Timer<>>
+template<typename Timer_T=uitsl::Timer<>>
 class ParallelTimeoutBarrier {
 
 public:
@@ -24,7 +24,7 @@ public:
   * Blocks until all threads have reached barrier, or timer expires.
    */
   ParallelTimeoutBarrier(
-    const uit::ThreadIbarrier& thread_barrier,
+    const uitsl::ThreadIbarrier& thread_barrier,
     const Timer_T& timer=Timer_T{}
   ) {
 
@@ -34,4 +34,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

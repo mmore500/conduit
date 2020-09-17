@@ -9,9 +9,9 @@
 TEST_CASE("ThreadMap") {
 
   // TODO expand stub test
-  uit::ThreadMap<size_t> map;
+  uitsl::ThreadMap<size_t> map;
 
-  uit::ThreadTeam team;
+  uitsl::ThreadTeam team;
 
   for (size_t thread = 0; thread < 4; ++thread) {
     team.Add([&map](){

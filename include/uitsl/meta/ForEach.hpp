@@ -3,7 +3,7 @@
 #include <functional>
 #include <stddef.h>
 
-namespace uit {
+namespace uitsl {
 
 template <
   template<size_t> typename Payload,
@@ -39,4 +39,4 @@ struct ForEach {
 
 };
 
-} // namespace uit
+} // namespace uitsl

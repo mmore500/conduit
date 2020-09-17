@@ -5,7 +5,7 @@
 
 #include "../../../third-party/Empirical/source/base/assert.h"
 
-namespace uit {
+namespace uitsl {
 
 class IsFirstExecutionChecker {
 
@@ -15,7 +15,7 @@ public:
 
   IsFirstExecutionChecker() = default;
 
-  IsFirstExecutionChecker(const uit::IsFirstExecutionChecker& other)
+  IsFirstExecutionChecker(const uitsl::IsFirstExecutionChecker& other)
   : flag(other.flag.load())
   { ; }
 
@@ -23,4 +23,4 @@ public:
 
 };
 
-} // namespace uit
+} // namespace uitsl

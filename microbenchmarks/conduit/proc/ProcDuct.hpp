@@ -4,21 +4,21 @@
 
 #include "../DuctBenchmarkRegistration.hpp"
 
-uit::ForEach<
+uitsl::ForEach<
   ThreadCountPayload,
   2
 > range{};
 
 // initialize
-const uit::MpiGuard mpi_guard;
-const uit::ScopeGuard register_benchmarks( [](){ range.item<1>(); } );
+const uitsl::MpiGuard mpi_guard;
+const uitsl::ScopeGuard register_benchmarks( [](){ range.item<1>(); } );
 
 int main(int argc, char** argv) {
 
   // suppress json output for non-root procs
   int one{1};
   benchmark::Initialize(
-    uit::is_root() ? &argc : &one,
+    uitsl::is_root() ? &argc : &one,
     argv
   );
 

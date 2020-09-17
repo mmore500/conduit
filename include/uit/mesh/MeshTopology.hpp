@@ -64,13 +64,13 @@ class MeshTopology {
 
   void InitializeNodes(
     const uit::Topology& topology,
-    const std::function<proc_id_t(node_id_t)> proc_assignment,
+    const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment,
     const MPI_Comm comm
   ) {
 
     // ensures that we include relevant nodes that don't have any edges
     for (node_id_t node_id = 0; node_id < topology.size(); ++node_id) {
-      if (proc_assignment(node_id) == uit::get_proc_id(comm)) {
+      if (proc_assignment(node_id) == uitsl::get_proc_id(comm)) {
         InitializeNode(node_id);
       }
     }
@@ -87,7 +87,7 @@ class MeshTopology {
 
   void InitializeEdges(
     const uit::Topology& topology,
-    const std::function<proc_id_t(node_id_t)> proc_assignment,
+    const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment,
     const MPI_Comm comm
   ) {
     for (edge_id_t edge : edge_registry) {
@@ -96,8 +96,8 @@ class MeshTopology {
       // only construct infrastructure relevant to this proc
       // (but do need nodes that are connected to nodes on this proc)
       if (
-        proc_assignment(input_id) == uit::get_proc_id(comm)
-        || proc_assignment(output_id) == uit::get_proc_id(comm)
+        proc_assignment(input_id) == uitsl::get_proc_id(comm)
+        || proc_assignment(output_id) == uitsl::get_proc_id(comm)
       ) {
         uit::Conduit<ImplSpec> conduit;
 
@@ -120,8 +120,8 @@ public:
 
   MeshTopology(
     const uit::Topology & topology,
-    const std::function<proc_id_t(node_id_t)> proc_assignment
-      =uit::AssignIntegrated<proc_id_t>{},
+    const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment
+      =uitsl::AssignIntegrated<uitsl::proc_id_t>{},
     const MPI_Comm comm=MPI_COMM_WORLD
   ) {
     InitializeRegistries(topology);

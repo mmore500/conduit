@@ -9,7 +9,7 @@
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/nonce/ScopeGuard.hpp"
 
-const uit::MpiGuard guard;
+const uitsl::MpiGuard guard;
 
 constexpr size_t buffer_size{ DEFAULT_BUFFER };
 
@@ -58,7 +58,7 @@ static void MPI_Rsend(benchmark::State& state) {
     {
       "Processes",
       benchmark::Counter(
-        uit::get_nprocs(),
+        uitsl::get_nprocs(),
         benchmark::Counter::kAvgThreads
       )
     }
@@ -125,10 +125,10 @@ static void support() {
   UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
 
   // loop until benchmarking is complete
-  while (!uit::test_completion(ibarrier_request)) {
+  while (!uitsl::test_completion(ibarrier_request)) {
 
     // has sender started to catch up with our posted recv's?
-    if (uit::test_completion(requests[requests.size() - buffer_size])) {
+    if (uitsl::test_completion(requests[requests.size() - buffer_size])) {
       post_fresh_recvs(requests, buffers);
     }
 
@@ -137,8 +137,8 @@ static void support() {
 }
 
 // register benchmark
-const uit::ScopeGuard registration{[](){
-  uit::report_confidence(
+const uitsl::ScopeGuard registration{[](){
+  uitsl::report_confidence(
     benchmark::RegisterBenchmark(
       "MPI_Rsend",
       MPI_Rsend
@@ -149,7 +149,7 @@ const uit::ScopeGuard registration{[](){
 int main(int argc, char** argv) {
 
   // only root runs benchmark
-  if (uit::is_root()) {
+  if (uitsl::is_root()) {
 
     benchmark::Initialize(&argc, argv);
 

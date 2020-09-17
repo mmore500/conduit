@@ -24,21 +24,21 @@ using Spec = uit::ImplSpec<MESSAGE_T, DEFAULT_BUFFER, ImplSel>;
 void do_work(
   uit::Mesh<Spec>::submesh_t submesh,
   std::latch& latch,
-  uit::Gatherer<MESSAGE_T>& gatherer
+  uitsl::Gatherer<MESSAGE_T>& gatherer
 ) {
 
-  std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
+  std::chrono::milliseconds duration; { const uitsl::TimeGuard guard{duration};
 
   auto optional_input = submesh.front().GetInputOrNullopt(0);
   auto optional_output = submesh.front().GetOutputOrNullopt(0);
 
-  if (optional_output) optional_output->TryPut(uit::get_thread_id());
+  if (optional_output) optional_output->TryPut(uitsl::get_thread_id());
 
   latch.arrive_and_wait();
 
   for (size_t rep = 0; rep < 1e7; ++rep) {
-    if (optional_output) optional_output->TryPut(uit::get_thread_id());
-    if (optional_input) uit::do_not_optimize(
+    if (optional_output) optional_output->TryPut(uitsl::get_thread_id());
+    if (optional_input) uitsl::do_not_optimize(
       optional_input->JumpGet()
     );
   }
@@ -51,19 +51,19 @@ void do_work(
 
 void profile_thread_count(const size_t num_threads) {
 
-  uit::ThreadTeam team;
+  uitsl::ThreadTeam team;
 
   uit::Mesh<Spec> mesh{
     uit::RingTopologyFactory{}(num_threads),
-    uit::AssignSegregated<uit::thread_id_t>{}
+    uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
-  uit::Gatherer<MESSAGE_T> gatherer(MPI_INT);
+  uitsl::Gatherer<MESSAGE_T> gatherer(MPI_INT);
 
-  std::chrono::milliseconds duration; { const uit::TimeGuard guard{duration};
+  std::chrono::milliseconds duration; { const uitsl::TimeGuard guard{duration};
 
-  std::latch latch{uit::safe_cast<std::ptrdiff_t>(num_threads)};
-  for (uit::thread_id_t i = 0; i < num_threads; ++i) {
+  std::latch latch{uitsl::safe_cast<std::ptrdiff_t>(num_threads)};
+  for (uitsl::thread_id_t i = 0; i < num_threads; ++i) {
     team.Add(
       [i, &latch, &gatherer, &mesh](){
         do_work(mesh.GetSubmesh(i), latch, gatherer);
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]) {
   UIT_Init_thread(&argc, &argv, MPI_THREAD_SINGLE, &provided);
   emp_assert(provided >= MPI_THREAD_FUNNELED);
 
-  for (size_t threads = 1; threads <= uit::get_nproc(); threads*=2) {
+  for (size_t threads = 1; threads <= uitsl::get_nproc(); threads*=2) {
     profile_thread_count(threads);
   }
 

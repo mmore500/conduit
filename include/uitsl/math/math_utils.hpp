@@ -9,7 +9,7 @@
 
 #include "../debug/safe_cast.hpp"
 
-namespace uit {
+namespace uitsl {
 
 size_t mod(int in_val, const size_t mod_val) {
   emp_assert(mod_val > 0);
@@ -67,8 +67,8 @@ int sidebyside_hash(const size_t a, const size_t b) {
 
   const auto res = top_bits | bottom_bits;
 
-  return uit::safe_cast<int>(res.to_ullong());
+  return uitsl::safe_cast<int>(res.to_ullong());
 
 }
 
-} // namespace uit
+} // namespace uitsl
