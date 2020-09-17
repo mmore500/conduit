@@ -1,6 +1,6 @@
 #pragma once
 
-#include "uit/conduit/Duct.hpp"
+#include "uit/duct/Duct.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 
 #include "grid_utils.hpp"

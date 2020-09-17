@@ -13,8 +13,7 @@
 #include "../../uitsl/parallel/thread_utils.hpp"
 #include "../../uitsl/nonce/CircularIndex.hpp"
 
-#include "config.hpp"
-#include "Duct.hpp"
+#include "../duct/Duct.hpp"
 
 namespace uit {
 
@@ -34,7 +33,7 @@ namespace uit {
  * example to provide thread-safe or process-safe transmission.
  *
  * - `EmplaceDuct` emplaces a new transmission implementation within
- *   the  existing `Duct` object. (See `include/conduit/Duct.hpp` for details.)
+ *   the  existing `Duct` object. (See `include/duct/Duct.hpp` for details.)
  * - `SplitDuct` makes a new `Duct` and points the `Outlet`'s `std::shared_ptr`
  *   to that `Duct`.
  *
@@ -47,7 +46,7 @@ namespace uit {
  *
  * @tparam ImplSpec class with static and typedef members specifying
  *   implementation details for the conduit framework. See
- *   `include/conduit/ImplSpec.hpp`.
+ *   `include/config/ImplSpec.hpp`.
  *
  * @note End users should probably never have to directly instantiate this
  *   class. The `Conduit`, `Sink`, and `Source` classes take care of creating a

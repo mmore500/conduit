@@ -5,8 +5,8 @@
 
 #include <mpi.h>
 
-#include "../conduit/Duct.hpp"
-#include "../conduit/InterProcAddress.hpp"
+#include "../duct/Duct.hpp"
+#include "../conduit/../config/InterProcAddress.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"
 #include "../../uitsl/math/math_utils.hpp"

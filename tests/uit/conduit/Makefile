@@ -1,48 +1,70 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += proc
-TARGET_NAMES += thread
-TARGET_NAMES += conduit
-TARGET_NAMES += intra
-TARGET_NAMES += mock
+TARGET_NAMES += Conduit
+TARGET_NAMES += ImplSpec
+TARGET_NAMES += Inlet
+TARGET_NAMES += InterProcAddress
+TARGET_NAMES += Outlet
+TARGET_NAMES += Sink
+TARGET_NAMES += Source
+
+TO_ROOT := $(shell git rev-parse --show-cdup)
+
+FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
+
+MPICXX ?= mpic++
+MPIEXEC ?= mpiexec
 
 default: test
 
-test-%: %
-	cd $< && make test
-
-opt-%: %
-	cd $< && make opt
-
-fulldebug-%: %
-	cd $< && make fulldebug
-
-cranky-%: %
-	cd $< && make cranky
-
-cov-%: %
-	cd $< && make cov
-
-clean-%: %
-	cd $< && make clean
+test-%: %.cpp
+	echo "MPICXX" $(MPICXX)
+	echo "MPIEXEC" $(MPIEXEC)
+	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	# execute test
+	for n in $$(seq 1 8); do \
+		$(MPIEXEC) --bind-to none -n $$n ./$@.out || break; \
+	done
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TARGET_NAMES))
+	rm -rf test*.out
 
-opt: $(addprefix opt-, $(TARGET_NAMES))
+# Test optimized version without debug features
+opt: FLAGS := -std=c++2a -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
+opt: $(addprefix test-, $(TARGET_NAMES))
+	rm -rf test*.out
 
-fulldebug: $(addprefix fulldebug-, $(TARGET_NAMES))
+# Test in debug mode with pointer tracking
+fulldebug: FLAGS := -std=c++2a -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
+fulldebug: $(addprefix test-, $(TARGET_NAMES))
+	rm -rf test*.out
 
-cranky: $(addprefix cranky-, $(TARGET_NAMES))
+cranky: FLAGS := -std=c++2a -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: $(addprefix test-, $(TARGET_NAMES))
+	rm -rf test*.out
 
+cov: FLAGS := -std=c++2a -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/coverage_include/ -I$(TO_ROOT)/third-party/ -DEMP_TRACK_MEM -DUIT_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
 cov: $(addprefix cov-, $(TARGET_NAMES))
 
-clean: $(addprefix clean-, $(TARGET_NAMES))
+cov-%: %.cpp
+	export OMPI_CXX=clang++ && $(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	#echo "running $@.out"
+	# execute test
+	./$@.out
+	llvm-profdata merge default.profraw -o default.profdata
+	llvm-cov show ./$@.out -instr-profile=default.profdata > coverage_$@.txt
+	python $(TO_ROOT)/third-party/force-cover/fix_coverage.py coverage_$@.txt
+
+clean:
 	rm -f *.out
 	rm -f *.o
 	rm -f *.gcda
 	rm -f *.gcno
 	rm -f *.info
 	rm -f *.gcov
+	rm -f *.txt
+	rm -f *.profdata
+	rm -f *.profraw
 	rm -f ./Coverage*
 	rm -rf ./temp

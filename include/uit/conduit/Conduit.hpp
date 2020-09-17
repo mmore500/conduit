@@ -4,7 +4,8 @@
 #include <stddef.h>
 #include <utility>
 
-#include "Duct.hpp"
+#include "../duct/Duct.hpp"
+
 #include "Inlet.hpp"
 #include "Outlet.hpp"
 
@@ -19,7 +20,7 @@ namespace uit {
  *
  * @tparam ImplSpec class with static and typedef members specifying
  * implementation details for the conduit framework. See
- *   `include/conduit/ImplSpec.hpp`.
+ *   `include/config/ImplSpec.hpp`.
  */
 template<typename ImplSpec>
 class Conduit {
