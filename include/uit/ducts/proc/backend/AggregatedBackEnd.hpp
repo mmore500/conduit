@@ -4,7 +4,7 @@
 
 #include "../../../../uitsl/datastructs/VectorMap.hpp"
 
-#include "../../../config/InterProcAddress.hpp"
+#include "../../../setup/InterProcAddress.hpp"
 
 #include "impl/InletMemoryAggregator.hpp"
 #include "impl/OutletMemoryAggregator.hpp"

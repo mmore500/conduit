@@ -2,7 +2,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uit/ducts/proc/backend/RdmaBackEnd.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"

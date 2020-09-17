@@ -11,7 +11,7 @@
 #include "uitsl/distributed/assign_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uit/ducts/mock/ThrowDuct.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/mesh/MeshNodeInput.hpp"

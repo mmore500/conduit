@@ -20,7 +20,7 @@
 #include "../../../../../uitsl/utility/print_utils.hpp"
 #include "../../../../../uitsl/initialization/Uninitialized.hpp"
 
-#include "../../../../config/InterProcAddress.hpp"
+#include "../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/RuntimeSizeBackEnd.hpp"
 

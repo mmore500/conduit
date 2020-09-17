@@ -18,7 +18,7 @@
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uit/fixtures/Sink.hpp"
 #include "uit/fixtures/Source.hpp"
 #include "uit/mesh/Mesh.hpp"

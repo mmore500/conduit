@@ -17,7 +17,7 @@
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
 
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uit/mesh/Mesh.hpp"
 #include "uit/topology/RingTopologyFactory.hpp"
 #include "uit/topology/DyadicTopologyFactory.hpp"

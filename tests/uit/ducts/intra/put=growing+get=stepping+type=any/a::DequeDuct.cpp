@@ -1,4 +1,4 @@
-#include "uit/config/ImplSpec.hpp"
+#include "uit/setup/ImplSpec.hpp"
 #include "uit/ducts/intra/put=growing+get=stepping+type=any/a::DequeDuct.hpp"
 #include "uit/ducts/mock/ThrowDuct.hpp"
 

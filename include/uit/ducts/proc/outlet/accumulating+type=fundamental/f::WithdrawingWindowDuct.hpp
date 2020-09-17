@@ -19,7 +19,7 @@
 #include "../../../../../uitsl/debug/safe_compare.hpp"
 #include "../../../../../uitsl/debug/WarnOnce.hpp"
 
-#include "../../../../config/InterProcAddress.hpp"
+#include "../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/RdmaBackEnd.hpp"
 
