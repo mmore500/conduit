@@ -18,9 +18,9 @@
 #include "uitsl/debug/safe_compare.hpp"
 
 #include "uit/setup/ImplSpec.hpp"
-#include "uit/mesh/Mesh.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
-#include "uit/topology/DyadicTopologyFactory.hpp"
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
+#include "netuit/topology/DyadicTopologyFactory.hpp"
 
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
 
@@ -33,7 +33,7 @@ const uitsl::MpiGuard guard;
 
 TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
-  uit::Mesh<Spec> mesh{ uit::RingTopologyFactory{}(num_nodes) };
+  netuit::Mesh<Spec> mesh{ netuit::RingTopologyFactory{}(num_nodes) };
 
   for (auto & node : mesh.GetSubmesh()) {
     REQUIRE( node.GetInput(0).Get() == MSG_T{} );

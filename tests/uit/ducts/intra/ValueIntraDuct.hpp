@@ -1,6 +1,6 @@
 TEST_CASE("Test IntraDuct Validity") {
 
-  uit::Mesh<Spec> mesh{ uit::RingTopologyFactory{}(num_nodes) };
+  netuit::Mesh<Spec> mesh{ netuit::RingTopologyFactory{}(num_nodes) };
 
   std::unordered_map<size_t, MSG_T> last;
   for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
@@ -25,7 +25,7 @@ TEST_CASE("Test IntraDuct Validity") {
 
 TEST_CASE("Unmatched puts") { REPEAT {
 
-  uit::Mesh<Spec> mesh{ uit::DyadicTopologyFactory{}(num_nodes) };
+  netuit::Mesh<Spec> mesh{ netuit::DyadicTopologyFactory{}(num_nodes) };
 
   for (auto & node : mesh.GetSubmesh()) {
     for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) node.GetOutput(0).TryPut(1);

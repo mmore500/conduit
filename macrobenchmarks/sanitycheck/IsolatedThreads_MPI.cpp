@@ -7,7 +7,7 @@
 #include "uit/setup/ImplSpec.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
-#include "uit/mesh/Mesh.hpp"
+#include "netuit/mesh/Mesh.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"

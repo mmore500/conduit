@@ -189,9 +189,9 @@ Here's what the entire process looks like in code.
 
 #include "uit/setup/ImplSpec.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
-#include "uit/mesh/Mesh.hpp"
+#include "netuit/mesh/Mesh.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 const size_t num_nodes = 5; // five nodes in our topology
 const size_t num_procs = 2; // two MPI processes
@@ -241,7 +241,7 @@ const uitsl::MpiGuard guard;
 // first task each thread will execute
 void send_task(
   const uitsl::thread_id_t thread_id,
-  uit::Mesh<Spec>::submesh_t& my_nodes
+  netuit::Mesh<Spec>::submesh_t& my_nodes
 ) {
 
   // goal: for each output in each node, send a message with info about the
@@ -262,7 +262,7 @@ void send_task(
 // second task each thread will execute
 void receive_task(
   const uitsl::thread_id_t thread_id,
-  uit::Mesh<Spec>::submesh_t& my_nodes
+  netuit::Mesh<Spec>::submesh_t& my_nodes
 ) {
 
   // goal: for each input to each node, print out info about who received what
@@ -284,7 +284,7 @@ void receive_task(
 }
 
 // make each thread execute send_task then receive_&ask
-void thread_job(const uitsl::thread_id_t thread_id, uit::Mesh<Spec>& mesh) {
+void thread_job(const uitsl::thread_id_t thread_id, netuit::Mesh<Spec>& mesh) {
 
   // get nodes that this thread on this process are responsible for
   auto my_nodes = mesh.GetSubmesh(thread_id);
@@ -297,9 +297,9 @@ void thread_job(const uitsl::thread_id_t thread_id, uit::Mesh<Spec>& mesh) {
 int main() {
 
   // instantiate a network of conduits
-  uit::Mesh<Spec> mesh{
+  netuit::Mesh<Spec> mesh{
     // how should nodes be connected?
-    uit::RingTopologyFactory{}(num_nodes),
+    netuit::RingTopologyFactory{}(num_nodes),
     // how should nodes be assigned to threads?
     uitsl::AssignRoundRobin<uitsl::thread_id_t>{num_threads},
     // how should nodes be assigned to processes?

@@ -1,6 +1,6 @@
 TEST_CASE("Test Sequential Completeness") {
 
-  uit::Mesh<Spec> mesh{ uit::RingTopologyFactory{}(num_nodes) };
+  netuit::Mesh<Spec> mesh{ netuit::RingTopologyFactory{}(num_nodes) };
 
   emp::vector<int> sizes;
 

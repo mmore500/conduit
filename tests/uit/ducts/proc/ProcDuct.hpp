@@ -22,12 +22,12 @@
 #include "uit/setup/ImplSpec.hpp"
 #include "uit/fixtures/Sink.hpp"
 #include "uit/fixtures/Source.hpp"
-#include "uit/mesh/Mesh.hpp"
-#include "uit/mesh/MeshNodeInput.hpp"
-#include "uit/mesh/MeshNodeOutput.hpp"
-#include "uit/topology/DyadicTopologyFactory.hpp"
-#include "uit/topology/ProConTopologyFactory.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/mesh/MeshNodeInput.hpp"
+#include "netuit/mesh/MeshNodeOutput.hpp"
+#include "netuit/topology/DyadicTopologyFactory.hpp"
+#include "netuit/topology/ProConTopologyFactory.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 const uitsl::MpiGuard guard;
 
@@ -38,8 +38,8 @@ using Spec = uit::ImplSpec<MSG_T, uit::DEFAULT_BUFFER, ImplSel>;
 
 decltype(auto) make_dyadic_bundle() {
 
-  uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
+  netuit::Mesh<Spec> mesh{
+    netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignAvailableProcs{}
   };
@@ -53,8 +53,8 @@ decltype(auto) make_dyadic_bundle() {
 
 decltype(auto) make_producer_consumer_bundle() {
 
-  uit::Mesh<Spec> mesh{
-    uit::ProConTopologyFactory{}(uitsl::get_nprocs()),
+  netuit::Mesh<Spec> mesh{
+    netuit::ProConTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignAvailableProcs{}
   };
@@ -74,8 +74,8 @@ decltype(auto) make_producer_consumer_bundle() {
 };
 
 decltype(auto) make_ring_bundle() {
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(uitsl::get_nprocs()),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignAvailableProcs{}
   };
@@ -90,8 +90,8 @@ decltype(auto) make_ring_bundle() {
 
 // p_1 -> p_2 -> ... -> p_n -> p_1 -> p_2 -> ... -> p_n -> p_1
 decltype(auto) make_coiled_bundle() {
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(uitsl::get_nprocs() * 2),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(uitsl::get_nprocs() * 2),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignRoundRobin<uitsl::proc_id_t>{
       uitsl::safe_cast<size_t>( uitsl::get_nprocs() )

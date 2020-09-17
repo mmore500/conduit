@@ -10,7 +10,7 @@
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 #include "Job.hpp"
 
@@ -26,8 +26,8 @@ int main() {
 
   if ( uitsl::is_root() ) std::cout << ">>> begin <<<" << std::endl << std::endl;
 
-  uit::Mesh<ImplSpec> mesh{
-    uit::RingTopologyFactory{}( num_nodes ),
+  netuit::Mesh<ImplSpec> mesh{
+    netuit::RingTopologyFactory{}( num_nodes ),
     uitsl::AssignRoundRobin<uitsl::thread_id_t>{ num_threads, nodes_per_job },
     uitsl::AssignContiguously<uitsl::proc_id_t>{ num_procs, num_nodes }
   };

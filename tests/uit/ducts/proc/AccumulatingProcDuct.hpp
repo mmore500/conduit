@@ -13,12 +13,12 @@
 
 #include "uit/setup/ImplSpec.hpp"
 #include "uit/ducts/mock/ThrowDuct.hpp"
-#include "uit/mesh/Mesh.hpp"
-#include "uit/mesh/MeshNodeInput.hpp"
-#include "uit/mesh/MeshNodeOutput.hpp"
-#include "uit/topology/DyadicTopologyFactory.hpp"
-#include "uit/topology/ProConTopologyFactory.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/mesh/MeshNodeInput.hpp"
+#include "netuit/mesh/MeshNodeOutput.hpp"
+#include "netuit/topology/DyadicTopologyFactory.hpp"
+#include "netuit/topology/ProConTopologyFactory.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
 
@@ -31,8 +31,8 @@ const uitsl::MpiGuard guard;
 
 decltype(auto) make_dyadic_bundle() {
 
-  uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
+  netuit::Mesh<Spec> mesh{
+    netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignAvailableProcs{}
   };
@@ -46,8 +46,8 @@ decltype(auto) make_dyadic_bundle() {
 
 decltype(auto) make_producer_consumer_bundle() {
 
-  uit::Mesh<Spec> mesh{
-    uit::ProConTopologyFactory{}(uitsl::get_nprocs()),
+  netuit::Mesh<Spec> mesh{
+    netuit::ProConTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignAvailableProcs{}
   };
@@ -67,8 +67,8 @@ decltype(auto) make_producer_consumer_bundle() {
 };
 
 decltype(auto) make_ring_bundle() {
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(uitsl::get_nprocs()),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignAvailableProcs{}
   };

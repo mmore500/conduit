@@ -24,10 +24,10 @@
 
 #include "uit/setup/ImplSpec.hpp"
 #include "uit/fixtures/Source.hpp"
-#include "uit/mesh/Mesh.hpp"
-#include "uit/topology/DyadicTopologyFactory.hpp"
-#include "uit/topology/ProConTopologyFactory.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/topology/DyadicTopologyFactory.hpp"
+#include "netuit/topology/ProConTopologyFactory.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 const uitsl::MpiGuard guard;
 
@@ -57,8 +57,8 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
 TEST_CASE("Unmatched gets") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::DyadicTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -77,8 +77,8 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
 TEST_CASE("Unmatched puts") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::DyadicTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
