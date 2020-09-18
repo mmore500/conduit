@@ -10,8 +10,8 @@
 #include "../../../third-party/Empirical/source/base/optional.h"
 
 #include "../../uitsl/debug/occupancy_audit.hpp"
-#include "../../uitsl/parallel/thread_utils.hpp"
 #include "../../uitsl/nonce/CircularIndex.hpp"
+#include "../../uitsl/parallel/thread_utils.hpp"
 
 #include "../ducts/Duct.hpp"
 

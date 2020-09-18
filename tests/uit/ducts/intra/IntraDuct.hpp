@@ -9,15 +9,16 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
-#include "uitsl/utility/assign_utils.hpp"
-#include "uitsl/nonce/CircularIndex.hpp"
-#include "uitsl/math/math_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/math/math_utils.hpp"
+#include "uitsl/nonce/CircularIndex.hpp"
+#include "uitsl/utility/assign_utils.hpp"
 
 #include "uit/setup/ImplSpec.hpp"
+
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/topology/RingTopologyFactory.hpp"
 #include "netuit/topology/DyadicTopologyFactory.hpp"

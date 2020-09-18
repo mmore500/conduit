@@ -6,11 +6,12 @@
 
 #include "Empirical/source/base/vector.h"
 
+#include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+
+#include "uit/ducts/proc/inlet/put=dropping+type=span/s::RingIrsendDuct.hpp"
 #include "uit/setup/ImplSpec.hpp"
 #include "uit/setup/InterProcAddress.hpp"
-#include "uit/ducts/proc/inlet/put=dropping+type=span/s::RingIrsendDuct.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
 
 const uitsl::MpiGuard guard;
 

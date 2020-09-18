@@ -5,11 +5,13 @@
 
 #include <mpi.h>
 
-#include "../../uit/ducts/Duct.hpp"
-#include "../../uit/setup/InterProcAddress.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"
 #include "../../uitsl/math/math_utils.hpp"
+
+#include "../../uit/ducts/Duct.hpp"
+#include "../../uit/setup/InterProcAddress.hpp"
+
 #include "../topology/Topology.hpp"
 
 #include "MeshNode.hpp"

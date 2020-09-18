@@ -1,7 +1,7 @@
 #pragma once
 
-#include <stddef.h>
 #include <memory>
+#include <stddef.h>
 
 #include "_ThreadIbarrierManager.hpp"
 #include "ThreadIbarrier.hpp"

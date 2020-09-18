@@ -6,12 +6,12 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
+#include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/math/math_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/Request.hpp"
 #include "uitsl/utility/assign_utils.hpp"
-#include "uitsl/math/math_utils.hpp"
 
 const uitsl::MpiGuard guard;
 

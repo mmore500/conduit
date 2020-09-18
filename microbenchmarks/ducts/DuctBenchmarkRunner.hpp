@@ -6,19 +6,21 @@
 #include <thread>
 #include <tuple>
 
-#include <mpi.h>
 #include <benchmark/benchmark.h>
+#include <mpi.h>
 
 #include "uitsl/concurrent/Gatherer.hpp"
-#include "uit/fixtures/Conduit.hpp"
 #include "uitsl/chrono/TimeGuard.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
-#include "netuit/mesh/Mesh.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/parallel/thread_utils.hpp"
+
+#include "uit/fixtures/Conduit.hpp"
+
+#include "netuit/mesh/Mesh.hpp"
 
 template<
   typename NumThreadsType,

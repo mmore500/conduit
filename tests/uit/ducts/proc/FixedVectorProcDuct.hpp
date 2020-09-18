@@ -7,7 +7,6 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
-
 #include "Empirical/source/base/vector.h"
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
@@ -18,9 +17,10 @@
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 
-#include "uit/setup/ImplSpec.hpp"
 #include "uit/fixtures/Sink.hpp"
 #include "uit/fixtures/Source.hpp"
+#include "uit/setup/ImplSpec.hpp"
+
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"

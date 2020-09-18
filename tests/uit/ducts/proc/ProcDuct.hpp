@@ -19,9 +19,10 @@
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 
-#include "uit/setup/ImplSpec.hpp"
 #include "uit/fixtures/Sink.hpp"
 #include "uit/fixtures/Source.hpp"
+#include "uit/setup/ImplSpec.hpp"
+
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"

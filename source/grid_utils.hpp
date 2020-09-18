@@ -19,16 +19,18 @@
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "uitsl/countdown/Counter.hpp"
 #include "uitsl/countdown/Timer.hpp"
-#include "uit/fixtures/Conduit.hpp"
 #include "uitsl/debug/safe_cast.hpp"
+#include "uitsl/debug/safe_compare.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
-#include "uitsl/debug/safe_compare.hpp"
-#include "netuit/mesh/Mesh.hpp"
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/polyfill/barrier.hpp"
 #include "uitsl/polyfill/latch.hpp"
+
+#include "uit/fixtures/Conduit.hpp"
+
+#include "netuit/mesh/Mesh.hpp"
 #include "netuit/topology/RingTopologyFactory.hpp"
 
 #include "chunk_utils.hpp"

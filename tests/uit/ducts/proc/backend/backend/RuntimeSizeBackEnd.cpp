@@ -3,10 +3,11 @@
 #include "Catch/single_include/catch2/catch.hpp"
 #include "Empirical/source/base/vector.h"
 
-#include "uit/setup/ImplSpec.hpp"
-#include "uit/ducts/proc/backend/RuntimeSizeBackEnd.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+
+#include "uit/ducts/proc/backend/RuntimeSizeBackEnd.hpp"
+#include "uit/setup/ImplSpec.hpp"
 
 const uitsl::MpiGuard guard;
 

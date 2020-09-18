@@ -6,9 +6,9 @@
 
 #include "../../../setup/InterProcAddress.hpp"
 
+#include "impl/AggregatorSpec.hpp"
 #include "impl/InletMemoryAggregator.hpp"
 #include "impl/OutletMemoryAggregator.hpp"
-#include "impl/AggregatorSpec.hpp"
 
 namespace uit {
 

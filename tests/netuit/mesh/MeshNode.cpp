@@ -3,6 +3,7 @@
 
 #include "uit/fixtures/Conduit.hpp"
 #include "uit/setup/ImplSpec.hpp"
+
 #include "netuit/mesh/MeshNode.hpp"
 
 TEST_CASE("Test MeshNode") {

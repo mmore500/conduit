@@ -2,8 +2,8 @@
 
 #include <functional>
 
-#include "mpi_utils.hpp"
 #include "audited_routines.hpp"
+#include "mpi_utils.hpp"
 
 namespace uitsl {
 

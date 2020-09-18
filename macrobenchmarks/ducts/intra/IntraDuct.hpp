@@ -12,8 +12,9 @@
 #include "uitsl/parallel/thread_utils.hpp"
 #include "uitsl/polyfill/latch.hpp"
 
-#include "uit/setup/ImplSpec.hpp"
 #include "uit/fixtures/Conduit.hpp"
+#include "uit/setup/ImplSpec.hpp"
+
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/topology/RingTopologyFactory.hpp"
 

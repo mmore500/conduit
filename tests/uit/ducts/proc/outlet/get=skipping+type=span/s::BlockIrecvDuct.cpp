@@ -5,11 +5,12 @@
 #include "Catch/single_include/catch2/catch.hpp"
 #include "Empirical/source/base/vector.h"
 
+#include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+
+#include "uit/ducts/proc/outlet/get=skipping+type=span/s::BlockIrecvDuct.hpp"
 #include "uit/setup/ImplSpec.hpp"
 #include "uit/setup/InterProcAddress.hpp"
-#include "uit/ducts/proc/outlet/get=skipping+type=span/s::BlockIrecvDuct.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
 
 const uitsl::MpiGuard guard;
 

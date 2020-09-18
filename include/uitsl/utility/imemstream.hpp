@@ -1,7 +1,7 @@
 #pragma once
 
-#include <streambuf>
 #include <istream>
+#include <streambuf>
 
 namespace uitsl {
 

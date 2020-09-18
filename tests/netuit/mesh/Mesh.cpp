@@ -1,8 +1,10 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/setup/ImplSpec.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
+
+#include "uit/setup/ImplSpec.hpp"
+
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/topology/RingTopologyFactory.hpp"
 #include "netuit/topology/ProConTopologyFactory.hpp"
