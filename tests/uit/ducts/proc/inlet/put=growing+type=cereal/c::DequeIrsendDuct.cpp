@@ -4,11 +4,12 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/config/ImplSpec.hpp"
-#include "uit/conduit/../config/InterProcAddress.hpp"
-#include "uit/ducts/proc/inlet/put=growing+type=cereal/c::DequeIrsendDuct.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+
+#include "uit/ducts/proc/inlet/put=growing+type=cereal/c::DequeIrsendDuct.hpp"
+#include "uit/setup/ImplSpec.hpp"
+#include "uit/setup/InterProcAddress.hpp"
 
 const uitsl::MpiGuard guard;
 

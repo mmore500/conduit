@@ -1,7 +1,7 @@
 TEST_CASE("Eventual flush-out") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::DyadicTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -31,8 +31,8 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
 TEST_CASE("Validity") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::DyadicTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 

@@ -13,16 +13,17 @@
 #include "uitsl/polyfill/latch.hpp"
 
 #include "uit/fixtures/Conduit.hpp"
-#include "uit/config/ImplSpec.hpp"
-#include "uit/mesh/Mesh.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
+#include "uit/setup/ImplSpec.hpp"
+
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 #define MESSAGE_T int
 
 using Spec = uit::ImplSpec<MESSAGE_T, uit::DEFAULT_BUFFER, ImplSel>;
 
 void do_work(
-  uit::Mesh<Spec>::submesh_t submesh,
+  netuit::Mesh<Spec>::submesh_t submesh,
   std::latch& latch,
   uitsl::Gatherer<MESSAGE_T>& gatherer
 ) {
@@ -53,8 +54,8 @@ void profile_thread_count(const size_t num_threads) {
 
   uitsl::ThreadTeam team;
 
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 

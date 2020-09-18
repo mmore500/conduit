@@ -19,17 +19,19 @@
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "uitsl/countdown/Counter.hpp"
 #include "uitsl/countdown/Timer.hpp"
-#include "uit/fixtures/Conduit.hpp"
 #include "uitsl/debug/safe_cast.hpp"
+#include "uitsl/debug/safe_compare.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
-#include "uitsl/debug/safe_compare.hpp"
-#include "uit/mesh/Mesh.hpp"
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/polyfill/barrier.hpp"
 #include "uitsl/polyfill/latch.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
+
+#include "uit/fixtures/Conduit.hpp"
+
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 #include "chunk_utils.hpp"
 #include "config_utils.hpp"
@@ -44,14 +46,14 @@ grid_t make_grid(const config_t & cfg) {
 
   const size_t grid_size = cfg.at("grid_size");
   const size_t num_threads = cfg.at("num_threads");
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(grid_size * uitsl::get_nprocs()),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(grid_size * uitsl::get_nprocs()),
     uitsl::AssignContiguously<uitsl::thread_id_t>{num_threads, grid_size}
   };
 
   grid_t grid;
 
-  uit::Mesh<Spec>::submesh_t submesh{ mesh.GetSubmesh() };
+  netuit::Mesh<Spec>::submesh_t submesh{ mesh.GetSubmesh() };
 
   for (const auto & node : submesh) {
     grid.push_back(

@@ -8,9 +8,9 @@
 #include "../../../third-party/Empirical/source/base/assert.h"
 #include "../../../third-party/Empirical/source/tools/math.h"
 
+#include "../debug/safe_compare.hpp"
 #include "../math/math_utils.hpp"
 #include "../utility/print_utils.hpp"
-#include "../debug/safe_compare.hpp"
 
 #include "audited_routines.hpp"
 #include "proc_id_t.hpp"

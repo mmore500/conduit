@@ -12,7 +12,7 @@
 #include "../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../uitsl/utility/print_utils.hpp"
 
-#include "../../../../config/InterProcAddress.hpp"
+#include "../../../../setup/InterProcAddress.hpp"
 
 #include "impl/BufferSpec.hpp"
 

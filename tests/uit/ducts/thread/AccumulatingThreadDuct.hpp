@@ -1,7 +1,7 @@
 TEST_CASE("Validity") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 

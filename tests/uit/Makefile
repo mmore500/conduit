@@ -1,11 +1,9 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += config
 TARGET_NAMES += ducts
 TARGET_NAMES += fixtures
-TARGET_NAMES += mesh
+TARGET_NAMES += setup
 TARGET_NAMES += spouts
-TARGET_NAMES += topology
 
 default: test
 

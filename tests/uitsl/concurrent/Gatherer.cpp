@@ -12,10 +12,10 @@
 
 #include "uitsl/concurrent/Gatherer.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
-#include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/parallel/thread_utils.hpp"
 #include "uitsl/polyfill/barrier.hpp"

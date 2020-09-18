@@ -12,14 +12,14 @@
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../../uitsl/mpi/mpi_utils.hpp"
+#include "../../../../../uitsl/debug/safe_compare.hpp"
+#include "../../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../../uitsl/distributed/RdmaAccumulatorPacket.hpp"
 #include "../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../uitsl/nonce/CircularIndex.hpp"
 #include "../../../../../uitsl/utility/print_utils.hpp"
-#include "../../../../../uitsl/debug/safe_compare.hpp"
-#include "../../../../../uitsl/debug/WarnOnce.hpp"
 
-#include "../../../../config/InterProcAddress.hpp"
+#include "../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/RdmaBackEnd.hpp"
 

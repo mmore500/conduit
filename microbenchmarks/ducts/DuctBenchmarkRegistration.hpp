@@ -25,11 +25,12 @@
 #include "uitsl/polyfill/barrier.hpp"
 
 #include "uit/fixtures/Conduit.hpp"
-#include "uit/config/ImplSpec.hpp"
-#include "uit/mesh/Mesh.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
-#include "uit/topology/DyadicTopologyFactory.hpp"
-#include "uit/topology/ProConTopologyFactory.hpp"
+#include "uit/setup/ImplSpec.hpp"
+
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
+#include "netuit/topology/DyadicTopologyFactory.hpp"
+#include "netuit/topology/ProConTopologyFactory.hpp"
 
 
 #include "DuctBenchmarkRunner.hpp"
@@ -88,9 +89,9 @@ struct ThreadCountPayload {
   ThreadCountPayload() {
 
     using factories_t = emp::TypePack<
-      uit::RingTopologyFactory,
-      uit::DyadicTopologyFactory,
-      uit::ProConTopologyFactory
+      netuit::RingTopologyFactory,
+      netuit::DyadicTopologyFactory,
+      netuit::ProConTopologyFactory
     >;
 
     using benchmarks_t = typename factories_t::wrap<

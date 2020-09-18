@@ -1,6 +1,6 @@
 TEST_CASE("Validity") { REPEAT {
 
-  uit::Mesh<Spec> mesh{ uit::RingTopologyFactory{}(num_nodes) };
+  netuit::Mesh<Spec> mesh{ netuit::RingTopologyFactory{}(num_nodes) };
 
   std::deque<int> sums;
 

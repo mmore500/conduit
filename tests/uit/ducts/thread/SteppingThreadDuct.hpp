@@ -1,7 +1,7 @@
 TEST_CASE("Ring Mesh connectivity") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -23,8 +23,8 @@ TEST_CASE("Ring Mesh connectivity") { REPEAT {
 
 TEST_CASE("Ring Mesh sequential consistency") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -49,8 +49,8 @@ TEST_CASE("Ring Mesh sequential consistency") { REPEAT {
 
 TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -81,8 +81,8 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
 
 TEST_CASE("Producer-Consumer Mesh sequential consistency") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -105,8 +105,8 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { REPEAT {
 
 TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::DyadicTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -140,8 +140,8 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
 
 TEST_CASE("Dyadic Mesh sequential consistency") { REPEAT {
 
-  uit::Mesh<Spec> mesh{
-    uit::DyadicTopologyFactory{}(num_threads),
+  netuit::Mesh<Spec> mesh{
+    netuit::DyadicTopologyFactory{}(num_threads),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 

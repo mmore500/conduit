@@ -13,14 +13,14 @@
 #include "../../../../../../third-party/Empirical/source/base/optional.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../../uitsl/initialization/Uninitialized.hpp"
 #include "../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../uitsl/mpi/Request.hpp"
 #include "../../../../../uitsl/nonce/CircularIndex.hpp"
 #include "../../../../../uitsl/utility/imemstream.hpp"
 #include "../../../../../uitsl/utility/print_utils.hpp"
-#include "../../../../../uitsl/initialization/Uninitialized.hpp"
 
-#include "../../../../config/InterProcAddress.hpp"
+#include "../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/MockBackEnd.hpp"
 

@@ -4,10 +4,11 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/config/ImplSpec.hpp"
-#include "uit/ducts/mock/NopDuct.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
+
+#include "uit/ducts/mock/NopDuct.hpp"
+#include "uit/setup/ImplSpec.hpp"
 
 #define MSG_T int
 

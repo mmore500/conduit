@@ -4,8 +4,8 @@
 
 #include "../../../third-party/Empirical/source/hardware/EventDrivenGP.h"
 
-#include "uit/mesh/Mesh.hpp"
-#include "uit/mesh/MeshNode.hpp"
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/mesh/MeshNode.hpp"
 
 #include "config.hpp"
 
@@ -34,6 +34,6 @@ using tag_t = hardware_t::affinity_t;
 
 #include "ImplSpec.hpp"
 
-using submesh_t = typename uit::Mesh<ImplSpec>::submesh_t;
+using submesh_t = typename netuit::Mesh<ImplSpec>::submesh_t;
 
-using node_t = uit::MeshNode<ImplSpec>;
+using node_t = netuit::MeshNode<ImplSpec>;

@@ -3,9 +3,10 @@
 #include <assert.h>
 #include <sstream>
 
+#include "uitsl/utility/print_utils.hpp"
+
 #include "uit/spouts/Inlet.hpp"
 #include "uit/spouts/Outlet.hpp"
-#include "uitsl/utility/print_utils.hpp"
 
 #include "config_utils.hpp"
 #include "State.hpp"

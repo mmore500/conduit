@@ -1,8 +1,8 @@
 #pragma once
 
 #include <mutex>
-#include <unordered_map>
 #include <shared_mutex>
+#include <unordered_map>
 
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <cstddef>
 #include <condition_variable>
+#include <cstddef>
 
 // polyfill until C++20 barrier becomes available
 // TODO C++20 cpp20 switch to std::barrier

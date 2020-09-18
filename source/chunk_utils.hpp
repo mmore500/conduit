@@ -1,7 +1,8 @@
 #pragma once
 
-#include "uit/ducts/Duct.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
+
+#include "uit/ducts/Duct.hpp"
 
 #include "grid_utils.hpp"
 #include "State.hpp"

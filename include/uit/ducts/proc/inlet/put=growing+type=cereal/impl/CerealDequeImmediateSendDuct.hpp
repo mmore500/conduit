@@ -18,7 +18,7 @@
 #include "../../../../../../uitsl/nonce/CircularIndex.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
 
-#include "../../../../../config/InterProcAddress.hpp"
+#include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../../backend/MockBackEnd.hpp"
 

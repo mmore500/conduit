@@ -3,14 +3,15 @@
 #include <map>
 #include <sstream>
 
+#include "uitsl/containers/safe/unordered_map.hpp"
+#include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/distributed/assign_utils.hpp"
 #include "uitsl/distributed/do_successively.hpp"
-#include "uitsl/containers/safe/unordered_map.hpp"
 #include "uitsl/mpi/MpiMultithreadGuard.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/utility/assign_utils.hpp"
-#include "uitsl/debug/safe_cast.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
+
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 #include "Job.hpp"
 
@@ -26,8 +27,8 @@ int main() {
 
   if ( uitsl::is_root() ) std::cout << ">>> begin <<<" << std::endl << std::endl;
 
-  uit::Mesh<ImplSpec> mesh{
-    uit::RingTopologyFactory{}( num_nodes ),
+  netuit::Mesh<ImplSpec> mesh{
+    netuit::RingTopologyFactory{}( num_nodes ),
     uitsl::AssignRoundRobin<uitsl::thread_id_t>{ num_threads, nodes_per_job },
     uitsl::AssignContiguously<uitsl::proc_id_t>{ num_procs, num_nodes }
   };

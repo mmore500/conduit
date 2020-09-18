@@ -7,7 +7,6 @@
 
 #include "../debug/err_audit.hpp"
 #include "../debug/safe_cast.hpp"
-
 #include "../math/divide_utils.hpp"
 
 // adapted from https://medium.com/@abhinavagarwal1996/a-fast-circular-ring-buffer-4d102ef4d4a3

@@ -9,8 +9,9 @@
 
 #include "../third-party/Empirical/source/tools/string_utils.h"
 
-#include "uit/config/ImplSpec.hpp"
 #include "uitsl/math/math_utils.hpp"
+
+#include "uit/setup/ImplSpec.hpp"
 
 #include "State.hpp"
 

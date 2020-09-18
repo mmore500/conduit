@@ -3,8 +3,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 

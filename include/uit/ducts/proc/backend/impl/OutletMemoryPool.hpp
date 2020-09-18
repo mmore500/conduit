@@ -7,9 +7,9 @@
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../../third-party/Empirical/source/base/optional.h"
 
-#include "../../../../spouts/Outlet.hpp"
 #include "../../../../fixtures/Source.hpp"
-#include "../../../../config/InterProcAddress.hpp"
+#include "../../../../setup/InterProcAddress.hpp"
+#include "../../../../spouts/Outlet.hpp"
 
 namespace uit {
 
