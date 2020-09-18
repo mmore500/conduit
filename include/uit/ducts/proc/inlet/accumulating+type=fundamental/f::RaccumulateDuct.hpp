@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <array>
 #include <stddef.h>
+#include <string>
 
 #include <mpi.h>
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <atomic>
+#include <string>
 
 #include "../../../../uitsl/parallel/AlignedImplicit.hpp"
 #include "../../../../uitsl/parallel/AlignedInherit.hpp"

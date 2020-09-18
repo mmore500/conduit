@@ -2,6 +2,7 @@
 
 #include <limits>
 #include <stddef.h>
+#include <string>
 #include <utility>
 
 #include "../../../../../third-party/Empirical/source/base/assert.h"

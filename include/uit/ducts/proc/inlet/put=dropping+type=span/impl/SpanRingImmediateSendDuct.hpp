@@ -4,6 +4,7 @@
 #include <array>
 #include <memory>
 #include <stddef.h>
+#include <string>
 
 #include <mpi.h>
 

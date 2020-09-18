@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <stddef.h>
+#include <string>
 
 #include <mpi.h>
 

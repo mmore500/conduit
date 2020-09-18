@@ -2,6 +2,7 @@
 
 #include <deque>
 #include <stddef.h>
+#include <string>
 
 #include "../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../third-party/Empirical/source/base/errors.h"

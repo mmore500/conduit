@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stddef.h>
+#include <string>
 
 #include "../../../../third-party/Empirical/source/base/assert.h"
 

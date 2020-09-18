@@ -5,6 +5,7 @@
 #include <tuple>
 #include <utility>
 #include <stddef.h>
+#include <string>
 
 #include <mpi.h>
 
