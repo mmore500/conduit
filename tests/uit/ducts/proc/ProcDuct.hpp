@@ -175,7 +175,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
-  for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
   }
 
@@ -185,7 +185,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
   output.TryFlush();
   while( input.JumpGet() != 42);
 
-  for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
+  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
     REQUIRE( input.JumpGet() == 42 );
   }
 
@@ -195,7 +195,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
-  for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(i);
+  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(i);
 
   REQUIRE( input.JumpGet() <= 2 * uit::DEFAULT_BUFFER );
 
@@ -211,7 +211,7 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
-  for (MSG_T i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(0);
+  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(0);
 
   output.TryFlush();
 
