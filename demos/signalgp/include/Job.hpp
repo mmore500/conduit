@@ -18,10 +18,8 @@ class Job {
   using timer_t = uitsl::Timer<std::chrono::seconds, uitsl::CoarseClock>;
   using bar_t = uitsl::ProgressBar<timer_t>;
 
-  static inline emp::NullStream ns;
-
   bar_t timer{
-    uitsl::is_root() ? std::cout : ns,
+    uitsl::is_root() ? std::cout : emp::nout,
     std::chrono::seconds{ 20 }
   };
 

@@ -17,7 +17,6 @@
 #include "../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../uitsl/mpi/Request.hpp"
 #include "../../../../../uitsl/nonce/CircularIndex.hpp"
-#include "../../../../../uitsl/utility/imemstream.hpp"
 #include "../../../../../uitsl/utility/print_utils.hpp"
 
 #include "../../../../setup/InterProcAddress.hpp"

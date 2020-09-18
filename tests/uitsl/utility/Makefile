@@ -1,6 +1,5 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += imemstream
 TARGET_NAMES += NamedArrayElement
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
