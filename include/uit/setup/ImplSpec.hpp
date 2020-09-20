@@ -27,7 +27,6 @@ public:
   constexpr inline static size_t N{ N_ };
 
   /// TODO.
-  /// TODO.
   constexpr inline static size_t B{ B_ };
 
   /// TODO.
