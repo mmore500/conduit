@@ -523,6 +523,16 @@ Implementations of inter-process communication currently use the [Messgage Passi
 Benchmarks are performed during Travis builds and occasionally on the [iCER HPCC cluster](https://icer.msu.edu/).
 Benchmark results are available at [https://osf.io/7jkgp/](https://osf.io/7jkgp/).
 
+## Organization
+
+Code is organized into three hierarchically-leveized namespaces.
+
+Base-level utility code resides in the `uitsl` ("conduit support library") namespace.
+Although tools in this namespace may be useful outside the scope of the conduit project, no conduit API is written in this namespace.
+
+The low-level API resides in the `uit` ("conduit") namespace.
+The high-level API resides in the `netuit` ("networked conduit") namespace.
+
 ## Acknowledgement
 
 This project is built using the [Empirical C++ library](https://github.com/devosoft/Empirical/).
