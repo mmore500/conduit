@@ -66,8 +66,8 @@ public:
  */
 template<
   typename T,
-  size_t N=uit::DEFAULT_BUFFER,
   typename ImplSelect=uit::ImplSelect<>,
+  size_t N=uit::DEFAULT_BUFFER,
   size_t B=std::numeric_limits<size_t>::max()
 >
 class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect, B> { };
