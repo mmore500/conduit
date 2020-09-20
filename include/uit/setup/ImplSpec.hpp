@@ -72,4 +72,9 @@ template<
 >
 class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect, B> { };
 
+template<typename T>
+struct MockSpec
+: public ImplSpec<T, uit::MockSelect>
+{};
+
 } // namespace uit

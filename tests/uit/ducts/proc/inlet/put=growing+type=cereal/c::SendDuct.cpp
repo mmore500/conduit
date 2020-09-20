@@ -15,7 +15,7 @@ const uitsl::MpiGuard guard;
 
 TEST_CASE("Test c::SendDuct") {
 
-  using ImplSpec = uit::ImplSpec<char>;
+  using ImplSpec = uit::MockSpec<char>;
   using BackEnd = uit::c::SendDuct<ImplSpec>::BackEndImpl;
 
   // TODO flesh out stub test

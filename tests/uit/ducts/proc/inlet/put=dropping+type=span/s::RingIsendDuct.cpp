@@ -17,7 +17,7 @@ const uitsl::MpiGuard guard;
 
 TEST_CASE("Test s::RingIsendDuct") {
 
-  using ImplSpec = uit::ImplSpec<emp::vector<char>>;
+  using ImplSpec = uit::MockSpec<emp::vector<char>>;
   using BackEnd = uit::s::RingIsendDuct<ImplSpec>::BackEndImpl;
 
   // TODO flesh out stub test

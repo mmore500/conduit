@@ -15,7 +15,7 @@ const uitsl::MpiGuard guard;
 
 TEST_CASE("Test f::RaccumulateDuct") {
 
-  using ImplSpec = uit::ImplSpec<char>;
+  using ImplSpec = uit::MockSpec<char>;
   using BackEnd = uit::f::RaccumulateDuct<ImplSpec>::BackEndImpl;
 
   // TODO flesh out stub test

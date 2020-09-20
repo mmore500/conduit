@@ -15,7 +15,7 @@ const uitsl::MpiGuard guard;
 
 TEST_CASE("Test f::WithdrawingWindowDuct") {
 
-  using ImplSpec = uit::ImplSpec<char>;
+  using ImplSpec = uit::MockSpec<char>;
   using BackEnd = uit::f::WithdrawingWindowDuct<ImplSpec>::BackEndImpl;
 
   // TODO flesh out stub test

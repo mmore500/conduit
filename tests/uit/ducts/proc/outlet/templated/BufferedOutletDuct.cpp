@@ -16,7 +16,7 @@ const uitsl::MpiGuard guard;
 
 TEST_CASE("Test BufferedOutletDuct") {
 
-  using ImplSpec = uit::ImplSpec<char>;
+  using ImplSpec = uit::MockSpec<char>;
   using BackEnd = uit::BufferedOutletDuct<
     uit::s::IriOiDuct,
     ImplSpec
