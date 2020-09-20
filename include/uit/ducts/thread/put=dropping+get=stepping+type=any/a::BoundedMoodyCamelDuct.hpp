@@ -11,6 +11,7 @@
 #include "../../../../../third-party/readerwriterqueue/readerwriterqueue.h"
 
 #include "../../../../uitsl/debug/occupancy_audit.hpp"
+#include "../../../../uitsl/meta/a::static_test.hpp"
 #include "../../../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
@@ -26,6 +27,7 @@ template<typename ImplSpec>
 class BoundedMoodyCamelDuct {
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::a::static_test<T>(), uitsl_a_message );
   constexpr inline static size_t N{ImplSpec::N};
 
   moodycamel::ReaderWriterQueue<T> queue{N};

@@ -12,6 +12,7 @@
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../uitsl/distributed/RdmaPacket.hpp"
 #include "../../../../../uitsl/distributed/RdmaWindowManager.hpp"
@@ -41,6 +42,7 @@ public:
 private:
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::t::static_test<T>(), uitsl_t_message );
   constexpr inline static size_t N{ImplSpec::N};
 
   using packet_t = uitsl::RdmaPacket<T>;

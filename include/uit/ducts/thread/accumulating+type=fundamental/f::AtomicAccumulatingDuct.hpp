@@ -8,6 +8,7 @@
 #include "../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../uitsl/meta/f::static_test.hpp"
 #include "../../../../uitsl/parallel/RelaxedAtomic.hpp"
 #include "../../../../uitsl/utility/print_utils.hpp"
 
@@ -24,6 +25,7 @@ template<typename ImplSpec>
 class AtomicAccumulatingDuct {
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::f::static_test<T>(), uitsl_f_message );
 
   uitsl::RelaxedAtomic<T> accumulator{};
   T cache{};

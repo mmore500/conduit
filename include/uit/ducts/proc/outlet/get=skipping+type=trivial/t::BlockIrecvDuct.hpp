@@ -9,6 +9,7 @@
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../uitsl/mpi/Request.hpp"
 #include "../../../../../uitsl/nonce/CircularIndex.hpp"
@@ -37,6 +38,7 @@ public:
 private:
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::t::static_test<T>(), uitsl_t_message );
   constexpr inline static size_t N{ImplSpec::N};
 
   using buffer_t = emp::array<T, N>;

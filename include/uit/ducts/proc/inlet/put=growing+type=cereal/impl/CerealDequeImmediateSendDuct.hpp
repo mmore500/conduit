@@ -14,6 +14,7 @@
 #include "../../../../../../../third-party/Empirical/source/tools/ContiguousStream.h"
 #include "../../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../../../uitsl/meta/c::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../../uitsl/mpi/Request.hpp"
 #include "../../../../../../uitsl/nonce/CircularIndex.hpp"
@@ -42,6 +43,7 @@ public:
 private:
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::c::static_test<T>(), uitsl_c_message );
 
   // newest requests are pushed back, oldest requests are at front
   std::deque<std::tuple<emp::ContiguousStream, uitsl::Request>> buffer;

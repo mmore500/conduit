@@ -13,6 +13,7 @@
 
 #include "../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../uitsl/debug/err_audit.hpp"
+#include "../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../../uitsl/mpi/Request.hpp"
 #include "../../../../../../uitsl/nonce/CircularIndex.hpp"
@@ -41,6 +42,7 @@ public:
 private:
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::t::static_test<T>(), uitsl_t_message );
   constexpr inline static size_t N{ImplSpec::N};
 
   using buffer_t = uitsl::RingBuffer<std::tuple<T, uitsl::Request>, N>;

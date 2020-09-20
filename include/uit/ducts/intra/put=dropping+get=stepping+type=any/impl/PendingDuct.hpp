@@ -6,6 +6,7 @@
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../../uitsl/meta/a::static_test.hpp"
 #include "../../../../../uitsl/debug/occupancy_audit.hpp"
 #include "../../../../../uitsl/nonce/CircularIndex.hpp"
 #include "../../../../../uitsl/utility/print_utils.hpp"
@@ -27,6 +28,7 @@ template<
 class PendingDuct {
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::a::static_test<T>(), uitsl_a_message );
   constexpr inline static size_t N{ImplSpec::N};
 
   using buffer_t = emp::array<BufferElementType, N>;
