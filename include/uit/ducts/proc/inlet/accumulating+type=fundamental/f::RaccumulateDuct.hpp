@@ -8,6 +8,7 @@
 #include <mpi.h>
 
 #include "../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../third-party/Empirical/source/base/array.h"
 #include "../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
@@ -48,7 +49,9 @@ private:
   using packet_t = uitsl::RdmaAccumulatorPacket<T>;
 
   uitsl::Request request{};
-  packet_t buffer{};
+  emp::array<packet_t, 2> buffer{};
+  packet_t* send_buffer{ &buffer[0] };
+  packet_t* prep_buffer{ &buffer[1] };
 
   const uit::InterProcAddress address;
 
@@ -61,12 +64,15 @@ private:
 
     emp_assert( uitsl::test_null( request ) );
 
+    std::swap( send_buffer, prep_buffer );
+    *prep_buffer = packet_t{};
+
     // TODO FIXME what kind of lock is needed here?
     back_end->GetWindowManager().LockShared( address.GetOutletProc() );
 
     back_end->GetWindowManager().template Raccumulate<T>(
       address.GetOutletProc(),
-      reinterpret_cast<const std::byte*>( &buffer ),
+      reinterpret_cast<const std::byte*>( send_buffer ),
       sizeof(packet_t),
       target_offset,
       &request
@@ -75,8 +81,6 @@ private:
     back_end->GetWindowManager().Unlock( address.GetOutletProc() );
 
     emp_assert( !uitsl::test_null( request ) );
-
-    buffer = packet_t{};
 
   }
 
@@ -120,8 +124,8 @@ public:
    * @param val TODO.
    */
   bool TryPut(const T& val) {
-    buffer.data += val;
-    ++buffer.epoch;
+    prep_buffer->data += val;
+    ++prep_buffer->epoch;
     TryPostAccumulate();
     return true;
   }
