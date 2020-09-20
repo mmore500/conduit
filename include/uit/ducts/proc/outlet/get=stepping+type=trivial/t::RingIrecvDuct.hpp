@@ -11,6 +11,7 @@
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../../../../uitsl/debug/err_audit.hpp"
+#include "../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../uitsl/datastructs/SiftingArray.hpp"
 #include "../../../../../uitsl/utility/print_utils.hpp"
@@ -39,6 +40,7 @@ public:
 private:
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::t::static_test<T>(), uitsl_t_message );
   constexpr inline static size_t N{ImplSpec::N};
 
   // one extra in the data buffer to hold the current get

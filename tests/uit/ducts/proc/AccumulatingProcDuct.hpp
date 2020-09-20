@@ -25,7 +25,7 @@
 
 
 using MSG_T = int;
-using Spec = uit::ImplSpec<MSG_T, uit::DEFAULT_BUFFER, ImplSel>;
+using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 const uitsl::MpiGuard guard;
 

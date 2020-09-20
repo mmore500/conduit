@@ -10,6 +10,7 @@
 #include "../../../../../third-party/SPSCQueue/include/rigtorp/SPSCQueue.h"
 
 #include "../../../../uitsl/debug/occupancy_audit.hpp"
+#include "../../../../uitsl/meta/a::static_test.hpp"
 #include "../../../../uitsl/parallel/RelaxedAtomic.hpp"
 #include "../../../../uitsl/utility/print_utils.hpp"
 
@@ -26,6 +27,7 @@ template<typename ImplSpec>
 class RigtorpDuct {
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::a::static_test<T>(), uitsl_a_message );
   constexpr inline static size_t N{ImplSpec::N};
 
   rigtorp::SPSCQueue<T> queue{N};

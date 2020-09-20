@@ -30,4 +30,11 @@ struct ImplSelect {
 
 };
 
+struct MockSelect
+: public ImplSelect<
+  uit::DefaultMockDuct,
+  uit::DefaultMockDuct,
+  uit::DefaultMockDuct
+> {};
+
 } // namespace uit

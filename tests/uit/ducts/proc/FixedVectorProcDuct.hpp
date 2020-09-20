@@ -32,7 +32,7 @@
 const uitsl::MpiGuard guard;
 
 using MSG_T = emp::vector<int>;
-using Spec = uit::ImplSpec<MSG_T, uit::DEFAULT_BUFFER, ImplSel>;
+using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
 

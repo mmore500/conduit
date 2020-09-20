@@ -9,9 +9,10 @@
 #include "../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../uitsl/meta/a::static_test.hpp"
 #include "../../../../uitsl/parallel/RelaxedAtomic.hpp"
 #include "../../../../uitsl/utility/print_utils.hpp"
-#include "../../../../uitsl/debug/WarnOnce.hpp"
 
 namespace uit {
 namespace a {
@@ -26,6 +27,7 @@ template<typename ImplSpec>
 class AtomicSconceDuct {
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::a::static_test<T>(), uitsl_a_message );
 
   emp::array<T, 2> sconces{};
   std::atomic<size_t> position{};

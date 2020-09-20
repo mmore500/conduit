@@ -20,7 +20,7 @@
 
 #define MESSAGE_T int
 
-using Spec = uit::ImplSpec<MESSAGE_T, uit::DEFAULT_BUFFER, ImplSel>;
+using Spec = uit::ImplSpec<MESSAGE_T, ImplSel>;
 
 void do_work(
   netuit::Mesh<Spec>::submesh_t submesh,

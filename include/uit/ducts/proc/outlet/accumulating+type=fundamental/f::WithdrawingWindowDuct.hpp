@@ -11,11 +11,12 @@
 #include "../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
-#include "../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../uitsl/debug/safe_compare.hpp"
 #include "../../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../../uitsl/distributed/RdmaAccumulatorPacket.hpp"
 #include "../../../../../uitsl/distributed/RdmaWindowManager.hpp"
+#include "../../../../../uitsl/meta/f::static_test.hpp"
+#include "../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../uitsl/nonce/CircularIndex.hpp"
 #include "../../../../../uitsl/utility/print_utils.hpp"
 
@@ -42,6 +43,7 @@ public:
 private:
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::f::static_test<T>(), uitsl_f_message );
   constexpr inline static size_t N{ImplSpec::N};
 
   using packet_t = uitsl::RdmaAccumulatorPacket<T>;

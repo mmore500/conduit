@@ -8,6 +8,7 @@
 #include "../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../uitsl/meta/a::static_test.hpp"
 #include "../../../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
@@ -25,6 +26,7 @@ class SconceDuct {
   using T = typename ImplSpec::T;
 
   T sconce{};
+  static_assert( uitsl::a::static_test<T>(), uitsl_a_message );
   size_t updates_since_last_get{};
 
   size_t CountUnconsumedGets() const { return updates_since_last_get; }

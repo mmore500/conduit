@@ -8,6 +8,7 @@
 #include "../../../../../third-party/Empirical/source/base/assert.h"
 #include "../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../uitsl/meta/a::static_test.hpp"
 #include "../../../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
@@ -23,6 +24,7 @@ template<typename ImplSpec>
 class AccumulatingDuct {
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::a::static_test<T>(), uitsl_a_message );
 
   T accumulator{};
   T cache{};

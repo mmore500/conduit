@@ -14,7 +14,7 @@ const uitsl::MpiGuard guard;
 TEST_CASE("Test BufferSpec") {
 
   // TODO flesh out stub test
-  using ImplSpec = uit::ImplSpec<char>;
+  using ImplSpec = uit::MockSpec<char>;
   uit::internal::BufferSpec<
     ImplSpec,
     uit::s::IriObiDuct

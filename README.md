@@ -20,6 +20,8 @@ C++ library that wraps intra-thread, inter-thread, and inter-process communicati
 
 ## Design
 
+The driving objective behind this library is to provide a performant, uniform, convenient interface for communication between simulation elements, whether those simulation elements reside on the same thread, different threads, or entirely different processes.
+
 ![Inlet and Outlet holding a shared Duct with intra-thread implementation active](docs/assets/default.png)
 
 The conduit model consists of:
@@ -50,7 +52,7 @@ Once a `Duct`'s are configured, `Inlet` and `Outlet` objects can be without any 
 This abstraction ensures a uniform API whether underlying communication is intra-thread, inter-thread, or inter-process.
 Furthermore, a `Duct` implementation can be re-configured or even re-directed at run time without any interaction with an `Inlet` or `Outlet` its tied to.
 
-## Low-Level Interface
+## Low-Level Interface: `uit`
 
 Conduit provides three helper construction interfaces:
 * `Conduit`, which constructs an `Inlet` and `Outlet` with a shared `Duct`,
@@ -129,7 +131,7 @@ If you're on a cluster without root access, you can try using Singularity.
 singularity shell docker://mmore500/conduit
 ```
 
-## High-Level Interface
+## High-Level Interface: `uitnet`
 
 The conduit library provides a `Mesh` interface to streamline construction of complex, potentially irregular, conduit networks.
 These networks are conceived as a directed graph, with edges representing conduits and nodes representing an actor that holds a set of `Inlet`'s and/or `Outlet`'s.
@@ -187,10 +189,12 @@ Here's what the entire process looks like in code.
 #include <tuple>
 #include <sstream>
 
-#include "uit/setup/ImplSpec.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
-#include "netuit/mesh/Mesh.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
+
+#include "uit/setup/ImplSpec.hpp"
+
+#include "netuit/mesh/Mesh.hpp"
 #include "netuit/topology/RingTopologyFactory.hpp"
 
 const size_t num_nodes = 5; // five nodes in our topology
@@ -326,6 +330,185 @@ Now compile and run.
 mpic++ --std=c++17 -O3 -DNDEBUG -Iinclude/ high.cpp -lpthread
 script/uitexec -n 2 script/uitwrap ./a.out | cat
 ```
+
+## Modular Duct Implementations
+
+The Duct implementations used for intra-thread, inter-thread, or inter-process communication can be swapped at compile time.
+Desired implementations should be specified through the `ImplSelect` type.
+Here's an example.
+
+`swipswap.cpp`:
+```cpp
+#include <string>
+
+#include "cereal/include/cereal/types/string.hpp"
+
+#include "uit/ducts/intra/put=dropping+get=stepping+type=any/a::SerialPendingDuct.hpp"
+#include "uit/ducts/proc/put=dropping+get=stepping+type=cereal/inlet=RingIsend+outlet=Iprobe_c::IriOiDuct.hpp"
+#include "uit/ducts/thread/put=dropping+get=stepping+type=any/a::RigtorpDuct.hpp"
+#include "uit/setup/ImplSelect.hpp"
+#include "uit/setup/ImplSpec.hpp"
+
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
+
+constexpr size_t num_nodes = 4;
+
+using Message = std::string;
+
+using ImplSel = uit::ImplSelect<
+  uit::a::SerialPendingDuct, // specifies IntraDuct
+  uit::a::RigtorpDuct, // specifies ThreadDuct
+  uit::c::IriOiDuct // specifies ProcDuct
+>;
+
+using ImplSpec = uit::ImplSpec<
+  Message, // specifies message type
+  ImplSel // specifies impls to use for intra, thread, proc communication
+>;
+
+int main() {
+
+  netuit::Mesh<ImplSpec> mesh{
+    // how should nodes be connected?
+    netuit::RingTopologyFactory{}(num_nodes),
+    // how should nodes be assigned to threads?
+    uitsl::AssignSegregated<uitsl::thread_id_t>{},
+    // how should nodes be assigned to processes?
+    uitsl::AssignSegregated<uitsl::proc_id_t>{}
+  };
+
+  // etc...
+
+  return 0;
+
+}
+
+```
+
+```sh
+mpic++ --std=c++17 -Iinclude/ -Ithird-party/ swipswap.cpp -lpthread
+script/uitexec -n 2 script/uitwrap ./a.out | cat
+```
+
+Because implementation is specified through type instances instead of globally, multiple implementations may be used within the same executable.
+
+## Duct Categories
+
+In the `include/uit/ducts/` directory, duct implementations are categorized by the communication context they're designed for:
+* intra-thread communication ("`intra/`"),
+* inter-thread communication ("`thread/`"), and
+* inter-process communication ("`proc/`").
+
+A fourth category, "`mock`", provides non-functional implementations meant for testing or situations compiling multithread or multiprocess code isn't feasible.
+
+## Message Type
+
+Implementations are templated on message type, allowing nearly any type to be sent as a message.
+However, not all implementations are compatible with all types.
+Implementations are organized and subnamespaced using the following type-compatibility designators.
+
+* "any" (subnamespace `a`)
+  * any type with a move or copy constructor
+* "cereal" (subnamespace `c`)
+  * any type compatible with the [cereal C++ serialization library](https://github.com/USCiLab/cereal)
+  * cereal has great support for standard library containers!
+  * custom types can be easily be made serializable with cereal by writing some boilerplate member functions
+* "fundamental" (subnamespace `f`)
+  * nominally, [fundamental types](https://en.cppreference.com/w/cpp/language/types)
+  * basically, [arithmetic types](https://en.cppreference.com/w/c/language/arithmetic_types)
+* "span" (subnamespace `s`)
+  * class with `.data()`, `.size()`, `::value_type` members
+  * size can be dynamic or fixed at runtime when a duct is created
+* ["trivially copyable"](https://en.cppreference.com/w/cpp/types/is_trivially_copyable) (subnamespace `t`)
+  * basically, objects that can be safely copied with [std:memcpy](https://en.cppreference.com/w/cpp/string/byte/memcpy)
+
+Proper use is `static_assert`'ed at compile time.
+
+## Word Ducts vs. Accumulating Ducts
+
+In addition to word ducts, which deliver individual messages, conduit also provides accumulating ducts, which may perform an operation (for example, addition) to consolidate messages traveling through the same duct.
+These ducts are useful for modeling, for example, the transfer of a continuously-valued quantity.
+
+![word behavior](docs/assets/word.gif)
+*Animation of word behavior, where any message that is received corresponds to an identical sent message.*
+
+![accumulating behavior](docs/assets/accumulating.gif)
+*Animation of accumulating behavior, where received messages may constitute an amalgamation of several sent messages.*
+
+`TryStep` or `GetNext` may not be called on accumulating ducts.
+Calling `Jump` or `JumpGet` on an accumulating duct will reset the accumulating quantity.
+Calling `Get` allows the accumulating quantity to be observed without being reset.
+
+## Word Ducts: Growing vs. Dropping
+
+Word ducts may exhibit one of two behaviors with respect to put operations: dropping or growing.
+
+For a "growing" duct, no put call on that duct will block or reject the incoming message.
+
+![growing behavior](docs/assets/growing.gif)
+*Animation of growing behavior, where puts are always accommodated.*
+
+For a "dropping" duct, a put call may block or reject an incoming message i.e., if its send buffer is full.
+
+![dropping behavior](docs/assets/dropping.gif)
+*Animation of growing behavior, where puts may be rejected.*
+
+## Word Ducts: Skipping vs. Stepping
+
+Word ducts may have one of two capacities with respect to get operations: skipping or stepping.
+
+For a "stepping" duct, received messages may be retrieved one-by-one.
+
+![stepping capability](docs/assets/stepping.gif)
+*Animation of stepping get capability, where received messages can be requested one-by-one.*
+
+For a "skipping" duct, only the most-recently received message can be retrieved.
+Calling `GetNext` or `TryStep` (instead of `JumpGet` or `Jump`) on a skipping duct will throw an assert (in debug mode).
+
+![skipping capability](docs/assets/skipping.gif)
+*Animation of skipping get capability, where only most-recently received messages are available.*
+
+## Consolidation
+
+Inter-process messages may incur significant overhead in terms of processing time and message size, especially for small messages.
+So, consolidating many small messages sent between pairs of processes into fewer larger messages can pay off as a big performance win.
+
+Conduit provides duct implementations that can perform different types of consolidation.
+To reduce thread synchronization overhead and prevent threads from needing to run in lockstep, implementations only consolidate messages between ducts within a particular thread that are headed to another particular thread and process (not between all sets of threads on two processes).
+(If inter-thread consolidation makes sense for your use case, though, writing an extension implementation would be feasible.)
+
+![consolidated ducts](docs/assets/consolidated.gif)
+*Comparison of unconsolidated and consolidated interprocess messaging.*
+
+Under the hood, consolidation among ducts is accomplished by a shared back-end, managed via `shared_ptr`.
+This design allows for multiple independent sets of consolidated ducts to be instantiated concurrently.
+The high-level `netuit` interface takes care of initializing and cleaning up the shared back-end automatically.
+
+## Unconsolidated
+
+Without consolidation, each duct would send independent inter-process messages between all pairs of connected inlets and outlets.
+
+![unconsolidated ducts](docs/assets/unconsolidated.gif)
+*Animation of unconsolidated inter-process ducts.*
+
+## Pooled
+
+Pooled ducts expect one contribution to be provided from each constituent duct in a round-robin fashion.
+This potentially allows for fixed-length interprocess messages to be used under the hood.
+The pooled message is automatically sent immediately all constituent ducts have contributed.
+
+![pooled ducts](docs/assets/pooled.gif)
+*Animation of pooled inter-process ducts.*
+
+## Aggregated
+
+Aggregated ducts allow an arbitrary number of message contributions --- zero or more --- to be made from each duct.
+Once each duct has called `TryFlush()`, all pending inter-process messages are consolidated and sent as a single message.
+This operation preserves the ordering of messages sent from the same inlet.
+
+![aggregated ducts](docs/assets/aggregated.gif)
+*Animation of aggregated inter-process ducts.*
 
 ## Extensibility
 

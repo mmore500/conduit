@@ -13,6 +13,7 @@
 #include "../../../../../../../third-party/Empirical/source/tools/ContiguousStream.h"
 #include "../../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../../../../../uitsl/meta/c::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../../uitsl/nonce/CircularIndex.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
@@ -40,6 +41,7 @@ public:
 private:
 
   using T = typename ImplSpec::T;
+  static_assert( uitsl::c::static_test<T>(), uitsl_c_message );
   constexpr inline static size_t N{ImplSpec::N};
 
   emp::ContiguousStream buffer;

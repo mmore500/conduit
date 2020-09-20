@@ -35,7 +35,7 @@
 
 #include "DuctBenchmarkRunner.hpp"
 
-using Spec = uit::ImplSpec<int, uit::DEFAULT_BUFFER, ImplSel>;
+using Spec = uit::ImplSpec<int, ImplSel>;
 
 template<
   typename MeshFactory,
