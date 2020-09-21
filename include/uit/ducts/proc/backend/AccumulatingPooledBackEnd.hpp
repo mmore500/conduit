@@ -10,6 +10,8 @@
 #include "impl/OutletMemoryPool.hpp"
 #include "impl/PoolSpec.hpp"
 
+#include "RuntimeSizeBackEnd.hpp"
+
 namespace uit {
 
 /**

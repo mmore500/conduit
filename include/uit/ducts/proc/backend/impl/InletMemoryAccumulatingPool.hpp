@@ -11,6 +11,8 @@
 #include "../../../../setup/InterProcAddress.hpp"
 #include "../../../../spouts/Inlet.hpp"
 
+#include "../RuntimeSizeBackEnd.hpp"
+
 namespace uit {
 
 template<typename PoolSpec>
