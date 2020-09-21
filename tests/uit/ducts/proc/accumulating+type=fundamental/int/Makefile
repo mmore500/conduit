@@ -3,6 +3,7 @@ SHELL := /bin/bash
 #TARGET_NAMES += aggregated+inlet=Accumulate+outlet=WithdrawingWindow_f\:\:AggregatedIaOwwDuct
 #TARGET_NAMES += aggregated+inlet=Raccumulate+outlet=WithdrawingWindow_f\:\:AggregatedIrOwwDuct
 #TARGET_NAMES += inlet=Accumulate+outlet=WithdrawingWindow_f\:\:IaOwwDuct
+TARGET_NAMES += inlet=Isend+outlet=Irecv_f\:\:IiOiDuct
 #TARGET_NAMES += inlet=Raccumulate+outlet=WithdrawingWindow_f\:\:IrOwwDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
