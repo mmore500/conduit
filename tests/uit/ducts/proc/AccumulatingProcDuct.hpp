@@ -91,7 +91,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
-  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
+  for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
   }
 
@@ -104,7 +104,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
   REQUIRE( input.Get() == 42 );
 
-  REQUIRE( input.JumpGet() == 0 );
+  REQUIRE( input.JumpGet() == MSG_T{} );
 
   UITSL_Barrier( MPI_COMM_WORLD );
 
@@ -114,7 +114,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
-  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(1);
+  for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(1);
 
   UITSL_Barrier( MPI_COMM_WORLD ); // todo why
 
@@ -127,7 +127,7 @@ TEST_CASE("Validity") { REPEAT {
   int sum{};
   // 1/2 n * (n + 1)
   const int expected_sum = (std::kilo{}.num - 1) * std::kilo{}.num / 2;
-  for (MSG_T msg = 0; msg < std::kilo{}.num; ++msg) {
+  for (int msg = 0; msg < std::kilo{}.num; ++msg) {
 
     output.TryPut(msg);
     output.TryFlush();
@@ -144,12 +144,15 @@ TEST_CASE("Validity") { REPEAT {
     REQUIRE( received <= expected_sum );
     REQUIRE( received >= 0);
     sum += received;
+    output.TryFlush();
   }
+
+  while ( !output.TryFlush() );
 
   REQUIRE( sum == expected_sum );
 
   for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
-    REQUIRE( input.JumpGet() == 0 );
+    REQUIRE( input.JumpGet() == MSG_T{} );
   }
 
   UITSL_Barrier(MPI_COMM_WORLD); // todo why
