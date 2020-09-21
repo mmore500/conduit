@@ -25,7 +25,7 @@
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
 
 
-using MSG_T = emp::vector<int>;
+using MSG_T = emp::vector<MSG_VALUE_T>;
 constexpr size_t message_size = 3;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 

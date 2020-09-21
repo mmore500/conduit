@@ -8,4 +8,6 @@ using ImplSel = uit::ImplSelect<
   uit::sf::IaOwwDuct
 >;
 
-#include "../VectorAccumulatingProcDuct.hpp"
+#define MSG_VALUE_T int
+
+#include "../../VectorAccumulatingProcDuct.hpp"

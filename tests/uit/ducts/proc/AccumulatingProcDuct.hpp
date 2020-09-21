@@ -23,8 +23,6 @@
 
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
 
-
-using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 const uitsl::MpiGuard guard;
