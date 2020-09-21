@@ -159,22 +159,33 @@ public:
   void Initialize() {
     emp_assert( !IsInitialized() );
 
+    std::set<uitsl::thread_id_t> thread_ids;
+    for (auto& [thread_id, __] : inlet_pools) thread_ids.insert(thread_id);
+    for (auto& [thread_id, __] : outlet_pools) thread_ids.insert(thread_id);
+
+    for (auto thread_id : thread_ids) InitializeThread( thread_id );
+
+    emp_assert( IsInitialized() || IsEmpty() );
+  }
+
+  void InitializeThread(const uitsl::thread_id_t thread_id) {
+
     auto backend{ std::make_shared<typename PoolSpec_t::ProcBackEnd>() };
 
-    for (auto& [__, proc_map] : inlet_pools) {
-      for (auto& [__, pool] : proc_map) {
+    if ( inlet_pools.count(thread_id) ) {
+      for (auto& [__, pool] : inlet_pools[thread_id]) {
         pool.Initialize( backend );
       }
     }
-    for (auto& [__, proc_map] : outlet_pools) {
-      for (auto& [__, pool] : proc_map) {
+
+    if ( outlet_pools.count(thread_id) ) {
+      for (auto& [__, pool] : outlet_pools[thread_id]) {
         pool.Initialize( backend );
       }
     }
 
     backend->Initialize();
 
-    emp_assert( IsInitialized() || IsEmpty() );
   }
 
   inlet_pool_t& GetInletPool(const address_t& address) {
