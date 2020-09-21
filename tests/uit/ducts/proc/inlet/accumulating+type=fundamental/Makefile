@@ -1,7 +1,6 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += f\:\:AccumulateDuct
-TARGET_NAMES += f\:\:IsendDuct
 TARGET_NAMES += f\:\:RaccumulateDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)

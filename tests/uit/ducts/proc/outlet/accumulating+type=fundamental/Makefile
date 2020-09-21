@@ -1,6 +1,5 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += f\:\:IrecvDuct
 TARGET_NAMES += f\:\:WithdrawingWindowDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
