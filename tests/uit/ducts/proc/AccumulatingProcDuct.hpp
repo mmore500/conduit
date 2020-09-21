@@ -89,6 +89,7 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
 TEST_CASE("Unmatched gets") { REPEAT {
 
+  // TODO why does rdma construction hang for dyadic bundle but not ring  ?
   auto [input, output] = make_dyadic_bundle();
 
   for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
@@ -112,6 +113,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
 TEST_CASE("Unmatched puts") { REPEAT {
 
+  // TODO why does rdma construction hang for dyadic bundle but not ring  ?
   auto [input, output] = make_dyadic_bundle();
 
   for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(1);
@@ -122,6 +124,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
 TEST_CASE("Validity") { REPEAT {
 
+  // TODO why does rdma construction hang for dyadic bundle but not ring  ?
   auto [input, output] = make_dyadic_bundle();
 
   int sum{};
