@@ -8,6 +8,8 @@ using ImplSel = uit::ImplSelect<
   uit::ThrowDuct
 >;
 
+#define MSG_T int
+
 #include "../IntraDuct.hpp"
 #include "../SteppingIntraDuct.hpp"
 #include "../ValueIntraDuct.hpp"

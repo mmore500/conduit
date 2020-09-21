@@ -5,5 +5,7 @@ using ImplSel = uit::ImplSelect<
   uit::a::AccumulatingDuct
 >;
 
-#include "../IntraDuct.hpp"
-#include "../AccumulatingIntraDuct.hpp"
+#define MSG_T int
+
+#include "../../IntraDuct.hpp"
+#include "../../AccumulatingIntraDuct.hpp"
