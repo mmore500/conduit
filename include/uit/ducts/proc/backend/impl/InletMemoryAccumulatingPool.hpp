@@ -13,19 +13,16 @@
 
 namespace uit {
 
-template<typename AggregatorSpec>
-class InletMemoryAggregator {
+template<typename PoolSpec>
+class InletMemoryAccumulatingPool {
 
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  emp::optional<uit::Inlet<AggregatorSpec>> inlet;
+  emp::optional<uit::Inlet<PoolSpec>> inlet;
 
-  // multimap of tag -> data
-  using T = typename AggregatorSpec::T;
+  using T = typename PoolSpec::T;
   T buffer{};
-
-  constexpr static inline size_t B{ AggregatorSpec::B };
 
   // incremented every time TryFlush is called
   // then reset to zero once every member of the pool has called
@@ -35,9 +32,9 @@ class InletMemoryAggregator {
     std::unordered_set<size_t> flush_index_checker;
   #endif
 
-  using value_type = typename AggregatorSpec::T::mapped_type;
+  using value_type = typename PoolSpec::T::value_type;
 
-  bool FlushAggregate() {
+  bool PutPool() {
     emp_assert( IsInitialized() );
 
     pending_flush_counter = 0;
@@ -45,16 +42,16 @@ class InletMemoryAggregator {
       flush_index_checker.clear();
     #endif
 
-    if ( buffer.empty() ) return inlet->TryFlush();
-    else if ( inlet->TryPut( std::move(buffer) ) ) {
-      buffer.clear();
-      return inlet->TryFlush();
-    } else return false;
+    const bool res = inlet->TryPut( std::move(buffer) );
+    buffer.resize( addresses.size() );
 
+    if (res) std::fill( std::begin(buffer), std::end(buffer), value_type{} );
+
+    return res;
   }
 
   void CheckCallingProc() const {
-    [[maybe_unused]] const auto& rep = *addresses.begin();
+    const auto& rep = *addresses.begin();
     emp_assert( rep.GetInletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
@@ -71,33 +68,39 @@ public:
     addresses.insert(address);
   }
 
+  /// Get index of this duct's entry in the pool.
+  size_t Lookup(const address_t& address) const {
+    emp_assert( IsInitialized() );
+    emp_assert( addresses.count(address) );
+    CheckCallingProc();
+    return std::distance( std::begin(addresses), addresses.find(address) );
+  }
+
   /// Get the querying duct's current value from the underlying duct.
-  bool TryPut(const value_type& val, const int tag) {
+  bool TryPut(const value_type& val, const size_t index) {
     emp_assert( IsInitialized() );
     CheckCallingProc();
 
-    if (buffer.count(tag) < B) {
-      buffer.emplace( std::make_pair( tag, val) );
-      return true;
-    } else return false;
+    buffer[index] += val;
+
+    return true;
 
   }
 
   // TODO add move overload?
-
-  bool TryFlush(const int tag) {
+  bool TryFlush(const size_t index) {
     emp_assert( IsInitialized() );
     CheckCallingProc();
 
-    emp_assert( flush_index_checker.insert(tag).second );
+    emp_assert( flush_index_checker.insert(index).second );
 
-    if ( ++pending_flush_counter == addresses.size() ) return FlushAggregate();
+    if ( ++pending_flush_counter == addresses.size() ) return PutPool();
     else return true;
 
   }
 
   /// Call after all members have requested a position in the pool.
-  void Initialize() {
+  void Initialize(std::shared_ptr<typename PoolSpec::ProcBackEnd> backend) {
 
     emp_assert( !IsInitialized() );
 
@@ -112,19 +115,16 @@ public:
       }
     ) );
 
-    auto backend = std::make_shared<
-      typename AggregatorSpec::ProcBackEnd
-    >();
+    buffer.resize( addresses.size() );
 
-    auto sink = uit::Sink<AggregatorSpec>{
+    auto sink = uit::Sink<PoolSpec>{
       std::in_place_type_t<
-        typename AggregatorSpec::ProcInletDuct
+        typename PoolSpec::ProcInletDuct
       >{},
       *addresses.begin(),
-      backend
+      backend,
+      uit::RuntimeSizeBackEnd<PoolSpec>{ addresses.size() }
     };
-
-    backend->Initialize();
 
     inlet = sink.GetInlet();
 

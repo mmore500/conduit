@@ -1,12 +1,7 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += AggregatorSpec
-TARGET_NAMES += InletMemoryAccumulatingPool
-TARGET_NAMES += InletMemoryAggregator
-TARGET_NAMES += InletMemoryPool
-TARGET_NAMES += OutletMemoryAggregator
-TARGET_NAMES += OutletMemoryPool
-TARGET_NAMES += PoolSpec
+#TARGET_NAMES += inlet=Accumulate+outlet=WithdrawingWindow_sf\:\:IaOwwDuct
+#TARGET_NAMES += inlet=Raccumulate+outlet=WithdrawingWindow_sf\:\:IrOwwDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
@@ -22,8 +17,9 @@ test-%: %.cpp
 	echo "MPIEXEC" $(MPIEXEC)
 	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
-	for n in $$(seq 1 8); do \
-		$(MPIEXEC) --bind-to none -n $$n ./$@.out || break; \
+	# TODO why does rdma hang with large proc counts on travis?
+	for n in $$(seq 2 4); do \
+		$(MPIEXEC) --bind-to none -n $$n ./$@.out || exit 1; \
 	done
 
 # Test in debug mode without pointer tracker
@@ -36,15 +32,15 @@ opt: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
 fulldebug: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
-cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
 cranky: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
-cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/coverage_include/ -I$(TO_ROOT)/third-party/ -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
+cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/coverage_include/ -I$(TO_ROOT)/third-party/ -DEMP_TRACK_MEM -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
 cov: $(addprefix cov-, $(TARGET_NAMES))
 
 cov-%: %.cpp

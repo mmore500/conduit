@@ -112,7 +112,9 @@ public:
   }
 
   /// Call after all members have requested a position in the pool.
-  void Initialize() {
+  void Initialize(
+    std::shared_ptr<typename PoolSpec::ProcBackEnd> backend
+  ) {
 
     emp_assert( !IsInitialized() );
 
@@ -128,23 +130,27 @@ public:
     ) );
     emp_assert( !addresses.empty() );
 
-    auto backend = std::make_shared<
-      typename PoolSpec::ProcBackEnd
-    >( addresses.size() );
-
     auto source = uit::Source<PoolSpec>{
       std::in_place_type_t<
         typename PoolSpec::ProcOutletDuct
       >{},
       *addresses.begin(),
-      backend
+      backend,
+      uit::RuntimeSizeBackEnd<PoolSpec>{ addresses.size() }
     };
-
-    backend->Initialize();
 
     outlet = source.GetOutlet();
 
   }
+
+  void Initialize() {
+    auto backend = std::make_shared<
+      typename PoolSpec::ProcBackEnd
+    >( addresses.size() );
+    Initialize(backend);
+    backend->Initialize();
+  }
+
 
   constexpr static bool CanStep() { return PoolSpec::OutletImpl::CanStep(); }
 

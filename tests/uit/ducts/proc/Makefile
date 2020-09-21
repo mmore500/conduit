@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += accumulating+type=fundamental
+TARGET_NAMES += accumulating+type=spanfundamental
 TARGET_NAMES += backend
 TARGET_NAMES += inlet
 TARGET_NAMES += outlet

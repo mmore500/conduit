@@ -69,13 +69,11 @@ decltype(auto) make_producer_consumer_bundle() {
 
 decltype(auto) make_ring_bundle() {
   netuit::Mesh<Spec> mesh{
-    netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
+    netuit::RingTopologyFactory{}( uitsl::get_nprocs() ),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignAvailableProcs{}
   };
-
   auto bundles = mesh.GetSubmesh();
-
   REQUIRE( bundles.size() == 1);
 
   return std::tuple{ bundles[0].GetInput(0), bundles[0].GetOutput(0) };
@@ -102,6 +100,8 @@ TEST_CASE("Unmatched gets") { REPEAT {
   UITSL_Barrier( MPI_COMM_WORLD );
 
   output.Put(42);
+  output.TryFlush();
+
   while( input.JumpGet() != 42);
 
   REQUIRE( input.Get() == 42 );
@@ -132,6 +132,7 @@ TEST_CASE("Validity") { REPEAT {
   for (MSG_T msg = 0; msg < std::kilo{}.num; ++msg) {
 
     output.TryPut(msg);
+    output.TryFlush();
 
     const MSG_T received = input.JumpGet();
     REQUIRE( received <= expected_sum );
