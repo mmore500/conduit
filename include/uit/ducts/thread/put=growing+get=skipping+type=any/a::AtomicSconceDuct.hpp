@@ -67,6 +67,12 @@ public:
   /**
    * TODO.
    *
+   */
+  bool TryFlush() const { return true; }
+
+  /**
+   * TODO.
+   *
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {
