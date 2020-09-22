@@ -58,7 +58,7 @@ public:
       std::end(bumps),
       std::begin(buff),
       std::begin(buff),
-      std::plus<int>{}
+      std::plus<T>{}
     );
   }
 
