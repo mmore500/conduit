@@ -9,7 +9,7 @@ TO_ROOT := $(shell git rev-parse --show-cdup)
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
-UIT_MPICXX ?= mpic++
+UIT_MPICXX ?= mpicxx
 UIT_MPIEXEC ?= mpiexec
 
 default: test

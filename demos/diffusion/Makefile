@@ -8,7 +8,7 @@ TO_ROOT := $(shell git rev-parse --show-cdup)
 CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -I$(TO_ROOT)/include/ -Iinclude/
 
 # Native compiler information
-UIT_MPICXX := mpic++
+UIT_MPICXX := mpicxx
 CFLAGS_nat := -O3 -DNDEBUG -march=native $(CFLAGS_all)
 CFLAGS_nat_debug := -g $(CFLAGS_all)
 

@@ -8,7 +8,7 @@ TO_ROOT := $(shell git rev-parse --show-cdup)
 
 FLAGS = -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function/ -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
-UIT_MPICXX ?= mpic++
+UIT_MPICXX ?= mpicxx
 UIT_MPIEXEC ?= mpiexec
 
 default: bench
