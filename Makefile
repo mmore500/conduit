@@ -8,9 +8,9 @@ EMP_DIR := third-party/Empirical/source
 CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -Iinclude/ -fopenmp
 
 # Native compiler information
-UIT_MPICXX := mpicxx
 CFLAGS_nat := -O3 -DNDEBUG -msse4.2 $(CFLAGS_all)
 CFLAGS_nat_debug := -g $(CFLAGS_all)
+UIT_MPICXX ?= mpicxx
 UIT_MPIEXEC ?= mpiexec
 
 # Emscripten compiler information
