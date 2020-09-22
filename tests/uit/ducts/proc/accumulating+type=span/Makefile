@@ -1,15 +1,7 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += accumulating+type=fundamental
-TARGET_NAMES += accumulating+type=span
-TARGET_NAMES += accumulating+type=spanfundamental
-TARGET_NAMES += accumulating+type=trivial
-TARGET_NAMES +=	put=dropping+type=cereal
-TARGET_NAMES += put=dropping+type=span
-TARGET_NAMES += put=dropping+type=trivial
-TARGET_NAMES += put=growing+type=cereal
-TARGET_NAMES += put=growing+type=trivial
-TARGET_NAMES += templated
+TARGET_NAMES += double
+TARGET_NAMES += int
 
 default: test
 

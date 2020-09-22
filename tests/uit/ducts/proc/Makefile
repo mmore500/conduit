@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += accumulating+type=fundamental
+TARGET_NAMES += accumulating+type=span
 TARGET_NAMES += accumulating+type=spanfundamental
 TARGET_NAMES += accumulating+type=trivial
 TARGET_NAMES += impl

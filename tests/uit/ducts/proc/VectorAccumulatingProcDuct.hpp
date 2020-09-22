@@ -69,6 +69,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
   UITSL_Barrier( MPI_COMM_WORLD );
 
   output.Put( MSG_T{24, 42, 101} );
+  while( output.TryFlush() );
   while( input.JumpGet() != MSG_T{24, 42, 101} );
 
   REQUIRE( input.Get() == MSG_T{24, 42, 101} );
@@ -83,7 +84,14 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   auto [input, output] = make_ring_bundle();
 
-  for (int i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut( MSG_T{1, 2, 3} );
+  for (int i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
+    output.TryPut( MSG_T{1, 2, 3} );
+  }
+
+  for (int i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
+    output.TryPut( MSG_T{1, 2, 3} );
+    output.TryFlush();
+  }
 
   UITSL_Barrier( MPI_COMM_WORLD ); // todo why
 
@@ -99,6 +107,7 @@ TEST_CASE("Validity") { REPEAT {
   for (int msg = 0; msg < std::kilo{}.num; ++msg) {
 
     output.TryPut(MSG_T(message_size, msg));
+    output.TryFlush();
 
     const MSG_T received = input.JumpGet();
     REQUIRE( received.size() == message_size );
@@ -126,7 +135,10 @@ TEST_CASE("Validity") { REPEAT {
       std::begin(sum),
       std::plus{}
     );
+    output.TryFlush();
   }
+
+  while ( !output.TryFlush() );
 
   REQUIRE( sum.front() == expected_sum );
 
