@@ -2541,8 +2541,8 @@ struct Type_create_structFunctor {
     UITSL_Type_create_struct(std::forward<Args>(args)...);
   }
 };
-;
-;/// Wraps corresponding MPI* call in a functor.
+
+/// Wraps corresponding MPI* call in a functor.
 struct Type_create_subarrayFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
@@ -2733,8 +2733,8 @@ struct Type_structFunctor {
     UITSL_Type_struct(std::forward<Args>(args)...);
   }
 };
-;
-;/// Wraps corresponding MPI* call in a functor.
+
+/// Wraps corresponding MPI* call in a functor.
 struct Type_ubFunctor {
   template<typename... Args>
   void operator()(Args&&... args) {
