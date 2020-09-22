@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += DistributedTimeoutBarrier do_successively MsgAccumulatorBundle
+TARGET_NAMES += DistributedTimeoutBarrier do_successively MsgAccumulatorBundle RdmaAccumulatorBundle
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

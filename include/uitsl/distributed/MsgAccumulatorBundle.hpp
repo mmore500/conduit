@@ -17,10 +17,9 @@ class MsgAccumulatorBundle {
   };
 
   size_t data_size;
-  // holds data as first data_size
-  // then epoch_embed_items count at the end
-  // for epoch as a size_t
-  mutable emp::vector<T> buff;
+  // holds data within size then epoch past the end
+  // within reserved capacity
+  emp::vector<T> buff;
 
   size_t const size() const { return buff.size(); }
 
@@ -31,32 +30,26 @@ public:
   const T* data() const { return buff.data(); }
 
   size_t byte_size() const {
-    emp_assert( buff.size() == data_size + epoch_embed_items );
     return sizeof(T) * data_size + sizeof(size_t);
   }
 
-  emp::vector<T>& GetData() {
-    while (buff.size() > data_size) buff.pop_back();
-    return buff;
-  }
+  emp::vector<T>& GetData() { return buff; }
 
-  const emp::vector<T>& GetData() const {
-    while (buff.size() > data_size) buff.pop_back();
-    return buff;
-    }
+  const emp::vector<T>& GetData() const { return buff; }
 
   void Reset() {
-    buff.resize(data_size + epoch_embed_items);
+    buff.reserve(data_size + epoch_embed_items);
+    buff.resize(data_size);
     std::fill(
       std::begin(buff),
-      std::begin(buff) + data_size,
+      std::end(buff),
       T{}
     );
     SetEpoch( size_t{} );
   }
 
   size_t GetEpoch() const {
-    emp_assert( buff.size() == data_size + epoch_embed_items );
+    emp_assert( buff.size() == data_size );
     size_t res;
     std::memcpy(
       &res,
@@ -67,7 +60,7 @@ public:
   }
 
   void SetEpoch(const size_t val) {
-    emp_assert( buff.size() == data_size + epoch_embed_items );
+    emp_assert( buff.size() == data_size );
     std::memcpy(
       buff.data() + data_size,
       &val,
@@ -75,14 +68,13 @@ public:
     );
   }
 
-  void BumpEpoch() {
-    emp_assert( buff.size() == data_size + epoch_embed_items );
-    SetEpoch( GetEpoch() + 1 );
+  void BumpEpoch(const size_t amt=1) {
+    SetEpoch( GetEpoch() + amt );
   }
 
   void BumpData(const emp::vector<T>& bumps) {
-    emp_assert( bumps.size() == data_size );
-    emp_assert( buff.size() == data_size + epoch_embed_items );
+    emp_assert( buff.size() == data_size );
+    emp_assert( bumps.size() == data_size  );
     std::transform(
       std::begin(bumps),
       std::end(bumps),
@@ -100,7 +92,7 @@ public:
   : data_size( data.size() )
   , buff( data )
   {
-    buff.resize( data_size + epoch_embed_items);
+    buff.reserve( data_size + epoch_embed_items);
     SetEpoch( size_t{} );
   }
 
@@ -108,7 +100,7 @@ public:
   : data_size( data.size() )
   , buff( std::move(data) )
   {
-    buff.resize( data_size + epoch_embed_items);
+    buff.reserve( data_size + epoch_embed_items);
     SetEpoch( size_t{} );
   }
 
@@ -116,15 +108,8 @@ public:
   MsgAccumulatorBundle& operator=(MsgAccumulatorBundle &&) = default;
 
   MsgAccumulatorBundle& operator+=(const MsgAccumulatorBundle& rhs) {
-    emp_assert( size() == rhs.size() );
-    std::transform(
-      rhs.buff.data(),
-      rhs.buff.data() + data_size,
-      buff.data(),
-      buff.data(),
-      std::plus<T>{}
-    );
-    SetEpoch( rhs.GetEpoch() + GetEpoch() );
+    BumpData( rhs.GetData() );
+    BumpEpoch( rhs.GetEpoch() );
     return *this;
   }
 

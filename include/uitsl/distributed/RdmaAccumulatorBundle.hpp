@@ -13,7 +13,9 @@ template<typename T>
 class RdmaAccumulatorBundle {
 
   size_t data_size;
-  mutable emp::vector<T> buff;
+  // holds data within size then epoch past the end
+  // within reserved capacity
+  emp::vector<T> buff;
 
 public:
 
@@ -21,38 +23,51 @@ public:
 
   const T* data() const { return buff.data(); }
 
-  size_t size() const { return buff.size(); }
-
-  size_t byte_size() const { return sizeof(T) * size(); }
-
-  emp::vector<T>& GetData() {
-    if (buff.size() > data_size) buff.pop_back();
-    return buff;
+  size_t byte_size() const {
+    emp_assert( buff.size() == data_size );
+    emp_assert( buff.capacity() == data_size + 1);
+    return sizeof(T) * (data_size + 1);
   }
 
-  const emp::vector<T>& GetData() const {
-    if (buff.size() > data_size) buff.pop_back();
-    return buff;
-    }
+  emp::vector<T>& GetData() { return buff; }
+
+  const emp::vector<T>& GetData() const { return buff; }
 
   void Reset() {
-    buff.resize(data_size + 1); // +1 for epoch
+    buff.reserve( data_size + 1 ); // +1 for epoch
+    buff.resize(data_size);
     std::fill( std::begin(buff), std::end(buff), T{} );
+    SetEpoch( T{} );
   }
 
   T GetEpoch() const {
-    emp_assert( buff.size() == data_size + 1 );
-    return buff.back();
+    emp_assert( buff.size() == data_size );
+    emp_assert( buff.capacity() == data_size + 1);
+    T res;
+    std::memcpy(
+      &res,
+      buff.data() + data_size,
+      sizeof(T)
+    );
+    return res;
   }
 
-  void BumpEpoch() {
-    emp_assert( buff.size() == data_size + 1 );
-    ++buff.back();
+  void SetEpoch(const T val) {
+    emp_assert( buff.size() == data_size );
+    emp_assert( buff.capacity() == data_size + 1);
+    std::memcpy(
+      buff.data() + data_size,
+      &val,
+      sizeof(T)
+    );
   }
+
+  void BumpEpoch(const T amt=1) { SetEpoch( GetEpoch() + amt ); }
+
 
   void BumpData(const emp::vector<T>& bumps) {
     emp_assert( bumps.size() == data_size );
-    emp_assert( buff.size() == data_size + 1 );
+    emp_assert( buff.size() == data_size );
     std::transform(
       std::begin(bumps),
       std::end(bumps),
@@ -64,18 +79,17 @@ public:
 
   RdmaAccumulatorBundle(const size_t data_size_)
   : data_size( data_size_ )
-  , buff( data_size + 1 )
-  { }
+  { Reset(); }
 
   RdmaAccumulatorBundle(const emp::vector<T>& data)
   : data_size( data.size() )
   , buff( data )
-  { buff.emplace_back(); }
+  { buff.reserve( data_size + 1 ); SetEpoch( T{} ); }
 
   RdmaAccumulatorBundle(emp::vector<T>&& data)
   : data_size( data.size() )
   , buff( std::move(data) )
-  { buff.emplace_back(); }
+  { buff.reserve( data_size + 1 ); SetEpoch( T{} ); }
 
   RdmaAccumulatorBundle(RdmaAccumulatorBundle &&) = default;
   RdmaAccumulatorBundle& operator=(RdmaAccumulatorBundle &&) = default;
