@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += DistributedTimeoutBarrier
+TARGET_NAMES += DistributedTimeoutBarrier do_successively
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
