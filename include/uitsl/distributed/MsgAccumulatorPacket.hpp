@@ -27,10 +27,6 @@ public:
     return *this;
   }
 
-  // MsgAccumulatorPacket& operator=(const MsgAccumulatorPacket&) = default;
-  //
-  // MsgAccumulatorPacket& operator=(MsgAccumulatorPacket&&) = default;
-
   T& GetData() { return data; }
 
   const T& GetData() const { return data; }

@@ -78,7 +78,8 @@ public:
   { buff.emplace_back(); }
 
   RdmaAccumulatorBundle(RdmaAccumulatorBundle &&) = default;
-  RdmaAccumulatorBundle& operator=(RdmaAccumulatorBundle &&) = default;	
+  RdmaAccumulatorBundle& operator=(RdmaAccumulatorBundle &&) = default;
+
 };
 
 } // namespace uitsl
