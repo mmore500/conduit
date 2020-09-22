@@ -6,11 +6,11 @@ namespace uit {
 namespace t {
 
 template<typename ImplSpec>
-class IsendDuct
-: public internal::AccumulatingTrivialIsendDuct<ImplSpec, false>
+class BufferedIsendDuct
+: public internal::AccumulatingTrivialIsendDuct<ImplSpec, true>
 {
 
-  using parent_t = internal::AccumulatingTrivialIsendDuct<ImplSpec, false>;
+  using parent_t = internal::AccumulatingTrivialIsendDuct<ImplSpec, true>;
 
 public:
 
