@@ -23,6 +23,7 @@ build/
 docs/_build/
 docs/doxyoutput
 docs/api
+coverage_include/
 
 package-lock.json
 node_modules/
