@@ -1,0 +1,118 @@
+#pragma once
+
+#include <algorithm>
+#include <array>
+#include <memory>
+#include <stddef.h>
+
+#include <mpi.h>
+
+#include "../../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../../third-party/Empirical/source/base/optional.h"
+#include "../../../../../../../third-party/Empirical/source/tools/string_utils.h"
+
+#include "../../../../../../uitsl/mpi/mpi_utils.hpp"
+#include "../../../../../../uitsl/utility/print_utils.hpp"
+
+#include "../../../../../setup/InterProcAddress.hpp"
+
+#include "../../backend/AccumulatingPooledBackEnd.hpp"
+
+namespace uit {
+
+/**
+ * TODO
+ *
+ * @tparam ImplSpec class with static and typedef members specifying
+ * implementation details for the conduit framework.
+ */
+template<template<typename> typename BackingDuct, typename ImplSpec>
+class AccumulatingPooledOutletDuct {
+
+public:
+
+  using BackEndImpl = uit::AccumulatingPooledBackEnd<ImplSpec, BackingDuct>;
+
+private:
+
+  using T = typename ImplSpec::T;
+
+  uit::InterProcAddress address;
+
+  std::shared_ptr<BackEndImpl> back_end;
+
+  using pool_t = typename BackEndImpl::outlet_pool_t;
+  emp::optional<std::reference_wrapper<pool_t>> pool;
+  size_t pool_index;
+
+  void SetupPool() {
+    pool = back_end->GetOutletPool(address);
+    pool_index = pool->get().Lookup(address);
+  }
+
+public:
+
+  AccumulatingPooledOutletDuct(
+    const uit::InterProcAddress& address_,
+    std::shared_ptr<BackEndImpl> back_end_
+  ) : address(address_)
+  , back_end(back_end_)
+  { back_end->RegisterOutletSlot(address); }
+
+  [[noreturn]] bool TryPut(const T&) const {
+    throw "TryPut called on AccumulatingPooledOutletDuct";
+  }
+
+  [[noreturn]] bool TryFlush() const {
+    throw "Flush called on AccumulatingPooledOutletDuct";
+  }
+
+  /**
+   * TODO.
+   *
+   * @param num_requested TODO.
+   * @return number items consumed.
+   */
+  size_t TryConsumeGets(const size_t num_requested) {
+
+    if (!pool.has_value()) SetupPool();
+    return pool->get().TryConsumeGets(num_requested, address);
+
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  const T& Get() const {
+    if (!pool.has_value()) SetupPool();
+    return pool->get().Get(pool_index);
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  T& Get() {
+    if (!pool.has_value()) SetupPool();
+    return pool->get().Get(pool_index);
+  }
+
+  static std::string GetName() { return "AccumulatingPooledOutletDuct"; }
+
+  static constexpr bool CanStep() {
+    return BackingDuct<ImplSpec>::OutletImpl::CanStep();
+  }
+
+  std::string ToString() const {
+    std::stringstream ss;
+    ss << GetName() << std::endl;
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    return ss.str();
+  }
+
+};
+
+} // namespace uit

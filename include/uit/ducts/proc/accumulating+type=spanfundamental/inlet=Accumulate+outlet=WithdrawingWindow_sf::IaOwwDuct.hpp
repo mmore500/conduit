@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/accumulating+type=spanfundamental/sf::AccumulateDuct.hpp"
-#include "../outlet/accumulating+type=spanfundamental/sf::WithdrawingWindowDuct.hpp"
+#include "../impl/inlet/accumulating+type=spanfundamental/sf::AccumulateDuct.hpp"
+#include "../impl/outlet/accumulating+type=spanfundamental/sf::WithdrawingWindowDuct.hpp"
 
 namespace uit {
 namespace sf {

@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/templated/BufferedInletDuct.hpp"
-#include "../outlet/templated/BufferedOutletDuct.hpp"
+#include "../impl/inlet/templated/BufferedInletDuct.hpp"
+#include "../impl/outlet/templated/BufferedOutletDuct.hpp"
 
 #include "../put=dropping+get=stepping+type=span/inlet=RingIsend+outlet=Iprobe_s::IriOiDuct.hpp"
 

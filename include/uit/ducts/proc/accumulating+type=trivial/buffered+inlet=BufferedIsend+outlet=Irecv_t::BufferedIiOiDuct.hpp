@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/accumulating+type=trivial/t::BufferedIsendDuct.hpp"
-#include "../outlet/accumulating+type=trivial/t::IrecvDuct.hpp"
+#include "../impl/inlet/accumulating+type=trivial/t::BufferedIsendDuct.hpp"
+#include "../impl/outlet/accumulating+type=trivial/t::IrecvDuct.hpp"
 
 namespace uit {
 namespace t {

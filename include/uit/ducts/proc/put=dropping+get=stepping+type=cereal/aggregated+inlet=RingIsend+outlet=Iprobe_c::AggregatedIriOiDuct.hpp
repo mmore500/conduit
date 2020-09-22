@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/templated/AggregatedInletDuct.hpp"
-#include "../outlet/templated/AggregatedOutletDuct.hpp"
+#include "../impl/inlet/templated/AggregatedInletDuct.hpp"
+#include "../impl/outlet/templated/AggregatedOutletDuct.hpp"
 
 #include "inlet=RingIsend+outlet=Iprobe_c::IriOiDuct.hpp"
 

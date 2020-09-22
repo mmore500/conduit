@@ -5,7 +5,7 @@
 
 #include "../../../../third-party/Empirical/source/base/assert.h"
 
-#include "../proc/backend/MockBackEnd.hpp"
+#include "../proc/impl/backend/MockBackEnd.hpp"
 
 namespace uit {
 

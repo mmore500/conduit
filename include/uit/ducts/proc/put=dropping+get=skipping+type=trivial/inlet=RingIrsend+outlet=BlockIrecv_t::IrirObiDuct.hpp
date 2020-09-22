@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/put=dropping+type=trivial/t::RingIrsendDuct.hpp"
-#include "../outlet/get=skipping+type=trivial/t::BlockIrecvDuct.hpp"
+#include "../impl/inlet/put=dropping+type=trivial/t::RingIrsendDuct.hpp"
+#include "../impl/outlet/get=skipping+type=trivial/t::BlockIrecvDuct.hpp"
 
 namespace uit {
 namespace t {

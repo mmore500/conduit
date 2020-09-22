@@ -3,8 +3,8 @@
 #include <type_traits>
 
 #include "../accumulating+type=spanfundamental/inlet=Raccumulate+outlet=WithdrawingWindow_sf::IrOwwDuct.hpp"
-#include "../inlet/templated/AccumulatingPooledInletDuct.hpp"
-#include "../outlet/templated/AccumulatingPooledOutletDuct.hpp"
+#include "../impl/inlet/templated/AccumulatingPooledInletDuct.hpp"
+#include "../impl/outlet/templated/AccumulatingPooledOutletDuct.hpp"
 
 namespace uit {
 namespace f {

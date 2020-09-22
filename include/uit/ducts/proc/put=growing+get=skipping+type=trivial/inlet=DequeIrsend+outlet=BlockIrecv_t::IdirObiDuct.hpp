@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/put=growing+type=trivial/t::DequeIrsendDuct.hpp"
-#include "../outlet/get=skipping+type=trivialt::/BlockIrecvDuct.hpp"
+#include "../impl/inlet/put=growing+type=trivial/t::DequeIrsendDuct.hpp"
+#include "../impl/outlet/get=skipping+type=trivialt::/BlockIrecvDuct.hpp"
 
 namespace uit {
 namespace t {

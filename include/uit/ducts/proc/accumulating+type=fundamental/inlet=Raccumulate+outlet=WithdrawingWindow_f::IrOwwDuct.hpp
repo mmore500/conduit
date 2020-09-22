@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/accumulating+type=fundamental/f::RaccumulateDuct.hpp"
-#include "../outlet/accumulating+type=fundamental/f::WithdrawingWindowDuct.hpp"
+#include "../impl/inlet/accumulating+type=fundamental/f::RaccumulateDuct.hpp"
+#include "../impl/outlet/accumulating+type=fundamental/f::WithdrawingWindowDuct.hpp"
 
 namespace uit {
 namespace f {
