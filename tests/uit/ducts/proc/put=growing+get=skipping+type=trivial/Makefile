@@ -11,18 +11,18 @@ TO_ROOT := $(shell git rev-parse --show-cdup)
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
-MPICXX ?= mpic++
-MPIEXEC ?= mpiexec
+UIT_MPICXX ?= mpic++
+UIT_MPIEXEC ?= mpiexec
 
 default: test
 
 test-%: %.cpp
-	echo "MPICXX" $(MPICXX)
-	echo "MPIEXEC" $(MPIEXEC)
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	echo "UIT_MPICXX" $(UIT_MPICXX)
+	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# TODO why does rdma hang with large proc counts on travis?
 	for n in $$(seq 2 4); do \
-		$(MPIEXEC) --bind-to none -n $$n ./$@.out || exit 1; \
+		$(UIT_MPIEXEC) --bind-to none -n $$n ./$@.out || exit 1; \
 	done
 
 # Test in debug mode without pointer tracker
@@ -47,7 +47,7 @@ cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I
 cov: $(addprefix cov-, $(TARGET_NAMES))
 
 cov-%: %.cpp
-	export OMPI_CXX=clang++ && $(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	#echo "running $@.out"
 	# execute test
 	./$@.out

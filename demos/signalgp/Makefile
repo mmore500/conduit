@@ -8,7 +8,7 @@ TO_ROOT := $(shell git rev-parse --show-cdup)
 CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -I$(TO_ROOT)/include/ -Iinclude/
 
 # Native compiler information
-MPICXX := mpic++
+UIT_MPICXX := mpic++
 CFLAGS_nat := -O3 -DNDEBUG -march=native $(CFLAGS_all)
 CFLAGS_nat_debug := -g $(CFLAGS_all)
 
@@ -38,7 +38,7 @@ test: debug
 	$(TO_ROOT)/script/uitexec -n 2 $(TO_ROOT)/script/uitwrap ./$(PROJECT) | cat
 
 $(PROJECT):	source/native.cpp
-	$(MPICXX) $(CFLAGS_nat) source/native.cpp -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
+	$(UIT_MPICXX) $(CFLAGS_nat) source/native.cpp -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
 	@echo To build the web version use: make web
 
 $(PROJECT).js: web/$(PROJECT).cpp

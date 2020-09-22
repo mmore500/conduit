@@ -9,47 +9,47 @@ jobs:
   include:
   - stage: Tests
     name: OpenMPI Unit Tests (debug mode)
-    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
   - name: MPICH Unit Tests (debug mode)
-    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
   - name: OpenMPI Unit Tests (fulldebug mode)
-    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
   - name: MPICH Unit Debug Tests (fulldebug mode)
-    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
   - name: OpenMPI Unit Tests (opt mode)
-    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
   - name: MPICH Unit Debug Tests (opt mode)
-    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
   - name: Macrobenchmarks
     install:
     - docker build -t mmore500/conduit .
