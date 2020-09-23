@@ -69,7 +69,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
   UITSL_Barrier( MPI_COMM_WORLD );
 
   output.Put( MSG_T{24, 42, 101} );
-  while( output.TryFlush() );
+  while( !output.TryFlush() );
   while( input.JumpGet() != MSG_T{24, 42, 101} );
 
   REQUIRE( input.Get() == MSG_T{24, 42, 101} );
