@@ -49,7 +49,7 @@ cov-%: %.cpp
 	echo "UIT_MPICXX" $(UIT_MPICXX)
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
 	# see https://clang.llvm.org/docs/UsersManual.html#profiling-with-instrumentation
-	for n in $$(seq 2 3); do \
+	for n in 1; do \
 		export n; \
 		$(UIT_MPIEXEC) --bind-to none -n $$n \
 			/bin/bash -c '\
