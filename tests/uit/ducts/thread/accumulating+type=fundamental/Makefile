@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += f\:\:AtomicAccumulatingDuct
+TARGET_NAMES += f\:\:CompareExchangeDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
