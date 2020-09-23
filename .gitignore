@@ -26,3 +26,15 @@ docs/api
 
 package-lock.json
 node_modules/
+
+.vscode
+
+# Log files
+*.h5
+*.csv
+*.cereal
+*.json
+
+*.png
+*.adj
+*.edg
