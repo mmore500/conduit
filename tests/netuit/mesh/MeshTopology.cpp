@@ -15,7 +15,7 @@ TEST_CASE("Test MeshTopology") {
   // TODO flesh out stub test
   using Spec = uit::ImplSpec<char>;
 
-  uit::internal::MeshTopology<Spec> mesh_topology{
+  netuit::internal::MeshTopology<Spec> mesh_topology{
     netuit::RingTopologyFactory{}(100)
   };
 

@@ -52,7 +52,7 @@ class Mesh {
   std::function<uitsl::proc_id_t(node_id_t)> proc_assignment;
 
   using back_end_t = typename ImplSpec::ProcBackEnd;
-  std::shared_ptr<back_end_t> back_end{ std::make_shared<back_end_t>() };
+  std::shared_ptr<back_end_t> back_end;
 
   void InitializeInterThreadDucts() {
     for (auto& [node_id, node] : nodes) {
@@ -165,6 +165,7 @@ public:
       =uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment_
       =uitsl::AssignIntegrated<uitsl::proc_id_t>{},
+    std::shared_ptr<back_end_t> back_end_=std::make_shared<back_end_t>(),
     const MPI_Comm comm_=MPI_COMM_WORLD,
     const size_t mesh_id_=internal::MeshIDCounter::Generate()
   )
@@ -172,7 +173,8 @@ public:
   , comm(comm_)
   , nodes(topology, proc_assignment_, comm)
   , thread_assignment(thread_assignment_)
-  , proc_assignment(proc_assignment_) {
+  , proc_assignment(proc_assignment_)
+  , back_end(back_end_) {
     InitializeInterThreadDucts();
     InitializeInterProcDucts();
     back_end->Initialize();

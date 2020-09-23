@@ -18,11 +18,14 @@ fulldebug-%: %
 cranky-%: %
 	cd $< && make cranky
 
-cov-%: %
+cov-%: % ../../coverage_include
 	cd $< && make cov
 
 clean-%: %
 	cd $< && make clean
+
+../../coverage_include:
+	cd .. && ./convert_for_tests.sh
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TARGET_NAMES))

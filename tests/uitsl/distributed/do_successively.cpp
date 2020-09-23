@@ -5,7 +5,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
-#include "uitsl/distributed/DistributedTimeoutBarrier.hpp"
+#include "uitsl/distributed/do_successively.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
 const uitsl::MpiGuard guard;

@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/put=dropping+type=span/s::RingIsendDuct.hpp"
-#include "../outlet/get=skipping+type=span/s::BlockIrecvDuct.hpp"
+#include "../impl/inlet/put=dropping+type=span/s::RingIsendDuct.hpp"
+#include "../impl/outlet/get=skipping+type=span/s::BlockIrecvDuct.hpp"
 
 namespace uit {
 namespace s {
