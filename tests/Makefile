@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += netuit
 TARGET_NAMES += uit
 TARGET_NAMES += uitsl
 
