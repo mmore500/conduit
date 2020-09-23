@@ -9,6 +9,7 @@
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/distributed/assign_utils.hpp"
+#include "uitsl/distributed/IbarrierRequest.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
 #include "uit/ducts/mock/ThrowDuct.hpp"
@@ -150,14 +151,12 @@ TEST_CASE("Validity") { REPEAT {
     output.TryFlush();
   }
 
-  while ( !output.TryFlush() );
-
   REQUIRE( sum == expected_sum );
 
   for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
   }
 
-  UITSL_Barrier(MPI_COMM_WORLD); // todo why
+  for (uitsl::IbarrierRequest req; !req.IsComplete(); ) output.TryFlush();
 
 } }

@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += aggregated+inlet=Isend+outlet=Irecv_t\:\:AggregatedIiOiDuct
 TARGET_NAMES += buffered+inlet=BufferedIsend+outlet=Irecv_t\:\:BufferedIiOiDuct
 TARGET_NAMES += inlet=Isend+outlet=Irecv_t\:\:IiOiDuct
 
