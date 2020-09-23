@@ -15,6 +15,6 @@ for snippet, __ in exdown.extract('README.md', syntax_filter='cpp'):
             file.write(snippet)
 
         audited_execute(
-            f'mpic++ --std=c++2a -Iinclude/ {source} -lpthread -o {out}'
+            f'mpic++ --std=c++2a -Iinclude/ -Ithird-party/ {source} -lpthread -o {out}'
         )
-        audited_execute(f'mpiexec -n 2 {out}')
+        audited_execute(f'script/uitexec -n 2 script/uitwrap {out}')

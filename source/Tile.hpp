@@ -3,9 +3,10 @@
 #include <assert.h>
 #include <sstream>
 
-#include "uit/conduit/Inlet.hpp"
-#include "uit/conduit/Outlet.hpp"
-#include "uit/utility/print_utils.hpp"
+#include "uitsl/utility/print_utils.hpp"
+
+#include "uit/spouts/Inlet.hpp"
+#include "uit/spouts/Outlet.hpp"
 
 #include "config_utils.hpp"
 #include "State.hpp"
@@ -34,13 +35,13 @@ class Tile {
       case '_':
         return '_';
       default:
-        uit::error_message_mutex.lock();
+        uitsl::error_message_mutex.lock();
         std::cerr
-          << uit::format_member("neighbor_state", neighbor_state)
+          << uitsl::format_member("neighbor_state", neighbor_state)
           << std::endl;
-        std::cerr << uit::format_member("prev Tile", *prev) << std::endl;
-        std::cerr << uit::format_member("this Tile", *this) << std::endl;
-        std::cerr << uit::format_member("next Tile", *next) << std::endl;
+        std::cerr << uitsl::format_member("prev Tile", *prev) << std::endl;
+        std::cerr << uitsl::format_member("this Tile", *this) << std::endl;
+        std::cerr << uitsl::format_member("next Tile", *next) << std::endl;
         throw "bad Transition on Tile";
     }
 
@@ -62,7 +63,7 @@ public:
   size_t id;
 
   void Update() {
-    const char neighbor_state = input.GetCurrent();
+    const char neighbor_state = input.JumpGet();
     const char next_state = Transition(neighbor_state);
     SetState(next_state);
   }
@@ -90,10 +91,10 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << uit::format_member("id", id) << std::endl;
-    ss << uit::format_member("State state", state) << std::endl;
-    ss << uit::format_member("Outlet<Spec> input", input) << std::endl;
-    ss << uit::format_member("Inlet<Spec> output", output);
+    ss << uitsl::format_member("id", id) << std::endl;
+    ss << uitsl::format_member("State state", state) << std::endl;
+    ss << uitsl::format_member("Outlet<Spec> input", input) << std::endl;
+    ss << uitsl::format_member("Inlet<Spec> output", output);
     return ss.str();
   }
 

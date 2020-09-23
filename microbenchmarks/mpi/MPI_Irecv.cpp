@@ -1,17 +1,18 @@
 #include <deque>
 
-#include <mpi.h>
 #include <benchmark/benchmark.h>
+#include <mpi.h>
 
-#include "uit/conduit/config.hpp"
-#include "uit/distributed/MPIGuard.hpp"
-#include "uit/distributed/mpi_utils.hpp"
-#include "uit/utility/benchmark_utils.hpp"
-#include "uit/utility/ScopeGuard.hpp"
+#include "uitsl/debug/benchmark_utils.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/nonce/ScopeGuard.hpp"
 
-const uit::MPIGuard guard;
+#include "uit/setup/ImplSpec.hpp"
 
-constexpr size_t buffer_size{ DEFAULT_BUFFER };
+const uitsl::MpiGuard guard;
+
+constexpr size_t buffer_size{ uit::DEFAULT_BUFFER };
 
 static void MPI_Irecv(benchmark::State& state) {
 
@@ -32,7 +33,7 @@ static void MPI_Irecv(benchmark::State& state) {
     // if receive buffer is at capacity, make some space
     if (requests.size() == buffer_size) {
 
-      if (uit::test_completion(requests.front())) {
+      if (uitsl::test_completion(requests.front())) {
         // if front request is complete, pop it
         requests.pop_front();
         buffers.pop_front();
@@ -52,7 +53,7 @@ static void MPI_Irecv(benchmark::State& state) {
     // add a receive request
     requests.emplace_back();
     buffers.emplace_back();
-    UIT_Irecv(
+    UITSL_Irecv(
       &buffers.back(), // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -106,7 +107,7 @@ static void MPI_Irecv(benchmark::State& state) {
     {
       "Processes",
       benchmark::Counter(
-        uit::get_nprocs(),
+        uitsl::get_nprocs(),
         benchmark::Counter::kAvgThreads
       )
     }
@@ -115,7 +116,7 @@ static void MPI_Irecv(benchmark::State& state) {
   // clean up
   // wait on all remaining receive requests to complete
   emp::vector<MPI_Request> contiguous(std::begin(requests), std::end(requests));
-  UIT_Waitall(
+  UITSL_Waitall(
     contiguous.size(),
     contiguous.data(),
     MPI_STATUSES_IGNORE
@@ -131,7 +132,7 @@ static void post_fresh_sends(
   for (size_t i = 0; i < buffer_size; ++i) {
     requests.emplace_back();
     buffers.emplace_back();
-    UIT_Isend(
+    UITSL_Isend(
       &buffers.back(), // const void *buf
       1, // int count
       MPI_INT, // MPI_Datatype datatype
@@ -149,7 +150,7 @@ static void post_fresh_sends(
       std::begin(requests),
       std::prev(std::end(requests), 2 * buffer_size)
     );
-    UIT_Waitall(
+    UITSL_Waitall(
       contiguous.size(),
       contiguous.data(),
       MPI_STATUSES_IGNORE
@@ -175,17 +176,17 @@ static void support() {
   post_fresh_sends(requests, buffers);
 
   // signal setup is complete
-  UIT_Barrier(MPI_COMM_WORLD);
+  UITSL_Barrier(MPI_COMM_WORLD);
 
   // this barrier will signal when benchmarking is complete
   MPI_Request ibarrier_request;
-  UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
+  UITSL_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
 
   // loop until benchmarking is complete
-  while (!uit::test_completion(ibarrier_request)) {
+  while (!uitsl::test_completion(ibarrier_request)) {
 
     // has sender started to catch up with our posted recv's?
-    if (uit::test_completion(requests[requests.size() - buffer_size])) {
+    if (uitsl::test_completion(requests[requests.size() - buffer_size])) {
       post_fresh_sends(requests, buffers);
     }
 
@@ -193,14 +194,14 @@ static void support() {
 
   // clean up
   for (auto& request : requests) {
-    if (!uit::test_completion(request)) UIT_Cancel(&request);
+    if (!uitsl::test_completion(request)) UITSL_Cancel(&request);
   }
 
 }
 
 // register benchmark
-const uit::ScopeGuard registration{[](){
-  uit::report_confidence(
+const uitsl::ScopeGuard registration{[](){
+  uitsl::report_confidence(
     benchmark::RegisterBenchmark(
       "MPI_Irecv",
       MPI_Irecv
@@ -211,19 +212,19 @@ const uit::ScopeGuard registration{[](){
 int main(int argc, char** argv) {
 
   // only root runs benchmark
-  if (uit::is_root()) {
+  if (uitsl::is_root()) {
 
     benchmark::Initialize(&argc, argv);
 
     // wait for support to complete setup
-    UIT_Barrier(MPI_COMM_WORLD);
+    UITSL_Barrier(MPI_COMM_WORLD);
 
     benchmark::RunSpecifiedBenchmarks();
 
     // notify support that benchmarking is complete
     MPI_Request ibarrier_request;
-    UIT_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
-    UIT_Wait(&ibarrier_request, MPI_STATUSES_IGNORE);
+    UITSL_Ibarrier(MPI_COMM_WORLD, &ibarrier_request);
+    UITSL_Wait(&ibarrier_request, MPI_STATUSES_IGNORE);
 
   } else {
 

@@ -1,4 +1,7 @@
-TEST_NAMES := conduit mpi
+SHELL := /bin/bash
+
+TARGET_NAMES += ducts
+TARGET_NAMES += mpi
 
 VERSION := $$(git describe --dirty --always)
 
@@ -23,23 +26,23 @@ clean-%: %
 	cd $< && make clean
 
 # Test in debug mode without pointer tracker
-bench: $(addprefix bench-, $(TEST_NAMES))
+bench: $(addprefix bench-, $(TARGET_NAMES))
 	./script/fixup_and_validate.sh
-	python3 script/consolidate.py $$(find conduit -name '*.json')
+	python3 script/consolidate.py $$(find ducts -name '*.json')
 	for f in *run_type=iteration*.csv; do \
 		python3 script/graph.py $$f; \
 	done
 	./script/upload.sh
 
-build: $(addprefix build-, $(TEST_NAMES))
+build: $(addprefix build-, $(TARGET_NAMES))
 
-opt: $(addprefix opt-, $(TEST_NAMES))
+opt: $(addprefix opt-, $(TARGET_NAMES))
 
-fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
+fulldebug: $(addprefix fulldebug-, $(TARGET_NAMES))
 
-cranky: $(addprefix cranky-, $(TEST_NAMES))
+cranky: $(addprefix cranky-, $(TARGET_NAMES))
 
-clean: $(addprefix clean-, $(TEST_NAMES))
+clean: $(addprefix clean-, $(TARGET_NAMES))
 	rm -f *.out
 	rm -f *.png
 	rm -f *.o

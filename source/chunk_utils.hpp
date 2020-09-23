@@ -1,7 +1,8 @@
 #pragma once
 
-#include "uit/conduit/Duct.hpp"
-#include "uit/utility/benchmark_utils.hpp"
+#include "uitsl/debug/benchmark_utils.hpp"
+
+#include "uit/ducts/Duct.hpp"
 
 #include "grid_utils.hpp"
 #include "State.hpp"
@@ -71,7 +72,7 @@ emp::vector<chunk_t> make_chunks(grid_t & grid, const size_t num_chunks) {
   ) {
 
     chunk_end = (
-      uit::safe_less(std::distance(chunk_end, std::end(grid)), chunk_width)
+      uitsl::safe_less(std::distance(chunk_end, std::end(grid)), chunk_width)
       ? std::end(grid)
       : std::next(chunk_begin, chunk_width)
     );
@@ -102,7 +103,7 @@ void update_chunk(
 
   for (auto & handle : chunk) {
 
-    uit::do_compute_work(resistance);
+    uitsl::do_compute_work(resistance);
 
     if (verbose) std::cout << handle->GetState();
     handle->Update();

@@ -1,0 +1,18 @@
+#include <mpi.h>
+
+#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
+#define CATCH_CONFIG_MAIN
+#include "Catch/single_include/catch2/catch.hpp"
+
+#include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/mpi/Request.hpp"
+
+const uitsl::MpiGuard guard;
+
+TEST_CASE("Test Request") {
+
+  uitsl::Request request;
+  REQUIRE( request == MPI_REQUEST_NULL );
+
+}

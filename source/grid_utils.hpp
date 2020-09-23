@@ -14,23 +14,24 @@
 #include "../third-party/Empirical/source/data/DataFile.h"
 #include "../third-party/Empirical/source/tools/keyname_utils.h"
 
-#include "uit/concurrent/Gatherer.hpp"
-#include "uit/concurrent/ConcurrentTimeoutBarrier.hpp"
-#include "uit/conduit/Conduit.hpp"
-#include "uit/conduit/config.hpp"
-#include "uit/distributed/mpi_utils.hpp"
-#include "uit/utility/CountdownIterator.hpp"
-#include "uit/utility/CountdownTimer.hpp"
-#include "uit/utility/CoarseClock.hpp"
-#include "uit/utility/math_utils.hpp"
-#include "uit/utility/numeric_cast.hpp"
-#include "uit/utility/safe_compare.hpp"
-#include "uit/mesh/Mesh.hpp"
-#include "uit/parallel/ThreadIbarrierFactory.hpp"
-#include "uit/parallel/ThreadTeam.hpp"
-#include "uit/polyfill/barrier.hpp"
-#include "uit/polyfill/latch.hpp"
-#include "uit/topology/RingTopologyFactory.hpp"
+#include "uitsl/chrono/CoarseClock.hpp"
+#include "uitsl/concurrent/Gatherer.hpp"
+#include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
+#include "uitsl/countdown/Counter.hpp"
+#include "uitsl/countdown/Timer.hpp"
+#include "uitsl/debug/safe_cast.hpp"
+#include "uitsl/debug/safe_compare.hpp"
+#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/math/math_utils.hpp"
+#include "uitsl/parallel/ThreadIbarrierFactory.hpp"
+#include "uitsl/parallel/ThreadTeam.hpp"
+#include "uitsl/polyfill/barrier.hpp"
+#include "uitsl/polyfill/latch.hpp"
+
+#include "uit/fixtures/Conduit.hpp"
+
+#include "netuit/mesh/Mesh.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 #include "chunk_utils.hpp"
 #include "config_utils.hpp"
@@ -45,14 +46,14 @@ grid_t make_grid(const config_t & cfg) {
 
   const size_t grid_size = cfg.at("grid_size");
   const size_t num_threads = cfg.at("num_threads");
-  uit::Mesh<Spec> mesh{
-    uit::RingTopologyFactory{}(grid_size * uit::get_nprocs()),
-    uit::AssignContiguously<uit::thread_id_t>{num_threads, grid_size}
+  netuit::Mesh<Spec> mesh{
+    netuit::RingTopologyFactory{}(grid_size * uitsl::get_nprocs()),
+    uitsl::AssignContiguously<uitsl::thread_id_t>{num_threads, grid_size}
   };
 
   grid_t grid;
 
-  uit::Mesh<Spec>::submesh_t submesh{ mesh.GetSubmesh() };
+  netuit::Mesh<Spec>::submesh_t submesh{ mesh.GetSubmesh() };
 
   for (const auto & node : submesh) {
     grid.push_back(
@@ -64,8 +65,8 @@ grid_t make_grid(const config_t & cfg) {
   }
 
   for (size_t i = 0; i < grid_size; ++i) {
-    grid[i].next = &grid[uit::circular_index(i, grid_size , 1)];
-    grid[i].prev = &grid[uit::circular_index(i, grid_size, -1)];
+    grid[i].next = &grid[uitsl::circular_index(i, grid_size , 1)];
+    grid[i].prev = &grid[uitsl::circular_index(i, grid_size, -1)];
     grid[i].id = i;
   }
 
@@ -109,11 +110,11 @@ double run_grid(grid_t & grid, const config_t & cfg) {
     update_chunk(chunk, verbose, shuffle_tile_evaluation, resistance);
   };
 
-  std::latch latch{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
-  std::barrier barrier{uit::numeric_cast<std::ptrdiff_t>(num_threads)};
-  uit::ThreadIbarrierFactory factory{ num_threads };
+  std::latch latch{uitsl::safe_cast<std::ptrdiff_t>(num_threads)};
+  std::barrier barrier{uitsl::safe_cast<std::ptrdiff_t>(num_threads)};
+  uitsl::ThreadIbarrierFactory factory{ num_threads };
 
-  uit::Gatherer<int> gatherer(MPI_INT);
+  uitsl::Gatherer<int> gatherer(MPI_INT);
 
   const auto task_sequence = [&](chunk_t source){
 
@@ -123,10 +124,10 @@ double run_grid(grid_t & grid, const config_t & cfg) {
       ? checkout_chunk(source)
       : source;
 
-    uit::CountdownTimer<std::chrono::seconds, uit::CoarseClock> timer{
+    uitsl::Timer<std::chrono::seconds, uitsl::CoarseClock> timer{
       std::chrono::seconds{num_seconds}
     };
-    uit::CountdownIterator counter{num_updates};
+    uitsl::Counter counter{num_updates};
 
     // synchronize once after thread creation and MPI spinup
     if (!synchronous) {
@@ -139,8 +140,8 @@ double run_grid(grid_t & grid, const config_t & cfg) {
 
       // synchronize after each step
       if (synchronous) {
-        const uit::ThreadIbarrier thread_barrier{ factory.MakeBarrier() };
-        uit::ConcurrentTimeoutBarrier{
+        const uitsl::ThreadIbarrier thread_barrier{ factory.MakeBarrier() };
+        uitsl::ConcurrentTimeoutBarrier{
           thread_barrier,
           timer
         };
@@ -152,7 +153,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
 
     if (checkout_memory) checkin_chunk(source, chunk);
 
-    gatherer.Put(uit::numeric_cast<int>(
+    gatherer.Put(uitsl::safe_cast<int>(
       counter.GetElapsed() / (
         num_seconds
         ?: std::chrono::duration_cast<std::chrono::duration<double>>(
@@ -191,7 +192,7 @@ double run_grid(grid_t & grid, const config_t & cfg) {
   };
 
   const auto std_run = [&](){
-    uit::ThreadTeam team;
+    uitsl::ThreadTeam team;
 
     for (auto chunk : chunks) {
       team.Add([chunk, task_sequence](){ task_sequence(chunk); });

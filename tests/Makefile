@@ -1,4 +1,7 @@
-TEST_NAMES := assign concurrent conduit containers distributed mesh topology utility
+SHELL := /bin/bash
+
+TARGET_NAMES += uit
+TARGET_NAMES += uitsl
 
 default: test
 
@@ -20,21 +23,21 @@ clean-%: %
 cov-%:
 	cd $(@:cov-%=%) && make cov
 
-cov: coverage_conversion $(addprefix cov-, $(TEST_NAMES))
+cov: coverage_conversion $(addprefix cov-, $(TARGET_NAMES))
 
 coverage_conversion:
 	./convert_for_tests.sh
 
 # Test in debug mode without pointer tracker
-test: $(addprefix test-, $(TEST_NAMES))
+test: $(addprefix test-, $(TARGET_NAMES))
 
-opt: $(addprefix opt-, $(TEST_NAMES))
+opt: $(addprefix opt-, $(TARGET_NAMES))
 
-fulldebug: $(addprefix fulldebug-, $(TEST_NAMES))
+fulldebug: $(addprefix fulldebug-, $(TARGET_NAMES))
 
-cranky: $(addprefix cranky-, $(TEST_NAMES))
+cranky: $(addprefix cranky-, $(TARGET_NAMES))
 
-clean: $(addprefix clean-, $(TEST_NAMES))
+clean: $(addprefix clean-, $(TARGET_NAMES))
 	rm -f *.out
 	rm -f *.o
 	rm -f *.gcda
