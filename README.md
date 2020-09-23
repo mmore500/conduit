@@ -492,6 +492,14 @@ Without consolidation, each duct would send independent inter-process messages b
 ![unconsolidated ducts](docs/assets/unconsolidated.gif)
 *Animation of unconsolidated inter-process ducts.*
 
+## Buffered
+
+Buffered ducts consolidate messages on an inlet-by-inlet basis.
+When `TryFlush()` is called on a duct, its pending inter-process messages are consolidated and sent as a single message.
+
+![buffered ducts](docs/assets/buffered.gif)
+*Animation of buffered inter-process ducts.*
+
 ## Pooled
 
 Pooled ducts expect one contribution to be provided from each constituent duct in a round-robin fashion.
