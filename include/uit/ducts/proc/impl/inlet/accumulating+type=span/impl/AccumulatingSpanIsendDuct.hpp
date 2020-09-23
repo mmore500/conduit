@@ -18,6 +18,7 @@
 #include "../../../../../../../uitsl/mpi/audited_routines.hpp"
 #include "../../../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../../../uitsl/mpi/Request.hpp"
+#include "../../../../../../../uitsl/polyfill/identity.hpp"
 #include "../../../../../../../uitsl/utility/print_utils.hpp"
 
 #include "../../../../../../setup/InterProcAddress.hpp"
@@ -125,9 +126,15 @@ public:
     if ( !uitsl::test_null( request ) ) TryFinalizeSend();
 
     if ( uitsl::test_null( request ) ) {
-      std::swap( send_buffer, pending_buffer );
-      pending_buffer.Reset();
-      PostSendRequest();
+      if ( std::any_of(
+        std::begin(pending_buffer.GetData()),
+        std::end(pending_buffer.GetData()),
+        std::identity
+      ) ) {
+        std::swap( send_buffer, pending_buffer );
+        pending_buffer.Reset();
+        PostSendRequest();
+      }
       return true;
     } else return false;
 
