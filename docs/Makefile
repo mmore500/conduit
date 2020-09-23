@@ -51,6 +51,8 @@ help:
 clean:
 	rm -rf $(BUILDDIR)/*
 
+# copy assets into build folder to make same relative image include path available
+# as stating from README.md at root of repo (i.e., /docs/assets)
 assets:
 	mkdir -p $(BUILDDIR)/html/docs/
 	cp -r assets $(BUILDDIR)/html/docs/
