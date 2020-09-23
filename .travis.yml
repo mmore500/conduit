@@ -8,81 +8,211 @@ services:
 jobs:
   include:
   - stage: Tests
-    name: OpenMPI Unit Tests (debug mode)
-    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+
+    name: OpenMPI uitsl Unit Tests (debug mode)
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
-  - name: MPICH Unit Tests (debug mode)
-    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make test"
+
+  - name: OpenMPI uit Unit Tests (debug mode)
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test"
-  - name: OpenMPI Unit Tests (fulldebug mode)
-    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uit && make test"
+
+  - name: OpenMPI netuit Unit Tests (debug mode)
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
-  - name: MPICH Unit Debug Tests (fulldebug mode)
-    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make test"
+
+
+  - name: MPICH uitsl Unit Tests (debug mode)
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-fulldebug"
-  - name: OpenMPI Unit Tests (opt mode)
-    env: MPICXX=mpicxx.openmpi MPIEXEC=mpiexec.openmpi
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make test"
+
+  - name: MPICH uit Unit Tests (debug mode)
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
-  - name: MPICH Unit Debug Tests (opt mode)
-    env: MPICXX=mpicxx.mpich MPIEXEC=mpiexec.mpich
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uit && make test"
+
+  - name: MPICH netuit Unit Tests (debug mode)
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e MPICXX -e MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit && make test-opt"
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make test"
+
+  - name: OpenMPI uitsl Unit Tests (fulldebug mode)
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make fulldebug"
+
+  - name: OpenMPI uit Unit Tests (fulldebug mode)
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uit && make fulldebug"
+
+  - name: OpenMPI netuit Unit Tests (fulldebug mode)
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make fulldebug"
+
+
+  - name: MPICH uitsl Unit Debug Tests (fulldebug mode)
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make fulldebug"
+
+  - name: MPICH uit Unit Debug Tests (fulldebug mode)
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uit && make fulldebug"
+
+  - name: MPICH netuit Unit Debug Tests (fulldebug mode)
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make fulldebug"
+
+
+  - name: OpenMPI uitsl Unit Tests (opt mode)
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make opt"
+
+  - name: OpenMPI uit Unit Tests (opt mode)
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uit && make opt"
+
+  - name: OpenMPI netuit Unit Tests (opt mode)
+    env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make opt"
+
+
+  - name: MPICH uitsl Unit Debug Tests (opt mode)
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make opt"
+
+  - name: MPICH uit Unit Debug Tests (opt mode)
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uit && make opt"
+
+  - name: MPICH netuit Unit Debug Tests (opt mode)
+    env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script:
+    - docker run -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make opt"
+
+
+  - name: uitsl Coverage
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make cov
+      && bash <(curl -s https://codecov.io/bash)"
+
+  - name: uit Coverage
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uit && make cov
+      && bash <(curl -s https://codecov.io/bash)"
+
+  - name: netuit Coverage
+    install:
+    - docker build -t mmore500/conduit .
+    - docker ps -a
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make cov
+      && bash <(curl -s https://codecov.io/bash)"
+
+
   - name: Macrobenchmarks
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make macrobenchmark"
+
   - name: Microbenchmarks
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script: docker run -e OSF_PASSWORD -e CONTEXT=travis mmore500/conduit /bin/bash -c "cd /opt/conduit && make microbenchmark"
-  - name: Coverage
-    install:
-    - docker build -t mmore500/conduit .
-    - docker ps -a
-    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make cov
-      && bash <(curl -s https://codecov.io/bash)"
+
   - name: Source
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script: docker run --cap-add=SYS_ADMIN mmore500/conduit /bin/bash -c "cd /opt/conduit
       && source third-party/emsdk/emsdk_env.sh && make test-source"
+
   - name: Docs
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit
       && make docs && make test-readme-snippets"
+
   - name: Demos
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make demos"
+
+
   - stage: Deploy
     name: GitHub Pages
     if: (type = push AND branch IN (master))

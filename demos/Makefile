@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += diffusion
 TARGET_NAMES += signalgp
 
 default: test

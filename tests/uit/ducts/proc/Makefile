@@ -1,9 +1,10 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += accumulating+type=fundamental
-TARGET_NAMES += backend
-TARGET_NAMES += inlet
-TARGET_NAMES += outlet
+TARGET_NAMES += accumulating+type=span
+TARGET_NAMES += accumulating+type=spanfundamental
+TARGET_NAMES += accumulating+type=trivial
+TARGET_NAMES += impl
 TARGET_NAMES += put=dropping+get=skipping+type=span
 TARGET_NAMES += put=dropping+get=skipping+type=trivial
 TARGET_NAMES += put=dropping+get=stepping+type=cereal

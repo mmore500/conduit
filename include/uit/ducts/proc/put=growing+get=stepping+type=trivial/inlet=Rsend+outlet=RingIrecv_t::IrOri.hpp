@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/put=growing+type=trivial/t::RsendDuct.hpp"
-#include "../outlet/get=stepping+type=trivial/t::RingIrecvDuct.hpp"
+#include "../impl/inlet/put=growing+type=trivial/t::RsendDuct.hpp"
+#include "../impl/outlet/get=stepping+type=trivial/t::RingIrecvDuct.hpp"
 
 namespace uit {
 namespace t {

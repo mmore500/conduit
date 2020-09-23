@@ -8,18 +8,18 @@ TO_ROOT := $(shell git rev-parse --show-cdup)
 
 FLAGS = -std=c++17 -g -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
-MPICXX ?= mpic++
-MPIEXEC ?= mpiexec
+UIT_MPICXX ?= mpicxx
+UIT_MPIEXEC ?= mpiexec
 
 default: test
 
 test-%: %.cpp
-	echo "MPICXX" $(MPICXX)
-	echo "MPIEXEC" $(MPIEXEC)
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread  -o $@.out
+	echo "UIT_MPICXX" $(UIT_MPICXX)
+	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread  -o $@.out
 	# execute test
 	for n in $$(seq 2 8); do \
-		$(MPIEXEC) -n 1 ./$@.out --num_threads $$n || exit 1; \
+		$(UIT_MPIEXEC) -n 1 ./$@.out --num_threads $$n || exit 1; \
 	done
 
 # Test in debug mode without pointer tracker
@@ -44,11 +44,20 @@ cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I
 cov: $(addprefix cov-, $(TARGET_NAMES))
 
 cov-%: %.cpp
-	export OMPI_CXX=clang++ && $(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
-	#echo "running $@.out"
+	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
-	./$@.out
-	llvm-profdata merge default.profraw -o default.profdata
+	echo "UIT_MPICXX" $(UIT_MPICXX)
+	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
+	# see https://clang.llvm.org/docs/UsersManual.html#profiling-with-instrumentation
+	for n in $$(seq 2 3); do \
+		export n; \
+		$(UIT_MPIEXEC) --bind-to none -n $$n \
+			/bin/bash -c '\
+				LLVM_PROFILE_FILE="%p-%m-%h-$${n}-$${OMPI_COMM_WORLD_RANK}.profraw" \
+				./$@.out' \
+			|| exit 1; \
+	done
+	llvm-profdata merge *.profraw -o default.profdata
 	llvm-cov show ./$@.out -instr-profile=default.profdata > coverage_$@.txt
 	python $(TO_ROOT)/third-party/force-cover/fix_coverage.py coverage_$@.txt
 

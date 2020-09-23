@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 set -e # exit with error if any of this fails
+rm -rf ../coverage_include
 cp -r ../include ../coverage_include
 for filename in $(find ../coverage_include -name "*.hpp")
 do

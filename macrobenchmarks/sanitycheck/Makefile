@@ -7,13 +7,13 @@ TO_ROOT := $(shell git rev-parse --show-cdup)
 
 FLAGS = -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function/ -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
-MPICXX ?= mpic++
-MPIEXEC ?= mpiexec
+UIT_MPICXX ?= mpicxx
+UIT_MPIEXEC ?= mpiexec
 
 default: bench
 
 bench-%: %.cpp
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
 	if echo $@ | grep -Fq "NoMPI"; \
 		then \
@@ -21,7 +21,7 @@ bench-%: %.cpp
 		  ./$@.out; \
 		else \
 		  echo "With MPI"; \
-			$(MPIEXEC) --bind-to none -n 1 ./$@.out; \
+			$(UIT_MPIEXEC) --bind-to none -n 1 ./$@.out; \
 	fi
 
 # Test in debug mode without pointer tracker
@@ -29,7 +29,7 @@ bench: $(addprefix bench-, $(TARGET_NAMES))
 	rm -rf bench*.out
 
 build-%: %.cpp
-	$(MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
 build: $(addprefix build-, $(TARGET_NAMES))

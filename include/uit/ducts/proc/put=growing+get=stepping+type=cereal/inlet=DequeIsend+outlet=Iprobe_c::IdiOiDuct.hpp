@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/put=growing+type=cereal/c::DequeIsendDuct.hpp"
-#include "../outlet/get=stepping+type=cereal/c::IprobeDuct.hpp"
+#include "../impl/inlet/put=growing+type=cereal/c::DequeIsendDuct.hpp"
+#include "../impl/outlet/get=stepping+type=cereal/c::IprobeDuct.hpp"
 
 namespace uit {
 namespace c {

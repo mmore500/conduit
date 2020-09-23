@@ -21,12 +21,10 @@ cranky-%: %
 clean-%: %
 	cd $< && make clean
 
-cov-%:
-	cd $(@:cov-%=%) && make cov
+cov-%: % ../coverage_include
+	cd $< && make cov
 
-cov: coverage_conversion $(addprefix cov-, $(TARGET_NAMES))
-
-coverage_conversion:
+../coverage_include:
 	./convert_for_tests.sh
 
 # Test in debug mode without pointer tracker
@@ -37,6 +35,8 @@ opt: $(addprefix opt-, $(TARGET_NAMES))
 fulldebug: $(addprefix fulldebug-, $(TARGET_NAMES))
 
 cranky: $(addprefix cranky-, $(TARGET_NAMES))
+
+cov: $(addprefix cov-, $(TARGET_NAMES))
 
 clean: $(addprefix clean-, $(TARGET_NAMES))
 	rm -f *.out

@@ -9,6 +9,7 @@
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/distributed/assign_utils.hpp"
+#include "uitsl/distributed/IbarrierRequest.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
 #include "uit/ducts/mock/ThrowDuct.hpp"
@@ -23,8 +24,6 @@
 
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
 
-
-using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 const uitsl::MpiGuard guard;
@@ -69,13 +68,11 @@ decltype(auto) make_producer_consumer_bundle() {
 
 decltype(auto) make_ring_bundle() {
   netuit::Mesh<Spec> mesh{
-    netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
+    netuit::RingTopologyFactory{}( uitsl::get_nprocs() ),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignAvailableProcs{}
   };
-
   auto bundles = mesh.GetSubmesh();
-
   REQUIRE( bundles.size() == 1);
 
   return std::tuple{ bundles[0].GetInput(0), bundles[0].GetOutput(0) };
@@ -93,20 +90,23 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
 TEST_CASE("Unmatched gets") { REPEAT {
 
+  // TODO why does rdma construction hang for dyadic bundle but not ring  ?
   auto [input, output] = make_dyadic_bundle();
 
-  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
+  for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
   }
 
   UITSL_Barrier( MPI_COMM_WORLD );
 
   output.Put(42);
+  output.TryFlush();
+
   while( input.JumpGet() != 42);
 
   REQUIRE( input.Get() == 42 );
 
-  REQUIRE( input.JumpGet() == 0 );
+  REQUIRE( input.JumpGet() == MSG_T{} );
 
   UITSL_Barrier( MPI_COMM_WORLD );
 
@@ -114,9 +114,10 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
 TEST_CASE("Unmatched puts") { REPEAT {
 
+  // TODO why does rdma construction hang for dyadic bundle but not ring  ?
   auto [input, output] = make_dyadic_bundle();
 
-  for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(1);
+  for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(1);
 
   UITSL_Barrier( MPI_COMM_WORLD ); // todo why
 
@@ -124,14 +125,16 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
 TEST_CASE("Validity") { REPEAT {
 
+  // TODO why does rdma construction hang for dyadic bundle but not ring  ?
   auto [input, output] = make_dyadic_bundle();
 
   int sum{};
   // 1/2 n * (n + 1)
   const int expected_sum = (std::kilo{}.num - 1) * std::kilo{}.num / 2;
-  for (MSG_T msg = 0; msg < std::kilo{}.num; ++msg) {
+  for (int msg = 0; msg < std::kilo{}.num; ++msg) {
 
     output.TryPut(msg);
+    output.TryFlush();
 
     const MSG_T received = input.JumpGet();
     REQUIRE( received <= expected_sum );
@@ -145,14 +148,15 @@ TEST_CASE("Validity") { REPEAT {
     REQUIRE( received <= expected_sum );
     REQUIRE( received >= 0);
     sum += received;
+    output.TryFlush();
   }
 
   REQUIRE( sum == expected_sum );
 
   for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
-    REQUIRE( input.JumpGet() == 0 );
+    REQUIRE( input.JumpGet() == MSG_T{} );
   }
 
-  UITSL_Barrier(MPI_COMM_WORLD); // todo why
+  for (uitsl::IbarrierRequest req; !req.IsComplete(); ) output.TryFlush();
 
 } }

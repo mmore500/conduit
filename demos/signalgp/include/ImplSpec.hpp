@@ -11,7 +11,7 @@ using ImplSel = uit::ImplSelect<
 
 using ImplSpec = uit::ImplSpec<
   message_t,
-  2, // N
   ImplSel,
+  2, // N
   16 // B
 >;

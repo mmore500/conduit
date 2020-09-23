@@ -115,7 +115,7 @@ int main() {
 Navigate to the `conduit` directory.
 Then, to compile and run,
 ```sh
-mpic++ --std=c++17 -O3 -DNDEBUG -Iinclude/ low.cpp -lpthread
+mpicxx --std=c++17 -O3 -DNDEBUG -Iinclude/ low.cpp -lpthread
 ./a.out
 ```
 
@@ -327,7 +327,7 @@ int main() {
 Now compile and run.
 
 ```sh
-mpic++ --std=c++17 -O3 -DNDEBUG -Iinclude/ high.cpp -lpthread
+mpicxx --std=c++17 -O3 -DNDEBUG -Iinclude/ high.cpp -lpthread
 script/uitexec -n 2 script/uitwrap ./a.out | cat
 ```
 
@@ -387,7 +387,7 @@ int main() {
 ```
 
 ```sh
-mpic++ --std=c++17 -Iinclude/ -Ithird-party/ swipswap.cpp -lpthread
+mpicxx --std=c++17 -Iinclude/ -Ithird-party/ swipswap.cpp -lpthread
 script/uitexec -n 2 script/uitwrap ./a.out | cat
 ```
 
@@ -491,6 +491,14 @@ Without consolidation, each duct would send independent inter-process messages b
 
 ![unconsolidated ducts](docs/assets/unconsolidated.gif)
 *Animation of unconsolidated inter-process ducts.*
+
+## Buffered
+
+Buffered ducts consolidate messages on an inlet-by-inlet basis.
+When `TryFlush()` is called on a duct, its pending inter-process messages are consolidated and sent as a single message.
+
+![buffered ducts](docs/assets/buffered.gif)
+*Animation of buffered inter-process ducts.*
 
 ## Pooled
 

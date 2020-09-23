@@ -2,8 +2,8 @@
 
 #include <type_traits>
 
-#include "../inlet/templated/PooledInletDuct.hpp"
-#include "../outlet/templated/PooledOutletDuct.hpp"
+#include "../impl/inlet/templated/PooledInletDuct.hpp"
+#include "../impl/outlet/templated/PooledOutletDuct.hpp"
 
 #include "../put=dropping+get=stepping+type=span/inlet=RingIsend+outlet=Iprobe_s::IriOiDuct.hpp"
 
