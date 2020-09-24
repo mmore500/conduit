@@ -15,6 +15,7 @@
 * [A single-producer, single-consumer lock-free queue for C++](https://github.com/cameron314/readerwriterqueue)
 * [ModernCppStarter](https://github.com/TheLartians/ModernCppStarter)
 * [boost spsc_queue implementation](https://github.com/boostorg/lockfree/blob/771e8c1016a5d9b61acbc871e442a3fb139e1494/include/boost/lockfree/spsc_queue.hpp)
+* [scotch Package for graph and mesh/hypergraph partitioning, graph clustering, and sparse matrix ordering](https://gitlab.inria.fr/scotch/scotch)
 
 ### Reference Materials
 
