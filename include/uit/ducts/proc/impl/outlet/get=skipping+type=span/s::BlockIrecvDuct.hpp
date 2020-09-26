@@ -52,7 +52,7 @@ private:
 
   const uit::InterProcAddress address;
 
-  std::shared_ptr<BackEndImpl> back_end;
+  size_t runtime_size;
 
   // for non-const Get
   T cache;
@@ -60,11 +60,11 @@ private:
   void PostReceiveRequest() {
     emp_assert( uitsl::test_null( receive_requests[receive_position] ) );
 
-    buffer[receive_position].resize( back_end->GetSize() );
+    buffer[receive_position].resize( runtime_size );
 
     UITSL_Irecv(
       buffer[receive_position].data(),
-      back_end->GetSize() * sizeof( typename T::value_type ),
+      runtime_size * sizeof( typename T::value_type ),
       MPI_BYTE,
       address.GetInletProc(),
       address.GetTag(),
@@ -135,9 +135,13 @@ public:
 
   BlockIrecvDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<BackEndImpl> back_end_
+    std::shared_ptr<BackEndImpl> back_end,
+    const uit::RuntimeSizeBackEnd<ImplSpec>& rts
+     =uit::RuntimeSizeBackEnd<ImplSpec>{}
   ) : address(address_)
-  , back_end(back_end_) {
+  , runtime_size( rts.HasSize() ? rts.GetSize() : back_end->GetSize() ) {
+
+    emp_assert( rts.HasSize() || back_end->HasSize() );
 
     emp_assert( std::all_of(
       std::begin(buffer),

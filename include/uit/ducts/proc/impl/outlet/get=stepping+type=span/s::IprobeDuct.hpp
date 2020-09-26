@@ -3,13 +3,13 @@
 #include <algorithm>
 #include <array>
 #include <cstddef>
-#include <optional>
 #include <stddef.h>
 
 #include <mpi.h>
 
 #include "../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
 #include "../../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../../third-party/Empirical/source/base/optional.h"
 #include "../../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
@@ -50,14 +50,10 @@ private:
 
   const uit::InterProcAddress address;
 
-  std::shared_ptr<BackEndImpl> back_end;
+  emp::optional<size_t> runtime_size;
 
   // most vexing parse
-  T buffer = T(
-    back_end->HasSize()
-    ? back_end->GetSize()
-    : 0
-  );
+  T buffer = T( runtime_size.value_or(0) );
 
 
   void PerformReceive(const MPI_Status& status) {
@@ -66,7 +62,7 @@ private:
     emp_assert(msg_len % sizeof(typename T::value_type) == 0);
     buffer.resize(msg_len / sizeof(typename T::value_type));
 
-    emp_assert( !back_end->HasSize() || back_end->GetSize() == buffer.size() );
+    emp_assert( !runtime_size.has_value() || *runtime_size == buffer.size() );
 
     UITSL_Recv(
       buffer.data(), // void* buf: initial address of receive buffer
@@ -116,9 +112,15 @@ public:
 
   IprobeDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<BackEndImpl> back_end_
+    std::shared_ptr<BackEndImpl> back_end,
+    const uit::RuntimeSizeBackEnd<ImplSpec>& rts
+     =uit::RuntimeSizeBackEnd<ImplSpec>{}
   ) : address(address_)
-  , back_end(back_end_)
+  , runtime_size( [&]()  -> emp::optional<size_t> {
+    if ( rts.HasSize() ) return {rts.GetSize()};
+    else if ( back_end->HasSize() ) return {back_end->GetSize()};
+    else return std::nullopt;
+  }() )
   { ; }
 
   ~IprobeDuct() {

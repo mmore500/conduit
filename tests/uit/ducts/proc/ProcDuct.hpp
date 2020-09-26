@@ -197,11 +197,11 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(i);
 
-  REQUIRE( input.JumpGet() <= 2 * uit::DEFAULT_BUFFER );
+  REQUIRE( uitsl::safe_leq(input.JumpGet(), 2 * uit::DEFAULT_BUFFER) );
 
   output.TryFlush();
 
-  REQUIRE( input.JumpGet() <= 2 * uit::DEFAULT_BUFFER );
+  REQUIRE( uitsl::safe_leq(input.JumpGet(), 2 * uit::DEFAULT_BUFFER) );
 
   UITSL_Barrier( MPI_COMM_WORLD ); // todo why
 
