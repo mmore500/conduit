@@ -9,7 +9,7 @@ jobs:
   include:
   - stage: Tests
 
-    name: OpenMPI uitsl Unit Tests (debug mode)
+    name: OpenMPI uitsl and external Unit Tests (debug mode)
     env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
@@ -34,7 +34,7 @@ jobs:
     - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make test"
 
 
-  - name: MPICH uitsl Unit Tests (debug mode)
+  - name: MPICH uitsl and external Unit Tests (debug mode)
     env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
     install:
     - docker build -t mmore500/conduit .
@@ -58,7 +58,7 @@ jobs:
     script:
     - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make test"
 
-  - name: OpenMPI uitsl Unit Tests (fulldebug mode)
+  - name: OpenMPI uitsl and external Unit Tests (fulldebug mode)
     env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
@@ -108,7 +108,7 @@ jobs:
     - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make fulldebug"
 
 
-  - name: OpenMPI uitsl Unit Tests (opt mode)
+  - name: OpenMPI uitsl and external Unit Tests (opt mode)
     env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     install:
     - docker build -t mmore500/conduit .
@@ -158,7 +158,7 @@ jobs:
     - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make opt"
 
 
-  - name: uitsl Coverage
+  - name: uitsl and external Coverage
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
