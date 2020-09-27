@@ -5,13 +5,13 @@ TEST_CASE("Validity") { REPEAT {
   std::deque<int> sums;
 
   // 1/2 n * (n + 1)
-  const int expected_sum = (std::kilo{}.num - 1) * std::kilo{}.num / 2;
+  const int expected_sum = (std::kilo::num - 1) * std::kilo::num / 2;
 
   for (auto & node : mesh.GetSubmesh()) {
 
     sums.emplace_back();
 
-    for (MSG_T msg = 0; msg < std::kilo{}.num; ++msg) {
+    for (MSG_T msg = 0; msg < std::kilo::num; ++msg) {
 
       node.GetOutput(0).TryPut(msg);
 
@@ -35,7 +35,7 @@ TEST_CASE("Validity") { REPEAT {
 
     REQUIRE( sums.front() == expected_sum );
 
-    for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
+    for (size_t i = 0; i < 10 * std::kilo::num; ++i) {
       REQUIRE( node.GetInput(0).JumpGet() == 0 );
     }
 

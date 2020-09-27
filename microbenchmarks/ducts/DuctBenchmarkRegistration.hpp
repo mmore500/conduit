@@ -77,7 +77,7 @@ struct RegisterBenchmarks {
 
     // need to guarantee a fixed number of stop/starts for the
     // MPI barriers to sync up correctly
-    if (uitsl::is_multiprocess()) res->Iterations(100 * std::kilo{}.num);
+    if (uitsl::is_multiprocess()) res->Iterations(100 * std::kilo::num);
   }
 
 };
