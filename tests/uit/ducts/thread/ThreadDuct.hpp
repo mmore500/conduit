@@ -35,7 +35,7 @@ const uitsl::MpiGuard guard;
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
-#define REPEAT for (size_t rep = 0; rep < std::deca{}.num ; ++rep)
+#define REPEAT for (size_t rep = 0; rep < std::deca::num ; ++rep)
 
 #define THREADED_BEGIN uitsl::ThreadTeam team; for (uitsl::thread_id_t thread_id = 0; thread_id < num_threads; ++thread_id) { team.Add([thread_id, &mesh](){
 

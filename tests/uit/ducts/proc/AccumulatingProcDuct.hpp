@@ -22,7 +22,7 @@
 #include "netuit/topology/ProConTopologyFactory.hpp"
 #include "netuit/topology/RingTopologyFactory.hpp"
 
-#define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
+#define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
@@ -130,8 +130,8 @@ TEST_CASE("Validity") { REPEAT {
 
   int sum{};
   // 1/2 n * (n + 1)
-  const int expected_sum = (std::kilo{}.num - 1) * std::kilo{}.num / 2;
-  for (int msg = 0; msg < std::kilo{}.num; ++msg) {
+  const int expected_sum = (std::kilo::num - 1) * std::kilo::num / 2;
+  for (int msg = 0; msg < std::kilo::num; ++msg) {
 
     output.TryPut(msg);
     output.TryFlush();
@@ -153,7 +153,7 @@ TEST_CASE("Validity") { REPEAT {
 
   REQUIRE( sum == expected_sum );
 
-  for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
+  for (size_t i = 0; i < 10 * std::kilo::num; ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
   }
 

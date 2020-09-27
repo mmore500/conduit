@@ -44,8 +44,8 @@ struct CoarseMonoClock {
 
     return time_point{
       std::chrono::milliseconds{
-        spec.tv_sec * std::milli{}.den
-        + spec.tv_nsec * (std::milli{}.den / std::nano{}.den)
+        spec.tv_sec * std::milli::den
+        + spec.tv_nsec * (std::milli::den / std::nano::den)
       }
     };
   }
