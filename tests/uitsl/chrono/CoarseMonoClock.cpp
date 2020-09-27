@@ -23,7 +23,7 @@ TEST_CASE("Test CoarseMonoClock")
     REQUIRE( uitsl::CoarseMonoClock::now() >= begin );
   }
 
-  REQUIRE( uitsl::CoarseMonoClock::now() - begin > std::chrono::seconds{2} );
-  REQUIRE( uitsl::CoarseMonoClock::now() - begin < std::chrono::seconds{4} );
+  REQUIRE( uitsl::CoarseMonoClock::now() - begin > std::chrono::seconds{1} );
+  REQUIRE( uitsl::CoarseMonoClock::now() - begin < std::chrono::seconds{5} );
 
 }

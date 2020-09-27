@@ -27,11 +27,11 @@ TEST_CASE("Test SplitWatch")
     REQUIRE( watch.TakeSplit() >= uitsl::zero_duration );
   }
 
-  std::this_thread::sleep_for( std::chrono::seconds{2} );
+  std::this_thread::sleep_for( std::chrono::seconds{3} );
 
   const auto split = watch.TakeSplit();
 
   REQUIRE( split > std::chrono::seconds{ 1 } );
-  REQUIRE( split < std::chrono::seconds{ 3 } );
+  REQUIRE( split < std::chrono::seconds{ 5 } );
 
 }

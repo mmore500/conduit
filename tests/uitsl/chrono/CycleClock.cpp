@@ -23,7 +23,7 @@ TEST_CASE("Test CycleClock")
     REQUIRE( uitsl::CycleClock::now() >= begin );
   }
 
-  REQUIRE( uitsl::CycleClock::now() - begin > std::chrono::seconds{2} );
-  REQUIRE( uitsl::CycleClock::now() - begin < std::chrono::seconds{4} );
+  REQUIRE( uitsl::CycleClock::now() - begin > std::chrono::seconds{1} );
+  REQUIRE( uitsl::CycleClock::now() - begin < std::chrono::seconds{5} );
 
 }

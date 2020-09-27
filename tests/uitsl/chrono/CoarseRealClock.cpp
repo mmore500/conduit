@@ -23,7 +23,7 @@ TEST_CASE("Test CoarseRealClock")
     REQUIRE( uitsl::CoarseRealClock::now() >= begin );
   }
 
-  REQUIRE( uitsl::CoarseRealClock::now() - begin > std::chrono::seconds{2} );
-  REQUIRE( uitsl::CoarseRealClock::now() - begin < std::chrono::seconds{4} );
+  REQUIRE( uitsl::CoarseRealClock::now() - begin > std::chrono::seconds{1} );
+  REQUIRE( uitsl::CoarseRealClock::now() - begin < std::chrono::seconds{5} );
 
 }
