@@ -213,7 +213,7 @@ public:
    *
    * @return TODO.
    */
-    std::string WhichImplIsActive() const {
+  std::string WhichImplIsActive() const {
     return std::visit(
       [](auto& arg) -> std::string { return arg.GetName(); },
       impl

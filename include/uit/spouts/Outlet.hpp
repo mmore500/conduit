@@ -230,9 +230,7 @@ public:
    *
    * @return TODO.
    */
-  typename duct_t::uid_t GetDuctUID() const {
-    return duct->GetUID();
-  }
+  typename duct_t::uid_t GetDuctUID() const { return duct->GetUID(); }
 
   bool CanStep() const { return duct->CanStep(); }
 
