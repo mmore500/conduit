@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += netuit
+TARGET_NAMES += sanitycheck
 TARGET_NAMES += uit
 TARGET_NAMES += uitsl
 
