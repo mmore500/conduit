@@ -19,3 +19,16 @@ TEST_CASE("Test Inlet") {
   };
 
 }
+
+TEST_CASE("Test impl detectors") {
+
+  using Spec = uit::ImplSpec<char>;
+  uit::Inlet<Spec> in{
+    std::make_shared<uit::internal::Duct<Spec>>()
+  };
+
+  REQUIRE( in.HoldsIntraImpl().value_or(false) == true );
+  REQUIRE( in.HoldsThreadImpl().value_or(false) == false );
+  REQUIRE( in.HoldsProcImpl().value_or(false) == false );
+
+}

@@ -11,6 +11,8 @@
 
 namespace uitsl {
 
+template<typename ...Args> auto sum(Args ...args) { return (args + ...); }
+
 size_t mod(int in_val, const size_t mod_val) {
   emp_assert(mod_val > 0);
   const int signed_mod_val = std::min(

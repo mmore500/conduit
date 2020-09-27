@@ -6,9 +6,11 @@
 #include <variant>
 
 #include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/source/base/optional.h"
 #include "../../../third-party/Empirical/source/meta/TypePack.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/print_utils.hpp"
 
@@ -87,6 +89,29 @@ class Duct {
   typename ducts_t::template apply<std::variant> impl;
 
   using T = typename ImplSpec::T;
+
+  bool MaybeHoldsIntraImpl() const {
+    return std::holds_alternative<typename ImplSpec::IntraDuct>( impl );
+  }
+
+  bool MaybeHoldsThreadImpl() const {
+    return std::holds_alternative<typename ImplSpec::ThreadDuct>( impl );
+  }
+
+  bool MaybeHoldsProcImpl() const {
+    return (
+      std::holds_alternative<typename ImplSpec::ProcInletDuct>( impl )
+      || std::holds_alternative<typename ImplSpec::ProcOutletDuct>( impl )
+    );
+  }
+
+  bool HoldsAmbiguousImpl() const {
+    return uitsl::sum(
+      MaybeHoldsIntraImpl(),
+      MaybeHoldsThreadImpl(),
+      MaybeHoldsProcImpl()
+    ) > 1;
+  }
 
 public:
 
@@ -218,6 +243,39 @@ public:
       [](auto& arg) -> std::string { return arg.GetName(); },
       impl
     );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  emp::optional<bool> HoldsIntraImpl() const {
+    if ( MaybeHoldsIntraImpl() ) {
+      return HoldsAmbiguousImpl() ? std::nullopt : emp::optional<bool>{ true };
+    } else return false;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  emp::optional<bool> HoldsThreadImpl() const {
+    if ( MaybeHoldsThreadImpl() ) {
+      return HoldsAmbiguousImpl() ? std::nullopt : emp::optional<bool>{ true };
+    } else return false;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  emp::optional<bool> HoldsProcImpl() const {
+    if ( MaybeHoldsProcImpl() ) {
+      return HoldsAmbiguousImpl() ? std::nullopt : emp::optional<bool>{ true };
+    } else return false;
   }
 
   /**

@@ -232,6 +232,14 @@ public:
    */
   typename duct_t::uid_t GetDuctUID() const { return duct->GetUID(); }
 
+  emp::optional<bool> HoldsIntraImpl() const { return duct->HoldsIntraImpl(); }
+
+  emp::optional<bool> HoldsThreadImpl() const {
+    return duct->HoldsThreadImpl();
+  }
+
+  emp::optional<bool> HoldsProcImpl() const { return duct->HoldsProcImpl(); }
+
   bool CanStep() const { return duct->CanStep(); }
 
   /**
