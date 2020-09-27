@@ -10,6 +10,7 @@ std::chrono::duration<double> infinite_duration {
   std::numeric_limits<double>::infinity()
 };
 
+std::chrono::duration<int> zero_duration { 0 };
 
 // adapted from https://stackoverflow.com/a/46134506
 std::string beautify_duration(std::chrono::seconds input_seconds) {
@@ -50,7 +51,3 @@ std::string beautify_duration(std::chrono::seconds input_seconds) {
 }
 
 } // namespace uitsl
-
-// std::chrono::duration<int> zero_duration {
-//   0
-// };

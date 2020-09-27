@@ -7,6 +7,7 @@ TARGET_NAMES += CoarseRealClock
 TARGET_NAMES += cycle_freq
 TARGET_NAMES += CycleClock
 TARGET_NAMES += RawCycleClock
+TARGET_NAMES += SplitWatch
 #TARGET_NAMES += TimeGuard
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
