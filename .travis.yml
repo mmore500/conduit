@@ -15,7 +15,7 @@ jobs:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make test && cd /opt/conduit/tests/sanitycheck && make test"
+    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make test && cd /opt/conduit/tests/external && make test"
 
   - name: OpenMPI uit Unit Tests (debug mode)
     env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
@@ -40,7 +40,7 @@ jobs:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make test && cd /opt/conduit/tests/sanitycheck && make test"
+    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make test && cd /opt/conduit/tests/external && make test"
 
   - name: MPICH uit Unit Tests (debug mode)
     env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
@@ -64,7 +64,7 @@ jobs:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make fulldebug && cd /opt/conduit/tests/sanitycheck && make fulldebug"
+    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make fulldebug && cd /opt/conduit/tests/external && make fulldebug"
 
   - name: OpenMPI uit Unit Tests (fulldebug mode)
     env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
@@ -89,7 +89,7 @@ jobs:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make fulldebug && cd /opt/conduit/tests/sanitycheck && make fulldebug"
+    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make fulldebug && cd /opt/conduit/tests/external && make fulldebug"
 
   - name: MPICH uit Unit Debug Tests (fulldebug mode)
     env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
@@ -114,7 +114,7 @@ jobs:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make opt && cd /opt/conduit/tests/sanitycheck && make opt"
+    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make opt && cd /opt/conduit/tests/external && make opt"
 
   - name: OpenMPI uit Unit Tests (opt mode)
     env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
@@ -139,7 +139,7 @@ jobs:
     - docker build -t mmore500/conduit .
     - docker ps -a
     script:
-    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make opt && cd /opt/conduit/tests/sanitycheck && make opt"
+    - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make opt && cd /opt/conduit/tests/external && make opt"
 
   - name: MPICH uit Unit Debug Tests (opt mode)
     env: UIT_MPICXX=mpicxx.mpich UIT_MPIEXEC=mpiexec.mpich
@@ -162,7 +162,7 @@ jobs:
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
-    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make cov && cd /opt/conduit/tests/sanitycheck && make cov
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make cov && cd /opt/conduit/tests/external && make cov
       && bash <(curl -s https://codecov.io/bash)"
 
   - name: uit Coverage

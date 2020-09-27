@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 TARGET_NAMES += ducts
-TARGET_NAMES += sanitycheck
+TARGET_NAMES += external
 
 default: bench
 
