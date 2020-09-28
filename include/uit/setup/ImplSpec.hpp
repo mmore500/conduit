@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../spouts/wrappers/TrivialSpoutWrapper.hpp"
-
 #include "defaults.hpp"
 #include "ImplSelect.hpp"
 
@@ -70,7 +68,7 @@ public:
 template<
   typename T,
   typename ImplSelect=uit::ImplSelect<>,
-  template<typename> typename SpoutWrapper=uit::TrivialSpoutWrapper,
+  template<typename> typename SpoutWrapper=uit::DefaultSpoutWrapper,
   size_t N=uit::DEFAULT_BUFFER,
   size_t B=std::numeric_limits<size_t>::max(),
   size_t SpoutCacheSize_=2

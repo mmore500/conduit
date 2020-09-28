@@ -16,6 +16,7 @@ using ImplSel = uit::ImplSelect<
 using ImplSpec = uit::ImplSpec<
   message_t,
   ImplSel,
+  uit::DefaultSpoutWrapper,
   2, // N
   16 // B
 >;
