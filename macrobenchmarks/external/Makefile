@@ -21,7 +21,7 @@ bench-%: %.cpp
 		  ./$@.out; \
 		else \
 		  echo "With MPI"; \
-			$(UIT_MPIEXEC) --bind-to none -n 1 ./$@.out; \
+			$(UIT_MPIEXEC) --bind-to none --oversubscribe -n 1 ./$@.out; \
 	fi
 
 # Test in debug mode without pointer tracker

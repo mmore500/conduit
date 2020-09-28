@@ -17,7 +17,7 @@ default: bench
 bench-%: %.cpp
 	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
-	$(UIT_MPIEXEC) --bind-to none -n 1 ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=1+ext=.json" | ../../../script/headtail.sh
+	$(UIT_MPIEXEC) --bind-to none --oversubscribe -n 1 ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=1+ext=.json" | ../../../script/headtail.sh
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(TARGET_NAMES))

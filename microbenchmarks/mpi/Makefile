@@ -26,7 +26,7 @@ bench-%: %.cpp
 	while :; do \
 		let n=$$((2**$$i)); \
 		test $$n -gt $$SLURM_NTASKS && break; \
-		$(UIT_MPIEXEC) --bind-to none -n $$n ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=$$n+ext=.json" | ../script/headtail.sh; \
+		$(UIT_MPIEXEC) --bind-to none --oversubscribe -n $$n ./$@.out --benchmark_counters_tabular=true --benchmark_format=json --benchmark_out="impl=$*+procs=$$n+ext=.json" | ../script/headtail.sh; \
 		let i++; \
 	done
 

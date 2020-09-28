@@ -51,7 +51,7 @@ cov-%: %.cpp
 	# see https://clang.llvm.org/docs/UsersManual.html#profiling-with-instrumentation
 	for n in 1; do \
 		export n; \
-		$(UIT_MPIEXEC) --bind-to none -n $$n \
+		$(UIT_MPIEXEC) --bind-to none --oversubscribe -n $$n \
 			/bin/bash -c '\
 				LLVM_PROFILE_FILE="%p-%m-%h-$${n}-$${OMPI_COMM_WORLD_RANK}.profraw" \
 				./$@.out' \

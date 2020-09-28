@@ -14,7 +14,7 @@ default: bench
 bench-%: %.cpp
 	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute bench
-	$(UIT_MPIEXEC) --bind-to none -n 1 ./$@.out
+	$(UIT_MPIEXEC) --bind-to none --oversubscribe -n 1 ./$@.out
 
 # Test in debug mode without pointer tracker
 bench: $(addprefix bench-, $(TARGET_NAMES))
