@@ -9,14 +9,14 @@ namespace internal {
 
 template<
   typename T_,
-  size_t N_,
   typename ImplSelect,
+  size_t N_,
   size_t B_
 >
 class ImplSpecKernel {
 
   /// TODO.
-  using THIS_T = ImplSpecKernel<T_, N_, ImplSelect, B_>;
+  using THIS_T = ImplSpecKernel<T_, ImplSelect, N_, B_>;
 
 public:
 
@@ -69,7 +69,7 @@ template<
   size_t N=uit::DEFAULT_BUFFER,
   size_t B=std::numeric_limits<size_t>::max()
 >
-class ImplSpec : public internal::ImplSpecKernel<T, N, ImplSelect, B> { };
+class ImplSpec : public internal::ImplSpecKernel<T, ImplSelect, N, B> { };
 
 template<typename T>
 struct MockSpec
