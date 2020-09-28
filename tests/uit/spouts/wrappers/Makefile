@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += spouts
+TARGET_NAMES += inlet
+TARGET_NAMES += outlet
 TARGET_NAMES += wrappers
 
 default: test

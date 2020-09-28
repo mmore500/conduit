@@ -19,7 +19,9 @@ class InletMemoryPool {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  emp::optional<uit::Inlet<PoolSpec>> inlet;
+  template<typename T>
+  using inlet_wrapper_t = typename PoolSpec::template inlet_wrapper_t<T>;
+  emp::optional<inlet_wrapper_t<uit::Inlet<PoolSpec>>> inlet;
 
   using T = typename PoolSpec::T;
   T buffer{};

@@ -21,7 +21,11 @@ class OutletMemoryAggregator {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  emp::optional<uit::Outlet<AggregatorSpec>> outlet;
+  template<typename T>
+  using outlet_wrapper_t = typename AggregatorSpec::template outlet_wrapper_t<
+    T
+  >;
+  emp::optional<outlet_wrapper_t<uit::Outlet<AggregatorSpec>>> outlet;
 
   // multimap of index -> value_type
   using T = typename AggregatorSpec::T;

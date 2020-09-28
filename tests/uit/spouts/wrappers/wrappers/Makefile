@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
-TARGET_NAMES += CachePacket DistributedTimeoutBarrier do_successively MsgAccumulatorBundle RdmaAccumulatorBundle
+TARGET_NAMES += CachingSpoutWrapper
+TARGET_NAMES += TrivialSpoutWrapper
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
@@ -14,10 +15,10 @@ default: test
 test-%: %.cpp
 	echo "UIT_MPICXX" $(UIT_MPICXX)
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
-	$(UIT_MPICXX) $(FLAGS) $< -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
-		$(UIT_MPIEXEC) --bind-to none --oversubscribe -n $$n ./$@.out; \
+		$(UIT_MPIEXEC) --bind-to none --oversubscribe -n $$n ./$@.out || break; \
 	done
 
 # Test in debug mode without pointer tracker
@@ -25,20 +26,20 @@ test: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
 # Test optimized version without debug features
-opt: FLAGS := -std=c++17 -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
+opt: FLAGS := -std=c++2a -pthread -march=native -DNDEBUG -O3 -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 opt: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
 # Test in debug mode with pointer tracking
-fulldebug: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
+fulldebug: FLAGS := -std=c++2a -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 # -Wmisleading-indentation
 fulldebug: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
-cranky: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
+cranky: FLAGS := -std=c++2a -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/ -pedantic -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -Wconversion -Weffc++
 cranky: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
-cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/coverage_include/ -I$(TO_ROOT)/third-party/  -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
+cov: FLAGS := -std=c++2a -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/coverage_include/ -I$(TO_ROOT)/third-party/ -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
 cov: $(addprefix cov-, $(TARGET_NAMES))
 
 cov-%: %.cpp

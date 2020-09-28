@@ -21,7 +21,9 @@ class OutletMemoryPool {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  emp::optional<uit::Outlet<PoolSpec>> outlet;
+  template<typename T>
+  using outlet_wrapper_t = typename PoolSpec::template outlet_wrapper_t<T>;
+  emp::optional<outlet_wrapper_t<uit::Outlet<PoolSpec>>> outlet;
 
   // incremented every time TryConsumeGets is called
   // then reset to zero once every member of the pool has called

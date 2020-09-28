@@ -19,7 +19,9 @@ class InletMemoryAggregator {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  emp::optional<uit::Inlet<AggregatorSpec>> inlet;
+  template<typename T>
+  using inlet_wrapper_t = typename AggregatorSpec::template inlet_wrapper_t<T>;
+  emp::optional<inlet_wrapper_t<uit::Inlet<AggregatorSpec>>> inlet;
 
   // multimap of tag -> data
   using T = typename AggregatorSpec::T;

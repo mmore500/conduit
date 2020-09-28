@@ -23,8 +23,17 @@ namespace uit {
 template<typename ImplSpec>
 class Sink {
 
+  template<typename Inlet>
+  using inlet_wrapper_t = typename ImplSpec::template inlet_wrapper_t<Inlet>;
+
+public:
+
+  using inlet_t = inlet_wrapper_t< uit::Inlet<ImplSpec> >;
+
+private:
+
   /// `Sink`'s `Inlet`.
-  uit::Inlet<ImplSpec> inlet;
+  inlet_t inlet;
 
 public:
 
@@ -63,18 +72,14 @@ public:
    * @return `Sink`'s `Inlet`.
    */
   template <size_t N>
-  decltype(auto) get() const {
-    if constexpr (N == 0) return inlet;
-  }
+  decltype(auto) get() const { if constexpr (N == 0) return inlet; }
 
   /**
    * Accessor for `Sink`'s `Inlet`.
    *
    * @return `Sink`'s `Inlet`.
    */
-  uit::Inlet<ImplSpec>& GetInlet() {
-    return inlet;
-  }
+  inlet_t& GetInlet() { return inlet; }
 
 };
 

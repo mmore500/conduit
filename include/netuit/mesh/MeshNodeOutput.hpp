@@ -8,16 +8,20 @@
 namespace netuit {
 
 template<typename ImplSpec>
-class MeshNodeOutput final : public uit::Inlet<ImplSpec> {
+class MeshNodeOutput
+final : public ImplSpec::template inlet_wrapper_t< uit::Inlet<ImplSpec> > {
+
+  using parent_t
+    = typename ImplSpec::template inlet_wrapper_t< uit::Inlet<ImplSpec> >;
 
   size_t edge_id;
 
 public:
 
   MeshNodeOutput(
-    const uit::Inlet<ImplSpec> & inlet,
+    const parent_t& inlet,
     const size_t edge_id_
-  ) : uit::Inlet<ImplSpec>(inlet)
+  ) : parent_t(inlet)
   , edge_id(edge_id_)
   { ; }
 

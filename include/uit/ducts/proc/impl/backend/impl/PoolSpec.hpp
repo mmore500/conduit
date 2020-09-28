@@ -2,6 +2,8 @@
 
 #include "../../../../../../../third-party/Empirical/source/base/vector.h"
 
+#include "../../../../../spouts/wrappers/TrivialSpoutWrapper.hpp"
+
 #include "../../../../mock/ThrowDuct.hpp"
 
 namespace uit {
@@ -17,6 +19,14 @@ class PoolSpec {
 public:
 
   using T = emp::vector<typename ImplSpec::T>;
+
+  template<typename Inlet>
+  using inlet_wrapper_t =
+    typename uit::TrivialSpoutWrapper<T>::template inlet_wrapper_t<Inlet>;
+  template<typename Outlet>
+  using outlet_wrapper_t =
+    typename uit::TrivialSpoutWrapper<T>::template outlet_wrapper_t<Outlet>;
+
   constexpr inline static size_t N{ ImplSpec::N };
   constexpr inline static size_t B{ ImplSpec::B };
 

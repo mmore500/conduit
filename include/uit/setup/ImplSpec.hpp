@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../spouts/wrappers/TrivialSpoutWrapper.hpp"
+
 #include "defaults.hpp"
 #include "ImplSelect.hpp"
 
@@ -57,19 +59,44 @@ public:
  * Specifies implementation details for the conduit framework.
  *
  * @tparam T Type to transmit.
- * @tparam N Buffer size.
  * @tparam ImplSelect Class with static typedef members specifying which
  * implementations to use for intra-thread, inter-thread, and inter-process
  * transmission.
+ * @tparam N Buffer size.
+ * @tparam B For buffered or aggregated ducts,
+ * maximum number of items to buffer.
  *
  */
 template<
   typename T,
   typename ImplSelect=uit::ImplSelect<>,
+  template<typename> typename SpoutWrapper=uit::TrivialSpoutWrapper,
   size_t N=uit::DEFAULT_BUFFER,
-  size_t B=std::numeric_limits<size_t>::max()
+  size_t B=std::numeric_limits<size_t>::max(),
+  size_t SpoutCacheSize_=2
 >
-class ImplSpec : public internal::ImplSpecKernel<T, ImplSelect, N, B> { };
+class ImplSpec
+: public internal::ImplSpecKernel<
+  typename SpoutWrapper<T>::T,
+  ImplSelect, N, B
+> {
+
+  using wrapper_t = SpoutWrapper<T>;
+
+public:
+
+  using value_type = T;
+
+  template<typename Inlet>
+  using inlet_wrapper_t = typename wrapper_t::template inlet_wrapper_t<Inlet>;
+
+  template<typename Outlet>
+  using outlet_wrapper_t
+    = typename wrapper_t::template outlet_wrapper_t<Outlet>;
+
+  constexpr inline static size_t SpoutCacheSize{ SpoutCacheSize_ };
+
+};
 
 template<typename T>
 struct MockSpec

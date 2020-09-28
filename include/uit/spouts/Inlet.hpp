@@ -53,11 +53,15 @@ namespace uit {
  *    threads and processes without having to manually construct `Conduits` and
  *    emplace necessary thread-safe and/or process-safe `Duct` implementations.
  */
-template<typename ImplSpec>
+template<typename ImplSpec_>
 class Inlet {
 
+public:
+  using ImplSpec = ImplSpec_;
+
+private:
   using T = typename ImplSpec::T;
-  constexpr inline static size_t N{ImplSpec::N};
+  constexpr inline static size_t N{ ImplSpec::N };
 
   using index_t = uitsl::CircularIndex<N>;
 
