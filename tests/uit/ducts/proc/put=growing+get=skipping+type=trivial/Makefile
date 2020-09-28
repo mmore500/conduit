@@ -22,7 +22,7 @@ test-%: %.cpp
 	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# TODO why does rdma hang with large proc counts on travis?
 	for n in $$(seq 2 4); do \
-		$(UIT_MPIEXEC) --bind-to none --oversubscribe -n $$n ./$@.out || exit 1; \
+		$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n $$n ./$@.out || exit 1; \
 	done
 
 # Test in debug mode without pointer tracker
@@ -54,7 +54,7 @@ cov-%: %.cpp
 	# see https://clang.llvm.org/docs/UsersManual.html#profiling-with-instrumentation
 	for n in $$(seq 2 3); do \
 		export n; \
-		$(UIT_MPIEXEC) --bind-to none --oversubscribe -n $$n \
+		$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n $$n \
 			/bin/bash -c '\
 				LLVM_PROFILE_FILE="%p-%m-%h-$${n}-$${OMPI_COMM_WORLD_RANK}.profraw" \
 				./$@.out' \

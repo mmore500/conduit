@@ -19,7 +19,7 @@ test-%: %.cpp
 	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
 	# execute test
 	for n in $$(seq 1 8); do \
-		$(UIT_MPIEXEC) --bind-to none --oversubscribe -n $$n ./$@.out || break; \
+		$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n $$n ./$@.out || break; \
 	done
 
 # Test in debug mode without pointer tracker
@@ -51,7 +51,7 @@ cov-%: %.cpp
 	# see https://clang.llvm.org/docs/UsersManual.html#profiling-with-instrumentation
 	for n in $$(seq 2 3); do \
 		export n; \
-		$(UIT_MPIEXEC) --bind-to none --oversubscribe -n $$n \
+		$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n $$n \
 			/bin/bash -c '\
 				LLVM_PROFILE_FILE="%p-%m-%h-$${n}-$${OMPI_COMM_WORLD_RANK}.profraw" \
 				./$@.out' \
