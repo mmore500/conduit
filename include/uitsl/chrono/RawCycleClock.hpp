@@ -24,7 +24,7 @@ struct RawCycleClock {
   // The representation type of C1::duration.
   using rep = size_t;
 
-	// A specialization of std::ratio.
+  // A specialization of std::ratio.
   // The tick period of the clock in seconds.
   // (this is blatantly false, but in raw mode assume one cycle = one second)
   using period = std::ratio<1>;

@@ -25,7 +25,7 @@ struct CoarseRealClock {
   // The representation type of C1::duration.
   using rep = size_t;
 
-	// A specialization of std::ratio.
+  // A specialization of std::ratio.
   // The tick period of the clock in seconds.
   using period = std::milli;
 
