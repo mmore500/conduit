@@ -29,8 +29,9 @@ class CachingOutletWrapper {
 
   void CacheCurrent() {
     const auto& packet = outlet.Get();
-    if ( packet.HasValue() ) cache.Put( packet.GetID(), packet.GetData() );
+    if ( packet.HasData() ) cache.Put( packet.GetID(), packet.GetData() );
     else if ( cache.Contains(packet.GetID()) ) cache.Get( packet.GetID() );
+    //^ Get moves item to the front of the cache
     else {
       static const uitsl::WarnOnce w{ "missing cache packet" };
     }
@@ -60,7 +61,7 @@ class CachingOutletWrapper {
   const value_type& DoProcGet() const {
     const static value_type pristine{};
     if ( cache.Empty() ) return pristine;
-    else return cache.begin()->GetData();
+    else return cache.begin()->second;
   }
 
   value_type& DoProcGet() {

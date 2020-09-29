@@ -11,13 +11,16 @@ class CachePacket {
 
   size_t cache_id{};
 
-  emp::optional<T> data;
+  emp::optional<T> data{ T{} };
 
 public:
 
   CachePacket() = default;
 
-  CachePacket(const size_t cache_id_) : cache_id(cache_id_) { ; }
+  CachePacket(const size_t cache_id_)
+  : cache_id(cache_id_)
+  , data{ std::nullopt }
+  { ; }
 
   CachePacket(
     const size_t cache_id_,

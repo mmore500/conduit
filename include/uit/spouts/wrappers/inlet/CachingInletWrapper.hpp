@@ -34,7 +34,7 @@ class CachingInletWrapper {
 
     const size_t uid = cache.Get(
       val,
-      [this, &hit](){ hit = false; return uid_stepper++; }
+      [this, &hit](const auto& key){ hit = false; return uid_stepper++; }
     );
 
     if ( hit ) inlet.Put( uitsl::CachePacket<value_type>{ uid } );
@@ -46,7 +46,7 @@ class CachingInletWrapper {
 
     const size_t uid = cache.Get(
       val,
-      [this, &hit](){ hit = false; return uid_stepper++; }
+      [this, &hit](const auto& key){ hit = false; return uid_stepper++; }
     );
 
     if ( hit ) return inlet.TryPut( uitsl::CachePacket<value_type>{ uid } );
@@ -65,7 +65,7 @@ class CachingInletWrapper {
 
     const size_t uid = cache.Get(
       val,
-      [this, &hit](){ hit = false; return uid_stepper++; }
+      [this, &hit](const auto& key){ hit = false; return uid_stepper++; }
     );
 
     if ( hit ) return inlet.TryPut( uitsl::CachePacket<value_type>{ uid } );

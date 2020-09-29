@@ -2,6 +2,7 @@
 
 #include <stddef.h>
 #include <string>
+#include <type_traits>
 #include <utility>
 #include <variant>
 
@@ -11,11 +12,14 @@
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 #include "../../uitsl/math/math_utils.hpp"
+#include "../../uitsl/meta/HasMemberFunction.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
 namespace internal {
+
+UITSL_GENERATE_HAS_MEMBER_FUNCTION( CanStep );
 
 /**
  * Performs data transmission between an `Inlet` and an `Outlet.
@@ -287,7 +291,12 @@ public:
 
   bool CanStep() const {
     return std::visit(
-      [](auto& arg) -> bool { return decltype(arg)::CanStep(); },
+      [](const auto& arg) -> bool {
+        using impl_t = typename std::decay<decltype(arg)>::type;
+        if constexpr ( HasMemberFunction_CanStep<impl_t, bool()>::value ) {
+          return impl_t::CanStep();
+        } else return false;
+      },
       impl
     );
   }
