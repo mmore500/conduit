@@ -9,6 +9,15 @@ SHELL ["/bin/bash", "-c"]
 # adapted from https://askubuntu.com/a/1013396
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN \
+  echo 'Acquire::http::Timeout "60";' >> "/etc/apt/apt.conf.d/99timeout" \
+    && \
+  echo 'Acquire::ftp::Timeout "60";' >> "/etc/apt/apt.conf.d/99timeout" \
+    && \
+  echo 'Acquire::Retries "100";' >> "/etc/apt/apt.conf.d/99timeout" \
+    && \
+  echo "buffed apt-get resiliency"
+
 # Install.
 RUN \
   apt-get update -qq \
