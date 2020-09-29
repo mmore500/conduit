@@ -21,7 +21,7 @@ public:
 
   SiftingArray() { ; }
 
-  SiftingArray(const T& t) {
+  explicit SiftingArray(const T& t) {
     data.fill(t);
     num_items = N;
   }

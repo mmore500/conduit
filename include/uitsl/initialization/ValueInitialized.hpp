@@ -12,7 +12,7 @@ class ValueInitialized {
 public:
 
   ValueInitialized() { ; }
-  ValueInitialized(const T& val_) : val(val_) { ; }
+  explicit ValueInitialized(const T& val_) : val(val_) { ; }
 
   operator const T&() const { return val; }
   operator T&() { return val; }

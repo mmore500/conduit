@@ -19,7 +19,7 @@ public:
   : index(index_%N)
   { ; }
 
-  CircularIndex(int index_)
+  explicit CircularIndex(int index_)
   : index( uitsl::mod(index_, N) )
   { ; }
 
