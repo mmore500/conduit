@@ -6,6 +6,7 @@
 
 #include "mpi_audit.hpp"
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Abort(Args&&... args) {
@@ -14,6 +15,7 @@ inline void UITSL_Abort(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Accumulate(Args&&... args) {
@@ -22,6 +24,7 @@ inline void UITSL_Accumulate(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Add_error_class(Args&&... args) {
@@ -30,6 +33,7 @@ inline void UITSL_Add_error_class(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Add_error_code(Args&&... args) {
@@ -38,6 +42,7 @@ inline void UITSL_Add_error_code(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Add_error_string(Args&&... args) {
@@ -46,6 +51,7 @@ inline void UITSL_Add_error_string(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Address(Args&&... args) {
@@ -54,6 +60,7 @@ inline void UITSL_Address(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Allgather(Args&&... args) {
@@ -62,6 +69,7 @@ inline void UITSL_Allgather(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Allgatherv(Args&&... args) {
@@ -70,6 +78,7 @@ inline void UITSL_Allgatherv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Alloc_mem(Args&&... args) {
@@ -78,6 +87,7 @@ inline void UITSL_Alloc_mem(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Allreduce(Args&&... args) {
@@ -86,6 +96,7 @@ inline void UITSL_Allreduce(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Alltoall(Args&&... args) {
@@ -94,6 +105,7 @@ inline void UITSL_Alltoall(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Alltoallv(Args&&... args) {
@@ -102,6 +114,7 @@ inline void UITSL_Alltoallv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Alltoallw(Args&&... args) {
@@ -110,6 +123,7 @@ inline void UITSL_Alltoallw(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Attr_delete(Args&&... args) {
@@ -118,6 +132,7 @@ inline void UITSL_Attr_delete(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Attr_get(Args&&... args) {
@@ -126,6 +141,7 @@ inline void UITSL_Attr_get(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Attr_put(Args&&... args) {
@@ -134,6 +150,7 @@ inline void UITSL_Attr_put(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Barrier(Args&&... args) {
@@ -142,6 +159,7 @@ inline void UITSL_Barrier(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Bcast(Args&&... args) {
@@ -150,6 +168,7 @@ inline void UITSL_Bcast(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Bsend(Args&&... args) {
@@ -158,6 +177,7 @@ inline void UITSL_Bsend(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Bsend_init(Args&&... args) {
@@ -166,6 +186,7 @@ inline void UITSL_Bsend_init(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Buffer_attach(Args&&... args) {
@@ -174,6 +195,7 @@ inline void UITSL_Buffer_attach(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Buffer_detach(Args&&... args) {
@@ -182,6 +204,7 @@ inline void UITSL_Buffer_detach(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Cancel(Args&&... args) {
@@ -190,6 +213,7 @@ inline void UITSL_Cancel(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Cart_coords(Args&&... args) {
@@ -198,6 +222,7 @@ inline void UITSL_Cart_coords(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Cart_create(Args&&... args) {
@@ -206,6 +231,7 @@ inline void UITSL_Cart_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Cart_get(Args&&... args) {
@@ -214,6 +240,7 @@ inline void UITSL_Cart_get(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Cart_map(Args&&... args) {
@@ -222,6 +249,7 @@ inline void UITSL_Cart_map(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Cart_rank(Args&&... args) {
@@ -230,6 +258,7 @@ inline void UITSL_Cart_rank(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Cart_shift(Args&&... args) {
@@ -238,6 +267,7 @@ inline void UITSL_Cart_shift(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Cart_sub(Args&&... args) {
@@ -246,6 +276,7 @@ inline void UITSL_Cart_sub(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Cartdim_get(Args&&... args) {
@@ -254,6 +285,7 @@ inline void UITSL_Cartdim_get(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Close_port(Args&&... args) {
@@ -262,6 +294,7 @@ inline void UITSL_Close_port(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_accept(Args&&... args) {
@@ -270,6 +303,7 @@ inline void UITSL_Comm_accept(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_call_errhandler(Args&&... args) {
@@ -278,6 +312,7 @@ inline void UITSL_Comm_call_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_compare(Args&&... args) {
@@ -286,6 +321,7 @@ inline void UITSL_Comm_compare(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_connect(Args&&... args) {
@@ -294,6 +330,7 @@ inline void UITSL_Comm_connect(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_create(Args&&... args) {
@@ -302,6 +339,7 @@ inline void UITSL_Comm_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_create_errhandler(Args&&... args) {
@@ -310,6 +348,7 @@ inline void UITSL_Comm_create_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_create_group(Args&&... args) {
@@ -318,6 +357,7 @@ inline void UITSL_Comm_create_group(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_create_keyval(Args&&... args) {
@@ -326,6 +366,7 @@ inline void UITSL_Comm_create_keyval(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_delete_attr(Args&&... args) {
@@ -334,6 +375,7 @@ inline void UITSL_Comm_delete_attr(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_disconnect(Args&&... args) {
@@ -342,6 +384,7 @@ inline void UITSL_Comm_disconnect(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_dup(Args&&... args) {
@@ -350,6 +393,7 @@ inline void UITSL_Comm_dup(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_dup_with_info(Args&&... args) {
@@ -358,6 +402,7 @@ inline void UITSL_Comm_dup_with_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_free(Args&&... args) {
@@ -366,6 +411,7 @@ inline void UITSL_Comm_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_free_keyval(Args&&... args) {
@@ -374,6 +420,7 @@ inline void UITSL_Comm_free_keyval(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_get_attr(Args&&... args) {
@@ -382,6 +429,7 @@ inline void UITSL_Comm_get_attr(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_get_errhandler(Args&&... args) {
@@ -390,6 +438,7 @@ inline void UITSL_Comm_get_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_get_info(Args&&... args) {
@@ -398,6 +447,7 @@ inline void UITSL_Comm_get_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_get_name(Args&&... args) {
@@ -406,6 +456,7 @@ inline void UITSL_Comm_get_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_get_parent(Args&&... args) {
@@ -414,6 +465,7 @@ inline void UITSL_Comm_get_parent(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_group(Args&&... args) {
@@ -422,6 +474,7 @@ inline void UITSL_Comm_group(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_idup(Args&&... args) {
@@ -430,6 +483,7 @@ inline void UITSL_Comm_idup(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_join(Args&&... args) {
@@ -438,6 +492,7 @@ inline void UITSL_Comm_join(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_rank(Args&&... args) {
@@ -446,6 +501,7 @@ inline void UITSL_Comm_rank(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_remote_group(Args&&... args) {
@@ -454,6 +510,7 @@ inline void UITSL_Comm_remote_group(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_remote_size(Args&&... args) {
@@ -462,6 +519,7 @@ inline void UITSL_Comm_remote_size(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_set_attr(Args&&... args) {
@@ -470,6 +528,7 @@ inline void UITSL_Comm_set_attr(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_set_errhandler(Args&&... args) {
@@ -478,6 +537,7 @@ inline void UITSL_Comm_set_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_set_info(Args&&... args) {
@@ -486,6 +546,7 @@ inline void UITSL_Comm_set_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_set_name(Args&&... args) {
@@ -494,6 +555,7 @@ inline void UITSL_Comm_set_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_size(Args&&... args) {
@@ -502,6 +564,7 @@ inline void UITSL_Comm_size(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_spawn(Args&&... args) {
@@ -510,6 +573,7 @@ inline void UITSL_Comm_spawn(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_spawn_multiple(Args&&... args) {
@@ -518,6 +582,7 @@ inline void UITSL_Comm_spawn_multiple(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_split(Args&&... args) {
@@ -526,6 +591,7 @@ inline void UITSL_Comm_split(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_split_type(Args&&... args) {
@@ -534,6 +600,7 @@ inline void UITSL_Comm_split_type(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Comm_test_inter(Args&&... args) {
@@ -542,6 +609,7 @@ inline void UITSL_Comm_test_inter(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Compare_and_swap(Args&&... args) {
@@ -550,6 +618,7 @@ inline void UITSL_Compare_and_swap(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Dims_create(Args&&... args) {
@@ -558,6 +627,7 @@ inline void UITSL_Dims_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Dist_graph_create(Args&&... args) {
@@ -566,6 +636,7 @@ inline void UITSL_Dist_graph_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Dist_graph_create_adjacent(Args&&... args) {
@@ -574,6 +645,7 @@ inline void UITSL_Dist_graph_create_adjacent(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Dist_graph_neighbors(Args&&... args) {
@@ -582,6 +654,7 @@ inline void UITSL_Dist_graph_neighbors(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Dist_graph_neighbors_count(Args&&... args) {
@@ -590,6 +663,7 @@ inline void UITSL_Dist_graph_neighbors_count(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Errhandler_create(Args&&... args) {
@@ -598,6 +672,7 @@ inline void UITSL_Errhandler_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Errhandler_free(Args&&... args) {
@@ -606,6 +681,7 @@ inline void UITSL_Errhandler_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Errhandler_get(Args&&... args) {
@@ -614,6 +690,7 @@ inline void UITSL_Errhandler_get(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Errhandler_set(Args&&... args) {
@@ -622,6 +699,7 @@ inline void UITSL_Errhandler_set(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Error_class(Args&&... args) {
@@ -630,6 +708,7 @@ inline void UITSL_Error_class(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Error_string(Args&&... args) {
@@ -638,6 +717,7 @@ inline void UITSL_Error_string(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Exscan(Args&&... args) {
@@ -646,6 +726,7 @@ inline void UITSL_Exscan(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Fetch_and_op(Args&&... args) {
@@ -654,6 +735,7 @@ inline void UITSL_Fetch_and_op(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_c2f(Args&&... args) {
@@ -662,6 +744,7 @@ inline void UITSL_File_c2f(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_call_errhandler(Args&&... args) {
@@ -670,6 +753,7 @@ inline void UITSL_File_call_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_close(Args&&... args) {
@@ -678,6 +762,7 @@ inline void UITSL_File_close(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_create_errhandler(Args&&... args) {
@@ -686,6 +771,7 @@ inline void UITSL_File_create_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_delete(Args&&... args) {
@@ -694,6 +780,7 @@ inline void UITSL_File_delete(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_f2c(Args&&... args) {
@@ -702,6 +789,7 @@ inline void UITSL_File_f2c(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_amode(Args&&... args) {
@@ -710,6 +798,7 @@ inline void UITSL_File_get_amode(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_atomicity(Args&&... args) {
@@ -718,6 +807,7 @@ inline void UITSL_File_get_atomicity(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_byte_offset(Args&&... args) {
@@ -726,6 +816,7 @@ inline void UITSL_File_get_byte_offset(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_errhandler(Args&&... args) {
@@ -734,6 +825,7 @@ inline void UITSL_File_get_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_group(Args&&... args) {
@@ -742,6 +834,7 @@ inline void UITSL_File_get_group(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_info(Args&&... args) {
@@ -750,6 +843,7 @@ inline void UITSL_File_get_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_position(Args&&... args) {
@@ -758,6 +852,7 @@ inline void UITSL_File_get_position(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_position_shared(Args&&... args) {
@@ -766,6 +861,7 @@ inline void UITSL_File_get_position_shared(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_size(Args&&... args) {
@@ -774,6 +870,7 @@ inline void UITSL_File_get_size(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_type_extent(Args&&... args) {
@@ -782,6 +879,7 @@ inline void UITSL_File_get_type_extent(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_get_view(Args&&... args) {
@@ -790,6 +888,7 @@ inline void UITSL_File_get_view(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iread(Args&&... args) {
@@ -798,6 +897,7 @@ inline void UITSL_File_iread(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iread_all(Args&&... args) {
@@ -806,6 +906,7 @@ inline void UITSL_File_iread_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iread_at(Args&&... args) {
@@ -814,6 +915,7 @@ inline void UITSL_File_iread_at(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iread_at_all(Args&&... args) {
@@ -822,6 +924,7 @@ inline void UITSL_File_iread_at_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iread_shared(Args&&... args) {
@@ -830,6 +933,7 @@ inline void UITSL_File_iread_shared(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iwrite(Args&&... args) {
@@ -838,6 +942,7 @@ inline void UITSL_File_iwrite(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iwrite_all(Args&&... args) {
@@ -846,6 +951,7 @@ inline void UITSL_File_iwrite_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iwrite_at(Args&&... args) {
@@ -854,6 +960,7 @@ inline void UITSL_File_iwrite_at(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iwrite_at_all(Args&&... args) {
@@ -862,6 +969,7 @@ inline void UITSL_File_iwrite_at_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_iwrite_shared(Args&&... args) {
@@ -870,6 +978,7 @@ inline void UITSL_File_iwrite_shared(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_open(Args&&... args) {
@@ -878,6 +987,7 @@ inline void UITSL_File_open(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_preallocate(Args&&... args) {
@@ -886,6 +996,7 @@ inline void UITSL_File_preallocate(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read(Args&&... args) {
@@ -894,6 +1005,7 @@ inline void UITSL_File_read(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_all(Args&&... args) {
@@ -902,6 +1014,7 @@ inline void UITSL_File_read_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_all_begin(Args&&... args) {
@@ -910,6 +1023,7 @@ inline void UITSL_File_read_all_begin(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_all_end(Args&&... args) {
@@ -918,6 +1032,7 @@ inline void UITSL_File_read_all_end(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_at(Args&&... args) {
@@ -926,6 +1041,7 @@ inline void UITSL_File_read_at(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_at_all(Args&&... args) {
@@ -934,6 +1050,7 @@ inline void UITSL_File_read_at_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_at_all_begin(Args&&... args) {
@@ -942,6 +1059,7 @@ inline void UITSL_File_read_at_all_begin(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_at_all_end(Args&&... args) {
@@ -950,6 +1068,7 @@ inline void UITSL_File_read_at_all_end(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_ordered(Args&&... args) {
@@ -958,6 +1077,7 @@ inline void UITSL_File_read_ordered(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_ordered_begin(Args&&... args) {
@@ -966,6 +1086,7 @@ inline void UITSL_File_read_ordered_begin(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_ordered_end(Args&&... args) {
@@ -974,6 +1095,7 @@ inline void UITSL_File_read_ordered_end(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_read_shared(Args&&... args) {
@@ -982,6 +1104,7 @@ inline void UITSL_File_read_shared(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_seek(Args&&... args) {
@@ -990,6 +1113,7 @@ inline void UITSL_File_seek(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_seek_shared(Args&&... args) {
@@ -998,6 +1122,7 @@ inline void UITSL_File_seek_shared(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_set_atomicity(Args&&... args) {
@@ -1006,6 +1131,7 @@ inline void UITSL_File_set_atomicity(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_set_errhandler(Args&&... args) {
@@ -1014,6 +1140,7 @@ inline void UITSL_File_set_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_set_info(Args&&... args) {
@@ -1022,6 +1149,7 @@ inline void UITSL_File_set_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_set_size(Args&&... args) {
@@ -1030,6 +1158,7 @@ inline void UITSL_File_set_size(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_set_view(Args&&... args) {
@@ -1038,6 +1167,7 @@ inline void UITSL_File_set_view(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_sync(Args&&... args) {
@@ -1046,6 +1176,7 @@ inline void UITSL_File_sync(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write(Args&&... args) {
@@ -1054,6 +1185,7 @@ inline void UITSL_File_write(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_all(Args&&... args) {
@@ -1062,6 +1194,7 @@ inline void UITSL_File_write_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_all_begin(Args&&... args) {
@@ -1070,6 +1203,7 @@ inline void UITSL_File_write_all_begin(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_all_end(Args&&... args) {
@@ -1078,6 +1212,7 @@ inline void UITSL_File_write_all_end(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_at(Args&&... args) {
@@ -1086,6 +1221,7 @@ inline void UITSL_File_write_at(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_at_all(Args&&... args) {
@@ -1094,6 +1230,7 @@ inline void UITSL_File_write_at_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_at_all_begin(Args&&... args) {
@@ -1102,6 +1239,7 @@ inline void UITSL_File_write_at_all_begin(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_at_all_end(Args&&... args) {
@@ -1110,6 +1248,7 @@ inline void UITSL_File_write_at_all_end(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_ordered(Args&&... args) {
@@ -1118,6 +1257,7 @@ inline void UITSL_File_write_ordered(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_ordered_begin(Args&&... args) {
@@ -1126,6 +1266,7 @@ inline void UITSL_File_write_ordered_begin(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_ordered_end(Args&&... args) {
@@ -1134,6 +1275,7 @@ inline void UITSL_File_write_ordered_end(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_File_write_shared(Args&&... args) {
@@ -1142,6 +1284,7 @@ inline void UITSL_File_write_shared(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Finalize(Args&&... args) {
@@ -1150,6 +1293,7 @@ inline void UITSL_Finalize(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Finalized(Args&&... args) {
@@ -1158,6 +1302,7 @@ inline void UITSL_Finalized(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Free_mem(Args&&... args) {
@@ -1166,6 +1311,7 @@ inline void UITSL_Free_mem(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Gather(Args&&... args) {
@@ -1174,6 +1320,7 @@ inline void UITSL_Gather(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Gatherv(Args&&... args) {
@@ -1182,6 +1329,7 @@ inline void UITSL_Gatherv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Get(Args&&... args) {
@@ -1190,6 +1338,7 @@ inline void UITSL_Get(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Get_accumulate(Args&&... args) {
@@ -1198,6 +1347,7 @@ inline void UITSL_Get_accumulate(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Get_address(Args&&... args) {
@@ -1206,6 +1356,7 @@ inline void UITSL_Get_address(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Get_count(Args&&... args) {
@@ -1214,6 +1365,7 @@ inline void UITSL_Get_count(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Get_elements(Args&&... args) {
@@ -1222,6 +1374,7 @@ inline void UITSL_Get_elements(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Get_elements_x(Args&&... args) {
@@ -1230,6 +1383,7 @@ inline void UITSL_Get_elements_x(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Get_library_version(Args&&... args) {
@@ -1238,6 +1392,7 @@ inline void UITSL_Get_library_version(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Get_processor_name(Args&&... args) {
@@ -1246,6 +1401,7 @@ inline void UITSL_Get_processor_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Get_version(Args&&... args) {
@@ -1254,6 +1410,7 @@ inline void UITSL_Get_version(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Graph_create(Args&&... args) {
@@ -1262,6 +1419,7 @@ inline void UITSL_Graph_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Graph_get(Args&&... args) {
@@ -1270,6 +1428,7 @@ inline void UITSL_Graph_get(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Graph_map(Args&&... args) {
@@ -1278,6 +1437,7 @@ inline void UITSL_Graph_map(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Graph_neighbors(Args&&... args) {
@@ -1286,6 +1446,7 @@ inline void UITSL_Graph_neighbors(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Graph_neighbors_count(Args&&... args) {
@@ -1294,6 +1455,7 @@ inline void UITSL_Graph_neighbors_count(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Graphdims_get(Args&&... args) {
@@ -1302,6 +1464,7 @@ inline void UITSL_Graphdims_get(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Grequest_complete(Args&&... args) {
@@ -1310,6 +1473,7 @@ inline void UITSL_Grequest_complete(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Grequest_start(Args&&... args) {
@@ -1318,6 +1482,7 @@ inline void UITSL_Grequest_start(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_compare(Args&&... args) {
@@ -1326,6 +1491,7 @@ inline void UITSL_Group_compare(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_difference(Args&&... args) {
@@ -1334,6 +1500,7 @@ inline void UITSL_Group_difference(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_excl(Args&&... args) {
@@ -1342,6 +1509,7 @@ inline void UITSL_Group_excl(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_free(Args&&... args) {
@@ -1350,6 +1518,7 @@ inline void UITSL_Group_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_incl(Args&&... args) {
@@ -1358,6 +1527,7 @@ inline void UITSL_Group_incl(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_intersection(Args&&... args) {
@@ -1366,6 +1536,7 @@ inline void UITSL_Group_intersection(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_range_excl(Args&&... args) {
@@ -1374,6 +1545,7 @@ inline void UITSL_Group_range_excl(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_range_incl(Args&&... args) {
@@ -1382,6 +1554,7 @@ inline void UITSL_Group_range_incl(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_rank(Args&&... args) {
@@ -1390,6 +1563,7 @@ inline void UITSL_Group_rank(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_size(Args&&... args) {
@@ -1398,6 +1572,7 @@ inline void UITSL_Group_size(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_translate_ranks(Args&&... args) {
@@ -1406,6 +1581,7 @@ inline void UITSL_Group_translate_ranks(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Group_union(Args&&... args) {
@@ -1414,6 +1590,7 @@ inline void UITSL_Group_union(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Iallgather(Args&&... args) {
@@ -1422,6 +1599,7 @@ inline void UITSL_Iallgather(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Iallgatherv(Args&&... args) {
@@ -1430,6 +1608,7 @@ inline void UITSL_Iallgatherv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Iallreduce(Args&&... args) {
@@ -1438,6 +1617,7 @@ inline void UITSL_Iallreduce(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ialltoall(Args&&... args) {
@@ -1446,6 +1626,7 @@ inline void UITSL_Ialltoall(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ialltoallv(Args&&... args) {
@@ -1454,6 +1635,7 @@ inline void UITSL_Ialltoallv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ialltoallw(Args&&... args) {
@@ -1462,6 +1644,7 @@ inline void UITSL_Ialltoallw(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ibarrier(Args&&... args) {
@@ -1470,6 +1653,7 @@ inline void UITSL_Ibarrier(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ibcast(Args&&... args) {
@@ -1478,6 +1662,7 @@ inline void UITSL_Ibcast(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ibsend(Args&&... args) {
@@ -1486,6 +1671,7 @@ inline void UITSL_Ibsend(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Iexscan(Args&&... args) {
@@ -1494,6 +1680,7 @@ inline void UITSL_Iexscan(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Igather(Args&&... args) {
@@ -1502,6 +1689,7 @@ inline void UITSL_Igather(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Igatherv(Args&&... args) {
@@ -1510,6 +1698,7 @@ inline void UITSL_Igatherv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Improbe(Args&&... args) {
@@ -1518,6 +1707,7 @@ inline void UITSL_Improbe(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Imrecv(Args&&... args) {
@@ -1526,6 +1716,7 @@ inline void UITSL_Imrecv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ineighbor_allgather(Args&&... args) {
@@ -1534,6 +1725,7 @@ inline void UITSL_Ineighbor_allgather(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ineighbor_allgatherv(Args&&... args) {
@@ -1542,6 +1734,7 @@ inline void UITSL_Ineighbor_allgatherv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ineighbor_alltoall(Args&&... args) {
@@ -1550,6 +1743,7 @@ inline void UITSL_Ineighbor_alltoall(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ineighbor_alltoallv(Args&&... args) {
@@ -1558,6 +1752,7 @@ inline void UITSL_Ineighbor_alltoallv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ineighbor_alltoallw(Args&&... args) {
@@ -1566,6 +1761,7 @@ inline void UITSL_Ineighbor_alltoallw(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Info_create(Args&&... args) {
@@ -1574,6 +1770,7 @@ inline void UITSL_Info_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Info_delete(Args&&... args) {
@@ -1582,6 +1779,7 @@ inline void UITSL_Info_delete(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Info_dup(Args&&... args) {
@@ -1590,6 +1788,7 @@ inline void UITSL_Info_dup(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Info_free(Args&&... args) {
@@ -1598,6 +1797,7 @@ inline void UITSL_Info_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Info_get(Args&&... args) {
@@ -1606,6 +1806,7 @@ inline void UITSL_Info_get(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Info_get_nkeys(Args&&... args) {
@@ -1614,6 +1815,7 @@ inline void UITSL_Info_get_nkeys(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Info_get_nthkey(Args&&... args) {
@@ -1622,6 +1824,7 @@ inline void UITSL_Info_get_nthkey(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Info_get_valuelen(Args&&... args) {
@@ -1630,6 +1833,7 @@ inline void UITSL_Info_get_valuelen(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Info_set(Args&&... args) {
@@ -1638,6 +1842,7 @@ inline void UITSL_Info_set(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Init(Args&&... args) {
@@ -1646,6 +1851,7 @@ inline void UITSL_Init(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Init_thread(Args&&... args) {
@@ -1654,6 +1860,7 @@ inline void UITSL_Init_thread(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Initialized(Args&&... args) {
@@ -1662,6 +1869,7 @@ inline void UITSL_Initialized(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Intercomm_create(Args&&... args) {
@@ -1670,6 +1878,7 @@ inline void UITSL_Intercomm_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Intercomm_merge(Args&&... args) {
@@ -1678,6 +1887,7 @@ inline void UITSL_Intercomm_merge(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Iprobe(Args&&... args) {
@@ -1686,6 +1896,7 @@ inline void UITSL_Iprobe(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Irecv(Args&&... args) {
@@ -1694,6 +1905,7 @@ inline void UITSL_Irecv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ireduce(Args&&... args) {
@@ -1702,6 +1914,7 @@ inline void UITSL_Ireduce(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ireduce_scatter(Args&&... args) {
@@ -1710,6 +1923,7 @@ inline void UITSL_Ireduce_scatter(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ireduce_scatter_block(Args&&... args) {
@@ -1718,6 +1932,7 @@ inline void UITSL_Ireduce_scatter_block(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Irsend(Args&&... args) {
@@ -1726,6 +1941,7 @@ inline void UITSL_Irsend(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Is_thread_main(Args&&... args) {
@@ -1734,6 +1950,7 @@ inline void UITSL_Is_thread_main(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Iscan(Args&&... args) {
@@ -1742,6 +1959,7 @@ inline void UITSL_Iscan(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Iscatter(Args&&... args) {
@@ -1750,6 +1968,7 @@ inline void UITSL_Iscatter(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Iscatterv(Args&&... args) {
@@ -1758,6 +1977,7 @@ inline void UITSL_Iscatterv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Isend(Args&&... args) {
@@ -1766,6 +1986,7 @@ inline void UITSL_Isend(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Issend(Args&&... args) {
@@ -1774,6 +1995,7 @@ inline void UITSL_Issend(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Keyval_create(Args&&... args) {
@@ -1782,6 +2004,7 @@ inline void UITSL_Keyval_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Keyval_free(Args&&... args) {
@@ -1790,6 +2013,7 @@ inline void UITSL_Keyval_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Lookup_name(Args&&... args) {
@@ -1798,6 +2022,7 @@ inline void UITSL_Lookup_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Mprobe(Args&&... args) {
@@ -1806,6 +2031,7 @@ inline void UITSL_Mprobe(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Mrecv(Args&&... args) {
@@ -1814,6 +2040,7 @@ inline void UITSL_Mrecv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Neighbor_allgather(Args&&... args) {
@@ -1822,6 +2049,7 @@ inline void UITSL_Neighbor_allgather(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Neighbor_allgatherv(Args&&... args) {
@@ -1830,6 +2058,7 @@ inline void UITSL_Neighbor_allgatherv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Neighbor_alltoall(Args&&... args) {
@@ -1838,6 +2067,7 @@ inline void UITSL_Neighbor_alltoall(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Neighbor_alltoallv(Args&&... args) {
@@ -1846,6 +2076,7 @@ inline void UITSL_Neighbor_alltoallv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Neighbor_alltoallw(Args&&... args) {
@@ -1854,6 +2085,7 @@ inline void UITSL_Neighbor_alltoallw(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Op_commute(Args&&... args) {
@@ -1862,6 +2094,7 @@ inline void UITSL_Op_commute(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Op_create(Args&&... args) {
@@ -1870,6 +2103,7 @@ inline void UITSL_Op_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Op_free(Args&&... args) {
@@ -1878,6 +2112,7 @@ inline void UITSL_Op_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Open_port(Args&&... args) {
@@ -1886,6 +2121,7 @@ inline void UITSL_Open_port(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Pack(Args&&... args) {
@@ -1894,6 +2130,7 @@ inline void UITSL_Pack(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Pack_external(Args&&... args) {
@@ -1902,6 +2139,7 @@ inline void UITSL_Pack_external(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Pack_external_size(Args&&... args) {
@@ -1910,6 +2148,7 @@ inline void UITSL_Pack_external_size(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Pack_size(Args&&... args) {
@@ -1918,6 +2157,7 @@ inline void UITSL_Pack_size(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Pcontrol(Args&&... args) {
@@ -1926,6 +2166,7 @@ inline void UITSL_Pcontrol(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Probe(Args&&... args) {
@@ -1934,6 +2175,7 @@ inline void UITSL_Probe(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Publish_name(Args&&... args) {
@@ -1942,6 +2184,7 @@ inline void UITSL_Publish_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Put(Args&&... args) {
@@ -1950,6 +2193,7 @@ inline void UITSL_Put(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Query_thread(Args&&... args) {
@@ -1958,6 +2202,7 @@ inline void UITSL_Query_thread(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Raccumulate(Args&&... args) {
@@ -1966,6 +2211,7 @@ inline void UITSL_Raccumulate(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Recv(Args&&... args) {
@@ -1974,6 +2220,7 @@ inline void UITSL_Recv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Recv_init(Args&&... args) {
@@ -1982,6 +2229,7 @@ inline void UITSL_Recv_init(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Reduce(Args&&... args) {
@@ -1990,6 +2238,7 @@ inline void UITSL_Reduce(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Reduce_local(Args&&... args) {
@@ -1998,6 +2247,7 @@ inline void UITSL_Reduce_local(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Reduce_scatter(Args&&... args) {
@@ -2006,6 +2256,7 @@ inline void UITSL_Reduce_scatter(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Reduce_scatter_block(Args&&... args) {
@@ -2014,6 +2265,7 @@ inline void UITSL_Reduce_scatter_block(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Register_datarep(Args&&... args) {
@@ -2022,6 +2274,7 @@ inline void UITSL_Register_datarep(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Request_free(Args&&... args) {
@@ -2030,6 +2283,7 @@ inline void UITSL_Request_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Request_get_status(Args&&... args) {
@@ -2038,6 +2292,7 @@ inline void UITSL_Request_get_status(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Rget(Args&&... args) {
@@ -2046,6 +2301,7 @@ inline void UITSL_Rget(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Rget_accumulate(Args&&... args) {
@@ -2054,6 +2310,7 @@ inline void UITSL_Rget_accumulate(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Rput(Args&&... args) {
@@ -2062,6 +2319,7 @@ inline void UITSL_Rput(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Rsend(Args&&... args) {
@@ -2070,6 +2328,7 @@ inline void UITSL_Rsend(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Rsend_init(Args&&... args) {
@@ -2078,6 +2337,7 @@ inline void UITSL_Rsend_init(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Scan(Args&&... args) {
@@ -2086,6 +2346,7 @@ inline void UITSL_Scan(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Scatter(Args&&... args) {
@@ -2094,6 +2355,7 @@ inline void UITSL_Scatter(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Scatterv(Args&&... args) {
@@ -2102,6 +2364,7 @@ inline void UITSL_Scatterv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Send(Args&&... args) {
@@ -2110,6 +2373,7 @@ inline void UITSL_Send(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Send_init(Args&&... args) {
@@ -2118,6 +2382,7 @@ inline void UITSL_Send_init(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Sendrecv(Args&&... args) {
@@ -2126,6 +2391,7 @@ inline void UITSL_Sendrecv(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Sendrecv_replace(Args&&... args) {
@@ -2134,6 +2400,7 @@ inline void UITSL_Sendrecv_replace(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ssend(Args&&... args) {
@@ -2142,6 +2409,7 @@ inline void UITSL_Ssend(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Ssend_init(Args&&... args) {
@@ -2150,6 +2418,7 @@ inline void UITSL_Ssend_init(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Start(Args&&... args) {
@@ -2158,6 +2427,7 @@ inline void UITSL_Start(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Startall(Args&&... args) {
@@ -2166,6 +2436,7 @@ inline void UITSL_Startall(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Status_set_cancelled(Args&&... args) {
@@ -2174,6 +2445,7 @@ inline void UITSL_Status_set_cancelled(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Status_set_elements(Args&&... args) {
@@ -2182,6 +2454,7 @@ inline void UITSL_Status_set_elements(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Status_set_elements_x(Args&&... args) {
@@ -2190,6 +2463,7 @@ inline void UITSL_Status_set_elements_x(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_category_changed(Args&&... args) {
@@ -2198,6 +2472,7 @@ inline void UITSL_T_category_changed(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_category_get_categories(Args&&... args) {
@@ -2206,6 +2481,7 @@ inline void UITSL_T_category_get_categories(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_category_get_cvars(Args&&... args) {
@@ -2214,6 +2490,7 @@ inline void UITSL_T_category_get_cvars(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_category_get_info(Args&&... args) {
@@ -2222,6 +2499,7 @@ inline void UITSL_T_category_get_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_category_get_num(Args&&... args) {
@@ -2230,6 +2508,7 @@ inline void UITSL_T_category_get_num(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_category_get_pvars(Args&&... args) {
@@ -2238,6 +2517,7 @@ inline void UITSL_T_category_get_pvars(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_cvar_get_info(Args&&... args) {
@@ -2246,6 +2526,7 @@ inline void UITSL_T_cvar_get_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_cvar_get_num(Args&&... args) {
@@ -2254,6 +2535,7 @@ inline void UITSL_T_cvar_get_num(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_cvar_handle_alloc(Args&&... args) {
@@ -2262,6 +2544,7 @@ inline void UITSL_T_cvar_handle_alloc(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_cvar_handle_free(Args&&... args) {
@@ -2270,6 +2553,7 @@ inline void UITSL_T_cvar_handle_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_cvar_read(Args&&... args) {
@@ -2278,6 +2562,7 @@ inline void UITSL_T_cvar_read(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_cvar_write(Args&&... args) {
@@ -2286,6 +2571,7 @@ inline void UITSL_T_cvar_write(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_enum_get_info(Args&&... args) {
@@ -2294,6 +2580,7 @@ inline void UITSL_T_enum_get_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_enum_get_item(Args&&... args) {
@@ -2302,6 +2589,7 @@ inline void UITSL_T_enum_get_item(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_finalize(Args&&... args) {
@@ -2310,6 +2598,7 @@ inline void UITSL_T_finalize(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_init_thread(Args&&... args) {
@@ -2318,6 +2607,7 @@ inline void UITSL_T_init_thread(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_get_info(Args&&... args) {
@@ -2326,6 +2616,7 @@ inline void UITSL_T_pvar_get_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_get_num(Args&&... args) {
@@ -2334,6 +2625,7 @@ inline void UITSL_T_pvar_get_num(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_handle_alloc(Args&&... args) {
@@ -2342,6 +2634,7 @@ inline void UITSL_T_pvar_handle_alloc(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_handle_free(Args&&... args) {
@@ -2350,6 +2643,7 @@ inline void UITSL_T_pvar_handle_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_read(Args&&... args) {
@@ -2358,6 +2652,7 @@ inline void UITSL_T_pvar_read(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_readreset(Args&&... args) {
@@ -2366,6 +2661,7 @@ inline void UITSL_T_pvar_readreset(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_reset(Args&&... args) {
@@ -2374,6 +2670,7 @@ inline void UITSL_T_pvar_reset(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_session_create(Args&&... args) {
@@ -2382,6 +2679,7 @@ inline void UITSL_T_pvar_session_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_session_free(Args&&... args) {
@@ -2390,6 +2688,7 @@ inline void UITSL_T_pvar_session_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_start(Args&&... args) {
@@ -2398,6 +2697,7 @@ inline void UITSL_T_pvar_start(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_stop(Args&&... args) {
@@ -2406,6 +2706,7 @@ inline void UITSL_T_pvar_stop(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_T_pvar_write(Args&&... args) {
@@ -2414,6 +2715,7 @@ inline void UITSL_T_pvar_write(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Test(Args&&... args) {
@@ -2422,6 +2724,7 @@ inline void UITSL_Test(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Test_cancelled(Args&&... args) {
@@ -2430,6 +2733,7 @@ inline void UITSL_Test_cancelled(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Testall(Args&&... args) {
@@ -2438,6 +2742,7 @@ inline void UITSL_Testall(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Testany(Args&&... args) {
@@ -2446,6 +2751,7 @@ inline void UITSL_Testany(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Testsome(Args&&... args) {
@@ -2454,6 +2760,7 @@ inline void UITSL_Testsome(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Topo_test(Args&&... args) {
@@ -2462,6 +2769,7 @@ inline void UITSL_Topo_test(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_commit(Args&&... args) {
@@ -2470,6 +2778,7 @@ inline void UITSL_Type_commit(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_contiguous(Args&&... args) {
@@ -2478,6 +2787,7 @@ inline void UITSL_Type_contiguous(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_create_darray(Args&&... args) {
@@ -2486,6 +2796,7 @@ inline void UITSL_Type_create_darray(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_create_hindexed(Args&&... args) {
@@ -2494,6 +2805,7 @@ inline void UITSL_Type_create_hindexed(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_create_hindexed_block(Args&&... args) {
@@ -2502,6 +2814,7 @@ inline void UITSL_Type_create_hindexed_block(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_create_hvector(Args&&... args) {
@@ -2510,6 +2823,7 @@ inline void UITSL_Type_create_hvector(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_create_indexed_block(Args&&... args) {
@@ -2518,6 +2832,7 @@ inline void UITSL_Type_create_indexed_block(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_create_keyval(Args&&... args) {
@@ -2526,6 +2841,7 @@ inline void UITSL_Type_create_keyval(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_create_resized(Args&&... args) {
@@ -2534,6 +2850,7 @@ inline void UITSL_Type_create_resized(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_create_struct(Args&&... args) {
@@ -2542,6 +2859,7 @@ inline void UITSL_Type_create_struct(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_create_subarray(Args&&... args) {
@@ -2550,6 +2868,7 @@ inline void UITSL_Type_create_subarray(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_delete_attr(Args&&... args) {
@@ -2558,6 +2877,7 @@ inline void UITSL_Type_delete_attr(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_dup(Args&&... args) {
@@ -2566,6 +2886,7 @@ inline void UITSL_Type_dup(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_extent(Args&&... args) {
@@ -2574,6 +2895,7 @@ inline void UITSL_Type_extent(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_free(Args&&... args) {
@@ -2582,6 +2904,7 @@ inline void UITSL_Type_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_free_keyval(Args&&... args) {
@@ -2590,6 +2913,7 @@ inline void UITSL_Type_free_keyval(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_get_attr(Args&&... args) {
@@ -2598,6 +2922,7 @@ inline void UITSL_Type_get_attr(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_get_contents(Args&&... args) {
@@ -2606,6 +2931,7 @@ inline void UITSL_Type_get_contents(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_get_envelope(Args&&... args) {
@@ -2614,6 +2940,7 @@ inline void UITSL_Type_get_envelope(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_get_extent(Args&&... args) {
@@ -2622,6 +2949,7 @@ inline void UITSL_Type_get_extent(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_get_extent_x(Args&&... args) {
@@ -2630,6 +2958,7 @@ inline void UITSL_Type_get_extent_x(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_get_name(Args&&... args) {
@@ -2638,6 +2967,7 @@ inline void UITSL_Type_get_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_get_true_extent(Args&&... args) {
@@ -2646,6 +2976,7 @@ inline void UITSL_Type_get_true_extent(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_get_true_extent_x(Args&&... args) {
@@ -2654,6 +2985,7 @@ inline void UITSL_Type_get_true_extent_x(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_hindexed(Args&&... args) {
@@ -2662,6 +2994,7 @@ inline void UITSL_Type_hindexed(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_hvector(Args&&... args) {
@@ -2670,6 +3003,7 @@ inline void UITSL_Type_hvector(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_indexed(Args&&... args) {
@@ -2678,6 +3012,7 @@ inline void UITSL_Type_indexed(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_lb(Args&&... args) {
@@ -2686,6 +3021,7 @@ inline void UITSL_Type_lb(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_match_size(Args&&... args) {
@@ -2694,6 +3030,7 @@ inline void UITSL_Type_match_size(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_set_attr(Args&&... args) {
@@ -2702,6 +3039,7 @@ inline void UITSL_Type_set_attr(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_set_name(Args&&... args) {
@@ -2710,6 +3048,7 @@ inline void UITSL_Type_set_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_size(Args&&... args) {
@@ -2718,6 +3057,7 @@ inline void UITSL_Type_size(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_size_x(Args&&... args) {
@@ -2726,6 +3066,7 @@ inline void UITSL_Type_size_x(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_struct(Args&&... args) {
@@ -2734,6 +3075,7 @@ inline void UITSL_Type_struct(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_ub(Args&&... args) {
@@ -2742,6 +3084,7 @@ inline void UITSL_Type_ub(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Type_vector(Args&&... args) {
@@ -2750,6 +3093,7 @@ inline void UITSL_Type_vector(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Unpack(Args&&... args) {
@@ -2758,6 +3102,7 @@ inline void UITSL_Unpack(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Unpack_external(Args&&... args) {
@@ -2766,6 +3111,7 @@ inline void UITSL_Unpack_external(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Unpublish_name(Args&&... args) {
@@ -2774,6 +3120,7 @@ inline void UITSL_Unpublish_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Wait(Args&&... args) {
@@ -2782,6 +3129,7 @@ inline void UITSL_Wait(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Waitall(Args&&... args) {
@@ -2790,6 +3138,7 @@ inline void UITSL_Waitall(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Waitany(Args&&... args) {
@@ -2798,6 +3147,7 @@ inline void UITSL_Waitany(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Waitsome(Args&&... args) {
@@ -2806,6 +3156,7 @@ inline void UITSL_Waitsome(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_allocate(Args&&... args) {
@@ -2814,6 +3165,7 @@ inline void UITSL_Win_allocate(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_allocate_shared(Args&&... args) {
@@ -2822,6 +3174,7 @@ inline void UITSL_Win_allocate_shared(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_attach(Args&&... args) {
@@ -2830,6 +3183,7 @@ inline void UITSL_Win_attach(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_call_errhandler(Args&&... args) {
@@ -2838,6 +3192,7 @@ inline void UITSL_Win_call_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_complete(Args&&... args) {
@@ -2846,6 +3201,7 @@ inline void UITSL_Win_complete(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_create(Args&&... args) {
@@ -2854,6 +3210,7 @@ inline void UITSL_Win_create(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_create_dynamic(Args&&... args) {
@@ -2862,6 +3219,7 @@ inline void UITSL_Win_create_dynamic(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_create_errhandler(Args&&... args) {
@@ -2870,6 +3228,7 @@ inline void UITSL_Win_create_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_create_keyval(Args&&... args) {
@@ -2878,6 +3237,7 @@ inline void UITSL_Win_create_keyval(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_delete_attr(Args&&... args) {
@@ -2886,6 +3246,7 @@ inline void UITSL_Win_delete_attr(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_detach(Args&&... args) {
@@ -2894,6 +3255,7 @@ inline void UITSL_Win_detach(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_fence(Args&&... args) {
@@ -2902,6 +3264,7 @@ inline void UITSL_Win_fence(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_flush(Args&&... args) {
@@ -2910,6 +3273,7 @@ inline void UITSL_Win_flush(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_flush_all(Args&&... args) {
@@ -2918,6 +3282,7 @@ inline void UITSL_Win_flush_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_flush_local(Args&&... args) {
@@ -2926,6 +3291,7 @@ inline void UITSL_Win_flush_local(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_flush_local_all(Args&&... args) {
@@ -2934,6 +3300,7 @@ inline void UITSL_Win_flush_local_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_free(Args&&... args) {
@@ -2942,6 +3309,7 @@ inline void UITSL_Win_free(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_free_keyval(Args&&... args) {
@@ -2950,6 +3318,7 @@ inline void UITSL_Win_free_keyval(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_get_attr(Args&&... args) {
@@ -2958,6 +3327,7 @@ inline void UITSL_Win_get_attr(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_get_errhandler(Args&&... args) {
@@ -2966,6 +3336,7 @@ inline void UITSL_Win_get_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_get_group(Args&&... args) {
@@ -2974,6 +3345,7 @@ inline void UITSL_Win_get_group(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_get_info(Args&&... args) {
@@ -2982,6 +3354,7 @@ inline void UITSL_Win_get_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_get_name(Args&&... args) {
@@ -2990,6 +3363,7 @@ inline void UITSL_Win_get_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_lock(Args&&... args) {
@@ -2998,6 +3372,7 @@ inline void UITSL_Win_lock(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_lock_all(Args&&... args) {
@@ -3006,6 +3381,7 @@ inline void UITSL_Win_lock_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_post(Args&&... args) {
@@ -3014,6 +3390,7 @@ inline void UITSL_Win_post(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_set_attr(Args&&... args) {
@@ -3022,6 +3399,7 @@ inline void UITSL_Win_set_attr(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_set_errhandler(Args&&... args) {
@@ -3030,6 +3408,7 @@ inline void UITSL_Win_set_errhandler(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_set_info(Args&&... args) {
@@ -3038,6 +3417,7 @@ inline void UITSL_Win_set_info(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_set_name(Args&&... args) {
@@ -3046,6 +3426,7 @@ inline void UITSL_Win_set_name(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_shared_query(Args&&... args) {
@@ -3054,6 +3435,7 @@ inline void UITSL_Win_shared_query(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_start(Args&&... args) {
@@ -3062,6 +3444,7 @@ inline void UITSL_Win_start(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_sync(Args&&... args) {
@@ -3070,6 +3453,7 @@ inline void UITSL_Win_sync(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_test(Args&&... args) {
@@ -3078,6 +3462,7 @@ inline void UITSL_Win_test(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_unlock(Args&&... args) {
@@ -3086,6 +3471,7 @@ inline void UITSL_Win_unlock(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_unlock_all(Args&&... args) {
@@ -3094,6 +3480,7 @@ inline void UITSL_Win_unlock_all(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITSL_Win_wait(Args&&... args) {
@@ -3102,6 +3489,7 @@ inline void UITSL_Win_wait(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITR_Type_commit(Args&&... args) {
@@ -3110,6 +3498,7 @@ inline void UITR_Type_commit(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITR_Type_contiguous(Args&&... args) {
@@ -3118,6 +3507,7 @@ inline void UITR_Type_contiguous(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITR_Type_dup(Args&&... args) {
@@ -3126,6 +3516,7 @@ inline void UITR_Type_dup(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITR_Type_get_contents(Args&&... args) {
@@ -3134,6 +3525,7 @@ inline void UITR_Type_get_contents(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITR_Type_indexed(Args&&... args) {
@@ -3142,6 +3534,7 @@ inline void UITR_Type_indexed(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITR_Type_struct(Args&&... args) {
@@ -3150,6 +3543,7 @@ inline void UITR_Type_struct(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITR_Type_vector(Args&&... args) {
@@ -3158,6 +3552,7 @@ inline void UITR_Type_vector(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITX_Comm_agree(Args&&... args) {
@@ -3166,6 +3561,7 @@ inline void UITX_Comm_agree(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITX_Comm_failure_ack(Args&&... args) {
@@ -3174,6 +3570,7 @@ inline void UITX_Comm_failure_ack(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITX_Comm_failure_get_acked(Args&&... args) {
@@ -3182,6 +3579,7 @@ inline void UITX_Comm_failure_get_acked(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITX_Comm_revoke(Args&&... args) {
@@ -3190,6 +3588,7 @@ inline void UITX_Comm_revoke(Args&&... args) {
   );
 }
 
+/// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
 template<typename... Args>
 inline void UITX_Comm_shrink(Args&&... args) {
