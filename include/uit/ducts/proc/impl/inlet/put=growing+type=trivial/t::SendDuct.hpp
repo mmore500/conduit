@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_T__SENDDUCT_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_T__SENDDUCT_HPP_INCLUDE
 
 #include "../../../../../../uitsl/mpi/routine_functors.hpp"
 
@@ -39,3 +41,5 @@ class SendDuct
 
 } // namespace t
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_T__SENDDUCT_HPP_INCLUDE

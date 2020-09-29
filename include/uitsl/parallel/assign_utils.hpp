@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_ASSIGN_UTILS_HPP_INCLUDE
+#define UITSL_PARALLEL_ASSIGN_UTILS_HPP_INCLUDE
 
 #include "thread_utils.hpp"
 
@@ -13,3 +15,5 @@ struct AssignAvailableThreads {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_ASSIGN_UTILS_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DATASTRUCTS_RINGBUFFER_HPP_INCLUDE
+#define UITSL_DATASTRUCTS_RINGBUFFER_HPP_INCLUDE
 
 #include <algorithm>
 #include <stddef.h>
@@ -78,3 +80,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DATASTRUCTS_RINGBUFFER_HPP_INCLUDE

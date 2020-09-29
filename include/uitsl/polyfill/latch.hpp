@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_POLYFILL_LATCH_HPP_INCLUDE
+#define UITSL_POLYFILL_LATCH_HPP_INCLUDE
 
 #include <atomic>
 #include <condition_variable>
@@ -56,3 +58,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_POLYFILL_LATCH_HPP_INCLUDE

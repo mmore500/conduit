@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_MESH_MESH_HPP_INCLUDE
+#define NETUIT_MESH_MESH_HPP_INCLUDE
 
 #include <unordered_map>
 #include <stddef.h>
@@ -214,3 +216,5 @@ public:
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_MESH_MESH_HPP_INCLUDE

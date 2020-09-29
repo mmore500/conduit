@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_TOPONODEOUTPUT_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_TOPONODEOUTPUT_HPP_INCLUDE
 
 #include <stddef.h>
 
@@ -30,3 +32,5 @@ public:
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_TOPOLOGY_TOPONODEOUTPUT_HPP_INCLUDE

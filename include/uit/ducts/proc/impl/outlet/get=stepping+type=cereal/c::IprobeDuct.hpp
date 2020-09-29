@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_OUTLET_GET_STEPPING_TYPE_CEREAL_C__IPROBEDUCT_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_OUTLET_GET_STEPPING_TYPE_CEREAL_C__IPROBEDUCT_HPP_INCLUDE
 
 #include <algorithm>
 #include <array>
@@ -191,3 +193,5 @@ public:
 
 } // namespace c
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_GET_STEPPING_TYPE_CEREAL_C__IPROBEDUCT_HPP_INCLUDE

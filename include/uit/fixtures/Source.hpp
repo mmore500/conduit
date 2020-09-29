@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_FIXTURES_SOURCE_HPP_INCLUDE
+#define UIT_FIXTURES_SOURCE_HPP_INCLUDE
 
 #include <utility>
 #include <memory>
@@ -23,8 +25,17 @@ namespace uit {
 template<typename ImplSpec>
 class Source {
 
+  template<typename Outlet>
+  using outlet_wrapper_t = typename ImplSpec::template outlet_wrapper_t<Outlet>;
+
+public:
+
+  using outlet_t = outlet_wrapper_t< uit::Outlet<ImplSpec> >;
+
+private:
+
   /// `Source`'s `Outlet`.
-  uit::Outlet<ImplSpec> outlet;
+  outlet_t outlet;
 
 public:
 
@@ -63,18 +74,14 @@ public:
    * @return `Source`'s `Outlet`.
    */
   template <size_t N>
-  decltype(auto) get() const {
-    if constexpr (N == 0) return outlet;
-  }
+  decltype(auto) get() const { if constexpr (N == 0) return outlet; }
 
   /**
    * Accessor for `Source`'s `Outlet`.
    *
    * @return `Source`'s `Inlet`.
    */
-  uit::Outlet<ImplSpec>& GetOutlet() {
-    return outlet;
-  }
+  outlet_t& GetOutlet() { return outlet; }
 
 };
 
@@ -97,3 +104,5 @@ namespace std {
   };
 
 } // namespace std
+
+#endif // #ifndef UIT_FIXTURES_SOURCE_HPP_INCLUDE

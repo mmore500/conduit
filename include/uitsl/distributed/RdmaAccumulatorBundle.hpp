@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DISTRIBUTED_RDMAACCUMULATORBUNDLE_HPP_INCLUDE
+#define UITSL_DISTRIBUTED_RDMAACCUMULATORBUNDLE_HPP_INCLUDE
 
 #include <algorithm>
 #include <cstring>
@@ -98,3 +100,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DISTRIBUTED_RDMAACCUMULATORBUNDLE_HPP_INCLUDE

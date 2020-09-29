@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_INTRA_PUT_GROWING_GET_STEPPING_TYPE_ANY_A__DEQUEDUCT_HPP_INCLUDE
+#define UIT_DUCTS_INTRA_PUT_GROWING_GET_STEPPING_TYPE_ANY_A__DEQUEDUCT_HPP_INCLUDE
 
 #include <deque>
 #include <stddef.h>
@@ -110,3 +112,5 @@ public:
 
 } // namespace a
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_INTRA_PUT_GROWING_GET_STEPPING_TYPE_ANY_A__DEQUEDUCT_HPP_INCLUDE

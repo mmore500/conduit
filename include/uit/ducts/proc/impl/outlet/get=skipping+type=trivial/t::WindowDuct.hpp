@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_OUTLET_GET_SKIPPING_TYPE_TRIVIAL_T__WINDOWDUCT_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_OUTLET_GET_SKIPPING_TYPE_TRIVIAL_T__WINDOWDUCT_HPP_INCLUDE
 
 #include <algorithm>
 #include <array>
@@ -138,3 +140,5 @@ public:
 
 } // namespace t
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_GET_SKIPPING_TYPE_TRIVIAL_T__WINDOWDUCT_HPP_INCLUDE

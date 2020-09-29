@@ -1,6 +1,10 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_POOLSPEC_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_POOLSPEC_HPP_INCLUDE
 
 #include "../../../../../../../third-party/Empirical/source/base/vector.h"
+
+#include "../../../../../spouts/wrappers/TrivialSpoutWrapper.hpp"
 
 #include "../../../../mock/ThrowDuct.hpp"
 
@@ -17,6 +21,14 @@ class PoolSpec {
 public:
 
   using T = emp::vector<typename ImplSpec::T>;
+
+  template<typename Inlet>
+  using inlet_wrapper_t =
+    typename uit::TrivialSpoutWrapper<T>::template inlet_wrapper_t<Inlet>;
+  template<typename Outlet>
+  using outlet_wrapper_t =
+    typename uit::TrivialSpoutWrapper<T>::template outlet_wrapper_t<Outlet>;
+
   constexpr inline static size_t N{ ImplSpec::N };
   constexpr inline static size_t B{ ImplSpec::B };
 
@@ -30,3 +42,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_POOLSPEC_HPP_INCLUDE

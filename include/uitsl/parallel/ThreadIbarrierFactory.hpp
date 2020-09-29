@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_THREADIBARRIERFACTORY_HPP_INCLUDE
+#define UITSL_PARALLEL_THREADIBARRIERFACTORY_HPP_INCLUDE
 
 #include <memory>
 #include <stddef.h>
@@ -23,3 +25,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_THREADIBARRIERFACTORY_HPP_INCLUDE

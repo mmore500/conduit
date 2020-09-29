@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_ROUTINE_FUNCTORS_HPP_INCLUDE
+#define UITSL_MPI_ROUTINE_FUNCTORS_HPP_INCLUDE
 
 #include <utility>
 
@@ -6,6 +8,7 @@
 
 namespace uitsl {
 
+  /// @private
 /// Wraps corresponding MPI* call in a functor.
 struct AbortFunctor {
   template<typename... Args>
@@ -14,6 +17,7 @@ struct AbortFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct AccumulateFunctor {
   template<typename... Args>
@@ -22,6 +26,7 @@ struct AccumulateFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Add_error_classFunctor {
   template<typename... Args>
@@ -30,6 +35,7 @@ struct Add_error_classFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Add_error_codeFunctor {
   template<typename... Args>
@@ -38,6 +44,7 @@ struct Add_error_codeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Add_error_stringFunctor {
   template<typename... Args>
@@ -46,6 +53,7 @@ struct Add_error_stringFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct AddressFunctor {
   template<typename... Args>
@@ -54,6 +62,7 @@ struct AddressFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct AllgatherFunctor {
   template<typename... Args>
@@ -62,6 +71,7 @@ struct AllgatherFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct AllgathervFunctor {
   template<typename... Args>
@@ -70,6 +80,7 @@ struct AllgathervFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Alloc_memFunctor {
   template<typename... Args>
@@ -78,6 +89,7 @@ struct Alloc_memFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct AllreduceFunctor {
   template<typename... Args>
@@ -86,6 +98,7 @@ struct AllreduceFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct AlltoallFunctor {
   template<typename... Args>
@@ -94,6 +107,7 @@ struct AlltoallFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct AlltoallvFunctor {
   template<typename... Args>
@@ -102,6 +116,7 @@ struct AlltoallvFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct AlltoallwFunctor {
   template<typename... Args>
@@ -110,6 +125,7 @@ struct AlltoallwFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Attr_deleteFunctor {
   template<typename... Args>
@@ -118,6 +134,7 @@ struct Attr_deleteFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Attr_getFunctor {
   template<typename... Args>
@@ -126,6 +143,7 @@ struct Attr_getFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Attr_putFunctor {
   template<typename... Args>
@@ -134,6 +152,7 @@ struct Attr_putFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct BarrierFunctor {
   template<typename... Args>
@@ -142,6 +161,7 @@ struct BarrierFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct BcastFunctor {
   template<typename... Args>
@@ -150,6 +170,7 @@ struct BcastFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct BsendFunctor {
   template<typename... Args>
@@ -158,6 +179,7 @@ struct BsendFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Bsend_initFunctor {
   template<typename... Args>
@@ -166,6 +188,7 @@ struct Bsend_initFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Buffer_attachFunctor {
   template<typename... Args>
@@ -174,6 +197,7 @@ struct Buffer_attachFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Buffer_detachFunctor {
   template<typename... Args>
@@ -182,6 +206,7 @@ struct Buffer_detachFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct CancelFunctor {
   template<typename... Args>
@@ -190,6 +215,7 @@ struct CancelFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Cart_coordsFunctor {
   template<typename... Args>
@@ -198,6 +224,7 @@ struct Cart_coordsFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Cart_createFunctor {
   template<typename... Args>
@@ -206,6 +233,7 @@ struct Cart_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Cart_getFunctor {
   template<typename... Args>
@@ -214,6 +242,7 @@ struct Cart_getFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Cart_mapFunctor {
   template<typename... Args>
@@ -222,6 +251,7 @@ struct Cart_mapFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Cart_rankFunctor {
   template<typename... Args>
@@ -230,6 +260,7 @@ struct Cart_rankFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Cart_shiftFunctor {
   template<typename... Args>
@@ -238,6 +269,7 @@ struct Cart_shiftFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Cart_subFunctor {
   template<typename... Args>
@@ -246,6 +278,7 @@ struct Cart_subFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Cartdim_getFunctor {
   template<typename... Args>
@@ -254,6 +287,7 @@ struct Cartdim_getFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Close_portFunctor {
   template<typename... Args>
@@ -262,6 +296,7 @@ struct Close_portFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_acceptFunctor {
   template<typename... Args>
@@ -270,6 +305,7 @@ struct Comm_acceptFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_call_errhandlerFunctor {
   template<typename... Args>
@@ -278,6 +314,7 @@ struct Comm_call_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_compareFunctor {
   template<typename... Args>
@@ -286,6 +323,7 @@ struct Comm_compareFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_connectFunctor {
   template<typename... Args>
@@ -294,6 +332,7 @@ struct Comm_connectFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_createFunctor {
   template<typename... Args>
@@ -302,6 +341,7 @@ struct Comm_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_create_errhandlerFunctor {
   template<typename... Args>
@@ -310,6 +350,7 @@ struct Comm_create_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_create_groupFunctor {
   template<typename... Args>
@@ -318,6 +359,7 @@ struct Comm_create_groupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_create_keyvalFunctor {
   template<typename... Args>
@@ -326,6 +368,7 @@ struct Comm_create_keyvalFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_delete_attrFunctor {
   template<typename... Args>
@@ -334,6 +377,7 @@ struct Comm_delete_attrFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_disconnectFunctor {
   template<typename... Args>
@@ -342,6 +386,7 @@ struct Comm_disconnectFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_dupFunctor {
   template<typename... Args>
@@ -350,6 +395,7 @@ struct Comm_dupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_dup_with_infoFunctor {
   template<typename... Args>
@@ -358,6 +404,7 @@ struct Comm_dup_with_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_freeFunctor {
   template<typename... Args>
@@ -366,6 +413,7 @@ struct Comm_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_free_keyvalFunctor {
   template<typename... Args>
@@ -374,6 +422,7 @@ struct Comm_free_keyvalFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_get_attrFunctor {
   template<typename... Args>
@@ -382,6 +431,7 @@ struct Comm_get_attrFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_get_errhandlerFunctor {
   template<typename... Args>
@@ -390,6 +440,7 @@ struct Comm_get_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_get_infoFunctor {
   template<typename... Args>
@@ -398,6 +449,7 @@ struct Comm_get_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_get_nameFunctor {
   template<typename... Args>
@@ -406,6 +458,7 @@ struct Comm_get_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_get_parentFunctor {
   template<typename... Args>
@@ -414,6 +467,7 @@ struct Comm_get_parentFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_groupFunctor {
   template<typename... Args>
@@ -422,6 +476,7 @@ struct Comm_groupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_idupFunctor {
   template<typename... Args>
@@ -430,6 +485,7 @@ struct Comm_idupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_joinFunctor {
   template<typename... Args>
@@ -438,6 +494,7 @@ struct Comm_joinFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_rankFunctor {
   template<typename... Args>
@@ -446,6 +503,7 @@ struct Comm_rankFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_remote_groupFunctor {
   template<typename... Args>
@@ -454,6 +512,7 @@ struct Comm_remote_groupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_remote_sizeFunctor {
   template<typename... Args>
@@ -462,6 +521,7 @@ struct Comm_remote_sizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_set_attrFunctor {
   template<typename... Args>
@@ -470,6 +530,7 @@ struct Comm_set_attrFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_set_errhandlerFunctor {
   template<typename... Args>
@@ -478,6 +539,7 @@ struct Comm_set_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_set_infoFunctor {
   template<typename... Args>
@@ -486,6 +548,7 @@ struct Comm_set_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_set_nameFunctor {
   template<typename... Args>
@@ -494,6 +557,7 @@ struct Comm_set_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_sizeFunctor {
   template<typename... Args>
@@ -502,6 +566,7 @@ struct Comm_sizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_spawnFunctor {
   template<typename... Args>
@@ -510,6 +575,7 @@ struct Comm_spawnFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_spawn_multipleFunctor {
   template<typename... Args>
@@ -518,6 +584,7 @@ struct Comm_spawn_multipleFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_splitFunctor {
   template<typename... Args>
@@ -526,6 +593,7 @@ struct Comm_splitFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_split_typeFunctor {
   template<typename... Args>
@@ -534,6 +602,7 @@ struct Comm_split_typeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Comm_test_interFunctor {
   template<typename... Args>
@@ -542,6 +611,7 @@ struct Comm_test_interFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Compare_and_swapFunctor {
   template<typename... Args>
@@ -550,6 +620,7 @@ struct Compare_and_swapFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Dims_createFunctor {
   template<typename... Args>
@@ -558,6 +629,7 @@ struct Dims_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Dist_graph_createFunctor {
   template<typename... Args>
@@ -566,6 +638,7 @@ struct Dist_graph_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Dist_graph_create_adjacentFunctor {
   template<typename... Args>
@@ -574,6 +647,7 @@ struct Dist_graph_create_adjacentFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Dist_graph_neighborsFunctor {
   template<typename... Args>
@@ -582,6 +656,7 @@ struct Dist_graph_neighborsFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Dist_graph_neighbors_countFunctor {
   template<typename... Args>
@@ -590,6 +665,7 @@ struct Dist_graph_neighbors_countFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Errhandler_createFunctor {
   template<typename... Args>
@@ -598,6 +674,7 @@ struct Errhandler_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Errhandler_freeFunctor {
   template<typename... Args>
@@ -606,6 +683,7 @@ struct Errhandler_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Errhandler_getFunctor {
   template<typename... Args>
@@ -614,6 +692,7 @@ struct Errhandler_getFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Errhandler_setFunctor {
   template<typename... Args>
@@ -622,6 +701,7 @@ struct Errhandler_setFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Error_classFunctor {
   template<typename... Args>
@@ -630,6 +710,7 @@ struct Error_classFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Error_stringFunctor {
   template<typename... Args>
@@ -638,6 +719,7 @@ struct Error_stringFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct ExscanFunctor {
   template<typename... Args>
@@ -646,6 +728,7 @@ struct ExscanFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Fetch_and_opFunctor {
   template<typename... Args>
@@ -654,6 +737,7 @@ struct Fetch_and_opFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_c2fFunctor {
   template<typename... Args>
@@ -662,6 +746,7 @@ struct File_c2fFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_call_errhandlerFunctor {
   template<typename... Args>
@@ -670,6 +755,7 @@ struct File_call_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_closeFunctor {
   template<typename... Args>
@@ -678,6 +764,7 @@ struct File_closeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_create_errhandlerFunctor {
   template<typename... Args>
@@ -686,6 +773,7 @@ struct File_create_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_deleteFunctor {
   template<typename... Args>
@@ -694,6 +782,7 @@ struct File_deleteFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_f2cFunctor {
   template<typename... Args>
@@ -702,6 +791,7 @@ struct File_f2cFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_amodeFunctor {
   template<typename... Args>
@@ -710,6 +800,7 @@ struct File_get_amodeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_atomicityFunctor {
   template<typename... Args>
@@ -718,6 +809,7 @@ struct File_get_atomicityFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_byte_offsetFunctor {
   template<typename... Args>
@@ -726,6 +818,7 @@ struct File_get_byte_offsetFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_errhandlerFunctor {
   template<typename... Args>
@@ -734,6 +827,7 @@ struct File_get_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_groupFunctor {
   template<typename... Args>
@@ -742,6 +836,7 @@ struct File_get_groupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_infoFunctor {
   template<typename... Args>
@@ -750,6 +845,7 @@ struct File_get_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_positionFunctor {
   template<typename... Args>
@@ -758,6 +854,7 @@ struct File_get_positionFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_position_sharedFunctor {
   template<typename... Args>
@@ -766,6 +863,7 @@ struct File_get_position_sharedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_sizeFunctor {
   template<typename... Args>
@@ -774,6 +872,7 @@ struct File_get_sizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_type_extentFunctor {
   template<typename... Args>
@@ -782,6 +881,7 @@ struct File_get_type_extentFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_get_viewFunctor {
   template<typename... Args>
@@ -790,6 +890,7 @@ struct File_get_viewFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_ireadFunctor {
   template<typename... Args>
@@ -798,6 +899,7 @@ struct File_ireadFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_iread_allFunctor {
   template<typename... Args>
@@ -806,6 +908,7 @@ struct File_iread_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_iread_atFunctor {
   template<typename... Args>
@@ -814,6 +917,7 @@ struct File_iread_atFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_iread_at_allFunctor {
   template<typename... Args>
@@ -822,6 +926,7 @@ struct File_iread_at_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_iread_sharedFunctor {
   template<typename... Args>
@@ -830,6 +935,7 @@ struct File_iread_sharedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_iwriteFunctor {
   template<typename... Args>
@@ -838,6 +944,7 @@ struct File_iwriteFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_iwrite_allFunctor {
   template<typename... Args>
@@ -846,6 +953,7 @@ struct File_iwrite_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_iwrite_atFunctor {
   template<typename... Args>
@@ -854,6 +962,7 @@ struct File_iwrite_atFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_iwrite_at_allFunctor {
   template<typename... Args>
@@ -862,6 +971,7 @@ struct File_iwrite_at_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_iwrite_sharedFunctor {
   template<typename... Args>
@@ -870,6 +980,7 @@ struct File_iwrite_sharedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_openFunctor {
   template<typename... Args>
@@ -878,6 +989,7 @@ struct File_openFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_preallocateFunctor {
   template<typename... Args>
@@ -886,6 +998,7 @@ struct File_preallocateFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_readFunctor {
   template<typename... Args>
@@ -894,6 +1007,7 @@ struct File_readFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_allFunctor {
   template<typename... Args>
@@ -902,6 +1016,7 @@ struct File_read_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_all_beginFunctor {
   template<typename... Args>
@@ -910,6 +1025,7 @@ struct File_read_all_beginFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_all_endFunctor {
   template<typename... Args>
@@ -918,6 +1034,7 @@ struct File_read_all_endFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_atFunctor {
   template<typename... Args>
@@ -926,6 +1043,7 @@ struct File_read_atFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_at_allFunctor {
   template<typename... Args>
@@ -934,6 +1052,7 @@ struct File_read_at_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_at_all_beginFunctor {
   template<typename... Args>
@@ -942,6 +1061,7 @@ struct File_read_at_all_beginFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_at_all_endFunctor {
   template<typename... Args>
@@ -950,6 +1070,7 @@ struct File_read_at_all_endFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_orderedFunctor {
   template<typename... Args>
@@ -958,6 +1079,7 @@ struct File_read_orderedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_ordered_beginFunctor {
   template<typename... Args>
@@ -966,6 +1088,7 @@ struct File_read_ordered_beginFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_ordered_endFunctor {
   template<typename... Args>
@@ -974,6 +1097,7 @@ struct File_read_ordered_endFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_read_sharedFunctor {
   template<typename... Args>
@@ -982,6 +1106,7 @@ struct File_read_sharedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_seekFunctor {
   template<typename... Args>
@@ -990,6 +1115,7 @@ struct File_seekFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_seek_sharedFunctor {
   template<typename... Args>
@@ -998,6 +1124,7 @@ struct File_seek_sharedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_set_atomicityFunctor {
   template<typename... Args>
@@ -1006,6 +1133,7 @@ struct File_set_atomicityFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_set_errhandlerFunctor {
   template<typename... Args>
@@ -1014,6 +1142,7 @@ struct File_set_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_set_infoFunctor {
   template<typename... Args>
@@ -1022,6 +1151,7 @@ struct File_set_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_set_sizeFunctor {
   template<typename... Args>
@@ -1030,6 +1160,7 @@ struct File_set_sizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_set_viewFunctor {
   template<typename... Args>
@@ -1038,6 +1169,7 @@ struct File_set_viewFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_syncFunctor {
   template<typename... Args>
@@ -1046,6 +1178,7 @@ struct File_syncFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_writeFunctor {
   template<typename... Args>
@@ -1054,6 +1187,7 @@ struct File_writeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_allFunctor {
   template<typename... Args>
@@ -1062,6 +1196,7 @@ struct File_write_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_all_beginFunctor {
   template<typename... Args>
@@ -1070,6 +1205,7 @@ struct File_write_all_beginFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_all_endFunctor {
   template<typename... Args>
@@ -1078,6 +1214,7 @@ struct File_write_all_endFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_atFunctor {
   template<typename... Args>
@@ -1086,6 +1223,7 @@ struct File_write_atFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_at_allFunctor {
   template<typename... Args>
@@ -1094,6 +1232,7 @@ struct File_write_at_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_at_all_beginFunctor {
   template<typename... Args>
@@ -1102,6 +1241,7 @@ struct File_write_at_all_beginFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_at_all_endFunctor {
   template<typename... Args>
@@ -1110,6 +1250,7 @@ struct File_write_at_all_endFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_orderedFunctor {
   template<typename... Args>
@@ -1118,6 +1259,7 @@ struct File_write_orderedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_ordered_beginFunctor {
   template<typename... Args>
@@ -1126,6 +1268,7 @@ struct File_write_ordered_beginFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_ordered_endFunctor {
   template<typename... Args>
@@ -1134,6 +1277,7 @@ struct File_write_ordered_endFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct File_write_sharedFunctor {
   template<typename... Args>
@@ -1142,6 +1286,7 @@ struct File_write_sharedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct FinalizeFunctor {
   template<typename... Args>
@@ -1150,6 +1295,7 @@ struct FinalizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct FinalizedFunctor {
   template<typename... Args>
@@ -1158,6 +1304,7 @@ struct FinalizedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Free_memFunctor {
   template<typename... Args>
@@ -1166,6 +1313,7 @@ struct Free_memFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct GatherFunctor {
   template<typename... Args>
@@ -1174,6 +1322,7 @@ struct GatherFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct GathervFunctor {
   template<typename... Args>
@@ -1182,6 +1331,7 @@ struct GathervFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct GetFunctor {
   template<typename... Args>
@@ -1190,6 +1340,7 @@ struct GetFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Get_accumulateFunctor {
   template<typename... Args>
@@ -1198,6 +1349,7 @@ struct Get_accumulateFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Get_addressFunctor {
   template<typename... Args>
@@ -1206,6 +1358,7 @@ struct Get_addressFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Get_countFunctor {
   template<typename... Args>
@@ -1214,6 +1367,7 @@ struct Get_countFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Get_elementsFunctor {
   template<typename... Args>
@@ -1222,6 +1376,7 @@ struct Get_elementsFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Get_elements_xFunctor {
   template<typename... Args>
@@ -1230,6 +1385,7 @@ struct Get_elements_xFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Get_library_versionFunctor {
   template<typename... Args>
@@ -1238,6 +1394,7 @@ struct Get_library_versionFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Get_processor_nameFunctor {
   template<typename... Args>
@@ -1246,6 +1403,7 @@ struct Get_processor_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Get_versionFunctor {
   template<typename... Args>
@@ -1254,6 +1412,7 @@ struct Get_versionFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Graph_createFunctor {
   template<typename... Args>
@@ -1262,6 +1421,7 @@ struct Graph_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Graph_getFunctor {
   template<typename... Args>
@@ -1270,6 +1430,7 @@ struct Graph_getFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Graph_mapFunctor {
   template<typename... Args>
@@ -1278,6 +1439,7 @@ struct Graph_mapFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Graph_neighborsFunctor {
   template<typename... Args>
@@ -1286,6 +1448,7 @@ struct Graph_neighborsFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Graph_neighbors_countFunctor {
   template<typename... Args>
@@ -1294,6 +1457,7 @@ struct Graph_neighbors_countFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Graphdims_getFunctor {
   template<typename... Args>
@@ -1302,6 +1466,7 @@ struct Graphdims_getFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Grequest_completeFunctor {
   template<typename... Args>
@@ -1310,6 +1475,7 @@ struct Grequest_completeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Grequest_startFunctor {
   template<typename... Args>
@@ -1318,6 +1484,7 @@ struct Grequest_startFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_compareFunctor {
   template<typename... Args>
@@ -1326,6 +1493,7 @@ struct Group_compareFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_differenceFunctor {
   template<typename... Args>
@@ -1334,6 +1502,7 @@ struct Group_differenceFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_exclFunctor {
   template<typename... Args>
@@ -1342,6 +1511,7 @@ struct Group_exclFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_freeFunctor {
   template<typename... Args>
@@ -1350,6 +1520,7 @@ struct Group_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_inclFunctor {
   template<typename... Args>
@@ -1358,6 +1529,7 @@ struct Group_inclFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_intersectionFunctor {
   template<typename... Args>
@@ -1366,6 +1538,7 @@ struct Group_intersectionFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_range_exclFunctor {
   template<typename... Args>
@@ -1374,6 +1547,7 @@ struct Group_range_exclFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_range_inclFunctor {
   template<typename... Args>
@@ -1382,6 +1556,7 @@ struct Group_range_inclFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_rankFunctor {
   template<typename... Args>
@@ -1390,6 +1565,7 @@ struct Group_rankFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_sizeFunctor {
   template<typename... Args>
@@ -1398,6 +1574,7 @@ struct Group_sizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_translate_ranksFunctor {
   template<typename... Args>
@@ -1406,6 +1583,7 @@ struct Group_translate_ranksFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Group_unionFunctor {
   template<typename... Args>
@@ -1414,6 +1592,7 @@ struct Group_unionFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IallgatherFunctor {
   template<typename... Args>
@@ -1422,6 +1601,7 @@ struct IallgatherFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IallgathervFunctor {
   template<typename... Args>
@@ -1430,6 +1610,7 @@ struct IallgathervFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IallreduceFunctor {
   template<typename... Args>
@@ -1438,6 +1619,7 @@ struct IallreduceFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IalltoallFunctor {
   template<typename... Args>
@@ -1446,6 +1628,7 @@ struct IalltoallFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IalltoallvFunctor {
   template<typename... Args>
@@ -1454,6 +1637,7 @@ struct IalltoallvFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IalltoallwFunctor {
   template<typename... Args>
@@ -1462,6 +1646,7 @@ struct IalltoallwFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IbarrierFunctor {
   template<typename... Args>
@@ -1470,6 +1655,7 @@ struct IbarrierFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IbcastFunctor {
   template<typename... Args>
@@ -1478,6 +1664,7 @@ struct IbcastFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IbsendFunctor {
   template<typename... Args>
@@ -1486,6 +1673,7 @@ struct IbsendFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IexscanFunctor {
   template<typename... Args>
@@ -1494,6 +1682,7 @@ struct IexscanFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IgatherFunctor {
   template<typename... Args>
@@ -1502,6 +1691,7 @@ struct IgatherFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IgathervFunctor {
   template<typename... Args>
@@ -1510,6 +1700,7 @@ struct IgathervFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct ImprobeFunctor {
   template<typename... Args>
@@ -1518,6 +1709,7 @@ struct ImprobeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct ImrecvFunctor {
   template<typename... Args>
@@ -1526,6 +1718,7 @@ struct ImrecvFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Ineighbor_allgatherFunctor {
   template<typename... Args>
@@ -1534,6 +1727,7 @@ struct Ineighbor_allgatherFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Ineighbor_allgathervFunctor {
   template<typename... Args>
@@ -1542,6 +1736,7 @@ struct Ineighbor_allgathervFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Ineighbor_alltoallFunctor {
   template<typename... Args>
@@ -1550,6 +1745,7 @@ struct Ineighbor_alltoallFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Ineighbor_alltoallvFunctor {
   template<typename... Args>
@@ -1558,6 +1754,7 @@ struct Ineighbor_alltoallvFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Ineighbor_alltoallwFunctor {
   template<typename... Args>
@@ -1566,6 +1763,7 @@ struct Ineighbor_alltoallwFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Info_createFunctor {
   template<typename... Args>
@@ -1574,6 +1772,7 @@ struct Info_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Info_deleteFunctor {
   template<typename... Args>
@@ -1582,6 +1781,7 @@ struct Info_deleteFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Info_dupFunctor {
   template<typename... Args>
@@ -1590,6 +1790,7 @@ struct Info_dupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Info_freeFunctor {
   template<typename... Args>
@@ -1598,6 +1799,7 @@ struct Info_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Info_getFunctor {
   template<typename... Args>
@@ -1606,6 +1808,7 @@ struct Info_getFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Info_get_nkeysFunctor {
   template<typename... Args>
@@ -1614,6 +1817,7 @@ struct Info_get_nkeysFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Info_get_nthkeyFunctor {
   template<typename... Args>
@@ -1622,6 +1826,7 @@ struct Info_get_nthkeyFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Info_get_valuelenFunctor {
   template<typename... Args>
@@ -1630,6 +1835,7 @@ struct Info_get_valuelenFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Info_setFunctor {
   template<typename... Args>
@@ -1638,6 +1844,7 @@ struct Info_setFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct InitFunctor {
   template<typename... Args>
@@ -1646,6 +1853,7 @@ struct InitFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Init_threadFunctor {
   template<typename... Args>
@@ -1654,6 +1862,7 @@ struct Init_threadFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct InitializedFunctor {
   template<typename... Args>
@@ -1662,6 +1871,7 @@ struct InitializedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Intercomm_createFunctor {
   template<typename... Args>
@@ -1670,6 +1880,7 @@ struct Intercomm_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Intercomm_mergeFunctor {
   template<typename... Args>
@@ -1678,6 +1889,7 @@ struct Intercomm_mergeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IprobeFunctor {
   template<typename... Args>
@@ -1686,6 +1898,7 @@ struct IprobeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IrecvFunctor {
   template<typename... Args>
@@ -1694,6 +1907,7 @@ struct IrecvFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IreduceFunctor {
   template<typename... Args>
@@ -1702,6 +1916,7 @@ struct IreduceFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Ireduce_scatterFunctor {
   template<typename... Args>
@@ -1710,6 +1925,7 @@ struct Ireduce_scatterFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Ireduce_scatter_blockFunctor {
   template<typename... Args>
@@ -1718,6 +1934,7 @@ struct Ireduce_scatter_blockFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IrsendFunctor {
   template<typename... Args>
@@ -1726,6 +1943,7 @@ struct IrsendFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Is_thread_mainFunctor {
   template<typename... Args>
@@ -1734,6 +1952,7 @@ struct Is_thread_mainFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IscanFunctor {
   template<typename... Args>
@@ -1742,6 +1961,7 @@ struct IscanFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IscatterFunctor {
   template<typename... Args>
@@ -1750,6 +1970,7 @@ struct IscatterFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IscattervFunctor {
   template<typename... Args>
@@ -1758,6 +1979,7 @@ struct IscattervFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IsendFunctor {
   template<typename... Args>
@@ -1766,6 +1988,7 @@ struct IsendFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct IssendFunctor {
   template<typename... Args>
@@ -1774,6 +1997,7 @@ struct IssendFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Keyval_createFunctor {
   template<typename... Args>
@@ -1782,6 +2006,7 @@ struct Keyval_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Keyval_freeFunctor {
   template<typename... Args>
@@ -1790,6 +2015,7 @@ struct Keyval_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Lookup_nameFunctor {
   template<typename... Args>
@@ -1798,6 +2024,7 @@ struct Lookup_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct MprobeFunctor {
   template<typename... Args>
@@ -1806,6 +2033,7 @@ struct MprobeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct MrecvFunctor {
   template<typename... Args>
@@ -1814,6 +2042,7 @@ struct MrecvFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Neighbor_allgatherFunctor {
   template<typename... Args>
@@ -1822,6 +2051,7 @@ struct Neighbor_allgatherFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Neighbor_allgathervFunctor {
   template<typename... Args>
@@ -1830,6 +2060,7 @@ struct Neighbor_allgathervFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Neighbor_alltoallFunctor {
   template<typename... Args>
@@ -1838,6 +2069,7 @@ struct Neighbor_alltoallFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Neighbor_alltoallvFunctor {
   template<typename... Args>
@@ -1846,6 +2078,7 @@ struct Neighbor_alltoallvFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Neighbor_alltoallwFunctor {
   template<typename... Args>
@@ -1854,6 +2087,7 @@ struct Neighbor_alltoallwFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Op_commuteFunctor {
   template<typename... Args>
@@ -1862,6 +2096,7 @@ struct Op_commuteFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Op_createFunctor {
   template<typename... Args>
@@ -1870,6 +2105,7 @@ struct Op_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Op_freeFunctor {
   template<typename... Args>
@@ -1878,6 +2114,7 @@ struct Op_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Open_portFunctor {
   template<typename... Args>
@@ -1886,6 +2123,7 @@ struct Open_portFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct PackFunctor {
   template<typename... Args>
@@ -1894,6 +2132,7 @@ struct PackFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Pack_externalFunctor {
   template<typename... Args>
@@ -1902,6 +2141,7 @@ struct Pack_externalFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Pack_external_sizeFunctor {
   template<typename... Args>
@@ -1910,6 +2150,7 @@ struct Pack_external_sizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Pack_sizeFunctor {
   template<typename... Args>
@@ -1918,6 +2159,7 @@ struct Pack_sizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct PcontrolFunctor {
   template<typename... Args>
@@ -1926,6 +2168,7 @@ struct PcontrolFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct ProbeFunctor {
   template<typename... Args>
@@ -1934,6 +2177,7 @@ struct ProbeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Publish_nameFunctor {
   template<typename... Args>
@@ -1942,6 +2186,7 @@ struct Publish_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct PutFunctor {
   template<typename... Args>
@@ -1950,6 +2195,7 @@ struct PutFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Query_threadFunctor {
   template<typename... Args>
@@ -1958,6 +2204,7 @@ struct Query_threadFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct RaccumulateFunctor {
   template<typename... Args>
@@ -1966,6 +2213,7 @@ struct RaccumulateFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct RecvFunctor {
   template<typename... Args>
@@ -1974,6 +2222,7 @@ struct RecvFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Recv_initFunctor {
   template<typename... Args>
@@ -1982,6 +2231,7 @@ struct Recv_initFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct ReduceFunctor {
   template<typename... Args>
@@ -1990,6 +2240,7 @@ struct ReduceFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Reduce_localFunctor {
   template<typename... Args>
@@ -1998,6 +2249,7 @@ struct Reduce_localFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Reduce_scatterFunctor {
   template<typename... Args>
@@ -2006,6 +2258,7 @@ struct Reduce_scatterFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Reduce_scatter_blockFunctor {
   template<typename... Args>
@@ -2014,6 +2267,7 @@ struct Reduce_scatter_blockFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Register_datarepFunctor {
   template<typename... Args>
@@ -2022,6 +2276,7 @@ struct Register_datarepFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Request_freeFunctor {
   template<typename... Args>
@@ -2030,6 +2285,7 @@ struct Request_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Request_get_statusFunctor {
   template<typename... Args>
@@ -2038,6 +2294,7 @@ struct Request_get_statusFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct RgetFunctor {
   template<typename... Args>
@@ -2046,6 +2303,7 @@ struct RgetFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Rget_accumulateFunctor {
   template<typename... Args>
@@ -2054,6 +2312,7 @@ struct Rget_accumulateFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct RputFunctor {
   template<typename... Args>
@@ -2062,6 +2321,7 @@ struct RputFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct RsendFunctor {
   template<typename... Args>
@@ -2070,6 +2330,7 @@ struct RsendFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Rsend_initFunctor {
   template<typename... Args>
@@ -2078,6 +2339,7 @@ struct Rsend_initFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct ScanFunctor {
   template<typename... Args>
@@ -2086,6 +2348,7 @@ struct ScanFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct ScatterFunctor {
   template<typename... Args>
@@ -2094,6 +2357,7 @@ struct ScatterFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct ScattervFunctor {
   template<typename... Args>
@@ -2102,6 +2366,7 @@ struct ScattervFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct SendFunctor {
   template<typename... Args>
@@ -2110,6 +2375,7 @@ struct SendFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Send_initFunctor {
   template<typename... Args>
@@ -2118,6 +2384,7 @@ struct Send_initFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct SendrecvFunctor {
   template<typename... Args>
@@ -2126,6 +2393,7 @@ struct SendrecvFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Sendrecv_replaceFunctor {
   template<typename... Args>
@@ -2134,6 +2402,7 @@ struct Sendrecv_replaceFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct SsendFunctor {
   template<typename... Args>
@@ -2142,6 +2411,7 @@ struct SsendFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Ssend_initFunctor {
   template<typename... Args>
@@ -2150,6 +2420,7 @@ struct Ssend_initFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct StartFunctor {
   template<typename... Args>
@@ -2158,6 +2429,7 @@ struct StartFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct StartallFunctor {
   template<typename... Args>
@@ -2166,6 +2438,7 @@ struct StartallFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Status_set_cancelledFunctor {
   template<typename... Args>
@@ -2174,6 +2447,7 @@ struct Status_set_cancelledFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Status_set_elementsFunctor {
   template<typename... Args>
@@ -2182,6 +2456,7 @@ struct Status_set_elementsFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Status_set_elements_xFunctor {
   template<typename... Args>
@@ -2190,6 +2465,7 @@ struct Status_set_elements_xFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_category_changedFunctor {
   template<typename... Args>
@@ -2198,6 +2474,7 @@ struct T_category_changedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_category_get_categoriesFunctor {
   template<typename... Args>
@@ -2206,6 +2483,7 @@ struct T_category_get_categoriesFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_category_get_cvarsFunctor {
   template<typename... Args>
@@ -2214,6 +2492,7 @@ struct T_category_get_cvarsFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_category_get_infoFunctor {
   template<typename... Args>
@@ -2222,6 +2501,7 @@ struct T_category_get_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_category_get_numFunctor {
   template<typename... Args>
@@ -2230,6 +2510,7 @@ struct T_category_get_numFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_category_get_pvarsFunctor {
   template<typename... Args>
@@ -2238,6 +2519,7 @@ struct T_category_get_pvarsFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_cvar_get_infoFunctor {
   template<typename... Args>
@@ -2246,6 +2528,7 @@ struct T_cvar_get_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_cvar_get_numFunctor {
   template<typename... Args>
@@ -2254,6 +2537,7 @@ struct T_cvar_get_numFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_cvar_handle_allocFunctor {
   template<typename... Args>
@@ -2262,6 +2546,7 @@ struct T_cvar_handle_allocFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_cvar_handle_freeFunctor {
   template<typename... Args>
@@ -2270,6 +2555,7 @@ struct T_cvar_handle_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_cvar_readFunctor {
   template<typename... Args>
@@ -2278,6 +2564,7 @@ struct T_cvar_readFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_cvar_writeFunctor {
   template<typename... Args>
@@ -2286,6 +2573,7 @@ struct T_cvar_writeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_enum_get_infoFunctor {
   template<typename... Args>
@@ -2294,6 +2582,7 @@ struct T_enum_get_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_enum_get_itemFunctor {
   template<typename... Args>
@@ -2302,6 +2591,7 @@ struct T_enum_get_itemFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_finalizeFunctor {
   template<typename... Args>
@@ -2310,6 +2600,7 @@ struct T_finalizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_init_threadFunctor {
   template<typename... Args>
@@ -2318,6 +2609,7 @@ struct T_init_threadFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_get_infoFunctor {
   template<typename... Args>
@@ -2326,6 +2618,7 @@ struct T_pvar_get_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_get_numFunctor {
   template<typename... Args>
@@ -2334,6 +2627,7 @@ struct T_pvar_get_numFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_handle_allocFunctor {
   template<typename... Args>
@@ -2342,6 +2636,7 @@ struct T_pvar_handle_allocFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_handle_freeFunctor {
   template<typename... Args>
@@ -2350,6 +2645,7 @@ struct T_pvar_handle_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_readFunctor {
   template<typename... Args>
@@ -2358,6 +2654,7 @@ struct T_pvar_readFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_readresetFunctor {
   template<typename... Args>
@@ -2366,6 +2663,7 @@ struct T_pvar_readresetFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_resetFunctor {
   template<typename... Args>
@@ -2374,6 +2672,7 @@ struct T_pvar_resetFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_session_createFunctor {
   template<typename... Args>
@@ -2382,6 +2681,7 @@ struct T_pvar_session_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_session_freeFunctor {
   template<typename... Args>
@@ -2390,6 +2690,7 @@ struct T_pvar_session_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_startFunctor {
   template<typename... Args>
@@ -2398,6 +2699,7 @@ struct T_pvar_startFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_stopFunctor {
   template<typename... Args>
@@ -2406,6 +2708,7 @@ struct T_pvar_stopFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct T_pvar_writeFunctor {
   template<typename... Args>
@@ -2414,6 +2717,7 @@ struct T_pvar_writeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct TestFunctor {
   template<typename... Args>
@@ -2422,6 +2726,7 @@ struct TestFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Test_cancelledFunctor {
   template<typename... Args>
@@ -2430,6 +2735,7 @@ struct Test_cancelledFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct TestallFunctor {
   template<typename... Args>
@@ -2438,6 +2744,7 @@ struct TestallFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct TestanyFunctor {
   template<typename... Args>
@@ -2446,6 +2753,7 @@ struct TestanyFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct TestsomeFunctor {
   template<typename... Args>
@@ -2454,6 +2762,7 @@ struct TestsomeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Topo_testFunctor {
   template<typename... Args>
@@ -2462,6 +2771,7 @@ struct Topo_testFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_commitFunctor {
   template<typename... Args>
@@ -2470,6 +2780,7 @@ struct Type_commitFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_contiguousFunctor {
   template<typename... Args>
@@ -2478,6 +2789,7 @@ struct Type_contiguousFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_create_darrayFunctor {
   template<typename... Args>
@@ -2486,6 +2798,7 @@ struct Type_create_darrayFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_create_hindexedFunctor {
   template<typename... Args>
@@ -2494,6 +2807,7 @@ struct Type_create_hindexedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_create_hindexed_blockFunctor {
   template<typename... Args>
@@ -2502,6 +2816,7 @@ struct Type_create_hindexed_blockFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_create_hvectorFunctor {
   template<typename... Args>
@@ -2510,6 +2825,7 @@ struct Type_create_hvectorFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_create_indexed_blockFunctor {
   template<typename... Args>
@@ -2518,6 +2834,7 @@ struct Type_create_indexed_blockFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_create_keyvalFunctor {
   template<typename... Args>
@@ -2526,6 +2843,7 @@ struct Type_create_keyvalFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_create_resizedFunctor {
   template<typename... Args>
@@ -2534,6 +2852,7 @@ struct Type_create_resizedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_create_structFunctor {
   template<typename... Args>
@@ -2542,6 +2861,7 @@ struct Type_create_structFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_create_subarrayFunctor {
   template<typename... Args>
@@ -2550,6 +2870,7 @@ struct Type_create_subarrayFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_delete_attrFunctor {
   template<typename... Args>
@@ -2558,6 +2879,7 @@ struct Type_delete_attrFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_dupFunctor {
   template<typename... Args>
@@ -2566,6 +2888,7 @@ struct Type_dupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_extentFunctor {
   template<typename... Args>
@@ -2574,6 +2897,7 @@ struct Type_extentFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_freeFunctor {
   template<typename... Args>
@@ -2582,6 +2906,7 @@ struct Type_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_free_keyvalFunctor {
   template<typename... Args>
@@ -2590,6 +2915,7 @@ struct Type_free_keyvalFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_get_attrFunctor {
   template<typename... Args>
@@ -2598,6 +2924,7 @@ struct Type_get_attrFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_get_contentsFunctor {
   template<typename... Args>
@@ -2606,6 +2933,7 @@ struct Type_get_contentsFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_get_envelopeFunctor {
   template<typename... Args>
@@ -2614,6 +2942,7 @@ struct Type_get_envelopeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_get_extentFunctor {
   template<typename... Args>
@@ -2622,6 +2951,7 @@ struct Type_get_extentFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_get_extent_xFunctor {
   template<typename... Args>
@@ -2630,6 +2960,7 @@ struct Type_get_extent_xFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_get_nameFunctor {
   template<typename... Args>
@@ -2638,6 +2969,7 @@ struct Type_get_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_get_true_extentFunctor {
   template<typename... Args>
@@ -2646,6 +2978,7 @@ struct Type_get_true_extentFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_get_true_extent_xFunctor {
   template<typename... Args>
@@ -2654,6 +2987,7 @@ struct Type_get_true_extent_xFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_hindexedFunctor {
   template<typename... Args>
@@ -2662,6 +2996,7 @@ struct Type_hindexedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_hvectorFunctor {
   template<typename... Args>
@@ -2670,6 +3005,7 @@ struct Type_hvectorFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_indexedFunctor {
   template<typename... Args>
@@ -2678,6 +3014,7 @@ struct Type_indexedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_lbFunctor {
   template<typename... Args>
@@ -2686,6 +3023,7 @@ struct Type_lbFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_match_sizeFunctor {
   template<typename... Args>
@@ -2694,6 +3032,7 @@ struct Type_match_sizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_set_attrFunctor {
   template<typename... Args>
@@ -2702,6 +3041,7 @@ struct Type_set_attrFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_set_nameFunctor {
   template<typename... Args>
@@ -2710,6 +3050,7 @@ struct Type_set_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_sizeFunctor {
   template<typename... Args>
@@ -2718,6 +3059,7 @@ struct Type_sizeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_size_xFunctor {
   template<typename... Args>
@@ -2726,6 +3068,7 @@ struct Type_size_xFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_structFunctor {
   template<typename... Args>
@@ -2734,6 +3077,7 @@ struct Type_structFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_ubFunctor {
   template<typename... Args>
@@ -2742,6 +3086,7 @@ struct Type_ubFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Type_vectorFunctor {
   template<typename... Args>
@@ -2750,6 +3095,7 @@ struct Type_vectorFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct UnpackFunctor {
   template<typename... Args>
@@ -2758,6 +3104,7 @@ struct UnpackFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Unpack_externalFunctor {
   template<typename... Args>
@@ -2766,6 +3113,7 @@ struct Unpack_externalFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Unpublish_nameFunctor {
   template<typename... Args>
@@ -2774,6 +3122,7 @@ struct Unpublish_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct WaitFunctor {
   template<typename... Args>
@@ -2782,6 +3131,7 @@ struct WaitFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct WaitallFunctor {
   template<typename... Args>
@@ -2790,6 +3140,7 @@ struct WaitallFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct WaitanyFunctor {
   template<typename... Args>
@@ -2798,6 +3149,7 @@ struct WaitanyFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct WaitsomeFunctor {
   template<typename... Args>
@@ -2806,6 +3158,7 @@ struct WaitsomeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_allocateFunctor {
   template<typename... Args>
@@ -2814,6 +3167,7 @@ struct Win_allocateFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_allocate_sharedFunctor {
   template<typename... Args>
@@ -2822,6 +3176,7 @@ struct Win_allocate_sharedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_attachFunctor {
   template<typename... Args>
@@ -2830,6 +3185,7 @@ struct Win_attachFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_call_errhandlerFunctor {
   template<typename... Args>
@@ -2838,6 +3194,7 @@ struct Win_call_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_completeFunctor {
   template<typename... Args>
@@ -2846,6 +3203,7 @@ struct Win_completeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_createFunctor {
   template<typename... Args>
@@ -2854,6 +3212,7 @@ struct Win_createFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_create_dynamicFunctor {
   template<typename... Args>
@@ -2862,6 +3221,7 @@ struct Win_create_dynamicFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_create_errhandlerFunctor {
   template<typename... Args>
@@ -2870,6 +3230,7 @@ struct Win_create_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_create_keyvalFunctor {
   template<typename... Args>
@@ -2878,6 +3239,7 @@ struct Win_create_keyvalFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_delete_attrFunctor {
   template<typename... Args>
@@ -2886,6 +3248,7 @@ struct Win_delete_attrFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_detachFunctor {
   template<typename... Args>
@@ -2894,6 +3257,7 @@ struct Win_detachFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_fenceFunctor {
   template<typename... Args>
@@ -2902,6 +3266,7 @@ struct Win_fenceFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_flushFunctor {
   template<typename... Args>
@@ -2910,6 +3275,7 @@ struct Win_flushFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_flush_allFunctor {
   template<typename... Args>
@@ -2918,6 +3284,7 @@ struct Win_flush_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_flush_localFunctor {
   template<typename... Args>
@@ -2926,6 +3293,7 @@ struct Win_flush_localFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_flush_local_allFunctor {
   template<typename... Args>
@@ -2934,6 +3302,7 @@ struct Win_flush_local_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_freeFunctor {
   template<typename... Args>
@@ -2942,6 +3311,7 @@ struct Win_freeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_free_keyvalFunctor {
   template<typename... Args>
@@ -2950,6 +3320,7 @@ struct Win_free_keyvalFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_get_attrFunctor {
   template<typename... Args>
@@ -2958,6 +3329,7 @@ struct Win_get_attrFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_get_errhandlerFunctor {
   template<typename... Args>
@@ -2966,6 +3338,7 @@ struct Win_get_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_get_groupFunctor {
   template<typename... Args>
@@ -2974,6 +3347,7 @@ struct Win_get_groupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_get_infoFunctor {
   template<typename... Args>
@@ -2982,6 +3356,7 @@ struct Win_get_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_get_nameFunctor {
   template<typename... Args>
@@ -2990,6 +3365,7 @@ struct Win_get_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_lockFunctor {
   template<typename... Args>
@@ -2998,6 +3374,7 @@ struct Win_lockFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_lock_allFunctor {
   template<typename... Args>
@@ -3006,6 +3383,7 @@ struct Win_lock_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_postFunctor {
   template<typename... Args>
@@ -3014,6 +3392,7 @@ struct Win_postFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_set_attrFunctor {
   template<typename... Args>
@@ -3022,6 +3401,7 @@ struct Win_set_attrFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_set_errhandlerFunctor {
   template<typename... Args>
@@ -3030,6 +3410,7 @@ struct Win_set_errhandlerFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_set_infoFunctor {
   template<typename... Args>
@@ -3038,6 +3419,7 @@ struct Win_set_infoFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_set_nameFunctor {
   template<typename... Args>
@@ -3046,6 +3428,7 @@ struct Win_set_nameFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_shared_queryFunctor {
   template<typename... Args>
@@ -3054,6 +3437,7 @@ struct Win_shared_queryFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_startFunctor {
   template<typename... Args>
@@ -3062,6 +3446,7 @@ struct Win_startFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_syncFunctor {
   template<typename... Args>
@@ -3070,6 +3455,7 @@ struct Win_syncFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_testFunctor {
   template<typename... Args>
@@ -3078,6 +3464,7 @@ struct Win_testFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_unlockFunctor {
   template<typename... Args>
@@ -3086,6 +3473,7 @@ struct Win_unlockFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_unlock_allFunctor {
   template<typename... Args>
@@ -3094,6 +3482,7 @@ struct Win_unlock_allFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct Win_waitFunctor {
   template<typename... Args>
@@ -3102,6 +3491,7 @@ struct Win_waitFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct R_Type_commitFunctor {
   template<typename... Args>
@@ -3110,6 +3500,7 @@ struct R_Type_commitFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct R_Type_contiguousFunctor {
   template<typename... Args>
@@ -3118,6 +3509,7 @@ struct R_Type_contiguousFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct R_Type_dupFunctor {
   template<typename... Args>
@@ -3126,6 +3518,7 @@ struct R_Type_dupFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct R_Type_get_contentsFunctor {
   template<typename... Args>
@@ -3134,6 +3527,7 @@ struct R_Type_get_contentsFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct R_Type_indexedFunctor {
   template<typename... Args>
@@ -3142,6 +3536,7 @@ struct R_Type_indexedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct R_Type_structFunctor {
   template<typename... Args>
@@ -3150,6 +3545,7 @@ struct R_Type_structFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct _Type_vectorFunctor {
   template<typename... Args>
@@ -3158,6 +3554,7 @@ struct _Type_vectorFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct X_Comm_agreeFunctor {
   template<typename... Args>
@@ -3166,6 +3563,7 @@ struct X_Comm_agreeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct X_Comm_failure_ackFunctor {
   template<typename... Args>
@@ -3174,6 +3572,7 @@ struct X_Comm_failure_ackFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct X_Comm_failure_get_ackedFunctor {
   template<typename... Args>
@@ -3182,6 +3581,7 @@ struct X_Comm_failure_get_ackedFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct X_Comm_revokeFunctor {
   template<typename... Args>
@@ -3190,6 +3590,7 @@ struct X_Comm_revokeFunctor {
   }
 };
 
+/// @private
 /// Wraps corresponding MPI* call in a functor.
 struct X_Comm_shrinkFunctor {
   template<typename... Args>
@@ -3199,3 +3600,5 @@ struct X_Comm_shrinkFunctor {
 };
 
 } //namespace uit
+
+#endif // #ifndef UITSL_MPI_ROUTINE_FUNCTORS_HPP_INCLUDE

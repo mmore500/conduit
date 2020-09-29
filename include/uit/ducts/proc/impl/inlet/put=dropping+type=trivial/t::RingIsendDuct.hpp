@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_DROPPING_TYPE_TRIVIAL_T__RINGISENDDUCT_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_INLET_PUT_DROPPING_TYPE_TRIVIAL_T__RINGISENDDUCT_HPP_INCLUDE
 
 #include "../../../../../../uitsl/mpi/routine_functors.hpp"
 
@@ -40,3 +42,5 @@ class RingIsendDuct
 
 } // namespace t
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_DROPPING_TYPE_TRIVIAL_T__RINGISENDDUCT_HPP_INCLUDE

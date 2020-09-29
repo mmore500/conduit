@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_MPI_TYPES_HPP_INCLUDE
+#define UITSL_MPI_MPI_TYPES_HPP_INCLUDE
 
 #include <cstddef>
 
@@ -86,3 +88,5 @@ namespace uitsl {
   MPI_Datatype datatype_from_type() { return datatype_from_type_t( T{} ); }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MPI_MPI_TYPES_HPP_INCLUDE

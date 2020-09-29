@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_OCCUPANCY_AUDIT_HPP_INCLUDE
+#define UITSL_DEBUG_OCCUPANCY_AUDIT_HPP_INCLUDE
 
 #include "OccupancyCaps.hpp"
 #include "OccupancyGuard.hpp"
@@ -28,3 +30,5 @@
     )
 
 #endif
+
+#endif // #ifndef UITSL_DEBUG_OCCUPANCY_AUDIT_HPP_INCLUDE

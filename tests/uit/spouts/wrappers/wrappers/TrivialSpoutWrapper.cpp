@@ -5,17 +5,12 @@
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 
-#include "uit/ducts/Duct.hpp"
-#include "uit/setup/ImplSpec.hpp"
-#include "uit/spouts/Inlet.hpp"
+#include "uit/spouts/wrappers/TrivialSpoutWrapper.hpp"
 
 const uitsl::MpiGuard guard;
 
-TEST_CASE("Test Inlet") {
+TEST_CASE("Test TrivialSpoutWrapper") {
 
-  using Spec = uit::ImplSpec<char>;
-  uit::Inlet<Spec>{
-    std::make_shared<uit::internal::Duct<Spec>>()
-  };
+  uit::TrivialSpoutWrapper<char>{};
 
 }

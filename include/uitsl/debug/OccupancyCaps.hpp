@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_OCCUPANCYCAPS_HPP_INCLUDE
+#define UITSL_DEBUG_OCCUPANCYCAPS_HPP_INCLUDE
 
 #include <limits>
 #include <stddef.h>
@@ -55,3 +57,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_OCCUPANCYCAPS_HPP_INCLUDE

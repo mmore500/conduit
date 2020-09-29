@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_IMPL_BUFFERSPEC_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_IMPL_BUFFERSPEC_HPP_INCLUDE
 
 #include "../../../../../../../../third-party/Empirical/source/base/vector.h"
 
@@ -42,3 +44,5 @@ class BufferSpec : public BufferSpecKernel<ImplSpec, ProcDuct> {
 
 } // namespace internal
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_IMPL_BUFFERSPEC_HPP_INCLUDE

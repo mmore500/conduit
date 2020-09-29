@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_CHRONO_CHRONO_UTILS_HPP_INCLUDE
+#define UITSL_CHRONO_CHRONO_UTILS_HPP_INCLUDE
 
 #include <chrono>
 #include <iomanip>
@@ -51,3 +53,5 @@ std::string beautify_duration(std::chrono::seconds input_seconds) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CHRONO_CHRONO_UTILS_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_META_HASMEMBERFUNCTION_HPP_INCLUDE
+#define UITSL_META_HASMEMBERFUNCTION_HPP_INCLUDE
 
 #include <type_traits>
 
@@ -31,3 +33,5 @@
   public: \
     static constexpr bool value = type::value; \
   };
+
+#endif // #ifndef UITSL_META_HASMEMBERFUNCTION_HPP_INCLUDE

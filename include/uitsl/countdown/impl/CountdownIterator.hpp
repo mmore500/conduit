@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_COUNTDOWN_IMPL_COUNTDOWNITERATOR_HPP_INCLUDE
+#define UITSL_COUNTDOWN_IMPL_COUNTDOWNITERATOR_HPP_INCLUDE
 
 #include <experimental/memory>
 
@@ -29,3 +31,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_COUNTDOWN_IMPL_COUNTDOWNITERATOR_HPP_INCLUDE

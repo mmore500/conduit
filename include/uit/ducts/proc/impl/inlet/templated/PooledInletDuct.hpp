@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_POOLEDINLETDUCT_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_POOLEDINLETDUCT_HPP_INCLUDE
 
 #include <algorithm>
 #include <array>
@@ -103,3 +105,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_POOLEDINLETDUCT_HPP_INCLUDE

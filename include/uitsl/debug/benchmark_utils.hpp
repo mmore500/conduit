@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_BENCHMARK_UTILS_HPP_INCLUDE
+#define UITSL_DEBUG_BENCHMARK_UTILS_HPP_INCLUDE
 
 #include <random>
 
@@ -75,3 +77,5 @@ benchmark::internal::Benchmark* report_confidence(
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_BENCHMARK_UTILS_HPP_INCLUDE

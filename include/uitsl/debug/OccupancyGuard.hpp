@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_OCCUPANCYGUARD_HPP_INCLUDE
+#define UITSL_DEBUG_OCCUPANCYGUARD_HPP_INCLUDE
 
 #include "OccupancyCap.hpp"
 
@@ -18,3 +20,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_OCCUPANCYGUARD_HPP_INCLUDE

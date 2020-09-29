@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_MESH_MESHNODE_HPP_INCLUDE
+#define NETUIT_MESH_MESHNODE_HPP_INCLUDE
 
 #include <stddef.h>
 
@@ -79,3 +81,5 @@ public:
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_MESH_MESHNODE_HPP_INCLUDE

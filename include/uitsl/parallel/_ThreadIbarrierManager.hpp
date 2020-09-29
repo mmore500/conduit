@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL__THREADIBARRIERMANAGER_HPP_INCLUDE
+#define UITSL_PARALLEL__THREADIBARRIERMANAGER_HPP_INCLUDE
 
 #include <iterator>
 #include <memory>
@@ -78,3 +80,5 @@ public:
 
 } // namespace internal
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL__THREADIBARRIERMANAGER_HPP_INCLUDE

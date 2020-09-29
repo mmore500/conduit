@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DISTRIBUTED_RDMAPACKET_HPP_INCLUDE
+#define UITSL_DISTRIBUTED_RDMAPACKET_HPP_INCLUDE
 
 #include <tuple>
 #include <type_traits>
@@ -30,3 +32,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DISTRIBUTED_RDMAPACKET_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_SAFE_CAST_HPP_INCLUDE
+#define UITSL_DEBUG_SAFE_CAST_HPP_INCLUDE
 
 #include <limits>
 #include <stddef.h>
@@ -65,3 +67,5 @@ inline Dst safe_cast(Src value)
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_SAFE_CAST_HPP_INCLUDE

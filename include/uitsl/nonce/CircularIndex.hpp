@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_NONCE_CIRCULARINDEX_HPP_INCLUDE
+#define UITSL_NONCE_CIRCULARINDEX_HPP_INCLUDE
 
 #include <stddef.h>
 
@@ -100,3 +102,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_NONCE_CIRCULARINDEX_HPP_INCLUDE

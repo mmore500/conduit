@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_COUNTDOWN_PROGRESSBAR_HPP_INCLUDE
+#define UITSL_COUNTDOWN_PROGRESSBAR_HPP_INCLUDE
 
 #include <chrono>
 #include <iostream>
@@ -149,3 +151,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_COUNTDOWN_PROGRESSBAR_HPP_INCLUDE

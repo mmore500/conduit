@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_ALIGNEDINHERIT_HPP_INCLUDE
+#define UITSL_PARALLEL_ALIGNEDINHERIT_HPP_INCLUDE
 
 #include "cache_line.hpp"
 
@@ -18,3 +20,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_ALIGNEDINHERIT_HPP_INCLUDE

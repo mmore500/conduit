@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_MPI_AUDIT_HPP_INCLUDE
+#define UITSL_MPI_MPI_AUDIT_HPP_INCLUDE
 
 #include <mpi.h>
 
@@ -187,3 +189,5 @@ inline void mpi_audit(const int err) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MPI_MPI_AUDIT_HPP_INCLUDE

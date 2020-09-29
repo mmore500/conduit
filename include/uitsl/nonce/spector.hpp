@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_NONCE_SPECTOR_HPP_INCLUDE
+#define UITSL_NONCE_SPECTOR_HPP_INCLUDE
 
 #include <variant>
 
@@ -145,3 +147,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_NONCE_SPECTOR_HPP_INCLUDE
