@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_META_F__STATIC_TEST_HPP_INCLUDE
+#define UITSL_META_F__STATIC_TEST_HPP_INCLUDE
 
 #include <type_traits>
 
@@ -15,3 +17,5 @@ constexpr bool static_test() { return StaticTest<T>::value; }
 
 } // namespace f
 } // namespace uitsl
+
+#endif // #ifndef UITSL_META_F__STATIC_TEST_HPP_INCLUDE

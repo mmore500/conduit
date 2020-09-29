@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_INTRA_PUT_GROWING_GET_SKIPPING_TYPE_ANY_A__SCONCEDUCT_HPP_INCLUDE
+#define UIT_DUCTS_INTRA_PUT_GROWING_GET_SKIPPING_TYPE_ANY_A__SCONCEDUCT_HPP_INCLUDE
 
 #include <limits>
 #include <stddef.h>
@@ -112,3 +114,5 @@ public:
 
 } // namespace a
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_INTRA_PUT_GROWING_GET_SKIPPING_TYPE_ANY_A__SCONCEDUCT_HPP_INCLUDE

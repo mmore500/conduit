@@ -1,19 +1,27 @@
 #pragma once
+#ifndef UIT_DUCTS_DUCT_HPP_INCLUDE
+#define UIT_DUCTS_DUCT_HPP_INCLUDE
 
 #include <stddef.h>
 #include <string>
+#include <type_traits>
 #include <utility>
 #include <variant>
 
 #include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/source/base/optional.h"
 #include "../../../third-party/Empirical/source/meta/TypePack.h"
 #include "../../../third-party/Empirical/source/tools/string_utils.h"
 
+#include "../../uitsl/math/math_utils.hpp"
+#include "../../uitsl/meta/HasMemberFunction.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
 namespace internal {
+
+UITSL_GENERATE_HAS_MEMBER_FUNCTION( CanStep );
 
 /**
  * Performs data transmission between an `Inlet` and an `Outlet.
@@ -87,6 +95,29 @@ class Duct {
   typename ducts_t::template apply<std::variant> impl;
 
   using T = typename ImplSpec::T;
+
+  bool MaybeHoldsIntraImpl() const {
+    return std::holds_alternative<typename ImplSpec::IntraDuct>( impl );
+  }
+
+  bool MaybeHoldsThreadImpl() const {
+    return std::holds_alternative<typename ImplSpec::ThreadDuct>( impl );
+  }
+
+  bool MaybeHoldsProcImpl() const {
+    return (
+      std::holds_alternative<typename ImplSpec::ProcInletDuct>( impl )
+      || std::holds_alternative<typename ImplSpec::ProcOutletDuct>( impl )
+    );
+  }
+
+  bool HoldsAmbiguousImpl() const {
+    return uitsl::sum(
+      MaybeHoldsIntraImpl(),
+      MaybeHoldsThreadImpl(),
+      MaybeHoldsProcImpl()
+    ) > 1;
+  }
 
 public:
 
@@ -213,7 +244,7 @@ public:
    *
    * @return TODO.
    */
-    std::string WhichImplIsActive() const {
+  std::string WhichImplIsActive() const {
     return std::visit(
       [](auto& arg) -> std::string { return arg.GetName(); },
       impl
@@ -225,11 +256,49 @@ public:
    *
    * @return TODO.
    */
+  emp::optional<bool> HoldsIntraImpl() const {
+    if ( MaybeHoldsIntraImpl() ) {
+      return HoldsAmbiguousImpl() ? std::nullopt : emp::optional<bool>{ true };
+    } else return false;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  emp::optional<bool> HoldsThreadImpl() const {
+    if ( MaybeHoldsThreadImpl() ) {
+      return HoldsAmbiguousImpl() ? std::nullopt : emp::optional<bool>{ true };
+    } else return false;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  emp::optional<bool> HoldsProcImpl() const {
+    if ( MaybeHoldsProcImpl() ) {
+      return HoldsAmbiguousImpl() ? std::nullopt : emp::optional<bool>{ true };
+    } else return false;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   uid_t GetUID() const { return reinterpret_cast<uid_t>(this); }
 
   bool CanStep() const {
     return std::visit(
-      [](auto& arg) -> bool { return decltype(arg)::CanStep(); },
+      [](const auto& arg) -> bool {
+        using impl_t = typename std::decay<decltype(arg)>::type;
+        if constexpr ( HasMemberFunction_CanStep<impl_t, bool()>::value ) {
+          return impl_t::CanStep();
+        } else return false;
+      },
       impl
     );
   }
@@ -263,3 +332,5 @@ public:
 
 } // namespace internal
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_DUCT_HPP_INCLUDE

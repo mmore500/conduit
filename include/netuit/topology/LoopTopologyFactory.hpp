@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
 
@@ -43,3 +45,5 @@ struct LoopTopologyFactory {
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_TOPOLOGY_LOOPTOPOLOGYFACTORY_HPP_INCLUDE

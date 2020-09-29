@@ -6,6 +6,15 @@
 
 #include "uitsl/math/math_utils.hpp"
 
+TEST_CASE("Test sum") {
+
+  REQUIRE( uitsl::sum(1, 2, 3, 0) == 6 );
+
+  REQUIRE( uitsl::sum(1.0, 2.0, 3.0, 0.5) == 6.5 );
+
+}
+
+
 TEST_CASE("Test mod") {
 
   REQUIRE( uitsl::mod(-11, 10) == 9 );

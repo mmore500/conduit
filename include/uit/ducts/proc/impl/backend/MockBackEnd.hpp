@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_BACKEND_MOCKBACKEND_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_BACKEND_MOCKBACKEND_HPP_INCLUDE
 
 namespace uit {
 
@@ -19,3 +21,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_MOCKBACKEND_HPP_INCLUDE

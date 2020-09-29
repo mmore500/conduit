@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_ONCEPERTHREADCHECKER_HPP_INCLUDE
+#define UITSL_DEBUG_ONCEPERTHREADCHECKER_HPP_INCLUDE
 
 #include "../debug/IsFirstExecutionChecker.hpp"
 #include "../parallel/ThreadMap.hpp"
@@ -16,3 +18,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_ONCEPERTHREADCHECKER_HPP_INCLUDE

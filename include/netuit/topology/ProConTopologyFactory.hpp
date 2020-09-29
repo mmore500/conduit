@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_PROCONTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_PROCONTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include "TopoEdge.hpp"
 #include "Topology.hpp"
@@ -55,3 +57,5 @@ struct ProConTopologyFactory {
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_TOPOLOGY_PROCONTOPOLOGYFACTORY_HPP_INCLUDE

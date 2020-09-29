@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_META_IDENTITYWRAPPER_HPP_INCLUDE
+#define UITSL_META_IDENTITYWRAPPER_HPP_INCLUDE
 
 namespace uitsl {
 
@@ -12,3 +14,5 @@ class IdentityWrapper : public T {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_META_IDENTITYWRAPPER_HPP_INCLUDE

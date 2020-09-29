@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_THREAD_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__RIGTORPDUCT_HPP_INCLUDE
+#define UIT_DUCTS_THREAD_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__RIGTORPDUCT_HPP_INCLUDE
 
 #include <mutex>
 #include <stddef.h>
@@ -138,3 +140,5 @@ public:
 
 } // namespace a
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_THREAD_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__RIGTORPDUCT_HPP_INCLUDE

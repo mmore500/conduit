@@ -1,29 +1,31 @@
 #pragma once
+#ifndef UITSL_CHRONO_TIMEGUARD_HPP_INCLUDE
+#define UITSL_CHRONO_TIMEGUARD_HPP_INCLUDE
 
 #include <chrono>
 
 namespace uitsl {
 
-template<typename DurationType>
+template<typename DurationType, typename Clock=std::chrono::steady_clock>
 class TimeGuard {
 
   DurationType &dest;
 
-  const std::chrono::time_point<std::chrono::steady_clock> start;
+  const std::chrono::time_point<Clock> start;
 
 public:
 
   TimeGuard(DurationType &dest_)
   : dest{dest_}
-  , start{std::chrono::steady_clock::now()}
+  , start{Clock::now()}
   { ; }
 
   ~TimeGuard() {
-    dest = std::chrono::duration_cast<DurationType>(
-      std::chrono::steady_clock::now() - start
-    );
+    dest = std::chrono::duration_cast<DurationType>( Clock::now() - start );
   }
 
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CHRONO_TIMEGUARD_HPP_INCLUDE

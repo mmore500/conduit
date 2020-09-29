@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_INLET_ACCUMULATING_TYPE_TRIVIAL_T__ISENDDUCT_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_INLET_ACCUMULATING_TYPE_TRIVIAL_T__ISENDDUCT_HPP_INCLUDE
 
 #include "impl/AccumulatingTrivialIsendDuct.hpp"
 
@@ -22,3 +24,5 @@ public:
 
 } // namespace t
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_ACCUMULATING_TYPE_TRIVIAL_T__ISENDDUCT_HPP_INCLUDE

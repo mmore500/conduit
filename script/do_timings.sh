@@ -116,7 +116,7 @@ for SYNCHRONOUS in 0 1; do
         echo "REP: ${REP}"
         echo "SYNCHRONOUS: ${SYNCHRONOUS}"
 
-        $(UIT_MPIEXEC) --bind-to none -n $MPI_PROCS ./conduit > tmp
+        $(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n $MPI_PROCS ./conduit > tmp
         UNIT_PRODUCTIVITY=$(cat tmp)
         echo "UNIT_PRODUCTIVITY: ${UNIT_PRODUCTIVITY}"
         TOTAL_PRODUCTIVITY=$(( \

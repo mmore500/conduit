@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_TOPOLOGY_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_TOPOLOGY_HPP_INCLUDE
 
 #include <algorithm>
 #include <exception>
@@ -309,3 +311,5 @@ public:
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_TOPOLOGY_TOPOLOGY_HPP_INCLUDE

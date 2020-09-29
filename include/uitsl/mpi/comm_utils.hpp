@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_COMM_UTILS_HPP_INCLUDE
+#define UITSL_MPI_COMM_UTILS_HPP_INCLUDE
 
 #include <set>
 #include <sstream>
@@ -123,3 +125,5 @@ std::string comm_to_string(const MPI_Comm& comm) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MPI_COMM_UTILS_HPP_INCLUDE

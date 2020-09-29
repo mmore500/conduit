@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_ALGORITHM_UPPER_UNIQUIFY_HPP_INCLUDE
+#define UITSL_ALGORITHM_UPPER_UNIQUIFY_HPP_INCLUDE
 
 #include <map>
 #include <utility>
@@ -27,3 +29,5 @@ void upper_uniquify(std::multimap<Key, T>& map) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_ALGORITHM_UPPER_UNIQUIFY_HPP_INCLUDE

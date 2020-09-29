@@ -34,7 +34,7 @@ const uitsl::MpiGuard guard;
 using MSG_T = emp::vector<int>;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
-#define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
+#define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 int tag{};
 

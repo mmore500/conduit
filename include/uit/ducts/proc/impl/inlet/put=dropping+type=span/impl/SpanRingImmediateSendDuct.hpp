@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_DROPPING_TYPE_SPAN_IMPL_SPANRINGIMMEDIATESENDDUCT_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_INLET_PUT_DROPPING_TYPE_SPAN_IMPL_SPANRINGIMMEDIATESENDDUCT_HPP_INCLUDE
 
 #include <algorithm>
 #include <array>
@@ -10,6 +12,7 @@
 
 #include "../../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
 #include "../../../../../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../../../../../third-party/Empirical/source/base/optional.h"
 #include "../../../../../../../../third-party/Empirical/source/tools/ContiguousStream.h"
 #include "../../../../../../../../third-party/Empirical/source/tools/string_utils.h"
 
@@ -52,13 +55,13 @@ private:
 
   const uit::InterProcAddress address;
 
-  std::shared_ptr<BackEndImpl> back_end;
+  emp::optional<size_t> runtime_size;
 
   void PostSendRequest() {
     emp_assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetHead() ) ) );
     emp_assert(
-      !back_end->HasSize()
-      || back_end->GetSize() == std::get<T>( buffer.GetHead() ).size()
+      !runtime_size.has_value()
+      || *runtime_size == std::get<T>( buffer.GetHead() ).size()
     );
 
     ImmediateSendFunctor{}(
@@ -143,9 +146,15 @@ public:
 
   SpanRingImmediateSendDuct(
     const uit::InterProcAddress& address_,
-    std::shared_ptr<BackEndImpl> back_end_
+    std::shared_ptr<BackEndImpl> back_end,
+    const uit::RuntimeSizeBackEnd<ImplSpec>& rts
+      =uit::RuntimeSizeBackEnd<ImplSpec>{}
   ) : address(address_)
-  , back_end(back_end_)
+  , runtime_size( [&]() -> emp::optional<size_t> {
+    if ( rts.HasSize() ) return {rts.GetSize()};
+    else if ( back_end->HasSize() ) return {back_end->GetSize()};
+    else return std::nullopt;
+  }() )
   { ; }
 
   ~SpanRingImmediateSendDuct() {
@@ -205,3 +214,5 @@ public:
 
 } // namespace internal
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_DROPPING_TYPE_SPAN_IMPL_SPANRINGIMMEDIATESENDDUCT_HPP_INCLUDE

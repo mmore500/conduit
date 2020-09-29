@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_THREADIBARRIER_HPP_INCLUDE
+#define UITSL_PARALLEL_THREADIBARRIER_HPP_INCLUDE
 
 #include <atomic>
 #include <deque>
@@ -89,3 +91,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_THREADIBARRIER_HPP_INCLUDE

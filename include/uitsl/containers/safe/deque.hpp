@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_CONTAINERS_SAFE_DEQUE_HPP_INCLUDE
+#define UITSL_CONTAINERS_SAFE_DEQUE_HPP_INCLUDE
 
 #include <deque>
 #include <shared_mutex>
@@ -265,3 +267,5 @@ public:
 
 } // namespace safe
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CONTAINERS_SAFE_DEQUE_HPP_INCLUDE

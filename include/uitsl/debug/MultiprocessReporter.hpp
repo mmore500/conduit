@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_MULTIPROCESSREPORTER_HPP_INCLUDE
+#define UITSL_DEBUG_MULTIPROCESSREPORTER_HPP_INCLUDE
 
 #include <mpi.h>
 
@@ -37,3 +39,5 @@ public:
 CATCH_REGISTER_REPORTER ("multiprocess", MultiprocessReporter)
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_MULTIPROCESSREPORTER_HPP_INCLUDE

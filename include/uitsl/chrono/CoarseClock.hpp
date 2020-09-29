@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_CHRONO_COARSECLOCK_HPP_INCLUDE
+#define UITSL_CHRONO_COARSECLOCK_HPP_INCLUDE
 
 #include <algorithm>
 #include <chrono>
@@ -32,7 +34,7 @@ struct CoarseClock {
 
   // true if t1 <= t2 is always true and the time between clock ticks
   // is constant, otherwise false
-  const static bool is_steady{true};
+  const static bool is_steady{ false };
 
   // Returns a time_point object representing the current point in time.
   static time_point now() {
@@ -44,3 +46,5 @@ struct CoarseClock {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CHRONO_COARSECLOCK_HPP_INCLUDE

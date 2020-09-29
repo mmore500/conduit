@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_BUFFEREDINLETDUCT_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_BUFFEREDINLETDUCT_HPP_INCLUDE
 
 #include <algorithm>
 #include <stddef.h>
@@ -118,3 +120,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_BUFFEREDINLETDUCT_HPP_INCLUDE

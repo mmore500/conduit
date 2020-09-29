@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_INITIALIZATION_UNINITIALIZED_HPP_INCLUDE
+#define UITSL_INITIALIZATION_UNINITIALIZED_HPP_INCLUDE
 
 #include <utility>
 
@@ -32,3 +34,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_INITIALIZATION_UNINITIALIZED_HPP_INCLUDE

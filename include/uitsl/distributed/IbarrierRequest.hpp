@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DISTRIBUTED_IBARRIERREQUEST_HPP_INCLUDE
+#define UITSL_DISTRIBUTED_IBARRIERREQUEST_HPP_INCLUDE
 
 #include <mpi.h>
 
@@ -34,3 +36,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DISTRIBUTED_IBARRIERREQUEST_HPP_INCLUDE

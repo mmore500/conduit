@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_BACKEND_ACCUMULATINGPOOLEDBACKEND_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_BACKEND_ACCUMULATINGPOOLEDBACKEND_HPP_INCLUDE
 
 #include "../../../../../../third-party/Empirical/source/base/vector.h"
 
@@ -223,3 +225,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_ACCUMULATINGPOOLEDBACKEND_HPP_INCLUDE

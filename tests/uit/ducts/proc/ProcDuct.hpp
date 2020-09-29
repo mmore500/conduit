@@ -35,7 +35,7 @@ const uitsl::MpiGuard guard;
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
-#define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
+#define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 decltype(auto) make_dyadic_bundle() {
 
@@ -197,11 +197,11 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
   for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(i);
 
-  REQUIRE( input.JumpGet() <= 2 * uit::DEFAULT_BUFFER );
+  REQUIRE( uitsl::safe_leq(input.JumpGet(), 2 * uit::DEFAULT_BUFFER) );
 
   output.TryFlush();
 
-  REQUIRE( input.JumpGet() <= 2 * uit::DEFAULT_BUFFER );
+  REQUIRE( uitsl::safe_leq(input.JumpGet(), 2 * uit::DEFAULT_BUFFER) );
 
   UITSL_Barrier( MPI_COMM_WORLD ); // todo why
 
@@ -238,14 +238,14 @@ TEST_CASE("Validity") { REPEAT {
   auto [input, output] = make_dyadic_bundle();
 
   int last{};
-  for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
+  for (MSG_T msg = 0; msg < 10 * std::kilo::num; ++msg) {
 
     output.TryPut(msg);
     output.TryFlush();
 
     const MSG_T current = input.JumpGet();
     REQUIRE( current >= 0 );
-    REQUIRE( current < 10 * std::kilo{}.num );
+    REQUIRE( current < 10 * std::kilo::num );
     REQUIRE( last <= current);
 
     last = current;
@@ -261,7 +261,7 @@ TEST_CASE("Multi-bridge Validity") { REPEAT {
   auto [inputs, outputs] = make_coiled_bundle();
 
   std::unordered_map<size_t, int> last_map{};
-  for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
+  for (MSG_T msg = 0; msg < 10 * std::kilo::num; ++msg) {
 
     for (auto& output : outputs) {
       output.TryPut(msg);
@@ -271,7 +271,7 @@ TEST_CASE("Multi-bridge Validity") { REPEAT {
     for (size_t i = 0; i < inputs.size(); ++i) {
       const MSG_T current = inputs[i].JumpGet();
       REQUIRE( current >= 0 );
-      REQUIRE( current < 10 * std::kilo{}.num );
+      REQUIRE( current < 10 * std::kilo::num );
       REQUIRE( last_map[i] <= current);
 
       last_map[i] = current;

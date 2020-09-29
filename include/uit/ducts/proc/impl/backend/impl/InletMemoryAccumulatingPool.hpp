@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_INLETMEMORYACCUMULATINGPOOL_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_INLETMEMORYACCUMULATINGPOOL_HPP_INCLUDE
 
 #include <algorithm>
 #include <mutex>
@@ -21,7 +23,9 @@ class InletMemoryAccumulatingPool {
   using address_t = uit::InterProcAddress;
   std::set<address_t> addresses;
 
-  emp::optional<uit::Inlet<PoolSpec>> inlet;
+  template<typename T>
+  using inlet_wrapper_t = typename PoolSpec::template inlet_wrapper_t<T>;
+  emp::optional<inlet_wrapper_t<uit::Inlet<PoolSpec>>> inlet;
 
   using T = typename PoolSpec::T;
   T buffer{};
@@ -135,3 +139,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_INLETMEMORYACCUMULATINGPOOL_HPP_INCLUDE

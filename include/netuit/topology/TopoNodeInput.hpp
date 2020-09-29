@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_TOPONODEINPUT_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_TOPONODEINPUT_HPP_INCLUDE
 
 #include <stddef.h>
 #include <utility>
@@ -50,3 +52,5 @@ namespace std {
     }
   };
 } // namespace std
+
+#endif // #ifndef NETUIT_TOPOLOGY_TOPONODEINPUT_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 
@@ -58,3 +60,5 @@ struct DyadicTopologyFactory {
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_TOPOLOGY_DYADICTOPOLOGYFACTORY_HPP_INCLUDE

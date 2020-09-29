@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DISTRIBUTED_ASSIGN_UTILS_HPP_INCLUDE
+#define UITSL_DISTRIBUTED_ASSIGN_UTILS_HPP_INCLUDE
 
 #include "../mpi/mpi_utils.hpp"
 
@@ -13,3 +15,5 @@ struct AssignAvailableProcs {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DISTRIBUTED_ASSIGN_UTILS_HPP_INCLUDE

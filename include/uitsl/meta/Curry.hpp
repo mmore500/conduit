@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_META_CURRY_HPP_INCLUDE
+#define UITSL_META_CURRY_HPP_INCLUDE
 
 #include <stddef.h>
 #include <type_traits>
@@ -41,3 +43,5 @@ template<auto x>
 using ValType=std::integral_constant<decltype(x), x>;
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_META_CURRY_HPP_INCLUDE

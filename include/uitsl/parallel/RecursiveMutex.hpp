@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_RECURSIVEMUTEX_HPP_INCLUDE
+#define UITSL_PARALLEL_RECURSIVEMUTEX_HPP_INCLUDE
 
 #include <shared_mutex>
 
@@ -36,3 +38,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_RECURSIVEMUTEX_HPP_INCLUDE

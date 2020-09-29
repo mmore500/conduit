@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_META_COMMON_SIGNED_T_HPP_INCLUDE
+#define UITSL_META_COMMON_SIGNED_T_HPP_INCLUDE
 
 // adapted from https://stackoverflow.com/a/63436491
 
@@ -18,3 +20,5 @@ using common_signed_t =
                        std::common_type_t<std::make_signed_t<A>, std::make_signed_t<B>>>;
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_META_COMMON_SIGNED_T_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DATASTRUCTS_SIFTINGARRAY_HPP_INCLUDE
+#define UITSL_DATASTRUCTS_SIFTINGARRAY_HPP_INCLUDE
 
 #include <algorithm>
 #include <array>
@@ -104,3 +106,5 @@ public:
 
 
 }
+
+#endif // #ifndef UITSL_DATASTRUCTS_SIFTINGARRAY_HPP_INCLUDE

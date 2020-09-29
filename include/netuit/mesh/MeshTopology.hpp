@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_MESH_MESHTOPOLOGY_HPP_INCLUDE
+#define NETUIT_MESH_MESHTOPOLOGY_HPP_INCLUDE
 
 #include <set>
 #include <stddef.h>
@@ -195,3 +197,5 @@ public:
 
 } // namespace internal
 } // namespace netuit
+
+#endif // #ifndef NETUIT_MESH_MESHTOPOLOGY_HPP_INCLUDE
