@@ -14,7 +14,7 @@ class Uninitialized {
 public:
 
   Uninitialized() { ; }
-  Uninitialized(const T& val_) : val(val_) { ; }
+  explicit Uninitialized(const T& val_) : val(val_) { ; }
 
   operator const T&() const { return val; }
   operator T&() { return val; }
