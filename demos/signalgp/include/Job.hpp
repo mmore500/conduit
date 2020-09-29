@@ -27,7 +27,7 @@ class Job {
 
 public:
 
-  Job(const submesh_t& submesh)
+  explicit Job(const submesh_t& submesh)
   : collection(submesh) {
     for ( const auto __ : timer ) {
       ++iteration_counter;
