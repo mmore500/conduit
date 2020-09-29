@@ -199,7 +199,7 @@ jobs:
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
-    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && ./ci/test_trailing_whitespace.sh && make docs && make demos && ./ci/test_headerguards.sh && make test-readme-snippets"
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && ./ci/test_trailing_whitespace.sh && ./ci/test_tabs.sh && make docs && make demos && ./ci/test_headerguards.sh && make test-readme-snippets"
 
   - stage: Deploy
     name: GitHub Pages
