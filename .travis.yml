@@ -162,22 +162,19 @@ jobs:
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
-    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make cov && cd /opt/conduit/tests/external && make cov
-      && bash <(curl -s https://codecov.io/bash)"
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uitsl && make cov && cd /opt/conduit/tests/external && make cov && bash <(curl -s https://codecov.io/bash)"
 
   - name: uit Coverage
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
-    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uit && make cov
-      && bash <(curl -s https://codecov.io/bash)"
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/uit && make cov && bash <(curl -s https://codecov.io/bash)"
 
   - name: netuit Coverage
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
-    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make cov
-      && bash <(curl -s https://codecov.io/bash)"
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit/tests/netuit && make cov && bash <(curl -s https://codecov.io/bash)"
 
 
   - name: Macrobenchmarks
@@ -196,15 +193,13 @@ jobs:
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
-    script: docker run --cap-add=SYS_ADMIN mmore500/conduit /bin/bash -c "cd /opt/conduit
-      && source third-party/emsdk/emsdk_env.sh && make test-source"
+    script: docker run --cap-add=SYS_ADMIN mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make test-source"
 
   - name: Docs, Demos, Miscellaneous
     install:
     - docker build -t mmore500/conduit .
     - docker ps -a
-    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit
-      && make docs && make demos && ./ci/test_headerguards.sh && make test-readme-snippets"
+    script: docker run mmore500/conduit /bin/bash -c "cd /opt/conduit && make docs && make demos && ./ci/test_headerguards.sh && make test-readme-snippets"
 
   - stage: Deploy
     name: GitHub Pages
@@ -214,8 +209,7 @@ jobs:
     - docker ps -a
     script:
     - docker run -e GH_TOKEN -e TRAVIS_BUILD_NUMBER -e OSF_PASSWORD mmore500/conduit
-      /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make
-      web && ./ci/deploy_gh_pages.sh"
+      /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make web && ./ci/deploy_gh_pages.sh"
   - name: DockerHub
     if: (type = push AND branch IN (master))
     install:
