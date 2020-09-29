@@ -37,6 +37,9 @@ public:
   : impl(std::forward<Args>(args)...)
   { ; }
 
+  list( std::initializer_list<T> init, const Allocator& alloc = Allocator() )
+  : impl( init, alloc )
+  { ; }
 
   // iterators
   iterator begin() noexcept {
