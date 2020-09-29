@@ -91,14 +91,14 @@ int main() {
 
   // start a producer thread
   team.Add( [&inlet](){
-    for (int i = 0; i < std::mega{}.num; ++i) inlet.TryPut(i);
+    for (int i = 0; i < std::mega::num; ++i) inlet.TryPut(i);
   } );
 
   // start a consumer thread
   team.Add( [&outlet](){
     int prev{ outlet.JumpGet() };
     size_t update_counter{};
-    for (size_t i = 0; i < std::mega{}.num; ++i) {
+    for (size_t i = 0; i < std::mega::num; ++i) {
       update_counter += std::exchange(prev, outlet.JumpGet()) == prev;
     }
     std::cout << update_counter << " updates detected" << std::endl;

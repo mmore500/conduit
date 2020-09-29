@@ -23,7 +23,7 @@
 #include "netuit/topology/RingTopologyFactory.hpp"
 #include "netuit/topology/DyadicTopologyFactory.hpp"
 
-#define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
+#define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 #define num_nodes 4
 

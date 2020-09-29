@@ -12,7 +12,7 @@ TEST_CASE("Test CountdownProgresBar<Counter>") {
 
   using bar_t = uitsl::ProgressBar<uitsl::Counter>;
 
-  for ( [[maybe_unused]] auto it : bar_t{ std::mega{}.num })
+  for ( [[maybe_unused]] auto it : bar_t{ std::mega::num })
     ;
 
 }

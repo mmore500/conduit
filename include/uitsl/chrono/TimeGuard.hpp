@@ -6,24 +6,22 @@
 
 namespace uitsl {
 
-template<typename DurationType>
+template<typename DurationType, typename Clock=std::chrono::steady_clock>
 class TimeGuard {
 
   DurationType &dest;
 
-  const std::chrono::time_point<std::chrono::steady_clock> start;
+  const std::chrono::time_point<Clock> start;
 
 public:
 
   TimeGuard(DurationType &dest_)
   : dest{dest_}
-  , start{std::chrono::steady_clock::now()}
+  , start{Clock::now()}
   { ; }
 
   ~TimeGuard() {
-    dest = std::chrono::duration_cast<DurationType>(
-      std::chrono::steady_clock::now() - start
-    );
+    dest = std::chrono::duration_cast<DurationType>( Clock::now() - start );
   }
 
 };

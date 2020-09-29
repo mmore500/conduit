@@ -11,11 +11,11 @@ TEST_CASE("Validity") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
     // 1/2 n * (n + 1)
-    const int expected_sum = (std::kilo{}.num - 1) * std::kilo{}.num / 2;
+    const int expected_sum = (std::kilo::num - 1) * std::kilo::num / 2;
 
     int sum{};
 
-    for (MSG_T msg = 0; msg < std::kilo{}.num; ++msg) {
+    for (MSG_T msg = 0; msg < std::kilo::num; ++msg) {
 
       output.Put(msg);
 
@@ -35,7 +35,7 @@ TEST_CASE("Validity") { REPEAT {
 
     REQUIRE( sum == expected_sum );
 
-    for (size_t i = 0; i < 10 * std::kilo{}.num; ++i) {
+    for (size_t i = 0; i < 10 * std::kilo::num; ++i) {
       REQUIRE( input.JumpGet() == 0 );
     }
 

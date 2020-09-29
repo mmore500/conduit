@@ -42,13 +42,13 @@ TEST_CASE("Validity") { REPEAT {
     auto output = mesh.GetSubmesh(thread_id)[0].GetOutput(0);
 
     int last{};
-    for (MSG_T msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
+    for (MSG_T msg = 0; msg < 10 * std::kilo::num; ++msg) {
 
       output.TryPut(msg);
 
       const MSG_T current = input.JumpGet();
       REQUIRE( current >= 0 );
-      REQUIRE( current < 10 * std::kilo{}.num );
+      REQUIRE( current < 10 * std::kilo::num );
       REQUIRE( last <= current);
 
       last = current;

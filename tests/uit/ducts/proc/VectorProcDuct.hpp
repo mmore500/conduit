@@ -34,7 +34,7 @@ const uitsl::MpiGuard guard;
 using MSG_T = emp::vector<int>;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
-#define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
+#define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 decltype(auto) make_dyadic_bundle() {
 
@@ -155,7 +155,7 @@ TEST_CASE("Validity") { REPEAT {
   auto [input, output] = make_dyadic_bundle();
 
   emp::vector<int> last{};
-  for (int msg = 0; msg < 10 * std::kilo{}.num; ++msg) {
+  for (int msg = 0; msg < 10 * std::kilo::num; ++msg) {
 
     output.TryPut( MSG_T{msg} );
 
@@ -166,7 +166,7 @@ TEST_CASE("Validity") { REPEAT {
     }
     if ( current.size() ) {
       REQUIRE( current.size() == 1 );
-      REQUIRE( current.front() < 10 * std::kilo{}.num );
+      REQUIRE( current.front() < 10 * std::kilo::num );
     }
 
     if ( last.size() ) {
