@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 #TARGET_NAMES += chrono_utils
-#TARGET_NAMES += CoarseClock
+TARGET_NAMES += CoarseClock
 TARGET_NAMES += CoarseMonoClock
 TARGET_NAMES += CoarseRealClock
 TARGET_NAMES += cycle_freq
