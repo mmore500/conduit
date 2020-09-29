@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_CHRONO_CYCLECLOCK_HPP_INCLUDE
+#define UITSL_CHRONO_CYCLECLOCK_HPP_INCLUDE
 
 #include <algorithm>
 #include <chrono>
@@ -49,3 +51,5 @@ struct CycleClock {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CHRONO_CYCLECLOCK_HPP_INCLUDE

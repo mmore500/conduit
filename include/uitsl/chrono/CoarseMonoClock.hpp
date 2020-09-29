@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_CHRONO_COARSEMONOCLOCK_HPP_INCLUDE
+#define UITSL_CHRONO_COARSEMONOCLOCK_HPP_INCLUDE
 
 #include <algorithm>
 #include <chrono>
@@ -53,3 +55,5 @@ struct CoarseMonoClock {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CHRONO_COARSEMONOCLOCK_HPP_INCLUDE
