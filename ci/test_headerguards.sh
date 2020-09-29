@@ -8,5 +8,5 @@ if [ "${SOURCE_HASH}" == "$( find include -type f | xargs cat | sha1sum )" ];
 then
   exit 0 # success
 else
-  echo 1 # failure
+  exit 1 # failure
 fi
