@@ -42,7 +42,7 @@ public:
   using value_type = typename impl_t::value_type;
 
   template<typename... Args>
-  unordered_map(Args&&... args)
+  explicit unordered_map(Args&&... args)
   : impl(std::forward<Args>(args)...)
   { ; }
 

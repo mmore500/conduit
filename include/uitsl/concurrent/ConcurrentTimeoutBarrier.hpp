@@ -33,7 +33,7 @@ public:
    * Blocks until all threads on all processes have reached barrier,
    * or a timeout expires.
    */
-  ConcurrentTimeoutBarrier(
+  explicit ConcurrentTimeoutBarrier(
     const uitsl::ThreadIbarrier& thread_barrier,
     const Timer_T& timer=Timer_T{},
     const MPI_Comm comm=MPI_COMM_WORLD

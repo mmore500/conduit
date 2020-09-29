@@ -32,7 +32,7 @@ public:
   using const_reverse_iterator = typename impl_t::const_reverse_iterator;
 
   template<typename... Args>
-  vector(Args&&... args)
+  explicit vector(Args&&... args)
   : impl(std::forward<Args>(args)...)
   { ; }
 

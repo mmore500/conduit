@@ -13,7 +13,7 @@ class TimeGuard {
 
 public:
 
-  TimeGuard(DurationType &dest_)
+  explicit TimeGuard(DurationType &dest_)
   : dest{dest_}
   , start{std::chrono::steady_clock::now()}
   { ; }
