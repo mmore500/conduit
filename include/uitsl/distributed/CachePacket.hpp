@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DISTRIBUTED_CACHEPACKET_HPP_INCLUDE
+#define UITSL_DISTRIBUTED_CACHEPACKET_HPP_INCLUDE
 
 #include <cstddef>
 
@@ -48,3 +50,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DISTRIBUTED_CACHEPACKET_HPP_INCLUDE

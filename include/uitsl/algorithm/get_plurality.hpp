@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_ALGORITHM_GET_PLURALITY_HPP_INCLUDE
+#define UITSL_ALGORITHM_GET_PLURALITY_HPP_INCLUDE
 
 #include <algorithm>
 #include <unordered_map>
@@ -25,3 +27,5 @@ typename It::value_type get_plurality(It begin, It end) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_ALGORITHM_GET_PLURALITY_HPP_INCLUDE

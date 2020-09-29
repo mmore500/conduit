@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_META_FOREACH_HPP_INCLUDE
+#define UITSL_META_FOREACH_HPP_INCLUDE
 
 #include <functional>
 #include <stddef.h>
@@ -40,3 +42,5 @@ struct ForEach {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_META_FOREACH_HPP_INCLUDE

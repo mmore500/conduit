@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_SPOUTS_WRAPPERS_OUTLET_CACHINGOUTLETWRAPPER_HPP_INCLUDE
+#define UIT_SPOUTS_WRAPPERS_OUTLET_CACHINGOUTLETWRAPPER_HPP_INCLUDE
 
 #include <cstddef>
 
@@ -164,3 +166,5 @@ public:
 
 } // namespace internal
 } // namespace uit
+
+#endif // #ifndef UIT_SPOUTS_WRAPPERS_OUTLET_CACHINGOUTLETWRAPPER_HPP_INCLUDE

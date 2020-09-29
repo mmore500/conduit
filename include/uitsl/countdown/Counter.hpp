@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_COUNTDOWN_COUNTER_HPP_INCLUDE
+#define UITSL_COUNTDOWN_COUNTER_HPP_INCLUDE
 
 #include <algorithm>
 #include <chrono>
@@ -57,3 +59,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_COUNTDOWN_COUNTER_HPP_INCLUDE

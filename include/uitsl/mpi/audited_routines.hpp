@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_AUDITED_ROUTINES_HPP_INCLUDE
+#define UITSL_MPI_AUDITED_ROUTINES_HPP_INCLUDE
 
 #include <utility>
 
@@ -3596,3 +3598,5 @@ inline void UITX_Comm_shrink(Args&&... args) {
     MPIX_Comm_shrink(std::forward<Args>(args)...)
   );
 }
+
+#endif // #ifndef UITSL_MPI_AUDITED_ROUTINES_HPP_INCLUDE

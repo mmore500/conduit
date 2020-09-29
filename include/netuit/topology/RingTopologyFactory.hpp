@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_RINGTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_RINGTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
 #include <list>
@@ -101,3 +103,5 @@ struct RingTopologyFactory {
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_TOPOLOGY_RINGTOPOLOGYFACTORY_HPP_INCLUDE

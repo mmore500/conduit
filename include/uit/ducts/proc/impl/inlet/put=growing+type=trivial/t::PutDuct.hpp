@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_T__PUTDUCT_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_T__PUTDUCT_HPP_INCLUDE
 
 #include <algorithm>
 #include <array>
@@ -139,3 +141,5 @@ public:
 
 } // namespace t
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_T__PUTDUCT_HPP_INCLUDE

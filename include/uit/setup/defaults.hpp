@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_SETUP_DEFAULTS_HPP_INCLUDE
+#define UIT_SETUP_DEFAULTS_HPP_INCLUDE
 
 #include "../ducts/intra/put=dropping+get=stepping+type=any/a::SerialPendingDuct.hpp"
 #include "../ducts/mock/NopDuct.hpp"
@@ -26,3 +28,5 @@ template<typename Spec>
 using DefaultMockDuct = uit::NopDuct<Spec>;
 
 } // namespace uit
+
+#endif // #ifndef UIT_SETUP_DEFAULTS_HPP_INCLUDE

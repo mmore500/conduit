@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_MESH_MESHNODEOUTPUT_HPP_INCLUDE
+#define NETUIT_MESH_MESHNODEOUTPUT_HPP_INCLUDE
 
 #include <memory>
 #include <stddef.h>
@@ -30,3 +32,5 @@ public:
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_MESH_MESHNODEOUTPUT_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_INTRA_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__HEADTAILDUCT_HPP_INCLUDE
+#define UIT_DUCTS_INTRA_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__HEADTAILDUCT_HPP_INCLUDE
 
 #include <stddef.h>
 #include <string>
@@ -160,3 +162,5 @@ public:
 
 } // namespace a
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_INTRA_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__HEADTAILDUCT_HPP_INCLUDE

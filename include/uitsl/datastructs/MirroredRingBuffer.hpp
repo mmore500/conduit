@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DATASTRUCTS_MIRROREDRINGBUFFER_HPP_INCLUDE
+#define UITSL_DATASTRUCTS_MIRROREDRINGBUFFER_HPP_INCLUDE
 
 #include <unistd.h>
 #include <sys/mman.h>
@@ -152,3 +154,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DATASTRUCTS_MIRROREDRINGBUFFER_HPP_INCLUDE

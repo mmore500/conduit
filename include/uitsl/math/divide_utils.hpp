@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MATH_DIVIDE_UTILS_HPP_INCLUDE
+#define UITSL_MATH_DIVIDE_UTILS_HPP_INCLUDE
 
 #include <type_traits>
 
@@ -87,3 +89,5 @@ div_up(Dividend x, Divisor y)
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MATH_DIVIDE_UTILS_HPP_INCLUDE

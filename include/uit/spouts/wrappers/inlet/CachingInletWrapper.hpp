@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_SPOUTS_WRAPPERS_INLET_CACHINGINLETWRAPPER_HPP_INCLUDE
+#define UIT_SPOUTS_WRAPPERS_INLET_CACHINGINLETWRAPPER_HPP_INCLUDE
 
 #include <cstddef>
 #include <utility>
@@ -158,3 +160,5 @@ public:
 
 } // namespace internal
 } // namesapce uit
+
+#endif // #ifndef UIT_SPOUTS_WRAPPERS_INLET_CACHINGINLETWRAPPER_HPP_INCLUDE

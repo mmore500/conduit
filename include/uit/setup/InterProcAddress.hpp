@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_SETUP_INTERPROCADDRESS_HPP_INCLUDE
+#define UIT_SETUP_INTERPROCADDRESS_HPP_INCLUDE
 
 #include <tuple>
 
@@ -115,3 +117,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_SETUP_INTERPROCADDRESS_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_SPOUTS_OUTLET_HPP_INCLUDE
+#define UIT_SPOUTS_OUTLET_HPP_INCLUDE
 
 #include <cstdint>
 #include <iostream>
@@ -263,3 +265,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_SPOUTS_OUTLET_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_OUTLETMEMORYPOOL_HPP_INCLUDE
+#define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_OUTLETMEMORYPOOL_HPP_INCLUDE
 
 #include <algorithm>
 #include <mutex>
@@ -161,3 +163,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_OUTLETMEMORYPOOL_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_REQUEST_UTILS_HPP_INCLUDE
+#define UITSL_MPI_REQUEST_UTILS_HPP_INCLUDE
 
 #include <mpi.h>
 
@@ -23,3 +25,5 @@ bool test_null(const MPI_Request& request) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MPI_REQUEST_UTILS_HPP_INCLUDE

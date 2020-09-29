@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_PARALLELTIMEOUTBARRIER_HPP_INCLUDE
+#define UITSL_PARALLEL_PARALLELTIMEOUTBARRIER_HPP_INCLUDE
 
 #include <thread>
 
@@ -35,3 +37,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_PARALLELTIMEOUTBARRIER_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_TOPOEDGE_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_TOPOEDGE_HPP_INCLUDE
 
 #include "TopoNodeInput.hpp"
 #include "TopoNodeOutput.hpp"
@@ -22,3 +24,5 @@ public:
 };
 
 } // namespace netuit
+
+#endif // #ifndef NETUIT_TOPOLOGY_TOPOEDGE_HPP_INCLUDE

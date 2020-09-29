@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MATH_STATS_UTILS_HPP_INCLUDE
+#define UITSL_MATH_STATS_UTILS_HPP_INCLUDE
 
 #include <stddef.h>
 
@@ -50,3 +52,5 @@ std::tuple<double, double> bootstrap(
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MATH_STATS_UTILS_HPP_INCLUDE

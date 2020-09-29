@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_THREADMAP_HPP_INCLUDE
+#define UITSL_PARALLEL_THREADMAP_HPP_INCLUDE
 
 #include <mutex>
 #include <shared_mutex>
@@ -41,3 +43,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_THREADMAP_HPP_INCLUDE

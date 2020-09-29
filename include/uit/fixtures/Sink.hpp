@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_FIXTURES_SINK_HPP_INCLUDE
+#define UIT_FIXTURES_SINK_HPP_INCLUDE
 
 #include <memory>
 #include <stddef.h>
@@ -101,3 +103,5 @@ namespace std {
   };
 
 } // namespace std
+
+#endif // #ifndef UIT_FIXTURES_SINK_HPP_INCLUDE

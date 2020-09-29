@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_GROUP_UTILS_HPP_INCLUDE
+#define UITSL_MPI_GROUP_UTILS_HPP_INCLUDE
 
 #include <numeric>
 #include <set>
@@ -193,3 +195,5 @@ std::string group_to_string(const MPI_Group& group) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MPI_GROUP_UTILS_HPP_INCLUDE

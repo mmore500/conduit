@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_UTILITY_PRINT_UTILS_HPP_INCLUDE
+#define UITSL_UTILITY_PRINT_UTILS_HPP_INCLUDE
 
 #include <mutex>
 #include <regex>
@@ -121,3 +123,5 @@ std::string to_string(const T & container) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_UTILITY_PRINT_UTILS_HPP_INCLUDE

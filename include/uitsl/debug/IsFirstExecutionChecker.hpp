@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_ISFIRSTEXECUTIONCHECKER_HPP_INCLUDE
+#define UITSL_DEBUG_ISFIRSTEXECUTIONCHECKER_HPP_INCLUDE
 
 #include <atomic>
 #include <stddef.h>
@@ -24,3 +26,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_ISFIRSTEXECUTIONCHECKER_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_RELAXEDATOMIC_HPP_INCLUDE
+#define UITSL_PARALLEL_RELAXEDATOMIC_HPP_INCLUDE
 
 #include <atomic>
 
@@ -54,3 +56,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_RELAXEDATOMIC_HPP_INCLUDE

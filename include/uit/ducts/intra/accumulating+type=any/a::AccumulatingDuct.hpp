@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_INTRA_ACCUMULATING_TYPE_ANY_A__ACCUMULATINGDUCT_HPP_INCLUDE
+#define UIT_DUCTS_INTRA_ACCUMULATING_TYPE_ANY_A__ACCUMULATINGDUCT_HPP_INCLUDE
 
 #include <limits>
 #include <stddef.h>
@@ -102,3 +104,5 @@ public:
 
 } // namespace a
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_INTRA_ACCUMULATING_TYPE_ANY_A__ACCUMULATINGDUCT_HPP_INCLUDE

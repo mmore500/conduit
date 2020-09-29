@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DISTRIBUTED_MSGACCUMULATORPACKET_HPP_INCLUDE
+#define UITSL_DISTRIBUTED_MSGACCUMULATORPACKET_HPP_INCLUDE
 
 #include "../../../third-party/Empirical/source/base/array.h"
 
@@ -38,3 +40,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DISTRIBUTED_MSGACCUMULATORPACKET_HPP_INCLUDE

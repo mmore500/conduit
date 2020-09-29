@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_SETUP_IMPLSPEC_HPP_INCLUDE
+#define UIT_SETUP_IMPLSPEC_HPP_INCLUDE
 
 #include "defaults.hpp"
 #include "ImplSelect.hpp"
@@ -102,3 +104,5 @@ struct MockSpec
 {};
 
 } // namespace uit
+
+#endif // #ifndef UIT_SETUP_IMPLSPEC_HPP_INCLUDE

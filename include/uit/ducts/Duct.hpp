@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_DUCT_HPP_INCLUDE
+#define UIT_DUCTS_DUCT_HPP_INCLUDE
 
 #include <stddef.h>
 #include <string>
@@ -330,3 +332,5 @@ public:
 
 } // namespace internal
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_DUCT_HPP_INCLUDE

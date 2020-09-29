@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_FIXTURES_SOURCE_HPP_INCLUDE
+#define UIT_FIXTURES_SOURCE_HPP_INCLUDE
 
 #include <utility>
 #include <memory>
@@ -102,3 +104,5 @@ namespace std {
   };
 
 } // namespace std
+
+#endif // #ifndef UIT_FIXTURES_SOURCE_HPP_INCLUDE

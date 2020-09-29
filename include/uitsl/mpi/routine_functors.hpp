@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_ROUTINE_FUNCTORS_HPP_INCLUDE
+#define UITSL_MPI_ROUTINE_FUNCTORS_HPP_INCLUDE
 
 #include <utility>
 
@@ -3598,3 +3600,5 @@ struct X_Comm_shrinkFunctor {
 };
 
 } //namespace uit
+
+#endif // #ifndef UITSL_MPI_ROUTINE_FUNCTORS_HPP_INCLUDE

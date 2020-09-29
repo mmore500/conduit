@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_SPOUTS_WRAPPERS_CACHINGSPOUTWRAPPER_HPP_INCLUDE
+#define UIT_SPOUTS_WRAPPERS_CACHINGSPOUTWRAPPER_HPP_INCLUDE
 
 #include "../../../uitsl/distributed/CachePacket.hpp"
 #include "../../../uitsl/meta/IdentityWrapper.hpp"
@@ -25,3 +27,5 @@ public:
 
 
 } // namespace uit
+
+#endif // #ifndef UIT_SPOUTS_WRAPPERS_CACHINGSPOUTWRAPPER_HPP_INCLUDE

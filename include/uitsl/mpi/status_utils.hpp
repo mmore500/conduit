@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_STATUS_UTILS_HPP_INCLUDE
+#define UITSL_MPI_STATUS_UTILS_HPP_INCLUDE
 
 #include <sstream>
 #include <string>
@@ -56,3 +58,5 @@ std::string to_string(const MPI_Status& status) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MPI_STATUS_UTILS_HPP_INCLUDE

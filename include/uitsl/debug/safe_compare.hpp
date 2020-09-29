@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_SAFE_COMPARE_HPP_INCLUDE
+#define UITSL_DEBUG_SAFE_COMPARE_HPP_INCLUDE
 
 #include <limits>
 #include <type_traits>
@@ -72,3 +74,5 @@ inline bool safe_equal(I x, J y) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_SAFE_COMPARE_HPP_INCLUDE

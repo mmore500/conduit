@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_CACHE_LINE_HPP_INCLUDE
+#define UITSL_PARALLEL_CACHE_LINE_HPP_INCLUDE
 
 #include <new>
 #include <stddef.h>
@@ -13,3 +15,5 @@ namespace uitsl {
 #endif
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_CACHE_LINE_HPP_INCLUDE

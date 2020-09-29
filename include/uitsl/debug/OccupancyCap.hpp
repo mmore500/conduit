@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_OCCUPANCYCAP_HPP_INCLUDE
+#define UITSL_DEBUG_OCCUPANCYCAP_HPP_INCLUDE
 
 #include <limits>
 #include <mutex>
@@ -70,3 +72,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_OCCUPANCYCAP_HPP_INCLUDE

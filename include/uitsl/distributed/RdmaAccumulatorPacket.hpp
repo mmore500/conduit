@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DISTRIBUTED_RDMAACCUMULATORPACKET_HPP_INCLUDE
+#define UITSL_DISTRIBUTED_RDMAACCUMULATORPACKET_HPP_INCLUDE
 
 #include "../../../third-party/Empirical/source/base/array.h"
 
@@ -32,3 +34,5 @@ struct RdmaAccumulatorPacket {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DISTRIBUTED_RDMAACCUMULATORPACKET_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MATH_MATH_UTILS_HPP_INCLUDE
+#define UITSL_MATH_MATH_UTILS_HPP_INCLUDE
 
 #include <cmath>
 #include <bitset>
@@ -74,3 +76,5 @@ int sidebyside_hash(const size_t a, const size_t b) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MATH_MATH_UTILS_HPP_INCLUDE
