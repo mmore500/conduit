@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += inflate
 TARGET_NAMES += NamedArrayElement
 TARGET_NAMES += untar
 
@@ -15,7 +16,7 @@ default: test
 test-%: %.cpp
 	echo "UIT_MPICXX" $(UIT_MPICXX)
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
-	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -lz -o $@.out
 	# execute test
 	$(UIT_MPIEXEC) -n 1 ./$@.out
 
@@ -41,7 +42,7 @@ cov: FLAGS := -std=c++17 -pthread -march=native -g -Wall -Wno-unused-function -I
 cov: $(addprefix cov-, $(TARGET_NAMES))
 
 cov-%: %.cpp
-	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -o $@.out
+	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -lz -o $@.out
 	# execute test
 	echo "UIT_MPICXX" $(UIT_MPICXX)
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
