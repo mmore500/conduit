@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += compare_files
+TARGET_NAMES += compare_streams
 TARGET_NAMES += IsFirstExecutionChecker
 TARGET_NAMES += OncePerThreadChecker
 TARGET_NAMES += safe_compare
