@@ -11,6 +11,7 @@ TARGET_NAMES += meta
 TARGET_NAMES += mpi
 TARGET_NAMES += nonce
 TARGET_NAMES += parallel
+TARGET_NAMES += polyfill
 TARGET_NAMES += utility
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
