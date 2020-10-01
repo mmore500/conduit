@@ -59,7 +59,7 @@ cov-%: %.cpp
 	llvm-profdata merge *.profraw -o default.profdata
 	llvm-cov show ./$@.out -instr-profile=default.profdata > coverage_$@.txt
 	python $(TO_ROOT)/third-party/force-cover/fix_coverage.py coverage_$@.txt
-	
+
 clean:
 	rm -f *.out
 	rm -f *.o
