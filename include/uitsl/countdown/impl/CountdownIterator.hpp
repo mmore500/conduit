@@ -15,7 +15,7 @@ public:
 
   CountdownIterator() = default;
 
-  CountdownIterator(CountdownType& countdown) {
+  explicit CountdownIterator(CountdownType& countdown) {
     impl = std::experimental::make_observer( &countdown );
   }
 
