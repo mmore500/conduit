@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <charconv>
 #include <fstream>
+#include <numeric>
 #include <streambuf>
 #include <string>
 #include <string_view>
