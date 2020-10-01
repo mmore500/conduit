@@ -33,7 +33,7 @@ TEST_CASE("untar empty directory") {
 // these fail when running the container with Docker but not with Singularity
 // with error message
 // ERROR: setting permissions for "./." failed with error code generic:1
-// ERROR: untar failure assets/____.tar 
+// ERROR: untar failure assets/____.tar
 // TODO fix
 // TEST_CASE("untar long filename") {
 
