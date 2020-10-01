@@ -36,7 +36,9 @@ RUN \
   echo "installed fundamentals"
 
 RUN \
-  apt-get install -qq software-properties-common \
+  apt-get install -qq \
+    software-properties-common \
+    apt-show-versions \
     && \
   add-apt-repository -y ppa:ubuntu-toolchain-r/test \
     && \
