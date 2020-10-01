@@ -1,4 +1,4 @@
-TARGET_NAMES += a\:\:AtomicPendingDuct
+#TARGET_NAMES += a\:\:AtomicPendingDuct
 TARGET_NAMES += a\:\:BoundedMoodyCamelDuct
 TARGET_NAMES += a\:\:RigtorpDuct
 
