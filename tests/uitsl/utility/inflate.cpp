@@ -36,11 +36,11 @@ TEST_CASE("inflate rick.tar.gz") {
 
 }
 
-TEST_CASE("inflate twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son-the-jaws-that-bite-the-claws-that-catch-beware-the-jubjub-bird-and-shun-the-frumious-bandersnatch.gz") {
+TEST_CASE("inflate twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son.gz") {
 
-  const auto temp_path{ uitsl::inflate( "assets/twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son-the-jaws-that-bite-the-claws-that-catch-beware-the-jubjub-bird-and-shun-the-frumious-bandersnatch.gz" ) };
+  const auto temp_path{ uitsl::inflate( "assets/twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son.gz" ) };
 
-  REQUIRE( uitsl::compare_files( "assets/twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son-the-jaws-that-bite-the-claws-that-catch-beware-the-jubjub-bird-and-shun-the-frumious-bandersnatch", temp_path ) );
+  REQUIRE( uitsl::compare_files( "assets/twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son", temp_path ) );
 
 }
 
