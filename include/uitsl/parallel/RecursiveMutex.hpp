@@ -12,7 +12,7 @@ class RecursiveExclusiveLock;
 
 class RecursiveMutex {
 
-  friend class uit::RecursiveExclusiveLock;
+  friend class uitsl::RecursiveExclusiveLock;
 
   std::shared_mutex mutex;
   uitsl::thread_id_t mutex_owner{ uitsl::max_thread };
