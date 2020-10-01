@@ -19,7 +19,7 @@ public:
 
   CachePacket() = default;
 
-  CachePacket(const size_t cache_id_)
+  explicit CachePacket(const size_t cache_id_)
   : cache_id(cache_id_)
   , data{ std::nullopt }
   { ; }
