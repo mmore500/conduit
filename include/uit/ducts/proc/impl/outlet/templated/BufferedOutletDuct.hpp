@@ -64,7 +64,7 @@ private:
     do {
 
       emp_assert( !outlet.Get().empty() );
-      emp_assert(std::distance(std::next(current),std::end(outlet.Get())) >= 0);
+      // emp_assert(std::distance(std::next(current),std::end(outlet.Get())) >= 0);
 
       const size_t cur_step = std::min(
         static_cast<size_t>(
