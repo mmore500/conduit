@@ -26,12 +26,12 @@ RUN \
 
 RUN \
   apt-get install -qq \
-    curl \
-    git \
-    gzip \
-    unzip \
-    tar \
-    wget \
+    curl==7.58.0 \
+    git==2.17.1 \
+    gzip==1.6 \
+    unzip=6.00 \
+    tar=1.29 \
+    wget=1.19.4 \
     && \
   echo "installed fundamentals"
 
