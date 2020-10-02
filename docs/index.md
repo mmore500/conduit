@@ -12,8 +12,8 @@ Overview
 :hidden:
 
 self
+ReadingList
 api/library_root
-Resources
 ```
 
 ```{include} ../README.md
