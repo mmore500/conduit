@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_UTILITY_ASSIGN_UTILS_HPP_INCLUDE
+#define UITSL_UTILITY_ASSIGN_UTILS_HPP_INCLUDE
 
 #include <functional>
 #include <stddef.h>
@@ -69,3 +71,5 @@ struct AssignRoundRobin {
 // arrange into n-dimensional volume
 // then divvy into n-dimensional subcubes
 // (special case of assign_contiguously)
+
+#endif // #ifndef UITSL_UTILITY_ASSIGN_UTILS_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_MPI_UTILS_HPP_INCLUDE
+#define UITSL_MPI_MPI_UTILS_HPP_INCLUDE
 
 #include <assert.h>
 #include <limits>
@@ -41,3 +43,5 @@ void mpi_init() {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MPI_MPI_UTILS_HPP_INCLUDE

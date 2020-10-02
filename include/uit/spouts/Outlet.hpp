@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_SPOUTS_OUTLET_HPP_INCLUDE
+#define UIT_SPOUTS_OUTLET_HPP_INCLUDE
 
 #include <cstdint>
 #include <iostream>
@@ -56,9 +58,13 @@ namespace uit {
  *    threads and processes without having to manually construct `Conduits` and
  *    emplace necessary thread-safe and/or process-safe `Duct` implementations.
  */
-template<typename ImplSpec>
+template<typename ImplSpec_>
 class Outlet {
 
+public:
+  using ImplSpec = ImplSpec_;
+
+private:
   using T = typename ImplSpec::T;
   constexpr inline static size_t N{ImplSpec::N};
 
@@ -230,9 +236,15 @@ public:
    *
    * @return TODO.
    */
-  typename duct_t::uid_t GetDuctUID() const {
-    return duct->GetUID();
+  typename duct_t::uid_t GetDuctUID() const { return duct->GetUID(); }
+
+  emp::optional<bool> HoldsIntraImpl() const { return duct->HoldsIntraImpl(); }
+
+  emp::optional<bool> HoldsThreadImpl() const {
+    return duct->HoldsThreadImpl();
   }
+
+  emp::optional<bool> HoldsProcImpl() const { return duct->HoldsProcImpl(); }
 
   bool CanStep() const { return duct->CanStep(); }
 
@@ -253,3 +265,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_SPOUTS_OUTLET_HPP_INCLUDE

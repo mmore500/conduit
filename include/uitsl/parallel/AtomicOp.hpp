@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_ATOMICOP_HPP_INCLUDE
+#define UITSL_PARALLEL_ATOMICOP_HPP_INCLUDE
 
 #include <atomic>
 
@@ -32,3 +34,5 @@ T AtomicOp(
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_ATOMICOP_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_META_HASMEMBERTYPE_HPP_INCLUDE
+#define UITSL_META_HASMEMBERTYPE_HPP_INCLUDE
 
 #include <type_traits>
 
@@ -23,3 +25,5 @@ private: \
 public: \
   static constexpr bool value = sizeof(test<Derived>(nullptr)) == sizeof(Yes);\
 };
+
+#endif // #ifndef UITSL_META_HASMEMBERTYPE_HPP_INCLUDE

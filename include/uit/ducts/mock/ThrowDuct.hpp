@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_DUCTS_MOCK_THROWDUCT_HPP_INCLUDE
+#define UIT_DUCTS_MOCK_THROWDUCT_HPP_INCLUDE
 
 #include <stddef.h>
 #include <string>
@@ -83,3 +85,5 @@ public:
 };
 
 } // namespace uit
+
+#endif // #ifndef UIT_DUCTS_MOCK_THROWDUCT_HPP_INCLUDE

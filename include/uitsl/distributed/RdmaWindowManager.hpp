@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DISTRIBUTED_RDMAWINDOWMANAGER_HPP_INCLUDE
+#define UITSL_DISTRIBUTED_RDMAWINDOWMANAGER_HPP_INCLUDE
 
 #include <cstddef>
 #include <unordered_map>
@@ -199,3 +201,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DISTRIBUTED_RDMAWINDOWMANAGER_HPP_INCLUDE

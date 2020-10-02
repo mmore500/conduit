@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_NONCE_SCOPEGUARD_HPP_INCLUDE
+#define UITSL_NONCE_SCOPEGUARD_HPP_INCLUDE
 
 #include <functional>
 
@@ -20,3 +22,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_NONCE_SCOPEGUARD_HPP_INCLUDE

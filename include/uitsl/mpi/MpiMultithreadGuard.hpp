@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MPI_MPIMULTITHREADGUARD_HPP_INCLUDE
+#define UITSL_MPI_MPIMULTITHREADGUARD_HPP_INCLUDE
 
 #include <functional>
 
@@ -16,3 +18,5 @@ struct MpiMultithreadGuard {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_MPI_MPIMULTITHREADGUARD_HPP_INCLUDE

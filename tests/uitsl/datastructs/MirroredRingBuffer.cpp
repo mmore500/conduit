@@ -11,7 +11,7 @@ TEST_CASE("Test MirroredRingBuffer") {
   constexpr size_t buff_size{ 10 };
   uitsl::MirroredRingBuffer<size_t, buff_size> buff;
 
-  for (size_t rep = 0; rep < std::mega{}.num; ++rep) {
+  for (size_t rep = 0; rep < std::mega::num; ++rep) {
 
     REQUIRE( buff.GetSize() == 0 );
 

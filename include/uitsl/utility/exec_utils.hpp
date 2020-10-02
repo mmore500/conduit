@@ -1,6 +1,6 @@
 #include <array>
-#include <cstdio>
-#include <iostream>
+#ifndef UITSL_UTILITY_EXEC_UTILS_HPP_INCLUDE
+#define UITSL_UTILITY_EXEC_UTILS_HPP_INCLUDE
 #include <memory>
 #include <stdexcept>
 #include <string>
@@ -24,3 +24,5 @@ std::string exec(const char* cmd) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_UTILITY_EXEC_UTILS_HPP_INCLUDE

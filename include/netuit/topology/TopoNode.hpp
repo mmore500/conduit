@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_TOPONODE_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_TOPONODE_HPP_INCLUDE
 
 #include <iostream>
 #include <algorithm>
@@ -82,15 +84,9 @@ public:
       "emp::vector<netuit::TopoNodeInput> inputs",
       uitsl::to_string(inputs)
     ) << std::endl;
-<<<<<<< HEAD:include/uit/topology/TopoNode.hpp
-    ss << format_member(
-      "emp::vector<uit::TopoNodeInput> outputs",
-      uit::to_string(outputs)
-=======
     ss << uitsl::format_member(
-      "emp::vector<netuit::TopoNodeInput> inputs",
+      "emp::vector<netuit::TopoNodeInput> outputs",
       uitsl::to_string(outputs)
->>>>>>> master:include/netuit/topology/TopoNode.hpp
     );
     return ss.str();
   }
@@ -104,7 +100,6 @@ public:
 
 };
 
-<<<<<<< HEAD:include/uit/topology/TopoNode.hpp
 std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
   if (!node.HasOutputs()) return os;
 
@@ -126,7 +121,6 @@ std::istream& operator>>(std::istream& is, TopoNode& node) {
   return is;
 }
 
-} // namespace uit
-=======
 } // namespace netuit
->>>>>>> master:include/netuit/topology/TopoNode.hpp
+
+#endif // #ifndef NETUIT_TOPOLOGY_TOPONODE_HPP_INCLUDE

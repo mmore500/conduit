@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DISTRIBUTED_RDMAWINDOW_HPP_INCLUDE
+#define UITSL_DISTRIBUTED_RDMAWINDOW_HPP_INCLUDE
 
 #include <stddef.h>
 
@@ -305,3 +307,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DISTRIBUTED_RDMAWINDOW_HPP_INCLUDE

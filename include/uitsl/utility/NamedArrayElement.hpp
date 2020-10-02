@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_UTILITY_NAMEDARRAYELEMENT_HPP_INCLUDE
+#define UITSL_UTILITY_NAMEDARRAYELEMENT_HPP_INCLUDE
 
 namespace uitsl {
 
@@ -32,3 +34,5 @@ struct NamedArrayElement {
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_UTILITY_NAMEDARRAYELEMENT_HPP_INCLUDE

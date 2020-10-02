@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UIT_FIXTURES_CONDUIT_HPP_INCLUDE
+#define UIT_FIXTURES_CONDUIT_HPP_INCLUDE
 
 #include <memory>
 #include <stddef.h>
@@ -30,10 +32,22 @@ class Conduit {
   /// Handle to `Duct` shared by `inlet` and `outlet`.
   std::shared_ptr<duct_t> duct;
 
+  template<typename Inlet>
+  using inlet_wrapper_t = typename ImplSpec::template inlet_wrapper_t<Inlet>;
+  template<typename Outlet>
+  using outlet_wrapper_t = typename ImplSpec::template outlet_wrapper_t<Outlet>;
+
+public:
+
+  using inlet_t = inlet_wrapper_t< uit::Inlet<ImplSpec> >;
+  using outlet_t = outlet_wrapper_t< uit::Outlet<ImplSpec> >;
+
+private:
+
   /// `Conduit`'s `Inlet`.
-  uit::Inlet<ImplSpec> inlet;
+  inlet_t inlet;
   /// `Conduit`'s `Outlet`.
-  uit::Outlet<ImplSpec> outlet;
+  outlet_t outlet;
 
 public:
 
@@ -83,14 +97,14 @@ public:
    *
    * @return `Conduit`'s `Inlet`.
    */
-  uit::Inlet<ImplSpec> & GetInlet() { return inlet; }
+  inlet_t& GetInlet() { return inlet; }
 
   /**
    * Accessor for `Conduit`'s `Outlet`.
    *
    * @return `Conduit`'s `Inlet`.
    */
-  uit::Outlet<ImplSpec> & GetOutlet() { return outlet; }
+  outlet_t& GetOutlet() { return outlet; }
 
 };
 
@@ -112,3 +126,5 @@ namespace std {
   };
 
 } // namespace std
+
+#endif // #ifndef UIT_FIXTURES_CONDUIT_HPP_INCLUDE

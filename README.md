@@ -6,7 +6,7 @@
 [![documentation status](https://readthedocs.org/projects/uit/badge/?version=latest)](https://uit.readthedocs.io/en/latest/?badge=latest)
 [![documentation coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Fmmore500.com%2Fconduit%2Fdocumentation-coverage-badge.json)](https://uit.readthedocs.io/en/latest/)
 [![code coverage status](https://codecov.io/gh/mmore500/conduit/branch/master/graph/badge.svg)](https://codecov.io/gh/mmore500/conduit)
-[![DockerHub status](https://img.shields.io/docker/build/mmore500/conduit.svg)](https://hub.docker.com/r/mmore500/conduit)
+[![DockerHub link](https://img.shields.io/badge/DockerHub-Hosted-blue)](https://hub.docker.com/r/mmore500/conduit)
 [![Lines of Code](https://tokei.rs/b1/github/mmore500/conduit?category=code)](https://github.com/XAMPPRocky/tokei)
 [![Comments](https://tokei.rs/b1/github/mmore500/conduit?category=comments)](https://github.com/XAMPPRocky/tokei)
 [![dotos](https://img.shields.io/endpoint?url=https%3A%2F%2Fmmore500.com%2Fconduit%2Fdoto-badge.json)](https://github.com/mmore500/conduit/search?q=todo+OR+fixme&type=)
@@ -91,14 +91,14 @@ int main() {
 
   // start a producer thread
   team.Add( [&inlet](){
-    for (int i = 0; i < std::mega{}.num; ++i) inlet.TryPut(i);
+    for (int i = 0; i < std::mega::num; ++i) inlet.TryPut(i);
   } );
 
   // start a consumer thread
   team.Add( [&outlet](){
     int prev{ outlet.JumpGet() };
     size_t update_counter{};
-    for (size_t i = 0; i < std::mega{}.num; ++i) {
+    for (size_t i = 0; i < std::mega::num; ++i) {
       update_counter += std::exchange(prev, outlet.JumpGet()) == prev;
     }
     std::cout << update_counter << " updates detected" << std::endl;

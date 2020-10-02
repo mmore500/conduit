@@ -6,7 +6,7 @@ TEST_CASE("Test Sequential Completeness") {
 
   for (auto & node : mesh.GetSubmesh()) {
     int i{};
-    while ( i < std::kilo{}.num && node.GetOutput(0).TryPut( ++i ));
+    while ( i < std::kilo::num && node.GetOutput(0).TryPut( ++i ));
     sizes.push_back(i);
   }
 

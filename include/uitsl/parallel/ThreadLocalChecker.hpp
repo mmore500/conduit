@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_THREADLOCALCHECKER_HPP_INCLUDE
+#define UITSL_PARALLEL_THREADLOCALCHECKER_HPP_INCLUDE
 
 #include <mutex>
 
@@ -22,3 +24,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_THREADLOCALCHECKER_HPP_INCLUDE

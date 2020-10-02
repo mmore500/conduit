@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+TARGET_NAMES += get_plurality
 TARGET_NAMES += upper_uniquify
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
@@ -47,7 +48,7 @@ cov-%: %.cpp
 	# see https://clang.llvm.org/docs/UsersManual.html#profiling-with-instrumentation
 	for n in $$(seq 2 3); do \
 		export n; \
-		$(UIT_MPIEXEC) --bind-to none -n $$n \
+		$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n $$n \
 			/bin/bash -c '\
 				LLVM_PROFILE_FILE="%p-%m-%h-$${n}-$${OMPI_COMM_WORLD_RANK}.profraw" \
 				./$@.out' \

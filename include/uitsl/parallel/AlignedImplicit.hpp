@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_PARALLEL_ALIGNEDIMPLICIT_HPP_INCLUDE
+#define UITSL_PARALLEL_ALIGNEDIMPLICIT_HPP_INCLUDE
 
 #include <sstream>
 
@@ -28,3 +30,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_PARALLEL_ALIGNEDIMPLICIT_HPP_INCLUDE

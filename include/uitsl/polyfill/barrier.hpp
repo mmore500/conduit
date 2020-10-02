@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_POLYFILL_BARRIER_HPP_INCLUDE
+#define UITSL_POLYFILL_BARRIER_HPP_INCLUDE
 
 #include <condition_variable>
 #include <cstddef>
@@ -100,3 +102,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_POLYFILL_BARRIER_HPP_INCLUDE

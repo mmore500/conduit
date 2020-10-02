@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DATASTRUCTS_VECTORMAP_HPP_INCLUDE
+#define UITSL_DATASTRUCTS_VECTORMAP_HPP_INCLUDE
 
 #include <functional>
 #include <memory>
@@ -198,3 +200,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DATASTRUCTS_VECTORMAP_HPP_INCLUDE
