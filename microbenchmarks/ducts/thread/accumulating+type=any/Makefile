@@ -1,4 +1,4 @@
-TARGET_NAMES += a\:\:MutexAccumulatingDuct
+#TARGET_NAMES += a\:\:MutexAccumulatingDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
