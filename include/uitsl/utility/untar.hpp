@@ -77,10 +77,10 @@ bool try_set_perms( const stdfs::path& path, const stdfs::perms mode ) {
   stdfs::permissions(path, mode, err);
 
   if ( err ) {
-    emp::NotifyError( emp::to_string(
+    emp::NotifyWarning( emp::to_string(
       "setting permissions for ", path, " failed with error code ", err
     ) );
-    return false;
+    return true;
   } else return true;
 
 }
