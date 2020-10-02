@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_COMPARE_FILES_HPP_INCLUDE
+#define UITSL_DEBUG_COMPARE_FILES_HPP_INCLUDE
 
 #include <fstream>
 #include <string>
@@ -17,3 +19,5 @@ bool compare_files(const std::string& p1, const std::string& p2) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_COMPARE_FILES_HPP_INCLUDE
