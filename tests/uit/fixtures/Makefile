@@ -13,14 +13,6 @@ UIT_MPIEXEC ?= mpiexec
 
 default: test
 
-test-%: %.cpp
-	echo "UIT_MPICXX" $(UIT_MPICXX)
-	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
-	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
-	# execute test
-	for n in $$(seq 1 8); do \
-		$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n $$n ./$@.out || break; \
-	done
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TARGET_NAMES))
