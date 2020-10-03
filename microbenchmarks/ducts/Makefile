@@ -1,4 +1,4 @@
-TARGET_NAMES += thread
+#TARGET_NAMES += thread
 TARGET_NAMES += intra
 TARGET_NAMES += proc
 
