@@ -1,8 +1,8 @@
 include $(TO_ROOT)/tests/MaketemplateRunning
 
-PROC_MIN ?: 1
+PROC_MIN ?= 1
 
-PROC_MAX ?: 8
+PROC_MAX ?= 8
 
 test-%: %.cpp
 	echo "UIT_MPICXX" $(UIT_MPICXX)
