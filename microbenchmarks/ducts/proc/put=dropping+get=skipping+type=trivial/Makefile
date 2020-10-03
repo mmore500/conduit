@@ -4,4 +4,4 @@ TARGET_NAMES += inlet=RingRput+outlet=Window_t\:\:IrrOwDuct
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
-include $(TO_ROOT)/microbenchmarks/MaketemplateRunning
+include $(TO_ROOT)/microbenchmarks/MaketemplateMultiproc

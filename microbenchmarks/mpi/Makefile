@@ -9,4 +9,4 @@ TARGET_NAMES += MPI_Irecv
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
-include $(TO_ROOT)/microbenchmarks/MaketemplateRunning
+include $(TO_ROOT)/microbenchmarks/MaketemplateMultiproc
