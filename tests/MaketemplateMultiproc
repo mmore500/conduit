@@ -9,7 +9,7 @@ test-%: %.cpp
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
 	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -o $@.out
 	# execute test
-	for n in $$(seq $PROC_MIN $PROC_MAX); do \
+	for n in $$(seq $(PROC_MIN) $(PROC_MAX)); do \
 		$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n $$n ./$@.out || break; \
 	done
 
