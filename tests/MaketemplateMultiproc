@@ -7,14 +7,14 @@ PROC_MAX ?= 8
 test-%: %.cpp
 	echo "UIT_MPICXX" $(UIT_MPICXX)
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
-	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -lz -o $@.out
 	# execute test
 	for n in $$(seq $(PROC_MIN) $(PROC_MAX)); do \
 		$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n $$n ./$@.out || break; \
 	done
 
 cov-%: %.cpp
-	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -o $@.out
+	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -lz -o $@.out
 	# execute test
 	echo "UIT_MPICXX" $(UIT_MPICXX)
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)

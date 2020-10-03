@@ -3,14 +3,14 @@ include $(TO_ROOT)/tests/MaketemplateRunning
 test-%: %.cpp
 	echo "UIT_MPICXX" $(UIT_MPICXX)
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
-	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -lz -o $@.out
 	# execute test
 	for n in $$(seq 2 8); do \
 		$(UIT_MPIEXEC) -n 1 ./$@.out --num_threads $$n || exit 1; \
 	done
 
 cov-%: %.cpp
-	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -o $@.out
+	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -lz -o $@.out
 	# execute test
 	echo "UIT_MPICXX" $(UIT_MPICXX)
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
