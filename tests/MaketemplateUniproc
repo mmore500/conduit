@@ -8,7 +8,7 @@ test-%: %.cpp
 	$(UIT_MPIEXEC) -n 1 ./$@.out
 
 cov-%: %.cpp
-	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	export OMPI_CXX=clang++ && $(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -lstdc++fs -o $@.out
 	# execute test
 	echo "UIT_MPICXX" $(UIT_MPICXX)
 	echo "UIT_MPIEXEC" $(UIT_MPIEXEC)
