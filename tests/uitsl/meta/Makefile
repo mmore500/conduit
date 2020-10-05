@@ -5,6 +5,7 @@ TARGET_NAMES += f\:\:static_test
 TARGET_NAMES += IdentityWrapper
 TARGET_NAMES += s\:\:static_test
 TARGET_NAMES += t\:\:static_test
+TARGET_NAMES += tuple_has_type
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
