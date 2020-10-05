@@ -22,7 +22,7 @@ public:
    * Get number of descendant leaf nodes.
    */
   static constexpr size_t GetSize() {
-    if constexpr ( sizeof...(Rest) ) {
+    if constexpr ( sizeof...(Rest) > 0 ) {
       return First::GetSize() + PodInternalNode<Rest...>::GetSize();
     } else return First::GetSize();
   }
@@ -56,7 +56,7 @@ public:
    */
   template<typename Query>
   static constexpr bool HasType() {
-    if constexpr ( sizeof...(Rest) ) {
+    if constexpr ( sizeof...(Rest) > 0 ) {
       return (
         std::is_same<First, Query>() // is this node the Query?
         || First::template HasType<Query>() // does first child contain Query?
