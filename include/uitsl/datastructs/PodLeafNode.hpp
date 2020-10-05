@@ -1,13 +1,13 @@
 #pragma once
-#ifndef UITSL_DATASTRUCTS_PODLEAFARRAY_HPP_INCLUDE
-#define UITSL_DATASTRUCTS_PODLEAFARRAY_HPP_INCLUDE
+#ifndef UITSL_DATASTRUCTS_PODLEAFNODE_HPP_INCLUDE
+#define UITSL_DATASTRUCTS_PODLEAFNODE_HPP_INCLUDE
 
 #include "../../../third-party/Empirical/source/base/array.h"
 
 namespace uitsl {
 
 template<typename T, size_t N=1>
-class PodLeafArray {
+class PodLeafNode {
 
   emp::array<T, N> data;
 
@@ -68,4 +68,4 @@ public:
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_DATASTRUCTS_PODLEAFARRAY_HPP_INCLUDE
+#endif // #ifndef UITSL_DATASTRUCTS_PODLEAFNODE_HPP_INCLUDE

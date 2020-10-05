@@ -5,8 +5,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/datastructs/PodInternalNode.hpp"
-#include "uitsl/datastructs/PodLeafArray.hpp"
-#include "uitsl/datastructs/PodLeafArray.hpp"
+#include "uitsl/datastructs/PodLeafNode.hpp"
+#include "uitsl/datastructs/PodLeafNode.hpp"
 #include "uitsl/meta/decay_equiv.hpp"
 
 // based on https://commons.wikimedia.org/wiki/File:Organizational_chart.svg#/media/File:Organizational_chart.svg
@@ -15,15 +15,15 @@ struct PrivateA{ std::string val{"PrivateA"}; };
 struct PrivateB{ std::string val{"PrivateB"}; };
 
 using SergeantB = uitsl::PodInternalNode<
-  uitsl::PodLeafArray<PrivateA, 2>,
-  uitsl::PodLeafArray<PrivateB, 1>,
-  uitsl::PodLeafArray<PrivateA>
+  uitsl::PodLeafNode<PrivateA, 2>,
+  uitsl::PodLeafNode<PrivateB, 1>,
+  uitsl::PodLeafNode<PrivateA>
 >;
 
 struct SergeantA{ std::string val{"SergeantA"}; };
 
 using CaptainA = uitsl::PodInternalNode<
-  uitsl::PodLeafArray<SergeantA>,
+  uitsl::PodLeafNode<SergeantA>,
   SergeantB
 >;
 
@@ -31,7 +31,7 @@ using CaptainA = uitsl::PodInternalNode<
 struct SergeantC{ std::string val{"SergeantC"}; };
 
 using CaptainB = uitsl::PodInternalNode<
-  uitsl::PodLeafArray<SergeantC>
+  uitsl::PodLeafNode<SergeantC>
 >;
 
 struct CaptainC{ std::string val{"CaptainC"}; };
@@ -39,7 +39,7 @@ struct CaptainC{ std::string val{"CaptainC"}; };
 using ColonelB = uitsl::PodInternalNode<
   CaptainA,
   CaptainB,
-  uitsl::PodLeafArray<CaptainC, 3>
+  uitsl::PodLeafNode<CaptainC, 3>
 >;
 
 // ignore ColonelA
