@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd metis
-make config shared=1 cc=gcc
-make install
-
+apt-get install libmetis-lib metis ||\
+pacman -S metis ||\
+yum install metis ||\
+echo "package installer not supported! please install METIS manually"
