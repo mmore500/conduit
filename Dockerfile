@@ -133,23 +133,23 @@ RUN \
     libstdc++6 \
     libx11-6 \
     libx11-xcb1 \
-    libxcb1 \
-    libxcomposite1 \
-    libxcursor1 \
-    libxdamage1 \
-    libxext6 \
-    libxfixes3 \
-    libxi6 \
-    libxrandr2 \
-    libxrender1 \
+    libxcb1=1.13 \
+    libxcomposite1=0.4.4 \
+    libxcursor1=1.1.15 \
+    libxdamage1=1.1.4 \
+    libxext6=1.3.3 \
+    libxfixes3=5.0.3 \
+    libxi6=1.7.9 \
+    libxrandr2=1.5.1 \
+    libxrender1=0.9.10 \
     libxss1 \
     libxtst6 \
     ca-certificates \
     fonts-liberation \
-    libappindicator1 \
-    libnss3 \
-    lsb-release \
-    xdg-utils \
+    libappindicator1=12.10.1 \
+    libnss3=3.35 \
+    lsb-release=9.20170808 \
+    xdg-utils=1.1.2 \
     && \
   echo "installed web dependencies"
 
@@ -159,10 +159,10 @@ RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 RUN \
   apt-get install -qq \
     man \
-    vim \
-    nano \
-    emacs \
-    htop \
+    vim=8.0.1453 \
+    nano=2.9.3 \
+    emacs=47.0 \
+    htop=2.1.0 \
     && \
   echo "installed creature comforts"
 
@@ -174,7 +174,7 @@ RUN \
     frozendict  \
     seaborn  \
     matplotlib  \
-    python-slugify  \
+    python-slugify=1.2.4  \
     iterpop  \
     exdown \
     && \
@@ -182,7 +182,7 @@ RUN \
 
 RUN \
   apt-get install -qq \
-    doxygen \
+    doxygen=1.8.13 \
     && \
   echo "installed documentation dependencies"
 
