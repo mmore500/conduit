@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_CHRONO_CYCLE_FREQ_HPP_INCLUDE
+#define UITSL_CHRONO_CYCLE_FREQ_HPP_INCLUDE
 
 #include <chrono>
 #include <thread>
@@ -56,3 +58,5 @@ namespace uitsl {
   }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CHRONO_CYCLE_FREQ_HPP_INCLUDE

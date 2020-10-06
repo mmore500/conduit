@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_MATH_RATIO_TO_DOUBLE_HPP_INCLUDE
+#define UITSL_MATH_RATIO_TO_DOUBLE_HPP_INCLUDE
 
 namespace uitsl {
 
@@ -10,4 +12,6 @@ constexpr double ratio_to_double() {
 template<typename Ratio>
 constexpr double as_double() { return ratio_to_double<Ratio>(); }
 
-}
+} // namespace uitsl
+
+#endif // #ifndef UITSL_MATH_RATIO_TO_DOUBLE_HPP_INCLUDE

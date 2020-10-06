@@ -1,6 +1,10 @@
-#include <array>
+#pragma once
 #ifndef UITSL_UTILITY_EXEC_UTILS_HPP_INCLUDE
 #define UITSL_UTILITY_EXEC_UTILS_HPP_INCLUDE
+
+#include <array>
+#include <cstdio>
+#include <iostream>
 #include <memory>
 #include <stdexcept>
 #include <string>
