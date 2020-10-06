@@ -26,12 +26,12 @@ RUN \
 
 RUN \
   apt-get install -qq \
-    curl==7.58.0 \
-    git==2.17.1 \
-    gzip==1.6 \
-    unzip=6.00 \
-    tar=1.29 \
-    wget=1.19.4 \
+    curl=7.58.0-2ubuntu3.10 \
+    git=1:2.17.1-1ubuntu0.7 \
+    gzip=1.6-5ubuntu1 \
+    unzip= 6.0-21ubuntu1 \
+    tar=1.29b-2ubuntu0.1 \
+    wget=1.19.4-1ubuntu2.2 \
     && \
   echo "installed fundamentals"
 
@@ -133,23 +133,23 @@ RUN \
     libstdc++6 \
     libx11-6 \
     libx11-xcb1 \
-    libxcb1=1.13 \
-    libxcomposite1=0.4.4 \
-    libxcursor1=1.1.15 \
-    libxdamage1=1.1.4 \
-    libxext6=1.3.3 \
-    libxfixes3=5.0.3 \
-    libxi6=1.7.9 \
-    libxrandr2=1.5.1 \
-    libxrender1=0.9.10 \
+    libxcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxext6 \
+    libxfixes3 \
+    libxi6 \
+    libxrandr2 \
+    libxrender1 \
     libxss1 \
     libxtst6 \
     ca-certificates \
     fonts-liberation \
-    libappindicator1=12.10.1 \
-    libnss3=3.35 \
-    lsb-release=9.20170808 \
-    xdg-utils=1.1.2 \
+    libappindicator1 \
+    libnss3 \
+    lsb-release \
+    xdg-utils \
     && \
   echo "installed web dependencies"
 
@@ -159,10 +159,10 @@ RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 RUN \
   apt-get install -qq \
     man \
-    vim=8.0.1453 \
-    nano=2.9.3 \
+    vim=2:8.0.1453-1ubuntu1.3 \
+    nano=2.9.3-2 \
     emacs=47.0 \
-    htop=2.1.0 \
+    htop=2.1.0-3 \
     && \
   echo "installed creature comforts"
 
@@ -174,7 +174,7 @@ RUN \
     frozendict  \
     seaborn  \
     matplotlib  \
-    python-slugify=1.2.4  \
+    python-slugify  \
     iterpop  \
     exdown \
     && \
@@ -182,7 +182,7 @@ RUN \
 
 RUN \
   apt-get install -qq \
-    doxygen=1.8.13 \
+    doxygen \
     && \
   echo "installed documentation dependencies"
 
