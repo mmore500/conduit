@@ -4,23 +4,23 @@
 #include <utility>
 #include <stddef.h>
 
-#include "../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/source/base/vector.h"
 
-#include "../utility/EnumeratedFunctor.hpp"
-#include "../parallel/thread_utils.hpp"
-#include "../distributed/mpi_utils.hpp"
+#include "../../uitsl/debug/EnumeratedFunctor.hpp"
+#include "../../uitsl/parallel/thread_utils.hpp"
+#include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../topology/Topology.hpp"
 
 namespace uit {
 
-std::unordered_map<uit::proc_id_t, Topology> GetSubTopologies(
-  const Topology& topo,
-  const uit::EnumeratedFunctor<Topology::node_id_t, uit::proc_id_t>& assigner
+std::unordered_map<uitsl::proc_id_t, netuit::Topology> GetSubTopologies(
+  const netuit::Topology& topo,
+  const uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t>& assigner
 ) {
-  std::unordered_map<uit::proc_id_t, Topology> subtopos;
+  std::unordered_map<uitsl::proc_id_t, netuit::Topology> subtopos;
 
   std::unordered_map<
-    uit::proc_id_t,
+    uitsl::proc_id_t,
     std::unordered_set<size_t>
   > node_map;
   for (size_t node_id = 0; node_id < assigner.GetSize(); ++node_id) {
@@ -36,11 +36,11 @@ std::unordered_map<uit::proc_id_t, Topology> GetSubTopologies(
   return subtopos;
 }
 // todo: rename
-std::unordered_map<size_t, uit::thread_id_t> Shim(
-  const std::unordered_map<uit::proc_id_t, Topology>& proc_map,
+std::unordered_map<size_t, uitsl::thread_id_t> Shim(
+  const std::unordered_map<uitsl::proc_id_t, netuit::Topology>& proc_map,
   const size_t threads_per_proc
 ) {
-  std::unordered_map<size_t, uit::thread_id_t> ret;
+  std::unordered_map<size_t, uitsl::thread_id_t> ret;
 
   for (const auto& [proc_id, subtopo] : proc_map) {
     const auto thread_assign = subtopo.Optimize(threads_per_proc);
@@ -58,18 +58,18 @@ std::unordered_map<size_t, uit::thread_id_t> Shim(
 // (special case of assign_contiguously)
 
 std::pair<
-  uit::EnumeratedFunctor<Topology::node_id_t, uit::proc_id_t>,
-  uit::EnumeratedFunctor<Topology::node_id_t, uit::thread_id_t>
+  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t>,
+  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::thread_id_t>
 > GenerateMetisAssignments (
   const size_t num_procs,
   const size_t threads_per_proc,
-  const Topology& topology
+  const netuit::Topology& topology
 ) {
-  uit::EnumeratedFunctor<Topology::node_id_t, uit::proc_id_t> proc_assigner{
+  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t> proc_assigner{
     topology.Optimize(num_procs)
   };
 
-  uit::EnumeratedFunctor<Topology::node_id_t, uit::thread_id_t> thread_assigner{
+  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::thread_id_t> thread_assigner{
     Shim(
       GetSubTopologies(topology, proc_assigner),
       threads_per_proc

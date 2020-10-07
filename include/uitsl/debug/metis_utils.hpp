@@ -2,13 +2,9 @@
 
 #include <string>
 
-extern "C" {
 #include <metis.h>
-}
 
-#include "../utility/numeric_cast.hpp"
-
-namespace uit::metis {
+namespace uitsl::metis {
 void verify(const int status) {
   std::string name;
 

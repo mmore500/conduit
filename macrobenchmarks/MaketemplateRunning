@@ -10,7 +10,7 @@ UIT_MPIEXEC ?= mpiexec
 default: bench
 
 bench-%: %.cpp
-	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lmetis -lpthread -o $@.out
 	# execute bench
 	$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n 1 ./$@.out
 
@@ -19,7 +19,7 @@ bench: $(addprefix bench-, $(TARGET_NAMES))
 	rm -rf bench*.out
 
 build-%: %.cpp
-	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lmetis -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
 build: $(addprefix build-, $(TARGET_NAMES))
@@ -57,7 +57,7 @@ UIT_MPIEXEC ?= mpiexec
 default: bench
 
 bench-%: %.cpp
-	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lmetis -lpthread -o $@.out
 	# execute bench
 	$(UIT_MPIEXEC) --bind-to none $$($(UIT_MPIEXEC) --version | grep -q "OpenRTE" && echo "--oversubscribe") -n 1 ./$@.out
 
@@ -66,7 +66,7 @@ bench: $(addprefix bench-, $(TARGET_NAMES))
 	rm -rf bench*.out
 
 build-%: %.cpp
-	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lmetis -lpthread -o $@.out
 
 # Test in debug mode without pointer tracker
 build: $(addprefix build-, $(TARGET_NAMES))

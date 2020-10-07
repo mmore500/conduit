@@ -40,15 +40,15 @@ public:
 
   const outputs_t& GetOutputs() const noexcept { return outputs; }
 
-  void AddInput(const uit::TopoNodeInput& input_) {
+  void AddInput(const netuit::TopoNodeInput& input_) {
     inputs.push_back(input_);
   }
 
-  void AddOutput(const uit::TopoNodeOutput& output_) {
+  void AddOutput(const netuit::TopoNodeOutput& output_) {
     outputs.push_back(output_);
   }
 
-  void RemoveInput(const uit::TopoNodeInput& input_) {
+  void RemoveInput(const netuit::TopoNodeInput& input_) {
     inputs.erase(
       std::remove(
         inputs.begin(),
@@ -59,7 +59,7 @@ public:
     );
   }
 
-  void RemoveOutput(const uit::TopoNodeOutput& output_) {
+  void RemoveOutput(const netuit::TopoNodeOutput& output_) {
     outputs.erase(
       std::remove(
         outputs.begin(),

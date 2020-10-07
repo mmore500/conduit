@@ -12,16 +12,15 @@
 #include <unordered_map>
 #include <utility>
 
+#include <metis.h>
+
 #include "../../../third-party/Empirical/source/tools/hash_utils.h"
 #include "../../../third-party/Empirical/source/tools/keyname_utils.h"
 
-extern "C" {
-#include <metis.h>
-}
-#include "../utility/EnumeratedFunctor.hpp"
-#include "../utility/identity.hpp"
-#include "metis_utils.hpp"
-#include "../utility/stream_utils.hpp"
+#include "../../uitsl/debug/EnumeratedFunctor.hpp"
+#include "../../uitsl/polyfill/identity.hpp"
+#include "../../uitsl/debug/metis_utils.hpp"
+#include "../../uitsl/utility/stream_utils.hpp"
 
 #include "TopoNode.hpp"
 
@@ -41,28 +40,28 @@ private:
   std::unordered_map<edge_id_t, node_id_t> output_registry;
 
   // map of index to node_id
-  std::function<node_id_t(node_id_t)> index_map{uit::identity};
+  std::function<node_id_t(node_id_t)> index_map{std::identity};
 
-  void RegisterNode(const node_id_t node_id, const uit::TopoNode& topo_node) {
+  void RegisterNode(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     RegisterNodeInputs(node_id, topo_node);
     RegisterNodeOutputs(node_id, topo_node);
   }
 
-  void RegisterNodeInputs(const node_id_t node_id, const uit::TopoNode& topo_node) {
+  void RegisterNodeInputs(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     for (const auto& input : topo_node.GetInputs()) {
       emp_assert(input_registry.count(input.GetEdgeID()) == 0);
       input_registry[input.GetEdgeID()] = node_id;
     }
   }
 
-  void RegisterNodeOutputs(const node_id_t node_id, const uit::TopoNode& topo_node) {
+  void RegisterNodeOutputs(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     for (const auto& output : topo_node.GetOutputs()) {
       emp_assert(output_registry.count(output.GetEdgeID()) == 0);
       output_registry[output.GetEdgeID()] = node_id;
     }
   }
 
-  emp::vector<node_id_t> GetNodeOutputs(const uit::TopoNode& node) const {
+  emp::vector<node_id_t> GetNodeOutputs(const netuit::TopoNode& node) const {
     emp::vector<node_id_t> res;
     for (const auto& edge : node.GetOutputs()) {
       res.push_back(input_registry.at(edge.GetEdgeID()));
@@ -85,7 +84,7 @@ public:
   Topology(std::istream& is) {
     emp::vector<std::string> lines;
     // read file lines into vector
-    uit::read_lines(is, std::back_inserter(lines));
+    uitsl::read_lines(is, std::back_inserter(lines));
 
     // map of node itds to nodes
     std::map<node_id_t, TopoNode> node_map;
@@ -150,7 +149,7 @@ public:
   const TopoNode& operator[](size_t n) const { return topology[n]; }
 
   void SetMap(const std::unordered_map<node_id_t, node_id_t>& map) {
-    index_map = uit::EnumeratedFunctor<node_id_t, node_id_t>(map);
+    index_map = uitsl::EnumeratedFunctor<node_id_t, node_id_t>(map);
   }
 
   node_id_t GetCanonicalNodeID(const node_id_t node_id) const {
@@ -228,7 +227,7 @@ public:
       result.data() // partition vector of the graph
     );
     // deal with return code
-    uit::metis::verify(status);
+    uitsl::metis::verify(status);
 
     return result;
   }
@@ -274,7 +273,7 @@ public:
   }
 
   Topology GetSubTopology(const std::unordered_set<size_t>& node_ids) const {
-    emp::vector<uit::TopoNode> nodes;
+    emp::vector<netuit::TopoNode> nodes;
     std::unordered_map<node_id_t, node_id_t> translator;
 
     // fill subtopology with all nodes in node_ids

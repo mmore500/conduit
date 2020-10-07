@@ -24,7 +24,7 @@ std::istream& operator>>(std::istream& is, Line& line) {
 
 template <typename Out>
 void read_lines(std::istream & is, Out out) {
-    using In = std::istream_iterator<uit::Line>;
+    using In = std::istream_iterator<uitsl::Line>;
     std::copy(In(is), In(), out);
 }
 

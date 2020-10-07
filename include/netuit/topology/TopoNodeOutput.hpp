@@ -45,8 +45,8 @@ public:
 
 namespace std {
   template <>
-  struct hash<uit::TopoNodeOutput> {
-    std::size_t operator()(const uit::TopoNodeOutput& k) const {
+  struct hash<netuit::TopoNodeOutput> {
+    std::size_t operator()(const netuit::TopoNodeOutput& k) const {
       return std::hash<size_t>()(k.GetEdgeID());
     }
   };

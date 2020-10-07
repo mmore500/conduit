@@ -4,10 +4,10 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/assign/AssignRoundRobin.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/MPIGuard.hpp"
+#include "netuit/assign/AssignRoundRobin.hpp"
+#include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
 
-const uit::MPIGuard guard;
+const uitsl::MpiGuard guard;
 
 // stub test

@@ -3,8 +3,8 @@
 #include <functional>
 #include <stddef.h>
 
-#include "../../third-party/Empirical/source/base/vector.h"
-#include "../../third-party/Empirical/source/tools/random_utils.h"
+#include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/source/tools/random_utils.h"
 
 namespace uit {
 // TODO assign_randomly
