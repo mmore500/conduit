@@ -29,7 +29,7 @@ RUN \
     curl=7.58.0-2ubuntu3.10 \
     git=1:2.17.1-1ubuntu0.7 \
     gzip=1.6-5ubuntu1 \
-    unzip= 6.0-21ubuntu1 \
+    unzip=6.0-21ubuntu1 \
     tar=1.29b-2ubuntu0.1 \
     wget=1.19.4-1ubuntu2.2 \
     && \
