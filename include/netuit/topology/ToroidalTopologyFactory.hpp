@@ -100,7 +100,7 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
 }
 
 struct ToroidalTopologyFactory {
-  uit::Topology operator()(const Dims& dim_cardinality) const {
+  netuit::Topology operator()(const Dims& dim_cardinality) const {
     return make_toroidal_topology(dim_cardinality);
   }
 
