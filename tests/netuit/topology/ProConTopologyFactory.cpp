@@ -5,7 +5,7 @@
 
 #include "netuit/topology/ProConTopologyFactory.hpp"
 
-#include "factory_common.hpp"
+#include "FactoryCommon.hpp"
 
 /*
 TEST_CASE("Test ProConTopologyFactory") {

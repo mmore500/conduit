@@ -5,7 +5,7 @@
 
 #include "netuit/topology/DyadicTopologyFactory.hpp"
 
-#include "factory_common.hpp"
+#include "FactoryCommon.hpp"
 
 TEST_CASE("Test DyadicTopologyFactory") {
 
