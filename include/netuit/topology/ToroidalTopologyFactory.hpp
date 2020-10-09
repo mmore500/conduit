@@ -14,8 +14,8 @@
 #include "Topology.hpp"
 #include "TopoNode.hpp"
 
-#include "../utility/mapping_utils.hpp"
-#include "../utility/math_utils.hpp"
+#include "uitsl/debug/mapping_utils.hpp"
+#include "uitsl/math/math_utils.hpp"
 
 namespace uit {
 
