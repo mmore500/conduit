@@ -3,11 +3,11 @@
 #include <filesystem>
 #include <sstream>
 
-#include "../../third-party/Empirical/source/tools/keyname_utils.h"
+#include "../../../third-party/Empirical/source/tools/keyname_utils.h"
 
-#include "uit/utility/exec_utils.hpp"
-#include "uit/utility/math_utils.hpp"
-#include "uit/utility/stream_utils.hpp"
+#include "uitsl/utility/exec_utils.hpp"
+#include "uitsl/math/math_utils.hpp"
+#include "uitsl/utility/stream_utils.hpp"
 
 const std::string dir = "assets/";
 
