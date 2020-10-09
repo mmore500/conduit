@@ -8,7 +8,7 @@ UIT_MPIEXEC ?= mpiexec
 default: test
 
 # Test in debug mode without pointer tracker
-test: $(addprefix test-, $(TARGET_NAMES))
+test:: $(addprefix test-, $(TARGET_NAMES))
 	rm -rf test*.out
 
 # Test optimized version without debug features
@@ -34,7 +34,7 @@ cov: $(addprefix cov-, $(TARGET_NAMES))
 cov-%: % $(TO_ROOT)/coverage_include
 	cd $< && make cov
 
-clean:
+clean::
 	rm -f *.out
 	rm -f *.o
 	rm -f *.gcda
