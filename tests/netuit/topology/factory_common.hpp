@@ -20,12 +20,12 @@ emp::vector<dim_t> find_assets(const std::string& name, const std::string& ext) 
         if (file.at("name") == name && file.at("ext") == ext) {
             // matching file found
             // get ndims
-            const size_t ndims = uit::stoszt(file.at("ndims"));
+            const size_t ndims = uitsl::stoszt(file.at("ndims"));
 
             // put all dims into dim_t
             dim_t dims;
             for (size_t i = 0; i < ndims; ++i) {
-                const size_t dim = uit::stoszt(file.at("dim" + emp::to_string(i)));
+                const size_t dim = uitsl::stoszt(file.at("dim" + emp::to_string(i)));
                 dims.push_back(dim);
             }
             // store the resulting data
@@ -66,7 +66,7 @@ bool test_isomorphic(const std::string& str, const std::string& filename) {
 
     std::cout << "isomorphic?" << std::endl;
     // use python utlity to compare
-    std::string res = uit::exec(emp::to_string(
+    std::string res = uitsl::exec(emp::to_string(
         "scripts/compare_graphs.py ",
         "staging/" + filename + " ",
         filename
@@ -97,7 +97,7 @@ bool test_adjacency_output(const Fun&& factory, const T dims) {
     std::ifstream adj_file(filename, std::ifstream::binary|std::ifstream::ate);
 
     return (
-        uit::compare_streams(adj_stream, adj_file)
+        uitsl::compare_streams(adj_stream, adj_file)
         || test_isomorphic(adj_str, filename)
     );
 }
@@ -117,7 +117,7 @@ bool test_edge_output(const Fun&& factory, const T dims) {
     std::cout << "testing: " << filename << std::endl;
 
     std::ifstream edge_file(filename, std::ifstream::binary|std::ifstream::ate);
-    return uit::compare_streams(edge_stream, edge_file);
+    return uitsl::compare_streams(edge_stream, edge_file);
 }
 
 template <typename Fun>
