@@ -53,7 +53,7 @@ public:
   }
 };
 
-Topology make_toroidal_topology(const Dims& dim_cardinality) {
+netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
   /*
   * goal
   * make toroidal topology (such that opposite edges are the same edge)
@@ -65,11 +65,11 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
     std::multiplies<size_t>()
   );
 
-  emp::vector<TopoNode> nodes(cardinality);
+  emp::vector<netuit::TopoNode> nodes(cardinality);
   uit::UIDMap<size_t> node_edge_map;
 
   auto get_neighbor = [&dim_cardinality](Point p, const size_t dim, const int n) -> Point {
-    p[dim] = uit::circular_index(p[dim], dim_cardinality[dim], n);
+    p[dim] = uitsl::circular_index(p[dim], dim_cardinality[dim], n);
     return p;
   };
 
@@ -87,10 +87,10 @@ Topology make_toroidal_topology(const Dims& dim_cardinality) {
 
   for (auto it = nodes.begin(); it != nodes.end(); ++it) {
     const size_t my_id = std::distance(nodes.begin(), it);
-    const auto n = uit::linear_decode(my_id, dim_cardinality);
+    const auto n = uitsl::linear_decode(my_id, dim_cardinality);
     const auto neighbors = get_neighbors(n);
     for (const auto& neighbor : neighbors) {
-      const auto neighbor_node = uit::linear_encode(neighbor, dim_cardinality);
+      const auto neighbor_node = uitsl::linear_encode(neighbor, dim_cardinality);
 
       it->AddInput(node_edge_map[{false, neighbor_node, my_id}]);
       it->AddOutput(node_edge_map[{true, my_id, neighbor_node}]);
