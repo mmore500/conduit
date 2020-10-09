@@ -11,9 +11,17 @@ def make_filename(dim):
         'dim0'  : str(dim),
         'ext'   : '.adj'
     })
+# taken from https://stackoverflow.com/a/312464
+def chunks(lst, n):
+    """Yield successive n-sized chunks from lst."""
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
 
 for dim in dims:
-    procon = [(i, i + 1) for i in range(0, dim, 2)]
+    x = list(range(0, dim))
+    if len(x) % 2:
+        x.append(x[-1])
+    procon = list(chunks(x, 2))
     G_procon = nx.DiGraph(procon)
 
     with open("assets/" + make_filename(dim), "w") as file:
