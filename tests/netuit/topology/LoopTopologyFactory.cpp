@@ -10,7 +10,7 @@
 TEST_CASE("Test LoopTopologyFactory") {
 
   // TODO flesh out stub test
-  uit::LoopTopologyFactory{}({100});
+  netuit::LoopTopologyFactory{}({100});
 
   for (size_t i = 0; i < 150; ++i) {
     REQUIRE( netuit::LoopTopologyFactory{}(i).GetSize() == i );
@@ -24,6 +24,6 @@ TEST_CASE("Test LoopTopologyFactory") {
 }
 TEST_CASE("Test file output") {
 
-  REQUIRE(test_all_adj(uit::LoopTopologyFactory{}));
+  REQUIRE(test_all_adj(netuit::LoopTopologyFactory{}));
 
 }
