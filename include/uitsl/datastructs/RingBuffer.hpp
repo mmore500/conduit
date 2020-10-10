@@ -58,10 +58,21 @@ public:
     }
   }
 
+  void DoPopHead(const size_t num_requested=1) {
+    emp_assert( num_requested <= GetSize() );
+    num_items -= num_popped;
+  }
+
+  size_t PopHead(const size_t num_requested=1) {
+    const size_t num_popped = std::min(num_requested, GetSize());
+    DoPopHead( num_requested );
+    return num_popped;
+  }
+
   void DoPopTail(const size_t num_requested=1) {
     emp_assert( num_requested <= GetSize() );
     tail += num_popped;
-    num_items -= num_popped;    
+    num_items -= num_popped;
   }
 
   size_t PopTail(const size_t num_requested=1) {
@@ -84,7 +95,7 @@ public:
 
   const T& GetTail() const { return Get(0); }
 
-  void Clear() { num_items = 0; }  
+  void Clear() { num_items = 0; }
 
 };
 
