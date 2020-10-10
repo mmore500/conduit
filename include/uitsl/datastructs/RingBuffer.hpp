@@ -101,6 +101,10 @@ public:
 
   auto& GetBuffer() { return buffer; }  
 
+  bool IsHead(const size_t pos) const { return pos == GetSize() - 1; }
+
+  bool IsTail(const size_t pos) const { return pos == 0; }
+
 };
 
 } // namespace uitsl
