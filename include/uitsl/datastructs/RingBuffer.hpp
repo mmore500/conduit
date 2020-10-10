@@ -62,7 +62,7 @@ public:
 
   void DoPopHead(const size_t num_requested=1) {
     emp_assert( num_requested <= GetSize() );
-    num_items -= num_popped;
+    num_items -= num_requested;
   }
 
   size_t PopHead(const size_t num_requested=1) {
@@ -73,8 +73,8 @@ public:
 
   void DoPopTail(const size_t num_requested=1) {
     emp_assert( num_requested <= GetSize() );
-    tail += num_popped;
-    num_items -= num_popped;
+    tail += num_requested;
+    num_items -= num_requested;
   }
 
   size_t PopTail(const size_t num_requested=1) {
