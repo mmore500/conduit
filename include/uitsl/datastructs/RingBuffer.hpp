@@ -82,6 +82,8 @@ public:
 
   const T& GetTail() const { return Get(0); }
 
+  void Clear() { num_items = 0; }  
+
 };
 
 } // namespace uitsl
