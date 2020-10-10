@@ -23,12 +23,14 @@ public:
 
   size_t GetSize() const { return num_items; }
 
+  constexpr size_t GetCapacity() const { return N; }
+
   bool IsEmpty() const { return GetSize() == 0; }
 
   bool IsFull() const { return GetSize() == N; }
-  
+
   void DoPushHead() { emp_assert( !IsFull() ); ++num_items; }
-  
+
   bool PushHead() {
     if ( IsFull() ) return false;
     else {
@@ -61,7 +63,7 @@ public:
     tail += num_popped;
     num_items -= num_popped;    
   }
-  
+
   size_t PopTail(const size_t num_requested=1) {
     const size_t num_popped = std::min(num_requested, GetSize());
     DoPopTail( num_requested );
