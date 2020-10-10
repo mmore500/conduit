@@ -56,10 +56,15 @@ public:
     }
   }
 
+  void DoPopTail(const size_t num_requested=1) {
+    emp_assert( num_requested <= GetSize() );
+    tail += num_popped;
+    num_items -= num_popped;    
+  }
+  
   size_t PopTail(const size_t num_requested=1) {
     const size_t num_popped = std::min(num_requested, GetSize());
-    tail += num_popped;
-    num_items -= num_popped;
+    DoPopTail( num_requested );
     return num_popped;
   }
 
