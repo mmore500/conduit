@@ -97,6 +97,8 @@ public:
 
   void Clear() { num_items = 0; }
 
+  auto& GetBuffer() { return buffer; }  
+
 };
 
 } // namespace uitsl
