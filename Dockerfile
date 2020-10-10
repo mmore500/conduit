@@ -177,6 +177,7 @@ RUN \
     python-slugify  \
     iterpop  \
     exdown \
+    networkx \
     && \
   echo "installed Python packages"
 
