@@ -23,29 +23,35 @@ public:
 
   size_t GetSize() const { return num_items; }
 
+  bool IsEmpty() const { return GetSize() == 0; }
+
+  bool IsFull() const { return GetSize() == N; }
+  
+  void DoPushHead() { emp_assert( !IsFull() ); ++num_items; }
+  
   bool PushHead() {
-    if (GetSize() == N) return false;
+    if ( IsFull() ) return false;
     else {
-      ++num_items;
+      DoPushHead();
       return true;
     }
   }
 
   bool PushHead(const T& t) {
-    if (GetSize() == N) return false;
+    if ( IsFull() ) return false;
     else {
       Get(num_items) = t;
-      ++num_items;
+      DoPushHead();
       return true;
     }
   }
 
   template<typename P>
   bool PushHead(P&& p) {
-    if (GetSize() == N) return false;
+    if ( IsFull() ) return false;
     else {
       Get(num_items) = std::forward<P>( p );
-      ++num_items;
+      DoPushHead();
       return true;
     }
   }
@@ -63,15 +69,9 @@ public:
 
   T& Get(const size_t i) { return buffer[tail + i]; }
 
-  T& GetHead() {
-    emp_assert( GetSize() );
-    return Get( GetSize() - 1 );
-  }
+  T& GetHead() { return Get( GetSize() - 1 ); }
 
-  const T& GetHead() const {
-    emp_assert( GetSize() );
-    return Get( GetSize() - 1 );
-  }
+  const T& GetHead() const { return Get( GetSize() - 1 ); }
 
   T& GetTail() { return Get(0); }
 
