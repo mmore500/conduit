@@ -67,7 +67,7 @@ public:
 
   size_t PopHead(const size_t num_requested=1) {
     const size_t num_popped = std::min(num_requested, GetSize());
-    DoPopHead( num_requested );
+    DoPopHead( num_popped );
     return num_popped;
   }
 
@@ -79,7 +79,7 @@ public:
 
   size_t PopTail(const size_t num_requested=1) {
     const size_t num_popped = std::min(num_requested, GetSize());
-    DoPopTail( num_requested );
+    DoPopTail( num_popped );
     return num_popped;
   }
 
