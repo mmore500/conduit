@@ -25,6 +25,8 @@ public:
 
   constexpr size_t GetCapacity() const { return N; }
 
+  size_t GetAvailableCapacity() const { return GetSize() - GetCapacity(); }
+
   bool IsEmpty() const { return GetSize() == 0; }
 
   bool IsFull() const { return GetSize() == N; }
