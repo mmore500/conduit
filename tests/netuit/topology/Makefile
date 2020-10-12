@@ -23,6 +23,9 @@ assets: staging
 	python3 scripts/make_toroidal.py
 
 test:: assets
+opt:: assets
+fulldebug:: assets
+
 clean::
 	rm -rf assets
 	rm -rf staging
