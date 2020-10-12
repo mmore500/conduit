@@ -99,7 +99,7 @@ public:
 
   void Clear() { num_items = 0; }
 
-  auto& GetBuffer() { return buffer; }  
+  auto& GetBuffer() { return buffer; }
 
   bool IsHead(const size_t pos) const { return pos == GetSize() - 1; }
 
