@@ -8,5 +8,6 @@ using ImplSel = uit::ImplSelect<
   uit::ThrowDuct
 >;
 
-#include "../AccumulatingThreadDuct.hpp"
 #include "../ThreadDuct.hpp"
+
+#include "../AccumulatingThreadDuct.hpp"
