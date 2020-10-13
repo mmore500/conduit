@@ -4,9 +4,9 @@
 
 #include <chrono>
 #include <iostream>
-#include <utility>
 #include <sstream>
 #include <string>
+#include <utility>
 
 #include "../chrono/chrono_utils.hpp"
 #include "../chrono/CoarseClock.hpp"

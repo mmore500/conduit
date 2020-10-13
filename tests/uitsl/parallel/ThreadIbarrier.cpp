@@ -1,8 +1,8 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/parallel/ThreadIbarrier.hpp"
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
+#include "uitsl/parallel/ThreadIbarrier.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 
 TEST_CASE("ThreadIbarrier satisfied serial") {

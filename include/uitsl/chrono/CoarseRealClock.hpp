@@ -4,8 +4,8 @@
 
 #include <algorithm>
 #include <chrono>
-#include <time.h>
 #include <ratio>
+#include <time.h>
 
 #include "chrono_utils.hpp"
 

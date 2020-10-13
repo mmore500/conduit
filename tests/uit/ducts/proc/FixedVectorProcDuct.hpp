@@ -12,10 +12,10 @@
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/distributed/assign_utils.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
-#include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/nonce/CircularIndex.hpp"
 
 #include "uit/fixtures/Sink.hpp"
 #include "uit/fixtures/Source.hpp"

@@ -2,9 +2,9 @@
 #ifndef UIT_FIXTURES_SOURCE_HPP_INCLUDE
 #define UIT_FIXTURES_SOURCE_HPP_INCLUDE
 
-#include <utility>
 #include <memory>
 #include <stddef.h>
+#include <utility>
 
 #include "../ducts/Duct.hpp"
 #include "../spouts/Outlet.hpp"

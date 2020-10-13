@@ -2,14 +2,14 @@
 #ifndef NETUIT_MESH_MESH_HPP_INCLUDE
 #define NETUIT_MESH_MESH_HPP_INCLUDE
 
-#include <unordered_map>
 #include <stddef.h>
+#include <unordered_map>
 
 #include <mpi.h>
 
+#include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"
-#include "../../uitsl/math/math_utils.hpp"
 
 #include "../../uit/ducts/Duct.hpp"
 #include "../../uit/setup/InterProcAddress.hpp"

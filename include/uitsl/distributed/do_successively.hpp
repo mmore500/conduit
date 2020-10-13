@@ -2,8 +2,8 @@
 #ifndef UITSL_DISTRIBUTED_DO_SUCCESSIVELY_HPP_INCLUDE
 #define UITSL_DISTRIBUTED_DO_SUCCESSIVELY_HPP_INCLUDE
 
-#include <iostream>
 #include <functional>
+#include <iostream>
 
 #include <mpi.h>
 

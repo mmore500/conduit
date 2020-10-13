@@ -5,8 +5,8 @@
 #include <thread>
 #include <tuple>
 
-#include <mpi.h>
 #include <benchmark/benchmark.h>
+#include <mpi.h>
 
 #include "../../third-party/Empirical/source/meta/TypePack.h"
 #include "../../third-party/Empirical/source/tools/Random.h"
@@ -15,10 +15,10 @@
 #include "uitsl/chrono/TimeGuard.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/math/stats_utils.hpp"
 #include "uitsl/meta/Curry.hpp"
 #include "uitsl/meta/ForEach.hpp"
+#include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/parallel/thread_utils.hpp"
@@ -28,9 +28,9 @@
 #include "uit/setup/ImplSpec.hpp"
 
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 #include "netuit/topology/DyadicTopologyFactory.hpp"
 #include "netuit/topology/ProConTopologyFactory.hpp"
+#include "netuit/topology/RingTopologyFactory.hpp"
 
 
 #include "DuctBenchmarkRunner.hpp"
