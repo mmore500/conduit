@@ -8,22 +8,5 @@
 #include "FactoryCommon.hpp"
 
 TEST_CASE("Test LoopTopologyFactory") {
-
-  // TODO flesh out stub test
-  netuit::LoopTopologyFactory{}({100});
-
-  for (size_t i = 0; i < 150; ++i) {
-    REQUIRE( netuit::LoopTopologyFactory{}(i).GetSize() == i );
-  }
-
-  for (const auto& node : netuit::LoopTopologyFactory{}(100)) {
-    REQUIRE( node.GetNumInputs() == 1);
-    REQUIRE( node.GetNumOutputs() == 1);
-  }
-
-}
-TEST_CASE("Test file output") {
-
   REQUIRE(test_all_adj(netuit::LoopTopologyFactory{}));
-
 }
