@@ -11,11 +11,13 @@ using Dims = emp::vector<size_t>;
 
 namespace uitsl {
 
-/// This function maps a point in a finite N-dimensional space to 1-dimensional space
-/// The cardinality of the dimensions of the space need not be equal
-/// @param p point to map
-/// @param dims dimensions of space
-/// @return 1-dimensional mapping
+/**
+ * This function maps a point in a finite N-dimensional space to 1-dimensional space
+ * The cardinality of the dimensions of the space need not be equal
+ * @param p point to map
+ * @param dims dimensions of space
+ * @return 1-dimensional mapping
+*/
 size_t linear_encode(const Point& p, const Dims& dims) {
     size_t mx = 1;
     size_t encoded = 0;
@@ -25,11 +27,14 @@ size_t linear_encode(const Point& p, const Dims& dims) {
     }
     return encoded;
 }
-/// This function maps a point in a 1-dimensional space to a finite N-dimensional space
-/// The cardinality of the dimensions of the space need not be equal
-/// @param p point to map
-/// @param dims dimensions of space
-/// @return 1-dimensional mapping
+
+/**
+ * This function maps a point in a 1-dimensional space to a finite N-dimensional space
+ * The cardinality of the dimensions of the space need not be equal
+ * @param p point to map
+ * @param dims dimensions of space
+ * @return 1-dimensional mapping
+*/
 Point linear_decode(size_t r, const Dims& dims) {
     emp::vector<size_t> decoded;
     for (size_t i = 0; i < dims.size(); ++i) {
