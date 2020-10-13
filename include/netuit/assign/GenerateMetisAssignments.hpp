@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_ASSIGN_GENERATEMETISASSIGNMENTS_HPP_INCLUDE
+#define NETUIT_ASSIGN_GENERATEMETISASSIGNMENTS_HPP_INCLUDE
 
 #include <functional>
 #include <utility>
@@ -81,4 +83,7 @@ std::pair<
     thread_assigner
   };
 }
-};
+
+} // namespace uit
+
+#endif // #ifndef NETUIT_ASSIGN_GENERATEMETISASSIGNMENTS_HPP_INCLUDE

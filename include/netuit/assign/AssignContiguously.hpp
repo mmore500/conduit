@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_ASSIGN_ASSIGNCONTIGUOUSLY_HPP_INCLUDE
+#define NETUIT_ASSIGN_ASSIGNCONTIGUOUSLY_HPP_INCLUDE
 
 #include <functional>
 #include <stddef.h>
@@ -23,4 +25,7 @@ struct AssignContiguously {
   }
 
 };
-};
+
+} // namespace uit
+
+#endif // #ifndef NETUIT_ASSIGN_ASSIGNCONTIGUOUSLY_HPP_INCLUDE

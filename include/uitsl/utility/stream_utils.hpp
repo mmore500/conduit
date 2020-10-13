@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_UTILITY_STREAM_UTILS_HPP_INCLUDE
+#define UITSL_UTILITY_STREAM_UTILS_HPP_INCLUDE
 
 #include <fstream>
 #include <string>
@@ -33,33 +35,6 @@ bool compare_streams(std::istream& s1, std::istream& s2) {
     s1.seekg(0, std::istream::beg);
     s2.seekg(0, std::istream::beg);
 
-/*
-    std::cout << "stream 1" << std::endl;
-    std::cout << s1.rdbuf() << std::endl;
-    std::cout << "stream 2" << std::endl;
-    std::cout << s2.rdbuf() << std::endl;
-
-    std::cout << "stream 1:" << std::endl;
-    std::for_each(
-        std::istreambuf_iterator<char>(s1.rdbuf()),
-        std::istreambuf_iterator<char>(),
-        [](const auto& ch) {
-            std::cout << (int)ch;
-        }
-    );
-    std::cout << std::endl;
-
-    std::cout << "stream 2:" << std::endl;
-    std::for_each(
-        std::istreambuf_iterator<char>(s2.rdbuf()),
-        std::istreambuf_iterator<char>(),
-        [](const auto& ch) {
-            std::cout << (int)ch;
-        }
-    );
-    std::cout << std::endl;
-    */
-
     if (s1.fail() || s2.fail()) {
         std::cout << "stream problem" << std::endl;
         return false; // stream problem
@@ -87,4 +62,6 @@ bool compare_files(const std::string& p1, const std::string& p2) {
 
     return compare_streams(f1, f2);
 }
-};
+
+} // namespace uitsl
+#endif // #ifndef UITSL_UTILITY_STREAM_UTILS_HPP_INCLUDE

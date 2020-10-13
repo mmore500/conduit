@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_ENUMERATEDFUNCTOR_HPP_INCLUDE
+#define UITSL_DEBUG_ENUMERATEDFUNCTOR_HPP_INCLUDE
 
 #include <unordered_map>
 
@@ -19,4 +21,5 @@ public:
     size_t GetSize() const { return map.size(); }
 };
 
-}
+} // namespace uitsl
+#endif // #ifndef UITSL_DEBUG_ENUMERATEDFUNCTOR_HPP_INCLUDE

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_ASSIGN_ASSIGNRANDOMLY_HPP_INCLUDE
+#define NETUIT_ASSIGN_ASSIGNRANDOMLY_HPP_INCLUDE
 
 #include <functional>
 #include <stddef.h>
@@ -30,4 +32,7 @@ struct AssignRandomly {
   }
 
 };
-};
+
+} // namespace uit
+
+#endif // #ifndef NETUIT_ASSIGN_ASSIGNRANDOMLY_HPP_INCLUDE

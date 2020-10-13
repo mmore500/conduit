@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_TOPOLOGY_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_TOPOLOGY_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
 #include <cmath>
@@ -107,4 +109,6 @@ struct ToroidalTopologyFactory {
   static std::string GetName() { return "Toroidal Topology"; }
   std::string GetSimpleName() const { return "toroidal"; }
 };
-};
+
+}
+#endif // #ifndef NETUIT_TOPOLOGY_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE

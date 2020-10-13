@@ -150,4 +150,3 @@ bool test_all_edg(const Fun&& factory) {
         }
     );
 }
-

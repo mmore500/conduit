@@ -1,4 +1,6 @@
 #pragma once
+#ifndef NETUIT_ASSIGN_ASSIGNSEGREGATED_HPP_INCLUDE
+#define NETUIT_ASSIGN_ASSIGNSEGREGATED_HPP_INCLUDE
 
 #include <functional>
 #include <stddef.h>
@@ -14,4 +16,6 @@ struct AssignSegregated {
 
 };
 
-};
+} // namespace uit
+
+#endif // #ifndef NETUIT_ASSIGN_ASSIGNSEGREGATED_HPP_INCLUDE

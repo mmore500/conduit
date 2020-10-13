@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_DEBUG_METIS_UTILS_HPP_INCLUDE
+#define UITSL_DEBUG_METIS_UTILS_HPP_INCLUDE
 
 #include <string>
 
@@ -27,4 +29,7 @@ void verify(const int status) {
   }
   emp_assert(status == METIS_OK, status, name);
 }
-}
+
+} // namespace uitsl::metis
+
+#endif // #ifndef UITSL_DEBUG_METIS_UTILS_HPP_INCLUDE
