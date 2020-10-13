@@ -13,4 +13,4 @@
 
 export CONTEXT=icer
 
-zsh <(curl -s https://raw.githubusercontent.com/mmore500/conduit/master/microbenchmarks/slurm/nnode=8+nproc=1+ext=.slurm.sh\?$(date +%s))
+zsh <(curl -s https://raw.githubusercontent.com/mmore500/conduit/master/microbenchmarks/slurm/job.sh\?$(date +%s))
