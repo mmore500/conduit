@@ -7,5 +7,6 @@ using ImplSel = uit::ImplSelect<
 
 #define MSG_T double
 
-#include "../../AccumulatingIntraDuct.hpp"
 #include "../../IntraDuct.hpp"
+
+#include "../../AccumulatingIntraDuct.hpp"
