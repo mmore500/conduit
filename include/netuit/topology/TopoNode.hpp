@@ -101,14 +101,18 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
+  // make sure node has outputs
   if (!node.HasOutputs()) return os;
 
-  for (const auto& node : std::span<const TopoNode::output_t>(
+  // loop through span of all outputs, except the last
+  for (const auto& edge : std::span<const TopoNode::output_t>(
     node.outputs.data(),
     node.outputs.size() - 1
   )) {
-    os << node.GetEdgeID() << " ";
+    // out edge ID of edge
+    os << edge.GetEdgeID() << " ";
   }
+  // out edge ID of last output
   os << node.outputs.back().GetEdgeID();
   return os;
 }
