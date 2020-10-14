@@ -7,7 +7,6 @@
 #include <list>
 #include <numeric>
 #include <tuple>
-#include <unordered_map>
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 #include "../../../third-party/Empirical/source/tools/tuple_utils.h"
@@ -18,42 +17,9 @@
 
 #include "uitsl/debug/mapping_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
+#include "uitsl/utility/UIDMap.hpp"
 
 namespace uit {
-
-// TODO: MOVE TO ITS OWN FILE
-template <typename T>
-class UIDMap {
-  using node_id_t = size_t;
-  using node_tuple = std::tuple<bool, T, T>;
-
-  size_t counter{};
-
-  std::unordered_multimap<
-    node_tuple,
-    size_t,
-    emp::TupleHash<bool, T, T>
-  > map;
-
-public:
-  size_t operator[](const node_tuple& a) {
-    const auto& [is_output, from_node, to_node] = a;
-    const node_tuple complement{
-      !is_output,
-      from_node,
-      to_node
-    };
-
-    if (map.count(complement)) {
-      const auto it = map.find(complement);
-      const auto [key, val] = *it;
-      map.erase(it);
-      return val;
-    } else {
-      return map.insert({a, counter++})->second;
-    }
-  }
-};
 
 netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
   /*
@@ -68,7 +34,7 @@ netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
   );
 
   emp::vector<netuit::TopoNode> nodes(cardinality);
-  uit::UIDMap<size_t> node_edge_map;
+  uitsl::UIDMap<size_t> node_edge_map;
 
   auto get_neighbor = [&dim_cardinality](Point p, const size_t dim, const int n) -> Point {
     p[dim] = uitsl::circular_index(p[dim], dim_cardinality[dim], n);
