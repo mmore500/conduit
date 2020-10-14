@@ -119,9 +119,7 @@ std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
 
 std::istream& operator>>(std::istream& is, TopoNode& node) {
   size_t input;
-  while (is >> input) {
-    node.AddInput(input);
-  }
+  while (is >> input) node.AddInput(input);
   return is;
 }
 
