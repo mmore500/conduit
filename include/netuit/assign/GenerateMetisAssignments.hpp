@@ -13,8 +13,13 @@
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../topology/Topology.hpp"
 
-
 namespace netuit {
+
+/// This function is used to get subtopologies made up of all
+/// the neighbors of a node in a given topology, for all nodes.
+/// @param[in] topo Topology to get subtopologies of.
+/// @param[in] assigner Functor of node ids to proc ids.
+/// @return Unordered map of proc ids to subtopologies.
 std::unordered_map<uitsl::proc_id_t, netuit::Topology> GetSubTopologies(
   const netuit::Topology& topo,
   const uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t>& assigner
@@ -54,11 +59,13 @@ std::unordered_map<size_t, uitsl::thread_id_t> Shim(
   return ret;
 }
 
-// TODO assign_chunkily (rename)
-// arrange into n-dimensional volume
-// then divvy into n-dimensional subcubes
-// (special case of assign_contiguously)
 
+/// This function returns a pair of functors determining thread and process
+/// assignments, from a (hopefully optimal) k-way partitioning as returned by METIS.
+/// @param[in] num_procs Number of processes.
+/// @param[in] threads_per_proc Number of threads per process.
+/// @param[in] topology Topology to partition.
+/// @return std::pair of process and thread assignments. *
 std::pair<
   uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t>,
   uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::thread_id_t>
