@@ -41,7 +41,7 @@ struct LoopTopologyFactory {
     return make_loop_topology(cardinality.front());
   }
   static std::string GetName() { return "Loop Topology"; }
-  std::string GetSimpleName() const { return "loop"; }
+  std::string GetSlug() const { return "loop"; }
 };
 
 } // namespace netuit

@@ -87,7 +87,7 @@ bool test_adjacency_output(const Fun&& factory, const T dims) {
     std::string adj_str(adj_stream.str());
 
     std::string filename = make_filename(
-        factory.GetSimpleName(),
+        factory.GetSlug(),
         dims,
         ".adj"
     );
@@ -109,7 +109,7 @@ bool test_edge_output(const Fun&& factory, const T dims) {
     factory(dims).PrintEdgeList(edge_stream);
 
     std::string filename = make_filename(
-        factory.GetSimpleName(),
+        factory.GetSlug(),
         dims,
         ".edg"
     );
@@ -122,7 +122,7 @@ bool test_edge_output(const Fun&& factory, const T dims) {
 
 template <typename Fun>
 bool test_all_adj(const Fun&& factory) {
-    const emp::vector<dim_t> assets = find_assets(factory.GetSimpleName(), ".adj");
+    const emp::vector<dim_t> assets = find_assets(factory.GetSlug(), ".adj");
 
     // no matching assets found
     if (!assets.size()) return false;
@@ -140,7 +140,7 @@ bool test_all_adj(const Fun&& factory) {
 
 template <typename Fun>
 bool test_all_edg(const Fun&& factory) {
-    const auto assets = find_assets(factory.GetSimpleName());
+    const auto assets = find_assets(factory.GetSlug());
 
     return std::all_of(
         assets.begin(),

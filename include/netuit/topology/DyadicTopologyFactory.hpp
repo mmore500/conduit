@@ -56,7 +56,7 @@ struct DyadicTopologyFactory {
   }
   static std::string GetName() { return "Dyadic Topology"; }
   // todo: rename GetSlug, look into making static
-  std::string GetSimpleName() const { return "dyadic"; }
+  std::string GetSlug() const { return "dyadic"; }
 };
 
 } // namespace netuit

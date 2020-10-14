@@ -53,7 +53,7 @@ struct ProConTopologyFactory {
   }
 
   static std::string GetName() { return "Producer-Consumer Topology"; }
-  std::string GetSimpleName() const { return "procon"; }
+  std::string GetSlug() const { return "procon"; }
 };
 
 } // namespace netuit
