@@ -13,8 +13,8 @@
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../topology/Topology.hpp"
 
-namespace uit {
 
+namespace netuit {
 std::unordered_map<uitsl::proc_id_t, netuit::Topology> GetSubTopologies(
   const netuit::Topology& topo,
   const uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t>& assigner
@@ -84,6 +84,6 @@ std::pair<
   };
 }
 
-} // namespace uit
+} // namespace netuit
 
 #endif // #ifndef NETUIT_ASSIGN_GENERATEMETISASSIGNMENTS_HPP_INCLUDE

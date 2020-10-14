@@ -5,7 +5,7 @@
 #include <functional>
 #include <stddef.h>
 
-namespace uit {
+namespace netuit {
 
 template<typename RETURN_TYPE>
 struct AssignRoundRobin {
@@ -22,5 +22,7 @@ struct AssignRoundRobin {
   }
 
 };
+
+} // namespace netuit
 
 #endif // #ifndef NETUIT_ASSIGN_ASSIGNROUNDROBIN_HPP_INCLUDE

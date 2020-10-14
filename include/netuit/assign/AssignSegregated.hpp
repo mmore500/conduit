@@ -5,7 +5,7 @@
 #include <functional>
 #include <stddef.h>
 
-namespace uit {
+namespace netuit {
 
 template<typename RETURN_TYPE>
 struct AssignSegregated {
@@ -16,6 +16,6 @@ struct AssignSegregated {
 
 };
 
-} // namespace uit
+} // namespace netuit
 
 #endif // #ifndef NETUIT_ASSIGN_ASSIGNSEGREGATED_HPP_INCLUDE
