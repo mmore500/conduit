@@ -2,8 +2,8 @@
 #ifndef NETUIT_TOPOLOGY_TOPONODE_HPP_INCLUDE
 #define NETUIT_TOPOLOGY_TOPONODE_HPP_INCLUDE
 
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 #include <string_view>
 
 #include "../../../third-party/Empirical/source/base/vector.h"
