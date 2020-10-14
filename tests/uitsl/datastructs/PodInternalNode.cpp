@@ -6,7 +6,6 @@
 
 #include "uitsl/datastructs/PodInternalNode.hpp"
 #include "uitsl/datastructs/PodLeafNode.hpp"
-#include "uitsl/datastructs/PodLeafNode.hpp"
 #include "uitsl/meta/decay_equiv.hpp"
 
 // based on https://commons.wikimedia.org/wiki/File:Organizational_chart.svg#/media/File:Organizational_chart.svg
