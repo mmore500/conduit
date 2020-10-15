@@ -31,7 +31,6 @@ public:
   using node_id_t = size_t;
   using edge_id_t = size_t;
 private:
-  // todo: change this to an unordered_map
   using topology_t = emp::vector<TopoNode>;
   topology_t topology;
 
@@ -42,11 +41,18 @@ private:
   // map of index to node_id
   std::function<node_id_t(node_id_t)> index_map{std::identity};
 
+  /// Register node in Topology.
+  /// Note: this does not put the node in the Topology.
+  /// @param[in] node_id ID of node to register.
+  /// @param[in] topo_node Node to register.
   void RegisterNode(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     RegisterNodeInputs(node_id, topo_node);
     RegisterNodeOutputs(node_id, topo_node);
   }
 
+  /// Register inputs of a node in Topology
+  /// @param[in] node_id ID of node to register.
+  /// @param[in] topo_node Node to register.
   void RegisterNodeInputs(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     for (const auto& input : topo_node.GetInputs()) {
       emp_assert(input_registry.count(input.GetEdgeID()) == 0);
@@ -54,6 +60,9 @@ private:
     }
   }
 
+  /// Register outputs of a node in Topology
+  /// @param[in] node_id ID of node to register.
+  /// @param[in] topo_node Node to register.
   void RegisterNodeOutputs(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     for (const auto& output : topo_node.GetOutputs()) {
       emp_assert(output_registry.count(output.GetEdgeID()) == 0);
@@ -61,6 +70,9 @@ private:
     }
   }
 
+  /// Return outputs of a node in Topology
+  /// @param[in] topo_node Node to return outputs of.
+  /// @return Vector of node IDs which topo_node is an output of.
   emp::vector<node_id_t> GetNodeOutputs(const netuit::TopoNode& node) const {
     emp::vector<node_id_t> res;
     for (const auto& edge : node.GetOutputs()) {
@@ -86,7 +98,7 @@ public:
     // read file lines into vector
     uitsl::read_lines(is, std::back_inserter(lines));
 
-    // map of node itds to nodes
+    // map of node ids to nodes
     std::map<node_id_t, TopoNode> node_map;
     // put nodes into map
     for (const std::string& line : lines) {
@@ -97,7 +109,7 @@ public:
     }
     // make sure we inserted every line
     emp_assert(lines.size() == node_map.size());
-    // make sure the node ids are less than the number of line
+    // make sure the node ids are less than the number of lines
     emp_assert( std::all_of(
       std::begin(node_map),
       std::end(node_map),
@@ -106,6 +118,7 @@ public:
         return id < num_lines;
       }
     ) );
+
     // insert all nodes into topology
     std::for_each(
       std::begin(node_map),
@@ -123,17 +136,24 @@ public:
   topology_t::const_iterator cbegin() const noexcept { return topology.cbegin(); }
   topology_t::const_iterator cend() const noexcept { return topology.cend(); }
 
+  /// Insert node in Topology.
+  /// @param[in] node Node to insert.
   void push_back(const TopoNode& node) {
     const size_t id = topology.size();
     topology.push_back(node);
     RegisterNode(id, node);
   }
+
+  /// Insert node in Topology.
+  /// @param[in] node Node to insert.
   void push_back(TopoNode&& node) {
     const size_t id = topology.size();
     topology.push_back(std::move(node));
     RegisterNode(id, node);
   }
 
+  /// Emplace node in Topology.
+  /// @param[in] args Arguments of node to emplace.
   template <typename... Args>
   void emplace_back(Args&&... args) {
     const size_t id = topology.size();
@@ -148,15 +168,24 @@ public:
   /// @return const ref to nth node
   const TopoNode& operator[](size_t n) const { return topology[n]; }
 
+  /// Sets map of node IDs to Canonical node IDs.
+  /// @param[in] map Map of node IDs to Canonical node IDs
   void SetMap(const std::unordered_map<node_id_t, node_id_t>& map) {
     index_map = uitsl::EnumeratedFunctor<node_id_t, node_id_t>(map);
   }
 
+  /// A Canonical node ID is the ID of the node in the original subtopology.
+  /// After GetSubTopology is called, nodes of that topology get a new ID, but
+  /// their Canonical ID stays the same. This provides a way to trace back nodes
+  /// to the original, parent topology.
+  /// @param node_id[in] ID of node to get Canonical ID of.
+  /// @return Canonical ID of node.
   node_id_t GetCanonicalNodeID(const node_id_t node_id) const {
     return index_map(node_id);
   }
 
-  /// Return Compressed Sparse Row (CSR) representation of topology
+  /// Return Compressed Sparse Row (CSR) representation of topology.
+  /// For more info, see: https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format)
   /// @return std::pair of vectors of int
   auto AsCSR() const {
     // get vector with degree of each node
@@ -205,8 +234,7 @@ public:
     // set up result vector
     emp::vector<idx_t> result(nodes);
 
-    // set up options array
-    // in this case, it's just the default options
+    // use default options
     idx_t options[METIS_NOPTIONS];
     METIS_SetDefaultOptions(options);
 
@@ -226,17 +254,17 @@ public:
       &volume, // edge-cut or total comm volume of the solution
       result.data() // partition vector of the graph
     );
-    // deal with return code
+
     uitsl::metis::verify(status);
 
     return result;
   }
 
+  /// Outputs this Topology's Edge list. This format stores node IDs with
+  /// their respective edge IDs.
+  /// For more info, see https://networkx.github.io/documentation/stable/reference/readwrite/edgelist.html
+  /// @param[out] os Stream to output Edge list to.
   void PrintEdgeList(std::ostream& os = std::cout) const noexcept {
-    // FIX THIS
-    // node1 node2
-    // node1 node3
-    // etc
     for (size_t i = 0; i < topology.size(); ++i) {
       for (const auto& output : topology[i].GetOutputs()) {
         os << i << " " << output << std::endl;
@@ -244,6 +272,10 @@ public:
     }
   }
 
+  /// Outputs this Topology's Adjacency list. This format stores node IDs with
+  /// the IDs of nodes they are connected to.
+  /// For more info, see https://networkx.github.io/documentation/stable/reference/readwrite/adjlist.html
+  /// @param[out] os Stream to output Adjacency list to.
   void PrintAdjacencyList(std::ostream& os = std::cout) const noexcept {
     for (size_t i = 0; i < topology.size(); ++i) {
       os << i;
@@ -272,6 +304,11 @@ public:
     }
   }
 
+  /// Returns a subtopology made up of all the nodes passed onto it,
+  /// based on the topology it was called on.
+  /// @param[in] node_ids Node IDs of nodes to make subtopology out of.
+  /// @param[in] translator Map of Node IDs to Canonical Node IDs.
+  /// @return Subtopology from Node IDs.
   Topology GetSubTopology(const std::unordered_set<size_t>& node_ids) const {
     emp::vector<netuit::TopoNode> nodes;
     std::unordered_map<node_id_t, node_id_t> translator;
@@ -282,8 +319,7 @@ public:
       translator[translator.size()] = i;
     }
 
-    // todo: test without this
-    // fix subtopology to exclude nodes outside topo
+    // fix subtopology to exclude external nodes
     for (auto& node : nodes) {
       for (const auto& output : node.GetOutputs()) {
         if (!node_ids.count(
@@ -296,12 +332,13 @@ public:
         )) node.RemoveInput(input);
       }
     }
-    // we are done
     Topology subtopo(nodes);
     subtopo.SetMap(translator);
     return subtopo;
   }
 
+  /// Returns this Topology's adjacency list as a string.
+  /// @return String describing topology
   std::string ToString() const noexcept {
     std::ostringstream oss;
     PrintAdjacencyList(oss);
