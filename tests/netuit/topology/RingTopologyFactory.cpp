@@ -5,7 +5,7 @@
 
 #include "netuit/topology/RingTopologyFactory.hpp"
 
-#include "FactoryCommon.hpp"
+#include "NetworkXTester.hpp"
 
 TEST_CASE("Test RingTopologyFactory") {
   REQUIRE(test_all_adj(netuit::RingTopologyFactory{}));

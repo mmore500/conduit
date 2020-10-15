@@ -5,7 +5,7 @@
 
 #include "netuit/topology/LoopTopologyFactory.hpp"
 
-#include "FactoryCommon.hpp"
+#include "NetworkXTester.hpp"
 
 TEST_CASE("Test LoopTopologyFactory") {
   REQUIRE(test_all_adj(netuit::LoopTopologyFactory{}));

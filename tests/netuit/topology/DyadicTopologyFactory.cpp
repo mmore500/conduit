@@ -5,7 +5,7 @@
 
 #include "netuit/topology/DyadicTopologyFactory.hpp"
 
-#include "FactoryCommon.hpp"
+#include "NetworkXTester.hpp"
 
 TEST_CASE("Test file output") {
   // TODO: implement matchers to move this require further in?

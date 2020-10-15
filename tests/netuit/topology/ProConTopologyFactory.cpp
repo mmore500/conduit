@@ -5,7 +5,7 @@
 
 #include "netuit/topology/ProConTopologyFactory.hpp"
 
-#include "FactoryCommon.hpp"
+#include "NetworkXTester.hpp"
 
 TEST_CASE("Test file output") {
   REQUIRE(test_all_adj(netuit::ProConTopologyFactory{}));
