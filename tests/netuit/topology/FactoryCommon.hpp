@@ -9,13 +9,13 @@
 #include "uitsl/utility/exec_utils.hpp"
 #include "uitsl/utility/stream_utils.hpp"
 
-const std::string dir = "assets/";
+const std::string base_directory = "assets/";
 
 using dim_t = emp::vector<size_t>;
 
 emp::vector<dim_t> find_assets(const std::string& name, const std::string& ext) {
     emp::vector<dim_t> files;
-    for (const auto& p : std::filesystem::directory_iterator(dir)) {
+    for (const auto& p : std::filesystem::directory_iterator(base_directory)) {
         const auto file = emp::keyname::unpack(p.path());
         if (file.at("name") == name && file.at("ext") == ext) {
             // matching file found
@@ -49,7 +49,7 @@ std::string make_filename(const std::string& name, const emp::vector<size_t>& di
         filename["dim" + emp::to_string(i)] = std::to_string(dims[i]);
     }
 
-    return dir + emp::keyname::pack(filename);
+    return base_directory + emp::keyname::pack(filename);
 }
 
 std::string make_filename(const std::string& name, const size_t dim, const std::string& ext) {
