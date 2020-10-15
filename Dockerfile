@@ -177,7 +177,7 @@ RUN \
     python-slugify  \
     iterpop  \
     exdown \
-    networkx \
+    networkx==4.4.2 \
     && \
   echo "installed Python packages"
 
