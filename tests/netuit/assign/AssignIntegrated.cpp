@@ -12,5 +12,5 @@ const uitsl::MpiGuard guard;
 
 // TODO: stub test
 TEST_CASE("Test AssignIntegrated") {
-  netuit::AssignIntegrated<size_t> assign;
+  netuit::AssignIntegrated<size_t>();
 }

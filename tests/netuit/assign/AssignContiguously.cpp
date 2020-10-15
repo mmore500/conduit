@@ -12,5 +12,5 @@ const uitsl::MpiGuard guard;
 
 // TODO: stub test
 TEST_CASE("Test AssignContiguously") {
-  netuit::AssignContiguously<size_t> assign(0, 0);
+  netuit::AssignContiguously<size_t>(1, 1)(1);
 }

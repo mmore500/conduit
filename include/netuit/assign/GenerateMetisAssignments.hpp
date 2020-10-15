@@ -74,6 +74,9 @@ std::pair<
   const size_t threads_per_proc,
   const netuit::Topology& topology
 ) {
+  // make sure topology isn't empty
+  if (topology.GetSize() == 0) return {};
+
   uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t> proc_assigner{
     topology.Optimize(num_procs)
   };

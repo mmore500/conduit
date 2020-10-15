@@ -10,12 +10,10 @@
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
-
-
 const uitsl::MpiGuard guard;
 
 // TODO: stub test
 TEST_CASE("Test AssignRandomly") {
   emp::Random rand;
-  netuit::AssignRandomly<size_t> assign(0, rand);
+  netuit::AssignRandomly<size_t>(1, rand)(0);
 }

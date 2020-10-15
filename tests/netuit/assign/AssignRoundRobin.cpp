@@ -12,5 +12,5 @@ const uitsl::MpiGuard guard;
 
 // TODO: stub test
 TEST_CASE("Test AssignRoundRobin") {
-  netuit::AssignRoundRobin<size_t> assign(0);
+  netuit::AssignRoundRobin<size_t>(1)(0);
 }

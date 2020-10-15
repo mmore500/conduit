@@ -14,5 +14,5 @@ const uitsl::MpiGuard guard;
 // TODO: stub test
 TEST_CASE("Test GenerateMetisAssignments") {
   netuit::Topology topo;
-  netuit::GenerateMetisAssignments(0, 0, topo);
+  netuit::GenerateMetisAssignments(1, 1, topo);
 }
