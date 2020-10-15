@@ -1,3 +1,14 @@
+"""Generate procon graphs.
+
+This script makes use of NetworkX to generate
+procon graphs (nodes are paired up; one outputs
+to another).
+
+This tool creates adjacency list files (.adj)
+whose filename represent the characteristics
+of the graph created.
+"""
+
 import networkx as nx
 import matplotlib.pyplot as plt
 from keyname import keyname as kn

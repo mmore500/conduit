@@ -1,3 +1,13 @@
+"""Generate ring graphs.
+
+This script makes use of NetworkX to generate
+ring graphs (nodes are connected in a ring).
+
+This tool creates adjacency list files (.adj)
+whose filename represent the characteristics
+of the graph created.
+"""
+
 import networkx as nx
 import matplotlib.pyplot as plt
 from keyname import keyname as kn

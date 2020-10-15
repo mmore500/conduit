@@ -1,3 +1,13 @@
+"""Generate dyadic graphs.
+
+This script makes use of NetworkX to generate
+dyadic graphs (pairs of nodes are connected).
+
+This tool creates adjacency list files (.adj)
+whose filename represent the characteristics
+of the graph created.
+"""
+
 import networkx as nx
 import matplotlib.pyplot as plt
 from keyname import keyname as kn

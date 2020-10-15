@@ -1,4 +1,14 @@
 #!/usr/bin/python3
+"""Check whether two graphs are isomorphic.
+
+This script makes use of NetworkX to check whether
+there exists an isomorphism between two graphs,
+aka if two graphs are equivalent.
+
+This tool takes in two adjacency list files (.adj) and
+prints whether the graph they represent are isomorphic,
+as well as the reason in case they aren't.
+"""
 
 import networkx as nx
 import sys

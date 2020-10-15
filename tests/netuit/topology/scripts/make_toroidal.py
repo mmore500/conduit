@@ -1,3 +1,14 @@
+"""Generate toroidal graphs.
+
+This script makes use of NetworkX to generate
+toroidal graphs (nodes are connected akin to a
+torus).
+
+This tool creates adjacency list files (.adj)
+whose filename represent the characteristics
+of the graph created.
+"""
+
 import networkx as nx
 import matplotlib.pyplot as plt
 from keyname import keyname as kn

@@ -1,3 +1,13 @@
+"""Generate loop graphs.
+
+This script makes use of NetworkX to generate
+loop graphs (nodes are connected to themselves).
+
+This tool creates adjacency list files (.adj)
+whose filename represent the characteristics
+of the graph created.
+"""
+
 import networkx as nx
 import matplotlib.pyplot as plt
 from keyname import keyname as kn
