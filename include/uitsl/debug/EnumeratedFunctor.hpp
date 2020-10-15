@@ -8,6 +8,12 @@
 
 namespace uitsl {
 
+/**
+ * This class holds an unordered map from Input to Output.
+ * This is done so they can be passed around in template arguments,
+ * or wherever else a class might be used, wihtout having to rebuild
+ * the map every time.
+*/
 template <typename Input, typename Output>
 class EnumeratedFunctor {
     std::unordered_map<Input, Output> map;
