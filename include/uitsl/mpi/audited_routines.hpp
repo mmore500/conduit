@@ -55,12 +55,12 @@ inline void UITSL_Add_error_string(Args&&... args) {
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Address(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Address(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Address(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Address(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
@@ -667,12 +667,12 @@ inline void UITSL_Dist_graph_neighbors_count(Args&&... args) {
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Errhandler_create(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Errhandler_create(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Errhandler_create(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Errhandler_create(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
@@ -685,21 +685,21 @@ inline void UITSL_Errhandler_free(Args&&... args) {
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Errhandler_get(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Errhandler_get(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Errhandler_get(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Errhandler_get(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Errhandler_set(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Errhandler_set(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Errhandler_set(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Errhandler_set(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
@@ -2890,12 +2890,12 @@ inline void UITSL_Type_dup(Args&&... args) {
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Type_extent(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Type_extent(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Type_extent(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Type_extent(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
@@ -2989,21 +2989,21 @@ inline void UITSL_Type_get_true_extent_x(Args&&... args) {
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Type_hindexed(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Type_hindexed(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Type_hindexed(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Type_hindexed(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Type_hvector(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Type_hvector(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Type_hvector(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Type_hvector(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
@@ -3016,12 +3016,12 @@ inline void UITSL_Type_indexed(Args&&... args) {
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Type_lb(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Type_lb(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Type_lb(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Type_lb(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
@@ -3070,21 +3070,21 @@ inline void UITSL_Type_size_x(Args&&... args) {
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Type_struct(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Type_struct(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Type_struct(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Type_struct(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
-// template<typename... Args>
-// inline void UITSL_Type_ub(Args&&... args) {
-//   uitsl::mpi_audit(
-//     MPI_Type_ub(std::forward<Args>(args)...)
-//   );
-// }
+template<typename... Args>
+inline void UITSL_Type_ub(Args&&... args) {
+  uitsl::mpi_audit(
+    MPI_Type_ub(std::forward<Args>(args)...)
+  );
+}
 
 /// @private
 /// Wraps corresponding MPI* call with debug-mode error code check.
