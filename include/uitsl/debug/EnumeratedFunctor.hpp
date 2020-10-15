@@ -18,6 +18,7 @@ template <typename Input, typename Output>
 class EnumeratedFunctor {
     std::unordered_map<Input, Output> map;
 public:
+    EnumeratedFunctor() = default;
     EnumeratedFunctor(const std::unordered_map<Input, Output>& map_) : map(map_) { ; }
     EnumeratedFunctor(const emp::vector<Output>& vect) {
         for (size_t i = 0; i < vect.size(); ++i) map[i] = vect[i];
