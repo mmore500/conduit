@@ -5,9 +5,14 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "netuit/assign/GenerateMetisAssignments.hpp"
+#include "netuit/topology/Topology.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
 const uitsl::MpiGuard guard;
 
-// stub test
+// TODO: stub test
+TEST_CASE("Test GenerateMetisAssignments") {
+  netuit::Topology topo;
+  netuit::GenerateMetisAssignments(0, 0, topo);
+}

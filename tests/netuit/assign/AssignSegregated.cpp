@@ -10,4 +10,7 @@
 
 const uitsl::MpiGuard guard;
 
-// stub test
+// TODO: stub test
+TEST_CASE("Test AssignSegregated") {
+  netuit::AssignSegregated<size_t> assign;
+}
