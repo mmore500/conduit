@@ -14,6 +14,8 @@ Overview
 self
 api/library_root
 Resources
+Citing
+Publications
 ```
 
 ```{include} ../README.md
