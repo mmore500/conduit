@@ -261,6 +261,24 @@ TEST_CASE("Test Get by type") {
 
 }
 
+TEST_CASE("Test Reset") {
+
+  General general;
+
+  general.Get<PrivateA>().val = "Ryan";
+
+  REQUIRE( general.Get<1>().val == "Ryan" );
+
+  REQUIRE( general.Get<2>().val == "PrivateA" );
+
+  general.Reset();
+
+  REQUIRE( general.Get<1>().val == "PrivateA" );
+
+  REQUIRE( general.Get<2>().val == "PrivateA" );
+
+
+}
 
 #ifdef NDEBUG // emp::array messes up sizing in debug mode...
 TEST_CASE("Test memory layout") {

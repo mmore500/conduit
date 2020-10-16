@@ -72,6 +72,11 @@ public:
     return data == other.data;
   }
 
+  /*
+   * Set data to value-initialized state.
+   */
+  void Reset() { data.fill( T{} ); }
+
 };
 
 } // namespace uitsl

@@ -16,6 +16,7 @@ class PodInternalNode : public std::tuple<First, Rest...> {
 
 public:
 
+  // inherit constructors
   using parent_t::parent_t;
 
   /*
@@ -97,6 +98,17 @@ public:
   template<typename Query, size_t SearchIndex=0>
   constexpr const Query& Get() const {
     return const_cast<this_t *>(this)->Get<Query, SearchIndex>();
+  }
+
+  /*
+   * Set all child nodes to value-initialized state.
+   */
+  void Reset() {
+    // adapted from https://stackoverflow.com/a/45498003
+    std::apply(
+      [](auto& ...x){ (..., [](auto& v){ v.Reset(); }(x)); },
+      *static_cast<parent_t*>(this)
+    );
   }
 
 };
