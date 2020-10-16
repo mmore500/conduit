@@ -148,8 +148,8 @@ public:
   /// @param[in] node Node to insert.
   void push_back(TopoNode&& node) {
     const size_t id = topology.size();
-    topology.push_back(std::move(node));
     RegisterNode(id, node);
+    topology.push_back(std::move(node));
   }
 
   /// Emplace node in Topology.
