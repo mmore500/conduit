@@ -79,8 +79,8 @@ bool test_isomorphic(const std::string& str, const std::string& filename) {
     return (res == "isomorphic");
 }
 
-template <typename Fun, typename T>
-bool test_adjacency_output(const Fun&& factory, const T dims) {
+template <typename Factory, typename T>
+bool test_adjacency_output(const Factory&& factory, const T dims) {
     // test adj list
     std::stringstream adj_stream;
     factory(dims).PrintAdjacencyList(adj_stream);
@@ -120,8 +120,8 @@ bool test_edge_output(const Fun&& factory, const T dims) {
     return uitsl::compare_streams(edge_stream, edge_file);
 }
 
-template <typename Fun>
-bool test_all_adj(const Fun&& factory) {
+template <typename Factory>
+bool test_all_adj(const Factory&& factory) {
     const emp::vector<dim_t> assets = find_assets(factory.GetSlug(), ".adj");
 
     // no matching assets found
@@ -133,7 +133,7 @@ bool test_all_adj(const Fun&& factory) {
         assets.begin(),
         assets.end(),
         [&factory](const dim_t& dim) {
-            return test_adjacency_output(std::move(factory), dim);
+            return test_adjacency_output(factory, dim);
         }
     );
 }
