@@ -1,3 +1,6 @@
+#pragma once
+#ifndef UITSL_ALGORITHM_NORMALIZE_HPP_INCLUDE
+#define UITSL_ALGORITHM_NORMALIZE_HPP_INCLUDE
 
 #include <algorithm>
 #include <numeric>
@@ -19,3 +22,5 @@ constexpr void normalize(InputIt first, InputIt last) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_ALGORITHM_NORMALIZE_HPP_INCLUDE
