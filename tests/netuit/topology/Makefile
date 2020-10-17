@@ -1,3 +1,4 @@
+TARGET_NAMES += CompleteTopologyFactory
 TARGET_NAMES += DyadicTopologyFactory
 TARGET_NAMES += RingTopologyFactory
 TARGET_NAMES += TopoNode
@@ -16,6 +17,7 @@ staging:
 
 assets: staging
 	mkdir assets
+	python3 scripts/make_complete.py
 	python3 scripts/make_dyadic.py
 	python3 scripts/make_loop.py
 	python3 scripts/make_procon.py
