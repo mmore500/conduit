@@ -1,6 +1,6 @@
 #pragma once
-
-
+#ifndef UITSL_UTILITY_UIDMAP_HPP_INCLUDE
+#define UITSL_UTILITY_UIDMAP_HPP_INCLUDE
 
 #include <unordered_map>
 
@@ -42,3 +42,4 @@ public:
 
 } // namespace uitsl
 
+#endif // #ifndef UITSL_UTILITY_UIDMAP_HPP_INCLUDE
