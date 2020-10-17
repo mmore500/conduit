@@ -12,6 +12,9 @@ TARGET_NAMES += ToroidalTopologyFactory
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
+default:
+	test
+
 staging:
 	mkdir -p staging/assets
 
