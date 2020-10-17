@@ -80,7 +80,7 @@ bool test_isomorphic(const std::string& str, const std::string& filename) {
 }
 
 template <typename Factory, typename T>
-bool test_adjacency_output(const Factory&& factory, const T dims) {
+bool test_adjacency_output(const Factory& factory, const T dims) {
     // test adj list
     std::stringstream adj_stream;
     factory(dims).PrintAdjacencyList(adj_stream);
@@ -132,7 +132,7 @@ bool test_all_adj(const Factory&& factory) {
     return std::all_of(
         assets.begin(),
         assets.end(),
-        [&factory](const dim_t& dim) {
+        [factory](const dim_t& dim) {
             return test_adjacency_output(factory, dim);
         }
     );
