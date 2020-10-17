@@ -19,7 +19,7 @@ def make_filename(dim):
         'name'  : 'loop',
         'ndims' : '1',
         'dim0'  : str(dim),
-        'ext'   : '.adj'
+        'ext'   : '.adj',
     })
 
 for dim in dims:

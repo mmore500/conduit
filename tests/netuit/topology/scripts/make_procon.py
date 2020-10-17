@@ -20,7 +20,7 @@ def make_filename(dim):
         'name'  : 'procon',
         'ndims' : '1',
         'dim0'  : str(dim),
-        'ext'   : '.adj'
+        'ext'   : '.adj',
     })
 # taken from https://stackoverflow.com/a/312464
 def chunks(lst, n):

@@ -26,9 +26,9 @@ def make_filename(dims):
         **{
             'name'  : 'toroidal',
             'ndims' : len(dims),
-            'ext'   : '.adj'
+            'ext'   : '.adj',
         },
-        **{'dim' + str(i) : dim for i, dim in enumerate(dims)}
+        **{'dim' + str(i) : dim for i, dim in enumerate(dims)},
     }
 
     return kn.pack(pack)
