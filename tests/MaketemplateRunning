@@ -29,7 +29,7 @@ $(TO_ROOT)/coverage_include:
 	cd $(TO_ROOT)/tests && ./convert_for_tests.sh
 
 cov: FLAGS := -std=c++17 -pipe -pthread -march=native -g -Wall -Wno-unused-function -I$(TO_ROOT)/coverage_include/ -I$(TO_ROOT)/third-party/ -DEMP_TRACK_MEM -DUITSL_AUDIT_OCCUPANCY -Wnon-virtual-dtor -Wcast-align -Woverloaded-virtual -ftemplate-backtrace-limit=0 -fprofile-instr-generate -fcoverage-mapping -fno-inline -fno-elide-constructors -O0
-cov: $(addprefix cov-, $(TARGET_NAMES))
+cov:: $(addprefix cov-, $(TARGET_NAMES))
 
 cov-%: % $(TO_ROOT)/coverage_include
 	cd $< && make cov

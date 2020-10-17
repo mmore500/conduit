@@ -30,6 +30,7 @@ assets: staging
 test:: assets
 opt:: assets
 fulldebug:: assets
+cov:: assets
 
 clean::
 	rm -rf assets
