@@ -33,5 +33,3 @@ for dim in dims:
     with open("assets/" + make_filename(dim), "w") as file:
         for line in nx.generate_adjlist(G_dyatic):
             file.write(line + '\n')
-
-
