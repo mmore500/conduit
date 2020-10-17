@@ -3,15 +3,15 @@
 #define NETUIT_ASSIGN_GENERATEMETISASSIGNMENTS_HPP_INCLUDE
 
 #include <functional>
-#include <utility>
 #include <stddef.h>
+#include <utility>
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 
-#include "../../uitsl/debug/EnumeratedFunctor.hpp"
-#include "../../uitsl/parallel/thread_utils.hpp"
-#include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../topology/Topology.hpp"
+#include "../../uitsl/debug/EnumeratedFunctor.hpp"
+#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/parallel/thread_utils.hpp"
 
 namespace netuit {
 

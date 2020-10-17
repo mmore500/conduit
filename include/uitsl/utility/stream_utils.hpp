@@ -2,11 +2,11 @@
 #ifndef UITSL_UTILITY_STREAM_UTILS_HPP_INCLUDE
 #define UITSL_UTILITY_STREAM_UTILS_HPP_INCLUDE
 
+#include <algorithm>
 #include <fstream>
-#include <string>
 #include <iostream>
 #include <iterator>
-#include <algorithm>
+#include <string>
 
 namespace uitsl {
 

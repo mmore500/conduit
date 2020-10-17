@@ -18,8 +18,8 @@
 #include "../../../third-party/Empirical/source/tools/keyname_utils.h"
 
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
-#include "../../uitsl/polyfill/identity.hpp"
 #include "../../uitsl/debug/metis_utils.hpp"
+#include "../../uitsl/polyfill/identity.hpp"
 #include "../../uitsl/utility/stream_utils.hpp"
 
 #include "TopoNode.hpp"

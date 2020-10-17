@@ -2,9 +2,9 @@
 #ifndef NETUIT_TOPOLOGY_TOPONODEINPUT_HPP_INCLUDE
 #define NETUIT_TOPOLOGY_TOPONODEINPUT_HPP_INCLUDE
 
+#include <iostream>
 #include <stddef.h>
 #include <utility>
-#include <iostream>
 
 #include "../../uitsl/utility/print_utils.hpp"
 
