@@ -8,4 +8,6 @@ TEST_CASE("Test PodLeafNode") {
   // TODO expand stub test
   uitsl::PodLeafNode<char, 2>{};
 
+  uitsl::PodLeafNode<char, 2>{}.Reset();
+
 }

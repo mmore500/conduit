@@ -2,8 +2,8 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
 
 #include "uit/spouts/wrappers/TrivialSpoutWrapper.hpp"
 

@@ -2,9 +2,9 @@
 //  Copyright (C) Matthew Andres Moreno, 2020.
 //  Released under MIT license; see LICENSE
 
+#include <chrono>
 #include <iomanip>
 #include <iostream>
-#include <chrono>
 
 #include "uitsl/chrono/TimeGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"

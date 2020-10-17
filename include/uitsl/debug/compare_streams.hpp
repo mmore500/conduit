@@ -3,9 +3,9 @@
 #define UITSL_DEBUG_COMPARE_STREAMS_HPP_INCLUDE
 
 #include <algorithm>
+#include <fstream>
 #include <iostream>
 #include <iterator>
-#include <fstream>
 #include <string>
 
 namespace uitsl {

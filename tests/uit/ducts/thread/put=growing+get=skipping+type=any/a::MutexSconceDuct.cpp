@@ -9,5 +9,6 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #include "../ThreadDuct.hpp"
-#include "../ValueThreadDuct.hpp"
+
 #include "../SkippingThreadDuct.hpp"
+#include "../ValueThreadDuct.hpp"

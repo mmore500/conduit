@@ -3,8 +3,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
-#include "uitsl/mpi/mpi_types.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/mpi/mpi_types.hpp"
 
 const uitsl::MpiGuard guard;
 

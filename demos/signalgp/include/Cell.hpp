@@ -2,12 +2,12 @@
 
 #include <memory>
 
-#include "../../../third-party/Empirical/source/tools/Random.h"
 #include "../../../third-party/Empirical/source/hardware/signalgp_utils.h"
+#include "../../../third-party/Empirical/source/tools/Random.h"
 
 #include "config.hpp"
-#include "InstLib.hpp"
 #include "EventLib.hpp"
+#include "InstLib.hpp"
 #include "Trait.hpp"
 #include "typedef.hpp"
 

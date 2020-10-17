@@ -2,8 +2,8 @@
 #ifndef UITSL_MATH_MATH_UTILS_HPP_INCLUDE
 #define UITSL_MATH_MATH_UTILS_HPP_INCLUDE
 
-#include <cmath>
 #include <bitset>
+#include <cmath>
 #include <limits>
 #include <stddef.h>
 

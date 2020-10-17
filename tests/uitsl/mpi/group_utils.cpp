@@ -6,8 +6,8 @@
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/group_utils.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/mpi/mpi_utils.hpp"
 
 const uitsl::MpiGuard guard;
 

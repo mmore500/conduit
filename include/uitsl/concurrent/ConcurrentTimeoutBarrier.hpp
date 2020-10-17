@@ -6,8 +6,8 @@
 
 #include <mpi.h>
 
-#include "../mpi/mpi_utils.hpp"
 #include "../countdown/Timer.hpp"
+#include "../mpi/mpi_utils.hpp"
 #include "../parallel/ParallelTimeoutBarrier.hpp"
 #include "../parallel/ThreadIbarrier.hpp"
 

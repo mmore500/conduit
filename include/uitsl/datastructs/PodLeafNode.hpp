@@ -64,6 +64,19 @@ public:
   template<typename Query>
   static constexpr bool HasType() { return std::is_same<T, Query>(); }
 
+
+  /*
+   * Equality operator overload.
+   */
+  bool operator==(const PodLeafNode& other) const {
+    return data == other.data;
+  }
+
+  /*
+   * Set data to value-initialized state.
+   */
+  void Reset() { data.fill( T{} ); }
+
 };
 
 } // namespace uitsl

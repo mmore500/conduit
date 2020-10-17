@@ -22,8 +22,8 @@
 #include "uitsl/polyfill/barrier.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 
-#include "uit/setup/ImplSpec.hpp"
 #include "uit/fixtures/Source.hpp"
+#include "uit/setup/ImplSpec.hpp"
 
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/topology/DyadicTopologyFactory.hpp"

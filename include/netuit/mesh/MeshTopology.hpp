@@ -11,8 +11,8 @@
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"
 
-#include "../../uit/fixtures/Conduit.hpp"
 #include "../../uit/ducts/Duct.hpp"
+#include "../../uit/fixtures/Conduit.hpp"
 
 #include "../topology/Topology.hpp"
 
