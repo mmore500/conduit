@@ -9,7 +9,7 @@ namespace uitsl {
 template<typename T, size_t N=1>
 class PodLeafNode {
 
-  emp::array<T, N> data;
+  emp::array<T, N> data{};
 
 public:
 
