@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UITSL_ALGORITHM_FIND_IF_NTH_HPP_INCLUDE
-#define UITSL_ALGORITHM_FIND_IF_NTH_HPP_INCLUDE
+#ifndef UITSL_ALGORITHM_COPY_IF_HPP_INCLUDE
+#define UITSL_ALGORITHM_COPY_IF_HPP_INCLUDE
 
 #include <algorithm>
 
@@ -57,4 +57,4 @@ OutputIt copy_if(
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_ALGORITHM_FIND_IF_NTH_HPP_INCLUDE
+#endif // #ifndef UITSL_ALGORITHM_COPY_IF_HPP_INCLUDE
