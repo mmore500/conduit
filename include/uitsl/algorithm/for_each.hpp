@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UITSL_ALGORITHM_FIND_IF_NTH_HPP_INCLUDE
-#define UITSL_ALGORITHM_FIND_IF_NTH_HPP_INCLUDE
+#ifndef UITSL_ALGORITHM_FOR_EACH_HPP_INCLUDE
+#define UITSL_ALGORITHM_FOR_EACH_HPP_INCLUDE
 
 #include <algorithm>
 
@@ -37,4 +37,4 @@ void for_each(
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_ALGORITHM_FIND_IF_NTH_HPP_INCLUDE
+#endif // #ifndef UITSL_ALGORITHM_FOR_EACH_HPP_INCLUDE
