@@ -13,6 +13,13 @@ class PodLeafNode {
 
 public:
 
+  PodLeafNode() = default;
+
+  PodLeafNode(const T& other) {
+    emp_assert( N == 1 );
+    data[0] = other;
+  }
+
   static constexpr size_t GetSize() { return N; }
 
   /*
@@ -76,6 +83,16 @@ public:
    * Set data to value-initialized state.
    */
   void Reset() { data.fill( T{} ); }
+
+  operator T&() { emp_assert( N == 1 ); return Get(); }
+
+  operator const T&() const { emp_assert( N == 1 ); return Get(); }
+
+  PodLeafNode& operator=(const T& other) {
+    emp_assert( N == 1 );
+    data[0] = other;
+    return *this;
+  }
 
 };
 
