@@ -78,13 +78,18 @@ TEST_CASE("Test audit_less<signed, unsigned>") {
   REQUIRE( uitsl::audit_less( (int) -1, (size_t) 0) );
   REQUIRE( uitsl::audit_less( (int) 0, (size_t) 1) );
 
-  REQUIRE( uitsl::audit_less( (int) 0, (size_t) -1) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( uitsl::audit_less( (int) 0, (size_t) -1) );
+  #endif
+
   REQUIRE( !uitsl::audit_less( (int) 1, (unsigned short) 0) );
   REQUIRE( !uitsl::audit_less( (int) 2, (size_t) 1) );
   REQUIRE( !uitsl::audit_less( (short) 42, (size_t) 25) );
 
 
-  REQUIRE( uitsl::audit_less( (int) -1, (unsigned short) -1) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( uitsl::audit_less( (int) -1, (unsigned short) -1) );
+  #endif
   REQUIRE( !uitsl::audit_less( (short) 0, (size_t) 0) );
   REQUIRE( !uitsl::audit_less( (int) 1, (size_t) 1) );
 
@@ -96,12 +101,16 @@ TEST_CASE("Test audit_less<unsigned, signed>") {
   REQUIRE( !uitsl::audit_less( (size_t) 0, (int) -1) );
   REQUIRE( !uitsl::audit_less( (size_t) 1, (int) 0) );
 
-  REQUIRE( !uitsl::audit_less( (size_t) -1, (int) 0) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( !uitsl::audit_less( (size_t) -1, (int) 0) );
+  #endif
   REQUIRE( uitsl::audit_less( (unsigned short) 0, (int) 1) );
   REQUIRE( uitsl::audit_less( (size_t) 1, (int) 2) );
   REQUIRE( uitsl::audit_less( (size_t) 25, (short) 42) );
 
-  REQUIRE( !uitsl::audit_less( (unsigned short) -1, (int) -1) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( !uitsl::audit_less( (unsigned short) -1, (int) -1) );
+  #endif
   REQUIRE( !uitsl::audit_less( (size_t) 0, (short) 0) );
   REQUIRE( !uitsl::audit_less( (size_t) 1, (int) 1) );
 
@@ -179,13 +188,17 @@ TEST_CASE("Test audit_greater<signed, unsigned>") {
   REQUIRE( !uitsl::audit_greater( (int) -1, (size_t) 0) );
   REQUIRE( !uitsl::audit_greater( (int) 0, (size_t) 1) );
 
-  REQUIRE( !uitsl::audit_greater( (int) 0, (size_t) -1) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( !uitsl::audit_greater( (int) 0, (size_t) -1) );
+  #endif
   REQUIRE( uitsl::audit_greater( (int) 1, (unsigned short) 0) );
   REQUIRE( uitsl::audit_greater( (int) 2, (size_t) 1) );
   REQUIRE( uitsl::audit_greater( (short) 42, (size_t) 25) );
 
 
-  REQUIRE( !uitsl::audit_greater( (int) -1, (unsigned short) -1) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( !uitsl::audit_greater( (int) -1, (unsigned short) -1) );
+  #endif
   REQUIRE( !uitsl::audit_greater( (short) 0, (size_t) 0) );
   REQUIRE( !uitsl::audit_greater( (int) 1, (size_t) 1) );
 
@@ -197,12 +210,16 @@ TEST_CASE("Test audit_greater<unsigned, signed>") {
   REQUIRE( uitsl::audit_greater( (size_t) 0, (int) -1) );
   REQUIRE( uitsl::audit_greater( (size_t) 1, (int) 0) );
 
-  REQUIRE( uitsl::audit_greater( (size_t) -1, (int) 0) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( uitsl::audit_greater( (size_t) -1, (int) 0) );
+  #endif
   REQUIRE( !uitsl::audit_greater( (unsigned short) 0, (int) 1) );
   REQUIRE( !uitsl::audit_greater( (size_t) 1, (int) 2) );
   REQUIRE( !uitsl::audit_greater( (size_t) 25, (short) 42) );
 
-  REQUIRE( uitsl::audit_greater( (unsigned short) -1, (int) -1) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( uitsl::audit_greater( (unsigned short) -1, (int) -1) );
+  #endif
   REQUIRE( !uitsl::audit_greater( (size_t) 0, (short) 0) );
   REQUIRE( !uitsl::audit_greater( (size_t) 1, (int) 1) );
 
@@ -290,30 +307,35 @@ TEST_CASE("Test audit_equal<signed, unsigned>") {
     uitsl::audit_equal( (short) -1, (int) -1)
   );
 
-  REQUIRE(
+  #ifndef NDEBUG
+  REQUIRE_THROWS(
     !uitsl::audit_equal( (short) -1, std::numeric_limits<unsigned short>::max())
   );
-  REQUIRE(
+  REQUIRE_THROWS(
     !uitsl::audit_equal( (short) -1, std::numeric_limits<unsigned int>::max())
   );
-  REQUIRE(
+  REQUIRE_THROWS(
     !uitsl::audit_equal( (int) -2, std::numeric_limits<unsigned int>::max() - 1)
   );
+  #endif
   REQUIRE(
-    !uitsl::audit_equal( (int) -2, std::numeric_limits<unsigned short>::max() - 1)
+    !uitsl::audit_equal( (int) -2, std::numeric_limits<unsigned short>::max()-1)
   );
 
   REQUIRE( !uitsl::audit_equal( (short) -1, (size_t) 0) );
   REQUIRE( !uitsl::audit_equal( (int) -1, (size_t) 0) );
   REQUIRE( !uitsl::audit_equal( (int) 0, (size_t) 1) );
 
-  REQUIRE( !uitsl::audit_equal( (int) 0, (size_t) -1) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( !uitsl::audit_equal( (int) 0, (size_t) -1) );
+  #endif
   REQUIRE( !uitsl::audit_equal( (int) 1, (unsigned short) 0) );
   REQUIRE( !uitsl::audit_equal( (int) 2, (size_t) 1) );
   REQUIRE( !uitsl::audit_equal( (short) 42, (size_t) 25) );
 
-
-  REQUIRE( !uitsl::audit_equal( (int) -1, (unsigned short) -1) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( !uitsl::audit_equal( (int) -1, (unsigned short) -1) );
+  #endif
   REQUIRE( uitsl::audit_equal( (short) 0, (size_t) 0) );
   REQUIRE( uitsl::audit_equal( (int) 1, (size_t) 1) );
 
@@ -321,29 +343,35 @@ TEST_CASE("Test audit_equal<signed, unsigned>") {
 
 TEST_CASE("Test audit_equal<unsigned, signed>") {
 
-  REQUIRE(
+  #ifndef NDEBUG
+  REQUIRE_THROWS(
     !uitsl::audit_equal( std::numeric_limits<unsigned short>::max(), (short) -1)
   );
-  REQUIRE(
+  REQUIRE_THROWS(
     !uitsl::audit_equal( std::numeric_limits<unsigned int>::max(), (short) -1)
   );
-  REQUIRE(
+  REQUIRE_THROWS(
     !uitsl::audit_equal( std::numeric_limits<unsigned int>::max() - 1, (int) -2)
   );
+  #endif
   REQUIRE(
-    !uitsl::audit_equal( std::numeric_limits<unsigned short>::max() - 1, (int) -2)
+    !uitsl::audit_equal(std::numeric_limits<unsigned short>::max() - 1, (int)-2)
   );
 
   REQUIRE( !uitsl::audit_equal( (size_t) 0, (short) -1) );
   REQUIRE( !uitsl::audit_equal( (size_t) 0, (int) -1) );
   REQUIRE( !uitsl::audit_equal( (size_t) 1, (int) 0) );
 
-  REQUIRE( !uitsl::audit_equal( (size_t) -1, (int) 0) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( !uitsl::audit_equal( (size_t) -1, (int) 0) );
+  #endif
   REQUIRE( !uitsl::audit_equal( (unsigned short) 0, (int) 1) );
   REQUIRE( !uitsl::audit_equal( (size_t) 1, (int) 2) );
   REQUIRE( !uitsl::audit_equal( (size_t) 25, (short) 42) );
 
-  REQUIRE( !uitsl::audit_equal( (unsigned short) -1, (int) -1) );
+  #ifndef NDEBUG
+  REQUIRE_THROWS( !uitsl::audit_equal( (unsigned short) -1, (int) -1) );
+  #endif
   REQUIRE( uitsl::audit_equal( (size_t) 0, (short) 0) );
   REQUIRE( uitsl::audit_equal( (size_t) 1, (int) 1) );
 
