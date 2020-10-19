@@ -16,7 +16,11 @@ jobs:
 
   - stage: Tests
 
-    name: OpenMPI uitsl and external Unit Tests (debug mode)
+    name: Docs, Demos, Miscellaneous
+    script: docker run "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && ./ci/test_trailing_whitespace.sh && ./ci/test_tabs.sh && ./ci/test_missing_newlines.sh && make docs && make demos && ./ci/test_headerguards.sh && ./ci/test_alphabetize_includes.sh && make test-readme-snippets"
+
+
+  - name: OpenMPI uitsl and external Unit Tests (debug mode)
     env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     script:
     - docker run -e TRAVIS -e UIT_MPICXX -e UIT_MPIEXEC "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit/tests/uitsl && make test && cd /opt/conduit/tests/external && make test"
@@ -129,9 +133,6 @@ jobs:
 
   - name: Source
     script: docker run --cap-add=SYS_ADMIN "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make test-source"
-
-  - name: Docs, Demos, Miscellaneous
-    script: docker run "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && ./ci/test_trailing_whitespace.sh && ./ci/test_tabs.sh && ./ci/test_missing_newlines.sh && make docs && make demos && ./ci/test_headerguards.sh && ./ci/test_alphabetize_includes.sh && make test-readme-snippets"
 
   - stage: Deploy
     name: GitHub Pages
