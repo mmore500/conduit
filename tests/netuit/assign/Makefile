@@ -1,3 +1,5 @@
+TARGET_NAMES += AssignAvailableThreads
+TARGET_NAMES += AssignAvailableProcs
 TARGET_NAMES += AssignContiguously
 TARGET_NAMES += AssignIntegrated
 TARGET_NAMES += AssignRandomly
