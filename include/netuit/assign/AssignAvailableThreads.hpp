@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UITSL_PARALLEL_ASSIGN_UTILS_HPP_INCLUDE
-#define UITSL_PARALLEL_ASSIGN_UTILS_HPP_INCLUDE
+#ifndef NETUIT_ASSIGN_ASSIGNAVAILABLETHREADS_HPP_INCLUDE
+#define NETUIT_ASSIGN_ASSIGNAVAILABLETHREADS_HPP_INCLUDE
 
 #include "../../uitsl/parallel/thread_utils.hpp"
 
@@ -16,4 +16,4 @@ struct AssignAvailableThreads {
 
 } // namespace netuit
 
-#endif // #ifndef UITSL_PARALLEL_ASSIGN_UTILS_HPP_INCLUDE
+#endif // #ifndef NETUIT_ASSIGN_ASSIGNAVAILABLETHREADS_HPP_INCLUDE
