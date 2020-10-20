@@ -12,5 +12,5 @@ const uitsl::MpiGuard guard;
 
 // TODO: stub test
 TEST_CASE("Test AssignAvailableProcs") {
-  netuit::AssignAvailableProcs(1);
+  netuit::AssignAvailableProcs{}(1);
 }

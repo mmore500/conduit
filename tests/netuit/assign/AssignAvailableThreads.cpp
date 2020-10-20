@@ -12,5 +12,5 @@ const uitsl::MpiGuard guard;
 
 // TODO: stub test
 TEST_CASE("Test AssignAvailableThreads") {
-  netuit::AssignAvailableThreads(1);
+  netuit::AssignAvailableThreads{}(1);
 }
