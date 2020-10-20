@@ -2,9 +2,9 @@
 #ifndef UITSL_PARALLEL_ASSIGN_UTILS_HPP_INCLUDE
 #define UITSL_PARALLEL_ASSIGN_UTILS_HPP_INCLUDE
 
-#include "thread_utils.hpp"
+#include "../../uitsl/parallel/thread_utils.hpp"
 
-namespace uitsl {
+namespace netuit {
 
 struct AssignAvailableThreads {
 
@@ -14,6 +14,6 @@ struct AssignAvailableThreads {
 
 };
 
-} // namespace uitsl
+} // namespace netuit
 
 #endif // #ifndef UITSL_PARALLEL_ASSIGN_UTILS_HPP_INCLUDE
