@@ -10,7 +10,7 @@
 #include "Empirical/source/base/vector.h"
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
-#include "uitsl/distributed/assign_utils.hpp"
+#include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"

@@ -2,9 +2,9 @@
 #ifndef UITSL_DISTRIBUTED_ASSIGN_UTILS_HPP_INCLUDE
 #define UITSL_DISTRIBUTED_ASSIGN_UTILS_HPP_INCLUDE
 
-#include "../mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_utils.hpp"
 
-namespace uitsl {
+namespace netuit {
 
 struct AssignAvailableProcs {
 
@@ -14,6 +14,6 @@ struct AssignAvailableProcs {
 
 };
 
-} // namespace uitsl
+} // namespace netuit
 
 #endif // #ifndef UITSL_DISTRIBUTED_ASSIGN_UTILS_HPP_INCLUDE

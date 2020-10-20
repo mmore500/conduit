@@ -9,7 +9,7 @@
 #include "Empirical/source/base/vector.h"
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
-#include "uitsl/distributed/assign_utils.hpp"
+#include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
 #include "uit/ducts/mock/ThrowDuct.hpp"
@@ -35,7 +35,7 @@ decltype(auto) make_ring_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
-    uitsl::AssignAvailableProcs{},
+    netuit::AssignAvailableProcs{},
     std::make_shared<typename Spec::ProcBackEnd>( message_size )
   };
 
