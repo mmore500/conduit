@@ -4,8 +4,8 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
+#include "uitsl/mpi/MpiGuard.hpp"
 
 #include "uit/ducts/proc/impl/inlet/templated/AggregatedInletDuct.hpp"
 #include "uit/ducts/proc/put=dropping+get=stepping+type=cereal/inlet=RingIsend+outlet=Iprobe_c::IriOiDuct.hpp"

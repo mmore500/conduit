@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UITSL_CHRONO_SPLITWATCH_HPP_INCLUDE
+#define UITSL_CHRONO_SPLITWATCH_HPP_INCLUDE
 
 #include <chrono>
 
@@ -31,3 +33,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CHRONO_SPLITWATCH_HPP_INCLUDE

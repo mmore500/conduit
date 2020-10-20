@@ -4,8 +4,8 @@
 
 #include <type_traits>
 
-#include "../../../third-party/cereal/include/cereal/cereal.hpp"
 #include "../../../third-party/cereal/include/cereal/archives/binary.hpp"
+#include "../../../third-party/cereal/include/cereal/cereal.hpp"
 
 #include "decay_equiv.hpp"
 

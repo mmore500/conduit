@@ -2,8 +2,8 @@
 
 #include <mpi.h>
 
-#include "uitsl/concurrent/Gatherer.hpp"
 #include "uitsl/chrono/TimeGuard.hpp"
+#include "uitsl/concurrent/Gatherer.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"

@@ -8,6 +8,6 @@ TEST_CASE("RecursiveExclusiveLock") {
 
   // TODO expand stub test
   uitsl::RecursiveMutex mutex;
-  uit::RecursiveExclusiveLock{ mutex };
+  uitsl::RecursiveExclusiveLock{ mutex };
 
 }

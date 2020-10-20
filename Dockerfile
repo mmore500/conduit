@@ -35,8 +35,19 @@ RUN \
     && \
   echo "installed fundamentals"
 
+# adapted in part from https://askubuntu.com/a/916451
 RUN \
-  apt-get install -qq software-properties-common \
+  rm /etc/apt/apt.conf.d/docker-gzip-indexes \
+    && \
+  apt-get purge apt-show-versions \
+    && \
+  rm /var/lib/apt/lists/*lz4 \
+    && \
+  apt-get -o Acquire::GzipIndexes=false update \
+    && \
+  apt-get install -qq \
+    software-properties-common \
+    apt-show-versions \
     && \
   add-apt-repository -y ppa:ubuntu-toolchain-r/test \
     && \
