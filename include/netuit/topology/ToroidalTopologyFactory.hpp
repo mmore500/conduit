@@ -19,7 +19,7 @@
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/utility/UIDMap.hpp"
 
-namespace uit {
+namespace netuit {
 
 netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
   /*
@@ -76,5 +76,6 @@ struct ToroidalTopologyFactory {
   std::string GetSlug() const { return "toroidal"; }
 };
 
-}
+} // namespace netuit
+
 #endif // #ifndef NETUIT_TOPOLOGY_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE

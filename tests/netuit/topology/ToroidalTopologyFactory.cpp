@@ -7,5 +7,5 @@
 #include "NetworkXTester.hpp"
 
 TEST_CASE("Test ToroidalTopologyFactory") {
-  REQUIRE(test_all_adj(uit::ToroidalTopologyFactory{}));
+  REQUIRE(test_all_adj(netuit::ToroidalTopologyFactory{}));
 }
