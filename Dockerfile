@@ -57,8 +57,6 @@ RUN \
     && \
   apt-get update -qq \
     && \
-  apt-get upgrade -qq \
-    && \
   echo "configured packaging system"
 
 RUN \
