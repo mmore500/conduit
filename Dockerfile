@@ -25,7 +25,7 @@ RUN \
   echo "initialized packaging system"
 
 RUN \
-  apt-get install -qq \
+  apt-get install -qq --no-install-recommends \
     curl=7.58.0-2ubuntu3.10 \
     git=1:2.17.1-1ubuntu0.7 \
     gzip=1.6-5ubuntu1 \
@@ -49,7 +49,7 @@ RUN \
     && \
   apt-get -o Acquire::GzipIndexes=false update \
     && \
-  apt-get install -qq \
+  apt-get install -qq --no-install-recommends \
     software-properties-common=0.96.24.32.14 \
     apt-show-versions=0.22.7ubuntu1 \
     && \
@@ -68,7 +68,7 @@ RUN \
   echo "configured packaging system"
 
 RUN \
-  apt-get install -qq \
+  apt-get install -qq --no-install-recommends \
     g++-8=8.4.0-1ubuntu1~18.04 \
     libclang-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
     llvm-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
@@ -91,7 +91,7 @@ RUN \
   echo "installed core dependencies"
 
 RUN \
-  apt-get install -qq \
+  apt-get install -qq --no-install-recommends \
     libopenmpi-dev=2.1.1-8 \
     libopenmpi2=2.1.1-8 \
     openmpi-bin=2.1.1-8 \
@@ -123,7 +123,7 @@ RUN \
   echo "installed hpc dependencies"
 
 RUN \
-  apt-get install -qq \
+  apt-get install -qq --no-install-recommends \
     nodejs=8.10.0~dfsg-2ubuntu0.4 \
     npm=3.5.2-0ubuntu4 \
     gconf-service=3.2.6-4ubuntu1 \
@@ -174,7 +174,7 @@ RUN \
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
 RUN \
-  apt-get install -qq \
+  apt-get install -qq --no-install-recommends \
     man \
     vim=2:8.0.1453-1ubuntu1.3 \
     nano=2.9.3-2 \
@@ -193,7 +193,7 @@ RUN \
   echo "installed Python packages"
 
 RUN \
-  apt-get install -qq \
+  apt-get install -qq --no-install-recommends \
     doxygen=1.8.13-10 \
     && \
   apt-get clean
