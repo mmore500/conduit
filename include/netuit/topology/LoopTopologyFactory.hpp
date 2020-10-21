@@ -45,7 +45,7 @@ struct LoopTopologyFactory {
 
   static std::string GetName() { return "Loop Topology"; }
 
-  static std::string GetSlug() const { return "loop"; }
+  static std::string GetSlug() { return "loop"; }
 
 };
 

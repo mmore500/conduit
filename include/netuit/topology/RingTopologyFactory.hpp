@@ -108,7 +108,7 @@ struct RingTopologyFactory {
 
   static std::string GetName() { return "Ring Topology"; }
 
-  static std::string GetSlug() const { return "ring"; }
+  static std::string GetSlug() { return "ring"; }
 
 };
 

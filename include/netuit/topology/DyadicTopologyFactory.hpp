@@ -59,7 +59,7 @@ struct DyadicTopologyFactory {
 
   static std::string GetName() { return "Dyadic Topology"; }
 
-  static std::string GetSlug() const { return "dyadic"; }
+  static std::string GetSlug() { return "dyadic"; }
 
 };
 

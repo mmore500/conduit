@@ -56,7 +56,7 @@ struct ProConTopologyFactory {
 
   static std::string GetName() { return "Producer-Consumer Topology"; }
 
-  static std::string GetSlug() const { return "procon"; }
+  static std::string GetSlug() { return "procon"; }
 
 };
 
