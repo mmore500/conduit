@@ -4,6 +4,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "netuit/topology/ToroidalTopologyFactory.hpp"
+
 #include "NetworkXTester.hpp"
 
 TEST_CASE("Test ToroidalTopologyFactory") {
