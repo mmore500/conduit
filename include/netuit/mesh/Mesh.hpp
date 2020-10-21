@@ -7,6 +7,7 @@
 
 #include <mpi.h>
 
+#include "../../uitsl/debug/safe_cast.hpp"
 #include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"
@@ -111,7 +112,9 @@ class Mesh {
     const uitsl::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
 
     static std::unordered_set<int> tag_checker;
-    const int tag = uitsl::sidebyside_hash(mesh_id, input.GetEdgeID());
+    const int tag = uitsl::safe_cast<int>(
+      uitsl::sidebyside_hash(mesh_id, input.GetEdgeID())
+    );
 
     // assert that generated tags are unique
     emp_assert( tag_checker.insert(tag).second );
