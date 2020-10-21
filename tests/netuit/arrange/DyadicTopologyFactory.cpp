@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "netuit/topology/DyadicTopologyFactory.hpp"
+#include "netuit/arrange/DyadicTopologyFactory.hpp"
 
 #include "NetworkXTester.hpp"
 

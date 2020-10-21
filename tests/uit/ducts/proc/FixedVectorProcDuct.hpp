@@ -21,12 +21,12 @@
 #include "uit/fixtures/Source.hpp"
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/DyadicTopologyFactory.hpp"
+#include "netuit/arrange/ProConTopologyFactory.hpp"
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
-#include "netuit/topology/DyadicTopologyFactory.hpp"
-#include "netuit/topology/ProConTopologyFactory.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 
 const uitsl::MpiGuard guard;

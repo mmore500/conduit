@@ -30,8 +30,8 @@
 
 #include "uit/fixtures/Conduit.hpp"
 
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 #include "chunk_utils.hpp"
 #include "config_utils.hpp"

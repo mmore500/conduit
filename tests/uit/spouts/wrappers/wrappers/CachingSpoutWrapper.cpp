@@ -18,10 +18,10 @@
 #include "uit/setup/ImplSpec.hpp"
 #include "uit/spouts/wrappers/CachingSpoutWrapper.hpp"
 
+#include "netuit/arrange/DyadicTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
-#include "netuit/topology/DyadicTopologyFactory.hpp"
 
 const uitsl::MpiGuard guard;
 

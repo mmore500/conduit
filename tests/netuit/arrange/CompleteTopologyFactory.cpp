@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "netuit/topology/CompleteTopologyFactory.hpp"
+#include "netuit/arrange/CompleteTopologyFactory.hpp"
 
 #include "NetworkXTester.hpp"
 
