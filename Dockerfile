@@ -33,6 +33,10 @@ RUN \
     tar=1.29b-2ubuntu0.1 \
     wget=1.19.4-1ubuntu2.2 \
     && \
+  apt-get clean
+    && \
+  rm -rf /var/lib/apt/lists/*
+    && \
   echo "installed fundamentals"
 
 # adapted in part from https://askubuntu.com/a/916451
@@ -57,6 +61,10 @@ RUN \
     && \
   apt-get update -qq \
     && \
+  apt-get clean
+    && \
+  rm -rf /var/lib/apt/lists/*
+    && \
   echo "configured packaging system"
 
 RUN \
@@ -75,6 +83,10 @@ RUN \
     libpthread-stubs0-dev=0.3-4 \
     libc6-dbg=2.27-3ubuntu1.2 \
     gdb=8.2-0ubuntu1~18.04 \
+    && \
+  apt-get clean
+    && \
+  rm -rf /var/lib/apt/lists/*
     && \
   echo "installed core dependencies"
 
@@ -103,6 +115,10 @@ RUN \
     python3-h5py=2.7.1-2 \
     slurm-client=17.11.2-1build1 \
     multitail=6.4.2-3 \
+    && \
+  apt-get clean
+    && \
+  rm -rf /var/lib/apt/lists/*
     && \
   echo "installed hpc dependencies"
 
@@ -148,6 +164,10 @@ RUN \
     lsb-release=9.20170808ubuntu1 \
     xdg-utils=1.1.2-1ubuntu2.3 \
     && \
+  apt-get clean
+    && \
+  rm -rf /var/lib/apt/lists/*
+    && \
   echo "installed web dependencies"
 
 # magic from https://github.com/puppeteer/puppeteer/issues/3451#issuecomment-523961368
@@ -161,6 +181,10 @@ RUN \
     emacs=47.0 \
     htop=2.1.0-3 \
     && \
+  apt-get clean
+    && \
+  rm -rf /var/lib/apt/lists/*
+    && \
   echo "installed creature comforts"
 
 RUN \
@@ -171,6 +195,10 @@ RUN \
 RUN \
   apt-get install -qq \
     doxygen=1.8.13-10 \
+    && \
+  apt-get clean
+    && \
+  rm -rf /var/lib/apt/lists/*
     && \
   echo "installed documentation dependencies"
 
