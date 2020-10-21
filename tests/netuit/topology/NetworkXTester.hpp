@@ -1,6 +1,7 @@
 #pragma once
 
 #include <filesystem>
+#include <fstream>
 #include <sstream>
 
 #include "../../../third-party/Empirical/source/tools/keyname_utils.h"
