@@ -37,7 +37,7 @@ bool compare_streams(std::istream& s1, std::istream& s2) {
 
   // stream problem
   if (s1.fail() || s2.fail()) {
-    std::err << "stream problem in compare_streams" << std::endl;
+    std::cerr << "stream problem in compare_streams" << std::endl;
     return false;
   }
 
