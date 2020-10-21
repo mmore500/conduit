@@ -158,10 +158,10 @@ RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 RUN \
   apt-get install -qq \
     man \
-    vim \
-    nano \
-    emacs \
-    htop \
+    vim=2:8.0.1453-1ubuntu1.3 \
+    nano=2.9.3-2 \
+    emacs=47.0 \
+    htop=2.1.0-3 \
     && \
   echo "installed creature comforts"
 
