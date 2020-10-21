@@ -5,6 +5,9 @@ COPY . /opt/conduit
 
 SHELL ["/bin/bash", "-c"]
 
+# Define default working directory.
+WORKDIR /opt/conduit
+
 # Prevent interactive time zone config.
 # adapted from https://askubuntu.com/a/1013396
 ENV DEBIAN_FRONTEND=noninteractive
@@ -234,8 +237,6 @@ RUN \
   echo "installed npm dependencies"
 
 RUN \
-  cd /opt/conduit/ \
-    && \
   cd third-party \
     && \
   ./install_dependencies.sh \
@@ -246,14 +247,9 @@ RUN \
 ENV LD_PRELOAD=/usr/local/lib/mimalloc-1.6/libmimalloc.so
 
 RUN \
-  cd /opt/conduit \
-    && \
   git remote set-url origin https://github.com/mmore500/conduit.git \
     && \
   echo "switched to https origin remote url"
-
-# Define default working directory.
-WORKDIR /opt/conduit
 
 # Perform any further action as an unprivileged user.
 # adapted from https://stackoverflow.com/a/27703359
