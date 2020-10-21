@@ -179,7 +179,7 @@ RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 RUN \
   apt-get install -qq --no-install-recommends \
     man \
-    vim=2:8.0.1453-1ubuntu1.3 \
+    vim \
     nano=2.9.3-2 \
     emacs=47.0 \
     htop=2.1.0-3 \
