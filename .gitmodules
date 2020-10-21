@@ -13,9 +13,6 @@
 [submodule "third-party/emsdk"]
   path = third-party/emsdk
   url = https://github.com/emscripten-core/emsdk
-[submodule "third-party/mimalloc"]
-  path = third-party/mimalloc
-  url = https://github.com/microsoft/mimalloc
 [submodule "third-party/readerwriterqueue"]
   path = third-party/readerwriterqueue
   url = https://github.com/cameron314/readerwriterqueue
