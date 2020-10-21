@@ -6,7 +6,10 @@
 
 namespace uitsl {
 
-/// Assigns a unique ID (UID) to an ordered tuple of elements.
+/*
+ * Helper class for toroidal topology factory that sifts for complementary
+ * from/to and to/from requests and links them to the same edge ID.
+ */
 template <typename T>
 class UIDMap {
   using node_id_t = size_t;
