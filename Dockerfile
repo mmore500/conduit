@@ -109,6 +109,7 @@ RUN \
     openmpi-doc=2.1.1-8 \
     libmpich-dev=3.3~a2-4 \
     libmpich12=3.3~a2-4 \
+    openssh-server=1:7.6p1-4ubuntu0.3 \
     hdf5-helpers=1.10.0-patch1+docs-4 \
     hdf5-tools=1.10.0-patch1+docs-4 \
     libhdf5-100=1.10.0-patch1+docs-4 \
