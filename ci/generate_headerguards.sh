@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for filename in $(cd include && find ./* -name '*.hpp' -type f); do
+for filename in $(cd include && find -- * -name '*.hpp' -type f); do
 
   GUARD=$( sed "s/[^[:alnum:]]/_/g" <<< "$filename" | tr [a-z] [A-Z] )
   NDEF_LINE="#ifndef ${GUARD}_INCLUDE"
