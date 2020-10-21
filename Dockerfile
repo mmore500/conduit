@@ -21,13 +21,9 @@ RUN \
     && \
   echo "buffed apt-get resiliency"
 
-# Install.
 RUN \
   apt-get update -qq \
     && \
-  echo "initialized packaging system"
-
-RUN \
   apt-get install -qq --no-install-recommends \
     curl=7.58.0-2ubuntu3.10 \
     git=1:2.17.1-1ubuntu0.7 \
@@ -35,6 +31,7 @@ RUN \
     unzip=6.0-21ubuntu1 \
     tar=1.29b-2ubuntu0.1 \
     wget=1.19.4-1ubuntu2.2 \
+    gpg-agent=2.2.4-1ubuntu1.3 \
     && \
   apt-get clean \
     && \
@@ -44,6 +41,8 @@ RUN \
 
 # adapted in part from https://askubuntu.com/a/916451
 RUN \
+  apt-get update -qq \
+    && \
   rm /etc/apt/apt.conf.d/docker-gzip-indexes \
     && \
   apt-get purge apt-show-versions \
@@ -71,6 +70,8 @@ RUN \
   echo "configured packaging system"
 
 RUN \
+  apt-get update -qq \
+    && \
   apt-get install -qq --no-install-recommends \
     g++-8=8.4.0-1ubuntu1~18.04 \
     libclang-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
@@ -83,6 +84,10 @@ RUN \
     python3-virtualenv=15.1.0+ds-1.1 \
     python-pip \
     python3-pip \
+    python-setuptools \
+    python3-setuptools \
+    python-wheel \
+    python3-wheel \
     libpthread-stubs0-dev=0.3-4 \
     libc6-dbg=2.27-3ubuntu1.2 \
     gdb=8.2-0ubuntu1~18.04 \
@@ -94,6 +99,8 @@ RUN \
   echo "installed core dependencies"
 
 RUN \
+  apt-get update -qq \
+    && \
   apt-get install -qq --no-install-recommends \
     libopenmpi-dev=2.1.1-8 \
     libopenmpi2=2.1.1-8 \
@@ -126,6 +133,8 @@ RUN \
   echo "installed hpc dependencies"
 
 RUN \
+  apt-get update -qq \
+    && \
   apt-get install -qq --no-install-recommends \
     nodejs=8.10.0~dfsg-2ubuntu0.4 \
     npm=3.5.2-0ubuntu4 \
@@ -177,6 +186,8 @@ RUN \
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
 RUN \
+  apt-get update -qq \
+    && \
   apt-get install -qq --no-install-recommends \
     man \
     vim \
@@ -196,6 +207,8 @@ RUN \
   echo "installed Python packages"
 
 RUN \
+  apt-get update -qq \
+    && \
   apt-get install -qq --no-install-recommends \
     doxygen=1.8.13-10 \
     && \
