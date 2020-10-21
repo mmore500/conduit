@@ -96,15 +96,20 @@ Topology make_ring_topology(const size_t cardinality) {
 }
 
 struct RingTopologyFactory {
+
   Topology operator()(const size_t cardinality) const {
     return make_ring_topology(cardinality);
   }
+
   netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
     emp_assert(cardinality.size() == 1);
     return make_ring_topology(cardinality.front());
   }
+
   static std::string GetName() { return "Ring Topology"; }
-  std::string GetSlug() const { return "ring"; }
+
+  static std::string GetSlug() const { return "ring"; }
+
 };
 
 } // namespace netuit

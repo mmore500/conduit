@@ -41,8 +41,7 @@ struct CompleteTopologyFactory {
   }
   static std::string GetName() { return "Complete Topology"; }
 
-  // todo static?
-  std::string GetSlug() const { return "complete"; }
+  static std::string GetSlug() const { return "complete"; }
 
 };
 

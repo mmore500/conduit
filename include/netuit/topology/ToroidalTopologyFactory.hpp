@@ -73,7 +73,7 @@ struct ToroidalTopologyFactory {
   }
 
   static std::string GetName() { return "Toroidal Topology"; }
-  std::string GetSlug() const { return "toroidal"; }
+  static std::string GetSlug() const { return "toroidal"; }
 };
 
 }

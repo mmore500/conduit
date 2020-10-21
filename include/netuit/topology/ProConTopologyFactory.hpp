@@ -44,16 +44,20 @@ Topology make_producer_consumer_topology(const size_t cardinality) {
 }
 
 struct ProConTopologyFactory {
+
   Topology operator()(const size_t cardinality) const {
     return make_producer_consumer_topology(cardinality);
   }
+
   netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
     emp_assert(cardinality.size() == 1);
     return make_producer_consumer_topology(cardinality.front());
   }
 
   static std::string GetName() { return "Producer-Consumer Topology"; }
-  std::string GetSlug() const { return "procon"; }
+
+  static std::string GetSlug() const { return "procon"; }
+
 };
 
 } // namespace netuit
