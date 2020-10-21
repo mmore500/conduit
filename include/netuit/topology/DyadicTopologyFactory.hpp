@@ -47,16 +47,20 @@ netuit::Topology make_dyadic_topology(const size_t cardinality) {
 }
 
 struct DyadicTopologyFactory {
+
   netuit::Topology operator()(const size_t cardinality) const {
     return make_dyadic_topology(cardinality);
   }
+
   netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
     emp_assert(cardinality.size() == 1);
     return make_dyadic_topology(cardinality.front());
   }
+
   static std::string GetName() { return "Dyadic Topology"; }
-  // todo: rename GetSlug, look into making static
-  std::string GetSlug() const { return "dyadic"; }
+
+  static std::string GetSlug() const { return "dyadic"; }
+
 };
 
 } // namespace netuit

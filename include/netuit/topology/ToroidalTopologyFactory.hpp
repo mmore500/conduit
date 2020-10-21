@@ -68,12 +68,15 @@ netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
 }
 
 struct ToroidalTopologyFactory {
+
   netuit::Topology operator()(const Dims& dim_cardinality) const {
     return make_toroidal_topology(dim_cardinality);
   }
 
   static std::string GetName() { return "Toroidal Topology"; }
-  std::string GetSlug() const { return "toroidal"; }
+
+  static std::string GetSlug() const { return "toroidal"; }
+
 };
 
 } // namespace netuit

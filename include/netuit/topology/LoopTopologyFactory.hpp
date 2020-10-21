@@ -33,15 +33,20 @@ netuit::Topology make_loop_topology(const size_t cardinality) {
 }
 
 struct LoopTopologyFactory {
+
   netuit::Topology operator()(const size_t cardinality) const {
     return make_loop_topology(cardinality);
   }
+
   netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
     emp_assert(cardinality.size() == 1);
     return make_loop_topology(cardinality.front());
   }
+
   static std::string GetName() { return "Loop Topology"; }
-  std::string GetSlug() const { return "loop"; }
+
+  static std::string GetSlug() const { return "loop"; }
+
 };
 
 } // namespace netuit
