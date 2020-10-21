@@ -44,7 +44,6 @@ class Mesh {
   using edge_id_t = size_t;
   using node_t = MeshNode<ImplSpec>;
 
-  inline static size_t mesh_id_counter{};
   size_t mesh_id;
   MPI_Comm comm;
 
