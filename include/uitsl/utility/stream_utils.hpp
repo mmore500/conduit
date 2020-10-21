@@ -35,15 +35,14 @@ bool compare_streams(std::istream& s1, std::istream& s2) {
   s1.seekg(0, std::istream::beg);
   s2.seekg(0, std::istream::beg);
 
+  // stream problem
   if (s1.fail() || s2.fail()) {
-    std::cout << "stream problem" << std::endl;
-    return false; // stream problem
+    std::err << "stream problem in compare_streams" << std::endl;
+    return false;
   }
 
-  if (s1.tellg() != s2.tellg()) {
-    std::cout << "size mismatch: " << s1.tellg() << " vs " << s2.tellg() << std::endl;
-    return false; //size mismatch
-  }
+  //size mismatch
+  if (s1.tellg() != s2.tellg()) return false;
 
   s1.seekg(0, std::istream::beg);
   s2.seekg(0, std::istream::beg);
