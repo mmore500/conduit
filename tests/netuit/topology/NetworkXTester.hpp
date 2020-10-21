@@ -130,7 +130,7 @@ bool test_all_adj(const Factory&& factory) {
   const emp::vector<dim_t> assets = find_assets(factory.GetSlug(), ".adj");
 
   // no matching assets found
-  if (!assets.size()) return false;
+  if ( assets.empty() ) return false;
 
   // breaks on first false
   // akin to python's 'for ... else'
