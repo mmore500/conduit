@@ -150,7 +150,9 @@ class Mesh {
       inlet_proc_id,
       thread_assignment(outlet_node_id),
       thread_assignment(inlet_node_id),
-      uitsl::sidebyside_hash(mesh_id, output.GetEdgeID()),
+      uitsl::safe_cast<int>(
+        uitsl::sidebyside_hash(mesh_id, output.GetEdgeID())
+      ),
       comm
     };
 
