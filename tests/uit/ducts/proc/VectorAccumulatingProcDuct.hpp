@@ -8,8 +8,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 #include "Empirical/source/base/vector.h"
 
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "netuit/assign/AssignAvailableProcs.hpp"
+#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
 #include "uit/ducts/mock/ThrowDuct.hpp"

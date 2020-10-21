@@ -9,8 +9,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 #include "Empirical/source/base/vector.h"
 
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "netuit/assign/AssignAvailableProcs.hpp"
+#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"

@@ -6,10 +6,10 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
+#include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
-#include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/utility/assign_utils.hpp"

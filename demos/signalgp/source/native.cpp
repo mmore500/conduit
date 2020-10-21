@@ -3,9 +3,9 @@
 #include <map>
 #include <sstream>
 
+#include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/containers/safe/unordered_map.hpp"
 #include "uitsl/debug/safe_cast.hpp"
-#include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/distributed/do_successively.hpp"
 #include "uitsl/mpi/MpiMultithreadGuard.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
