@@ -4,12 +4,6 @@
 [submodule "third-party/Empirical"]
   path = third-party/Empirical
   url = https://github.com/devosoft/Empirical
-[submodule "third-party/force-cover"]
-  path = third-party/force-cover
-  url = https://github.com/emilydolson/force-cover
-[submodule "third-party/emsdk"]
-  path = third-party/emsdk
-  url = https://github.com/emscripten-core/emsdk
 [submodule "third-party/readerwriterqueue"]
   path = third-party/readerwriterqueue
   url = https://github.com/cameron314/readerwriterqueue
