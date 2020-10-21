@@ -1,9 +1,13 @@
 #pragma once
 
+#include <algorithm>
+#include <cstddef>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
+#include <string>
 
+#include "../../../third-party/Empirical/source/base/vector.h"
 #include "../../../third-party/Empirical/source/tools/keyname_utils.h"
 
 #include "uitsl/math/math_utils.hpp"
