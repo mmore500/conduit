@@ -16,8 +16,8 @@ jobs:
 
   - stage: Tests
 
-    name: Docs, Demos, Miscellaneous
-    script: docker run "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && ./ci/test_trailing_whitespace.sh && ./ci/test_tabs.sh && ./ci/test_missing_newlines.sh && make docs && make demos && ./ci/test_headerguards.sh && ./ci/test_alphabetize_includes.sh && make test-readme-snippets"
+    name: Tidy
+    script: docker run "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && ./ci/test_tidy.sh"
 
 
   - name: OpenMPI uitsl and external Unit Tests (debug mode)
@@ -131,8 +131,9 @@ jobs:
   - name: Microbenchmarks
     script: docker run -e OSF_USERNAME -e OSF_PASSWORD -e CONTEXT=travis "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && make microbenchmark"
 
-  - name: Source
-    script: docker run --cap-add=SYS_ADMIN "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make test-source"
+  - name: Source, Docs, Demos
+    script: docker run "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && make test-source && make docs && make demos"
+
 
   - stage: Deploy
     name: GitHub Pages

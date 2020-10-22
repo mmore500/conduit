@@ -19,9 +19,9 @@
 
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/DyadicTopologyFactory.hpp"
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/DyadicTopologyFactory.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 

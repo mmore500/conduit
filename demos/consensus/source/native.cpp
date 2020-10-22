@@ -11,7 +11,7 @@
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 
-#include "netuit/topology/RingTopologyFactory.hpp"
+#include "netuit/arrange/RingTopologyFactory.hpp"
 
 #include "Job.hpp"
 

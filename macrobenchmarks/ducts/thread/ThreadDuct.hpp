@@ -15,8 +15,8 @@
 #include "uit/fixtures/Conduit.hpp"
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 #define MESSAGE_T int
 

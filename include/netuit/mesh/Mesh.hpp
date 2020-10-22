@@ -44,7 +44,6 @@ class Mesh {
   using edge_id_t = size_t;
   using node_t = MeshNode<ImplSpec>;
 
-  inline static size_t mesh_id_counter{};
   size_t mesh_id;
   MPI_Comm comm;
 
@@ -150,7 +149,9 @@ class Mesh {
       inlet_proc_id,
       thread_assignment(outlet_node_id),
       thread_assignment(inlet_node_id),
-      uitsl::sidebyside_hash(mesh_id, output.GetEdgeID()),
+      uitsl::safe_cast<int>(
+        uitsl::sidebyside_hash(mesh_id, output.GetEdgeID())
+      ),
       comm
     };
 

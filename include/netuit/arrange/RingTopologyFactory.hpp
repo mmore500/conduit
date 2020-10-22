@@ -1,13 +1,13 @@
 #pragma once
-#ifndef NETUIT_TOPOLOGY_RINGTOPOLOGYFACTORY_HPP_INCLUDE
-#define NETUIT_TOPOLOGY_RINGTOPOLOGYFACTORY_HPP_INCLUDE
+#ifndef NETUIT_ARRANGE_RINGTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_ARRANGE_RINGTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
 #include <list>
 
-#include "TopoEdge.hpp"
-#include "Topology.hpp"
-#include "TopoNode.hpp"
+#include "../topology/TopoEdge.hpp"
+#include "../topology/Topology.hpp"
+#include "../topology/TopoNode.hpp"
 
 namespace netuit {
 
@@ -108,10 +108,10 @@ struct RingTopologyFactory {
 
   static std::string GetName() { return "Ring Topology"; }
 
-  static std::string GetSlug() const { return "ring"; }
+  static std::string GetSlug() { return "ring"; }
 
 };
 
 } // namespace netuit
 
-#endif // #ifndef NETUIT_TOPOLOGY_RINGTOPOLOGYFACTORY_HPP_INCLUDE
+#endif // #ifndef NETUIT_ARRANGE_RINGTOPOLOGYFACTORY_HPP_INCLUDE

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef NETUIT_TOPOLOGY_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE
-#define NETUIT_TOPOLOGY_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE
+#ifndef NETUIT_ARRANGE_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_ARRANGE_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
 #include <cmath>
@@ -11,9 +11,9 @@
 #include "../../../third-party/Empirical/source/base/vector.h"
 #include "../../../third-party/Empirical/source/tools/tuple_utils.h"
 
-#include "TopoEdge.hpp"
-#include "Topology.hpp"
-#include "TopoNode.hpp"
+#include "../topology/TopoEdge.hpp"
+#include "../topology/Topology.hpp"
+#include "../topology/TopoNode.hpp"
 
 #include "uitsl/debug/mapping_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
@@ -75,10 +75,10 @@ struct ToroidalTopologyFactory {
 
   static std::string GetName() { return "Toroidal Topology"; }
 
-  static std::string GetSlug() const { return "toroidal"; }
+  static std::string GetSlug() { return "toroidal"; }
 
 };
 
 } // namespace netuit
 
-#endif // #ifndef NETUIT_TOPOLOGY_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE
+#endif // #ifndef NETUIT_ARRANGE_TOROIDALTOPOLOGYFACTORY_HPP_INCLUDE

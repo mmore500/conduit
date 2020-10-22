@@ -1,12 +1,12 @@
 #pragma once
-#ifndef NETUIT_TOPOLOGY_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
-#define NETUIT_TOPOLOGY_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
+#ifndef NETUIT_ARRANGE_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_ARRANGE_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include "../../../third-party/Empirical/source/base/vector.h"
 
-#include "TopoEdge.hpp"
-#include "Topology.hpp"
-#include "TopoNode.hpp"
+#include "../topology/TopoEdge.hpp"
+#include "../topology/Topology.hpp"
+#include "../topology/TopoNode.hpp"
 
 namespace netuit {
 
@@ -59,10 +59,10 @@ struct DyadicTopologyFactory {
 
   static std::string GetName() { return "Dyadic Topology"; }
 
-  static std::string GetSlug() const { return "dyadic"; }
+  static std::string GetSlug() { return "dyadic"; }
 
 };
 
 } // namespace netuit
 
-#endif // #ifndef NETUIT_TOPOLOGY_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
+#endif // #ifndef NETUIT_ARRANGE_DYADICTOPOLOGYFACTORY_HPP_INCLUDE

@@ -1,12 +1,12 @@
 #pragma once
-#ifndef NETUIT_TOPOLOGY_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
-#define NETUIT_TOPOLOGY_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
+#ifndef NETUIT_ARRANGE_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_ARRANGE_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
 
-#include "TopoEdge.hpp"
-#include "Topology.hpp"
-#include "TopoNode.hpp"
+#include "../topology/TopoEdge.hpp"
+#include "../topology/Topology.hpp"
+#include "../topology/TopoNode.hpp"
 
 namespace netuit {
 
@@ -45,10 +45,10 @@ struct LoopTopologyFactory {
 
   static std::string GetName() { return "Loop Topology"; }
 
-  static std::string GetSlug() const { return "loop"; }
+  static std::string GetSlug() { return "loop"; }
 
 };
 
 } // namespace netuit
 
-#endif // #ifndef NETUIT_TOPOLOGY_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
+#endif // #ifndef NETUIT_ARRANGE_LOOPTOPOLOGYFACTORY_HPP_INCLUDE

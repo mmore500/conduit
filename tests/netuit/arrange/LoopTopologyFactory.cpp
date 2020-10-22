@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "netuit/topology/LoopTopologyFactory.hpp"
+#include "netuit/arrange/LoopTopologyFactory.hpp"
 
 #include "NetworkXTester.hpp"
 
