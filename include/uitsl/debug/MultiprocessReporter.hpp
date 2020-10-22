@@ -16,7 +16,7 @@ class MultiprocessReporter : public Catch::ConsoleReporter {
 
 public:
 
-  MultiprocessReporter(const Catch::ReporterConfig& config)
+  explicit MultiprocessReporter(const Catch::ReporterConfig& config)
   : Catch::ConsoleReporter(config), impl(config) { ; }
 
   void testRunEnded(Catch::TestRunStats const& testRunStats) override {

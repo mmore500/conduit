@@ -1,9 +1,11 @@
 import exdown
-import tempfile
 import os
+import sys
+import tempfile
 
 def audited_execute(command):
-    assert os.EX_OK == os.system(command)
+    if not os.EX_OK == os.system(command):
+        sys.exit(f"command {command} failed")
 
 for snippet, __ in exdown.extract('README.md', syntax_filter='cpp'):
     with tempfile.TemporaryDirectory() as tmpdirname:

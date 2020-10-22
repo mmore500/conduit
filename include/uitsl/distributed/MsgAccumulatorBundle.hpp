@@ -87,11 +87,11 @@ public:
     );
   }
 
-  MsgAccumulatorBundle(const size_t data_size_)
+  explicit MsgAccumulatorBundle(const size_t data_size_)
   : data_size( data_size_ )
   { Reset(); }
 
-  MsgAccumulatorBundle(const emp::vector<T>& data)
+  explicit MsgAccumulatorBundle(const emp::vector<T>& data)
   : data_size( data.size() )
   , buff( data )
   {
@@ -99,7 +99,7 @@ public:
     SetEpoch( size_t{} );
   }
 
-  MsgAccumulatorBundle(emp::vector<T>&& data)
+  explicit MsgAccumulatorBundle(emp::vector<T>&& data)
   : data_size( data.size() )
   , buff( std::move(data) )
   {

@@ -36,7 +36,7 @@ public:
    *
    */
   template <typename... Args>
-  spector(Args&&... args)
+  explicit spector(Args&&... args)
   : impl(
     std::in_place_type_t<vector_t>{},
     std::forward<Args>(args)...

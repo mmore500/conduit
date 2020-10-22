@@ -10,7 +10,7 @@ class WarnOnce {
 
 public:
 
-  WarnOnce(const std::string& warning) {
+  explicit WarnOnce(const std::string& warning) {
     emp::NotifyWarning(warning);
   }
 

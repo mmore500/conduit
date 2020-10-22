@@ -43,7 +43,7 @@ $(PROJECT): source/native/$(PROJECT).cpp
 	@echo To build the web version use: make web
 
 $(PROJECT).js: source/web/$(PROJECT)-web.cpp
-	source third-party/emsdk/emsdk_env.sh
+	source third-party/emsdk/emsdk_env.sh; \
 	$(CXX_web) $(CFLAGS_web) source/web/$(PROJECT)-web.cpp -o web/$(PROJECT).js
 
 serve:
