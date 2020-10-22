@@ -107,6 +107,7 @@ RUN \
     openmpi-bin=2.1.1-8 \
     openmpi-common=2.1.1-8 \
     openmpi-doc=2.1.1-8 \
+    mpich=3.3~a2-4 \
     libmpich-dev=3.3~a2-4 \
     libmpich12=3.3~a2-4 \
     openssh-server=1:7.6p1-4ubuntu0.3 \
