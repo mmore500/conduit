@@ -77,7 +77,10 @@ public:
    * TODO.
    *
    */
-  bool TryFlush() { return aggregator->get().TryFlush( address.GetTag() ); }
+  bool TryFlush() {
+    if (!aggregator.has_value()) SetupAggregator();
+    return aggregator->get().TryFlush( address.GetTag() );
+  }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on AggregatedInletDuct";
