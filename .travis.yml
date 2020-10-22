@@ -132,7 +132,7 @@ jobs:
     script: docker run -e OSF_USERNAME -e OSF_PASSWORD -e CONTEXT=travis "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && make microbenchmark"
 
   - name: Source, Docs, Demos
-    script: docker run "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && make test-source && make docs && make demos"
+    script: docker run --cap-add=SYS_ADMIN "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit && make test-source && make docs && make demos"
 
 
   - stage: Deploy
