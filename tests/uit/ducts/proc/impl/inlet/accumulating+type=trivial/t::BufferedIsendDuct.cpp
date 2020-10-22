@@ -13,7 +13,7 @@
 
 const uitsl::MpiGuard guard;
 
-TEST_CASE("Test t::IsendDuct") {
+TEST_CASE("Test t::BufferedIsendDuct") {
 
   using ImplSpec = uit::MockSpec<char>;
   using BackEnd = uit::t::IsendDuct<ImplSpec>::BackEndImpl;

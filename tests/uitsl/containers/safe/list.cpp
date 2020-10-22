@@ -5,7 +5,7 @@
 
 #include "uitsl/containers/safe/list.hpp"
 
-TEST_CASE("deque") {
+TEST_CASE("test list") {
 
   // TODO expand stub test
   uitsl::safe::list<std::string> list;

@@ -9,20 +9,22 @@
 
 #include "uitsl/meta/s::static_test.hpp"
 
-TEST_CASE("Test valid types") {
+TEST_CASE("Testr s::static_test") {
+  SECTION("Test valid types") {
 
-  REQUIRE( uitsl::s::static_test<std::vector<int>>() );
+    REQUIRE( uitsl::s::static_test<std::vector<int>>() );
 
-  REQUIRE( uitsl::s::static_test<std::string>() );
+    REQUIRE( uitsl::s::static_test<std::string>() );
 
-}
+  }
 
-TEST_CASE("Test invalid types") {
+  SECTION("Test invalid types") {
 
-  REQUIRE( !uitsl::s::static_test<int>() );
+    REQUIRE( !uitsl::s::static_test<int>() );
 
-  REQUIRE( !uitsl::s::static_test<double>() );
+    REQUIRE( !uitsl::s::static_test<double>() );
 
-  REQUIRE( !uitsl::s::static_test<std::set<double>>() );
+    REQUIRE( !uitsl::s::static_test<std::set<double>>() );
 
+  }
 }

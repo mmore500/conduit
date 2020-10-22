@@ -5,6 +5,7 @@
 
 #include "NetworkXTester.hpp"
 
-TEST_CASE("Test file output") {
+
+TEST_CASE("Test Procon file output") {
   REQUIRE(test_all_adj(netuit::ProConTopologyFactory{}));
 }

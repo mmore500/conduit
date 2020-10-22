@@ -5,7 +5,7 @@
 
 #include "uitsl/algorithm/get_plurality.hpp"
 
-TEST_CASE("Test upper_uniquify")
+TEST_CASE("Test get_plurality")
 {
 
   std::multiset<int> target{ 1, 1, 2, 5, 6, 9 ,1, 2, 2, 2 };

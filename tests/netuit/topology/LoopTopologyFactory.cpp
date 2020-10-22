@@ -6,5 +6,5 @@
 #include "NetworkXTester.hpp"
 
 TEST_CASE("Test LoopTopologyFactory") {
-  REQUIRE(test_all_adj(netuit::LoopTopologyFactory{}));
+  REQUIRE(test_all_adj(uit::LoopTopologyFactory{}));
 }
