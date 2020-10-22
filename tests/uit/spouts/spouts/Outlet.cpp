@@ -17,17 +17,17 @@ TEST_CASE("Test Outlet") {
     std::make_shared<uit::internal::Duct<Spec>>()
   };
 
-}
 
-TEST_CASE("Test impl detectors") {
+  SECTION("Test impl detectors") {
 
-  using Spec = uit::ImplSpec<char>;
-  uit::Outlet<Spec> out{
-    std::make_shared<uit::internal::Duct<Spec>>()
-  };
+    using Spec = uit::ImplSpec<char>;
+    uit::Outlet<Spec> out{
+      std::make_shared<uit::internal::Duct<Spec>>()
+    };
 
-  REQUIRE( out.HoldsIntraImpl().value_or(false) == true );
-  REQUIRE( out.HoldsThreadImpl().value_or(false) == false );
-  REQUIRE( out.HoldsProcImpl().value_or(false) == false );
+    REQUIRE( out.HoldsIntraImpl().value_or(false) == true );
+    REQUIRE( out.HoldsThreadImpl().value_or(false) == false );
+    REQUIRE( out.HoldsProcImpl().value_or(false) == false );
 
+  }
 }

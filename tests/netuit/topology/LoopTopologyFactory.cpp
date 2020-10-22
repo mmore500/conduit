@@ -22,7 +22,7 @@ TEST_CASE("Test LoopTopologyFactory") {
   }
 
 }
-TEST_CASE("Test file output") {
+TEST_CASE("Test Loop file output") {
 
   REQUIRE(test_all_adj(uit::LoopTopologyFactory{}));
 

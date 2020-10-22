@@ -23,7 +23,7 @@ TEST_CASE("Test DyadicTopologyFactory") {
 
 }
 
-TEST_CASE("Test file output") {
+TEST_CASE("Test Dyadic file output") {
 
   // TODO: implement matchers to move this require further in?
   // https://github.com/catchorg/Catch2/blob/master/docs/matchers.md

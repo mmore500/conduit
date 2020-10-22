@@ -4,7 +4,7 @@
 #define __EMSCRIPTEN__
 #include "uitsl/polyfill/filesystem.hpp"
 
-TEST_CASE("Test filesystem") {
+TEST_CASE("Test emscripten filesystem") {
 
   REQUIRE( std::filesystem::path{ "test.txt" }.extension() == ".txt" );
 

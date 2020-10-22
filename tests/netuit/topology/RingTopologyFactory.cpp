@@ -21,7 +21,7 @@ TEST_CASE("Test RingTopologyFactory") {
     REQUIRE( node.GetNumOutputs() == 1);
   }
 }
-TEST_CASE("Test file output") {
+TEST_CASE("Test Ring file output") {
 
   REQUIRE(test_all_adj(netuit::RingTopologyFactory{}));
 
