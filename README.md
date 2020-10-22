@@ -11,6 +11,7 @@
 [![Comments](https://tokei.rs/b1/github/mmore500/conduit?category=comments)](https://github.com/XAMPPRocky/tokei)
 [![dotos](https://img.shields.io/endpoint?url=https%3A%2F%2Fmmore500.com%2Fconduit%2Fdoto-badge.json)](https://github.com/mmore500/conduit/search?q=todo+OR+fixme&type=)
 [![GitHub stars](https://img.shields.io/github/stars/mmore500/conduit.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/mmore500/conduit)
+[![DOI](https://zenodo.org/badge/278400174.svg)](https://zenodo.org/badge/latestdoi/278400174)
 
   * Free software: MIT license
   * Documentation: [https://conduit.fyi](https://conduit.fyi)
