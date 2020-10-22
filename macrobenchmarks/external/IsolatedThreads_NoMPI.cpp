@@ -13,7 +13,7 @@
 
 #include "uit/setup/ImplSpec.hpp"
 
-#include "netuit/topology/LoopTopologyFactory.hpp"
+#include "netuit/arrange/LoopTopologyFactory.hpp"
 
 #define MESSAGE_T int
 

@@ -1,7 +1,7 @@
 include $(TO_ROOT)/microbenchmarks/MaketemplateRunning
 
 bench-%: %.cpp
-	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lpthread -o $@.out
+	$(UIT_MPICXX) $(FLAGS) $< -lbenchmark -lmetis -lpthread -o $@.out
 	# execute bench
 	let i=1; \
 	test -z "$$SLURM_NTASKS" && SLURM_NTASKS=$$(nproc); \

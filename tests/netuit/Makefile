@@ -1,3 +1,5 @@
+TARGET_NAMES += arrange
+TARGET_NAMES += assign
 TARGET_NAMES += mesh
 TARGET_NAMES += topology
 

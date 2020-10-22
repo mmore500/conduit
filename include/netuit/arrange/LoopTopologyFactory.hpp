@@ -1,12 +1,12 @@
 #pragma once
-#ifndef NETUIT_TOPOLOGY_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
-#define NETUIT_TOPOLOGY_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
+#ifndef NETUIT_ARRANGE_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_ARRANGE_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
 
-#include "TopoEdge.hpp"
-#include "Topology.hpp"
-#include "TopoNode.hpp"
+#include "../topology/TopoEdge.hpp"
+#include "../topology/Topology.hpp"
+#include "../topology/TopoNode.hpp"
 
 namespace netuit {
 
@@ -33,12 +33,22 @@ netuit::Topology make_loop_topology(const size_t cardinality) {
 }
 
 struct LoopTopologyFactory {
+
   netuit::Topology operator()(const size_t cardinality) const {
     return make_loop_topology(cardinality);
   }
+
+  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
+    emp_assert(cardinality.size() == 1);
+    return make_loop_topology(cardinality.front());
+  }
+
   static std::string GetName() { return "Loop Topology"; }
+
+  static std::string GetSlug() { return "loop"; }
+
 };
 
 } // namespace netuit
 
-#endif // #ifndef NETUIT_TOPOLOGY_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
+#endif // #ifndef NETUIT_ARRANGE_LOOPTOPOLOGYFACTORY_HPP_INCLUDE

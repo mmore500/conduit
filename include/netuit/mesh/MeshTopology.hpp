@@ -39,7 +39,7 @@ class MeshTopology {
   std::unordered_map<edge_id_t, node_id_t> output_registry;
 
   void InitializeRegistries(const netuit::Topology& topology) {
-    for (node_id_t node_id = 0; node_id < topology.size(); ++node_id) {
+    for (node_id_t node_id = 0; node_id < topology.GetSize(); ++node_id) {
       const netuit::TopoNode& topo_node = topology[node_id];
       RegisterNodeInputs(node_id, topo_node);
       RegisterNodeOutputs(node_id, topo_node);
@@ -69,11 +69,11 @@ class MeshTopology {
   void InitializeNodes(
     const netuit::Topology& topology,
     const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment,
-    const MPI_Comm comm
+    const MPI_Comm& comm
   ) {
 
     // ensures that we include relevant nodes that don't have any edges
-    for (node_id_t node_id = 0; node_id < topology.size(); ++node_id) {
+    for (node_id_t node_id = 0; node_id < topology.GetSize(); ++node_id) {
       if (proc_assignment(node_id) == uitsl::get_proc_id(comm)) {
         InitializeNode(node_id);
       }
@@ -92,7 +92,7 @@ class MeshTopology {
   void InitializeEdges(
     const netuit::Topology& topology,
     const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment,
-    const MPI_Comm comm
+    const MPI_Comm& comm
   ) {
     for (edge_id_t edge : edge_registry) {
       const node_id_t input_id = input_registry.at(edge);

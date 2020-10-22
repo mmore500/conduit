@@ -38,11 +38,12 @@ debug-web: $(PROJECT).js
 
 web-debug: debug-web
 
-$(PROJECT):	source/native/$(PROJECT).cpp
-	$(UIT_MPICXX) $(CFLAGS_nat) source/native/$(PROJECT).cpp -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
+$(PROJECT): source/native/$(PROJECT).cpp
+	$(UIT_MPICXX) $(CFLAGS_nat) source/native/$(PROJECT).cpp -lstdc++fs -lbenchmark -lmetis -lpthread -o $(PROJECT)
 	@echo To build the web version use: make web
 
 $(PROJECT).js: source/web/$(PROJECT)-web.cpp
+	source third-party/emsdk/emsdk_env.sh
 	$(CXX_web) $(CFLAGS_web) source/web/$(PROJECT)-web.cpp -o web/$(PROJECT).js
 
 serve:

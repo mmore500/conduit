@@ -1,10 +1,10 @@
 #pragma once
-#ifndef NETUIT_TOPOLOGY_PROCONTOPOLOGYFACTORY_HPP_INCLUDE
-#define NETUIT_TOPOLOGY_PROCONTOPOLOGYFACTORY_HPP_INCLUDE
+#ifndef NETUIT_ARRANGE_PROCONTOPOLOGYFACTORY_HPP_INCLUDE
+#define NETUIT_ARRANGE_PROCONTOPOLOGYFACTORY_HPP_INCLUDE
 
-#include "TopoEdge.hpp"
-#include "Topology.hpp"
-#include "TopoNode.hpp"
+#include "../topology/TopoEdge.hpp"
+#include "../topology/Topology.hpp"
+#include "../topology/TopoNode.hpp"
 
 namespace netuit {
 
@@ -44,12 +44,22 @@ Topology make_producer_consumer_topology(const size_t cardinality) {
 }
 
 struct ProConTopologyFactory {
+
   Topology operator()(const size_t cardinality) const {
     return make_producer_consumer_topology(cardinality);
   }
+
+  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
+    emp_assert(cardinality.size() == 1);
+    return make_producer_consumer_topology(cardinality.front());
+  }
+
   static std::string GetName() { return "Producer-Consumer Topology"; }
+
+  static std::string GetSlug() { return "procon"; }
+
 };
 
 } // namespace netuit
 
-#endif // #ifndef NETUIT_TOPOLOGY_PROCONTOPOLOGYFACTORY_HPP_INCLUDE
+#endif // #ifndef NETUIT_ARRANGE_PROCONTOPOLOGYFACTORY_HPP_INCLUDE

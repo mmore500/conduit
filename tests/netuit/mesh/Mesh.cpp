@@ -5,9 +5,9 @@
 
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/ProConTopologyFactory.hpp"
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/ProConTopologyFactory.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 const uitsl::MpiGuard guard;
 

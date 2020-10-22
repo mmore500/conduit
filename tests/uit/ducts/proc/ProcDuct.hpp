@@ -8,10 +8,10 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
+#include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
-#include "uitsl/distributed/assign_utils.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
@@ -23,12 +23,12 @@
 #include "uit/fixtures/Source.hpp"
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/DyadicTopologyFactory.hpp"
+#include "netuit/arrange/ProConTopologyFactory.hpp"
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
-#include "netuit/topology/DyadicTopologyFactory.hpp"
-#include "netuit/topology/ProConTopologyFactory.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 const uitsl::MpiGuard guard;
 
@@ -42,7 +42,7 @@ decltype(auto) make_dyadic_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
-    uitsl::AssignAvailableProcs{}
+    netuit::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh();
@@ -57,7 +57,7 @@ decltype(auto) make_producer_consumer_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::ProConTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
-    uitsl::AssignAvailableProcs{}
+    netuit::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh(0);
@@ -78,7 +78,7 @@ decltype(auto) make_ring_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
-    uitsl::AssignAvailableProcs{}
+    netuit::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh();

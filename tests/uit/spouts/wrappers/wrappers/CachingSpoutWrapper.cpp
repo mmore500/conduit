@@ -6,10 +6,10 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
+#include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
-#include "uitsl/distributed/assign_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/utility/assign_utils.hpp"
@@ -18,10 +18,10 @@
 #include "uit/setup/ImplSpec.hpp"
 #include "uit/spouts/wrappers/CachingSpoutWrapper.hpp"
 
+#include "netuit/arrange/DyadicTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
-#include "netuit/topology/DyadicTopologyFactory.hpp"
 
 const uitsl::MpiGuard guard;
 
@@ -35,7 +35,7 @@ decltype(auto) make_dyadic_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
-    uitsl::AssignAvailableProcs{}
+    netuit::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh();
