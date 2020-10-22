@@ -38,7 +38,7 @@ test: debug
 	$(TO_ROOT)/script/uitexec -n 2 $(TO_ROOT)/script/uitwrap ./$(PROJECT) | cat
 
 $(PROJECT):	source/native.cpp
-	$(UIT_MPICXX) $(CFLAGS_nat) source/native.cpp -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
+	$(UIT_MPICXX) $(CFLAGS_nat) source/native.cpp -lstdc++fs -lbenchmark -lmetis -lpthread -o $(PROJECT)
 	@echo To build the web version use: make web
 
 $(PROJECT).js: web/$(PROJECT).cpp

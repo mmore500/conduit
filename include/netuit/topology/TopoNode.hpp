@@ -2,7 +2,12 @@
 #ifndef NETUIT_TOPOLOGY_TOPONODE_HPP_INCLUDE
 #define NETUIT_TOPOLOGY_TOPONODE_HPP_INCLUDE
 
+#include <algorithm>
+#include <iostream>
+#include <string_view>
+
 #include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/source/polyfill/span.h"
 
 #include "../../uitsl/utility/print_utils.hpp"
 
@@ -13,29 +18,65 @@ namespace netuit {
 
 class TopoNode {
 
-  using inputs_t = emp::vector<netuit::TopoNodeInput>;
-  using outputs_t = emp::vector<netuit::TopoNodeOutput>;
+public:
+  using input_t = netuit::TopoNodeInput;
+  using output_t = netuit::TopoNodeOutput;
 
+  using inputs_t = emp::vector<input_t>;
+  using outputs_t = emp::vector<output_t>;
+
+private:
   inputs_t inputs;
   outputs_t outputs;
 
 public:
 
+  TopoNode() = default;
   TopoNode(const inputs_t& inputs_, const outputs_t& outputs_)
   : inputs(inputs_), outputs(outputs_)
   { ; }
 
-  const inputs_t& GetInputs() const { return inputs; }
+  const inputs_t& GetInputs() const noexcept { return inputs; }
 
-  const outputs_t& GetOutputs() const { return outputs; }
+  const outputs_t& GetOutputs() const noexcept { return outputs; }
 
-  size_t GetNumInputs() const { return inputs.size(); }
+  void AddInput(const netuit::TopoNodeInput& input_) {
+    inputs.push_back(input_);
+  }
 
-  size_t GetNumOutputs() const { return outputs.size(); }
+  void AddOutput(const netuit::TopoNodeOutput& output_) {
+    outputs.push_back(output_);
+  }
 
-  bool HasInputs() const { return inputs.size(); }
+  void RemoveInput(const netuit::TopoNodeInput& input_) {
+    inputs.erase(
+      std::remove(
+        inputs.begin(),
+        inputs.end(),
+        input_
+      ),
+      inputs.end()
+    );
+  }
 
-  bool HasOutputs() const { return outputs.size(); }
+  void RemoveOutput(const netuit::TopoNodeOutput& output_) {
+    outputs.erase(
+      std::remove(
+        outputs.begin(),
+        outputs.end(),
+        output_
+      ),
+      outputs.end()
+    );
+  }
+
+  size_t GetNumInputs() const noexcept { return inputs.size(); }
+
+  size_t GetNumOutputs() const noexcept { return outputs.size(); }
+
+  bool HasInputs() const noexcept { return inputs.size(); }
+
+  bool HasOutputs() const noexcept { return outputs.size(); }
 
   std::string ToString() const {
     std::stringstream ss;
@@ -44,13 +85,43 @@ public:
       uitsl::to_string(inputs)
     ) << std::endl;
     ss << uitsl::format_member(
-      "emp::vector<netuit::TopoNodeInput> inputs",
+      "emp::vector<netuit::TopoNodeInput> outputs",
       uitsl::to_string(outputs)
     );
     return ss.str();
   }
 
+  bool operator==(const TopoNode& other) const {
+    return inputs == other.inputs && outputs == other.outputs;
+  }
+
+  friend std::ostream& operator<<(std::ostream&, const TopoNode&);
+  friend std::istream& operator>>(std::istream&, TopoNode&);
+
 };
+
+std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
+  // make sure node has outputs
+  if (!node.HasOutputs()) return os;
+
+  // loop through span of all outputs, except the last
+  for (const auto& edge : std::span<const TopoNode::output_t>(
+    node.outputs.data(),
+    node.outputs.size() - 1
+  )) {
+    // out edge ID of edge
+    os << edge.GetEdgeID() << " ";
+  }
+  // out edge ID of last output
+  os << node.outputs.back().GetEdgeID();
+  return os;
+}
+
+std::istream& operator>>(std::istream& is, TopoNode& node) {
+  size_t input;
+  while (is >> input) node.AddInput(input);
+  return is;
+}
 
 } // namespace netuit
 

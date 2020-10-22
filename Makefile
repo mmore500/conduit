@@ -5,10 +5,10 @@ PROJECT := conduit
 EMP_DIR := third-party/Empirical/source
 
 # Flags to use regardless of compiler
-CFLAGS_all := -Wall -Wno-unused-function -std=c++17 -Iinclude/ -fopenmp
+CFLAGS_all := -pipe -Wall -Wno-unused-function -std=c++17 -Iinclude/ -fopenmp
 
 # Native compiler information
-CFLAGS_nat := -O3 -DNDEBUG -msse4.2 $(CFLAGS_all)
+CFLAGS_nat := -O3 -DNDEBUG -O3 -flto -march=native $(CFLAGS_all)
 CFLAGS_nat_debug := -g $(CFLAGS_all)
 UIT_MPICXX ?= mpicxx
 UIT_MPIEXEC ?= mpiexec
@@ -38,11 +38,12 @@ debug-web: $(PROJECT).js
 
 web-debug: debug-web
 
-$(PROJECT):	source/native/$(PROJECT).cpp
-	$(UIT_MPICXX) $(CFLAGS_nat) source/native/$(PROJECT).cpp -lstdc++fs -lbenchmark -lpthread -o $(PROJECT)
+$(PROJECT): source/native/$(PROJECT).cpp
+	$(UIT_MPICXX) $(CFLAGS_nat) source/native/$(PROJECT).cpp -lstdc++fs -lbenchmark -lmetis -lpthread -o $(PROJECT)
 	@echo To build the web version use: make web
 
 $(PROJECT).js: source/web/$(PROJECT)-web.cpp
+	source third-party/emsdk/emsdk_env.sh
 	$(CXX_web) $(CFLAGS_web) source/web/$(PROJECT)-web.cpp -o web/$(PROJECT).js
 
 serve:

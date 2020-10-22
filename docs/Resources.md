@@ -21,3 +21,8 @@
 
 * [MPI Specification](https://www.mpi-forum.org/docs/)
 * [boost spsc_queue docs](https://www.boost.org/doc/libs/1_73_0/doc/html/boost/lockfree/spsc_queue.html)
+
+### Benchmarking
+* [Singularity benchmarking](https://sc19.supercomputing.org/proceedings/tech_poster/poster_files/rpost227s2-file3.pdf)
+* [ditto](https://ieeexplore.ieee.org/abstract/document/8855563)
+* [Singularity FAQs](https://singularity.lbl.gov/faq#why-do-we-call-mpirun-from-outside-the-container-rather-than-inside)

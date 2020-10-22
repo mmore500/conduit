@@ -5,9 +5,9 @@
 #include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
 
+#include "uit/ducts/proc/accumulating+type=spanfundamental/inlet=Accumulate+outlet=WithdrawingWindow_sf::IaOwwDuct.hpp"
 #include "uit/ducts/proc/impl/backend/impl/InletMemoryAccumulatingPool.hpp"
 #include "uit/ducts/proc/impl/backend/impl/PoolSpec.hpp"
-#include "uit/ducts/proc/accumulating+type=spanfundamental/inlet=Accumulate+outlet=WithdrawingWindow_sf::IaOwwDuct.hpp"
 #include "uit/setup/ImplSpec.hpp"
 
 const uitsl::MpiGuard guard;

@@ -2,8 +2,8 @@
 #ifndef UITSL_MATH_MATH_UTILS_HPP_INCLUDE
 #define UITSL_MATH_MATH_UTILS_HPP_INCLUDE
 
-#include <cmath>
 #include <bitset>
+#include <cmath>
 #include <limits>
 #include <stddef.h>
 
@@ -56,7 +56,7 @@ size_t difference(const size_t a, const size_t b) {
   return std::max(a, b) - std::min(a, b);
 }
 
-int sidebyside_hash(const size_t a, const size_t b) {
+size_t sidebyside_hash(const size_t a, const size_t b) {
 
   // half of non-sign int bits
   const size_t int_bits = sizeof(int) * 8;
@@ -71,7 +71,7 @@ int sidebyside_hash(const size_t a, const size_t b) {
 
   const auto res = top_bits | bottom_bits;
 
-  return uitsl::safe_cast<int>(res.to_ullong());
+  return res.to_ullong();
 
 }
 

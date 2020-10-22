@@ -5,8 +5,8 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/debug/MultiprocessReporter.hpp"
-#include "uitsl/mpi/routine_functors.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/mpi/routine_functors.hpp"
 
 const uitsl::MpiGuard guard;
 

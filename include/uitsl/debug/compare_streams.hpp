@@ -1,9 +1,11 @@
 #pragma once
+#ifndef UITSL_DEBUG_COMPARE_STREAMS_HPP_INCLUDE
+#define UITSL_DEBUG_COMPARE_STREAMS_HPP_INCLUDE
 
 #include <algorithm>
+#include <fstream>
 #include <iostream>
 #include <iterator>
-#include <fstream>
 #include <string>
 
 namespace uitsl {
@@ -31,3 +33,5 @@ bool compare_streams(std::istream& s1, std::istream& s2) {
 }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_DEBUG_COMPARE_STREAMS_HPP_INCLUDE

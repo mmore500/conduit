@@ -4,8 +4,8 @@
 
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
-#include "cereal/include/cereal/cereal.hpp"
 #include "cereal/include/cereal/archives/binary.hpp"
+#include "cereal/include/cereal/cereal.hpp"
 #include "cereal/include/cereal/types/array.hpp"
 #include "cereal/include/cereal/types/optional.hpp"
 #include "cereal/include/cereal/types/variant.hpp"

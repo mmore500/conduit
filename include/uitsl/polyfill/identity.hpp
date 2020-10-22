@@ -15,6 +15,6 @@ static constexpr struct identity_t {
   }
 } identity{};
 
-} // namespace uitsl
+} // namespace std
 
 #endif // #ifndef UITSL_POLYFILL_IDENTITY_HPP_INCLUDE

@@ -72,8 +72,8 @@ Here's an example of how this works in code.
 #include <utility>
 
 #include "uit/fixtures/Conduit.hpp"
-#include "uit/setup/ImplSpec.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
+#include "uit/setup/ImplSpec.hpp"
 
 // use int as message type
 using Spec = uit::ImplSpec<int>;
@@ -194,8 +194,8 @@ Here's what the entire process looks like in code.
 
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 const size_t num_nodes = 5; // five nodes in our topology
 const size_t num_procs = 2; // two MPI processes
@@ -349,8 +349,8 @@ Here's an example.
 #include "uit/setup/ImplSelect.hpp"
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 constexpr size_t num_nodes = 4;
 

@@ -9,6 +9,7 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #include "../ThreadDuct.hpp"
+
 // TODO FIXME fix segfault
 // #include "../ValueThreadDuct.hpp"
 // #include "../SkippingThreadDuct.hpp"

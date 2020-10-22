@@ -11,8 +11,8 @@
 
 #include "../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
 #include "../../../../../../../third-party/Empirical/source/base/assert.h"
-#include "../../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../../third-party/Empirical/source/base/optional.h"
+#include "../../../../../../../third-party/Empirical/source/base/vector.h"
 #include "../../../../../../../third-party/Empirical/source/tools/MemoryIStream.h"
 #include "../../../../../../../third-party/Empirical/source/tools/string_utils.h"
 

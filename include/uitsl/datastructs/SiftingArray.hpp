@@ -7,8 +7,8 @@
 #include <functional>
 #include <utility>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
 #include "../../../third-party/Empirical/source/base/array.h"
+#include "../../../third-party/Empirical/source/base/assert.h"
 
 namespace uitsl {
 

@@ -4,6 +4,7 @@
 
 #include <cstddef>
 
+#include "../../../third-party/cereal/include/cereal/types/optional.hpp"
 #include "../../../third-party/Empirical/source/base/optional.h"
 
 namespace uitsl {
@@ -46,6 +47,9 @@ public:
   const T& GetData() const { return *data; }
 
   size_t GetID() const { return cache_id; }
+
+  template<class Archive>
+  void serialize(Archive & archive) { archive( cache_id, data ); }
 
 };
 

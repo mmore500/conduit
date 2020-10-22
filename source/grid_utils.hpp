@@ -1,7 +1,7 @@
 #pragma once
 
-#include <cstdlib>
 #include <algorithm>
+#include <cstdlib>
 #include <random>
 #include <string>
 #include <thread>
@@ -15,14 +15,14 @@
 #include "../third-party/Empirical/source/tools/keyname_utils.h"
 
 #include "uitsl/chrono/CoarseClock.hpp"
-#include "uitsl/concurrent/Gatherer.hpp"
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
+#include "uitsl/concurrent/Gatherer.hpp"
 #include "uitsl/countdown/Counter.hpp"
 #include "uitsl/countdown/Timer.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
+#include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/polyfill/barrier.hpp"
@@ -30,8 +30,8 @@
 
 #include "uit/fixtures/Conduit.hpp"
 
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 #include "chunk_utils.hpp"
 #include "config_utils.hpp"

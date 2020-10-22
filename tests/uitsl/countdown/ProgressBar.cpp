@@ -4,9 +4,9 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/chrono/CoarseClock.hpp"
+#include "uitsl/countdown/Counter.hpp"
 #include "uitsl/countdown/ProgressBar.hpp"
 #include "uitsl/countdown/Timer.hpp"
-#include "uitsl/countdown/Counter.hpp"
 
 TEST_CASE("Test CountdownProgresBar<Counter>") {
 

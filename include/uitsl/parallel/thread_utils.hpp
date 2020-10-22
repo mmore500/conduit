@@ -4,8 +4,8 @@
 
 #include <atomic>
 #include <limits>
-#include <thread>
 #include <stddef.h>
+#include <thread>
 
 #include "../../../third-party/Empirical/source/base/assert.h"
 

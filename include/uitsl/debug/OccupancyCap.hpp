@@ -7,8 +7,8 @@
 #include <stddef.h>
 #include <unordered_set>
 
-#include "../utility/print_utils.hpp"
 #include "../parallel/thread_utils.hpp"
+#include "../utility/print_utils.hpp"
 
 namespace uitsl {
 
