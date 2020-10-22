@@ -139,7 +139,7 @@ jobs:
     name: GitHub Pages
     if: (type = push AND branch IN (master))
     script:
-    - docker run -e GH_TOKEN -e TRAVIS_BUILD_NUMBER -e OSF_USERNAME -e OSF_PASSWORD mmore500/conduit /bin/bash -c "cd /opt/conduit && source third-party/emsdk/emsdk_env.sh && make web && ./ci/deploy_gh_pages.sh"
+    - docker run -e GH_TOKEN -e TRAVIS_BUILD_NUMBER -e OSF_USERNAME -e OSF_PASSWORD mmore500/conduit /bin/bash -c "cd /opt/conduit && make web && ./ci/deploy_gh_pages.sh"
   - name: DockerHub
     if: (type = push AND branch IN (master))
     script:
