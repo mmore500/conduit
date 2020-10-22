@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UITSL_DEBUG_MAPPING_UTILS_HPP_INCLUDE
-#define UITSL_DEBUG_MAPPING_UTILS_HPP_INCLUDE
+#ifndef UITSL_MATH_MAPPING_UTILS_HPP_INCLUDE
+#define UITSL_MATH_MAPPING_UTILS_HPP_INCLUDE
 
 #include <cmath>
 
@@ -48,4 +48,4 @@ Point linear_decode(size_t r, const Dims& dims) {
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_DEBUG_MAPPING_UTILS_HPP_INCLUDE
+#endif // #ifndef UITSL_MATH_MAPPING_UTILS_HPP_INCLUDE

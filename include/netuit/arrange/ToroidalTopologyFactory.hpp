@@ -15,7 +15,7 @@
 #include "../topology/Topology.hpp"
 #include "../topology/TopoNode.hpp"
 
-#include "uitsl/debug/mapping_utils.hpp"
+#include "uitsl/math/mapping_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/utility/UIDMap.hpp"
 
