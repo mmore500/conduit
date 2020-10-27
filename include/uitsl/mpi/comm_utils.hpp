@@ -22,7 +22,7 @@ int get_nprocs(const MPI_Comm& comm=MPI_COMM_WORLD) {
     return 1;
   #else
     int res;
-    UITSL_Comm_rank(
+    UITSL_Comm_size(
       comm,
       &res
     );
