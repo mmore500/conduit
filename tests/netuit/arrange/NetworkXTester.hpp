@@ -10,9 +10,9 @@
 #include "../../../third-party/Empirical/source/base/vector.h"
 #include "../../../third-party/Empirical/source/tools/keyname_utils.h"
 
+#include "uitsl/debug/stream_utils.hpp"
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/utility/exec_utils.hpp"
-#include "uitsl/utility/stream_utils.hpp"
 
 const std::string base_directory = "assets/";
 
