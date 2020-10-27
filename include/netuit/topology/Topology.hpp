@@ -12,7 +12,9 @@
 #include <unordered_map>
 #include <utility>
 
+#ifndef __EMSCRIPTEN__
 #include <metis.h>
+#endif
 
 #include "../../../third-party/Empirical/source/tools/hash_utils.h"
 #include "../../../third-party/Empirical/source/tools/keyname_utils.h"
@@ -222,24 +224,26 @@ public:
   /// Apply METIS' K-way partitioning algorithm to subdivide topology
   /// @param parts number of parts to subdivide topology into
   /// @return vector indicating what partition each vertex should go into
-  emp::vector<idx_t> Optimize(int32_t parts) const {
+  emp::vector<size_t> Optimize(const int32_t parts) const {
+
+    // set up result vector
+    size_t nodes = topology.size();
+    emp::vector<size_t> result(nodes);
+
+    #ifndef __EMSCRIPTEN__
+    // use default options
+    size_t options[METIS_NOPTIONS];
+    METIS_SetDefaultOptions(options);
+
     // set up variables
-    idx_t nodes = topology.size();
-    idx_t n_cons = 1;
-    idx_t volume;
+    size_t n_cons = 1;
+    size_t volume;
 
     // get topology as CSR
     auto [xadj, adjacency] = AsCSR();
 
-    // set up result vector
-    emp::vector<idx_t> result(nodes);
-
-    // use default options
-    idx_t options[METIS_NOPTIONS];
-    METIS_SetDefaultOptions(options);
-
     // call partitioning algorithm
-    int status = METIS_PartGraphKway(
+    const int status = METIS_PartGraphKway(
       &nodes, // number of vertices in the graph
       &n_cons, // number of balancing constraints.
       xadj.data(), // array of node indexes into adjacency[]
@@ -256,6 +260,7 @@ public:
     );
 
     uitsl::metis::verify(status);
+    #endif
 
     return result;
   }

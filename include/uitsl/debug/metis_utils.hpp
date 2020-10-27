@@ -4,10 +4,14 @@
 
 #include <string>
 
+#ifndef __EMSCRIPTEN__
 #include <metis.h>
+#endif
 
 namespace uitsl::metis {
 void verify(const int status) {
+  #ifndef __EMSCRIPTEN__
+
   std::string name;
 
   switch(status) {
@@ -28,6 +32,7 @@ void verify(const int status) {
       break;
   }
   emp_assert(status == METIS_OK, status, name);
+  #endif
 }
 
 } // namespace uitsl::metis

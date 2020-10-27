@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef UITSL_POLYFILL_OMPI_MPI_COMM_WORLD_HPP_INCLUDE
+#define UITSL_POLYFILL_OMPI_MPI_COMM_WORLD_HPP_INCLUDE
 
 #include <mpi.h>
 
@@ -11,4 +12,6 @@
 
   ompi_predefined_communicator_t  ompi_mpi_comm_world = {0};
 
-#endif
+#endif // #if defined(__EMSCRIPTEN__) && defined(OPEN_MPI)
+
+#endif // #ifndef UITSL_POLYFILL_OMPI_MPI_COMM_WORLD_HPP_INCLUDE
