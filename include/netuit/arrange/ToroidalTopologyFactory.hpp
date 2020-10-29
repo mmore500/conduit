@@ -11,13 +11,13 @@
 #include "../../../third-party/Empirical/source/base/vector.h"
 #include "../../../third-party/Empirical/source/tools/tuple_utils.h"
 
+#include "../../uitsl/math/mapping_utils.hpp"
+#include "../../uitsl/math/math_utils.hpp"
+#include "../../uitsl/utility/UIDMap.hpp"
+
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"
 #include "../topology/TopoNode.hpp"
-
-#include "uitsl/math/mapping_utils.hpp"
-#include "uitsl/math/math_utils.hpp"
-#include "uitsl/utility/UIDMap.hpp"
 
 namespace netuit {
 
