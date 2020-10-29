@@ -12,17 +12,12 @@
 #include <unordered_map>
 #include <utility>
 
-#ifndef __EMSCRIPTEN__
-#include <metis.h>
-#else
-using idx_t = int;
-#endif
-
 #include "../../../third-party/Empirical/source/tools/hash_utils.h"
 #include "../../../third-party/Empirical/source/tools/keyname_utils.h"
 
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
 #include "../../uitsl/debug/metis_utils.hpp"
+#include "../../uitsl/debug/safe_compare.hpp"
 #include "../../uitsl/polyfill/identity.hpp"
 #include "../../uitsl/utility/stream_utils.hpp"
 
@@ -192,79 +187,58 @@ public:
   /// For more info, see: https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format)
   /// @return std::pair of vectors of int
   auto AsCSR() const {
+
+    if ( GetSize() == 0 ) return std::make_pair(
+      emp::vector<int>{},
+      emp::vector<int>{}
+    );
+
     // get vector with degree of each node
     emp::vector<int> degrees;
     std::transform(
-      std::begin(topology),
-      std::end(topology),
-      std::back_inserter(degrees),
-      [](const auto& node){ return node.GetNumOutputs(); }
+      std::begin( topology ),
+      std::end( topology ),
+      std::back_inserter( degrees ),
+      []( const auto& node ){ return node.GetNumOutputs(); }
     );
+
+    emp_assert( degrees.size() == GetSize() );
+
     // get each starting position of each node's adjacency list
-    emp::vector<int> x_adj{0};
+    emp::vector<int> x_adj{ 0 };
     std::partial_sum(
-      std::begin(degrees),
-      std::end(degrees),
-      std::back_inserter(x_adj)
+      std::begin( degrees ),
+      std::prev( std::end(degrees) ),
+      std::back_inserter( x_adj )
     );
+
+    emp_assert( x_adj.size() == GetSize() );
+
     // build vector of concatenated adjacency lists
     emp::vector<int> adjacency;
-    std::for_each(
-      std::begin(topology),
-      std::end(topology),
-      [this, &adjacency](const auto& node){
-        const auto outputs = GetNodeOutputs(node);
-        adjacency.insert(
-          std::end(adjacency),
-          std::begin(outputs),
-          std::end(outputs)
-        );
+    for( const auto& node : topology ) {
+      const auto outputs = GetNodeOutputs( node );
+      adjacency.insert(
+        std::end( adjacency ),
+        std::begin( outputs ),
+        std::end( outputs )
+      );
+    }
+
+    emp_assert( uitsl::safe_equal(
+      adjacency.size(),
+      std::accumulate( std::begin(degrees), std::end(degrees), 0 )
+    ) );
+
+    emp_assert( adjacency.size() == 0 || std::all_of(
+      std::begin( x_adj ),
+      std::end( x_adj ),
+      [&adjacency]( const auto val ){
+        return uitsl::safe_less( val, adjacency.size() );
       }
-    );  return std::make_pair(x_adj, adjacency);
-  }
+    ) );
 
-  /// Apply METIS' K-way partitioning algorithm to subdivide topology
-  /// @param parts number of parts to subdivide topology into
-  /// @return vector indicating what partition each vertex should go into
-  emp::vector<idx_t> Optimize(int32_t parts) const {
-
-    // set up result vector
-    idx_t nodes = topology.size();
-    emp::vector<idx_t> result(nodes);
-
-    #ifndef __EMSCRIPTEN__
-    // use default options
-    idx_t options[METIS_NOPTIONS];
-    METIS_SetDefaultOptions(options);
-
-    // set up variables
-    idx_t n_cons = 1;
-    idx_t volume;
-
-    // get topology as CSR
-    auto [xadj, adjacency] = AsCSR();
-
-    // call partitioning algorithm
-    const int status = METIS_PartGraphKway(
-      &nodes, // number of vertices in the graph
-      &n_cons, // number of balancing constraints.
-      xadj.data(), // array of node indexes into adjacency[]
-      adjacency.data(), // array of adjacenct nodes for every node
-      nullptr, // weights of nodes
-      nullptr, // size of nodes for total comunication value
-      nullptr, // weights of edges
-      &parts, // number of parts to partition the graph into
-      nullptr, // weight for each partition and constraint
-      nullptr, // allowed load imbalance tolerance for each constraint
-      nullptr, // array of options
-      &volume, // edge-cut or total comm volume of the solution
-      result.data() // partition vector of the graph
-    );
-
-    uitsl::metis::verify(status);
-    #endif
-
-    return result;
+    return std::make_pair(x_adj, adjacency);
   }
 
   /// Outputs this Topology's Edge list. This format stores node IDs with
