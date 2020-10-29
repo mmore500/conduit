@@ -83,6 +83,8 @@ RUN \
     build-essential=12.4ubuntu1 \
     python-virtualenv=15.1.0+ds-1.1 \
     python3-virtualenv=15.1.0+ds-1.1 \
+    python-dev \
+    python3-dev \
     python-pip \
     python3-pip \
     python-setuptools \
