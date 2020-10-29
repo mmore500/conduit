@@ -94,6 +94,8 @@ public:
     return *this;
   }
 
+  const emp::array<T, N>& GetBuffer() const { return data; }
+
 };
 
 } // namespace uitsl
