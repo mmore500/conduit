@@ -172,7 +172,7 @@ RUN \
     libxrender1=1:0.9.10-1 \
     libxss1=1:1.2.2-1 \
     libxtst6=2:1.2.3-1 \
-    ca-certificates=20190110~18.04.1 \
+    ca-certificates \
     fonts-liberation=1:1.07.4-7~18.04.1 \
     libappindicator1=12.10.1+18.04.20180322.1-0ubuntu1 \
     libnss3=2:3.35-2ubuntu2.12 \
