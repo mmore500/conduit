@@ -2,6 +2,7 @@
 #ifndef NETUIT_MESH_MESH_HPP_INCLUDE
 #define NETUIT_MESH_MESH_HPP_INCLUDE
 
+#include <ratio>
 #include <stddef.h>
 #include <unordered_map>
 
@@ -112,7 +113,7 @@ class Mesh {
 
     static std::unordered_set<int> tag_checker;
     const int tag = uitsl::safe_cast<int>(
-      uitsl::sidebyside_hash(mesh_id, input.GetEdgeID())
+      uitsl::sidebyside_hash<std::ratio<3, 4>>(mesh_id, input.GetEdgeID())
     );
 
     // assert that generated tags are unique
@@ -150,7 +151,7 @@ class Mesh {
       thread_assignment(outlet_node_id),
       thread_assignment(inlet_node_id),
       uitsl::safe_cast<int>(
-        uitsl::sidebyside_hash(mesh_id, output.GetEdgeID())
+        uitsl::sidebyside_hash<std::ratio<3, 4>>(mesh_id, output.GetEdgeID())
       ),
       comm
     };
