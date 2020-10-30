@@ -185,16 +185,16 @@ public:
 
   /// Return Compressed Sparse Row (CSR) representation of topology.
   /// For more info, see: https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format)
-  /// @return std::pair of vectors of int
+  /// @return std::pair of vectors of int32_t
   auto AsCSR() const {
 
     if ( GetSize() == 0 ) return std::make_pair(
-      emp::vector<int>{},
-      emp::vector<int>{}
+      emp::vector<int32_t>{},
+      emp::vector<int32_t>{}
     );
 
     // get vector with degree of each node
-    emp::vector<int> degrees;
+    emp::vector<int32_t> degrees;
     std::transform(
       std::begin( topology ),
       std::end( topology ),
@@ -205,17 +205,17 @@ public:
     emp_assert( degrees.size() == GetSize() );
 
     // get each starting position of each node's adjacency list
-    emp::vector<int> x_adj{ 0 };
+    emp::vector<int32_t> x_adj{ 0 };
     std::partial_sum(
       std::begin( degrees ),
-      std::prev( std::end(degrees) ),
+      std::end(degrees),
       std::back_inserter( x_adj )
     );
 
-    emp_assert( x_adj.size() == GetSize() );
+    emp_assert( x_adj.size() == GetSize() + 1 );
 
     // build vector of concatenated adjacency lists
-    emp::vector<int> adjacency;
+    emp::vector<int32_t> adjacency;
     for( const auto& node : topology ) {
       const auto outputs = GetNodeOutputs( node );
       adjacency.insert(
@@ -230,11 +230,11 @@ public:
       std::accumulate( std::begin(degrees), std::end(degrees), 0 )
     ) );
 
-    emp_assert( adjacency.size() == 0 || std::all_of(
+    emp_assert( std::all_of(
       std::begin( x_adj ),
       std::end( x_adj ),
       [&adjacency]( const auto val ){
-        return uitsl::safe_less( val, adjacency.size() );
+        return uitsl::safe_leq( val, adjacency.size() );
       }
     ) );
 

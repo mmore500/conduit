@@ -29,8 +29,13 @@ emp::vector<idx_t> PartitionMetis(
   const size_t num_parts, const netuit::Topology& topology
 ) {
 
+  emp_assert( num_parts <= topology.GetSize() );
+
   // set up result vector
-  emp::vector<idx_t> result( topology.GetSize() );
+  emp::vector<idx_t> result( topology.GetSize(), {} );
+
+  // the trivial no-split partition crashes METIS, so return before METIS call
+  if ( num_parts == 1 ) return result;
 
   #ifndef __EMSCRIPTEN___
   // set up variables
@@ -48,19 +53,19 @@ emp::vector<idx_t> PartitionMetis(
 
   // call partitioning algorithm
   const int status = METIS_PartGraphKway(
-    &nodes, // number of vertices in the graph
-    &n_cons, // number of balancing constraints.
-    xadj.data(), // array of node indexes into adjacency[]
-    adjacency.data(), // array of adjacenct nodes for every node
-    nullptr, // weights of nodes
-    nullptr, // size of nodes for total comunication value
-    nullptr, // weights of edges
-    &parts, // number of parts to partition the graph into
-    nullptr, // weight for each partition and constraint
-    nullptr, // allowed load imbalance tolerance for each constraint
-    nullptr, // array of options
-    &objval, // edge-cut or total comm volume of the solution
-    result.data() // partition vector of the graph
+    &nodes, // idx_t *nvtxs: number of vertices in the graph
+    &n_cons, // idx_t *ncon: number of balancing constraints.
+    xadj.data(), // idx_t *xadj: array of node indexes into adjacency[]
+    adjacency.data(), // idx_t *adjncy:  array of adjacenct nodes for every node
+    nullptr, // idx_t *vwgt: weights of nodes
+    nullptr, // idx_t *vsize: size of nodes for total comunication value
+    nullptr, // idx_t *adjwgt: weights of edges
+    &parts, // idx_t *nparts: number of parts to partition the graph into
+    nullptr, // real_t *tpwgts: weight for each partition and constraint
+    nullptr, // real_t ubvec: allowed load imbalance tolerance for each constrnt
+    nullptr, // idx_t *options: array of options
+    &objval, // idx_t *objvalL edge-cut or total comm volume of the solution
+    result.data() // idx_t *part: partition vector of the graph
   );
 
   uitsl::metis::verify(status);
@@ -132,16 +137,16 @@ std::pair<
   // make sure topology isn't empty
   if (topology.GetSize() == 0) return {};
 
-  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t> proc_assigner{ PartitionMetis(num_procs, topology) };
+  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t>
+    proc_assigner{ PartitionMetis(num_procs, topology) };
 
-  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::thread_id_t> thread_assigner{
-    Shim(
+  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::thread_id_t>
+    thread_assigner{ Shim(
       GetSubTopologies(topology, proc_assigner),
       threads_per_proc
-    )
-  };
+    ) };
 
-  return {
+  return std::pair{
     proc_assigner,
     thread_assigner
   };

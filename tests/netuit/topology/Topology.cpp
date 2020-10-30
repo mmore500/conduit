@@ -31,7 +31,7 @@ TEST_CASE("Test AsCSR CompleteTopologyFactory") {
   netuit::Topology topology = netuit::make_complete_topology( 3 );
   const auto [x_adj, adjacency] = topology.AsCSR();
 
-  REQUIRE( x_adj == emp::vector<int>{ 0, 2, 4 } );
+  REQUIRE( x_adj == emp::vector<int>{ 0, 2, 4, 6 } );
   REQUIRE( adjacency == emp::vector<int>{ 1, 2, 0, 2, 0, 1 } );
 
 
@@ -42,7 +42,7 @@ TEST_CASE("Test AsCSR DyadicTopologyFactory") {
   netuit::Topology topology = netuit::make_dyadic_topology( 3 );
   const auto [x_adj, adjacency] = topology.AsCSR();
 
-  REQUIRE( x_adj == emp::vector<int>{ 0, 1, 2 } );
+  REQUIRE( x_adj == emp::vector<int>{ 0, 1, 2, 3 } );
   REQUIRE( adjacency == emp::vector<int>{ 1, 0, 2 } );
 
 
@@ -53,7 +53,7 @@ TEST_CASE("Test AsCSR Empty Topology") {
   netuit::Topology topology = netuit::make_empty_topology( 3 );
   const auto [x_adj, adjacency] = topology.AsCSR();
 
-  REQUIRE( x_adj == emp::vector<int>{ 0, 0, 0 } );
+  REQUIRE( x_adj == emp::vector<int>{ 0, 0, 0, 0 } );
   REQUIRE( adjacency == emp::vector<int>{} );
 
 }
@@ -69,7 +69,7 @@ TEST_CASE("Test AsCSR ToroidalTopologyFactory") {
    * 6 7 8
    */
 
-  REQUIRE( x_adj == emp::vector<int>{ 0, 4, 8, 12, 16, 20, 24, 28, 32 } );
+  REQUIRE( x_adj == emp::vector<int>{ 0, 4, 8, 12, 16, 20, 24, 28, 32, 36 } );
   REQUIRE( adjacency == emp::vector<int>{
     1, 2, 3, 6, // 0's neighbors
     2, 0, 4, 7, // 1's neighbors
