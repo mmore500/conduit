@@ -74,8 +74,8 @@ private:
   /// @return Vector of node IDs which topo_node is an output of.
   emp::vector<node_id_t> GetNodeOutputs(const netuit::TopoNode& node) const {
     emp::vector<node_id_t> res;
-    for (const auto& edge : node.GetOutputs()) {
-      res.push_back(input_registry.at(edge.GetEdgeID()));
+    for ( const auto& edge : node.GetOutputs() ) {
+      res.push_back( input_registry.at( edge.GetEdgeID() ) );
     }
     return res;
   }
@@ -296,26 +296,35 @@ public:
 
     // fill subtopology with all nodes in node_ids
     for (const size_t i : node_ids) {
-      nodes.push_back(topology[i]);
+      nodes.push_back( topology[i] );
       translator[translator.size()] = i;
     }
 
-    // fix subtopology to exclude external nodes
+    // filter subtopology to exclude external nodes
     for (auto& node : nodes) {
-      for (const auto& output : node.GetOutputs()) {
-        if (!node_ids.count(
-          output_registry.at(output.GetEdgeID())
-        )) node.RemoveOutput(output);
-      }
-      for (const auto& input : node.GetInputs()) {
-        if (node_ids.count(
-          input_registry.at(input.GetEdgeID())
-        )) node.RemoveInput(input);
-      }
+
+      node.GetOutputs().erase( std::remove_if(
+        std::begin( node.GetOutputs() ),
+        std::end( node.GetOutputs() ),
+        [this, &node_ids]( const auto& output ){
+          return !node_ids.count( input_registry.at( output.GetEdgeID() ) );
+        }
+      ), std::end( node.GetOutputs() ) );
+
+      node.GetInputs().erase( std::remove_if(
+        std::begin( node.GetInputs() ),
+        std::end( node.GetInputs() ),
+        [this, &node_ids]( const auto& input ){
+          return !node_ids.count( output_registry.at( input.GetEdgeID() ) );
+        }
+      ), std::end( node.GetInputs() ) );
+
     }
-    Topology subtopo(nodes);
-    subtopo.SetMap(translator);
+
+    Topology subtopo( nodes );
+    subtopo.SetMap( translator );
     return subtopo;
+
   }
 
   /// Returns this Topology's adjacency list as a string.

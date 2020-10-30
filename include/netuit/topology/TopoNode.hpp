@@ -38,7 +38,11 @@ public:
 
   const inputs_t& GetInputs() const noexcept { return inputs; }
 
+  inputs_t& GetInputs() noexcept { return inputs; }
+
   const outputs_t& GetOutputs() const noexcept { return outputs; }
+
+  outputs_t& GetOutputs() noexcept { return outputs; }
 
   void AddInput(const netuit::TopoNodeInput& input_) {
     inputs.push_back(input_);

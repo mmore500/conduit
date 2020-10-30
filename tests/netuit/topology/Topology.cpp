@@ -84,3 +84,53 @@ TEST_CASE("Test AsCSR ToroidalTopologyFactory") {
 
 
 }
+
+TEST_CASE("Test trivial Subtopology, ToroidalTopologyFactory") {
+
+  netuit::Topology topology = netuit::make_toroidal_topology( {3, 3} );
+  netuit::Topology subtopo = topology.GetSubTopology(
+    {0, 1, 2, 3, 4, 5, 6, 7, 8}
+  );
+
+  auto [x_adj, adjacency] = subtopo.AsCSR();
+
+  /*
+   * 0 1 2
+   * 3 4 5
+   * 6 7 8
+   */
+
+  REQUIRE( x_adj == emp::vector<int>{ 0, 4, 8, 12, 16, 20, 24, 28, 32, 36 } );
+  REQUIRE( adjacency == emp::vector<int>{
+    2, 1, 6, 3, // 0's neighbors
+    0, 2, 7, 4, // 1's neighbors
+    1, 0, 8, 5, // 2's neighbors
+    5, 4, 0, 6, // 3's neighbors
+    3, 5, 1, 7, // 4's neighbors
+    4, 3, 2, 8, // 5's neighbors
+    8, 7, 3, 0, // 6's neighbors
+    6, 8, 4, 1, // 7's neighbors
+    7, 6, 5, 2, // 8's neighbors
+  } );
+
+}
+
+TEST_CASE("Test Subtopology, ToroidalTopologyFactory") {
+
+  netuit::Topology topology = netuit::make_toroidal_topology( {3, 3} );
+  netuit::Topology subtopo = topology.GetSubTopology({0, 1, 2, 3, 4, 5});
+
+  auto [x_adj, adjacency] = subtopo.AsCSR();
+
+  REQUIRE( x_adj == emp::vector<int>{ 0, 3, 6, 9, 12, 15, 18 } );
+  REQUIRE( adjacency == emp::vector<int>{
+    2, 1, 3, // 0's neighbors
+    0, 2, 4, // 1's neighbors
+    1, 0, 5, // 2's neighbors
+    5, 4, 0, // 3's neighbors
+    3, 5, 1, // 4's neighbors
+    4, 3, 2, // 5's neighbors
+  } );
+
+
+}
