@@ -25,30 +25,30 @@ namespace netuit {
 /// @param parts number of parts to subdivide topology into
 /// @param topology topology to subdivide
 /// @return vector indicating what partition each vertex should go into
-emp::vector<idx_t> PartitionMetis(
+emp::vector<int32_t> PartitionMetis(
   const size_t num_parts, const netuit::Topology& topology
 ) {
 
   emp_assert( num_parts <= topology.GetSize() );
 
   // set up result vector
-  emp::vector<idx_t> result( topology.GetSize(), {} );
+  emp::vector<int32_t> result( topology.GetSize(), {} );
 
   // the trivial no-split partition crashes METIS, so return before METIS call
   if ( num_parts == 1 ) return result;
 
-  #ifndef __EMSCRIPTEN___
+  #ifndef __EMSCRIPTEN__
   // set up variables
-  idx_t nodes = topology.GetSize();
-  idx_t n_cons = 1;
-  idx_t parts = uitsl::audit_cast<idx_t>( num_parts );
-  idx_t objval;
+  int32_t nodes = topology.GetSize();
+  int32_t n_cons = 1;
+  int32_t parts = uitsl::audit_cast<int32_t>( num_parts );
+  int32_t objval;
 
   // get topology as CSR
   auto [xadj, adjacency] = topology.AsCSR();
 
   // use default options
-  idx_t options[METIS_NOPTIONS];
+  int32_t options[METIS_NOPTIONS];
   METIS_SetDefaultOptions(options);
 
   // call partitioning algorithm
