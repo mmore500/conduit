@@ -94,6 +94,14 @@ public:
     return *this;
   }
 
+  auto begin() { return std::begin( data ); }
+
+  auto end() { return std::end( data ); }
+
+  auto begin() const { return std::begin( data ); }
+
+  auto end() const { return std::end( data ); }
+
   const emp::array<T, N>& GetBuffer() const { return data; }
 
 };
