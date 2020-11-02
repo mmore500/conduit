@@ -69,6 +69,10 @@ netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
 
 struct ToroidalTopologyFactory {
 
+  netuit::Topology operator()(const size_t cardinality) const {
+    return make_toroidal_topology({cardinality});
+  }
+
   netuit::Topology operator()(const Dims& dim_cardinality) const {
     return make_toroidal_topology(dim_cardinality);
   }
