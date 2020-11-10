@@ -13,25 +13,16 @@ namespace uitsl {
 template<typename To, typename From>
 To clamp_cast( const From from ) {
 
+  // ideally, we'd use std::nexttoward but unfortunately it's not constexpr
+  constexpr double lower_bound =
+    static_cast<double>( std::numeric_limits<To>::min() )
+    + std::numeric_limits<double>::epsilon()
+  ;
 
-  #ifndef __EMSCRIPTEN__
-  constexpr
-  #else
-  const
-  #endif
-  double lower_bound = static_cast<double>( std::nexttoward(
-    std::numeric_limits<To>::min(), std::numeric_limits<double>::infinity()
-  ) );
-
-
-  #ifndef __EMSCRIPTEN__
-  constexpr
-  #else
-  const
-  #endif
-  double upper_bound = static_cast<double>( std::nexttoward(
-    std::numeric_limits<To>::max(), -std::numeric_limits<double>::infinity()
-  ) );
+  constexpr double upper_bound =
+    static_cast<double>( std::numeric_limits<To>::max() )
+    - std::numeric_limits<double>::epsilon()
+  ;
 
   return static_cast<To>( std::clamp(
     static_cast<double>( uitsl::nan_to_zero( from ) ),
