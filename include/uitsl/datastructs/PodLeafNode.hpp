@@ -2,6 +2,8 @@
 #ifndef UITSL_DATASTRUCTS_PODLEAFNODE_HPP_INCLUDE
 #define UITSL_DATASTRUCTS_PODLEAFNODE_HPP_INCLUDE
 
+#include <algorithm>
+
 #include "../../../third-party/Empirical/source/base/array.h"
 
 namespace uitsl {
@@ -83,6 +85,18 @@ public:
    */
   bool operator==(const PodLeafNode& other) const {
     return data == other.data;
+  }
+
+  /*
+   * Equality operator overload.
+   */
+  bool operator<(const PodLeafNode& other) const {
+    return std::lexicographical_compare(
+      std::begin( data ),
+      std::end( data ),
+      std::begin( other.data ),
+      std::end( other.data )
+    );
   }
 
   /*
