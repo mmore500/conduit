@@ -6,6 +6,8 @@
 #include <cmath>
 #include <limits>
 
+#include "../debug/uitsl_assert.hpp"
+
 #include "nan_to_zero.hpp"
 
 namespace uitsl {
@@ -24,11 +26,19 @@ To clamp_cast( const From from ) {
     - std::numeric_limits<double>::epsilon()
   ;
 
-  return static_cast<To>( std::clamp(
+  const double clamped = std::clamp(
     static_cast<double>( uitsl::nan_to_zero( from ) ),
     lower_bound,
     upper_bound
-  ) );
+  );
+
+  #ifdef __EMSCRIPTEN__
+    // necessary to keep nan sanitization from getting optimized away
+    // and (I assume?) implicitly taken care of via the static_cast
+    uitsl_assert( !std::isnan( clamped ) );
+  #endif
+
+  return static_cast<To>( clamped );
 }
 
 } // namespace uitsl
