@@ -64,7 +64,7 @@ size_t sidebyside_hash(const size_t top, const size_t bottom) {
   // exclude int sign bit
   constexpr size_t avail_size = int_size - 1;
   constexpr size_t bottom_size = avail_size * BottomFrac::num / BottomFrac::den;
-  constexpr size_t top_size = avail_size - bottom_size;
+  [[maybe_unused]] constexpr size_t top_size = avail_size - bottom_size;
 
   // bounds checking
   emp_assert(std::bitset<top_size>(top).to_ullong() == top, top);

@@ -6,15 +6,14 @@
 #include <cstdlib>
 
 #include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/source/tools/string_utils.h"
 
 // adapted from https://stackoverflow.com/a/389901
 #define uitsl_assert(x)                                                        \
   if (!(x)) {                                                                  \
-      char buf[2048];                                                          \
-      std::cerr << std::snprintf(                                              \
-        buf, 2048, "Assertion failed in \"%s\", line %d\n"                     \
-        __FILE__, __LINE__                                                     \
-      );                                                                       \
+      std::cerr << emp::format_string(                                         \
+        "Assertion failed in \"%s\", line %d\n", __FILE__, __LINE__            \
+      ) << std::endl;                                                          \
       abort();                                                                 \
   }                                                                            \
   else
