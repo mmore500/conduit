@@ -20,6 +20,12 @@ namespace uitsl {
     static const char* Get() { return #A; } \
   };
 
+  #define UITSL_ENABLE_TYPENAME_TEMPLATE(A) \
+  template <typename... Args> \
+  struct TypeName< A<Args...> > { \
+    static const char* Get() { return #A; } \
+  };
+
 } // namespace uitsl
 
 #endif // #ifndef UITSL_META_TYPENAME_HPP_INCLUDE
