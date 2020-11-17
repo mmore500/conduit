@@ -22,6 +22,8 @@ public:
     data[0] = other;
   }
 
+  static constexpr bool IsLeaf() { return true; }
+
   static constexpr size_t GetSize() { return N; }
 
   /*
