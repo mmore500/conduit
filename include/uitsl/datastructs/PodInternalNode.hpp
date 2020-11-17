@@ -38,6 +38,19 @@ class PodInternalNode : public std::tuple<First, Rest...> {
 
     }
 
+    template<size_t RemainingSteps, size_t ChildIndex=0>
+    static constexpr size_t GetLeafIndex() {
+
+      using Child = typename std::tuple_element<ChildIndex, parent_t>::type;
+      constexpr size_t ChildSteps = Child::GetSize();
+
+      if constexpr ( RemainingSteps < ChildSteps ) {
+        if constexpr ( Child::IsLeaf() ) return RemainingSteps;
+        else return Child::Workaround::template GetLeafIndex<RemainingSteps>();
+      } else return GetLeafIndex<RemainingSteps - ChildSteps, ChildIndex + 1>();
+
+    }
+
   };
 
 public:
@@ -47,6 +60,14 @@ public:
 
   template< size_t Index >
   using leaf_t = decltype( Workaround::template GetLeafType<Index>() );
+
+  /*
+   * Get index into leaf node.
+   */
+  template<size_t Index>
+  static constexpr size_t GetLeafIndex() {
+    return Workaround::template GetLeafIndex< Index >();
+  }
 
   static constexpr bool IsLeaf() { return false; }
 
