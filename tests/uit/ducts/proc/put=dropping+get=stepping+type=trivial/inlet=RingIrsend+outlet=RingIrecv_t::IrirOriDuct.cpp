@@ -8,5 +8,7 @@ using ImplSel = uit::ImplSelect<
   uit::t::IrirOriDuct
 >;
 
+#define IMPL_NAME "inlet=RingIrsend+outlet=RingIrecv_t::IrirOriDuct"
+
 #include "../ProcDuct.hpp"
 #include "../SkippingProcDuct.hpp"

@@ -1,15 +1,10 @@
 #include <mpi.h>
 
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/distributed/MsgAccumulatorBundle.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/polyfill/identity.hpp"
 
-const uitsl::MpiGuard guard;
 
 TEST_CASE("test MsgAccumulatorBundle") {
   SECTION("Test data") {
@@ -43,7 +38,7 @@ TEST_CASE("test MsgAccumulatorBundle") {
     REQUIRE( dest.byte_size() == src.size() * sizeof(int) + sizeof(size_t) );
   }
 
-  ECTION("test GetData") {
+  SECTION("test GetData") {
     emp::vector<double> src{1.0, 2.0, 3.0};
 
     uitsl::MsgAccumulatorBundle<double> dest{ src };

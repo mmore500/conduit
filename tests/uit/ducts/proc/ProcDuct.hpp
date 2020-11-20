@@ -4,17 +4,13 @@
 
 #include <mpi.h>
 
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "netuit/assign/AssignAvailableProcs.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uitsl/math/math_utils.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/utility/assign_utils.hpp"
@@ -30,14 +26,14 @@
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
 
-const uitsl::MpiGuard guard;
-
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
-decltype(auto) make_dyadic_bundle() {
+#define PD_IMPL_NAME IMPL_NAME " ProcDuct"
+
+inline decltype(auto) make_dyadic_bundle() {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
@@ -52,7 +48,7 @@ decltype(auto) make_dyadic_bundle() {
 
 };
 
-decltype(auto) make_producer_consumer_bundle() {
+inline decltype(auto) make_producer_consumer_bundle() {
 
   netuit::Mesh<Spec> mesh{
     netuit::ProConTopologyFactory{}(uitsl::get_nprocs()),
@@ -74,7 +70,7 @@ decltype(auto) make_producer_consumer_bundle() {
 
 };
 
-decltype(auto) make_ring_bundle() {
+inline decltype(auto) make_ring_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
@@ -90,7 +86,7 @@ decltype(auto) make_ring_bundle() {
 }
 
 // p_1 -> p_2 -> ... -> p_n -> p_1 -> p_2 -> ... -> p_n -> p_1
-decltype(auto) make_coiled_bundle() {
+inline decltype(auto) make_coiled_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs() * 2),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
@@ -126,7 +122,7 @@ decltype(auto) make_coiled_bundle() {
 }
 
 // TODO why doesn't this work with openmpi with RingRdmaDuct?
-// TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+// TEST_CASE("Is initial RingRdmaDuct Get() result value-intialized?" PD_IMPL_NAME) { REPEAT {
 //
 //   std::shared_ptr<Spec::ProcBackEnd> backend{
 //     std::make_shared<Spec::ProcBackEnd>()
@@ -162,7 +158,7 @@ decltype(auto) make_coiled_bundle() {
 //
 // } }
 
-TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+TEST_CASE("Is initial ProcDuct Get() result value-intialized?" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
   auto [input, output] = make_ring_bundle();
 
@@ -171,7 +167,7 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched gets") { REPEAT {
+TEST_CASE("Unmatched gets" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -191,7 +187,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts") { REPEAT {
+TEST_CASE("Unmatched puts" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -207,7 +203,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
 } }
 
-TEST_CASE("Eventual flush-out") { REPEAT {
+TEST_CASE("Eventual flush-out" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -233,7 +229,7 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
 } }
 
-TEST_CASE("Validity") { REPEAT {
+TEST_CASE("Validity" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -256,7 +252,7 @@ TEST_CASE("Validity") { REPEAT {
 
 } }
 
-TEST_CASE("Multi-bridge Validity") { REPEAT {
+TEST_CASE("Multi-bridge Validity" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
   auto [inputs, outputs] = make_coiled_bundle();
 

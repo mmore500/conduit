@@ -8,7 +8,7 @@ using ImplSel = uit::ImplSelect<
   uit::t::IrrOwDuct
 >;
 
-int main() { return 0; }
+#define IMPL_NAME "inlet=RingRput+outlet=Window_t::IrrOwDuct"
 
 // TODO why does this hang on travis?
 // #include "../ProcDuct.hpp"

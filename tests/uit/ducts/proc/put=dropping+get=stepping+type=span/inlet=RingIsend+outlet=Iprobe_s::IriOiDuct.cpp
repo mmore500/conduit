@@ -8,4 +8,6 @@ using ImplSel = uit::ImplSelect<
   uit::s::IriOiDuct
 >;
 
+#define IMPL_NAME "inlet=RingIsend+outlet=Iprobe_s::IriOiDuct"
+
 #include "../VectorProcDuct.hpp"

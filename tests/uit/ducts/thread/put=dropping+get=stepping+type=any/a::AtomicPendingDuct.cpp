@@ -8,6 +8,8 @@ using ImplSel = uit::ImplSelect<
   uit::ThrowDuct
 >;
 
+#define IMPL_NAME "a::AtomicPendingDuct"
+
 #include "../ThreadDuct.hpp"
 
 #include "../SteppingThreadDuct.hpp"

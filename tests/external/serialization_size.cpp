@@ -2,7 +2,6 @@
 #include <ratio>
 #include <variant>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 #include "cereal/include/cereal/archives/binary.hpp"
 #include "cereal/include/cereal/cereal.hpp"

@@ -14,11 +14,11 @@
 #include "uitsl/utility/exec_utils.hpp"
 #include "uitsl/utility/stream_utils.hpp"
 
-const std::string base_directory = "assets/";
+const std::string base_directory = "../../tests/netuit/arrange/assets/";
 
 using dim_t = emp::vector<size_t>;
 
-emp::vector<dim_t> find_assets(const std::string& name, const std::string& ext){
+inline emp::vector<dim_t> find_assets(const std::string& name, const std::string& ext){
   emp::vector<dim_t> files;
   for (const auto& p : std::filesystem::directory_iterator(base_directory)) {
     const auto file = emp::keyname::unpack(p.path());
@@ -40,7 +40,7 @@ emp::vector<dim_t> find_assets(const std::string& name, const std::string& ext){
   return files;
 }
 
-std::string make_filename(const std::string& name, const emp::vector<size_t>& dims, const std::string& ext) {
+inline std::string make_filename(const std::string& name, const emp::vector<size_t>& dims, const std::string& ext) {
   std::unordered_map<std::string, std::string> filename;
 
   filename["name"] = name;
@@ -57,11 +57,11 @@ std::string make_filename(const std::string& name, const emp::vector<size_t>& di
   return base_directory + emp::keyname::pack(filename);
 }
 
-std::string make_filename(const std::string& name, const size_t dim, const std::string& ext) {
-  return make_filename(name, {dim}, ext);
+inline std::string make_filename(const std::string& name, const size_t dim, const std::string& ext) {
+  return make_filename(name, emp::vector<size_t>{dim}, ext);
 }
 
-bool test_isomorphic(const std::string& str, const std::string& filename) {
+inline bool test_isomorphic(const std::string& str, const std::string& filename) {
   // write ss to file
   std::cout << str << std::endl;
 

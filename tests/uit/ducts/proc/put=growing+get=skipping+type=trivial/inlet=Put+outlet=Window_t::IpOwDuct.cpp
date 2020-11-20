@@ -8,5 +8,7 @@ using ImplSel = uit::ImplSelect<
   uit::t::IpOwDuct
 >;
 
+#define IMPL_NAME "inlet=Put+outlet=Window_t::IpOwDuct"
+
 #include "../ProcDuct.hpp"
 #include "../SkippingProcDuct.hpp"

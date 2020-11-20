@@ -4,29 +4,26 @@
 
 #include <mpi.h>
 
-#define CATCH_CONFIG_MAIN
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "Empirical/source/base/vector.h"
 
 #include "uitsl/concurrent/Gatherer.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
+#if 0
+#endif
 #include "uitsl/debug/safe_cast.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/parallel/thread_utils.hpp"
 #include "uitsl/polyfill/barrier.hpp"
 
-const uitsl::MpiGuard guard;
 
 constexpr size_t num_threads{ 2 };
 
 uitsl::Gatherer<int> gather(MPI_INT);
 
-void do_work() {
+inline void do_work() {
 
   static std::barrier barrier{uitsl::safe_cast<std::ptrdiff_t>(num_threads)};
 

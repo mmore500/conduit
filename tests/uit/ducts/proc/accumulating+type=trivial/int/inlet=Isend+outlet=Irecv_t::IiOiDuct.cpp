@@ -10,5 +10,6 @@ using ImplSel = uit::ImplSelect<
 >;
 
 using MSG_T = int;
+#define IMPL_NAME "inlet=Isend+outlet=Irecv_t::IiOiDuct/int"
 
 #include "../../AccumulatingProcDuct.hpp"

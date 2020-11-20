@@ -1,4 +1,6 @@
-TEST_CASE("Eventual flush-out") { REPEAT {
+#define VATD_IMPL_NAME IMPL_NAME " ValueThreadDuct"
+
+TEST_CASE("Eventual flush-out " VATD_IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(num_threads),
@@ -29,7 +31,7 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 } }
 
 
-TEST_CASE("Validity") { REPEAT {
+TEST_CASE("Validity " VATD_IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(num_threads),

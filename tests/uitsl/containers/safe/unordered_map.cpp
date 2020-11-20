@@ -1,6 +1,5 @@
 #include <string>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/containers/safe/unordered_map.hpp"

@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <string>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/datastructs/PodInternalNode.hpp"
@@ -280,8 +279,8 @@ TEST_CASE("Test Reset") {
 
 }
 
-#ifdef NDEBUG // emp::array messes up sizing in debug mode...
 TEST_CASE("Test memory layout") {
+#ifdef NDEBUG // emp::array messes up sizing in debug mode...
 
   REQUIRE( General::GetSize() * sizeof(std::string) == sizeof(General) );
 
@@ -292,6 +291,5 @@ TEST_CASE("Test memory layout") {
   REQUIRE( CaptainB::GetSize() * sizeof(std::string) == sizeof(CaptainB) );
 
   REQUIRE( SergeantB::GetSize() * sizeof(std::string) == sizeof(SergeantB) );
-
-}
 #endif
+}

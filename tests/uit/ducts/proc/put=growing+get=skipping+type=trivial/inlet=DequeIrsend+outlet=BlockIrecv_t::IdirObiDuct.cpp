@@ -8,5 +8,7 @@ using ImplSel = uit::ImplSelect<
   uit::t::IdirObiDuct
 >;
 
+#define IMPL_NAME "inlet=DequeIrsend+outlet=BlockIrecv_t::IdirObiDuct"
+
 #include "../ProcDuct.hpp"
 #include "../SkippingProcDuct.hpp"

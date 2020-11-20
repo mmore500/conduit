@@ -1,4 +1,6 @@
-TEST_CASE("Ring Mesh connectivity") { REPEAT {
+#define STD_IMPL_NAME IMPL_NAME " SteppingThreadDuct"
+
+TEST_CASE("Ring Mesh connectivity " STD_IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(num_threads),
@@ -21,7 +23,7 @@ TEST_CASE("Ring Mesh connectivity") { REPEAT {
 
 } }
 
-TEST_CASE("Ring Mesh sequential consistency") { REPEAT {
+TEST_CASE("Ring Mesh sequential consistency " STD_IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(num_threads),
@@ -47,7 +49,7 @@ TEST_CASE("Ring Mesh sequential consistency") { REPEAT {
 
 } }
 
-TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
+TEST_CASE("Producer-Consumer Mesh connectivity " STD_IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(num_threads),
@@ -79,7 +81,7 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
 
 } }
 
-TEST_CASE("Producer-Consumer Mesh sequential consistency") { REPEAT {
+TEST_CASE("Producer-Consumer Mesh sequential consistency " STD_IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(num_threads),
@@ -103,7 +105,7 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { REPEAT {
 
 } }
 
-TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
+TEST_CASE("Dyadic Mesh connectivity " STD_IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(num_threads),
@@ -138,7 +140,7 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
 
 } }
 
-TEST_CASE("Dyadic Mesh sequential consistency") { REPEAT {
+TEST_CASE("Dyadic Mesh sequential consistency " STD_IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(num_threads),

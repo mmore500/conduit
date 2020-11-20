@@ -1,4 +1,4 @@
-TEST_CASE("Ring Mesh connectivity") { REPEAT {
+TEST_CASE("Ring Mesh connectivity " IMPL_NAME) { REPEAT {
 
   auto [input, output] = make_ring_bundle();
 
@@ -14,7 +14,7 @@ TEST_CASE("Ring Mesh connectivity") { REPEAT {
 
 } }
 
-TEST_CASE("Ring Mesh sequential consistency") { {
+TEST_CASE("Ring Mesh sequential consistency " IMPL_NAME) { {
 
   auto [input, output] = make_ring_bundle();
 
@@ -32,7 +32,7 @@ TEST_CASE("Ring Mesh sequential consistency") { {
 
 } }
 
-TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
+TEST_CASE("Producer-Consumer Mesh connectivity " IMPL_NAME) { REPEAT {
 
   auto [input, output] = make_producer_consumer_bundle();
 
@@ -59,7 +59,7 @@ TEST_CASE("Producer-Consumer Mesh connectivity") { REPEAT {
 
 } }
 
-TEST_CASE("Producer-Consumer Mesh sequential consistency") { {
+TEST_CASE("Producer-Consumer Mesh sequential consistency " IMPL_NAME) { {
 
   auto [input, output] = make_producer_consumer_bundle();
 
@@ -79,7 +79,7 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency") { {
 
 } }
 
-TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
+TEST_CASE("Dyadic Mesh connectivity " IMPL_NAME) { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
   UITSL_Barrier(MPI_COMM_WORLD);
@@ -108,7 +108,7 @@ TEST_CASE("Dyadic Mesh connectivity") { REPEAT {
 
 } }
 
-TEST_CASE("Dyadic Mesh sequential consistency") { {
+TEST_CASE("Dyadic Mesh sequential consistency " IMPL_NAME) { {
 
   auto [input, output] = make_dyadic_bundle();
 

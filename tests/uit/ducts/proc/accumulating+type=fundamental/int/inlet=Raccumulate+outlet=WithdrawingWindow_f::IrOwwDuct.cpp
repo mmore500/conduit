@@ -10,5 +10,6 @@ using ImplSel = uit::ImplSelect<
 >;
 
 using MSG_T = int;
+#define IMPL_NAME "inlet=Raccumulate+outlet=WithdrawingWindow_f::IrOwwDuct/int"
 
 #include "../../AccumulatingProcDuct.hpp"
