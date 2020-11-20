@@ -39,13 +39,13 @@ public:
   { ; }
 
 
-  constexpr vector& operator=(const vector& x) {
+  vector& operator=(const vector& x) {
     const std::unique_lock lock{ mutex };
     impl.operator=(x);
     return *this;
   }
 
-  constexpr vector& operator=(vector&& x) noexcept(
+  vector& operator=(vector&& x) noexcept(
     std::allocator_traits<Allocator>::propagate_on_container_move_assignment::value
     || std::allocator_traits<Allocator>::is_always_equal::value
   ) {
@@ -54,24 +54,24 @@ public:
     return *this;
   }
 
-  constexpr vector& operator=(std::initializer_list<T> arg) {
+  vector& operator=(std::initializer_list<T> arg) {
     const std::unique_lock lock{ mutex };
     impl.operator=(arg);
     return *this;
   }
 
   template<class InputIt>
-  constexpr void assign(InputIt first, InputIt last) {
+  void assign(InputIt first, InputIt last) {
     const std::unique_lock lock{ mutex };
     impl.assign(first, last);
   }
 
-  constexpr void assign(size_type n, const T& u) {
+  void assign(size_type n, const T& u) {
     const std::unique_lock lock{ mutex };
     impl.assign(n, u);
   }
 
-  constexpr void assign(std::initializer_list<T> arg) {
+  void assign(std::initializer_list<T> arg) {
     const std::unique_lock lock{ mutex };
     impl.assign(arg);
   }
@@ -146,22 +146,22 @@ public:
     return impl.capacity();
   }
 
-  constexpr void resize(size_type sz) {
+  void resize(size_type sz) {
     const std::unique_lock lock{ mutex };
     impl.resize(sz);
   }
 
-  constexpr void resize(size_type sz, const T& c) {
+  void resize(size_type sz, const T& c) {
     const std::unique_lock lock{ mutex };
     impl.resize(sz, c);
   }
 
-  constexpr void reserve(size_type n) {
+  void reserve(size_type n) {
     const std::unique_lock lock{ mutex };
     impl.resize(n);
   }
 
-  constexpr void shrink_to_fit() {
+  void shrink_to_fit() {
     const std::unique_lock lock{ mutex };
     impl.shrink_to_fit();
   }
@@ -212,31 +212,31 @@ public:
 
   // modifiers
   template<class... Args>
-  constexpr reference emplace_back(Args&&... args) {
+  reference emplace_back(Args&&... args) {
     const std::unique_lock lock{ mutex };
     return impl.emplace_back(
       std::forward<Args>(args)...
     );
   }
 
-  constexpr void push_back(const T& x) {
+  void push_back(const T& x) {
     const std::unique_lock lock{ mutex };
     return impl.push_back(x);
   }
 
-  constexpr void push_back(T&& x) {
+  void push_back(T&& x) {
     const std::unique_lock lock{ mutex };
     return impl.push_back(std::move(x));
   }
 
-  constexpr void pop_back() {
+  void pop_back() {
     const std::unique_lock lock{ mutex };
     return impl.pop_back();
   }
 
 
   template<class... Args>
-  constexpr iterator emplace(const_iterator position, Args&&... args) {
+  iterator emplace(const_iterator position, Args&&... args) {
     const std::unique_lock lock{ mutex };
     return impl.emplace(
       position,
@@ -244,23 +244,23 @@ public:
     );
   }
 
-  constexpr iterator insert(const_iterator position, const T& x) {
+  iterator insert(const_iterator position, const T& x) {
     const std::unique_lock lock{ mutex };
     return impl.insert(position, x);
   }
 
-  constexpr iterator insert(const_iterator position, T&& x) {
+  iterator insert(const_iterator position, T&& x) {
     const std::unique_lock lock{ mutex };
     return impl.insert(position, std::move(x));
   }
 
-  constexpr iterator insert(const_iterator position, size_type n, const T& x) {
+  iterator insert(const_iterator position, size_type n, const T& x) {
     const std::unique_lock lock{ mutex };
     return impl.insert(position, n, x);
   }
 
   template<class InputIt>
-  constexpr iterator insert(
+  iterator insert(
     const_iterator position,
     InputIt first,
     InputIt last
@@ -269,7 +269,7 @@ public:
     return impl.insert(position, first, last);
  }
 
-  constexpr iterator insert(
+  iterator insert(
     const_iterator position,
     std::initializer_list<T> il
   ) {
@@ -277,17 +277,17 @@ public:
     return impl.insert(position, il);
   }
 
-  constexpr iterator erase(const_iterator position) {
+  iterator erase(const_iterator position) {
     const std::unique_lock lock{ mutex };
     return impl.erase(position);
   }
 
-  constexpr iterator erase(const_iterator first, const_iterator last) {
+  iterator erase(const_iterator first, const_iterator last) {
     const std::unique_lock lock{ mutex };
     return impl.erase(first, last);
   }
 
-  constexpr void swap(vector& arg) noexcept(
+  void swap(vector& arg) noexcept(
     std::allocator_traits<Allocator>::propagate_on_container_swap::value
     || std::allocator_traits<Allocator>::is_always_equal::value
   ) {
@@ -295,7 +295,7 @@ public:
     impl.swap(arg);
   }
 
-  constexpr void clear() noexcept {
+  void clear() noexcept {
     const std::unique_lock lock{ mutex };
     impl.clear();
   }

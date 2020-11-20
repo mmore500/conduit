@@ -24,7 +24,7 @@
 
 namespace uitsl {
 
-void mpi_init_multithread(int *argc, char ***argv) {
+inline void mpi_init_multithread(int *argc, char ***argv) {
   int res{};
   UITSL_Init_thread(argc, argv, MPI_THREAD_MULTIPLE, &res);
   if (res < MPI_THREAD_MULTIPLE) emp::NotifyWarning(
@@ -32,12 +32,12 @@ void mpi_init_multithread(int *argc, char ***argv) {
   );
 }
 
-void mpi_init_multithread() {
+inline void mpi_init_multithread() {
   int argc{};
   mpi_init_multithread(&argc, nullptr);
 }
 
-void mpi_init() {
+inline void mpi_init() {
   int argc{};
   UITSL_Init(&argc, nullptr);
 }

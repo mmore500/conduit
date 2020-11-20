@@ -15,7 +15,7 @@ namespace uitsl {
 
 template<typename ...Args> auto sum(Args ...args) { return (args + ...); }
 
-size_t mod(int in_val, const size_t mod_val) {
+inline size_t mod(int in_val, const size_t mod_val) {
   emp_assert(mod_val > 0);
   const int signed_mod_val = std::min(
     safe_cast<size_t>(std::numeric_limits<int>::max()),
@@ -25,12 +25,12 @@ size_t mod(int in_val, const size_t mod_val) {
   return (in_val < 0) ? (in_val + signed_mod_val) : in_val;
 }
 
-size_t circular_index(const size_t pos, const size_t len, const int diff) {
+inline size_t circular_index(const size_t pos, const size_t len, const int diff) {
   emp_assert(len > 0);
   return (pos + mod(diff, len)) % len;
 }
 
-size_t stoszt(const std::string & source) {
+inline size_t stoszt(const std::string & source) {
   std::stringstream ss{source};
   size_t res;
   ss >> res;
@@ -52,11 +52,11 @@ bool test_bit(const TYPE x, const size_t bit) {
   return std::bitset<sizeof(TYPE)*8>(emp::Abs(x)).test(bit);
 }
 
-size_t difference(const size_t a, const size_t b) {
+inline size_t difference(const size_t a, const size_t b) {
   return std::max(a, b) - std::min(a, b);
 }
 
-size_t sidebyside_hash(const size_t a, const size_t b) {
+inline size_t sidebyside_hash(const size_t a, const size_t b) {
 
   // half of non-sign int bits
   const size_t int_bits = sizeof(int) * 8;

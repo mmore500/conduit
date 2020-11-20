@@ -10,7 +10,7 @@
 
 namespace netuit {
 
-netuit::Topology make_complete_topology(const size_t cardinality) {
+inline netuit::Topology make_complete_topology(const size_t cardinality) {
 
   emp::vector<netuit::TopoNode> res( cardinality );
 

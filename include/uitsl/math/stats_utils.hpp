@@ -9,7 +9,7 @@
 
 namespace uitsl {
 
-double sample_mean_with_replacement(
+inline double sample_mean_with_replacement(
   emp::Random & rand,
   const emp::vector<double>& data
 ) {
@@ -27,7 +27,7 @@ double sample_mean_with_replacement(
 }
 
 
-std::tuple<double, double> bootstrap(
+inline std::tuple<double, double> bootstrap(
   emp::Random & rand,
   const emp::vector<double>& data,
   const double percentile=5.0,

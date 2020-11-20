@@ -10,7 +10,7 @@
 
 namespace uitsl {
 
-bool compare_streams(std::istream& s1, std::istream& s2) {
+inline bool compare_streams(std::istream& s1, std::istream& s2) {
 
   // seek back to beginning and use std::equal to compare contents
   s1.seekg(0, std::istream::beg);

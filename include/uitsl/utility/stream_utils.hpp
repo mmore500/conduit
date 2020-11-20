@@ -19,7 +19,7 @@ public:
   friend std::istream& operator>>(std::istream&, Line&);
 };
 
-std::istream& operator>>(std::istream& is, Line& line) {
+inline std::istream& operator>>(std::istream& is, Line& line) {
   std::getline(is, line.str);
   return is;
 }
@@ -30,7 +30,7 @@ void read_lines(std::istream & is, Out out) {
   std::copy(In(is), In(), out);
 }
 
-bool compare_streams(std::istream& s1, std::istream& s2) {
+inline bool compare_streams(std::istream& s1, std::istream& s2) {
   // seek back to beginning and use std::equal to compare contents
   s1.seekg(0, std::istream::beg);
   s2.seekg(0, std::istream::beg);
@@ -55,7 +55,7 @@ bool compare_streams(std::istream& s1, std::istream& s2) {
 }
 
 /// Do files at paths p1 and p2 have identical contents?
-bool compare_files(const std::string& p1, const std::string& p2) {
+inline bool compare_files(const std::string& p1, const std::string& p2) {
   // adapted from https://stackoverflow.com/a/37575457
   std::ifstream f1(p1, std::ifstream::binary|std::ifstream::ate);
   std::ifstream f2(p2, std::ifstream::binary|std::ifstream::ate);

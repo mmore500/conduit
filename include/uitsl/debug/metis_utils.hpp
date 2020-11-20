@@ -7,7 +7,7 @@
 #include <metis.h>
 
 namespace uitsl::metis {
-void verify(const int status) {
+inline void verify(const int status) {
   std::string name;
 
   switch(status) {

@@ -15,7 +15,7 @@
 
 namespace uitsl {
 
-int get_count(const MPI_Status& status, const MPI_Datatype& datatype) {
+inline int get_count(const MPI_Status& status, const MPI_Datatype& datatype) {
   int res;
   UITSL_Get_count(
     &status, // const MPI_Status * status: return status of receive operation
@@ -26,13 +26,13 @@ int get_count(const MPI_Status& status, const MPI_Datatype& datatype) {
   return res;
 }
 
-bool test_cancelled(const MPI_Status& status) {
+inline bool test_cancelled(const MPI_Status& status) {
   int res;
   UITSL_Test_cancelled(&status, &res);
   return res;
 }
 
-std::string to_string(const MPI_Status& status) {
+inline std::string to_string(const MPI_Status& status) {
   std::stringstream ss;
   ss << uitsl::format_member(
     "MPI_Get_count",

@@ -21,7 +21,7 @@
 
 namespace netuit {
 
-netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
+inline netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
   /*
   * goal
   * make toroidal topology (such that opposite edges are the same edge)
