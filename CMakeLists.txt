@@ -5,10 +5,20 @@ project(conduit VERSION 0.1.0
         LANGUAGES CXX
 )
 
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 # required libraries
 find_package(benchmark REQUIRED)
 find_package(Threads REQUIRED)
-find_package(OpenMP REQUIRED)
+#find_package(OpenMP REQUIRED)
+#set(MPI_EXECUTABLE_SUFFIX ".mpich")
+find_package(MPI REQUIRED)
+find_package(ZLIB REQUIRED)
+
+find_package(METIS)
+
+add_definitions(-DOMPI_SKIP_MPICXX)
+#include_directories(SYSTEM ${MPI_C_INCLUDE_PATH})
 
 
 include(CTest)
@@ -16,11 +26,19 @@ enable_testing()
 
 set(default_build_type "Debug")
 set(THREADS_PREFER_PTHREAD_FLAG ON)
-set(CMAKE_CXX_FLAGS "-pipe -Wall -Wno-unused-function")
+set(CMAKE_CXX_FLAGS "-pipe -Wall -Wno-unused-function -Wno-unused-lambda-capture")
 set(CATCH_BUILD_TESTING ON)
 set(BUILD_TESTING ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+
+option (FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." FALSE)
+
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+   add_compile_options (-fdiagnostics-color=always)
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+   add_compile_options (-fcolor-diagnostics)
+endif ()
 
 # create conduit library
 add_library(conduit INTERFACE)
@@ -34,8 +52,11 @@ target_compile_features(conduit INTERFACE cxx_std_17)
 # add link flags
 target_link_libraries(conduit INTERFACE stdc++fs)
 target_link_libraries(conduit INTERFACE Threads::Threads)
-target_link_libraries(conduit INTERFACE debug benchmark::benchmark)
-target_link_libraries(conduit INTERFACE OpenMP::OpenMP_CXX)
+target_link_libraries(conduit INTERFACE benchmark::benchmark)
+#target_link_libraries(conduit INTERFACE OpenMP::OpenMP_CXX)
+target_link_libraries(conduit INTERFACE MPI::MPI_CXX)
+target_link_libraries(conduit INTERFACE ZLIB::ZLIB)
+target_link_libraries(conduit INTERFACE metis)
 
 # enable interprocedural optimization (-flto flag)
 include(CheckIPOSupported)
