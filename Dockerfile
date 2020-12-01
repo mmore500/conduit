@@ -68,7 +68,7 @@ RUN \
     llvm-7 \
     clang-7 \
     libstdc++-7-dev \
-    snappy \
+    snapd \
     ninja-build \
     build-essential \
     python-virtualenv \
