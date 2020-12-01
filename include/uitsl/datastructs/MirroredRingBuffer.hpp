@@ -5,7 +5,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 
-#include "../../../third-party/Empirical/source/polyfill/span.h"
+#include "../../../third-party/Empirical/include/emp/polyfill/span.hpp"
 
 #include "../debug/err_audit.hpp"
 #include "../debug/safe_cast.hpp"

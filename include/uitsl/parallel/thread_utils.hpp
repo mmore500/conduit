@@ -7,7 +7,7 @@
 #include <stddef.h>
 #include <thread>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../math/math_utils.hpp"
 #include "../utility/exec_utils.hpp"

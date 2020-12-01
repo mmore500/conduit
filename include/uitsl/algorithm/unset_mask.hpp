@@ -2,9 +2,6 @@
 #ifndef UITSL_ALGORITHM_UNSET_MASK_HPP_INCLUDE
 #define UITSL_ALGORITHM_UNSET_MASK_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/source/tools/BitSet.h"
-
-
 namespace uitsl {
 
 template<typename T>

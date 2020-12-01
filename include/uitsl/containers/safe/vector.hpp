@@ -4,7 +4,7 @@
 
 #include <shared_mutex>
 
-#include "../../../../third-party/Empirical/source/base/vector.h"
+#include "../../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 namespace uitsl {
 namespace safe {

@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include <unordered_map>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../debug/OncePerThreadChecker.hpp"
 

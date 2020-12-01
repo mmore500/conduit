@@ -5,8 +5,8 @@
 #include <functional>
 #include <stddef.h>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
-#include "../../../third-party/Empirical/source/tools/random_utils.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../third-party/Empirical/include/emp/math/random_utils.hpp"
 
 namespace netuit {
 

@@ -4,7 +4,7 @@
 
 #include <cmath>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 using Point = emp::vector<size_t>;
 using Dims = emp::vector<size_t>;

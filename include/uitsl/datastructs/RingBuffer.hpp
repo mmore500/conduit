@@ -6,7 +6,7 @@
 #include <stddef.h>
 #include <utility>
 
-#include "../../../third-party/Empirical/source/base/array.h"
+#include "../../../third-party/Empirical/include/emp/base/array.hpp"
 
 #include "../nonce/CircularIndex.hpp"
 

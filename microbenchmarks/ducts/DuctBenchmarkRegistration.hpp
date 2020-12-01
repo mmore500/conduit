@@ -8,9 +8,9 @@
 #include <benchmark/benchmark.h>
 #include <mpi.h>
 
-#include "../../third-party/Empirical/source/meta/TypePack.h"
-#include "../../third-party/Empirical/source/tools/Random.h"
-#include "../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../third-party/Empirical/include/emp/meta/TypePack.hpp"
+#include "../../third-party/Empirical/include/emp/math/Random.hpp"
+#include "../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "uitsl/chrono/TimeGuard.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"

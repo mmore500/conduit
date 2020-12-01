@@ -8,7 +8,7 @@
 #include <ratio>
 #include <stddef.h>
 
-#include "../../../third-party/Empirical/source/tools/math.h"
+#include "../../../third-party/Empirical/include/emp/math/math.hpp"
 
 #include "../debug/safe_cast.hpp"
 

@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 
-#include "../third-party/Empirical/source/tools/NullStream.h"
+#include "../third-party/Empirical/include/emp/io/NullStream.hpp"
 
 #include "uitsl/chrono/CoarseClock.hpp"
 #include "uitsl/countdown/ProgressBar.hpp"

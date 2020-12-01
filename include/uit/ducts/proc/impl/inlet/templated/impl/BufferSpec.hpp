@@ -2,7 +2,7 @@
 #ifndef UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_IMPL_BUFFERSPEC_HPP_INCLUDE
 #define UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_IMPL_BUFFERSPEC_HPP_INCLUDE
 
-#include "../../../../../../../../third-party/Empirical/source/base/vector.h"
+#include "../../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "../../../../../mock/ThrowDuct.hpp"
 

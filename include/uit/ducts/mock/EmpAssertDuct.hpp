@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <string>
 
-#include "../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../proc/impl/backend/MockBackEnd.hpp"
 

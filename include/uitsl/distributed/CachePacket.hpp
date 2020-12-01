@@ -5,7 +5,7 @@
 #include <cstddef>
 
 #include "../../../third-party/cereal/include/cereal/types/optional.hpp"
-#include "../../../third-party/Empirical/source/base/optional.h"
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 namespace uitsl {
 

@@ -7,7 +7,7 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #define CATCH_CONFIG_RUNNER
 #include "Catch/single_include/catch2/catch.hpp"
-#include "Empirical/source/base/optional.h"
+#include "Empirical/include/emp/base/optional.hpp"
 
 #include "uitsl/concurrent/Gatherer.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"

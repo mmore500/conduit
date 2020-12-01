@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "../../../third-party/Empirical/source/hardware/signalgp_utils.h"
-#include "../../../third-party/Empirical/source/tools/Random.h"
+#include "../../../third-party/Empirical/include/emp/hardware/signalgp_utils.hpp"
+#include "../../../third-party/Empirical/include/emp/math/Random.hpp"
 
 #include "config.hpp"
 #include "EventLib.hpp"

@@ -10,9 +10,9 @@
 #include <string>
 #include <string_view>
 
-#include "../../../third-party/Empirical/source/base/errors.h"
-#include "../../../third-party/Empirical/source/base/optional.h"
-#include "../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../third-party/Empirical/include/emp/base/errors.hpp"
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"

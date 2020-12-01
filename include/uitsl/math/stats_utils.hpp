@@ -4,8 +4,8 @@
 
 #include <stddef.h>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
-#include "../../../third-party/Empirical/source/data/DataNode.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../third-party/Empirical/include/emp/data/DataNode.hpp"
 
 namespace uitsl {
 

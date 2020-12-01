@@ -2,7 +2,7 @@
 #ifndef NETUIT_ARRANGE_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
 #define NETUIT_ARRANGE_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"

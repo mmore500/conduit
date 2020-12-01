@@ -4,7 +4,7 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 namespace uitsl {
 

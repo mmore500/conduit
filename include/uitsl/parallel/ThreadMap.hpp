@@ -6,7 +6,7 @@
 #include <shared_mutex>
 #include <unordered_map>
 
-#include "../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../containers/safe/unordered_map.hpp"
 #include "../utility/print_utils.hpp"

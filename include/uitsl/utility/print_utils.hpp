@@ -7,7 +7,7 @@
 #include <sstream>
 #include <string>
 
-#include "../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 // TODO be clever and use fewer overloads
 

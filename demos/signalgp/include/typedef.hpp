@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "../../../third-party/Empirical/source/hardware/EventDrivenGP.h"
+#include "../../../third-party/Empirical/include/emp/hardware/EventDrivenGP.hpp"
 
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/mesh/MeshNode.hpp"

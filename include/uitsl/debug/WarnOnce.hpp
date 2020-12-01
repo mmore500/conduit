@@ -2,7 +2,7 @@
 #ifndef UITSL_DEBUG_WARNONCE_HPP_INCLUDE
 #define UITSL_DEBUG_WARNONCE_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/source/base/errors.h"
+#include "../../../third-party/Empirical/include/emp/base/errors.hpp"
 
 namespace uitsl {
 

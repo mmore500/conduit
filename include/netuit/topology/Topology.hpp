@@ -12,8 +12,8 @@
 #include <unordered_map>
 #include <utility>
 
-#include "../../../third-party/Empirical/source/tools/hash_utils.h"
-#include "../../../third-party/Empirical/source/tools/keyname_utils.h"
+#include "../../../third-party/Empirical/include/emp/datastructs/hash_utils.hpp"
+#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
 
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
 #include "../../uitsl/debug/metis_utils.hpp"

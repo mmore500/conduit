@@ -7,7 +7,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "../third-party/Empirical/source/tools/string_utils.h"
+#include "../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "uitsl/math/math_utils.hpp"
 

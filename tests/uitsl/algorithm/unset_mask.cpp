@@ -1,8 +1,8 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "Empirical/source/tools/BitSet.h"
-#include "Empirical/source/tools/Random.h"
+#include "Empirical/include/emp/bits/BitSet.hpp"
+#include "Empirical/include/emp/math/Random.hpp"
 
 #include "uitsl/algorithm/unset_mask.hpp"
 

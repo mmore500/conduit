@@ -8,8 +8,8 @@
 #include <numeric>
 #include <tuple>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
-#include "../../../third-party/Empirical/source/tools/tuple_utils.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
 
 #include "../../uitsl/math/mapping_utils.hpp"
 #include "../../uitsl/math/math_utils.hpp"
