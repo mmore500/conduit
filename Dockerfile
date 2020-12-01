@@ -83,6 +83,10 @@ RUN \
 
 RUN snap install cmake --classic \
     && \
+    systemctl enable --now snapd.socket \
+    && \
+    ln -s /var/lib/snapd/snap /snap \
+    && \
   echo "installed snapper packages"
 
 RUN \
