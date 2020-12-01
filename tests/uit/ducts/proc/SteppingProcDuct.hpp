@@ -1,6 +1,6 @@
 TEST_CASE("Ring Mesh connectivity " IMPL_NAME) { REPEAT {
 
-  auto [input, output] = make_ring_pd_bundle();
+  auto [input, output] = make_ring_pd_bundle<Spec>();
 
   // check that everyone's connected properly
   output.TryPut(uitsl::get_rank());
@@ -16,7 +16,7 @@ TEST_CASE("Ring Mesh connectivity " IMPL_NAME) { REPEAT {
 
 TEST_CASE("Ring Mesh sequential consistency " IMPL_NAME) { {
 
-  auto [input, output] = make_ring_pd_bundle();
+  auto [input, output] = make_ring_pd_bundle<Spec>();
 
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
@@ -34,7 +34,7 @@ TEST_CASE("Ring Mesh sequential consistency " IMPL_NAME) { {
 
 TEST_CASE("Producer-Consumer Mesh connectivity " IMPL_NAME) { REPEAT {
 
-  auto [input, output] = make_producer_consumer_pd_bundle();
+  auto [input, output] = make_producer_consumer_pd_bundle<Spec>();
 
   // check that everyone's connected properly
   if (output) {
@@ -61,7 +61,7 @@ TEST_CASE("Producer-Consumer Mesh connectivity " IMPL_NAME) { REPEAT {
 
 TEST_CASE("Producer-Consumer Mesh sequential consistency " IMPL_NAME) { {
 
-  auto [input, output] = make_producer_consumer_pd_bundle();
+  auto [input, output] = make_producer_consumer_pd_bundle<Spec>();
 
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
@@ -81,7 +81,7 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency " IMPL_NAME) { {
 
 TEST_CASE("Dyadic Mesh connectivity " IMPL_NAME) { REPEAT {
 
-  auto [input, output] = make_dyadic_pd_bundle();
+  auto [input, output] = make_dyadic_pd_bundle<Spec>();
   UITSL_Barrier(MPI_COMM_WORLD);
 
   // check that everyone's connected properly
@@ -110,7 +110,7 @@ TEST_CASE("Dyadic Mesh connectivity " IMPL_NAME) { REPEAT {
 
 TEST_CASE("Dyadic Mesh sequential consistency " IMPL_NAME) { {
 
-  auto [input, output] = make_dyadic_pd_bundle();
+  auto [input, output] = make_dyadic_pd_bundle<Spec>();
 
   // long enough to check that buffer wraparound works properly
   for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {

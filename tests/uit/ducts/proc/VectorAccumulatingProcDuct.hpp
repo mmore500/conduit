@@ -20,18 +20,19 @@
 
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
-#define VAPD_IMPL_NAME IMPL_NAME " VectorAccumulatingProcDuct"
+#define VAPD_IMPL_NAME IMPL_NAME "VectorAccumulatingProcDuct"
 
 using MSG_T = emp::vector<MSG_VALUE_T>;
 constexpr size_t message_size = 3;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
-inline decltype(auto) make_ring_vapd_bundle() {
-  netuit::Mesh<Spec> mesh{
+template <typename T>
+decltype(auto) make_ring_vapd_bundle() {
+  netuit::Mesh<T> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     netuit::AssignAvailableProcs{},
-    std::make_shared<typename Spec::ProcBackEnd>( message_size )
+    std::make_shared<typename T::ProcBackEnd>( message_size )
   };
 
   auto bundles = mesh.GetSubmesh();
@@ -44,7 +45,7 @@ inline decltype(auto) make_ring_vapd_bundle() {
 
 TEST_CASE("Is initial VectorAccumulatingProcDuct Get() result value-intialized? " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { REPEAT {
 
-  auto [input, output] = make_ring_vapd_bundle();
+  auto [input, output] = make_ring_vapd_bundle<Spec>();
 
   REQUIRE( input.Get() == MSG_T(message_size) );
   REQUIRE( input.JumpGet() == MSG_T(message_size) );
@@ -55,7 +56,7 @@ TEST_CASE("Is initial VectorAccumulatingProcDuct Get() result value-intialized? 
 
 TEST_CASE("Unmatched gets " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { REPEAT {
 
-  auto [input, output] = make_ring_vapd_bundle();
+  auto [input, output] = make_ring_vapd_bundle<Spec>();
 
   for (int i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
     REQUIRE( input.JumpGet() == MSG_T(message_size) );
@@ -77,7 +78,7 @@ TEST_CASE("Unmatched gets " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { RE
 
 TEST_CASE("Unmatched puts " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { REPEAT {
 
-  auto [input, output] = make_ring_vapd_bundle();
+  auto [input, output] = make_ring_vapd_bundle<Spec>();
 
   for (int i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
     output.TryPut( MSG_T{1, 2, 3} );
@@ -94,7 +95,7 @@ TEST_CASE("Unmatched puts " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { RE
 
 TEST_CASE("Validity " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { REPEAT {
 
-  auto [input, output] = make_ring_vapd_bundle();
+  auto [input, output] = make_ring_vapd_bundle<Spec>();
 
   MSG_T sum(message_size);
   // 1/2 n * (n + 1)

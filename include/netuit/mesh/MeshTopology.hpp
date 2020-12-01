@@ -71,7 +71,6 @@ class MeshTopology {
     const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment,
     const MPI_Comm& comm
   ) {
-
     // ensures that we include relevant nodes that don't have any edges
     for (node_id_t node_id = 0; node_id < topology.GetSize(); ++node_id) {
       if (proc_assignment(node_id) == uitsl::get_proc_id(comm)) {
