@@ -10,8 +10,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 # required libraries
 find_package(benchmark REQUIRED)
 find_package(Threads REQUIRED)
-#find_package(OpenMP REQUIRED)
-#set(MPI_EXECUTABLE_SUFFIX ".mpich")
+set(MPI_EXECUTABLE_SUFFIX ".openmpi")
 find_package(MPI REQUIRED)
 find_package(ZLIB REQUIRED)
 
@@ -19,7 +18,6 @@ find_package(METIS)
 
 add_definitions(-DOMPI_SKIP_MPICXX)
 #include_directories(SYSTEM ${MPI_C_INCLUDE_PATH})
-
 
 include(CTest)
 enable_testing()
@@ -30,7 +28,6 @@ set(CMAKE_CXX_FLAGS "-pipe -Wall -Wno-unused-function -Wno-unused-lambda-capture
 set(CATCH_BUILD_TESTING ON)
 set(BUILD_TESTING ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
 
 option (FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." FALSE)
 
@@ -53,7 +50,6 @@ target_compile_features(conduit INTERFACE cxx_std_17)
 target_link_libraries(conduit INTERFACE stdc++fs)
 target_link_libraries(conduit INTERFACE Threads::Threads)
 target_link_libraries(conduit INTERFACE benchmark::benchmark)
-#target_link_libraries(conduit INTERFACE OpenMP::OpenMP_CXX)
 target_link_libraries(conduit INTERFACE MPI::MPI_CXX)
 target_link_libraries(conduit INTERFACE ZLIB::ZLIB)
 target_link_libraries(conduit INTERFACE metis)
