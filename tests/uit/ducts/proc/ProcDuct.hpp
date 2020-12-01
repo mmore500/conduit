@@ -33,7 +33,7 @@ using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 #define PD_IMPL_NAME IMPL_NAME " ProcDuct"
 
-inline decltype(auto) make_dyadic_bundle() {
+inline decltype(auto) make_dyadic_pd_bundle() {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
@@ -48,7 +48,7 @@ inline decltype(auto) make_dyadic_bundle() {
 
 };
 
-inline decltype(auto) make_producer_consumer_bundle() {
+inline decltype(auto) make_producer_consumer_pd_bundle() {
 
   netuit::Mesh<Spec> mesh{
     netuit::ProConTopologyFactory{}(uitsl::get_nprocs()),
@@ -70,7 +70,7 @@ inline decltype(auto) make_producer_consumer_bundle() {
 
 };
 
-inline decltype(auto) make_ring_bundle() {
+inline decltype(auto) make_ring_pd_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
@@ -86,7 +86,7 @@ inline decltype(auto) make_ring_bundle() {
 }
 
 // p_1 -> p_2 -> ... -> p_n -> p_1 -> p_2 -> ... -> p_n -> p_1
-inline decltype(auto) make_coiled_bundle() {
+inline decltype(auto) make_coiled_pd_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs() * 2),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
@@ -160,7 +160,7 @@ inline decltype(auto) make_coiled_bundle() {
 
 TEST_CASE("Is initial ProcDuct Get() result value-intialized?" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
-  auto [input, output] = make_ring_bundle();
+  auto [input, output] = make_ring_pd_bundle();
 
   REQUIRE( input.Get() == MSG_T{} );
   REQUIRE( input.JumpGet() == MSG_T{} );
@@ -169,7 +169,7 @@ TEST_CASE("Is initial ProcDuct Get() result value-intialized?" PD_IMPL_NAME, "[P
 
 TEST_CASE("Unmatched gets" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_pd_bundle();
 
   for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
@@ -189,7 +189,7 @@ TEST_CASE("Unmatched gets" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
 TEST_CASE("Unmatched puts" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_pd_bundle();
 
   for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(i);
 
@@ -205,7 +205,7 @@ TEST_CASE("Unmatched puts" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
 TEST_CASE("Eventual flush-out" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_pd_bundle();
 
   for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(0);
 
@@ -231,7 +231,7 @@ TEST_CASE("Eventual flush-out" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
 TEST_CASE("Validity" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_pd_bundle();
 
   int last{};
   for (MSG_T msg = 0; msg < 10 * std::kilo::num; ++msg) {
@@ -254,7 +254,7 @@ TEST_CASE("Validity" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
 TEST_CASE("Multi-bridge Validity" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
-  auto [inputs, outputs] = make_coiled_bundle();
+  auto [inputs, outputs] = make_coiled_pd_bundle();
 
   std::unordered_map<size_t, int> last_map{};
   for (MSG_T msg = 0; msg < 10 * std::kilo::num; ++msg) {

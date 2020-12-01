@@ -25,8 +25,7 @@
 
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
-
-inline decltype(auto) make_dyadic_bundle() {
+inline decltype(auto) make_dyadic_apd_bundle() {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
@@ -41,7 +40,7 @@ inline decltype(auto) make_dyadic_bundle() {
 
 };
 
-inline decltype(auto) make_producer_consumer_bundle() {
+inline decltype(auto) make_producer_consumer_apd_bundle() {
 
   netuit::Mesh<Spec> mesh{
     netuit::ProConTopologyFactory{}(uitsl::get_nprocs()),
@@ -63,7 +62,7 @@ inline decltype(auto) make_producer_consumer_bundle() {
 
 };
 
-inline decltype(auto) make_ring_bundle() {
+inline decltype(auto) make_ring_apd_bundle() {
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}( uitsl::get_nprocs() ),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
@@ -77,7 +76,7 @@ inline decltype(auto) make_ring_bundle() {
 }
 TEST_CASE("Is initial AccumulatingProcDuct Get() result value-intialized? " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
 
-  auto [input, output] = make_ring_bundle();
+  auto [input, output] = make_ring_apd_bundle();
 
   REQUIRE( input.Get() == MSG_T{} );
   REQUIRE( input.JumpGet() == MSG_T{} );
@@ -87,7 +86,7 @@ TEST_CASE("Is initial AccumulatingProcDuct Get() result value-intialized? " APD_
 TEST_CASE("Unmatched gets " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
 
   // TODO why does rdma construction hang for dyadic bundle but not ring  ?
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_apd_bundle();
 
   for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
@@ -111,7 +110,7 @@ TEST_CASE("Unmatched gets " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
 TEST_CASE("Unmatched puts " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
 
   // TODO why does rdma construction hang for dyadic bundle but not ring  ?
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_apd_bundle();
 
   for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(1);
 
@@ -122,7 +121,7 @@ TEST_CASE("Unmatched puts " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
 TEST_CASE("Validity " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
 
   // TODO why does rdma construction hang for dyadic bundle but not ring  ?
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_apd_bundle();
 
   int sum{};
   // 1/2 n * (n + 1)
