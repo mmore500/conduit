@@ -68,7 +68,7 @@ RUN \
     llvm-7 \
     clang-7 \
     libstdc++-7-dev \
-    cmake \
+    snappy \
     ninja-build \
     build-essential \
     python-virtualenv \
@@ -80,6 +80,10 @@ RUN \
     gdb \
     && \
   echo "installed core dependencies"
+
+RUN snap install cmake --classic \
+    && \
+  echo "installed snapper packages"
 
 RUN \
   apt-get install -qq \
