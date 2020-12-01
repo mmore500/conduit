@@ -10,7 +10,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 # required libraries
 find_package(benchmark REQUIRED)
 find_package(Threads REQUIRED)
-#set(MPI_EXECUTABLE_SUFFIX ".openmpi")
+#set(MPI_EXECUTABLE_SUFFIX ".openmp")
 find_package(MPI REQUIRED)
 find_package(ZLIB REQUIRED)
 

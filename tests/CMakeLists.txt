@@ -305,6 +305,8 @@ add_custom_command(TARGET tests
     COMMAND ${CMAKE_COMMAND} -E echo "Copying unit test data.."
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/uitsl/utility/assets ${CMAKE_BINARY_DIR}/tests/assets
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/uitsl/debug/assets ${CMAKE_BINARY_DIR}/tests/assets
+
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/netuit/arrange/scripts ${CMAKE_BINARY_DIR}/tests/scripts
     )
 
 add_custom_command(TARGET tests
