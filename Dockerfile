@@ -69,6 +69,7 @@ RUN \
     clang-7 \
     libstdc++-7-dev \
     cmake \
+    ninja-build \
     build-essential \
     python-virtualenv \
     python3-virtualenv \
