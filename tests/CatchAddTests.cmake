@@ -56,19 +56,10 @@ foreach(line ${output})
   foreach(char , [ ])
     string(REPLACE ${char} "\\${char}" test_name ${test_name})
   endforeach(char)
-#  add_command(add_test
-#    NAME "${prefix}${test}${suffix}"
-#    COMMAND ${OptionalCatchTestLauncher}
-#    ${TEST_EXECUTOR}
-#    "${TEST_EXECUTABLE}"
-#    "${test_name}"
-#    ${extra_args}
-#  )
   # ...and add to script
   add_command(add_test
     "${prefix}${test}${suffix}"
-    ${OptionalCatchTestLauncher}
-#    ${TEST_EXECUTOR}
+    ${TEST_RUNNER}
     "${TEST_EXECUTABLE}"
     "${test_name}"
     ${extra_args}
