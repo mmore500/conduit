@@ -22,7 +22,7 @@ jobs:
   - name: OpenMPI Unit Tests (debug mode)
     env: UIT_MPICXX=mpicxx.openmpi UIT_MPIEXEC=mpiexec.openmpi
     script:
-    - docker run -e TRAVIS "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit/ && cmake -S . -B build && cmake -build build"
+    - docker run -e TRAVIS "mmore500/conduit:TRAVIS_BUILD_${TRAVIS_BUILD_NUMBER}" /bin/bash -c "cd /opt/conduit/ && cmake -S . -B build -GNinja && cmake -build build"
 
 
 env:
