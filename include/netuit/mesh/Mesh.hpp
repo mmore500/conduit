@@ -33,6 +33,7 @@ class MeshIDCounter {
 public:
 
   static size_t Generate() { return counter++; }
+  static void Reset() { counter = 0; }
 
 };
 
