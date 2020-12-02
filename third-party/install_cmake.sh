@@ -5,4 +5,4 @@ tar -zxvf cmake-3.19.1.tar.gz
 cd cmake-3.19.1
 ./bootstrap
 make
-sudo make install
+make install
