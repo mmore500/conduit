@@ -68,7 +68,6 @@ RUN \
     llvm-7 \
     clang-7 \
     libstdc++-7-dev \
-    snapd \
     ninja-build \
     build-essential \
     python-virtualenv \
@@ -80,14 +79,6 @@ RUN \
     gdb \
     && \
   echo "installed core dependencies"
-
-RUN snap install cmake --classic \
-    && \
-    systemctl enable --now snapd.socket \
-    && \
-    ln -s /var/lib/snapd/snap /snap \
-    && \
-  echo "installed snapper packages"
 
 RUN \
   apt-get install -qq \
@@ -235,6 +226,15 @@ RUN \
   ./install_dependencies.sh \
     && \
   echo "installed third party dependencies"
+
+RUN \
+  cd /opt/conduit/ \
+    && \
+  cd third-party \
+    && \
+  ./install_cmake.sh \
+    && \
+  echo "installed cmake"
 
 # Use mimalloc override within the container.
 ENV LD_PRELOAD=/usr/local/lib/mimalloc-1.6/libmimalloc.so
