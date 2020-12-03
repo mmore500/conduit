@@ -73,6 +73,7 @@ RUN \
     python-virtualenv \
     python3-virtualenv \
     python-pip \
+    libbenchmark-dev \
     python3-pip \
     libpthread-stubs0-dev \
     libc6-dbg \
@@ -226,15 +227,6 @@ RUN \
   ./install_dependencies.sh \
     && \
   echo "installed third party dependencies"
-
-RUN \
-  cd /opt/conduit/ \
-    && \
-  cd third-party \
-    && \
-  ./install_cmake.sh \
-    && \
-  echo "installed cmake"
 
 # Use mimalloc override within the container.
 ENV LD_PRELOAD=/usr/local/lib/mimalloc-1.6/libmimalloc.so
