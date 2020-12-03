@@ -1,8 +1,11 @@
 #!/bin/sh
 
-wget https://github.com/Kitware/CMake/releases/download/v3.19.1/cmake-3.19.1.tar.gz
-tar -zxvf cmake-3.19.1.tar.gz
-cd cmake-3.19.1
-./bootstrap
-make
-make install
+version=3.19
+build=1
+mkdir ~/temp
+cd ~/temp
+wget https://cmake.org/files/v$version/cmake-$version.$build-Linux-x86_64.sh
+mkdir /opt/cmake
+sh cmake-$version.$build-Linux-x86_64.sh --prefix=/opt/cmake
+
+ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
