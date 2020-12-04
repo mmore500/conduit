@@ -302,11 +302,20 @@ add_executable(tests
 
 add_custom_command(TARGET tests
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E echo "Copying unit test data.."
+    COMMAND ${CMAKE_COMMAND} -E echo "Copying unit test data..."
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/uitsl/utility/assets ${CMAKE_BINARY_DIR}/tests/assets
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/uitsl/debug/assets ${CMAKE_BINARY_DIR}/tests/assets
 
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/netuit/arrange/scripts ${CMAKE_BINARY_DIR}/tests/scripts
+
+    COMMAND ${CMAKE_COMMAND} -E echo "Executing python scripts..."
+#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_complete.py
+#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_dyadic.py
+#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_loop.py
+#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_procon.py
+#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_ring.py
+#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_toroidal.py
+
     )
 
 add_custom_command(TARGET tests
