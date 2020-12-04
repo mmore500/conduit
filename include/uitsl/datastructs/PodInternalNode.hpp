@@ -5,6 +5,8 @@
 #include <tuple>
 #include <type_traits>
 
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
+
 #include "../meta/tuple_has_type.hpp"
 
 namespace uitsl {
