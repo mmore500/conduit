@@ -10,7 +10,7 @@
 
 constexpr size_t num_threads{ 2 };
 
-inline void do_work() {
+inline void do_work_barrier() {
 
   const uitsl::ThreadSafeIbarrierRequest barrier;
   while( !barrier.IsComplete() );
@@ -23,8 +23,8 @@ TEST_CASE("Test ThreadSafeIbarrierRequest") {
 
   uitsl::ThreadTeam team;
 
-  team.Add(do_work);
-  team.Add(do_work);
+  team.Add(do_work_barrier);
+  team.Add(do_work_barrier);
 
   team.Join();
 

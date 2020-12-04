@@ -9,7 +9,7 @@
 
 constexpr size_t num_threads{ 2 };
 
-inline void do_work() {
+inline void do_work_concurrent() {
 
   static uitsl::ThreadIbarrierFactory factory{ num_threads };
 
@@ -22,8 +22,8 @@ TEST_CASE("Test ConcurrentTimeoutBarrier") {
 
   uitsl::ThreadTeam team;
 
-  team.Add(do_work);
-  team.Add(do_work);
+  team.Add(do_work_concurrent);
+  team.Add(do_work_concurrent);
 
   team.Join();
 

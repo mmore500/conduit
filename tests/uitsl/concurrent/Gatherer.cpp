@@ -23,8 +23,7 @@ constexpr size_t num_threads{ 2 };
 
 uitsl::Gatherer<int> gather(MPI_INT);
 
-inline void do_work() {
-
+inline void do_work_gatherer() {
   static std::barrier barrier{uitsl::safe_cast<std::ptrdiff_t>(num_threads)};
 
   barrier.arrive_and_wait();
@@ -37,10 +36,8 @@ inline void do_work() {
 TEST_CASE("Test Gatherer") {
 
   uitsl::ThreadTeam team;
-
-  team.Add(do_work);
-  team.Add(do_work);
-
+  team.Add(do_work_gatherer);
+  team.Add(do_work_gatherer);
   team.Join();
 
   const auto res = gather.Gather();
