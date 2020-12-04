@@ -7,7 +7,7 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../utility/print_utils.hpp"
 
@@ -18,22 +18,30 @@
 namespace uitsl {
 
 inline int get_nprocs(const MPI_Comm& comm=MPI_COMM_WORLD) {
-  int res;
-  UITSL_Comm_size(
-    comm,
-    &res
-  );
-  return res;
+  #ifdef __EMSCRIPTEN__
+    return 1;
+  #else
+    int res;
+    UITSL_Comm_size(
+      comm,
+      &res
+    );
+    return res;
+  #endif
 }
 
 //TODO replace with get_proc_id
 inline proc_id_t get_rank(const MPI_Comm& comm=MPI_COMM_WORLD) {
-  int res;
-  UITSL_Comm_rank(
-    comm,
-    &res
-  );
-  return res;
+  #ifdef __EMSCRIPTEN__
+    return 0;
+  #else
+    int res;
+    UITSL_Comm_rank(
+      comm,
+      &res
+    );
+    return res;
+  #endif
 }
 
 // TODO rename get_pid

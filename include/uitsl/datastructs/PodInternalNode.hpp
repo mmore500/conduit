@@ -3,6 +3,7 @@
 #define UITSL_DATASTRUCTS_PODINTERNALNODE_HPP_INCLUDE
 
 #include <tuple>
+#include <type_traits>
 
 #include "../meta/tuple_has_type.hpp"
 
@@ -14,10 +15,61 @@ class PodInternalNode : public std::tuple<First, Rest...> {
   using parent_t = std::tuple<First, Rest...>;
   using this_t = PodInternalNode<First, Rest...>;
 
+  template<typename Arg1, typename... Args> friend class PodInternalNode;
+  friend struct Workaround;
+
+  // clang workaround, see https://stackoverflow.com/a/52884963
+  struct Workaround {
+    /*
+     * Metaprogramming utility.
+     */
+    template<size_t RemainingSteps, size_t ChildIndex=0>
+    static constexpr auto GetLeafType() {
+
+      emp_assert( false , "GetLeafType should not be run" );
+
+      using Child = typename std::tuple_element<ChildIndex, parent_t>::type;
+      constexpr size_t ChildSteps = Child::GetSize();
+
+      if constexpr ( RemainingSteps < ChildSteps ) {
+        if constexpr ( Child::IsLeaf() ) return Child{};
+        else return Child::Workaround::template GetLeafType<RemainingSteps>();
+      } else return GetLeafType<RemainingSteps - ChildSteps, ChildIndex + 1>();
+
+    }
+
+    template<size_t RemainingSteps, size_t ChildIndex=0>
+    static constexpr size_t GetLeafIndex() {
+
+      using Child = typename std::tuple_element<ChildIndex, parent_t>::type;
+      constexpr size_t ChildSteps = Child::GetSize();
+
+      if constexpr ( RemainingSteps < ChildSteps ) {
+        if constexpr ( Child::IsLeaf() ) return RemainingSteps;
+        else return Child::Workaround::template GetLeafIndex<RemainingSteps>();
+      } else return GetLeafIndex<RemainingSteps - ChildSteps, ChildIndex + 1>();
+
+    }
+
+  };
+
 public:
 
   // inherit constructors
   using parent_t::parent_t;
+
+  template< size_t Index >
+  using leaf_t = decltype( Workaround::template GetLeafType<Index>() );
+
+  /*
+   * Get index into leaf node.
+   */
+  template<size_t Index>
+  static constexpr size_t GetLeafIndex() {
+    return Workaround::template GetLeafIndex< Index >();
+  }
+
+  static constexpr bool IsLeaf() { return false; }
 
   /*
    * Get number of descendant leaf nodes.
@@ -26,6 +78,22 @@ public:
     if constexpr ( sizeof...(Rest) > 0 ) {
       return First::GetSize() + PodInternalNode<Rest...>::GetSize();
     } else return First::GetSize();
+  }
+
+  /*
+   * Get leaf by index.
+   */
+  template<size_t RemainingSteps, size_t ChildIndex=0>
+  constexpr auto& GetByIndex() {
+
+    using Child = typename std::tuple_element<ChildIndex, parent_t>::type;
+    constexpr size_t ChildSteps = Child::GetSize();
+
+    if constexpr ( RemainingSteps < ChildSteps ) {
+      return std::get<ChildIndex>(*this).template
+        GetByIndex<RemainingSteps>();
+    } else return GetByIndex<RemainingSteps - ChildSteps, ChildIndex + 1>();
+
   }
 
   /*

@@ -5,7 +5,7 @@
 #include <cstddef>
 
 #include "../../../third-party/cereal/include/cereal/types/optional.hpp"
-#include "../../../third-party/Empirical/source/base/optional.h"
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 namespace uitsl {
 
@@ -20,7 +20,7 @@ public:
 
   CachePacket() = default;
 
-  CachePacket(const size_t cache_id_)
+  explicit CachePacket(const size_t cache_id_)
   : cache_id(cache_id_)
   , data{ std::nullopt }
   { ; }

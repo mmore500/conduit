@@ -3,7 +3,6 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "netuit/assign/AssignContiguously.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 
 // TODO: stub test
 TEST_CASE("Test AssignContiguously") {

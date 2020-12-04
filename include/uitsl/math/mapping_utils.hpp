@@ -1,10 +1,10 @@
 #pragma once
-#ifndef UITSL_DEBUG_MAPPING_UTILS_HPP_INCLUDE
-#define UITSL_DEBUG_MAPPING_UTILS_HPP_INCLUDE
+#ifndef UITSL_MATH_MAPPING_UTILS_HPP_INCLUDE
+#define UITSL_MATH_MAPPING_UTILS_HPP_INCLUDE
 
 #include <cmath>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 using Point = emp::vector<size_t>;
 using Dims = emp::vector<size_t>;
@@ -48,4 +48,4 @@ Point linear_decode(size_t r, const Dims& dims) {
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_DEBUG_MAPPING_UTILS_HPP_INCLUDE
+#endif // #ifndef UITSL_MATH_MAPPING_UTILS_HPP_INCLUDE

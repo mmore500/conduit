@@ -7,6 +7,7 @@ TARGET_NAMES += s\:\:static_test
 TARGET_NAMES += t\:\:static_test
 TARGET_NAMES += tuple_has_type
 TARGET_NAMES += tuple_index
+TARGET_NAMES += TupleConstructEach
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

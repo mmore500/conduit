@@ -6,14 +6,73 @@
 #include <stddef.h>
 #include <utility>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
+#ifndef __EMSCRIPTEN__
+#include <metis.h>
+#endif
 
-#include "../topology/Topology.hpp"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
+#include "../../uitsl/debug/audit_cast.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 
+#include "../topology/Topology.hpp"
+
 namespace netuit {
+
+/// Apply METIS' K-way partitioning algorithm to subdivide topology
+/// @param parts number of parts to subdivide topology into
+/// @param topology topology to subdivide
+/// @return vector indicating what partition each vertex should go into
+emp::vector<int32_t> PartitionMetis(
+  const size_t num_parts, const netuit::Topology& topology
+) {
+
+  emp_assert( num_parts <= topology.GetSize() );
+
+  // set up result vector
+  emp::vector<int32_t> result( topology.GetSize(), {} );
+
+  // the trivial no-split partition crashes METIS, so return before METIS call
+  if ( num_parts == 1 ) return result;
+
+  #ifndef __EMSCRIPTEN__
+  // set up variables
+  int32_t nodes = topology.GetSize();
+  int32_t n_cons = 1;
+  int32_t parts = uitsl::audit_cast<int32_t>( num_parts );
+  int32_t objval;
+
+  // get topology as CSR
+  auto [xadj, adjacency] = topology.AsCSR();
+
+  // use default options
+  int32_t options[METIS_NOPTIONS];
+  METIS_SetDefaultOptions(options);
+
+  // call partitioning algorithm
+  const int status = METIS_PartGraphKway(
+    &nodes, // idx_t *nvtxs: number of vertices in the graph
+    &n_cons, // idx_t *ncon: number of balancing constraints.
+    xadj.data(), // idx_t *xadj: array of node indexes into adjacency[]
+    adjacency.data(), // idx_t *adjncy:  array of adjacenct nodes for every node
+    nullptr, // idx_t *vwgt: weights of nodes
+    nullptr, // idx_t *vsize: size of nodes for total comunication value
+    nullptr, // idx_t *adjwgt: weights of edges
+    &parts, // idx_t *nparts: number of parts to partition the graph into
+    nullptr, // real_t *tpwgts: weight for each partition and constraint
+    nullptr, // real_t ubvec: allowed load imbalance tolerance for each constrnt
+    nullptr, // idx_t *options: array of options
+    &objval, // idx_t *objvalL edge-cut or total comm volume of the solution
+    result.data() // idx_t *part: partition vector of the graph
+  );
+
+  uitsl::metis::verify(status);
+  #endif
+
+  return result;
+}
 
 /// This function is used to get subtopologies made up of all
 /// the neighbors of a node in a given topology, for all nodes.
@@ -42,6 +101,7 @@ std::unordered_map<uitsl::proc_id_t, netuit::Topology> GetSubTopologies(
 
   return subtopos;
 }
+
 // todo: rename
 std::unordered_map<size_t, uitsl::thread_id_t> Shim(
   const std::unordered_map<uitsl::proc_id_t, netuit::Topology>& proc_map,
@@ -50,7 +110,7 @@ std::unordered_map<size_t, uitsl::thread_id_t> Shim(
   std::unordered_map<size_t, uitsl::thread_id_t> ret;
 
   for (const auto& [proc_id, subtopo] : proc_map) {
-    const auto thread_assign = subtopo.Optimize(threads_per_proc);
+    const auto thread_assign = PartitionMetis( threads_per_proc, subtopo );
     for (size_t i = 0; i < subtopo.GetSize(); ++i) {
       ret[subtopo.GetCanonicalNodeID(i)] = thread_assign[i];
     }
@@ -77,18 +137,16 @@ std::pair<
   // make sure topology isn't empty
   if (topology.GetSize() == 0) return {};
 
-  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t> proc_assigner{
-    topology.Optimize(num_procs)
-  };
+  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::proc_id_t>
+    proc_assigner{ PartitionMetis(num_procs, topology) };
 
-  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::thread_id_t> thread_assigner{
-    Shim(
+  uitsl::EnumeratedFunctor<netuit::Topology::node_id_t, uitsl::thread_id_t>
+    thread_assigner{ Shim(
       GetSubTopologies(topology, proc_assigner),
       threads_per_proc
-    )
-  };
+    ) };
 
-  return {
+  return std::pair{
     proc_assigner,
     thread_assigner
   };

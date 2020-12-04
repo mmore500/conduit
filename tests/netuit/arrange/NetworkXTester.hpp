@@ -7,12 +7,12 @@
 #include <sstream>
 #include <string>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
-#include "../../../third-party/Empirical/source/tools/keyname_utils.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
 
+#include "uitsl/debug/compare_streams.hpp"
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/utility/exec_utils.hpp"
-#include "uitsl/utility/stream_utils.hpp"
 
 const std::string base_directory = "../../tests/netuit/arrange/assets/";
 

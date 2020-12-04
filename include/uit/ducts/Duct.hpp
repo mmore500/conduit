@@ -8,10 +8,10 @@
 #include <utility>
 #include <variant>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
-#include "../../../third-party/Empirical/source/base/optional.h"
-#include "../../../third-party/Empirical/source/meta/TypePack.h"
-#include "../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include "../../../third-party/Empirical/include/emp/meta/TypePack.hpp"
+#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/meta/HasMemberFunction.hpp"

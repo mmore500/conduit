@@ -30,39 +30,6 @@ void read_lines(std::istream & is, Out out) {
   std::copy(In(is), In(), out);
 }
 
-inline bool compare_streams(std::istream& s1, std::istream& s2) {
-  // seek back to beginning and use std::equal to compare contents
-  s1.seekg(0, std::istream::beg);
-  s2.seekg(0, std::istream::beg);
-
-  // stream problem
-  if (s1.fail() || s2.fail()) {
-    std::cerr << "stream problem in compare_streams" << std::endl;
-    return false;
-  }
-
-  //size mismatch
-  if (s1.tellg() != s2.tellg()) return false;
-
-  s1.seekg(0, std::istream::beg);
-  s2.seekg(0, std::istream::beg);
-
-  return std::equal(
-    std::istreambuf_iterator<char>(s1.rdbuf()),
-    std::istreambuf_iterator<char>(),
-    std::istreambuf_iterator<char>(s2.rdbuf())
-  );
-}
-
-/// Do files at paths p1 and p2 have identical contents?
-inline bool compare_files(const std::string& p1, const std::string& p2) {
-  // adapted from https://stackoverflow.com/a/37575457
-  std::ifstream f1(p1, std::ifstream::binary|std::ifstream::ate);
-  std::ifstream f2(p2, std::ifstream::binary|std::ifstream::ate);
-
-  return compare_streams(f1, f2);
-}
-
 } // namespace uitsl
 
 #endif // #ifndef UITSL_UTILITY_STREAM_UTILS_HPP_INCLUDE

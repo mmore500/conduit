@@ -9,8 +9,8 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/array.h"
-#include "../../../third-party/Empirical/source/base/errors.h"
+#include "../../../third-party/Empirical/include/emp/base/array.hpp"
+#include "../../../third-party/Empirical/include/emp/base/errors.hpp"
 
 #include "../debug/safe_cast.hpp"
 #include "../utility/print_utils.hpp"

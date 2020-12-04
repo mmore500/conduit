@@ -2,6 +2,7 @@
 #ifndef NETUIT_MESH_MESH_HPP_INCLUDE
 #define NETUIT_MESH_MESH_HPP_INCLUDE
 
+#include <ratio>
 #include <stddef.h>
 #include <unordered_map>
 
@@ -32,6 +33,7 @@ class MeshIDCounter {
 public:
 
   static size_t Generate() { return counter++; }
+  static void Reset() { counter = 0; }
 
 };
 
@@ -112,11 +114,8 @@ class Mesh {
 
     static std::unordered_set<int> tag_checker;
     const int tag = uitsl::safe_cast<int>(
-      uitsl::sidebyside_hash(mesh_id, input.GetEdgeID())
+      uitsl::sidebyside_hash<std::ratio<3, 4>>(mesh_id, input.GetEdgeID())
     );
-
-    // assert that generated tags are unique
-    emp_assert( tag_checker.insert(tag).second );
 
     const uit::InterProcAddress addr{
       outlet_proc_id,
@@ -127,9 +126,13 @@ class Mesh {
       comm
     };
 
-    if (inlet_proc_id != outlet_proc_id) input.template SplitDuct<
-      typename ImplSpec::ProcOutletDuct
-    >(addr, back_end);
+    if (inlet_proc_id != outlet_proc_id) {
+      input.template SplitDuct<
+        typename ImplSpec::ProcOutletDuct
+      >(addr, back_end);
+      // assert that generated tags are unique
+      emp_assert( tag_checker.insert(tag).second );
+    }
 
   }
 
@@ -150,7 +153,7 @@ class Mesh {
       thread_assignment(outlet_node_id),
       thread_assignment(inlet_node_id),
       uitsl::safe_cast<int>(
-        uitsl::sidebyside_hash(mesh_id, output.GetEdgeID())
+        uitsl::sidebyside_hash<std::ratio<3, 4>>(mesh_id, output.GetEdgeID())
       ),
       comm
     };

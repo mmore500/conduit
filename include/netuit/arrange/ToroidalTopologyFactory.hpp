@@ -8,16 +8,16 @@
 #include <numeric>
 #include <tuple>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
-#include "../../../third-party/Empirical/source/tools/tuple_utils.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
+
+#include "../../uitsl/math/mapping_utils.hpp"
+#include "../../uitsl/math/math_utils.hpp"
+#include "../../uitsl/utility/UIDMap.hpp"
 
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"
 #include "../topology/TopoNode.hpp"
-
-#include "uitsl/debug/mapping_utils.hpp"
-#include "uitsl/math/math_utils.hpp"
-#include "uitsl/utility/UIDMap.hpp"
 
 namespace netuit {
 
@@ -68,6 +68,10 @@ inline netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
 }
 
 struct ToroidalTopologyFactory {
+
+  netuit::Topology operator()(const size_t cardinality) const {
+    return make_toroidal_topology({cardinality});
+  }
 
   netuit::Topology operator()(const Dims& dim_cardinality) const {
     return make_toroidal_topology(dim_cardinality);

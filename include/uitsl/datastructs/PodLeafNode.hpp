@@ -2,7 +2,9 @@
 #ifndef UITSL_DATASTRUCTS_PODLEAFNODE_HPP_INCLUDE
 #define UITSL_DATASTRUCTS_PODLEAFNODE_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/source/base/array.h"
+#include <algorithm>
+
+#include "../../../third-party/Empirical/include/emp/base/array.hpp"
 
 namespace uitsl {
 
@@ -20,7 +22,15 @@ public:
     data[0] = other;
   }
 
+  static constexpr bool IsLeaf() { return true; }
+
   static constexpr size_t GetSize() { return N; }
+
+  /*
+   * Access value by index at compile time.
+   */
+  template<size_t Query>
+  constexpr T& GetByIndex() { return data.at(Query); }
 
   /*
    * Access value by index at compile time.
@@ -80,6 +90,18 @@ public:
   }
 
   /*
+   * Equality operator overload.
+   */
+  bool operator<(const PodLeafNode& other) const {
+    return std::lexicographical_compare(
+      std::begin( data ),
+      std::end( data ),
+      std::begin( other.data ),
+      std::end( other.data )
+    );
+  }
+
+  /*
    * Set data to value-initialized state.
    */
   void Reset() { data.fill( T{} ); }
@@ -93,6 +115,16 @@ public:
     data[0] = other;
     return *this;
   }
+
+  auto begin() { return std::begin( data ); }
+
+  auto end() { return std::end( data ); }
+
+  auto begin() const { return std::begin( data ); }
+
+  auto end() const { return std::end( data ); }
+
+  const emp::array<T, N>& GetBuffer() const { return data; }
 
 };
 

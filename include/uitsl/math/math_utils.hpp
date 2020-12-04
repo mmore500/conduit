@@ -5,9 +5,10 @@
 #include <bitset>
 #include <cmath>
 #include <limits>
+#include <ratio>
 #include <stddef.h>
 
-#include "../../../third-party/Empirical/source/tools/math.h"
+#include "../../../third-party/Empirical/include/emp/math/math.hpp"
 
 #include "../debug/safe_cast.hpp"
 
@@ -56,18 +57,21 @@ inline size_t difference(const size_t a, const size_t b) {
   return std::max(a, b) - std::min(a, b);
 }
 
-inline size_t sidebyside_hash(const size_t a, const size_t b) {
+template<typename BottomFrac = std::ratio<1, 2> >
+size_t sidebyside_hash(const size_t top, const size_t bottom) {
 
-  // half of non-sign int bits
-  const size_t int_bits = sizeof(int) * 8;
-  const size_t each_bits = (int_bits - 1) / 2;
+  constexpr size_t int_size = sizeof(int) * 8;
+  // exclude int sign bit
+  constexpr size_t avail_size = int_size - 1;
+  constexpr size_t bottom_size = avail_size * BottomFrac::num / BottomFrac::den;
+  [[maybe_unused]] constexpr size_t top_size = avail_size - bottom_size;
 
   // bounds checking
-  emp_assert(std::bitset<each_bits>(a).to_ullong() == a);
-  emp_assert(std::bitset<each_bits>(b).to_ullong() == b);
+  emp_assert(std::bitset<top_size>(top).to_ullong() == top, top);
+  emp_assert(std::bitset<bottom_size>(bottom).to_ullong() == bottom, bottom);
 
-  const auto bottom_bits = std::bitset<int_bits>(a);
-  const auto top_bits = std::bitset<int_bits>(b) << each_bits;
+  const auto bottom_bits = std::bitset<int_size>( bottom );
+  const auto top_bits = std::bitset<int_size>( top ) << bottom_size;
 
   const auto res = top_bits | bottom_bits;
 

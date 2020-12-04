@@ -2,7 +2,7 @@
 #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_POOLSPEC_HPP_INCLUDE
 #define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_POOLSPEC_HPP_INCLUDE
 
-#include "../../../../../../../third-party/Empirical/source/base/vector.h"
+#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "../../../../../spouts/wrappers/TrivialSpoutWrapper.hpp"
 

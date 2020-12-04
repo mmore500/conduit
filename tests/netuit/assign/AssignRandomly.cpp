@@ -2,10 +2,9 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "../../../third-party/Empirical/source/tools/random_utils.h"
+#include "../../../third-party/Empirical/include/emp/math/random_utils.hpp"
 
 #include "netuit/assign/AssignRandomly.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 
 // TODO: stub test
 TEST_CASE("Test AssignRandomly") {

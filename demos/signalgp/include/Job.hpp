@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 
-#include "../third-party/Empirical/source/tools/NullStream.h"
+#include "../third-party/Empirical/include/emp/io/NullStream.hpp"
 
 #include "uitsl/chrono/CoarseClock.hpp"
 #include "uitsl/countdown/ProgressBar.hpp"
@@ -27,7 +27,7 @@ class Job {
 
 public:
 
-  Job(const submesh_t& submesh)
+  explicit Job(const submesh_t& submesh)
   : collection(submesh) {
     for ( const auto __ : timer ) {
       ++iteration_counter;

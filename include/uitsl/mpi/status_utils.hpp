@@ -7,7 +7,7 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../utility/print_utils.hpp"
 

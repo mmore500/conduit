@@ -11,8 +11,8 @@
 #include <omp.h>
 #endif
 
-#include "../third-party/Empirical/source/data/DataFile.h"
-#include "../third-party/Empirical/source/tools/keyname_utils.h"
+#include "../third-party/Empirical/include/emp/data/DataFile.hpp"
+#include "../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
 
 #include "uitsl/chrono/CoarseClock.hpp"
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"

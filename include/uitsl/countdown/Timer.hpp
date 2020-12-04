@@ -71,9 +71,9 @@ public:
 
   Timer& operator++() { return *this; }
 
-  iterator begin() { return { *this }; }
+  iterator begin() { return iterator{ *this }; }
 
-  iterator end() { return {}; }
+  iterator end() { return iterator{}; }
 
 };
 

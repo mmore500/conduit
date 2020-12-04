@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include <utility>
 
-#include "../../../third-party/Empirical/source/base/optional.h"
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 #include "../../uitsl/debug/occupancy_audit.hpp"
 #include "../../uitsl/nonce/CircularIndex.hpp"

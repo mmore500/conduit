@@ -3,8 +3,8 @@
 #include <sstream>
 #include <string>
 
-#include "../../../third-party/Empirical/source/base/optional.h"
-#include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "Cell.hpp"
 

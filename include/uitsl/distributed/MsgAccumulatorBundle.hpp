@@ -5,8 +5,8 @@
 #include <algorithm>
 #include <cstring>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
-#include "../../../third-party/Empirical/source/polyfill/span.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../third-party/Empirical/include/emp/polyfill/span.hpp"
 
 #include "../math/divide_utils.hpp"
 
@@ -87,11 +87,11 @@ public:
     );
   }
 
-  MsgAccumulatorBundle(const size_t data_size_)
+  explicit MsgAccumulatorBundle(const size_t data_size_)
   : data_size( data_size_ )
   { Reset(); }
 
-  MsgAccumulatorBundle(const emp::vector<T>& data)
+  explicit MsgAccumulatorBundle(const emp::vector<T>& data)
   : data_size( data.size() )
   , buff( data )
   {
@@ -99,7 +99,7 @@ public:
     SetEpoch( size_t{} );
   }
 
-  MsgAccumulatorBundle(emp::vector<T>&& data)
+  explicit MsgAccumulatorBundle(emp::vector<T>&& data)
   : data_size( data.size() )
   , buff( std::move(data) )
   {

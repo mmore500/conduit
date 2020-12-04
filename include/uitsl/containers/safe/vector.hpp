@@ -4,7 +4,7 @@
 
 #include <shared_mutex>
 
-#include "../../../../third-party/Empirical/source/base/vector.h"
+#include "../../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 namespace uitsl {
 namespace safe {
@@ -34,7 +34,7 @@ public:
   using const_reverse_iterator = typename impl_t::const_reverse_iterator;
 
   template<typename... Args>
-  vector(Args&&... args)
+  explicit vector(Args&&... args)
   : impl(std::forward<Args>(args)...)
   { ; }
 

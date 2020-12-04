@@ -4,7 +4,7 @@
 
 #include <shared_mutex>
 
-#include "../../../third-party/Empirical/source/base/optional.h"
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 #include "RecursiveMutex.hpp"
 #include "thread_utils.hpp"

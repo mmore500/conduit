@@ -7,8 +7,8 @@
 #include <string>
 #include <utility>
 
-#include "../../../../../third-party/Empirical/source/base/assert.h"
-#include "../../../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/meta/f::static_test.hpp"
 #include "../../../../uitsl/parallel/RelaxedAtomic.hpp"

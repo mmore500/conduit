@@ -12,13 +12,12 @@
 #include <unordered_map>
 #include <utility>
 
-#include <metis.h>
-
-#include "../../../third-party/Empirical/source/tools/hash_utils.h"
-#include "../../../third-party/Empirical/source/tools/keyname_utils.h"
+#include "../../../third-party/Empirical/include/emp/datastructs/hash_utils.hpp"
+#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
 
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
 #include "../../uitsl/debug/metis_utils.hpp"
+#include "../../uitsl/debug/safe_compare.hpp"
 #include "../../uitsl/polyfill/identity.hpp"
 #include "../../uitsl/utility/stream_utils.hpp"
 
@@ -75,8 +74,8 @@ private:
   /// @return Vector of node IDs which topo_node is an output of.
   emp::vector<node_id_t> GetNodeOutputs(const netuit::TopoNode& node) const {
     emp::vector<node_id_t> res;
-    for (const auto& edge : node.GetOutputs()) {
-      res.push_back(input_registry.at(edge.GetEdgeID()));
+    for ( const auto& edge : node.GetOutputs() ) {
+      res.push_back( input_registry.at( edge.GetEdgeID() ) );
     }
     return res;
   }
@@ -186,78 +185,60 @@ public:
 
   /// Return Compressed Sparse Row (CSR) representation of topology.
   /// For more info, see: https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_row_(CSR,_CRS_or_Yale_format)
-  /// @return std::pair of vectors of int
+  /// @return std::pair of vectors of int32_t
   auto AsCSR() const {
+
+    if ( GetSize() == 0 ) return std::make_pair(
+      emp::vector<int32_t>{},
+      emp::vector<int32_t>{}
+    );
+
     // get vector with degree of each node
-    emp::vector<int> degrees;
+    emp::vector<int32_t> degrees;
     std::transform(
-      std::begin(topology),
-      std::end(topology),
-      std::back_inserter(degrees),
-      [](const auto& node){ return node.GetNumOutputs(); }
+      std::begin( topology ),
+      std::end( topology ),
+      std::back_inserter( degrees ),
+      []( const auto& node ){ return node.GetNumOutputs(); }
     );
+
+    emp_assert( degrees.size() == GetSize() );
+
     // get each starting position of each node's adjacency list
-    emp::vector<int> x_adj{0};
+    emp::vector<int32_t> x_adj{ 0 };
     std::partial_sum(
-      std::begin(degrees),
+      std::begin( degrees ),
       std::end(degrees),
-      std::back_inserter(x_adj)
+      std::back_inserter( x_adj )
     );
+
+    emp_assert( x_adj.size() == GetSize() + 1 );
+
     // build vector of concatenated adjacency lists
-    emp::vector<int> adjacency;
-    std::for_each(
-      std::begin(topology),
-      std::end(topology),
-      [this, &adjacency](const auto& node){
-        const auto outputs = GetNodeOutputs(node);
-        adjacency.insert(
-          std::end(adjacency),
-          std::begin(outputs),
-          std::end(outputs)
-        );
+    emp::vector<int32_t> adjacency;
+    for( const auto& node : topology ) {
+      const auto outputs = GetNodeOutputs( node );
+      adjacency.insert(
+        std::end( adjacency ),
+        std::begin( outputs ),
+        std::end( outputs )
+      );
+    }
+
+    emp_assert( uitsl::safe_equal(
+      adjacency.size(),
+      std::accumulate( std::begin(degrees), std::end(degrees), 0 )
+    ) );
+
+    emp_assert( std::all_of(
+      std::begin( x_adj ),
+      std::end( x_adj ),
+      [&adjacency]( const auto val ){
+        return uitsl::safe_leq( val, adjacency.size() );
       }
-    );  return std::make_pair(x_adj, adjacency);
-  }
+    ) );
 
-  /// Apply METIS' K-way partitioning algorithm to subdivide topology
-  /// @param parts number of parts to subdivide topology into
-  /// @return vector indicating what partition each vertex should go into
-  emp::vector<idx_t> Optimize(int32_t parts) const {
-    // set up variables
-    idx_t nodes = topology.size();
-    idx_t n_cons = 1;
-    idx_t volume;
-
-    // get topology as CSR
-    auto [xadj, adjacency] = AsCSR();
-
-    // set up result vector
-    emp::vector<idx_t> result(nodes);
-
-    // use default options
-    idx_t options[METIS_NOPTIONS];
-    METIS_SetDefaultOptions(options);
-
-    // call partitioning algorithm
-    int status = METIS_PartGraphKway(
-      &nodes, // number of vertices in the graph
-      &n_cons, // number of balancing constraints.
-      xadj.data(), // array of node indexes into adjacency[]
-      adjacency.data(), // array of adjacenct nodes for every node
-      nullptr, // weights of nodes
-      nullptr, // size of nodes for total comunication value
-      nullptr, // weights of edges
-      &parts, // number of parts to partition the graph into
-      nullptr, // weight for each partition and constraint
-      nullptr, // allowed load imbalance tolerance for each constraint
-      nullptr, // array of options
-      &volume, // edge-cut or total comm volume of the solution
-      result.data() // partition vector of the graph
-    );
-
-    uitsl::metis::verify(status);
-
-    return result;
+    return std::make_pair(x_adj, adjacency);
   }
 
   /// Outputs this Topology's Edge list. This format stores node IDs with
@@ -315,26 +296,35 @@ public:
 
     // fill subtopology with all nodes in node_ids
     for (const size_t i : node_ids) {
-      nodes.push_back(topology[i]);
+      nodes.push_back( topology[i] );
       translator[translator.size()] = i;
     }
 
-    // fix subtopology to exclude external nodes
+    // filter subtopology to exclude external nodes
     for (auto& node : nodes) {
-      for (const auto& output : node.GetOutputs()) {
-        if (!node_ids.count(
-          output_registry.at(output.GetEdgeID())
-        )) node.RemoveOutput(output);
-      }
-      for (const auto& input : node.GetInputs()) {
-        if (node_ids.count(
-          input_registry.at(input.GetEdgeID())
-        )) node.RemoveInput(input);
-      }
+
+      node.GetOutputs().erase( std::remove_if(
+        std::begin( node.GetOutputs() ),
+        std::end( node.GetOutputs() ),
+        [this, &node_ids]( const auto& output ){
+          return !node_ids.count( input_registry.at( output.GetEdgeID() ) );
+        }
+      ), std::end( node.GetOutputs() ) );
+
+      node.GetInputs().erase( std::remove_if(
+        std::begin( node.GetInputs() ),
+        std::end( node.GetInputs() ),
+        [this, &node_ids]( const auto& input ){
+          return !node_ids.count( output_registry.at( input.GetEdgeID() ) );
+        }
+      ), std::end( node.GetInputs() ) );
+
     }
-    Topology subtopo(nodes);
-    subtopo.SetMap(translator);
+
+    Topology subtopo( nodes );
+    subtopo.SetMap( translator );
     return subtopo;
+
   }
 
   /// Returns this Topology's adjacency list as a string.

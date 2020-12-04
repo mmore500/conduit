@@ -6,7 +6,7 @@
 
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "Empirical/source/base/vector.h"
+#include "Empirical/include/emp/base/vector.hpp"
 
 #include "uitsl/concurrent/Gatherer.hpp"
 #if 0

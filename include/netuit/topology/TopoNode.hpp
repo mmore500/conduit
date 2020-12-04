@@ -6,8 +6,8 @@
 #include <iostream>
 #include <string_view>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
-#include "../../../third-party/Empirical/source/polyfill/span.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../third-party/Empirical/include/emp/polyfill/span.hpp"
 
 #include "../../uitsl/utility/print_utils.hpp"
 
@@ -38,7 +38,11 @@ public:
 
   const inputs_t& GetInputs() const noexcept { return inputs; }
 
+  inputs_t& GetInputs() noexcept { return inputs; }
+
   const outputs_t& GetOutputs() const noexcept { return outputs; }
+
+  outputs_t& GetOutputs() noexcept { return outputs; }
 
   void AddInput(const netuit::TopoNodeInput& input_) {
     inputs.push_back(input_);

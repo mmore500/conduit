@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#include "../../third-party/Empirical/source/web/web.h"
+#include "../../third-party/Empirical/include/emp/web/web.hpp"
 
 namespace UI = emp::web;
 

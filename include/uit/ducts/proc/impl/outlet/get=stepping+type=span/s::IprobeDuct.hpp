@@ -10,10 +10,10 @@
 #include <mpi.h>
 
 #include "../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
-#include "../../../../../../../third-party/Empirical/source/base/assert.h"
-#include "../../../../../../../third-party/Empirical/source/base/optional.h"
-#include "../../../../../../../third-party/Empirical/source/base/vector.h"
-#include "../../../../../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../../../uitsl/initialization/Uninitialized.hpp"
 #include "../../../../../../uitsl/meta/s::static_test.hpp"

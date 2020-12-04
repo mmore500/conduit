@@ -11,10 +11,11 @@
 [![Comments](https://tokei.rs/b1/github/mmore500/conduit?category=comments)](https://github.com/XAMPPRocky/tokei)
 [![dotos](https://img.shields.io/endpoint?url=https%3A%2F%2Fmmore500.com%2Fconduit%2Fdoto-badge.json)](https://github.com/mmore500/conduit/search?q=todo+OR+fixme&type=)
 [![GitHub stars](https://img.shields.io/github/stars/mmore500/conduit.svg?style=flat-square&logo=github&label=Stars&logoColor=white)](https://github.com/mmore500/conduit)
+[![DOI](https://zenodo.org/badge/278400174.svg)](https://zenodo.org/badge/latestdoi/278400174)
 
-* Free software: MIT license
-* Documentation: [https://conduit.fyi](https://conduit.fyi)
-* header-only, namespace-encapsulated software
+  * Free software: MIT license
+  * Documentation: [https://conduit.fyi](https://conduit.fyi)
+  * header-only, namespace-encapsulated software
 
 C++ library that wraps intra-thread, inter-thread, and inter-process communication in a uniform, modular, object-oriented interface, with a focus on asynchronous high-performance computing applications.
 
@@ -25,15 +26,15 @@ The driving objective behind this library is to provide a performant, uniform, c
 ![Inlet and Outlet holding a shared Duct with intra-thread implementation active](docs/assets/default.png)
 
 The conduit model consists of:
-* `Inlet`'s, which accepts inputs `T` through a non-blocking call,
-* `Duct`'s, which handle transmission logistics,
-* `Outlet`'s, which provides the latest `T` or next `T` through a non-blocking call.
+  * `Inlet`'s, which accepts inputs `T` through a non-blocking call,
+  * `Duct`'s, which handle transmission logistics,
+  * `Outlet`'s, which provides the latest `T` or next `T` through a non-blocking call.
 
 `Inlet` and `Outlet` objects both hold a [`std::shared_ptr`](https://en.cppreference.com/w/cpp/memory/shared_ptr) to a `Duct` object.
 The `Duct` object is implemented as a [`std::variant`](https://en.cppreference.com/w/cpp/utility/variant) of three implementation types:
-* `IntraDuct` type for intra-thread communication (default),
-* `ThreadDuct` type one for inter-thread communication, and
-* `ProcDuct` type for inter-process communication.
+  * `IntraDuct` type for intra-thread communication (default),
+  * `ThreadDuct` type one for inter-thread communication, and
+  * `ProcDuct` type for inter-process communication.
 
 The `Duct`'s active implementation can be switched at run-time by calling `EmplaceDuct<Type>` from either the `Inlet` or the `Outlet`.
 All calls to a `Duct` at run-time are forwarded to its active implementation.
@@ -55,9 +56,9 @@ Furthermore, a `Duct` implementation can be re-configured or even re-directed at
 ## Low-Level Interface: `uit`
 
 Conduit provides three helper construction interfaces:
-* `Conduit`, which constructs an `Inlet` and `Outlet` with a shared `Duct`,
-* `Sink`, which constructs an `Inlet` with sole holdership of a `Duct`,
-* `Source`, which constructs an `Outlet` with sole holdership of a `Duct`.
+  * `Conduit`, which constructs an `Inlet` and `Outlet` with a shared `Duct`,
+  * `Sink`, which constructs an `Inlet` with sole holdership of a `Duct`,
+  * `Source`, which constructs an `Outlet` with sole holdership of a `Duct`.
 
 ![comparison of Conduit, Sink, and Source](docs/assets/conduit-sink-source.png)
 
@@ -137,8 +138,8 @@ The conduit library provides a `Mesh` interface to streamline construction of co
 These networks are conceived as a directed graph, with edges representing conduits and nodes representing an actor that holds a set of `Inlet`'s and/or `Outlet`'s.
 
 `Mesh`es are constructed through two independently-specified components,
-1. topology: how should nodes be connected?
-2. delegation: how should nodes be assigned to threads and processes?
+ 1. topology: how should nodes be connected?
+ 2. delegation: how should nodes be assigned to threads and processes?
 
 Here's an example topology, with each node connected to a successor in a one-dimensional ring.
 
@@ -146,17 +147,17 @@ Here's an example topology, with each node connected to a successor in a one-dim
 
 We might choose to delegate contiguous subsets of nodes to threads and processes.
 For example, to distribute 24 nodes over four double-threaded processes, we might perform the following assignment:
-* node 0 :arrow_right: thread 0, process 0
-* node 1 :arrow_right: thread 0, process 0
-* node 2 :arrow_right: thread 0, process 0
-* node 3 :arrow_right: thread 1, process 0
-* node 4 :arrow_right: thread 1, process 0
-* node 5 :arrow_right: thread 1, process 0
-* node 6 :arrow_right: thread 0, process 1
-* node 7 :arrow_right: thread 0, process 1
-* node 8 :arrow_right: thread 0, process 1
-* node 9 :arrow_right: thread 1, process 1
-* etc.
+  * node 0 :arrow_right: thread 0, process 0
+  * node 1 :arrow_right: thread 0, process 0
+  * node 2 :arrow_right: thread 0, process 0
+  * node 3 :arrow_right: thread 1, process 0
+  * node 4 :arrow_right: thread 1, process 0
+  * node 5 :arrow_right: thread 1, process 0
+  * node 6 :arrow_right: thread 0, process 1
+  * node 7 :arrow_right: thread 0, process 1
+  * node 8 :arrow_right: thread 0, process 1
+  * node 9 :arrow_right: thread 1, process 1
+  * etc.
 
 ![graph nodes assigned to threads and processes](docs/assets/ring-mesh.png)
 
@@ -396,9 +397,9 @@ Because implementation is specified through type instances instead of globally, 
 ## Duct Categories
 
 In the `include/uit/ducts/` directory, duct implementations are categorized by the communication context they're designed for:
-* intra-thread communication ("`intra/`"),
-* inter-thread communication ("`thread/`"), and
-* inter-process communication ("`proc/`").
+  * intra-thread communication ("`intra/`"),
+  * inter-thread communication ("`thread/`"), and
+  * inter-process communication ("`proc/`").
 
 A fourth category, "`mock`", provides non-functional implementations meant for testing or situations compiling multithread or multiprocess code isn't feasible.
 
@@ -408,20 +409,20 @@ Implementations are templated on message type, allowing nearly any type to be se
 However, not all implementations are compatible with all types.
 Implementations are organized and subnamespaced using the following type-compatibility designators.
 
-* "any" (subnamespace `a`)
-  * any type with a move or copy constructor
-* "cereal" (subnamespace `c`)
-  * any type compatible with the [cereal C++ serialization library](https://github.com/USCiLab/cereal)
-  * cereal has great support for standard library containers!
-  * custom types can be easily be made serializable with cereal by writing some boilerplate member functions
-* "fundamental" (subnamespace `f`)
-  * nominally, [fundamental types](https://en.cppreference.com/w/cpp/language/types)
-  * basically, [arithmetic types](https://en.cppreference.com/w/c/language/arithmetic_types)
-* "span" (subnamespace `s`)
-  * class with `.data()`, `.size()`, `::value_type` members
-  * size can be dynamic or fixed at runtime when a duct is created
-* ["trivially copyable"](https://en.cppreference.com/w/cpp/types/is_trivially_copyable) (subnamespace `t`)
-  * basically, objects that can be safely copied with [std:memcpy](https://en.cppreference.com/w/cpp/string/byte/memcpy)
+  * "any" (subnamespace `a`)
+    * any type with a move or copy constructor
+  * "cereal" (subnamespace `c`)
+    * any type compatible with the [cereal C++ serialization library](https://github.com/USCiLab/cereal)
+    * cereal has great support for standard library containers!
+    * custom types can be easily be made serializable with cereal by writing some boilerplate member functions
+  * "fundamental" (subnamespace `f`)
+    * nominally, [fundamental types](https://en.cppreference.com/w/cpp/language/types)
+    * basically, [arithmetic types](https://en.cppreference.com/w/c/language/arithmetic_types)
+  * "span" (subnamespace `s`)
+    * class with `.data()`, `.size()`, `::value_type` members
+    * size can be dynamic or fixed at runtime when a duct is created
+  * ["trivially copyable"](https://en.cppreference.com/w/cpp/types/is_trivially_copyable) (subnamespace `t`)
+    * basically, objects that can be safely copied with [std:memcpy](https://en.cppreference.com/w/cpp/string/byte/memcpy)
 
 Proper use is `static_assert`'ed at compile time.
 
@@ -520,9 +521,9 @@ This operation preserves the ordering of messages sent from the same inlet.
 
 ## Extensibility
 
-* Create your own topologies by writing a topology-generating method or loading a topology from file, perhaps generated via another tool like [NetworkX](https://networkx.github.io/documentation/stable/reference/readwrite/adjlist.html).
-* Define your own delegation functor to control how nodes are distributed between threads and processes.
-* Seamlessly write and build with your own intra-thread, inter-thread, or inter-process duct implementations.
+  * Create your own topologies by writing a topology-generating method or loading a topology from file, perhaps generated via another tool like [NetworkX](https://networkx.github.io/documentation/stable/reference/readwrite/adjlist.html).
+  * Define your own delegation functor to control how nodes are distributed between threads and processes.
+  * Seamlessly write and build with your own intra-thread, inter-thread, or inter-process duct implementations.
 
 Implementations of inter-process communication currently use the [Messgage Passing Interface (MPI)](https://www.mpi-forum.org/docs/) standard.
 

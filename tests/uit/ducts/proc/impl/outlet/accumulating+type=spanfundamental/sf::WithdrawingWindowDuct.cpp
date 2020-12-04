@@ -2,7 +2,7 @@
 
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
-#include "Empirical/source/base/vector.h"
+#include "Empirical/include/emp/base/vector.hpp"
 
 #include "uit/ducts/proc/impl/outlet/accumulating+type=spanfundamental/sf::WithdrawingWindowDuct.hpp"
 #include "uit/setup/ImplSpec.hpp"

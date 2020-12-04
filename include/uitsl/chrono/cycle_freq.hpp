@@ -6,7 +6,7 @@
 #include <thread>
 
 #include "../../../third-party/benchmark/src/cycleclock.h"
-#include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "TimeGuard.hpp"
 
