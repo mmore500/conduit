@@ -2,7 +2,6 @@
 FROM ubuntu:18.04
 
 COPY . /opt/conduit
-COPY .git /opt/conduit
 
 SHELL ["/bin/bash", "-c"]
 
