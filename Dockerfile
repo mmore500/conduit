@@ -8,9 +8,6 @@ SHELL ["/bin/bash", "-c"]
 # Define default working directory.
 WORKDIR /opt/conduit
 
-RUN ls -a .
-RUN ls -a .git
-
 # Prevent interactive time zone config.
 # adapted from https://askubuntu.com/a/1013396
 ENV DEBIAN_FRONTEND=noninteractive
