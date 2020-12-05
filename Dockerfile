@@ -1,7 +1,7 @@
 # Pull base image.
 FROM ubuntu:18.04
 
-COPY . /opt/conduit
+COPY . /opt/conduit/
 
 SHELL ["/bin/bash", "-c"]
 
