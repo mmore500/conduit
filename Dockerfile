@@ -70,6 +70,8 @@ RUN \
   echo "configured packaging system"
 
 RUN \
+  apt-get update -qq \
+    && \
   apt-get install -qq --no-install-recommends \
     g++-8=8.4.0-1ubuntu1~18.04 \
     libclang-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
