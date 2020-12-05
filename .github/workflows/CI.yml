@@ -28,7 +28,6 @@ jobs:
       - name: Push to Docker Hub
         uses: mmore500/build-push-action@v2-nobuildx
         with:
-          builder: ${{ steps.builder1.outputs.name }}
           push: true
           tags: "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}"
 
