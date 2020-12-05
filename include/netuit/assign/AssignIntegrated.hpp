@@ -1,9 +1,11 @@
 #pragma once
+#ifndef NETUIT_ASSIGN_ASSIGNINTEGRATED_HPP_INCLUDE
+#define NETUIT_ASSIGN_ASSIGNINTEGRATED_HPP_INCLUDE
 
 #include <functional>
 #include <stddef.h>
 
-namespace uit {
+namespace netuit {
 
 template<typename RETURN_TYPE>
 struct AssignIntegrated {
@@ -12,4 +14,6 @@ struct AssignIntegrated {
   }
 };
 
-};
+} // namespace netuit
+
+#endif // #ifndef NETUIT_ASSIGN_ASSIGNINTEGRATED_HPP_INCLUDE

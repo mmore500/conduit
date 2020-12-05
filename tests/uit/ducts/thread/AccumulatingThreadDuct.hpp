@@ -1,4 +1,6 @@
-TEST_CASE("Validity") { REPEAT {
+#define ATD_IMPL_NAME IMPL_NAME " AccumulatingThreadDuct"
+
+TEST_CASE("Validity " ATD_IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::RingTopologyFactory{}(num_threads),

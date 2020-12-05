@@ -17,7 +17,7 @@ namespace s {
  * implementation details for the conduit framework.
  */
 template<typename ImplSpec>
-struct IrirOriDuct {
+struct IrirOiDuct {
 
   using InletImpl = uit::s::RingIrsendDuct<ImplSpec>;
   using OutletImpl = uit::s::IprobeDuct<ImplSpec>;

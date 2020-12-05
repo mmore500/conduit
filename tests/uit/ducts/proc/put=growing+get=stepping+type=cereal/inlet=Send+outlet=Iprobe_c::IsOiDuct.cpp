@@ -8,5 +8,7 @@ using ImplSel = uit::ImplSelect<
   uit::c::IsOiDuct
 >;
 
+#define IMPL_NAME "inlet=Send+outlet=Iprobe_c::IsOiDuct"
+
 #include "../ProcDuct.hpp"
 #include "../SteppingProcDuct.hpp"

@@ -10,5 +10,6 @@ using ImplSel = uit::ImplSelect<
 >;
 
 using MSG_T = double;
+#define IMPL_NAME "aggregated+inlet=Isend+outlet=Irecv_t::AggregatedIiOiDuct/double"
 
 #include "../../AccumulatingProcDuct.hpp"

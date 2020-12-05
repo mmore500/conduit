@@ -1,15 +1,10 @@
 #include <mpi.h>
 
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/group_utils.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 
-const uitsl::MpiGuard guard;
 
 TEST_CASE("make_group") {
 

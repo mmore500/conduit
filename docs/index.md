@@ -14,6 +14,9 @@ Overview
 self
 ReadingList
 api/library_root
+Resources
+Citing
+Publications
 ```
 
 ```{include} ../README.md

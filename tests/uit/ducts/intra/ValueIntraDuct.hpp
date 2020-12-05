@@ -1,4 +1,4 @@
-TEST_CASE("Test IntraDuct Validity") {
+TEST_CASE("Test IntraDuct Validity " IMPL_NAME) {
 
   netuit::Mesh<Spec> mesh{ netuit::RingTopologyFactory{}(num_nodes) };
 
@@ -23,7 +23,7 @@ TEST_CASE("Test IntraDuct Validity") {
 
 }
 
-TEST_CASE("Unmatched puts") { REPEAT {
+TEST_CASE("ValueIntraDuct unmatched puts " IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{ netuit::DyadicTopologyFactory{}(num_nodes) };
 

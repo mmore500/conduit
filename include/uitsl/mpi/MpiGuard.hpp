@@ -4,16 +4,20 @@
 
 #include <functional>
 
-#include "audited_routines.hpp"
-#include "mpi_utils.hpp"
-
 namespace uitsl {
 
 struct MpiGuard {
 
-  MpiGuard() { uitsl::mpi_init(); }
+  MpiGuard() {
+    int argc{};
+    const auto res = MPI_Init(&argc, nullptr);
+    assert(res == 0);
+  }
 
-  ~MpiGuard() { UITSL_Finalize(); }
+  ~MpiGuard() {
+    const auto res = MPI_Finalize();
+    assert(res == 0);
+  }
 
 };
 

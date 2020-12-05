@@ -6,7 +6,7 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/optional.h"
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 #include "../distributed/IbarrierRequest.hpp"
 

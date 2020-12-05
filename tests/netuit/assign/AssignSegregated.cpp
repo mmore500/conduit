@@ -1,13 +1,10 @@
 #include <mpi.h>
 
-#define CATCH_CONFIG_MAIN
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/assign/AssignSegregated.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/MPIGuard.hpp"
+#include "netuit/assign/AssignSegregated.hpp"
 
-const uit::MPIGuard guard;
-
-// stub test
+// TODO: stub test
+TEST_CASE("Test AssignSegregated") {
+  netuit::AssignSegregated<size_t>();
+}

@@ -8,6 +8,9 @@ using ImplSel = uit::ImplSelect<
   uit::ThrowDuct
 >;
 
+#define IMPL_NAME "a::MutexSconceDuct"
+
 #include "../ThreadDuct.hpp"
-#include "../ValueThreadDuct.hpp"
+
 #include "../SkippingThreadDuct.hpp"
+#include "../ValueThreadDuct.hpp"

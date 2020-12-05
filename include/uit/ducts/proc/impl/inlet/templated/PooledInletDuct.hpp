@@ -10,9 +10,9 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/source/base/assert.h"
-#include "../../../../../../../third-party/Empirical/source/base/optional.h"
-#include "../../../../../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../../../uitsl/mpi/mpi_utils.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"

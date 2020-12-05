@@ -1,17 +1,19 @@
 #pragma once
+#ifndef UITSL_CHRONO_CYCLE_FREQ_HPP_INCLUDE
+#define UITSL_CHRONO_CYCLE_FREQ_HPP_INCLUDE
 
 #include <chrono>
 #include <thread>
 
 #include "../../../third-party/benchmark/src/cycleclock.h"
-#include "../../../third-party/Empirical/source/base/vector.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "TimeGuard.hpp"
 
 namespace uitsl {
 
   // estimate cycles per nanosecond
-  double measure_cycle_freq() {
+  inline double measure_cycle_freq() {
 
     using time_guard_t = uitsl::TimeGuard<
       std::chrono::nanoseconds,
@@ -32,7 +34,7 @@ namespace uitsl {
 
   }
 
-  double estimate_cycle_freq() {
+  inline double estimate_cycle_freq() {
 
     emp::vector<double> readings;
 
@@ -50,9 +52,11 @@ namespace uitsl {
 
   }
 
-  double get_cycle_freq() {
+  inline double get_cycle_freq() {
     const static double res{ estimate_cycle_freq() };
     return res;
   }
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CHRONO_CYCLE_FREQ_HPP_INCLUDE

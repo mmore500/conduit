@@ -9,6 +9,7 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #define MSG_T int
+#define IMPL_NAME "a::DequeDuct/MSG_T"
 
 #include "../IntraDuct.hpp"
 #include "../SteppingIntraDuct.hpp"

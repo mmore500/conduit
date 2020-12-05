@@ -7,15 +7,15 @@
 #include <sstream>
 #include <string>
 
-#include "../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 // TODO be clever and use fewer overloads
 
 namespace uitsl {
 
-std::mutex error_message_mutex;
+inline std::mutex error_message_mutex;
 
-std::string apply_indent(std::string in) {
+inline std::string apply_indent(std::string in) {
   return std::regex_replace(
     in,
     std::regex{"(^|\n)"},
@@ -24,7 +24,7 @@ std::string apply_indent(std::string in) {
 }
 
 template<typename T>
-std::string format_member(
+inline std::string format_member(
   const std::string & name,
   const T& member
 ) {
@@ -35,7 +35,7 @@ std::string format_member(
 }
 
 template<>
-std::string format_member<std::string>(
+inline std::string format_member<std::string>(
   const std::string & name,
   const std::string& member
 ) {
@@ -46,7 +46,7 @@ std::string format_member<std::string>(
 }
 
 template<>
-std::string format_member<char>(
+inline std::string format_member<char>(
   const std::string & name,
   const char& member
 ) {
@@ -59,7 +59,7 @@ std::string format_member<char>(
 }
 
 template<>
-std::string format_member<size_t>(
+inline std::string format_member<size_t>(
   const std::string & name,
   const size_t& member
 ) {
@@ -72,7 +72,7 @@ std::string format_member<size_t>(
 }
 
 template<>
-std::string format_member<int>(
+inline std::string format_member<int>(
   const std::string & name,
   const int& member
 ) {
@@ -85,7 +85,7 @@ std::string format_member<int>(
 }
 
 template<>
-std::string format_member<bool>(
+inline std::string format_member<bool>(
   const std::string & name,
   const bool& member
 ) {
@@ -98,7 +98,7 @@ std::string format_member<bool>(
 }
 
 template<>
-std::string format_member<const void *>(
+inline std::string format_member<const void *>(
   const std::string & name,
   const void* const& member
 ) {

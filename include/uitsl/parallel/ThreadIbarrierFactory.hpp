@@ -5,8 +5,8 @@
 #include <memory>
 #include <stddef.h>
 
-#include "_ThreadIbarrierManager.hpp"
 #include "ThreadIbarrier.hpp"
+#include "_ThreadIbarrierManager.hpp"
 
 namespace uitsl {
 

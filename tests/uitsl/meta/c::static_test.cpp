@@ -1,7 +1,6 @@
 #include <string>
 #include <vector>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 #include "cereal/include/cereal/types/string.hpp"
 #include "cereal/include/cereal/types/vector.hpp"

@@ -8,5 +8,7 @@ using ImplSel = uit::ImplSelect<
   uit::t::IsOriDuct
 >;
 
+#define IMPL_NAME "inlet=DequeIrsend+outlet=RingIrecv_t::IdirOriDuct"
+
 #include "../ProcDuct.hpp"
 #include "../SteppingProcDuct.hpp"

@@ -8,6 +8,9 @@ using ImplSel = uit::ImplSelect<
   uit::ThrowDuct
 >;
 
+#define IMPL_NAME "a::RigtorpDuct"
+
 #include "../ThreadDuct.hpp"
-#include "../ValueThreadDuct.hpp"
+
 #include "../SteppingThreadDuct.hpp"
+#include "../ValueThreadDuct.hpp"

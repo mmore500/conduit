@@ -5,6 +5,8 @@
 #include <new>
 #include <stddef.h>
 
+#include "../polyfill/hardware_destructive_interference_size.hpp"
+
 namespace uitsl {
 
 #ifdef __cpp_lib_hardware_interference_size

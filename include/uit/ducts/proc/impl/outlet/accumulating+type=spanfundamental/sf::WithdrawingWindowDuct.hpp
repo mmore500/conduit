@@ -9,9 +9,9 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/source/base/assert.h"
-#include "../../../../../../../third-party/Empirical/source/base/vector.h"
-#include "../../../../../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../../../uitsl/debug/safe_compare.hpp"
 #include "../../../../../../uitsl/debug/WarnOnce.hpp"
@@ -25,8 +25,8 @@
 
 #include "../../../../../setup/InterProcAddress.hpp"
 
-#include "../../backend/RuntimeSizeRdmaBackEnd.hpp"
 #include "../../backend/RuntimeSizeBackEnd.hpp"
+#include "../../backend/RuntimeSizeRdmaBackEnd.hpp"
 
 namespace uit {
 namespace sf {

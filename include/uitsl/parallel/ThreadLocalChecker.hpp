@@ -4,7 +4,7 @@
 
 #include <mutex>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "thread_utils.hpp"
 

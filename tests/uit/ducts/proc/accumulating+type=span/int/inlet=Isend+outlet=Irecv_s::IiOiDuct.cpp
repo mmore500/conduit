@@ -9,5 +9,6 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #define MSG_VALUE_T int
+#define IMPL_NAME "inlet=Isend+outlet=Irecv_s::IiOiDuct/int"
 
 #include "../../VectorAccumulatingProcDuct.hpp"

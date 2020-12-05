@@ -5,8 +5,8 @@
 #include <cstddef>
 #include <utility>
 
-#include "../../../../../third-party/Empirical/source/base/optional.h"
-#include "../../../../../third-party/Empirical/source/tools/QueueCache.h"
+#include "../../../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include "../../../../../third-party/Empirical/include/emp/datastructs/QueueCache.hpp"
 
 #include "../../../../uitsl/distributed/CachePacket.hpp"
 

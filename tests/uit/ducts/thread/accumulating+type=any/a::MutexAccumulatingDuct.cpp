@@ -8,5 +8,8 @@ using ImplSel = uit::ImplSelect<
   uit::ThrowDuct
 >;
 
+#define IMPL_NAME "a::MutexAccumulatingDuct"
+
 #include "../ThreadDuct.hpp"
+
 #include "../AccumulatingThreadDuct.hpp"

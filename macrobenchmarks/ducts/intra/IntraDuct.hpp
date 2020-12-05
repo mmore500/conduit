@@ -2,8 +2,8 @@
 
 #include <mpi.h>
 
-#include "uitsl/concurrent/Gatherer.hpp"
 #include "uitsl/chrono/TimeGuard.hpp"
+#include "uitsl/concurrent/Gatherer.hpp"
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
@@ -15,8 +15,8 @@
 #include "uit/fixtures/Conduit.hpp"
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
 
 #define MESSAGE_T int
 

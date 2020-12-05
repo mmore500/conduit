@@ -2,14 +2,16 @@
 #ifndef NETUIT_MESH_MESH_HPP_INCLUDE
 #define NETUIT_MESH_MESH_HPP_INCLUDE
 
-#include <unordered_map>
+#include <ratio>
 #include <stddef.h>
+#include <unordered_map>
 
 #include <mpi.h>
 
+#include "../../uitsl/debug/safe_cast.hpp"
+#include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"
-#include "../../uitsl/math/math_utils.hpp"
 
 #include "../../uit/ducts/Duct.hpp"
 #include "../../uit/setup/InterProcAddress.hpp"
@@ -31,6 +33,7 @@ class MeshIDCounter {
 public:
 
   static size_t Generate() { return counter++; }
+  static void Reset() { counter = 0; }
 
 };
 
@@ -43,7 +46,6 @@ class Mesh {
   using edge_id_t = size_t;
   using node_t = MeshNode<ImplSpec>;
 
-  inline static size_t mesh_id_counter{};
   size_t mesh_id;
   MPI_Comm comm;
 
@@ -111,10 +113,9 @@ class Mesh {
     const uitsl::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
 
     static std::unordered_set<int> tag_checker;
-    const int tag = uitsl::sidebyside_hash(mesh_id, input.GetEdgeID());
-
-    // assert that generated tags are unique
-    emp_assert( tag_checker.insert(tag).second );
+    const int tag = uitsl::safe_cast<int>(
+      uitsl::sidebyside_hash<std::ratio<3, 4>>(mesh_id, input.GetEdgeID())
+    );
 
     const uit::InterProcAddress addr{
       outlet_proc_id,
@@ -125,9 +126,13 @@ class Mesh {
       comm
     };
 
-    if (inlet_proc_id != outlet_proc_id) input.template SplitDuct<
-      typename ImplSpec::ProcOutletDuct
-    >(addr, back_end);
+    if (inlet_proc_id != outlet_proc_id) {
+      input.template SplitDuct<
+        typename ImplSpec::ProcOutletDuct
+      >(addr, back_end);
+      // assert that generated tags are unique
+      emp_assert( tag_checker.insert(tag).second );
+    }
 
   }
 
@@ -147,7 +152,9 @@ class Mesh {
       inlet_proc_id,
       thread_assignment(outlet_node_id),
       thread_assignment(inlet_node_id),
-      uitsl::sidebyside_hash(mesh_id, output.GetEdgeID()),
+      uitsl::safe_cast<int>(
+        uitsl::sidebyside_hash<std::ratio<3, 4>>(mesh_id, output.GetEdgeID())
+      ),
       comm
     };
 

@@ -8,7 +8,6 @@ namespace std {
 
 // TODO cpp20
 // adpated from https://codereview.stackexchange.com/q/134627
-// todo: move to polyfill
 static constexpr struct identity_t {
   template<typename T>
   constexpr decltype(auto) operator()(T&& t) const noexcept {
@@ -16,6 +15,6 @@ static constexpr struct identity_t {
   }
 } identity{};
 
-} // namespace uitsl
+} // namespace std
 
 #endif // #ifndef UITSL_POLYFILL_IDENTITY_HPP_INCLUDE

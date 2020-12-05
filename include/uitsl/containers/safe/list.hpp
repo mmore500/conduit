@@ -35,7 +35,7 @@ public:
 
 
   template<typename... Args>
-  list(Args&&... args)
+  explicit list(Args&&... args)
   : impl(std::forward<Args>(args)...)
   { ; }
 

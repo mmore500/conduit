@@ -6,8 +6,8 @@
 
 #include <mpi.h>
 
-#include "../mpi/mpi_utils.hpp"
 #include "../countdown/Timer.hpp"
+#include "../mpi/mpi_utils.hpp"
 #include "../parallel/ParallelTimeoutBarrier.hpp"
 #include "../parallel/ThreadIbarrier.hpp"
 
@@ -35,7 +35,7 @@ public:
    * Blocks until all threads on all processes have reached barrier,
    * or a timeout expires.
    */
-  ConcurrentTimeoutBarrier(
+  explicit ConcurrentTimeoutBarrier(
     const uitsl::ThreadIbarrier& thread_barrier,
     const Timer_T& timer=Timer_T{},
     const MPI_Comm comm=MPI_COMM_WORLD

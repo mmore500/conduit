@@ -2,7 +2,7 @@
 #ifndef UITSL_DEBUG_ERR_AUDIT_HPP_INCLUDE
 #define UITSL_DEBUG_ERR_AUDIT_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 namespace uitsl {
 

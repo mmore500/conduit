@@ -1,13 +1,10 @@
 #include <mpi.h>
 
-#define CATCH_CONFIG_MAIN
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uit/assign/AssignContiguously.hpp"
-#include "uit/distributed/MultiprocessReporter.hpp"
-#include "uit/distributed/MPIGuard.hpp"
+#include "netuit/assign/AssignContiguously.hpp"
 
-const uit::MPIGuard guard;
-
-// stub test
+// TODO: stub test
+TEST_CASE("Test AssignContiguously") {
+  netuit::AssignContiguously<size_t>(1, 1)(1);
+}

@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <string>
 
-#include "../../../../third-party/Empirical/source/base/assert.h"
+#include "../../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../proc/impl/backend/MockBackEnd.hpp"
 
@@ -28,6 +28,8 @@ public:
   using OutletImpl = EmpAssertDuct<ImplSpec>;
   using BackEndImpl = uit::MockBackEnd<ImplSpec>;
 
+  T val{};
+
   /**
    * TODO.
    */
@@ -39,16 +41,18 @@ public:
    *
    * @throws TODO.
    */
-  [[noreturn]] bool TryPut(const T&) const {
+  bool TryPut(const T&) const {
     emp_assert(false, "TryPut called on EmpAssertDuct");
+    return false;
   }
 
   /**
    * TODO.
    *
    */
-  [[noreturn]] bool TryFlush() const {
+  bool TryFlush() const {
     emp_assert(false, "Flush called on EmpAssertDuct");
+    return true;
   }
 
   /**
@@ -56,8 +60,9 @@ public:
    *
    * @throws TODO.
    */
-  [[noreturn]] const T& Get() const {
+  const T& Get() const {
     emp_assert(false, "Get called on EmpAssertDuct");
+    return val;
   }
 
   /**
@@ -65,8 +70,9 @@ public:
    *
    * @throws TODO.
    */
-  [[noreturn]] T& Get() {
+  T& Get() {
     emp_assert(false, "Get called on EmpAssertDuct");
+    return val;
   }
 
   /**
@@ -74,8 +80,9 @@ public:
    *
    * @throws TODO.
    */
-  [[noreturn]] size_t TryConsumeGets(size_t) const {
+  size_t TryConsumeGets(size_t) const {
     emp_assert(false, "ConsumeGets called on EmpAssertDuct");
+    return 0;
   }
 
   /**

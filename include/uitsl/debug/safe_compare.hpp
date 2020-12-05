@@ -5,7 +5,7 @@
 #include <limits>
 #include <type_traits>
 
-#include "../../../third-party/Empirical/source/tools/math.h"
+#include "../../../third-party/Empirical/include/emp/math/math.hpp"
 
 namespace uitsl {
 
@@ -24,14 +24,14 @@ namespace internal {
 
   template <typename I, typename J, int typeCodeI, int typeCodeJ>
   struct SafeImp {
-    static inline bool Less(I x, J y) {
+    static inline bool Less(const I x, const J y) {
       return x < y;
     }
   };
 
   template <typename I, typename J>
   struct SafeImp<I, J, 1, 0> {
-    static inline bool Less(I x, J y) {
+    static inline bool Less(const I x, const J y) {
       return (x < 0) || (
         static_cast<typename std::make_unsigned<I>::type>(x) < y
       );
@@ -40,7 +40,7 @@ namespace internal {
 
   template <typename I, typename J>
   struct SafeImp<I, J, 0, 1> {
-    static inline bool Less(I x, J y) {
+    static inline bool Less(const I x, const J y) {
       return (y >= 0) && (
         x < static_cast<typename std::make_unsigned<J>::type>(y)
       );
@@ -50,7 +50,7 @@ namespace internal {
 }
 
 template <typename I, typename J>
-inline bool safe_less(I x, J y) {
+inline bool safe_less(const I x, const J y) {
   return internal::SafeImp<
     I,
     J,
@@ -60,16 +60,16 @@ inline bool safe_less(I x, J y) {
 }
 
 template <typename I, typename J>
-inline bool safe_greater(I x, J y) { return safe_less<J, I>(y, x); }
+inline bool safe_greater(const I x, const J y) { return safe_less<J, I>(y, x); }
 
 template <typename I, typename J>
-inline bool safe_leq(I x, J y) { return !safe_greater<I, J>(x, y); }
+inline bool safe_leq(const I x, const J y) { return !safe_greater<I, J>(x, y); }
 
 template <typename I, typename J>
-inline bool safe_geq(I x, J y) { return !safe_less<I, J>(x, y); }
+inline bool safe_geq(const I x, const J y) { return !safe_less<I, J>(x, y); }
 
 template <typename I, typename J>
-inline bool safe_equal(I x, J y) {
+inline bool safe_equal(const I x, const J y) {
   return !safe_less<I, J>(x, y) && !safe_greater<I, J>(x, y);
 }
 

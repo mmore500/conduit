@@ -1,7 +1,6 @@
 #include <limits>
 #include <unordered_set>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/math/math_utils.hpp"
@@ -299,9 +298,9 @@ TEST_CASE("difference") {
 
 TEST_CASE("sidebyside_hash") {
 
-  std::unordered_set<int> results;
+  std::unordered_set<size_t> results;
 
-  constexpr int n = 100;
+  constexpr size_t n = 100;
   for (size_t a = 0; a < n; ++a) {
     for (size_t b = 0; b < n; ++b) {
       results.insert(uitsl::sidebyside_hash(a, b));

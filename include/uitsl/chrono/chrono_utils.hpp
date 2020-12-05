@@ -8,14 +8,14 @@
 
 namespace uitsl {
 
-std::chrono::duration<double> infinite_duration {
+inline std::chrono::duration<double> infinite_duration {
   std::numeric_limits<double>::infinity()
 };
 
-std::chrono::duration<int> zero_duration { 0 };
+inline std::chrono::duration<int> zero_duration { 0 };
 
 // adapted from https://stackoverflow.com/a/46134506
-std::string beautify_duration(std::chrono::seconds input_seconds) {
+inline std::string beautify_duration(std::chrono::seconds input_seconds) {
     using namespace std::chrono;
     typedef duration<int, std::ratio<86400>> days;
     auto d = duration_cast<days>(input_seconds);

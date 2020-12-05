@@ -6,22 +6,20 @@
 #include <mpi.h>
 
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/utility/assign_utils.hpp"
+#include "uitsl/utility/print_utils.hpp"
 
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/DyadicTopologyFactory.hpp"
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
-#include "netuit/topology/DyadicTopologyFactory.hpp"
 
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
@@ -29,9 +27,7 @@
 
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
-const uitsl::MpiGuard guard;
-
-TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+TEST_CASE("Is initial Get() result value-intialized? " IMPL_NAME, "[IntraDuct]") { REPEAT {
 
   netuit::Mesh<Spec> mesh{ netuit::RingTopologyFactory{}(num_nodes) };
 

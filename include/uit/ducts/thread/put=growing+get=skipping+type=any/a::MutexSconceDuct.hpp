@@ -2,14 +2,14 @@
 #ifndef UIT_DUCTS_THREAD_PUT_GROWING_GET_SKIPPING_TYPE_ANY_A__MUTEXSCONCEDUCT_HPP_INCLUDE
 #define UIT_DUCTS_THREAD_PUT_GROWING_GET_SKIPPING_TYPE_ANY_A__MUTEXSCONCEDUCT_HPP_INCLUDE
 
-#include <mutex>
 #include <limits>
+#include <mutex>
 #include <stddef.h>
-#include <utility>
 #include <string>
+#include <utility>
 
-#include "../../../../../third-party/Empirical/source/base/assert.h"
-#include "../../../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/meta/a::static_test.hpp"
 #include "../../../../uitsl/utility/print_utils.hpp"

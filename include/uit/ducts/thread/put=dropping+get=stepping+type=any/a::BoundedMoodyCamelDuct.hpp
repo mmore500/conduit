@@ -6,9 +6,9 @@
 #include <stddef.h>
 #include <string>
 
-#include "../../../../../third-party/Empirical/source/base/assert.h"
-#include "../../../../../third-party/Empirical/source/base/errors.h"
-#include "../../../../../third-party/Empirical/source/tools/string_utils.h"
+#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../../../third-party/Empirical/include/emp/base/errors.hpp"
+#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 #include "../../../../../third-party/readerwriterqueue/atomicops.h"
 #include "../../../../../third-party/readerwriterqueue/readerwriterqueue.h"
 

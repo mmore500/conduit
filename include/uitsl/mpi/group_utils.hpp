@@ -8,8 +8,8 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
-#include "../../../third-party/Empirical/source/tools/math.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../third-party/Empirical/include/emp/math/math.hpp"
 
 #include "../debug/safe_compare.hpp"
 #include "../math/math_utils.hpp"
@@ -21,9 +21,9 @@
 namespace uitsl {
 
 // predeclaration
-MPI_Group comm_to_group(const MPI_Comm &);
+inline MPI_Group comm_to_group(const MPI_Comm &);
 
-MPI_Group intersect_groups(emp::vector<MPI_Group> groups) {
+inline MPI_Group intersect_groups(emp::vector<MPI_Group> groups) {
 
   MPI_Group res{
     groups.size() ? groups.back() : MPI_GROUP_EMPTY
@@ -48,7 +48,7 @@ MPI_Group intersect_groups(emp::vector<MPI_Group> groups) {
 
 }
 
-MPI_Group combine_groups(emp::vector<MPI_Group> groups) {
+inline MPI_Group combine_groups(emp::vector<MPI_Group> groups) {
 
   MPI_Group res{
     groups.size() ? groups.back() : MPI_GROUP_EMPTY
@@ -73,7 +73,7 @@ MPI_Group combine_groups(emp::vector<MPI_Group> groups) {
 
 }
 
-MPI_Group subtract_groups(
+inline MPI_Group subtract_groups(
   const MPI_Group & minuend,
   const MPI_Group & subtrahend
 ) {
@@ -90,7 +90,7 @@ MPI_Group subtract_groups(
 
 }
 
-size_t group_size(const MPI_Group & group) {
+inline size_t group_size(const MPI_Group & group) {
   int res;
   UITSL_Group_size(
     group, // MPI_Group group
@@ -100,7 +100,7 @@ size_t group_size(const MPI_Group & group) {
   return res;
 }
 
-MPI_Comm group_to_comm(
+inline MPI_Comm group_to_comm(
   const MPI_Group & group,
   const MPI_Comm & comm=MPI_COMM_WORLD
 ) {
@@ -114,7 +114,7 @@ MPI_Comm group_to_comm(
   return res;
 }
 
-MPI_Group make_group(
+inline MPI_Group make_group(
   emp::vector<proc_id_t> ranks,
   const MPI_Group source=uitsl::comm_to_group(MPI_COMM_WORLD)
 ) {
@@ -145,7 +145,7 @@ MPI_Group make_group(
   return res;
 }
 
-proc_id_t translate_group_rank(
+inline proc_id_t translate_group_rank(
   const proc_id_t rank,
   const MPI_Group& from,
   const MPI_Group& to=uitsl::comm_to_group(MPI_COMM_WORLD)
@@ -161,7 +161,7 @@ proc_id_t translate_group_rank(
   return res;
 }
 
-emp::vector<proc_id_t> get_group_ranks(const MPI_Group& group) {
+inline emp::vector<proc_id_t> get_group_ranks(const MPI_Group& group) {
 
   emp::vector<proc_id_t> within_group_ranks(group_size(group));
   std::iota(
@@ -183,7 +183,7 @@ emp::vector<proc_id_t> get_group_ranks(const MPI_Group& group) {
 
 }
 
-std::string group_to_string(const MPI_Group& group) {
+inline std::string group_to_string(const MPI_Group& group) {
   std::stringstream ss;
   ss << uitsl::format_member(
     "uitsl::group_size(group)", uitsl::group_size(group)

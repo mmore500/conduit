@@ -1,4 +1,4 @@
-TEST_CASE("Validity") { REPEAT {
+TEST_CASE("Validity " IMPL_NAME) { REPEAT {
 
   netuit::Mesh<Spec> mesh{ netuit::RingTopologyFactory{}(num_nodes) };
 

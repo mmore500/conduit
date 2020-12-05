@@ -8,5 +8,7 @@ using ImplSel = uit::ImplSelect<
   uit::t::BlockRmsgDuct
 >;
 
+#define IMPL_NAME "t::BlockRmsgDuct"
+
 #include "../ProcDuct.hpp"
 #include "../SkippingProcDuct.hpp"

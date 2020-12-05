@@ -1,15 +1,14 @@
 #pragma once
+#ifndef NETUIT_ASSIGN_ASSIGNRANDOMLY_HPP_INCLUDE
+#define NETUIT_ASSIGN_ASSIGNRANDOMLY_HPP_INCLUDE
 
 #include <functional>
 #include <stddef.h>
 
-#include "../../third-party/Empirical/source/base/vector.h"
-#include "../../third-party/Empirical/source/tools/random_utils.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../third-party/Empirical/include/emp/math/random_utils.hpp"
 
-namespace uit {
-// TODO assign_randomly
-// make a vector of IDs, shuffle it, capture it,
-// then return result of indexing into it
+namespace netuit {
 
 template<typename RETURN_TYPE>
 struct AssignRandomly {
@@ -30,4 +29,7 @@ struct AssignRandomly {
   }
 
 };
-};
+
+} // namespace netuit
+
+#endif // #ifndef NETUIT_ASSIGN_ASSIGNRANDOMLY_HPP_INCLUDE

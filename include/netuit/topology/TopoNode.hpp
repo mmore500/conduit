@@ -2,12 +2,12 @@
 #ifndef NETUIT_TOPOLOGY_TOPONODE_HPP_INCLUDE
 #define NETUIT_TOPOLOGY_TOPONODE_HPP_INCLUDE
 
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 #include <string_view>
 
-#include "../../../third-party/Empirical/source/base/vector.h"
-#include "../../../third-party/Empirical/source/polyfill/span.h"
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../third-party/Empirical/include/emp/polyfill/span.hpp"
 
 #include "../../uitsl/utility/print_utils.hpp"
 
@@ -38,17 +38,21 @@ public:
 
   const inputs_t& GetInputs() const noexcept { return inputs; }
 
+  inputs_t& GetInputs() noexcept { return inputs; }
+
   const outputs_t& GetOutputs() const noexcept { return outputs; }
 
-  void AddInput(const uit::TopoNodeInput& input_) {
+  outputs_t& GetOutputs() noexcept { return outputs; }
+
+  void AddInput(const netuit::TopoNodeInput& input_) {
     inputs.push_back(input_);
   }
 
-  void AddOutput(const uit::TopoNodeOutput& output_) {
+  void AddOutput(const netuit::TopoNodeOutput& output_) {
     outputs.push_back(output_);
   }
 
-  void RemoveInput(const uit::TopoNodeInput& input_) {
+  void RemoveInput(const netuit::TopoNodeInput& input_) {
     inputs.erase(
       std::remove(
         inputs.begin(),
@@ -59,7 +63,7 @@ public:
     );
   }
 
-  void RemoveOutput(const uit::TopoNodeOutput& output_) {
+  void RemoveOutput(const netuit::TopoNodeOutput& output_) {
     outputs.erase(
       std::remove(
         outputs.begin(),
@@ -100,24 +104,26 @@ public:
 
 };
 
-std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
+inline std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
+  // make sure node has outputs
   if (!node.HasOutputs()) return os;
 
-  for (const auto& node : std::span<const TopoNode::output_t>(
+  // loop through span of all outputs, except the last
+  for (const auto& edge : std::span<const TopoNode::output_t>(
     node.outputs.data(),
     node.outputs.size() - 1
   )) {
-    os << node.GetEdgeID() << " ";
+    // out edge ID of edge
+    os << edge.GetEdgeID() << " ";
   }
+  // out edge ID of last output
   os << node.outputs.back().GetEdgeID();
   return os;
 }
 
-std::istream& operator>>(std::istream& is, TopoNode& node) {
+inline std::istream& operator>>(std::istream& is, TopoNode& node) {
   size_t input;
-  while (is >> input) {
-    node.AddInput(input);
-  }
+  while (is >> input) node.AddInput(input);
   return is;
 }
 

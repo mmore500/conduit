@@ -7,7 +7,7 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/source/base/assert.h"
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../utility/print_utils.hpp"
 
@@ -17,31 +17,39 @@
 
 namespace uitsl {
 
-int get_nprocs(const MPI_Comm& comm=MPI_COMM_WORLD) {
-  int res;
-  UITSL_Comm_size(
-    comm,
-    &res
-  );
-  return res;
+inline int get_nprocs(const MPI_Comm& comm=MPI_COMM_WORLD) {
+  #ifdef __EMSCRIPTEN__
+    return 1;
+  #else
+    int res;
+    UITSL_Comm_size(
+      comm,
+      &res
+    );
+    return res;
+  #endif
 }
 
 //TODO replace with get_proc_id
-proc_id_t get_rank(const MPI_Comm& comm=MPI_COMM_WORLD) {
-  int res;
-  UITSL_Comm_rank(
-    comm,
-    &res
-  );
-  return res;
+inline proc_id_t get_rank(const MPI_Comm& comm=MPI_COMM_WORLD) {
+  #ifdef __EMSCRIPTEN__
+    return 0;
+  #else
+    int res;
+    UITSL_Comm_rank(
+      comm,
+      &res
+    );
+    return res;
+  #endif
 }
 
 // TODO rename get_pid
-proc_id_t get_proc_id(const MPI_Comm& comm=MPI_COMM_WORLD) {
+inline proc_id_t get_proc_id(const MPI_Comm& comm=MPI_COMM_WORLD) {
   return get_rank(comm);
 }
 
-MPI_Group comm_to_group(const MPI_Comm & comm){
+inline MPI_Group comm_to_group(const MPI_Comm & comm){
   MPI_Group group;
   UITSL_Comm_group(
     comm, // MPI_Comm comm
@@ -50,14 +58,14 @@ MPI_Group comm_to_group(const MPI_Comm & comm){
   return group;
 }
 
-std::string get_name(const MPI_Comm& comm) {
+inline std::string get_name(const MPI_Comm& comm) {
   int len;
   emp::array<char, MPI_MAX_OBJECT_NAME> buffer;
   UITSL_Comm_get_name(comm, buffer.data(), &len);
   return std::string{}.assign(buffer.data(), len);
 }
 
-MPI_Comm duplicate_comm(const MPI_Comm& comm) {
+inline MPI_Comm duplicate_comm(const MPI_Comm& comm) {
   MPI_Comm res;
   UITSL_Comm_dup(
     comm,
@@ -66,13 +74,13 @@ MPI_Comm duplicate_comm(const MPI_Comm& comm) {
   return res;
 }
 
-size_t comm_size(const MPI_Comm& comm) {
+inline size_t comm_size(const MPI_Comm& comm) {
   const int res{ get_nprocs(comm) };
   emp_assert(res >= 0);
   return res;
 }
 
-MPI_Comm split_comm(
+inline MPI_Comm split_comm(
   const std::function<int(const int)> colorer,
   const MPI_Comm& comm=MPI_COMM_WORLD
 ) {
@@ -88,11 +96,11 @@ MPI_Comm split_comm(
 
 }
 
-emp::vector<proc_id_t> get_comm_ranks(const MPI_Comm& comm) {
+inline emp::vector<proc_id_t> get_comm_ranks(const MPI_Comm& comm) {
   return uitsl::get_group_ranks(uitsl::comm_to_group(comm));
 }
 
-proc_id_t translate_comm_rank(
+inline proc_id_t translate_comm_rank(
   const proc_id_t rank,
   const MPI_Comm& from,
   const MPI_Comm& to=MPI_COMM_WORLD
@@ -102,15 +110,15 @@ proc_id_t translate_comm_rank(
   );
 }
 
-bool is_multiprocess(const MPI_Comm& comm=MPI_COMM_WORLD) {
+inline bool is_multiprocess(const MPI_Comm& comm=MPI_COMM_WORLD) {
   return uitsl::get_nprocs(comm) > 1;
 }
 
-bool is_root(const MPI_Comm& comm=MPI_COMM_WORLD) {
+inline bool is_root(const MPI_Comm& comm=MPI_COMM_WORLD) {
   return uitsl::get_rank(comm) == 0;
 }
 
-std::string comm_to_string(const MPI_Comm& comm) {
+inline std::string comm_to_string(const MPI_Comm& comm) {
   std::stringstream ss;
   ss << uitsl::format_member(
     "uitsl::comm_size(comm)", uitsl::comm_size(comm)

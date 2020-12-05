@@ -8,7 +8,10 @@ using ImplSel = uit::ImplSelect<
   uit::ThrowDuct
 >;
 
+#define IMPL_NAME "a::AtomicSconceDuct"
+
 #include "../ThreadDuct.hpp"
+
 // TODO FIXME fix segfault
 // #include "../ValueThreadDuct.hpp"
 // #include "../SkippingThreadDuct.hpp"

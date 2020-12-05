@@ -4,17 +4,13 @@
 
 #include <mpi.h>
 
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "Empirical/source/base/vector.h"
+#include "Empirical/include/emp/base/vector.hpp"
 
-#include "uitsl/debug/MultiprocessReporter.hpp"
-#include "uitsl/distributed/assign_utils.hpp"
+#include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uitsl/math/math_utils.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 
@@ -22,26 +18,27 @@
 #include "uit/fixtures/Source.hpp"
 #include "uit/setup/ImplSpec.hpp"
 
+#include "netuit/arrange/DyadicTopologyFactory.hpp"
+#include "netuit/arrange/ProConTopologyFactory.hpp"
+#include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
-#include "netuit/topology/DyadicTopologyFactory.hpp"
-#include "netuit/topology/ProConTopologyFactory.hpp"
-#include "netuit/topology/RingTopologyFactory.hpp"
-
-const uitsl::MpiGuard guard;
 
 using MSG_T = emp::vector<int>;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
-decltype(auto) make_dyadic_bundle() {
+#define VPD_IMPL_NAME IMPL_NAME "VectorProcDuct"
 
-  netuit::Mesh<Spec> mesh{
+template <typename T>
+decltype(auto) make_dyadic_vpd_bundle() {
+
+  netuit::Mesh<T> mesh{
     netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
-    uitsl::AssignAvailableProcs{}
+    netuit::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh();
@@ -51,12 +48,13 @@ decltype(auto) make_dyadic_bundle() {
 
 };
 
-decltype(auto) make_producer_consumer_bundle() {
+template <typename T>
+decltype(auto) make_producer_consumer_vpd_bundle() {
 
-  netuit::Mesh<Spec> mesh{
+  netuit::Mesh<T> mesh{
     netuit::ProConTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
-    uitsl::AssignAvailableProcs{}
+    netuit::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh(0);
@@ -73,11 +71,12 @@ decltype(auto) make_producer_consumer_bundle() {
 
 };
 
-decltype(auto) make_ring_bundle() {
-  netuit::Mesh<Spec> mesh{
+template <typename T>
+decltype(auto) make_ring_vpd_bundle() {
+  netuit::Mesh<T> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
-    uitsl::AssignAvailableProcs{}
+    netuit::AssignAvailableProcs{}
   };
 
   auto bundles = mesh.GetSubmesh();
@@ -88,18 +87,18 @@ decltype(auto) make_ring_bundle() {
 
 }
 
-TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+TEST_CASE("Is initial VectorProcDuct Get() result value-intialized? " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
 
-  auto [input, output] = make_ring_bundle();
+  auto [input, output] = make_ring_vpd_bundle<Spec>();
 
   REQUIRE( input.Get() == MSG_T{} );
   REQUIRE( input.JumpGet() == MSG_T{} );
 
 } }
 
-TEST_CASE("Unmatched gets") { REPEAT {
+TEST_CASE("Unmatched gets " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_vpd_bundle<Spec>();
 
   for (int i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
@@ -116,9 +115,9 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts") { REPEAT {
+TEST_CASE("Unmatched puts " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_vpd_bundle<Spec>();
 
   for (int i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(MSG_T(i));
 
@@ -128,9 +127,9 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
 } }
 
-TEST_CASE("Eventual flush-out") { REPEAT {
+TEST_CASE("Eventual flush-out " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_vpd_bundle<Spec>();
 
   for (int i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut({});
 
@@ -150,9 +149,9 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
 } }
 
-TEST_CASE("Validity") { REPEAT {
+TEST_CASE("Validity " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_vpd_bundle<Spec>();
 
   emp::vector<int> last{};
   for (int msg = 0; msg < 10 * std::kilo::num; ++msg) {

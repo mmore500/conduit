@@ -24,7 +24,7 @@ public:
   using iterator = uitsl::CountdownIterator<Counter>;
   using elapsed_t = size_t;
 
-  Counter(
+  explicit Counter(
     const size_t duration_=std::numeric_limits<size_t>::max()
   ) : duration{duration_}
   { ; }
@@ -52,9 +52,9 @@ public:
 
   Counter& operator++() { Step(); return *this; }
 
-  iterator begin() { return { *this }; }
+  iterator begin() { return iterator{ *this }; }
 
-  iterator end() { return {}; }
+  iterator end() { return iterator{}; }
 
 };
 

@@ -1,8 +1,10 @@
 #pragma once
+#ifndef UITSL_CHRONO_SPLITWATCH_HPP_INCLUDE
+#define UITSL_CHRONO_SPLITWATCH_HPP_INCLUDE
 
 #include <chrono>
 
-#include "../../../third-party/Empirical/source/base/optional.h"
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 namespace uitsl {
 
@@ -31,3 +33,5 @@ public:
 };
 
 } // namespace uitsl
+
+#endif // #ifndef UITSL_CHRONO_SPLITWATCH_HPP_INCLUDE
