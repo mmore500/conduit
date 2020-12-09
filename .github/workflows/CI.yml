@@ -99,6 +99,7 @@ jobs:
     needs:
       - docs
       - unit
+      - tidy
       - coverage
       - macrobenchmarks
       - microbenchmarks
@@ -123,13 +124,14 @@ jobs:
           git push --force --quiet origin gh-pages
 
   deploy-dockerhub:
-    name: Deploy to GitHub Pages
+    name: Deploy to Dockerhub
     runs-on: ubuntu-16.04
     if: github.ref == 'refs/heads/master'
     needs:
       - docs
       - unit
       - coverage
+      - tidy
       - macrobenchmarks
       - microbenchmarks
 
