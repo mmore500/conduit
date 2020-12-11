@@ -25,7 +25,7 @@ RUN \
   apt-get update -qq \
     && \
   apt-get install -qq --no-install-recommends \
-    curl=7.58.0-2ubuntu3.10 \
+    curl \
     git=1:2.17.1-1ubuntu0.7 \
     gzip=1.6-5ubuntu1 \
     unzip=6.0-21ubuntu1 \
