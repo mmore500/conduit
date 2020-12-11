@@ -1,59 +1,6 @@
 find_package(Catch2 REQUIRED)
 
-file(GLOB_RECURSE ALL_TESTS
-    uitsl/*.cpp
-    uit/*.cpp
-    netuit/*.cpp
-)
-
-#message("${ALL_TESTS}")
-
-list(REMOVE_ITEM ALL_TESTS
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=skipping+type=trivial/inlet=DequeRput+outlet=Window_t::IdrOwDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=skipping+type=trivial/inlet=Put+outlet=Window_t::IpOwDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=skipping+type=trivial/inlet=DequeIrsend+outlet=BlockIrecv_t::IdirObiDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=skipping+type=trivial/inlet=Rsend+outlet=BlockIrecv_t::IrObiDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=stepping+type=trivial/pooled+inlet=RingIsend+outlet=Iprobe_t::PooledIriOiDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=stepping+type=trivial/inlet=RingIsend+outlet=RingIrecv_t::IriOriDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=stepping+type=trivial/inlet=RingIrsend+outlet=RingIrecv_t::IrirOriDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=stepping+type=trivial/inlet=Rsend+outlet=RingIrecv_t::IrOri.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=stepping+type=trivial/inlet=Send+outlet=RingIrecv_t::IsOriDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=stepping+type=trivial/inlet=DequeIrsend+outlet=RingIrecv_t::IdirOriDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=stepping+type=cereal/inlet=DequeIrsend+outlet=Iprobe_c::IdirOiDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=stepping+type=cereal/inlet=Rsend+outlet=Iprobe_c::IrOiDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=stepping+type=span/inlet=RingIrsend+outlet=Iprobe_s::IrirOiDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=skipping+type=span/inlet=RingIrend+outlet=BlockIrecv_s::IrirObiDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=skipping+type=span/inlet=RingIrsend+outlet=BlockIrecv_s::IrirObiDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=stetgpping+type=cereal/inlet=RingIrsend+outlet=Iprobe_c::IrirOiDuct.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/MpiMultithreadGuard.cpp"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=stepping+type=cereal/inlet=RingIrsend+outlet=Iprobe_c::IrirOiDuct.cpp"
-
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=fundamental/double/aggregated+inlet=Accumulate+outlet=WithdrawingWindow_f::AggregatedIaOwwDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=fundamental/double/aggregated+inlet=Raccumulate+outlet=WithdrawingWindow_f::AggregatedIrOwwDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=fundamental/double/inlet=Accumulate+outlet=WithdrawingWindow_f::IaOwwDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=fundamental/double/inlet=Raccumulate+outlet=WithdrawingWindow_f::IrOwwDuct"
-
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=fundamental/int/aggregated+inlet=Accumulate+outlet=WithdrawingWindow_f::AggregatedIaOwwDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=fundamental/int/aggregated+inlet=Raccumulate+outlet=WithdrawingWindow_f::AggregatedIrOwwDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=fundamental/int/inlet=Accumulate+outlet=WithdrawingWindow_f::IaOwwDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=fundamental/int/inlet=Raccumulate+outlet=WithdrawingWindow_f::IrOwwDuct"
-
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=spanfundamental/double/inlet=Accumulate+outlet=WithdrawingWindow_sf::IaOwwDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=spanfundamental/double/inlet=Raccumulate+outlet=WithdrawingWindow_sf::IrOwwDuct"
-
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=spanfundamental/int/inlet=Accumulate+outlet=WithdrawingWindow_sf::IaOwwDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/accumulating+type=spanfundamental/int/inlet=Raccumulate+outlet=WithdrawingWindow_sf::IrOwwDuct"
-
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=stepping+type=cereal/inlet=DequeIrsend+outlet=Iprobe_c::IdirOiDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=growing+get=stepping+type=cereal/inlet=Rsend+outlet=Iprobe_c::IrOiDuct"
-
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=stepping+type=trivial/inlet=RingIrsend+outlet=RingIrecv_t::IrirOriDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=stepping+type=trivial/inlet=RingIsend+outlet=RingIrecv_t::IriOriDuct"
-    "${CMAKE_SOURCE_DIR}/tests/uit/ducts/proc/put=dropping+get=stepping+type=trivial/pooled+inlet=RingIsend+outlet=Iprobe_t::PooledIriOiDuct"
-
-    )
-
-set(TEST_SOURCES
+set(NETUIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/CompleteTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/DyadicTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/LoopTopologyFactory.cpp
@@ -78,6 +25,8 @@ set(TEST_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoNodeInput.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoNodeOutput.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/Topology.cpp
+    )
+set(UIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uit/ducts/ducts/Duct.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/ducts/intra/accumulating+type=any/double/a::AccumulatingDuct.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/ducts/intra/accumulating+type=any/int/a::AccumulatingDuct.cpp
@@ -213,6 +162,8 @@ set(TEST_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/outlet/CachingOutletWrapper.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/wrappers/CachingSpoutWrapper.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/wrappers/TrivialSpoutWrapper.cpp
+    )
+set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/algorithm/get_plurality.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/algorithm/normalize.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/algorithm/upper_uniquify.cpp
@@ -294,18 +245,32 @@ set(TEST_SOURCES
 set(CATCH_BUILD_TESTING ON)
 set(BUILD_TESTING ON)
 
-add_executable(tests
+add_executable(test-uit
     main.cpp
-    ${TEST_SOURCES}
-)
+    ${UIT_SOURCES}
+    )
+add_executable(test-netuit
+    main.cpp
+    ${NETUIT_SOURCES}
+    )
+add_executable(test-uitsl
+    main.cpp
+    ${UITSL_SOURCES}
+    )
 
 
-add_custom_command(TARGET tests
+
+
+add_custom_command(TARGET test-uitsl
     POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E echo "Copying unit test data..."
+    COMMAND ${CMAKE_COMMAND} -E echo "Copying uitsl test data..."
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/uitsl/utility/assets ${CMAKE_BINARY_DIR}/tests/assets
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/uitsl/debug/assets ${CMAKE_BINARY_DIR}/tests/assets
+    )
 
+add_custom_command(TARGET test-netuit
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E echo "Copying netuit test data..."
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/netuit/arrange/scripts ${CMAKE_BINARY_DIR}/tests/scripts
 
     COMMAND ${CMAKE_COMMAND} -E echo "Executing python scripts..."
@@ -318,17 +283,16 @@ add_custom_command(TARGET tests
 
     )
 
-add_custom_command(TARGET tests
-    POST_BUILD
-    COMMAND /bin/python3
-    )
-
-target_link_libraries(tests Catch2::Catch2 conduit)
+target_link_libraries(test-uitsl Catch2::Catch2 conduit)
+target_link_libraries(test-netuit Catch2::Catch2 conduit)
+target_link_libraries(test-uit Catch2::Catch2 conduit)
 
 include(CatchInt.cmake)
-include(ParseAndAddCatchTests)
 
 set(OptionalCatchTestLauncher ${MPIEXEC} ${MPIEXEC_NUMPROC_FLAG} 2)
-catch_discover_tests(tests)
-#ParseAndAddCatchTests(tests)
+
+catch_discover_tests(test-uitsl)
+catch_discover_tests(test-netuit)
+catch_discover_tests(test-uit)
+
 unset(OptionalCatchTestLauncher)
