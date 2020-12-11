@@ -44,13 +44,15 @@ jobs:
     strategy:
       matrix:
         mpicxx: [mpich, openmpi]
-        mode: [ debug, fulldebug, opt ]
-    env:
-      UIT_MPICXX: mpicxx.${{ matrix.mpicxx }}
-      UIT_MPIEXEC: mpicxx.${{ matrix.mpicxx }}
+        mode: [ Debug, Opt ]
     steps:
       - uses: docker-practice/actions-setup-docker@v1
-      - run: docker run -e UIT_MPICXX=$UIT_MPICXX -e UIT_MPIEXEC=$UIT_MPIEXEC "mmore500/conduit:GITHUB_ACTION_${GITHUB_ACTION}" /bin/bash -c "cd /opt/conduit/tests/ && make ${{ matrix.mpicxx }}"
+      - run: docker run "mmore500/conduit:GITHUB_ACTION_${GITHUB_ACTION}" /bin/bash -c \
+        "cd /opt/conduit/tests/ && \
+        cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=${{ matrix.mpicxx }} && \
+        cmake --build build && \
+        cd build && \
+        ctest"
 
   coverage:
     name: Coverage
