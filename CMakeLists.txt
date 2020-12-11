@@ -10,10 +10,8 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 # required libraries
 find_package(benchmark REQUIRED)
 find_package(Threads REQUIRED)
-#set(MPI_EXECUTABLE_SUFFIX ".openmp")
 find_package(MPI REQUIRED)
 find_package(ZLIB REQUIRED)
-
 find_package(METIS)
 
 add_definitions(-DOMPI_SKIP_MPICXX)
@@ -22,14 +20,22 @@ add_definitions(-DOMPI_SKIP_MPICXX)
 include(CTest)
 enable_testing()
 
+
+set(CMAKE_CONFIGURATION_TYPES "Debug;Opt")
+set(CMAKE_CXX_FLAGS_DEBUG "-pipe -Wall -Wno-unused-function")
+set(CMAKE_CXX_FLAGS_OPT "-pipe -pthread -march=native -DNDEBUG -O3 -flto -Wno-unused-function -Wno-unused-value")
+#set(CMAKE_CXX_FLAGS "-pipe -Wall -Wno-unused-function -Wno-unused-lambda-capture")
+message("Generated with config types: ${CMAKE_CONFIGURATION_TYPES}")
 set(default_build_type "Debug")
+
+message("Building in ${CMAKE_BUILD_TYPE} mode.")
+
 set(THREADS_PREFER_PTHREAD_FLAG ON)
-set(CMAKE_CXX_FLAGS "-pipe -Wall -Wno-unused-function -Wno-unused-lambda-capture")
 set(CATCH_BUILD_TESTING ON)
 set(BUILD_TESTING ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-option (FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." FALSE)
+option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." TRUE)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
    add_compile_options (-fdiagnostics-color=always)
