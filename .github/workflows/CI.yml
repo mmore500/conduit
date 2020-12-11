@@ -49,7 +49,7 @@ jobs:
       - uses: docker-practice/actions-setup-docker@v1
       - run: >
           docker run "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
-          "cd /opt/conduit/tests/ &&
+          "cd /opt/conduit/ &&
           cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=${{ matrix.mpicxx }} &&
           cmake --build build &&
           cd build &&
