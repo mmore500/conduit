@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Generate dyadic graphs.
 
 This script makes use of NetworkX to generate

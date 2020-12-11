@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Generate toroidal graphs.
 
 This script makes use of NetworkX to generate
