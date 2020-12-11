@@ -47,12 +47,13 @@ jobs:
         mode: [ Debug, Opt ]
     steps:
       - uses: docker-practice/actions-setup-docker@v1
-      - run: docker run "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c \
-        "cd /opt/conduit/tests/ && \
-        cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=${{ matrix.mpicxx }} && \
-        cmake --build build && \
-        cd build && \
-        ctest"
+      - run: >
+          docker run "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
+          "cd /opt/conduit/tests/ &&
+          cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=${{ matrix.mpicxx }} &&
+          cmake --build build &&
+          cd build &&
+          ctest"
 
   coverage:
     name: Coverage
