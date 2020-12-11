@@ -1,7 +1,7 @@
 # Pull base image.
 FROM ubuntu:18.04
 
-COPY . /opt/conduit
+COPY . /opt/conduit/
 
 SHELL ["/bin/bash", "-c"]
 
@@ -70,17 +70,19 @@ RUN \
   echo "configured packaging system"
 
 RUN \
+  apt-get update -qq \
+    && \
   apt-get install -qq --no-install-recommends \
-    g++-8=8.4.0-1ubuntu1~18.04 \
-    libclang-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    llvm-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    llvm-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    clang-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    libstdc++-7-dev=7.5.0-3ubuntu1~18.04 \
-    build-essential=12.4ubuntu1 \
-    ninja-build=1.8.2-1 \
-    python-virtualenv=15.1.0+ds-1.1 \
-    python3-virtualenv=15.1.0+ds-1.1 \
+    g++-8 \
+    libclang-7-dev \
+    llvm-7 \
+    llvm-7-dev \
+    clang-7 \
+    libstdc++-7-dev \
+    build-essential \
+    ninja-build \
+    python-virtualenv \
+    python3-virtualenv \
     python-dev \
     python3-dev \
     python-pip \
@@ -90,9 +92,9 @@ RUN \
     python3-setuptools \
     python-wheel \
     python3-wheel \
-    libpthread-stubs0-dev=0.3-4 \
-    libc6-dbg=2.27-3ubuntu1.2 \
-    gdb=8.2-0ubuntu1~18.04 \
+    libpthread-stubs0-dev \
+    libc6-dbg \
+    gdb \
     && \
   apt-get clean \
     && \
@@ -140,45 +142,45 @@ RUN \
   apt-get update -qq \
     && \
   apt-get install -qq --no-install-recommends \
-    nodejs=8.10.0~dfsg-2ubuntu0.4 \
-    npm=3.5.2-0ubuntu4 \
-    gconf-service=3.2.6-4ubuntu1 \
-    libasound2=1.1.3-5ubuntu0.5 \
-    libatk1.0-0=2.28.1-1 \
-    libc6=2.27-3ubuntu1.2 \
-    libcairo2=1.15.10-2ubuntu0.1 \
-    libcups2=2.2.7-1ubuntu2.8 \
-    libdbus-1-3=1.12.2-1ubuntu1.2 \
-    libexpat1=2.2.5-3ubuntu0.2 \
-    libfontconfig1=2.12.6-0ubuntu2 \
-    libgcc1=1:10.1.0-2ubuntu1~18.04 \
-    libgconf-2-4=3.2.6-4ubuntu1 \
-    libgdk-pixbuf2.0-0=2.36.11-2 \
-    libglib2.0-0=2.56.4-0ubuntu0.18.04.6 \
-    libgtk-3-0=3.22.30-1ubuntu4 \
-    libnspr4=2:4.18-1ubuntu1 \
-    libpango-1.0-0=1.40.14-1ubuntu0.1 \
-    libpangocairo-1.0-0=1.40.14-1ubuntu0.1 \
-    libstdc++6=10.1.0-2ubuntu1~18.04 \
-    libx11-6=2:1.6.4-3ubuntu0.3 \
-    libx11-xcb1=2:1.6.4-3ubuntu0.3 \
-    libxcb1=1.13-2~ubuntu18.04 \
-    libxcomposite1=1:0.4.4-2 \
-    libxcursor1=1:1.1.15-1 \
-    libxdamage1=1:1.1.4-3 \
-    libxext6=2:1.3.3-1 \
-    libxfixes3=1:5.0.3-1 \
-    libxi6=2:1.7.9-1 \
-    libxrandr2=2:1.5.1-1 \
-    libxrender1=1:0.9.10-1 \
-    libxss1=1:1.2.2-1 \
-    libxtst6=2:1.2.3-1 \
+    nodejs \
+    npm \
+    gconf-service \
+    libasound2 \
+    libatk1.0-0 \
+    libc6 \
+    libcairo2 \
+    libcups2 \
+    libdbus-1-3 \
+    libexpat1 \
+    libfontconfig1 \
+    libgcc1 \
+    libgconf-2-4 \
+    libgdk-pixbuf2.0-0 \
+    libglib2.0-0 \
+    libgtk-3-0 \
+    libnspr4 \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libstdc++6 \
+    libx11-6 \
+    libx11-xcb1 \
+    libxcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxext6 \
+    libxfixes3 \
+    libxi6 \
+    libxrandr2 \
+    libxrender1 \
+    libxss1 \
+    libxtst6 \
     ca-certificates \
-    fonts-liberation=1:1.07.4-7~18.04.1 \
-    libappindicator1=12.10.1+18.04.20180322.1-0ubuntu1 \
-    libnss3=2:3.35-2ubuntu2.12 \
-    lsb-release=9.20170808ubuntu1 \
-    xdg-utils=1.1.2-1ubuntu2.3 \
+    fonts-liberation \
+    libappindicator1 \
+    libnss3 \
+    lsb-release \
+    xdg-utils \
     && \
   apt-get clean \
     && \
