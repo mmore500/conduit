@@ -14,7 +14,7 @@
 #include "uitsl/math/math_utils.hpp"
 #include "uitsl/utility/exec_utils.hpp"
 
-const std::string base_directory = "../../tests/netuit/arrange/assets/";
+const std::string base_directory = "assets/";
 
 using dim_t = emp::vector<size_t>;
 
@@ -127,6 +127,7 @@ bool test_edge_output(const Fun&& factory, const T dims) {
 
 template <typename Factory>
 bool test_all_adj(const Factory&& factory) {
+  std::cout << uitsl::exec("pwd") << std::endl;
   const emp::vector<dim_t> assets = find_assets(factory.GetSlug(), ".adj");
 
   // no matching assets found

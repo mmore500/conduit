@@ -15,16 +15,18 @@ set(NETUIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/AssignRoundRobin.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/AssignSegregated.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/GenerateMetisAssignments.cpp
-    ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/Mesh.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshNode.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshNodeInput.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshNodeOutput.cpp
-    ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshTopology.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoEdge.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoNode.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoNodeInput.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoNodeOutput.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/Topology.cpp
+    )
+set(NETUIT_UNIPROC_SOURCES
+    ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/Mesh.cpp
+    ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshTopology.cpp
     )
 set(UIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uit/ducts/ducts/Duct.cpp
@@ -253,13 +255,14 @@ add_executable(test-netuit
     main.cpp
     ${NETUIT_SOURCES}
     )
+add_executable(test-uniproc
+    main.cpp
+    ${NETUIT_UNIPROC_SOURCES}
+)
 add_executable(test-uitsl
     main.cpp
     ${UITSL_SOURCES}
     )
-
-
-
 
 add_custom_command(TARGET test-uitsl
     POST_BUILD
@@ -274,12 +277,15 @@ add_custom_command(TARGET test-netuit
     COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_HOME_DIRECTORY}/tests/netuit/arrange/scripts ${CMAKE_BINARY_DIR}/tests/scripts
 
     COMMAND ${CMAKE_COMMAND} -E echo "Executing python scripts..."
-#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_complete.py
-#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_dyadic.py
-#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_loop.py
-#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_procon.py
-#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_ring.py
-#    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_toroidal.py
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/tests/assets
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/tests/staging/assets
+
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_complete.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_dyadic.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_loop.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_procon.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_ring.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_toroidal.py
 
     )
 
@@ -296,3 +302,8 @@ catch_discover_tests(test-netuit)
 catch_discover_tests(test-uit)
 
 unset(OptionalCatchTestLauncher)
+
+set(OptionalCatchTestLauncher ${MPIEXEC} ${MPIEXEC_NUMPROC_FLAG} 1)
+catch_discover_tests(test-uniproc)
+unset(OptionalCatchTestLauncher)
+
