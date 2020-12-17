@@ -1,4 +1,3 @@
-find_package(Catch2 REQUIRED)
 
 set(NETUIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/CompleteTopologyFactory.cpp

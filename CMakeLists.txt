@@ -12,6 +12,7 @@ find_package(benchmark REQUIRED)
 find_package(Threads REQUIRED)
 find_package(MPI REQUIRED)
 find_package(ZLIB REQUIRED)
+find_package(Catch2 REQUIRED)
 find_package(METIS)
 
 add_definitions(-DOMPI_SKIP_MPICXX)
