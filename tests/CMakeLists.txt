@@ -1,3 +1,4 @@
+find_package(Catch2 REQUIRED)
 
 set(NETUIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/CompleteTopologyFactory.cpp
@@ -291,6 +292,7 @@ add_custom_command(TARGET test-netuit
 target_link_libraries(test-uitsl Catch2::Catch2 conduit)
 target_link_libraries(test-netuit Catch2::Catch2 conduit)
 target_link_libraries(test-uit Catch2::Catch2 conduit)
+target_link_libraries(test-uniproc Catch2::Catch2 conduit)
 
 include(CatchInt.cmake)
 
