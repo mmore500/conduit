@@ -21,6 +21,7 @@ namespace uitsl {
 
 /*
  * Fetch data from a url to a temporary file, return temporary file path.
+ * Requires -lcurl.
  * Adapted from https://stackoverflow.com/a/21573625.
  */
 std::filesystem::path fetch_native( const std::string& url ) {

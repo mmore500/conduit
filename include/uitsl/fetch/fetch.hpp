@@ -17,7 +17,10 @@
 namespace uitsl {
 
 /*
- * TODO
+ * Synchronously fetch data from a url to a temporary file,
+ * return temporary file path. Works natively and with Emscripten.
+ * Requires -lcurl when compiling for native. Requires `xmlhttprequest` when
+ * running with Node.js.
  */
 std::filesystem::path fetch( const std::string& url ) {
   #ifdef __EMSCRIPTEN__
