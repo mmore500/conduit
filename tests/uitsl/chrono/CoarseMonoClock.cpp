@@ -11,7 +11,7 @@ using mytimer_t = uitsl::Timer<
 >;
 using bar_t = uitsl::ProgressBar<mytimer_t>;
 
-TEST_CASE("Test CoarseMonoClock")
+TEST_CASE("Test CoarseMonoClock", "[nproc:1]")
 {
 
   uitsl::CoarseMonoClock{};

@@ -14,7 +14,7 @@ TEST_CASE("Test sum") {
 }
 
 
-TEST_CASE("Test mod") {
+TEST_CASE("Test mod", "[nproc:1]") {
 
   REQUIRE( uitsl::mod(-11, 10) == 9 );
   REQUIRE( uitsl::mod(-10, 10) == 0 );
@@ -37,7 +37,7 @@ TEST_CASE("Test mod") {
 
 }
 
-TEST_CASE("Test uitsl::circular_index") {
+TEST_CASE("Test uitsl::circular_index", "[nproc:1]") {
 
   REQUIRE( uitsl::circular_index(0, 10, 0) == 0 );
 
@@ -63,7 +63,7 @@ TEST_CASE("Test uitsl::circular_index") {
 
 }
 
-TEST_CASE("Test stoszt") {
+TEST_CASE("Test stoszt", "[nproc:1]") {
 
   REQUIRE( uitsl::stoszt("0") == 0 );
 
@@ -77,7 +77,7 @@ TEST_CASE("Test stoszt") {
 
 }
 
-TEST_CASE("Test is_power_of_two") {
+TEST_CASE("Test is_power_of_two", "[nproc:1]") {
 
   // int
   REQUIRE( !uitsl::is_power_of_two(-65538) );
@@ -150,7 +150,7 @@ TEST_CASE("Test is_power_of_two") {
 
 }
 
-TEST_CASE("Test num_bits") {
+TEST_CASE("Test num_bits", "[nproc:1]") {
 
   // int
   REQUIRE( uitsl::num_bits(-65538) == 17 );
@@ -221,7 +221,7 @@ TEST_CASE("Test num_bits") {
 
 }
 
-TEST_CASE("test_bit") {
+TEST_CASE("test_bit", "[nproc:1]") {
 
   // int
   REQUIRE( uitsl::test_bit(-8, 8) == 0 );
@@ -280,7 +280,7 @@ TEST_CASE("test_bit") {
 
 }
 
-TEST_CASE("difference") {
+TEST_CASE("difference", "[nproc:1]") {
 
   REQUIRE(uitsl::difference(3,8) == 5);
   REQUIRE(uitsl::difference(12,8) == 4);
@@ -296,7 +296,7 @@ TEST_CASE("difference") {
 
 }
 
-TEST_CASE("sidebyside_hash") {
+TEST_CASE("sidebyside_hash", "[nproc:1]") {
 
   std::unordered_set<size_t> results;
 

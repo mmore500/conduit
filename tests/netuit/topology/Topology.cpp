@@ -8,14 +8,14 @@
 #include "netuit/arrange/ToroidalTopologyFactory.hpp"
 #include "netuit/topology/Topology.hpp"
 
-TEST_CASE("Test Topology") {
+TEST_CASE("Test Topology", "[nproc:1]") {
 
   // TODO flesh out stub test
   netuit::Topology{};
 
 }
 
-TEST_CASE("Test AsCSR Null Topology") {
+TEST_CASE("Test AsCSR Null Topology", "[nproc:1]") {
 
   netuit::Topology topology{};
   const auto [x_adj, adjacency] = topology.AsCSR();
@@ -25,7 +25,7 @@ TEST_CASE("Test AsCSR Null Topology") {
 
 }
 
-TEST_CASE("Test AsCSR CompleteTopologyFactory") {
+TEST_CASE("Test AsCSR CompleteTopologyFactory", "[nproc:1]") {
 
   netuit::Topology topology = netuit::make_complete_topology( 3 );
   const auto [x_adj, adjacency] = topology.AsCSR();
@@ -36,7 +36,7 @@ TEST_CASE("Test AsCSR CompleteTopologyFactory") {
 
 }
 
-TEST_CASE("Test AsCSR DyadicTopologyFactory") {
+TEST_CASE("Test AsCSR DyadicTopologyFactory", "[nproc:1]") {
 
   netuit::Topology topology = netuit::make_dyadic_topology( 3 );
   const auto [x_adj, adjacency] = topology.AsCSR();
@@ -47,7 +47,7 @@ TEST_CASE("Test AsCSR DyadicTopologyFactory") {
 
 }
 
-TEST_CASE("Test AsCSR Empty Topology") {
+TEST_CASE("Test AsCSR Empty Topology", "[nproc:1]") {
 
   netuit::Topology topology = netuit::make_empty_topology( 3 );
   const auto [x_adj, adjacency] = topology.AsCSR();
@@ -57,7 +57,7 @@ TEST_CASE("Test AsCSR Empty Topology") {
 
 }
 
-TEST_CASE("Test AsCSR ToroidalTopologyFactory") {
+TEST_CASE("Test AsCSR ToroidalTopologyFactory", "[nproc:1]") {
 
   netuit::Topology topology = netuit::make_toroidal_topology( {3, 3} );
   const auto [x_adj, adjacency] = topology.AsCSR();
@@ -84,7 +84,7 @@ TEST_CASE("Test AsCSR ToroidalTopologyFactory") {
 
 }
 
-TEST_CASE("Test trivial Subtopology, ToroidalTopologyFactory") {
+TEST_CASE("Test trivial Subtopology, ToroidalTopologyFactory", "[nproc:1]") {
 
   netuit::Topology topology = netuit::make_toroidal_topology( {3, 3} );
   netuit::Topology subtopo = topology.GetSubTopology(
@@ -114,7 +114,7 @@ TEST_CASE("Test trivial Subtopology, ToroidalTopologyFactory") {
 
 }
 
-TEST_CASE("Test Subtopology, ToroidalTopologyFactory") {
+TEST_CASE("Test Subtopology, ToroidalTopologyFactory", "[nproc:1]") {
 
   netuit::Topology topology = netuit::make_toroidal_topology( {3, 3} );
   netuit::Topology subtopo = topology.GetSubTopology({0, 1, 2, 3, 4, 5});

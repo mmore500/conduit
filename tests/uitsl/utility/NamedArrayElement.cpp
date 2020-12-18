@@ -25,7 +25,7 @@ struct NamedArray {
 
 };
 
-TEST_CASE("NamedArrayElement") {
+TEST_CASE("NamedArrayElement", "[nproc:1]") {
 
   NamedArray arr;
 

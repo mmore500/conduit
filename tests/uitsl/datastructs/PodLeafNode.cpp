@@ -2,7 +2,7 @@
 
 #include "uitsl/datastructs/PodLeafNode.hpp"
 
-TEST_CASE("Test PodLeafNode") {
+TEST_CASE("Test PodLeafNode", "[nproc:1]") {
 
   // TODO expand stub test
   uitsl::PodLeafNode<char, 2>{};

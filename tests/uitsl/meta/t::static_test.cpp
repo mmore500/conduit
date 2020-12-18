@@ -8,7 +8,7 @@
 
 #include "uitsl/meta/t::static_test.hpp"
 
-TEST_CASE("Test t::static_test") {
+TEST_CASE("Test t::static_test", "[nproc:1]") {
   SECTION("Test valid types") {
 
     REQUIRE( uitsl::t::static_test<std::array<double, 3>>() );

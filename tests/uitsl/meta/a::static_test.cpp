@@ -8,7 +8,7 @@
 
 #include "uitsl/meta/a::static_test.hpp"
 
-TEST_CASE("Test good types") {
+TEST_CASE("Test good types", "[nproc:1]") {
 
   REQUIRE( uitsl::a::static_test<double>() );
 
@@ -25,7 +25,7 @@ TEST_CASE("Test good types") {
 
 }
 
-TEST_CASE("Test bad types") {
+TEST_CASE("Test bad types", "[nproc:1]") {
 
   REQUIRE( uitsl::a::static_test<std::unique_ptr<int>>() );
 

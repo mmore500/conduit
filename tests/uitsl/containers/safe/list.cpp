@@ -4,7 +4,7 @@
 
 #include "uitsl/containers/safe/list.hpp"
 
-TEST_CASE("test list") {
+TEST_CASE("test list", "[nproc:1]") {
 
   // TODO expand stub test
   uitsl::safe::list<std::string> list;

@@ -3,7 +3,7 @@
 #include "uitsl/debug/compare_files.hpp"
 #include "uitsl/utility/untar.hpp"
 
-TEST_CASE("untar file") {
+TEST_CASE("untar file", "[nproc:1]") {
 
   REQUIRE( uitsl::untar( "assets/rick.tar" ) );
 
@@ -11,7 +11,7 @@ TEST_CASE("untar file") {
 
 }
 
-TEST_CASE("untar nested directory") {
+TEST_CASE("untar nested directory", "[nproc:1]") {
 
   REQUIRE( uitsl::untar( "assets/nested.tar" ) );
 
@@ -21,7 +21,7 @@ TEST_CASE("untar nested directory") {
 
 }
 
-TEST_CASE("untar empty directory") {
+TEST_CASE("untar empty directory", "[nproc:1]") {
 
   REQUIRE( uitsl::untar( "assets/empty.tar" ) );
 
@@ -29,7 +29,7 @@ TEST_CASE("untar empty directory") {
 
 }
 
-TEST_CASE("untar long filename") {
+TEST_CASE("untar long filename", "[nproc:1]") {
 
   REQUIRE( uitsl::untar( "assets/jabberwocky.tar" ) );
 
@@ -40,7 +40,7 @@ TEST_CASE("untar long filename") {
 
 }
 
-TEST_CASE("untar long filename and long directory name") {
+TEST_CASE("untar long filename and long directory name", "[nproc:1]") {
 
   REQUIRE( uitsl::untar( "assets/zen.tar" ) );
 

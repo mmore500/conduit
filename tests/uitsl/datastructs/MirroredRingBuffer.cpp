@@ -5,7 +5,7 @@
 
 #include "uitsl/datastructs/MirroredRingBuffer.hpp"
 
-TEST_CASE("Test MirroredRingBuffer") {
+TEST_CASE("Test MirroredRingBuffer", "[nproc:1]") {
 
   constexpr size_t buff_size{ 10 };
   uitsl::MirroredRingBuffer<size_t, buff_size> buff;

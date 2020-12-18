@@ -11,7 +11,7 @@ using mytimer_t = uitsl::Timer<
 >;
 using bar_t = uitsl::ProgressBar<mytimer_t>;
 
-TEST_CASE("Test RawCycleClock")
+TEST_CASE("Test RawCycleClock", "[nproc:1]")
 {
 
   uitsl::RawCycleClock{};

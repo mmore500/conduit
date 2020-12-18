@@ -3,7 +3,7 @@
 
 #include "uitsl/math/mapping_utils.hpp"
 
-TEST_CASE("Test linear encoder/decoder") {
+TEST_CASE("Test linear encoder/decoder", "[nproc:1]") {
     const size_t a = 9;
     const size_t b = 7;
     const size_t c = 2;

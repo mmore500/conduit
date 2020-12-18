@@ -2,7 +2,7 @@
 
 #include "netuit/topology/TopoNode.hpp"
 
-TEST_CASE("Test TopoNode") {
+TEST_CASE("Test TopoNode", "[nproc:1]") {
 
   // TODO flesh out stub test
   netuit::TopoNode{{},{}};

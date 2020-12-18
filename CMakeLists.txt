@@ -4,8 +4,7 @@ project(conduit VERSION 0.1.0
         DESCRIPTION ""
         LANGUAGES CXX
 )
-
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
 
 # required libraries
 find_package(benchmark REQUIRED)
@@ -73,4 +72,3 @@ set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 
 include(CPack)
-partclone

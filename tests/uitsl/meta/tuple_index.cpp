@@ -5,7 +5,7 @@
 
 #include "uitsl/meta/tuple_index.hpp"
 
-TEST_CASE("Test tuple_index") {
+TEST_CASE("Test tuple_index", "[nproc:1]") {
 
   using target = std::tuple<int, double, std::string, int>;
 

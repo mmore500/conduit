@@ -3,7 +3,7 @@
 #include "uitsl/chrono/cycle_freq.hpp"
 #include "uitsl/math/ratio_to_double.hpp"
 
-TEST_CASE("Test measure_cycle_freq") {
+TEST_CASE("Test measure_cycle_freq", "[nproc:1]") {
 
   REQUIRE(
     uitsl::measure_cycle_freq() < uitsl::ratio_to_double<std::kilo>()
@@ -14,7 +14,7 @@ TEST_CASE("Test measure_cycle_freq") {
 
 }
 
-TEST_CASE("Test estimate_cycle_freq") {
+TEST_CASE("Test estimate_cycle_freq", "[nproc:1]") {
 
   REQUIRE(
     uitsl::measure_cycle_freq() / uitsl::estimate_cycle_freq()
@@ -36,7 +36,7 @@ TEST_CASE("Test estimate_cycle_freq") {
 
 }
 
-TEST_CASE("Test get_cycle_freq") {
+TEST_CASE("Test get_cycle_freq", "[nproc:1]") {
 
   REQUIRE( uitsl::get_cycle_freq() == uitsl::get_cycle_freq() );
 

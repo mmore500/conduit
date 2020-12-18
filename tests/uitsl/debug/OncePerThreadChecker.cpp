@@ -2,7 +2,7 @@
 
 #include "uitsl/debug/OncePerThreadChecker.hpp"
 
-TEST_CASE("OncePerThreadChecker") {
+TEST_CASE("OncePerThreadChecker", "[nproc:1]") {
 
   // TODO expand stub test
   uitsl::OncePerThreadChecker checker;

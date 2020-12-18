@@ -5,7 +5,7 @@
 #include "netuit/arrange/RingTopologyFactory.hpp"
 #include "netuit/mesh/MeshTopology.hpp"
 
-TEST_CASE("Test MeshTopology") {
+TEST_CASE("Test MeshTopology", "[nproc:1]") {
 
   // TODO flesh out stub test
   using Spec = uit::ImplSpec<char>;

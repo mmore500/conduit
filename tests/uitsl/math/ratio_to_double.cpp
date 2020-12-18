@@ -5,7 +5,7 @@
 
 #include "uitsl/math/ratio_to_double.hpp"
 
-TEST_CASE("Test ratio_to_double") {
+TEST_CASE("Test ratio_to_double", "[nproc:1]") {
 
   REQUIRE( uitsl::ratio_to_double<std::deca>() == 10.0 );
   REQUIRE( uitsl::ratio_to_double<std::ratio<1>>() == 1.0 );
@@ -13,7 +13,7 @@ TEST_CASE("Test ratio_to_double") {
 
 }
 
-TEST_CASE("Test as_double") {
+TEST_CASE("Test as_double", "[nproc:1]") {
 
   REQUIRE(
     uitsl::as_double<std::deca>() == uitsl::ratio_to_double<std::deca>()

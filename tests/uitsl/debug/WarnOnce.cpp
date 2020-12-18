@@ -2,7 +2,7 @@
 
 #include "uitsl/debug/WarnOnce.hpp"
 
-TEST_CASE("WarnOnce") {
+TEST_CASE("WarnOnce", "[nproc:1]") {
 
   static const uitsl::WarnOnce warning{"howdy"};
 

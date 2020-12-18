@@ -15,7 +15,7 @@ using mytimer_t = uitsl::Timer<
 >;
 using bar_t = uitsl::ProgressBar<mytimer_t>;
 
-TEST_CASE("Test SplitWatch")
+TEST_CASE("Test SplitWatch", "[nproc:1]")
 {
 
   uitsl::SplitWatch<uitsl::CycleClock> watch;

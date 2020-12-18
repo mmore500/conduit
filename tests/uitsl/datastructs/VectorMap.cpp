@@ -4,7 +4,7 @@
 
 #include "uitsl/datastructs/VectorMap.hpp"
 
-TEST_CASE("VectorMap") {
+TEST_CASE("VectorMap", "[nproc:1]") {
 
   uitsl::VectorMap<size_t, std::string> map;
 

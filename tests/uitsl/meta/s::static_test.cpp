@@ -8,7 +8,7 @@
 
 #include "uitsl/meta/s::static_test.hpp"
 
-TEST_CASE("Testr s::static_test") {
+TEST_CASE("Testr s::static_test", "[nproc:1]") {
   SECTION("Test valid types") {
 
     REQUIRE( uitsl::s::static_test<std::vector<int>>() );

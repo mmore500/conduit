@@ -5,7 +5,7 @@
 
 #include "uitsl/algorithm/clamp_cast.hpp"
 
-TEST_CASE("Test clamp_cast no overflow") {
+TEST_CASE("Test clamp_cast no overflow", "[nproc:1]") {
 
   REQUIRE( uitsl::clamp_cast<int>( 0.1 ) == 0 );
   REQUIRE( uitsl::clamp_cast<int>( -10.0 ) == -10 );
@@ -13,7 +13,7 @@ TEST_CASE("Test clamp_cast no overflow") {
 
 }
 
-TEST_CASE("Test clamp_cast with finite overflow") {
+TEST_CASE("Test clamp_cast with finite overflow", "[nproc:1]") {
 
   REQUIRE( uitsl::clamp_cast<int>(
     static_cast<double>( std::numeric_limits<int>::max() ) * 2
@@ -24,7 +24,7 @@ TEST_CASE("Test clamp_cast with finite overflow") {
 
 }
 
-TEST_CASE("Test clamp_cast with infinite overflow") {
+TEST_CASE("Test clamp_cast with infinite overflow", "[nproc:1]") {
 
   REQUIRE( uitsl::clamp_cast<int>(
     std::numeric_limits<double>::infinity()
@@ -35,7 +35,7 @@ TEST_CASE("Test clamp_cast with infinite overflow") {
 
 }
 
-TEST_CASE("Test clamp_cast with nan") {
+TEST_CASE("Test clamp_cast with nan", "[nproc:1]") {
 
   REQUIRE( uitsl::clamp_cast<int>(
     std::numeric_limits<double>::quiet_NaN()

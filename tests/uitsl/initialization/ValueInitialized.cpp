@@ -2,7 +2,7 @@
 
 #include "uitsl/initialization/ValueInitialized.hpp"
 
-TEST_CASE("Test ValueInitialized") {
+TEST_CASE("Test ValueInitialized", "[nproc:1]") {
 
   uitsl::ValueInitialized<int> val1;
   REQUIRE( val1 == 0 );

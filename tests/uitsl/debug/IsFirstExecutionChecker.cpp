@@ -2,7 +2,7 @@
 
 #include "uitsl/debug/IsFirstExecutionChecker.hpp"
 
-TEST_CASE("IsFirstExecutionChecker") {
+TEST_CASE("IsFirstExecutionChecker", "[nproc:1]") {
 
   uitsl::IsFirstExecutionChecker checker;
   checker.Check();

@@ -4,7 +4,7 @@
 
 #include "uitsl/debug/compare_streams.hpp"
 
-TEST_CASE("compare_streams same") {
+TEST_CASE("compare_streams same", "[nproc:1]") {
 
   std::stringstream first;
   std::stringstream second;
@@ -16,7 +16,7 @@ TEST_CASE("compare_streams same") {
 
 }
 
-TEST_CASE("compare_streams different content") {
+TEST_CASE("compare_streams different content", "[nproc:1]") {
 
   std::stringstream first;
   std::stringstream second;
@@ -28,7 +28,7 @@ TEST_CASE("compare_streams different content") {
 
 }
 
-TEST_CASE("compare_streams different lengths") {
+TEST_CASE("compare_streams different lengths", "[nproc:1]") {
 
   std::stringstream first;
   std::stringstream second;

@@ -5,7 +5,7 @@
 
 #include "netuit/mesh/MeshNodeOutput.hpp"
 
-TEST_CASE("Test MeshNodeOutput") {
+TEST_CASE("Test MeshNodeOutput", "[nproc:1]") {
 
   // TODO flesh out stub test
   using Spec = uit::ImplSpec<char>;

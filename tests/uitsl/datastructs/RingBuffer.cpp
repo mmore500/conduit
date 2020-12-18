@@ -5,7 +5,7 @@
 
 #include "uitsl/datastructs/RingBuffer.hpp"
 
-TEST_CASE("Test RingBuffer") {
+TEST_CASE("Test RingBuffer", "[nproc:1]") {
 
   constexpr size_t buff_size{ 10 };
   uitsl::RingBuffer<size_t, buff_size> buff;

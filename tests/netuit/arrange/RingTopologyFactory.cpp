@@ -4,7 +4,7 @@
 
 #include "NetworkXTester.hpp"
 
-TEST_CASE("Test RingTopologyFactory") {
+TEST_CASE("Test RingTopologyFactory", "[nproc:1]") {
 
   // TODO flesh out stub test
   netuit::RingTopologyFactory{}(100);

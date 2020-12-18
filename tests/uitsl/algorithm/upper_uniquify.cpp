@@ -4,7 +4,7 @@
 
 #include "uitsl/algorithm/upper_uniquify.hpp"
 
-TEST_CASE("Test upper_uniquify")
+TEST_CASE("Test upper_uniquify", "[nproc:1]")
 {
 
   std::multimap<int, int> target{

@@ -43,7 +43,7 @@ class ThreeHolder {
 
 };
 
-TEST_CASE("Test Curry just typenames") {
+TEST_CASE("Test Curry just typenames", "[nproc:1]") {
 
   CountUpA::ResetCount();
   CountUpB::ResetCount();
@@ -97,7 +97,7 @@ struct TripleHolder {
 };
 
 
-TEST_CASE("Test Curry just types") {
+TEST_CASE("Test Curry just types", "[nproc:1]") {
 
   uitsl::CurryValues<
     DoubleHolder,
@@ -132,7 +132,7 @@ struct MixedHolderTypeTemplate : public MixedHolder<
   Ntype{}()
 > {};
 
-TEST_CASE("Test Curry mixed") {
+TEST_CASE("Test Curry mixed", "[nproc:1]") {
 
   CountUpA::ResetCount();
   CountUpB::ResetCount();

@@ -5,7 +5,7 @@
 #include "uitsl/debug/safe_compare.hpp"
 
 
-TEST_CASE("Test safe_less<signed, signed>") {
+TEST_CASE("Test safe_less<signed, signed>", "[nproc:1]") {
 
   // shorts
   for (short i = -100; i < 100; ++i) {
@@ -31,7 +31,7 @@ TEST_CASE("Test safe_less<signed, signed>") {
 
 }
 
-TEST_CASE("Test safe_less<unsigned, unsigned>") {
+TEST_CASE("Test safe_less<unsigned, unsigned>", "[nproc:1]") {
 
   // big size_t
   for (
@@ -71,7 +71,7 @@ TEST_CASE("Test safe_less<unsigned, unsigned>") {
 
 }
 
-TEST_CASE("Test safe_less<signed, unsigned>") {
+TEST_CASE("Test safe_less<signed, unsigned>", "[nproc:1]") {
 
   REQUIRE( uitsl::safe_less( (short) -1, (size_t) 0) );
   REQUIRE( uitsl::safe_less( (int) -1, (size_t) 0) );
@@ -89,7 +89,7 @@ TEST_CASE("Test safe_less<signed, unsigned>") {
 
 }
 
-TEST_CASE("Test safe_less<unsigned, signed>") {
+TEST_CASE("Test safe_less<unsigned, signed>", "[nproc:1]") {
 
   REQUIRE( !uitsl::safe_less( (size_t) 0, (short) -1) );
   REQUIRE( !uitsl::safe_less( (size_t) 0, (int) -1) );
@@ -106,7 +106,7 @@ TEST_CASE("Test safe_less<unsigned, signed>") {
 
 }
 
-TEST_CASE("Test safe_greater<signed, signed>") {
+TEST_CASE("Test safe_greater<signed, signed>", "[nproc:1]") {
 
   // shorts
   for (short i = -100; i < 100; ++i) {
@@ -132,7 +132,7 @@ TEST_CASE("Test safe_greater<signed, signed>") {
 
 }
 
-TEST_CASE("Test safe_greater<unsigned, unsigned>") {
+TEST_CASE("Test safe_greater<unsigned, unsigned>", "[nproc:1]") {
 
   // big size_t
   for (
@@ -172,7 +172,7 @@ TEST_CASE("Test safe_greater<unsigned, unsigned>") {
 
 }
 
-TEST_CASE("Test safe_greater<signed, unsigned>") {
+TEST_CASE("Test safe_greater<signed, unsigned>", "[nproc:1]") {
 
   REQUIRE( !uitsl::safe_greater( (short) -1, (size_t) 0) );
   REQUIRE( !uitsl::safe_greater( (int) -1, (size_t) 0) );
@@ -190,7 +190,7 @@ TEST_CASE("Test safe_greater<signed, unsigned>") {
 
 }
 
-TEST_CASE("Test safe_greater<unsigned, signed>") {
+TEST_CASE("Test safe_greater<unsigned, signed>", "[nproc:1]") {
 
   REQUIRE( uitsl::safe_greater( (size_t) 0, (short) -1) );
   REQUIRE( uitsl::safe_greater( (size_t) 0, (int) -1) );
@@ -207,7 +207,7 @@ TEST_CASE("Test safe_greater<unsigned, signed>") {
 
 }
 
-TEST_CASE("Test safe_equal<signed, signed>") {
+TEST_CASE("Test safe_equal<signed, signed>", "[nproc:1]") {
 
   // shorts
   for (short i = -100; i < 100; ++i) {
@@ -233,7 +233,7 @@ TEST_CASE("Test safe_equal<signed, signed>") {
 
 }
 
-TEST_CASE("Test safe_equal<unsigned, unsigned>") {
+TEST_CASE("Test safe_equal<unsigned, unsigned>", "[nproc:1]") {
 
   REQUIRE(
     !uitsl::safe_equal( (unsigned int) -1, (unsigned short) -1)
@@ -280,7 +280,7 @@ TEST_CASE("Test safe_equal<unsigned, unsigned>") {
 
 }
 
-TEST_CASE("Test safe_equal<signed, unsigned>") {
+TEST_CASE("Test safe_equal<signed, unsigned>", "[nproc:1]") {
 
   REQUIRE(
     uitsl::safe_equal( (int) -1, (short) -1)
@@ -318,7 +318,7 @@ TEST_CASE("Test safe_equal<signed, unsigned>") {
 
 }
 
-TEST_CASE("Test safe_equal<unsigned, signed>") {
+TEST_CASE("Test safe_equal<unsigned, signed>", "[nproc:1]") {
 
   REQUIRE(
     !uitsl::safe_equal( std::numeric_limits<unsigned short>::max(), (short) -1)

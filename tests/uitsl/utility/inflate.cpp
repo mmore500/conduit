@@ -3,7 +3,7 @@
 #include "uitsl/debug/compare_files.hpp"
 #include "uitsl/utility/inflate.hpp"
 
-TEST_CASE("inflate empty.tar.gz") {
+TEST_CASE("inflate empty.tar.gz", "[nproc:1]") {
 
   const auto temp_path{ uitsl::inflate( "assets/empty.tar.gz" ) };
 
@@ -11,7 +11,7 @@ TEST_CASE("inflate empty.tar.gz") {
 
 }
 
-TEST_CASE("inflate jabberwocky.tar.gz") {
+TEST_CASE("inflate jabberwocky.tar.gz", "[nproc:1]") {
 
   const auto temp_path{ uitsl::inflate( "assets/jabberwocky.tar.gz" ) };
 
@@ -19,7 +19,7 @@ TEST_CASE("inflate jabberwocky.tar.gz") {
 
 }
 
-TEST_CASE("inflate nested.tar.gz") {
+TEST_CASE("inflate nested.tar.gz", "[nproc:1]") {
 
   const auto temp_path{ uitsl::inflate( "assets/nested.tar.gz" ) };
 
@@ -27,7 +27,7 @@ TEST_CASE("inflate nested.tar.gz") {
 
 }
 
-TEST_CASE("inflate rick.tar.gz") {
+TEST_CASE("inflate rick.tar.gz", "[nproc:1]") {
 
   const auto temp_path{ uitsl::inflate( "assets/rick.tar.gz" ) };
 
@@ -35,7 +35,7 @@ TEST_CASE("inflate rick.tar.gz") {
 
 }
 
-TEST_CASE("inflate twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son.gz") {
+TEST_CASE("inflate twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son.gz", "[nproc:1]") {
 
   const auto temp_path{ uitsl::inflate( "assets/twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son.gz" ) };
 
@@ -43,7 +43,7 @@ TEST_CASE("inflate twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-
 
 }
 
-TEST_CASE("inflate zen.tar.gz") {
+TEST_CASE("inflate zen.tar.gz", "[nproc:1]") {
 
   const auto temp_path{ uitsl::inflate( "assets/zen.tar.gz" ) };
 

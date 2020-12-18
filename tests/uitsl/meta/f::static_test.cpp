@@ -8,7 +8,7 @@
 
 #include "uitsl/meta/f::static_test.hpp"
 
-TEST_CASE("Test f::static_test") {
+TEST_CASE("Test f::static_test", "[nproc:1]") {
   SECTION("Test valid types") {
 
     REQUIRE( uitsl::f::static_test<int>() );
@@ -17,7 +17,7 @@ TEST_CASE("Test f::static_test") {
 
   }
 
-  SECTION("Test invalid types") {
+  SECTION("Test invalid types", "[nproc:1]") {
 
     REQUIRE( !uitsl::f::static_test<std::vector<int>>() );
 

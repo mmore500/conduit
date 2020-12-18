@@ -2,7 +2,7 @@
 
 #include "netuit/topology/TopoEdge.hpp"
 
-TEST_CASE("Test TopoEdge") {
+TEST_CASE("Test TopoEdge", "[nproc:1]") {
 
   // TODO flesh out stub test
   netuit::TopoEdge{0};

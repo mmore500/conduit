@@ -15,18 +15,16 @@ set(NETUIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/AssignRoundRobin.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/AssignSegregated.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/GenerateMetisAssignments.cpp
+    ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/Mesh.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshNode.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshNodeInput.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshNodeOutput.cpp
+    ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshTopology.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoEdge.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoNode.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoNodeInput.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/TopoNodeOutput.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/topology/Topology.cpp
-    )
-set(NETUIT_UNIPROC_SOURCES
-    ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/Mesh.cpp
-    ${CMAKE_SOURCE_DIR}/tests/netuit/mesh/MeshTopology.cpp
     )
 set(UIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uit/ducts/ducts/Duct.cpp
@@ -255,10 +253,6 @@ add_executable(test-netuit
     main.cpp
     ${NETUIT_SOURCES}
     )
-add_executable(test-uniproc
-    main.cpp
-    ${NETUIT_UNIPROC_SOURCES}
-)
 add_executable(test-uitsl
     main.cpp
     ${UITSL_SOURCES}
@@ -292,19 +286,10 @@ add_custom_command(TARGET test-netuit
 target_link_libraries(test-uitsl Catch2::Catch2 conduit)
 target_link_libraries(test-netuit Catch2::Catch2 conduit)
 target_link_libraries(test-uit Catch2::Catch2 conduit)
-target_link_libraries(test-uniproc Catch2::Catch2 conduit)
 
-include(CatchInt.cmake)
+include("../cmake/NProcMultiplexer.cmake")
 
-set(OptionalCatchTestLauncher ${MPIEXEC} ${MPIEXEC_NUMPROC_FLAG} 2)
-
-catch_discover_tests(test-uitsl)
-catch_discover_tests(test-netuit)
-catch_discover_tests(test-uit)
-
-unset(OptionalCatchTestLauncher)
-
-set(OptionalCatchTestLauncher ${MPIEXEC} ${MPIEXEC_NUMPROC_FLAG} 1)
-catch_discover_tests(test-uniproc)
-unset(OptionalCatchTestLauncher)
+nproc_multiplex_tests(test-uitsl)
+nproc_multiplex_tests(test-uit)
+nproc_multiplex_tests(test-netuit)
 

@@ -4,7 +4,7 @@
 
 #include "uitsl/containers/safe/deque.hpp"
 
-TEST_CASE("deque") {
+TEST_CASE("deque", "[nproc:1]") {
 
   // TODO expand stub test
   uitsl::safe::deque<std::string> deque;

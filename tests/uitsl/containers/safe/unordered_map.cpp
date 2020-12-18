@@ -4,7 +4,7 @@
 
 #include "uitsl/containers/safe/unordered_map.hpp"
 
-TEST_CASE("unordered_map") {
+TEST_CASE("unordered_map", "[nproc:1]") {
 
   // TODO expand stub test
   uitsl::safe::unordered_map<std::string, size_t> map;

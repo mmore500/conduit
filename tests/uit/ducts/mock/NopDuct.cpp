@@ -8,7 +8,7 @@
 
 #define MSG_T int
 
-TEST_CASE("Test NopDuct") {
+TEST_CASE("Test NopDuct", "[nproc:1]") {
 
   // TODO flesh out stub tests
   uit::NopDuct<uit::ImplSpec<MSG_T>>{};

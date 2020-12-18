@@ -18,7 +18,7 @@ inline void do_work_concurrent() {
 }
 
 
-TEST_CASE("Test ConcurrentTimeoutBarrier") {
+TEST_CASE("Test ConcurrentTimeoutBarrier", "[nproc:1][nproc:2][nproc:3]") {
 
   uitsl::ThreadTeam team;
 
