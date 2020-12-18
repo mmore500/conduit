@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UITSL_UTILITY_UNTAR_HPP_INCLUDE
-#define UITSL_UTILITY_UNTAR_HPP_INCLUDE
+#ifndef UITSL_FETCH_UNTAR_HPP_INCLUDE
+#define UITSL_FETCH_UNTAR_HPP_INCLUDE
 
 #include <algorithm>
 #include <charconv>
@@ -10,6 +10,7 @@
 #include <string>
 #include <string_view>
 
+#include "../../../third-party/Empirical/include/emp/base/always_assert_warning.hpp"
 #include "../../../third-party/Empirical/include/emp/base/errors.hpp"
 #include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -76,12 +77,11 @@ bool try_set_perms( const stdfs::path& path, const stdfs::perms mode ) {
 
   stdfs::permissions(path, mode, err);
 
-  if ( err ) {
-    emp::NotifyWarning( emp::to_string(
-      "setting permissions for ", path, " failed with error code ", err
-    ) );
-    return true;
-  } else return true;
+  if ( err ) emp::NotifyWarning( emp::to_string(
+    "setting permissions for ", path, " failed with error code ", err
+  ) );
+
+  return true;
 
 }
 
@@ -120,6 +120,7 @@ bool try_mkdir( const stdfs::path& target, const stdfs::perms mode ) {
 
   std::error_code err;
   stdfs::create_directories(path, err);
+
   if ( err ) {
     emp::NotifyError( emp::to_string(
       "creating directory ", path, " failed with error code ", err
@@ -308,4 +309,4 @@ bool untar(const std::string filename) {
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_UTILITY_UNTAR_HPP_INCLUDE
+#endif // #ifndef UITSL_FETCH_UNTAR_HPP_INCLUDE

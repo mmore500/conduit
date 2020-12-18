@@ -6,6 +6,7 @@ TARGET_NAMES += countdown
 TARGET_NAMES += datastructs
 TARGET_NAMES += debug
 TARGET_NAMES += distributed
+TARGET_NAMES += fetch
 TARGET_NAMES += math
 TARGET_NAMES += meta
 TARGET_NAMES += mpi

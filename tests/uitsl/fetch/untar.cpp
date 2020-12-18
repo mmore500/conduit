@@ -2,7 +2,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/debug/compare_files.hpp"
-#include "uitsl/utility/untar.hpp"
+#include "uitsl/fetch/untar.hpp"
 
 TEST_CASE("untar file") {
 
