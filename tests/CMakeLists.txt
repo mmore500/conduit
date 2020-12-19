@@ -199,6 +199,12 @@ set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/distributed/MsgAccumulatorBundle.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/distributed/RdmaAccumulatorBundle.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/distributed/do_successively.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/autoinstall.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/detect_gz.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/detect_tar.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/fetch.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/inflate.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/untar.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/initialization/Uninitialized.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/initialization/ValueInitialized.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/math/math_utils.cpp
@@ -238,8 +244,6 @@ set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/polyfill/filesystem_emscripten.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/polyfill/filesystem_native.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/utility/NamedArrayElement.cpp
-    ${CMAKE_SOURCE_DIR}/tests/uitsl/utility/inflate.cpp
-    ${CMAKE_SOURCE_DIR}/tests/uitsl/utility/untar.cpp
     )
 
 set(CATCH_BUILD_TESTING ON)
