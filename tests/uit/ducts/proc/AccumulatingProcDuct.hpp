@@ -54,7 +54,7 @@ decltype(auto) make_ring_apd_bundle() {
   return std::tuple{ bundles[0].GetInput(0), bundles[0].GetOutput(0) };
 
 }
-TEST_CASE("Is initial AccumulatingProcDuct Get() result value-intialized? " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
+TEST_CASE("Is initial AccumulatingProcDuct Get() result value-intialized? " APD_IMPL_NAME, "[AccumulatingProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_ring_apd_bundle<Spec>();
 
@@ -63,7 +63,7 @@ TEST_CASE("Is initial AccumulatingProcDuct Get() result value-intialized? " APD_
 
 } }
 
-TEST_CASE("Unmatched gets " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
+TEST_CASE("Unmatched gets " APD_IMPL_NAME, "[AccumulatingProcDuct]" TAGS) { REPEAT {
 
   // TODO why does rdma construction hang for dyadic bundle but not ring  ?
   auto [input, output] = make_dyadic_apd_bundle<Spec>();
@@ -87,7 +87,7 @@ TEST_CASE("Unmatched gets " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
+TEST_CASE("Unmatched puts " APD_IMPL_NAME, "[AccumulatingProcDuct]" TAGS) { REPEAT {
 
   // TODO why does rdma construction hang for dyadic bundle but not ring  ?
   auto [input, output] = make_dyadic_apd_bundle<Spec>();
@@ -98,7 +98,7 @@ TEST_CASE("Unmatched puts " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Validity " APD_IMPL_NAME, "[AccumulatingProcDuct]") { REPEAT {
+TEST_CASE("Validity " APD_IMPL_NAME, "[AccumulatingProcDuct]" TAGS) { REPEAT {
 
   // TODO why does rdma construction hang for dyadic bundle but not ring  ?
   auto [input, output] = make_dyadic_apd_bundle<Spec>();

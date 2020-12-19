@@ -9,6 +9,7 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #define IMPL_NAME "inlet=DequeIrsend+outlet=BlockIrecv_t::IdirObiDuct"
+#define TAGS "[nproc:2][nproc:3][nproc:4]"
 
 #include "../ProcDuct.hpp"
 #include "../SkippingProcDuct.hpp"

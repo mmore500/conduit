@@ -9,6 +9,7 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #define IMPL_NAME "buffered+inlet=RingIsend+outlet=Iprobe_t::BufferedIriOiDuct"
+#define TAGS "[nproc:2][nproc:3][nproc:4]"
 
 #include "../ProcDuct.hpp"
 #include "../SteppingProcDuct.hpp"

@@ -43,7 +43,7 @@ decltype(auto) make_ring_vapd_bundle() {
 
 }
 
-TEST_CASE("Is initial VectorAccumulatingProcDuct Get() result value-intialized? " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { REPEAT {
+TEST_CASE("Is initial VectorAccumulatingProcDuct Get() result value-intialized? " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_ring_vapd_bundle<Spec>();
 
@@ -54,7 +54,7 @@ TEST_CASE("Is initial VectorAccumulatingProcDuct Get() result value-intialized? 
 
 } }
 
-TEST_CASE("Unmatched gets " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { REPEAT {
+TEST_CASE("Unmatched gets " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_ring_vapd_bundle<Spec>();
 
@@ -76,7 +76,7 @@ TEST_CASE("Unmatched gets " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { RE
 
 } }
 
-TEST_CASE("Unmatched puts " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { REPEAT {
+TEST_CASE("Unmatched puts " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_ring_vapd_bundle<Spec>();
 
@@ -93,7 +93,7 @@ TEST_CASE("Unmatched puts " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { RE
 
 } }
 
-TEST_CASE("Validity " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]") { REPEAT {
+TEST_CASE("Validity " VAPD_IMPL_NAME, "[VectorAccumulatingProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_ring_vapd_bundle<Spec>();
 

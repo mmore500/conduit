@@ -10,5 +10,6 @@ using ImplSel = uit::ImplSelect<
 
 #define MSG_VALUE_T int
 #define IMPL_NAME "buffered+inlet=BufferedIsend+outlet=Irecv_s::BufferedIbiOiDuct/int"
+#define TAGS "[nproc:2][nproc:3][nproc:4]"
 
 #include "../../VectorAccumulatingProcDuct.hpp"

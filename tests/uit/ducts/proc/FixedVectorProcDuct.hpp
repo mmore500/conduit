@@ -33,7 +33,7 @@ using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 int tag{};
 
-TEST_CASE("Is initial FixedVectorProcDuct Get() result value-intialized?", "[FixedVectorProcDuct]") { REPEAT {
+TEST_CASE("Is initial FixedVectorProcDuct Get() result value-intialized?", "[FixedVectorProcDuct]" TAGS) { REPEAT {
 
   std::shared_ptr<Spec::ProcBackEnd> backend{
     std::make_shared<Spec::ProcBackEnd>(2)
@@ -75,7 +75,7 @@ TEST_CASE("Is initial FixedVectorProcDuct Get() result value-intialized?", "[Fix
 
 } }
 
-TEST_CASE("Is transmission reliable?") { REPEAT {
+TEST_CASE("Is transmission reliable?", TAGS) { REPEAT {
 
   std::shared_ptr<Spec::ProcBackEnd> backend{
     std::make_shared<Spec::ProcBackEnd>(1)

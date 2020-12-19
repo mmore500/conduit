@@ -6,7 +6,7 @@
 #include "uitsl/fetch/autoinstall.hpp"
 #include "uitsl/polyfill/filesystem.hpp"
 
-TEST_CASE("should install .tar.gz") {
+TEST_CASE("should install .tar.gz", "[nproc:1]") {
 
   std::filesystem::remove( "rick.txt" );
   REQUIRE( !std::filesystem::exists( "rick.txt" ) );
@@ -21,7 +21,7 @@ TEST_CASE("should install .tar.gz") {
 
 }
 
-TEST_CASE("should install .tar") {
+TEST_CASE("should install .tar", "[nproc:1]") {
 
   std::filesystem::remove( "rick.txt" );
   REQUIRE( !std::filesystem::exists( "rick.txt" ) );
@@ -36,7 +36,7 @@ TEST_CASE("should install .tar") {
 
 }
 
-TEST_CASE("should install .gz") {
+TEST_CASE("should install .gz", "[nproc:1]") {
 
   std::filesystem::remove( "twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son" );
   REQUIRE( !std::filesystem::exists( "twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son" ) );
@@ -51,7 +51,7 @@ TEST_CASE("should install .gz") {
 
 }
 
-TEST_CASE("should install plain text file") {
+TEST_CASE("should install plain text file", "[nproc:1]") {
 
   std::filesystem::remove( "rick.txt" );
   REQUIRE( !std::filesystem::exists( "rick.txt" ) );
@@ -66,7 +66,7 @@ TEST_CASE("should install plain text file") {
 
 }
 
-TEST_CASE("should be compatible with osf") {
+TEST_CASE("should be compatible with osf", "[nproc:1]") {
 
   std::filesystem::remove( "run_type=aggregate+time_type=cpu_time+ext=.csv" );
   REQUIRE( !std::filesystem::exists(

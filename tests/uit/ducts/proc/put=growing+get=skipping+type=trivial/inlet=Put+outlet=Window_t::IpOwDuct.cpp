@@ -9,6 +9,7 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #define IMPL_NAME "inlet=Put+outlet=Window_t::IpOwDuct"
+#define TAGS "[nproc:2][nproc:3][nproc:4]"
 
 #include "../ProcDuct.hpp"
 #include "../SkippingProcDuct.hpp"

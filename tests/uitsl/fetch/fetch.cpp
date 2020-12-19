@@ -4,7 +4,7 @@
 #include "uitsl/debug/compare_files.hpp"
 #include "uitsl/fetch/fetch.hpp"
 
-TEST_CASE("fetch") {
+TEST_CASE("fetch", "[nproc:1]") {
 
   REQUIRE( uitsl::compare_files(
     "assets/TheWorldWideWebProject.html",

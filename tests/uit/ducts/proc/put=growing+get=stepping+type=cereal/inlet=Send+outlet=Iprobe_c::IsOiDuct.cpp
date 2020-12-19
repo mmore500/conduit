@@ -9,6 +9,7 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #define IMPL_NAME "inlet=Send+outlet=Iprobe_c::IsOiDuct"
+#define TAGS "[nproc:2][nproc:3][nproc:4][nproc:5][nproc:6][nproc:7][nproc:8]"
 
 #include "../ProcDuct.hpp"
 #include "../SteppingProcDuct.hpp"

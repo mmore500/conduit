@@ -3,7 +3,7 @@
 
 #include "uit/spouts/wrappers/TrivialSpoutWrapper.hpp"
 
-TEST_CASE("Test TrivialSpoutWrapper") {
+TEST_CASE("Test TrivialSpoutWrapper", TAGS) {
 
   uit::TrivialSpoutWrapper<char>{};
 

@@ -162,7 +162,7 @@ decltype(auto) make_coiled_pd_bundle() {
 //
 // } }
 
-TEST_CASE("Is initial ProcDuct Get() result value-intialized?" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
+TEST_CASE("Is initial ProcDuct Get() result value-intialized?" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_ring_pd_bundle<Spec>();
 
@@ -171,7 +171,7 @@ TEST_CASE("Is initial ProcDuct Get() result value-intialized?" PD_IMPL_NAME, "[P
 
 } }
 
-TEST_CASE("Unmatched gets" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
+TEST_CASE("Unmatched gets" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_dyadic_pd_bundle<Spec>();
 
@@ -191,7 +191,7 @@ TEST_CASE("Unmatched gets" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
+TEST_CASE("Unmatched puts" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_dyadic_pd_bundle<Spec>();
 
@@ -207,7 +207,7 @@ TEST_CASE("Unmatched puts" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Eventual flush-out" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
+TEST_CASE("Eventual flush-out" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_dyadic_pd_bundle<Spec>();
 
@@ -233,7 +233,7 @@ TEST_CASE("Eventual flush-out" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Validity" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
+TEST_CASE("Validity" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_dyadic_pd_bundle<Spec>();
 
@@ -256,7 +256,7 @@ TEST_CASE("Validity" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Multi-bridge Validity" PD_IMPL_NAME, "[ProcDuct]") { REPEAT {
+TEST_CASE("Multi-bridge Validity" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
   auto [inputs, outputs] = make_coiled_pd_bundle<Spec>();
 

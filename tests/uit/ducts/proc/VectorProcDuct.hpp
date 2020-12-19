@@ -87,7 +87,7 @@ decltype(auto) make_ring_vpd_bundle() {
 
 }
 
-TEST_CASE("Is initial VectorProcDuct Get() result value-intialized? " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
+TEST_CASE("Is initial VectorProcDuct Get() result value-intialized? " VPD_IMPL_NAME, "[VectorProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_ring_vpd_bundle<Spec>();
 
@@ -96,7 +96,7 @@ TEST_CASE("Is initial VectorProcDuct Get() result value-intialized? " VPD_IMPL_N
 
 } }
 
-TEST_CASE("Unmatched gets " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
+TEST_CASE("Unmatched gets " VPD_IMPL_NAME, "[VectorProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_dyadic_vpd_bundle<Spec>();
 
@@ -115,7 +115,7 @@ TEST_CASE("Unmatched gets " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
+TEST_CASE("Unmatched puts " VPD_IMPL_NAME, "[VectorProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_dyadic_vpd_bundle<Spec>();
 
@@ -127,7 +127,7 @@ TEST_CASE("Unmatched puts " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Eventual flush-out " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
+TEST_CASE("Eventual flush-out " VPD_IMPL_NAME, "[VectorProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_dyadic_vpd_bundle<Spec>();
 
@@ -149,7 +149,7 @@ TEST_CASE("Eventual flush-out " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Validity " VPD_IMPL_NAME, "[VectorProcDuct]") { REPEAT {
+TEST_CASE("Validity " VPD_IMPL_NAME, "[VectorProcDuct]" TAGS) { REPEAT {
 
   auto [input, output] = make_dyadic_vpd_bundle<Spec>();
 
