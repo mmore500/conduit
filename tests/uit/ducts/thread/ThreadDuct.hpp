@@ -42,7 +42,7 @@ inline size_t num_threads;
 // must be emplacedd
 static emp::optional<std::barrier<>> barrier;
 
-TEST_CASE("Is initial ThreadDuct Get() result value-intialized? " TD_IMPL_NAME, "[ThreadDuct]" TAGS) { REPEAT {
+TEST_CASE("Is initial ThreadDuct Get() result value-intialized? " TD_IMPL_NAME, "[ThreadDuct]") { REPEAT {
 
   auto [outlet] = uit::Source<Spec>{
     std::in_place_type_t<Spec::ThreadDuct>{}
@@ -52,7 +52,7 @@ TEST_CASE("Is initial ThreadDuct Get() result value-intialized? " TD_IMPL_NAME, 
 
 } }
 
-TEST_CASE("Unmatched gets " TD_IMPL_NAME, "[ThreadDuct]" TAGS) { REPEAT {
+TEST_CASE("Unmatched gets " TD_IMPL_NAME, "[ThreadDuct]") { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(num_threads),
@@ -72,7 +72,7 @@ TEST_CASE("Unmatched gets " TD_IMPL_NAME, "[ThreadDuct]" TAGS) { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts " TD_IMPL_NAME, "[ThreadDuct]" TAGS) { REPEAT {
+TEST_CASE("Unmatched puts " TD_IMPL_NAME, "[ThreadDuct]") { REPEAT {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(num_threads),

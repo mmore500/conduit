@@ -41,7 +41,7 @@ inline decltype(auto) make_dyadic_bundle() {
 
 };
 
-TEST_CASE("Is initial CachingSpoutWrapper Get() result value-intialized? " CSW_IMPL_NAME, "[CachingSpoutWrapper]" TAGS) { REPEAT {
+TEST_CASE("Is initial CachingSpoutWrapper Get() result value-intialized? " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -50,7 +50,7 @@ TEST_CASE("Is initial CachingSpoutWrapper Get() result value-intialized? " CSW_I
 
 } }
 
-TEST_CASE("Unmatched gets " CSW_IMPL_NAME, "[CachingSpoutWrapper]" TAGS) { REPEAT {
+TEST_CASE("Unmatched gets " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -70,7 +70,7 @@ TEST_CASE("Unmatched gets " CSW_IMPL_NAME, "[CachingSpoutWrapper]" TAGS) { REPEA
 
 } }
 
-TEST_CASE("Unmatched puts " CSW_IMPL_NAME, "[CachingSpoutWrapper]" TAGS) { REPEAT {
+TEST_CASE("Unmatched puts " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -86,7 +86,7 @@ TEST_CASE("Unmatched puts " CSW_IMPL_NAME, "[CachingSpoutWrapper]" TAGS) { REPEA
 
 } }
 
-TEST_CASE("Eventual flush-out " CSW_IMPL_NAME, "[CachingSpoutWrapper]" TAGS) { REPEAT {
+TEST_CASE("Eventual flush-out " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -112,7 +112,7 @@ TEST_CASE("Eventual flush-out " CSW_IMPL_NAME, "[CachingSpoutWrapper]" TAGS) { R
 
 } }
 
-TEST_CASE("Validity " CSW_IMPL_NAME, "[CachingSpoutWrapper]" TAGS) { REPEAT {
+TEST_CASE("Validity " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 

@@ -22,6 +22,10 @@
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 #define APD_IMPL_NAME IMPL_NAME "AccumulatingProcDuct"
+#ifndef TAGS 
+#define TAGS ""
+#endif
+
 
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 

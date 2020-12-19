@@ -25,6 +25,9 @@
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
 
+#ifndef TAGS 
+#define TAGS ""
+#endif
 
 using MSG_T = emp::vector<int>;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;

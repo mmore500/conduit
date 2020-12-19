@@ -31,6 +31,9 @@ using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 #define VPD_IMPL_NAME IMPL_NAME "VectorProcDuct"
+#ifndef TAGS 
+#define TAGS ""
+#endif
 
 template <typename T>
 decltype(auto) make_dyadic_vpd_bundle() {

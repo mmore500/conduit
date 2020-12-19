@@ -8,7 +8,7 @@
 #include "uit/spouts/wrappers/CachingSpoutWrapper.hpp"
 #include "uit/spouts/wrappers/inlet/CachingInletWrapper.hpp"
 
-TEST_CASE("Test CachingInletWrapper", TAGS) {
+TEST_CASE("Test CachingInletWrapper") {
 
   using Spec = uit::ImplSpec<
     char,

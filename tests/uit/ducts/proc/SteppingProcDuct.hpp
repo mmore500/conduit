@@ -1,4 +1,8 @@
-TEST_CASE("Ring Mesh connectivity " IMPL_NAME) { REPEAT {
+#ifndef TAGS 
+#define TAGS ""
+#endif
+
+TEST_CASE("Ring Mesh connectivity " IMPL_NAME, TAGS) { REPEAT {
 
   auto [input, output] = make_ring_pd_bundle<Spec>();
 
@@ -14,7 +18,7 @@ TEST_CASE("Ring Mesh connectivity " IMPL_NAME) { REPEAT {
 
 } }
 
-TEST_CASE("Ring Mesh sequential consistency " IMPL_NAME) { {
+TEST_CASE("Ring Mesh sequential consistency " IMPL_NAME, TAGS) { {
 
   auto [input, output] = make_ring_pd_bundle<Spec>();
 
@@ -32,7 +36,7 @@ TEST_CASE("Ring Mesh sequential consistency " IMPL_NAME) { {
 
 } }
 
-TEST_CASE("Producer-Consumer Mesh connectivity " IMPL_NAME) { REPEAT {
+TEST_CASE("Producer-Consumer Mesh connectivity " IMPL_NAME, TAGS) { REPEAT {
 
   auto [input, output] = make_producer_consumer_pd_bundle<Spec>();
 
@@ -59,7 +63,7 @@ TEST_CASE("Producer-Consumer Mesh connectivity " IMPL_NAME) { REPEAT {
 
 } }
 
-TEST_CASE("Producer-Consumer Mesh sequential consistency " IMPL_NAME) { {
+TEST_CASE("Producer-Consumer Mesh sequential consistency " IMPL_NAME, TAGS) { {
 
   auto [input, output] = make_producer_consumer_pd_bundle<Spec>();
 
@@ -79,7 +83,7 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency " IMPL_NAME) { {
 
 } }
 
-TEST_CASE("Dyadic Mesh connectivity " IMPL_NAME) { REPEAT {
+TEST_CASE("Dyadic Mesh connectivity " IMPL_NAME, TAGS) { REPEAT {
 
   auto [input, output] = make_dyadic_pd_bundle<Spec>();
   UITSL_Barrier(MPI_COMM_WORLD);
@@ -108,7 +112,7 @@ TEST_CASE("Dyadic Mesh connectivity " IMPL_NAME) { REPEAT {
 
 } }
 
-TEST_CASE("Dyadic Mesh sequential consistency " IMPL_NAME) { {
+TEST_CASE("Dyadic Mesh sequential consistency " IMPL_NAME, TAGS) { {
 
   auto [input, output] = make_dyadic_pd_bundle<Spec>();
 

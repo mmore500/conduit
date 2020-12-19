@@ -21,6 +21,9 @@
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 #define VAPD_IMPL_NAME IMPL_NAME "VectorAccumulatingProcDuct"
+#ifndef TAGS 
+#define TAGS ""
+#endif
 
 using MSG_T = emp::vector<MSG_VALUE_T>;
 constexpr size_t message_size = 3;
