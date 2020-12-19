@@ -3,6 +3,7 @@
 #define UITSL_FETCH_FETCH_EMSCRIPTEN_HPP_INCLUDE
 
 #include "../base/always_assert.hpp"
+#include "../polyfill/filesystem.hpp"
 
 #include "make_temp_path.hpp"
 
