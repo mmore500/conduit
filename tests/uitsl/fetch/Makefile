@@ -1,3 +1,5 @@
+TARGET_NAMES += detect_gz
+TARGET_NAMES += detect_tar
 TARGET_NAMES += fetch
 TARGET_NAMES += inflate
 TARGET_NAMES += untar
