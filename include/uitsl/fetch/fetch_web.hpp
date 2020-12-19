@@ -14,7 +14,7 @@ namespace uitsl {
  * return temporary file path. Requires `xmlhttprequest` package when running
  * with Node.js.
  */
-std::filesystem::path fetch_web( const std::string& url ) {
+inline std::filesystem::path fetch_web( const std::string& url ) {
 
   const std::filesystem::path bodypath{ uitsl::make_temp_filepath() };
   const std::filesystem::path headerpath{ uitsl::make_temp_filepath() };

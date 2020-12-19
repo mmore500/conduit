@@ -22,7 +22,7 @@ namespace uitsl {
  * If data is gzipped, unzip it.
  * Then, if data is tarred, untar it.
  */
-void autoinstall( const std::string& url ) {
+inline void autoinstall( const std::string& url ) {
 
   const std::filesystem::path temp = uitsl::inflate_if_gzip(
     uitsl::fetch( url )

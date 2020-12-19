@@ -10,7 +10,7 @@
 
 namespace uitsl {
 
-std::filesystem::path make_temp_dirpath() {
+inline std::filesystem::path make_temp_dirpath() {
 
   // adapted from https://en.wikipedia.org/wiki/Mkstemp
   char dest_path[] = "/tmp/uitsl_temp_dirXXXXXX";

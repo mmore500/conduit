@@ -16,7 +16,7 @@
 
 namespace uitsl {
 
-emp::optional<std::string> try_filename_from_header(
+inline emp::optional<std::string> try_filename_from_header(
   const std::filesystem::path& headerpath
 ) {
 
@@ -43,7 +43,7 @@ emp::optional<std::string> try_filename_from_header(
 
 }
 
-emp::optional<std::string> try_filename_from_url( const std::string& url ) {
+inline emp::optional<std::string> try_filename_from_url( const std::string& url ) {
   if (
     const std::filesystem::path as_path( url );
     as_path.has_extension()
@@ -56,7 +56,7 @@ emp::optional<std::string> try_filename_from_url( const std::string& url ) {
  * Attempt to give fetched file its proper filename
  * (inside of temporary directory). Return new (or old) path to file.
  */
-std::filesystem::path resolve_fetched_filename(
+inline std::filesystem::path resolve_fetched_filename(
   const std::string& url,
   const std::filesystem::path& bodypath,
   const std::filesystem::path& headerpath
