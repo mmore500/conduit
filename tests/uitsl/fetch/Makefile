@@ -1,3 +1,4 @@
+TARGET_NAMES += autoinstall
 TARGET_NAMES += detect_gz
 TARGET_NAMES += detect_tar
 TARGET_NAMES += fetch
@@ -22,3 +23,7 @@ test:: web
 clean::
 	rm -f *.js
 	rm -f *.wasm
+	rm -f twas-brillig-and-the-slithy-toves-did-gyre-and-gimble-in-the-wabe-all-mimsy-were-the-borogoves-and-the-mome-raths-outgrabe-beware-the-jabberwock-my-son
+	rm -rf beautiful-is-better-than-ugly-explicit-is-better-than-implicit-simple-is-better-than-complex-complex-is-better-than-complicated-flat-is-better-than-nested
+	rm -rf never
+	rm -rf empty

@@ -9,6 +9,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "xmlhttprequest": "^1.8.0"
+    "sync-request": "6.1.0",
   }
 }

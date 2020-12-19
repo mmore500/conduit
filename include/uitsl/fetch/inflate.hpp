@@ -7,11 +7,13 @@
 
 #include "zlib.h"
 
+#include "../debug/cat.hpp"
 #include "../debug/err_audit.hpp"
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"
 
-#include "make_temp_path.hpp"
+#include "detect_gz.hpp"
+#include "make_temp_filepath.hpp"
 
 #define UITSL_INFLATE_CHUNK 16384
 
@@ -59,7 +61,19 @@ std::filesystem::path inflate(
 }
 
 std::filesystem::path inflate( const std::filesystem::path& source_path ) {
-  return inflate( source_path, uitsl::make_temp_path() );
+  if ( source_path.extension() == ".gz" ) {
+    return uitsl::inflate(
+      source_path,
+      std::filesystem::path(source_path).replace_extension("") // strip .gz
+    );
+  } else return uitsl::inflate( source_path, uitsl::make_temp_filepath() );
+}
+
+std::filesystem::path inflate_if_gzip(const std::filesystem::path& source) {
+  if ( uitsl::detect_gz( source ) ) {
+    return uitsl::inflate( source );
+  }
+  else return source;
 }
 
 } // namespace uitsl

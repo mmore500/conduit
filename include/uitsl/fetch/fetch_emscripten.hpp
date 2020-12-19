@@ -4,7 +4,8 @@
 
 #include "../polyfill/filesystem.hpp"
 
-#include "make_temp_path.hpp"
+#include "make_temp_filepath.hpp"
+#include "resolve_fetched_filename.hpp"
 
 namespace uitsl {
 
@@ -15,28 +16,42 @@ namespace uitsl {
  */
 std::filesystem::path fetch_emscripten( const std::string& url ) {
 
-  const std::filesystem::path outpath{ uitsl::make_temp_path() };
+  const std::filesystem::path bodypath{ uitsl::make_temp_filepath() };
+  const std::filesystem::path headerpath{ uitsl::make_temp_filepath() };
 
   EM_ASM({
 
     var url = UTF8ToString($0);
-    var outfile = UTF8ToString($1);
+    var bodypath = UTF8ToString($1);
+    var headerpath = UTF8ToString($2);
 
-    if (typeof XMLHttpRequest == "undefined") { // node polyfill
-      globalThis.XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+    var body;
+    var headers;
+    if ( typeof XMLHttpRequest == "undefined" ) { // nodejs
+      var request = require("sync-request");
+      var res = request("GET", url, { gzip: false });
+      body = res.body;
+      headers = Object.entries(res.headers).map(
+        (kv, i) => `${kv[0]}: ${kv[1]}`
+      ).join("\n");
+    } else { // browser
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, false);  // synchronous request
+      xhr.responseType = "arraybuffer";
+      xhr.send();
+      body = xhr.response;
+      headers = xhr.getAllResponseHeaders();
     }
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, false);  // synchronous request
-    xhr.send();
+    var bodystream = FS.open(bodypath, 'w');
+    FS.write(bodystream, body, 0, body.length, 0);
+    FS.close(bodystream);
 
-    console.assert( xhr.status === 200, url, xhr.status );
+    FS.writeFile( headerpath, headers );
 
-    FS.writeFile( outfile, xhr.responseText );
+  }, url.c_str(), bodypath.c_str(), headerpath.c_str() );
 
-  }, url.c_str(), outpath.c_str() );
-
-  return outpath;
+  return uitsl::resolve_fetched_filename( url, bodypath, headerpath );
 
 }
 
