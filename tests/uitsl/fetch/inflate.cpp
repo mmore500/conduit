@@ -1,7 +1,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/debug/compare_files.hpp"
-#include "uitsl/utility/inflate.hpp"
+#include "uitsl/fetch/inflate.hpp"
 
 TEST_CASE("inflate empty.tar.gz", "[nproc:1]") {
 

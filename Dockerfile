@@ -1,5 +1,5 @@
 # Pull base image.
-FROM ubuntu:18.04
+FROM ubuntu:bionic-20180125
 
 COPY . /opt/conduit/
 
@@ -22,16 +22,111 @@ RUN \
   echo "buffed apt-get resiliency"
 
 RUN \
+  find /etc/apt -type f -name '*.list' -exec sed -i 's/\(^deb.*-backports.*\)/#\1/; s/\(^deb.*-updates.*\)/#\1/; s/\(^deb.*-proposed.*\)/#\1/; s/\(^deb.*-security.*\)/#\1/' {} + \
+    && \
+  rm -rf /var/lib/apt/lists/* \
+    && \
+  echo "removed -backports, -updates, -proposed, -security repositories"
+
+RUN \
   apt-get update -qq \
     && \
-  apt-get install -qq --no-install-recommends \
+  apt-get install -y --allow-downgrades --no-install-recommends \
+    build-essential \
+    ca-certificates \
+    cmake \
+    cpp-8 \
     curl \
-    git=1:2.17.1-1ubuntu0.7 \
-    gzip=1.6-5ubuntu1 \
-    unzip=6.0-21ubuntu1 \
-    tar=1.29b-2ubuntu0.1 \
-    wget=1.19.4-1ubuntu2.2 \
-    gpg-agent=2.2.4-1ubuntu1.3 \
+    doxygen \
+    emacs \
+    fonts-liberation \
+    g++-8 \
+    gconf-service \
+    gdb \
+    git \
+    gpg-agent \
+    gzip \
+    hdf5-helpers \
+    hdf5-tools \
+    htop \
+    libappindicator1 \
+    libasound2 \
+    libatk1.0-0 \
+    libc6 \
+    libcairo2 \
+    libcups2 \
+    libdbus-1-3 \
+    libexpat1 \
+    libfontconfig1 \
+    libgconf-2-4 \
+    libgdk-pixbuf2.0-0 \
+    libglib2.0-0 \
+    libgtk-3-0 \
+    libhdf5-100 \
+    libhdf5-cpp-100 \
+    libhdf5-dev \
+    libhdf5-doc \
+    libhdf5-mpi-dev \
+    libhdf5-mpich-100 \
+    libhdf5-mpich-dev \
+    libhdf5-openmpi-100 \
+    libhdf5-openmpi-dev \
+    libhdf5-serial-dev \
+    libmpich-dev \
+    libmpich12 \
+    libnspr4 \
+    libnss3 \
+    libopenmpi-dev \
+    libopenmpi2 \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libpthread-stubs0-dev \
+    libstdc++-7-dev \
+    libstdc++6=8-20180414-1ubuntu2 \
+    libx11-6 \
+    libx11-xcb1 \
+    libxcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxext6 \
+    libxfixes3 \
+    libxi6 \
+    libxrandr2 \
+    libxrender1 \
+    libxss1 \
+    libxtst6 \
+    lsb-release \
+    man \
+    mpich \
+    multitail \
+    nano \
+    ninja-build \
+    nodejs \
+    npm \
+    openmpi-bin \
+    openmpi-common \
+    openmpi-doc \
+    openssh-server \
+    python-dev \
+    python-h5py \
+    python-pip \
+    python-setuptools \
+    python-virtualenv \
+    python-wheel \
+    python3-dev \
+    python3-h5py \
+    python3-pip \
+    python3-setuptools \
+    python3-virtualenv \
+    python3-wheel \
+    slurm-client \
+    software-properties-common \
+    tar \
+    unzip \
+    vim \
+    wget \
+    xdg-utils \
     && \
   apt-get clean \
     && \
@@ -51,10 +146,6 @@ RUN \
     && \
   apt-get -o Acquire::GzipIndexes=false update \
     && \
-  apt-get install -qq --no-install-recommends \
-    software-properties-common=0.96.24.32.14 \
-    apt-show-versions=0.22.7ubuntu1 \
-    && \
   add-apt-repository -y ppa:ubuntu-toolchain-r/test \
     && \
   wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
@@ -72,162 +163,27 @@ RUN \
 RUN \
   apt-get update -qq \
     && \
-  apt-get install -qq --no-install-recommends \
-    g++-8 \
-    libclang-7-dev \
-    llvm-7 \
-    llvm-7-dev \
-    clang-7 \
-    libstdc++-7-dev \
-    build-essential \
-    ninja-build \
-    python-virtualenv \
-    python3-virtualenv \
-    python-dev \
-    python3-dev \
-    python-pip \
-    libbenchmark-dev \
-    python3-pip \
-    python-setuptools \
-    python3-setuptools \
-    python-wheel \
-    python3-wheel \
-    libpthread-stubs0-dev \
-    libc6-dbg \
-    gdb \
+  apt-get install -qq \
+    libclang-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
+    llvm-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
+    llvm-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
+    clang-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
     && \
   apt-get clean \
     && \
   rm -rf /var/lib/apt/lists/* \
     && \
-  echo "installed core dependencies"
-
-RUN \
-  apt-get update -qq \
-    && \
-  apt-get install -qq --no-install-recommends \
-    libopenmpi-dev=2.1.1-8 \
-    libopenmpi2=2.1.1-8 \
-    openmpi-bin=2.1.1-8 \
-    openmpi-common=2.1.1-8 \
-    openmpi-doc=2.1.1-8 \
-    mpich=3.3~a2-4 \
-    libmpich-dev=3.3~a2-4 \
-    libmpich12=3.3~a2-4 \
-    openssh-server=1:7.6p1-4ubuntu0.3 \
-    hdf5-helpers=1.10.0-patch1+docs-4 \
-    hdf5-tools=1.10.0-patch1+docs-4 \
-    libhdf5-100=1.10.0-patch1+docs-4 \
-    libhdf5-cpp-100=1.10.0-patch1+docs-4 \
-    libhdf5-dev=1.10.0-patch1+docs-4 \
-    libhdf5-doc=1.10.0-patch1+docs-4 \
-    libhdf5-mpi-dev=1.10.0-patch1+docs-4 \
-    libhdf5-mpich-100=1.10.0-patch1+docs-4 \
-    libhdf5-mpich-dev=1.10.0-patch1+docs-4 \
-    libhdf5-openmpi-100=1.10.0-patch1+docs-4 \
-    libhdf5-openmpi-dev=1.10.0-patch1+docs-4 \
-    libhdf5-serial-dev=1.10.0-patch1+docs-4 \
-    python-h5py=2.7.1-2 \
-    python3-h5py=2.7.1-2 \
-    slurm-client=17.11.2-1build1 \
-    multitail=6.4.2-3 \
-    && \
-  apt-get clean \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "installed hpc dependencies"
-
-RUN \
-  apt-get update -qq \
-    && \
-  apt-get install -qq --no-install-recommends \
-    nodejs \
-    npm \
-    gconf-service \
-    libasound2 \
-    libatk1.0-0 \
-    libc6 \
-    libcairo2 \
-    libcups2 \
-    libdbus-1-3 \
-    libexpat1 \
-    libfontconfig1 \
-    libgcc1 \
-    libgconf-2-4 \
-    libgdk-pixbuf2.0-0 \
-    libglib2.0-0 \
-    libgtk-3-0 \
-    libnspr4 \
-    libpango-1.0-0 \
-    libpangocairo-1.0-0 \
-    libstdc++6 \
-    libx11-6 \
-    libx11-xcb1 \
-    libxcb1 \
-    libxcomposite1 \
-    libxcursor1 \
-    libxdamage1 \
-    libxext6 \
-    libxfixes3 \
-    libxi6 \
-    libxrandr2 \
-    libxrender1 \
-    libxss1 \
-    libxtst6 \
-    ca-certificates \
-    fonts-liberation \
-    libappindicator1 \
-    libnss3 \
-    lsb-release \
-    xdg-utils \
-    && \
-  apt-get clean \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "installed web dependencies"
+  echo "installed llvm-7 dependencies"
 
 # magic from https://github.com/puppeteer/puppeteer/issues/3451#issuecomment-523961368
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
 RUN \
-  apt-get update -qq \
-    && \
-  apt-get install -qq --no-install-recommends \
-    man \
-    vim \
-    nano=2.9.3-2 \
-    emacs=47.0 \
-    htop=2.1.0-3 \
-    && \
-  apt-get clean \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "installed creature comforts"
-
-RUN \
   pip3 install -r /opt/conduit/third-party/requirements.txt \
     && \
-  echo "installed Python packages"
-
-RUN \
-  apt-get update -qq \
-    && \
-  apt-get install -qq --no-install-recommends \
-    doxygen=1.8.13-10 \
-    && \
-  apt-get clean \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "installed documentation dependencies"
-
-RUN \
   pip3 install -r /opt/conduit/docs/requirements.txt \
     && \
-  echo "installed documentation build requirements"
+  echo "installed Python packages"
 
 RUN \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90 \

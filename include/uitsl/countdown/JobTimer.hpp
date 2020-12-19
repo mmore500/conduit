@@ -1,10 +1,12 @@
 #pragma once
-#ifndef UITSL_COUNTDOWN_TIMER_HPP_INCLUDE
-#define UITSL_COUNTDOWN_TIMER_HPP_INCLUDE
+#ifndef UITSL_COUNTDOWN_JOBTIMER_HPP_INCLUDE
+#define UITSL_COUNTDOWN_JOBTIMER_HPP_INCLUDE
 
 #include <algorithm>
 #include <chrono>
+#include <cstdlib>
 #include <stddef.h>
+#include <string>
 
 #include "../chrono/chrono_utils.hpp"
 
@@ -16,18 +18,24 @@ template<
   typename Duration_T=std::chrono::duration<double, std::ratio<1>>,
   typename Clock_T=std::chrono::steady_clock
 >
-class Timer {
+class JobTimer {
+
+  using time_point_t = std::chrono::time_point<Clock_T>;
 
   Duration_T duration;
 
-  std::chrono::time_point<Clock_T> start{ Clock_T::now() };
+  time_point_t start{
+    Clock_T::now() - std::chrono::seconds{
+      std::stoi( std::getenv("SECONDS") ?: "0" )
+    }
+  };
 
 public:
 
-  using iterator = uitsl::CountdownIterator<Timer>;
+  using iterator = uitsl::CountdownIterator<JobTimer>;
   using elapsed_t = Duration_T;
 
-  Timer(
+  JobTimer(
     const Duration_T& duration_=infinite_duration
   ) : duration(duration_)
   { ; }
@@ -54,7 +62,7 @@ public:
     );
   }
 
-  Timer& operator++() { return *this; }
+  JobTimer& operator++() { return *this; }
 
   iterator begin() { return iterator{ *this }; }
 
@@ -64,4 +72,4 @@ public:
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_COUNTDOWN_TIMER_HPP_INCLUDE
+#endif // #ifndef UITSL_COUNTDOWN_JOBTIMER_HPP_INCLUDE

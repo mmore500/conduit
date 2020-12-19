@@ -1,9 +1,8 @@
 #pragma once
-#ifndef UITSL_UTILITY_INFLATE_HPP_INCLUDE
-#define UITSL_UTILITY_INFLATE_HPP_INCLUDE
+#ifndef UITSL_FETCH_INFLATE_HPP_INCLUDE
+#define UITSL_FETCH_INFLATE_HPP_INCLUDE
 
 #include <cstdio>
-#include <cstdlib>
 #include <string>
 
 #include "zlib.h"
@@ -11,6 +10,8 @@
 #include "../debug/err_audit.hpp"
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"
+
+#include "make_temp_path.hpp"
 
 #define UITSL_INFLATE_CHUNK 16384
 
@@ -58,12 +59,9 @@ std::filesystem::path inflate(
 }
 
 std::filesystem::path inflate( const std::filesystem::path& source_path ) {
-  // adapted from https://en.wikipedia.org/wiki/Mkstemp
-  char dest_path[] = "/tmp/uitsl_inflate_dataXXXXXX";
-  uitsl::err_audit(! mkstemp(dest_path) );
-  return inflate( source_path, dest_path );
+  return inflate( source_path, uitsl::make_temp_path() );
 }
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_UTILITY_INFLATE_HPP_INCLUDE
+#endif // #ifndef UITSL_FETCH_INFLATE_HPP_INCLUDE
