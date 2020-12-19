@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UITSL_FETCH_FETCH_EMSCRIPTEN_HPP_INCLUDE
-#define UITSL_FETCH_FETCH_EMSCRIPTEN_HPP_INCLUDE
+#ifndef UITSL_FETCH_FETCH_WEB_HPP_INCLUDE
+#define UITSL_FETCH_FETCH_WEB_HPP_INCLUDE
 
 #include "../polyfill/filesystem.hpp"
 
@@ -14,7 +14,7 @@ namespace uitsl {
  * return temporary file path. Requires `xmlhttprequest` package when running
  * with Node.js.
  */
-std::filesystem::path fetch_emscripten( const std::string& url ) {
+std::filesystem::path fetch_web( const std::string& url ) {
 
   const std::filesystem::path bodypath{ uitsl::make_temp_filepath() };
   const std::filesystem::path headerpath{ uitsl::make_temp_filepath() };
@@ -57,4 +57,4 @@ std::filesystem::path fetch_emscripten( const std::string& url ) {
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_FETCH_FETCH_EMSCRIPTEN_HPP_INCLUDE
+#endif // #ifndef UITSL_FETCH_FETCH_WEB_HPP_INCLUDE
