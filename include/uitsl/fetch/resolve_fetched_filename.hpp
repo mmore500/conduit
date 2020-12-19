@@ -37,7 +37,6 @@ emp::optional<std::string> try_filename_from_header(
     ) && match.size() == 2
   ) {
     // zeroth match is whole string, next is the first paren expression
-    std::cout << "match " << match[1].str() << std::endl;
     return match[1].str();
   } else return std::nullopt;
 
