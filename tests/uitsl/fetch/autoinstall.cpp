@@ -1,7 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/debug/cat.hpp"
 #include "uitsl/debug/compare_files.hpp"
 #include "uitsl/fetch/autoinstall.hpp"
 #include "uitsl/polyfill/filesystem.hpp"
