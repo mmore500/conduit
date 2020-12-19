@@ -5,7 +5,8 @@
 #include <chrono>
 #include <thread>
 
-#include "../../../third-party/benchmark/src/cycleclock.h"
+#include <benchmark/src/cycleclock.h>
+
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "TimeGuard.hpp"
