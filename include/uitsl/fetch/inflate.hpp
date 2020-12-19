@@ -39,6 +39,10 @@ void inflate(gzFile_s* source_handle, FILE* dest_handle) {
 
 }
 
+/*
+ * Inflate from source path to destination path.
+ * @return destination path
+ */
 std::filesystem::path inflate(
   const std::filesystem::path& source_path,
   const std::filesystem::path& dest_path
@@ -60,6 +64,12 @@ std::filesystem::path inflate(
 
 }
 
+/*
+ * Inflate from source path. Choose a destination path by stripping the gz
+ * extension. If the source path doesn't have gz extension or the path with
+ * the gz extension stripped exists, write to a temporary file.
+ * @return destination path
+ */
 std::filesystem::path inflate( const std::filesystem::path& source_path ) {
 
   const auto with_extension_dropped
