@@ -7,7 +7,6 @@
 
 #include "zlib.h"
 
-#include "../debug/cat.hpp"
 #include "../debug/err_audit.hpp"
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"
