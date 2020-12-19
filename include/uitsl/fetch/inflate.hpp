@@ -61,12 +61,15 @@ std::filesystem::path inflate(
 }
 
 std::filesystem::path inflate( const std::filesystem::path& source_path ) {
-  if ( source_path.extension() == ".gz" ) {
-    return uitsl::inflate(
-      source_path,
-      std::filesystem::path(source_path).replace_extension("") // strip .gz
-    );
-  } else return uitsl::inflate( source_path, uitsl::make_temp_filepath() );
+
+  const auto with_extension_dropped
+    = std::filesystem::path(source_path).replace_extension("");
+
+  if (
+    source_path.extension() == ".gz"
+    && !std::filesystem::exists( with_extension_dropped )
+  ) return uitsl::inflate( source_path, with_extension_dropped );
+  else return uitsl::inflate( source_path, uitsl::make_temp_filepath() );
 }
 
 std::filesystem::path inflate_if_gzip(const std::filesystem::path& source) {
