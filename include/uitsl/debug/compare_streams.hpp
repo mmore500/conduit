@@ -10,6 +10,9 @@
 
 namespace uitsl {
 
+/*
+ * Return true if streams are equal.
+ */
 inline bool compare_streams(std::istream& s1, std::istream& s2) {
 
   // seek back to beginning and use std::equal to compare contents

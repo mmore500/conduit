@@ -9,7 +9,7 @@
 #include "../polyfill/filesystem.hpp"
 
 #ifdef __EMSCRIPTEN__
-  #include "fetch_emscripten.hpp"
+  #include "fetch_web.hpp"
 #else
   #include "fetch_native.hpp"
 #endif
@@ -24,7 +24,7 @@ namespace uitsl {
  */
 std::filesystem::path fetch( const std::string& url ) {
   #ifdef __EMSCRIPTEN__
-    return uitsl::fetch_emscripten( url );
+    return uitsl::fetch_web( url );
   #else
     return uitsl::fetch_native( url );
   #endif
