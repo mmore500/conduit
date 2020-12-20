@@ -2,6 +2,7 @@
 #ifndef UITSL_FETCH_DETECT_TAR_HPP_INCLUDE
 #define UITSL_FETCH_DETECT_TAR_HPP_INCLUDE
 
+#include <fstream>
 #include <istream>
 
 #include "../nonce/ScopeGuard.hpp"
