@@ -31,8 +31,9 @@ emp::optional<std::string> try_filename_from_header(
   // scrape filename out of header
   if (
     std::regex_match(
-      header, match,  std::regex(
-        ".*content-disposition: .*filename=\"(.+)\".*", std::regex::extended
+      header, match, std::regex(
+        ".*content-disposition: .*filename=\"(.+)\".*",
+        std::regex::extended | std::regex_constants::icase
       )
     ) && match.size() == 2
   ) {
