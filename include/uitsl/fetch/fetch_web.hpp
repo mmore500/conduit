@@ -21,7 +21,8 @@ std::filesystem::path fetch_web( const std::string& url ) {
 
   EM_ASM({
 
-    var url = UTF8ToString($0);
+    // use cors proxy to allow cross-origin access in browser
+    var url = "https://cors-anywhere.herokuapp.com/" + UTF8ToString($0);
     var bodypath = UTF8ToString($1);
     var headerpath = UTF8ToString($2);
 
@@ -29,7 +30,10 @@ std::filesystem::path fetch_web( const std::string& url ) {
     var headers;
     if ( typeof XMLHttpRequest == "undefined" ) { // nodejs
       var request = require("sync-request");
-      var res = request("GET", url, { gzip: false });
+      var res = request("GET", url, {
+        gzip: false,
+        headers: { "X-Requested-With" : "XMLHttpRequest" },
+      });
       body = res.body;
       headers = Object.entries(res.headers).map(
         (kv, i) => `${kv[0]}: ${kv[1]}`
@@ -38,6 +42,7 @@ std::filesystem::path fetch_web( const std::string& url ) {
       var xhr = new XMLHttpRequest();
       xhr.open("GET", url, false);  // synchronous request
       xhr.responseType = "arraybuffer";
+      xhr.setRequestHeader( "X-Requested-With", "XMLHttpRequest" );
       xhr.send();
       body = xhr.response;
       headers = xhr.getAllResponseHeaders();
