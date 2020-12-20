@@ -19,7 +19,10 @@ std::filesystem::path fetch_web( const std::string& url ) {
   const std::filesystem::path bodypath{ uitsl::make_temp_filepath() };
   const std::filesystem::path headerpath{ uitsl::make_temp_filepath() };
 
-  EM_ASM({
+  // has to run on the main thread in order to write to main thread filesystem,
+  // where all C filesystem access calls are proxied to
+  // see https://github.com/emscripten-core/emscripten/issues/8624
+  MAIN_THREAD_EM_ASM({
 
     // use cors proxy to allow cross-origin access in browser
     var url = "https://cors-anywhere.herokuapp.com/" + UTF8ToString($0);
@@ -41,7 +44,6 @@ std::filesystem::path fetch_web( const std::string& url ) {
     } else { // browser
       var xhr = new XMLHttpRequest();
       xhr.open("GET", url, false);  // synchronous request
-      xhr.responseType = "arraybuffer";
       xhr.setRequestHeader( "X-Requested-With", "XMLHttpRequest" );
       xhr.send();
       body = xhr.response;
