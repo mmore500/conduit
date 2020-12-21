@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UITSL_FETCH_MAKE_TEMP_PATH_HPP_INCLUDE
-#define UITSL_FETCH_MAKE_TEMP_PATH_HPP_INCLUDE
+#ifndef UITSL_FETCH_MAKE_TEMP_FILEPATH_HPP_INCLUDE
+#define UITSL_FETCH_MAKE_TEMP_FILEPATH_HPP_INCLUDE
 
 #include <cstdlib>
 #include <string>
@@ -21,4 +21,4 @@ inline std::filesystem::path make_temp_filepath() {
 
 } // namespace uitsl
 
-#endif // #ifndef UITSL_FETCH_MAKE_TEMP_PATH_HPP_INCLUDE
+#endif // #ifndef UITSL_FETCH_MAKE_TEMP_FILEPATH_HPP_INCLUDE
