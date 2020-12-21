@@ -31,13 +31,13 @@ inline emp::optional<std::string> try_filename_from_header(
   // scrape filename out of header
   if (
     std::regex_match(
-      header, match,  std::regex(
-        ".*content-disposition: .*filename=\"(.+)\".*", std::regex::extended
+      header, match, std::regex(
+        ".*content-disposition: .*filename=\"(.+)\".*",
+        std::regex::extended | std::regex_constants::icase
       )
     ) && match.size() == 2
   ) {
     // zeroth match is whole string, next is the first paren expression
-    std::cout << "match " << match[1].str() << std::endl;
     return match[1].str();
   } else return std::nullopt;
 

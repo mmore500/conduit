@@ -3,6 +3,10 @@
 #define UITSL_FETCH_DETECT_TAR_HPP_INCLUDE
 
 #include <fstream>
+<<<<<<< HEAD
+=======
+#include <istream>
+>>>>>>> 774aaa2e1d0a5d410a483bfd9ce1e091eb3e3eff
 
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"

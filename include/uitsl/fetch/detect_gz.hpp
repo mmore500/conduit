@@ -3,6 +3,7 @@
 #define UITSL_FETCH_DETECT_GZ_HPP_INCLUDE
 
 #include <fstream>
+#include <istream>
 
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"

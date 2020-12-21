@@ -21,8 +21,9 @@ namespace uitsl {
  * Synchronously fetch data from a url to pwd.
  * If data is gzipped, unzip it.
  * Then, if data is tarred, untar it.
+ * @return filename of installed or tar file unzipped.
  */
-inline void autoinstall( const std::string& url ) {
+inline std::filesystem::path autoinstall( const std::string& url ) {
 
   const std::filesystem::path temp = uitsl::inflate_if_gzip(
     uitsl::fetch( url )
@@ -33,6 +34,8 @@ inline void autoinstall( const std::string& url ) {
     temp,
     std::filesystem::current_path() / temp.filename()
   );
+
+  return temp.filename();
 
 }
 
