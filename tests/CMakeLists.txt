@@ -203,8 +203,8 @@ set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/detect_gz.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/detect_tar.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/fetch.cpp
-    ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/inflate.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/untar.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/inflate.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/initialization/Uninitialized.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/initialization/ValueInitialized.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/math/math_utils.cpp
@@ -287,6 +287,12 @@ add_custom_command(TARGET test-netuit
 
     )
 
+add_custom_target(
+    test-web
+    COMMAND make web
+    WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}/tests/uitsl/fetch
+    )
+
 target_link_libraries(test-uitsl Catch2::Catch2 conduit)
 target_link_libraries(test-netuit Catch2::Catch2 conduit)
 target_link_libraries(test-uit Catch2::Catch2 conduit)
@@ -296,4 +302,3 @@ include("../cmake/NProcMultiplexer.cmake")
 nproc_multiplex_tests(test-uitsl)
 nproc_multiplex_tests(test-uit)
 nproc_multiplex_tests(test-netuit)
-
