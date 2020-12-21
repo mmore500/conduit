@@ -55,6 +55,8 @@ RUN \
     libc6 \
     libcairo2 \
     libcups2 \
+    libcurl4 \
+    libcurl4-openssl-dev \
     libdbus-1-3 \
     libexpat1 \
     libfontconfig1 \
