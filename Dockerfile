@@ -32,7 +32,6 @@ RUN \
   apt-get update -qq \
     && \
   apt-get install -y --allow-downgrades --no-install-recommends \
-    benchmark \
     libbenchmark-dev \
     build-essential \
     ca-certificates \
