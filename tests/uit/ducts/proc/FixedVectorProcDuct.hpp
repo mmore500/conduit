@@ -25,7 +25,7 @@
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
 
-#ifndef TAGS 
+#ifndef TAGS
 #define TAGS ""
 #endif
 

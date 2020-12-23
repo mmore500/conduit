@@ -32,7 +32,7 @@ using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 #define PD_IMPL_NAME IMPL_NAME "ProcDuct"
-#ifndef TAGS 
+#ifndef TAGS
 #define TAGS ""
 #endif
 

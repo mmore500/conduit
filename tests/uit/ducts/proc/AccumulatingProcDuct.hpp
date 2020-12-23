@@ -22,7 +22,7 @@
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
 #define APD_IMPL_NAME IMPL_NAME "AccumulatingProcDuct"
-#ifndef TAGS 
+#ifndef TAGS
 #define TAGS ""
 #endif
 
@@ -139,4 +139,3 @@ TEST_CASE("Validity " APD_IMPL_NAME, "[AccumulatingProcDuct]" TAGS) { REPEAT {
   for (uitsl::IbarrierRequest req; !req.IsComplete(); ) output.TryFlush();
 
 } }
-

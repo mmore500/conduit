@@ -134,4 +134,3 @@ TEST_CASE("Validity " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
   UITSL_Barrier(MPI_COMM_WORLD); // todo why
 
 } }
-

@@ -1,4 +1,4 @@
-#ifndef TAGS 
+#ifndef TAGS
 #define TAGS ""
 #endif
 

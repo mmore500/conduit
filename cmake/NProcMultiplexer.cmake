@@ -22,5 +22,3 @@ function(nproc_multiplex_tests TARGET)
     endforeach(nproc)
 
 endfunction()
-
-
