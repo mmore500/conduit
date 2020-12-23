@@ -2,7 +2,7 @@ include("../cmake/CatchInt.cmake")
 
 function(nproc_multiplex_tests TARGET)
     foreach(nproc RANGE 1 8)
-        set(OptionalCatchTestLauncher ${MPIEXEC} ${MPIEXEC_NUMPROC_FLAG} ${nproc})
+        set(OptionalCatchTestLauncher ${MPIEXEC} --quiet ${MPIEXEC_NUMPROC_FLAG} ${nproc})
         catch_discover_tests(${TARGET}
             TEST_SPEC "[nproc:${nproc}]"
             TEST_SUFFIX "-nproc${nproc}"
