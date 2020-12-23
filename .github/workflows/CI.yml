@@ -45,6 +45,7 @@ jobs:
       matrix:
         mpicxx: [mpich, openmpi]
         mode: [ Debug, Opt ]
+      fail-fast: false
     steps:
       - uses: docker-practice/actions-setup-docker@v1
       - run: >
