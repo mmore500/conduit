@@ -66,7 +66,7 @@ jobs:
     steps:
       - uses: docker-practice/actions-setup-docker@v1
       - run: export ci_env=`bash <(curl -s https://codecov.io/env)`
-      - run: docker run $ci_env -e DISH_MPICXX=$DISH_MPICXX -e OMPI_CXX=$OMPI_CXX "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/condit/tests && make cov && bash <(curl -s https://codecov.io/bash)"
+      - run: docker run $ci_env -e DISH_MPICXX=$DISH_MPICXX -e OMPI_CXX=$OMPI_CXX "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit/tests && make cov && bash <(curl -s https://codecov.io/bash)"
 
   microbenchmarks:
     name: Microbenchmarks
