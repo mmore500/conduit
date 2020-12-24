@@ -10,11 +10,14 @@
 #include <string>
 #include <string_view>
 
+#include <sys/stat.h>
+
 #include "../../../third-party/Empirical/include/emp/base/always_assert_warning.hpp"
 #include "../../../third-party/Empirical/include/emp/base/errors.hpp"
 #include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
+#include "../debug/err_audit.hpp"
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"
 
@@ -34,14 +37,14 @@ namespace internal {
 namespace stdfs = std::filesystem;
 
 /// Parse an octal number, ignoring leading and trailing nonsense.
-inline unsigned int parseoct( const std::string_view view ) {
+unsigned int parseoct( const std::string_view view ) {
   unsigned int res;
   std::from_chars( std::begin(view), std::end(view), res, 8 );
   return res;
 }
 
 /// Returns true if this is 512 zero bytes.
-inline bool is_end_of_archive( const std::string_view buff_view ) {
+bool is_end_of_archive( const std::string_view buff_view ) {
   return std::all_of(
     std::begin(buff_view),
     std::end(buff_view),
@@ -51,7 +54,7 @@ inline bool is_end_of_archive( const std::string_view buff_view ) {
 
 /// Verify the tar checksum.
 /// @return true on success, false on failure
-inline bool verify_checksum( const std::string_view buff_view ) {
+bool verify_checksum( const std::string_view buff_view ) {
 
   // standard tar checksum adds unsigned bytes
   const unsigned char* uptr{ reinterpret_cast<const unsigned char*>(
@@ -71,7 +74,7 @@ inline bool verify_checksum( const std::string_view buff_view ) {
 }
 
 /// @return true on success, false on failure
-inline bool try_set_perms( const stdfs::path& path, const stdfs::perms mode ) {
+bool try_set_perms( const stdfs::path& path, const stdfs::perms mode ) {
 
   std::error_code err;
 
@@ -89,7 +92,7 @@ inline bool try_set_perms( const stdfs::path& path, const stdfs::perms mode ) {
 /// If the file being unpacked had a long filename, change its filename to the
 /// contents of the LongLink file.
 /// @return the path of the file being unpacked, adjusted if necessary
-inline stdfs::path handle_longlink( const stdfs::path& path ) {
+stdfs::path handle_longlink( const stdfs::path& path ) {
 
   if (
     // if this path isn't @LongLink...
@@ -114,12 +117,17 @@ inline stdfs::path handle_longlink( const stdfs::path& path ) {
 
 /// Create a directory, including parent directories as necessary.
 /// @return true on success, false on failure
-inline bool try_mkdir( const stdfs::path& target, const stdfs::perms mode ) {
+bool try_mkdir( const stdfs::path& target, const stdfs::perms mode ) {
 
   const stdfs::path path{ handle_longlink( target ) };
 
   std::error_code err;
   stdfs::create_directories(path, err);
+
+  // stdfs::create_directories is failing inside Docker container
+  // so use mkdir as a backup for now
+  if (! stdfs::exists(path) ) uitsl::err_audit( mkdir( path.c_str(), 0755 ) );
+  emp_assert( stdfs::exists(path) );
 
   if ( err ) {
     emp::NotifyError( emp::to_string(
@@ -133,7 +141,7 @@ inline bool try_mkdir( const stdfs::path& target, const stdfs::perms mode ) {
 }
 
 /// Create a file, including parent directory as necessary.
-inline FILE* create_file( const stdfs::path& target, const stdfs::perms mode ) {
+FILE* create_file( const stdfs::path& target, const stdfs::perms mode ) {
 
   const stdfs::path path{ handle_longlink( target ) };
 
@@ -156,7 +164,7 @@ inline FILE* create_file( const stdfs::path& target, const stdfs::perms mode ) {
 }
 
 /// @return true on success, false on failure
-inline bool unpack_file_chunk(FILE* source, FILE* dest, const size_t bytes_remaining) {
+bool unpack_file_chunk(FILE* source, FILE* dest, const size_t bytes_remaining) {
 
   char buff[512];
 
@@ -182,7 +190,7 @@ inline bool unpack_file_chunk(FILE* source, FILE* dest, const size_t bytes_remai
 
 
 /// @return true on success, false on failure
-inline bool try_unpack_file( FILE* source, FILE* dest, const size_t filesize ) {
+bool try_unpack_file( FILE* source, FILE* dest, const size_t filesize ) {
 
   if (dest == nullptr) return false; // failure, bad file handle
 
@@ -204,7 +212,7 @@ inline bool try_unpack_file( FILE* source, FILE* dest, const size_t filesize ) {
 }
 
 /// @return true on success, false on failure
-inline bool try_skip(
+bool try_skip(
   const std::string category,
   const stdfs::path path,
   FILE* source,
@@ -229,7 +237,7 @@ inline bool try_skip(
 }
 
 /// @return true on success, false on failure
-inline bool try_unpack_chunk( const std::string_view buff, FILE* source ) {
+bool try_unpack_chunk( const std::string_view buff, FILE* source ) {
 
   const stdfs::path path{ std::string{ buff.data() } };
   const stdfs::perms perms{ parseoct( buff.substr(100, 8) ) };
@@ -249,7 +257,7 @@ inline bool try_unpack_chunk( const std::string_view buff, FILE* source ) {
 
 /// Process chunk of a tar file.
 /// @return true if complete, false if incomplete, nullopt on failure
-inline emp::optional<bool> try_process_chunk( FILE* source ) {
+emp::optional<bool> try_process_chunk( FILE* source ) {
 
   char buff[512];
   std::string_view buff_view{ buff, 512 };
@@ -282,7 +290,7 @@ inline emp::optional<bool> try_process_chunk( FILE* source ) {
 
 /// Extract a tar archive.
 /// @return true on success, false on failure
-inline bool untar(const std::string filename) {
+bool untar(const std::string filename) {
 
   FILE *source = std::fopen(filename.c_str(), "r");
 
