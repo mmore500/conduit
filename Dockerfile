@@ -12,6 +12,12 @@ WORKDIR /opt/conduit
 # adapted from https://askubuntu.com/a/1013396
 ENV DEBIAN_FRONTEND=noninteractive
 
+# adapted from https://users.open-mpi.narkive.com/tEPxZF0B/ompi-users-how-to-get-rid-of-openmpi-warning-unable-to-find-any-relevant-network-interfaces
+RUN \
+  echo "btl_base_warn_component_used = 0" >> /etc/openmpi-mca-params.conf \
+    && \
+  echo "configured system-wide openmpi mca parameters"
+
 RUN \
   echo 'Acquire::http::Timeout "60";' >> "/etc/apt/apt.conf.d/99timeout" \
     && \
