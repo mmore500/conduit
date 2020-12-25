@@ -33,7 +33,8 @@ for filename, entry in [
             })].append({
                 'Mesh' : benchmark['name'].split('/')[0],
                 'Implementation' : kn.unpack(filename)['impl'],
-                'Threads' : benchmark['threads'],
+                'Threads' :
+                    threads['benchmark'] if 'threads' in benchmark else 1,
                 'Processes' : kn.unpack(filename)['procs'],
                 'Statistic' : (
                     benchmark['aggregate_name']
