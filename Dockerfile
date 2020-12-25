@@ -13,8 +13,17 @@ WORKDIR /opt/conduit
 ENV DEBIAN_FRONTEND=noninteractive
 
 # adapted from https://users.open-mpi.narkive.com/tEPxZF0B/ompi-users-how-to-get-rid-of-openmpi-warning-unable-to-find-any-relevant-network-interfaces
+# see also https://github.com/open-mpi/ompi-www/issues/161#issue-390004007
 RUN \
-  echo "btl_base_warn_component_used = 0" >> /etc/openmpi-mca-params.conf \
+  mkdir -p "/root/.openmpi" \
+    && \
+  mkdir -p "/home/user/.openmpi" \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /etc/openmpi-mca-params.conf \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /root/.openmpi/openmpi-mca-params.conf \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /home/user/.openmpi/openmpi-mca-params.conf \
     && \
   echo "configured system-wide openmpi mca parameters"
 
