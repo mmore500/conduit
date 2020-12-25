@@ -20,7 +20,9 @@ for filename, entry in [
     for benchmark in entry['benchmarks']:
         try:
             res[frozendict({
-                'run_type' : benchmark['run_type'],
+                'run_type' : (
+                    benchmark['run_type'] if 'run_type' in benchmark else None
+                ),
                 'time_type' : (
                     'wall_time'
                     if (
@@ -46,7 +48,6 @@ for filename, entry in [
         except KeyError as e:
             print("key error")
             print(benchmark)
-            print(e.message)
 
 for run_specs, rows in res.items():
     pd.DataFrame(rows).to_csv(
