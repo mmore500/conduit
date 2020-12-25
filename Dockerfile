@@ -21,9 +21,9 @@ RUN \
     && \
   echo "btl_base_warn_component_unused = 0" >> /etc/openmpi-mca-params.conf \
     && \
-  echo "btl_base_warn_component_unused = 0" >> /root/.openmpi/openmpi-mca-params.conf \
+  echo "btl_base_warn_component_unused = 0" >> /root/.openmpi/mca-params.conf \
     && \
-  echo "btl_base_warn_component_unused = 0" >> /home/user/.openmpi/openmpi-mca-params.conf \
+  echo "btl_base_warn_component_unused = 0" >> /home/user/.openmpi/mca-params.conf \
     && \
   echo "configured system-wide openmpi mca parameters"
 
