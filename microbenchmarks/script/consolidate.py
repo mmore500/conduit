@@ -46,7 +46,7 @@ for filename, entry in [
                 'Lossiness' : benchmark['Lossiness'],
             })
         except KeyError as e:
-            print("key error")
+            print("key error", e)
             print(benchmark)
 
 for run_specs, rows in res.items():
