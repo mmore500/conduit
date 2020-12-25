@@ -258,7 +258,9 @@ RUN \
     && \
   chmod --recursive g+rwx /opt \
     && \
-  echo "user added and granted permissions to /opt"
+  chmod --recursive g+rwx /home/user \
+    && \
+  echo "user added and granted permissions to /opt and /home/user"
 
 USER user
 
