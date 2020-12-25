@@ -292,7 +292,7 @@ inline emp::optional<bool> try_process_chunk( FILE* source ) {
 
 /// Extract a tar archive.
 /// @return true on success, false on failure
-inline bool untar(const std::string filename) {
+inline bool untar(const std::string& filename) {
 
   FILE *source = std::fopen(filename.c_str(), "r");
 
