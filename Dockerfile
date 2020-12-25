@@ -260,6 +260,8 @@ RUN \
     && \
   chmod --recursive g+rwx /home/user \
     && \
+  chown -R user /home/user/ \
+    && \
   echo "user added and granted permissions to /opt and /home/user"
 
 USER user
