@@ -47,7 +47,6 @@ RUN \
   apt-get update -qq \
     && \
   apt-get install -y --allow-downgrades --no-install-recommends \
-    libbenchmark-dev \
     build-essential \
     ca-certificates \
     cmake \
