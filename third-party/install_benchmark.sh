@@ -15,9 +15,16 @@ git fetch --depth 1 origin c4a5ee3ac0d4a457fa50b7381f603b6aea1e6897
 git checkout FETCH_HEAD
 cd ..
 
-cmake -E make_directory "build"
-cmake -E chdir "build" cmake -DCMAKE_BUILD_TYPE=Release ../
-cmake --build "build" --config Release --target install
+# verify checked-out commit
+git rev-parse HEAD
+
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release ../
+make -j8
+make install
+
+# verify checked-out commit
+git rev-parse HEAD
 
 # pacakge manger install isn't new enough, disable it
 # apt-get update -qq \
