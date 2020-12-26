@@ -11,7 +11,7 @@ git checkout FETCH_HEAD
 mkdir googletest && cd googletest
 git init
 git remote add origin https://github.com/google/googletest
-git fetch --depth 1 origin ca4b7c9ff4d8a5c37ac51795b03ffe934958aeff
+git fetch --depth 1 origin c4a5ee3ac0d4a457fa50b7381f603b6aea1e6897
 git checkout FETCH_HEAD
 cd ..
 
