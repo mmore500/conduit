@@ -12,6 +12,21 @@ WORKDIR /opt/conduit
 # adapted from https://askubuntu.com/a/1013396
 ENV DEBIAN_FRONTEND=noninteractive
 
+# adapted from https://users.open-mpi.narkive.com/tEPxZF0B/ompi-users-how-to-get-rid-of-openmpi-warning-unable-to-find-any-relevant-network-interfaces
+# see also https://github.com/open-mpi/ompi-www/issues/161#issue-390004007
+RUN \
+  mkdir -p "/root/.openmpi" \
+    && \
+  mkdir -p "/home/user/.openmpi" \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /etc/openmpi-mca-params.conf \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /root/.openmpi/mca-params.conf \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /home/user/.openmpi/mca-params.conf \
+    && \
+  echo "configured system-wide openmpi mca parameters"
+
 RUN \
   echo 'Acquire::http::Timeout "60";' >> "/etc/apt/apt.conf.d/99timeout" \
     && \
@@ -32,7 +47,6 @@ RUN \
   apt-get update -qq \
     && \
   apt-get install -y --allow-downgrades --no-install-recommends \
-    libbenchmark-dev \
     build-essential \
     ca-certificates \
     cmake \
@@ -243,7 +257,11 @@ RUN \
     && \
   chmod --recursive g+rwx /opt \
     && \
-  echo "user added and granted permissions to /opt"
+  chmod --recursive g+rwx /home/user \
+    && \
+  chown -R user /home/user/ \
+    && \
+  echo "user added and granted permissions to /opt and /home/user"
 
 USER user
 

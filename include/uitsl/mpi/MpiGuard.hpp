@@ -4,20 +4,20 @@
 
 #include <functional>
 
+#include <mpi.h>
+
+#include "../debug/err_verify.hpp"
+
 namespace uitsl {
 
 struct MpiGuard {
 
   MpiGuard() {
     int argc{};
-    const auto res = MPI_Init(&argc, nullptr);
-    assert(res == 0);
+    uitsl::err_verify( MPI_Init(&argc, nullptr) );
   }
 
-  ~MpiGuard() {
-    const auto res = MPI_Finalize();
-    assert(res == 0);
-  }
+  ~MpiGuard() { uitsl::err_verify( MPI_Finalize() ); }
 
 };
 

@@ -10,11 +10,14 @@
 #include <string>
 #include <string_view>
 
+#include <sys/stat.h>
+
 #include "../../../third-party/Empirical/include/emp/base/always_assert_warning.hpp"
 #include "../../../third-party/Empirical/include/emp/base/errors.hpp"
 #include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
+#include "../debug/err_audit.hpp"
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"
 
@@ -121,6 +124,11 @@ inline bool try_mkdir( const stdfs::path& target, const stdfs::perms mode ) {
   std::error_code err;
   stdfs::create_directories(path, err);
 
+  // stdfs::create_directories is failing inside Docker container
+  // so use mkdir as a backup for now
+  if (! stdfs::exists(path) ) uitsl::err_audit( mkdir( path.c_str(), 0755 ) );
+  emp_assert( stdfs::exists(path) );
+
   if ( err ) {
     emp::NotifyError( emp::to_string(
       "creating directory ", path, " failed with error code ", err
@@ -156,7 +164,9 @@ inline FILE* create_file( const stdfs::path& target, const stdfs::perms mode ) {
 }
 
 /// @return true on success, false on failure
-inline bool unpack_file_chunk(FILE* source, FILE* dest, const size_t bytes_remaining) {
+inline bool unpack_file_chunk(
+  FILE* source, FILE* dest, const size_t bytes_remaining
+) {
 
   char buff[512];
 
@@ -282,7 +292,7 @@ inline emp::optional<bool> try_process_chunk( FILE* source ) {
 
 /// Extract a tar archive.
 /// @return true on success, false on failure
-inline bool untar(const std::string filename) {
+inline bool untar(const std::string& filename) {
 
   FILE *source = std::fopen(filename.c_str(), "r");
 
