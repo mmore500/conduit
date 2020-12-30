@@ -263,6 +263,13 @@ add_executable(test-uitsl
     ${UITSL_SOURCES}
     )
 
+if(DEFINED CUSTOM_SOURCES)
+    add_executable(test-custom
+    main.cpp
+    ${CUSTOM_SOURCES}
+    )
+endif()
+
 add_custom_command(TARGET test-uitsl
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E echo "Copying uitsl test data..."
@@ -297,9 +304,15 @@ add_custom_target(
 target_link_libraries(test-uitsl Catch2::Catch2 conduit)
 target_link_libraries(test-netuit Catch2::Catch2 conduit)
 target_link_libraries(test-uit Catch2::Catch2 conduit)
+if(DEFINED CUSTOM_SOURCES)
+    target_link_libraries(test-custom Catch2::Catch2 conduit)
+endif()
 
 include("../cmake/NProcMultiplexer.cmake")
 
 nproc_multiplex_tests(test-uitsl)
 nproc_multiplex_tests(test-uit)
 nproc_multiplex_tests(test-netuit)
+if(DEFINED CUSTOM_SOURCES)
+nproc_multiplex_tests(test-custom)
+endif()
