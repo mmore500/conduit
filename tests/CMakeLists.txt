@@ -207,6 +207,7 @@ set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/fetch/inflate.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/initialization/Uninitialized.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/initialization/ValueInitialized.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/math/mapping_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/math/math_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/math/ratio_to_double.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/math/shift_mod.cpp
