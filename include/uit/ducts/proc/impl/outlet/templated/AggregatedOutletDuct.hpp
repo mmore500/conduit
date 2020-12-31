@@ -86,8 +86,10 @@ public:
    * @return TODO.
    */
   const T& Get() const {
-    if (!aggregator.has_value()) SetupAggregator();
-    return aggregator->get().Get(address.GetTag());
+    if (!aggregator.has_value()) {
+      const_cast<AggregatedOutletDuct*>(this)->SetupAggregator();
+    }
+    return std::as_const(aggregator->get()).Get(address.GetTag());
   }
 
   /**
