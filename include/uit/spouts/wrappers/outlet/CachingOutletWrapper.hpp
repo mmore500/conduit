@@ -73,6 +73,7 @@ class CachingOutletWrapper {
       std::string{}
       + "Calling non-const Get on CachingOutletWrapper incurs extra copy, T "
       + typeid( value_type ).name()
+      + " ... consider using std::as_const"
     };
 
     thread_local value_type mutable_copy;

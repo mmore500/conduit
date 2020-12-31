@@ -213,6 +213,7 @@ public:
       std::string{}
       + "Calling non-const Get on BlockIrecvDuct incurs unnecessary copy, T "
       + typeid( T ).name()
+      + " ... consider using std::as_const"
     };
     //TODO tidy up
     const uitsl::CircularIndex<N> idx = receive_position - 1;
