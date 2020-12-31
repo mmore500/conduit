@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <array>
 #include <stddef.h>
+#include <typeinfo>
 
 #include <mpi.h>
 
@@ -209,7 +210,9 @@ public:
    */
   T& Get() {
     static const uitsl::WarnOnce warning{
-      "Calling non-const Get on BlockIrecvDuct incurs unnecessary copy."
+      std::string{}
+      + "Calling non-const Get on BlockIrecvDuct incurs unnecessary copy, T "
+      + typeid( T ).name()
     };
     //TODO tidy up
     const uitsl::CircularIndex<N> idx = receive_position - 1;

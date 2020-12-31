@@ -3,6 +3,8 @@
 #define UIT_SPOUTS_WRAPPERS_OUTLET_CACHINGOUTLETWRAPPER_HPP_INCLUDE
 
 #include <cstddef>
+#include <string>
+#include <typeinfo>
 
 #include "../../../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../../../third-party/Empirical/include/emp/datastructs/QueueCache.hpp"
@@ -67,7 +69,11 @@ class CachingOutletWrapper {
   }
 
   value_type& DoProcGet() {
-    const static uitsl::WarnOnce w{ "calling mutable Get() incurs extra copy" };
+    const static uitsl::WarnOnce w{
+      std::string{}
+      + "Calling non-const Get on CachingOutletWrapper incurs extra copy, T "
+      + typeid( value_type ).name()
+    };
 
     thread_local value_type mutable_copy;
     mutable_copy = const_cast<const this_t*>(this)->DoProcGet();
