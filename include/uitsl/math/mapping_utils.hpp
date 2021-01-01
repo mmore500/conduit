@@ -6,10 +6,10 @@
 
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
+namespace uitsl {
+
 using Point = emp::vector<size_t>;
 using Dims = emp::vector<size_t>;
-
-namespace uitsl {
 
 /**
  * This function maps a point in a finite N-dimensional space to 1-dimensional space

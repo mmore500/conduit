@@ -21,7 +21,9 @@
 
 namespace netuit {
 
-inline netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
+inline netuit::Topology make_toroidal_topology(
+  const uitsl::Dims& dim_cardinality
+) {
   /*
   * goal
   * make toroidal topology (such that opposite edges are the same edge)
@@ -36,14 +38,14 @@ inline netuit::Topology make_toroidal_topology(const Dims& dim_cardinality) {
   emp::vector<netuit::TopoNode> nodes(cardinality);
   uitsl::UIDMap<size_t> node_edge_map;
 
-  auto get_neighbor = [&dim_cardinality](Point p, const size_t dim, const int n) -> Point {
+  auto get_neighbor = [&dim_cardinality](uitsl::Point p, const size_t dim, const int n) -> uitsl::Point {
     p[dim] = uitsl::circular_index(p[dim], dim_cardinality[dim], n);
     return p;
   };
 
   // returns a vector containing all neighbors
-  auto get_neighbors = [&get_neighbor](const Point& p) {
-    emp::vector<Point> neighbors;
+  auto get_neighbors = [&get_neighbor](const uitsl::Point& p) {
+    emp::vector<uitsl::Point> neighbors;
 
     for (size_t i = 0; i < p.size(); ++i) {
       neighbors.push_back(get_neighbor(p, i, +1));
@@ -73,7 +75,7 @@ struct ToroidalTopologyFactory {
     return make_toroidal_topology({cardinality});
   }
 
-  netuit::Topology operator()(const Dims& dim_cardinality) const {
+  netuit::Topology operator()(const uitsl::Dims& dim_cardinality) const {
     return make_toroidal_topology(dim_cardinality);
   }
 
