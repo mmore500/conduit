@@ -5,7 +5,7 @@
 
 #include "uitsl/math/math_utils.hpp"
 
-TEST_CASE("Test sum") {
+TEST_CASE("Test sum", "[nproc:1]") {
 
   REQUIRE( uitsl::sum(1, 2, 3, 0) == 6 );
 
