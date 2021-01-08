@@ -301,29 +301,37 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}/tests/uitsl/fetch
     )
 
-target_link_libraries(test-uitsl Catch2::Catch2 conduit)
-target_link_libraries(test-netuit Catch2::Catch2 conduit)
-target_link_libraries(test-uit Catch2::Catch2 conduit)
-
 include("../cmake/NProcMultiplexer.cmake")
+include("../cmake/CodeCoverage2.cmake")
+
+if(DEFINED CODE_COVERAGE)
+    set(UIT_NPROC_MIN 2)
+    set(UIT_NPROC_MAX 3)
+endif()
 
 nproc_multiplex_tests(test-uitsl)
 nproc_multiplex_tests(test-uit)
 nproc_multiplex_tests(test-netuit)
 
 if(DEFINED CUSTOM_SOURCES)
-    if(DEFINED CODE_COVERAGE)
-        include("../cmake/CodeCoverage2.cmake")
-        set(UIT_NPROC_MIN 2)
-        set(UIT_NPROC_MAX 3)
-        nproc_multiplex_tests(test-custom)
+    nproc_multiplex_tests(test-custom)
+endif()
 
-        target_link_libraries(test-custom Catch2::Catch2 conduit)
+target_link_libraries(test-uitsl Catch2::Catch2 conduit)
+target_link_libraries(test-netuit Catch2::Catch2 conduit)
+target_link_libraries(test-uit Catch2::Catch2 conduit)
 
+if(DEFINED CUSTOM_SOURCES)
+    target_link_libraries(test-custom Catch2::Catch2 conduit)
+endif()
+
+if(DEFINED CODE_COVERAGE)
+    target_code_coverage(test-uitsl)
+    target_code_coverage(test-uit)
+    target_code_coverage(test-netuit)
+
+    if(DEFINED CUSTOM_SOURCES)
         target_code_coverage(test-custom)
-    else()
-        nproc_multiplex_tests(test-custom)
-        target_link_libraries(test-custom Catch2::Catch2 conduit)
     endif()
 endif()
 
