@@ -30,7 +30,8 @@ inline std::filesystem::path autoinstall( const std::string& url ) {
   );
 
   if ( uitsl::detect_tar( temp ) ) uitsl::untar( temp );
-  else std::filesystem::rename(
+  // we can't rename() because renaming across filesystems fails
+  else std::filesystem::copy(
     temp,
     std::filesystem::current_path() / temp.filename()
   );
