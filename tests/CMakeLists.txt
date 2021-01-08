@@ -304,9 +304,6 @@ add_custom_target(
 target_link_libraries(test-uitsl Catch2::Catch2 conduit)
 target_link_libraries(test-netuit Catch2::Catch2 conduit)
 target_link_libraries(test-uit Catch2::Catch2 conduit)
-if(DEFINED CUSTOM_SOURCES)
-    target_link_libraries(test-custom Catch2::Catch2 conduit)
-endif()
 
 include("../cmake/NProcMultiplexer.cmake")
 
@@ -314,5 +311,25 @@ nproc_multiplex_tests(test-uitsl)
 nproc_multiplex_tests(test-uit)
 nproc_multiplex_tests(test-netuit)
 if(DEFINED CUSTOM_SOURCES)
-nproc_multiplex_tests(test-custom)
+    if(DEFINED CODE_COVERAGE)
+        include("../cmake/CodeCoverage2.cmake")
+        set(UIT_NPROC_MIN 2)
+        set(UIT_NPROC_MAX 3)
+        nproc_multiplex_tests(test-custom)
+
+        target_link_libraries(test-custom Catch2::Catch2 conduit)
+
+        target_code_coverage(test-custom)
+    else()
+        nproc_multiplex_tests(test-custom)
+        target_link_libraries(test-custom Catch2::Catch2 conduit)
+    endif()
 endif()
+
+add_custom_target(
+     run-tests
+     COMMENT "Run tests"
+     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+     COMMAND ${CMAKE_CTEST_COMMAND} -E "NOT_BUILT" --output-on-failures
+)
+
