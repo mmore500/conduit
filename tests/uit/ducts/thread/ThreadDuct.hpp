@@ -1,5 +1,6 @@
 #include <ratio>
 #include <thread>
+#include <type_traits>
 #include <unordered_set>
 
 #include <mpi.h>
@@ -31,18 +32,16 @@ using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 #define REPEAT for (size_t rep = 0; rep < std::deca::num ; ++rep)
 
-#define THREADED_BEGIN uitsl::ThreadTeam team; for (uitsl::thread_id_t thread_id = 0; thread_id < num_threads; ++thread_id) { team.Add([thread_id, &mesh](){
+#define THREADED_BEGIN uitsl::ThreadTeam team; for (uitsl::thread_id_t thread_id = 0; thread_id < TestType::value; ++thread_id) { team.Add([&, thread_id](){
 
 #define THREADED_END }); } team.Join();
 
 #define TD_IMPL_NAME IMPL_NAME " ThreadProcDuct"
 
-inline size_t num_threads;
+using two_thread = std::integral_constant<int, 2>;
+using three_thread = std::integral_constant<int, 3>;
 
-// must be emplacedd
-static emp::optional<std::barrier<>> barrier;
-
-TEST_CASE("Is initial ThreadDuct Get() result value-intialized? " TD_IMPL_NAME, "[ThreadDuct]") { REPEAT {
+TEMPLATE_TEST_CASE("Is initial ThreadDuct Get() result value-intialized? " TD_IMPL_NAME, "[ThreadDuct][nproc:1]", two_thread, three_thread) { REPEAT {
 
   auto [outlet] = uit::Source<Spec>{
     std::in_place_type_t<Spec::ThreadDuct>{}
@@ -52,10 +51,10 @@ TEST_CASE("Is initial ThreadDuct Get() result value-intialized? " TD_IMPL_NAME, 
 
 } }
 
-TEST_CASE("Unmatched gets " TD_IMPL_NAME, "[ThreadDuct]") { REPEAT {
+TEMPLATE_TEST_CASE("Unmatched gets " TD_IMPL_NAME, "[ThreadDuct][nproc:1]", two_thread, three_thread) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::DyadicTopologyFactory{}(num_threads),
+    netuit::DyadicTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -72,10 +71,10 @@ TEST_CASE("Unmatched gets " TD_IMPL_NAME, "[ThreadDuct]") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts " TD_IMPL_NAME, "[ThreadDuct]") { REPEAT {
+TEMPLATE_TEST_CASE("Unmatched puts " TD_IMPL_NAME, "[ThreadDuct][nproc:1]", two_thread, three_thread) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::DyadicTopologyFactory{}(num_threads),
+    netuit::DyadicTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 

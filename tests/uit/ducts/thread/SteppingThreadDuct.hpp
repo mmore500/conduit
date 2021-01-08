@@ -1,9 +1,9 @@
 #define STD_IMPL_NAME IMPL_NAME " SteppingThreadDuct"
 
-TEST_CASE("Ring Mesh connectivity " STD_IMPL_NAME) { REPEAT {
+TEMPLATE_TEST_CASE("Ring Mesh connectivity " STD_IMPL_NAME, "[nproc:1]", two_thread, three_thread) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::RingTopologyFactory{}(num_threads),
+    netuit::RingTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -23,10 +23,13 @@ TEST_CASE("Ring Mesh connectivity " STD_IMPL_NAME) { REPEAT {
 
 } }
 
-TEST_CASE("Ring Mesh sequential consistency " STD_IMPL_NAME) { REPEAT {
+TEMPLATE_TEST_CASE("Ring Mesh sequential consistency " STD_IMPL_NAME, "[nproc:1]", two_thread, three_thread) {
+  std::barrier<> barrier(uitsl::safe_cast<std::ptrdiff_t>(TestType::value));
+
+  REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::RingTopologyFactory{}(num_threads),
+    netuit::RingTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -38,7 +41,7 @@ TEST_CASE("Ring Mesh sequential consistency " STD_IMPL_NAME) { REPEAT {
     // long enough to check that buffer wraparound works properly
     for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
 
-      barrier->arrive_and_wait();
+      barrier.arrive_and_wait();
 
       output.Put(i);
       REQUIRE(input.GetNext() == i);
@@ -49,10 +52,10 @@ TEST_CASE("Ring Mesh sequential consistency " STD_IMPL_NAME) { REPEAT {
 
 } }
 
-TEST_CASE("Producer-Consumer Mesh connectivity " STD_IMPL_NAME) { REPEAT {
+TEMPLATE_TEST_CASE("Producer-Consumer Mesh connectivity " STD_IMPL_NAME, "[nproc:1]", two_thread, three_thread) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::RingTopologyFactory{}(num_threads),
+    netuit::RingTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -81,10 +84,10 @@ TEST_CASE("Producer-Consumer Mesh connectivity " STD_IMPL_NAME) { REPEAT {
 
 } }
 
-TEST_CASE("Producer-Consumer Mesh sequential consistency " STD_IMPL_NAME) { REPEAT {
+TEMPLATE_TEST_CASE("Producer-Consumer Mesh sequential consistency " STD_IMPL_NAME, "[nproc:1]", two_thread, three_thread) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::RingTopologyFactory{}(num_threads),
+    netuit::RingTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -105,10 +108,10 @@ TEST_CASE("Producer-Consumer Mesh sequential consistency " STD_IMPL_NAME) { REPE
 
 } }
 
-TEST_CASE("Dyadic Mesh connectivity " STD_IMPL_NAME) { REPEAT {
+TEMPLATE_TEST_CASE("Dyadic Mesh connectivity " STD_IMPL_NAME, "[nproc:1]", two_thread, three_thread) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::DyadicTopologyFactory{}(num_threads),
+    netuit::DyadicTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -140,10 +143,13 @@ TEST_CASE("Dyadic Mesh connectivity " STD_IMPL_NAME) { REPEAT {
 
 } }
 
-TEST_CASE("Dyadic Mesh sequential consistency " STD_IMPL_NAME) { REPEAT {
+TEMPLATE_TEST_CASE("Dyadic Mesh sequential consistency " STD_IMPL_NAME, "[nproc:1]", two_thread, three_thread) {
+  std::barrier<> barrier(uitsl::safe_cast<std::ptrdiff_t>(TestType::value));
+
+  REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::DyadicTopologyFactory{}(num_threads),
+    netuit::DyadicTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -155,7 +161,7 @@ TEST_CASE("Dyadic Mesh sequential consistency " STD_IMPL_NAME) { REPEAT {
     // long enough to check that buffer wraparound works properly
     for (MSG_T i = 1; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
 
-      barrier->arrive_and_wait();
+      barrier.arrive_and_wait();
 
       output.Put(i);
       REQUIRE( input.GetNext() == i );

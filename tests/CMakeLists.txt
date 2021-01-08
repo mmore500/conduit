@@ -310,6 +310,7 @@ include("../cmake/NProcMultiplexer.cmake")
 nproc_multiplex_tests(test-uitsl)
 nproc_multiplex_tests(test-uit)
 nproc_multiplex_tests(test-netuit)
+
 if(DEFINED CUSTOM_SOURCES)
     if(DEFINED CODE_COVERAGE)
         include("../cmake/CodeCoverage2.cmake")

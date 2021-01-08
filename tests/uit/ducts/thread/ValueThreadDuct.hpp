@@ -1,9 +1,9 @@
 #define VATD_IMPL_NAME IMPL_NAME " ValueThreadDuct"
 
-TEST_CASE("Eventual flush-out " VATD_IMPL_NAME) { REPEAT {
+TEMPLATE_TEST_CASE("Eventual flush-out " VATD_IMPL_NAME, "[nproc:1]", two_thread, three_thread) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::DyadicTopologyFactory{}(num_threads),
+    netuit::DyadicTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
@@ -31,10 +31,10 @@ TEST_CASE("Eventual flush-out " VATD_IMPL_NAME) { REPEAT {
 } }
 
 
-TEST_CASE("Validity " VATD_IMPL_NAME) { REPEAT {
+TEMPLATE_TEST_CASE("Validity " VATD_IMPL_NAME, "[nproc:1]", two_thread, three_thread) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::DyadicTopologyFactory{}(num_threads),
+    netuit::DyadicTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 
