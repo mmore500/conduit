@@ -34,11 +34,7 @@ execute_process(
   RESULT_VARIABLE result
 )
 # Catch --list-test-names-only reports the number of tests, so 0 is... surprising
-if(${result} EQUAL 0)
-  message(WARNING
-    "Test executable '${TEST_EXECUTABLE}' contains no tests!\n"
-  )
-elseif(${result} LESS 0)
+if(${result} LESS 0)
   message(FATAL_ERROR
     "Error running test executable '${TEST_EXECUTABLE}':\n"
     "  Result: ${result}\n"
