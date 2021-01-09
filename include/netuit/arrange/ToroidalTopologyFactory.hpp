@@ -6,11 +6,13 @@
 #include <cmath>
 #include <list>
 #include <numeric>
+#include <set>
 #include <tuple>
 
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
 
+#include "../../uitsl/math/is_perfect_hypercube.hpp"
 #include "../../uitsl/math/mapping_utils.hpp"
 #include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/utility/UIDMap.hpp"
@@ -19,11 +21,20 @@
 #include "../topology/Topology.hpp"
 #include "../topology/TopoNode.hpp"
 
+#include "ToroidalGridTopologyFactory.hpp"
+
 namespace netuit {
 
 inline netuit::Topology make_toroidal_topology(
   const uitsl::Dims& dim_cardinality
 ) {
+
+  // special case: if two-dimensional square, custom construct so it's easy
+  // to visualize
+  if ( dim_cardinality.size() == 2 && std::set<size_t>(
+    std::begin( dim_cardinality ), std::end( dim_cardinality )
+  ).size() == 1 ) return netuit::make_toroidal_grid_topology( dim_cardinality );
+
   /*
   * goal
   * make toroidal topology (such that opposite edges are the same edge)

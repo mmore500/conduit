@@ -7,6 +7,7 @@ set(NETUIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ProConTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/RingTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ToroidalTopologyFactory.cpp
+    ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ToroidalGridTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/AssignAvailableProcs.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/AssignAvailableThreads.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/AssignContiguously.cpp
