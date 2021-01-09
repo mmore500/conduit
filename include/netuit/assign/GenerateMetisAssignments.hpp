@@ -12,8 +12,8 @@
 
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
-#include "../../uitsl/debug/EnumeratedFunctor.hpp"
 #include "../../uitsl/debug/audit_cast.hpp"
+#include "../../uitsl/debug/EnumeratedFunctor.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 

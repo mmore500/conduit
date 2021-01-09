@@ -4,8 +4,8 @@
 
 #include <fstream>
 #include <regex>
-#include <string>
 #include <streambuf>
+#include <string>
 
 #include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
