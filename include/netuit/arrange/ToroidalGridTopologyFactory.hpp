@@ -48,44 +48,46 @@ netuit::Topology make_toroidal_grid_topology(
   emp::vector<netuit::TopoNode> nodes(cardinality);
   uitsl::UIDMap<size_t> node_edge_map;
 
-  auto get_north_input_id = [](const size_t idx){ return idx; };
-  auto get_west_input_id = [cardinality](const size_t idx){
-    return cardinality + idx;
+  auto get_north_output_id = [cardinality](const size_t idx){
+    return cardinality * 0 + idx;
   };
-  auto get_south_input_id = [cardinality](const size_t idx){
-    return 2 * cardinality + idx;
+  auto get_west_output_id = [cardinality](const size_t idx){
+    return cardinality * 1 + idx;
   };
-  auto get_east_input_id = [cardinality](const size_t idx){
-    return 3 * cardinality + idx;
+  auto get_east_output_id = [cardinality](const size_t idx){
+    return cardinality * 2 + idx;
+  };
+  auto get_south_output_id = [cardinality](const size_t idx){
+    return cardinality * 3 + idx;
   };
 
-  auto get_north_output_id = [&](const size_t idx){
-    // northern neighbor's southern inlet edge id
-    return get_south_input_id(
+  auto get_north_input_id = [&](const size_t idx){
+    // northern neighbor's southern input edge id
+    return get_south_output_id(
       (idx + cardinality - dimension) % cardinality
     );
   };
-  auto get_south_output_id = [&](const size_t idx){
-    // southern neighbor's northern inlet edge id
-    return get_north_input_id(
+  auto get_south_input_id = [&](const size_t idx){
+    // southern neighbor's northern input edge id
+    return get_north_output_id(
       (idx + dimension) % cardinality
     );
   };
-  auto get_east_output_id = [&](const size_t idx){
+  auto get_east_input_id = [&](const size_t idx){
     const size_t first_idx_in_row = (idx / dimension) * dimension;
     const size_t idx_in_row = idx % dimension;
 
-    // eastern neighbor's western inlet id
-    return get_west_input_id(
+    // eastern neighbor's western input id
+    return get_west_output_id(
       first_idx_in_row + (idx_in_row + 1) % dimension
     );
   };
-  auto get_west_output_id = [&](const size_t idx){
+  auto get_west_input_id = [&](const size_t idx){
     const size_t first_idx_in_row = (idx / dimension) * dimension;
     const size_t idx_in_row = idx % dimension;
 
-    // western neighbor's eastern inlet id
-    return get_east_input_id(
+    // western neighbor's eastern input id
+    return get_east_output_id(
       first_idx_in_row + (idx_in_row + dimension - 1) % dimension
     );
   };
@@ -94,13 +96,13 @@ netuit::Topology make_toroidal_grid_topology(
     const size_t idx = std::distance(nodes.begin(), it);
     it->AddInput( get_north_input_id( idx ) );
     it->AddInput( get_west_input_id( idx ) );
-    it->AddInput( get_south_input_id( idx ) );
     it->AddInput( get_east_input_id( idx ) );
+    it->AddInput( get_south_input_id( idx ) );
 
     it->AddOutput( get_north_output_id( idx ) );
     it->AddOutput( get_west_output_id( idx ) );
-    it->AddOutput( get_south_output_id( idx ) );
     it->AddOutput( get_east_output_id( idx ) );
+    it->AddOutput( get_south_output_id( idx ) );
   }
 
   return nodes;

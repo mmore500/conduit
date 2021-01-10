@@ -93,7 +93,11 @@ class MeshTopology {
     const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment,
     const MPI_Comm& comm
   ) {
-    for (edge_id_t edge : edge_registry) {
+
+    std::unordered_map<edge_id_t, uit::Conduit<ImplSpec>> edge_conduits;
+
+    // initialize inputs first...
+    for (const edge_id_t edge : edge_registry) {
       const node_id_t input_id = input_registry.at(edge);
       const node_id_t output_id = output_registry.at(edge);
       // only construct infrastructure relevant to this proc
@@ -102,12 +106,33 @@ class MeshTopology {
         proc_assignment(input_id) == uitsl::get_proc_id(comm)
         || proc_assignment(output_id) == uitsl::get_proc_id(comm)
       ) {
-        uit::Conduit<ImplSpec> conduit;
+        auto& conduit = edge_conduits[ edge ];
 
         InitializeNode(input_id);
         nodes.at(input_id).AddInput(
           MeshNodeInput<ImplSpec>{conduit.GetOutlet(), edge}
         );
+
+      }
+    }
+
+    // then initialize outputs in reverse order
+    // so that in cases where connections are reciporical
+    // when a node's inputs and outputs zip together,
+    // each (input, output) pair are associated with the same partner node
+    for (
+      auto it = std::rbegin(edge_registry); it != std::rend(edge_registry); ++it
+    ) {
+      const edge_id_t edge = *it;
+      const node_id_t input_id = input_registry.at(edge);
+      const node_id_t output_id = output_registry.at(edge);
+      // only construct infrastructure relevant to this proc
+      // (but do need nodes that are connected to nodes on this proc)
+      if (
+        proc_assignment(input_id) == uitsl::get_proc_id(comm)
+        || proc_assignment(output_id) == uitsl::get_proc_id(comm)
+      ) {
+        auto& conduit = edge_conduits.at( edge );
 
         InitializeNode(output_id);
         nodes.at(output_id).AddOutput(
@@ -115,6 +140,7 @@ class MeshTopology {
         );
       }
     }
+
   }
 
 public:
