@@ -203,18 +203,37 @@ public:
 
   const std::set<edge_id_t>& GetEdgeRegistry() const { return edge_registry; }
 
-  const std::unordered_map<edge_id_t, node_id_t>& GetInputRegistry() const {
+  const std::map<edge_id_t, node_id_t>& GetInputRegistry() const {
     return input_registry;
   }
 
-  const std::unordered_map<edge_id_t, node_id_t>& GetOutputRegistry() const {
+  const std::map<edge_id_t, node_id_t>& GetOutputRegistry() const {
     return output_registry;
   }
 
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << "TODO" << std::endl;
+    ss << "nodes" << std::endl;
+    for ( const auto& [node_id, node] : nodes ) {
+      ss << "node_id " << node_id << std::endl;
+      ss << "node " << node.ToString() << std::endl;
+    }
+
+    // std::set<edge_id_t> edge_registry;
+
+    // edge_id -> node_id
+    ss << "input_registry " << std::endl;
+    for ( const auto& [edge_id, node_id] : input_registry ) {
+      ss << edge_id << " -> " << node_id << std::endl;
+    }
+
+    // edge_id -> node_id
+    ss << "output_registry " << std::endl;
+    for ( const auto& [edge_id, node_id] : output_registry ) {
+      ss << edge_id << " -> " << node_id << std::endl;
+    }
+
     return ss.str();
   }
 
