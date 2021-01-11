@@ -1,6 +1,6 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/mpi/MpiGuard.hpp"
+#include "uitsl/mpi/MpiAutoGuard.hpp"
 
 #include "uit/setup/ImplSpec.hpp"
 
@@ -9,8 +9,6 @@
 #include "netuit/arrange/ToroidalGridTopologyFactory.hpp"
 #include "netuit/arrange/ToroidalTopologyFactory.hpp"
 #include "netuit/mesh/Mesh.hpp"
-
-const uitsl::MpiGuard guard;
 
 TEST_CASE("Test Mesh", "[nproc:1]") {
 
