@@ -4,7 +4,7 @@
 
 #include <set>
 #include <stddef.h>
-#include <unordered_map>
+#include <map>
 
 #include <mpi.h>
 
@@ -27,7 +27,7 @@ class MeshTopology {
   using node_id_t = size_t;
   using edge_id_t = size_t;
   using node_t = MeshNode<ImplSpec>;
-  using node_lookup_t = std::unordered_map<node_id_t, node_t>;
+  using node_lookup_t = std::map<node_id_t, node_t>;
 
   // node_id -> node
   node_lookup_t nodes;
@@ -35,8 +35,8 @@ class MeshTopology {
   // ordered by edge_id
   std::set<edge_id_t> edge_registry;
   // edge_id -> node_id
-  std::unordered_map<edge_id_t, node_id_t> input_registry;
-  std::unordered_map<edge_id_t, node_id_t> output_registry;
+  std::map<edge_id_t, node_id_t> input_registry;
+  std::map<edge_id_t, node_id_t> output_registry;
 
   void InitializeRegistries(const netuit::Topology& topology) {
     for (node_id_t node_id = 0; node_id < topology.GetSize(); ++node_id) {
@@ -94,7 +94,7 @@ class MeshTopology {
     const MPI_Comm& comm
   ) {
 
-    std::unordered_map<edge_id_t, uit::Conduit<ImplSpec>> edge_conduits;
+    std::map<edge_id_t, uit::Conduit<ImplSpec>> edge_conduits;
 
     // initialize inputs first...
     for (const edge_id_t edge : edge_registry) {
