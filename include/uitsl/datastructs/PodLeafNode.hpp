@@ -125,7 +125,8 @@ public:
 
   auto end() const { return std::end( data ); }
 
-  const emp::array<T, N>& GetBuffer() const { return data; }
+  // TODO swtich back to emp::array after https://github.com/devosoft/Empirical/issues/408 is resolved
+  const std::array<T, N>& GetBuffer() const { return data; }
 
 };
 
