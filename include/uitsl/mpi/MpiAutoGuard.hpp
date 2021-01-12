@@ -7,7 +7,7 @@
 namespace uitsl {
 namespace internal {
 
-const uitsl::MpiGuard mpi_guard;
+inline const uitsl::MpiGuard mpi_guard;
 
 } // namespace internal
 } // namespace uitsl
