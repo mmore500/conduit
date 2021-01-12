@@ -68,7 +68,8 @@ jobs:
       - uses: docker-practice/actions-setup-docker@v1
       - run: export ci_env=`bash <(curl -s https://codecov.io/env)`
       - run: >
-          docker run $ci_env -e DISH_MPICXX=$DISH_MPICXX -e OMPI_CXX=$OMPI_CXX "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
+          docker run $ci_env -e DISH_MPICXX=$DISH_MPICXX -e OMPI_CXX=$OMPI_CXX -e CC=clang -e CXX=clang++
+          "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
           "cd /opt/conduit/ &&
           cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
           && cmake --build build --target ccov-show-test-netuit ccov-show-test-uit ccov-show-test-uitsl
