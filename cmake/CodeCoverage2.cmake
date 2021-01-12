@@ -292,8 +292,13 @@ function(target_code_coverage TARGET_NAME)
                 export n\;
                 export LLVM_PROFILE_FILE=%p-${target_code_coverage_COVERAGE_TARGET_NAME}.profraw\;
                 ${MPIEXEC_EXECUTABLE} ${UIT_MPI_FLAGS} ${MPIEXEC_NUMPROC_FLAG} $$n
-                $<TARGET_FILE:${TARGET_NAME}> ${target_code_coverage_ARGS}
-              \; done\'
+                $<TARGET_FILE:${TARGET_NAME}> "~[nproc:1]~[nproc:2]~[nproc:3]~[nproc:4]~[nproc:5]~[nproc:6]~[nproc:7]~[nproc:8]" ${target_code_coverage_ARGS}\;
+                ${MPIEXEC_EXECUTABLE} ${UIT_MPI_FLAGS} ${MPIEXEC_NUMPROC_FLAG} $$n
+                $<TARGET_FILE:${TARGET_NAME}> "[nproc:$$n]" ${target_code_coverage_ARGS}
+              \; done \;
+              ${MPIEXEC_EXECUTABLE} ${UIT_MPI_FLAGS} ${MPIEXEC_NUMPROC_FLAG} 1
+                $<TARGET_FILE:${TARGET_NAME}> "[nproc:1]" ${target_code_coverage_ARGS}
+              \;\'
           COMMAND echo "-object=$<TARGET_FILE:${TARGET_NAME}>" ${SO_OBJECTS} >>
                   ${CMAKE_COVERAGE_OUTPUT_DIRECTORY}/binaries.list
           COMMAND
@@ -325,8 +330,14 @@ function(target_code_coverage TARGET_NAME)
           COMMAND
             ${LLVM_COV_PATH} show $<TARGET_FILE:${TARGET_NAME}> ${SO_OBJECTS}
             -instr-profile=${target_code_coverage_COVERAGE_TARGET_NAME}.profdata
-            -show-line-counts-or-regions ${EXCLUDE_REGEX}
+            -show-line-counts-or-regions ${EXCLUDE_REGEX} > coverage_${target_code_coverage_COVERAGE_TARGET_NAME}.txt
           DEPENDS ccov-processing-${target_code_coverage_COVERAGE_TARGET_NAME})
+
+        add_custom_command(TARGET ccov-show-${target_code_coverage_COVERAGE_TARGET_NAME}
+          POST_BUILD
+          COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/third-party/force-cover/fix_coverage.py coverage_${target_code_coverage_COVERAGE_TARGET_NAME}.txt
+          COMMENT "Running force-cover"
+          )
 
         # Print out a summary of the coverage information to the command line
         add_custom_target(
