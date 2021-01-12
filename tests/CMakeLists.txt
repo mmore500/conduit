@@ -302,13 +302,13 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}/tests/uitsl/fetch
     )
 
-include("../cmake/NProcMultiplexer.cmake")
-include("../cmake/CodeCoverage2.cmake")
-
 if(DEFINED CODE_COVERAGE)
     set(UIT_NPROC_MIN 2)
     set(UIT_NPROC_MAX 3)
 endif()
+
+include("../cmake/NProcMultiplexer.cmake")
+include("../cmake/CodeCoverage2.cmake")
 
 nproc_multiplex_tests(test-uitsl)
 nproc_multiplex_tests(test-uit)
@@ -327,9 +327,11 @@ if(DEFINED CUSTOM_SOURCES)
 endif()
 
 if(DEFINED CODE_COVERAGE)
-    target_code_coverage(test-uitsl)
-    target_code_coverage(test-uit)
-    target_code_coverage(test-netuit)
+    add_code_coverage_all_targets(EXCLUDE tests/* third-party/*)
+
+    target_code_coverage(test-uitsl AUTO ALL EXCLUDE tests/* third-party/*)
+    target_code_coverage(test-uit AUTO ALL EXCLUDE tests/* third-party/*)
+    target_code_coverage(test-netuit AUTO ALL EXCLUDE tests/* third-party/*)
 
     if(DEFINED CUSTOM_SOURCES)
         target_code_coverage(test-custom)
