@@ -15,20 +15,17 @@ import matplotlib.pyplot as plt
 from keyname import keyname as kn
 
 dims = [
+    [1, 1],
     [2, 2],
-    [2, 10],
     [3, 3],
-    [3, 3, 3],
-    [4, 5],
     [8, 8],
-    [9, 9],
-    [9],
+    [9, 9]
 ]
 
 def make_filename(dims):
     pack = {
         **{
-            'name'  : 'toroidal',
+            'name'  : 'toroidal_grid',
             'ndims' : len(dims),
             'ext'   : '.adj',
         },

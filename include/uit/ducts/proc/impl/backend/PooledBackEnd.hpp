@@ -78,11 +78,11 @@ private:
 
     return std::any_of(
       std::begin(inlet_pools), std::end(inlet_pools),
-      [this](const auto& map_pair){
+      [](const auto& map_pair){
         const auto& [key, map] = map_pair;
         return std::any_of(
           std::begin(map), std::end(map),
-          [this](const auto& pool_pair) {
+          [](const auto& pool_pair) {
             const auto& [key, pool] = pool_pair;
             return pool.IsInitialized();
           }
@@ -111,11 +111,11 @@ private:
 
     return std::any_of(
       std::begin(outlet_pools), std::end(outlet_pools),
-      [this](const auto& map_pair){
+      [](const auto& map_pair){
         const auto& [key, map] = map_pair;
         return std::any_of(
           std::begin(map), std::end(map),
-          [this](const auto& pool_pair) {
+          [](const auto& pool_pair) {
             const auto& [key, pool] = pool_pair;
             return pool.IsInitialized();
           }

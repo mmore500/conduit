@@ -4,7 +4,7 @@
 
 #include <set>
 #include <stddef.h>
-#include <unordered_map>
+#include <map>
 
 #include <mpi.h>
 
@@ -27,7 +27,7 @@ class MeshTopology {
   using node_id_t = size_t;
   using edge_id_t = size_t;
   using node_t = MeshNode<ImplSpec>;
-  using node_lookup_t = std::unordered_map<node_id_t, node_t>;
+  using node_lookup_t = std::map<node_id_t, node_t>;
 
   // node_id -> node
   node_lookup_t nodes;
@@ -35,8 +35,8 @@ class MeshTopology {
   // ordered by edge_id
   std::set<edge_id_t> edge_registry;
   // edge_id -> node_id
-  std::unordered_map<edge_id_t, node_id_t> input_registry;
-  std::unordered_map<edge_id_t, node_id_t> output_registry;
+  std::map<edge_id_t, node_id_t> input_registry;
+  std::map<edge_id_t, node_id_t> output_registry;
 
   void InitializeRegistries(const netuit::Topology& topology) {
     for (node_id_t node_id = 0; node_id < topology.GetSize(); ++node_id) {
@@ -93,7 +93,11 @@ class MeshTopology {
     const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment,
     const MPI_Comm& comm
   ) {
-    for (edge_id_t edge : edge_registry) {
+
+    std::map<edge_id_t, uit::Conduit<ImplSpec>> edge_conduits;
+
+    // initialize inputs first...
+    for (const edge_id_t edge : edge_registry) {
       const node_id_t input_id = input_registry.at(edge);
       const node_id_t output_id = output_registry.at(edge);
       // only construct infrastructure relevant to this proc
@@ -102,12 +106,33 @@ class MeshTopology {
         proc_assignment(input_id) == uitsl::get_proc_id(comm)
         || proc_assignment(output_id) == uitsl::get_proc_id(comm)
       ) {
-        uit::Conduit<ImplSpec> conduit;
+        auto& conduit = edge_conduits[ edge ];
 
         InitializeNode(input_id);
         nodes.at(input_id).AddInput(
           MeshNodeInput<ImplSpec>{conduit.GetOutlet(), edge}
         );
+
+      }
+    }
+
+    // then initialize outputs in reverse order
+    // so that in cases where connections are reciporical
+    // when a node's inputs and outputs zip together,
+    // each (input, output) pair are associated with the same partner node
+    for (
+      auto it = std::rbegin(edge_registry); it != std::rend(edge_registry); ++it
+    ) {
+      const edge_id_t edge = *it;
+      const node_id_t input_id = input_registry.at(edge);
+      const node_id_t output_id = output_registry.at(edge);
+      // only construct infrastructure relevant to this proc
+      // (but do need nodes that are connected to nodes on this proc)
+      if (
+        proc_assignment(input_id) == uitsl::get_proc_id(comm)
+        || proc_assignment(output_id) == uitsl::get_proc_id(comm)
+      ) {
+        auto& conduit = edge_conduits.at( edge );
 
         InitializeNode(output_id);
         nodes.at(output_id).AddOutput(
@@ -115,6 +140,7 @@ class MeshTopology {
         );
       }
     }
+
   }
 
 public:
@@ -177,18 +203,37 @@ public:
 
   const std::set<edge_id_t>& GetEdgeRegistry() const { return edge_registry; }
 
-  const std::unordered_map<edge_id_t, node_id_t>& GetInputRegistry() const {
+  const std::map<edge_id_t, node_id_t>& GetInputRegistry() const {
     return input_registry;
   }
 
-  const std::unordered_map<edge_id_t, node_id_t>& GetOutputRegistry() const {
+  const std::map<edge_id_t, node_id_t>& GetOutputRegistry() const {
     return output_registry;
   }
 
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << "TODO" << std::endl;
+    ss << "nodes" << std::endl;
+    for ( const auto& [node_id, node] : nodes ) {
+      ss << "node_id " << node_id << std::endl;
+      ss << "node " << node.ToString() << std::endl;
+    }
+
+    // std::set<edge_id_t> edge_registry;
+
+    // edge_id -> node_id
+    ss << "input_registry " << std::endl;
+    for ( const auto& [edge_id, node_id] : input_registry ) {
+      ss << edge_id << " -> " << node_id << std::endl;
+    }
+
+    // edge_id -> node_id
+    ss << "output_registry " << std::endl;
+    for ( const auto& [edge_id, node_id] : output_registry ) {
+      ss << edge_id << " -> " << node_id << std::endl;
+    }
+
     return ss.str();
   }
 

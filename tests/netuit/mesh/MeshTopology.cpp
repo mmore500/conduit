@@ -1,5 +1,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
+#include "uitsl/mpi/MpiAutoGuard.hpp"
+
 #include "uit/setup/ImplSpec.hpp"
 
 #include "netuit/arrange/RingTopologyFactory.hpp"

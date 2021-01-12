@@ -6,6 +6,7 @@
 #include <array>
 #include <memory>
 #include <stddef.h>
+#include <utility>
 
 #include <mpi.h>
 
@@ -88,8 +89,8 @@ public:
    * @return TODO.
    */
   const T& Get() const {
-    if (!pool.has_value()) SetupPool();
-    return pool->get().Get(pool_index);
+    if (!pool.has_value()) const_cast<PooledOutletDuct*>(this)->SetupPool();
+    return std::as_const(pool->get()).Get(pool_index);
   }
 
   /**

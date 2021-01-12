@@ -219,7 +219,7 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << "TODO" << std::endl;
+    ss << nodes.ToString() << std::endl;
     return ss.str();
   }
 

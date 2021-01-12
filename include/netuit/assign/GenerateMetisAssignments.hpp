@@ -12,8 +12,8 @@
 
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
-#include "../../uitsl/debug/EnumeratedFunctor.hpp"
 #include "../../uitsl/debug/audit_cast.hpp"
+#include "../../uitsl/debug/EnumeratedFunctor.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 
@@ -150,6 +150,32 @@ std::pair<
     proc_assigner,
     thread_assigner
   };
+}
+
+/// This function returns a pair of functors determining thread and process
+/// assignments, from a (hopefully optimal) k-way partitioning as returned by METIS.
+/// @param[in] num_procs Number of processes.
+/// @param[in] threads_per_proc Number of threads per process.
+/// @param[in] topology Topology to partition.
+/// @return std::pair of process and thread assignments. *
+std::pair<
+  std::function<uitsl::proc_id_t(size_t)>,
+  std::function<uitsl::thread_id_t(size_t)>
+> GenerateMetisAssignmentFunctors (
+  const size_t num_procs,
+  const size_t threads_per_proc,
+  const netuit::Topology& topology
+) {
+
+  const auto enumerated = netuit::GenerateMetisAssignments(
+    num_procs, threads_per_proc, topology
+  );
+
+  return std::pair{
+    enumerated.first,
+    enumerated.second
+  };
+
 }
 
 } // namespace netuit

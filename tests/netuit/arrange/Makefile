@@ -4,6 +4,7 @@ TARGET_NAMES += RingTopologyFactory
 TARGET_NAMES += LoopTopologyFactory
 TARGET_NAMES += ProConTopologyFactory
 TARGET_NAMES += ToroidalTopologyFactory
+TARGET_NAMES += ToroidalGridTopologyFactory
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
@@ -20,6 +21,7 @@ assets: staging
 	python3 scripts/make_loop.py
 	python3 scripts/make_procon.py
 	python3 scripts/make_ring.py
+	python3 scripts/make_toroidal_grid.py
 	python3 scripts/make_toroidal.py
 
 test:: assets

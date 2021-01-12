@@ -132,7 +132,7 @@ public:
    *
    * @return TODO.
    */
-  const T& Get() const { LogRead(); return duct->Get(); }
+  const T& Get() const { LogRead(); return std::as_const(*duct).Get(); }
 
   /**
    * TODO.

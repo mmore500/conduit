@@ -79,7 +79,10 @@ public:
    * TODO.
    *
    */
-  bool TryFlush() { return pool->get().TryFlush(); }
+  bool TryFlush() {
+    if (!pool.has_value()) SetupPool();
+    return pool->get().TryFlush();
+  }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     throw "ConsumeGets called on PooledInletDuct";
