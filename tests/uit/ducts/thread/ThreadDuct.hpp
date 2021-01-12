@@ -41,7 +41,14 @@ using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 using two_thread = std::integral_constant<int, 2>;
 using three_thread = std::integral_constant<int, 3>;
 
-TEMPLATE_TEST_CASE("Is initial ThreadDuct Get() result value-intialized? " TD_IMPL_NAME, "[ThreadDuct][nproc:1]", two_thread, three_thread) { REPEAT {
+// this test is required for preventing overlow
+// of mesh IDs when running tests from many files back to back
+TEST_CASE("Reset MeshIDCounter" TD_IMPL_NAME, "[ThreadDuct][nproc:1]") {
+  netuit::internal::MeshIDCounter::Reset();
+  REQUIRE(netuit::internal::MeshIDCounter::Get() == 0);
+}
+
+TEMPLATE_TEST_CASE("Is initial ThreadDuct Get() result value-intialized? " TD_IMPL_NAME, "[ThreadDuct][nproc:1]", two_thread, three_thread) {  REPEAT {
 
   auto [outlet] = uit::Source<Spec>{
     std::in_place_type_t<Spec::ThreadDuct>{}

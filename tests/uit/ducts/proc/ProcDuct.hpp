@@ -36,6 +36,14 @@ using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 #define TAGS ""
 #endif
 
+// this test is required for preventing overlow
+// of mesh IDs when running tests from many files back to back
+TEST_CASE("Reset MeshIDCounter" PD_IMPL_NAME, "[ProcDuct][nproc:1]") {
+  netuit::internal::MeshIDCounter::Reset();
+  REQUIRE(netuit::internal::MeshIDCounter::Get() == 0);
+}
+
+
 template <typename T>
 decltype(auto) make_dyadic_pd_bundle() {
 

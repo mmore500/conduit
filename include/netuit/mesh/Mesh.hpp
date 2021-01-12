@@ -34,6 +34,8 @@ public:
 
   static size_t Generate() { return counter++; }
   static void Reset() { counter = 0; }
+  static size_t Get() { return counter; }
+
 
 };
 
