@@ -150,14 +150,17 @@ public:
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
     emp_always_assert(false, "ConsumeGets called on RaccumulateDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
     emp_always_assert(false, "Get called on RaccumulateDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
     emp_always_assert(false, "Get called on RaccumulateDuct");
+    __builtin_unreachable();
   }
 
   static std::string GetType() { return "RaccumulateDuct"; }

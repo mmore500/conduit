@@ -95,10 +95,12 @@ public:
 
   [[noreturn]] bool TryPut(const T&) {
     emp_always_assert(false, "TryPut called on WindowDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
     emp_always_assert(false, "Flush called on WindowDuct");
+    __builtin_unreachable();
   }
 
   size_t TryConsumeGets(const size_t requested) {

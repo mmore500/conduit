@@ -64,10 +64,12 @@ public:
 
   [[noreturn]] bool TryPut(const T&) const {
     emp_always_assert(false, "TryPut called on AccumulatingPooledOutletDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
     emp_always_assert(false, "Flush called on AccumulatingPooledOutletDuct");
+    __builtin_unreachable();
   }
 
   /**

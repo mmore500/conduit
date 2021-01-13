@@ -89,14 +89,17 @@ public:
     emp_always_assert(
       false, "ConsumeGets called on AccumulatingPooledInletDuct"
     );
+    __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
     emp_always_assert(false, "Get called on AccumulatingPooledInletDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
     emp_always_assert(false, "Get called on AccumulatingPooledInletDuct");
+    __builtin_unreachable();
   }
 
   static std::string GetType() { return "AccumulatingPooledInletDuct"; }

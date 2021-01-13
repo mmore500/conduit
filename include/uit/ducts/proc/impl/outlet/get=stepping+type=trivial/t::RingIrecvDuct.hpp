@@ -157,6 +157,7 @@ public:
 
   [[noreturn]] bool TryPut(const T&) const {
     emp_always_assert(false, "TryPut called on RingIrecvDuct");
+    __builtin_unreachable();
   }
 
   /**
@@ -165,6 +166,7 @@ public:
    */
   [[noreturn]] bool TryFlush() const {
     emp_always_assert(false, "Flush called on RingIrecvDuct");
+    __builtin_unreachable();
   }
 
   /**
