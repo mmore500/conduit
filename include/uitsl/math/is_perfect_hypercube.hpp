@@ -15,7 +15,7 @@
 namespace uitsl {
 
 // adapted from https://stackoverflow.com/questions/1549941/perfect-square-and-perfect-cube
-bool is_perfect_hypercube(int n, const int dim) {
+inline bool is_perfect_hypercube(int n, const int dim) {
   if( dim <= 0 ) return false;
   if( n < 0 && dim % 2 == 0 ) return false;
 

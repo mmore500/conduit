@@ -27,7 +27,7 @@ namespace netuit {
 
 /// Special case for well-behaved two-dimensional square grid
 /// that's easy to visualize.
-netuit::Topology make_toroidal_grid_topology(
+inline netuit::Topology make_toroidal_grid_topology(
   const uitsl::Dims& dim_cardinality
 ) {
 
