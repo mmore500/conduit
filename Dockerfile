@@ -178,9 +178,9 @@ RUN \
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
 RUN \
-  pip3 install -r /opt/conduit/third-party/requirements.txt \
+  pip3 install  --timeout 60 --retries 100 -r /opt/conduit/third-party/requirements.txt \
     && \
-  pip3 install -r /opt/conduit/docs/requirements.txt \
+  pip3 install  --timeout 60 --retries 100 -r /opt/conduit/docs/requirements.txt \
     && \
   echo "installed Python packages"
 
