@@ -1,6 +1,6 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/mpi/MpiAutoGuard.hpp"
+#include "uitsl/mpi/mpi_guard.hpp"
 
 #include "uit/setup/ImplSpec.hpp"
 

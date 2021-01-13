@@ -12,12 +12,14 @@ namespace uitsl {
 
 struct MpiGuard {
 
+  #ifndef __EMSCRIPTEN__
   MpiGuard() {
     int argc{};
     uitsl::err_verify( MPI_Init(&argc, nullptr) );
   }
 
   ~MpiGuard() { uitsl::err_verify( MPI_Finalize() ); }
+  #endif // #ifndef __EMSCRIPTEN__
 
 };
 
