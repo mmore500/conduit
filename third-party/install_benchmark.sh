@@ -8,5 +8,5 @@ apt-get update -qq \
     libbenchmark-dev \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
-  || echo "package installer not supported!"
+  || echo "package installer not supported!" \
     && echo "please install Google Benchmark manually"
