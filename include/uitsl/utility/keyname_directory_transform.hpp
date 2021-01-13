@@ -5,6 +5,7 @@
 #include <functional>
 #include <string>
 #include <type_traits>
+#include <utility>
 
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
@@ -12,22 +13,25 @@
 #include "../polyfill/filesystem.hpp"
 #include "../polyfill/identity.hpp"
 
-#include "keyname_directory_scrape.hpp"
+#include "keyname_directory_filter.hpp"
 
 namespace uitsl {
 
 template< typename T >
 auto keyname_directory_transform(
   const std::string& key,
+  emp::vector<std::pair<std::string, std::string>> filters={},
   const std::filesystem::path& target=".",
   const T& parser=std::identity
 ) {
+
+  filters.emplace_back(key, "*");
 
   using parsed_t = std::decay_t<
     typename std::invoke_result< decltype(parser), std::string >::type
   >;
 
-  const auto targets = uitsl::keyname_directory_scrape( key, target );
+  const auto targets = uitsl::keyname_directory_filter( filters, target );
 
   emp::vector< parsed_t > res;
   std::transform(

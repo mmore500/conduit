@@ -15,12 +15,13 @@ namespace uitsl {
 template< typename T >
 auto keyname_directory_max(
   const std::string& key,
+  const emp::vector<std::pair<std::string, std::string>>& filters={},
   const std::filesystem::path& target=".",
   const T& parser=std::identity
 ) {
 
   const auto transformed = uitsl::keyname_directory_transform(
-    key, target, parser
+    key, filters, target, parser
   );
 
   emp_assert( transformed.size() );

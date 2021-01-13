@@ -32,7 +32,8 @@ emp::vector< std::filesystem::path > keyname_directory_filter(
         std::end(keyvals),
         [&]( const auto& keyval ) {
           const auto& [key, val] = keyval;
-          return keyname_attrs.count( key ) && keyname_attrs.at( key ) == val;
+          return keyname_attrs.count( key )
+            && (keyname_attrs.at( key ) == val || val == "*");
         }
       );
     }
