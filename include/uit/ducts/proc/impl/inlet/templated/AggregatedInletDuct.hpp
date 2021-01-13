@@ -10,6 +10,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -83,15 +84,15 @@ public:
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    throw "ConsumeGets called on AggregatedInletDuct";
+    emp_always_assert(false, "ConsumeGets called on AggregatedInletDuct");
   }
 
   [[noreturn]] const T& Get() const {
-    throw "Get called on AggregatedInletDuct";
+    emp_always_assert(false, "Get called on AggregatedInletDuct");
   }
 
   [[noreturn]] T& Get() {
-    throw "Get called on AggregatedInletDuct";
+    emp_always_assert(false, "Get called on AggregatedInletDuct");
   }
 
   static std::string GetType() { return "AggregatedInletDuct"; }

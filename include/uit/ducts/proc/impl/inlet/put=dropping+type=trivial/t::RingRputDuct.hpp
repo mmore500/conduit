@@ -8,6 +8,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -272,12 +273,16 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    throw "ConsumeGets called on RingRputDuct";
+    emp_always_assert(false, "ConsumeGets called on RingRputDuct");
   }
 
-  [[noreturn]] const T& Get() const { throw "Get called on RingRputDuct"; }
+  [[noreturn]] const T& Get() const {
+    emp_always_assert(false, "Get called on RingRputDuct");
+  }
 
-  [[noreturn]] T& Get() { throw "Get called on RingRputDuct"; }
+  [[noreturn]] T& Get() {
+    emp_always_assert(false, "Get called on RingRputDuct");
+  }
 
   static std::string GetType() { return "RingRputDuct"; }
 

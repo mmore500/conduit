@@ -10,6 +10,7 @@
 #include <mpi.h>
 
 #include "../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
@@ -137,10 +138,12 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    throw "Put called on IprobeDuct";
+    emp_always_assert(false, "Put called on IprobeDuct");
   }
 
-  [[noreturn]] bool TryFlush() const { throw "Flush called on IprobeDuct"; }
+  [[noreturn]] bool TryFlush() const {
+    emp_always_assert(false, "Flush called on IprobeDuct");
+  }
 
   /**
    * TODO.

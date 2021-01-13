@@ -11,6 +11,7 @@
 #include <mpi.h>
 
 #include "../../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
+#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/io/ContiguousStream.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -155,15 +156,17 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    throw "ConsumeGets called on CerealRingImmediateSendDuct";
+    emp_always_assert(
+      false, "ConsumeGets called on CerealRingImmediateSendDuct"
+    );
   }
 
   [[noreturn]] const T& Get() const {
-    throw "Get called on CerealRingImmediateSendDuct";
+    emp_always_assert(false, "Get called on CerealRingImmediateSendDuct");
   }
 
   [[noreturn]] T& Get() {
-    throw "Get called on CerealRingImmediateSendDuct";
+    emp_always_assert(false, "Get called on CerealRingImmediateSendDuct");
   }
 
   static std::string GetType() { return "CerealRingImmediateSendDuct"; }

@@ -9,6 +9,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
@@ -155,14 +156,16 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    throw "TryPut called on RingIrecvDuct";
+    emp_always_assert(false, "TryPut called on RingIrecvDuct");
   }
 
   /**
    * TODO.
    *
    */
-  [[noreturn]] bool TryFlush() const { throw "Flush called on RingIrecvDuct"; }
+  [[noreturn]] bool TryFlush() const {
+    emp_always_assert(false, "Flush called on RingIrecvDuct");
+  }
 
   /**
    * TODO.

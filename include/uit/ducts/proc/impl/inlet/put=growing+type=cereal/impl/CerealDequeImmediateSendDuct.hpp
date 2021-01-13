@@ -12,6 +12,7 @@
 #include <mpi.h>
 
 #include "../../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
+#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/io/ContiguousStream.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -131,15 +132,17 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    throw "ConsumeGets called on CerealDequeImmediateSendDuct";
+    emp_always_assert(
+      false, "ConsumeGets called on CerealDequeImmediateSendDuct"
+    );
   }
 
   [[noreturn]] const T& Get() const {
-    throw "Get called on CerealDequeImmediateSendDuct";
+    emp_always_assert(false, "Get called on CerealDequeImmediateSendDuct");
   }
 
   [[noreturn]] T& Get() {
-    throw "Get called on CerealDequeImmediateSendDuct";
+    emp_always_assert(false, "Get called on CerealDequeImmediateSendDuct");
   }
 
   static std::string GetType() { return "CerealDequeImmediateSendDuct"; }
