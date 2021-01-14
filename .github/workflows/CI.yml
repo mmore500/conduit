@@ -72,7 +72,9 @@ jobs:
           "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
           "cd /opt/conduit/ &&
           cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
-          && cmake --build build --target ccov-show-test-netuit ccov-show-test-uit ccov-show-test-uitsl
+          && cmake --build build --target ccov-show-test-netuit
+          && cmake --build build --target ccov-show-test-uit
+          && cmake --build build --target ccov-show-test-uitsl
           && bash <(curl -s https://codecov.io/bash)"
 
   microbenchmarks:
