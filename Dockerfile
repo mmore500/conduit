@@ -235,8 +235,11 @@ RUN \
     && \
   echo "installed third party dependencies"
 
+# Set enviroment variables
 # Use mimalloc override within the container.
 ENV LD_PRELOAD=/usr/local/lib/mimalloc-1.6/libmimalloc.so
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 
 RUN \
   git remote set-url origin https://github.com/mmore500/conduit.git \
