@@ -1,5 +1,5 @@
 find_package(Catch2 REQUIRED)
-find_package(PythonInterp REQUIRED)
+find_package(PythonInterp 3 REQUIRED)
 
 set(NETUIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/CompleteTopologyFactory.cpp
