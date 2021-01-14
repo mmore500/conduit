@@ -26,12 +26,11 @@ make install
 # verify checked-out commit
 git rev-parse HEAD
 
-# pacakge manger install isn't new enough, disable it
-# apt-get update -qq \
-#   && apt-get install -qq --no-install-recommends \
-#     libbenchmark1 \
-#     libbenchmark-dev \
-#   && apt-get clean \
-#   && rm -rf /var/lib/apt/lists/* \
-#   || echo "package installer not supported!"
-#     && echo "please install Google Benchmark manually"
+apt-get update -qq \
+  && apt-get install -qq --no-install-recommends \
+    libbenchmark1 \
+    libbenchmark-dev \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* \
+  || echo "package installer not supported!" \
+    && echo "please install Google Benchmark manually"
