@@ -10,6 +10,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -63,11 +64,13 @@ public:
   { back_end->RegisterOutletSlot(address); }
 
   [[noreturn]] bool TryPut(const T&) const {
-    throw "TryPut called on PooledOutletDuct";
+    emp_always_assert(false, "TryPut called on PooledOutletDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    throw "Flush called on PooledOutletDuct";
+    emp_always_assert(false, "Flush called on PooledOutletDuct");
+    __builtin_unreachable();
   }
 
   /**
