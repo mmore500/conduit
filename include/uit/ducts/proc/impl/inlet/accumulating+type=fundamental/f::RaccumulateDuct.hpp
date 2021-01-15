@@ -9,8 +9,8 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/array.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/array.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
