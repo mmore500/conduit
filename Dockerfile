@@ -268,6 +268,13 @@ RUN \
     && \
   echo "user added and granted permissions to /opt and /home/user"
 
+RUN \
+  mkdir /context/ \
+    && \
+  chown user:user /context/ \
+    && \
+  echo "/context/ directory set up, user granted permissions"
+
 USER user
 
 CMD ["bash"]
