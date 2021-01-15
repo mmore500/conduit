@@ -1,5 +1,5 @@
 # Pull base image.
-FROM ubuntu:bionic-20180125
+FROM ubuntu:bionic-20180125@sha256:d6f6cc62b6bed64387d84ca227b76b9cc45049b0d0aefee0deec21ed19a300bf
 
 COPY . /opt/conduit/
 
