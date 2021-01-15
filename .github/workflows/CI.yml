@@ -118,7 +118,7 @@ jobs:
       - microbenchmarks
     steps:
       - uses: docker-practice/actions-setup-docker@v1
-      - run: docker run -v "$(pwd):/context/" "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit/ && make web && cp -r web/ /context/"
+      - run: docker run -e "OSF_USERNAME=${{ secrets.OSF_USERNAME }}" -e "OSF_PASSWORD=${{ secrets.OSF_PASSWORD }}" -v "$(pwd):/context/" "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit/ && make web && cp -r web/ /context/"
       - uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
