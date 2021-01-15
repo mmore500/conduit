@@ -119,21 +119,14 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: 'recursive'
-      - run:
-        |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          echo $(cd third-party && ./install_emsdk.sh)
+      - run: echo $(cd third-party && ./install_emsdk.sh)
       - run: make web
-      - run:
-        |
-          cd web
-          git init
-          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/devosoft/empirical-prefab-demo.git > /dev/null 2>&1
-          git checkout -b gh-pages
-          git add .
-          git commit --message "GitHub Run ${{ github.run_number }}"
-          git push --force --quiet origin gh-pages
+      - uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: web # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
 
   deploy-dockerhub:
     name: Deploy to Dockerhub
@@ -146,14 +139,16 @@ jobs:
       - tidy
       - macrobenchmarks
       - microbenchmarks
-
     steps:
-      - uses: docker-practice/actions-setup-docker@v1
-      - name: Login to DockerHub
-        uses: docker/login-action@v1
+      - uses: actions/checkout@v2
         with:
+          submodules: 'recursive'
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v1
+        with:
+          push: true
+          tags: "latest"
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_TOKEN }}
-      - run: docker build -t "mmore500/conduit:latest" .
-      - run: docker ps -a
-      - run: docker push "mmore500/conduit:latest"
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: mmore500/conduit
+          tag_with_ref: true

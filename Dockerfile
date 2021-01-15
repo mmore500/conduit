@@ -129,12 +129,14 @@ RUN \
     python-h5py \
     python-pip \
     python-setuptools \
+    python-sphinx \
     python-virtualenv \
     python-wheel \
     python3-dev \
     python3-h5py \
     python3-pip \
     python3-setuptools \
+    python3-sphinx \
     python3-virtualenv \
     python3-wheel \
     slurm-client \
