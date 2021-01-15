@@ -145,7 +145,9 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           push: true
-          tags: "latest"
+          tags: |
+            mmore500/conduit:latest
+            mmore500/conduit:${{ github.sha }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: mmore500/conduit
