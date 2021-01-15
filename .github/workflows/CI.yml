@@ -108,13 +108,13 @@ jobs:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-16.04
     if: github.ref == 'refs/heads/master'
-    needs:
-      - docs
-      - unit
-      - coverage
-      - tidy
-      - macrobenchmarks
-      - microbenchmarks
+    # needs:
+      # - docs
+      # - unit
+      # - coverage
+      # - tidy
+      # - macrobenchmarks
+      # - microbenchmarks
     steps:
       - uses: actions/checkout@v2
         with:
@@ -132,13 +132,13 @@ jobs:
     name: Deploy to Dockerhub
     runs-on: ubuntu-16.04
     if: github.ref == 'refs/heads/master'
-    needs:
-      - docs
-      - unit
-      - coverage
-      - tidy
-      - macrobenchmarks
-      - microbenchmarks
+    # needs:
+      # - docs
+      # - unit
+      # - coverage
+      # - tidy
+      # - macrobenchmarks
+      # - microbenchmarks
     steps:
       - uses: actions/checkout@v2
         with:
