@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 # Project-specific settings
 PROJECT := conduit
-EMP_DIR := third-party/Empirical/source
+EMP_DIR := third-party/Empirical/include/emp
 
 # Flags to use regardless of compiler
 CFLAGS_all := -pipe -Wall -Wno-unused-function -std=c++17 -Iinclude/ -fopenmp

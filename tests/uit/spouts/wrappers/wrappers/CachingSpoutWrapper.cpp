@@ -2,15 +2,11 @@
 
 #include <mpi.h>
 
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "netuit/assign/AssignAvailableProcs.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 
@@ -23,14 +19,14 @@
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
 
-const uitsl::MpiGuard guard;
-
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, uit::ImplSelect<>, uit::CachingSpoutWrapper>;
 
 #define REPEAT for (size_t rep = 0; rep < std::deca{}.num; ++rep)
 
-decltype(auto) make_dyadic_bundle() {
+#define CSW_IMPL_NAME "CachingSpoutWrapper"
+
+inline decltype(auto) make_dyadic_bundle() {
 
   netuit::Mesh<Spec> mesh{
     netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
@@ -45,7 +41,7 @@ decltype(auto) make_dyadic_bundle() {
 
 };
 
-TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+TEST_CASE("Is initial CachingSpoutWrapper Get() result value-intialized? " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -54,7 +50,7 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched gets") { REPEAT {
+TEST_CASE("Unmatched gets " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -74,7 +70,7 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts") { REPEAT {
+TEST_CASE("Unmatched puts " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -90,7 +86,7 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
 } }
 
-TEST_CASE("Eventual flush-out") { REPEAT {
+TEST_CASE("Eventual flush-out " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 
@@ -116,7 +112,7 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
 } }
 
-TEST_CASE("Validity") { REPEAT {
+TEST_CASE("Validity " CSW_IMPL_NAME, "[CachingSpoutWrapper]") { REPEAT {
 
   auto [input, output] = make_dyadic_bundle();
 

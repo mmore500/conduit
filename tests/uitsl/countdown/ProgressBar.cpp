@@ -1,6 +1,5 @@
 #include <ratio>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/chrono/CoarseClock.hpp"
@@ -8,7 +7,7 @@
 #include "uitsl/countdown/ProgressBar.hpp"
 #include "uitsl/countdown/Timer.hpp"
 
-TEST_CASE("Test CountdownProgresBar<Counter>") {
+TEST_CASE("Test CountdownProgresBar<Counter>", "[nproc:1]") {
 
   using bar_t = uitsl::ProgressBar<uitsl::Counter>;
 
@@ -17,7 +16,7 @@ TEST_CASE("Test CountdownProgresBar<Counter>") {
 
 }
 
-TEST_CASE("Test CountdownProgresBar<Timer>") {
+TEST_CASE("Test CountdownProgresBar<Timer>", "[nproc:1]") {
 
   using timer_t = uitsl::Timer<
     std::chrono::duration<double, std::ratio<1>>,

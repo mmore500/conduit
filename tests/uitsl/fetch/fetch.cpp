@@ -1,10 +1,9 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/debug/compare_files.hpp"
 #include "uitsl/fetch/fetch.hpp"
 
-TEST_CASE("fetch text data") {
+TEST_CASE("fetch text data", "[nproc:1]") {
 
   REQUIRE( uitsl::compare_files(
     "assets/TheWorldWideWebProject.html",
@@ -13,7 +12,7 @@ TEST_CASE("fetch text data") {
 
 }
 
-TEST_CASE("fetch binary data") {
+TEST_CASE("fetch binary data", "[nproc:1]") {
 
   REQUIRE( uitsl::compare_files(
     "assets/jabberwocky.tar.gz",
@@ -22,7 +21,7 @@ TEST_CASE("fetch binary data") {
 
 }
 
-TEST_CASE("fetch with redirect") {
+TEST_CASE("fetch with redirect", "[nproc:1]") {
 
   REQUIRE( uitsl::compare_files(
     "assets/run_type=aggregate+time_type=cpu_time+ext=.csv",

@@ -10,7 +10,7 @@
 
 namespace uitsl {
 
-bool detect_tar( const std::filesystem::path& path ) {
+inline bool detect_tar( const std::filesystem::path& path ) {
 
   char buffer[265];
 

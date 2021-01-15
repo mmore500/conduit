@@ -1,12 +1,11 @@
 #include <list>
 #include <vector>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/algorithm/normalize.hpp"
 
-TEST_CASE("Test normalize") {
+TEST_CASE("Test normalize", "[nproc:1]") {
 
   std::list<double> target{ 0.0, 2.0, 2.5, 0.5 };
 
@@ -16,7 +15,7 @@ TEST_CASE("Test normalize") {
 
 }
 
-TEST_CASE("Test normalize zero length") {
+TEST_CASE("Test normalize zero length", "[nproc:1]") {
 
   std::vector<double> target{ };
 
@@ -26,7 +25,7 @@ TEST_CASE("Test normalize zero length") {
 
 };
 
-TEST_CASE("Test normalize zero sum") {
+TEST_CASE("Test normalize zero sum", "[nproc:1]") {
 
   std::vector<double> target{ 0.0, 0.0, 0.0 };
 

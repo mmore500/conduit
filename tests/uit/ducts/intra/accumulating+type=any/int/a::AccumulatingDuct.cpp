@@ -6,6 +6,7 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #define MSG_T int
+#define IMPL_NAME "a::AccumulatingDuct/int"
 
 #include "../../IntraDuct.hpp"
 

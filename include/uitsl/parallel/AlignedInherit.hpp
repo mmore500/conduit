@@ -2,6 +2,8 @@
 #ifndef UITSL_PARALLEL_ALIGNEDINHERIT_HPP_INCLUDE
 #define UITSL_PARALLEL_ALIGNEDINHERIT_HPP_INCLUDE
 
+#include <sstream>
+
 #include "cache_line.hpp"
 
 namespace uitsl {

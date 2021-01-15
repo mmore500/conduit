@@ -4,17 +4,13 @@
 
 #include <mpi.h>
 
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "netuit/assign/AssignAvailableProcs.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uitsl/math/math_utils.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/utility/assign_utils.hpp"
@@ -30,16 +26,28 @@
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
 
-const uitsl::MpiGuard guard;
-
 using MSG_T = int;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
-decltype(auto) make_dyadic_bundle() {
+#define PD_IMPL_NAME IMPL_NAME "ProcDuct"
+#ifndef TAGS
+#define TAGS ""
+#endif
 
-  netuit::Mesh<Spec> mesh{
+// this test is required for preventing overlow
+// of mesh IDs when running tests from many files back to back
+TEST_CASE("Reset MeshIDCounter" PD_IMPL_NAME, "[ProcDuct][nproc:1]") {
+  netuit::internal::MeshIDCounter::Reset();
+  REQUIRE(netuit::internal::MeshIDCounter::Get() == 0);
+}
+
+
+template <typename T>
+decltype(auto) make_dyadic_pd_bundle() {
+
+  netuit::Mesh<T> mesh{
     netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     netuit::AssignAvailableProcs{}
@@ -52,9 +60,10 @@ decltype(auto) make_dyadic_bundle() {
 
 };
 
-decltype(auto) make_producer_consumer_bundle() {
+template <typename T>
+decltype(auto) make_producer_consumer_pd_bundle() {
 
-  netuit::Mesh<Spec> mesh{
+  netuit::Mesh<T> mesh{
     netuit::ProConTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     netuit::AssignAvailableProcs{}
@@ -74,8 +83,9 @@ decltype(auto) make_producer_consumer_bundle() {
 
 };
 
-decltype(auto) make_ring_bundle() {
-  netuit::Mesh<Spec> mesh{
+template <typename T>
+decltype(auto) make_ring_pd_bundle() {
+  netuit::Mesh<T> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     netuit::AssignAvailableProcs{}
@@ -90,8 +100,9 @@ decltype(auto) make_ring_bundle() {
 }
 
 // p_1 -> p_2 -> ... -> p_n -> p_1 -> p_2 -> ... -> p_n -> p_1
-decltype(auto) make_coiled_bundle() {
-  netuit::Mesh<Spec> mesh{
+template <typename T>
+decltype(auto) make_coiled_pd_bundle() {
+  netuit::Mesh<T> mesh{
     netuit::RingTopologyFactory{}(uitsl::get_nprocs() * 2),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     uitsl::AssignRoundRobin<uitsl::proc_id_t>{
@@ -103,7 +114,7 @@ decltype(auto) make_coiled_bundle() {
 
   REQUIRE( bundles.size() == 2);
 
-  std::decay<decltype(bundles[0].GetInputs())>::type inputs;
+  typename std::decay<decltype(bundles[0].GetInputs())>::type inputs;
   for (const auto& bundle : bundles) {
     inputs.insert(
       std::end(inputs),
@@ -112,7 +123,7 @@ decltype(auto) make_coiled_bundle() {
     );
   }
 
-  std::decay<decltype(bundles[0].GetOutputs())>::type outputs;
+  typename std::decay<decltype(bundles[0].GetOutputs())>::type outputs;
   for (const auto& bundle : bundles) {
     outputs.insert(
       std::end(outputs),
@@ -126,7 +137,7 @@ decltype(auto) make_coiled_bundle() {
 }
 
 // TODO why doesn't this work with openmpi with RingRdmaDuct?
-// TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+// TEST_CASE("Is initial RingRdmaDuct Get() result value-intialized?" PD_IMPL_NAME) { REPEAT {
 //
 //   std::shared_ptr<Spec::ProcBackEnd> backend{
 //     std::make_shared<Spec::ProcBackEnd>()
@@ -162,18 +173,18 @@ decltype(auto) make_coiled_bundle() {
 //
 // } }
 
-TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+TEST_CASE("Is initial ProcDuct Get() result value-intialized?" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
-  auto [input, output] = make_ring_bundle();
+  auto [input, output] = make_ring_pd_bundle<Spec>();
 
   REQUIRE( input.Get() == MSG_T{} );
   REQUIRE( input.JumpGet() == MSG_T{} );
 
 } }
 
-TEST_CASE("Unmatched gets") { REPEAT {
+TEST_CASE("Unmatched gets" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_pd_bundle<Spec>();
 
   for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
@@ -191,9 +202,9 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts") { REPEAT {
+TEST_CASE("Unmatched puts" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_pd_bundle<Spec>();
 
   for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(i);
 
@@ -207,9 +218,9 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
 } }
 
-TEST_CASE("Eventual flush-out") { REPEAT {
+TEST_CASE("Eventual flush-out" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_pd_bundle<Spec>();
 
   for (MSG_T i = 0; uitsl::safe_leq(i, 2 * uit::DEFAULT_BUFFER); ++i) output.TryPut(0);
 
@@ -233,9 +244,9 @@ TEST_CASE("Eventual flush-out") { REPEAT {
 
 } }
 
-TEST_CASE("Validity") { REPEAT {
+TEST_CASE("Validity" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_pd_bundle<Spec>();
 
   int last{};
   for (MSG_T msg = 0; msg < 10 * std::kilo::num; ++msg) {
@@ -256,9 +267,9 @@ TEST_CASE("Validity") { REPEAT {
 
 } }
 
-TEST_CASE("Multi-bridge Validity") { REPEAT {
+TEST_CASE("Multi-bridge Validity" PD_IMPL_NAME, "[ProcDuct]" TAGS) { REPEAT {
 
-  auto [inputs, outputs] = make_coiled_bundle();
+  auto [inputs, outputs] = make_coiled_pd_bundle<Spec>();
 
   std::unordered_map<size_t, int> last_map{};
   for (MSG_T msg = 0; msg < 10 * std::kilo::num; ++msg) {

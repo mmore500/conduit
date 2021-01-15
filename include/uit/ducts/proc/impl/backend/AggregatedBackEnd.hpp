@@ -79,11 +79,11 @@ private:
 
     return std::any_of(
       std::begin(inlet_aggregators), std::end(inlet_aggregators),
-      [this](const auto& map_pair){
+      [](const auto& map_pair){
         const auto& [key, map] = map_pair;
         return std::any_of(
           std::begin(map), std::end(map),
-          [this](const auto& aggregator_pair) {
+          [](const auto& aggregator_pair) {
             const auto& [key, aggregator] = aggregator_pair;
             return aggregator.IsInitialized();
           }
@@ -112,11 +112,11 @@ private:
 
     return std::any_of(
       std::begin(outlet_aggregators), std::end(outlet_aggregators),
-      [this](const auto& map_pair){
+      [](const auto& map_pair){
         const auto& [key, map] = map_pair;
         return std::any_of(
           std::begin(map), std::end(map),
-          [this](const auto& aggregator_pair) {
+          [](const auto& aggregator_pair) {
             const auto& [key, aggregator] = aggregator_pair;
             return aggregator.IsInitialized();
           }

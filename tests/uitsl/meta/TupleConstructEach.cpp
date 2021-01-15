@@ -7,7 +7,7 @@
 
 #include "uitsl/meta/TupleConstructEach.hpp"
 
-TEST_CASE("Test TupleConstructEach same") {
+TEST_CASE("Test TupleConstructEach same", "[nproc:1]") {
 
   using type = std::tuple<int, int, int>;
 
@@ -18,7 +18,7 @@ TEST_CASE("Test TupleConstructEach same") {
 
 }
 
-TEST_CASE("Test TupleConstructEach different") {
+TEST_CASE("Test TupleConstructEach different", "[nproc:1]") {
 
   using type = std::tuple<int, double, char, int>;
 
@@ -29,7 +29,7 @@ TEST_CASE("Test TupleConstructEach different") {
 
 }
 
-TEST_CASE("Test TupleConstructEach multi") {
+TEST_CASE("Test TupleConstructEach multi", "[nproc:1]") {
 
   using type = std::tuple<std::vector<char>, std::string>;
 

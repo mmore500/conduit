@@ -18,18 +18,22 @@ const std::string base_directory = "assets/";
 
 using dim_t = emp::vector<size_t>;
 
-emp::vector<dim_t> find_assets(const std::string& name, const std::string& ext){
+inline emp::vector<dim_t> find_assets(const std::string& name, const std::string& ext){
   emp::vector<dim_t> files;
   for (const auto& p : std::filesystem::directory_iterator(base_directory)) {
     const auto file = emp::keyname::unpack(p.path());
-    if (file.at("name") == name && file.at("ext") == ext) {
+    if (file.count("name") && file.count("ext") &&
+        file.at("name") == name && file.at("ext") == ext
+       ) {
       // matching file found
+      emp_assert(file.count("ndims"));
       // get ndims
       const size_t ndims = uitsl::stoszt(file.at("ndims"));
 
       // put all dims into dim_t
       dim_t dims;
       for (size_t i = 0; i < ndims; ++i) {
+        emp_assert(file.count("dim" + emp::to_string(i)));
         const size_t dim = uitsl::stoszt(file.at("dim" + emp::to_string(i)));
         dims.push_back(dim);
       }
@@ -40,7 +44,7 @@ emp::vector<dim_t> find_assets(const std::string& name, const std::string& ext){
   return files;
 }
 
-std::string make_filename(const std::string& name, const emp::vector<size_t>& dims, const std::string& ext) {
+inline std::string make_filename(const std::string& name, const emp::vector<size_t>& dims, const std::string& ext) {
   std::unordered_map<std::string, std::string> filename;
 
   filename["name"] = name;
@@ -57,11 +61,11 @@ std::string make_filename(const std::string& name, const emp::vector<size_t>& di
   return base_directory + emp::keyname::pack(filename);
 }
 
-std::string make_filename(const std::string& name, const size_t dim, const std::string& ext) {
-  return make_filename(name, {dim}, ext);
+inline std::string make_filename(const std::string& name, const size_t dim, const std::string& ext) {
+  return make_filename(name, emp::vector<size_t>{dim}, ext);
 }
 
-bool test_isomorphic(const std::string& str, const std::string& filename) {
+inline bool test_isomorphic(const std::string& str, const std::string& filename) {
   // write ss to file
   std::cout << str << std::endl;
 
@@ -127,6 +131,7 @@ bool test_edge_output(const Fun&& factory, const T dims) {
 
 template <typename Factory>
 bool test_all_adj(const Factory&& factory) {
+  std::cout << uitsl::exec("pwd") << std::endl;
   const emp::vector<dim_t> assets = find_assets(factory.GetSlug(), ".adj");
 
   // no matching assets found

@@ -8,5 +8,8 @@ using ImplSel = uit::ImplSelect<
   uit::t::PooledIriObiDuct
 >;
 
+#define IMPL_NAME "pooled+inlet=RingIsend+outlet=BlockIrecv_t::PooledIriObiDuct"
+#define TAGS "[nproc:2][nproc:3][nproc:4][nproc:5][nproc:6][nproc:7][nproc:8]"
+
 #include "../ProcDuct.hpp"
 #include "../SkippingProcDuct.hpp"

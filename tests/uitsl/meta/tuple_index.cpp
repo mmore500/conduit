@@ -1,12 +1,11 @@
 #include <string>
 #include <tuple>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/meta/tuple_index.hpp"
 
-TEST_CASE("Test tuple_index") {
+TEST_CASE("Test tuple_index", "[nproc:1]") {
 
   using target = std::tuple<int, double, std::string, int>;
 

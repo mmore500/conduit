@@ -1,11 +1,10 @@
 #include <string>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/datastructs/VectorMap.hpp"
 
-TEST_CASE("VectorMap") {
+TEST_CASE("VectorMap", "[nproc:1]") {
 
   uitsl::VectorMap<size_t, std::string> map;
 

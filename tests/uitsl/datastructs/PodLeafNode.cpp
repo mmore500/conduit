@@ -1,9 +1,8 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/datastructs/PodLeafNode.hpp"
 
-TEST_CASE("Test PodLeafNode") {
+TEST_CASE("Test PodLeafNode", "[nproc:1]") {
 
   // TODO expand stub test
   uitsl::PodLeafNode<char, 2>{};

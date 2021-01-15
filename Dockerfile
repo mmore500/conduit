@@ -1,7 +1,7 @@
 # Pull base image.
 FROM ubuntu:bionic-20180125
 
-COPY . /opt/conduit
+COPY . /opt/conduit/
 
 SHELL ["/bin/bash", "-c"]
 
@@ -11,6 +11,21 @@ WORKDIR /opt/conduit
 # Prevent interactive time zone config.
 # adapted from https://askubuntu.com/a/1013396
 ENV DEBIAN_FRONTEND=noninteractive
+
+# adapted from https://users.open-mpi.narkive.com/tEPxZF0B/ompi-users-how-to-get-rid-of-openmpi-warning-unable-to-find-any-relevant-network-interfaces
+# see also https://github.com/open-mpi/ompi-www/issues/161#issue-390004007
+RUN \
+  mkdir -p "/root/.openmpi" \
+    && \
+  mkdir -p "/home/user/.openmpi" \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /etc/openmpi-mca-params.conf \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /root/.openmpi/mca-params.conf \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /home/user/.openmpi/mca-params.conf \
+    && \
+  echo "configured system-wide openmpi mca parameters"
 
 RUN \
   echo 'Acquire::http::Timeout "60";' >> "/etc/apt/apt.conf.d/99timeout" \
@@ -55,6 +70,8 @@ RUN \
     libc6 \
     libcairo2 \
     libcups2 \
+    libcurl4 \
+    libcurl4-openssl-dev \
     libdbus-1-3 \
     libexpat1 \
     libfontconfig1 \
@@ -101,6 +118,7 @@ RUN \
     mpich \
     multitail \
     nano \
+    ninja-build \
     nodejs \
     npm \
     openmpi-bin \
@@ -217,8 +235,11 @@ RUN \
     && \
   echo "installed third party dependencies"
 
+# Set enviroment variables
 # Use mimalloc override within the container.
 ENV LD_PRELOAD=/usr/local/lib/mimalloc-1.6/libmimalloc.so
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 
 RUN \
   git remote set-url origin https://github.com/mmore500/conduit.git \
@@ -239,7 +260,11 @@ RUN \
     && \
   chmod --recursive g+rwx /opt \
     && \
-  echo "user added and granted permissions to /opt"
+  chmod --recursive g+rwx /home/user \
+    && \
+  chown -R user /home/user/ \
+    && \
+  echo "user added and granted permissions to /opt and /home/user"
 
 USER user
 

@@ -8,7 +8,7 @@
 
 namespace netuit {
 
-Topology make_producer_consumer_topology(const size_t cardinality) {
+inline Topology make_producer_consumer_topology(const size_t cardinality) {
 
   Topology res;
 

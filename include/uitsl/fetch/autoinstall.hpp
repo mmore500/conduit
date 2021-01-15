@@ -23,14 +23,15 @@ namespace uitsl {
  * Then, if data is tarred, untar it.
  * @return filename of installed or tar file unzipped.
  */
-std::filesystem::path autoinstall( const std::string& url ) {
+inline std::filesystem::path autoinstall( const std::string& url ) {
 
   const std::filesystem::path temp = uitsl::inflate_if_gzip(
     uitsl::fetch( url )
   );
 
   if ( uitsl::detect_tar( temp ) ) uitsl::untar( temp );
-  else std::filesystem::rename(
+  // we can't rename() because renaming across filesystems fails
+  else std::filesystem::copy(
     temp,
     std::filesystem::current_path() / temp.filename()
   );

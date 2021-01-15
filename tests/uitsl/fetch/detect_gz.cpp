@@ -1,9 +1,8 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/fetch/detect_gz.hpp"
 
-TEST_CASE("should detect gz") {
+TEST_CASE("should detect gz", "[nproc:1]") {
 
   REQUIRE( uitsl::detect_gz( "assets/empty.tar.gz" ) );
   REQUIRE( uitsl::detect_gz( "assets/jabberwocky.tar.gz" ) );
@@ -14,7 +13,7 @@ TEST_CASE("should detect gz") {
 
 }
 
-TEST_CASE("shouldn't detect gz") {
+TEST_CASE("shouldn't detect gz", "[nproc:1]") {
 
   REQUIRE( !uitsl::detect_gz( "assets/beautiful-is-better-than-ugly-explicit-is-better-than-implicit-simple-is-better-than-complex-complex-is-better-than-complicated-flat-is-better-than-nested" ) );
   REQUIRE( !uitsl::detect_gz( "assets/empty.tar" ) );

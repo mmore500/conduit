@@ -22,7 +22,7 @@ namespace uitsl {
  * Requires -lcurl when compiling for native. Requires `xmlhttprequest` when
  * running with Node.js.
  */
-std::filesystem::path fetch( const std::string& url ) {
+inline std::filesystem::path fetch( const std::string& url ) {
   #ifdef __EMSCRIPTEN__
     return uitsl::fetch_web( url );
   #else

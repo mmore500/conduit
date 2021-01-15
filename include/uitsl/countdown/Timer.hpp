@@ -6,8 +6,8 @@
 #include <chrono>
 #include <stddef.h>
 
-#include "../chrono/CoarseClock.hpp"
 #include "../chrono/chrono_utils.hpp"
+#include "../chrono/CoarseClock.hpp"
 
 #include "impl/CountdownIterator.hpp"
 

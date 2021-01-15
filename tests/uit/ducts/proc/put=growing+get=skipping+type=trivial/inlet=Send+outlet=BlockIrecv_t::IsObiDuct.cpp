@@ -8,5 +8,8 @@ using ImplSel = uit::ImplSelect<
   uit::t::IsObiDuct
 >;
 
+#define IMPL_NAME "inlet=Send+outlet=BlockIrecv_t::IsObiDuct"
+#define TAGS "[nproc:2][nproc:3][nproc:4]"
+
 #include "../ProcDuct.hpp"
 #include "../SkippingProcDuct.hpp"

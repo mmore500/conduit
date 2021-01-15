@@ -1,9 +1,8 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/debug/compare_files.hpp"
 
-TEST_CASE("compare_files copy") {
+TEST_CASE("compare_files copy", "[nproc:1]") {
 
   REQUIRE(
     uitsl::compare_files( "assets/dali.txt", "assets/dali-copy.txt" )
@@ -16,7 +15,7 @@ TEST_CASE("compare_files copy") {
 }
 
 
-TEST_CASE("compare_files symlink") {
+TEST_CASE("compare_files symlink", "[nproc:1]") {
 
   REQUIRE(
     uitsl::compare_files( "assets/dali.txt", "assets/dali.txt.symlink" )
@@ -28,7 +27,7 @@ TEST_CASE("compare_files symlink") {
 
 }
 
-TEST_CASE("compare_files same file") {
+TEST_CASE("compare_files same file", "[nproc:1]") {
 
   REQUIRE(
     uitsl::compare_files( "assets/dali.txt", "assets/dali.txt" )
@@ -41,7 +40,7 @@ TEST_CASE("compare_files same file") {
 }
 
 
-TEST_CASE("compare_files same symlink") {
+TEST_CASE("compare_files same symlink", "[nproc:1]") {
 
   REQUIRE(
     uitsl::compare_files( "assets/dali.txt.symlink", "assets/dali.txt.symlink" )
@@ -54,7 +53,7 @@ TEST_CASE("compare_files same symlink") {
 }
 
 
-TEST_CASE("compare_files different files") {
+TEST_CASE("compare_files different files", "[nproc:1]") {
 
   REQUIRE(
     ! uitsl::compare_files( "assets/dali.txt", "assets/wiley.txt" )
@@ -67,7 +66,7 @@ TEST_CASE("compare_files different files") {
 }
 
 
-TEST_CASE("compare_files different file and symlink") {
+TEST_CASE("compare_files different file and symlink", "[nproc:1]") {
 
   REQUIRE(
     ! uitsl::compare_files( "assets/dali.txt", "assets/wiley.txt.symlink" )

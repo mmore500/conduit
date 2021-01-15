@@ -1,4 +1,3 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uit/fixtures/Conduit.hpp"
@@ -6,7 +5,7 @@
 
 #include "netuit/mesh/MeshNode.hpp"
 
-TEST_CASE("Test MeshNode") {
+TEST_CASE("Test MeshNode", "[nproc:1]") {
 
   // TODO flesh out stub test
   using Spec = uit::ImplSpec<char>;

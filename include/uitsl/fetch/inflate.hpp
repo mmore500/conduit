@@ -26,7 +26,7 @@ namespace uitsl {
  * - https://windrealm.org/tutorials/decompress-gzip-stream.php
  * - https://stackoverflow.com/questions/10195343/copy-a-file-in-a-sane-safe-and-efficient-way
  */
-void inflate(gzFile_s* source_handle, FILE* dest_handle) {
+inline void inflate(gzFile_s* source_handle, FILE* dest_handle) {
 
  unsigned char buf[UITSL_INFLATE_CHUNK];
 
@@ -42,7 +42,7 @@ void inflate(gzFile_s* source_handle, FILE* dest_handle) {
  * Inflate from source path to destination path.
  * @return destination path
  */
-std::filesystem::path inflate(
+inline std::filesystem::path inflate(
   const std::filesystem::path& source_path,
   const std::filesystem::path& dest_path
 ) {
@@ -69,7 +69,7 @@ std::filesystem::path inflate(
  * the gz extension stripped exists, write to a temporary file.
  * @return destination path
  */
-std::filesystem::path inflate( const std::filesystem::path& source_path ) {
+inline std::filesystem::path inflate( const std::filesystem::path& source_path ) {
 
   const auto with_extension_dropped
     = std::filesystem::path(source_path).replace_extension("");
@@ -81,7 +81,7 @@ std::filesystem::path inflate( const std::filesystem::path& source_path ) {
   else return uitsl::inflate( source_path, uitsl::make_temp_filepath() );
 }
 
-std::filesystem::path inflate_if_gzip(const std::filesystem::path& source) {
+inline std::filesystem::path inflate_if_gzip(const std::filesystem::path& source) {
   if ( uitsl::detect_gz( source ) ) {
     return uitsl::inflate( source );
   }

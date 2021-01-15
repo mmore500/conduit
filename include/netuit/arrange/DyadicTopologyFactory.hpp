@@ -10,7 +10,7 @@
 
 namespace netuit {
 
-netuit::Topology make_dyadic_topology(const size_t cardinality) {
+inline netuit::Topology make_dyadic_topology(const size_t cardinality) {
 
   netuit::Topology res;
 

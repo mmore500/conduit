@@ -4,13 +4,10 @@
 #include <mpi.h>
 
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "netuit/assign/AssignAvailableProcs.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/distributed/IbarrierRequest.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 
 #include "uit/ducts/mock/ThrowDuct.hpp"
 #include "uit/setup/ImplSpec.hpp"
@@ -24,14 +21,18 @@
 
 #define REPEAT for (size_t rep = 0; rep < std::deca::num; ++rep)
 
+#define APD_IMPL_NAME IMPL_NAME "AccumulatingProcDuct"
+#ifndef TAGS
+#define TAGS ""
+#endif
+
+
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
-const uitsl::MpiGuard guard;
+template <typename T>
+decltype(auto) make_dyadic_apd_bundle() {
 
-
-decltype(auto) make_dyadic_bundle() {
-
-  netuit::Mesh<Spec> mesh{
+  netuit::Mesh<T> mesh{
     netuit::DyadicTopologyFactory{}(uitsl::get_nprocs()),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     netuit::AssignAvailableProcs{}
@@ -44,30 +45,9 @@ decltype(auto) make_dyadic_bundle() {
 
 };
 
-decltype(auto) make_producer_consumer_bundle() {
-
-  netuit::Mesh<Spec> mesh{
-    netuit::ProConTopologyFactory{}(uitsl::get_nprocs()),
-    uitsl::AssignIntegrated<uitsl::thread_id_t>{},
-    netuit::AssignAvailableProcs{}
-  };
-
-  auto bundles = mesh.GetSubmesh(0);
-
-  REQUIRE( bundles.size() == 1 );
-  REQUIRE(
-    (bundles[0].GetInputOrNullopt(0) || bundles[0].GetOutputOrNullopt(0))
-  );
-
-  return std::tuple{
-    bundles[0].GetInputOrNullopt(0),
-    bundles[0].GetOutputOrNullopt(0)
-  };
-
-};
-
-decltype(auto) make_ring_bundle() {
-  netuit::Mesh<Spec> mesh{
+template <typename T>
+decltype(auto) make_ring_apd_bundle() {
+  netuit::Mesh<T> mesh{
     netuit::RingTopologyFactory{}( uitsl::get_nprocs() ),
     uitsl::AssignIntegrated<uitsl::thread_id_t>{},
     netuit::AssignAvailableProcs{}
@@ -78,20 +58,19 @@ decltype(auto) make_ring_bundle() {
   return std::tuple{ bundles[0].GetInput(0), bundles[0].GetOutput(0) };
 
 }
+TEST_CASE("Is initial AccumulatingProcDuct Get() result value-intialized? " APD_IMPL_NAME, "[AccumulatingProcDuct]" TAGS) { REPEAT {
 
-TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
-
-  auto [input, output] = make_ring_bundle();
+  auto [input, output] = make_ring_apd_bundle<Spec>();
 
   REQUIRE( input.Get() == MSG_T{} );
   REQUIRE( input.JumpGet() == MSG_T{} );
 
 } }
 
-TEST_CASE("Unmatched gets") { REPEAT {
+TEST_CASE("Unmatched gets " APD_IMPL_NAME, "[AccumulatingProcDuct]" TAGS) { REPEAT {
 
   // TODO why does rdma construction hang for dyadic bundle but not ring  ?
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_apd_bundle<Spec>();
 
   for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) {
     REQUIRE( input.JumpGet() == MSG_T{} );
@@ -112,10 +91,10 @@ TEST_CASE("Unmatched gets") { REPEAT {
 
 } }
 
-TEST_CASE("Unmatched puts") { REPEAT {
+TEST_CASE("Unmatched puts " APD_IMPL_NAME, "[AccumulatingProcDuct]" TAGS) { REPEAT {
 
   // TODO why does rdma construction hang for dyadic bundle but not ring  ?
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_apd_bundle<Spec>();
 
   for (size_t i = 0; i <= 2 * uit::DEFAULT_BUFFER; ++i) output.TryPut(1);
 
@@ -123,10 +102,10 @@ TEST_CASE("Unmatched puts") { REPEAT {
 
 } }
 
-TEST_CASE("Validity") { REPEAT {
+TEST_CASE("Validity " APD_IMPL_NAME, "[AccumulatingProcDuct]" TAGS) { REPEAT {
 
   // TODO why does rdma construction hang for dyadic bundle but not ring  ?
-  auto [input, output] = make_dyadic_bundle();
+  auto [input, output] = make_dyadic_apd_bundle<Spec>();
 
   int sum{};
   // 1/2 n * (n + 1)

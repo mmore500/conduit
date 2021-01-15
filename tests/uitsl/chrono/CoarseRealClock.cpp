@@ -1,4 +1,3 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/chrono/CoarseClock.hpp"
@@ -12,7 +11,7 @@ using mytimer_t = uitsl::Timer<
 >;
 using bar_t = uitsl::ProgressBar<mytimer_t>;
 
-TEST_CASE("Test CoarseRealClock")
+TEST_CASE("Test CoarseRealClock", "[nproc:1]")
 {
 
   uitsl::CoarseRealClock{};

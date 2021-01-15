@@ -1,4 +1,4 @@
-TEST_CASE("Test Sequential Completeness") {
+TEST_CASE("Test Sequential Completeness " IMPL_NAME) {
 
   netuit::Mesh<Spec> mesh{ netuit::RingTopologyFactory{}(num_nodes) };
 

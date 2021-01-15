@@ -1,9 +1,8 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/fetch/detect_tar.hpp"
 
-TEST_CASE("should detect tar") {
+TEST_CASE("should detect tar", "[nproc:1]") {
 
   REQUIRE( uitsl::detect_tar( "assets/empty.tar" ) );
   REQUIRE( uitsl::detect_tar( "assets/jabberwocky.tar" ) );
@@ -13,7 +12,7 @@ TEST_CASE("should detect tar") {
 
 }
 
-TEST_CASE("shouldn't detect tar") {
+TEST_CASE("shouldn't detect tar", "[nproc:1]") {
 
   REQUIRE( !uitsl::detect_tar( "assets/beautiful-is-better-than-ugly-explicit-is-better-than-implicit-simple-is-better-than-complex-complex-is-better-than-complicated-flat-is-better-than-nested" ) );
   REQUIRE( !uitsl::detect_tar( "assets/empty.tar.gz" ) );

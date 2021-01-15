@@ -10,7 +10,7 @@
 
 namespace uitsl {
 
-bool detect_gz( const std::filesystem::path& path ) {
+inline bool detect_gz( const std::filesystem::path& path ) {
 
   char buffer[258];
 

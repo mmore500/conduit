@@ -5,10 +5,12 @@
 #include <algorithm>
 #include <array>
 #include <stddef.h>
+#include <typeinfo>
 
 #include <mpi.h>
 
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../../../uitsl/debug/WarnOnce.hpp"
@@ -170,11 +172,13 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    throw "TryPut called on BlockIrecvDuct";
+    emp_always_assert(false, "TryPut called on BlockIrecvDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    throw "Flush called on BlockIrecvDuct";
+    emp_always_assert(false, "Flush called on BlockIrecvDuct");
+    __builtin_unreachable();
   }
 
   /**
@@ -209,7 +213,10 @@ public:
    */
   T& Get() {
     static const uitsl::WarnOnce warning{
-      "Calling non-const Get on BlockIrecvDuct incurs unnecessary copy."
+      std::string{}
+      + "Calling non-const Get on BlockIrecvDuct incurs unnecessary copy, T "
+      + typeid( T ).name()
+      + " ... consider using std::as_const"
     };
     //TODO tidy up
     const uitsl::CircularIndex<N> idx = receive_position - 1;

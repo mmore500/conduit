@@ -11,6 +11,7 @@
 #include <mpi.h>
 
 #include "../../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
+#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/io/ContiguousStream.hpp"
@@ -189,15 +190,18 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    throw "ConsumeGets called on SpanRingImmediateSendDuct";
+    emp_always_assert(false, "ConsumeGets called on SpanRingImmediateSendDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    throw "Get called on SpanRingImmediateSendDuct";
+    emp_always_assert(false, "Get called on SpanRingImmediateSendDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    throw "Get called on SpanRingImmediateSendDuct";
+    emp_always_assert(false, "Get called on SpanRingImmediateSendDuct");
+    __builtin_unreachable();
   }
 
   static std::string GetType() { return "SpanRingImmediateSendDuct"; }

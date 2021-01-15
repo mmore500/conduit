@@ -25,7 +25,7 @@ namespace uitsl {
  * Requires -lcurl.
  * Adapted from https://stackoverflow.com/a/21573625.
  */
-std::filesystem::path fetch_native( const std::string& url ) {
+inline std::filesystem::path fetch_native( const std::string& url ) {
 
   const uitsl::ScopeGuard curl_global_guard(
     [](){ curl_global_init(CURL_GLOBAL_ALL); },

@@ -1,7 +1,9 @@
-TEST_CASE("Validity") { REPEAT {
+#define ATD_IMPL_NAME IMPL_NAME " AccumulatingThreadDuct"
+
+TEMPLATE_TEST_CASE("Validity " ATD_IMPL_NAME, "[nproc:1]", two_thread, three_thread) { REPEAT {
 
   netuit::Mesh<Spec> mesh{
-    netuit::RingTopologyFactory{}(num_threads),
+    netuit::RingTopologyFactory{}(TestType::value),
     uitsl::AssignSegregated<uitsl::thread_id_t>{}
   };
 

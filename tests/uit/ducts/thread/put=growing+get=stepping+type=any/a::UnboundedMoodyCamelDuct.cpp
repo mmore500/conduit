@@ -8,6 +8,8 @@ using ImplSel = uit::ImplSelect<
   uit::ThrowDuct
 >;
 
+#define IMPL_NAME "a::UnboundedMoodyCamelDuct"
+
 #include "../ThreadDuct.hpp"
 
 #include "../SteppingThreadDuct.hpp"

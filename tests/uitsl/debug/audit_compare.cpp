@@ -1,12 +1,11 @@
 #include <limits>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/debug/audit_compare.hpp"
 
 
-TEST_CASE("Test audit_less<signed, signed>") {
+TEST_CASE("Test audit_less<signed, signed>", "[nproc:1]") {
 
   // shorts
   for (short i = -100; i < 100; ++i) {
@@ -32,7 +31,7 @@ TEST_CASE("Test audit_less<signed, signed>") {
 
 }
 
-TEST_CASE("Test audit_less<unsigned, unsigned>") {
+TEST_CASE("Test audit_less<unsigned, unsigned>", "[nproc:1]") {
 
   // big size_t
   for (
@@ -72,7 +71,7 @@ TEST_CASE("Test audit_less<unsigned, unsigned>") {
 
 }
 
-TEST_CASE("Test audit_less<signed, unsigned>") {
+TEST_CASE("Test audit_less<signed, unsigned>", "[nproc:1]") {
 
   REQUIRE( uitsl::audit_less( (short) -1, (size_t) 0) );
   REQUIRE( uitsl::audit_less( (int) -1, (size_t) 0) );
@@ -95,7 +94,7 @@ TEST_CASE("Test audit_less<signed, unsigned>") {
 
 }
 
-TEST_CASE("Test audit_less<unsigned, signed>") {
+TEST_CASE("Test audit_less<unsigned, signed>", "[nproc:1]") {
 
   REQUIRE( !uitsl::audit_less( (size_t) 0, (short) -1) );
   REQUIRE( !uitsl::audit_less( (size_t) 0, (int) -1) );
@@ -116,7 +115,7 @@ TEST_CASE("Test audit_less<unsigned, signed>") {
 
 }
 
-TEST_CASE("Test audit_greater<signed, signed>") {
+TEST_CASE("Test audit_greater<signed, signed>", "[nproc:1]") {
 
   // shorts
   for (short i = -100; i < 100; ++i) {
@@ -142,7 +141,7 @@ TEST_CASE("Test audit_greater<signed, signed>") {
 
 }
 
-TEST_CASE("Test audit_greater<unsigned, unsigned>") {
+TEST_CASE("Test audit_greater<unsigned, unsigned>", "[nproc:1]") {
 
   // big size_t
   for (
@@ -182,7 +181,7 @@ TEST_CASE("Test audit_greater<unsigned, unsigned>") {
 
 }
 
-TEST_CASE("Test audit_greater<signed, unsigned>") {
+TEST_CASE("Test audit_greater<signed, unsigned>", "[nproc:1]") {
 
   REQUIRE( !uitsl::audit_greater( (short) -1, (size_t) 0) );
   REQUIRE( !uitsl::audit_greater( (int) -1, (size_t) 0) );
@@ -204,7 +203,7 @@ TEST_CASE("Test audit_greater<signed, unsigned>") {
 
 }
 
-TEST_CASE("Test audit_greater<unsigned, signed>") {
+TEST_CASE("Test audit_greater<unsigned, signed>", "[nproc:1]") {
 
   REQUIRE( uitsl::audit_greater( (size_t) 0, (short) -1) );
   REQUIRE( uitsl::audit_greater( (size_t) 0, (int) -1) );
@@ -225,7 +224,7 @@ TEST_CASE("Test audit_greater<unsigned, signed>") {
 
 }
 
-TEST_CASE("Test audit_equal<signed, signed>") {
+TEST_CASE("Test audit_equal<signed, signed>", "[nproc:1]") {
 
   // shorts
   for (short i = -100; i < 100; ++i) {
@@ -251,7 +250,7 @@ TEST_CASE("Test audit_equal<signed, signed>") {
 
 }
 
-TEST_CASE("Test audit_equal<unsigned, unsigned>") {
+TEST_CASE("Test audit_equal<unsigned, unsigned>", "[nproc:1]") {
 
   REQUIRE(
     !uitsl::audit_equal( (unsigned int) -1, (unsigned short) -1)
@@ -298,7 +297,7 @@ TEST_CASE("Test audit_equal<unsigned, unsigned>") {
 
 }
 
-TEST_CASE("Test audit_equal<signed, unsigned>") {
+TEST_CASE("Test audit_equal<signed, unsigned>", "[nproc:1]") {
 
   REQUIRE(
     uitsl::audit_equal( (int) -1, (short) -1)
@@ -341,7 +340,7 @@ TEST_CASE("Test audit_equal<signed, unsigned>") {
 
 }
 
-TEST_CASE("Test audit_equal<unsigned, signed>") {
+TEST_CASE("Test audit_equal<unsigned, signed>", "[nproc:1]") {
 
   #ifndef NDEBUG
   REQUIRE_THROWS(

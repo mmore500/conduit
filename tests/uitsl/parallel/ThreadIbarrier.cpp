@@ -1,4 +1,3 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
@@ -28,7 +27,7 @@ TEST_CASE("ThreadIbarrier unsatisfied") {
 
 TEST_CASE("ThreadIbarrier satisfied parallel") {
 
-  for (size_t thread_count = 1; thread_count <= 16; ++thread_count) {
+  for (size_t thread_count = 1; thread_count <= 8; ++thread_count) {
     std::cout << "thread_count: " << thread_count << std::endl;
     uitsl::ThreadIbarrierFactory factory{thread_count};
     uitsl::ThreadTeam team;

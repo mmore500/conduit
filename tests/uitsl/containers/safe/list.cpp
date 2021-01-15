@@ -1,11 +1,10 @@
 #include <string>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/containers/safe/list.hpp"
 
-TEST_CASE("deque") {
+TEST_CASE("test list", "[nproc:1]") {
 
   // TODO expand stub test
   uitsl::safe::list<std::string> list;
