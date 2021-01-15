@@ -108,7 +108,8 @@ jobs:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-16.04
     if: github.ref == 'refs/heads/master'
-    # needs:
+    needs:
+      - docker-build
       # - docs
       # - unit
       # - coverage
@@ -116,12 +117,8 @@ jobs:
       # - macrobenchmarks
       # - microbenchmarks
     steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: 'recursive'
-      - run: apt-get install python3-sphinx
-      - run: echo $(cd third-party && ./install_emsdk.sh)
-      - run: make web
+      - uses: docker-practice/actions-setup-docker@v1
+      - run: docker run -v "$(pwd):/context/" "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit/ && make web && cp -r web /context/"
       - uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
