@@ -347,4 +347,3 @@ add_custom_target(
      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
      COMMAND ${CMAKE_CTEST_COMMAND} -E "NOT_BUILT" --output-on-failures
 )
-
