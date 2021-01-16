@@ -20,12 +20,12 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           push: true
-          tags: "GITHUB_ACTION_${{ github.run_number }}"
+          tags: GITHUB_ACTION_${{ github.run_number }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: mmore500/dishtiny
-          tag_with_sha: true
+          repository: mmore500/conduit
           add_git_labels: true
+
 
   tidy:
     name: Docs, Miscellaneous
@@ -151,8 +151,8 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           push: true
-          tags: latest,${{ github.sha }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: mmore500/conduit
           tag_with_ref: true
+          tag_with_sha: true
