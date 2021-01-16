@@ -14,7 +14,7 @@ inline std::filesystem::path make_temp_filepath() {
 
   // adapted from https://en.wikipedia.org/wiki/Mkstemp
   char dest_path[] = "/tmp/uitsl_temp_fileXXXXXX";
-  uitsl::err_audit(! mkstemp(dest_path) );
+  uitsl_err_audit(! mkstemp(dest_path) );
   return dest_path;
 
 }

@@ -74,7 +74,7 @@ private:
 
     if (uitsl::test_completion( std::get<uitsl::Request>( buffer.GetTail() ) )) {
       emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.GetTail()) ) );
-      uitsl::err_audit(!   buffer.PopTail()   );
+      uitsl_err_audit(!   buffer.PopTail()   );
       return true;
     } else return false;
   }
@@ -87,7 +87,7 @@ private:
 
     emp_assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
-    uitsl::err_audit(!   buffer.PopTail()   );
+    uitsl_err_audit(!   buffer.PopTail()   );
   }
 
   void FlushFinalizedSends() { while (buffer.GetSize() && TryFinalizeSend()); }
@@ -100,7 +100,7 @@ private:
   void DoPut(const T& val) {
     emp_assert( buffer.GetSize() < N );
 
-    uitsl::err_audit(!   buffer.PushHead()   );
+    uitsl_err_audit(!   buffer.PushHead()   );
 
     std::get<T>( buffer.GetHead() ) = val;
 

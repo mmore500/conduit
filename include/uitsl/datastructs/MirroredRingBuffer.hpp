@@ -37,7 +37,7 @@ public:
 
     emp_assert( byte_size % getpagesize() == 0 );
 
-    uitsl::err_audit(ftruncate(
+    uitsl_err_audit(ftruncate(
       file_descriptor, // int fd
       byte_size // off_t length
     ));
@@ -80,7 +80,7 @@ public:
   }
 
   ~MirroredRingBuffer() {
-    uitsl::err_audit(munmap(
+    uitsl_err_audit(munmap(
       buffer, // void *addr
       allocation_size // size_t length
     ));

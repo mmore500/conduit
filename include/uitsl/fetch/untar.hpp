@@ -126,7 +126,7 @@ inline bool try_mkdir( const stdfs::path& target, const stdfs::perms mode ) {
 
   // stdfs::create_directories is failing inside Docker container
   // so use mkdir as a backup for now
-  if (! stdfs::exists(path) ) uitsl::err_audit( mkdir( path.c_str(), 0755 ) );
+  if (! stdfs::exists(path) ) uitsl_err_audit( mkdir( path.c_str(), 0755 ) );
   emp_assert( stdfs::exists(path) );
 
   if ( err ) {

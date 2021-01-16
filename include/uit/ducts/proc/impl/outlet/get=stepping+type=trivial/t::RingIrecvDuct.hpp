@@ -53,7 +53,7 @@ private:
   const uit::InterProcAddress address;
 
   void PostReceiveRequest() {
-    uitsl::err_audit(!
+    uitsl_err_audit(!
       data.PushHead()
     );
     requests.PushBack( MPI_REQUEST_NULL );
@@ -80,8 +80,8 @@ private:
 
     emp_assert( uitsl::test_null( requests.Back() ) );
 
-    uitsl::err_audit(!  data.PopTail()  );
-    uitsl::err_audit(!  requests.PopBack()  );
+    uitsl_err_audit(!  data.PopTail()  );
+    uitsl_err_audit(!  requests.PopBack()  );
 
   }
 
@@ -185,7 +185,7 @@ public:
 
       --batch_countdown;
       --requested_countdown;
-      uitsl::err_audit(!   data.PopTail()   );
+      uitsl_err_audit(!   data.PopTail()   );
       PostReceiveRequest();
 
       if (full_batch && batch_countdown == 0) {
