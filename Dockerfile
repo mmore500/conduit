@@ -58,7 +58,6 @@ RUN \
     g++-8 \
     gconf-service \
     gdb \
-    git \
     gpg-agent \
     gzip \
     hdf5-helpers \
@@ -139,6 +138,7 @@ RUN \
     python3-sphinx \
     python3-virtualenv \
     python3-wheel \
+    rsync \
     slurm-client \
     software-properties-common \
     tar \
@@ -146,6 +146,12 @@ RUN \
     vim \
     wget \
     xdg-utils \
+    && \
+  add-apt-repository ppa:git-core/ppa -y \
+    && \
+  apt-get update -qq \
+    && \
+  apt-get install -y --no-install-recommends git \
     && \
   apt-get clean \
     && \
@@ -273,7 +279,11 @@ RUN \
     && \
   chown user:user /context/ \
     && \
-  echo "/context/ directory set up, user granted permissions"
+  mkdir /__w/ \
+    && \
+  chown user:user /__w/ \
+    && \
+  echo "/context/ /__w/ directories set up, user granted permissions"
 
 USER user
 
