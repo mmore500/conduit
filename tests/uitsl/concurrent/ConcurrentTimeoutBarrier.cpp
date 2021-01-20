@@ -1,8 +1,6 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
-#if 0
-#endif
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 
