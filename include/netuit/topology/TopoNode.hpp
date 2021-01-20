@@ -100,7 +100,6 @@ public:
   }
 
   friend std::ostream& operator<<(std::ostream&, const TopoNode&);
-  friend std::istream& operator>>(std::istream&, TopoNode&);
 
 };
 
@@ -121,11 +120,6 @@ inline std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
   return os;
 }
 
-inline std::istream& operator>>(std::istream& is, TopoNode& node) {
-  size_t input;
-  while (is >> input) node.AddInput(input);
-  return is;
-}
 
 } // namespace netuit
 
