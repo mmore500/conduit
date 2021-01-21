@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <memory>
 
+#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../third-party/Empirical/include/emp/math/Random.hpp"
 #include "../../../third-party/Empirical/include/emp/math/random_utils.hpp"
@@ -66,6 +67,9 @@ class Cell {
         if (d < sum) return i;
         sum += p[i + 1];
       }
+
+      emp_always_assert(false);
+      __builtin_unreachable();
     };
 
     // choose channel with probability p
