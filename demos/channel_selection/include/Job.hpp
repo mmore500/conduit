@@ -1,5 +1,6 @@
 #pragma once
 
+#include <fstream>
 #include <limits>
 #include <sstream>
 #include <string>
@@ -10,6 +11,7 @@
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "uitsl/countdown/ProgressBar.hpp"
 #include "uitsl/countdown/Timer.hpp"
+#include "uitsl/mpi/comm_utils.hpp"
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
 
 #include "CellCollection.hpp"
@@ -24,7 +26,7 @@ class Job {
 
   bar_t timer;
 
-  size_t iteration_counter{};
+  size_t update_counter{};
 
 public:
 
@@ -35,7 +37,7 @@ public:
     cfg.RUN_SECONDS() ?: std::numeric_limits<double>::infinity()
   ) {
     for ( const auto __ : timer ) {
-      ++iteration_counter;
+      ++update_counter;
       collection.Update();
 
       if ( cfg.SYNCHRONOUS() ) {
@@ -46,17 +48,37 @@ public:
         const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
           factory.MakeBarrier(), timer
         };
-
       }
-
     }
+
+    std::ofstream( emp::keyname::pack({
+      {"a", "updates_elapsed"},
+      {"proc", emp::to_string( uitsl::get_proc_id() )},
+      {"thread", emp::to_string( thread_idx )},
+      {"ext", ".txt"},
+    }) ) << update_counter << std::endl;;
+
+    std::ofstream( emp::keyname::pack({
+      {"a", "num_messages_sent"},
+      {"proc", emp::to_string( uitsl::get_proc_id() )},
+      {"thread", emp::to_string( thread_idx )},
+      {"ext", ".txt"},
+    }) ) << collection.GetNumMessagesSent() << std::endl;;
+
+    std::ofstream( emp::keyname::pack({
+      {"a", "num_messages_received"},
+      {"proc", emp::to_string( uitsl::get_proc_id() )},
+      {"thread", emp::to_string( thread_idx )},
+      {"ext", ".txt"},
+    }) ) << collection.GetNumMessagesReceived() << std::endl;;
+
   }
 
   std::string ToString() const {
     std::stringstream ss;
     ss << "job size " << collection.GetSize() << std::endl;
     ss << collection.ToString() << std::endl;
-    ss << "iterations " << iteration_counter << std::endl;
+    ss << "updates elapsed " << update_counter << std::endl;
     ss << "num messages sent " << collection.GetNumMessagesSent() << std::endl;
     ss << "num messages received " << collection.GetNumMessagesReceived()
       << std::endl;
