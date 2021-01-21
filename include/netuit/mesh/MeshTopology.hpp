@@ -2,9 +2,9 @@
 #ifndef NETUIT_MESH_MESHTOPOLOGY_HPP_INCLUDE
 #define NETUIT_MESH_MESHTOPOLOGY_HPP_INCLUDE
 
+#include <map>
 #include <set>
 #include <stddef.h>
-#include <map>
 
 #include <mpi.h>
 

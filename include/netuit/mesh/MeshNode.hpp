@@ -2,8 +2,8 @@
 #ifndef NETUIT_MESH_MESHNODE_HPP_INCLUDE
 #define NETUIT_MESH_MESHNODE_HPP_INCLUDE
 
-#include <stddef.h>
 #include <sstream>
+#include <stddef.h>
 
 #include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
