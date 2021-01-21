@@ -117,8 +117,6 @@ public:
       }
     }
 
-    // make sure we inserted every line
-    emp_assert(lines.size() == node_map.size());
     // make sure the node ids are less than the number of lines
     emp_assert( std::all_of(
       std::begin(node_map),
