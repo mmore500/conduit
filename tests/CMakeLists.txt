@@ -9,6 +9,7 @@ set(NETUIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/NavigableSmallWorldTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ProConTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/RingTopologyFactory.cpp
+    ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/SmallWorldGridTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ToroidalTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ToroidalGridTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/AssignAvailableProcs.cpp
@@ -296,6 +297,7 @@ add_custom_command(TARGET test-netuit
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_navigable_small_world.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_procon.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_ring.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_small_world_grid.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_toroidal.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_toroidal_grid.py
 
