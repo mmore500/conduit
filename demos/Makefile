@@ -3,6 +3,7 @@ SHELL := /bin/bash
 TARGET_NAMES += consensus
 TARGET_NAMES += diffusion
 TARGET_NAMES += signalgp
+TARGET_NAMES += channel_selection
 
 default: test
 
