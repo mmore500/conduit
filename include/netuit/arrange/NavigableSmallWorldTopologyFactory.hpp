@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <ratio>
+#include <set>
 
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -35,7 +36,7 @@ inline Topology make_navigable_small_world_topology(
   const size_t p=1,
   const size_t q=1,
   const double r=2,
-  const size_t dim=2
+  const size_t dim=1
 ) {
 
   const auto tmpfile = uitsl::make_temp_filepath();
@@ -69,20 +70,28 @@ inline Topology make_navigable_small_world_topology(
 
 }
 
-template<size_t P=1, size_t Q=1, typename R=std::ratio<2>, size_t DIM=2>
+template<size_t P=1, size_t Q=1, typename R=std::ratio<2>>
 struct NavigableSmallWorldTopologyFactory {
 
   Topology operator()(const size_t cardinality) const {
 
     return make_navigable_small_world_topology(
-      cardinality, P, Q, static_cast<double>( R::num ) / R::den, DIM
+      cardinality, P, Q, static_cast<double>( R::num ) / R::den, 1
     );
 
   }
 
-  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
-    emp_assert(cardinality.size() == 1);
-    return operator()(cardinality.front());
+  netuit::Topology operator()(const emp::vector<size_t>& cardinality) const {
+    emp_assert(
+      std::set<size_t>(
+        std::begin(cardinality), std::end(cardinality)
+      ).size() == 1
+    );
+    return make_navigable_small_world_topology(
+      cardinality.front(),
+      P, Q, static_cast<double>( R::num ) / R::den,
+      cardinality.size()
+    );
   }
 
   static std::string GetName() { return "Navigable Small World Topology"; }

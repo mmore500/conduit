@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <ratio>
+#include <set>
 
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -29,7 +30,7 @@ namespace netuit {
 inline Topology make_small_world_grid_topology(
   const size_t n,
   const double p=1.0,
-  const size_t dim=2
+  const size_t dim=1
 ) {
 
   const auto tmpfile = uitsl::make_temp_filepath();
@@ -73,20 +74,28 @@ inline Topology make_small_world_grid_topology(
 
 }
 
-template<typename P=std::ratio<1>, size_t DIM=2>
+template<typename P=std::ratio<1>>
 struct SmallWorldGridTopologyFactory {
 
   Topology operator()(const size_t cardinality) const {
 
     return make_small_world_grid_topology(
-      cardinality, static_cast<double>(P::num) / P::den, DIM
+      cardinality, static_cast<double>(P::num) / P::den, 1
     );
 
   }
 
-  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
-    emp_assert(cardinality.size() == 1);
-    return operator()(cardinality.front());
+  netuit::Topology operator()(const emp::vector<size_t>& cardinality) const {
+    emp_assert(
+      std::set<size_t>(
+        std::begin(cardinality), std::end(cardinality)
+      ).size() == 1
+    );
+    return make_small_world_grid_topology(
+      cardinality.front(),
+      static_cast<double>(P::num) / P::den,
+      cardinality.size()
+    );
   }
 
   static std::string GetName() { return "Small World Grid Topology"; }

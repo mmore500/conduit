@@ -28,6 +28,7 @@ for dim in dims:
     G = nx.generators.geometric.navigable_small_world_graph(
         dim,
         seed=1,
+        dim=1,
     )
 
     # relabel nodes to numeric indices from previous coordinate labels

@@ -29,7 +29,7 @@ for dim in dims:
     random.seed(1)
 
     G = nx.grid_graph(
-        (dim, dim), periodic=True
+        (dim, ), periodic=True
     ).to_directed()
 
     nodes = list(G.nodes())
