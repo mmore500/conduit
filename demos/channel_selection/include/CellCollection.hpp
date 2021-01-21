@@ -16,11 +16,10 @@ public:
 
   CellCollection(
     const submesh_t& submesh,
-    const size_t num_nodes
   ) : cells( submesh.size() ) {
     // this approach is a workaround for deleted copy constructor on Cell
     for (size_t i = 0; i < submesh.size(); ++i) {
-      cells[i].emplace( submesh[i], num_nodes );
+      cells[i].emplace( submesh[i] );
     }
   }
 

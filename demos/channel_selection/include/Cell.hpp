@@ -23,19 +23,19 @@ class Cell {
   outputs_t outputs;
 
   size_t node_id;
-  const size_t num_nodes;
 
   size_t state{};
 
-  const double b;
-
-  const size_t c; // number of available channels
   emp::vector<double> p; // state vector
 
 
   emp::Random rand;
 
   void PullInputs() {
+
+    const double b = cfg.B();
+    const size_t c = inputs.size();
+
     std::vector<size_t> values;
     values.reserve( inputs.size() );
     std::transform(
@@ -96,15 +96,11 @@ class Cell {
 
 public:
 
-  Cell(const node_t& node, const size_t num_nodes_)
+  Cell(const node_t& node)
   : inputs( node.GetInputs() )
   , outputs( node.GetOutputs() )
   , node_id( node.GetNodeID() )
-  , num_nodes( num_nodes_ )
-  , state( node_id + 1 )
-  , b(0.1)
-  , c(2)
-  , p(c, 1.0/c)
+  , p( inputs.size(), 1.0 / inputs.size() )
   { }
 
   void Update() {

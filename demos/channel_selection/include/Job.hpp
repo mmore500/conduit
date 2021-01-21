@@ -6,10 +6,13 @@
 #include "../third-party/Empirical/include/emp/io/NullStream.hpp"
 
 #include "uitsl/chrono/CoarseClock.hpp"
+#include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "uitsl/countdown/ProgressBar.hpp"
 #include "uitsl/countdown/Timer.hpp"
+#include "uitsl/parallel/ThreadIbarrierFactory.hpp"
 
 #include "CellCollection.hpp"
+#include "config/cfg.hpp"
 
 class Job {
 
@@ -20,18 +23,30 @@ class Job {
 
   bar_t timer{
     uitsl::is_root() ? std::cout : emp::nout,
-    std::chrono::seconds{ 20 }
+    std::chrono::seconds{ cfg.RUN_SECONDS() }
   };
 
   size_t iteration_counter{};
 
 public:
 
-  Job(const submesh_t& submesh, const size_t num_nodes)
-  : collection(submesh, num_nodes) {
+  Job(const submesh_t& submesh)
+  : collection(submesh) {
     for ( const auto __ : timer ) {
       ++iteration_counter;
       collection.Update();
+
+      if ( cfg.SYNCHRONOUS() ) {
+        // initialized first time thru the function,
+        // so N_THREADS should be initialized
+        static uitsl::ThreadIbarrierFactory factory{ cfg.N_THREADS() };
+
+        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
+          factory.MakeBarrier(), run_timer
+        };
+
+      }
+
     }
   }
 
