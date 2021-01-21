@@ -23,15 +23,12 @@ namespace netuit {
 
 /*
  * @param n The length of one side of the lattice; the number of nodes in the graph is therefore $n^2$.
- * @param p The diameter of short range connections.
- *  Each node is joined with every other node within this lattice distance.
- * @param q The number of long-range connections for each node.
- * @param r Exponent for decaying probability of connections.
- *   The probability of connecting to a node at lattice distance $d$ is $d^{-r}$.
+ * @param p The probability of each node engaging in a long distance connection.
  * @param dim Dimension of grid
  */
 inline Topology make_small_world_grid_topology(
   const size_t n,
+  const double p=1.0,
   const size_t dim=2
 ) {
 
@@ -51,8 +48,9 @@ inline Topology make_small_world_grid_topology(
       nodes = list(G.nodes())
       random.shuffle( nodes )
       for a, b in zip(nodes[0::2], nodes[1::2]):
-        G.add_edge(a, b)
-        G.add_edge(b, a)
+        if (random.random() < %f):
+          G.add_edge(a, b)
+          G.add_edge(b, a)
 
       # relabel nodes to numeric indices from previous coordinate labels
       H = nx.relabel_nodes(
@@ -66,7 +64,7 @@ inline Topology make_small_world_grid_topology(
       )" ) + "\"";
 
   const std::string command = emp::format_string(
-    command_template, n, dim, tmpfile.c_str()
+    command_template, n, dim, p, tmpfile.c_str()
   );
 
   uitsl::err_verify( std::system( command.c_str() ) );
@@ -75,13 +73,13 @@ inline Topology make_small_world_grid_topology(
 
 }
 
-template<size_t DIM=2>
+template<typename P=std::ratio<1>, size_t DIM=2>
 struct SmallWorldGridTopologyFactory {
 
   Topology operator()(const size_t cardinality) const {
 
     return make_small_world_grid_topology(
-      cardinality, DIM
+      cardinality, static_cast<double>(P::num) / P::den, DIM
     );
 
   }
