@@ -3,10 +3,9 @@
 #include <algorithm>
 #include <memory>
 
+#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../third-party/Empirical/include/emp/math/Random.hpp"
 #include "../../../third-party/Empirical/include/emp/math/random_utils.hpp"
-
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "uitsl/algorithm/get_plurality.hpp"
 
