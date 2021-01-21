@@ -14,7 +14,7 @@ class CellCollection {
 
 public:
 
-  CellCollection(
+  explicit CellCollection(
     const submesh_t& submesh
   ) : cells( submesh.size() ) {
     // this approach is a workaround for deleted copy constructor on Cell

@@ -44,7 +44,7 @@ class Cell {
       std::accumulate( std::begin(p), std::end(p), 0.0 )
     );
 
-    double sum;
+    double sum{};
 
     // turn to index map
     for (size_t i{}; i < p.size() - 1; ++i) {
@@ -118,7 +118,7 @@ class Cell {
 
 public:
 
-  Cell(const node_t& node)
+  explicit Cell(const node_t& node)
   : inputs( node.GetInputs() )
   , outputs( node.GetOutputs() )
   , node_id( node.GetNodeID() )
