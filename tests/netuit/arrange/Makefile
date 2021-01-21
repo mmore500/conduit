@@ -1,12 +1,13 @@
+TARGET_NAMES += AdjacencyFileTopologyFactory
 TARGET_NAMES += CompleteTopologyFactory
 TARGET_NAMES += DyadicTopologyFactory
-TARGET_NAMES += RingTopologyFactory
 TARGET_NAMES += LoopTopologyFactory
 TARGET_NAMES += NavigableSmallWorldTopologyFactory
 TARGET_NAMES += ProConTopologyFactory
+TARGET_NAMES += RingTopologyFactory
+TARGET_NAMES += SmallWorldGridFactory
 TARGET_NAMES += ToroidalTopologyFactory
 TARGET_NAMES += ToroidalGridTopologyFactory
-TARGET_NAMES += AdjacencyFileTopologyFactory
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
@@ -26,6 +27,7 @@ assets: staging
 	python3 scripts/make_ring.py
 	python3 scripts/make_toroidal_grid.py
 	python3 scripts/make_toroidal.py
+	python3 scripts/make_small_world_grid.py
 
 test:: assets
 opt:: assets
