@@ -21,16 +21,16 @@
 
 int main(int argc, char* argv[]) {
 
-  if ( uitsl::is_root() ) {
-    std::cout << ">>> begin <<<" << std::endl << std::endl;
-  }
-
   emp::ArgManager am{ argc, argv, emp::ArgManager::make_builtin_specs(&cfg) };
   am.UseCallbacks();
   if ( am.HasUnused() ) std::exit( EXIT_FAILURE );
 
   if ( cfg.N_THREADS() == 1 ) uitsl::mpi_flex_guard.InitSingleThread();
   else uitsl::mpi_flex_guard.InitMultithread();
+
+  if ( uitsl::is_root() ) {
+    std::cout << ">>> begin <<<" << std::endl << std::endl;
+  }
 
   // todo switch this out for assign metis
   netuit::Mesh<ImplSpec> mesh{
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
     [&mesh, &res, thread](){
 
       // run the job
-      Job job{ mesh.GetSubmesh(thread) };
+      Job job{ thread, mesh.GetSubmesh(thread) };
 
       std::stringstream ss;
 
@@ -72,9 +72,6 @@ int main(int argc, char* argv[]) {
     },
     uitsl::print_separator
   );
-
-
-  if ( uitsl::is_root() ) std::cout << ">>> end <<<" << std::endl;
 
   return 0;
 }

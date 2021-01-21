@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <memory>
+#include <ratio>
 
 #include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
@@ -35,16 +36,24 @@ class Cell {
 
     const double d = rand.GetDouble();
 
-    double sum = p[0];
+    emp_assert( p.size() );
+
+    emp_assert(
+      std::abs( 1.0 - std::accumulate( std::begin(p), std::end(p), 0.0 ))
+        < 1.0 / std::nano::den,
+      std::accumulate( std::begin(p), std::end(p), 0.0 )
+    );
+
+    double sum;
 
     // turn to index map
-    for (size_t i{}; i < p.size(); ++i) {
+    for (size_t i{}; i < p.size() - 1; ++i) {
+      sum += p[i];
       if (d < sum) return i;
-      sum += p[i + 1];
     }
 
-    emp_always_assert(false);
-    __builtin_unreachable();
+    // we have to do second check due to possible numerical precision issues
+    return p.size() - 1;
 
   }
 
@@ -58,7 +67,7 @@ class Cell {
   }
 
   void PullInputs() {
-    for (auto& in : inputs) received_message_counter += in.Jump();
+    for (auto& in : inputs) if ( in.Jump() ) ++received_message_counter;
   }
 
   void PushOutputs() {
@@ -71,7 +80,8 @@ class Cell {
   void UpdateSetChannel() {
 
     const double b = cfg.B();
-    const size_t c = inputs.size();
+    const size_t c = cfg.N_CHANNELS();
+    emp_assert( c > 1 );
 
     thread_local std::vector<size_t> neighbor_channels;
     neighbor_channels.resize( inputs.size() );
@@ -84,18 +94,26 @@ class Cell {
 
     // choose channel with probability p
     const size_t proposed_channel = ProposeNextChannel();
+    emp_assert( proposed_channel < c );
 
     if( !DetectInterference(proposed_channel) ) {
-      for (size_t i = 0; i < p.size(); ++i) p[i] = (i == proposed_channel);
+      for (size_t i{}; i < p.size(); ++i) p[i] = (i == proposed_channel);
 
       // choose proposed_channel
       set_channel = proposed_channel;
     } else {
-      for (size_t i = 0; i < p.size(); ++i) {
+      for (size_t i{}; i < p.size(); ++i) {
         if (i == proposed_channel) p[i] *= (1 - b);
         else p[i] = (1 - b) * p[i] + b / (c - 1);
       }
     }
+
+    emp_assert(
+      std::abs( 1.0 - std::accumulate( std::begin(p), std::end(p), 0.0 ))
+        < std::nano::den,
+      std::accumulate( std::begin(p), std::end(p), 0.0 )
+    );
+
   }
 
 public:
@@ -104,7 +122,7 @@ public:
   : inputs( node.GetInputs() )
   , outputs( node.GetOutputs() )
   , node_id( node.GetNodeID() )
-  , p( inputs.size(), 1.0 / inputs.size() )
+  , p( cfg.N_CHANNELS(), 1.0 / cfg.N_CHANNELS() )
   { }
 
   void Update() {
