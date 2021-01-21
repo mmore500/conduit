@@ -1,4 +1,4 @@
-	SHELL := /bin/bash
+SHELL := /bin/bash
 
 TARGET_NAMES += consensus
 TARGET_NAMES += diffusion
