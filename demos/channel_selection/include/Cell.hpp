@@ -139,4 +139,11 @@ public:
 
   double GetState() const { return set_channel; }
 
+  size_t CountConflicts() const {
+    return std::count_if(
+      std::begin( inputs ), std::end( inputs ),
+      [this]( const auto& input ){ return input.Get() == set_channel; }
+    );
+  }
+
 };

@@ -49,6 +49,17 @@ public:
 
   size_t GetSize() const { return cells.size(); }
 
+  size_t CountConflicts() const {
+    return std::accumulate(
+      std::begin(cells),
+      std::end(cells),
+      0,
+      [](const size_t a, auto& cell){
+        return a + cell->CountConflicts();
+      }
+    );
+  }
+
   std::string ToString() const {
     std::stringstream ss;
     ss << "node ids ";
