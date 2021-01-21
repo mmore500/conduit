@@ -2,6 +2,7 @@ TARGET_NAMES += CompleteTopologyFactory
 TARGET_NAMES += DyadicTopologyFactory
 TARGET_NAMES += RingTopologyFactory
 TARGET_NAMES += LoopTopologyFactory
+TARGET_NAMES += NavigableSmallWorldTopologyFactory
 TARGET_NAMES += ProConTopologyFactory
 TARGET_NAMES += ToroidalTopologyFactory
 TARGET_NAMES += ToroidalGridTopologyFactory
@@ -20,6 +21,7 @@ assets: staging
 	python3 scripts/make_complete.py
 	python3 scripts/make_dyadic.py
 	python3 scripts/make_loop.py
+	python3 scripts/make_navigable_small_world.py
 	python3 scripts/make_procon.py
 	python3 scripts/make_ring.py
 	python3 scripts/make_toroidal_grid.py
