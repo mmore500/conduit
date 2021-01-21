@@ -98,15 +98,15 @@ class Cell {
 
     if( !DetectInterference(proposed_channel) ) {
       for (size_t i{}; i < p.size(); ++i) p[i] = (i == proposed_channel);
-
-      // choose proposed_channel
-      set_channel = proposed_channel;
     } else {
       for (size_t i{}; i < p.size(); ++i) {
         if (i == proposed_channel) p[i] *= (1 - b);
         else p[i] = (1 - b) * p[i] + b / (c - 1);
       }
     }
+
+    // choose proposed_channel
+    set_channel = proposed_channel;
 
     emp_assert(
       std::abs( 1.0 - std::accumulate( std::begin(p), std::end(p), 0.0 ))
