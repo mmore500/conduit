@@ -13,11 +13,9 @@ namespace netuit {
 inline Topology make_adjacency_file_topology(const std::string& filename) {
   std::ifstream file(filename);
 
-  if (!file) {
-    // handle error
-  }
+  emp_always_assert(file);
 
-  return file;
+  return dynamic_cast<std::istream&>(file);
 }
 
 struct AdjacencyFileTopologyFactory {
