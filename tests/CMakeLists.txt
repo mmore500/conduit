@@ -6,6 +6,7 @@ set(NETUIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/CompleteTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/DyadicTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/LoopTopologyFactory.cpp
+    ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/NavigableSmallWorldTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ProConTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/RingTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ToroidalTopologyFactory.cpp
@@ -292,6 +293,7 @@ add_custom_command(TARGET test-netuit
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_complete.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_dyadic.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_loop.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_navigable_small_world.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_procon.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_ring.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_toroidal.py
@@ -348,4 +350,3 @@ add_custom_target(
      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
      COMMAND ${CMAKE_CTEST_COMMAND} -E "NOT_BUILT" --output-on-failures
 )
-
