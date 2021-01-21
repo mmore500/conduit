@@ -29,7 +29,6 @@ class Cell {
 
   emp::vector<double> p; // state vector
 
-
   emp::Random rand;
 
   void PullInputs() {

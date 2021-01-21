@@ -11,7 +11,7 @@
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/distributed/do_successively.hpp"
 #include "uitsl/mpi/comm_utils.hpp"
-#include "uitsl/mpi/MpiMultithreadGuard.hpp"
+#include "uitsl/mpi/mpi_flex_guard.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 
@@ -19,18 +19,18 @@
 
 #include "Job.hpp"
 
-
-const uitsl::MpiMultithreadGuard guard{};
-
 int main(int argc, char* argv[]) {
 
   if ( uitsl::is_root() ) {
     std::cout << ">>> begin <<<" << std::endl << std::endl;
   }
 
-  emp::ArgManager am{ argc, argv, emp::ArgManager::make_builtin_specs(&cfg); };
+  emp::ArgManager am{ argc, argv, emp::ArgManager::make_builtin_specs(&cfg) };
   am.UseCallbacks();
-  if ( arg_manager.HasUnused() ) std::exit( EXIT_FAILURE );
+  if ( am.HasUnused() ) std::exit( EXIT_FAILURE );
+
+  if ( cfg.N_THREADS() == 1 ) uitsl::mpi_flex_guard.InitSingleThread();
+  else uitsl::mpi_flex_guard.InitMultithread();
 
   // todo switch this out for assign metis
   netuit::Mesh<ImplSpec> mesh{
@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
       cfg.N_THREADS(), cfg.N_NODES_PER_CPU()
     },
     uitsl::AssignContiguously<uitsl::proc_id_t>{
-      uitsl::get_nprocs(), num_nodes()
+      uitsl::safe_cast<size_t>(uitsl::get_nprocs()), num_nodes()
     }
   };
 
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
     [&mesh, &res, thread](){
 
       // run the job
-      Job job{ mesh.GetSubmesh(thread), num_nodes };
+      Job job{ mesh.GetSubmesh(thread) };
 
       std::stringstream ss;
 

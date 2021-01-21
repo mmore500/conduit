@@ -1,5 +1,6 @@
 #pragma once
 
+#include <limits>
 #include <sstream>
 #include <string>
 
@@ -18,12 +19,12 @@ class Job {
 
   CellCollection collection;
 
-  using timer_t = uitsl::Timer<std::chrono::seconds, uitsl::CoarseClock>;
+  using timer_t = uitsl::CoarseTimer;
   using bar_t = uitsl::ProgressBar<timer_t>;
 
   bar_t timer{
     uitsl::is_root() ? std::cout : emp::nout,
-    std::chrono::seconds{ cfg.RUN_SECONDS() }
+    cfg.RUN_SECONDS() ?: std::numeric_limits<double>::infinity()
   };
 
   size_t iteration_counter{};
@@ -42,7 +43,7 @@ public:
         static uitsl::ThreadIbarrierFactory factory{ cfg.N_THREADS() };
 
         const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
-          factory.MakeBarrier(), run_timer
+          factory.MakeBarrier(), timer
         };
 
       }

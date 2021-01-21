@@ -14,7 +14,7 @@ EMP_BUILD_CONFIG(
     "How many seconds should we run the experiment for?"
   ),
   VALUE(SYNCHRONOUS, bool, false,
-    "Should updates occur synchronously across threawds and processes?"
+    "Should updates occur synchronously across threads and processes?"
   ),
 
 
