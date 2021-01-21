@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Generate toroidal graphs.
+"""
+Generate toroidal graphs.
 
 This script makes use of NetworkX to generate
 toroidal graphs (nodes are connected akin to a
@@ -11,7 +12,6 @@ of the graph created.
 """
 
 import networkx as nx
-import matplotlib.pyplot as plt
 from keyname import keyname as kn
 
 dims = [
