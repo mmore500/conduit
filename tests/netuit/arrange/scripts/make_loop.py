@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Generate loop graphs.
+"""
+Generate loop graphs.
 
 This script makes use of NetworkX to generate
 loop graphs (nodes are connected to themselves).
@@ -10,7 +11,6 @@ of the graph created.
 """
 
 import networkx as nx
-import matplotlib.pyplot as plt
 from keyname import keyname as kn
 
 dims = [3, 10, 15, 27, 56, 99]

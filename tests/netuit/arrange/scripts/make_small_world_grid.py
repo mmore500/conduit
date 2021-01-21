@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-"""Generate loop graphs.
+"""
+Generate small world grid graphs.
 
 This script makes use of NetworkX to generate
-loop graphs (nodes are connected to themselves).
+a toroidal grid with all nodes connected to one other random node.
 
 This tool creates adjacency list files (.adj)
 whose filename represent the characteristics
@@ -10,7 +11,6 @@ of the graph created.
 """
 
 import networkx as nx
-import matplotlib.pyplot as plt
 from keyname import keyname as kn
 import random
 
