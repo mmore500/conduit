@@ -5,6 +5,7 @@ TARGET_NAMES += LoopTopologyFactory
 TARGET_NAMES += ProConTopologyFactory
 TARGET_NAMES += ToroidalTopologyFactory
 TARGET_NAMES += ToroidalGridTopologyFactory
+TARGET_NAMES += AdjacencyFileTopologyFactory
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 
