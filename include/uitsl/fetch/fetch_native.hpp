@@ -15,7 +15,8 @@
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"
 
-#include "make_temp_path.hpp"
+#include "make_temp_filepath.hpp"
+#include "resolve_fetched_filename.hpp"
 
 namespace uitsl {
 
@@ -24,19 +25,25 @@ namespace uitsl {
  * Requires -lcurl.
  * Adapted from https://stackoverflow.com/a/21573625.
  */
-std::filesystem::path fetch_native( const std::string& url ) {
+inline std::filesystem::path fetch_native( const std::string& url ) {
 
   const uitsl::ScopeGuard curl_global_guard(
     [](){ curl_global_init(CURL_GLOBAL_ALL); },
     [](){ curl_global_cleanup(); }
   );
 
-  const std::filesystem::path outpath{ uitsl::make_temp_path() };
+  const std::filesystem::path bodypath{ uitsl::make_temp_filepath() };
+  FILE *bodyfile;
+  const uitsl::ScopeGuard bodyfile_guard(
+    [&bodyfile, bodypath](){ bodyfile = fopen(bodypath.c_str(), "wb"); },
+    [&bodyfile](){ fclose(bodyfile); }
+  );
 
-  FILE *outfile;
-  const uitsl::ScopeGuard outfile_guard(
-    [&outfile, outpath](){ outfile = fopen(outpath.c_str(), "wb"); },
-    [&outfile](){ fclose(outfile); }
+  const std::filesystem::path headerpath{ uitsl::make_temp_filepath() };
+  FILE *headerfile;
+  const uitsl::ScopeGuard headerfile_guard(
+    [&](){ headerfile = fopen(headerpath.c_str(), "wb"); },
+    [&](){ fclose(headerfile); }
   );
 
   CURL* curl_handle;
@@ -54,7 +61,13 @@ std::filesystem::path fetch_native( const std::string& url ) {
     curl_easy_setopt( curl_handle, CURLOPT_WRITEFUNCTION, nullptr)
   );
   uitsl::err_verify(
-    curl_easy_setopt( curl_handle, CURLOPT_WRITEDATA, outfile)
+    curl_easy_setopt( curl_handle, CURLOPT_WRITEDATA, bodyfile)
+  );
+  uitsl::err_verify(
+    curl_easy_setopt( curl_handle, CURLOPT_HEADERDATA, headerfile)
+  );
+  uitsl::err_verify(
+    curl_easy_setopt(curl_handle, CURLOPT_FOLLOWLOCATION, 1L)
   );
 
   uitsl::err_verify( curl_easy_perform(curl_handle) );
@@ -63,7 +76,10 @@ std::filesystem::path fetch_native( const std::string& url ) {
   curl_easy_getinfo( curl_handle, CURLINFO_RESPONSE_CODE, &http_code );
   emp_always_assert( http_code == 200, url, http_code );
 
-  return outpath;
+  fflush( bodyfile );
+  fflush( headerfile );
+
+  return uitsl::resolve_fetched_filename( url, bodypath, headerpath );
 
 }
 

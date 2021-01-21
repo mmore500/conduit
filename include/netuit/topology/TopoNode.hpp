@@ -104,7 +104,7 @@ public:
 
 };
 
-std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
+inline std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
   // make sure node has outputs
   if (!node.HasOutputs()) return os;
 
@@ -121,7 +121,7 @@ std::ostream& operator<<(std::ostream& os, const TopoNode& node) {
   return os;
 }
 
-std::istream& operator>>(std::istream& is, TopoNode& node) {
+inline std::istream& operator>>(std::istream& is, TopoNode& node) {
   size_t input;
   while (is >> input) node.AddInput(input);
   return is;

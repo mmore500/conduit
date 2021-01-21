@@ -10,5 +10,6 @@ using ImplSel = uit::ImplSelect<
 >;
 
 using MSG_T = int;
+#define IMPL_NAME "aggregated+inlet=Accumulate+outlet=WithdrawingWindow_f::AggregatedIaOwwDuct/int"
 
 #include "../../AccumulatingProcDuct.hpp"

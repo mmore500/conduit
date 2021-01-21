@@ -9,5 +9,6 @@ using ImplSel = uit::ImplSelect<
 >;
 
 #define MSG_VALUE_T double
+#define IMPL_NAME "inlet=Raccumulate+outlet=WithdrawingWindow_sf::IrOwwDuct/double"
 
 #include "../../VectorAccumulatingProcDuct.hpp"

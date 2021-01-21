@@ -2,7 +2,6 @@
 #include <ratio>
 #include <variant>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 #include "cereal/include/cereal/archives/binary.hpp"
 #include "cereal/include/cereal/cereal.hpp"
@@ -16,7 +15,7 @@
 using small_t = size_t;
 using big_t = std::array<size_t, std::kilo::num>;
 
-TEST_CASE("Test variant") {
+TEST_CASE("Test variant", "[nproc:1]") {
 
   using variant_t = std::variant<small_t, big_t>;
 
@@ -41,7 +40,7 @@ TEST_CASE("Test variant") {
 
 }
 
-TEST_CASE("Test optional") {
+TEST_CASE("Test optional", "[nproc:1]") {
 
   emp::ContiguousStream cs_small;
   emp::ContiguousStream cs_big;

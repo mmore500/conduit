@@ -8,6 +8,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
@@ -98,11 +99,13 @@ public:
   { ; }
 
   [[noreturn]] bool TryPut(const T&) const {
-    throw "TryPut called on BufferedOutletDuct";
+    emp_always_assert(false, "TryPut called on BufferedOutletDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    throw "Flush called on BufferedOutletDuct";
+    emp_always_assert(false, "Flush called on BufferedOutletDuct");
+    __builtin_unreachable();
   }
 
   /**

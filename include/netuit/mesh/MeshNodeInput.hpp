@@ -3,6 +3,7 @@
 #define NETUIT_MESH_MESHNODEINPUT_HPP_INCLUDE
 
 #include <memory>
+#include <sstream>
 #include <stddef.h>
 
 #include "../../uit/spouts/Outlet.hpp"
@@ -28,6 +29,15 @@ public:
   { ; }
 
   size_t GetEdgeID() const { return edge_id; }
+
+  std::string ToString() const {
+    std::stringstream ss;
+
+    ss << "edge_id " << edge_id << std::endl;
+
+    return ss.str();
+  }
+
 
 };
 

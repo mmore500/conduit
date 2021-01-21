@@ -1,7 +1,6 @@
 #include <limits>
 #include <utility>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "Empirical/include/emp/base/array.hpp"
@@ -26,7 +25,7 @@ struct NamedArray {
 
 };
 
-TEST_CASE("NamedArrayElement") {
+TEST_CASE("NamedArrayElement", "[nproc:1]") {
 
   NamedArray arr;
 

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Generate toroidal graphs.
 
 This script makes use of NetworkX to generate
@@ -15,10 +16,13 @@ from keyname import keyname as kn
 
 dims = [
     [2, 2],
+    [2, 10],
     [3, 3],
+    [3, 3, 3],
     [4, 5],
     [8, 8],
-    [9, 9]
+    [9, 9],
+    [9],
 ]
 
 def make_filename(dims):

@@ -5,15 +5,12 @@
 #include <mpi.h>
 
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 #include "Empirical/include/emp/base/vector.hpp"
 
 #include "netuit/assign/AssignAvailableProcs.hpp"
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uitsl/math/math_utils.hpp"
-#include "uitsl/mpi/MpiGuard.hpp"
 #include "uitsl/mpi/mpi_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 
@@ -28,8 +25,9 @@
 #include "netuit/mesh/MeshNodeInput.hpp"
 #include "netuit/mesh/MeshNodeOutput.hpp"
 
-
-const uitsl::MpiGuard guard;
+#ifndef TAGS
+#define TAGS ""
+#endif
 
 using MSG_T = emp::vector<int>;
 using Spec = uit::ImplSpec<MSG_T, ImplSel>;
@@ -38,7 +36,7 @@ using Spec = uit::ImplSpec<MSG_T, ImplSel>;
 
 int tag{};
 
-TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
+TEST_CASE("Is initial FixedVectorProcDuct Get() result value-intialized?", "[FixedVectorProcDuct]" TAGS) { REPEAT {
 
   std::shared_ptr<Spec::ProcBackEnd> backend{
     std::make_shared<Spec::ProcBackEnd>(2)
@@ -80,7 +78,7 @@ TEST_CASE("Is initial Get() result value-intialized?") { REPEAT {
 
 } }
 
-TEST_CASE("Is transmission reliable?") { REPEAT {
+TEST_CASE("Is transmission reliable?", TAGS) { REPEAT {
 
   std::shared_ptr<Spec::ProcBackEnd> backend{
     std::make_shared<Spec::ProcBackEnd>(1)

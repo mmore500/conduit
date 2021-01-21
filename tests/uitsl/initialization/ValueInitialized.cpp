@@ -1,9 +1,8 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/utility/ValueInitialized.hpp"
+#include "uitsl/initialization/ValueInitialized.hpp"
 
-TEST_CASE("Test ValueInitialized") {
+TEST_CASE("Test ValueInitialized", "[nproc:1]") {
 
   uitsl::ValueInitialized<int> val1;
   REQUIRE( val1 == 0 );

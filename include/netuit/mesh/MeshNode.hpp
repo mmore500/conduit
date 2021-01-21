@@ -2,6 +2,7 @@
 #ifndef NETUIT_MESH_MESHNODE_HPP_INCLUDE
 #define NETUIT_MESH_MESHNODE_HPP_INCLUDE
 
+#include <sstream>
 #include <stddef.h>
 
 #include "../../../third-party/Empirical/include/emp/base/optional.hpp"
@@ -76,6 +77,24 @@ public:
 
   emp::optional<output_t> GetOutputOrNullopt(const size_t i) const {
     return HasOutput(i) ? emp::optional<output_t>{GetOutput(i)} : std::nullopt;
+  }
+
+  std::string ToString() const {
+    std::stringstream ss;
+
+    ss << "node_id" << node_id << std::endl;
+
+    ss << "inputs" << std::endl;
+    for ( const auto& input : inputs ) {
+      ss << input.ToString() << std::endl;
+    }
+
+    ss << "outputs" << std::endl;
+    for ( const auto& output : outputs ) {
+      ss << output.ToString() << std::endl;
+    }
+
+    return ss.str();
   }
 
 };

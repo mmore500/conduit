@@ -123,7 +123,7 @@ public:
 
   bool IsInitialized() const { return outlet.has_value(); }
 
-  /// Retister a duct for an entry in the pool.
+  /// Register a duct for an entry in the pool.
   void Register(const address_t& address) {
     emp_assert( !IsInitialized() );
     emp_assert( !addresses.count(address) );

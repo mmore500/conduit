@@ -9,6 +9,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -93,11 +94,13 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) {
-    throw "TryPut called on WithdrawingWindowDuct";
+    emp_always_assert(false, "TryPut called on WithdrawingWindowDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    throw "Flush called on WithdrawingWindowDuct";
+    emp_always_assert(false, "Flush called on WithdrawingWindowDuct");
+    __builtin_unreachable();
   }
 
   size_t TryConsumeGets(const size_t requested) {

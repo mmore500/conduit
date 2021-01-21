@@ -1,10 +1,7 @@
 #include <mpi.h>
 
-#define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
-#include "uitsl/debug/MultiprocessReporter.hpp"
 #include "uitsl/mpi/audited_routines.hpp"
 #include "uitsl/mpi/MpiMultithreadGuard.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"

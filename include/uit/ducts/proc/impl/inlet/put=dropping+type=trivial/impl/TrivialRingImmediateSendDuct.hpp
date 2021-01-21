@@ -10,6 +10,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
@@ -73,7 +74,7 @@ private:
 
     if (uitsl::test_completion( std::get<uitsl::Request>( buffer.GetTail() ) )) {
       emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.GetTail()) ) );
-      uitsl::err_audit(!   buffer.PopTail()   );
+      uitsl_err_audit(!   buffer.PopTail()   );
       return true;
     } else return false;
   }
@@ -86,7 +87,7 @@ private:
 
     emp_assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
-    uitsl::err_audit(!   buffer.PopTail()   );
+    uitsl_err_audit(!   buffer.PopTail()   );
   }
 
   void FlushFinalizedSends() { while (buffer.GetSize() && TryFinalizeSend()); }
@@ -99,7 +100,7 @@ private:
   void DoPut(const T& val) {
     emp_assert( buffer.GetSize() < N );
 
-    uitsl::err_audit(!   buffer.PushHead()   );
+    uitsl_err_audit(!   buffer.PushHead()   );
 
     std::get<T>( buffer.GetHead() ) = val;
 
@@ -145,15 +146,20 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    throw "ConsumeGets called on TrivialRingImmediateSendDuct";
+    emp_always_assert(
+      false, "ConsumeGets called on TrivialRingImmediateSendDuct"
+    );
+    __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    throw "Get called on TrivialRingImmediateSendDuct";
+    emp_always_assert(false, "Get called on TrivialRingImmediateSendDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    throw "Get called on TrivialRingImmediateSendDuct";
+    emp_always_assert(false, "Get called on TrivialRingImmediateSendDuct");
+    __builtin_unreachable();
   }
 
   static std::string GetType() { return "TrivialRingImmediateSendDuct"; }

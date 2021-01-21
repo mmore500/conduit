@@ -11,7 +11,8 @@ namespace uitsl {
 template<typename T, size_t N=1>
 class PodLeafNode {
 
-  emp::array<T, N> data{};
+  // TODO swtich back to emp::array after https://github.com/devosoft/Empirical/issues/408 is resolved
+  std::array<T, N> data{};
 
 public:
 
@@ -124,7 +125,8 @@ public:
 
   auto end() const { return std::end( data ); }
 
-  const emp::array<T, N>& GetBuffer() const { return data; }
+  // TODO swtich back to emp::array after https://github.com/devosoft/Empirical/issues/408 is resolved
+  const std::array<T, N>& GetBuffer() const { return data; }
 
 };
 

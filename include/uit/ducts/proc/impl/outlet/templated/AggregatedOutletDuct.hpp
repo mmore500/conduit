@@ -9,6 +9,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -60,11 +61,13 @@ public:
   { back_end->RegisterOutletSlot(address); }
 
   [[noreturn]] bool TryPut(const T&) const {
-    throw "TryPut called on AggregatedOutletDuct";
+    emp_always_assert(false, "TryPut called on AggregatedOutletDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    throw "Flush called on AggregatedOutletDuct";
+    emp_always_assert(false, "Flush called on AggregatedOutletDuct");
+    __builtin_unreachable();
   }
 
   /**
@@ -86,8 +89,10 @@ public:
    * @return TODO.
    */
   const T& Get() const {
-    if (!aggregator.has_value()) SetupAggregator();
-    return aggregator->get().Get(address.GetTag());
+    if (!aggregator.has_value()) {
+      const_cast<AggregatedOutletDuct*>(this)->SetupAggregator();
+    }
+    return std::as_const(aggregator->get()).Get(address.GetTag());
   }
 
   /**

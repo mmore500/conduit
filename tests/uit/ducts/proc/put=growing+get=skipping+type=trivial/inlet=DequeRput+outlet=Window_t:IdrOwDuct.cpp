@@ -8,8 +8,9 @@ using ImplSel = uit::ImplSelect<
   uit::t::IdrOwDuct
 >;
 
+#define IMPL_NAME "inlet=DequeRput+outlet=Window_t::IdrOwDuct"
+#define TAGS "[nproc:2][nproc:3][nproc:4]"
 
-int main() { return 0; }
 // TODO why does this hang on travis
 // #include "../ProcDuct.hpp"
 // #include "../SkippingProcDuct.hpp"

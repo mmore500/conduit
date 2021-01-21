@@ -2,6 +2,7 @@
 #ifndef UITSL_FETCH_DETECT_TAR_HPP_INCLUDE
 #define UITSL_FETCH_DETECT_TAR_HPP_INCLUDE
 
+#include <fstream>
 #include <istream>
 
 #include "../nonce/ScopeGuard.hpp"
@@ -9,7 +10,7 @@
 
 namespace uitsl {
 
-bool detect_tar( const std::filesystem::path& path ) {
+inline bool detect_tar( const std::filesystem::path& path ) {
 
   char buffer[265];
 

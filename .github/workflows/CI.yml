@@ -1,0 +1,158 @@
+name: CI
+on:
+  push:
+    branches: [ master, dev ]
+  pull_request:
+    branches:
+      - '**'
+  schedule:
+    - cron: '0 0 * * 0'
+jobs:
+
+  docker-build:
+    name: Docker Build
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v1
+        with:
+          push: true
+          tags: GITHUB_ACTION_${{ github.run_number }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: mmore500/conduit
+          add_git_labels: true
+
+
+  tidy:
+    name: Docs, Miscellaneous
+    runs-on: ubuntu-16.04
+    needs:
+      - docker-build
+    steps:
+      - uses: docker-practice/actions-setup-docker@v1
+      - run: docker run "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit && ./ci/test_tidy.sh"
+
+
+  unit:
+    name: Unit Tests
+    runs-on: ubuntu-16.04
+    needs:
+      - docker-build
+    strategy:
+      matrix:
+        mpicxx: [mpich, openmpi]
+        mode: [ Debug, Opt ]
+      fail-fast: false
+    steps:
+      - uses: docker-practice/actions-setup-docker@v1
+      - run: >
+          docker run "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
+          "cd /opt/conduit/ &&
+          cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=.${{ matrix.mpicxx }} &&
+          cmake --build build &&
+          cd build &&
+          ctest"
+
+  coverage:
+    name: Coverage
+    runs-on: ubuntu-16.04
+    needs:
+      - docker-build
+    env:
+      DISH_MPICXX: mpicxx.openmpi
+      OMPI_CXX: clang++
+    steps:
+      - uses: docker-practice/actions-setup-docker@v1
+      - run: export ci_env=`bash <(curl -s https://codecov.io/env)`
+      - run: >
+          docker run $ci_env -e DISH_MPICXX=$DISH_MPICXX -e OMPI_CXX=$OMPI_CXX -e CC=clang -e CXX=clang++
+          "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
+          "cd /opt/conduit/ &&
+          cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
+          && cmake --build build --target ccov-show-test-netuit
+          && cmake --build build --target ccov-show-test-uit
+          && cmake --build build --target ccov-show-test-uitsl
+          && bash <(curl -s https://codecov.io/bash)"
+
+  microbenchmarks:
+    name: Microbenchmarks
+    runs-on: ubuntu-16.04
+    needs:
+      - docker-build
+    steps:
+      - uses: docker-practice/actions-setup-docker@v1
+      - run: docker run -e OSF_USERNAME=${{ secrets.OSF_USERNAME }} -e OSF_PASSWORD=${{ secrets.OSF_PASSWORD }} -e CONTEXT=actions "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit/microbenchmarks && make"
+
+  macrobenchmarks:
+    name: Macrobenchmarks
+    runs-on: ubuntu-16.04
+    needs:
+      - docker-build
+    steps:
+      - uses: docker-practice/actions-setup-docker@v1
+      - run: docker run -e OSF_USERNAME=${{ secrets.OSF_USERNAME }} -e OSF_PASSWORD=${{ secrets.OSF_PASSWORD }} -e CONTEXT=actions "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit/macrobenchmarks && make"
+
+  docs:
+    name: Source, Docs, Demos
+    runs-on: ubuntu-16.04
+    needs:
+      - docker-build
+    steps:
+      - uses: docker-practice/actions-setup-docker@v1
+      - run: docker run --cap-add=SYS_ADMIN "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit && make test-source && make docs && make demos"
+
+  deploy-pages:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-16.04
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      env:
+        OSF_PASSWORD: ${{ secrets.OSF_PASSWORD }}
+        OSF_USERNAME: ${{ secrets.OSF_USERNAME }}
+      # github actions requires root to access mounted volumes
+      options: --user root
+    if: github.ref == 'refs/heads/master'
+    needs:
+      - docs
+      - unit
+      - coverage
+      - tidy
+      - macrobenchmarks
+      - microbenchmarks
+    steps:
+      - run: make -C /opt/conduit/ web
+      - run: cp -r /opt/conduit/web/ web/
+      - uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: web # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
+
+  deploy-dockerhub:
+    name: Deploy to Dockerhub
+    runs-on: ubuntu-16.04
+    needs:
+      - docs
+      - unit
+      - coverage
+      - tidy
+      - macrobenchmarks
+      - microbenchmarks
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v1
+        with:
+          push: true
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: mmore500/conduit
+          tag_with_ref: true
+          tag_with_sha: true

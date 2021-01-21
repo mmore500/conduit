@@ -8,4 +8,6 @@ using ImplSel = uit::ImplSelect<
   uit::IrirObi
 >;
 
+#define TAGS "[nproc:2][nproc:3][nproc:4]"
+
 #include "../FixedVectorProcDuct.hpp"

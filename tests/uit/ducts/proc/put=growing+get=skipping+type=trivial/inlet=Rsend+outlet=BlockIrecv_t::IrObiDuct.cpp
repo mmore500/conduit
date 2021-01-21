@@ -8,5 +8,8 @@ using ImplSel = uit::ImplSelect<
   uit::t::BlockRmsgDuct
 >;
 
+#define IMPL_NAME "t::BlockRmsgDuct"
+#define TAGS "[nproc:2][nproc:3][nproc:4]"
+
 #include "../ProcDuct.hpp"
 #include "../SkippingProcDuct.hpp"

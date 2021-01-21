@@ -1,12 +1,11 @@
 #include <ratio>
 #include <vector>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/datastructs/SiftingArray.hpp"
 
-TEST_CASE("Test SiftingArray") {
+TEST_CASE("Test SiftingArray", "[nproc:1]") {
 
   constexpr size_t buff_size{ 10 };
   uitsl::SiftingArray<size_t, buff_size> buff;

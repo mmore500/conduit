@@ -8,5 +8,8 @@ using ImplSel = uit::ImplSelect<
   uit::t::PooledIriOiDuct
 >;
 
+#define IMPL_NAME "pooled+inlet=RingIsend+outlet=Iprobe_t::PooledIriOiDuct"
+#define TAGS "[nproc:2][nproc:3][nproc:4]"
+
 #include "../ProcDuct.hpp"
 #include "../SteppingProcDuct.hpp"

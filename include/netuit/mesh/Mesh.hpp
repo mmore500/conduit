@@ -34,6 +34,8 @@ public:
 
   static size_t Generate() { return counter++; }
   static void Reset() { counter = 0; }
+  static size_t Get() { return counter; }
+
 
 };
 
@@ -217,7 +219,7 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << "TODO" << std::endl;
+    ss << nodes.ToString() << std::endl;
     return ss.str();
   }
 

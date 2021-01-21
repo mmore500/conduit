@@ -7,6 +7,7 @@
 #include <stddef.h>
 
 #include "../chrono/chrono_utils.hpp"
+#include "../chrono/CoarseClock.hpp"
 
 #include "impl/CountdownIterator.hpp"
 
@@ -30,6 +31,9 @@ public:
   Timer(
     const Duration_T& duration_=infinite_duration
   ) : duration(duration_)
+  { ; }
+
+  Timer( const double duration_ ) : Timer( Duration_T{ duration_ } )
   { ; }
 
   bool IsComplete() const { return duration <= GetElapsed(); }
@@ -60,7 +64,16 @@ public:
 
   iterator end() { return iterator{}; }
 
+  void Reset() { start =  Clock_T::now(); }
+
 };
+
+// convenience typedef
+using CoarseTimer = uitsl::Timer<
+  std::chrono::duration<double, std::ratio<1>>,
+  uitsl::CoarseClock
+>;
+
 
 } // namespace uitsl
 

@@ -1,9 +1,8 @@
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/meta/IdentityWrapper.hpp"
 
-TEST_CASE("IdentityWrapper") {
+TEST_CASE("IdentityWrapper", "[nproc:1]") {
 
   uitsl::IdentityWrapper<std::string> wrapped{"present"};
   REQUIRE(wrapped == "present");

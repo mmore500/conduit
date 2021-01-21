@@ -1,5 +1,5 @@
-osfclient==0.0.4
-keyname==0.1.0
+git+git://github.com/mmore500/osfclient@9e2e14d#egg=osfclient
+keyname==0.3.0
 pandas==1.1.2
 frozendict==1.2
 seaborn==0.11.0

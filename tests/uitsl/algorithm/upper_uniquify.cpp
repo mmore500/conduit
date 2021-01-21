@@ -1,11 +1,10 @@
 #include <map>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/algorithm/upper_uniquify.hpp"
 
-TEST_CASE("Test upper_uniquify")
+TEST_CASE("Test upper_uniquify", "[nproc:1]")
 {
 
   std::multimap<int, int> target{

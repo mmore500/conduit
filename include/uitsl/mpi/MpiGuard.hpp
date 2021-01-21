@@ -4,16 +4,22 @@
 
 #include <functional>
 
-#include "audited_routines.hpp"
-#include "mpi_utils.hpp"
+#include <mpi.h>
+
+#include "../debug/err_verify.hpp"
 
 namespace uitsl {
 
 struct MpiGuard {
 
-  MpiGuard() { uitsl::mpi_init(); }
+  #ifndef __EMSCRIPTEN__
+  MpiGuard() {
+    int argc{};
+    uitsl::err_verify( MPI_Init(&argc, nullptr) );
+  }
 
-  ~MpiGuard() { UITSL_Finalize(); }
+  ~MpiGuard() { uitsl::err_verify( MPI_Finalize() ); }
+  #endif // #ifndef __EMSCRIPTEN__
 
 };
 

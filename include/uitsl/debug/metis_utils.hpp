@@ -9,7 +9,7 @@
 #endif
 
 namespace uitsl::metis {
-void verify(const int status) {
+inline void verify(const int status) {
   #ifndef __EMSCRIPTEN__
 
   std::string name;

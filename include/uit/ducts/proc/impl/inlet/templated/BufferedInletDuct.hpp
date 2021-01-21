@@ -8,6 +8,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
@@ -97,15 +98,18 @@ public:
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    throw "ConsumeGets called on BufferedInletDuct";
+    emp_always_assert(false, "ConsumeGets called on BufferedInletDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    throw "Get called on BufferedInletDuct";
+    emp_always_assert(false, "Get called on BufferedInletDuct");
+    __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    throw "Get called on BufferedInletDuct";
+    emp_always_assert(false, "Get called on BufferedInletDuct");
+    __builtin_unreachable();
   }
 
   static std::string GetType() { return "BufferedInletDuct"; }

@@ -19,7 +19,7 @@ public:
   friend std::istream& operator>>(std::istream&, Line&);
 };
 
-std::istream& operator>>(std::istream& is, Line& line) {
+inline std::istream& operator>>(std::istream& is, Line& line) {
   std::getline(is, line.str);
   return is;
 }

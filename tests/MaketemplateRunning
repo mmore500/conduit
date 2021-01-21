@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-FLAGS = -std=c++17 -g -pipe -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
+FLAGS = -std=c++17 -g -pipe -pthread -march=native -Wall -Wno-unused-function -Wno-unused-private-field -DCATCH_CONFIG_MAIN -I$(TO_ROOT)/include/ -I$(TO_ROOT)/third-party/
 
 UIT_MPICXX ?= mpicxx
 UIT_MPIEXEC ?= mpiexec

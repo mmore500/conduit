@@ -6,7 +6,7 @@
 
 #include "uitsl/algorithm/unset_mask.hpp"
 
-TEST_CASE("Test unset_mask random testing") {
+TEST_CASE("Test unset_mask random testing", "[nproc:1]") {
 
   emp::Random rand(1);
 
@@ -27,7 +27,7 @@ TEST_CASE("Test unset_mask random testing") {
 
 }
 
-TEST_CASE("Test unset_mask hand testing") {
+TEST_CASE("Test unset_mask hand testing", "[nproc:1]") {
 
   const emp::BitSet<4> target{1,1,0,0};
   const emp::BitSet<4> mask{0,1,1,0};

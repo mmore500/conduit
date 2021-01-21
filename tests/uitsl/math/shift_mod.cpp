@@ -1,12 +1,11 @@
 #include <limits>
 #include <unordered_set>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/math/shift_mod.hpp"
 
-TEST_CASE("Test shift_mod") {
+TEST_CASE("Test shift_mod", "[nproc:1]") {
 
   REQUIRE( uitsl::shift_mod(0, 1) == 0 );
   REQUIRE( uitsl::shift_mod(1, 1) == 0 );

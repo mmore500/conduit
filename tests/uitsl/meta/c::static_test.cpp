@@ -1,14 +1,13 @@
 #include <string>
 #include <vector>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 #include "cereal/include/cereal/types/string.hpp"
 #include "cereal/include/cereal/types/vector.hpp"
 
 #include "uitsl/meta/c::static_test.hpp"
 
-TEST_CASE("Test fundamental types") {
+TEST_CASE("Test fundamental types", "[nproc:1]") {
 
   REQUIRE( uitsl::c::static_test<double>() );
 
@@ -16,7 +15,7 @@ TEST_CASE("Test fundamental types") {
 
 }
 
-TEST_CASE("Test stl types") {
+TEST_CASE("Test stl types", "[nproc:1]") {
 
   REQUIRE( uitsl::c::static_test<std::string>() );
 
@@ -26,7 +25,7 @@ TEST_CASE("Test stl types") {
 
 struct foobar { int x; };
 
-TEST_CASE("Test non-serializable types") {
+TEST_CASE("Test non-serializable types", "[nproc:1]") {
 
   REQUIRE( !uitsl::c::static_test<foobar>() );
 

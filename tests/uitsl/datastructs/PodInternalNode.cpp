@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <string>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/datastructs/PodInternalNode.hpp"
@@ -46,7 +45,7 @@ using ColonelB = uitsl::PodInternalNode<
 using General = uitsl::PodInternalNode<ColonelB>;
 
 
-TEST_CASE("Test GetSize") {
+TEST_CASE("Test GetSize", "[nproc:1]") {
 
   REQUIRE( General::GetSize() == 9 );
 
@@ -60,7 +59,7 @@ TEST_CASE("Test GetSize") {
 
 }
 
-TEST_CASE("Test Get by index type") {
+TEST_CASE("Test Get by index type", "[nproc:1]") {
 
   General general;
 
@@ -102,7 +101,7 @@ TEST_CASE("Test Get by index type") {
 
 }
 
-TEST_CASE("Test const Get by index value") {
+TEST_CASE("Test const Get by index value", "[nproc:1]") {
 
   const General general;
 
@@ -126,7 +125,7 @@ TEST_CASE("Test const Get by index value") {
 
 }
 
-TEST_CASE("Test Get by index value") {
+TEST_CASE("Test Get by index value", "[nproc:1]") {
 
   General general;
 
@@ -213,7 +212,7 @@ TEST_CASE("Test Get by index value") {
 
 }
 
-TEST_CASE("Test HasType") {
+TEST_CASE("Test HasType", "[nproc:1]") {
 
   REQUIRE( General::HasType<SergeantA>() );
 
@@ -233,7 +232,7 @@ TEST_CASE("Test HasType") {
 
 }
 
-TEST_CASE("Test const Get by type") {
+TEST_CASE("Test const Get by type", "[nproc:1]") {
 
   const General general;
 
@@ -249,7 +248,7 @@ TEST_CASE("Test const Get by type") {
 
 }
 
-TEST_CASE("Test Get by type") {
+TEST_CASE("Test Get by type", "[nproc:1]") {
 
   General general;
 
@@ -261,7 +260,7 @@ TEST_CASE("Test Get by type") {
 
 }
 
-TEST_CASE("Test Reset") {
+TEST_CASE("Test Reset", "[nproc:1]") {
 
   General general;
 
@@ -280,8 +279,8 @@ TEST_CASE("Test Reset") {
 
 }
 
+TEST_CASE("Test memory layout", "[nproc:1]") {
 #ifdef NDEBUG // emp::array messes up sizing in debug mode...
-TEST_CASE("Test memory layout") {
 
   REQUIRE( General::GetSize() * sizeof(std::string) == sizeof(General) );
 
@@ -292,6 +291,5 @@ TEST_CASE("Test memory layout") {
   REQUIRE( CaptainB::GetSize() * sizeof(std::string) == sizeof(CaptainB) );
 
   REQUIRE( SergeantB::GetSize() * sizeof(std::string) == sizeof(SergeantB) );
-
-}
 #endif
+}

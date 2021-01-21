@@ -9,6 +9,7 @@
 
 #include <mpi.h>
 
+#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
@@ -52,7 +53,7 @@ private:
   const uit::InterProcAddress address;
 
   void PostReceiveRequest() {
-    uitsl::err_audit(!
+    uitsl_err_audit(!
       data.PushHead()
     );
     requests.PushBack( MPI_REQUEST_NULL );
@@ -79,8 +80,8 @@ private:
 
     emp_assert( uitsl::test_null( requests.Back() ) );
 
-    uitsl::err_audit(!  data.PopTail()  );
-    uitsl::err_audit(!  requests.PopBack()  );
+    uitsl_err_audit(!  data.PopTail()  );
+    uitsl_err_audit(!  requests.PopBack()  );
 
   }
 
@@ -155,14 +156,18 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    throw "TryPut called on RingIrecvDuct";
+    emp_always_assert(false, "TryPut called on RingIrecvDuct");
+    __builtin_unreachable();
   }
 
   /**
    * TODO.
    *
    */
-  [[noreturn]] bool TryFlush() const { throw "Flush called on RingIrecvDuct"; }
+  [[noreturn]] bool TryFlush() const {
+    emp_always_assert(false, "Flush called on RingIrecvDuct");
+    __builtin_unreachable();
+  }
 
   /**
    * TODO.
@@ -180,7 +185,7 @@ public:
 
       --batch_countdown;
       --requested_countdown;
-      uitsl::err_audit(!   data.PopTail()   );
+      uitsl_err_audit(!   data.PopTail()   );
       PostReceiveRequest();
 
       if (full_batch && batch_countdown == 0) {

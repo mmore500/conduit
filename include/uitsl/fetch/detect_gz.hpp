@@ -2,6 +2,7 @@
 #ifndef UITSL_FETCH_DETECT_GZ_HPP_INCLUDE
 #define UITSL_FETCH_DETECT_GZ_HPP_INCLUDE
 
+#include <fstream>
 #include <istream>
 
 #include "../nonce/ScopeGuard.hpp"
@@ -9,7 +10,7 @@
 
 namespace uitsl {
 
-bool detect_gz( const std::filesystem::path& path ) {
+inline bool detect_gz( const std::filesystem::path& path ) {
 
   char buffer[258];
 

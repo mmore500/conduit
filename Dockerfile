@@ -1,7 +1,7 @@
 # Pull base image.
-FROM ubuntu:bionic-20180125
+FROM ubuntu:bionic-20180125@sha256:d6f6cc62b6bed64387d84ca227b76b9cc45049b0d0aefee0deec21ed19a300bf
 
-COPY . /opt/conduit
+COPY . /opt/conduit/
 
 SHELL ["/bin/bash", "-c"]
 
@@ -11,6 +11,21 @@ WORKDIR /opt/conduit
 # Prevent interactive time zone config.
 # adapted from https://askubuntu.com/a/1013396
 ENV DEBIAN_FRONTEND=noninteractive
+
+# adapted from https://users.open-mpi.narkive.com/tEPxZF0B/ompi-users-how-to-get-rid-of-openmpi-warning-unable-to-find-any-relevant-network-interfaces
+# see also https://github.com/open-mpi/ompi-www/issues/161#issue-390004007
+RUN \
+  mkdir -p "/root/.openmpi" \
+    && \
+  mkdir -p "/home/user/.openmpi" \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /etc/openmpi-mca-params.conf \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /root/.openmpi/mca-params.conf \
+    && \
+  echo "btl_base_warn_component_unused = 0" >> /home/user/.openmpi/mca-params.conf \
+    && \
+  echo "configured system-wide openmpi mca parameters"
 
 RUN \
   echo 'Acquire::http::Timeout "60";' >> "/etc/apt/apt.conf.d/99timeout" \
@@ -43,7 +58,6 @@ RUN \
     g++-8 \
     gconf-service \
     gdb \
-    git \
     gpg-agent \
     gzip \
     hdf5-helpers \
@@ -55,6 +69,8 @@ RUN \
     libc6 \
     libcairo2 \
     libcups2 \
+    libcurl4 \
+    libcurl4-openssl-dev \
     libdbus-1-3 \
     libexpat1 \
     libfontconfig1 \
@@ -101,6 +117,7 @@ RUN \
     mpich \
     multitail \
     nano \
+    ninja-build \
     nodejs \
     npm \
     openmpi-bin \
@@ -111,14 +128,17 @@ RUN \
     python-h5py \
     python-pip \
     python-setuptools \
+    python-sphinx \
     python-virtualenv \
     python-wheel \
     python3-dev \
     python3-h5py \
     python3-pip \
     python3-setuptools \
+    python3-sphinx \
     python3-virtualenv \
     python3-wheel \
+    rsync \
     slurm-client \
     software-properties-common \
     tar \
@@ -126,6 +146,12 @@ RUN \
     vim \
     wget \
     xdg-utils \
+    && \
+  add-apt-repository ppa:git-core/ppa -y \
+    && \
+  apt-get update -qq \
+    && \
+  apt-get install -y --no-install-recommends git \
     && \
   apt-get clean \
     && \
@@ -178,9 +204,9 @@ RUN \
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
 RUN \
-  pip3 install -r /opt/conduit/third-party/requirements.txt \
+  pip3 install  --timeout 60 --retries 100 -r /opt/conduit/third-party/requirements.txt \
     && \
-  pip3 install -r /opt/conduit/docs/requirements.txt \
+  pip3 install  --timeout 60 --retries 100 -r /opt/conduit/docs/requirements.txt \
     && \
   echo "installed Python packages"
 
@@ -217,8 +243,11 @@ RUN \
     && \
   echo "installed third party dependencies"
 
+# Set enviroment variables
 # Use mimalloc override within the container.
 ENV LD_PRELOAD=/usr/local/lib/mimalloc-1.6/libmimalloc.so
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 
 RUN \
   git remote set-url origin https://github.com/mmore500/conduit.git \
@@ -239,7 +268,22 @@ RUN \
     && \
   chmod --recursive g+rwx /opt \
     && \
-  echo "user added and granted permissions to /opt"
+  chmod --recursive g+rwx /home/user \
+    && \
+  chown -R user /home/user/ \
+    && \
+  echo "user added and granted permissions to /opt and /home/user"
+
+RUN \
+  mkdir /context/ \
+    && \
+  chown user:user /context/ \
+    && \
+  mkdir /__w/ \
+    && \
+  chown user:user /__w/ \
+    && \
+  echo "/context/ /__w/ directories set up, user granted permissions"
 
 USER user
 

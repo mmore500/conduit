@@ -7,7 +7,7 @@
 #include <ctime>
 #include <ratio>
 
-#include "../../../third-party/benchmark/src/cycleclock.h"
+#include <benchmark/src/cycleclock.h>
 
 #include "chrono_utils.hpp"
 #include "cycle_freq.hpp"

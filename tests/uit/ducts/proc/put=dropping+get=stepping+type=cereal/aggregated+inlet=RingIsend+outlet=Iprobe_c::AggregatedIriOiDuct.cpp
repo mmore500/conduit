@@ -8,5 +8,7 @@ using ImplSel = uit::ImplSelect<
   uit::c::AggregatedIriOiDuct
 >;
 
+#define IMPL_NAME "aggregated+inlet=RingIsend+outlet=Iprobe_c::AggregatedIriOiDuct"
+
 #include "../ProcDuct.hpp"
 #include "../SteppingProcDuct.hpp"

@@ -297,7 +297,8 @@ public:
         using impl_t = typename std::decay<decltype(arg)>::type;
         if constexpr ( HasMemberFunction_CanStep<impl_t, bool()>::value ) {
           return impl_t::CanStep();
-        } else return false;
+        } /* else */ // removed to silence no return from non-void warning
+        return false;
       },
       impl
     );

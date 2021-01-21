@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Generate loop graphs.
 
 This script makes use of NetworkX to generate

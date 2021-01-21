@@ -11,9 +11,12 @@ namespace uitsl {
 
 struct MpiMultithreadGuard {
 
+  #ifndef __EMSCRIPTEN__
   MpiMultithreadGuard() { uitsl::mpi_init_multithread(); }
 
   ~MpiMultithreadGuard() { UITSL_Finalize(); }
+  #endif // #ifndef __EMSCRIPTEN__
+
 
 };
 

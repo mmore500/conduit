@@ -1,11 +1,10 @@
 #include <string>
 
-#define CATCH_CONFIG_MAIN
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/containers/safe/vector.hpp"
 
-TEST_CASE("vector") {
+TEST_CASE("vector", "[nproc:1]") {
 
   // TODO expand stub test
   uitsl::safe::vector<std::string> vector;
