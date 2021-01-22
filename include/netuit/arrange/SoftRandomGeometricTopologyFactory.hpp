@@ -67,14 +67,20 @@ struct SoftRandomGeometricTopologyFactory {
   Topology operator()(const size_t cardinality) const {
 
     return make_soft_random_geometric_topology(
-      cardinality, static_cast<double>( Radius::num ) / Radius::den, 1
+      cardinality,
+      static_cast<double>( Radius::num ) / Radius::den,
+      1
     );
 
   }
 
   netuit::Topology operator()(const emp::vector<size_t>& cardinality) const {
     emp_assert(cardinality.size() == 1);
-    return make_soft_random_geometric_topology( cardinality.front() );
+    return make_soft_random_geometric_topology(
+      cardinality.front(),
+      static_cast<double>( Radius::num ) / Radius::den,
+      1
+    );
   }
 
   static std::string GetName() { return "Soft Random Geometric Topology"; }
