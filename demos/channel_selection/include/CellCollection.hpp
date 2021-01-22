@@ -54,7 +54,7 @@ public:
       std::begin(cells),
       std::end(cells),
       0,
-      [](const size_t a, auto& cell){
+      [](const size_t a, const auto& cell){
         return a + cell->CountConflicts();
       }
     );
