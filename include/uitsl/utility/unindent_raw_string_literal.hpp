@@ -9,7 +9,7 @@
 namespace uitsl {
 
 // adapted from https://stackoverflow.com/a/24900770
-std::string unindent_raw_string_literal(const char* p) {
+inline std::string unindent_raw_string_literal(const char* p) {
 
   if (*p == '\n') ++p;
 
