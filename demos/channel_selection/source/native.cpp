@@ -5,7 +5,7 @@
 
 #include "../../../third-party/Empirical/include/emp/config/ArgManager.hpp"
 
-#include "netuit/arrange/RingTopologyFactory.hpp"
+#include "netuit/arrange/SoftRandomGeometricTopologyFactory.hpp"
 #include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/containers/safe/unordered_map.hpp"
 #include "uitsl/debug/safe_cast.hpp"
@@ -34,7 +34,9 @@ int main(int argc, char* argv[]) {
 
   // todo switch this out for assign metis
   netuit::Mesh<ImplSpec> mesh{
-    netuit::RingTopologyFactory{}( num_nodes() ),
+    netuit::make_soft_random_geometric_topology(
+      num_nodes(), 2 / std::pow( num_nodes(), 0.25 ), 4
+    ),
     uitsl::AssignRoundRobin<uitsl::thread_id_t>{
       cfg.N_THREADS(), cfg.N_NODES_PER_CPU()
     },
