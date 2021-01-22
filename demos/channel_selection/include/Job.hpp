@@ -41,11 +41,15 @@ public:
     // so N_THREADS should be initialized
     static uitsl::ThreadIbarrierFactory factory{ cfg.N_THREADS() };
 
+    UITSL_Barrier( MPI_COMM_WORLD );
+
+    const bool use_intra = ( cfg.ASYNCHRONOUS() != 2 );
+
     for ( const auto __ : timer ) {
       ++update_counter;
-      collection.Update();
+      collection.Update(use_intra);
 
-      if ( cfg.SYNCHRONOUS() ) {
+      if ( !cfg.ASYNCHRONOUS() ) {
         const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
           factory.MakeBarrier(), timer
         };
@@ -74,14 +78,16 @@ public:
     }) ) << collection.GetNumMessagesReceived() << std::endl;;
 
 
-    if ( !cfg.SYNCHRONOUS() ) {
+    if ( cfg.ASYNCHRONOUS() ) {
+      collection.PushOutputs();
       // try to get a consistent reading for num_conflicts
       const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
         factory.MakeBarrier(),
         timer_t{ std::numeric_limits<double>::infinity() }
       };
-      collection.Update();
     }
+
+    collection.PullInputs();
 
     std::ofstream( emp::keyname::pack({
       {"a", "num_conflicts"},

@@ -66,17 +66,6 @@ class Cell {
     );
   }
 
-  void PullInputs() {
-    for (auto& in : inputs) if ( in.Jump() ) ++received_message_counter;
-  }
-
-  void PushOutputs() {
-    for (auto& out : outputs) {
-      sent_message_counter += out.TryPut( set_channel );
-      out.TryFlush();
-    }
-  }
-
   void UpdateSetChannel() {
 
     const double b = cfg.B();
@@ -125,10 +114,31 @@ public:
   , p( cfg.N_CHANNELS(), 1.0 / cfg.N_CHANNELS() )
   { }
 
-  void Update() {
-    PullInputs();
+  void Update(const bool use_inter) {
+    PullInputs(use_inter);
     UpdateSetChannel();
-    PushOutputs();
+    PushOutputs(use_inter);
+  }
+
+  void PullInputs(const bool use_inter) {
+    for (auto& in : inputs) {
+      if (
+        use_inter || !in.HoldsIntraImpl().has_value() || *in.HoldsIntraImpl()
+      ) {
+        if ( in.Jump() ) ++received_message_counter;
+      }
+    }
+  }
+
+  void PushOutputs(const bool use_inter) {
+    for (auto& out : outputs) {
+      if (
+        use_inter || !out.HoldsIntraImpl().has_value() || *out.HoldsIntraImpl()
+      ) {
+        sent_message_counter += out.TryPut( set_channel );
+        out.TryFlush();
+      }
+    }
   }
 
   size_t GetNumMessagesSent() const { return sent_message_counter; }

@@ -23,7 +23,13 @@ public:
     }
   }
 
-  void Update() { for (auto& cell : cells) cell->Update(); }
+  void Update(const bool use_inter) {
+    for (auto& cell : cells) cell->Update(use_inter);
+  }
+
+  void PullInputs() { for (auto& cell : cells) cell->PullInputs(true); }
+
+  void PushOutputs() { for (auto& cell : cells) cell->PushOutputs(true); }
 
   size_t GetNumMessagesSent() const {
     return std::accumulate(

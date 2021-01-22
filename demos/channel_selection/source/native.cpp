@@ -5,8 +5,8 @@
 
 #include "../../../third-party/Empirical/include/emp/config/ArgManager.hpp"
 
-#include "netuit/arrange/SoftRandomGeometricTopologyFactory.hpp"
-#include "netuit/assign/AssignAvailableProcs.hpp"
+#include "netuit/arrange/ToroidalTopologyFactory.hpp"
+#include "netuit/assign/GenerateMetisAssignments.hpp"
 #include "uitsl/containers/safe/unordered_map.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/distributed/do_successively.hpp"
@@ -32,17 +32,26 @@ int main(int argc, char* argv[]) {
     std::cout << ">>> begin <<<" << std::endl << std::endl;
   }
 
+  const size_t dim = static_cast<size_t>(std::pow(num_nodes(), 0.25));
+  const auto topology = netuit::make_toroidal_topology(
+    { dim, dim, dim, dim }
+  );
+
+  const std::pair<
+      std::function<uitsl::proc_id_t(size_t)>,
+      std::function<uitsl::thread_id_t(size_t)>
+  > assignments = netuit::GenerateMetisAssignmentFunctors(
+    uitsl::safe_cast<size_t>( uitsl::get_nprocs() ),
+    cfg.N_THREADS(),
+    topology
+  );
+
+
   // todo switch this out for assign metis
   netuit::Mesh<ImplSpec> mesh{
-    netuit::make_soft_random_geometric_topology(
-      num_nodes(), 2 / std::pow( num_nodes(), 0.25 ), 4
-    ),
-    uitsl::AssignRoundRobin<uitsl::thread_id_t>{
-      cfg.N_THREADS(), cfg.N_NODES_PER_CPU()
-    },
-    uitsl::AssignContiguously<uitsl::proc_id_t>{
-      uitsl::safe_cast<size_t>(uitsl::get_nprocs()), num_nodes()
-    }
+    topology,
+    assignments.second,
+    assignments.first
   };
 
   uitsl::safe::unordered_map<size_t, std::string> res;
