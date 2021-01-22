@@ -38,10 +38,13 @@ inline Topology make_soft_random_geometric_topology(
   const std::string command_template = std::string{"python3 -c \""}
     + uitsl::unindent_raw_string_literal( R"(
       import networkx as nx
+      import numpy as np
 
       G = nx.generators.geometric.soft_random_geometric_graph(
         %u, %f, dim=%u, seed=1
       )
+
+      print('mean degree', np.mean([val for (node, val) in G.degree()]))
 
       with open('%s', 'w') as file:
           for line in nx.generate_adjlist(G):
