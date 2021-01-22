@@ -2,6 +2,8 @@
 #include "uit/ducts/proc/put=dropping+get=skipping+type=trivial/pooled+inlet=RingIsend+outlet=BlockIrecv_t::PooledIriObiDuct.hpp"
 #include "uit/setup/ImplSpec.hpp"
 
+#include "uitsl/mpi/mpi_guard.hpp"
+
 using ImplSel = uit::ImplSelect<
   uit::a::SerialPendingDuct,
   uit::ThrowDuct,

@@ -2,6 +2,8 @@
 #include "uit/ducts/proc/put=dropping+get=skipping+type=trivial/inlet=RingRput+outlet=Window_t::IrrOwDuct.hpp"
 #include "uit/setup/ImplSpec.hpp"
 
+#include "uitsl/mpi/mpi_guard.hpp"
+
 using ImplSel = uit::ImplSelect<
   uit::a::SerialPendingDuct,
   uit::ThrowDuct,
