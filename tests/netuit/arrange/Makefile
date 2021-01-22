@@ -5,6 +5,7 @@ TARGET_NAMES += LoopTopologyFactory
 TARGET_NAMES += NavigableSmallWorldTopologyFactory
 TARGET_NAMES += ProConTopologyFactory
 TARGET_NAMES += RingTopologyFactory
+TARGET_NAMES += SoftRandomGeometricTopologyFactory
 TARGET_NAMES += SmallWorldGridFactory
 TARGET_NAMES += ToroidalTopologyFactory
 TARGET_NAMES += ToroidalGridTopologyFactory
@@ -27,6 +28,7 @@ assets: staging
 	python3 scripts/make_ring.py
 	python3 scripts/make_toroidal_grid.py
 	python3 scripts/make_toroidal.py
+	python3 scripts/make_soft_random_geometric.py
 	python3 scripts/make_small_world_grid.py
 
 test:: assets
