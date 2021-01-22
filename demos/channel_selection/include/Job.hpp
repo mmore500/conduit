@@ -74,12 +74,14 @@ public:
     }) ) << collection.GetNumMessagesReceived() << std::endl;;
 
 
-    // try to guarantee a good reading for num_conflicts
-    const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
-      factory.MakeBarrier(),
-      timer_t{ std::numeric_limits<double>::infinity() }
-    };
-    collection.Update();
+    if ( !cfg.SYNCHRONOUS() ) {
+      // try to get a consistent reading for num_conflicts
+      const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
+        factory.MakeBarrier(),
+        timer_t{ std::numeric_limits<double>::infinity() }
+      };
+      collection.Update();
+    }
 
     std::ofstream( emp::keyname::pack({
       {"a", "num_conflicts"},
