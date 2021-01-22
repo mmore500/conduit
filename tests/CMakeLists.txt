@@ -2,11 +2,15 @@ find_package(Catch2 REQUIRED)
 find_package(PythonInterp 3 REQUIRED)
 
 set(NETUIT_SOURCES
+    ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/AdjacencyFileTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/CompleteTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/DyadicTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/LoopTopologyFactory.cpp
+    ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/NavigableSmallWorldTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ProConTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/RingTopologyFactory.cpp
+    ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/SoftRandomGeometricTopologyFactory.cpp
+    ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/SmallWorldGridTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ToroidalTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/arrange/ToroidalGridTopologyFactory.cpp
     ${CMAKE_SOURCE_DIR}/tests/netuit/assign/AssignAvailableProcs.cpp
@@ -291,8 +295,11 @@ add_custom_command(TARGET test-netuit
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_complete.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_dyadic.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_loop.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_navigable_small_world.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_procon.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_ring.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_soft_random_geometric.py
+    COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_small_world_grid.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_toroidal.py
     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_BINARY_DIR}/tests/scripts/make_toroidal_grid.py
 

@@ -97,17 +97,26 @@ public:
     // read file lines into vector
     uitsl::read_lines(is, std::back_inserter(lines));
 
+    size_t edge_id = 0;
+
     // map of node ids to nodes
     std::map<node_id_t, TopoNode> node_map;
     // put nodes into map
     for (const std::string& line : lines) {
       std::istringstream iss(line);
+
       node_id_t node_id;
       iss >> node_id;
-      iss >> node_map[node_id];
+      node_map[node_id];
+
+      size_t neighbor;
+      while (iss >> neighbor) {
+        node_map[node_id].AddOutput(edge_id);
+        node_map[neighbor].AddInput(edge_id);
+        ++edge_id;
+      }
     }
-    // make sure we inserted every line
-    emp_assert(lines.size() == node_map.size());
+
     // make sure the node ids are less than the number of lines
     emp_assert( std::all_of(
       std::begin(node_map),

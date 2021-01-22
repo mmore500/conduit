@@ -130,6 +130,22 @@ TEST_CASE("Test Subtopology, ToroidalTopologyFactory", "[nproc:1]") {
     5, 3, 1, // 4's neighbors
     3, 4, 2, // 5's neighbors
   } );
+}
 
+TEST_CASE("Test Topology istream ctor", "[nproc:1]") {
+  std::stringstream iss(
+    "0 1\n"
+    "1 2\n"
+    "2 3\n"
+    "3 0\n"
+    "4\n"
+  );
+
+  netuit::Topology topology(dynamic_cast<std::istream&>(iss));
+
+  std::stringstream oss;
+  topology.PrintAdjacencyList(oss);
+
+  REQUIRE(iss.str() == oss.str());
 
 }
