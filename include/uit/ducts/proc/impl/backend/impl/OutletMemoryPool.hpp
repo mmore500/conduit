@@ -3,8 +3,8 @@
 #define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_OUTLETMEMORYPOOL_HPP_INCLUDE
 
 #include <algorithm>
+#include <map>
 #include <mutex>
-#include <set>
 
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
@@ -21,7 +21,7 @@ template<typename PoolSpec>
 class OutletMemoryPool {
 
   using address_t = uit::InterProcAddress;
-  std::set<address_t> addresses;
+  std::unordered_map<address_t, size_t> addresses;
 
   template<typename T>
   using outlet_wrapper_t = typename PoolSpec::template outlet_wrapper_t<T>;
@@ -58,7 +58,7 @@ class OutletMemoryPool {
   }
 
   void CheckCallingProc() const {
-    [[maybe_unused]] const auto& rep = *addresses.begin();
+    [[maybe_unused]] const auto& rep = addresses.begin()->first;
     emp_assert( rep.GetOutletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
@@ -66,11 +66,13 @@ public:
 
   bool IsInitialized() const { return outlet.has_value(); }
 
+  size_t GetSize() const { return addresses.size(); }
+
   /// Retister a duct for an entry in the pool.
   void Register(const address_t& address) {
     emp_assert( !IsInitialized() );
     emp_assert( !addresses.count(address) );
-    addresses.insert(address);
+    addresses[address] = GetSize();
   }
 
   /// Get index of this duct's entry in the pool.
@@ -78,7 +80,7 @@ public:
     emp_assert( IsInitialized() );
     emp_assert( addresses.count(address) );
     CheckCallingProc();
-    return std::distance( std::begin(addresses), addresses.find(address) );
+    return addresses.at( address );
   }
 
   /// Get the querying duct's current value from the underlying duct.
@@ -112,7 +114,7 @@ public:
     emp_assert( address_checker.insert( address ).second );
 
     ++consume_call_counter;
-    consume_call_counter %= addresses.size();
+    consume_call_counter %= GetSize();
 
     return current_num_consumed;
   }
@@ -128,9 +130,10 @@ public:
       std::begin(addresses),
       std::end(addresses),
       [this](const auto& addr){ return (
-          addr.GetInletProc() == addresses.begin()->GetInletProc()
-          && addr.GetOutletThread() == addresses.begin()->GetOutletThread()
-          && addr.GetComm() == addresses.begin()->GetComm()
+          addr.first.GetInletProc() == addresses.begin()->first.GetInletProc()
+          && addr.first.GetOutletThread()
+            == addresses.begin()->first.GetOutletThread()
+          && addr.first.GetComm() == addresses.begin()->first.GetComm()
         );
       }
     ) );
@@ -140,9 +143,9 @@ public:
       std::in_place_type_t<
         typename PoolSpec::ProcOutletDuct
       >{},
-      *addresses.begin(),
+      addresses.begin()->first,
       backend,
-      uit::RuntimeSizeBackEnd<PoolSpec>{ addresses.size() }
+      uit::RuntimeSizeBackEnd<PoolSpec>{ GetSize() }
     };
 
     outlet = source.GetOutlet();
@@ -152,7 +155,7 @@ public:
   void Initialize() {
     auto backend = std::make_shared<
       typename PoolSpec::ProcBackEnd
-    >( addresses.size() );
+    >( GetSize() );
     Initialize(backend);
     backend->Initialize();
   }

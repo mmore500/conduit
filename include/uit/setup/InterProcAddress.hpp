@@ -114,8 +114,32 @@ public:
     return ss.str();
   }
 
+  size_t GetHash() const {
+    return
+      std::hash<decltype(outlet_proc)>{}(outlet_proc)
+      ^ std::hash<decltype(inlet_proc)>{}(inlet_proc)
+      ^ std::hash<decltype(outlet_thread)>{}(outlet_thread)
+      ^ std::hash<decltype(inlet_thread)>{}(inlet_thread)
+      ^ std::hash<decltype(tag)>{}(tag)
+      ^ std::hash<decltype(comm)>{}(comm)
+    ;
+  }
+
 };
 
 } // namespace uit
+
+namespace std {
+
+template<>
+struct hash<uit::InterProcAddress> {
+
+  size_t operator()(uit::InterProcAddress const& address) const {
+    return address.GetHash();
+  }
+
+};
+
+} // namespace std
 
 #endif // #ifndef UIT_SETUP_INTERPROCADDRESS_HPP_INCLUDE
