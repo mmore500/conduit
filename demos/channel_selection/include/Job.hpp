@@ -42,7 +42,8 @@ public:
     // so N_THREADS should be initialized
     static uitsl::ThreadIbarrierFactory factory{ cfg.N_THREADS() };
 
-    uitsl::ClockDeltaDetector inner_sync;
+    // uitsl::ClockDeltaDetector inner_sync;
+    uitsl::CoarseRealTimer inner_sync{ std::chrono::milliseconds{ 10 } };
 
     const bool use_intra = ( cfg.ASYNCHRONOUS() != 2 );
     const bool is_multiproc = uitsl::is_multiprocess();
@@ -62,10 +63,11 @@ public:
       } else if (
         is_multiproc
         && cfg.ASYNCHRONOUS() == 1
-        && inner_sync.HasDeltaElapsed() ) {
+        && inner_sync.IsComplete() ) {
         const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
           factory.MakeBarrier(), timer
         };
+        inner_sync.Reset();
       }
     }
 
