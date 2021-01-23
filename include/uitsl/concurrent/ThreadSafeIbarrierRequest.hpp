@@ -42,15 +42,6 @@ public:
     return request->IsComplete();
   }
 
-  /**
-   * Cancel request.
-   *
-   */
-  void Cancel() {
-    const std::lock_guard guard{ mutex };
-    return request->Cancel();
-  }
-
 };
 
 } // namespace uitsl

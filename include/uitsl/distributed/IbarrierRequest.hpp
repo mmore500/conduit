@@ -33,12 +33,6 @@ public:
    */
   bool IsComplete() const { return uitsl::test_completion(request); }
 
-  /**
-   * Cancel Requeest.
-   *
-   */
-  void Cancel() { UITSL_Cancel(&request); }
-
 };
 
 } // namespace uitsl

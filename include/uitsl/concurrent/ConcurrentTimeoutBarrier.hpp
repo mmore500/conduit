@@ -42,9 +42,7 @@ public:
   ) : proc_barrier(comm) {
 
     uitsl::ParallelTimeoutBarrier{thread_barrier, timer};
-    while (!proc_barrier.IsComplete()) {
-      if (timer.IsComplete()) { proc_barrier.Cancel(); break; }
-    }
+    while (!proc_barrier.IsComplete() && !timer.IsComplete());
 
   }
 
