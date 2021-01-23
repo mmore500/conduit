@@ -64,11 +64,11 @@ public:
         is_multiproc
         && cfg.ASYNCHRONOUS() == 1
         && inner_sync.IsComplete() ) {
-        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
+        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier1{
           factory.MakeBarrier(), timer
         };
         collection.PullInputs();
-        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
+        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier2{
           factory.MakeBarrier(), timer
         };
         inner_sync.Reset();
