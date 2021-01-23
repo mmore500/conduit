@@ -67,6 +67,10 @@ public:
         const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
           factory.MakeBarrier(), timer
         };
+        collection.PullInputs();
+        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
+          factory.MakeBarrier(), timer
+        };
         inner_sync.Reset();
       }
     }
