@@ -60,7 +60,7 @@ public:
 
       if ( !cfg.ASYNCHRONOUS() ) {
         const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
-          factory.MakeBarrier(), timer
+          factory.MakeBarrier(), timer, comm3
         };
       } else if (
         is_multiproc
