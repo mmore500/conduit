@@ -42,6 +42,7 @@ public:
     // so N_THREADS should be initialized
     static uitsl::ThreadIbarrierFactory factory{ cfg.N_THREADS() };
     static auto comm2 = uitsl::duplicate_comm( MPI_COMM_WORLD );
+    static auto comm3 = uitsl::duplicate_comm( MPI_COMM_WORLD );
 
     // uitsl::ClockDeltaDetector inner_sync;
     uitsl::CoarseRealTimer inner_sync{ std::chrono::milliseconds{ 10 } };
@@ -66,11 +67,11 @@ public:
         && cfg.ASYNCHRONOUS() == 1
         && inner_sync.IsComplete() ) {
         const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier1{
-          factory.MakeBarrier(), timer
+          factory.MakeBarrier(), timer, comm3
         };
         collection.PullInputs();
         const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier2{
-          factory.MakeBarrier(), timer
+          factory.MakeBarrier(), timer, comm3
         };
         inner_sync.Reset();
       }
