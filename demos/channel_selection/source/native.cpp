@@ -32,9 +32,9 @@ int main(int argc, char* argv[]) {
     std::cout << ">>> begin <<<" << std::endl << std::endl;
   }
 
-  const size_t dim = static_cast<size_t>(std::pow(num_nodes(), 0.25));
+  const size_t dim = static_cast<size_t>(std::pow(num_nodes(), 0.5));
   const auto topology = netuit::make_toroidal_topology(
-    { dim, dim, dim, dim }
+    { dim, dim }
   );
 
   const std::pair<
