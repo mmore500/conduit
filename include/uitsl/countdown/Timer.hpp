@@ -8,6 +8,7 @@
 
 #include "../chrono/chrono_utils.hpp"
 #include "../chrono/CoarseClock.hpp"
+#include "../chrono/CoarseRealClock.hpp"
 
 #include "impl/CountdownIterator.hpp"
 
@@ -72,6 +73,11 @@ public:
 using CoarseTimer = uitsl::Timer<
   std::chrono::duration<double, std::ratio<1>>,
   uitsl::CoarseClock
+>;
+
+using CoarseRealTimer = uitsl::Timer<
+  std::chrono::duration<double, std::ratio<1>>,
+  uitsl::CoarseRealClock
 >;
 
 
