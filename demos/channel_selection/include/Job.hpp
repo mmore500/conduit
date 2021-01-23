@@ -8,6 +8,7 @@
 #include "../third-party/Empirical/include/emp/io/NullStream.hpp"
 
 #include "uitsl/chrono/CoarseClock.hpp"
+#include "uitsl/chrono/ClockDeltaDetector.hpp"
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "uitsl/countdown/ProgressBar.hpp"
 #include "uitsl/countdown/Timer.hpp"
@@ -41,15 +42,27 @@ public:
     // so N_THREADS should be initialized
     static uitsl::ThreadIbarrierFactory factory{ cfg.N_THREADS() };
 
-    UITSL_Barrier( MPI_COMM_WORLD );
+    uitsl::ClockDeltaDetector inner_sync;
 
     const bool use_intra = ( cfg.ASYNCHRONOUS() != 2 );
+    const bool is_multiproc = uitsl::is_multiprocess();
+
+    const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
+      factory.MakeBarrier(), timer
+    };
 
     for ( const auto __ : timer ) {
       ++update_counter;
       collection.Update(use_intra);
 
       if ( !cfg.ASYNCHRONOUS() ) {
+        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
+          factory.MakeBarrier(), timer
+        };
+      } else if (
+        is_multiproc
+        && cfg.ASYNCHRONOUS() == 1
+        && inner_sync.HasDeltaElapsed() ) {
         const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
           factory.MakeBarrier(), timer
         };

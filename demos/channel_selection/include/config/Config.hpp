@@ -10,7 +10,7 @@ EMP_BUILD_CONFIG(
   GROUP(EXECUTION, "EXECUTION"),
   VALUE(N_THREADS, size_t, 1, "How many threads should each process run with?"),
   VALUE(N_NODES_PER_CPU, size_t, 2048, "How many nodes should we simulate per CPU?"),
-  VALUE(RUN_SECONDS, double, 10,
+  VALUE(RUN_SECONDS, double, 5,
     "How many seconds should we run the experiment for?"
   ),
   VALUE(ASYNCHRONOUS, size_t, 1,
