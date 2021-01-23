@@ -41,6 +41,7 @@ public:
     // initialized first time thru the function,
     // so N_THREADS should be initialized
     static uitsl::ThreadIbarrierFactory factory{ cfg.N_THREADS() };
+    static auto comm2 = uitsl::duplicate_comm( MPI_COMM_WORLD );
 
     // uitsl::ClockDeltaDetector inner_sync;
     uitsl::CoarseRealTimer inner_sync{ std::chrono::milliseconds{ 10 } };
@@ -102,7 +103,8 @@ public:
       // try to get a consistent reading for num_conflicts
       const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
         factory.MakeBarrier(),
-        timer_t{ std::numeric_limits<double>::infinity() }
+        timer_t{ std::numeric_limits<double>::infinity() },
+        comm2
       };
     }
 
