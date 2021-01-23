@@ -41,6 +41,7 @@ public:
     // initialized first time thru the function,
     // so N_THREADS should be initialized
     static uitsl::ThreadIbarrierFactory factory{ cfg.N_THREADS() };
+    static uitsl::ThreadIbarrierFactory factory2{ cfg.N_THREADS() };
     static auto comm2 = uitsl::duplicate_comm( MPI_COMM_WORLD );
     static auto comm3 = uitsl::duplicate_comm( MPI_COMM_WORLD );
 
@@ -103,7 +104,7 @@ public:
       collection.PushOutputs();
       // try to get a consistent reading for num_conflicts
       const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
-        factory.MakeBarrier(),
+        factory2.MakeBarrier(),
         timer_t{ std::numeric_limits<double>::infinity() },
         comm2
       };
