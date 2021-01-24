@@ -75,7 +75,7 @@ int main(int argc, char* argv[]) {
   );
   team.Join();
 
-  uitsl::do_successively(
+  if ( !uitsl::is_multiprocess() ) uitsl::do_successively(
     [&](){
       for (const auto& [k, v] : std::map{ std::begin(res), std::end(res) }) {
         std::cout << v;
