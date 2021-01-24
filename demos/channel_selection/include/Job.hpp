@@ -129,6 +129,7 @@ public:
 
     if ( cfg.ASYNCHRONOUS() ) {
       // try to ensure consistent reading for num_conflicts
+      collection.PullInputs();
       collection.PushOutputs();
       const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier2{
         factory2.MakeBarrier(),
