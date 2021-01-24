@@ -84,5 +84,7 @@ int main(int argc, char* argv[]) {
     uitsl::print_separator
   );
 
+  std::cout << "_" << std::endl;
+
   return 0;
 }

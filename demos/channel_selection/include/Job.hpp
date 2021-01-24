@@ -95,6 +95,8 @@ public:
       }
     } // end simulation loop
 
+    std::cout << "." << std::endl;
+
     // dump data
 
     std::ofstream( emp::keyname::pack({
@@ -126,6 +128,7 @@ public:
         timer_t{ std::numeric_limits<double>::infinity() },
         comm2
       };
+      std::cout << ":" << std::endl;
     }
 
     // base number of conflicts on the final state of the simulation
@@ -137,6 +140,8 @@ public:
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
     }) ) << collection.CountConflicts() << std::endl;;
+
+    std::cout << "|" << std::endl;
 
   }
 
