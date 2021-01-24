@@ -38,12 +38,17 @@ class ProgressBar : public CountdownType {
   void DrawBar(std::stringstream& ss) const {
 
     const double progress = parent_t::GetFractionComplete();
-    const size_t position = progress * bar_width;
+    // min protects against progress > 100%
+    const size_t position = std::min(
+      static_cast<size_t>(progress * bar_width), bar_width
+    );
 
     ss << "|";
     for (size_t i = 0; i < position; ++i) ss << complete;
-    if (position < bar_width) ss << divider;
-    for (size_t i = 1; i < bar_width - position; ++i) ss << incomplete;
+    if (position < bar_width) {
+      ss << divider;
+      for (size_t i = 1; i < bar_width - position; ++i) ss << incomplete;
+    }
     ss << "| ";
 
   }
