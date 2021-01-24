@@ -54,12 +54,12 @@ public:
     // only use progress bar for single process jobs
     // or first thread of multithread jobs
     bar_t timer{
-      !uitsl::is_multiprocess() && thread_idx == 0 ? std::cout : emp::nout,
+      uitsl::is_root() && thread_idx == 0 ? std::cout : emp::nout,
       cfg.RUN_SECONDS() ?: std::numeric_limits<double>::infinity()
     };
     uitsl::CoarseRealTimer timer_sync{ std::chrono::milliseconds{ 10 } };
 
-    for ( const auto __ : timer ) { // begin simulation loop
+    for ( const auto __ : timer ) { // begin benchmarking loop
       ++update_counter;
       collection.Update(use_intra);
 
@@ -93,12 +93,19 @@ public:
       } else {
         // nop for cfg.ASYNCHRONOUS() == 3 and 4
       }
-    } // end simulation loop
+    } // end benchmarking loop
+    std::cout << "." << std::flush;
 
-    std::cout << "." << std::endl;
+    const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier1{
+      factory2.MakeBarrier(),
+      timer_t{ std::numeric_limits<double>::infinity() },
+      comm2
+    };
+    if ( uitsl::is_root() && thread_idx == 0 ) {
+      std::cout << " all benchmarking loops complete" << std::endl;
+    }
 
     // dump data
-
     std::ofstream( emp::keyname::pack({
       {"a", "updates_elapsed"},
       {"proc", emp::to_string( uitsl::get_proc_id() )},
@@ -123,12 +130,11 @@ public:
     if ( cfg.ASYNCHRONOUS() ) {
       // try to ensure consistent reading for num_conflicts
       collection.PushOutputs();
-      const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
+      const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier2{
         factory2.MakeBarrier(),
         timer_t{ std::numeric_limits<double>::infinity() },
         comm2
       };
-      std::cout << ":" << std::endl;
     }
 
     // base number of conflicts on the final state of the simulation
@@ -140,8 +146,6 @@ public:
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
     }) ) << collection.CountConflicts() << std::endl;;
-
-    std::cout << "|" << std::endl;
 
   }
 
