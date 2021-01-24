@@ -78,7 +78,8 @@ int main(int argc, char* argv[]) {
   uitsl::do_successively(
     [&](){
       for (const auto& [k, v] : std::map{ std::begin(res), std::end(res) }) {
-        std::cout << v;
+        // prevent excessive logs for many-proc jobs
+        if (uitsl::get_proc_id() < 4) std::cout << v;
       }
     },
     uitsl::print_separator
