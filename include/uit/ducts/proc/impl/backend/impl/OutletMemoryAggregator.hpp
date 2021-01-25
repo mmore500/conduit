@@ -3,11 +3,10 @@
 #define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_OUTLETMEMORYAGGREGATOR_HPP_INCLUDE
 
 #include <algorithm>
-#include <mutex>
-#include <set>
 
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "../../../../../../uitsl/algorithm/upper_uniquify.hpp"
 
@@ -21,7 +20,7 @@ template<typename AggregatorSpec>
 class OutletMemoryAggregator {
 
   using address_t = uit::InterProcAddress;
-  std::set<address_t> addresses;
+  emp::vector<address_t> addresses;
 
   template<typename T>
   using outlet_wrapper_t = typename AggregatorSpec::template outlet_wrapper_t<
@@ -103,7 +102,7 @@ class OutletMemoryAggregator {
 
     // estimate value steps
     const size_t approx_steps = (
-      buffer_steps * outlet->Get().size() / addresses.size()
+      buffer_steps * outlet->Get().size() / GetSize()
     );
 
     buffer.merge( outlet->Get() );
@@ -115,7 +114,7 @@ class OutletMemoryAggregator {
   }
 
   void CheckCallingProc() const {
-    [[maybe_unused]] const auto& rep = *addresses.begin();
+    [[maybe_unused]] const auto& rep = addresses.front();
     emp_assert( rep.GetOutletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
@@ -123,11 +122,15 @@ public:
 
   bool IsInitialized() const { return outlet.has_value(); }
 
+  size_t GetSize() const { return addresses.size(); }
+
   /// Register a duct for an entry in the pool.
   void Register(const address_t& address) {
     emp_assert( !IsInitialized() );
-    emp_assert( !addresses.count(address) );
-    addresses.insert(address);
+    emp_assert( std::find(
+      std::begin( addresses ), std::end( addresses ), address
+    ) == std::end(addresses) );
+    addresses.push_back(address);
   }
 
   /// Get the querying duct's current value from the underlying duct.
@@ -175,16 +178,15 @@ public:
 
     emp_assert( !IsInitialized() );
 
-    emp_assert( std::all_of(
-      std::begin(addresses),
-      std::end(addresses),
-      [this](const auto& addr){ return (
-          addr.GetInletProc() == addresses.begin()->GetInletProc()
-          && addr.GetOutletThread() == addresses.begin()->GetOutletThread()
-          && addr.GetComm() == addresses.begin()->GetComm()
-        );
+    emp_assert( std::adjacent_find(
+      std::begin(addresses), std::end(addresses),
+      [](const auto& a, const auto& b){
+        return a.GetOutletProc() != b.GetOutletProc()
+          || a.GetInletThread() != b.GetInletThread()
+          || a.GetComm() != b.GetComm()
+        ;
       }
-    ) );
+    ) == std::end(addresses) );
     emp_assert( !addresses.empty() );
 
     auto backend = std::make_shared<
@@ -195,7 +197,7 @@ public:
       std::in_place_type_t<
         typename AggregatorSpec::ProcOutletDuct
       >{},
-      *addresses.begin(),
+      addresses.front(),
       backend
     };
 

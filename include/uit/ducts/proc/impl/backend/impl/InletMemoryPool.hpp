@@ -3,7 +3,6 @@
 #define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_INLETMEMORYPOOL_HPP_INCLUDE
 
 #include <algorithm>
-#include <map>
 
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"

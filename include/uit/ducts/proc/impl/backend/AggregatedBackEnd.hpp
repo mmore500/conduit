@@ -40,92 +40,67 @@ public:
 
 private:
 
-  // thread_id of caller -> proc_id of target -> inlet aggregator
-  uitsl::VectorMap<
-    uitsl::thread_id_t,
-    uitsl::VectorMap<
-      uitsl::proc_id_t,
-      inlet_aggregator_t
-    >
+  // < caller thread, target thread, target proc > -> inlet aggregator
+  robin_hood::unordered_map<
+    std::tuple<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>,
+    inlet_aggregator_t,
+    emp::TupleHash<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>
   > inlet_aggregators;
 
-  // thread_id of caller -> proc_id of target -> outlet aggregator
-  uitsl::VectorMap<
-    uitsl::thread_id_t,
-    uitsl::VectorMap<
-      uitsl::proc_id_t,
-      outlet_aggregator_t
-    >
+  // < caller thread, target thread, target proc > -> inlet aggregator
+  robin_hood::unordered_map<
+    std::tuple<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>,
+    outlet_aggregator_t,
+    emp::TupleHash<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>
   > outlet_aggregators;
 
   bool AreAllInletAggregatorsInitialized() const {
 
     // check that all windows are in the same initialization state
-    emp_assert( std::all_of(
+    emp_assert( std::adjacent_find(
       std::begin(inlet_aggregators), std::end(inlet_aggregators),
-      [this](const auto& map_pair){
-        const auto& [key, map] = map_pair;
-        return std::all_of(
-          std::begin(map), std::end(map),
-          [this](const auto& aggregator_pair) {
-            const auto& [key, aggregator] = aggregator_pair;
-            const auto& rep = inlet_aggregators.begin()->second.begin()->second;
-            return aggregator.IsInitialized() == rep.IsInitialized();
-          }
-        );
+      [this](const auto& aggregator_pair1, const auto& aggregator_pair2) {
+        const auto& [key1, aggregator1] = aggregator_pair1;
+        const auto& [key2, aggregator2] = aggregator_pair2;
+        return aggregator1.IsInitialized() != aggregator2.IsInitialized();
       }
-    ) );
+    ) == std::end(inlet_aggregators) );
 
 
     return std::any_of(
       std::begin(inlet_aggregators), std::end(inlet_aggregators),
-      [](const auto& map_pair){
-        const auto& [key, map] = map_pair;
-        return std::any_of(
-          std::begin(map), std::end(map),
-          [](const auto& aggregator_pair) {
-            const auto& [key, aggregator] = aggregator_pair;
-            return aggregator.IsInitialized();
-          }
-        );
+      [](const auto& aggregator_pair) {
+        const auto& [key, aggregator] = aggregator_pair;
+        return aggregator.IsInitialized();
       }
     );
+
   }
 
   bool AreAllOutletAggregatorsInitialized() const {
 
     // check that all windows are in the same initialization state
-    emp_assert( std::all_of(
+    emp_assert( std::adjacent_find(
       std::begin(outlet_aggregators), std::end(outlet_aggregators),
-      [this](const auto& map_pair){
-        const auto& [key, map] = map_pair;
-        return std::all_of(
-          std::begin(map), std::end(map),
-          [this](const auto& aggregator_pair) {
-            const auto& [key, aggregator] = aggregator_pair;
-            const auto& rep = outlet_aggregators.begin()->second.begin()->second;
-            return aggregator.IsInitialized() == rep.IsInitialized()  ;
-          }
-        );
+      [this](const auto& aggregator_pair1, const auto& aggregator_pair2) {
+        const auto& [key1, aggregator1] = aggregator_pair1;
+        const auto& [key2, aggregator2] = aggregator_pair2;
+        return aggregator1.IsInitialized() != aggregator2.IsInitialized();
       }
-    ) );
+    ) == std::end(outlet_aggregators) );
+
 
     return std::any_of(
       std::begin(outlet_aggregators), std::end(outlet_aggregators),
-      [](const auto& map_pair){
-        const auto& [key, map] = map_pair;
-        return std::any_of(
-          std::begin(map), std::end(map),
-          [](const auto& aggregator_pair) {
-            const auto& [key, aggregator] = aggregator_pair;
-            return aggregator.IsInitialized();
-          }
-        );
+      [](const auto& aggregator_pair) {
+        const auto& [key, aggregator] = aggregator_pair;
+        return aggregator.IsInitialized();
       }
     );
+
   }
 
-  bool IsInitialized() {
+  bool IsInitialized() const {
     emp_assert(
       AreAllInletAggregatorsInitialized() == AreAllOutletAggregatorsInitialized()
       || inlet_aggregators.empty()
@@ -135,7 +110,7 @@ private:
     || AreAllOutletAggregatorsInitialized();
   }
 
-  bool IsEmpty() {
+  bool IsEmpty() const {
     return outlet_aggregators.empty() && inlet_aggregators.empty();
   }
 
@@ -143,35 +118,27 @@ public:
 
   void RegisterInletSlot(const address_t& address) {
     emp_assert( !IsInitialized() );
-    inlet_aggregators[
-      address.GetInletThread()
-    ][
-      address.GetOutletProc()
-    ].Register(address);
+    inlet_aggregators[ {
+      address.GetInletThread(),
+      address.GetOutletThread(),
+      address.GetOutletProc(),
+    } ].Register(address);
   }
 
   void RegisterOutletSlot(const address_t& address) {
     emp_assert( !IsInitialized() );
-    outlet_aggregators[
-      address.GetOutletThread()
-    ][
-      address.GetInletProc()
-    ].Register(address);
+    outlet_aggregators[ {
+      address.GetOutletThread(),
+      address.GetInletThread(),
+      address.GetInletProc(),
+    } ].Register(address);
   }
 
   void Initialize() {
     emp_assert( !IsInitialized() );
 
-    for (auto& [__, proc_map] : inlet_aggregators) {
-      for (auto& [__, aggregator] : proc_map) {
-        aggregator.Initialize();
-      }
-    }
-    for (auto& [__, proc_map] : outlet_aggregators) {
-      for (auto& [__, aggregator] : proc_map) {
-        aggregator.Initialize();
-      }
-    }
+    for (auto& [__, aggregator] : inlet_aggregators) aggregator.Initialize();
+    for (auto& [__, aggregator] : outlet_aggregators) aggregator.Initialize();
 
     emp_assert( IsInitialized() || IsEmpty() );
   }
@@ -179,11 +146,11 @@ public:
   inlet_aggregator_t& GetInletAggregator(const address_t& address) {
     emp_assert( IsInitialized() );
 
-    auto& aggregator = inlet_aggregators.at(
-      address.GetInletThread()
-    ).at(
-      address.GetOutletProc()
-    );
+    auto& aggregator = inlet_aggregators.at( {
+      address.GetInletThread(),
+      address.GetOutletThread(),
+      address.GetOutletProc(),
+    } );
 
     emp_assert( aggregator.IsInitialized(), aggregator.GetSize() );
 
@@ -193,11 +160,11 @@ public:
   outlet_aggregator_t& GetOutletAggregator(const address_t& address) {
     emp_assert( IsInitialized() );
 
-    auto& aggregator = outlet_aggregators.at(
-      address.GetOutletThread()
-    ).at(
-      address.GetInletProc()
-    );
+    auto& aggregator = outlet_aggregators.at( {
+      address.GetOutletThread(),
+      address.GetInletThread(),
+      address.GetInletProc(),
+    } );
 
     emp_assert( aggregator.IsInitialized() );
 

@@ -8,8 +8,6 @@
 #include "../../../../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
 #include "../../../../../../third-party/Empirical/third-party/robin-hood-hashing/src/include/robin_hood.h"
 
-#include "../../../../../uitsl/datastructs/VectorMap.hpp"
-
 #include "../../../../setup/InterProcAddress.hpp"
 
 #include "impl/InletMemoryPool.hpp"
@@ -100,9 +98,10 @@ private:
         return pool.IsInitialized();
       }
     );
+
   }
 
-  bool IsInitialized() {
+  bool IsInitialized() const {
     emp_assert(
       AreAllInletPoolsInitialized() == AreAllOutletPoolsInitialized()
       || inlet_pools.empty()
@@ -111,7 +110,7 @@ private:
     return AreAllInletPoolsInitialized() || AreAllOutletPoolsInitialized();
   }
 
-  bool IsEmpty() {
+  bool IsEmpty() const {
     return outlet_pools.empty() && inlet_pools.empty();
   }
 
@@ -122,16 +121,16 @@ public:
     inlet_pools[ {
         address.GetInletThread(),
         address.GetOutletThread(),
-        address.GetOutletProc()
+        address.GetOutletProc(),
     } ].Register(address);
   }
 
   void RegisterOutletSlot(const address_t& address) {
     emp_assert( !IsInitialized() );
     outlet_pools[ {
-        address.GetInletThread(),
         address.GetOutletThread(),
-        address.GetOutletProc()
+        address.GetInletThread(),
+        address.GetInletProc(),
     } ].Register(address);
   }
 
@@ -162,9 +161,9 @@ public:
     emp_assert( IsInitialized() );
 
     auto& pool = outlet_pools.at( {
-      address.GetInletThread(),
       address.GetOutletThread(),
-      address.GetOutletProc(),
+      address.GetInletThread(),
+      address.GetInletProc(),
     } );
 
     emp_assert( pool.IsInitialized() );

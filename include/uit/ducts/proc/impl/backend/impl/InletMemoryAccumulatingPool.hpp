@@ -3,11 +3,10 @@
 #define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_INLETMEMORYACCUMULATINGPOOL_HPP_INCLUDE
 
 #include <algorithm>
-#include <mutex>
-#include <set>
 
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "../../../../../fixtures/Sink.hpp"
 #include "../../../../../setup/InterProcAddress.hpp"
@@ -21,7 +20,7 @@ template<typename PoolSpec>
 class InletMemoryAccumulatingPool {
 
   using address_t = uit::InterProcAddress;
-  std::set<address_t> addresses;
+  emp::vector<address_t> addresses;
 
   template<typename T>
   using inlet_wrapper_t = typename PoolSpec::template inlet_wrapper_t<T>;
@@ -48,8 +47,10 @@ class InletMemoryAccumulatingPool {
       flush_index_checker.clear();
     #endif
 
+
+    // should we also flush the inlet?
     const bool res = inlet->TryPut( std::move(buffer) );
-    buffer.resize( addresses.size() );
+    buffer.resize( GetSize() );
 
     if (res) std::fill( std::begin(buffer), std::end(buffer), value_type{} );
 
@@ -57,7 +58,7 @@ class InletMemoryAccumulatingPool {
   }
 
   void CheckCallingProc() const {
-    [[maybe_unused]] const auto& rep = *addresses.begin();
+    [[maybe_unused]] const auto& rep = addresses.front();
     emp_assert( rep.GetInletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
@@ -70,16 +71,26 @@ public:
   /// Retister a duct for an entry in the pool.
   void Register(const address_t& address) {
     emp_assert( !IsInitialized() );
-    emp_assert( !addresses.count(address) );
-    addresses.insert(address);
+    emp_assert( std::find(
+      std::begin( addresses ), std::end( addresses ), address
+    ) == std::end( addresses ) );
+    addresses.push_back(address);
   }
 
   /// Get index of this duct's entry in the pool.
   size_t Lookup(const address_t& address) const {
     emp_assert( IsInitialized() );
-    emp_assert( addresses.count(address) );
+    emp_assert( std::find(
+      std::begin(addresses), std::end(addresses), address
+    ) != std::end(addresses) );
+    emp_assert( std::is_sorted( std::begin(addresses), std::end(addresses) ) );
     CheckCallingProc();
-    return std::distance( std::begin(addresses), addresses.find(address) );
+    return std::distance(
+      std::begin( addresses ),
+      std::lower_bound( // get address by binary search
+        std::begin( addresses ), std::end( addresses ), address
+      )
+    );
   }
 
   /// Get the querying duct's current value from the underlying duct.
@@ -100,39 +111,44 @@ public:
 
     emp_assert( flush_index_checker.insert(index).second );
 
-    if ( ++pending_flush_counter == addresses.size() ) return PutPool();
+    if ( ++pending_flush_counter == GetSize() ) return PutPool();
     else return true;
 
   }
 
   /// Call after all members have requested a position in the pool.
-  void Initialize(std::shared_ptr<typename PoolSpec::ProcBackEnd> backend) {
+  void Initialize() {
 
     emp_assert( !IsInitialized() );
 
-    emp_assert( std::all_of(
-      std::begin(addresses),
-      std::end(addresses),
-      [this](const auto& addr){ return (
-          addr.GetOutletProc() == addresses.begin()->GetOutletProc()
-          && addr.GetInletThread() == addresses.begin()->GetInletThread()
-          && addr.GetComm() == addresses.begin()->GetComm()
-        );
+    emp_assert( std::adjacent_find(
+      std::begin(addresses), std::end(addresses),
+      [](const auto& a, const auto& b){
+        return a.GetOutletProc() != b.GetOutletProc()
+          || a.GetInletThread() != b.GetInletThread()
+          || a.GetComm() != b.GetComm()
+        ;
       }
-    ) );
+    ) == std::end(addresses) );
 
     buffer.resize( addresses.size() );
+    auto backend = std::make_shared<
+      typename PoolSpec::ProcBackEnd
+    >( GetSize() );
 
     auto sink = uit::Sink<PoolSpec>{
       std::in_place_type_t<
         typename PoolSpec::ProcInletDuct
       >{},
-      *addresses.begin(),
-      backend,
-      uit::RuntimeSizeBackEnd<PoolSpec>{ addresses.size() }
+      addresses.front(),
+      backend
     };
 
+    backend->Initialize();
+
     inlet = sink.GetInlet();
+
+    emp_assert( IsInitialized() );
 
   }
 

@@ -2,9 +2,11 @@
 #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_ACCUMULATINGPOOLEDBACKEND_HPP_INCLUDE
 #define UIT_DUCTS_PROC_IMPL_BACKEND_ACCUMULATINGPOOLEDBACKEND_HPP_INCLUDE
 
-#include "../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <tuple>
 
-#include "../../../../../uitsl/datastructs/VectorMap.hpp"
+#include "../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
+#include "../../../../../../third-party/Empirical/third-party/robin-hood-hashing/src/include/robin_hood.h"
 
 #include "../../../../setup/InterProcAddress.hpp"
 
@@ -42,92 +44,65 @@ public:
 
 private:
 
-  // thread_id of caller -> proc_id of target -> inlet pool
-  uitsl::VectorMap<
-    uitsl::thread_id_t,
-    uitsl::VectorMap<
-      uitsl::proc_id_t,
-      inlet_pool_t
-    >
+  // < caller thread, target thread, target proc > -> inlet pool
+  robin_hood::unordered_map<
+    std::tuple<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>,
+    inlet_pool_t,
+    emp::TupleHash<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>
   > inlet_pools;
 
-  // thread_id of caller -> proc_id of target -> outlet pool
-  uitsl::VectorMap<
-    uitsl::thread_id_t,
-    uitsl::VectorMap<
-      uitsl::proc_id_t,
-      outlet_pool_t
-    >
+  // < caller thread, target thread, target proc > -> inlet pool
+  robin_hood::unordered_map<
+    std::tuple<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>,
+    outlet_pool_t,
+    emp::TupleHash<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>
   > outlet_pools;
 
   bool AreAllInletPoolsInitialized() const {
 
     // check that all windows are in the same initialization state
-    emp_assert( std::all_of(
+    emp_assert( std::adjacent_find(
       std::begin(inlet_pools), std::end(inlet_pools),
-      [this](const auto& map_pair){
-        const auto& [key, map] = map_pair;
-        return std::all_of(
-          std::begin(map), std::end(map),
-          [this](const auto& pool_pair) {
-            const auto& [key, pool] = pool_pair;
-            const auto& rep = inlet_pools.begin()->second.begin()->second;
-            return pool.IsInitialized() == rep.IsInitialized();
-          }
-        );
+      [this](const auto& pool_pair1, const auto& pool_pair2) {
+        const auto& [key1, pool1] = pool_pair1;
+        const auto& [key2, pool2] = pool_pair2;
+        return pool1.IsInitialized() != pool2.IsInitialized();
       }
-    ) );
-
+    ) == std::end(inlet_pools) );
 
     return std::any_of(
       std::begin(inlet_pools), std::end(inlet_pools),
-      [this](const auto& map_pair){
-        const auto& [key, map] = map_pair;
-        return std::any_of(
-          std::begin(map), std::end(map),
-          [this](const auto& pool_pair) {
-            const auto& [key, pool] = pool_pair;
-            return pool.IsInitialized();
-          }
-        );
+      [](const auto& pool_pair) {
+        const auto& [key, pool] = pool_pair;
+        return pool.IsInitialized();
       }
     );
+
   }
 
   bool AreAllOutletPoolsInitialized() const {
 
     // check that all windows are in the same initialization state
-    emp_assert( std::all_of(
+    emp_assert( std::adjacent_find(
       std::begin(outlet_pools), std::end(outlet_pools),
-      [this](const auto& map_pair){
-        const auto& [key, map] = map_pair;
-        return std::all_of(
-          std::begin(map), std::end(map),
-          [this](const auto& pool_pair) {
-            const auto& [key, pool] = pool_pair;
-            const auto& rep = outlet_pools.begin()->second.begin()->second;
-            return pool.IsInitialized() == rep.IsInitialized()  ;
-          }
-        );
+      [this](const auto& pool_pair1, const auto& pool_pair2) {
+        const auto& [key1, pool1] = pool_pair1;
+        const auto& [key2, pool2] = pool_pair2;
+        return pool1.IsInitialized() != pool2.IsInitialized();
       }
-    ) );
+    ) == std::end(outlet_pools) );
 
     return std::any_of(
       std::begin(outlet_pools), std::end(outlet_pools),
-      [this](const auto& map_pair){
-        const auto& [key, map] = map_pair;
-        return std::any_of(
-          std::begin(map), std::end(map),
-          [this](const auto& pool_pair) {
-            const auto& [key, pool] = pool_pair;
-            return pool.IsInitialized();
-          }
-        );
+      [](const auto& pool_pair) {
+        const auto& [key, pool] = pool_pair;
+        return pool.IsInitialized();
       }
     );
+
   }
 
-  bool IsInitialized() {
+  bool IsInitialized() const {
     emp_assert(
       AreAllInletPoolsInitialized() == AreAllOutletPoolsInitialized()
       || inlet_pools.empty()
@@ -136,7 +111,7 @@ private:
     return AreAllInletPoolsInitialized() || AreAllOutletPoolsInitialized();
   }
 
-  bool IsEmpty() {
+  bool IsEmpty() const {
     return outlet_pools.empty() && inlet_pools.empty();
   }
 
@@ -144,62 +119,39 @@ public:
 
   void RegisterInletSlot(const address_t& address) {
     emp_assert( !IsInitialized() );
-    inlet_pools[
-      address.GetInletThread()
-    ][
-      address.GetOutletProc()
-    ].Register(address);
+    inlet_pools[ {
+      address.GetInletThread(),
+      address.GetOutletThread(),
+      address.GetOutletProc(),
+    } ].Register(address);
   }
 
   void RegisterOutletSlot(const address_t& address) {
     emp_assert( !IsInitialized() );
-    outlet_pools[
-      address.GetOutletThread()
-    ][
-      address.GetInletProc()
-    ].Register(address);
+    outlet_pools[ {
+      address.GetOutletThread(),
+      address.GetInletThread(),
+      address.GetInletProc(),
+    } ].Register(address);
   }
 
   void Initialize() {
     emp_assert( !IsInitialized() );
 
-    std::set<uitsl::thread_id_t> thread_ids;
-    for (auto& [thread_id, __] : inlet_pools) thread_ids.insert(thread_id);
-    for (auto& [thread_id, __] : outlet_pools) thread_ids.insert(thread_id);
-
-    for (auto thread_id : thread_ids) InitializeThread( thread_id );
+    for (auto& [__, pool] : inlet_pools) pool.Initialize();
+    for (auto& [__, pool] : outlet_pools) pool.Initialize();
 
     emp_assert( IsInitialized() || IsEmpty() );
-  }
-
-  void InitializeThread(const uitsl::thread_id_t thread_id) {
-
-    auto backend{ std::make_shared<typename PoolSpec_t::ProcBackEnd>() };
-
-    if ( inlet_pools.count(thread_id) ) {
-      for (auto& [__, pool] : inlet_pools[thread_id]) {
-        pool.Initialize( backend );
-      }
-    }
-
-    if ( outlet_pools.count(thread_id) ) {
-      for (auto& [__, pool] : outlet_pools[thread_id]) {
-        pool.Initialize( backend );
-      }
-    }
-
-    backend->Initialize();
-
   }
 
   inlet_pool_t& GetInletPool(const address_t& address) {
     emp_assert( IsInitialized() );
 
-    auto& pool = inlet_pools.at(
-      address.GetInletThread()
-    ).at(
-      address.GetOutletProc()
-    );
+    auto& pool = inlet_pools.at( {
+      address.GetInletThread(),
+      address.GetOutletThread(),
+      address.GetOutletProc(),
+    } );
 
     emp_assert( pool.IsInitialized(), pool.GetSize() );
 
@@ -209,11 +161,11 @@ public:
   outlet_pool_t& GetOutletPool(const address_t& address) {
     emp_assert( IsInitialized() );
 
-    auto& pool = outlet_pools.at(
-      address.GetOutletThread()
-    ).at(
-      address.GetInletProc()
-    );
+    auto& pool = outlet_pools.at( {
+      address.GetOutletThread(),
+      address.GetInletThread(),
+      address.GetInletProc(),
+    } );
 
     emp_assert( pool.IsInitialized() );
 
