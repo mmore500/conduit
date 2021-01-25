@@ -71,7 +71,7 @@ public:
     emp_assert( !IsInitialized() );
     emp_assert( std::find(
       std::begin( addresses ), std::end( addresses ), address
-    ) != std::end( addresses ) );
+    ) == std::end( addresses ) );
     addresses.push_back( address );
   }
 
@@ -79,7 +79,7 @@ public:
   /// so the index should be cached by the caller.
   size_t Lookup(const address_t& address) const {
     emp_assert( IsInitialized() );
-    emp_assert( std::is_sorted( addresses ) );
+    emp_assert( std::is_sorted( std::begin(addresses), std::end(addresses) ) );
     emp_assert( std::find(
       std::begin( addresses ), std::end( addresses ), address
     ) != std::end( addresses ) );
@@ -126,18 +126,15 @@ public:
 
     emp_assert( !IsInitialized() );
 
-    emp_assert( std::all_of(
-      std::begin(addresses),
-      std::end(addresses),
-      [this](const auto& addr){ return (
-          addr.first.GetOutletProc()
-            == addresses.front().GetOutletProc()
-          && addr.first.GetInletThread()
-            == addresses.front().GetInletThread()
-          && addr.first.GetComm() == addresses.front().GetComm()
-        );
+    emp_assert( std::adjacent_find(
+      std::begin(addresses), std::end(addresses),
+      [](const auto& a, const auto& b){
+        return a.GetOutletProc() != b.GetOutletProc()
+          || a.GetInletThread() != b.GetInletThread()
+          || a.GetComm() != b.GetComm()
+        ;
       }
-    ) );
+    ) == std::end(addresses) );
 
     std::sort( std::begin( addresses ), std::end( addresses ) );
 
