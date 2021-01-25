@@ -69,7 +69,7 @@ struct SoftRandomGeometricTopologyFactory {
     return make_soft_random_geometric_topology(
       cardinality,
       static_cast<double>( Radius::num ) / Radius::den,
-      1
+      Dim
     );
 
   }
@@ -79,7 +79,7 @@ struct SoftRandomGeometricTopologyFactory {
     return make_soft_random_geometric_topology(
       cardinality.front(),
       static_cast<double>( Radius::num ) / Radius::den,
-      1
+      Dim
     );
   }
 
