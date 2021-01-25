@@ -7,8 +7,8 @@
 
 #include "../third-party/Empirical/include/emp/io/NullStream.hpp"
 
-#include "uitsl/chrono/CoarseClock.hpp"
 #include "uitsl/chrono/ClockDeltaDetector.hpp"
+#include "uitsl/chrono/CoarseClock.hpp"
 #include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
 #include "uitsl/countdown/ProgressBar.hpp"
 #include "uitsl/countdown/Timer.hpp"

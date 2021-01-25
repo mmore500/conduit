@@ -6,8 +6,8 @@
 #include <map>
 
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "../../../../../fixtures/Source.hpp"
 #include "../../../../../setup/InterProcAddress.hpp"
