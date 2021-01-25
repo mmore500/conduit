@@ -4,9 +4,9 @@
 
 #include <algorithm>
 #include <map>
-#include <mutex>
 
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 #include "../../../../../fixtures/Sink.hpp"
@@ -19,7 +19,7 @@ template<typename PoolSpec>
 class InletMemoryPool {
 
   using address_t = uit::InterProcAddress;
-  std::unordered_map<address_t, size_t> addresses;
+  emp::vector<address_t> addresses;
 
   template<typename T>
   using inlet_wrapper_t = typename PoolSpec::template inlet_wrapper_t<T>;
@@ -56,7 +56,7 @@ class InletMemoryPool {
   }
 
   void CheckCallingProc() const {
-    [[maybe_unused]] const auto& rep = addresses.begin()->first;
+    [[maybe_unused]] const auto& rep = addresses.front();
     emp_assert( rep.GetInletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
@@ -69,16 +69,27 @@ public:
   /// Retister a duct for an entry in the pool.
   void Register(const address_t& address) {
     emp_assert( !IsInitialized() );
-    emp_assert( !addresses.count(address) );
-    addresses[address] = GetSize();
+    emp_assert( std::find(
+      std::begin( addresses ), std::end( addresses ), address
+    ) != std::end( addresses ) );
+    addresses.push_back( address );
   }
 
-  /// Get index of this duct's entry in the pool.
+  /// Get index of this duct's entry in the pool. This is a log-time operation
+  /// so the index should be cached by the caller.
   size_t Lookup(const address_t& address) const {
     emp_assert( IsInitialized() );
-    emp_assert( addresses.count(address) );
+    emp_assert( std::is_sorted( addresses ) );
+    emp_assert( std::find(
+      std::begin( addresses ), std::end( addresses ), address
+    ) != std::end( addresses ) );
     CheckCallingProc();
-    return addresses.at( address );
+    return std::distance(
+      std::begin( addresses ),
+      std::lower_bound( // get address by binary search
+        std::begin( addresses ), std::end( addresses ), address
+      )
+    );
   }
 
   /// Get the querying duct's current value from the underlying duct.
@@ -119,13 +130,16 @@ public:
       std::begin(addresses),
       std::end(addresses),
       [this](const auto& addr){ return (
-          addr.first.GetOutletProc() == addresses.begin()->first.GetOutletProc()
+          addr.first.GetOutletProc()
+            == addresses.front().GetOutletProc()
           && addr.first.GetInletThread()
-            == addresses.begin()->first.GetInletThread()
-          && addr.first.GetComm() == addresses.begin()->first.GetComm()
+            == addresses.front().GetInletThread()
+          && addr.first.GetComm() == addresses.front().GetComm()
         );
       }
     ) );
+
+    std::sort( std::begin( addresses ), std::end( addresses ) );
 
     buffer.resize( GetSize() );
     auto backend = std::make_shared<
@@ -136,13 +150,15 @@ public:
       std::in_place_type_t<
         typename PoolSpec::ProcInletDuct
       >{},
-      addresses.begin()->first,
+      addresses.front(),
       backend
     };
 
     backend->Initialize();
 
     inlet = sink.GetInlet();
+
+    emp_assert( IsInitialized() );
 
   }
 
