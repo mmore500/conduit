@@ -219,7 +219,21 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << nodes.ToString() << std::endl;
+    for (const auto& [node_id, node] : nodes) {
+      ss << uitsl::format_member(
+        "node id", node_id
+      );
+      ss << uitsl::format_member(
+        "proc assignment", proc_assignment(node_id)
+      );
+      ss << uitsl::format_member(
+        "thread assignment", thread_assignment(node_id)
+      );
+      ss << uitsl::format_member(
+        "node", node.ToString()
+      );
+      ss << std::endl;
+    }
     return ss.str();
   }
 
