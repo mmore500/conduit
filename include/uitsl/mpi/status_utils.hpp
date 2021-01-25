@@ -12,6 +12,7 @@
 #include "../utility/print_utils.hpp"
 
 #include "audited_routines.hpp"
+#include "name_mpi_error.hpp"
 
 namespace uitsl {
 
@@ -53,6 +54,10 @@ inline std::string to_string(const MPI_Status& status) {
   ss << uitsl::format_member(
     "int MPI_ERROR",
     (int) status.MPI_ERROR
+  ) << std::endl;
+  ss << uitsl::format_member(
+    "error enum",
+    uitsl::name_mpi_error(status.MPI_ERROR)
   );
   return ss.str();
 }
