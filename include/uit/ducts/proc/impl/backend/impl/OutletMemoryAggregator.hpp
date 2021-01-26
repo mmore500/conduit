@@ -223,6 +223,8 @@ public:
       }
     );
 
+    emp_assert( IsInitialized() );
+
   }
 
 };

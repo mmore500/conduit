@@ -135,9 +135,9 @@ public:
 
     inlet = sink.GetInlet();
 
-  }
+    emp_assert( IsInitialized() );
 
-  emp_assert( IsInitialized() );
+  }
 
 };
 
