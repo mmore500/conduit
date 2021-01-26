@@ -61,7 +61,7 @@ private:
     // check that all windows are in the same initialization state
     emp_assert( std::adjacent_find(
       std::begin(inlet_aggregators), std::end(inlet_aggregators),
-      [this](const auto& aggregator_pair1, const auto& aggregator_pair2) {
+      [](const auto& aggregator_pair1, const auto& aggregator_pair2) {
         const auto& [key1, aggregator1] = aggregator_pair1;
         const auto& [key2, aggregator2] = aggregator_pair2;
         return aggregator1.IsInitialized() != aggregator2.IsInitialized();
@@ -84,7 +84,7 @@ private:
     // check that all windows are in the same initialization state
     emp_assert( std::adjacent_find(
       std::begin(outlet_aggregators), std::end(outlet_aggregators),
-      [this](const auto& aggregator_pair1, const auto& aggregator_pair2) {
+      [](const auto& aggregator_pair1, const auto& aggregator_pair2) {
         const auto& [key1, aggregator1] = aggregator_pair1;
         const auto& [key2, aggregator2] = aggregator_pair2;
         return aggregator1.IsInitialized() != aggregator2.IsInitialized();

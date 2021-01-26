@@ -60,7 +60,7 @@ private:
     // check that all windows are in the same initialization state
     emp_assert( std::adjacent_find(
       std::begin(inlet_pools), std::end(inlet_pools),
-      [this](const auto& pool_pair1, const auto& pool_pair2) {
+      [](const auto& pool_pair1, const auto& pool_pair2) {
         const auto& [key1, pool1] = pool_pair1;
         const auto& [key2, pool2] = pool_pair2;
         return pool1.IsInitialized() != pool2.IsInitialized();
@@ -83,7 +83,7 @@ private:
     // check that all windows are in the same initialization state
     emp_assert( std::adjacent_find(
       std::begin(outlet_pools), std::end(outlet_pools),
-      [this](const auto& pool_pair1, const auto& pool_pair2) {
+      [](const auto& pool_pair1, const auto& pool_pair2) {
         const auto& [key1, pool1] = pool_pair1;
         const auto& [key2, pool2] = pool_pair2;
         return pool1.IsInitialized() != pool2.IsInitialized();
