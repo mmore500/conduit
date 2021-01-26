@@ -33,7 +33,7 @@ public:
    */
   DistributedTimeoutBarrier(
     const Timer_T& timer=Timer_T{},
-    MPI_Comm comm=MPI_COMM_WORLD
+    const MPI_Comm comm=MPI_COMM_WORLD
   ) : proc_barrier(comm) {
 
     while (!proc_barrier.IsComplete() && !timer.IsComplete());

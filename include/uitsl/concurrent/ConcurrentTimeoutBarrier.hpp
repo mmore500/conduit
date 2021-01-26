@@ -23,7 +23,7 @@ namespace uitsl {
  */
 // TODO is Ibarrier request leaked?
 template<typename Timer_T=uitsl::Timer<>>
-class ConcurrentTimeoutBarrier {
+class [[deprecated("use ConcurrentBarrier")]] ConcurrentTimeoutBarrier {
 
   /// manages state of MPI Ibarrier call
   // TODO this won't work properly with different thread counts per process

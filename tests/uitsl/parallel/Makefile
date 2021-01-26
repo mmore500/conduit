@@ -1,5 +1,6 @@
 TARGET_NAMES += AlignedImplicit
 TARGET_NAMES += AlignedInherit
+TARGET_NAMES += ParallelBarrier
 TARGET_NAMES += ParallelTimeoutBarrier
 TARGET_NAMES += RecursiveExclusiveLock
 TARGET_NAMES += RecursiveMutex

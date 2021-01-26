@@ -18,7 +18,7 @@ namespace uitsl {
  * @tparam Timer_T class to manage timeout check.
  */
 template<typename Timer_T=uitsl::Timer<>>
-class ParallelTimeoutBarrier {
+class [[deprecated("use ParallelBarrier")]] ParallelTimeoutBarrier {
 
 public:
 

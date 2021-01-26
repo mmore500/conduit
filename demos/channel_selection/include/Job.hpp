@@ -9,11 +9,12 @@
 
 #include "uitsl/chrono/ClockDeltaDetector.hpp"
 #include "uitsl/chrono/CoarseClock.hpp"
-#include "uitsl/concurrent/ConcurrentTimeoutBarrier.hpp"
+#include "uitsl/concurrent/ConcurrentBarrier.hpp"
 #include "uitsl/countdown/ProgressBar.hpp"
 #include "uitsl/countdown/Timer.hpp"
 #include "uitsl/mpi/comm_utils.hpp"
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
+#include "uitsl/polyfill/latch.hpp"
 
 #include "CellCollection.hpp"
 #include "config/cfg.hpp"
@@ -37,19 +38,19 @@ public:
 
     // initialized first time thru the function,
     // so N_THREADS should be initialized
-    static uitsl::ThreadIbarrierFactory factory1{ cfg.N_THREADS() };
-    static uitsl::ThreadIbarrierFactory factory2{ cfg.N_THREADS() };
-    static auto comm1 = uitsl::duplicate_comm( MPI_COMM_WORLD );
-    static auto comm2 = uitsl::duplicate_comm( MPI_COMM_WORLD );
+    static uitsl::ConcurrentBarrier barrier1{
+      cfg.N_THREADS(), uitsl::duplicate_comm( MPI_COMM_WORLD )
+    };
+    static uitsl::ConcurrentBarrier barrier2{
+      cfg.N_THREADS(), uitsl::duplicate_comm( MPI_COMM_WORLD )
+    };
 
     const bool use_intra = ( cfg.ASYNCHRONOUS() != 4 );
     const bool is_multiproc = uitsl::is_multiprocess();
 
     // for a fair profile, don't start the benchmark
     // until all procs, threads are ready
-    const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
-      factory1.MakeBarrier()
-    };
+    barrier1.ArriveAndWait();
 
     // only use progress bar for single process jobs
     // or first thread of multithread jobs
@@ -64,43 +65,29 @@ public:
       collection.Update(use_intra);
 
       if ( !cfg.ASYNCHRONOUS() ) {
-        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier{
-          factory1.MakeBarrier(), timer, comm1
-        };
+        barrier1.ArriveAndWaitWhile( timer );
       } else if (
         is_multiproc && cfg.ASYNCHRONOUS() == 1 && timer_sync.IsComplete()
       ) {
         // intermittently have procs clear out pending input
-        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier1{
-          factory1.MakeBarrier(), timer, comm1
-        };
+        barrier1.ArriveAndWaitWhile( timer );
         collection.PullInputs();
-        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier2{
-          factory1.MakeBarrier(), timer, comm1
-        };
+        barrier1.ArriveAndWaitWhile( timer );
         timer_sync.Reset();
       } else if (
         is_multiproc && cfg.ASYNCHRONOUS() == 2 && delta_sync.HasDeltaElapsed()
       ) {
         // intermittently have procs clear out pending input
-        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier1{
-          factory1.MakeBarrier(), timer, comm1
-        };
+        barrier1.ArriveAndWaitWhile( timer );
         collection.PullInputs();
-        const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier2{
-          factory1.MakeBarrier(), timer, comm1
-        };
+        barrier1.ArriveAndWaitWhile( timer );
       } else {
         // nop for cfg.ASYNCHRONOUS() == 3 and 4
       }
     } // end benchmarking loop
     std::cout << "." << std::flush;
 
-    const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier1{
-      factory2.MakeBarrier(),
-      timer_t{ std::numeric_limits<double>::infinity() },
-      comm2
-    };
+    barrier2.ArriveAndWait();
     if ( uitsl::is_root() && thread_idx == 0 ) {
       std::cout << " all benchmarking loops complete" << std::endl;
     }
@@ -131,11 +118,7 @@ public:
       // try to ensure consistent reading for num_conflicts
       collection.PullInputs();
       collection.PushOutputs();
-      const uitsl::ConcurrentTimeoutBarrier<timer_t> barrier2{
-        factory2.MakeBarrier(),
-        timer_t{ std::numeric_limits<double>::infinity() },
-        comm2
-      };
+      barrier2.ArriveAndWait();
     }
 
     // base number of conflicts on the final state of the simulation

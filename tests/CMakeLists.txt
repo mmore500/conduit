@@ -240,6 +240,7 @@ set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/nonce/spector.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/parallel/AlignedImplicit.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/parallel/AlignedInherit.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/parallel/ParallelBarrier.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/parallel/ParallelTimeoutBarrier.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/parallel/RecursiveExclusiveLock.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/parallel/RecursiveMutex.cpp
