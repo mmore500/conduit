@@ -2,9 +2,11 @@
 #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_AGGREGATEDBACKEND_HPP_INCLUDE
 #define UIT_DUCTS_PROC_IMPL_BACKEND_AGGREGATEDBACKEND_HPP_INCLUDE
 
-#include "../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <tuple>
 
-#include "../../../../../uitsl/datastructs/VectorMap.hpp"
+#include "../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../../../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
+#include "../../../../../../third-party/Empirical/third-party/robin-hood-hashing/src/include/robin_hood.h"
 
 #include "../../../../setup/InterProcAddress.hpp"
 
