@@ -48,7 +48,7 @@ public:
     const size_t my_generation = generation;
 
     if (!--missing_threads) {
-      uitsl::DistributedTimeoutBarrier<Timer> barrier( timer );
+      uitsl::DistributedTimeoutBarrier<Timer> barrier( timer, comm );
       missing_threads = expected_threads;
       ++generation;
     } else while (generation == my_generation && !timer.IsComplete());
