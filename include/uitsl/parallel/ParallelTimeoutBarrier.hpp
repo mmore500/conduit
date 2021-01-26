@@ -16,9 +16,14 @@ namespace uitsl {
  * Block until all threads reach the barrier or a timeout is exceeded.
  *
  * @tparam Timer_T class to manage timeout check.
+ * @deprecated
  */
 template<typename Timer_T=uitsl::Timer<>>
-class [[deprecated("use ParallelBarrier")]] ParallelTimeoutBarrier {
+class
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
+[[deprecated("use ParallelBarrier")]]
+#endif
+ParallelTimeoutBarrier {
 
 public:
 
