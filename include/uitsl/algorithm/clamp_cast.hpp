@@ -17,7 +17,7 @@ To clamp_cast( const From from ) {
 
   // ideally, we'd use std::nexttoward but unfortunately it's not constexpr
   constexpr double lower_bound =
-    static_cast<double>( std::numeric_limits<To>::min() )
+    static_cast<double>( std::numeric_limits<To>::lowest() )
     + std::numeric_limits<double>::epsilon()
   ;
 
