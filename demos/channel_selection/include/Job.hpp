@@ -98,21 +98,21 @@ public:
       {"proc", emp::to_string( uitsl::get_proc_id() )},
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
-    }) ) << update_counter << std::endl;;
+    }) ) << update_counter << std::endl;
 
     std::ofstream( emp::keyname::pack({
       {"a", "num_messages_sent"},
       {"proc", emp::to_string( uitsl::get_proc_id() )},
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
-    }) ) << collection.GetNumMessagesSent() << std::endl;;
+    }) ) << collection.GetNumMessagesSent() << std::endl;
 
     std::ofstream( emp::keyname::pack({
       {"a", "num_messages_received"},
       {"proc", emp::to_string( uitsl::get_proc_id() )},
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
-    }) ) << collection.GetNumMessagesReceived() << std::endl;;
+    }) ) << collection.GetNumMessagesReceived() << std::endl;
 
     if ( cfg.ASYNCHRONOUS() ) {
       // try to ensure consistent reading for num_conflicts
@@ -129,7 +129,7 @@ public:
       {"proc", emp::to_string( uitsl::get_proc_id() )},
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
-    }) ) << collection.CountConflicts() << std::endl;;
+    }) ) << collection.CountConflicts() << std::endl;
 
   }
 
