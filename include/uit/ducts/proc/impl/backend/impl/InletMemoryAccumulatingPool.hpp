@@ -130,6 +130,8 @@ public:
       }
     ) == std::end(addresses) );
 
+    std::sort( std::begin( addresses ), std::end( addresses ) );
+
     buffer.resize( addresses.size() );
     auto backend = std::make_shared<
       typename PoolSpec::ProcBackEnd
