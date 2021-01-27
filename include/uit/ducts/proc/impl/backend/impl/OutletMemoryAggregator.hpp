@@ -181,8 +181,7 @@ public:
     emp_assert( std::adjacent_find(
       std::begin(addresses), std::end(addresses),
       [](const auto& a, const auto& b){
-        return a.GetOutletProc() != b.GetOutletProc()
-          || a.GetInletThread() != b.GetInletThread()
+        return a.WhichProcsThreads() != b.WhichProcsThreads()
           || a.GetComm() != b.GetComm()
         ;
       }

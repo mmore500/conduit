@@ -42,18 +42,30 @@ public:
 
 private:
 
-  // < caller thread, target thread, target proc > -> inlet aggregator
+  // < caller/target thread/proc > -> inlet aggregator
   robin_hood::unordered_map<
-    std::tuple<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>,
+    std::tuple<
+      uitsl::proc_id_t, uitsl::thread_id_t,
+      uitsl::proc_id_t, uitsl::thread_id_t
+    >,
     inlet_aggregator_t,
-    emp::TupleHash<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>
+    emp::TupleHash<
+      uitsl::proc_id_t, uitsl::thread_id_t,
+      uitsl::proc_id_t, uitsl::thread_id_t
+    >
   > inlet_aggregators;
 
-  // < caller thread, target thread, target proc > -> inlet aggregator
+  // < caller/target thread/proc > -> outlet aggregator
   robin_hood::unordered_map<
-    std::tuple<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>,
+    std::tuple<
+      uitsl::proc_id_t, uitsl::thread_id_t,
+      uitsl::proc_id_t, uitsl::thread_id_t
+    >,
     outlet_aggregator_t,
-    emp::TupleHash<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>
+    emp::TupleHash<
+      uitsl::proc_id_t, uitsl::thread_id_t,
+      uitsl::proc_id_t, uitsl::thread_id_t
+    >
   > outlet_aggregators;
 
   bool AreAllInletAggregatorsInitialized() const {
@@ -120,20 +132,12 @@ public:
 
   void RegisterInletSlot(const address_t& address) {
     emp_assert( !IsInitialized() );
-    inlet_aggregators[ {
-      address.GetInletThread(),
-      address.GetOutletThread(),
-      address.GetOutletProc(),
-    } ].Register(address);
+    inlet_aggregators[ address.WhichProcsThreads() ].Register(address);
   }
 
   void RegisterOutletSlot(const address_t& address) {
     emp_assert( !IsInitialized() );
-    outlet_aggregators[ {
-      address.GetOutletThread(),
-      address.GetInletThread(),
-      address.GetInletProc(),
-    } ].Register(address);
+    outlet_aggregators[ address.WhichProcsThreads() ].Register(address);
   }
 
   void Initialize() {
@@ -148,11 +152,7 @@ public:
   inlet_aggregator_t& GetInletAggregator(const address_t& address) {
     emp_assert( IsInitialized() );
 
-    auto& aggregator = inlet_aggregators.at( {
-      address.GetInletThread(),
-      address.GetOutletThread(),
-      address.GetOutletProc(),
-    } );
+    auto& aggregator = inlet_aggregators.at( address.WhichProcsThreads() );
 
     emp_assert( aggregator.IsInitialized(), aggregator.GetSize() );
 
@@ -162,11 +162,7 @@ public:
   outlet_aggregator_t& GetOutletAggregator(const address_t& address) {
     emp_assert( IsInitialized() );
 
-    auto& aggregator = outlet_aggregators.at( {
-      address.GetOutletThread(),
-      address.GetInletThread(),
-      address.GetInletProc(),
-    } );
+    auto& aggregator = outlet_aggregators.at( address.WhichProcsThreads() );
 
     emp_assert( aggregator.IsInitialized() );
 

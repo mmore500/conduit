@@ -125,6 +125,15 @@ public:
     ;
   }
 
+  auto WhichProcsThreads() const {
+    return std::tuple{
+      GetInletProc(),
+      GetInletThread(),
+      GetOutletProc(),
+      GetOutletThread(),
+    };
+  }
+
 };
 
 } // namespace uit

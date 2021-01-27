@@ -41,18 +41,30 @@ public:
 
 private:
 
-  // < caller thread, target thread, target proc > -> inlet pool
+  // < caller/target thread/proc > -> inlet pool
   robin_hood::unordered_map<
-    std::tuple<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>,
+    std::tuple<
+      uitsl::proc_id_t, uitsl::thread_id_t,
+      uitsl::proc_id_t, uitsl::thread_id_t
+    >,
     inlet_pool_t,
-    emp::TupleHash<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>
+    emp::TupleHash<
+      uitsl::proc_id_t, uitsl::thread_id_t,
+      uitsl::proc_id_t, uitsl::thread_id_t
+    >
   > inlet_pools;
 
-  // < caller thread, target thread, target proc > -> inlet pool
+  // < caller/target thread/proc > -> outlet pool
   robin_hood::unordered_map<
-    std::tuple<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>,
+    std::tuple<
+      uitsl::proc_id_t, uitsl::thread_id_t,
+      uitsl::proc_id_t, uitsl::thread_id_t
+    >,
     outlet_pool_t,
-    emp::TupleHash<uitsl::thread_id_t, uitsl::thread_id_t, uitsl::proc_id_t>
+    emp::TupleHash<
+      uitsl::proc_id_t, uitsl::thread_id_t,
+      uitsl::proc_id_t, uitsl::thread_id_t
+    >
   > outlet_pools;
 
   bool AreAllInletPoolsInitialized() const {
@@ -118,20 +130,12 @@ public:
 
   void RegisterInletSlot(const address_t& address) {
     emp_assert( !IsInitialized() );
-    inlet_pools[ {
-        address.GetInletThread(),
-        address.GetOutletThread(),
-        address.GetOutletProc(),
-    } ].Register(address);
+    inlet_pools[ address.WhichProcsThreads() ].Register(address);
   }
 
   void RegisterOutletSlot(const address_t& address) {
     emp_assert( !IsInitialized() );
-    outlet_pools[ {
-        address.GetOutletThread(),
-        address.GetInletThread(),
-        address.GetInletProc(),
-    } ].Register(address);
+    outlet_pools[ address.WhichProcsThreads() ].Register(address);
   }
 
   void Initialize() {
@@ -146,11 +150,7 @@ public:
   inlet_pool_t& GetInletPool(const address_t& address) {
     emp_assert( IsInitialized() );
 
-    auto& pool = inlet_pools.at( {
-      address.GetInletThread(),
-      address.GetOutletThread(),
-      address.GetOutletProc(),
-    } );
+    auto& pool = inlet_pools.at( address.WhichProcsThreads() );
 
     emp_assert( pool.IsInitialized(), pool.GetSize() );
 
@@ -160,11 +160,7 @@ public:
   outlet_pool_t& GetOutletPool(const address_t& address) {
     emp_assert( IsInitialized() );
 
-    auto& pool = outlet_pools.at( {
-      address.GetOutletThread(),
-      address.GetInletThread(),
-      address.GetInletProc(),
-    } );
+    auto& pool = outlet_pools.at( address.WhichProcsThreads() );
 
     emp_assert( pool.IsInitialized() );
 
