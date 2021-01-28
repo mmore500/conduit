@@ -2,7 +2,8 @@
 #ifndef UITSL_POLYFILL_FILESYSTEM_HPP_INCLUDE
 #define UITSL_POLYFILL_FILESYSTEM_HPP_INCLUDE
 
-#ifdef __EMSCRIPTEN__
+#if defined(__EMSCRIPTEN__) \
+  && __EMSCRIPTEN_major__ == 1 && __EMSCRIPTEN_minor__ <= 38
 
 #include <experimental/filesystem>
 
