@@ -50,9 +50,15 @@ inline std::filesystem::path fetch_web( const std::string& url ) {
       headers = xhr.getAllResponseHeaders();
     }
 
-    var bodystream = FS.open(bodypath, 'w');
-    FS.write(bodystream, body, 0, body.length, 0);
-    FS.close(bodystream);
+    if (typeof body === 'string' || body instanceof String) {
+      // text data
+      FS.writeFile( bodypath, body );
+    } else {
+      // binary data
+      var bodystream = FS.open(bodypath, 'w');
+      FS.write(bodystream, body, 0, body.length, 0);
+      FS.close(bodystream);
+    }
 
     FS.writeFile( headerpath, headers );
 
