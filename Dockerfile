@@ -50,12 +50,12 @@ RUN \
     build-essential \
     ca-certificates \
     cmake \
-    cpp-8 \
+    cpp-9 \
     curl \
     doxygen \
     emacs \
     fonts-liberation \
-    g++-8 \
+    g++-9 \
     gconf-service \
     gdb \
     gpg-agent \
