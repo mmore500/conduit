@@ -50,7 +50,6 @@ RUN \
     build-essential \
     ca-certificates \
     cmake \
-    cpp-9 \
     curl \
     doxygen \
     emacs \
