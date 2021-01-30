@@ -54,7 +54,6 @@ RUN \
     doxygen \
     emacs \
     fonts-liberation \
-    g++-9 \
     gconf-service \
     gdb \
     gpg-agent \
@@ -176,6 +175,8 @@ RUN \
     && \
   apt-add-repository "deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-7 main" \
     && \
+  add-apt-repository -y ppa:ubuntu-toolchain-r/test \
+    && \
   apt-get update -qq \
     && \
   apt-get clean \
@@ -192,6 +193,7 @@ RUN \
     llvm-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
     llvm-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
     clang-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
+    g++-9=9.3.0-11ubuntu0~18.04.1 \
     && \
   apt-get clean \
     && \
@@ -210,7 +212,7 @@ RUN \
   echo "installed Python packages"
 
 RUN \
-  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90 \
+  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 90 \
     && \
   update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-7 90 \
     && \
