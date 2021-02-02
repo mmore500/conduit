@@ -3,8 +3,8 @@
 #define UITSL_UTILITY_KEYNAME_KEY_UNION_HPP_INCLUDE
 
 #include <algorithm>
-#include <string>
 #include <set>
+#include <string>
 
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
