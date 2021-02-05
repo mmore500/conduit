@@ -38,6 +38,7 @@ extensions = [
     'exhale',
     'sphinx_rtd_theme',
     'myst_parser',
+    'sphinxemoji.sphinxemoji',
 ]
 
 # Setup the breathe extension
