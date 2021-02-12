@@ -35,6 +35,15 @@ inline bool compare_streams(std::istream& s1, std::istream& s2) {
 
 }
 
+/*
+ * Return true if streams are equal.
+ */
+inline bool compare_streams(std::istream&& s1, std::istream&& s2) {
+
+  return compare_streams(s1, s2);
+
+}
+
 } // namespace uitsl
 
 #endif // #ifndef UITSL_DEBUG_COMPARE_STREAMS_HPP_INCLUDE
