@@ -8,12 +8,14 @@ constexpr bool is_constant_evaluated(const int impl=0) noexcept {
 
   // adapted from https://stackoverflow.com/a/62610143
   // exclude clang versions with compiler bug https://reviews.llvm.org/D35190
-  #if defined(__clang__) && __clang_major__>=9 || defined(__GNUC__) && !defined(__clang__)
-  // if base is not known at compile time, use std::pow which is faster
+  #if defined(__clang__) && __clang_major__>=9 \
+    || defined(__GNUC__) && !defined(__clang__)
+    // if impl is known at compile time,
+    // we are in a constevaluated context
     return __builtin_constant_p( impl );
-  // otherwise, use constexpr-friendly implementations
   #else
-    return false;
+    // otherwise, default to a constexpr-friendly implementation
+    return true;
   #endif
 
 }
