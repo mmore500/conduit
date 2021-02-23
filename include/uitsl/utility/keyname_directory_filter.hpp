@@ -3,6 +3,7 @@
 #define UITSL_UTILITY_KEYNAME_DIRECTORY_FILTER_HPP_INCLUDE
 
 #include <algorithm>
+#include <regex>
 #include <string>
 #include <type_traits>
 #include <utility>
@@ -17,7 +18,8 @@ namespace uitsl {
 
 emp::vector< std::filesystem::path > keyname_directory_filter(
   const emp::vector<std::pair<std::string, std::string>>& keyvals,
-  const std::filesystem::path& target="."
+  const std::filesystem::path& target=".",
+  const bool use_regex=false
 ) {
 
   emp::vector< std::filesystem::path > res;
@@ -32,8 +34,13 @@ emp::vector< std::filesystem::path > keyname_directory_filter(
         std::end(keyvals),
         [&]( const auto& keyval ) {
           const auto& [key, val] = keyval;
-          return keyname_attrs.count( key )
-            && (keyname_attrs.at( key ) == val || val == "*");
+          if ( !keyname_attrs.count( key ) ) return false;
+          const auto& attr = keyname_attrs.at( key );
+          return (
+            attr == val
+            || val == "*"
+            || (use_regex && std::regex_search( attr, std::regex( val ) ))
+          );
         }
       );
     }

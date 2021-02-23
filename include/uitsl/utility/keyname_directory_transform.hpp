@@ -22,7 +22,8 @@ auto keyname_directory_transform(
   const std::string& key,
   emp::vector<std::pair<std::string, std::string>> filters={},
   const std::filesystem::path& target=".",
-  const T& parser=std::identity
+  const T& parser=std::identity,
+  const bool use_regex=false
 ) {
 
   filters.emplace_back(key, "*");
@@ -31,7 +32,9 @@ auto keyname_directory_transform(
     typename std::invoke_result< decltype(parser), std::string >::type
   >;
 
-  const auto targets = uitsl::keyname_directory_filter( filters, target );
+  const auto targets = uitsl::keyname_directory_filter(
+    filters, target, use_regex
+  );
 
   emp::vector< parsed_t > res;
   std::transform(
