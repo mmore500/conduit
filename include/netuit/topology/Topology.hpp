@@ -236,7 +236,7 @@ public:
 
     emp_assert( uitsl::safe_equal(
       adjacency.size(),
-      std::accumulate( std::begin(degrees), std::end(degrees), 0 )
+      std::accumulate( std::begin(degrees), std::end(degrees), int32_t{} )
     ) );
 
     emp_assert( std::all_of(

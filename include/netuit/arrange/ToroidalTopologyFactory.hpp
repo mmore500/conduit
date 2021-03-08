@@ -42,7 +42,7 @@ inline netuit::Topology make_toroidal_topology(
   const size_t cardinality = std::accumulate(
     dim_cardinality.begin(),
     dim_cardinality.end(),
-    1,
+    1ul,
     std::multiplies<size_t>()
   );
 

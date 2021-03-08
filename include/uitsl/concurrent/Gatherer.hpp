@@ -111,7 +111,7 @@ public:
     const size_t num_items = std::accumulate(
       std::begin(counts),
       std::end(counts),
-      0
+      size_t{}
     );
     emp::vector<T> res(num_items);
 

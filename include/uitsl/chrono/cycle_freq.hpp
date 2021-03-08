@@ -48,7 +48,7 @@ namespace uitsl {
     return std::accumulate(
       std::begin(readings),
       std::end(readings),
-      0.0
+      double{}
     ) / readings.size();
 
   }
