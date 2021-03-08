@@ -7,7 +7,7 @@
 namespace std {
 
 template< typename... Args, typename Pred >
-bool erase_if( std::unordered_map<Args...>& c, Pred pred ) {
+size_t erase_if( std::unordered_map<Args...>& c, Pred pred ) {
 
   auto old_size = c.size();
   for (auto i = c.begin(), last = c.end(); i != last; ) {
