@@ -306,7 +306,7 @@ inline bool untar(const std::string& filename) {
   while ( true ) {
     const auto res{ internal::try_process_chunk( source ) };
 
-    if ( res == std::nullopt ) {
+    if ( !res.has_value() ) {
       emp::NotifyError( emp::to_string( "untar failure ", filename ) );
       return false; // failure
     }
