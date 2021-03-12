@@ -95,6 +95,8 @@ public:
 
   T& GetTail() { return Get(0); }
 
+  T GetPopTail() { const T res = GetTail(); DoPopTail(); return res; }
+
   const T& GetTail() const { return Get(0); }
 
   void Clear() { num_items = 0; }
