@@ -7,9 +7,7 @@ namespace uitsl {
 template<typename T>
 T unset_mask(const T& target, const T& mask) {
 
-  return ~(
-    (~target) | mask
-  );
+  return target & ~mask;
 
 }
 
