@@ -82,16 +82,16 @@ public:
   std::string ToString() const {
     std::stringstream ss;
 
-    ss << "node_id" << node_id << std::endl;
+    ss << "node_id" << node_id << '\n';
 
-    ss << "inputs" << std::endl;
+    ss << "inputs" << '\n';
     for ( const auto& input : inputs ) {
-      ss << input.ToString() << std::endl;
+      ss << input.ToString() << '\n';
     }
 
-    ss << "outputs" << std::endl;
+    ss << "outputs" << '\n';
     for ( const auto& output : outputs ) {
-      ss << output.ToString() << std::endl;
+      ss << output.ToString() << '\n';
     }
 
     return ss.str();

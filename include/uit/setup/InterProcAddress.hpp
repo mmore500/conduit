@@ -98,17 +98,17 @@ public:
   std::string ToString() const {
 
     std::stringstream ss;
-    ss << uitsl::format_member("uitsl::proc_id_t outlet_proc", outlet_proc) << std::endl;
-    ss << uitsl::format_member("uitsl::proc_id_t inlet_proc", inlet_proc) << std::endl;
+    ss << uitsl::format_member("uitsl::proc_id_t outlet_proc", outlet_proc) << '\n';
+    ss << uitsl::format_member("uitsl::proc_id_t inlet_proc", inlet_proc) << '\n';
     ss << uitsl::format_member(
       "uitsl::thread_id_t outlet_thread",
       outlet_thread
-    ) << std::endl;
+    ) << '\n';
     ss << uitsl::format_member(
       "uitsl::thread_id_t inlet_thread",
       inlet_thread
-    ) << std::endl;
-    ss << uitsl::format_member("int tag", tag) << std::endl;
+    ) << '\n';
+    ss << uitsl::format_member("int tag", tag) << '\n';
     ss << uitsl::format_member("MPI_Comm comm", uitsl::comm_to_string(comm));
 
     return ss.str();

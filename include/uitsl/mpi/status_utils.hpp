@@ -38,23 +38,23 @@ inline std::string to_string(const MPI_Status& status) {
   ss << uitsl::format_member(
     "MPI_Get_count",
     uitsl::get_count(status, MPI_BYTE)
-  ) << std::endl;
+  ) << '\n';
   ss << uitsl::format_member(
     "MPI_Test_cancelled",
     uitsl::test_cancelled(status)
-  ) << std::endl;
+  ) << '\n';
   ss << uitsl::format_member(
     "int MPI_SOURCE",
     (int) status.MPI_SOURCE
-  ) << std::endl;
+  ) << '\n';
   ss << uitsl::format_member(
     "int MPI_TAG",
     (int) status.MPI_TAG
-  ) << std::endl;
+  ) << '\n';
   ss << uitsl::format_member(
     "int MPI_ERROR",
     (int) status.MPI_ERROR
-  ) << std::endl;
+  ) << '\n';
   ss << uitsl::format_member(
     "error enum",
     uitsl::name_mpi_error(status.MPI_ERROR)

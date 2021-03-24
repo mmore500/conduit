@@ -8,7 +8,7 @@
 TEST_CASE("test do_successively") {
 
   uitsl::do_successively(
-    [=](){ std::cout << "hello" << std::endl; },
+    [=](){ std::cout << "hello" << '\n'; },
     uitsl::print_separator
   );
 

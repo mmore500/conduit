@@ -187,11 +187,11 @@ public:
   std::string ToString() {
 
     std::stringstream ss;
-    ss << uitsl::format_member("windows.size()", windows.size()) << std::endl;
+    ss << uitsl::format_member("windows.size()", windows.size()) << '\n';
 
     for (proc_id_t rank : GetSortedRanks()) {
-      ss << uitsl::format_member("rank", rank) << std::endl;
-      ss << uitsl::format_member("window", windows.at(rank).ToString()) << std::endl;
+      ss << uitsl::format_member("rank", rank) << '\n';
+      ss << uitsl::format_member("window", windows.at(rank).ToString()) << '\n';
     }
 
     return ss.str();

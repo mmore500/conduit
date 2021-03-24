@@ -54,7 +54,7 @@ public:
     std::stringstream ss;
     ss << "node ids ";
     for (const auto& cell : cells) ss << cell->GetNodeID() << " ";
-    ss << std::endl;
+    ss << '\n';
     ss << "states ";
     for (const auto& cell : cells) ss << cell->GetState() << " ";
     return ss.str();

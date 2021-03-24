@@ -116,7 +116,7 @@ public:
 
   ~ProgressBar() {
     Draw();
-    os << std::endl;
+    os << '\n';
   }
 
   void Draw() const {

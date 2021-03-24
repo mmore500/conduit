@@ -108,7 +108,7 @@ void update_chunk(
     if (verbose) std::cout << handle->GetState();
     handle->Update();
   }
-  if (verbose) std::cout << std::endl;
+  if (verbose) std::cout << '\n';
 
 
 }

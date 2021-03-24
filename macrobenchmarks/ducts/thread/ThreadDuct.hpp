@@ -80,15 +80,15 @@ void profile_thread_count(const size_t num_threads) {
 
   if (res) {
 
-    std::cout << "threads: " << num_threads << std::endl;
+    std::cout << "threads: " << num_threads << '\n';
 
     std::cout << "mean milliseconds:" << std::accumulate(
         std::begin(*res),
         std::end(*res),
         0.0
-      ) / std::size(*res) << std::endl;
+      ) / std::size(*res) << '\n';
 
-    std::cout << "net milliseconds:" << duration.count() << std::endl;
+    std::cout << "net milliseconds:" << duration.count() << '\n';
 
   }
 

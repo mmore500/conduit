@@ -314,11 +314,11 @@ public:
     ss << uitsl::format_member(
       "uitsl::get_proc_id()",
       uitsl::get_proc_id()
-    ) << std::endl;
+    ) << '\n';
     ss << uitsl::format_member(
       "GetUID()",
       GetUID()
-    ) << std::endl;
+    ) << '\n';
     ss << uitsl::format_member(
       "std::variant impl",
       std::visit(

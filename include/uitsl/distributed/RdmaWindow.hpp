@@ -290,13 +290,13 @@ public:
 
     std::stringstream ss;
     ss << uitsl::format_member("IsInitialized()", emp::to_string(IsInitialized()))
-      << std::endl;
+      << '\n';
     ss << uitsl::format_member("IsUninitialized()", emp::to_string(IsUninitialized()))
-      << std::endl;
+      << '\n';
     // TODO add print function for MPI_Win
     ss << uitsl::format_member("std::byte *buffer", static_cast<const void *>(buffer))
-      << std::endl;
-    ss << uitsl::format_member("GetSize()", GetSize()) << std::endl;
+      << '\n';
+    ss << uitsl::format_member("GetSize()", GetSize()) << '\n';
     ss << uitsl::format_member("proc_id_t local_rank", local_rank);
 
     return ss.str();

@@ -187,10 +187,10 @@ inline std::string group_to_string(const MPI_Group& group) {
   std::stringstream ss;
   ss << uitsl::format_member(
     "uitsl::group_size(group)", uitsl::group_size(group)
-  ) << std::endl;
+  ) << '\n';
   ss << uitsl::format_member(
     "uitsl::get_group_ranks(group)", uitsl::to_string(uitsl::get_group_ranks(group))
-  ) << std::endl;
+  ) << '\n';
   return ss.str();
 }
 

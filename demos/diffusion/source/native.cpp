@@ -25,7 +25,7 @@ const size_t num_nodes = num_procs * num_threads * nodes_per_job;
 
 int main() {
 
-  if ( uitsl::is_root() ) std::cout << ">>> begin <<<" << std::endl << std::endl;
+  if ( uitsl::is_root() ) std::cout << ">>> begin <<<" << '\n' << '\n';
 
   netuit::Mesh<ImplSpec> mesh{
     netuit::RingTopologyFactory{}( num_nodes ),
@@ -42,9 +42,9 @@ int main() {
 
       std::stringstream ss;
 
-      ss << "process " << uitsl::get_proc_id() << std::endl;
-      ss << "thread " << thread << std::endl;
-      ss << job.ToString() << std::endl;
+      ss << "process " << uitsl::get_proc_id() << '\n';
+      ss << "thread " << thread << '\n';
+      ss << job.ToString() << '\n';
 
       res[thread] = ss.str();
 
@@ -62,7 +62,7 @@ int main() {
   );
 
 
-  if ( uitsl::is_root() ) std::cout << ">>> end <<<" << std::endl;
+  if ( uitsl::is_root() ) std::cout << ">>> end <<<" << '\n';
 
   return 0;
 }

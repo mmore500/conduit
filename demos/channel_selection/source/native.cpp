@@ -29,7 +29,7 @@ int main(int argc, char* argv[]) {
   else uitsl::mpi_flex_guard.InitMultithread();
 
   if ( uitsl::is_root() ) {
-    std::cout << ">>> begin <<<" << std::endl << std::endl;
+    std::cout << ">>> begin <<<" << '\n' << '\n';
   }
 
   const size_t dim = static_cast<size_t>(std::pow(num_nodes(), 0.5));
@@ -65,9 +65,9 @@ int main(int argc, char* argv[]) {
 
       std::stringstream ss;
 
-      ss << "process " << uitsl::get_proc_id() << std::endl;
-      ss << "thread " << thread << std::endl;
-      ss << job.ToString() << std::endl;
+      ss << "process " << uitsl::get_proc_id() << '\n';
+      ss << "thread " << thread << '\n';
+      ss << job.ToString() << '\n';
 
       res[thread] = ss.str();
 

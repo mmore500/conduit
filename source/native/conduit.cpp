@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
 
   const config_t cfg{make_config()};
 
-  if (!cfg.at("taciturn")) std::cout << ">>> begin <<<" << std::endl << std::endl;
+  if (!cfg.at("taciturn")) std::cout << ">>> begin <<<" << '\n' << '\n';
 
   if (!cfg.at("taciturn")) print_config(cfg);
 
@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
     if (uitsl::is_root()) {
       if (!cfg.at("taciturn")) std::cout << "mean_productivity: ";
       std::cout << std::fixed << std::setprecision(0);
-      std::cout << mean_productivity << std::endl;
+      std::cout << mean_productivity << '\n';
     }
 
   }
@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
     std::chrono::duration_cast<std::chrono::nanoseconds>(duration).count()
   );
 
-  if (!cfg.at("taciturn")) std::cout << ">>> end <<<" << std::endl;
+  if (!cfg.at("taciturn")) std::cout << ">>> end <<<" << '\n';
 
   MPI_Finalize();
 

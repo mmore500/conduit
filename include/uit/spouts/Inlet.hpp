@@ -235,15 +235,15 @@ public:
    */
   std::string ToString() const {
     std::stringstream ss;
-    ss << uitsl::format_member("duct_t duct", *duct) << std::endl;
+    ss << uitsl::format_member("duct_t duct", *duct) << '\n';
     ss << uitsl::format_member(
       "size_t successful_put_count",
       successful_put_count
-    ) << std::endl;
+    ) << '\n';
     ss << uitsl::format_member(
       "size_t dropped_put_count",
       dropped_put_count
-    ) << std::endl;
+    ) << '\n';
     ss << uitsl::format_member(
       "size_t blocked_put_count",
       blocked_put_count

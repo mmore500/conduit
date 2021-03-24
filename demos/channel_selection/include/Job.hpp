@@ -89,7 +89,7 @@ public:
 
     barrier2.ArriveAndWait();
     if ( uitsl::is_root() && thread_idx == 0 ) {
-      std::cout << " all benchmarking loops complete" << std::endl;
+      std::cout << " all benchmarking loops complete" << '\n';
     }
 
     // dump data
@@ -98,21 +98,21 @@ public:
       {"proc", emp::to_string( uitsl::get_proc_id() )},
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
-    }) ) << update_counter << std::endl;
+    }) ) << update_counter << '\n';
 
     std::ofstream( emp::keyname::pack({
       {"a", "num_messages_sent"},
       {"proc", emp::to_string( uitsl::get_proc_id() )},
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
-    }) ) << collection.GetNumMessagesSent() << std::endl;
+    }) ) << collection.GetNumMessagesSent() << '\n';
 
     std::ofstream( emp::keyname::pack({
       {"a", "num_messages_received"},
       {"proc", emp::to_string( uitsl::get_proc_id() )},
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
-    }) ) << collection.GetNumMessagesReceived() << std::endl;
+    }) ) << collection.GetNumMessagesReceived() << '\n';
 
     if ( cfg.ASYNCHRONOUS() ) {
       // try to ensure consistent reading for num_conflicts
@@ -129,19 +129,19 @@ public:
       {"proc", emp::to_string( uitsl::get_proc_id() )},
       {"thread", emp::to_string( thread_idx )},
       {"ext", ".txt"},
-    }) ) << collection.CountConflicts() << std::endl;
+    }) ) << collection.CountConflicts() << '\n';
 
   }
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << "job size " << collection.GetSize() << std::endl;
-    ss << "updates elapsed " << update_counter << std::endl;
-    ss << "num messages sent " << collection.GetNumMessagesSent() << std::endl;
+    ss << "job size " << collection.GetSize() << '\n';
+    ss << "updates elapsed " << update_counter << '\n';
+    ss << "num messages sent " << collection.GetNumMessagesSent() << '\n';
     ss << "num messages received " << collection.GetNumMessagesReceived()
-      << std::endl;
+      << '\n';
     ss << "num chanel conflicts " << collection.CountConflicts()
-      << std::endl;
+      << '\n';
     return ss.str();
   }
 

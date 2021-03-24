@@ -67,13 +67,13 @@ inline std::string make_filename(const std::string& name, const size_t dim, cons
 
 inline bool test_isomorphic(const std::string& str, const std::string& filename) {
   // write ss to file
-  std::cout << str << std::endl;
+  std::cout << str << '\n';
 
   std::ofstream file_out("staging/" + filename, std::ifstream::binary|std::ifstream::ate);
   file_out << str;
   file_out.close();
 
-  std::cout << "isomorphic?" << std::endl;
+  std::cout << "isomorphic?" << '\n';
   // use python utlity to compare
   std::string res = uitsl::exec(emp::to_string(
     "scripts/compare_graphs.py ",
@@ -81,7 +81,7 @@ inline bool test_isomorphic(const std::string& str, const std::string& filename)
     filename
   ).c_str());
 
-  std::cout << res << std::endl;
+  std::cout << res << '\n';
 
   emp::remove_whitespace(res);
 
@@ -101,7 +101,7 @@ bool test_adjacency_output(const Factory& factory, const T dims) {
     ".adj"
   );
 
-  std::cout << "testing: " << filename << std::endl;
+  std::cout << "testing: " << filename << '\n';
 
   std::ifstream adj_file(filename, std::ifstream::binary|std::ifstream::ate);
 
@@ -123,7 +123,7 @@ bool test_edge_output(const Fun&& factory, const T dims) {
     ".edg"
   );
 
-  std::cout << "testing: " << filename << std::endl;
+  std::cout << "testing: " << filename << '\n';
 
   std::ifstream edge_file(filename, std::ifstream::binary|std::ifstream::ate);
   return uitsl::compare_streams(edge_stream, edge_file);
@@ -131,7 +131,7 @@ bool test_edge_output(const Fun&& factory, const T dims) {
 
 template <typename Factory>
 bool test_all_adj(const Factory&& factory) {
-  std::cout << uitsl::exec("pwd") << std::endl;
+  std::cout << uitsl::exec("pwd") << '\n';
   const emp::vector<dim_t> assets = find_assets(factory.GetSlug(), ".adj");
 
   // no matching assets found

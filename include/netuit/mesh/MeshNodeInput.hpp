@@ -33,7 +33,7 @@ public:
   std::string ToString() const {
     std::stringstream ss;
 
-    ss << "edge_id " << edge_id << std::endl;
+    ss << "edge_id " << edge_id << '\n';
 
     return ss.str();
   }

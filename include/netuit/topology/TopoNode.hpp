@@ -87,7 +87,7 @@ public:
     ss << uitsl::format_member(
       "emp::vector<netuit::TopoNodeInput> inputs",
       uitsl::to_string(inputs)
-    ) << std::endl;
+    ) << '\n';
     ss << uitsl::format_member(
       "emp::vector<netuit::TopoNodeInput> outputs",
       uitsl::to_string(outputs)

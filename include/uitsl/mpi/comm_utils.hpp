@@ -122,13 +122,13 @@ inline std::string comm_to_string(const MPI_Comm& comm) {
   std::stringstream ss;
   ss << uitsl::format_member(
     "uitsl::comm_size(comm)", uitsl::comm_size(comm)
-  ) << std::endl;
+  ) << '\n';
   ss << uitsl::format_member(
     "uitsl::get_comm_ranks(comm)", uitsl::to_string(uitsl::get_comm_ranks(comm))
-  ) << std::endl;
+  ) << '\n';
   ss << uitsl::format_member(
     "uitsl::get_name(comm)", uitsl::get_name(comm)
-  ) << std::endl;
+  ) << '\n';
   return ss.str();
 }
 

@@ -12,9 +12,9 @@
 namespace uitsl {
 
 void print_separator(const proc_id_t rank) {
-  std::cout << "======================" << std::endl;
-  std::cout << "\\/ \\/ Rank " << rank << " \\/ \\/" << std::endl;
-  std::cout << "======================" << std::endl;
+  std::cout << "======================" << '\n';
+  std::cout << "\\/ \\/ Rank " << rank << " \\/ \\/" << '\n';
+  std::cout << "======================" << '\n';
 }
 
 //TODO add a thread do successively and a combined do successively

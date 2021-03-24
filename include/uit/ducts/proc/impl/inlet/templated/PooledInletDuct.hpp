@@ -104,8 +104,8 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << GetType() << std::endl;
-    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
+    ss << GetType() << '\n';
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << '\n';
     return ss.str();
   }
 

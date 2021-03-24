@@ -28,7 +28,7 @@ TEST_CASE("ThreadIbarrier unsatisfied") {
 TEST_CASE("ThreadIbarrier satisfied parallel") {
 
   for (size_t thread_count = 1; thread_count <= 8; ++thread_count) {
-    std::cout << "thread_count: " << thread_count << std::endl;
+    std::cout << "thread_count: " << thread_count << '\n';
     uitsl::ThreadIbarrierFactory factory{thread_count};
     uitsl::ThreadTeam team;
     for (size_t thread = 0; thread < thread_count; ++thread) {

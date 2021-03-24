@@ -111,9 +111,9 @@ config_t make_config() {
 }
 
 void print_config(const config_t & cfg) {
-  std::cout << ">>> config <<<" << std::endl;
+  std::cout << ">>> config <<<" << '\n';
   for (const auto & [name, value] : cfg) {
-    std::cout << name << ": " << value << std::endl;
+    std::cout << name << ": " << value << '\n';
   }
-  std::cout << std::endl;
+  std::cout << '\n';
 }

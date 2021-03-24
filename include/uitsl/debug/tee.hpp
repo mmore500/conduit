@@ -15,7 +15,7 @@ namespace uitsl {
 template <typename T>
 decltype(auto) tee(T&& value) {
 
-  std::cout << value << std::endl;
+  std::cout << value << '\n';
   return std::forward<T>(value);
 
 }

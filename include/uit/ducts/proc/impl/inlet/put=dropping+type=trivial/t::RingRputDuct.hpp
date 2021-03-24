@@ -291,11 +291,11 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << GetType() << std::endl;
-    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << uitsl::format_member("buffer_t buffer", buffer[0]) << std::endl;
-    ss << uitsl::format_member("size_t pending_puts", pending_puts) << std::endl;
-    ss << uitsl::format_member("InterProcAddress address", address) << std::endl;
+    ss << GetType() << '\n';
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << '\n';
+    ss << uitsl::format_member("buffer_t buffer", buffer[0]) << '\n';
+    ss << uitsl::format_member("size_t pending_puts", pending_puts) << '\n';
+    ss << uitsl::format_member("InterProcAddress address", address) << '\n';
     ss << uitsl::format_member("size_t put_position", put_position);
     return ss.str();
   }

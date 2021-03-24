@@ -8,9 +8,9 @@
 namespace uitsl {
 
 void list_cwd() {
-  std::cout << std::filesystem::absolute(".") << std::endl;
+  std::cout << std::filesystem::absolute(".") << '\n';
   for (auto& p: std::filesystem::directory_iterator(".")) {
-    std::cout << p.path() << std::endl;
+    std::cout << p.path() << '\n';
   }
 }
 

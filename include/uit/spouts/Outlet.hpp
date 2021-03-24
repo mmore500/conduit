@@ -255,9 +255,9 @@ public:
    */
   std::string ToString() const {
     std::stringstream ss;
-    ss << uitsl::format_member("std::shared_ptr<duct_t> duct", *duct) << std::endl;
-    ss << uitsl::format_member("size_t read_count", read_count) << std::endl;
-    ss << uitsl::format_member("size_t revision_count", revision_count) << std::endl;
+    ss << uitsl::format_member("std::shared_ptr<duct_t> duct", *duct) << '\n';
+    ss << uitsl::format_member("size_t read_count", read_count) << '\n';
+    ss << uitsl::format_member("size_t revision_count", revision_count) << '\n';
     ss << uitsl::format_member("size_t net_flux", net_flux);
     return ss.str();
   }

@@ -150,9 +150,9 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << GetName() << std::endl;
-    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << uitsl::format_member("int uitsl::get_rank()", uitsl::get_rank()) << std::endl;
+    ss << GetName() << '\n';
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << '\n';
+    ss << uitsl::format_member("int uitsl::get_rank()", uitsl::get_rank()) << '\n';
     return ss.str();
   }
 

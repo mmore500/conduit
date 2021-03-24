@@ -232,7 +232,7 @@ public:
       ss << uitsl::format_member(
         "node", node.ToString()
       );
-      ss << std::endl;
+      ss << '\n';
     }
     return ss.str();
   }

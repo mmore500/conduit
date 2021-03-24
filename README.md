@@ -102,7 +102,7 @@ int main() {
     for (size_t i = 0; i < std::mega::num; ++i) {
       update_counter += std::exchange(prev, outlet.JumpGet()) == prev;
     }
-    std::cout << update_counter << " updates detected" << std::endl;
+    std::cout << update_counter << " updates detected" << '\n';
   } );
 
   // wait for threads to complete
@@ -282,7 +282,7 @@ void receive_task(
     for (auto& input : node.GetInputs()) {
       const Message received{ input.GetNext() };
       std::cout << received.ToString() << "  =>  " << my_info.ToString()
-        << std::endl;
+        << '\n';
     }
   }
 

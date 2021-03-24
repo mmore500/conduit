@@ -37,12 +37,12 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << "job size " << collection.GetSize() << std::endl;
-    ss << collection.ToString() << std::endl;
-    ss << "iterations " << iteration_counter << std::endl;
-    ss << "num messages sent " << collection.GetNumMessagesSent() << std::endl;
+    ss << "job size " << collection.GetSize() << '\n';
+    ss << collection.ToString() << '\n';
+    ss << "iterations " << iteration_counter << '\n';
+    ss << "num messages sent " << collection.GetNumMessagesSent() << '\n';
     ss << "num messages received " << collection.GetNumMessagesReceived()
-      << std::endl;
+      << '\n';
     return ss.str();
   }
 

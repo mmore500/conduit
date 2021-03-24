@@ -46,7 +46,7 @@ void profile_thread_count(const size_t num_threads) {
 
   } // close TimeGuard
 
-  std::cout << "t: " << duration.count() << std::endl;
+  std::cout << "t: " << duration.count() << '\n';
 
 }
 

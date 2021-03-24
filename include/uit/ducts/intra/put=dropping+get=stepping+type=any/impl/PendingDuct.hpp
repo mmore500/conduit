@@ -146,9 +146,9 @@ public:
    */
   std::string ToString() const {
     std::stringstream ss;
-    ss << GetName() << std::endl;
-    ss << uitsl::format_member("this", static_cast<const void *>(this)) << std::endl;
-    ss << uitsl::format_member("buffer_t buffer", buffer[0]) << std::endl;
+    ss << GetName() << '\n';
+    ss << uitsl::format_member("this", static_cast<const void *>(this)) << '\n';
+    ss << uitsl::format_member("buffer_t buffer", buffer[0]) << '\n';
     ss << uitsl::format_member("pending_t pending_gets", pending_gets);
     ss << uitsl::format_member("pending_t get_position", get_position);
     return ss.str();

@@ -257,7 +257,7 @@ public:
   void PrintEdgeList(std::ostream& os = std::cout) const noexcept {
     for (size_t i = 0; i < topology.size(); ++i) {
       for (const auto& output : topology[i].GetOutputs()) {
-        os << i << " " << output << std::endl;
+        os << i << " " << output << '\n';
       }
     }
   }
@@ -272,7 +272,7 @@ public:
       for (const auto& output : GetNodeOutputs(topology[i])) {
         os << " " << output;
       }
-      os << std::endl;
+      os << '\n';
     }
   }
 
@@ -286,10 +286,10 @@ public:
 
     for (size_t i = 0; i < topology.size(); ++i) {
       os << name_node(i) << " ";
-      os << topology[i].GetNumOutputs() << std::endl;
+      os << topology[i].GetNumOutputs() << '\n';
 
       for (const auto& node : GetNodeOutputs(topology[i])) {
-        os << name_node(node) << std::endl;
+        os << name_node(node) << '\n';
       }
     }
   }

@@ -38,10 +38,10 @@ class Tile {
         uitsl::error_message_mutex.lock();
         std::cerr
           << uitsl::format_member("neighbor_state", neighbor_state)
-          << std::endl;
-        std::cerr << uitsl::format_member("prev Tile", *prev) << std::endl;
-        std::cerr << uitsl::format_member("this Tile", *this) << std::endl;
-        std::cerr << uitsl::format_member("next Tile", *next) << std::endl;
+          << '\n';
+        std::cerr << uitsl::format_member("prev Tile", *prev) << '\n';
+        std::cerr << uitsl::format_member("this Tile", *this) << '\n';
+        std::cerr << uitsl::format_member("next Tile", *next) << '\n';
         throw "bad Transition on Tile";
     }
 
@@ -91,9 +91,9 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << uitsl::format_member("id", id) << std::endl;
-    ss << uitsl::format_member("State state", state) << std::endl;
-    ss << uitsl::format_member("Outlet<Spec> input", input) << std::endl;
+    ss << uitsl::format_member("id", id) << '\n';
+    ss << uitsl::format_member("State state", state) << '\n';
+    ss << uitsl::format_member("Outlet<Spec> input", input) << '\n';
     ss << uitsl::format_member("Inlet<Spec> output", output);
     return ss.str();
   }

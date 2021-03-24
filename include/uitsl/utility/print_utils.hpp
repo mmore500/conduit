@@ -29,7 +29,7 @@ inline std::string format_member(
   const T& member
 ) {
   std::stringstream ss;
-  ss << name << ":" << std::endl;
+  ss << name << ":" << '\n';
   ss << uitsl::apply_indent(member.ToString());
   return ss.str();
 }
@@ -40,7 +40,7 @@ inline std::string format_member<std::string>(
   const std::string& member
 ) {
   std::stringstream ss;
-  ss << name << ":" << std::endl;
+  ss << name << ":" << '\n';
   ss << apply_indent(member);
   return ss.str();
 }
@@ -51,7 +51,7 @@ inline std::string format_member<char>(
   const char& member
 ) {
   std::stringstream ss;
-  ss << name << ":" << std::endl;
+  ss << name << ":" << '\n';
   ss << apply_indent(
     [member](){ std::stringstream ss; ss << member; return ss.str(); }()
   );
@@ -64,7 +64,7 @@ inline std::string format_member<size_t>(
   const size_t& member
 ) {
   std::stringstream ss;
-  ss << name << ":" << std::endl;
+  ss << name << ":" << '\n';
   ss << apply_indent(
     std::to_string(member)
   );
@@ -77,7 +77,7 @@ inline std::string format_member<int>(
   const int& member
 ) {
   std::stringstream ss;
-  ss << name << ":" << std::endl;
+  ss << name << ":" << '\n';
   ss << apply_indent(
     std::to_string(member)
   );
@@ -90,7 +90,7 @@ inline std::string format_member<bool>(
   const bool& member
 ) {
   std::stringstream ss;
-  ss << name << ":" << std::endl;
+  ss << name << ":" << '\n';
   ss << apply_indent(
     std::to_string(member)
   );
@@ -103,7 +103,7 @@ inline std::string format_member<const void *>(
   const void* const& member
 ) {
   std::stringstream ss;
-  ss << name << ":" << std::endl;
+  ss << name << ":" << '\n';
   ss << apply_indent(
     [member](){ std::stringstream ss; ss << member; return ss.str(); }()
   );

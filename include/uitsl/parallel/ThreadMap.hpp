@@ -35,7 +35,7 @@ public:
   std::string ToString() {
     std::stringstream ss;
     for (const auto & [k, v] : map) {
-      ss << uitsl::format_member(emp::to_string("thread ", k), v) << std::endl;
+      ss << uitsl::format_member(emp::to_string("thread ", k), v) << '\n';
     }
     return ss.str();
   }

@@ -214,24 +214,24 @@ public:
 
   std::string ToString() const {
     std::stringstream ss;
-    ss << "nodes" << std::endl;
+    ss << "nodes" << '\n';
     for ( const auto& [node_id, node] : nodes ) {
-      ss << "node_id " << node_id << std::endl;
-      ss << "node " << node.ToString() << std::endl;
+      ss << "node_id " << node_id << '\n';
+      ss << "node " << node.ToString() << '\n';
     }
 
     // std::set<edge_id_t> edge_registry;
 
     // edge_id -> node_id
-    ss << "input_registry " << std::endl;
+    ss << "input_registry " << '\n';
     for ( const auto& [edge_id, node_id] : input_registry ) {
-      ss << edge_id << " -> " << node_id << std::endl;
+      ss << edge_id << " -> " << node_id << '\n';
     }
 
     // edge_id -> node_id
-    ss << "output_registry " << std::endl;
+    ss << "output_registry " << '\n';
     for ( const auto& [edge_id, node_id] : output_registry ) {
-      ss << edge_id << " -> " << node_id << std::endl;
+      ss << edge_id << " -> " << node_id << '\n';
     }
 
     return ss.str();
