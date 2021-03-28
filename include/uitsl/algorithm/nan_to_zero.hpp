@@ -7,7 +7,7 @@
 namespace uitsl {
 
 template<typename T>
-T nan_to_zero(T val) { return std::isnan(val) ? T{} : val; }
+T nan_to_zero(const T val) { return std::isnan(val) ? T{} : val; }
 
 } // namespace uitsl
 
