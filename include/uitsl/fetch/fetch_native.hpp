@@ -2,10 +2,12 @@
 #ifndef UITSL_FETCH_FETCH_NATIVE_HPP_INCLUDE
 #define UITSL_FETCH_FETCH_NATIVE_HPP_INCLUDE
 
+#include <chrono>
 #include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <thread>
 
 #include <curl/curl.h>
 
@@ -70,11 +72,21 @@ inline std::filesystem::path fetch_native( const std::string& url ) {
     curl_easy_setopt(curl_handle, CURLOPT_FOLLOWLOCATION, 1L)
   );
 
-  uitsl::err_verify( curl_easy_perform(curl_handle) );
+  for ( size_t retry{}; true; ++retry ) {
 
-  long http_code{};
-  curl_easy_getinfo( curl_handle, CURLINFO_RESPONSE_CODE, &http_code );
-  emp_always_assert( http_code == 200, url, http_code );
+    CURLcode err = curl_easy_perform(curl_handle);
+
+    long http_code{};
+    if ( err == CURLE_OK ) {
+      curl_easy_getinfo( curl_handle, CURLINFO_RESPONSE_CODE, &http_code );
+      if ( http_code == 200 ) break;
+    }
+
+    emp_always_assert( retry < 5, retry, err, http_code, url );
+
+    using namespace std::chrono_literals;
+    std::this_thread::sleep_for( 10s );
+  }
 
   fflush( bodyfile );
   fflush( headerfile );
