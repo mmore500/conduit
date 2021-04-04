@@ -9,3 +9,4 @@ iterpop==0.3.4
 exdown==0.7.0
 networkx==2.5
 numpy==1.19.5
+scipy==1.5.4
