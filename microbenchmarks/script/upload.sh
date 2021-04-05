@@ -10,5 +10,7 @@ OSF_PATH="microbenchmarks/context=${CONTEXT}/nnode=${NNODE}+nproc=${NPROC}/time=
 set -o xtrace
 
 for f in $(find . -name "*.json") *.csv *.png; do
+  :
+  # TODO
   #osf -u "$OSF_USERNAME" -p 7jkgp upload "$f" "${OSF_PATH}/${f}";
 done
