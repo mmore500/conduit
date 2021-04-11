@@ -248,8 +248,8 @@ void audit_grid(
   size_t tile;
   datafile.AddVar<size_t>(tile, "Tile");
 
-  size_t successful_write_count;
-  datafile.AddVar<size_t>(successful_write_count, "Successful Write Count");
+  size_t attempted_write_count;
+  datafile.AddVar<size_t>(attempted_write_count, "Attempted Write Count");
 
   size_t blocked_write_count;
   datafile.AddVar<size_t>(blocked_write_count, "Blocked Write Count");
@@ -271,7 +271,7 @@ void audit_grid(
   for (tile = 0; tile < grid.size(); ++tile) {
     const auto & which = grid[tile];
 
-    successful_write_count = which.GetSuccessfulPutCount();
+    attempted_write_count = which.GetAttemptedPutCount();
     blocked_write_count = which.GetBlockedPutCount();
     dropped_write_count = which.GetDroppedPutCount();
     read_count = which.GetReadCount();

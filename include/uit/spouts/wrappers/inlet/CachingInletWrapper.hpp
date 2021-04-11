@@ -130,7 +130,7 @@ public:
 
   void Flush() { inlet.Flush(); }
 
-  size_t GetSuccessfulPutCount() const { return inlet.GetSuccessfulPutCount(); }
+  size_t GetAttemptedPutCount() const { return inlet.GetAttemptedPutCount(); }
 
   size_t GetBlockedPutCount() const { return inlet.GetBlockedPutCount(); }
 

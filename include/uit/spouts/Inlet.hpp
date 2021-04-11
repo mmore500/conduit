@@ -72,7 +72,7 @@ private:
   std::shared_ptr<duct_t> duct;
 
   /// How many put operations have been performed?
-  size_t successful_put_count{};
+  size_t attempted_put_count{};
 
   /// How many times has Put blocked?
   size_t blocked_put_count{};
@@ -117,6 +117,7 @@ public:
   void Put(const T& val) {
     uitsl_occupancy_audit(1);
 
+    ++attempted_put_count;
     bool was_blocked{ false };
     while (!DoTryPut(val)) was_blocked = true;
 
@@ -133,6 +134,7 @@ public:
   bool TryPut(const T& val) {
     uitsl_occupancy_audit(1);
 
+    ++attempted_put_count;
     if ( DoTryPut(val) ) return true;
     else { ++dropped_put_count; return false; }
 
@@ -148,6 +150,7 @@ public:
   bool TryPut(P&& val) {
     uitsl_occupancy_audit(1);
 
+    ++attempted_put_count;
     if ( DoTryPut(std::forward<P>(val)) ) return true;
     else { ++dropped_put_count; return false; }
 
@@ -170,7 +173,7 @@ public:
    *
    * @return TODO.
    */
-  size_t GetSuccessfulPutCount() const { return successful_put_count; }
+  size_t GetAttemptedPutCount() const { return attempted_put_count; }
 
   /**
    * TODO.
@@ -237,8 +240,8 @@ public:
     std::stringstream ss;
     ss << uitsl::format_member("duct_t duct", *duct) << '\n';
     ss << uitsl::format_member(
-      "size_t successful_put_count",
-      successful_put_count
+      "size_t attempted_put_count",
+      attempted_put_count
     ) << '\n';
     ss << uitsl::format_member(
       "size_t dropped_put_count",
