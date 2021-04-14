@@ -24,6 +24,7 @@ docs/_build/
 docs/doxyoutput
 docs/api
 coverage_include/
+binder/.ipynb_checkpoints
 
 package-lock.json
 node_modules/
