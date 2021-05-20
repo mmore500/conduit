@@ -32,10 +32,14 @@ jobs:
     runs-on: ubuntu-16.04
     needs:
       - docker-build
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --user root
     steps:
-      - uses: docker-practice/actions-setup-docker@v1
-      - run: docker run "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit && ./ci/test_tidy.sh"
-
+      - run: |
+          cd /opt/conduit
+          ./ci/test_tidy.sh
 
   unit:
     name: Unit Tests
@@ -47,63 +51,96 @@ jobs:
         mpicxx: [mpich, openmpi]
         mode: [ Debug, Opt ]
       fail-fast: false
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --user root --cap-add=SYS_ADMIN
+      env:
+        DISH_MPICXX: mpicxx.${{ matrix.mpicxx }}
+        OMPI_CXX: clang++
     steps:
-      - uses: docker-practice/actions-setup-docker@v1
-      - run: >
-          docker run "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
-          "cd /opt/conduit/ &&
-          cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=.${{ matrix.mpicxx }} &&
-          cmake --build build &&
-          cd build &&
-          ctest"
+      - run: |
+          cd /opt/conduit/
+          cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=.${{ matrix.mpicxx }}
+          cmake --build build
+          cd build
+          ctest
 
   coverage:
     name: Coverage
     runs-on: ubuntu-16.04
     needs:
       - docker-build
-    env:
-      DISH_MPICXX: mpicxx.openmpi
-      OMPI_CXX: clang++
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --user root --cap-add=SYS_ADMIN
+      env:
+        DISH_MPICXX: mpicxx.openmpi
+        OMPI_CXX: clang++
+        CC: clang
+        CXX: clang++
     steps:
-      - uses: docker-practice/actions-setup-docker@v1
-      - run: export ci_env=`bash <(curl -s https://codecov.io/env)`
-      - run: >
-          docker run $ci_env -e DISH_MPICXX=$DISH_MPICXX -e OMPI_CXX=$OMPI_CXX -e CC=clang -e CXX=clang++
-          "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
-          "cd /opt/conduit/ &&
+      - run: |
+          export ci_env=`bash <(curl -s https://codecov.io/env)`
+          cd /opt/conduit/
           cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
-          && cmake --build build --target ccov-show-test-netuit
-          && cmake --build build --target ccov-show-test-uit
-          && cmake --build build --target ccov-show-test-uitsl
-          && bash <(curl -s https://codecov.io/bash)"
+          cmake --build build --target ccov-show-test-netuit
+          cmake --build build --target ccov-show-test-uit
+          cmake --build build --target ccov-show-test-uitsl
+          bash <(curl -s https://codecov.io/bash)
 
   microbenchmarks:
     name: Microbenchmarks
     runs-on: ubuntu-16.04
     needs:
       - docker-build
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --user root --cap-add=SYS_ADMIN
+      env:
+        OSF_USERNAME: ${{ secrets.OSF_USERNAME }}
+        OSF_PASSWORD: ${{ secrets.OSF_PASSWORD }}
+        CONTEXT: actions
     steps:
-      - uses: docker-practice/actions-setup-docker@v1
-      - run: docker run -e OSF_USERNAME=${{ secrets.OSF_USERNAME }} -e OSF_PASSWORD=${{ secrets.OSF_PASSWORD }} -e CONTEXT=actions "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit/microbenchmarks && make"
+      - run: |
+          cd /opt/conduit/microbenchmarks
+          make
 
   macrobenchmarks:
     name: Macrobenchmarks
     runs-on: ubuntu-16.04
     needs:
       - docker-build
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --user root --cap-add=SYS_ADMIN
+      env:
+        OSF_USERNAME: ${{ secrets.OSF_USERNAME }}
+        OSF_PASSWORD: ${{ secrets.OSF_PASSWORD }}
+        CONTEXT: actions
     steps:
-      - uses: docker-practice/actions-setup-docker@v1
-      - run: docker run -e OSF_USERNAME=${{ secrets.OSF_USERNAME }} -e OSF_PASSWORD=${{ secrets.OSF_PASSWORD }} -e CONTEXT=actions "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit/macrobenchmarks && make"
+      - run: |
+          cd /opt/conduit/macrobenchmarks
+          make
 
   docs:
     name: Source, Docs, Demos
     runs-on: ubuntu-16.04
     needs:
       - docker-build
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --user root --cap-add=SYS_ADMIN
     steps:
-      - uses: docker-practice/actions-setup-docker@v1
-      - run: docker run --cap-add=SYS_ADMIN "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit && make test-source && make docs && make demos"
+      - run: |
+          cd /opt/conduit
+          make test-source
+          make docs
+          make demos
 
   deploy-pages:
     name: Deploy to GitHub Pages
