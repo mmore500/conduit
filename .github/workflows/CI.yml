@@ -41,7 +41,31 @@ jobs:
           cd /opt/conduit
           ./ci/test_tidy.sh
 
-  unit:
+  # unit:
+  #   name: Unit Tests
+  #   runs-on: ubuntu-16.04
+  #   needs:
+  #     - docker-build
+  #   strategy:
+  #     matrix:
+  #       mpicxx: [mpich, openmpi]
+  #       mode: [ Debug, Opt ]
+  #     fail-fast: false
+  #   container:
+  #     image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+  #     # github actions requires root to access mounted volumes
+  #     options: --cap-add=SYS_ADMIN
+  #     env:
+  #       DISH_MPICXX: mpicxx.${{ matrix.mpicxx }}
+  #       OMPI_CXX: clang++
+  #   steps:
+  #     - run: |
+  #         cd /opt/conduit/
+  #         cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=.${{ matrix.mpicxx }}
+  #         cmake --build build
+  #         cd build
+  #         ctest
+    unit:
     name: Unit Tests
     runs-on: ubuntu-16.04
     needs:
@@ -51,20 +75,15 @@ jobs:
         mpicxx: [mpich, openmpi]
         mode: [ Debug, Opt ]
       fail-fast: false
-    container:
-      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
-      # github actions requires root to access mounted volumes
-      options: --cap-add=SYS_ADMIN
-      env:
-        DISH_MPICXX: mpicxx.${{ matrix.mpicxx }}
-        OMPI_CXX: clang++
     steps:
-      - run: |
-          cd /opt/conduit/
-          cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=.${{ matrix.mpicxx }}
-          cmake --build build
-          cd build
-          ctest
+      - uses: docker-practice/actions-setup-docker@v1
+      - run: >
+          docker run "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
+          "cd /opt/conduit/ &&
+          cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=.${{ matrix.mpicxx }} &&
+          cmake --build build &&
+          cd build &&
+          ctest"
 
   coverage:
     name: Coverage
