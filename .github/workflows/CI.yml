@@ -82,7 +82,6 @@ jobs:
         CXX: clang++
     steps:
       - run: |
-          export ci_env=`bash <(curl -s https://codecov.io/env)`
           cd /opt/conduit/
           cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
           cmake --build build --target ccov-show-test-netuit
