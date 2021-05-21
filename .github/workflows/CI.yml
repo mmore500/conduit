@@ -87,7 +87,11 @@ jobs:
           cmake --build build --target ccov-show-test-netuit
           cmake --build build --target ccov-show-test-uit
           cmake --build build --target ccov-show-test-uitsl
-          bash <(curl -s https://codecov.io/bash)
+      - uses: codecov/codecov-action@v1
+        with:
+          fail_ci_if_error: true
+          verbose: true
+          directory: /opt/conduit
 
   microbenchmarks:
     name: Microbenchmarks
