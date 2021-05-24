@@ -159,6 +159,7 @@ jobs:
       options: --cap-add=SYS_ADMIN
     steps:
       - run: |
+          sudo chown -R 1000:1000 "/github/home/.npm"
           cd /opt/conduit
           make test-source
           make docs
