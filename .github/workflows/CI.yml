@@ -90,27 +90,49 @@ jobs:
     runs-on: ubuntu-16.04
     needs:
       - docker-build
-    container:
-      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
-      # github actions requires root to access mounted volumes
-      options: --cap-add=SYS_ADMIN
-      env:
-        DISH_MPICXX: mpicxx.openmpi
-        OMPI_CXX: clang++
-        CC: clang
-        CXX: clang++
+    env:
+      DISH_MPICXX: mpicxx.openmpi
+      OMPI_CXX: clang++
     steps:
-      - run: |
-          cd /opt/conduit/
+      - uses: docker-practice/actions-setup-docker@v1
+      - run: export ci_env=`bash <(curl -s https://codecov.io/env)`
+      - run: >
+          docker run $ci_env -e DISH_MPICXX=$DISH_MPICXX -e OMPI_CXX=$OMPI_CXX -e CC=clang -e CXX=clang++
+          "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
+          "cd /opt/conduit/ &&
           cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
-          cmake --build build --target ccov-show-test-netuit
-          cmake --build build --target ccov-show-test-uit
-          cmake --build build --target ccov-show-test-uitsl
-      - uses: codecov/codecov-action@v1
-        with:
-          fail_ci_if_error: true
-          verbose: true
-          directory: /opt/conduit
+          && cmake --build build --target ccov-show-test-netuit
+          && cmake --build build --target ccov-show-test-uit
+          && cmake --build build --target ccov-show-test-uitsl
+          && bash <(curl -s https://codecov.io/bash)"
+
+  # TODO: figure out why codecov errors out
+  # coverage:
+  #   name: Coverage
+  #   runs-on: ubuntu-16.04
+  #   needs:
+  #     - docker-build
+  #   container:
+  #     image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+  #     # github actions requires root to access mounted volumes
+  #     options: --cap-add=SYS_ADMIN
+  #     env:
+  #       DISH_MPICXX: mpicxx.openmpi
+  #       OMPI_CXX: clang++
+  #       CC: clang
+  #       CXX: clang++
+  #   steps:
+  #     - run: |
+  #         cd /opt/conduit/
+  #         cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
+  #         cmake --build build --target ccov-show-test-netuit
+  #         cmake --build build --target ccov-show-test-uit
+  #         cmake --build build --target ccov-show-test-uitsl
+  #     - uses: codecov/codecov-action@v1
+  #       with:
+  #         fail_ci_if_error: true
+  #         verbose: true
+  #         directory: /opt/conduit
 
   microbenchmarks:
     name: Microbenchmarks
