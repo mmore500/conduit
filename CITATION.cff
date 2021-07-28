@@ -18,6 +18,9 @@ abstract: >-
   and a compute-intensive digital evolution simulation show that Conduit's
   best-effort model can improve scaling efficiency and solution quality,
   particularly in a distributed, multi-node context.
+date-released: 2021-07-01
+license: MIT
+version: 0.1.0
 authors:
   - affiliation: Michigan State University
     family-names: Moreno
