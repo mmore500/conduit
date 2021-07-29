@@ -50,5 +50,5 @@ keywords:
   - high performance computing
 isbn: 9781450383516
 cff-version: 1.1.0
-message: 'If you use this software, please cite it using these metadata.'
+message: 'Please consult docs/citing.md to cite this software.'
 title: 'Conduit: A C++ Library for Best-Effort High Performance Computing'
