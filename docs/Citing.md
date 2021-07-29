@@ -43,7 +43,7 @@ Chicago:
 >  Moreno, Matthew Andres, Santiago Rodriguez, Papa, and Charles, Ofria. "Conduit: A C++ Library for Best-Effort High Performance Computing." . In Proceedings of the Genetic and Evolutionary Computation Conference Companion (pp. 1795–1800). Association for Computing Machinery, 2021.
 
 MLA:
-> Moreno, Matthew Andres et al. "Conduit: A C++ Library for Best-Effort High Performance Computing." Proceedings of the Genetic and Evolutionary Computation Conference Companion. Association for Computing Machinery, 
+> Moreno, Matthew Andres et al. "Conduit: A C++ Library for Best-Effort High Performance Computing." Proceedings of the Genetic and Evolutionary Computation Conference Companion. Association for Computing Machinery, July 7 2021, 1795-1800.
 
 You can also access metadata to cite Conduit in our [`CITATION.cff` file](https://github.com/mmore500/conduit/blob/master/CITATION.cff).
 Formatted citations were generated via <https://bibtex.online>.
