@@ -45,5 +45,5 @@ Chicago:
 MLA:
 > Moreno, Matthew Andres et al. "Conduit: A C++ Library for Best-Effort High Performance Computing." Proceedings of the Genetic and Evolutionary Computation Conference Companion. Association for Computing Machinery, 
 
-You can also access metadata to cite Conduit in our `CITATION.cff` file.
+You can also access metadata to cite Conduit in our [`CITATION.cff` file](https://github.com/mmore500/conduit/blob/master/CITATION.cff).
 Formatted citations were generated via <https://bibtex.online>.
