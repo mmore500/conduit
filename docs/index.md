@@ -12,11 +12,10 @@ Overview
 :hidden:
 
 self
-ReadingList
 api/library_root
-Resources
-Citing
-Publications
+resources
+citing
+publications
 ```
 
 ```{include} ../README.md
