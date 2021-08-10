@@ -26,6 +26,10 @@ namespace std {
 
 } // namespace std
 
+#else // __cplusplus > 201703L
+
+#include <bit>
+
 #endif // #if __cplusplus <= 201703L
 
 #endif // #ifndef UITSL_POLYFILL_BIT_CAST_HPP_INCLUDE
