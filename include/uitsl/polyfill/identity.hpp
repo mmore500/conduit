@@ -2,19 +2,14 @@
 #ifndef UITSL_POLYFILL_IDENTITY_HPP_INCLUDE
 #define UITSL_POLYFILL_IDENTITY_HPP_INCLUDE
 
-#include <utility>
+#if __cplusplus < 202002L
 
-namespace std {
+#include "impl/identity.hpp"
 
-// TODO cpp20
-// adpated from https://codereview.stackexchange.com/q/134627
-static constexpr struct identity_t {
-  template<typename T>
-  constexpr decltype(auto) operator()(T&& t) const noexcept {
-    return std::forward<T>(t);
-  }
-} identity{};
+#else // #if __cplusplus < 202002L
 
-} // namespace std
+#include <functional>
+
+#endif // #if __cplusplus < 202002L
 
 #endif // #ifndef UITSL_POLYFILL_IDENTITY_HPP_INCLUDE
