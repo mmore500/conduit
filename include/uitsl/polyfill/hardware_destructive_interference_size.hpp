@@ -2,16 +2,14 @@
 #ifndef UITSL_POLYFILL_HARDWARE_DESTRUCTIVE_INTERFERENCE_SIZE_HPP_INCLUDE
 #define UITSL_POLYFILL_HARDWARE_DESTRUCTIVE_INTERFERENCE_SIZE_HPP_INCLUDE
 
-#include <cstddef>
+#if __cplusplus < 202002L
 
-#ifdef __EMSCRIPTEN__
+#include "impl/hardware_destructive_interference_size.hpp"
 
-namespace std {
+#else // #if __cplusplus < 202002L
 
-  const size_t hardware_destructive_interference_size = 64;
+#include <barrier>
 
-} // namespace std
-
-#endif
+#endif // #if __cplusplus < 202002L
 
 #endif // #ifndef UITSL_POLYFILL_HARDWARE_DESTRUCTIVE_INTERFERENCE_SIZE_HPP_INCLUDE

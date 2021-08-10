@@ -2,37 +2,14 @@
 #ifndef UITSL_POLYFILL_ERASE_IF_HPP_INCLUDE
 #define UITSL_POLYFILL_ERASE_IF_HPP_INCLUDE
 
-#include <algorithm>
-#include <unordered_map>
+#if __cplusplus < 202002L
 
-namespace std {
+#include "impl/erase_if.hpp"
 
-template< typename... Args, typename Pred >
-size_t erase_if( std::unordered_map<Args...>& c, Pred pred ) {
+#else // #if __cplusplus < 202002L
 
-  auto old_size = c.size();
-  for (auto i = c.begin(), last = c.end(); i != last; ) {
-    if (pred(*i)) {
-      i = c.erase(i);
-    } else {
-      ++i;
-    }
-  }
-  return old_size - c.size();
+#include <vector>
 
-}
-
-
-template< typename... Args, typename Pred >
-size_t erase_if( std::vector<Args...>& c, Pred pred ) {
-
-  auto it = std::remove_if(c.begin(), c.end(), pred);
-  const auto r = std::distance(it, c.end());
-  c.erase(it, c.end());
-  return r;
-
-}
-
-} // namespace std
+#endif // #if __cplusplus < 202002L
 
 #endif // #ifndef UITSL_POLYFILL_ERASE_IF_HPP_INCLUDE
