@@ -12,6 +12,7 @@ Overview
 :hidden:
 
 self
+demos
 api/library_root
 resources
 citing
