@@ -274,9 +274,9 @@ void audit_grid(
     attempted_write_count = which.GetAttemptedPutCount();
     blocked_write_count = which.GetBlockedPutCount();
     dropped_write_count = which.GetDroppedPutCount();
-    read_count = which.GetReadCount();
+    read_count = which.GetNumReadsPerformed();
     read_revision_count = which.GetReadRevisionCount();
-    net_flux = which.GetNetFlux();
+    net_flux = which.GetNetFluxThroughDuct();
 
     datafile.Update();
   }

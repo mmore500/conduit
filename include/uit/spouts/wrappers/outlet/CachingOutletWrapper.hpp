@@ -141,11 +141,11 @@ public:
     : std::nullopt;
   }
 
-  size_t GetReadCount() const { return outlet.GetReadCount(); }
+  size_t GetNumReadsPerformed() const { return outlet.GetNumReadsPerformed(); }
 
-  size_t GetRevisionCount() const { return outlet.GetRevisionCount(); }
+  size_t GetNumRevisionsPulled() const { return outlet.GetNumRevisionsPulled(); }
 
-  size_t GetNetFlux() const { return outlet.GetNetFlux(); }
+  size_t GetNetFluxThroughDuct() const { return outlet.GetNetFluxThroughDuct(); }
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {

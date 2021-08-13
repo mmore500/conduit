@@ -88,13 +88,17 @@ private:
   /// Instrumentation for communication profiling.
   mutable size_t fresh_read_count{0};
 
-  /// How many times has current value changed?
+  /// How many times has current value changed (i.e., a pull succeeded)?
   /// Instrumentation for communication profiling.
   size_t revision_count{0};
 
   /// Total distance traversed through underlying buffer.
   /// Instrumentation for communication profiling.
   size_t net_flux{0};
+
+  /// Number of times step or jump was called.
+  /// Instrumentation for communication profiling.
+  size_t pull_attempt_count{0};
 
   uitsl_occupancy_auditor;
 
@@ -136,10 +140,12 @@ public:
   ) : duct(duct_) { ; }
 
   size_t TryStep(const size_t num_steps=1) {
+    ++pull_attempt_count;
     return TryConsumeGets(num_steps);
   }
 
   size_t Jump() {
+    ++pull_attempt_count;
     return TryConsumeGets( std::numeric_limits<size_t>::max() );
   }
 
@@ -177,7 +183,8 @@ public:
    */
   const T& GetNext() {
     uitsl_occupancy_audit(1);
-    while (TryStep() == 0);
+    ++pull_attempt_count;
+    while (TryConsumeGets(1) == 0);
     return Get();
   }
 
@@ -204,28 +211,64 @@ public:
    *
    * @return TODO.
    */
-  size_t GetReadCount() const { return read_count; }
+  size_t GetNumReadsPerformed() const { return read_count; }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetFreshReadCount() const { return fresh_read_count; }
+  size_t GetNumReadsThatWereFresh() const { return fresh_read_count; }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetRevisionCount() const { return revision_count; }
+  size_t GetNumReadsThatWereStale() const {
+    emp_assert( read_count >= fresh_read_count );
+    return read_count - fresh_read_count;
+  }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetNetFlux() const { return net_flux; }
+  size_t GetNumRevisionsPulled() const { return revision_count; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPullsAttempted() const { return pull_attempt_count; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionPullsThatWereLaden() const {
+    emp_assert( pull_attempt_count >= revision_count );
+    return revision_count / static_cast<double>( pull_attempt_count );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionPullsThatWereUnladen() const {
+    return 1.0 - GetFractionPullsThatWereLaden();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNetFluxThroughDuct() const { return net_flux; }
 
   /**
    * TODO.
@@ -234,6 +277,15 @@ public:
    */
   double GetFractionReadsThatWereFresh() const {
     return fresh_read_count / static_cast<double>(read_count);
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionReadsThatWereStale() const {
+    return 1.0 - GetFractionReadsThatWereFresh();
   }
 
   /**
@@ -250,11 +302,8 @@ public:
    *
    * @return TODO.
    */
-  double GetFractionFluxThatWasJumpedOver() const {
-    const double fraction_flux_that_is_not_jumped_over = (
-      revision_count / static_cast<double>(net_flux)
-    );
-    return 1.0 - fraction_flux_that_is_not_jumped_over;
+  double GetFractionRevisionsThatWereNotRead() const {
+    return 1.0 - GetFractionRevisionsThatWereRead();
   }
 
   /**
@@ -262,7 +311,25 @@ public:
    *
    * @return TODO.
    */
-  double GetFractionFluxThatWasRead() const {
+  double GetFractionDuctFluxThatWasSteppedThrough() const {
+    return revision_count / static_cast<double>(net_flux);
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionDuctFluxThatWasJumpedOver() const {
+    return 1.0 - GetFractionDuctFluxThatWasSteppedThrough();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionDuctFluxThatWasRead() const {
     return fresh_read_count / static_cast<double>(net_flux);
   }
 
