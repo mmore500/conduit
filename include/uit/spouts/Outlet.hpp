@@ -77,12 +77,23 @@ private:
   static_assert(N > 0);
 
   /// How many times has outlet been read from?
+  /// Instrumentation for communication profiling.
   mutable size_t read_count{0};
 
+  /// Has the current revision been viewed?
+  /// Instrumentation for communication profiling.
+  mutable bool cur_revision_unread{true};
+
+  /// How many unique revisions have been read?
+  /// Instrumentation for communication profiling.
+  mutable size_t fresh_read_count{0};
+
   /// How many times has current value changed?
+  /// Instrumentation for communication profiling.
   size_t revision_count{0};
 
   /// Total distance traversed through underlying buffer.
+  /// Instrumentation for communication profiling.
   size_t net_flux{0};
 
   uitsl_occupancy_auditor;
@@ -104,11 +115,16 @@ private:
    */
   size_t LogStep(const size_t n) {
     revision_count += (n > 0);
+    if (n > 0) cur_revision_unread = true;
     net_flux += n;
     return n;
   }
 
-  void LogRead() const { ++read_count; }
+  void LogRead() const {
+    ++read_count;
+    fresh_read_count += cur_revision_unread;
+    cur_revision_unread = false;
+  }
 
 public:
 
@@ -195,6 +211,13 @@ public:
    *
    * @return TODO.
    */
+  size_t GetFreshReadCount() const { return fresh_read_count; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   size_t GetRevisionCount() const { return revision_count; }
 
   /**
@@ -203,6 +226,45 @@ public:
    * @return TODO.
    */
   size_t GetNetFlux() const { return net_flux; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionReadsThatWereFresh() const {
+    return fresh_read_count / static_cast<double>(read_count);
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionRevisionsThatWereRead() const {
+    return fresh_read_count / static_cast<double>(revision_count);
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionFluxThatWasJumpedOver() const {
+    const double fraction_flux_that_is_not_jumped_over = (
+      revision_count / static_cast<double>(net_flux)
+    );
+    return 1.0 - fraction_flux_that_is_not_jumped_over;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionFluxThatWasRead() const {
+    return fresh_read_count / static_cast<double>(net_flux);
+  }
 
   /**
    * TODO.

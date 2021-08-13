@@ -132,7 +132,7 @@ public:
 
   size_t GetAttemptedPutCount() const { return inlet.GetAttemptedPutCount(); }
 
-  size_t GetBlockedPutCount() const { return inlet.GetBlockedPutCount(); }
+  size_t GetNumPutsThatBlocked() const { return inlet.GetNumPutsThatBlocked(); }
 
   size_t GetDroppedPutCount() const { return inlet.GetDroppedPutCount(); }
 
