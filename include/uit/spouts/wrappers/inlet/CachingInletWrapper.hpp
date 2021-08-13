@@ -130,11 +130,11 @@ public:
 
   void Flush() { inlet.Flush(); }
 
-  size_t GetAttemptedPutCount() const { return inlet.GetAttemptedPutCount(); }
+  size_t GetNumPutsAttempted() const { return inlet.GetNumPutsAttempted(); }
 
   size_t GetNumPutsThatBlocked() const { return inlet.GetNumPutsThatBlocked(); }
 
-  size_t GetDroppedPutCount() const { return inlet.GetDroppedPutCount(); }
+  size_t GetNumDroppedPuts() const { return inlet.GetNumDroppedPuts(); }
 
   template<typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
