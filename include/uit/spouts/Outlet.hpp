@@ -96,9 +96,21 @@ private:
   /// Instrumentation for communication profiling.
   size_t net_flux{0};
 
-  /// Number of times step or jump was called.
+  /// Number of times try_step or jump was called.
   /// Instrumentation for communication profiling.
-  size_t pull_attempt_count{0};
+  size_t nonblocking_pull_attempt_count{0};
+
+  /// Number of times nonblocking pull retrieved a fresh value.
+  /// Instrumentation for communication profiling.
+  size_t laden_nonblocking_pull_count{0};
+
+  /// Number of times step was called.
+  /// Instrumentation for communication profiling.
+  size_t blocking_pull_count{0};
+
+  /// Number of times step blocked.
+  /// Instrumentation for communication profiling.
+  size_t pulls_that_blocked_count{0};
 
   uitsl_occupancy_auditor;
 
@@ -140,13 +152,14 @@ public:
   ) : duct(duct_) { ; }
 
   size_t TryStep(const size_t num_steps=1) {
-    ++pull_attempt_count;
-    return TryConsumeGets(num_steps);
+    ++nonblocking_pull_attempt_count;
+    const size_t res = TryConsumeGets(num_steps);
+    if ( res ) ++laden_nonblocking_pull_count;
+    return res;
   }
 
   size_t Jump() {
-    ++pull_attempt_count;
-    return TryConsumeGets( std::numeric_limits<size_t>::max() );
+    return TryStep( std::numeric_limits<size_t>::max() );
   }
 
   /**
@@ -175,20 +188,41 @@ public:
   }
 
   /**
+   * Step forward num_steps values.
+   *
+   * Blocking.
+   *
+   * @return TODO.
+   */
+  void Step(size_t num_steps=1) {
+    uitsl_occupancy_audit(1);
+    blocking_pull_count += num_steps;
+
+    while (num_steps) {
+      size_t uncounted_steps{};
+      bool was_blocked{ false };
+      do {
+        uncounted_steps = TryConsumeGets(num_steps);
+        was_blocked |= (uncounted_steps == 0);
+      } while ( uncounted_steps == 0 );
+
+      num_steps -= uncounted_steps;
+      pulls_that_blocked_count += was_blocked;
+    }
+
+  }
+
+  /**
    * Get next received value.
    *
    * Blocking.
    *
    * @return TODO.
    */
-  const T& GetNext() {
-    uitsl_occupancy_audit(1);
-    ++pull_attempt_count;
-    while (TryConsumeGets(1) == 0);
+  const T& GetNext(const size_t num_steps=1) {
+    Step(num_steps);
     return Get();
   }
-
-
 
   using optional_ref_t = emp::optional<std::reference_wrapper<const T>>;
 
@@ -242,16 +276,8 @@ public:
    *
    * @return TODO.
    */
-  size_t GetNumPullsAttempted() const { return pull_attempt_count; }
-
-  /**
-   * TODO.
-   *
-   * @return TODO.
-   */
-  double GetFractionPullsThatWereLaden() const {
-    emp_assert( pull_attempt_count >= revision_count );
-    return revision_count / static_cast<double>( pull_attempt_count );
+  size_t GetNumTryPullsAttempted() const {
+    return nonblocking_pull_attempt_count;
   }
 
   /**
@@ -259,9 +285,178 @@ public:
    *
    * @return TODO.
    */
-  double GetFractionPullsThatWereUnladen() const {
-    return 1.0 - GetFractionPullsThatWereLaden();
+  size_t GetNumBlockingPulls() const {
+    return blocking_pull_count;
   }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumBlockingPullsThatBlocked() const {
+    return pulls_that_blocked_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumRevisionsFromTryPulls() const {
+    return laden_nonblocking_pull_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumRevisionsFromBlockingPulls() const {
+    emp_assert(revision_count >= GetNumRevisionsFromTryPulls());
+    return revision_count - GetNumRevisionsFromTryPulls();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPullsAttempted() const {
+    return nonblocking_pull_attempt_count + blocking_pull_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPullsThatWereLadenEventually() const {
+    return GetNumTryPullsThatWereLaden() + GetNumBlockingPulls();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumBlockingPullsThatWereLadenImmediately() const {
+    emp_assert( GetNumBlockingPulls() >= GetNumBlockingPullsThatBlocked() );
+    return GetNumBlockingPulls() - GetNumBlockingPullsThatBlocked();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumBlockingPullsThatWereLadenEventually() const {
+    return GetNumBlockingPulls();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPullsThatWereLadenImmediately() const {
+    return GetNumTryPullsThatWereLaden()
+    + GetNumBlockingPullsThatWereLadenImmediately();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+
+  size_t GetNumTryPullsThatWereLaden() const {
+    return laden_nonblocking_pull_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumTryPullsThatWereUnladen() const {
+    emp_assert(nonblocking_pull_attempt_count >= laden_nonblocking_pull_count);
+    return nonblocking_pull_attempt_count - laden_nonblocking_pull_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionTryPullsThatWereLaden() const {
+    emp_assert(GetNumTryPullsThatWereLaden() >= GetNumTryPullsAttempted());
+    return (
+      GetNumTryPullsThatWereLaden()
+      / static_cast<double>( GetNumTryPullsAttempted() )
+    );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionTryPullsThatWereUnladen() const {
+    return 1.0 - GetFractionTryPullsThatWereLaden();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionBlockingPullsThatBlocked() const {
+    emp_assert(
+      GetNumBlockingPullsThatBlocked()
+      >= GetNumBlockingPulls()
+    );
+    return (
+      GetNumBlockingPullsThatBlocked()
+      / static_cast<double>( GetNumBlockingPulls() )
+    );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionBlockingPullsThatWereLadenImmediately() const {
+    return 1.0 - GetFractionBlockingPullsThatBlocked();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionPullsThatWereLadenImmediately() const {
+    emp_assert(GetNumPullsThatWereLadenImmediately() >= GetNumPullsAttempted());
+    return (
+      GetNumPullsThatWereLadenImmediately()
+      / static_cast<double>( GetNumPullsAttempted() )
+    );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionPullsThatWereLadenEventually() const {
+    emp_assert(GetNumPullsThatWereLadenEventually() >= GetNumPullsAttempted());
+    return (
+      GetNumPullsThatWereLadenEventually()
+      / static_cast<double>( GetNumPullsAttempted() )
+    );
+  }
+
 
   /**
    * TODO.
