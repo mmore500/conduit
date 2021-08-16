@@ -132,9 +132,51 @@ public:
 
   size_t GetNumPutsAttempted() const { return inlet.GetNumPutsAttempted(); }
 
+  size_t GetNumTryPutsAttempted() const {
+    return inlet.GetNumTryPutsAttempted();
+  }
+
+  size_t GetNumBlockingPuts() const { return inlet.GetNumBlockingPuts(); }
+
+  size_t GetNumTryPutsThatSucceeded() const {
+    return inlet.GetNumTryPutsThatSucceeded();
+  }
+
+  size_t GetNumPutsThatSucceededEventually() const {
+    return inlet.GetNumPutsThatSucceededEventually();
+  }
+
+  size_t GetNumBlockingPutsThatSucceededImmediately() const {
+    return inlet.GetNumBlockingPutsThatSucceededImmediately();
+  }
+
+  size_t GetNumPutsThatSucceededImmediately() const {
+    return inlet.GetNumPutsThatSucceededImmediately();
+  }
+
   size_t GetNumPutsThatBlocked() const { return inlet.GetNumPutsThatBlocked(); }
 
-  size_t GetNumDroppedPuts() const { return inlet.GetNumDroppedPuts(); }
+  size_t GetNumDroppedPuts() const { return inlet.GetNumPutsThatBlocked(); }
+
+  double GetFractionTryPutsDropped() const {
+    return inlet.GetFractionTryPutsDropped();
+  }
+
+  double GetFractionTryPutsThatSucceeded() const {
+    return inlet.GetFractionTryPutsThatSucceeded();
+  }
+
+  double GetFractionBlockingPutsThatBlocked() const {
+    return inlet.GetFractionBlockingPutsThatBlocked();
+  }
+
+  double GetFractionPutsThatSucceededEventually() const {
+    return inlet.GetFractionPutsThatSucceededEventually();
+  }
+
+  double GetFractionPutsThatSucceededImmediately() const {
+    return inlet.GetFractionPutsThatSucceededImmediately();
+  }
 
   template<typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {

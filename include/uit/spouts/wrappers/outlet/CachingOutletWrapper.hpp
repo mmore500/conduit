@@ -143,9 +143,117 @@ public:
 
   size_t GetNumReadsPerformed() const { return outlet.GetNumReadsPerformed(); }
 
-  size_t GetNumRevisionsPulled() const { return outlet.GetNumRevisionsPulled(); }
+  size_t GetNumReadsThatWereFresh() const {
+    return outlet.GetNumReadsThatWereFresh();
+  }
 
-  size_t GetNetFluxThroughDuct() const { return outlet.GetNetFluxThroughDuct(); }
+  size_t GetNumReadsThatWereStale() const {
+    return outlet.GetNumReadsThatWereStale();
+  }
+
+  size_t GetNumRevisionsPulled() const {
+    return outlet.GetNumRevisionsPulled();
+  }
+
+  size_t GetNumTryPullsAttempted() const {
+    return outlet.GetNumTryPullsAttempted();
+  }
+
+  size_t GetNumBlockingPulls() const {
+    return outlet.GetNumBlockingPulls();
+  }
+
+  size_t GetNumBlockingPullsThatBlocked() const {
+    return outlet.GetNumBlockingPullsThatBlocked();
+  }
+
+  size_t GetNumRevisionsFromTryPulls() const {
+    return outlet.GetNumRevisionsFromTryPulls();
+  }
+
+  size_t GetNumRevisionsFromBlockingPulls() const {
+    return outlet.GetNumRevisionsFromBlockingPulls();
+  }
+
+  size_t GetNumPullsAttempted() const {
+    return outlet.GetNumPullsAttempted();
+  }
+
+  size_t GetNumPullsThatWereLadenEventually() const {
+    return outlet.GetNumPullsThatWereLadenEventually();
+  }
+
+  size_t GetNumBlockingPullsThatWereLadenImmediately() const {
+    return outlet.GetNumBlockingPullsThatWereLadenImmediately();
+  }
+
+  size_t GetNumBlockingPullsThatWereLadenEventually() const {
+    return outlet.GetNumBlockingPullsThatWereLadenEventually();
+  }
+
+  size_t GetNumPullsThatWereLadenImmediately() const {
+    return outlet.GetNumPullsThatWereLadenImmediately();
+  }
+
+  size_t GetNumTryPullsThatWereLaden() const {
+    return outlet.GetNumTryPullsThatWereLaden();
+  }
+
+  size_t GetNumTryPullsThatWereUnladen() const {
+    return outlet.GetNumTryPullsThatWereUnladen();
+  }
+
+  double GetFractionTryPullsThatWereLaden() const {
+    return outlet.GetFractionTryPullsThatWereLaden();
+  }
+
+  double GetFractionTryPullsThatWereUnladen() const {
+    return outlet.GetFractionTryPullsThatWereUnladen();
+  }
+
+  double GetFractionBlockingPullsThatBlocked() const {
+    return outlet.GetFractionBlockingPullsThatBlocked();
+  }
+
+  double GetFractionBlockingPullsThatWereLadenImmediately() const {
+    return outlet.GetFractionBlockingPullsThatWereLadenImmediately();
+  }
+
+  double GetFractionPullsThatWereLadenImmediately() const {
+    return outlet.GetFractionPullsThatWereLadenImmediately();
+  }
+
+  double GetFractionPullsThatWereLadenEventually() const {
+    return outlet.GetFractionPullsThatWereLadenEventually();
+  }
+
+  size_t GetNetFluxThroughDuct() const {
+    return outlet.GetNetFluxThroughDuct();
+  }
+
+  double GetFractionReadsThatWereFresh() const {
+    return outlet.GetFractionReadsThatWereFresh();
+  }
+
+  double GetFractionRevisionsThatWereRead() const {
+    return outlet.GetFractionRevisionsThatWereRead();
+  }
+
+  double GetFractionRevisionsThatWereNotRead() const {
+    return outlet.GetFractionRevisionsThatWereNotRead();
+  }
+
+  double GetFractionDuctFluxThatWasSteppedThrough() const {
+    return outlet.GetFractionDuctFluxThatWasSteppedThrough();
+  }
+
+  double GetFractionDuctFluxThatWasJumpedOver() const {
+    return outlet.GetFractionDuctFluxThatWasJumpedOver();
+  }
+
+  double GetFractionDuctFluxThatWasRead() const {
+    return outlet.GetFractionDuctFluxThatWasRead();
+  }
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
