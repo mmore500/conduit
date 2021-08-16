@@ -301,6 +301,7 @@ public:
   /**
    * TODO.
    *
+   * @node identical to GetNumTryPullsThatWereLaden
    * @return TODO.
    */
   size_t GetNumRevisionsFromTryPulls() const {
@@ -367,6 +368,7 @@ public:
   /**
    * TODO.
    *
+   * @note Identical to `GetNumRevisionsFromTryPulls`.
    * @return TODO.
    */
 
