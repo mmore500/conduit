@@ -182,6 +182,7 @@ uitsl/datastructs/RingBuffer.cpp
 uitsl/datastructs/SiftingArray.cpp
 uitsl/datastructs/VectorMap.cpp
 uitsl/debug/IsFirstExecutionChecker.cpp
+uitsl/debug/NotImplementedException.cpp
 uitsl/debug/OncePerThreadChecker.cpp
 uitsl/debug/WarnOnce.cpp
 uitsl/debug/audit_compare.cpp

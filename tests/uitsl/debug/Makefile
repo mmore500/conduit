@@ -3,6 +3,7 @@ TARGET_NAMES += compare_files
 TARGET_NAMES += compare_streams
 TARGET_NAMES += IsFirstExecutionChecker
 TARGET_NAMES += list_cwd
+TARGET_NAMES += NotImplementedException
 TARGET_NAMES += OncePerThreadChecker
 TARGET_NAMES += safe_compare
 TARGET_NAMES += WarnOnce
