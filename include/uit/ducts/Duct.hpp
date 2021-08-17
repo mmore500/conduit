@@ -66,7 +66,7 @@ UITSL_GENERATE_HAS_MEMBER_FUNCTION( CanStep );
  *
  * @tparam ImplSpec class with static and typedef members specifying
  *   implementation details for the conduit framework. See
- *  `include/config/ImplSpec.hpp`.
+ *  `include/uit/setup/ImplSpec.hpp`.
  *
  * @note Because processes do not share memory space and inter-process
  *   communication code is typically asymmetric between the sender and

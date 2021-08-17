@@ -80,7 +80,7 @@ class InstrumentationAggregatingInletWrapper {
       );
     }
 
-    static size_t GetNumPutsThatSucceededEventually()  {
+    static size_t GetNumPutsThatSucceededEventually() {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
