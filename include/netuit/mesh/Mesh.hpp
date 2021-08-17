@@ -181,7 +181,7 @@ class Mesh {
   // solely for instrumentation purposes
   void RegisterDuctTarget(netuit::MeshNodeOutput<ImplSpec>& output) {
     const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
-      input.GetEdgeID()
+      output.GetEdgeID()
     );
     const uitsl::proc_id_t inlet_proc_id = proc_assignment(inlet_node_id);
     const uitsl::thread_id_t inlet_thread_id = thread_assignment(inlet_node_id);
