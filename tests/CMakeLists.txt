@@ -169,7 +169,7 @@ set(UIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/outlet/CachingOutletWrapper.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/outlet/InstrumentationAggregatingOutletWrapper.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/wrappers/CachingSpoutWrapper.cpp
-    ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/wrappers/InstrumentationAggregatinggSpoutWrapper.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/wrappers/InstrumentationAggregatingSpoutWrapper.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/wrappers/TrivialSpoutWrapper.cpp
     )
 set(UITSL_SOURCES
