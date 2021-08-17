@@ -154,8 +154,11 @@ uit/setup/InterProcAddress.cpp
 uit/spouts/spouts/Inlet.cpp
 uit/spouts/spouts/Outlet.cpp
 uit/spouts/wrappers/inlet/CachingInletWrapper.cpp
+uit/spouts/wrappers/inlet/InstrumentationAggregatingInletWrapper.cpp
 uit/spouts/wrappers/outlet/CachingOutletWrapper.cpp
+uit/spouts/wrappers/outlet/InstrumentationAggregatingOutletWrapper.cpp
 uit/spouts/wrappers/wrappers/CachingSpoutWrapper.cpp
+uit/spouts/wrappers/wrappers/InstrumentationAggregatingSpoutWrapper.cpp
 uit/spouts/wrappers/wrappers/TrivialSpoutWrapper.cpp
 uitsl/algorithm/get_plurality.cpp
 uitsl/algorithm/normalize.cpp
