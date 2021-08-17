@@ -2,8 +2,8 @@
 #ifndef UITSL_CONTAINERS_SAFE_UNORDERED_MAP_HPP_INCLUDE
 #define UITSL_CONTAINERS_SAFE_UNORDERED_MAP_HPP_INCLUDE
 
-#include <shared_mutex>
 #include <mutex>
+#include <shared_mutex>
 #include <unordered_map>
 
 namespace uitsl {

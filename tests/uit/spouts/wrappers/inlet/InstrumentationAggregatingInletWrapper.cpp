@@ -5,8 +5,8 @@
 #include "uit/setup/ImplSelect.hpp"
 #include "uit/setup/ImplSpec.hpp"
 #include "uit/spouts/Inlet.hpp"
-#include "uit/spouts/wrappers/InstrumentationAggregatingSpoutWrapper.hpp"
 #include "uit/spouts/wrappers/inlet/InstrumentationAggregatingInletWrapper.hpp"
+#include "uit/spouts/wrappers/InstrumentationAggregatingSpoutWrapper.hpp"
 
 TEST_CASE("Test InstrumentationAggregatingInletWrapper") {
 

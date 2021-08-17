@@ -2,8 +2,8 @@
 #ifndef UITSL_CONTAINERS_SAFE_UNORDERED_SET_HPP_INCLUDE
 #define UITSL_CONTAINERS_SAFE_UNORDERED_SET_HPP_INCLUDE
 
-#include <shared_mutex>
 #include <mutex>
+#include <shared_mutex>
 #include <unordered_set>
 
 namespace uitsl {
