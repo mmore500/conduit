@@ -272,8 +272,8 @@ void audit_grid(
     const auto & which = grid[tile];
 
     attempted_write_count = which.GetNumPutsAttempted();
-    blocked_write_count = which.GetBlockedPutCount();
-    dropped_write_count = which.GetDroppedPutCount();
+    blocked_write_count = which.GetNumPutsThatBlocked();
+    dropped_write_count = which.GetNumDroppedPuts();
     read_count = which.GetNumReadsPerformed();
     read_revision_count = which.GetReadRevisionCount();
     net_flux = which.GetNetFluxThroughDuct();

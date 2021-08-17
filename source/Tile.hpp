@@ -77,9 +77,9 @@ public:
 
   size_t GetAttemptedPutCount() const { return output.GetNumPutsAttempted(); }
 
-  size_t GetBlockedPutCount() const { return output.GetBlockedPutCount(); }
+  size_t GetBlockedPutCount() const { return output.GetNumPutsThatBlocked(); }
 
-  size_t GetDroppedPutCount() const { return output.GetDroppedPutCount(); }
+  size_t GetDroppedPutCount() const { return output.GetNumDroppedPuts(); }
 
   size_t GetNumReadsPerformed() const { return input.GetNumReadsPerformed(); }
 
