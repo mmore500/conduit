@@ -172,6 +172,7 @@ uitsl/concurrent/ThreadSafeIbarrierRequest.cpp
 uitsl/containers/safe/deque.cpp
 uitsl/containers/safe/list.cpp
 uitsl/containers/safe/unordered_map.cpp
+uitsl/containers/safe/unordered_set.cpp
 uitsl/containers/safe/vector.cpp
 uitsl/countdown/ProgressBar.cpp
 uitsl/datastructs/MirroredRingBuffer.cpp
