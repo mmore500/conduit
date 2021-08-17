@@ -19,6 +19,9 @@ class deque {
 
 
 public:
+
+  std::shared_mutex& GetMutex() const { return mutex; }
+
   // types
   using value_type = typename impl_t::value_type;
   using allocator_type = typename impl_t::allocator_type;

@@ -42,6 +42,8 @@ class unordered_map {
 
 public:
 
+  std::shared_mutex& GetMutex() const { return mutex; }
+
   using allocator_type = typename impl_t::allocator_type;
   using const_iterator = typename impl_t::const_iterator;
   using const_local_iterator = typename impl_t::const_local_iterator;

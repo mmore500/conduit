@@ -36,6 +36,9 @@ class unordered_set {
   impl_t impl;
 
 public:
+
+  std::shared_mutex& GetMutex() const { return mutex; }
+
   // types
   using key_type = typename impl_t::key_type;
   using value_type = typename impl_t::value_type;
