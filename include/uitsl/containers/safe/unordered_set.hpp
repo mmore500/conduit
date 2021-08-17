@@ -309,13 +309,21 @@ public:
 
   bool contains(const key_type& k) const {
     const std::shared_lock lock{ mutex };
-    return impl.contains(k);
+    #if __cplusplus >= 202002L
+      return impl.contains(k);
+    #else // #if __cplusplus >= 202002L
+      return impl.count(k);
+    #endif // #if __cplusplus >= 202002L
   }
 
   template<class K>
   bool contains(const K& k) const {
     const std::shared_lock lock{ mutex };
-    return impl.contains(k);
+    #if __cplusplus >= 202002L
+      return impl.contains(k);
+    #else // #if __cplusplus >= 202002L
+      return impl.count(k);
+    #endif // #if __cplusplus >= 202002L
   }
 
   std::pair<iterator, iterator> equal_range(const key_type& k) {
