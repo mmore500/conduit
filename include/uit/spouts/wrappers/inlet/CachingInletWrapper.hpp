@@ -126,55 +126,61 @@ public:
 
   }
 
-  bool TryFlush() { return inlet.TryFlush(); }
+  decltype(auto) TryFlush() { return inlet.TryFlush(); }
 
   void Flush() { inlet.Flush(); }
 
-  size_t GetNumPutsAttempted() const { return inlet.GetNumPutsAttempted(); }
+  decltype(auto) GetNumPutsAttempted() const { return inlet.GetNumPutsAttempted(); }
 
-  size_t GetNumTryPutsAttempted() const {
+  decltype(auto) GetNumTryPutsAttempted() const {
     return inlet.GetNumTryPutsAttempted();
   }
 
-  size_t GetNumBlockingPuts() const { return inlet.GetNumBlockingPuts(); }
+  decltype(auto) GetNumBlockingPuts() const { return
+    inlet.GetNumBlockingPuts();
+  }
 
-  size_t GetNumTryPutsThatSucceeded() const {
+  decltype(auto) GetNumTryPutsThatSucceeded() const {
     return inlet.GetNumTryPutsThatSucceeded();
   }
 
-  size_t GetNumPutsThatSucceededEventually() const {
+  decltype(auto) GetNumPutsThatSucceededEventually() const {
     return inlet.GetNumPutsThatSucceededEventually();
   }
 
-  size_t GetNumBlockingPutsThatSucceededImmediately() const {
+  decltype(auto) GetNumBlockingPutsThatSucceededImmediately() const {
     return inlet.GetNumBlockingPutsThatSucceededImmediately();
   }
 
-  size_t GetNumPutsThatSucceededImmediately() const {
+  decltype(auto) GetNumPutsThatSucceededImmediately() const {
     return inlet.GetNumPutsThatSucceededImmediately();
   }
 
-  size_t GetNumPutsThatBlocked() const { return inlet.GetNumPutsThatBlocked(); }
+  decltype(auto) GetNumPutsThatBlocked() const { return
+    inlet.GetNumPutsThatBlocked();
+  }
 
-  size_t GetNumDroppedPuts() const { return inlet.GetNumPutsThatBlocked(); }
+  decltype(auto) GetNumDroppedPuts() const { return
+    inlet.GetNumPutsThatBlocked();
+  }
 
-  double GetFractionTryPutsDropped() const {
+  decltype(auto) GetFractionTryPutsDropped() const {
     return inlet.GetFractionTryPutsDropped();
   }
 
-  double GetFractionTryPutsThatSucceeded() const {
+  decltype(auto) GetFractionTryPutsThatSucceeded() const {
     return inlet.GetFractionTryPutsThatSucceeded();
   }
 
-  double GetFractionBlockingPutsThatBlocked() const {
+  decltype(auto) GetFractionBlockingPutsThatBlocked() const {
     return inlet.GetFractionBlockingPutsThatBlocked();
   }
 
-  double GetFractionPutsThatSucceededEventually() const {
+  decltype(auto) GetFractionPutsThatSucceededEventually() const {
     return inlet.GetFractionPutsThatSucceededEventually();
   }
 
-  double GetFractionPutsThatSucceededImmediately() const {
+  decltype(auto) GetFractionPutsThatSucceededImmediately() const {
     return inlet.GetFractionPutsThatSucceededImmediately();
   }
 

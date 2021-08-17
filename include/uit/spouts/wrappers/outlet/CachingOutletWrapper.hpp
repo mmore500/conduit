@@ -141,117 +141,119 @@ public:
     : std::nullopt;
   }
 
-  size_t GetNumReadsPerformed() const { return outlet.GetNumReadsPerformed(); }
+  decltype(auto) GetNumReadsPerformed() const { return
+    outlet.GetNumReadsPerformed();
+  }
 
-  size_t GetNumReadsThatWereFresh() const {
+  decltype(auto) GetNumReadsThatWereFresh() const {
     return outlet.GetNumReadsThatWereFresh();
   }
 
-  size_t GetNumReadsThatWereStale() const {
+  decltype(auto) GetNumReadsThatWereStale() const {
     return outlet.GetNumReadsThatWereStale();
   }
 
-  size_t GetNumRevisionsPulled() const {
+  decltype(auto) GetNumRevisionsPulled() const {
     return outlet.GetNumRevisionsPulled();
   }
 
-  size_t GetNumTryPullsAttempted() const {
+  decltype(auto) GetNumTryPullsAttempted() const {
     return outlet.GetNumTryPullsAttempted();
   }
 
-  size_t GetNumBlockingPulls() const {
+  decltype(auto) GetNumBlockingPulls() const {
     return outlet.GetNumBlockingPulls();
   }
 
-  size_t GetNumBlockingPullsThatBlocked() const {
+  decltype(auto) GetNumBlockingPullsThatBlocked() const {
     return outlet.GetNumBlockingPullsThatBlocked();
   }
 
-  size_t GetNumRevisionsFromTryPulls() const {
+  decltype(auto) GetNumRevisionsFromTryPulls() const {
     return outlet.GetNumRevisionsFromTryPulls();
   }
 
-  size_t GetNumRevisionsFromBlockingPulls() const {
+  decltype(auto) GetNumRevisionsFromBlockingPulls() const {
     return outlet.GetNumRevisionsFromBlockingPulls();
   }
 
-  size_t GetNumPullsAttempted() const {
+  decltype(auto) GetNumPullsAttempted() const {
     return outlet.GetNumPullsAttempted();
   }
 
-  size_t GetNumPullsThatWereLadenEventually() const {
+  decltype(auto) GetNumPullsThatWereLadenEventually() const {
     return outlet.GetNumPullsThatWereLadenEventually();
   }
 
-  size_t GetNumBlockingPullsThatWereLadenImmediately() const {
+  decltype(auto) GetNumBlockingPullsThatWereLadenImmediately() const {
     return outlet.GetNumBlockingPullsThatWereLadenImmediately();
   }
 
-  size_t GetNumBlockingPullsThatWereLadenEventually() const {
+  decltype(auto) GetNumBlockingPullsThatWereLadenEventually() const {
     return outlet.GetNumBlockingPullsThatWereLadenEventually();
   }
 
-  size_t GetNumPullsThatWereLadenImmediately() const {
+  decltype(auto) GetNumPullsThatWereLadenImmediately() const {
     return outlet.GetNumPullsThatWereLadenImmediately();
   }
 
-  size_t GetNumTryPullsThatWereLaden() const {
+  decltype(auto) GetNumTryPullsThatWereLaden() const {
     return outlet.GetNumTryPullsThatWereLaden();
   }
 
-  size_t GetNumTryPullsThatWereUnladen() const {
+  decltype(auto) GetNumTryPullsThatWereUnladen() const {
     return outlet.GetNumTryPullsThatWereUnladen();
   }
 
-  double GetFractionTryPullsThatWereLaden() const {
+  decltype(auto) GetFractionTryPullsThatWereLaden() const {
     return outlet.GetFractionTryPullsThatWereLaden();
   }
 
-  double GetFractionTryPullsThatWereUnladen() const {
+  decltype(auto) GetFractionTryPullsThatWereUnladen() const {
     return outlet.GetFractionTryPullsThatWereUnladen();
   }
 
-  double GetFractionBlockingPullsThatBlocked() const {
+  decltype(auto) GetFractionBlockingPullsThatBlocked() const {
     return outlet.GetFractionBlockingPullsThatBlocked();
   }
 
-  double GetFractionBlockingPullsThatWereLadenImmediately() const {
+  decltype(auto) GetFractionBlockingPullsThatWereLadenImmediately() const {
     return outlet.GetFractionBlockingPullsThatWereLadenImmediately();
   }
 
-  double GetFractionPullsThatWereLadenImmediately() const {
+  decltype(auto) GetFractionPullsThatWereLadenImmediately() const {
     return outlet.GetFractionPullsThatWereLadenImmediately();
   }
 
-  double GetFractionPullsThatWereLadenEventually() const {
+  decltype(auto) GetFractionPullsThatWereLadenEventually() const {
     return outlet.GetFractionPullsThatWereLadenEventually();
   }
 
-  size_t GetNetFluxThroughDuct() const {
+  decltype(auto) GetNetFluxThroughDuct() const {
     return outlet.GetNetFluxThroughDuct();
   }
 
-  double GetFractionReadsThatWereFresh() const {
+  decltype(auto) GetFractionReadsThatWereFresh() const {
     return outlet.GetFractionReadsThatWereFresh();
   }
 
-  double GetFractionRevisionsThatWereRead() const {
+  decltype(auto) GetFractionRevisionsThatWereRead() const {
     return outlet.GetFractionRevisionsThatWereRead();
   }
 
-  double GetFractionRevisionsThatWereNotRead() const {
+  decltype(auto) GetFractionRevisionsThatWereNotRead() const {
     return outlet.GetFractionRevisionsThatWereNotRead();
   }
 
-  double GetFractionDuctFluxThatWasSteppedThrough() const {
+  decltype(auto) GetFractionDuctFluxThatWasSteppedThrough() const {
     return outlet.GetFractionDuctFluxThatWasSteppedThrough();
   }
 
-  double GetFractionDuctFluxThatWasJumpedOver() const {
+  decltype(auto) GetFractionDuctFluxThatWasJumpedOver() const {
     return outlet.GetFractionDuctFluxThatWasJumpedOver();
   }
 
-  double GetFractionDuctFluxThatWasRead() const {
+  decltype(auto) GetFractionDuctFluxThatWasRead() const {
     return outlet.GetFractionDuctFluxThatWasRead();
   }
 
