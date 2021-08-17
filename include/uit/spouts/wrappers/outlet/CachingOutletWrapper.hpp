@@ -141,8 +141,8 @@ public:
     : std::nullopt;
   }
 
-  decltype(auto) GetNumReadsPerformed() const { return
-    outlet.GetNumReadsPerformed();
+  decltype(auto) GetNumReadsPerformed() const {
+    return outlet.GetNumReadsPerformed();
   }
 
   decltype(auto) GetNumReadsThatWereFresh() const {
@@ -269,15 +269,13 @@ public:
 
   auto GetDuctUID() const { return outlet.GetUID(); }
 
-  emp::optional<bool> HoldsIntraImpl() const { return outlet.HoldsIntraImpl(); }
+  decltype(auto) HoldsIntraImpl() const { return outlet.HoldsIntraImpl(); }
 
-  emp::optional<bool> HoldsThreadImpl() const {
-    return outlet.HoldsThreadImpl();
-  }
+  decltype(auto) HoldsThreadImpl() const { return outlet.HoldsThreadImpl(); }
 
-  emp::optional<bool> HoldsProcImpl() const { return outlet.HoldsProcImpl(); }
+  decltype(auto) HoldsProcImpl() const { return outlet.HoldsProcImpl(); }
 
-  bool CanStep() const { return outlet.CanStep(); }
+  decltype(auto) CanStep() const { return outlet.CanStep(); }
 
 };
 

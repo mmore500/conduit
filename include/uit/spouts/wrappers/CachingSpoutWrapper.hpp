@@ -3,7 +3,6 @@
 #define UIT_SPOUTS_WRAPPERS_CACHINGSPOUTWRAPPER_HPP_INCLUDE
 
 #include "../../../uitsl/distributed/CachePacket.hpp"
-#include "../../../uitsl/meta/IdentityWrapper.hpp"
 
 #include "inlet/CachingInletWrapper.hpp"
 #include "outlet/CachingOutletWrapper.hpp"
