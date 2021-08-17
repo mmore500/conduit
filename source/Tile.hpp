@@ -75,11 +75,13 @@ public:
     FlushState();
   }
 
-  size_t GetAttemptedPutCount() const { return output.GetNumPutsAttempted(); }
+  size_t GetNumPutsAttempted() const { return output.GetNumPutsAttempted(); }
 
-  size_t GetBlockedPutCount() const { return output.GetNumPutsThatBlocked(); }
+  size_t GetNumPutsThatBlocked() const {
+    return output.GetNumPutsThatBlocked();
+  }
 
-  size_t GetDroppedPutCount() const { return output.GetNumDroppedPuts(); }
+  size_t GetNumDroppedPuts() const { return output.GetNumDroppedPuts(); }
 
   size_t GetNumReadsPerformed() const { return input.GetNumReadsPerformed(); }
 
