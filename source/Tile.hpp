@@ -75,7 +75,7 @@ public:
     FlushState();
   }
 
-  size_t GetAttemptedPutCount() const { return output.GetAttemptedPutCount(); }
+  size_t GetAttemptedPutCount() const { return output.GetNumPutsAttempted(); }
 
   size_t GetBlockedPutCount() const { return output.GetBlockedPutCount(); }
 
