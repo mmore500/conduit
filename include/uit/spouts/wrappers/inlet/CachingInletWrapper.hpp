@@ -196,13 +196,35 @@ public:
 
   auto GetDuctUID() const { return inlet.GetUID(); }
 
-  emp::optional<bool> HoldsIntraImpl() const { return inlet.HoldsIntraImpl(); }
+  decltype(auto) HoldsIntraImpl() const { return inlet.HoldsIntraImpl(); }
 
-  emp::optional<bool> HoldsThreadImpl() const {
+  decltype(auto) HoldsThreadImpl() const {
     return inlet.HoldsThreadImpl();
   }
 
-  emp::optional<bool> HoldsProcImpl() const { return inlet.HoldsProcImpl(); }
+  decltype(auto) HoldsProcImpl() const { return inlet.HoldsProcImpl(); }
+
+  decltype(auto) WhichImplHeld() const { return inlet.WhichImplHeld(); }
+
+  void RegisterInletProc(const uitsl::proc_id_t proc) const {
+    inlet.RegisterInletProc(proc);
+  }
+
+  void RegisterInletThread(const uitsl::thread_id_t thread) const {
+    inlet.RegisterInletThread(thread);
+  }
+
+  decltype(auto) LookupOutletProc() const { return inlet.LookupOutletProc(); }
+
+  decltype(auto) LookupOutletThread() const {
+    return inlet.LookupOutletThread();
+  }
+
+  decltype(auto) LookupInletProc() const { return inlet.LookupInletProc(); }
+
+  decltype(auto) LookupInletThread() const {
+    return inlet.LookupInletThread();
+  }
 
 };
 

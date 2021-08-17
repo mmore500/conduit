@@ -275,7 +275,30 @@ public:
 
   decltype(auto) HoldsProcImpl() const { return outlet.HoldsProcImpl(); }
 
+  decltype(auto) WhichImplHeld() const { return outlet.WhichImplHeld(); }
+
   decltype(auto) CanStep() const { return outlet.CanStep(); }
+
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    outlet.RegisterOutletProc(proc);
+  }
+
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    outlet.RegisterOutletThread(thread);
+  }
+
+
+  decltype(auto) LookupOutletProc() const { return outlet.LookupOutletProc(); }
+
+  decltype(auto) LookupOutletThread() const {
+    return outlet.LookupOutletThread();
+  }
+
+  decltype(auto) LookupInletProc() const { return outlet.LookupInletProc(); }
+
+  decltype(auto) LookupInletThread() const {
+    return outlet.LookupInletThread();
+  }
 
 };
 

@@ -16,7 +16,9 @@
 #include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/meta/HasMemberFunction.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/parallel/thread_utils.hpp"
 #include "../../uitsl/utility/print_utils.hpp"
+#include "../../uitsl/containers/safe/unordered_map.hpp"
 
 namespace uit {
 namespace internal {
@@ -119,25 +121,35 @@ class Duct {
     ) > 1;
   }
 
+  using uid_t_ = std::uintptr_t;
+
+  using t_registry_t = uitsl::safe::unordered_map<uid_t_, uitsl::proc_id_t>;
+  inline static t_registry_t inlet_thread_registry;
+  inline static t_registry_t outlet_thread_registry;
+
+  using p_registry_t = uitsl::safe::unordered_map<uid_t_, uitsl::thread_id_t>;
+  inline static p_registry_t inlet_proc_registry;
+  inline static p_registry_t outlet_proc_registry;
+
 public:
 
   /// TODO.
-  using uid_t = std::uintptr_t;
+  using uid_t = uid_t_;
 
   /**
    * Copy constructor.
    */
-  Duct(Duct& other) = default;
+  Duct(Duct& other) = delete;
 
   /**
    * Copy constructor.
    */
-  Duct(const Duct& other) = default;
+  Duct(const Duct& other) = delete;
 
   /**
    * Move constructor.
    */
-  Duct(Duct&& other) = default;
+  Duct(Duct&& other) = delete;
 
   /**
    * Forwarding constructor.
@@ -289,6 +301,18 @@ public:
    *
    * @return TODO.
    */
+  std::string WhichImplHeld() const {
+    if ( HoldsIntraImpl().value_or(false) ) return "intra";
+    else if ( HoldsThreadImpl().value_or(false) ) return "thread";
+    else if ( HoldsProcImpl().value_or(false) ) return "proc";
+    else return "ambiguous";
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   uid_t GetUID() const { return reinterpret_cast<uid_t>(this); }
 
   bool CanStep() const {
@@ -302,6 +326,54 @@ public:
       },
       impl
     );
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterInletProc(const uitsl::proc_id_t proc) const {
+    inlet_proc_registry[GetUID()] = proc;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    outlet_proc_registry[GetUID()] = proc;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterInletThread(const uitsl::thread_id_t thread) const {
+    inlet_thread_registry[GetUID()] = thread;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    outlet_thread_registry[GetUID()] = thread;
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupInletProc() const {
+    return inlet_proc_registry.contains( GetUID() )
+      ? emp::optional<uitsl::proc_id_t>{ inlet_proc_registry.at( GetUID() ) }
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
+    return outlet_proc_registry.contains( GetUID() )
+      ? emp::optional<uitsl::proc_id_t>{ outlet_proc_registry.at( GetUID() ) }
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupInletThread() const {
+    return inlet_thread_registry.contains( GetUID() )
+      ? emp::optional<uitsl::thread_id_t>{inlet_thread_registry.at( GetUID() )}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupOutletThread() const {
+    return outlet_thread_registry.contains( GetUID() )
+      ? emp::optional<uitsl::thread_id_t>{outlet_thread_registry.at( GetUID() )}
+      : std::nullopt
+    ;
   }
 
   /**

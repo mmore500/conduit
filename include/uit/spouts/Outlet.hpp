@@ -572,7 +572,35 @@ public:
 
   emp::optional<bool> HoldsProcImpl() const { return duct->HoldsProcImpl(); }
 
+  std::string WhichImplHeld() const { return duct->WhichImplHeld(); }
+
   bool CanStep() const { return duct->CanStep(); }
+
+  // exclusively for instrumentation purposes
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    duct->RegisterOutletProc(proc);
+  }
+
+  // exclusively for instrumentation purposes
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    duct->RegisterOutletThread(thread);
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
+    return duct->LookupOutletProc();
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupOutletThread() const {
+    return duct->LookupOutletThread();
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupInletProc() const {
+    return duct->LookupInletProc();
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupInletThread() const {
+    return duct->LookupInletThread();
+  }
 
   /**
    * TODO.
