@@ -156,12 +156,12 @@ public:
     return inlet.GetNumPutsThatSucceededImmediately();
   }
 
-  decltype(auto) GetNumPutsThatBlocked() const { return
-    inlet.GetNumPutsThatBlocked();
+  decltype(auto) GetNumPutsThatBlocked() const {
+    return inlet.GetNumPutsThatBlocked();
   }
 
-  decltype(auto) GetNumDroppedPuts() const { return
-    inlet.GetNumPutsThatBlocked();
+  decltype(auto) GetNumDroppedPuts() const {
+    return inlet.GetNumDroppedPuts();
   }
 
   decltype(auto) GetFractionTryPutsDropped() const {
