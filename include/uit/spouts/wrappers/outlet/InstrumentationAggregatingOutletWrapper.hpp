@@ -428,199 +428,208 @@ class InstrumentationAggregatingOutletWrapper {
         );
       } );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumPutsAttempted(); },
+        [](const auto outlet_ptr){ return outlet_ptr->WhichImplHeld(); },
         "Which Impl"
       );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumReadsPerformed(); },
+        [](const auto outlet_ptr){ return outlet_ptr->GetNumReadsPerformed(); },
         "Num Reads Performed"
       );
        res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumReadsThatWereFresh(); },
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumReadsThatWereFresh();
+        },
         "Num Reads That Were Fresh"
       );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumReadsThatWereStale(); },
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumReadsThatWereStale();
+        },
         "Num Reads That Were Stale"
       );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumRevisionsPulled(); },
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumRevisionsPulled();
+        },
         "Num Revisions Pulled"
       );
        res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumTryPullsAttempted(); },
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumTryPullsAttempted();
+        },
         "Num Try Pulls Attempted"
       );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumBlockingPulls(); },
+        [](const auto outlet_ptr){ return outlet_ptr->GetNumBlockingPulls(); },
         "Num Blocking Pulls"
       );
        res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetNumBlockingPullsThatBlocked();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumBlockingPullsThatBlocked();
         },
         "Num Blocking Pulls That Blocked"
       );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumRevisionsFromTryPulls(); },
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumRevisionsFromTryPulls();
+        },
         "Num Revisions From Try Pulls"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetNumRevisionsFromBlockingPulls();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumRevisionsFromBlockingPulls();
         },
         "Num Revisions From Blocking Pulls"
       );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumPullsAttempted(); },
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumPullsAttempted();
+        },
         "Num Pulls Attempted"
       );
        res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetNumPullsThatWereLadenEventually();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumPullsThatWereLadenEventually();
         },
         "Num Pulls That Were Laden Eventually"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetNumBlockingPullsThatWereLadenImmediately();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumBlockingPullsThatWereLadenImmediately();
         },
         "Num Blocking Pulls That Were Laden Immediately"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetNumBlockingPullsThatWereLadenEventually();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumBlockingPullsThatWereLadenEventually();
         },
         "Num Blocking Pulls That Were Laden Eventually"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetNumPullsThatWereLadenImmediately();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumPullsThatWereLadenImmediately();
         },
         "Num Pulls That Were Laden Immediately"
       );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNumTryPullsThatWereLaden(); },
+        [](const auto outlet_ptr){ return outlet_ptr->GetNumTryPullsThatWereLaden(); },
         "Num Try Pulls That Were Laden"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetNumTryPullsThatWereUnladen();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNumTryPullsThatWereUnladen();
         },
         "Num Try Pulls That Were Unladen"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionTryPullsThatWereLaden();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionTryPullsThatWereLaden();
         },
         "Fraction Try Pulls That Were Laden"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionTryPullsThatWereUnladen();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionTryPullsThatWereUnladen();
         },
         "Fraction Try Pulls That Were Unladen"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionBlockingPullsThatBlocked();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionBlockingPullsThatBlocked();
         },
         "Fraction Blocking Pulls That Blocked "
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionBlockingPullsThatWereLadenImmediately();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionBlockingPullsThatWereLadenImmediately();
         },
         "Fraction Blocking Pulls That Were Laden Immediately"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionBlockingPullsThatWereLadenEventually();
-        },
-        "Fraction Blocking Pulls That Were Laden Eventually"
-      );
-      res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionPullsThatWereLadenImmediately();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionPullsThatWereLadenImmediately();
         },
         "Fraction Pulls That Were Laden Immediately"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionPullsThatWereLadenEventually();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionPullsThatWereLadenEventually();
         },
         "Fraction Pulls That Were Laden Eventually"
       );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetNetFluxThroughDuct(); },
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetNetFluxThroughDuct();
+        },
         "Net Flux Through Duct "
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionReadsThatWereFresh();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionReadsThatWereFresh();
         },
         "Fraction Reads That Were Fresh "
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionReadsThatWereStale();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionReadsThatWereStale();
         },
         "Fraction Reads That Were Stale "
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionRevisionsThatWereRead();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionRevisionsThatWereRead();
         },
         "Fraction Revisions That Were Read "
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionRevisionsThatWereNotRead();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionRevisionsThatWereNotRead();
         },
         "Fraction Revisions That Were Not Read"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionDuctFluxThatWasSteppedThrough();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionDuctFluxThatWasSteppedThrough();
         },
         "Fraction Duct Flux That Was Stepped Through"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionDuctFluxThatWasJumpedOver();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionDuctFluxThatWasJumpedOver();
         },
         "Fraction Duct Flux That Was Jumped Over"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          return outlet.GetFractionDuctFluxThatWasRead();
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetFractionDuctFluxThatWasRead();
         },
         "Fraction Duct Flux That Was Read"
       );
       res.AddContainerFun(
-        [](const auto& outlet){ return outlet.GetHeldImpl(); }, "Held Impl"
+        [](const auto outlet_ptr){ return outlet_ptr->WhichImplHeld(); },
+        "Held Impl"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          const auto res = outlet.LookupInletProc();
+        [](const auto outlet_ptr){
+          const auto res = outlet_ptr->LookupInletProc();
           return res.has_value() ? emp::to_string(*res) : "null";
         }, "Inlet Proc"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          const auto res = outlet.LookupOutletProc();
+        [](const auto outlet_ptr){
+          const auto res = outlet_ptr->LookupOutletProc();
           return res.has_value() ? emp::to_string(*res) : "null";
         }, "Outlet Proc"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          const auto res = outlet.LookupInletThread();
+        [](const auto outlet_ptr){
+          const auto res = outlet_ptr->LookupInletThread();
           return res.has_value() ? emp::to_string(*res) : "null";
         }, "Inlet Thread"
       );
       res.AddContainerFun(
-        [](const auto& outlet){
-          const auto res = outlet.LookupOutletThread();
+        [](const auto outlet_ptr){
+          const auto res = outlet_ptr->LookupOutletThread();
           return res.has_value() ? emp::to_string(*res) : "null";
         }, "Outlet Thread"
       );

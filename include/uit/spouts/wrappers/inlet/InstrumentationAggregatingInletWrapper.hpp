@@ -232,103 +232,104 @@ class InstrumentationAggregatingInletWrapper {
         );
       } );
       res.AddContainerFun(
-        [](const auto& inlet){ return inlet.GetNumPutsAttempted(); },
+        [](const auto inlet_ptr){ return inlet_ptr->WhichImplHeld(); },
         "Which Impl"
       );
       res.AddContainerFun(
-        [](const auto& inlet){ return inlet.GetNumPutsAttempted(); },
+        [](const auto inlet_ptr){ return inlet_ptr->GetNumPutsAttempted(); },
         "Num Puts Attempted"
       );
       res.AddContainerFun(
-        [](const auto& inlet){ return inlet.GetNumTryPutsAttempted(); },
+        [](const auto inlet_ptr){ return inlet_ptr->GetNumTryPutsAttempted(); },
         "Num Try Puts Attempted"
       );
       res.AddContainerFun(
-        [](const auto& inlet){ return inlet.GetNumBlockingPuts(); },
+        [](const auto inlet_ptr){ return inlet_ptr->GetNumBlockingPuts(); },
         "Num Blocking Puts"
       );
       res.AddContainerFun(
-        [](const auto& inlet){ return inlet.GetNumTryPutsThatSucceeded(); },
+        [](const auto inlet_ptr){ return inlet_ptr->GetNumTryPutsThatSucceeded(); },
         "Num Try Puts That Succeeded"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          return inlet.GetNumPutsThatSucceededEventually();
+        [](const auto inlet_ptr){
+          return inlet_ptr->GetNumPutsThatSucceededEventually();
         },
         "Num Puts That Succeeded Eventually"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          return inlet.GetNumBlockingPutsThatSucceededImmediately();
+        [](const auto inlet_ptr){
+          return inlet_ptr->GetNumBlockingPutsThatSucceededImmediately();
         },
         "Num Blocking Puts ThatSucceeded Immediately"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          return inlet.GetNumPutsThatSucceededImmediately();
+        [](const auto inlet_ptr){
+          return inlet_ptr->GetNumPutsThatSucceededImmediately();
         },
         "Num Puts That Succeeded Immediately"
       );
       res.AddContainerFun(
-        [](const auto& inlet){ return inlet.GetNumPutsThatBlocked(); },
+        [](const auto inlet_ptr){ return inlet_ptr->GetNumPutsThatBlocked(); },
         "Num Puts That Blocked"
       );
       res.AddContainerFun(
-        [](const auto& inlet){ return inlet.GetNumDroppedPuts(); },
+        [](const auto inlet_ptr){ return inlet_ptr->GetNumDroppedPuts(); },
         "Num Dropped Puts"
       );
       res.AddContainerFun(
-        [](const auto& inlet){ return inlet.GetFractionTryPutsDropped(); },
+        [](const auto inlet_ptr){ return inlet_ptr->GetFractionTryPutsDropped(); },
         "Fraction Try Puts Dropped"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          return inlet.GetFractionTryPutsThatSucceeded();
+        [](const auto inlet_ptr){
+          return inlet_ptr->GetFractionTryPutsThatSucceeded();
         },
         "Fraction Try Puts That Succeeded"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          return inlet.GetFractionBlockingPutsThatBlocked();
+        [](const auto inlet_ptr){
+          return inlet_ptr->GetFractionBlockingPutsThatBlocked();
         },
         "Get Fraction Blocking Puts That Blocked"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          return inlet.GetFractionPutsThatSucceededEventually();
+        [](const auto inlet_ptr){
+          return inlet_ptr->GetFractionPutsThatSucceededEventually();
         },
         "Fraction Puts That Succeeded Eventually"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          return inlet.GetFractionPutsThatSucceededImmediately();
+        [](const auto inlet_ptr){
+          return inlet_ptr->GetFractionPutsThatSucceededImmediately();
         },
         "Fraction Puts That Succeeded Immediately"
       );
       res.AddContainerFun(
-        [](const auto& inlet){ return inlet.GetHeldImpl(); }, "Held Impl"
+        [](const auto inlet_ptr){ return inlet_ptr->WhichImplHeld(); },
+        "Held Impl"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          const auto res = inlet.LookupInletProc();
+        [](const auto inlet_ptr){
+          const auto res = inlet_ptr->LookupInletProc();
           return res.has_value() ? emp::to_string(*res) : "null";
         }, "Inlet Proc"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          const auto res = inlet.LookupOutletProc();
+        [](const auto inlet_ptr){
+          const auto res = inlet_ptr->LookupOutletProc();
           return res.has_value() ? emp::to_string(*res) : "null";
         }, "Outlet Proc"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          const auto res = inlet.LookupInletThread();
+        [](const auto inlet_ptr){
+          const auto res = inlet_ptr->LookupInletThread();
           return res.has_value() ? emp::to_string(*res) : "null";
         }, "Inlet Thread"
       );
       res.AddContainerFun(
-        [](const auto& inlet){
-          const auto res = inlet.LookupOutletThread();
+        [](const auto inlet_ptr){
+          const auto res = inlet_ptr->LookupOutletThread();
           return res.has_value() ? emp::to_string(*res) : "null";
         }, "Outlet Thread"
       );
