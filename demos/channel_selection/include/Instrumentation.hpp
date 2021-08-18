@@ -22,6 +22,7 @@ class Instrumentation {
     df.AddVar(update, "Update");
     df.AddVar(snapshot, "Snapshot");
     df.AddVal(cfg.REPLICATE(), "Replicate");
+    df.AddVal(cfg.ASYNCHRONOUS(), "Async Mode");
     return df;
   }
 
@@ -36,6 +37,7 @@ class Instrumentation {
           inlet_t::thread::MakeContainerDataFile(
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "thread"},
               {"subject", "inlet"},
               {"view", "container"},
@@ -55,6 +57,7 @@ class Instrumentation {
           inlet_t::thread::MakeSummaryDataFile(
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "thread"},
               {"subject", "inlet"},
               {"view", "summary"},
@@ -78,6 +81,7 @@ class Instrumentation {
           inlet_t::proc::MakeContainerDataFile(
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "proc"},
               {"subject", "inlet"},
               {"view", "container"},
@@ -97,6 +101,7 @@ class Instrumentation {
           inlet_t::proc::MakeSummaryDataFile(
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "proc"},
               {"subject", "inlet"},
               {"view", "summary"},
