@@ -60,7 +60,7 @@ public:
     };
     uitsl::CoarseRealTimer timer_sync{ std::chrono::milliseconds{ 10 } };
 
-    for ( const auto __ : timer ) { // begin benchmarking loop
+    for ( [[maybe_unused]] const auto __ : timer ) { // begin benchmarking loop
       ++update_counter;
       collection.Update(use_intra);
 
