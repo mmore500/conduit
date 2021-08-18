@@ -7,6 +7,7 @@
 
 #include "netuit/arrange/ToroidalTopologyFactory.hpp"
 #include "netuit/assign/GenerateMetisAssignments.hpp"
+#include "uitsl/chrono/ClockDeltaDetector.hpp"
 #include "uitsl/containers/safe/unordered_map.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/distributed/do_successively.hpp"
@@ -73,7 +74,38 @@ int main(int argc, char* argv[]) {
 
     }
   );
-  team.Join();
+
+  auto inlet_container_thread_datafile
+  = inlet_instrumentation_aggregating_t::thread::MakeContainerDataFile(
+    "impl=thread+target=inlet+what=container+ext=.csv"
+  );
+  auto inlet_summary_thread_datafile
+  = inlet_instrumentation_aggregating_t::thread::MakeSummaryDataFile(
+    "impl=thread+target=inlet+what=summary+ext=.csv"
+  );
+  auto outlet_container_thread_datafile
+  = outlet_instrumentation_aggregating_t::thread::MakeContainerDataFile(
+    "impl=thread+target=outlet+what=container+ext=.csv"
+  );
+  auto outlet_summary_thread_datafile
+  = outlet_instrumentation_aggregating_t::thread::MakeSummaryDataFile(
+    "impl=thread+target=outlet+what=summary+ext=.csv"
+  );
+
+  inlet_container_thread_datafile.PrintHeaderKeys();
+  inlet_summary_thread_datafile.PrintHeaderKeys();
+  outlet_container_thread_datafile.PrintHeaderKeys();
+  outlet_summary_thread_datafile.PrintHeaderKeys();
+
+  uitsl::ClockDeltaDetector<> delta_sync;
+  while ( !team.TryJoin() ) {
+    if ( delta_sync.HasDeltaElapsed() ) {
+      inlet_container_thread_datafile.Update();
+      inlet_summary_thread_datafile.Update();
+      outlet_container_thread_datafile.Update();
+      outlet_summary_thread_datafile.Update();
+    }
+  }
 
   uitsl::do_successively(
     [&](){
