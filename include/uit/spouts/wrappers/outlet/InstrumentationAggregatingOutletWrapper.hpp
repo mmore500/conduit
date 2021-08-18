@@ -726,11 +726,11 @@ public:
     return outlet.TryStep( num_steps );
   }
 
-  decltype(auto) Jump() { outlet.Jump(); }
+  decltype(auto) Jump() { return outlet.Jump(); }
 
-  decltype(auto) Get() const { outlet.Get(); }
+  decltype(auto) Get() const { return outlet.Get(); }
 
-  decltype(auto) Get() { outlet.Get(); }
+  decltype(auto) Get() { return outlet.Get(); }
 
   decltype(auto) JumpGet() { return outlet.JumpGet(); }
 
