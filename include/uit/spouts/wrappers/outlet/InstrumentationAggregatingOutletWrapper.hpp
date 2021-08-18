@@ -18,6 +18,7 @@
 
 #include "../../../../uitsl/algorithm/accumulate_if.hpp"
 #include "../../../../uitsl/containers/safe/unordered_set.hpp"
+#include "../../../../uitsl/countdown/coarse_runtime.hpp"
 #include "../../../../uitsl/countdown/runtime.hpp"
 #include "../../../../uitsl/debug/WarnOnce.hpp"
 
@@ -409,7 +410,8 @@ class InstrumentationAggregatingOutletWrapper {
         "Fraction Duct Flux That Was Read"
       );
       res.AddFun(
-        [](){ return uitsl::runtime<>.GetElapsed().count(); }, "Runtime Seconds"
+        [](){ return uitsl::runtime<>.GetElapsed().count(); },
+        "Runtime Seconds"
       );
       return res;
     }
@@ -635,7 +637,7 @@ class InstrumentationAggregatingOutletWrapper {
         }, "Outlet Thread"
       );
       res.AddFun(
-        [](){ return uitsl::runtime<>.GetElapsed().count(); },
+        [](){ return uitsl::coarse_runtime<>.GetElapsed().count(); },
         "Runtime Seconds"
       );
       return res;
