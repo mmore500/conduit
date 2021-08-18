@@ -2,6 +2,7 @@
 #ifndef UIT_SPOUTS_WRAPPERS_OUTLET_INSTRUMENTATIONAGGREGATINGOUTLETWRAPPER_HPP_INCLUDE
 #define UIT_SPOUTS_WRAPPERS_OUTLET_INSTRUMENTATIONAGGREGATINGOUTLETWRAPPER_HPP_INCLUDE
 
+#include <algorithm>
 #include <cstddef>
 #include <memory>
 #include <shared_mutex>
@@ -301,10 +302,18 @@ class InstrumentationAggregatingOutletWrapper {
       );
     }
 
+    static size_t GetNumOutlets() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return std::count_if(
+        std::begin(registry), std::end(registry),
+        Filter{}
+      );
+    }
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
       res.AddVal(uitsl::get_proc_id(), "proc");
       res.AddVal(Filter::name(), "Impl Filter");
+      res.AddFun(GetNumOutlets, "Num Outlets");
       res.AddFun(GetNumReadsPerformed, "Num Reads Performed");
       res.AddFun(GetNumReadsThatWereFresh, "Num Reads That Were Fresh");
       res.AddFun(GetNumReadsThatWereStale, "Num Reads That Were Stale");

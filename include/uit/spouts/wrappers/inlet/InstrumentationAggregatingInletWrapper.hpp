@@ -2,6 +2,7 @@
 #ifndef UIT_SPOUTS_WRAPPERS_INLET_INSTRUMENTATIONAGGREGATINGINLETWRAPPER_HPP_INCLUDE
 #define UIT_SPOUTS_WRAPPERS_INLET_INSTRUMENTATIONAGGREGATINGINLETWRAPPER_HPP_INCLUDE
 
+#include <algorithm>
 #include <cstddef>
 #include <memory>
 #include <shared_mutex>
@@ -164,10 +165,19 @@ class InstrumentationAggregatingInletWrapper {
       );
     }
 
+    static size_t GetNumInlets() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return std::count_if(
+        std::begin(registry), std::end(registry),
+        Filter{}
+      );
+    }
+
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
       res.AddVal(uitsl::get_proc_id(), "proc");
       res.AddVal(Filter::name(), "Impl Filter");
+      res.AddFun(GetNumInlets, "Num Inlets");
       res.AddFun(GetNumPutsAttempted, "Num Puts Attempted");
       res.AddFun(GetNumTryPutsAttempted, "Num Try Puts Attempted");
       res.AddFun(GetNumBlockingPuts, "Num Blocking Puts");
