@@ -19,6 +19,7 @@ EMP_BUILD_CONFIG(
     "1: yes, "
     "2: yes and disable interthread, interproccess communication, "
   ),
+  VALUE(REPLICATE, size_t, 0, "What replicate are we currently running?"),
 
 
   GROUP(EXPERIMENT, "EXPERIMENT"),

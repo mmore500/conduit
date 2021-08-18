@@ -3,6 +3,7 @@
 #include <variant>
 
 #include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
+#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "uitsl/mpi/comm_utils.hpp"
 
@@ -16,8 +17,9 @@ class Instrumentation {
 
   template<typename DATAFILE>
   static auto AddBespokeColumns(DATAFILE df) {
-    df.AddVar(update, "update");
-    df.AddVar(snapshot, "snapshot");
+    df.AddVar(update, "Update");
+    df.AddVar(snapshot, "Snapshot");
+    df.AddVal(cfg.REPLICATE(), "Replicate");
     return df;
   }
 
@@ -35,6 +37,8 @@ class Instrumentation {
               {"impl", "thread"},
               {"subject", "inlet"},
               {"view", "container"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
               {"ext", ".csv"}
             })
           )
@@ -50,6 +54,8 @@ class Instrumentation {
               {"impl", "thread"},
               {"subject", "inlet"},
               {"view", "summary"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
               {"ext", ".csv"}
             })
           )
@@ -69,6 +75,8 @@ class Instrumentation {
               {"impl", "proc"},
               {"subject", "inlet"},
               {"view", "container"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
               {"ext", ".csv"}
             })
           )
@@ -84,6 +92,8 @@ class Instrumentation {
               {"impl", "proc"},
               {"subject", "inlet"},
               {"view", "summary"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
               {"ext", ".csv"}
             })
           )
@@ -109,6 +119,8 @@ class Instrumentation {
               {"impl", "thread"},
               {"subject", "outlet"},
               {"view", "container"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
               {"ext", ".csv"}
             })
           )
@@ -124,6 +136,8 @@ class Instrumentation {
               {"impl", "thread"},
               {"subject", "outlet"},
               {"view", "summary"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
               {"ext", ".csv"}
             })
           )
@@ -143,6 +157,8 @@ class Instrumentation {
               {"impl", "proc"},
               {"subject", "outlet"},
               {"view", "container"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
               {"ext", ".csv"}
             })
           )
@@ -158,6 +174,8 @@ class Instrumentation {
               {"impl", "proc"},
               {"subject", "outlet"},
               {"view", "summary"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
               {"ext", ".csv"}
             })
           )
