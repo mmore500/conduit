@@ -20,8 +20,8 @@
 
 #include "config/num_nodes.hpp"
 
-#include "Job.hpp"
 #include "Instrumentation.hpp"
+#include "Job.hpp"
 
 int main(int argc, char* argv[]) {
 

@@ -8,8 +8,8 @@
 #include <shared_mutex>
 #include <string>
 #include <string_view>
-#include <type_traits>
 #include <typeinfo>
+#include <type_traits>
 
 #include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../third-party/Empirical/include/emp/base/optional.hpp"
