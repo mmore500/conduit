@@ -6,6 +6,7 @@
 #include <memory>
 #include <shared_mutex>
 #include <string>
+#include <type_traits>
 #include <utility>
 
 #include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
@@ -214,10 +215,11 @@ class InstrumentationAggregatingInletWrapper {
       );
       res.SetFilterContainerFun( Filter{} );
       res.SetLockContainerFun( [](const auto& container_ptr){
-        const std::shared_ptr<void> res = std::make_shared<std::shared_lock>(
+        using mutex_t = std::decay_t<decltype(container_ptr->GetMutex())>;
+        using lock_t = std::shared_lock<mutex_t>;
+        return std::make_shared<lock_t>(
           container_ptr->GetMutex()
         );
-        return res;
       } );
       res.AddContainerFun(
         [](const auto& inlet){ return inlet.GetNumPutsAttempted(); },

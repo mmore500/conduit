@@ -3,8 +3,10 @@
 #define UIT_SPOUTS_WRAPPERS_OUTLET_INSTRUMENTATIONAGGREGATINGOUTLETWRAPPER_HPP_INCLUDE
 
 #include <cstddef>
+#include <memory>
 #include <shared_mutex>
 #include <string>
+#include <type_traits>
 #include <typeinfo>
 
 #include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
@@ -409,11 +411,12 @@ class InstrumentationAggregatingOutletWrapper {
         filename
       );
       res.SetFilterContainerFun( Filter{} );
-      res.SetLockContainerFun( [](const auto& container){
-        const std::shared_ptr<void> res = std::make_shared<std::shared_lock>(
-          container.GetMutex()
+      res.SetLockContainerFun( [](const auto& container_ptr){
+        using mutex_t = std::decay_t<decltype(container_ptr->GetMutex())>;
+        using lock_t = std::shared_lock<mutex_t>;
+        return std::make_shared<lock_t>(
+          container_ptr->GetMutex()
         );
-        return res;
       } );
       res.AddContainerFun(
         [](const auto& outlet){ return outlet.GetNumPutsAttempted(); },
