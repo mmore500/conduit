@@ -21,6 +21,7 @@
 #include "../../../../uitsl/countdown/coarse_runtime.hpp"
 #include "../../../../uitsl/countdown/runtime.hpp"
 #include "../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../uitsl/parallel/thread_utils.hpp"
 
 namespace uit {
 namespace internal {
