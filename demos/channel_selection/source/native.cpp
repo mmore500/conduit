@@ -2,7 +2,9 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <utility>
 
+#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../third-party/Empirical/include/emp/config/ArgManager.hpp"
 
 #include "netuit/arrange/ToroidalTopologyFactory.hpp"
@@ -50,7 +52,8 @@ int main(int argc, char* argv[]) {
     topology
   );
 
-  netuit::Mesh<ImplSpec> mesh{
+  emp ::optional<netuit::Mesh<ImplSpec>> mesh{
+    std::in_place_t{},
     topology,
     assignments.second,
     assignments.first
@@ -64,10 +67,10 @@ int main(int argc, char* argv[]) {
 
   uitsl::ThreadTeam team;
   for (size_t thread = 0; thread < cfg.N_THREADS(); ++thread) team.Add(
-    [&mesh, &res,&mesh_disposal_latch,  thread](){
+    [&mesh, &res, &mesh_disposal_latch, thread](){
 
       // set up the job
-      Job job{ mesh.GetSubmesh(thread) };
+      Job job{ mesh->GetSubmesh(thread) };
 
       mesh_disposal_latch.count_down();
 
@@ -86,7 +89,7 @@ int main(int argc, char* argv[]) {
   );
 
   mesh_disposal_latch.wait();
-  mesh.~Mesh();
+  mesh.reset();
 
   Instrumentation::PrintHeaderKeys();
 
