@@ -397,7 +397,7 @@ class InstrumentationAggregatingOutletWrapper {
         "Fraction Duct Flux That Was Read"
       );
       res.AddFun(
-        [](){ return uitsl::runtime<>.GetElapsed(); }, "Runtime Seconds"
+        [](){ return uitsl::runtime<>.GetElapsed().count(); }, "Runtime Seconds"
       );
       return res;
     }
@@ -613,7 +613,7 @@ class InstrumentationAggregatingOutletWrapper {
         }, "Outlet Thread"
       );
       res.AddFun(
-        [](){ return uitsl::runtime<>.GetElapsed(); },
+        [](){ return uitsl::runtime<>.GetElapsed().count(); },
         "Runtime Seconds"
       );
       return res;

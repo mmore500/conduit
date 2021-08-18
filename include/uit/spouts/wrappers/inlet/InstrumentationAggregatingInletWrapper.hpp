@@ -201,7 +201,7 @@ class InstrumentationAggregatingInletWrapper {
         "Fraction Puts That Succeeded Immediately"
       );
       res.AddFun(
-        [](){ return uitsl::runtime<>.GetElapsed(); }, "Runtime Seconds"
+        [](){ return uitsl::runtime<>.GetElapsed().count(); }, "Runtime Seconds"
       );
       return res;
     }
@@ -321,7 +321,7 @@ class InstrumentationAggregatingInletWrapper {
         }, "Outlet Thread"
       );
       res.AddFun(
-        [](){ return uitsl::runtime<>.GetElapsed(); },
+        [](){ return uitsl::runtime<>.GetElapsed().count(); },
         "Runtime Seconds"
       );
       return res;
