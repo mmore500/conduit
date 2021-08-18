@@ -13,12 +13,12 @@
 #include "../../../third-party/Empirical/include/emp/meta/TypePack.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
+#include "../../uitsl/containers/safe/unordered_map.hpp"
 #include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/meta/HasMemberFunction.hpp"
 #include "../../uitsl/mpi/mpi_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 #include "../../uitsl/utility/print_utils.hpp"
-#include "../../uitsl/containers/safe/unordered_map.hpp"
 
 namespace uit {
 namespace internal {

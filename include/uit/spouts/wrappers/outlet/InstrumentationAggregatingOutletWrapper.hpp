@@ -698,8 +698,8 @@ public:
     registry.insert(&outlet);
   }
 
-  ~InstrumentationAggregatingOutletWrapper(){
-    const size_t res = registry.erase( &outlet );
+  ~InstrumentationAggregatingOutletWrapper() {
+    [[maybe_unused]] const size_t res = registry.erase( &outlet );
     emp_assert( res == 1, res );
   }
 

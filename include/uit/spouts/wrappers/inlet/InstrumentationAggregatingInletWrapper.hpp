@@ -14,8 +14,8 @@
 #include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/algorithm/accumulate_if.hpp"
-#include "../../../../uitsl/countdown/runtime.hpp"
 #include "../../../../uitsl/containers/safe/unordered_set.hpp"
+#include "../../../../uitsl/countdown/runtime.hpp"
 #include "../../../../uitsl/mpi/comm_utils.hpp"
 
 namespace uit {
@@ -408,7 +408,7 @@ public:
   }
 
   ~InstrumentationAggregatingInletWrapper() {
-    const size_t res = registry.erase( &inlet );
+    [[maybe_unused]] const size_t res = registry.erase( &inlet );
     emp_assert( res == 1, res );
   }
 
