@@ -7,13 +7,15 @@
 
 #include "netuit/arrange/ToroidalTopologyFactory.hpp"
 #include "netuit/assign/GenerateMetisAssignments.hpp"
-#include "uitsl/chrono/ClockDeltaDetector.hpp"
 #include "uitsl/containers/safe/unordered_map.hpp"
+#include "uitsl/countdown/FixedRateRepeatingTimer.hpp"
+#include "uitsl/countdown/Timer.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/distributed/do_successively.hpp"
 #include "uitsl/mpi/comm_utils.hpp"
 #include "uitsl/mpi/mpi_flex_guard.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
+#include "uitsl/polyfill/latch.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 
 #include "config/num_nodes.hpp"
@@ -48,8 +50,6 @@ int main(int argc, char* argv[]) {
     topology
   );
 
-
-  // todo switch this out for assign metis
   netuit::Mesh<ImplSpec> mesh{
     topology,
     assignments.second,
@@ -58,12 +58,21 @@ int main(int argc, char* argv[]) {
 
   uitsl::safe::unordered_map<size_t, std::string> res;
 
+  std::latch mesh_disposal_latch{
+    static_cast<int>( cfg.N_THREADS() )
+  };
+
   uitsl::ThreadTeam team;
   for (size_t thread = 0; thread < cfg.N_THREADS(); ++thread) team.Add(
-    [&mesh, &res, thread](){
+    [&mesh, &res,&mesh_disposal_latch,  thread](){
+
+      // set up the job
+      Job job{ mesh.GetSubmesh(thread) };
+
+      mesh_disposal_latch.count_down();
 
       // run the job
-      Job job{ thread, mesh.GetSubmesh(thread) };
+      job.Run(thread);
 
       std::stringstream ss;
 
@@ -76,15 +85,26 @@ int main(int argc, char* argv[]) {
     }
   );
 
-  // todo better data management
-  // todo better data colletion
+  mesh_disposal_latch.wait();
+  mesh.~Mesh();
+
   Instrumentation::PrintHeaderKeys();
 
-  uitsl::ClockDeltaDetector<> delta_sync;
+  uitsl::FixedRateRepeatingTimer snapshot_interval_timer{
+    cfg.SNAPSHOT_INTERVAL()
+  };
   while ( !team.TryJoin() ) {
-    if ( delta_sync.HasDeltaElapsed() ) {
-      Instrumentation::UpdateDataFiles();
-    }
+
+    while ( !snapshot_interval_timer.IsComplete() && !team.TryJoin() );
+    if ( team.TryJoin() ) break;
+
+    Instrumentation::UpdateDataFiles();
+
+    const uitsl::Timer snapshot_duration_timer{ cfg.SNAPSHOT_DURATION() };
+    while ( !snapshot_duration_timer.IsComplete() );
+
+    Instrumentation::UpdateDataFiles();
+    Instrumentation::ElapseShapshot();
   }
 
   uitsl::do_successively(

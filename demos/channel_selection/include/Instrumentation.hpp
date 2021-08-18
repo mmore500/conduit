@@ -11,6 +11,16 @@
 
 class Instrumentation {
 
+  inline static size_t update{};
+  inline static size_t snapshot{};
+
+  template<typename DATAFILE>
+  static auto AddBespokeColumns(DATAFILE df) {
+    df.AddVar(update, "update");
+    df.AddVar(snapshot, "snapshot");
+    return df;
+  }
+
   struct inlet {
 
     using inlet_t = inlet_instrumentation_aggregating_t;
@@ -18,25 +28,31 @@ class Instrumentation {
     struct thread {
 
       static auto& GetContainerDataFile() {
-        static auto res = inlet_t::thread::MakeContainerDataFile(
-          emp::keyname::pack({
-            {"a", "conduit_instrumentation"},
-            {"impl", "thread"},
-            {"subject", "inlet"},
-            {"view", "container"}
-          })
+        static auto res = AddBespokeColumns(
+          inlet_t::thread::MakeContainerDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"impl", "thread"},
+              {"subject", "inlet"},
+              {"view", "container"},
+              {"ext", ".csv"}
+            })
+          )
         );
         return res;
       }
 
       static auto& GetSummaryDataFile() {
-        static auto res = inlet_t::thread::MakeSummaryDataFile(
-          emp::keyname::pack({
-            {"a", "conduit_instrumentation"},
-            {"impl", "thread"},
-            {"subject", "inlet"},
-            {"view", "summary"}
-          })
+        static auto res = AddBespokeColumns(
+          inlet_t::thread::MakeSummaryDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"impl", "thread"},
+              {"subject", "inlet"},
+              {"view", "summary"},
+              {"ext", ".csv"}
+            })
+          )
         );
         return res;
       }
@@ -46,25 +62,31 @@ class Instrumentation {
     struct proc {
 
       static auto& GetContainerDataFile() {
-        static auto res = inlet_t::proc::MakeContainerDataFile(
-          emp::keyname::pack({
-            {"a", "conduit_instrumentation"},
-            {"impl", "proc"},
-            {"subject", "inlet"},
-            {"view", "container"}
-          })
+        static auto res = AddBespokeColumns(
+          inlet_t::proc::MakeContainerDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"impl", "proc"},
+              {"subject", "inlet"},
+              {"view", "container"},
+              {"ext", ".csv"}
+            })
+          )
         );
         return res;
       }
 
       static auto& GetSummaryDataFile() {
-        static auto res = inlet_t::proc::MakeSummaryDataFile(
-          emp::keyname::pack({
-            {"a", "conduit_instrumentation"},
-            {"impl", "proc"},
-            {"subject", "inlet"},
-            {"view", "summary"}
-          })
+        static auto res = AddBespokeColumns(
+          inlet_t::proc::MakeSummaryDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"impl", "proc"},
+              {"subject", "inlet"},
+              {"view", "summary"},
+              {"ext", ".csv"}
+            })
+          )
         );
         return res;
       }
@@ -80,23 +102,31 @@ class Instrumentation {
     struct thread {
 
       static auto& GetContainerDataFile() {
-        static auto res = outlet_t::thread::MakeContainerDataFile(
-          emp::keyname::pack({
-            {"impl", "thread"},
-            {"subject", "outlet"},
-            {"view", "container"}
-          })
+        static auto res = AddBespokeColumns(
+          outlet_t::thread::MakeContainerDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"impl", "thread"},
+              {"subject", "outlet"},
+              {"view", "container"},
+              {"ext", ".csv"}
+            })
+          )
         );
         return res;
       }
 
       static auto& GetSummaryDataFile() {
-        static auto res = outlet_t::thread::MakeSummaryDataFile(
-          emp::keyname::pack({
-            {"impl", "thread"},
-            {"subject", "outlet"},
-            {"view", "summary"}
-          })
+        static auto res = AddBespokeColumns(
+          outlet_t::thread::MakeSummaryDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"impl", "thread"},
+              {"subject", "outlet"},
+              {"view", "summary"},
+              {"ext", ".csv"}
+            })
+          )
         );
         return res;
       }
@@ -106,23 +136,31 @@ class Instrumentation {
     struct proc {
 
       static auto& GetContainerDataFile() {
-        static auto res = outlet_t::proc::MakeContainerDataFile(
-          emp::keyname::pack({
-            {"impl", "proc"},
-            {"subject", "outlet"},
-            {"view", "container"}
-          })
+        static auto res = AddBespokeColumns(
+          outlet_t::proc::MakeContainerDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"impl", "proc"},
+              {"subject", "outlet"},
+              {"view", "container"},
+              {"ext", ".csv"}
+            })
+          )
         );
         return res;
       }
 
       static auto& GetSummaryDataFile() {
-        static auto res = outlet_t::proc::MakeSummaryDataFile(
-          emp::keyname::pack({
-            {"impl", "proc"},
-            {"subject", "outlet"},
-            {"view", "summary"}
-          })
+        static auto res = AddBespokeColumns(
+          outlet_t::proc::MakeSummaryDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"impl", "proc"},
+              {"subject", "outlet"},
+              {"view", "summary"},
+              {"ext", ".csv"}
+            })
+          )
         );
         return res;
       }
@@ -132,6 +170,8 @@ class Instrumentation {
   }; // struct outlet
 
 public:
+
+  static void ElapseShapshot() { ++snapshot; }
 
   static void PrintHeaderKeys() {
     if ( cfg.N_THREADS() > 1 ) {
@@ -163,7 +203,7 @@ public:
       outlet::proc::GetContainerDataFile().Update();
       outlet::proc::GetSummaryDataFile().Update();
     }
-
+    ++update;
   }
 
 };

@@ -25,4 +25,12 @@ EMP_BUILD_CONFIG(
   VALUE(N_CHANNELS, size_t, 3, "Number of node colors available"),
   VALUE(B, double, 0.1, "Node channel stickiness"),
 
+  GROUP(INSTRUMENTATION, "INSTRUMENTATION"),
+  VALUE(SNAPSHOT_INTERVAL, double, 60,
+    "How many seconds should we wait between instrumentaiton snapshots?"
+  ),
+  VALUE(SNAPSHOT_DURATION, double, 1,
+    "How many secons should an instrumentation snapshot last"
+  ),
+
 )

@@ -32,9 +32,11 @@ class Job {
 
 public:
 
-  Job(const size_t thread_idx, const submesh_t& submesh)
+  Job(const submesh_t& submesh)
   : collection(submesh)
-  {
+  { ; }
+
+  void Run(const size_t thread_idx) {
 
     // initialized first time thru the function,
     // so N_THREADS should be initialized
