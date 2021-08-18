@@ -7,6 +7,7 @@
 #include <memory>
 #include <shared_mutex>
 #include <string>
+#include <string_view>
 #include <type_traits>
 #include <typeinfo>
 
@@ -644,28 +645,28 @@ class InstrumentationAggregatingOutletWrapper {
 
   struct AllFilter {
     bool operator()( const outlet_t* ) const { return true; }
-    static const std::string& name() { return "all"; }
+    static std::string name() { return "all"; }
   };
 
   struct IntraFilter {
-    bool operator()( const outlet_t* outlet ) const {
-      return outlet->HoldsIntraImpl().value();
+    bool operator()( const outlet_t* outlet_ptr ) const {
+      return outlet_ptr->HoldsIntraImpl().value();
     }
-    static const std::string& name() { return "intra"; }
+    static std::string_view name() { return "intra"; }
   };
 
   struct ThreadFilter {
-    bool operator()( const outlet_t* outlet ) const {
-      return outlet->HoldsThreadImpl().value();
+    bool operator()( const outlet_t* outlet_ptr ) const {
+      return outlet_ptr->HoldsThreadImpl().value();
     }
-    static const std::string& name() { return "thread"; }
+    static std::string_view name() { return "thread"; }
   };
 
   struct ProcFilter {
-    bool operator()( const outlet_t* outlet ) const {
-      return outlet->HoldsProcImpl().value();
+    bool operator()( const outlet_t* outlet_ptr ) const {
+      return outlet_ptr->HoldsProcImpl().value();
     }
-    static const std::string& name() { return "proc"; }
+    static std::string_view name() { return "proc"; }
   };
 
 

@@ -7,6 +7,7 @@
 #include <memory>
 #include <shared_mutex>
 #include <string>
+#include <string_view>
 #include <type_traits>
 #include <utility>
 
@@ -344,28 +345,28 @@ class InstrumentationAggregatingInletWrapper {
 
   struct AllFilter {
     bool operator()( const inlet_t* ) const { return true; }
-    static const std::string& name() { return "all"; }
+    static std::string_view name() { return "all"; }
   };
 
   struct IntraFilter {
-    bool operator()( const inlet_t* inlet ) const {
-      return inlet->HoldsIntraImpl().value();
+    bool operator()( const inlet_t* inlet_ptr ) const {
+      return inlet_ptr->HoldsIntraImpl().value();
     }
-    static const std::string& name() { return "intra"; }
+    static std::string_view name() { return "intra"; }
   };
 
   struct ThreadFilter {
-    bool operator()( const inlet_t* inlet ) const {
-      return inlet->HoldsThreadImpl().value();
+    bool operator()( const inlet_t* inlet_ptr ) const {
+      return inlet_ptr->HoldsThreadImpl().value();
     }
-    static const std::string& name() { return "thread"; }
+    static std::string_view name() { return "thread"; }
   };
 
   struct ProcFilter {
-    bool operator()( const inlet_t* inlet ) const {
-      return inlet->HoldsProcImpl().value();
+    bool operator()( const inlet_t* inlet_ptr ) const {
+      return inlet_ptr->HoldsProcImpl().value();
     }
-    static const std::string& name() { return "proc"; }
+    static std::string_view name() { return "proc"; }
   };
 
 
