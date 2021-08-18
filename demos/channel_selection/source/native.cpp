@@ -19,6 +19,7 @@
 #include "config/num_nodes.hpp"
 
 #include "Job.hpp"
+#include "Instrumentation.hpp"
 
 int main(int argc, char* argv[]) {
 
@@ -75,35 +76,14 @@ int main(int argc, char* argv[]) {
     }
   );
 
-  auto inlet_container_thread_datafile
-  = inlet_instrumentation_aggregating_t::thread::MakeContainerDataFile(
-    "impl=thread+target=inlet+what=container+ext=.csv"
-  );
-  auto inlet_summary_thread_datafile
-  = inlet_instrumentation_aggregating_t::thread::MakeSummaryDataFile(
-    "impl=thread+target=inlet+what=summary+ext=.csv"
-  );
-  auto outlet_container_thread_datafile
-  = outlet_instrumentation_aggregating_t::thread::MakeContainerDataFile(
-    "impl=thread+target=outlet+what=container+ext=.csv"
-  );
-  auto outlet_summary_thread_datafile
-  = outlet_instrumentation_aggregating_t::thread::MakeSummaryDataFile(
-    "impl=thread+target=outlet+what=summary+ext=.csv"
-  );
-
-  inlet_container_thread_datafile.PrintHeaderKeys();
-  inlet_summary_thread_datafile.PrintHeaderKeys();
-  outlet_container_thread_datafile.PrintHeaderKeys();
-  outlet_summary_thread_datafile.PrintHeaderKeys();
+  // todo better data management
+  // todo better data colletion
+  Instrumentation::PrintHeaderKeys();
 
   uitsl::ClockDeltaDetector<> delta_sync;
   while ( !team.TryJoin() ) {
     if ( delta_sync.HasDeltaElapsed() ) {
-      inlet_container_thread_datafile.Update();
-      inlet_summary_thread_datafile.Update();
-      outlet_container_thread_datafile.Update();
-      outlet_summary_thread_datafile.Update();
+      Instrumentation::UpdateDataFiles();
     }
   }
 
