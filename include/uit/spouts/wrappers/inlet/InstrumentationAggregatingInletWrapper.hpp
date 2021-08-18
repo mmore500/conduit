@@ -368,8 +368,7 @@ public:
    */
   InstrumentationAggregatingInletWrapper(
     InstrumentationAggregatingInletWrapper& other
-  ) {
-    inlet = other.inlet;
+  ) : inlet( other.inlet ) {
     emp_assert( !registry.contains(&inlet) );
     registry.insert(&inlet);
   }
@@ -379,8 +378,7 @@ public:
    */
   InstrumentationAggregatingInletWrapper(
     const InstrumentationAggregatingInletWrapper& other
-  ) {
-    inlet = other.inlet;
+  ) : inlet( other.inlet ) {
     emp_assert( !registry.contains(&inlet) );
     registry.insert(&inlet);
   };
@@ -390,8 +388,7 @@ public:
    */
   InstrumentationAggregatingInletWrapper(
     InstrumentationAggregatingInletWrapper&& other
-  ) {
-    inlet = std::move(other.inlet);
+  ) : inlet( std::move(other.inlet) ) {
     emp_assert( !registry.contains(&inlet) );
     registry.insert(&inlet);
   };

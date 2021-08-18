@@ -660,8 +660,7 @@ public:
    */
   InstrumentationAggregatingOutletWrapper(
     InstrumentationAggregatingOutletWrapper& other
-  ) {
-    outlet = other.outlet;
+  ) : outlet( other.outlet ) {
     emp_assert( !registry.contains(&outlet) );
     registry.insert(&outlet);
   }
@@ -671,8 +670,7 @@ public:
    */
   InstrumentationAggregatingOutletWrapper(
     const InstrumentationAggregatingOutletWrapper& other
-  ) {
-    outlet = other.outlet;
+  ) : outlet( other.outlet ) {
     emp_assert( !registry.contains(&outlet) );
     registry.insert(&outlet);
   };
@@ -682,8 +680,7 @@ public:
    */
   InstrumentationAggregatingOutletWrapper(
     InstrumentationAggregatingOutletWrapper&& other
-  ) {
-    outlet = std::move(other.outlet);
+  ) : outlet( std::move(other.outlet) ) {
     emp_assert( !registry.contains(&outlet) );
     registry.insert(&outlet);
   };
