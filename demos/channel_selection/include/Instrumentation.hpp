@@ -2,12 +2,14 @@
 
 #include <variant>
 
+#include "../../../third-party/Empirical/include/emp/base/macros.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "uitsl/mpi/comm_utils.hpp"
 
 #include "config/cfg.hpp"
+#include "get_hostname.hpp"
 #include "typedef.hpp"
 
 class Instrumentation {
@@ -39,6 +41,8 @@ class Instrumentation {
               {"view", "container"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
               {"ext", ".csv"}
             })
           )
@@ -56,6 +60,8 @@ class Instrumentation {
               {"view", "summary"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
               {"ext", ".csv"}
             })
           )
@@ -77,6 +83,8 @@ class Instrumentation {
               {"view", "container"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
               {"ext", ".csv"}
             })
           )
@@ -94,6 +102,8 @@ class Instrumentation {
               {"view", "summary"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
               {"ext", ".csv"}
             })
           )
@@ -121,6 +131,8 @@ class Instrumentation {
               {"view", "container"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
               {"ext", ".csv"}
             })
           )
@@ -138,6 +150,8 @@ class Instrumentation {
               {"view", "summary"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
               {"ext", ".csv"}
             })
           )
@@ -159,6 +173,8 @@ class Instrumentation {
               {"view", "container"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
               {"ext", ".csv"}
             })
           )
@@ -176,6 +192,8 @@ class Instrumentation {
               {"view", "summary"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
               {"ext", ".csv"}
             })
           )
