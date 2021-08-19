@@ -68,6 +68,7 @@ int main(int argc, char* argv[]) {
   };
 
   uitsl::ThreadTeam team;
+  MPI_Barrier( MPI_COMM_WORLD );
   for (size_t thread = 0; thread < cfg.N_THREADS(); ++thread) team.Add(
     [&mesh, &res, &mesh_disposal_latch, thread](){
 
