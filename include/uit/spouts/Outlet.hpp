@@ -90,7 +90,8 @@ private:
 
   /// How many times has current value changed (i.e., a pull succeeded)?
   /// Instrumentation for communication profiling.
-  size_t revision_count{0};
+  /// Start at 1 to account for default-constructed initial value.
+  size_t revision_count{1};
 
   /// Total distance traversed through underlying buffer.
   /// Instrumentation for communication profiling.
