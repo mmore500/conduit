@@ -4,6 +4,8 @@
 #include <sstream>
 #include <utility>
 
+#include <mpi.h>
+
 #include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../third-party/Empirical/include/emp/config/ArgManager.hpp"
 
@@ -70,18 +72,19 @@ int main(int argc, char* argv[]) {
     [&mesh, &res, &mesh_disposal_latch, thread](){
 
       // set up the job
-      Job job{ mesh->GetSubmesh(thread) };
+      // intentionally leaked so that inlets/outlets don't get destructed
+      Job* job = new Job{ mesh->GetSubmesh(thread) };
 
       mesh_disposal_latch.count_down();
 
       // run the job
-      job.Run(thread);
+      job->Run(thread);
 
       std::stringstream ss;
 
       ss << "process " << uitsl::get_proc_id() << '\n';
       ss << "thread " << thread << '\n';
-      ss << job.ToString() << '\n';
+      ss << job->ToString() << '\n';
 
       res[thread] = ss.str();
 
@@ -109,6 +112,9 @@ int main(int argc, char* argv[]) {
     Instrumentation::UpdateDataFiles(true);
     Instrumentation::ElapseShapshot();
   }
+
+  MPI_Barrier( MPI_COMM_WORLD );
+  Instrumentation::UpdateDataFiles(false);
 
   uitsl::do_successively(
     [&](){
