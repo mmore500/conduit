@@ -22,7 +22,7 @@ class Instrumentation {
   static auto AddBespokeColumns(DATAFILE df) {
     df.AddVar(update, "Update");
     df.AddVar(snapshot, "Snapshot");
-    df.AddVar(has_execution_blurr, "Has Execution Blur");
+    df.AddVar(has_execution_blur, "Has Execution Blur");
     df.AddVal(cfg.REPLICATE(), "Replicate");
     df.AddVal(cfg.ASYNCHRONOUS(), "Async Mode");
     return df;
