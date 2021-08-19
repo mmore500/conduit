@@ -123,11 +123,11 @@ class Duct {
 
   using uid_t_ = std::uintptr_t;
 
-  using t_registry_t = uitsl::safe::unordered_map<uid_t_, uitsl::proc_id_t>;
+  using t_registry_t = uitsl::safe::unordered_map<uid_t_, uitsl::thread_id_t>;
   inline static t_registry_t inlet_thread_registry;
   inline static t_registry_t outlet_thread_registry;
 
-  using p_registry_t = uitsl::safe::unordered_map<uid_t_, uitsl::thread_id_t>;
+  using p_registry_t = uitsl::safe::unordered_map<uid_t_, uitsl::proc_id_t>;
   inline static p_registry_t inlet_proc_registry;
   inline static p_registry_t outlet_proc_registry;
 
