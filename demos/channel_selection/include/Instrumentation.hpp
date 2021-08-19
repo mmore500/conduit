@@ -131,6 +131,7 @@ class Instrumentation {
           outlet_t::thread::MakeContainerDataFile(
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "thread"},
               {"subject", "outlet"},
               {"view", "container"},
@@ -150,6 +151,7 @@ class Instrumentation {
           outlet_t::thread::MakeSummaryDataFile(
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "thread"},
               {"subject", "outlet"},
               {"view", "summary"},
@@ -173,6 +175,7 @@ class Instrumentation {
           outlet_t::proc::MakeContainerDataFile(
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "proc"},
               {"subject", "outlet"},
               {"view", "container"},
@@ -192,6 +195,7 @@ class Instrumentation {
           outlet_t::proc::MakeSummaryDataFile(
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "proc"},
               {"subject", "outlet"},
               {"view", "summary"},
