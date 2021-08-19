@@ -101,12 +101,12 @@ int main(int argc, char* argv[]) {
     while ( !snapshot_interval_timer.IsComplete() && !team.TryJoin() );
     if ( team.TryJoin() ) break;
 
-    Instrumentation::UpdateDataFiles();
+    Instrumentation::UpdateDataFiles(true);
 
     const uitsl::Timer snapshot_duration_timer{ cfg.SNAPSHOT_DURATION() };
     while ( !snapshot_duration_timer.IsComplete() );
 
-    Instrumentation::UpdateDataFiles();
+    Instrumentation::UpdateDataFiles(true);
     Instrumentation::ElapseShapshot();
   }
 

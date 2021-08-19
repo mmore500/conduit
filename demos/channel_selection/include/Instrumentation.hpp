@@ -16,11 +16,13 @@ class Instrumentation {
 
   inline static size_t update{};
   inline static size_t snapshot{};
+  inline static bool has_execution_blur;
 
   template<typename DATAFILE>
   static auto AddBespokeColumns(DATAFILE df) {
     df.AddVar(update, "Update");
     df.AddVar(snapshot, "Snapshot");
+    df.AddVar(has_execution_blurr, "Has Execution Blur");
     df.AddVal(cfg.REPLICATE(), "Replicate");
     df.AddVal(cfg.ASYNCHRONOUS(), "Async Mode");
     return df;
@@ -234,7 +236,10 @@ public:
     }
   }
 
-  static void UpdateDataFiles() {
+  static void UpdateDataFiles(const bool has_execution_blur_) {
+
+    has_execution_blur = has_execution_blur_;
+
     if ( cfg.N_THREADS() > 1 ) {
       inlet::thread::GetContainerDataFile().Update();
       inlet::thread::GetSummaryDataFile().Update();
