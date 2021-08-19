@@ -214,6 +214,14 @@ public:
     inlet.RegisterInletThread(thread);
   }
 
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    inlet.RegisterOutletProc(proc);
+  }
+
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    inlet.RegisterOutletThread(thread);
+  }
+
   decltype(auto) LookupOutletProc() const { return inlet.LookupOutletProc(); }
 
   decltype(auto) LookupOutletThread() const {

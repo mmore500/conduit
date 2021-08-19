@@ -279,6 +279,14 @@ public:
 
   decltype(auto) CanStep() const { return outlet.CanStep(); }
 
+  void RegisterInletProc(const uitsl::proc_id_t proc) const {
+    outlet.RegisterInletProc(proc);
+  }
+
+  void RegisterInletThread(const uitsl::thread_id_t thread) const {
+    outlet.RegisterInletThread(thread);
+  }
+
   void RegisterOutletProc(const uitsl::proc_id_t proc) const {
     outlet.RegisterOutletProc(proc);
   }
@@ -286,7 +294,6 @@ public:
   void RegisterOutletThread(const uitsl::thread_id_t thread) const {
     outlet.RegisterOutletThread(thread);
   }
-
 
   decltype(auto) LookupOutletProc() const { return outlet.LookupOutletProc(); }
 

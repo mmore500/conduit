@@ -577,6 +577,16 @@ public:
   bool CanStep() const { return duct->CanStep(); }
 
   // exclusively for instrumentation purposes
+  void RegisterInletProc(const uitsl::proc_id_t proc) const {
+    duct->RegisterInletProc(proc);
+  }
+
+  // exclusively for instrumentation purposes
+  void RegisterInletThread(const uitsl::thread_id_t thread) const {
+    duct->RegisterInletThread(thread);
+  }
+
+  // exclusively for instrumentation purposes
   void RegisterOutletProc(const uitsl::proc_id_t proc) const {
     duct->RegisterOutletProc(proc);
   }

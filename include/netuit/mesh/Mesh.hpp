@@ -174,36 +174,66 @@ class Mesh {
 
   // solely for instrumentation purposes
   void RegisterDuctTargets(const node_id_t node_id, node_t& node) {
-    for (auto & input : node.GetInputs()) RegisterDuctTarget(input);
-    for (auto & output : node.GetOutputs()) RegisterDuctTarget(output);
+    for (const auto & input : node.GetInputs()) RegisterDuctTarget(input);
+    for (const auto & output : node.GetOutputs()) RegisterDuctTarget(output);
   }
 
   // solely for instrumentation purposes
-  void RegisterDuctTarget(netuit::MeshNodeOutput<ImplSpec>& output) {
-    const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
-      output.GetEdgeID()
-    );
-    const uitsl::proc_id_t inlet_proc_id = proc_assignment(inlet_node_id);
-    const uitsl::thread_id_t inlet_thread_id = thread_assignment(inlet_node_id);
+  void RegisterDuctTarget(const netuit::MeshNodeOutput<ImplSpec>& output) {
+    {
+      const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
+        output.GetEdgeID()
+      );
+      const uitsl::proc_id_t inlet_proc_id = proc_assignment(inlet_node_id);
+      const uitsl::thread_id_t inlet_thread_id = thread_assignment(
+        inlet_node_id
+      );
 
-    output.RegisterInletProc( inlet_proc_id );
-    output.RegisterInletThread( inlet_thread_id );
+      output.RegisterInletProc( inlet_proc_id );
+      output.RegisterInletThread( inlet_thread_id );
+    }
 
-  }
-
-  // solely for instrumentation purposes
-  void RegisterDuctTarget(netuit::MeshNodeInput<ImplSpec>& input) {
-    const node_id_t outlet_node_id = nodes.GetInputRegistry().at(
-      input.GetEdgeID()
-    );
-    const uitsl::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
-    const uitsl::thread_id_t outlet_thread_id = thread_assignment(
+    {
+      const node_id_t outlet_node_id = nodes.GetInputRegistry().at(
+        output.GetEdgeID()
+      );
+      const uitsl::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
+      const uitsl::thread_id_t outlet_thread_id = thread_assignment(
         outlet_node_id
-    );
+      );
 
-    input.RegisterOutletProc( outlet_proc_id );
-    input.RegisterOutletThread( outlet_thread_id );
+      output.RegisterOutletProc( outlet_proc_id );
+      output.RegisterOutletThread( outlet_thread_id );
+    }
+  }
 
+  // solely for instrumentation purposes
+  void RegisterDuctTarget(const netuit::MeshNodeInput<ImplSpec>& input) {
+    {
+      const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
+        input.GetEdgeID()
+      );
+      const uitsl::proc_id_t inlet_proc_id = proc_assignment(inlet_node_id);
+      const uitsl::thread_id_t inlet_thread_id = thread_assignment(
+          inlet_node_id
+      );
+
+      input.RegisterInletProc( inlet_proc_id );
+      input.RegisterInletThread( inlet_thread_id );
+    }
+
+    {
+      const node_id_t outlet_node_id = nodes.GetInputRegistry().at(
+        input.GetEdgeID()
+      );
+      const uitsl::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
+      const uitsl::thread_id_t outlet_thread_id = thread_assignment(
+          outlet_node_id
+      );
+
+      input.RegisterOutletProc( outlet_proc_id );
+      input.RegisterOutletThread( outlet_thread_id );
+    }
   }
 
 

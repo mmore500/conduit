@@ -370,6 +370,14 @@ public:
     duct->RegisterInletThread(thread);
   }
 
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    duct->RegisterOutletProc(proc);
+  }
+
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    duct->RegisterOutletThread(thread);
+  }
+
   emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
     return duct->LookupOutletProc();
   }
