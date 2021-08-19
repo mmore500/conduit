@@ -25,6 +25,8 @@ class Instrumentation {
     df.AddVar(has_execution_blur, "Has Execution Blur");
     df.AddVal(cfg.REPLICATE(), "Replicate");
     df.AddVal(cfg.ASYNCHRONOUS(), "Async Mode");
+    df.AddVal(cfg.N_THREADS(), "Num Threads");
+    df.AddVal(uitsl::get_nprocs(), "Num Processes");
     return df;
   }
 
@@ -41,6 +43,8 @@ class Instrumentation {
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "thread"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
               {"subject", "inlet"},
               {"view", "container"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
@@ -61,6 +65,8 @@ class Instrumentation {
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "thread"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
               {"subject", "inlet"},
               {"view", "summary"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
@@ -85,6 +91,8 @@ class Instrumentation {
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "proc"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
               {"subject", "inlet"},
               {"view", "container"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
@@ -105,6 +113,8 @@ class Instrumentation {
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "proc"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
               {"subject", "inlet"},
               {"view", "summary"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
@@ -135,6 +145,8 @@ class Instrumentation {
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "thread"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
               {"subject", "outlet"},
               {"view", "container"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
@@ -155,6 +167,8 @@ class Instrumentation {
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "thread"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
               {"subject", "outlet"},
               {"view", "summary"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
@@ -179,6 +193,8 @@ class Instrumentation {
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "proc"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
               {"subject", "outlet"},
               {"view", "container"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
@@ -199,6 +215,8 @@ class Instrumentation {
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
               {"impl", "proc"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
               {"subject", "outlet"},
               {"view", "summary"},
               {"proc", emp::to_string(uitsl::get_proc_id())},
