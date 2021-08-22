@@ -895,6 +895,10 @@ public:
     outlet.RegisterOutletThread(thread);
   }
 
+  void RegisterEdgeID(const size_t edge_id) const {
+    outlet.RegisterEdgeID(edge_id);
+  }
+
   decltype(auto) LookupOutletProc() const { return outlet.LookupOutletProc(); }
 
   decltype(auto) LookupOutletThread() const {
@@ -906,6 +910,8 @@ public:
   decltype(auto) LookupInletThread() const {
     return outlet.LookupInletThread();
   }
+
+  decltype(auto) LookupEdgeID() const { return outlet.LookupEdgeID(); }
 
 };
 

@@ -180,6 +180,7 @@ class Mesh {
 
   // solely for instrumentation purposes
   void RegisterDuctTarget(const netuit::MeshNodeOutput<ImplSpec>& output) {
+    output.RegisterEdgeID( output.GetEdgeID() );
     {
       const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
         output.GetEdgeID()
@@ -209,6 +210,7 @@ class Mesh {
 
   // solely for instrumentation purposes
   void RegisterDuctTarget(const netuit::MeshNodeInput<ImplSpec>& input) {
+    input.RegisterEdgeID( input.GetEdgeID() );
     {
       const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
         input.GetEdgeID()

@@ -222,6 +222,10 @@ public:
     inlet.RegisterOutletThread(thread);
   }
 
+  void RegisterEdgeID(const size_t edge_id) const {
+    inlet.RegisterEdgeID(edge_id);
+  }
+
   decltype(auto) LookupOutletProc() const { return inlet.LookupOutletProc(); }
 
   decltype(auto) LookupOutletThread() const {
@@ -233,6 +237,8 @@ public:
   decltype(auto) LookupInletThread() const {
     return inlet.LookupInletThread();
   }
+
+  decltype(auto) LookupEdgeID() const { return inlet.LookupEdgeID(); }
 
 };
 

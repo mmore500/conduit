@@ -131,6 +131,9 @@ class Duct {
   inline static p_registry_t inlet_proc_registry;
   inline static p_registry_t outlet_proc_registry;
 
+  using edge_id_registry_t = uitsl::safe::unordered_map<uid_t_, size_t>;
+  inline static edge_id_registry_t edge_id_registry;
+
 public:
 
   /// TODO.
@@ -348,6 +351,11 @@ public:
     outlet_thread_registry[GetUID()] = thread;
   }
 
+  /// Optional, for instrumentaiton purposes.
+  void RegisterEdgeID(const size_t edge_id) const {
+    edge_id_registry[GetUID()] = edge_id;
+  }
+
   emp::optional<uitsl::proc_id_t> LookupInletProc() const {
     return inlet_proc_registry.contains( GetUID() )
       ? emp::optional<uitsl::proc_id_t>{ inlet_proc_registry.at( GetUID() ) }
@@ -372,6 +380,13 @@ public:
   emp::optional<uitsl::thread_id_t> LookupOutletThread() const {
     return outlet_thread_registry.contains( GetUID() )
       ? emp::optional<uitsl::thread_id_t>{outlet_thread_registry.at( GetUID() )}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<size_t> LookupEdgeID() const {
+    return edge_id_registry.contains( GetUID() )
+      ? emp::optional<uitsl::thread_id_t>{edge_id_registry.at( GetUID() )}
       : std::nullopt
     ;
   }

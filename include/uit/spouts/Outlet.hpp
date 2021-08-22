@@ -597,6 +597,10 @@ public:
     duct->RegisterOutletThread(thread);
   }
 
+  void RegisterEdgeID(const size_t edge_id) const {
+    duct->RegisterEdgeID(edge_id);
+  }
+
   emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
     return duct->LookupOutletProc();
   }
@@ -611,6 +615,10 @@ public:
 
   emp::optional<uitsl::thread_id_t> LookupInletThread() const {
     return duct->LookupInletThread();
+  }
+
+  emp::optional<size_t> LookupEdgeID() const {
+    return duct->LookupEdgeID();
   }
 
   /**
