@@ -134,6 +134,10 @@ class Duct {
   using edge_id_registry_t = uitsl::safe::unordered_map<uid_t_, size_t>;
   inline static edge_id_registry_t edge_id_registry;
 
+  using node_id_registry_t = uitsl::safe::unordered_map<uid_t_, size_t>;
+  inline static node_id_registry_t inlet_node_id_registry;
+  inline static node_id_registry_t outlet_node_id_registry;
+
 public:
 
   /// TODO.
@@ -356,6 +360,16 @@ public:
     edge_id_registry[GetUID()] = edge_id;
   }
 
+  /// Optional, for instrumentaiton purposes.
+  void RegisterInletNodeID(const size_t node_id) const {
+    inlet_node_id_registry[GetUID()] = node_id;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterOutletNodeID(const size_t node_id) const {
+    outlet_node_id_registry[GetUID()] = node_id;
+  }
+
   emp::optional<uitsl::proc_id_t> LookupInletProc() const {
     return inlet_proc_registry.contains( GetUID() )
       ? emp::optional<uitsl::proc_id_t>{ inlet_proc_registry.at( GetUID() ) }
@@ -386,7 +400,21 @@ public:
 
   emp::optional<size_t> LookupEdgeID() const {
     return edge_id_registry.contains( GetUID() )
-      ? emp::optional<uitsl::thread_id_t>{edge_id_registry.at( GetUID() )}
+      ? emp::optional<size_t>{edge_id_registry.at( GetUID() )}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<size_t> LookupInletNodeID() const {
+    return inlet_node_id_registry.contains( GetUID() )
+      ? emp::optional<size_t>{inlet_node_id_registry.at(GetUID())}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<size_t> LookupOutletNodeID() const {
+    return outlet_node_id_registry.contains( GetUID() )
+      ? emp::optional<size_t>{outlet_node_id_registry.at(GetUID())}
       : std::nullopt
     ;
   }

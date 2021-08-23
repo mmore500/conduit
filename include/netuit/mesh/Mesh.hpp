@@ -192,6 +192,7 @@ class Mesh {
 
       output.RegisterInletProc( inlet_proc_id );
       output.RegisterInletThread( inlet_thread_id );
+      output.RegisterInletNodeID( inlet_node_id );
     }
 
     {
@@ -205,6 +206,7 @@ class Mesh {
 
       output.RegisterOutletProc( outlet_proc_id );
       output.RegisterOutletThread( outlet_thread_id );
+      output.RegisterOutletNodeID( outlet_node_id );
     }
   }
 
@@ -222,6 +224,7 @@ class Mesh {
 
       input.RegisterInletProc( inlet_proc_id );
       input.RegisterInletThread( inlet_thread_id );
+      input.RegisterInletNodeID( inlet_node_id );
     }
 
     {
@@ -235,6 +238,7 @@ class Mesh {
 
       input.RegisterOutletProc( outlet_proc_id );
       input.RegisterOutletThread( outlet_thread_id );
+      input.RegisterOutletNodeID( outlet_node_id );
     }
   }
 

@@ -899,6 +899,14 @@ public:
     outlet.RegisterEdgeID(edge_id);
   }
 
+  void RegisterInletNodeID(const size_t node_id) const {
+    outlet.RegisterInletNodeID(node_id);
+  }
+
+  void RegisterOutletNodeID(const size_t node_id) const {
+    outlet.RegisterOutletNodeID(node_id);
+  }
+
   decltype(auto) LookupOutletProc() const { return outlet.LookupOutletProc(); }
 
   decltype(auto) LookupOutletThread() const {

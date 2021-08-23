@@ -601,6 +601,14 @@ public:
     duct->RegisterEdgeID(edge_id);
   }
 
+  void RegisterInletNodeID(const size_t node_id) const {
+    duct->RegisterInletNodeID(node_id);
+  }
+
+  void RegisterOutletNodeID(const size_t node_id) const {
+    duct->RegisterOutletNodeID(node_id);
+  }
+
   emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
     return duct->LookupOutletProc();
   }
@@ -619,6 +627,14 @@ public:
 
   emp::optional<size_t> LookupEdgeID() const {
     return duct->LookupEdgeID();
+  }
+
+  emp::optional<size_t> LookupInletNodeID() const {
+    return duct->LookupInletNodeID();
+  }
+
+  emp::optional<size_t> LookupOutletNodeID() const {
+    return duct->LookupOutletNodeID();
   }
 
   /**

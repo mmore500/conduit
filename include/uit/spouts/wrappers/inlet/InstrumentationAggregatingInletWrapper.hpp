@@ -537,6 +537,14 @@ public:
     inlet.RegisterEdgeID(edge_id);
   }
 
+  void RegisterInletNodeID(const size_t node_id) const {
+    inlet.RegisterInletNodeID(node_id);
+  }
+
+  void RegisterOutletNodeID(const size_t node_id) const {
+    inlet.RegisterOutletNodeID(node_id);
+  }
+
   decltype(auto) LookupOutletProc() const { return inlet.LookupOutletProc(); }
 
   decltype(auto) LookupOutletThread() const {
@@ -550,6 +558,12 @@ public:
   }
 
   decltype(auto) LookupEdgeID() const { return inlet.LookupEdgeID(); }
+
+  decltype(auto) LookupInletNodeID() const { return inlet.LookupInletNodeID(); }
+
+  decltype(auto) LookupOutletNodeID() const {
+    return inlet.LookupOutletNodeID();
+  }
 
 };
 
