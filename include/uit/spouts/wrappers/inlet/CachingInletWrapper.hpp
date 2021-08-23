@@ -242,9 +242,7 @@ public:
 
   decltype(auto) LookupInletProc() const { return inlet.LookupInletProc(); }
 
-  decltype(auto) LookupInletThread() const {
-    return inlet.LookupInletThread();
-  }
+  decltype(auto) LookupInletThread() const { return inlet.LookupInletThread(); }
 
   decltype(auto) LookupEdgeID() const { return inlet.LookupEdgeID(); }
 
