@@ -30,13 +30,14 @@ template<typename Outlet>
 class InstrumentationAggregatingOutletWrapper {
 
   using ImplSpec = typename Outlet::ImplSpec;
+  using this_t = InstrumentationAggregatingOutletWrapper<Outlet>;
 
   using outlet_t = Outlet;
   outlet_t outlet;
 
   using value_type = typename ImplSpec::value_type;
 
-  inline static uitsl::safe::unordered_set<const outlet_t*> registry;
+  inline static uitsl::safe::unordered_set<const this_t*> registry;
 
   template<typename Filter>
   struct RegistryAggregator {
@@ -45,7 +46,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumReadsPerformed();
         },
         Filter{}
@@ -56,7 +57,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumReadsThatWereFresh();
         },
         Filter{}
@@ -67,7 +68,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumReadsThatWereStale();
         },
         Filter{}
@@ -78,7 +79,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumRevisionsPulled();
         },
         Filter{}
@@ -89,7 +90,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumTryPullsAttempted();
         },
         Filter{}
@@ -100,7 +101,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumBlockingPulls();
         },
         Filter{}
@@ -111,7 +112,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumBlockingPullsThatBlocked();
         },
         Filter{}
@@ -122,7 +123,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumRevisionsFromTryPulls();
         },
         Filter{}
@@ -133,7 +134,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumRevisionsFromBlockingPulls();
         },
         Filter{}
@@ -144,7 +145,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumPullsAttempted();
         },
         Filter{}
@@ -155,7 +156,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumPullsThatWereLadenEventually();
         },
         Filter{}
@@ -166,7 +167,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumBlockingPullsThatWereLadenImmediately();
         },
         Filter{}
@@ -177,7 +178,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumBlockingPullsThatWereLadenEventually();
         },
         Filter{}
@@ -188,7 +189,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumPullsThatWereLadenImmediately();
         },
         Filter{}
@@ -199,7 +200,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumTryPullsThatWereLaden();
         },
         Filter{}
@@ -210,7 +211,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumTryPullsThatWereUnladen();
         },
         Filter{}
@@ -260,7 +261,7 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const outlet_t* outlet) {
+        [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNetFluxThroughDuct();
         },
         Filter{}
@@ -647,26 +648,26 @@ class InstrumentationAggregatingOutletWrapper {
   };
 
   struct AllFilter {
-    bool operator()( const outlet_t* ) const { return true; }
+    bool operator()( const this_t* ) const { return true; }
     static std::string name() { return "all"; }
   };
 
   struct IntraFilter {
-    bool operator()( const outlet_t* outlet_ptr ) const {
+    bool operator()( const this_t* outlet_ptr ) const {
       return outlet_ptr->HoldsIntraImpl().value();
     }
     static std::string_view name() { return "intra"; }
   };
 
   struct ThreadFilter {
-    bool operator()( const outlet_t* outlet_ptr ) const {
+    bool operator()( const this_t* outlet_ptr ) const {
       return outlet_ptr->HoldsThreadImpl().value();
     }
     static std::string_view name() { return "thread"; }
   };
 
   struct ProcFilter {
-    bool operator()( const outlet_t* outlet_ptr ) const {
+    bool operator()( const this_t* outlet_ptr ) const {
       return outlet_ptr->HoldsProcImpl().value();
     }
     static std::string_view name() { return "proc"; }
@@ -686,8 +687,8 @@ public:
   InstrumentationAggregatingOutletWrapper(
     InstrumentationAggregatingOutletWrapper& other
   ) : outlet( other.outlet ) {
-    emp_assert( !registry.contains(&outlet) );
-    registry.insert(&outlet);
+    emp_assert( !registry.contains(this) );
+    registry.insert(this);
   }
 
   /**
@@ -696,8 +697,8 @@ public:
   InstrumentationAggregatingOutletWrapper(
     const InstrumentationAggregatingOutletWrapper& other
   ) : outlet( other.outlet ) {
-    emp_assert( !registry.contains(&outlet) );
-    registry.insert(&outlet);
+    emp_assert( !registry.contains(this) );
+    registry.insert(this);
   };
 
   /**
@@ -706,8 +707,8 @@ public:
   InstrumentationAggregatingOutletWrapper(
     InstrumentationAggregatingOutletWrapper&& other
   ) : outlet( std::move(other.outlet) ) {
-    emp_assert( !registry.contains(&outlet) );
-    registry.insert(&outlet);
+    emp_assert( !registry.contains(this) );
+    registry.insert(this);
   };
 
   /**
@@ -716,12 +717,12 @@ public:
   template <typename... Args>
   InstrumentationAggregatingOutletWrapper(Args&&... args)
   : outlet(std::forward<Args>(args)...) {
-    emp_assert( !registry.contains(&outlet) );
-    registry.insert(&outlet);
+    emp_assert( !registry.contains(this) );
+    registry.insert(this);
   }
 
   ~InstrumentationAggregatingOutletWrapper() {
-    [[maybe_unused]] const size_t res = registry.erase( &outlet );
+    [[maybe_unused]] const size_t res = registry.erase( this );
     emp_assert( res == 1, res );
   }
 

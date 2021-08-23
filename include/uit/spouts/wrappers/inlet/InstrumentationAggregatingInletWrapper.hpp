@@ -30,13 +30,14 @@ template<typename Inlet>
 class InstrumentationAggregatingInletWrapper {
 
   using ImplSpec = typename Inlet::ImplSpec;
+  using this_t = InstrumentationAggregatingInletWrapper<Inlet>;
 
   using inlet_t = Inlet;
   inlet_t inlet;
 
   using value_type = typename ImplSpec::value_type;
 
-  inline static uitsl::safe::unordered_set<const inlet_t*> registry;
+  inline static uitsl::safe::unordered_set<const this_t*> registry;
 
   template<typename Filter>
   struct RegistryAggregator {
@@ -45,7 +46,7 @@ class InstrumentationAggregatingInletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const inlet_t* inlet) {
+        [](size_t accum, const this_t* inlet) {
           return accum + inlet->GetNumPutsAttempted();
         },
         Filter{}
@@ -56,7 +57,7 @@ class InstrumentationAggregatingInletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const inlet_t* inlet) {
+        [](size_t accum, const this_t* inlet) {
           return accum + inlet->GetNumTryPutsAttempted();
         },
         Filter{}
@@ -67,7 +68,7 @@ class InstrumentationAggregatingInletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const inlet_t* inlet) {
+        [](size_t accum, const this_t* inlet) {
           return accum + inlet->GetNumBlockingPuts();
         },
         Filter{}
@@ -78,7 +79,7 @@ class InstrumentationAggregatingInletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const inlet_t* inlet) {
+        [](size_t accum, const this_t* inlet) {
           return accum + inlet->GetNumTryPutsThatSucceeded();
         },
         Filter{}
@@ -89,7 +90,7 @@ class InstrumentationAggregatingInletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const inlet_t* inlet) {
+        [](size_t accum, const this_t* inlet) {
           return accum + inlet->GetNumTryPutsAttempted();
         },
         Filter{}
@@ -100,7 +101,7 @@ class InstrumentationAggregatingInletWrapper {
     std::shared_lock lock{ registry.GetMutex() };
     return uitsl::accumulate_if(
       std::begin(registry), std::end(registry), size_t{},
-      [](size_t accum, const inlet_t* inlet) {
+      [](size_t accum, const this_t* inlet) {
         return accum + inlet->GetNumBlockingPutsThatSucceededImmediately();
       },
       Filter{}
@@ -111,7 +112,7 @@ class InstrumentationAggregatingInletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const inlet_t* inlet) {
+        [](size_t accum, const this_t* inlet) {
           return accum + inlet->GetNumPutsThatSucceededImmediately();
         },
         Filter{}
@@ -122,7 +123,7 @@ class InstrumentationAggregatingInletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const inlet_t* inlet) {
+        [](size_t accum, const this_t* inlet) {
           return accum + inlet->GetNumPutsThatBlocked();
         },
         Filter{}
@@ -133,7 +134,7 @@ class InstrumentationAggregatingInletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), size_t{},
-        [](size_t accum, const inlet_t* inlet) {
+        [](size_t accum, const this_t* inlet) {
           return accum + inlet->GetNumDroppedPuts();
         },
         Filter{}
@@ -347,26 +348,26 @@ class InstrumentationAggregatingInletWrapper {
   };
 
   struct AllFilter {
-    bool operator()( const inlet_t* ) const { return true; }
+    bool operator()( const this_t* ) const { return true; }
     static std::string_view name() { return "all"; }
   };
 
   struct IntraFilter {
-    bool operator()( const inlet_t* inlet_ptr ) const {
+    bool operator()( const this_t* inlet_ptr ) const {
       return inlet_ptr->HoldsIntraImpl().value();
     }
     static std::string_view name() { return "intra"; }
   };
 
   struct ThreadFilter {
-    bool operator()( const inlet_t* inlet_ptr ) const {
+    bool operator()( const this_t* inlet_ptr ) const {
       return inlet_ptr->HoldsThreadImpl().value();
     }
     static std::string_view name() { return "thread"; }
   };
 
   struct ProcFilter {
-    bool operator()( const inlet_t* inlet_ptr ) const {
+    bool operator()( const this_t* inlet_ptr ) const {
       return inlet_ptr->HoldsProcImpl().value();
     }
     static std::string_view name() { return "proc"; }
@@ -386,8 +387,8 @@ public:
   InstrumentationAggregatingInletWrapper(
     InstrumentationAggregatingInletWrapper& other
   ) : inlet( other.inlet ) {
-    emp_assert( !registry.contains(&inlet) );
-    registry.insert(&inlet);
+    emp_assert( !registry.contains(this) );
+    registry.insert(this);
   }
 
   /**
@@ -396,8 +397,8 @@ public:
   InstrumentationAggregatingInletWrapper(
     const InstrumentationAggregatingInletWrapper& other
   ) : inlet( other.inlet ) {
-    emp_assert( !registry.contains(&inlet) );
-    registry.insert(&inlet);
+    emp_assert( !registry.contains(this) );
+    registry.insert(this);
   };
 
   /**
@@ -406,8 +407,8 @@ public:
   InstrumentationAggregatingInletWrapper(
     InstrumentationAggregatingInletWrapper&& other
   ) : inlet( std::move(other.inlet) ) {
-    emp_assert( !registry.contains(&inlet) );
-    registry.insert(&inlet);
+    emp_assert( !registry.contains(this) );
+    registry.insert(this);
   };
 
   /**
@@ -417,12 +418,12 @@ public:
   InstrumentationAggregatingInletWrapper(Args&&... args)
   : inlet(std::forward<Args>(args)...)
   {
-    emp_assert( !registry.contains(&inlet) );
-    registry.insert(&inlet);
+    emp_assert( !registry.contains(this) );
+    registry.insert(this);
   }
 
   ~InstrumentationAggregatingInletWrapper() {
-    [[maybe_unused]] const size_t res = registry.erase( &inlet );
+    [[maybe_unused]] const size_t res = registry.erase( this );
     emp_assert( res == 1, res );
   }
 
