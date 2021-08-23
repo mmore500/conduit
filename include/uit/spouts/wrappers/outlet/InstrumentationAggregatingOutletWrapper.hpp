@@ -313,6 +313,184 @@ class InstrumentationAggregatingOutletWrapper {
         Filter{}
       );
     }
+
+    static double GetMeanFractionTryPullsThatWereLaden() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumTryPullsThatWereLaden()
+            / static_cast<double>( outlet->GetNumTryPullsAttempted() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+
+    static double GetMeanFractionTryPullsThatWereUnladen() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumTryPullsThatWereUnladen()
+            / static_cast<double>( outlet->GetNumTryPullsAttempted() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionBlockingPullsThatBlocked() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumBlockingPullsThatBlocked()
+            / static_cast<double>( outlet->GetNumBlockingPulls() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionBlockingPullsThatWereLadenImmediately() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumBlockingPullsThatWereLadenImmediately()
+            / static_cast<double>( outlet->GetNumBlockingPulls() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionBlockingPullsThatWereLadenEventually() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumBlockingPullsThatWereLadenEventually()
+            / static_cast<double>( outlet->GetNumBlockingPulls() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionPullsThatWereLadenImmediately() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumPullsThatWereLadenImmediately()
+            / static_cast<double>( outlet->GetNumPullsAttempted() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionPullsThatWereLadenEventually() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumPullsThatWereLadenEventually()
+            / static_cast<double>( outlet->GetNumPullsAttempted() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionReadsThatWereFresh() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumReadsThatWereFresh()
+            / static_cast<double>( outlet->GetNumReadsPerformed() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionReadsThatWereStale() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumReadsThatWereStale()
+            / static_cast<double>( outlet->GetNumReadsPerformed() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionRevisionsThatWereRead() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumReadsThatWereFresh()
+            / static_cast<double>( outlet->GetNumRevisionsPulled() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionRevisionsThatWereNotRead() {
+      return 1.0 - GetMeanFractionRevisionsThatWereRead();
+    }
+
+    static double GetMeanFractionDuctFluxThatWasSteppedThrough() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumRevisionsPulled()
+            / static_cast<double>( outlet->GetNetFluxThroughDuct() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
+    static double GetMeanFractionDuctFluxThatWasJumpedOver() {
+      return 1.0 - GetMeanFractionDuctFluxThatWasSteppedThrough();
+    }
+
+    static double GetMeanFractionDuctFluxThatWasRead() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetNumReadsThatWereFresh()
+            / static_cast<double>( outlet->GetNetFluxThroughDuct() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
       res.AddVal(uitsl::get_proc_id(), "proc");
@@ -410,6 +588,61 @@ class InstrumentationAggregatingOutletWrapper {
       res.AddFun(
         GetFractionDuctFluxThatWasRead,
         "Fraction Duct Flux That Was Read"
+      );
+      res.AddFun(
+        GetMeanFractionTryPullsThatWereLaden,
+        "Mean Fraction Try Pulls That Were Laden"
+      );
+      res.AddFun(
+        GetMeanFractionTryPullsThatWereUnladen,
+        "Mean Fraction Try Pulls That Were Unladen"
+      );
+      res.AddFun(
+        GetMeanFractionBlockingPullsThatBlocked,
+        "Mean Fraction Blocking Pulls That Blocked"
+      );
+      res.AddFun(
+        GetMeanFractionBlockingPullsThatWereLadenImmediately,
+        "Mean Fraction Blocking Pulls That Were Laden Immediately"
+      );
+      res.AddFun(
+        GetMeanFractionBlockingPullsThatWereLadenEventually,
+        "Mean Fraction Blocking Pulls That Were Laden Eventually"
+      );
+      res.AddFun(
+        GetMeanFractionPullsThatWereLadenImmediately,
+        "Mean Fraction Pulls That Were Laden Immediately"
+      );
+      res.AddFun(
+        GetMeanFractionPullsThatWereLadenEventually,
+        "Mean Fraction Pulls That Were Laden Eventually"
+      );
+      res.AddFun(
+        GetMeanFractionReadsThatWereFresh, "Mean Fraction Reads That Were Fresh"
+      );
+      res.AddFun(
+        GetMeanFractionReadsThatWereStale,
+        "Mean Fraction Reads That Were Stale"
+      );
+      res.AddFun(
+        GetMeanFractionRevisionsThatWereRead,
+        "Mean Fraction Revisions That Were Read"
+      );
+      res.AddFun(
+        GetMeanFractionRevisionsThatWereNotRead,
+        "Mean Fraction Revisions That Were Not Read"
+      );
+      res.AddFun(
+        GetMeanFractionDuctFluxThatWasSteppedThrough,
+        "Mean Fraction Duct Flux That Was Stepped Through"
+      );
+      res.AddFun(
+        GetMeanFractionDuctFluxThatWasJumpedOver,
+        "Mean Fraction Duct Flux That Was Jumped Over"
+      );
+      res.AddFun(
+        GetMeanFractionDuctFluxThatWasRead,
+        "Mean Fraction Duct Flux That Was Read"
       );
       res.AddFun(
         [](){ return uitsl::runtime<>.GetElapsed().count(); },

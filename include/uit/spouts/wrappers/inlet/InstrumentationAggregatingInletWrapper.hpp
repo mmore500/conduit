@@ -177,6 +177,66 @@ class InstrumentationAggregatingInletWrapper {
       );
     }
 
+    static double GetMeanFractionTryPutsDropped() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* inlet) {
+          return accum + (
+            inlet->GetNumDroppedPuts()
+            / static_cast<double>( inlet->GetNumPutsAttempted() )
+          );
+        },
+        Filter{}
+      ) / GetNumInlets();
+    }
+
+    static double GetMeanFractionTryPutsThatSucceeded() {
+      return 1.0 - GetMeanFractionTryPutsDropped();
+    }
+
+    static double GetMeanFractionBlockingPutsThatBlocked() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* inlet) {
+          return accum + (
+            inlet->GetNumPutsThatBlocked()
+            / static_cast<double>( inlet->GetNumBlockingPuts() )
+          );
+        },
+        Filter{}
+      ) / GetNumInlets();
+    }
+
+    static double GetMeanFractionPutsThatSucceededEventually() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* inlet) {
+          return accum + (
+            inlet->GetNumPutsThatSucceededEventually()
+            / static_cast<double>( inlet->GetNumPutsAttempted() )
+          );
+        },
+        Filter{}
+      ) / GetNumInlets();
+    }
+
+    static double GetMeanFractionPutsThatSucceededImmediately() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* inlet) {
+          return accum + (
+            inlet->GetNumPutsThatSucceededImmediately()
+            / static_cast<double>( inlet->GetNumPutsAttempted() )
+          );
+        },
+        Filter{}
+      ) / GetNumInlets();
+    }
+
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
       res.AddVal(uitsl::get_proc_id(), "proc");
@@ -214,6 +274,26 @@ class InstrumentationAggregatingInletWrapper {
       res.AddFun(
         GetFractionPutsThatSucceededImmediately,
         "Fraction Puts That Succeeded Immediately"
+      );
+      res.AddFun(
+        GetMeanFractionTryPutsDropped,
+        "Mean Fraction Try Puts Dropped"
+      );
+      res.AddFun(
+        GetMeanFractionTryPutsThatSucceeded,
+        "Mean Fraction Try Puts That Succeeded"
+      );
+      res.AddFun(
+        GetMeanFractionBlockingPutsThatBlocked,
+        "Mean Fraction Blocking Puts That Blocked"
+      );
+      res.AddFun(
+        GetMeanFractionPutsThatSucceededEventually,
+        "Mean Fraction Puts That Succeeded Eventually"
+      );
+      res.AddFun(
+        GetMeanFractionPutsThatSucceededImmediately,
+        "Mean Fraction Puts That Succeeded Immediately"
       );
       res.AddFun(
         [](){ return uitsl::runtime<>.GetElapsed().count(); },
