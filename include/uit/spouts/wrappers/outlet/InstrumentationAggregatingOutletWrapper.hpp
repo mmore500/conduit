@@ -219,42 +219,168 @@ class InstrumentationAggregatingOutletWrapper {
     }
 
     static double GetFractionTryPullsThatWereLaden() {
-      return GetNumTryPullsThatWereLaden() / static_cast<double>(
-        GetNumTryPullsAttempted()
-      );
+      struct Adder {
+        size_t num_try_pulls_that_were_laden{};
+        size_t num_try_pulls_attempted{};
+        double GetRatio() const {
+          return num_try_pulls_that_were_laden / static_cast<double>(
+            num_try_pulls_attempted
+          );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_try_pulls_that_were_laden
+            += inlet->GetNumTryPullsThatWereLaden();
+          accum.num_try_pulls_attempted += inlet->GetNumTryPullsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
 
     static double GetFractionTryPullsThatWereUnladen() {
-      return GetNumTryPullsThatWereUnladen() / static_cast<double>(
-        GetNumTryPullsAttempted()
-      );
+      struct Adder {
+        size_t num_try_pulls_that_were_unladen{};
+        size_t num_try_pulls_attempted{};
+        double GetRatio() const {
+          return num_try_pulls_that_were_unladen / static_cast<double>(
+            num_try_pulls_attempted
+          );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_try_pulls_that_were_unladen
+            += inlet->GetNumTryPullsThatWereUnladen();
+          accum.num_try_pulls_attempted += inlet->GetNumTryPullsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionBlockingPullsThatBlocked() {
-      return GetNumBlockingPullsThatBlocked() / static_cast<double>(
-        GetNumBlockingPulls()
-      );
+      struct Adder {
+        size_t num_blocking_pulls_that_blocked{};
+        size_t num_blocking_pulls{};
+        double GetRatio() const {
+          return num_blocking_pulls_that_blocked / static_cast<double>(
+            num_blocking_pulls
+          );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_blocking_pulls_that_blocked
+            += inlet->GetNumBlockingPullsThatBlocked();
+          accum.num_blocking_pulls += inlet->GetNumBlockingPulls();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionBlockingPullsThatWereLadenImmediately() {
-      return GetNumBlockingPullsThatWereLadenImmediately()
-        / static_cast<double>( GetNumBlockingPulls() );
+      struct Adder {
+        size_t num_blocking_pulls_that_were_laden_immediately{};
+        size_t num_blocking_pulls{};
+        double GetRatio() const {
+          return num_blocking_pulls_that_were_laden_immediately
+            / static_cast<double>( num_blocking_pulls );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_blocking_pulls_that_were_laden_immediately
+            += inlet->GetNumBlockingPullsThatWereLadenImmediately();
+          accum.num_blocking_pulls += inlet->GetNumBlockingPulls();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionBlockingPullsThatWereLadenEventually() {
-      return GetNumBlockingPullsThatWereLadenEventually()
-        / static_cast<double>( GetNumBlockingPulls() );
+      struct Adder {
+        size_t num_blocking_pulls_that_were_laden_eventually{};
+        size_t num_blocking_pulls{};
+        double GetRatio() const {
+          return num_blocking_pulls_that_were_laden_eventually
+            / static_cast<double>( num_blocking_pulls );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_blocking_pulls_that_were_laden_eventually
+            += inlet->GetNumBlockingPullsThatWereLadenEventually();
+          accum.num_blocking_pulls += inlet->GetNumBlockingPulls();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionPullsThatWereLadenImmediately() {
-      return GetNumPullsThatWereLadenImmediately()
-        / static_cast<double>( GetNumPullsAttempted() );
+      struct Adder {
+        size_t num_blocking_pulls_that_were_laden_immediately{};
+        size_t num_pulls_attempted{};
+        double GetRatio() const {
+          return num_blocking_pulls_that_were_laden_immediately
+            / static_cast<double>( num_pulls_attempted );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_blocking_pulls_that_were_laden_immediately
+            += inlet->GetNumPullsThatWereLadenImmediately();
+          accum.num_pulls_attempted += inlet->GetNumPullsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionPullsThatWereLadenEventually() {
-      return GetNumPullsThatWereLadenEventually()
-        / static_cast<double>( GetNumPullsAttempted() );
+      struct Adder {
+        size_t num_blocking_pulls_that_were_laden_eventually{};
+        size_t num_pulls_attempted{};
+        double GetRatio() const {
+          return num_blocking_pulls_that_were_laden_eventually
+            / static_cast<double>( num_pulls_attempted );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_blocking_pulls_that_were_laden_eventually
+            += inlet->GetNumPullsThatWereLadenEventually();
+          accum.num_pulls_attempted += inlet->GetNumPullsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static size_t GetNetFluxThroughDuct() {
@@ -269,21 +395,69 @@ class InstrumentationAggregatingOutletWrapper {
     }
 
     static double GetFractionReadsThatWereFresh() {
-      return GetNumReadsThatWereFresh() / static_cast<double>(
-        GetNumReadsPerformed()
-      );
+      struct Adder {
+        size_t num_reads_that_were_fresh{};
+        size_t num_reads_performed{};
+        double GetRatio() const {
+          return num_reads_that_were_fresh
+            / static_cast<double>( num_reads_performed );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_reads_that_were_fresh += inlet->GetNumReadsThatWereFresh();
+          accum.num_reads_performed += inlet->GetNumReadsPerformed();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionReadsThatWereStale() {
-      return GetNumReadsThatWereStale() / static_cast<double>(
-        GetNumReadsPerformed()
-      );
+      struct Adder {
+        size_t num_reads_that_were_stale{};
+        size_t num_reads_performed{};
+        double GetRatio() const {
+          return num_reads_that_were_stale
+            / static_cast<double>( num_reads_performed );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_reads_that_were_stale += inlet->GetNumReadsThatWereStale();
+          accum.num_reads_performed += inlet->GetNumReadsPerformed();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionRevisionsThatWereRead() {
-      return GetNumReadsThatWereFresh() / static_cast<double>(
-        GetNumRevisionsPulled()
-      );
+      struct Adder {
+        size_t num_reads_that_were_fresh{};
+        size_t num_revisions_pulled{};
+        double GetRatio() const {
+          return num_reads_that_were_fresh
+            / static_cast<double>( num_revisions_pulled );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_reads_that_were_fresh += inlet->GetNumReadsThatWereFresh();
+          accum.num_revisions_pulled += inlet->GetNumRevisionsPulled();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionRevisionsThatWereNotRead() {
@@ -291,9 +465,25 @@ class InstrumentationAggregatingOutletWrapper {
     }
 
     static double GetFractionDuctFluxThatWasSteppedThrough() {
-      return GetNumRevisionsPulled() / static_cast<double>(
-        GetNetFluxThroughDuct()
-      );
+      struct Adder {
+        size_t num_revisions_pulled{};
+        size_t net_flux_through_duct{};
+        double GetRatio() const {
+          return num_revisions_pulled
+            / static_cast<double>( net_flux_through_duct );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_revisions_pulled += inlet->GetNumRevisionsPulled();
+          accum.net_flux_through_duct += inlet->GetNetFluxThroughDuct();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionDuctFluxThatWasJumpedOver() {
@@ -301,9 +491,25 @@ class InstrumentationAggregatingOutletWrapper {
     }
 
     static double GetFractionDuctFluxThatWasRead() {
-      return GetNumReadsThatWereFresh() / static_cast<double>(
-        GetNetFluxThroughDuct()
-      );
+      struct Adder {
+        size_t num_reads_that_were_fresh{};
+        size_t net_flux_through_duct{};
+        double GetRatio() const {
+          return num_reads_that_were_fresh
+            / static_cast<double>( net_flux_through_duct );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_reads_that_were_fresh += inlet->GetNumReadsThatWereFresh();
+          accum.net_flux_through_duct += inlet->GetNetFluxThroughDuct();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static size_t GetNumOutlets() {

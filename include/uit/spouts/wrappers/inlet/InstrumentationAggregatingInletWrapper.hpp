@@ -142,31 +142,121 @@ class InstrumentationAggregatingInletWrapper {
     }
 
     static double GetFractionTryPutsDropped() {
-      return GetNumDroppedPuts() / static_cast<double>(
-        GetNumTryPutsAttempted()
-      );
+      struct Adder {
+        size_t num_dropped_puts{};
+        size_t num_try_puts_attempted{};
+        double GetRatio() const {
+          return num_dropped_puts / static_cast<double>(
+            num_try_puts_attempted
+          );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_dropped_puts += inlet->GetNumDroppedPuts();
+          accum.num_try_puts_attempted += inlet->GetNumTryPutsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionTryPutsThatSucceeded() {
-      return 1.0 - GetFractionTryPutsDropped();
+      struct Adder {
+        size_t num_try_puts_that_succeeded{};
+        size_t num_try_puts_attempted{};
+        double GetRatio() const {
+          return num_try_puts_that_succeeded / static_cast<double>(
+            num_try_puts_attempted
+          );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_try_puts_that_succeeded
+            += inlet->GetNumTryPutsThatSucceeded();
+          accum.num_try_puts_attempted += inlet->GetNumTryPutsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionBlockingPutsThatBlocked() {
-      return GetNumPutsThatBlocked() / static_cast<double>(
-        GetNumBlockingPuts()
-      );
+      struct Adder {
+        size_t num_puts_that_blocked{};
+        size_t num_blocking_puts{};
+        double GetRatio() const {
+          return num_puts_that_blocked / static_cast<double>(
+            num_blocking_puts
+          );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_puts_that_blocked += inlet->GetNumPutsThatBlocked();
+          accum.num_blocking_puts += inlet->GetNumBlockingPuts();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionPutsThatSucceededEventually() {
-      return GetNumPutsThatSucceededEventually() / static_cast<double>(
-        GetNumPutsAttempted()
-      );
+      struct Adder {
+        size_t num_puts_that_succeeded_eventually{};
+        size_t num_puts_attempted{};
+        double GetRatio() const {
+          return num_puts_that_succeeded_eventually / static_cast<double>(
+            num_puts_attempted
+          );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_puts_that_succeeded_eventually
+            += inlet->GetNumPutsThatSucceededEventually();
+          accum.num_puts_attempted += inlet->GetNumPutsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static double GetFractionPutsThatSucceededImmediately() {
-      return GetNumPutsThatSucceededImmediately() / static_cast<double>(
-        GetNumPutsAttempted()
-      );
+      struct Adder {
+        size_t num_puts_that_succeeded_immediately{};
+        size_t num_puts_attempted{};
+        double GetRatio() const {
+          return num_puts_that_succeeded_immediately / static_cast<double>(
+            num_puts_attempted
+          );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_puts_that_succeeded_immediately
+            += inlet->GetNumPutsThatSucceededImmediately();
+          accum.num_puts_attempted += inlet->GetNumPutsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
     }
 
     static size_t GetNumInlets() {
