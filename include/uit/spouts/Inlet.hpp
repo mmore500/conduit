@@ -390,6 +390,10 @@ public:
     duct->RegisterOutletNodeID(node_id);
   }
 
+  void RegisterMeshID(const size_t mesh_id) const {
+    duct->RegisterMeshID(mesh_id);
+  }
+
   emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
     return duct->LookupOutletProc();
   }
@@ -417,6 +421,8 @@ public:
   emp::optional<size_t> LookupOutletNodeID() const {
     return duct->LookupOutletNodeID();
   }
+
+  emp::optional<size_t> LookupMeshID() const { return duct->LookupMeshID(); }
 
   /**
    * TODO.

@@ -234,6 +234,10 @@ public:
     inlet.RegisterOutletNodeID(node_id);
   }
 
+  void RegisterMeshID(const size_t mesh_id) const {
+    inlet.RegisterMeshID(mesh_id);
+  }
+
   decltype(auto) LookupOutletProc() const { return inlet.LookupOutletProc(); }
 
   decltype(auto) LookupOutletThread() const {
@@ -251,6 +255,8 @@ public:
   decltype(auto) LookupOutletNodeID() const {
     return inlet.LookupOutletNodeID();
   }
+
+  decltype(auto) LookupMeshID() const { return inlet.LookupMeshID(); }
 
 };
 

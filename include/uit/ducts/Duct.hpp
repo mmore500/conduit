@@ -138,6 +138,9 @@ class Duct {
   inline static node_id_registry_t inlet_node_id_registry;
   inline static node_id_registry_t outlet_node_id_registry;
 
+  using mesh_id_registry_t = uitsl::safe::unordered_map<uid_t_, size_t>;
+  inline static mesh_id_registry_t mesh_id_registry;
+
 public:
 
   /// TODO.
@@ -370,6 +373,11 @@ public:
     outlet_node_id_registry[GetUID()] = node_id;
   }
 
+  /// Optional, for instrumentaiton purposes.
+  void RegisterMeshID(const size_t mesh_id) const {
+    mesh_id_registry[GetUID()] = mesh_id;
+  }
+
   emp::optional<uitsl::proc_id_t> LookupInletProc() const {
     return inlet_proc_registry.contains( GetUID() )
       ? emp::optional<uitsl::proc_id_t>{ inlet_proc_registry.at( GetUID() ) }
@@ -415,6 +423,13 @@ public:
   emp::optional<size_t> LookupOutletNodeID() const {
     return outlet_node_id_registry.contains( GetUID() )
       ? emp::optional<size_t>{outlet_node_id_registry.at(GetUID())}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<size_t> LookupMeshID() const {
+    return mesh_id_registry.contains( GetUID() )
+      ? emp::optional<size_t>{mesh_id_registry.at(GetUID())}
       : std::nullopt
     ;
   }

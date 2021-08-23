@@ -907,6 +907,10 @@ public:
     outlet.RegisterOutletNodeID(node_id);
   }
 
+  void RegisterMeshID(const size_t mesh_id) const {
+    outlet.RegisterMeshID(mesh_id);
+  }
+
   decltype(auto) LookupOutletProc() const { return outlet.LookupOutletProc(); }
 
   decltype(auto) LookupOutletThread() const {
@@ -920,6 +924,8 @@ public:
   }
 
   decltype(auto) LookupEdgeID() const { return outlet.LookupEdgeID(); }
+
+  decltype(auto) LookupMeshID() const { return outlet.LookupMeshID(); }
 
 };
 
