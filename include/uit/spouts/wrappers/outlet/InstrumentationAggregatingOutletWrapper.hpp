@@ -838,6 +838,10 @@ public:
     return outlet.GetFractionReadsThatWereFresh();
   }
 
+  decltype(auto) GetFractionReadsThatWereStale() const {
+    return outlet.GetFractionReadsThatWereStale();
+  }
+
   decltype(auto) GetFractionRevisionsThatWereRead() const {
     return outlet.GetFractionRevisionsThatWereRead();
   }
@@ -925,6 +929,14 @@ public:
   }
 
   decltype(auto) LookupEdgeID() const { return outlet.LookupEdgeID(); }
+
+  decltype(auto) LookupInletNodeID() const {
+    return outlet.LookupInletNodeID();
+  }
+
+  decltype(auto) LookupOutletNodeID() const {
+    return outlet.LookupOutletNodeID();
+  }
 
   decltype(auto) LookupMeshID() const { return outlet.LookupMeshID(); }
 

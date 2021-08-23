@@ -129,6 +129,10 @@ public:
 
   const value_type& JumpGet() { Jump(); return Get(); }
 
+  void Step(size_t num_steps=1) {
+    while ( num_steps ) num_steps -= TryStep(num_steps);
+  }
+
   const value_type& GetNext() { while (TryStep() == 0); return Get(); }
 
   using optional_ref_t = emp::optional<std::reference_wrapper<
@@ -235,6 +239,10 @@ public:
 
   decltype(auto) GetFractionReadsThatWereFresh() const {
     return outlet.GetFractionReadsThatWereFresh();
+  }
+
+  decltype(auto) GetFractionReadsThatWereStale() const {
+    return outlet.GetFractionReadsThatWereStale();
   }
 
   decltype(auto) GetFractionRevisionsThatWereRead() const {
