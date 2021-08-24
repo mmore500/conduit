@@ -217,7 +217,7 @@ uitsl/mpi/Request.cpp
 uitsl/mpi/comm_utils.cpp
 uitsl/mpi/group_utils.cpp
 uitsl/mpi/mpi_types.cpp
-uitsl/mpi/mpi_utils.cpp
+uitsl/mpi/mpi_init_utils.cpp
 uitsl/mpi/request_utils.cpp
 uitsl/mpi/routine_functors.cpp
 uitsl/nonce/CircularIndex.cpp

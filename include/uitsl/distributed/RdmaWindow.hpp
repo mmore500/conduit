@@ -11,7 +11,7 @@
 
 #include "../mpi/audited_routines.hpp"
 #include "../mpi/mpi_types.hpp"
-#include "../mpi/mpi_utils.hpp"
+#include "../mpi/mpi_init_utils.hpp"
 
 namespace uitsl {
 

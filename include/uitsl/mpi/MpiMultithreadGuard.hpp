@@ -5,7 +5,7 @@
 #include <functional>
 
 #include "audited_routines.hpp"
-#include "mpi_utils.hpp"
+#include "mpi_init_utils.hpp"
 
 namespace uitsl {
 

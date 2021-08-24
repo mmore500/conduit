@@ -5,7 +5,7 @@
 
 #include "uitsl/debug/benchmark_utils.hpp"
 #include "uitsl/mpi/MpiGuard.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/mpi/mpi_init_utils.hpp"
 #include "uitsl/nonce/ScopeGuard.hpp"
 
 #include "uit/setup/ImplSpec.hpp"

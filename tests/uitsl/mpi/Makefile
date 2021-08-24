@@ -1,6 +1,6 @@
 TARGET_NAMES += group_utils
 TARGET_NAMES += mpi_types
-TARGET_NAMES += mpi_utils
+TARGET_NAMES += mpi_init_utils
 TARGET_NAMES += MpiGuard
 TARGET_NAMES += MpiMultithreadGuard
 TARGET_NAMES += Request

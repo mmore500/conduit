@@ -5,7 +5,7 @@
 #include "Catch/single_include/catch2/catch.hpp"
 
 #include "uitsl/math/math_utils.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/mpi/mpi_init_utils.hpp"
 #include "uitsl/mpi/Request.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 

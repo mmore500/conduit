@@ -11,7 +11,7 @@
 
 #include "../../uitsl/debug/safe_cast.hpp"
 #include "../../uitsl/math/math_utils.hpp"
-#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"
 

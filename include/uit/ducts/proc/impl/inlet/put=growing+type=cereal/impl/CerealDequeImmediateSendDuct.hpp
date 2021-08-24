@@ -18,7 +18,7 @@
 #include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../../../../uitsl/meta/c::static_test.hpp"
-#include "../../../../../../../uitsl/mpi/mpi_utils.hpp"
+#include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../../uitsl/mpi/Request.hpp"
 #include "../../../../../../../uitsl/nonce/CircularIndex.hpp"
 #include "../../../../../../../uitsl/utility/print_utils.hpp"

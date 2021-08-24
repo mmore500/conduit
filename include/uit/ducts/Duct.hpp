@@ -16,7 +16,7 @@
 #include "../../uitsl/containers/safe/unordered_map.hpp"
 #include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/meta/HasMemberFunction.hpp"
-#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 #include "../../uitsl/utility/print_utils.hpp"
 

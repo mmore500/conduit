@@ -17,7 +17,7 @@
 #include "../../../third-party/stduuid/include/uuid.h"
 
 #include "../mpi/comm_utils.hpp"
-#include "../mpi/mpi_utils.hpp"
+#include "../mpi/mpi_init_utils.hpp"
 #include "../polyfill/filesystem.hpp"
 
 namespace uitsl {

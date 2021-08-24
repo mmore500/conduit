@@ -14,7 +14,7 @@
 
 #include "../../uitsl/debug/audit_cast.hpp"
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
-#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 
 #include "../topology/Topology.hpp"

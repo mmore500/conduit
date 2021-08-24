@@ -19,7 +19,7 @@
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorPacket.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/f::static_test.hpp"
-#include "../../../../../../uitsl/mpi/mpi_utils.hpp"
+#include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/nonce/CircularIndex.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
 

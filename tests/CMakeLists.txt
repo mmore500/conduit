@@ -237,7 +237,7 @@ set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/comm_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/group_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/mpi_types.cpp
-    ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/mpi_utils.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/mpi_init_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/request_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/routine_functors.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/nonce/CircularIndex.cpp

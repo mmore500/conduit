@@ -7,7 +7,7 @@
 #include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/mpi/mpi_init_utils.hpp"
 #include "uitsl/utility/assign_utils.hpp"
 
 #include "uit/setup/ImplSelect.hpp"

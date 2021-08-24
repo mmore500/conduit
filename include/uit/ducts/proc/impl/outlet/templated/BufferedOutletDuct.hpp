@@ -12,7 +12,7 @@
 #include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
-#include "../../../../../../uitsl/mpi/mpi_utils.hpp"
+#include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/nonce/ScopeGuard.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
 
