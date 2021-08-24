@@ -447,12 +447,12 @@ public:
 
   // element access
   mapped_type& operator[](const key_type& k) {
-    const std::shared_lock lock{ mutex };
+    const std::unique_lock lock{ mutex };
     return impl.operator[](k);
   }
 
   mapped_type& operator[](key_type&& k) {
-    const std::shared_lock lock{ mutex };
+    const std::unique_lock lock{ mutex };
     return impl.operator[](std::move(k));
   }
 
