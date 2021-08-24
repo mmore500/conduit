@@ -2,6 +2,8 @@
 #ifndef UIT_SPOUTS_WRAPPERS_IMPL_ROUNDTRIPCOUNTPACKET_HPP_INCLUDE
 #define UIT_SPOUTS_WRAPPERS_IMPL_ROUNDTRIPCOUNTPACKET_HPP_INCLUDE
 
+#include <tuple>
+
 namespace uit {
 namespace impl {
 
@@ -13,6 +15,16 @@ struct RoundTripCountPacket {
 
   template<class Archive>
   void serialize(Archive& archive) { archive( round_trip_count, data ); }
+
+  bool operator==(const RoundTripCountPacket& other) const {
+    return std::tuple{
+      round_trip_count,
+      data,
+    } == std::tuple{
+      other.round_trip_count,
+      other.data
+    };
+  }
 
 };
 
