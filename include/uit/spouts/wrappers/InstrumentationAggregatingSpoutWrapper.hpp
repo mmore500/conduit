@@ -8,13 +8,15 @@
 #include "inlet/InstrumentationAggregatingInletWrapper.hpp"
 #include "outlet/InstrumentationAggregatingOutletWrapper.hpp"
 
+#include "impl/RoundTripCountPacket.hpp"
+
 namespace uit {
 
 template<typename T_>
 class InstrumentationAggregatingSpoutWrapper {
 
 public:
-  using T = std::tuple<size_t, T_>; // size_t is round trip touch count
+  using T = uit::impl::RoundTripCountPacket<T_>;
 
   template<typename Inlet>
   using inlet_wrapper_t

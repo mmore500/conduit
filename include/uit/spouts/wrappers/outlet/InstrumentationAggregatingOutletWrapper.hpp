@@ -9,7 +9,6 @@
 #include <shared_mutex>
 #include <string>
 #include <string_view>
-#include <tuple>
 #include <typeinfo>
 #include <type_traits>
 #include <utility>
@@ -1196,13 +1195,8 @@ class InstrumentationAggregatingOutletWrapper {
   mutable touch_count_address_cache_t touch_count_address_cache{ std::nullopt };
 
   void DoRefreshTouchCountAddressCache() const {
-    // initializer list necessary to prevent ub
-    // see https://en.cppreference.com/w/cpp/algorithm/minmax
-    const auto [min_node_id, max_node_id] = std::minmax({
-      *LookupInletNodeID(), *LookupOutletNodeID()
-    });
     touch_count_address_cache.emplace(
-      *LookupMeshID(), min_node_id, max_node_id
+      *LookupMeshID(), *LookupInletNodeID(), *LookupOutletNodeID()
     );
   }
 
@@ -1231,7 +1225,7 @@ class InstrumentationAggregatingOutletWrapper {
     );
     uit::impl::round_trip_touch_counter.at(
       GetTouchCountAddr()
-    ) = std::max( std::get<0>( outlet.Get() ), GetCurRoundTripTouchCount() );
+    ) = std::max( outlet.Get().round_trip_count , GetCurRoundTripTouchCount() );
   }
 
 public:
@@ -1298,9 +1292,9 @@ public:
     return res;
   }
 
-  const value_type& Get() const { return std::get<1>(outlet.Get()); }
+  const value_type& Get() const { return outlet.Get().data; }
 
-  value_type& Get() { return std::get<1>(outlet.Get()); }
+  value_type& Get() { return outlet.Get().data; }
 
   decltype(auto) JumpGet() {
     Jump();

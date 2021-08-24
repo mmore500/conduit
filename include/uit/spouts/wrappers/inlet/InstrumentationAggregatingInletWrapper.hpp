@@ -9,7 +9,6 @@
 #include <string>
 #include <string_view>
 #include <type_traits>
-#include <tuple>
 #include <utility>
 
 #include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
@@ -26,6 +25,8 @@
 #include "../../../../uitsl/parallel/thread_utils.hpp"
 
 #include "../impl/round_trip_touch_counter.hpp"
+#include "../impl/RoundTripCounterAddr.hpp"
+#include "../impl/RoundTripCountPacket.hpp"
 
 namespace uit {
 namespace internal {
@@ -624,13 +625,8 @@ class InstrumentationAggregatingInletWrapper {
   mutable touch_count_address_cache_t touch_count_address_cache{ std::nullopt };
 
   void DoRefreshTouchCountAddressCache() const {
-    // initializer list necessary to prevent ub
-    // see https://en.cppreference.com/w/cpp/algorithm/minmax
-    const auto [min_node_id, max_node_id] = std::minmax({
-      *LookupInletNodeID(), *LookupOutletNodeID()
-    });
     touch_count_address_cache.emplace(
-      *LookupMeshID(), min_node_id, max_node_id
+      *LookupMeshID(), *LookupInletNodeID(), *LookupOutletNodeID()
     );
   }
 
@@ -706,16 +702,20 @@ public:
   }
 
   void Put(const value_type& val) {
-    return inlet.Put( std::tuple{ GetCurRoundTripTouchCount() + 1, val } );
+    return inlet.Put( uit::impl::RoundTripCountPacket<value_type>{
+      GetCurRoundTripTouchCount() + 1, val
+    } );
   }
 
   decltype(auto) TryPut(const value_type& val) {
-    return inlet.TryPut( std::tuple{ GetCurRoundTripTouchCount() + 1, val } );
+    return inlet.TryPut( uit::impl::RoundTripCountPacket<value_type>{
+      GetCurRoundTripTouchCount() + 1, val
+    } );
   }
 
   template<typename P>
   decltype(auto) TryPut(P&& val) {
-    return inlet.TryPut( std::tuple{
+    return inlet.TryPut( uit::impl::RoundTripCountPacket<value_type>{
       GetCurRoundTripTouchCount() + 1, std::forward<P>(val)
     } );
   }

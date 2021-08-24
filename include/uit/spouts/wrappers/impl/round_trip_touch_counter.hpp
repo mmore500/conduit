@@ -7,17 +7,19 @@
 
 #include "../../../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
 
+#include "RoundTripCounterAddr.hpp"
+
 namespace uit {
 namespace impl {
 
 // (mesh id, min node id, max node id) -> round trip touch count
-using round_trip_touch_addr_t = std::tuple<size_t, size_t, size_t>;
+using round_trip_touch_addr_t = uit::impl::RoundTripCounterAddr;
 using round_trip_touch_counter_t = std::unordered_map<
   round_trip_touch_addr_t,
-  size_t,
-  emp::TupleHash<size_t, size_t, size_t>
+  size_t
 >;
-// set up done by mesh
+
+// all set up (adding addrs) performed by uit::Mesh
 inline static round_trip_touch_counter_t round_trip_touch_counter{};
 
 } // namespace impl
