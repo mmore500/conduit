@@ -42,6 +42,12 @@ inline void mpi_init() {
   UITSL_Init(&argc, nullptr);
 }
 
+inline bool is_mpi_initialized() {
+  int flag{};
+  UITSL_Initialized(&flag);
+  return flag;
+}
+
 } // namespace uitsl
 
 #endif // #ifndef UITSL_MPI_MPI_UTILS_HPP_INCLUDE
