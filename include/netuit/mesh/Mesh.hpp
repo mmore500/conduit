@@ -2,8 +2,10 @@
 #ifndef NETUIT_MESH_MESH_HPP_INCLUDE
 #define NETUIT_MESH_MESH_HPP_INCLUDE
 
+#include <algorithm>
 #include <ratio>
 #include <stddef.h>
+#include <tuple>
 #include <unordered_map>
 
 #include <mpi.h>
@@ -16,6 +18,7 @@
 
 #include "../../uit/ducts/Duct.hpp"
 #include "../../uit/setup/InterProcAddress.hpp"
+#include "../../uit/spouts/wrappers/impl/round_trip_touch_counter.hpp"
 
 #include "../assign/AssignIntegrated.hpp"
 #include "../topology/Topology.hpp"
@@ -209,6 +212,18 @@ class Mesh {
       output.RegisterOutletThread( outlet_thread_id );
       output.RegisterOutletNodeID( outlet_node_id );
     }
+
+    {
+      // initializer list necessary to prevent ub
+      // see https://en.cppreference.com/w/cpp/algorithm/minmax
+      const auto [min_node_id, max_node_id] = std::minmax({
+        nodes.GetInputRegistry().at( output.GetEdgeID() ),
+        nodes.GetOutputRegistry().at( output.GetEdgeID() )
+      });
+      const auto addr = std::tuple{ mesh_id, min_node_id, max_node_id };
+      uit::impl::round_trip_touch_counter[ addr ];
+      emp_assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
+    }
   }
 
   // solely for instrumentation purposes
@@ -241,6 +256,18 @@ class Mesh {
       input.RegisterOutletProc( outlet_proc_id );
       input.RegisterOutletThread( outlet_thread_id );
       input.RegisterOutletNodeID( outlet_node_id );
+    }
+
+    {
+      // initializer list necessary to prevent ub
+      // see https://en.cppreference.com/w/cpp/algorithm/minmax
+      const auto [min_node_id, max_node_id] = std::minmax({
+        nodes.GetInputRegistry().at( input.GetEdgeID() ),
+        nodes.GetOutputRegistry().at( input.GetEdgeID() )
+      });
+      const auto addr = std::tuple{ mesh_id, min_node_id, max_node_id };
+      uit::impl::round_trip_touch_counter[ addr ];
+      emp_assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
     }
   }
 

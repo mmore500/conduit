@@ -9,6 +9,7 @@
 #include <string>
 #include <string_view>
 #include <type_traits>
+#include <tuple>
 #include <utility>
 
 #include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
@@ -20,8 +21,11 @@
 #include "../../../../uitsl/containers/safe/unordered_set.hpp"
 #include "../../../../uitsl/countdown/coarse_runtime.hpp"
 #include "../../../../uitsl/countdown/runtime.hpp"
+#include "../../../../uitsl/debug/benchmark_utils.hpp"
 #include "../../../../uitsl/mpi/comm_utils.hpp"
 #include "../../../../uitsl/parallel/thread_utils.hpp"
+
+#include "../impl/round_trip_touch_counter.hpp"
 
 namespace uit {
 namespace internal {
@@ -259,6 +263,29 @@ class InstrumentationAggregatingInletWrapper {
       ).GetRatio();
     }
 
+    static double GetRoundTripTouchesPerAttemptedPut() {
+      struct Adder {
+        size_t num_round_trip_touches{};
+        size_t num_puts_attempted{};
+        double GetRatio() const {
+          return num_round_trip_touches / static_cast<double>(
+            num_puts_attempted
+          );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_round_trip_touches += inlet->GetCurRoundTripTouchCount();
+          accum.num_puts_attempted += inlet->GetNumPutsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
+    }
+
     static size_t GetNumInlets() {
       std::shared_lock lock{ registry.GetMutex() };
       return std::count_if(
@@ -327,6 +354,31 @@ class InstrumentationAggregatingInletWrapper {
       ) / GetNumInlets();
     }
 
+    static double GetMeanRoundTripTouchesPerAttemptedPut() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* inlet) {
+          return accum + (
+            inlet->GetCurRoundTripTouchCount()
+            / static_cast<double>( inlet->GetNumPutsAttempted() )
+          );
+        },
+        Filter{}
+      ) / GetNumInlets();
+    }
+
+    static size_t GetNumRoundTripTouches() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), size_t{},
+        [](size_t accum, const this_t* inlet) {
+          return accum + inlet->GetCurRoundTripTouchCount();
+        },
+        Filter{}
+      );
+    }
+
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
       res.AddVal(uitsl::get_proc_id(), "proc");
@@ -366,6 +418,10 @@ class InstrumentationAggregatingInletWrapper {
         "Fraction Puts That Succeeded Immediately"
       );
       res.AddFun(
+        GetRoundTripTouchesPerAttemptedPut,
+        "Round Trip Touches Per Attempted Put"
+      );
+      res.AddFun(
         GetMeanFractionTryPutsDropped,
         "Mean Fraction Try Puts Dropped"
       );
@@ -385,6 +441,11 @@ class InstrumentationAggregatingInletWrapper {
         GetMeanFractionPutsThatSucceededImmediately,
         "Mean Fraction Puts That Succeeded Immediately"
       );
+      res.AddFun(
+        GetMeanRoundTripTouchesPerAttemptedPut,
+        "Mean Round Trip Touches Per Attempted Put"
+      );
+      res.AddFun( GetNumRoundTripTouches, "Num Round Trip Touches" );
       res.AddFun(
         [](){ return uitsl::runtime<>.GetElapsed().count(); },
         "Runtime Seconds"
@@ -481,6 +542,20 @@ class InstrumentationAggregatingInletWrapper {
         "Fraction Puts That Succeeded Immediately"
       );
       res.AddContainerFun(
+        [](const auto inlet_ptr){
+          return inlet_ptr->GetCurRoundTripTouchCount() / static_cast<double>(
+            inlet_ptr->GetNumPutsAttempted()
+          );
+        },
+        "Round Trip Touches Per Attempted Put"
+      );
+      res.AddContainerFun(
+        [](const auto inlet_ptr){
+          return inlet_ptr->GetCurRoundTripTouchCount();
+        },
+        "Num Round Trip Touches"
+      );
+      res.AddContainerFun(
         [](const auto inlet_ptr){ return inlet_ptr->WhichImplHeld(); },
         "Held Impl"
       );
@@ -543,6 +618,35 @@ class InstrumentationAggregatingInletWrapper {
     static std::string_view name() { return "proc"; }
   };
 
+  using touch_count_address_cache_t = emp::optional<
+    uit::impl::round_trip_touch_addr_t
+  >;
+  mutable touch_count_address_cache_t touch_count_address_cache{ std::nullopt };
+
+  void DoRefreshTouchCountAddressCache() const {
+    // initializer list necessary to prevent ub
+    // see https://en.cppreference.com/w/cpp/algorithm/minmax
+    const auto [min_node_id, max_node_id] = std::minmax({
+      *LookupInletNodeID(), *LookupOutletNodeID()
+    });
+    touch_count_address_cache.emplace(
+      *LookupMeshID(), min_node_id, max_node_id
+    );
+  }
+
+  void RefreshTouchCountAddressCacheIfNecesssary() const {
+    if ( !touch_count_address_cache.has_value() )
+      DoRefreshTouchCountAddressCache();
+  }
+
+  decltype(auto) GetTouchCountAddr() const {
+    RefreshTouchCountAddressCacheIfNecesssary();
+    return *touch_count_address_cache;
+  }
+
+  size_t GetCurRoundTripTouchCount() const {
+    return uit::impl::round_trip_touch_counter.at( GetTouchCountAddr() );
+  }
 
 public:
 
@@ -597,13 +701,19 @@ public:
     emp_assert( res == 1, res );
   }
 
-  void Put(const value_type& val) { return inlet.Put(val); }
+  void Put(const value_type& val) {
+    return inlet.Put( std::tuple{ GetCurRoundTripTouchCount() + 1, val } );
+  }
 
-  decltype(auto) TryPut(const value_type& val) { return inlet.TryPut(val); }
+  decltype(auto) TryPut(const value_type& val) {
+    return inlet.TryPut( std::tuple{ GetCurRoundTripTouchCount() + 1, val } );
+  }
 
   template<typename P>
   decltype(auto) TryPut(P&& val) {
-    return inlet.TryPut( std::forward<P>(val) );
+    return inlet.TryPut( std::tuple{
+      GetCurRoundTripTouchCount() + 1, std::forward<P>(val)
+    } );
   }
 
   decltype(auto) TryFlush() { return inlet.TryFlush(); }
@@ -668,11 +778,13 @@ public:
 
   template<typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
+    touch_count_address_cache.reset();
     inlet.template EmplaceDuct<WhichDuct>( std::forward<Args>(args)... );
   }
 
   template<typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
+    touch_count_address_cache.reset();
     inlet.template SplitDuct<WhichDuct>( std::forward<Args>(args)... );
   }
 
@@ -709,14 +821,17 @@ public:
   }
 
   void RegisterInletNodeID(const size_t node_id) const {
+    touch_count_address_cache.reset();
     inlet.RegisterInletNodeID(node_id);
   }
 
   void RegisterOutletNodeID(const size_t node_id) const {
+    touch_count_address_cache.reset();
     inlet.RegisterOutletNodeID(node_id);
   }
 
   void RegisterMeshID(const size_t mesh_id) const {
+    touch_count_address_cache.reset();
     inlet.RegisterMeshID(mesh_id);
   }
 

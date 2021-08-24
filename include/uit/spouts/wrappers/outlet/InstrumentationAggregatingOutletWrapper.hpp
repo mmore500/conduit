@@ -4,12 +4,15 @@
 
 #include <algorithm>
 #include <cstddef>
+#include <functional>
 #include <memory>
 #include <shared_mutex>
 #include <string>
 #include <string_view>
+#include <tuple>
 #include <typeinfo>
 #include <type_traits>
+#include <utility>
 
 #include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
 #include "../../../../../third-party/Empirical/include/emp/base/optional.hpp"
@@ -22,6 +25,8 @@
 #include "../../../../uitsl/countdown/runtime.hpp"
 #include "../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../uitsl/parallel/thread_utils.hpp"
+
+#include "../impl/round_trip_touch_counter.hpp"
 
 namespace uit {
 namespace internal {
@@ -213,6 +218,17 @@ class InstrumentationAggregatingOutletWrapper {
         std::begin(registry), std::end(registry), size_t{},
         [](size_t accum, const this_t* outlet) {
           return accum + outlet->GetNumTryPullsThatWereUnladen();
+        },
+        Filter{}
+      );
+    }
+
+    static size_t GetNumRoundTripTouches() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), size_t{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + outlet->GetCurRoundTripTouchCount();
         },
         Filter{}
       );
@@ -512,6 +528,28 @@ class InstrumentationAggregatingOutletWrapper {
       ).GetRatio();
     }
 
+    static double GetRoundTripTouchesPerAttemptedPull() {
+      struct Adder {
+        size_t num_round_trip_touches{};
+        size_t num_attempted_pulls{};
+        double GetRatio() const {
+          return num_round_trip_touches
+            / static_cast<double>( num_attempted_pulls );
+        }
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), Adder{},
+        [](Adder accum, const this_t* inlet) {
+          accum.num_round_trip_touches += inlet->GetCurRoundTripTouchCount();
+          accum.num_attempted_pulls += inlet->GetNumPullsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).GetRatio();
+    }
+
     static size_t GetNumOutlets() {
       std::shared_lock lock{ registry.GetMutex() };
       return std::count_if(
@@ -697,6 +735,20 @@ class InstrumentationAggregatingOutletWrapper {
       ) / GetNumOutlets();
     }
 
+    static double GetMeanRoundTripTouchesPerAttemptedPull() {
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), double{},
+        [](size_t accum, const this_t* outlet) {
+          return accum + (
+            outlet->GetCurRoundTripTouchCount()
+            / static_cast<double>( outlet->GetNumPullsAttempted() )
+          );
+        },
+        Filter{}
+      ) / GetNumOutlets();
+    }
+
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
       res.AddVal(uitsl::get_proc_id(), "proc");
@@ -740,6 +792,7 @@ class InstrumentationAggregatingOutletWrapper {
       res.AddFun(
         GetNumTryPullsThatWereUnladen, "Num Try Pulls That Were Unladen"
       );
+      res.AddFun( GetNumRoundTripTouches, "Num Round Trip Touches" );
       res.AddFun(
         GetFractionTryPullsThatWereLaden, "Fraction Try Pulls That Were Laden"
       );
@@ -796,6 +849,10 @@ class InstrumentationAggregatingOutletWrapper {
         "Fraction Duct Flux That Was Read"
       );
       res.AddFun(
+        GetRoundTripTouchesPerAttemptedPull,
+        "Round Trip Touches Per Attempted Pull"
+      );
+      res.AddFun(
         GetMeanFractionTryPullsThatWereLaden,
         "Mean Fraction Try Pulls That Were Laden"
       );
@@ -849,6 +906,13 @@ class InstrumentationAggregatingOutletWrapper {
       res.AddFun(
         GetMeanFractionDuctFluxThatWasRead,
         "Mean Fraction Duct Flux That Was Read"
+      );
+      res.AddFun(
+        GetMeanRoundTripTouchesPerAttemptedPull,
+        "Round Trip Touches Per Attempted Pull"
+      );
+      res.AddFun(
+        GetNumRoundTripTouches, "Num Round Trip Touches"
       );
       res.AddFun(
         [](){ return uitsl::runtime<>.GetElapsed().count(); },
@@ -1050,6 +1114,20 @@ class InstrumentationAggregatingOutletWrapper {
         "Fraction Duct Flux That Was Read"
       );
       res.AddContainerFun(
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetCurRoundTripTouchCount() / static_cast<double>(
+            outlet_ptr->GetNumPullsAttempted()
+          );
+        },
+        "Round Trip Touches Per Attempted Pull"
+      );
+      res.AddContainerFun(
+        [](const auto outlet_ptr){
+          return outlet_ptr->GetCurRoundTripTouchCount();
+        },
+        "Num Round Trip Touches"
+      );
+      res.AddContainerFun(
         [](const auto outlet_ptr){ return outlet_ptr->WhichImplHeld(); },
         "Held Impl"
       );
@@ -1112,6 +1190,41 @@ class InstrumentationAggregatingOutletWrapper {
     static std::string_view name() { return "proc"; }
   };
 
+  using touch_count_address_cache_t = emp::optional<
+    uit::impl::round_trip_touch_addr_t
+  >;
+  mutable touch_count_address_cache_t touch_count_address_cache{ std::nullopt };
+
+  void DoRefreshTouchCountAddressCache() const {
+    // initializer list necessary to prevent ub
+    // see https://en.cppreference.com/w/cpp/algorithm/minmax
+    const auto [min_node_id, max_node_id] = std::minmax({
+      *LookupInletNodeID(), *LookupOutletNodeID()
+    });
+    touch_count_address_cache.emplace(
+      *LookupMeshID(), min_node_id, max_node_id
+    );
+  }
+
+  void RefreshTouchCountAddressCacheIfNecesssary() const {
+    if ( !touch_count_address_cache.has_value() )
+      DoRefreshTouchCountAddressCache();
+  }
+
+  decltype(auto) GetTouchCountAddr() const {
+    RefreshTouchCountAddressCacheIfNecesssary();
+    return *touch_count_address_cache;
+  }
+
+  size_t GetCurRoundTripTouchCount() const {
+    return uit::impl::round_trip_touch_counter.at( GetTouchCountAddr() );
+  }
+
+  void ProgressRoundTripTouchCount() const {
+    uit::impl::round_trip_touch_counter.at(
+      GetTouchCountAddr()
+    ) = std::max( std::get<0>( outlet.Get() ), GetCurRoundTripTouchCount() );
+  }
 
 public:
 
@@ -1165,21 +1278,46 @@ public:
     emp_assert( res == 1, res );
   }
 
-  decltype(auto) TryStep(const size_t num_steps) {
-    return outlet.TryStep( num_steps );
+  size_t TryStep(const size_t num_steps) {
+    const size_t res = outlet.TryStep( num_steps );
+    ProgressRoundTripTouchCount();
+    return res;
   }
 
-  decltype(auto) Jump() { return outlet.Jump(); }
+  decltype(auto) Jump() {
+    const size_t res = outlet.Jump();
+    ProgressRoundTripTouchCount();
+    return res;
+  }
 
-  decltype(auto) Get() const { return outlet.Get(); }
+  const value_type& Get() const { return std::get<1>(outlet.Get()); }
 
-  decltype(auto) Get() { return outlet.Get(); }
+  value_type& Get() { return std::get<1>(outlet.Get()); }
 
-  decltype(auto) JumpGet() { return outlet.JumpGet(); }
+  decltype(auto) JumpGet() {
+    Jump();
+    return Get();
+  }
 
-  decltype(auto) GetNext() { return outlet.GetNext(); }
+  void Step(const size_t num_steps=1) {
+    outlet.Step(num_steps);
+    ProgressRoundTripTouchCount();
+  }
 
-  decltype(auto) GetNextOrNullopt() { return outlet.GetNextOrNullopt(); }
+  decltype(auto) GetNext() {
+    Step();
+    return Get();
+  }
+
+  using optional_ref_t = emp::optional<
+    std::reference_wrapper<const value_type>
+  >;
+
+  optional_ref_t GetNextOrNullopt() {
+    return TryStep()
+      ? optional_ref_t{ std::reference_wrapper{ Get() } }
+      : std::nullopt;
+  }
 
   decltype(auto) GetNumReadsPerformed() const {
     return outlet.GetNumReadsPerformed();
@@ -1303,11 +1441,13 @@ public:
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
+    touch_count_address_cache.reset();
     outlet.template EmplaceDuct<WhichDuct>( std::forward<Args>(args)... );
   }
 
   template <typename WhichDuct, typename... Args>
   void SplitDuct(Args&&... args) {
+    touch_count_address_cache.reset();
     outlet.template SplitDuct<WhichDuct>( std::forward<Args>(args)... );
   }
 
@@ -1344,14 +1484,17 @@ public:
   }
 
   void RegisterInletNodeID(const size_t node_id) const {
+    touch_count_address_cache.reset();
     outlet.RegisterInletNodeID(node_id);
   }
 
   void RegisterOutletNodeID(const size_t node_id) const {
+    touch_count_address_cache.reset();
     outlet.RegisterOutletNodeID(node_id);
   }
 
   void RegisterMeshID(const size_t mesh_id) const {
+    touch_count_address_cache.reset();
     outlet.RegisterMeshID(mesh_id);
   }
 

@@ -3,6 +3,7 @@
 #define UIT_SPOUTS_WRAPPERS_INSTRUMENTATIONAGGREGATINGSPOUTWRAPPER_HPP_INCLUDE
 
 #include <string>
+#include <tuple>
 
 #include "inlet/InstrumentationAggregatingInletWrapper.hpp"
 #include "outlet/InstrumentationAggregatingOutletWrapper.hpp"
@@ -13,7 +14,7 @@ template<typename T_>
 class InstrumentationAggregatingSpoutWrapper {
 
 public:
-  using T = T_;
+  using T = std::tuple<size_t, T_>; // size_t is round trip touch count
 
   template<typename Inlet>
   using inlet_wrapper_t
