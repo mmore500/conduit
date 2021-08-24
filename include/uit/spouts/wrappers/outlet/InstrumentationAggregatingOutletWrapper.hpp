@@ -1217,10 +1217,18 @@ class InstrumentationAggregatingOutletWrapper {
   }
 
   size_t GetCurRoundTripTouchCount() const {
+    emp_assert(
+      uit::impl::round_trip_touch_counter.count( GetTouchCountAddr() ),
+      "round_trip_touch_counter should be initialized during Mesh construction."
+    );
     return uit::impl::round_trip_touch_counter.at( GetTouchCountAddr() );
   }
 
   void ProgressRoundTripTouchCount() const {
+    emp_assert(
+      uit::impl::round_trip_touch_counter.count( GetTouchCountAddr() ),
+      "round_trip_touch_counter should be initialized during Mesh construction."
+    );
     uit::impl::round_trip_touch_counter.at(
       GetTouchCountAddr()
     ) = std::max( std::get<0>( outlet.Get() ), GetCurRoundTripTouchCount() );

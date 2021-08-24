@@ -645,6 +645,10 @@ class InstrumentationAggregatingInletWrapper {
   }
 
   size_t GetCurRoundTripTouchCount() const {
+    emp_assert(
+      uit::impl::round_trip_touch_counter.count( GetTouchCountAddr() ),
+      "round_trip_touch_counter should be initialized during Mesh construction."
+    );
     return uit::impl::round_trip_touch_counter.at( GetTouchCountAddr() );
   }
 
