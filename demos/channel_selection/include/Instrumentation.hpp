@@ -7,6 +7,7 @@
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "uitsl/mpi/comm_utils.hpp"
+#include "uitsl/utility/uuid_utils.hpp"
 
 #include "config/cfg.hpp"
 #include "get_hostname.hpp"
@@ -27,6 +28,8 @@ class Instrumentation {
     df.AddVal(cfg.ASYNCHRONOUS(), "Async Mode");
     df.AddVal(cfg.N_THREADS(), "Num Threads");
     df.AddVal(uitsl::get_nprocs(), "Num Processes");
+    df.AddVal(uitsl::get_exec_instance_uuid(), "Execution Instance UUID");
+    df.AddVal(uitsl::get_proc_instance_uuid(), "Process Instance UUID");
     return df;
   }
 

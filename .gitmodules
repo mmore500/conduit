@@ -22,3 +22,6 @@
 [submodule "third-party/SPSCQueue"]
   path = third-party/SPSCQueue
   url = https://github.com/rigtorp/SPSCQueue
+[submodule "third-party/stduuid"]
+  path = third-party/stduuid
+  url = https://github.com/mmore500/stduuid.git
