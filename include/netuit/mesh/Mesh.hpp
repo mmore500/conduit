@@ -17,8 +17,8 @@
 
 #include "../../uit/ducts/Duct.hpp"
 #include "../../uit/setup/InterProcAddress.hpp"
-#include "../../uit/spouts/wrappers/impl/round_trip_touch_counter.hpp"
 #include "../../uit/spouts/wrappers/impl/RoundTripCounterAddr.hpp"
+#include "../../uit/spouts/wrappers/impl/round_trip_touch_counter.hpp"
 
 #include "../assign/AssignIntegrated.hpp"
 #include "../topology/Topology.hpp"

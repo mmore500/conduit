@@ -24,9 +24,9 @@
 #include "../../../../uitsl/mpi/comm_utils.hpp"
 #include "../../../../uitsl/parallel/thread_utils.hpp"
 
-#include "../impl/round_trip_touch_counter.hpp"
 #include "../impl/RoundTripCounterAddr.hpp"
 #include "../impl/RoundTripCountPacket.hpp"
+#include "../impl/round_trip_touch_counter.hpp"
 
 namespace uit {
 namespace internal {
