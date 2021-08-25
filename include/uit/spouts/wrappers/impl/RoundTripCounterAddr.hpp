@@ -2,7 +2,6 @@
 #ifndef UIT_SPOUTS_WRAPPERS_IMPL_ROUNDTRIPCOUNTERADDR_HPP_INCLUDE
 #define UIT_SPOUTS_WRAPPERS_IMPL_ROUNDTRIPCOUNTERADDR_HPP_INCLUDE
 
-#include <algorithm>
 #include <tuple>
 
 #include "../../../../../third-party/Empirical/include/emp/datastructs/hash_utils.hpp"
@@ -13,27 +12,18 @@ namespace impl {
 struct RoundTripCounterAddr {
 
   size_t mesh_id;
-  size_t smallest_node_id;
-  size_t largest_node_id;
-
-  RoundTripCounterAddr(
-    const size_t mesh_id_,
-    const size_t first_node_id,
-    const size_t second_node_id
-  ) : mesh_id( mesh_id_ )
-  , smallest_node_id( std::min( first_node_id, second_node_id ) )
-  , largest_node_id( std::max( first_node_id, second_node_id ) )
-  { }
+  size_t this_spout_node_id;
+  size_t partner_spout_node_id;
 
   bool operator==(const RoundTripCounterAddr& other) const {
     return std::tuple{
       mesh_id,
-      smallest_node_id,
-      largest_node_id
+      this_spout_node_id,
+      partner_spout_node_id
     } ==  std::tuple{
       other.mesh_id,
-      other.smallest_node_id,
-      other.largest_node_id
+      other.this_spout_node_id,
+      other.partner_spout_node_id
     };
   }
 
@@ -49,8 +39,8 @@ namespace std {
     size_t operator()(const uit::impl::RoundTripCounterAddr& addr) const {
       return emp::CombineHash(
         addr.mesh_id,
-        addr.smallest_node_id,
-        addr.largest_node_id
+        addr.this_spout_node_id,
+        addr.partner_spout_node_id
       );
     }
   };

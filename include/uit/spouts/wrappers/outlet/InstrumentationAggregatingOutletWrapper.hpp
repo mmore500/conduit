@@ -1195,9 +1195,9 @@ class InstrumentationAggregatingOutletWrapper {
   mutable touch_count_address_cache_t touch_count_address_cache{ std::nullopt };
 
   void DoRefreshTouchCountAddressCache() const {
-    touch_count_address_cache.emplace(
-      *LookupMeshID(), *LookupInletNodeID(), *LookupOutletNodeID()
-    );
+    touch_count_address_cache = uit::impl::round_trip_touch_addr_t{
+      *LookupMeshID(), *LookupOutletNodeID(), *LookupInletNodeID()
+    };
   }
 
   void RefreshTouchCountAddressCacheIfNecesssary() const {

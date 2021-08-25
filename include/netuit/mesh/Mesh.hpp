@@ -214,11 +214,11 @@ class Mesh {
     }
 
     {
-      const auto addr = uit::impl::RoundTripCounterAddr(
+      const auto addr = uit::impl::RoundTripCounterAddr{
         mesh_id,
-        nodes.GetInputRegistry().at( output.GetEdgeID() ),
-        nodes.GetOutputRegistry().at( output.GetEdgeID() )
-      );
+        nodes.GetOutputRegistry().at( output.GetEdgeID() ),
+        nodes.GetInputRegistry().at( output.GetEdgeID() )
+      };
       uit::impl::round_trip_touch_counter[ addr ];
       emp_assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
     }
@@ -257,11 +257,11 @@ class Mesh {
     }
 
     {
-      const auto addr = uit::impl::RoundTripCounterAddr(
+      const auto addr = uit::impl::RoundTripCounterAddr{
         mesh_id,
         nodes.GetInputRegistry().at( input.GetEdgeID() ),
         nodes.GetOutputRegistry().at( input.GetEdgeID() )
-      );
+      };
       uit::impl::round_trip_touch_counter[ addr ];
       emp_assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
     }
