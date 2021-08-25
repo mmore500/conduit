@@ -24,7 +24,12 @@ namespace uitsl {
 
 uuids::uuid generate_random_uuid() {
   thread_local auto random_generator = [](){
-    std::random_device rd;
+    // workaround for error encountered when multiprocesses share same node
+    // > terminate called after throwing an instance of 'std::runtime_error'
+    // > what():  random_device: rdseed failed
+    // see https://github.com/xdspacelab/openvslam/issues/319#issuecomment-630225541
+    // see https://en.cppreference.com/w/cpp/numeric/random/random_device/random_device
+    std::random_device rd("rdrand");
     auto seed_data = std::array<int, std::mt19937::state_size> {};
     std::generate(std::begin(seed_data), std::end(seed_data), std::ref(rd));
     std::seed_seq seq(std::begin(seed_data), std::end(seed_data));
