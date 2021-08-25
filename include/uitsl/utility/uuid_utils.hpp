@@ -11,9 +11,9 @@
 
 #include "../../../third-party/Empirical/include/emp/base/always_assert.hpp"
 #include "../../../third-party/Empirical/include/emp/base/error.hpp"
+#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
+#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
 #include "../../../third-party/stduuid/include/uuid.h"
 
 #include "../mpi/comm_utils.hpp"
