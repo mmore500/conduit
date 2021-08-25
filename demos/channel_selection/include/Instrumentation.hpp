@@ -247,17 +247,27 @@ public:
 
   static void PrintHeaderKeys() {
     if ( cfg.N_THREADS() > 1 ) {
-      inlet::thread::GetContainerDataFile().PrintHeaderKeys();
-      inlet::thread::GetSummaryDataFile().PrintHeaderKeys();
-      outlet::thread::GetContainerDataFile().PrintHeaderKeys();
-      outlet::thread::GetSummaryDataFile().PrintHeaderKeys();
+      if ( cfg.WRITE_CONTAINER_INSTRUMENTATION_DATAFILES() ) {
+        inlet::thread::GetContainerDataFile().PrintHeaderKeys();
+        outlet::thread::GetContainerDataFile().PrintHeaderKeys();
+      }
+
+      if ( cfg.WRITE_SUMMARY_INSTRUMENTATION_DATAFILES() ) {
+        inlet::thread::GetSummaryDataFile().PrintHeaderKeys();
+        outlet::thread::GetSummaryDataFile().PrintHeaderKeys();
+      }
     }
 
     if ( uitsl::is_multiprocess() ) {
-      inlet::proc::GetContainerDataFile().PrintHeaderKeys();
-      inlet::proc::GetSummaryDataFile().PrintHeaderKeys();
-      outlet::proc::GetContainerDataFile().PrintHeaderKeys();
-      outlet::proc::GetSummaryDataFile().PrintHeaderKeys();
+      if ( cfg.WRITE_CONTAINER_INSTRUMENTATION_DATAFILES() ) {
+        inlet::proc::GetContainerDataFile().PrintHeaderKeys();
+        outlet::proc::GetContainerDataFile().PrintHeaderKeys();
+      }
+
+      if ( cfg.WRITE_SUMMARY_INSTRUMENTATION_DATAFILES() ) {
+        inlet::proc::GetSummaryDataFile().PrintHeaderKeys();
+        outlet::proc::GetSummaryDataFile().PrintHeaderKeys();
+      }
     }
   }
 
@@ -266,17 +276,27 @@ public:
     has_execution_blur = has_execution_blur_;
 
     if ( cfg.N_THREADS() > 1 ) {
-      inlet::thread::GetContainerDataFile().Update();
-      inlet::thread::GetSummaryDataFile().Update();
-      outlet::thread::GetContainerDataFile().Update();
-      outlet::thread::GetSummaryDataFile().Update();
+      if ( cfg.WRITE_CONTAINER_INSTRUMENTATION_DATAFILES() ) {
+        inlet::thread::GetContainerDataFile().Update();
+        outlet::thread::GetContainerDataFile().Update();
+      }
+
+      if ( cfg.WRITE_SUMMARY_INSTRUMENTATION_DATAFILES() ) {
+        inlet::thread::GetSummaryDataFile().Update();
+        outlet::thread::GetSummaryDataFile().Update();
+      }
     }
 
     if ( uitsl::is_multiprocess() ) {
-      inlet::proc::GetContainerDataFile().Update();
-      inlet::proc::GetSummaryDataFile().Update();
-      outlet::proc::GetContainerDataFile().Update();
-      outlet::proc::GetSummaryDataFile().Update();
+      if ( cfg.WRITE_CONTAINER_INSTRUMENTATION_DATAFILES() ) {
+        inlet::proc::GetContainerDataFile().Update();
+        outlet::proc::GetContainerDataFile().Update();
+      }
+
+      if ( cfg.WRITE_SUMMARY_INSTRUMENTATION_DATAFILES() ) {
+        inlet::proc::GetSummaryDataFile().Update();
+        outlet::proc::GetSummaryDataFile().Update();
+      }
     }
     ++update;
   }

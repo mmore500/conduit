@@ -31,7 +31,13 @@ EMP_BUILD_CONFIG(
     "How many seconds should we wait between instrumentaiton snapshots?"
   ),
   VALUE(SNAPSHOT_DURATION, double, 1,
-    "How many secons should an instrumentation snapshot last"
+    "How many seconds should an instrumentation snapshot last?"
+  ),
+  VALUE(WRITE_CONTAINER_INSTRUMENTATION_DATAFILES, bool, false,
+    "Should we write instrumentation container data files?"
+  ),
+  VALUE(WRITE_SUMMARY_INSTRUMENTATION_DATAFILES, bool, true,
+    "Should we write instrumentation summary data files?"
   ),
 
 )
