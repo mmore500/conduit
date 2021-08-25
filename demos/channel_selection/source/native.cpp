@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
     topology
   );
 
-  emp ::optional<netuit::Mesh<ImplSpec>> mesh{
+  emp::optional<netuit::Mesh<ImplSpec>> mesh{
     std::in_place_t{},
     topology,
     assignments.second,
