@@ -41,6 +41,54 @@ class Instrumentation {
 
     using inlet_t = inlet_instrumentation_aggregating_t;
 
+    struct intra {
+
+      static auto& GetContainerDataFile() {
+        static auto res = AddBespokeColumns(
+          inlet_t::intra::MakeContainerDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"impl", "intra"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
+              {"subject", "inlet"},
+              {"view", "container"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
+              {"ext", ".csv"}
+            })
+          )
+        );
+        return res;
+      }
+
+      static auto& GetSummaryDataFile() {
+        static auto res = AddBespokeColumns(
+          inlet_t::intra::MakeSummaryDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"impl", "intra"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
+              {"subject", "inlet"},
+              {"view", "summary"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
+              {"ext", ".csv"}
+            })
+          )
+        );
+        return res;
+      }
+
+    }; // struct intra
+
     struct thread {
 
       static auto& GetContainerDataFile() {
@@ -142,6 +190,54 @@ class Instrumentation {
   struct outlet {
 
     using outlet_t = outlet_instrumentation_aggregating_t;
+
+    struct intra {
+
+      static auto& GetContainerDataFile() {
+        static auto res = AddBespokeColumns(
+          outlet_t::intra::MakeContainerDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"impl", "intra"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
+              {"subject", "outlet"},
+              {"view", "container"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
+              {"ext", ".csv"}
+            })
+          )
+        );
+        return res;
+      }
+
+      static auto& GetSummaryDataFile() {
+        static auto res = AddBespokeColumns(
+          outlet_t::intra::MakeSummaryDataFile(
+            emp::keyname::pack({
+              {"a", "conduit_instrumentation"},
+              {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"impl", "intra"},
+              {"nproc", emp::to_string(uitsl::get_nprocs())},
+              {"nthread", emp::to_string(cfg.N_THREADS())},
+              {"subject", "outlet"},
+              {"view", "summary"},
+              {"proc", emp::to_string(uitsl::get_proc_id())},
+              {"replicate", emp::to_string(cfg.REPLICATE())},
+              {"_hostname", get_hostname()},
+              {"_revision", EMP_STRINGIFY(REVISION_)},
+              {"ext", ".csv"}
+            })
+          )
+        );
+        return res;
+      }
+
+    }; // struct intra
 
     struct thread {
 
@@ -269,6 +365,19 @@ public:
         outlet::proc::GetSummaryDataFile().PrintHeaderKeys();
       }
     }
+
+    if ( cfg.N_THREADS() == 1 && !uitsl::is_multiprocess() ) {
+      if ( cfg.WRITE_CONTAINER_INSTRUMENTATION_DATAFILES() ) {
+        inlet::intra::GetContainerDataFile().PrintHeaderKeys();
+        outlet::intra::GetContainerDataFile().PrintHeaderKeys();
+      }
+
+      if ( cfg.WRITE_SUMMARY_INSTRUMENTATION_DATAFILES() ) {
+        inlet::intra::GetSummaryDataFile().PrintHeaderKeys();
+        outlet::intra::GetSummaryDataFile().PrintHeaderKeys();
+      }
+    }
+
   }
 
   static void UpdateDataFiles(const bool has_execution_blur_) {
@@ -298,6 +407,19 @@ public:
         outlet::proc::GetSummaryDataFile().Update();
       }
     }
+
+    if ( cfg.N_THREADS() == 1 && !uitsl::is_multiprocess() ) {
+      if ( cfg.WRITE_CONTAINER_INSTRUMENTATION_DATAFILES() ) {
+        inlet::intra::GetContainerDataFile().Update();
+        outlet::intra::GetContainerDataFile().Update();
+      }
+
+      if ( cfg.WRITE_SUMMARY_INSTRUMENTATION_DATAFILES() ) {
+        inlet::intra::GetSummaryDataFile().Update();
+        outlet::intra::GetSummaryDataFile().Update();
+      }
+    }
+
     ++update;
   }
 
