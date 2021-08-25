@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# resource allocation and setup (do this manually)
+# resource allocation and setup
+# (do this manually and be sure to fill in SET_ME)
 : << '###BLOCK-COMMENT'
 salloc --nodes=SET_ME --ntasks=SET_ME --cpus-per-task=1 --time=4:00:00
 source ~/.secrets.sh
