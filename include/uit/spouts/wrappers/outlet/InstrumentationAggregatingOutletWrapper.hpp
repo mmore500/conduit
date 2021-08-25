@@ -3,6 +3,7 @@
 #define UIT_SPOUTS_WRAPPERS_OUTLET_INSTRUMENTATIONAGGREGATINGOUTLETWRAPPER_HPP_INCLUDE
 
 #include <algorithm>
+#include <chrono>
 #include <cstddef>
 #include <functional>
 #include <memory>
@@ -21,7 +22,6 @@
 #include "../../../../uitsl/algorithm/accumulate_if.hpp"
 #include "../../../../uitsl/containers/safe/unordered_set.hpp"
 #include "../../../../uitsl/countdown/coarse_runtime.hpp"
-#include "../../../../uitsl/countdown/runtime.hpp"
 #include "../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../uitsl/parallel/thread_utils.hpp"
 
@@ -750,6 +750,14 @@ class InstrumentationAggregatingOutletWrapper {
 
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
+      res.AddFun(
+        [](){
+          return std::chrono::time_point_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now()
+          ).time_since_epoch().count();
+        },
+        "Row Initial Timepoint (ns)"
+      );
       res.AddVal(uitsl::get_proc_id(), "proc");
       res.AddVal(Filter::name(), "Impl Filter");
       res.AddFun(GetNumOutlets, "Num Outlets");
@@ -914,8 +922,16 @@ class InstrumentationAggregatingOutletWrapper {
         GetNumRoundTripTouches, "Num Round Trip Touches"
       );
       res.AddFun(
-        [](){ return uitsl::runtime<>.GetElapsed().count(); },
-        "Runtime Seconds"
+        [](){ return uitsl::coarse_runtime<>.GetElapsed().count(); },
+        "Runtime Seconds Elapsed"
+      );
+      res.AddFun(
+        [](){
+          return std::chrono::time_point_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now()
+          ).time_since_epoch().count();
+        },
+        "Row Final Timepoint (ns)"
       );
       return res;
     }
@@ -934,6 +950,14 @@ class InstrumentationAggregatingOutletWrapper {
           container_ptr->GetMutex()
         );
       } );
+      res.AddFun(
+        [](){
+          return std::chrono::time_point_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now()
+          ).time_since_epoch().count();
+        },
+        "Row Initial Timepoint (ns)"
+      );
       res.AddContainerFun(
         [](const auto outlet_ptr){ return outlet_ptr->WhichImplHeld(); },
         "Which Impl"
@@ -1155,8 +1179,16 @@ class InstrumentationAggregatingOutletWrapper {
         }, "Outlet Thread"
       );
       res.AddFun(
-        [](){ return uitsl::coarse_runtime<>.GetElapsed().count(); },
-        "Runtime Seconds"
+        [](){ return uitsl::runtime<>.GetElapsed().count(); },
+        "Runtime Seconds Elapsed"
+      );
+      res.AddFun(
+        [](){
+          return std::chrono::time_point_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now()
+          ).time_since_epoch().count();
+        },
+        "Row Final Timepoint (ns)"
       );
       return res;
     }

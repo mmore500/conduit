@@ -3,6 +3,7 @@
 #define UIT_SPOUTS_WRAPPERS_INLET_INSTRUMENTATIONAGGREGATINGINLETWRAPPER_HPP_INCLUDE
 
 #include <algorithm>
+#include <chrono>
 #include <cstddef>
 #include <memory>
 #include <shared_mutex>
@@ -19,7 +20,6 @@
 #include "../../../../uitsl/algorithm/accumulate_if.hpp"
 #include "../../../../uitsl/containers/safe/unordered_set.hpp"
 #include "../../../../uitsl/countdown/coarse_runtime.hpp"
-#include "../../../../uitsl/countdown/runtime.hpp"
 #include "../../../../uitsl/debug/benchmark_utils.hpp"
 #include "../../../../uitsl/mpi/comm_utils.hpp"
 #include "../../../../uitsl/parallel/thread_utils.hpp"
@@ -382,6 +382,14 @@ class InstrumentationAggregatingInletWrapper {
 
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
+      res.AddFun(
+        [](){
+          return std::chrono::time_point_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now()
+          ).time_since_epoch().count();
+        },
+        "Row Initial Timepoint (ns)"
+      );
       res.AddVal(uitsl::get_proc_id(), "proc");
       res.AddVal(Filter::name(), "Impl Filter");
       res.AddFun(GetNumInlets, "Num Inlets");
@@ -448,8 +456,16 @@ class InstrumentationAggregatingInletWrapper {
       );
       res.AddFun( GetNumRoundTripTouches, "Num Round Trip Touches" );
       res.AddFun(
-        [](){ return uitsl::runtime<>.GetElapsed().count(); },
-        "Runtime Seconds"
+        [](){ return uitsl::coarse_runtime<>.GetElapsed().count(); },
+        "Runtime Seconds Elapsed"
+      );
+      res.AddFun(
+        [](){
+          return std::chrono::time_point_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now()
+          ).time_since_epoch().count();
+        },
+        "Row Final Timepoint (ns)"
       );
       return res;
     }
@@ -468,6 +484,14 @@ class InstrumentationAggregatingInletWrapper {
           container_ptr->GetMutex()
         );
       } );
+      res.AddFun(
+        [](){
+          return std::chrono::time_point_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now()
+          ).time_since_epoch().count();
+        },
+        "Row Initial Timepoint (ns)"
+      );
       res.AddContainerFun(
         [](const auto inlet_ptr){ return inlet_ptr->WhichImplHeld(); },
         "Which Impl"
@@ -586,7 +610,15 @@ class InstrumentationAggregatingInletWrapper {
       );
       res.AddFun(
         [](){ return uitsl::coarse_runtime<>.GetElapsed().count(); },
-        "Runtime Seconds"
+        "Runtime Seconds Elapsed"
+      );
+      res.AddFun(
+        [](){
+          return std::chrono::time_point_cast<std::chrono::nanoseconds>(
+            std::chrono::steady_clock::now()
+          ).time_since_epoch().count();
+        },
+        "Row Final Timepoint (ns)"
       );
       return res;
     }
