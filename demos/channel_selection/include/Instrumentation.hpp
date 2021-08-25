@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdlib>
 #include <variant>
 
 #include "../../../third-party/Empirical/include/emp/base/macros.hpp"
@@ -30,6 +31,9 @@ class Instrumentation {
     df.AddVal(uitsl::get_nprocs(), "Num Processes");
     df.AddVal(uitsl::get_exec_instance_uuid(), "Execution Instance UUID");
     df.AddVal(uitsl::get_proc_instance_uuid(), "Process Instance UUID");
+    df.AddVal(std::getenv("SLURM_NNODES") ?: "", "SLURM_NNODES");
+    df.AddVal(std::getenv("SLURM_NTASKS") ?: "", "SLURM_NTASKS");
+    df.AddVal(std::getenv("SLURM_CPUS_ON_NODE") ?: "", "SLURM_CPUS_ON_NODE");
     return df;
   }
 
