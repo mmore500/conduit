@@ -3,7 +3,7 @@
 # resource allocation and setup
 # (do this manually and be sure to fill in SET_ME)
 : << '###BLOCK-COMMENT'
-salloc --nodes=SET_ME --ntasks=SET_ME --cpus-per-task=1 --time=4:00:00
+salloc --nodes=SET_ME --ntasks=SET_ME --cpus-per-task=1 --time=4:00:00 --mem-per-cpu=4G --constraint=lac
 source ~/.secrets.sh
 singularity exec docker://mmore500/dishtiny:sha-2f60ec6 make
 module purge
