@@ -25,6 +25,6 @@ for REPLICATE in 0 1 2 3 4; do
           -RUN_SECONDS 330 \
           -REPLICATE "${REPLICATE}" \
           -ASYNCHRONOUS "${ASYNCHRONOUS}"
+    done
   done
-done
 done
