@@ -916,10 +916,7 @@ class InstrumentationAggregatingOutletWrapper {
       );
       res.AddFun(
         GetMeanRoundTripTouchesPerAttemptedPull,
-        "Round Trip Touches Per Attempted Pull"
-      );
-      res.AddFun(
-        GetNumRoundTripTouches, "Num Round Trip Touches"
+        "Mean Round Trip Touches Per Attempted Pull"
       );
       res.AddFun(
         [](){ return uitsl::coarse_runtime<>.GetElapsed().count(); },
