@@ -28,6 +28,7 @@ class Instrumentation {
     df.AddVal(cfg.REPLICATE(), "Replicate");
     df.AddVal(cfg.ASYNCHRONOUS(), "Async Mode");
     df.AddVal(cfg.N_THREADS(), "Num Threads");
+    df.AddVal(cfg.N_NODES_PER_CPU(), "Num Simulation Elements Per Cpu");
     df.AddVal(uitsl::get_nprocs(), "Num Processes");
     df.AddVal(uitsl::get_exec_instance_uuid(), "Execution Instance UUID");
     df.AddVal(uitsl::get_proc_instance_uuid(), "Process Instance UUID");
