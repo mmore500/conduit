@@ -765,9 +765,9 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), JointAdder{},
-        [](auto accum, const this_t* inlet) {
-          accum.num_pulls_attempted += inlet->GetNumPullsAttempted();
-          accum.num_round_trip_touches += inlet->GetCurRoundTripTouchCount();
+        [](auto accum, const this_t* outlet) {
+          accum.num_pulls_attempted += outlet->GetNumPullsAttempted();
+          accum.num_round_trip_touches += outlet->GetCurRoundTripTouchCount();
           return accum;
         },
         Filter{}
@@ -794,11 +794,11 @@ class InstrumentationAggregatingOutletWrapper {
       std::shared_lock lock{ registry.GetMutex() };
       return uitsl::accumulate_if(
         std::begin(registry), std::end(registry), JointAdder{},
-        [](auto accum, const this_t* inlet) {
-          accum.net_flux_through_duct += inlet->GetNetFluxThroughDuct();
-          accum.num_try_pulls_attempted += inlet->GetNumTryPullsAttempted();
+        [](auto accum, const this_t* outlet) {
+          accum.net_flux_through_duct += outlet->GetNetFluxThroughDuct();
+          accum.num_try_pulls_attempted += outlet->GetNumTryPullsAttempted();
           accum.num_try_pulls_that_were_laden
-            += inlet->GetNumTryPullsThatWereLaden();
+            += outlet->GetNumTryPullsThatWereLaden();
           return accum;
         },
         Filter{}
