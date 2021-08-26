@@ -11,9 +11,9 @@ module load GCC/7.2.0-2.29
 module load MPICH/3.2.1
 ###BLOCK-COMMENT
 
-for REPLICATE in 10 11 12 13 14; do
-  for ASYNCHRONOUS in 3 0 1 2; do
-    for N_PROCS in 256 128 64 32 16 8 4; do
+for REPLICATE in 0 1 2 3 4 5 6 7 8 9; do
+  for ASYNCHRONOUS in 3; do
+    for N_PROCS in 256 128 64 32; do
       echo "REPLICATE ${REPLICATE}"
       echo "ASYNCHRONOUS ${ASYNCHRONOUS}"
       echo "N_PROCS ${N_PROCS}"
