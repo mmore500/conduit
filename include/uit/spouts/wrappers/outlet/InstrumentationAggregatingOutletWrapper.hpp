@@ -748,6 +748,63 @@ class InstrumentationAggregatingOutletWrapper {
       ) / GetNumOutlets();
     }
 
+    // capture these from each outlet as close together as possible
+    static std::string JointGet_NumPullsAttempted_NumRoundTripTouches() {
+      struct JointAdder {
+        size_t num_pulls_attempted{};
+        size_t num_round_trip_touches{};
+
+        std::string pack() const {
+          return emp::to_string(
+            num_pulls_attempted, ',', num_round_trip_touches
+          );
+        }
+
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), JointAdder{},
+        [](auto accum, const this_t* inlet) {
+          accum.num_pulls_attempted += inlet->GetNumPullsAttempted();
+          accum.num_round_trip_touches += inlet->GetCurRoundTripTouchCount();
+          return accum;
+        },
+        Filter{}
+      ).pack();
+    }
+
+    // capture these from each outlet as close together as possible
+    static std::string JointGet_NetFluxThroughDuct_NumTryPullsAttempted_NumTryPullsThatWereLaden() {
+      struct JointAdder {
+        size_t net_flux_through_duct{};
+        size_t num_try_pulls_attempted{};
+        size_t num_try_pulls_that_were_laden{};
+
+        std::string pack() const {
+          return emp::to_string(
+            net_flux_through_duct,
+            ',', num_try_pulls_attempted,
+            ',', num_try_pulls_that_were_laden
+          );
+        }
+
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), JointAdder{},
+        [](auto accum, const this_t* inlet) {
+          accum.net_flux_through_duct += inlet->GetNetFluxThroughDuct();
+          accum.num_try_pulls_attempted += inlet->GetNumTryPullsAttempted();
+          accum.num_try_pulls_that_were_laden
+            += inlet->GetNumTryPullsThatWereLaden();
+          return accum;
+        },
+        Filter{}
+      ).pack();
+    }
+
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
       res.AddFun(
@@ -765,7 +822,10 @@ class InstrumentationAggregatingOutletWrapper {
       res.AddFun(GetNumReadsThatWereFresh, "Num Reads That Were Fresh");
       res.AddFun(GetNumReadsThatWereStale, "Num Reads That Were Stale");
       res.AddFun(GetNumRevisionsPulled, "Num Revisions Pulled");
-      res.AddFun(GetNumTryPullsAttempted, "Num Try Pulls Attempted");
+      res.AddFun(
+        JointGet_NetFluxThroughDuct_NumTryPullsAttempted_NumTryPullsThatWereLaden,
+        "Net Flux Through Duct,Num Try Pulls Attempted,Num Try Pulls That Were Laden"
+      );
       res.AddFun(GetNumBlockingPulls, "Num Blocking Pulls");
       res.AddFun(
         GetNumBlockingPullsThatBlocked, "Num Blocking Pulls That Blocked"
@@ -776,7 +836,10 @@ class InstrumentationAggregatingOutletWrapper {
       res.AddFun(
         GetNumRevisionsFromBlockingPulls, "Num Revisions From Blocking Pulls"
       );
-      res.AddFun(GetNumPullsAttempted, "Num Pulls Attempted");
+      res.AddFun(
+        JointGet_NumPullsAttempted_NumRoundTripTouches,
+        "Num Pulls Attempted,Num Round Trip Touches"
+      );
       res.AddFun(
         GetNumPullsThatWereLadenEventually,
         "Num Pulls That Were Laden Eventually"
@@ -794,12 +857,8 @@ class InstrumentationAggregatingOutletWrapper {
         "Num Pulls That Were Laden Immediately"
       );
       res.AddFun(
-        GetNumTryPullsThatWereLaden, "Num Try Pulls That Were Laden"
-      );
-      res.AddFun(
         GetNumTryPullsThatWereUnladen, "Num Try Pulls That Were Unladen"
       );
-      res.AddFun( GetNumRoundTripTouches, "Num Round Trip Touches" );
       res.AddFun(
         GetFractionTryPullsThatWereLaden, "Fraction Try Pulls That Were Laden"
       );
@@ -827,7 +886,6 @@ class InstrumentationAggregatingOutletWrapper {
         GetFractionPullsThatWereLadenEventually,
         "Fraction Pulls That Were Laden Eventually"
       );
-      res.AddFun(GetNetFluxThroughDuct, "Net Flux Through Duct");
       res.AddFun(
         GetFractionReadsThatWereFresh, "Fraction Reads That Were Fresh"
       );

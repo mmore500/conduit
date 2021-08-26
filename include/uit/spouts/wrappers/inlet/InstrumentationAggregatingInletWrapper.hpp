@@ -380,6 +380,58 @@ class InstrumentationAggregatingInletWrapper {
       );
     }
 
+    // capture these from each inlet as close together as possible
+    static std::string JointGet_NumTryPutsAttempted_NumDroppedPuts() {
+      struct JointAdder {
+        size_t num_try_puts_attempted{};
+        size_t num_dropped_puts{};
+
+        std::string pack() const {
+          return emp::to_string(
+            num_try_puts_attempted, ',', num_dropped_puts
+          );
+        }
+
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), JointAdder{},
+        [](auto accum, const this_t* inlet) {
+          accum.num_dropped_puts += inlet->GetNumDroppedPuts();
+          accum.num_try_puts_attempted += inlet->GetNumTryPutsAttempted();
+          return accum;
+        },
+        Filter{}
+      ).pack();
+    }
+
+    // capture these from each inlet as close together as possible
+    static std::string JointGet_NumPutsAttempted_NumRoundTripTouches() {
+      struct JointAdder {
+        size_t num_puts_attempted{};
+        size_t num_round_trip_touches{};
+
+        std::string pack() const {
+          return emp::to_string(
+            num_puts_attempted, ',', num_round_trip_touches
+          );
+        }
+
+      };
+
+      std::shared_lock lock{ registry.GetMutex() };
+      return uitsl::accumulate_if(
+        std::begin(registry), std::end(registry), JointAdder{},
+        [](auto accum, const this_t* inlet) {
+          accum.num_puts_attempted += inlet->GetNumPutsAttempted();
+          accum.num_round_trip_touches += inlet->GetCurRoundTripTouchCount();
+          return accum;
+        },
+        Filter{}
+      ).pack();
+    }
+
     static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
       emp::DataFile res( filename );
       res.AddFun(
@@ -393,8 +445,14 @@ class InstrumentationAggregatingInletWrapper {
       res.AddVal(uitsl::get_proc_id(), "proc");
       res.AddVal(Filter::name(), "Impl Filter");
       res.AddFun(GetNumInlets, "Num Inlets");
-      res.AddFun(GetNumPutsAttempted, "Num Puts Attempted");
-      res.AddFun(GetNumTryPutsAttempted, "Num Try Puts Attempted");
+      res.AddFun(
+        JointGet_NumPutsAttempted_NumRoundTripTouches,
+        "Num Puts Attempted,Num Round Trip Touches"
+      );
+      res.AddFun(
+        JointGet_NumTryPutsAttempted_NumDroppedPuts,
+        "Num Try Puts Attempted,Num Dropped Puts"
+      );
       res.AddFun(GetNumBlockingPuts, "Num Blocking Puts");
       res.AddFun(GetNumTryPutsThatSucceeded, "Num Try Puts That Succeeded");
       res.AddFun(
@@ -409,7 +467,6 @@ class InstrumentationAggregatingInletWrapper {
         "Num Puts That Succeeded Immediately"
       );
       res.AddFun( GetNumPutsThatBlocked, "Num Puts That Blocked" );
-      res.AddFun( GetNumDroppedPuts, "Num Dropped Puts" );
       res.AddFun( GetFractionTryPutsDropped, "Fraction Try Puts Dropped" );
       res.AddFun(
         GetFractionTryPutsThatSucceeded, "Fraction Try Puts That Succeeded"
@@ -454,7 +511,6 @@ class InstrumentationAggregatingInletWrapper {
         GetMeanRoundTripTouchesPerAttemptedPut,
         "Mean Round Trip Touches Per Attempted Put"
       );
-      res.AddFun( GetNumRoundTripTouches, "Num Round Trip Touches" );
       res.AddFun(
         [](){ return uitsl::coarse_runtime<>.GetElapsed().count(); },
         "Runtime Seconds Elapsed"
