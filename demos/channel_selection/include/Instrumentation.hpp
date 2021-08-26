@@ -32,7 +32,12 @@ class Instrumentation {
     df.AddVal(uitsl::get_nprocs(), "Num Processes");
     df.AddVal(uitsl::get_exec_instance_uuid(), "Execution Instance UUID");
     df.AddVal(uitsl::get_proc_instance_uuid(), "Process Instance UUID");
-    df.AddVal(std::getenv("SLURM_NNODES") ?: "", "SLURM_NNODES");
+    // SLURM_NNODES seems to be overwritten by mpiexec,
+    // so allow for manual override
+    df.AddVal(
+      std::getenv("SLURM_NNODES_OVERRIDE") ?: std::getenv("SLURM_NNODES") ?: "",
+      "SLURM_NNODES"
+    );
     df.AddVal(std::getenv("SLURM_NTASKS") ?: "", "SLURM_NTASKS");
     df.AddVal(std::getenv("SLURM_CPUS_ON_NODE") ?: "", "SLURM_CPUS_ON_NODE");
     return df;
@@ -56,7 +61,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "inlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "container"},
               {"_hostname", get_hostname()},
@@ -80,7 +90,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "inlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "summary"},
               {"_hostname", get_hostname()},
@@ -108,7 +123,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "inlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "container"},
               {"_hostname", get_hostname()},
@@ -132,7 +152,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "inlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "summary"},
               {"_hostname", get_hostname()},
@@ -160,7 +185,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "inlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "container"},
               {"_hostname", get_hostname()},
@@ -184,7 +214,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "inlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "summary"},
               {"_hostname", get_hostname()},
@@ -218,7 +253,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "outlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "container"},
               {"_hostname", get_hostname()},
@@ -242,7 +282,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "outlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "summary"},
               {"_hostname", get_hostname()},
@@ -270,7 +315,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "outlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "container"},
               {"_hostname", get_hostname()},
@@ -294,7 +344,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "outlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "summary"},
               {"_hostname", get_hostname()},
@@ -322,7 +377,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "outlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "container"},
               {"_hostname", get_hostname()},
@@ -346,7 +406,12 @@ class Instrumentation {
               {"proc", emp::to_string(uitsl::get_proc_id())},
               {"replicate", emp::to_string(cfg.REPLICATE())},
               {"subject", "outlet"},
-              {"slurm_nnodes", std::getenv("SLURM_NNODES") ?: ""},
+              {
+                "slurm_nnodes",
+                std::getenv("SLURM_NNODES_OVERRIDE")
+                  ?: std::getenv("SLURM_NNODES")
+                  ?: ""
+              },
               {"slurm_ntasks", std::getenv("SLURM_NTASKS") ?: ""},
               {"view", "summary"},
               {"_hostname", get_hostname()},

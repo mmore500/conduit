@@ -9,6 +9,7 @@ singularity exec docker://mmore500/dishtiny:sha-2f60ec6 make
 module purge
 module load GCC/7.2.0-2.29
 module load MPICH/3.2.1
+export SLURM_NNODES_OVERRIDE=SET_ME
 ###BLOCK-COMMENT
 
 for REPLICATE in 0 1 2 3 4 5 6 7 8 9; do
