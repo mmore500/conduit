@@ -25,6 +25,9 @@ EMP_BUILD_CONFIG(
   GROUP(EXPERIMENT, "EXPERIMENT"),
   VALUE(N_CHANNELS, size_t, 3, "Number of node colors available"),
   VALUE(B, double, 0.1, "Node channel stickiness"),
+  VALUE(WHICH_TOPOLOGY, std::string, "toroidal",
+    "Which topology should we use?"
+  ),
 
   GROUP(INSTRUMENTATION, "INSTRUMENTATION"),
   VALUE(SNAPSHOT_INTERVAL, double, 60,

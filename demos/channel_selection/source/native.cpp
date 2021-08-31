@@ -6,9 +6,11 @@
 
 #include <mpi.h>
 
+#include "../../../third-party/Empirical/include/emp/base/error.hpp"
 #include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../third-party/Empirical/include/emp/config/ArgManager.hpp"
 
+#include "netuit/arrange/DyadicTopologyFactory.hpp"
 #include "netuit/arrange/ToroidalTopologyFactory.hpp"
 #include "netuit/assign/GenerateMetisAssignments.hpp"
 #include "uitsl/containers/safe/unordered_map.hpp"
@@ -41,9 +43,16 @@ int main(int argc, char* argv[]) {
   }
 
   const size_t dim = static_cast<size_t>(std::pow(num_nodes(), 0.5));
-  const auto topology = netuit::make_toroidal_topology(
-    { dim, dim }
-  );
+  const auto topology = [&](){
+    if ( cfg.WHICH_TOPOLOGY() == "toroidal" ) {
+      return netuit::make_toroidal_topology( { dim, dim } );
+    } else if ( cfg.WHICH_TOPOLOGY() == "dyadic" ) {
+      return netuit::make_dyadic_topology( num_nodes() );
+    } else {
+      emp_error( "bad WHICH_TOPOLOGY", cfg.WHICH_TOPOLOGY() );
+      __builtin_unreachable();
+    }
+  }();
 
   const std::pair<
       std::function<uitsl::proc_id_t(size_t)>,
