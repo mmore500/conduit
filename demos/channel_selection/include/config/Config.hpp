@@ -28,6 +28,7 @@ EMP_BUILD_CONFIG(
   VALUE(WHICH_TOPOLOGY, std::string, "toroidal",
     "Which topology should we use?"
   ),
+  VALUE(AMT_COMPUTE_WORK, size_t, 0, "How much compute work should we do?"),
 
   GROUP(INSTRUMENTATION, "INSTRUMENTATION"),
   VALUE(SNAPSHOT_INTERVAL, double, 60,

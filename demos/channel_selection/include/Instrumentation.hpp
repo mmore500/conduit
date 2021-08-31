@@ -29,6 +29,7 @@ class Instrumentation {
     df.AddVal(cfg.ASYNCHRONOUS(), "Async Mode");
     df.AddVal(cfg.N_THREADS(), "Num Threads");
     df.AddVal(cfg.N_NODES_PER_CPU(), "Num Simulation Elements Per Cpu");
+    df.AddVal(cfg.AMT_COMPUTE_WORK(), "Amount Compute Work");
     df.AddVal(uitsl::get_nprocs(), "Num Processes");
     df.AddVal(uitsl::get_exec_instance_uuid(), "Execution Instance UUID");
     df.AddVal(uitsl::get_proc_instance_uuid(), "Process Instance UUID");
@@ -55,6 +56,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "intra"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -84,6 +86,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "intra"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -117,6 +120,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "thread"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -146,6 +150,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "thread"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -179,6 +184,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "proc"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -208,6 +214,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "proc"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -247,6 +254,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "intra"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -276,6 +284,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "intra"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -309,6 +318,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "thread"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -338,6 +348,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "thread"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -371,6 +382,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "proc"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},
@@ -400,6 +412,7 @@ class Instrumentation {
             emp::keyname::pack({
               {"a", "conduit_instrumentation"},
               {"async_mode", emp::to_string(cfg.ASYNCHRONOUS())},
+              {"comp_work", emp::to_string(cfg.AMT_COMPUTE_WORK())},
               {"impl", "proc"},
               {"nproc", emp::to_string(uitsl::get_nprocs())},
               {"nthread", emp::to_string(cfg.N_THREADS())},

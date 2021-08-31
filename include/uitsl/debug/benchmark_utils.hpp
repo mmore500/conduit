@@ -33,6 +33,8 @@ inline void do_not_optimize(T& value) {
 #endif
 }
 
+// one work item ~= 35ns walltime, 21ns cputime
+// see https://godbolt.org/z/b9a873x9j
 inline void do_compute_work(const size_t amt=1) {
 
   thread_local std::uniform_int_distribution<size_t> distribution{
