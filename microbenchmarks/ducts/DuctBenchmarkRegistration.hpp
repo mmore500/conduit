@@ -18,7 +18,7 @@
 #include "uitsl/math/stats_utils.hpp"
 #include "uitsl/meta/Curry.hpp"
 #include "uitsl/meta/ForEach.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/mpi/mpi_init_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/parallel/thread_utils.hpp"

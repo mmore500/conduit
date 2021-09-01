@@ -2,6 +2,7 @@
 #ifndef UITSL_CONTAINERS_SAFE_UNORDERED_MAP_HPP_INCLUDE
 #define UITSL_CONTAINERS_SAFE_UNORDERED_MAP_HPP_INCLUDE
 
+#include <mutex>
 #include <shared_mutex>
 #include <unordered_map>
 
@@ -17,7 +18,7 @@ template<
 >
 class unordered_map {
 
-  using impl_t = std::unordered_map<
+  using this_t = uitsl::safe::unordered_map<
     Key,
     T,
     Hash,
@@ -25,11 +26,23 @@ class unordered_map {
     Allocator
   >;
 
+  using stl_equiv_t = std::unordered_map<
+    Key,
+    T,
+    Hash,
+    Pred,
+    Allocator
+  >;
+
+  using impl_t = stl_equiv_t;
+
   mutable std::shared_mutex mutex;
 
   impl_t impl;
 
 public:
+
+  std::shared_mutex& GetMutex() const { return mutex; }
 
   using allocator_type = typename impl_t::allocator_type;
   using const_iterator = typename impl_t::const_iterator;
@@ -42,6 +55,8 @@ public:
   using node_type = typename impl_t::node_type;
   using size_type = typename impl_t::size_type;
   using value_type = typename impl_t::value_type;
+  using hasher = typename impl_t::hasher;
+  using key_equal = typename impl_t::key_equal;
 
   template<typename... Args>
   explicit unordered_map(Args&&... args)
@@ -154,7 +169,7 @@ public:
 
   void insert(std::initializer_list<value_type> arg) {
     const std::unique_lock lock{ mutex };
-    return impl.insert(arg);
+    impl.insert(arg);
   }
 
   node_type extract(const_iterator position) {
@@ -273,7 +288,16 @@ public:
     return impl.erase(first, last);
   }
 
-  void swap(unordered_map& arg) noexcept(
+  void swap(this_t& arg) noexcept(
+    std::allocator_traits<Allocator>::is_always_equal::value
+    && std::is_nothrow_swappable_v<Hash>
+    && std::is_nothrow_swappable_v<Pred>
+  ) {
+    const std::scoped_lock lock{ mutex, arg.mutex };
+    impl.swap(arg);
+  }
+
+  void swap(stl_equiv_t& arg) noexcept(
     std::allocator_traits<Allocator>::is_always_equal::value
     && std::is_nothrow_swappable_v<Hash>
     && std::is_nothrow_swappable_v<Pred>
@@ -286,6 +310,34 @@ public:
     const std::unique_lock lock{ mutex };
     impl.clear();
   }
+
+  template<class H2, class P2>
+  void merge(uitsl::safe::unordered_map<Key, T, H2, P2, Allocator>& source) {
+    const std::lock_guard lock{ mutex };
+    impl.merge(source);
+  }
+
+  template<class H2, class P2>
+  void merge(uitsl::safe::unordered_map<Key, T, H2, P2, Allocator>&& source) {
+    const std::scoped_lock lock{ mutex, source.mutex };
+    impl.merge(std::move(source.impl));
+  }
+
+  // TODO unimplemented
+  // template<class H2, class P2>
+  // void merge(
+  //  uitsl::safe::unordered_multimap<Key, T, H2, P2, Allocator>& source
+  // ) {
+  //   const std::scoped_lock lock{ mutex, source.mutex };
+  //   impl.merge(source);
+  // }
+
+  // TODO unimplemented
+  // template<class H2, class P2>
+  // void merge(std::unordered_multimap<Key, T, H2, P2, Allocator>&& source) {
+  //   const std::scoped_lock lock{ source. };
+  //   impl.merge(std::move(source));
+  // }
 
   template<class H2, class P2>
   void merge(std::unordered_map<Key, T, H2, P2, Allocator>& source) {
@@ -312,9 +364,8 @@ public:
   }
 
   // observers
-  // no override
-  // hasher hash_function() const;
-  // key_equal key_eq() const;
+  hasher hash_function() const { return impl.hash_function(); }
+  key_equal key_eq() const { return impl.key_eq(); }
 
   // map operations
   iterator find(const key_type& k) {
@@ -353,13 +404,21 @@ public:
 
   bool contains(const key_type& k) const {
     const std::shared_lock lock{ mutex };
-    return impl.contains(k);
+    #if __cplusplus >= 202002L
+      return impl.contains(k);
+    #else // #if __cplusplus >= 202002L
+      return impl.count(k);
+    #endif // #if __cplusplus >= 202002L
   }
 
   template<class K>
   bool contains(const K& k) const {
     const std::shared_lock lock{ mutex };
-    return impl.contains(k);
+    #if __cplusplus >= 202002L
+      return impl.contains(k);
+    #else // #if __cplusplus >= 202002L
+      return impl.count(k);
+    #endif // #if __cplusplus >= 202002L
   }
 
   std::pair<iterator, iterator> equal_range(const key_type& k) {
@@ -388,12 +447,12 @@ public:
 
   // element access
   mapped_type& operator[](const key_type& k) {
-    const std::shared_lock lock{ mutex };
+    const std::unique_lock lock{ mutex };
     return impl.operator[](k);
   }
 
   mapped_type& operator[](key_type&& k) {
-    const std::shared_lock lock{ mutex };
+    const std::unique_lock lock{ mutex };
     return impl.operator[](std::move(k));
   }
 

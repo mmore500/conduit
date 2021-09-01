@@ -7,7 +7,7 @@
 
 #include <mpi.h>
 
-#include "../mpi/mpi_utils.hpp"
+#include "../mpi/mpi_init_utils.hpp"
 
 namespace uitsl {
 

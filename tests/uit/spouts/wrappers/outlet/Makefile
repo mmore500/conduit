@@ -1,4 +1,5 @@
 TARGET_NAMES += CachingOutletWrapper
+TARGET_NAMES += InstrumentationAggregatingOutletWrapper
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
 

@@ -2,6 +2,7 @@
 #ifndef NETUIT_MESH_MESH_HPP_INCLUDE
 #define NETUIT_MESH_MESH_HPP_INCLUDE
 
+#include <algorithm>
 #include <ratio>
 #include <stddef.h>
 #include <unordered_map>
@@ -10,11 +11,14 @@
 
 #include "../../uitsl/debug/safe_cast.hpp"
 #include "../../uitsl/math/math_utils.hpp"
-#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_init_utils.hpp"
+#include "../../uitsl/parallel/thread_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"
 
 #include "../../uit/ducts/Duct.hpp"
 #include "../../uit/setup/InterProcAddress.hpp"
+#include "../../uit/spouts/wrappers/impl/RoundTripCounterAddr.hpp"
+#include "../../uit/spouts/wrappers/impl/round_trip_touch_counter.hpp"
 
 #include "../assign/AssignIntegrated.hpp"
 #include "../topology/Topology.hpp"
@@ -164,7 +168,103 @@ class Mesh {
       typename ImplSpec::ProcInletDuct
     >(addr, back_end);
 
+  }
 
+  // solely for instrumentation purposes
+  void RegisterDuctTargets() {
+    for (auto& [node_id, node] : nodes) RegisterDuctTargets(node_id, node);
+  }
+
+  // solely for instrumentation purposes
+  void RegisterDuctTargets(const node_id_t node_id, node_t& node) {
+    for (const auto & input : node.GetInputs()) RegisterDuctTarget(input);
+    for (const auto & output : node.GetOutputs()) RegisterDuctTarget(output);
+  }
+
+  // solely for instrumentation purposes
+  void RegisterDuctTarget(const netuit::MeshNodeOutput<ImplSpec>& output) {
+    output.RegisterEdgeID( output.GetEdgeID() );
+    output.RegisterMeshID( mesh_id );
+    {
+      const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
+        output.GetEdgeID()
+      );
+      const uitsl::proc_id_t inlet_proc_id = proc_assignment(inlet_node_id);
+      const uitsl::thread_id_t inlet_thread_id = thread_assignment(
+        inlet_node_id
+      );
+
+      output.RegisterInletProc( inlet_proc_id );
+      output.RegisterInletThread( inlet_thread_id );
+      output.RegisterInletNodeID( inlet_node_id );
+    }
+
+    {
+      const node_id_t outlet_node_id = nodes.GetInputRegistry().at(
+        output.GetEdgeID()
+      );
+      const uitsl::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
+      const uitsl::thread_id_t outlet_thread_id = thread_assignment(
+        outlet_node_id
+      );
+
+      output.RegisterOutletProc( outlet_proc_id );
+      output.RegisterOutletThread( outlet_thread_id );
+      output.RegisterOutletNodeID( outlet_node_id );
+    }
+
+    {
+      const auto addr = uit::impl::RoundTripCounterAddr{
+        mesh_id,
+        nodes.GetOutputRegistry().at( output.GetEdgeID() ),
+        nodes.GetInputRegistry().at( output.GetEdgeID() )
+      };
+      uit::impl::round_trip_touch_counter[ addr ];
+      emp_assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
+    }
+  }
+
+  // solely for instrumentation purposes
+  void RegisterDuctTarget(const netuit::MeshNodeInput<ImplSpec>& input) {
+    input.RegisterEdgeID( input.GetEdgeID() );
+    input.RegisterMeshID( mesh_id );
+    {
+      const node_id_t inlet_node_id = nodes.GetOutputRegistry().at(
+        input.GetEdgeID()
+      );
+      const uitsl::proc_id_t inlet_proc_id = proc_assignment(inlet_node_id);
+      const uitsl::thread_id_t inlet_thread_id = thread_assignment(
+          inlet_node_id
+      );
+
+      input.RegisterInletProc( inlet_proc_id );
+      input.RegisterInletThread( inlet_thread_id );
+      input.RegisterInletNodeID( inlet_node_id );
+    }
+
+    {
+      const node_id_t outlet_node_id = nodes.GetInputRegistry().at(
+        input.GetEdgeID()
+      );
+      const uitsl::proc_id_t outlet_proc_id = proc_assignment(outlet_node_id);
+      const uitsl::thread_id_t outlet_thread_id = thread_assignment(
+          outlet_node_id
+      );
+
+      input.RegisterOutletProc( outlet_proc_id );
+      input.RegisterOutletThread( outlet_thread_id );
+      input.RegisterOutletNodeID( outlet_node_id );
+    }
+
+    {
+      const auto addr = uit::impl::RoundTripCounterAddr{
+        mesh_id,
+        nodes.GetInputRegistry().at( input.GetEdgeID() ),
+        nodes.GetOutputRegistry().at( input.GetEdgeID() )
+      };
+      uit::impl::round_trip_touch_counter[ addr ];
+      emp_assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
+    }
   }
 
 
@@ -188,6 +288,7 @@ public:
   , back_end(back_end_) {
     InitializeInterThreadDucts();
     InitializeInterProcDucts();
+    RegisterDuctTargets();
     back_end->Initialize();
   }
 

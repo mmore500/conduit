@@ -12,7 +12,7 @@
 #if 0
 #endif
 #include "uitsl/debug/safe_cast.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/mpi/mpi_init_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/parallel/thread_utils.hpp"

@@ -8,7 +8,7 @@
 
 #include <mpi.h>
 
-#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../uitsl/utility/assign_utils.hpp"
 
 #include "../../uit/ducts/Duct.hpp"
@@ -147,7 +147,7 @@ public:
 
   using value_type = typename node_lookup_t::value_type;
 
-  MeshTopology(
+  explicit MeshTopology(
     const netuit::Topology & topology,
     const std::function<uitsl::proc_id_t(node_id_t)> proc_assignment
       =uitsl::AssignIntegrated<uitsl::proc_id_t>{},

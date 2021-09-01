@@ -77,13 +77,41 @@ private:
   static_assert(N > 0);
 
   /// How many times has outlet been read from?
+  /// Instrumentation for communication profiling.
   mutable size_t read_count{0};
 
-  /// How many times has current value changed?
-  size_t revision_count{0};
+  /// Has the current revision been viewed?
+  /// Instrumentation for communication profiling.
+  mutable bool cur_revision_unread{true};
+
+  /// How many unique revisions have been read?
+  /// Instrumentation for communication profiling.
+  mutable size_t fresh_read_count{0};
+
+  /// How many times has current value changed (i.e., a pull succeeded)?
+  /// Instrumentation for communication profiling.
+  /// Start at 1 to account for default-constructed initial value.
+  size_t revision_count{1};
 
   /// Total distance traversed through underlying buffer.
+  /// Instrumentation for communication profiling.
   size_t net_flux{0};
+
+  /// Number of times try_step or jump was called.
+  /// Instrumentation for communication profiling.
+  size_t nonblocking_pull_attempt_count{0};
+
+  /// Number of times nonblocking pull retrieved a fresh value.
+  /// Instrumentation for communication profiling.
+  size_t laden_nonblocking_pull_count{0};
+
+  /// Number of times step was called.
+  /// Instrumentation for communication profiling.
+  size_t blocking_pull_count{0};
+
+  /// Number of times step blocked.
+  /// Instrumentation for communication profiling.
+  size_t pulls_that_blocked_count{0};
 
   uitsl_occupancy_auditor;
 
@@ -104,11 +132,16 @@ private:
    */
   size_t LogStep(const size_t n) {
     revision_count += (n > 0);
+    if (n > 0) cur_revision_unread = true;
     net_flux += n;
     return n;
   }
 
-  void LogRead() const { ++read_count; }
+  void LogRead() const {
+    ++read_count;
+    fresh_read_count += cur_revision_unread;
+    cur_revision_unread = false;
+  }
 
 public:
 
@@ -120,11 +153,14 @@ public:
   ) : duct(duct_) { ; }
 
   size_t TryStep(const size_t num_steps=1) {
-    return TryConsumeGets(num_steps);
+    ++nonblocking_pull_attempt_count;
+    const size_t res = TryConsumeGets(num_steps);
+    if ( res ) ++laden_nonblocking_pull_count;
+    return res;
   }
 
   size_t Jump() {
-    return TryConsumeGets( std::numeric_limits<size_t>::max() );
+    return TryStep( std::numeric_limits<size_t>::max() );
   }
 
   /**
@@ -153,19 +189,41 @@ public:
   }
 
   /**
+   * Step forward num_steps values.
+   *
+   * Blocking.
+   *
+   * @return TODO.
+   */
+  void Step(size_t num_steps=1) {
+    uitsl_occupancy_audit(1);
+    blocking_pull_count += num_steps;
+
+    while (num_steps) {
+      size_t uncounted_steps{};
+      bool was_blocked{ false };
+      do {
+        uncounted_steps = TryConsumeGets(num_steps);
+        was_blocked |= (uncounted_steps == 0);
+      } while ( uncounted_steps == 0 );
+
+      num_steps -= uncounted_steps;
+      pulls_that_blocked_count += was_blocked;
+    }
+
+  }
+
+  /**
    * Get next received value.
    *
    * Blocking.
    *
    * @return TODO.
    */
-  const T& GetNext() {
-    uitsl_occupancy_audit(1);
-    while (TryStep() == 0);
+  const T& GetNext(const size_t num_steps=1) {
+    Step(num_steps);
     return Get();
   }
-
-
 
   using optional_ref_t = emp::optional<std::reference_wrapper<const T>>;
 
@@ -188,21 +246,290 @@ public:
    *
    * @return TODO.
    */
-  size_t GetReadCount() const { return read_count; }
+  size_t GetNumReadsPerformed() const { return read_count; }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetRevisionCount() const { return revision_count; }
+  size_t GetNumReadsThatWereFresh() const { return fresh_read_count; }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetNetFlux() const { return net_flux; }
+  size_t GetNumReadsThatWereStale() const {
+    emp_assert( read_count >= fresh_read_count );
+    return read_count - fresh_read_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumRevisionsPulled() const { return revision_count; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumTryPullsAttempted() const {
+    return nonblocking_pull_attempt_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumBlockingPulls() const {
+    return blocking_pull_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumBlockingPullsThatBlocked() const {
+    return pulls_that_blocked_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @node identical to GetNumTryPullsThatWereLaden
+   * @return TODO.
+   */
+  size_t GetNumRevisionsFromTryPulls() const {
+    return laden_nonblocking_pull_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumRevisionsFromBlockingPulls() const {
+    emp_assert(revision_count >= GetNumRevisionsFromTryPulls());
+    return revision_count - GetNumRevisionsFromTryPulls();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPullsAttempted() const {
+    return nonblocking_pull_attempt_count + blocking_pull_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPullsThatWereLadenEventually() const {
+    return GetNumTryPullsThatWereLaden() + GetNumBlockingPulls();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumBlockingPullsThatWereLadenImmediately() const {
+    emp_assert( GetNumBlockingPulls() >= GetNumBlockingPullsThatBlocked() );
+    return GetNumBlockingPulls() - GetNumBlockingPullsThatBlocked();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumBlockingPullsThatWereLadenEventually() const {
+    return GetNumBlockingPulls();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPullsThatWereLadenImmediately() const {
+    return GetNumTryPullsThatWereLaden()
+    + GetNumBlockingPullsThatWereLadenImmediately();
+  }
+
+  /**
+   * TODO.
+   *
+   * @note Identical to `GetNumRevisionsFromTryPulls`.
+   * @return TODO.
+   */
+
+  size_t GetNumTryPullsThatWereLaden() const {
+    return laden_nonblocking_pull_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumTryPullsThatWereUnladen() const {
+    emp_assert(nonblocking_pull_attempt_count >= laden_nonblocking_pull_count);
+    return nonblocking_pull_attempt_count - laden_nonblocking_pull_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionTryPullsThatWereLaden() const {
+    emp_assert(GetNumTryPullsThatWereLaden() >= GetNumTryPullsAttempted());
+    return (
+      GetNumTryPullsThatWereLaden()
+      / static_cast<double>( GetNumTryPullsAttempted() )
+    );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionTryPullsThatWereUnladen() const {
+    return 1.0 - GetFractionTryPullsThatWereLaden();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionBlockingPullsThatBlocked() const {
+    emp_assert(
+      GetNumBlockingPullsThatBlocked()
+      >= GetNumBlockingPulls()
+    );
+    return (
+      GetNumBlockingPullsThatBlocked()
+      / static_cast<double>( GetNumBlockingPulls() )
+    );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionBlockingPullsThatWereLadenImmediately() const {
+    return 1.0 - GetFractionBlockingPullsThatBlocked();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionPullsThatWereLadenImmediately() const {
+    emp_assert(GetNumPullsThatWereLadenImmediately() >= GetNumPullsAttempted());
+    return (
+      GetNumPullsThatWereLadenImmediately()
+      / static_cast<double>( GetNumPullsAttempted() )
+    );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionPullsThatWereLadenEventually() const {
+    emp_assert(GetNumPullsThatWereLadenEventually() >= GetNumPullsAttempted());
+    return (
+      GetNumPullsThatWereLadenEventually()
+      / static_cast<double>( GetNumPullsAttempted() )
+    );
+  }
+
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNetFluxThroughDuct() const { return net_flux; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionReadsThatWereFresh() const {
+    return fresh_read_count / static_cast<double>(read_count);
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionReadsThatWereStale() const {
+    return 1.0 - GetFractionReadsThatWereFresh();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionRevisionsThatWereRead() const {
+    return fresh_read_count / static_cast<double>(revision_count);
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionRevisionsThatWereNotRead() const {
+    return 1.0 - GetFractionRevisionsThatWereRead();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionDuctFluxThatWasSteppedThrough() const {
+    return revision_count / static_cast<double>(net_flux);
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionDuctFluxThatWasJumpedOver() const {
+    return 1.0 - GetFractionDuctFluxThatWasSteppedThrough();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionDuctFluxThatWasRead() const {
+    return fresh_read_count / static_cast<double>(net_flux);
+  }
 
   /**
    * TODO.
@@ -246,7 +573,75 @@ public:
 
   emp::optional<bool> HoldsProcImpl() const { return duct->HoldsProcImpl(); }
 
+  std::string WhichImplHeld() const { return duct->WhichImplHeld(); }
+
   bool CanStep() const { return duct->CanStep(); }
+
+  // exclusively for instrumentation purposes
+  void RegisterInletProc(const uitsl::proc_id_t proc) const {
+    duct->RegisterInletProc(proc);
+  }
+
+  // exclusively for instrumentation purposes
+  void RegisterInletThread(const uitsl::thread_id_t thread) const {
+    duct->RegisterInletThread(thread);
+  }
+
+  // exclusively for instrumentation purposes
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    duct->RegisterOutletProc(proc);
+  }
+
+  // exclusively for instrumentation purposes
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    duct->RegisterOutletThread(thread);
+  }
+
+  void RegisterEdgeID(const size_t edge_id) const {
+    duct->RegisterEdgeID(edge_id);
+  }
+
+  void RegisterInletNodeID(const size_t node_id) const {
+    duct->RegisterInletNodeID(node_id);
+  }
+
+  void RegisterOutletNodeID(const size_t node_id) const {
+    duct->RegisterOutletNodeID(node_id);
+  }
+
+  void RegisterMeshID(const size_t mesh_id) const {
+    duct->RegisterMeshID(mesh_id);
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
+    return duct->LookupOutletProc();
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupOutletThread() const {
+    return duct->LookupOutletThread();
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupInletProc() const {
+    return duct->LookupInletProc();
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupInletThread() const {
+    return duct->LookupInletThread();
+  }
+
+  emp::optional<size_t> LookupEdgeID() const {
+    return duct->LookupEdgeID();
+  }
+
+  emp::optional<size_t> LookupInletNodeID() const {
+    return duct->LookupInletNodeID();
+  }
+
+  emp::optional<size_t> LookupOutletNodeID() const {
+    return duct->LookupOutletNodeID();
+  }
+
+  emp::optional<size_t> LookupMeshID() const { return duct->LookupMeshID(); }
 
   /**
    * TODO.

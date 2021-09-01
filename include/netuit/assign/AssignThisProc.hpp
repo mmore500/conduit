@@ -2,7 +2,7 @@
 #ifndef NETUIT_ASSIGN_ASSIGNTHISPROC_HPP_INCLUDE
 #define NETUIT_ASSIGN_ASSIGNTHISPROC_HPP_INCLUDE
 
-#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_init_utils.hpp"
 
 namespace netuit {
 

@@ -22,7 +22,7 @@
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/debug/safe_compare.hpp"
 #include "uitsl/math/math_utils.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/mpi/mpi_init_utils.hpp"
 #include "uitsl/parallel/ThreadIbarrierFactory.hpp"
 #include "uitsl/parallel/ThreadTeam.hpp"
 #include "uitsl/polyfill/barrier.hpp"
@@ -271,12 +271,12 @@ void audit_grid(
   for (tile = 0; tile < grid.size(); ++tile) {
     const auto & which = grid[tile];
 
-    attempted_write_count = which.GetAttemptedPutCount();
-    blocked_write_count = which.GetBlockedPutCount();
-    dropped_write_count = which.GetDroppedPutCount();
-    read_count = which.GetReadCount();
+    attempted_write_count = which.GetNumPutsAttempted();
+    blocked_write_count = which.GetNumPutsThatBlocked();
+    dropped_write_count = which.GetNumDroppedPuts();
+    read_count = which.GetNumReadsPerformed();
     read_revision_count = which.GetReadRevisionCount();
-    net_flux = which.GetNetFlux();
+    net_flux = which.GetNetFluxThroughDuct();
 
     datafile.Update();
   }

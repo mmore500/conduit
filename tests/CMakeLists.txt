@@ -165,8 +165,11 @@ set(UIT_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/spouts/Inlet.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/spouts/Outlet.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/inlet/CachingInletWrapper.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/inlet/InstrumentationAggregatingInletWrapper.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/outlet/CachingOutletWrapper.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/outlet/InstrumentationAggregatingOutletWrapper.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/wrappers/CachingSpoutWrapper.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/wrappers/InstrumentationAggregatingSpoutWrapper.cpp
     ${CMAKE_SOURCE_DIR}/tests/uit/spouts/wrappers/wrappers/TrivialSpoutWrapper.cpp
     )
 set(UITSL_SOURCES
@@ -185,6 +188,7 @@ set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/containers/safe/deque.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/containers/safe/list.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/containers/safe/unordered_map.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/containers/safe/unordered_set.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/containers/safe/vector.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/countdown/ProgressBar.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/datastructs/MirroredRingBuffer.cpp
@@ -194,6 +198,7 @@ set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/datastructs/SiftingArray.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/datastructs/VectorMap.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/debug/IsFirstExecutionChecker.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/debug/NotImplementedException.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/debug/OncePerThreadChecker.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/debug/WarnOnce.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/debug/audit_compare.cpp
@@ -232,7 +237,7 @@ set(UITSL_SOURCES
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/comm_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/group_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/mpi_types.cpp
-    ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/mpi_utils.cpp
+    ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/mpi_init_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/request_utils.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/mpi/routine_functors.cpp
     ${CMAKE_SOURCE_DIR}/tests/uitsl/nonce/CircularIndex.cpp

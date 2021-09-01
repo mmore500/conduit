@@ -6,7 +6,7 @@
 
 #include <mpi.h>
 
-#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 
 namespace uit {

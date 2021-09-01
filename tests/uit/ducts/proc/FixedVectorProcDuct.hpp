@@ -11,7 +11,7 @@
 #include "netuit/assign/AssignAvailableProcs.hpp"
 #include "uitsl/distributed/RdmaWindowManager.hpp"
 #include "uitsl/math/math_utils.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/mpi/mpi_init_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
 
 #include "uit/fixtures/Sink.hpp"

@@ -75,17 +75,19 @@ public:
     FlushState();
   }
 
-  size_t GetAttemptedPutCount() const { return output.GetAttemptedPutCount(); }
+  size_t GetNumPutsAttempted() const { return output.GetNumPutsAttempted(); }
 
-  size_t GetBlockedPutCount() const { return output.GetBlockedPutCount(); }
+  size_t GetNumPutsThatBlocked() const {
+    return output.GetNumPutsThatBlocked();
+  }
 
-  size_t GetDroppedPutCount() const { return output.GetDroppedPutCount(); }
+  size_t GetNumDroppedPuts() const { return output.GetNumDroppedPuts(); }
 
-  size_t GetReadCount() const { return input.GetReadCount(); }
+  size_t GetNumReadsPerformed() const { return input.GetNumReadsPerformed(); }
 
-  size_t GetReadRevisionCount() const { return input.GetRevisionCount(); }
+  size_t GetReadRevisionCount() const { return input.GetNumRevisionsPulled(); }
 
-  size_t GetNetFlux() const { return input.GetNetFlux(); }
+  size_t GetNetFluxThroughDuct() const { return input.GetNetFluxThroughDuct(); }
 
   std::string ToString() const {
     std::stringstream ss;

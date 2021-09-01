@@ -129,6 +129,10 @@ public:
 
   const value_type& JumpGet() { Jump(); return Get(); }
 
+  void Step(size_t num_steps=1) {
+    while ( num_steps ) num_steps -= TryStep(num_steps);
+  }
+
   const value_type& GetNext() { while (TryStep() == 0); return Get(); }
 
   using optional_ref_t = emp::optional<std::reference_wrapper<
@@ -141,11 +145,125 @@ public:
     : std::nullopt;
   }
 
-  size_t GetReadCount() const { return outlet.GetReadCount(); }
+  decltype(auto) GetNumReadsPerformed() const {
+    return outlet.GetNumReadsPerformed();
+  }
 
-  size_t GetRevisionCount() const { return outlet.GetRevisionCount(); }
+  decltype(auto) GetNumReadsThatWereFresh() const {
+    return outlet.GetNumReadsThatWereFresh();
+  }
 
-  size_t GetNetFlux() const { return outlet.GetNetFlux(); }
+  decltype(auto) GetNumReadsThatWereStale() const {
+    return outlet.GetNumReadsThatWereStale();
+  }
+
+  decltype(auto) GetNumRevisionsPulled() const {
+    return outlet.GetNumRevisionsPulled();
+  }
+
+  decltype(auto) GetNumTryPullsAttempted() const {
+    return outlet.GetNumTryPullsAttempted();
+  }
+
+  decltype(auto) GetNumBlockingPulls() const {
+    return outlet.GetNumBlockingPulls();
+  }
+
+  decltype(auto) GetNumBlockingPullsThatBlocked() const {
+    return outlet.GetNumBlockingPullsThatBlocked();
+  }
+
+  decltype(auto) GetNumRevisionsFromTryPulls() const {
+    return outlet.GetNumRevisionsFromTryPulls();
+  }
+
+  decltype(auto) GetNumRevisionsFromBlockingPulls() const {
+    return outlet.GetNumRevisionsFromBlockingPulls();
+  }
+
+  decltype(auto) GetNumPullsAttempted() const {
+    return outlet.GetNumPullsAttempted();
+  }
+
+  decltype(auto) GetNumPullsThatWereLadenEventually() const {
+    return outlet.GetNumPullsThatWereLadenEventually();
+  }
+
+  decltype(auto) GetNumBlockingPullsThatWereLadenImmediately() const {
+    return outlet.GetNumBlockingPullsThatWereLadenImmediately();
+  }
+
+  decltype(auto) GetNumBlockingPullsThatWereLadenEventually() const {
+    return outlet.GetNumBlockingPullsThatWereLadenEventually();
+  }
+
+  decltype(auto) GetNumPullsThatWereLadenImmediately() const {
+    return outlet.GetNumPullsThatWereLadenImmediately();
+  }
+
+  decltype(auto) GetNumTryPullsThatWereLaden() const {
+    return outlet.GetNumTryPullsThatWereLaden();
+  }
+
+  decltype(auto) GetNumTryPullsThatWereUnladen() const {
+    return outlet.GetNumTryPullsThatWereUnladen();
+  }
+
+  decltype(auto) GetFractionTryPullsThatWereLaden() const {
+    return outlet.GetFractionTryPullsThatWereLaden();
+  }
+
+  decltype(auto) GetFractionTryPullsThatWereUnladen() const {
+    return outlet.GetFractionTryPullsThatWereUnladen();
+  }
+
+  decltype(auto) GetFractionBlockingPullsThatBlocked() const {
+    return outlet.GetFractionBlockingPullsThatBlocked();
+  }
+
+  decltype(auto) GetFractionBlockingPullsThatWereLadenImmediately() const {
+    return outlet.GetFractionBlockingPullsThatWereLadenImmediately();
+  }
+
+  decltype(auto) GetFractionPullsThatWereLadenImmediately() const {
+    return outlet.GetFractionPullsThatWereLadenImmediately();
+  }
+
+  decltype(auto) GetFractionPullsThatWereLadenEventually() const {
+    return outlet.GetFractionPullsThatWereLadenEventually();
+  }
+
+  decltype(auto) GetNetFluxThroughDuct() const {
+    return outlet.GetNetFluxThroughDuct();
+  }
+
+  decltype(auto) GetFractionReadsThatWereFresh() const {
+    return outlet.GetFractionReadsThatWereFresh();
+  }
+
+  decltype(auto) GetFractionReadsThatWereStale() const {
+    return outlet.GetFractionReadsThatWereStale();
+  }
+
+  decltype(auto) GetFractionRevisionsThatWereRead() const {
+    return outlet.GetFractionRevisionsThatWereRead();
+  }
+
+  decltype(auto) GetFractionRevisionsThatWereNotRead() const {
+    return outlet.GetFractionRevisionsThatWereNotRead();
+  }
+
+  decltype(auto) GetFractionDuctFluxThatWasSteppedThrough() const {
+    return outlet.GetFractionDuctFluxThatWasSteppedThrough();
+  }
+
+  decltype(auto) GetFractionDuctFluxThatWasJumpedOver() const {
+    return outlet.GetFractionDuctFluxThatWasJumpedOver();
+  }
+
+  decltype(auto) GetFractionDuctFluxThatWasRead() const {
+    return outlet.GetFractionDuctFluxThatWasRead();
+  }
 
   template <typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
@@ -159,15 +277,71 @@ public:
 
   auto GetDuctUID() const { return outlet.GetUID(); }
 
-  emp::optional<bool> HoldsIntraImpl() const { return outlet.HoldsIntraImpl(); }
+  decltype(auto) HoldsIntraImpl() const { return outlet.HoldsIntraImpl(); }
 
-  emp::optional<bool> HoldsThreadImpl() const {
-    return outlet.HoldsThreadImpl();
+  decltype(auto) HoldsThreadImpl() const { return outlet.HoldsThreadImpl(); }
+
+  decltype(auto) HoldsProcImpl() const { return outlet.HoldsProcImpl(); }
+
+  decltype(auto) WhichImplHeld() const { return outlet.WhichImplHeld(); }
+
+  decltype(auto) CanStep() const { return outlet.CanStep(); }
+
+  void RegisterInletProc(const uitsl::proc_id_t proc) const {
+    outlet.RegisterInletProc(proc);
   }
 
-  emp::optional<bool> HoldsProcImpl() const { return outlet.HoldsProcImpl(); }
+  void RegisterInletThread(const uitsl::thread_id_t thread) const {
+    outlet.RegisterInletThread(thread);
+  }
 
-  bool CanStep() const { return outlet.CanStep(); }
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    outlet.RegisterOutletProc(proc);
+  }
+
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    outlet.RegisterOutletThread(thread);
+  }
+
+  void RegisterEdgeID(const size_t edge_id) const {
+    outlet.RegisterEdgeID(edge_id);
+  }
+
+  void RegisterInletNodeID(const size_t node_id) const {
+    outlet.RegisterInletNodeID(node_id);
+  }
+
+  void RegisterOutletNodeID(const size_t node_id) const {
+    outlet.RegisterOutletNodeID(node_id);
+  }
+
+  void RegisterMeshID(const size_t mesh_id) const {
+    outlet.RegisterMeshID(mesh_id);
+  }
+
+  decltype(auto) LookupOutletProc() const { return outlet.LookupOutletProc(); }
+
+  decltype(auto) LookupOutletThread() const {
+    return outlet.LookupOutletThread();
+  }
+
+  decltype(auto) LookupInletProc() const { return outlet.LookupInletProc(); }
+
+  decltype(auto) LookupInletThread() const {
+    return outlet.LookupInletThread();
+  }
+
+  decltype(auto) LookupEdgeID() const { return outlet.LookupEdgeID(); }
+
+  decltype(auto) LookupInletNodeID() const {
+    return outlet.LookupInletNodeID();
+  }
+
+  decltype(auto) LookupOutletNodeID() const {
+    return outlet.LookupOutletNodeID();
+  }
+
+  decltype(auto) LookupMeshID() const { return outlet.LookupMeshID(); }
 
 };
 

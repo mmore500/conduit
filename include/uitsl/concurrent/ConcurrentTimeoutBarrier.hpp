@@ -7,7 +7,7 @@
 #include <mpi.h>
 
 #include "../countdown/Timer.hpp"
-#include "../mpi/mpi_utils.hpp"
+#include "../mpi/mpi_init_utils.hpp"
 #include "../parallel/ParallelTimeoutBarrier.hpp"
 #include "../parallel/ThreadIbarrier.hpp"
 

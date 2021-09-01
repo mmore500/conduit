@@ -12,7 +12,7 @@
 #include <mpi.h>
 
 #include "../mpi/group_utils.hpp"
-#include "../mpi/mpi_utils.hpp"
+#include "../mpi/mpi_init_utils.hpp"
 
 #include "RdmaWindow.hpp"
 

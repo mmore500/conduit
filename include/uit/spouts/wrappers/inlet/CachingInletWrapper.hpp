@@ -126,15 +126,63 @@ public:
 
   }
 
-  bool TryFlush() { return inlet.TryFlush(); }
+  decltype(auto) TryFlush() { return inlet.TryFlush(); }
 
   void Flush() { inlet.Flush(); }
 
-  size_t GetAttemptedPutCount() const { return inlet.GetAttemptedPutCount(); }
+  decltype(auto) GetNumPutsAttempted() const { return inlet.GetNumPutsAttempted(); }
 
-  size_t GetBlockedPutCount() const { return inlet.GetBlockedPutCount(); }
+  decltype(auto) GetNumTryPutsAttempted() const {
+    return inlet.GetNumTryPutsAttempted();
+  }
 
-  size_t GetDroppedPutCount() const { return inlet.GetDroppedPutCount(); }
+  decltype(auto) GetNumBlockingPuts() const { return
+    inlet.GetNumBlockingPuts();
+  }
+
+  decltype(auto) GetNumTryPutsThatSucceeded() const {
+    return inlet.GetNumTryPutsThatSucceeded();
+  }
+
+  decltype(auto) GetNumPutsThatSucceededEventually() const {
+    return inlet.GetNumPutsThatSucceededEventually();
+  }
+
+  decltype(auto) GetNumBlockingPutsThatSucceededImmediately() const {
+    return inlet.GetNumBlockingPutsThatSucceededImmediately();
+  }
+
+  decltype(auto) GetNumPutsThatSucceededImmediately() const {
+    return inlet.GetNumPutsThatSucceededImmediately();
+  }
+
+  decltype(auto) GetNumPutsThatBlocked() const {
+    return inlet.GetNumPutsThatBlocked();
+  }
+
+  decltype(auto) GetNumDroppedPuts() const {
+    return inlet.GetNumDroppedPuts();
+  }
+
+  decltype(auto) GetFractionTryPutsDropped() const {
+    return inlet.GetFractionTryPutsDropped();
+  }
+
+  decltype(auto) GetFractionTryPutsThatSucceeded() const {
+    return inlet.GetFractionTryPutsThatSucceeded();
+  }
+
+  decltype(auto) GetFractionBlockingPutsThatBlocked() const {
+    return inlet.GetFractionBlockingPutsThatBlocked();
+  }
+
+  decltype(auto) GetFractionPutsThatSucceededEventually() const {
+    return inlet.GetFractionPutsThatSucceededEventually();
+  }
+
+  decltype(auto) GetFractionPutsThatSucceededImmediately() const {
+    return inlet.GetFractionPutsThatSucceededImmediately();
+  }
 
   template<typename WhichDuct, typename... Args>
   void EmplaceDuct(Args&&... args) {
@@ -148,13 +196,67 @@ public:
 
   auto GetDuctUID() const { return inlet.GetUID(); }
 
-  emp::optional<bool> HoldsIntraImpl() const { return inlet.HoldsIntraImpl(); }
+  decltype(auto) HoldsIntraImpl() const { return inlet.HoldsIntraImpl(); }
 
-  emp::optional<bool> HoldsThreadImpl() const {
+  decltype(auto) HoldsThreadImpl() const {
     return inlet.HoldsThreadImpl();
   }
 
-  emp::optional<bool> HoldsProcImpl() const { return inlet.HoldsProcImpl(); }
+  decltype(auto) HoldsProcImpl() const { return inlet.HoldsProcImpl(); }
+
+  decltype(auto) WhichImplHeld() const { return inlet.WhichImplHeld(); }
+
+  void RegisterInletProc(const uitsl::proc_id_t proc) const {
+    inlet.RegisterInletProc(proc);
+  }
+
+  void RegisterInletThread(const uitsl::thread_id_t thread) const {
+    inlet.RegisterInletThread(thread);
+  }
+
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    inlet.RegisterOutletProc(proc);
+  }
+
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    inlet.RegisterOutletThread(thread);
+  }
+
+  void RegisterEdgeID(const size_t edge_id) const {
+    inlet.RegisterEdgeID(edge_id);
+  }
+
+  void RegisterInletNodeID(const size_t node_id) const {
+    inlet.RegisterInletNodeID(node_id);
+  }
+
+  void RegisterOutletNodeID(const size_t node_id) const {
+    inlet.RegisterOutletNodeID(node_id);
+  }
+
+  void RegisterMeshID(const size_t mesh_id) const {
+    inlet.RegisterMeshID(mesh_id);
+  }
+
+  decltype(auto) LookupOutletProc() const { return inlet.LookupOutletProc(); }
+
+  decltype(auto) LookupOutletThread() const {
+    return inlet.LookupOutletThread();
+  }
+
+  decltype(auto) LookupInletProc() const { return inlet.LookupInletProc(); }
+
+  decltype(auto) LookupInletThread() const { return inlet.LookupInletThread(); }
+
+  decltype(auto) LookupEdgeID() const { return inlet.LookupEdgeID(); }
+
+  decltype(auto) LookupInletNodeID() const { return inlet.LookupInletNodeID(); }
+
+  decltype(auto) LookupOutletNodeID() const {
+    return inlet.LookupOutletNodeID();
+  }
+
+  decltype(auto) LookupMeshID() const { return inlet.LookupMeshID(); }
 
 };
 

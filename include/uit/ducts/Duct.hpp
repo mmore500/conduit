@@ -13,9 +13,11 @@
 #include "../../../third-party/Empirical/include/emp/meta/TypePack.hpp"
 #include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
+#include "../../uitsl/containers/safe/unordered_map.hpp"
 #include "../../uitsl/math/math_utils.hpp"
 #include "../../uitsl/meta/HasMemberFunction.hpp"
-#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_init_utils.hpp"
+#include "../../uitsl/parallel/thread_utils.hpp"
 #include "../../uitsl/utility/print_utils.hpp"
 
 namespace uit {
@@ -64,7 +66,7 @@ UITSL_GENERATE_HAS_MEMBER_FUNCTION( CanStep );
  *
  * @tparam ImplSpec class with static and typedef members specifying
  *   implementation details for the conduit framework. See
- *  `include/config/ImplSpec.hpp`.
+ *  `include/uit/setup/ImplSpec.hpp`.
  *
  * @note Because processes do not share memory space and inter-process
  *   communication code is typically asymmetric between the sender and
@@ -119,25 +121,45 @@ class Duct {
     ) > 1;
   }
 
+  using uid_t_ = std::uintptr_t;
+
+  using t_registry_t = uitsl::safe::unordered_map<uid_t_, uitsl::thread_id_t>;
+  inline static t_registry_t inlet_thread_registry;
+  inline static t_registry_t outlet_thread_registry;
+
+  using p_registry_t = uitsl::safe::unordered_map<uid_t_, uitsl::proc_id_t>;
+  inline static p_registry_t inlet_proc_registry;
+  inline static p_registry_t outlet_proc_registry;
+
+  using edge_id_registry_t = uitsl::safe::unordered_map<uid_t_, size_t>;
+  inline static edge_id_registry_t edge_id_registry;
+
+  using node_id_registry_t = uitsl::safe::unordered_map<uid_t_, size_t>;
+  inline static node_id_registry_t inlet_node_id_registry;
+  inline static node_id_registry_t outlet_node_id_registry;
+
+  using mesh_id_registry_t = uitsl::safe::unordered_map<uid_t_, size_t>;
+  inline static mesh_id_registry_t mesh_id_registry;
+
 public:
 
   /// TODO.
-  using uid_t = std::uintptr_t;
+  using uid_t = uid_t_;
 
   /**
    * Copy constructor.
    */
-  Duct(Duct& other) = default;
+  Duct(Duct& other) = delete;
 
   /**
    * Copy constructor.
    */
-  Duct(const Duct& other) = default;
+  Duct(const Duct& other) = delete;
 
   /**
    * Move constructor.
    */
-  Duct(Duct&& other) = default;
+  Duct(Duct&& other) = delete;
 
   /**
    * Forwarding constructor.
@@ -289,6 +311,18 @@ public:
    *
    * @return TODO.
    */
+  std::string WhichImplHeld() const {
+    if ( HoldsIntraImpl().value_or(false) ) return "intra";
+    else if ( HoldsThreadImpl().value_or(false) ) return "thread";
+    else if ( HoldsProcImpl().value_or(false) ) return "proc";
+    else return "ambiguous";
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
   uid_t GetUID() const { return reinterpret_cast<uid_t>(this); }
 
   bool CanStep() const {
@@ -302,6 +336,102 @@ public:
       },
       impl
     );
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterInletProc(const uitsl::proc_id_t proc) const {
+    inlet_proc_registry[GetUID()] = proc;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    outlet_proc_registry[GetUID()] = proc;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterInletThread(const uitsl::thread_id_t thread) const {
+    inlet_thread_registry[GetUID()] = thread;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    outlet_thread_registry[GetUID()] = thread;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterEdgeID(const size_t edge_id) const {
+    edge_id_registry[GetUID()] = edge_id;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterInletNodeID(const size_t node_id) const {
+    inlet_node_id_registry[GetUID()] = node_id;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterOutletNodeID(const size_t node_id) const {
+    outlet_node_id_registry[GetUID()] = node_id;
+  }
+
+  /// Optional, for instrumentaiton purposes.
+  void RegisterMeshID(const size_t mesh_id) const {
+    mesh_id_registry[GetUID()] = mesh_id;
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupInletProc() const {
+    return inlet_proc_registry.contains( GetUID() )
+      ? emp::optional<uitsl::proc_id_t>{ inlet_proc_registry.at( GetUID() ) }
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
+    return outlet_proc_registry.contains( GetUID() )
+      ? emp::optional<uitsl::proc_id_t>{ outlet_proc_registry.at( GetUID() ) }
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupInletThread() const {
+    return inlet_thread_registry.contains( GetUID() )
+      ? emp::optional<uitsl::thread_id_t>{inlet_thread_registry.at( GetUID() )}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupOutletThread() const {
+    return outlet_thread_registry.contains( GetUID() )
+      ? emp::optional<uitsl::thread_id_t>{outlet_thread_registry.at( GetUID() )}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<size_t> LookupEdgeID() const {
+    return edge_id_registry.contains( GetUID() )
+      ? emp::optional<size_t>{edge_id_registry.at( GetUID() )}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<size_t> LookupInletNodeID() const {
+    return inlet_node_id_registry.contains( GetUID() )
+      ? emp::optional<size_t>{inlet_node_id_registry.at(GetUID())}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<size_t> LookupOutletNodeID() const {
+    return outlet_node_id_registry.contains( GetUID() )
+      ? emp::optional<size_t>{outlet_node_id_registry.at(GetUID())}
+      : std::nullopt
+    ;
+  }
+
+  emp::optional<size_t> LookupMeshID() const {
+    return mesh_id_registry.contains( GetUID() )
+      ? emp::optional<size_t>{mesh_id_registry.at(GetUID())}
+      : std::nullopt
+    ;
   }
 
   /**

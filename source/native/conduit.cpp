@@ -7,7 +7,7 @@
 #include <iostream>
 
 #include "uitsl/chrono/TimeGuard.hpp"
-#include "uitsl/mpi/mpi_utils.hpp"
+#include "uitsl/mpi/mpi_init_utils.hpp"
 
 #include "../config_utils.hpp"
 #include "../grid_utils.hpp"

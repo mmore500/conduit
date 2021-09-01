@@ -9,11 +9,15 @@
 
 #include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
+#include "../polyfill/erase_if.hpp"
+
+#include "_TryJoinableThread.hpp"
+
 namespace uitsl {
 
 class ThreadTeam {
 
-  emp::vector<std::thread> workers;
+  emp::vector<internal::TryJoinableThread> workers;
 
 public:
 
@@ -26,9 +30,17 @@ public:
     std::for_each(
       std::begin(workers),
       std::end(workers),
-      [](auto & worker){ worker.join(); }
+      [](auto & worker){ worker.Join(); }
     );
     workers.clear();
+  }
+
+  bool TryJoin() {
+    std::erase_if(
+      workers,
+      [](auto& worker){ return worker.TryJoin(); }
+    );
+    return workers.size() == 0;
   }
 
   size_t Size() const { return workers.size(); }

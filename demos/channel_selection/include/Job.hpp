@@ -32,9 +32,11 @@ class Job {
 
 public:
 
-  Job(const size_t thread_idx, const submesh_t& submesh)
+  Job(const submesh_t& submesh)
   : collection(submesh)
-  {
+  { ; }
+
+  void Run(const size_t thread_idx) {
 
     // initialized first time thru the function,
     // so N_THREADS should be initialized
@@ -60,7 +62,7 @@ public:
     };
     uitsl::CoarseRealTimer timer_sync{ std::chrono::milliseconds{ 10 } };
 
-    for ( const auto __ : timer ) { // begin benchmarking loop
+    for ( [[maybe_unused]] const auto __ : timer ) { // begin benchmarking loop
       ++update_counter;
       collection.Update(use_intra);
 

@@ -3,6 +3,7 @@
 #define UITSL_CONTAINERS_SAFE_LIST_HPP_INCLUDE
 
 #include <list>
+#include <mutex>
 #include <shared_mutex>
 
 namespace uitsl {
@@ -11,13 +12,17 @@ namespace safe {
 template<class T, class Allocator = std::allocator<T>>
 class list {
 
-  using impl_t = std::list<T, Allocator>;
+  using this_t = uitsl::safe::list<T, Allocator>;
+  using stl_equiv_t = std::list<T, Allocator>;
+  using impl_t = stl_equiv_t;
 
   mutable std::shared_mutex mutex;
 
   impl_t impl;
 
 public:
+
+  std::shared_mutex& GetMutex() const { return mutex; }
 
   // types
   using value_type = typename impl_t::value_type;
@@ -297,28 +302,49 @@ public:
   }
 
 
-  void merge(list& x) {
+  void merge(this_t& x) {
+    const std::scoped_lock lock{ mutex, x.mutex };
+    impl.merge(x);
+  }
+
+  void merge(this_t&& x) {
+    const std::scoped_lock lock{ mutex, x.mutex };
+    impl.merge(std::move(x));
+  }
+
+  template<class Compare>
+  void merge(this_t& x, Compare comp) {
+    const std::scoped_lock lock{ mutex, x.mutex };
+    impl.merge(x, comp);
+  }
+
+  template<class Compare>
+  void merge(this_t&& x, Compare comp) {
+    const std::scoped_lock lock{ mutex, x.mutex };
+    impl.merge(std::move(x), comp);
+  }
+
+  void merge(stl_equiv_t& x) {
     const std::unique_lock lock{ mutex };
     impl.merge(x);
   }
 
-  void merge(list&& x) {
+  void merge(stl_equiv_t&& x) {
     const std::unique_lock lock{ mutex };
     impl.merge(std::move(x));
   }
 
   template<class Compare>
-  void merge(list& x, Compare comp) {
+  void merge(stl_equiv_t& x, Compare comp) {
     const std::unique_lock lock{ mutex };
     impl.merge(x, comp);
   }
 
   template<class Compare>
-  void merge(list&& x, Compare comp) {
+  void merge(stl_equiv_t&& x, Compare comp) {
     const std::unique_lock lock{ mutex };
     impl.merge(std::move(x), comp);
   }
-
 
   void sort() {
     const std::unique_lock lock{ mutex };

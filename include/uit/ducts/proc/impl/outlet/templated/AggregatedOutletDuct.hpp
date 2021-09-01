@@ -14,7 +14,7 @@
 #include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
 #include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
-#include "../../../../../../uitsl/mpi/mpi_utils.hpp"
+#include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
 
 #include "../../../../../setup/InterProcAddress.hpp"

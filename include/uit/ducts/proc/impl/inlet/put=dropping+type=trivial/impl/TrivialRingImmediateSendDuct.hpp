@@ -17,7 +17,7 @@
 #include "../../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../../uitsl/debug/err_audit.hpp"
 #include "../../../../../../../uitsl/meta/t::static_test.hpp"
-#include "../../../../../../../uitsl/mpi/mpi_utils.hpp"
+#include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../../uitsl/mpi/Request.hpp"
 #include "../../../../../../../uitsl/nonce/CircularIndex.hpp"
 #include "../../../../../../../uitsl/utility/print_utils.hpp"

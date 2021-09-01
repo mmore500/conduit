@@ -10,6 +10,7 @@
 #include "../../../third-party/Empirical/include/emp/math/random_utils.hpp"
 
 #include "uitsl/algorithm/get_plurality.hpp"
+#include "uitsl/debug/benchmark_utils.hpp"
 
 #include "typedef.hpp"
 
@@ -117,6 +118,7 @@ public:
   void Update(const bool use_inter) {
     PullInputs(use_inter);
     UpdateSetChannel();
+    uitsl::do_compute_work( cfg.AMT_COMPUTE_WORK() );
     PushOutputs(use_inter);
   }
 

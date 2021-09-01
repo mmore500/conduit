@@ -71,13 +71,20 @@ private:
   using duct_t = internal::Duct<ImplSpec>;
   std::shared_ptr<duct_t> duct;
 
-  /// How many put operations have been performed?
-  size_t attempted_put_count{};
+  /// How many blocking put operations have been performed?
+  /// Instrumentation for communication profiling.
+  size_t blocking_put_count{};
+
+  /// How many nonblocking try put operations have been attempted?
+  /// Instrumentation for communication profiling.
+  size_t attempted_try_put_count{};
 
   /// How many times has Put blocked?
-  size_t blocked_put_count{};
+  /// Instrumentation for communication profiling.
+  size_t puts_that_blocked_count{};
 
   // How many TryPut calls have dropped?
+  /// Instrumentation for communication profiling.
   size_t dropped_put_count{};
 
   uitsl_occupancy_auditor;
@@ -117,11 +124,11 @@ public:
   void Put(const T& val) {
     uitsl_occupancy_audit(1);
 
-    ++attempted_put_count;
+    ++blocking_put_count;
     bool was_blocked{ false };
     while (!DoTryPut(val)) was_blocked = true;
 
-    blocked_put_count += was_blocked;
+    puts_that_blocked_count += was_blocked;
 
   }
 
@@ -134,7 +141,7 @@ public:
   bool TryPut(const T& val) {
     uitsl_occupancy_audit(1);
 
-    ++attempted_put_count;
+    ++attempted_try_put_count;
     if ( DoTryPut(val) ) return true;
     else { ++dropped_put_count; return false; }
 
@@ -150,7 +157,7 @@ public:
   bool TryPut(P&& val) {
     uitsl_occupancy_audit(1);
 
-    ++attempted_put_count;
+    ++attempted_try_put_count;
     if ( DoTryPut(std::forward<P>(val)) ) return true;
     else { ++dropped_put_count; return false; }
 
@@ -173,21 +180,143 @@ public:
    *
    * @return TODO.
    */
-  size_t GetAttemptedPutCount() const { return attempted_put_count; }
+  size_t GetNumPutsAttempted() const {
+    return attempted_try_put_count + blocking_put_count;
+  }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetBlockedPutCount() const { return blocked_put_count; }
+  size_t GetNumTryPutsAttempted() const {
+    return attempted_try_put_count;
+  }
 
   /**
    * TODO.
    *
    * @return TODO.
    */
-  size_t GetDroppedPutCount() const { return dropped_put_count; }
+  size_t GetNumBlockingPuts() const {
+    return blocking_put_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumTryPutsThatSucceeded() const {
+    emp_assert( attempted_try_put_count >= dropped_put_count );
+    return attempted_try_put_count - dropped_put_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPutsThatSucceededEventually() const {
+    return blocking_put_count + GetNumTryPutsThatSucceeded();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumBlockingPutsThatSucceededImmediately() const {
+    emp_assert( blocking_put_count >= puts_that_blocked_count );
+    return blocking_put_count - puts_that_blocked_count;
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPutsThatSucceededImmediately() const {
+    return (
+      GetNumTryPutsThatSucceeded()
+      + GetNumBlockingPutsThatSucceededImmediately()
+    );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumPutsThatBlocked() const { return puts_that_blocked_count; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  size_t GetNumDroppedPuts() const { return dropped_put_count; }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionTryPutsDropped() const {
+    return dropped_put_count / static_cast<double>( attempted_try_put_count );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionTryPutsThatSucceeded() const {
+    return 1.0 - GetFractionTryPutsDropped();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionBlockingPutsThatBlocked() const {
+    return puts_that_blocked_count / static_cast<double>( blocking_put_count );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionBlockingPutsThatSucceededImmediately() const {
+    return 1.0 - GetFractionBlockingPutsThatBlocked();
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionPutsThatSucceededEventually() const {
+    return (
+      GetNumPutsThatSucceededEventually()
+      / static_cast<double>( GetNumPutsAttempted() )
+    );
+  }
+
+  /**
+   * TODO.
+   *
+   * @return TODO.
+   */
+  double GetFractionPutsThatSucceededImmediately() const {
+    return (
+      GetNumPutsThatSucceededImmediately()
+      / static_cast<double>( GetNumPutsAttempted() )
+    );
+  }
+
 
   /**
    * TODO.
@@ -231,6 +360,70 @@ public:
 
   emp::optional<bool> HoldsProcImpl() const { return duct->HoldsProcImpl(); }
 
+  std::string WhichImplHeld() const { return duct->WhichImplHeld(); }
+
+  void RegisterInletProc(const uitsl::proc_id_t proc) const {
+    duct->RegisterInletProc(proc);
+  }
+
+  void RegisterInletThread(const uitsl::thread_id_t thread) const {
+    duct->RegisterInletThread(thread);
+  }
+
+  void RegisterOutletProc(const uitsl::proc_id_t proc) const {
+    duct->RegisterOutletProc(proc);
+  }
+
+  void RegisterOutletThread(const uitsl::thread_id_t thread) const {
+    duct->RegisterOutletThread(thread);
+  }
+
+  void RegisterEdgeID(const size_t edge_id) const {
+    duct->RegisterEdgeID(edge_id);
+  }
+
+  void RegisterInletNodeID(const size_t node_id) const {
+    duct->RegisterInletNodeID(node_id);
+  }
+
+  void RegisterOutletNodeID(const size_t node_id) const {
+    duct->RegisterOutletNodeID(node_id);
+  }
+
+  void RegisterMeshID(const size_t mesh_id) const {
+    duct->RegisterMeshID(mesh_id);
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
+    return duct->LookupOutletProc();
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupOutletThread() const {
+    return duct->LookupOutletThread();
+  }
+
+  emp::optional<uitsl::proc_id_t> LookupInletProc() const {
+    return duct->LookupInletProc();
+  }
+
+  emp::optional<uitsl::thread_id_t> LookupInletThread() const {
+    return duct->LookupInletThread();
+  }
+
+  emp::optional<size_t> LookupEdgeID() const {
+    return duct->LookupEdgeID();
+  }
+
+  emp::optional<size_t> LookupInletNodeID() const {
+    return duct->LookupInletNodeID();
+  }
+
+  emp::optional<size_t> LookupOutletNodeID() const {
+    return duct->LookupOutletNodeID();
+  }
+
+  emp::optional<size_t> LookupMeshID() const { return duct->LookupMeshID(); }
+
   /**
    * TODO.
    *
@@ -240,16 +433,20 @@ public:
     std::stringstream ss;
     ss << uitsl::format_member("duct_t duct", *duct) << '\n';
     ss << uitsl::format_member(
-      "size_t attempted_put_count",
-      attempted_put_count
+      "size_t attempted_try_put_count",
+      attempted_try_put_count
+    ) << '\n';
+    ss << uitsl::format_member(
+      "size_t blocking_put_count",
+      blocking_put_count
     ) << '\n';
     ss << uitsl::format_member(
       "size_t dropped_put_count",
       dropped_put_count
     ) << '\n';
     ss << uitsl::format_member(
-      "size_t blocked_put_count",
-      blocked_put_count
+      "size_t puts_that_blocked_count",
+      puts_that_blocked_count
     );
     return ss.str();
   }

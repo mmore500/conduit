@@ -154,8 +154,11 @@ uit/setup/InterProcAddress.cpp
 uit/spouts/spouts/Inlet.cpp
 uit/spouts/spouts/Outlet.cpp
 uit/spouts/wrappers/inlet/CachingInletWrapper.cpp
+uit/spouts/wrappers/inlet/InstrumentationAggregatingInletWrapper.cpp
 uit/spouts/wrappers/outlet/CachingOutletWrapper.cpp
+uit/spouts/wrappers/outlet/InstrumentationAggregatingOutletWrapper.cpp
 uit/spouts/wrappers/wrappers/CachingSpoutWrapper.cpp
+uit/spouts/wrappers/wrappers/InstrumentationAggregatingSpoutWrapper.cpp
 uit/spouts/wrappers/wrappers/TrivialSpoutWrapper.cpp
 uitsl/algorithm/get_plurality.cpp
 uitsl/algorithm/normalize.cpp
@@ -172,6 +175,7 @@ uitsl/concurrent/ThreadSafeIbarrierRequest.cpp
 uitsl/containers/safe/deque.cpp
 uitsl/containers/safe/list.cpp
 uitsl/containers/safe/unordered_map.cpp
+uitsl/containers/safe/unordered_set.cpp
 uitsl/containers/safe/vector.cpp
 uitsl/countdown/ProgressBar.cpp
 uitsl/datastructs/MirroredRingBuffer.cpp
@@ -181,6 +185,7 @@ uitsl/datastructs/RingBuffer.cpp
 uitsl/datastructs/SiftingArray.cpp
 uitsl/datastructs/VectorMap.cpp
 uitsl/debug/IsFirstExecutionChecker.cpp
+uitsl/debug/NotImplementedException.cpp
 uitsl/debug/OncePerThreadChecker.cpp
 uitsl/debug/WarnOnce.cpp
 uitsl/debug/audit_compare.cpp
@@ -212,7 +217,7 @@ uitsl/mpi/Request.cpp
 uitsl/mpi/comm_utils.cpp
 uitsl/mpi/group_utils.cpp
 uitsl/mpi/mpi_types.cpp
-uitsl/mpi/mpi_utils.cpp
+uitsl/mpi/mpi_init_utils.cpp
 uitsl/mpi/request_utils.cpp
 uitsl/mpi/routine_functors.cpp
 uitsl/nonce/CircularIndex.cpp

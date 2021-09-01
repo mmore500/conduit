@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UITSL_MPI_MPI_UTILS_HPP_INCLUDE
-#define UITSL_MPI_MPI_UTILS_HPP_INCLUDE
+#ifndef UITSL_MPI_MPI_INIT_UTILS_HPP_INCLUDE
+#define UITSL_MPI_MPI_INIT_UTILS_HPP_INCLUDE
 
 #include <assert.h>
 #include <limits>
@@ -42,6 +42,12 @@ inline void mpi_init() {
   UITSL_Init(&argc, nullptr);
 }
 
+inline bool is_mpi_initialized() {
+  int flag{};
+  UITSL_Initialized(&flag);
+  return flag;
+}
+
 } // namespace uitsl
 
-#endif // #ifndef UITSL_MPI_MPI_UTILS_HPP_INCLUDE
+#endif // #ifndef UITSL_MPI_MPI_INIT_UTILS_HPP_INCLUDE

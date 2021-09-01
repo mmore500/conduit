@@ -3,6 +3,7 @@
 #define NETUIT_ASSIGN_GENERATEMETISASSIGNMENTS_HPP_INCLUDE
 
 #include <functional>
+#include <numeric>
 #include <stddef.h>
 #include <utility>
 
@@ -14,7 +15,7 @@
 
 #include "../../uitsl/debug/audit_cast.hpp"
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
-#include "../../uitsl/mpi/mpi_utils.hpp"
+#include "../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 
 #include "../topology/Topology.hpp"
@@ -32,10 +33,17 @@ emp::vector<int32_t> PartitionMetis(
   emp_assert( num_parts <= topology.GetSize() );
 
   // set up result vector
-  emp::vector<int32_t> result( topology.GetSize(), {} );
+  emp::vector<int32_t> result( topology.GetSize(), 0 );
 
   // the trivial no-split partition crashes METIS, so return before METIS call
   if ( num_parts == 1 ) return result;
+
+  // manual override for trivial one node per partition
+  // ensures that each partition gets a node
+  if ( num_parts == topology.GetSize() ) {
+    std::iota( std::begin( result ), std::end( result ), 0 );
+    return result;
+  }
 
   #ifndef __EMSCRIPTEN__
   // set up variables
