@@ -24,6 +24,7 @@ decorator==4.4.2
     # via
     #   ipython
     #   networkx
+    #   traitlets
 defusedxml==0.7.1
     # via nbconvert
 entrypoints==0.3
@@ -41,7 +42,9 @@ ipykernel==5.5.3
 ipynbname==2021.3.2
     # via nbmetalog
 ipython-genutils==0.2.0
-    # via nbformat
+    # via
+    #   nbformat
+    #   traitlets
 ipython==7.16.1
     # via
     #   -r requirements.in
@@ -159,6 +162,7 @@ six==1.15.0
     #   jsonschema
     #   osfclient
     #   python-dateutil
+    #   traitlets
 teeplot==0.1.1
     # via -r requirements.in
 testpath==0.5.0
@@ -171,8 +175,9 @@ tornado==6.1
     #   jupyter-client
 tqdm==4.57.0
     # via osfclient
-traitlets==5.1.0
+traitlets==4.3.3
     # via
+    #   -r requirements.in
     #   ipykernel
     #   ipython
     #   jupyter-client
