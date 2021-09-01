@@ -1,0 +1,54 @@
+type: conference-paper
+abstract: >-
+  Developing software to effectively take advantage of growth in parallel
+  and distributed processing capacity poses significant challenges.
+  Traditional programming techniques allow a user to assume that execution,
+  message passing, and memory are always kept synchronized. However,
+  maintaining this consistency becomes increasingly costly at scale. One
+  proposed strategy is "best-effort computing", which relaxes
+  synchronization and hardware reliability requirements, accepting
+  nondeterminism in exchange for efficiency. Although many programming
+  languages and frameworks aim to facilitate software development for high
+  performance applications, existing tools do not directly provide a
+  prepackaged best-effort interface. The Conduit C++ Library aims to provide
+  such an interface for convenient implementation of software that uses
+  best-effort inter-thread and inter-process communication. Here, we
+  describe the motivation, objectives, design, and implementation of the
+  library. Benchmarks on a communication-intensive graph coloring problem
+  and a compute-intensive digital evolution simulation show that Conduit's
+  best-effort model can improve scaling efficiency and solution quality,
+  particularly in a distributed, multi-node context.
+date-released: 2021-07-01
+license: MIT
+version: 0.1.0
+authors:
+  - affiliation: Michigan State University
+    family-names: Moreno
+    given-names: Matthew Andres
+    orcid: 'https://orcid.org/0000-0003-4726-4479'
+  - affiliation: Michigan State University
+    family-names: Rodriguez Papa
+    given-names: Santiago
+    orcid: 'https://orcid.org/0000-0002-6028-2105'
+  - affiliation: Michigan State University
+    family-names: Ofria
+    given-names: Charles
+    orcid: 'https://orcid.org/0000-0003-2924-1732'
+publisher:
+  name: Association for Computing Machinery
+  city: New York
+  region: NY
+  country: USA
+pages: 6
+url: 'https://doi.org/10.1145/3449726.3463205'
+doi: '10.1145/3449726.3463205'
+start: 1795
+end: 1800
+year: 2021
+keywords:
+  - best-effort computing
+  - high performance computing
+isbn: 9781450383516
+cff-version: 1.1.0
+message: 'Please consult docs/citing.md to cite this software.'
+title: 'Conduit: A C++ Library for Best-Effort High Performance Computing'
