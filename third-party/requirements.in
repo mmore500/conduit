@@ -1,5 +1,5 @@
 git+git://github.com/mmore500/osfclient@9e2e14d#egg=osfclient
-keyname==0.3.0
+keyname==0.4.1
 pandas==1.1.2
 frozendict==1.2
 seaborn==0.11.0
@@ -10,3 +10,11 @@ exdown==0.7.0
 networkx==2.5
 numpy==1.19.5
 scipy==1.5.4
+teeplot==0.1.1
+nbmetalog==0.1.0
+nbconvert==5.6.1
+jupyter_client==6.1.12
+jupyter_core==4.7.1
+ipykernel==5.5.3
+ipython==7.16.1
+nb-clean==2.0.2

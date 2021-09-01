@@ -56,21 +56,21 @@ for outplot in *{.pdf,.png}; do
   keyname stash --move --drop "${outplot}" _dfdigest
 done
 
-for outfile in *{.pdf,.png}*; do
-
-  bucket="$(echo "${outfile}" | keyname extract bucket)"
-  endeavor="$(echo "${outfile}" | keyname extract endeavor)"
-  echo "bucket ${bucket}"
-  echo "endeavor ${endeavor}"
-
-  aws s3 cp --quiet \
-    "${outfile}" \
-    "s3://${bucket}/endeavor=${endeavor}/stage=9+what=plotted/${outfile}" \
-    & pids+=($!)
-
-    # limit to twenty concurrent upload jobs
-    while (( $(jobs -p | wc -l) > 20 )); do sleep 1; done
-done
+# for outfile in *{.pdf,.png}*; do
+#
+#   bucket="$(echo "${outfile}" | keyname extract bucket)"
+#   endeavor="$(echo "${outfile}" | keyname extract endeavor)"
+#   echo "bucket ${bucket}"
+#   echo "endeavor ${endeavor}"
+#
+#   aws s3 cp --quiet \
+#     "${outfile}" \
+#     "s3://${bucket}/endeavor=${endeavor}/stage=9+what=plotted/${outfile}" \
+#     & pids+=($!)
+#
+#     # limit to twenty concurrent upload jobs
+#     while (( $(jobs -p | wc -l) > 20 )); do sleep 1; done
+# done
 
 # wait on all forked upload jobs
 for pid in "${pids[@]}"; do
