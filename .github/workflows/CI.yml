@@ -41,6 +41,27 @@ jobs:
           cd /opt/conduit
           ./ci/test_tidy.sh
 
+  binder:
+    name: Notebooks
+    runs-on: ubuntu-16.04
+    needs:
+      - docker-build
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --user root
+    steps:
+      # Adapted from https://askubuntu.com/a/524368
+      - run: /opt/conduit/binder/execute_notebooks.sh
+      - run: git init
+      - uses: fregante/setup-git-user@v1
+      - run: git commit --allow-empty -m "Initial commit"
+      - run: cp -r /opt/conduit/ deploy/
+      - uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          branch: binder # The branch the action should deploy to.
+          folder: deploy # The folder the action should deploy.
+
   # unit:
   #   name: Unit Tests
   #   runs-on: ubuntu-16.04
@@ -234,6 +255,7 @@ jobs:
       - tidy
       - macrobenchmarks
       - microbenchmarks
+      - binder
     steps:
       - uses: actions/checkout@v2
         with:
