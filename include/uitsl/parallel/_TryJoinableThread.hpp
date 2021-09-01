@@ -19,7 +19,7 @@ class TryJoinableThread {
 public:
 
   template <typename... Args>
-  TryJoinableThread(Args&&... args)
+  explicit TryJoinableThread(Args&&... args)
   : task( std::forward<Args>(args)... )
   , future( task.get_future() )
   , thread( std::move(task) )

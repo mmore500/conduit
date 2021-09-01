@@ -777,7 +777,7 @@ public:
    * Forwarding constructor.
    */
   template <typename... Args>
-  InstrumentationAggregatingInletWrapper(Args&&... args)
+  explicit InstrumentationAggregatingInletWrapper(Args&&... args)
   : inlet(std::forward<Args>(args)...)
   {
     emp_assert( !registry.contains(this) );

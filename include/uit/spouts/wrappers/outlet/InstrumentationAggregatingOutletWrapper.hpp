@@ -1356,7 +1356,7 @@ public:
    * Forwarding constructor.
    */
   template <typename... Args>
-  InstrumentationAggregatingOutletWrapper(Args&&... args)
+  explicit InstrumentationAggregatingOutletWrapper(Args&&... args)
   : outlet(std::forward<Args>(args)...) {
     emp_assert( !registry.contains(this) );
     registry.insert(this);

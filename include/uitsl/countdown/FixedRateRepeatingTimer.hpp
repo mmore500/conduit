@@ -30,12 +30,12 @@ public:
   using iterator = uitsl::CountdownIterator<FixedRateRepeatingTimer>;
   using elapsed_t = Duration_T;
 
-  FixedRateRepeatingTimer(
+  explicit FixedRateRepeatingTimer(
     const Duration_T& duration_=infinite_duration
   ) : duration(duration_)
   { ; }
 
-  FixedRateRepeatingTimer( const double duration_ )
+  explicit FixedRateRepeatingTimer( const double duration_ )
   : FixedRateRepeatingTimer( Duration_T{ duration_ } )
   { ; }
 

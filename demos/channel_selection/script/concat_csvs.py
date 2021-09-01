@@ -1,7 +1,6 @@
 #!/user/bin/env python3
 
-"""Concatenates csv files provided via stdin.
-"""
+"""Concatenates csv files provided via stdin."""
 
 from iterdub import iterdub as ib
 from keyname import keyname as kn
