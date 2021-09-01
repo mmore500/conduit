@@ -255,6 +255,7 @@ jobs:
       - tidy
       - macrobenchmarks
       - microbenchmarks
+      - notebooks
     steps:
       - uses: actions/checkout@v2
         with:
