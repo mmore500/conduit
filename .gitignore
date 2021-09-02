@@ -16,6 +16,7 @@
 *tmp.*
 
 .DS_Store
+.ipynb_checkpoints
 a.out
 a.out.js
 
