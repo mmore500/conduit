@@ -37,6 +37,7 @@ jobs:
       # github actions requires root to access mounted volumes
       options: --user root
     steps:
+      - run: /opt/conduit/conduitpylib/test/run_tests.sh
       - run: |
           cd /opt/conduit
           ./ci/test_tidy.sh
