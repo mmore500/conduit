@@ -33,6 +33,8 @@ exdown==0.7.0
     # via -r requirements.in
 frozendict==1.2
     # via -r requirements.in
+hurry.filesize==0.9
+    # via nbmetalog
 idna==2.10
     # via requests
 ipykernel==5.5.3
@@ -91,7 +93,7 @@ nbformat==5.1.3
     # via
     #   nb-clean
     #   nbconvert
-nbmetalog==0.1.1
+nbmetalog==0.2.1
     # via -r requirements.in
 networkx==2.5
     # via -r requirements.in
@@ -102,6 +104,7 @@ numpy==1.19.5
     #   pandas
     #   scipy
     #   seaborn
+    #   teeplot
 git+git://github.com/mmore500/osfclient@9e2e14d#egg=osfclient
     # via -r requirements.in
 packaging==21.0
@@ -109,7 +112,9 @@ packaging==21.0
 pandas==1.1.2
     # via
     #   -r requirements.in
+    #   nbmetalog
     #   seaborn
+    #   teeplot
 pandocfilters==1.4.3
     # via nbconvert
 parso==0.8.2
@@ -163,7 +168,7 @@ six==1.15.0
     #   osfclient
     #   python-dateutil
     #   traitlets
-teeplot==0.1.1
+teeplot==0.2.0
     # via -r requirements.in
 testpath==0.5.0
     # via nbconvert
