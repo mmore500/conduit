@@ -16,6 +16,6 @@ using ImplSpec = uit::ImplSpec<
   message_t,
   ImplSel,
   uit::InstrumentationAggregatingSpoutWrapper,
-  64, // N buffer requests
+  2, // N buffer requests
   16 // B
 >;
