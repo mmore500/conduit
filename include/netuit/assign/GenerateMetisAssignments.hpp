@@ -30,7 +30,7 @@ emp::vector<int32_t> PartitionMetis(
   const size_t num_parts, const netuit::Topology& topology
 ) {
 
-  emp_assert( num_parts <= topology.GetSize() );
+  emp_assert( num_parts <= topology.GetSize(), num_parts, topology.GetSize() );
 
   // set up result vector
   emp::vector<int32_t> result( topology.GetSize(), 0 );
