@@ -51,6 +51,8 @@ ipython==7.16.1
     # via
     #   -r requirements.in
     #   ipykernel
+iterdub==0.2.0
+    # via -r requirements.in
 iterpop==0.3.4
     # via -r requirements.in
 jedi==0.18.0
@@ -100,6 +102,7 @@ networkx==2.5
 numpy==1.19.5
     # via
     #   -r requirements.in
+    #   iterdub
     #   matplotlib
     #   pandas
     #   scipy
