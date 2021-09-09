@@ -105,8 +105,10 @@ numpy==1.19.5
     #   iterdub
     #   matplotlib
     #   pandas
+    #   patsy
     #   scipy
     #   seaborn
+    #   statsmodels
     #   teeplot
 git+git://github.com/mmore500/osfclient@9e2e14d#egg=osfclient
     # via -r requirements.in
@@ -117,11 +119,14 @@ pandas==1.1.2
     #   -r requirements.in
     #   nbmetalog
     #   seaborn
+    #   statsmodels
     #   teeplot
 pandocfilters==1.4.3
     # via nbconvert
 parso==0.8.2
     # via jedi
+patsy==0.5.1
+    # via statsmodels
 pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
@@ -161,6 +166,7 @@ scipy==1.5.4
     # via
     #   -r requirements.in
     #   seaborn
+    #   statsmodels
 seaborn==0.11.0
     # via -r requirements.in
 six==1.15.0
@@ -169,8 +175,11 @@ six==1.15.0
     #   cycler
     #   jsonschema
     #   osfclient
+    #   patsy
     #   python-dateutil
     #   traitlets
+statsmodels==0.12.2
+    # via -r requirements.in
 teeplot==0.2.0
     # via -r requirements.in
 testpath==0.5.0
