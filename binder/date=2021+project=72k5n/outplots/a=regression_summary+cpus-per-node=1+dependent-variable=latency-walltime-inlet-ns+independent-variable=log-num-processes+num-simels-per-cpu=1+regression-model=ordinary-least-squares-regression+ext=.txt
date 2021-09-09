@@ -1,0 +1,25 @@
+                                   OLS Regression Results                                   
+============================================================================================
+Dep. Variable:     Q('Latency Walltime Inlet (ns)')   R-squared:                       0.000
+Model:                                          OLS   Adj. R-squared:                 -0.055
+Method:                               Least Squares   F-statistic:                  0.004344
+Date:                              Thu, 09 Sep 2021   Prob (F-statistic):              0.948
+Time:                                      18:14:16   Log-Likelihood:                -229.25
+No. Observations:                                20   AIC:                             462.5
+Df Residuals:                                    18   BIC:                             464.5
+Df Model:                                         1                                         
+Covariance Type:                          nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept               4.785e+05   3.83e+04     12.479      0.000    3.98e+05    5.59e+05
+Q('Log Num Processes')   714.8299   1.08e+04      0.066      0.948   -2.21e+04    2.35e+04
+==============================================================================
+Omnibus:                       12.661   Durbin-Watson:                   2.247
+Prob(Omnibus):                  0.002   Jarque-Bera (JB):               10.443
+Skew:                           1.471   Prob(JB):                      0.00540
+Kurtosis:                       4.968   Cond. No.                         27.0
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
