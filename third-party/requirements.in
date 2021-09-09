@@ -19,3 +19,5 @@ ipykernel==5.5.3
 ipython==7.16.1
 nb-clean==2.0.2
 traitlets==4.3.3
+iterdub==0.2.0
+python-slugify==4.0.1
