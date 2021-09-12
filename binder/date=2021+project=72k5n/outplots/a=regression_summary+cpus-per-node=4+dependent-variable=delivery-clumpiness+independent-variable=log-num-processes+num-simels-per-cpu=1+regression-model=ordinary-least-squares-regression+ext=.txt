@@ -4,7 +4,7 @@ Dep. Variable:     Q('Delivery Clumpiness')   R-squared:                       0
 Model:                                  OLS   Adj. R-squared:                  0.127
 Method:                       Least Squares   F-statistic:                     3.768
 Date:                      Sun, 12 Sep 2021   Prob (F-statistic):             0.0681
-Time:                              16:49:02   Log-Likelihood:                 57.864
+Time:                              17:58:52   Log-Likelihood:                 57.864
 No. Observations:                        20   AIC:                            -111.7
 Df Residuals:                            18   BIC:                            -109.7
 Df Model:                                 1                                         
@@ -12,12 +12,12 @@ Covariance Type:                  nonrobust
 ==========================================================================================
                              coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------------
-Intercept                  0.3337      0.022     14.935      0.000       0.287       0.381
-Q('Log Num Processes')     0.0123      0.006      1.941      0.068      -0.001       0.026
+Intercept                  0.6663      0.022     29.824      0.000       0.619       0.713
+Q('Log Num Processes')    -0.0123      0.006     -1.941      0.068      -0.026       0.001
 ==============================================================================
 Omnibus:                        5.472   Durbin-Watson:                   1.727
 Prob(Omnibus):                  0.065   Jarque-Bera (JB):                3.107
-Skew:                           0.792   Prob(JB):                        0.212
+Skew:                          -0.792   Prob(JB):                        0.212
 Kurtosis:                       4.105   Cond. No.                         27.0
 ==============================================================================
 
