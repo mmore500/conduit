@@ -1,0 +1,25 @@
+                                   OLS Regression Results                                  
+===========================================================================================
+Dep. Variable:     Q('Simstep Period Outlet (ns)')   R-squared:                       0.774
+Model:                                         OLS   Adj. R-squared:                  0.762
+Method:                              Least Squares   F-statistic:                     61.80
+Date:                             Sun, 12 Sep 2021   Prob (F-statistic):           3.14e-07
+Time:                                     16:49:02   Log-Likelihood:                -177.87
+No. Observations:                               20   AIC:                             359.7
+Df Residuals:                                   18   BIC:                             361.7
+Df Model:                                        1                                         
+Covariance Type:                         nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept               5.948e+04   2938.082     20.246      0.000    5.33e+04    6.57e+04
+Q('Log Num Processes')  6532.9978    831.015      7.861      0.000    4787.100    8278.896
+==============================================================================
+Omnibus:                        5.984   Durbin-Watson:                   1.871
+Prob(Omnibus):                  0.050   Jarque-Bera (JB):                3.533
+Skew:                          -0.865   Prob(JB):                        0.171
+Kurtosis:                       4.118   Cond. No.                         27.0
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

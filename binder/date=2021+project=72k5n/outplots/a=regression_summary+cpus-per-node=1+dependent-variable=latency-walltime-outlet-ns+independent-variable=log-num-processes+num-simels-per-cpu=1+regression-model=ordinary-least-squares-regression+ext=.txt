@@ -1,0 +1,25 @@
+                                    OLS Regression Results                                   
+=============================================================================================
+Dep. Variable:     Q('Latency Walltime Outlet (ns)')   R-squared:                       0.000
+Model:                                           OLS   Adj. R-squared:                 -0.055
+Method:                                Least Squares   F-statistic:                  0.007667
+Date:                               Sun, 12 Sep 2021   Prob (F-statistic):              0.931
+Time:                                       16:49:01   Log-Likelihood:                -229.24
+No. Observations:                                 20   AIC:                             462.5
+Df Residuals:                                     18   BIC:                             464.5
+Df Model:                                          1                                         
+Covariance Type:                           nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                 4.8e+05   3.83e+04     12.525      0.000    3.99e+05    5.61e+05
+Q('Log Num Processes')   949.1233   1.08e+04      0.088      0.931   -2.18e+04    2.37e+04
+==============================================================================
+Omnibus:                       12.181   Durbin-Watson:                   2.236
+Prob(Omnibus):                  0.002   Jarque-Bera (JB):                9.830
+Skew:                           1.442   Prob(JB):                      0.00733
+Kurtosis:                       4.866   Cond. No.                         27.0
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
