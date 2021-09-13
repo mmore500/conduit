@@ -4,7 +4,7 @@ Dep. Variable:     Q('Latency Walltime Outlet (ns)')   R-squared:               
 Model:                                           OLS   Adj. R-squared:                  0.154
 Method:                                Least Squares   F-statistic:                     4.468
 Date:                               Mon, 13 Sep 2021   Prob (F-statistic):             0.0488
-Time:                                       03:33:58   Log-Likelihood:                -260.58
+Time:                                       04:02:38   Log-Likelihood:                -260.58
 No. Observations:                                 20   AIC:                             525.2
 Df Residuals:                                     18   BIC:                             527.1
 Df Model:                                          1                                         

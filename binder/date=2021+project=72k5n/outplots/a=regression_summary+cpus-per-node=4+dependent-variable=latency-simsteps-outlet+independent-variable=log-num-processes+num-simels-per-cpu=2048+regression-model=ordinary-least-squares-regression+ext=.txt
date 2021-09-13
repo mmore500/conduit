@@ -4,7 +4,7 @@ Dep. Variable:     Q('Latency Simsteps Outlet')   R-squared:                    
 Model:                                      OLS   Adj. R-squared:                 -0.055
 Method:                           Least Squares   F-statistic:                   0.01750
 Date:                          Mon, 13 Sep 2021   Prob (F-statistic):              0.896
-Time:                                  03:33:58   Log-Likelihood:                 28.447
+Time:                                  04:02:39   Log-Likelihood:                 28.447
 No. Observations:                            20   AIC:                            -52.89
 Df Residuals:                                18   BIC:                            -50.90
 Df Model:                                     1                                         

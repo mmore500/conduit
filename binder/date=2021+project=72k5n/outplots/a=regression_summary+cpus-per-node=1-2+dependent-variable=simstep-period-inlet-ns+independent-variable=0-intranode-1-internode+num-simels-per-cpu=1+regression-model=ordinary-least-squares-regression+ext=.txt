@@ -1,0 +1,25 @@
+                                  OLS Regression Results                                  
+==========================================================================================
+Dep. Variable:     Q('Simstep Period Inlet (ns)')   R-squared:                       0.978
+Model:                                        OLS   Adj. R-squared:                  0.976
+Method:                             Least Squares   F-statistic:                     784.8
+Date:                            Mon, 13 Sep 2021   Prob (F-statistic):           2.68e-16
+Time:                                    03:56:39   Log-Likelihood:                -149.20
+No. Observations:                              20   AIC:                             302.4
+Df Residuals:                                  18   BIC:                             304.4
+Df Model:                                       1                                         
+Covariance Type:                        nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+Intercept                           9022.1551    140.095     64.400      0.000    8727.827    9316.483
+Q('0 = Intranode | 1 = Internode')  5550.3311    198.124     28.014      0.000    5134.088    5966.574
+==============================================================================
+Omnibus:                        4.410   Durbin-Watson:                   1.784
+Prob(Omnibus):                  0.110   Jarque-Bera (JB):                2.407
+Skew:                          -0.451   Prob(JB):                        0.300
+Kurtosis:                       4.441   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

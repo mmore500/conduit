@@ -1,0 +1,25 @@
+                                OLS Regression Results                                
+======================================================================================
+Dep. Variable:     Q('Delivery Failure Rate')   R-squared:                       0.921
+Model:                                    OLS   Adj. R-squared:                  0.916
+Method:                         Least Squares   F-statistic:                     209.0
+Date:                        Mon, 13 Sep 2021   Prob (F-statistic):           2.39e-11
+Time:                                03:56:39   Log-Likelihood:                 34.237
+No. Observations:                          20   AIC:                            -64.47
+Df Residuals:                              18   BIC:                            -62.48
+Df Model:                                   1                                         
+Covariance Type:                    nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+Intercept                              0.2977      0.015     20.444      0.000       0.267       0.328
+Q('0 = Intranode | 1 = Internode')    -0.2977      0.021    -14.456      0.000      -0.341      -0.254
+==============================================================================
+Omnibus:                       16.140   Durbin-Watson:                   2.150
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               17.051
+Skew:                          -1.540   Prob(JB):                     0.000198
+Kurtosis:                       6.313   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
