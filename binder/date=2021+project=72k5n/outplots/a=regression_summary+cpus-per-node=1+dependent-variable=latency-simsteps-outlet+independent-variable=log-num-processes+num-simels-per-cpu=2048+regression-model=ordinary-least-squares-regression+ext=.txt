@@ -1,24 +1,24 @@
                                  OLS Regression Results                                 
 ========================================================================================
-Dep. Variable:     Q('Latency Simsteps Outlet')   R-squared:                       0.022
-Model:                                      OLS   Adj. R-squared:                 -0.032
-Method:                           Least Squares   F-statistic:                    0.4137
-Date:                          Mon, 13 Sep 2021   Prob (F-statistic):              0.528
-Time:                                  04:02:38   Log-Likelihood:                 30.237
-No. Observations:                            20   AIC:                            -56.47
-Df Residuals:                                18   BIC:                            -54.48
+Dep. Variable:     Q('Latency Simsteps Outlet')   R-squared:                       0.620
+Model:                                      OLS   Adj. R-squared:                  0.599
+Method:                           Least Squares   F-statistic:                     29.36
+Date:                          Mon, 13 Sep 2021   Prob (F-statistic):           3.79e-05
+Time:                                  06:11:54   Log-Likelihood:                -44.783
+No. Observations:                            20   AIC:                             93.57
+Df Residuals:                                18   BIC:                             95.56
 Df Model:                                     1                                         
 Covariance Type:                      nonrobust                                         
 ==========================================================================================
                              coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------------
-Intercept                  1.2467      0.089     14.020      0.000       1.060       1.434
-Q('Log Num Processes')    -0.0162      0.025     -0.643      0.528      -0.069       0.037
+Intercept                -16.1737      3.785     -4.273      0.000     -24.126      -8.222
+Q('Log Num Processes')     5.8007      1.071      5.418      0.000       3.552       8.050
 ==============================================================================
-Omnibus:                        1.842   Durbin-Watson:                   2.173
-Prob(Omnibus):                  0.398   Jarque-Bera (JB):                0.483
-Skew:                           0.110   Prob(JB):                        0.785
-Kurtosis:                       3.729   Cond. No.                         27.0
+Omnibus:                        4.439   Durbin-Watson:                   2.524
+Prob(Omnibus):                  0.109   Jarque-Bera (JB):                2.411
+Skew:                           0.777   Prob(JB):                        0.299
+Kurtosis:                       3.694   Cond. No.                         27.0
 ==============================================================================
 
 Notes:

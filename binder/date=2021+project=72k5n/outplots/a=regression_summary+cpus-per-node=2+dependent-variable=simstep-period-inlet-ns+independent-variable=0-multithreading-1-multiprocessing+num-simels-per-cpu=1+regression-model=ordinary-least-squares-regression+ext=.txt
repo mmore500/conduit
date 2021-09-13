@@ -1,24 +1,24 @@
                                   OLS Regression Results                                  
 ==========================================================================================
-Dep. Variable:     Q('Simstep Period Inlet (ns)')   R-squared:                       0.986
-Model:                                        OLS   Adj. R-squared:                  0.985
-Method:                             Least Squares   F-statistic:                     1244.
-Date:                            Mon, 13 Sep 2021   Prob (F-statistic):           4.56e-18
-Time:                                    03:57:37   Log-Likelihood:                -140.40
-No. Observations:                              20   AIC:                             284.8
-Df Residuals:                                  18   BIC:                             286.8
+Dep. Variable:     Q('Simstep Period Inlet (ns)')   R-squared:                       0.987
+Model:                                        OLS   Adj. R-squared:                  0.987
+Method:                             Least Squares   F-statistic:                     1408.
+Date:                            Mon, 13 Sep 2021   Prob (F-statistic):           1.52e-18
+Time:                                    06:08:08   Log-Likelihood:                -139.02
+No. Observations:                              20   AIC:                             282.0
+Df Residuals:                                  18   BIC:                             284.0
 Df Model:                                       1                                         
 Covariance Type:                        nonrobust                                         
 =================================================================================================================
                                                     coef    std err          t      P>|t|      [0.025      0.975]
 -----------------------------------------------------------------------------------------------------------------
-Intercept                                      4595.0703     90.219     50.932      0.000    4405.527    4784.614
-Q('0 = Multithreading | 1 = Multiprocessing')  4500.1408    127.589     35.270      0.000    4232.085    4768.196
+Intercept                                      4618.1953     84.231     54.828      0.000    4441.232    4795.158
+Q('0 = Multithreading | 1 = Multiprocessing')  4469.6227    119.121     37.522      0.000    4219.359    4719.886
 ==============================================================================
-Omnibus:                        0.910   Durbin-Watson:                   1.649
-Prob(Omnibus):                  0.634   Jarque-Bera (JB):                0.430
-Skew:                          -0.358   Prob(JB):                        0.807
-Kurtosis:                       2.936   Cond. No.                         2.62
+Omnibus:                        0.649   Durbin-Watson:                   1.631
+Prob(Omnibus):                  0.723   Jarque-Bera (JB):                0.292
+Skew:                          -0.291   Prob(JB):                        0.864
+Kurtosis:                       2.895   Cond. No.                         2.62
 ==============================================================================
 
 Notes:

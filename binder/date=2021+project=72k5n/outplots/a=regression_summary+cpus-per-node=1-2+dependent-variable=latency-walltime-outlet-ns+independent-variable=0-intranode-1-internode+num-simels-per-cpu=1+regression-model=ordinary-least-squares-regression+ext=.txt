@@ -1,24 +1,24 @@
                                     OLS Regression Results                                   
 =============================================================================================
-Dep. Variable:     Q('Latency Walltime Outlet (ns)')   R-squared:                       0.978
-Model:                                           OLS   Adj. R-squared:                  0.977
-Method:                                Least Squares   F-statistic:                     814.9
-Date:                               Mon, 13 Sep 2021   Prob (F-statistic):           1.93e-16
-Time:                                       03:56:39   Log-Likelihood:                -240.47
-No. Observations:                                 20   AIC:                             484.9
-Df Residuals:                                     18   BIC:                             486.9
+Dep. Variable:     Q('Latency Walltime Outlet (ns)')   R-squared:                       0.957
+Model:                                           OLS   Adj. R-squared:                  0.954
+Method:                                Least Squares   F-statistic:                     395.9
+Date:                               Mon, 13 Sep 2021   Prob (F-statistic):           1.05e-13
+Time:                                       06:07:24   Log-Likelihood:                -249.32
+No. Observations:                                 20   AIC:                             502.6
+Df Residuals:                                     18   BIC:                             504.6
 Df Model:                                          1                                         
 Covariance Type:                           nonrobust                                         
 ======================================================================================================
                                          coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------------------------
-Intercept                           6785.2690   1.34e+04      0.505      0.620   -2.15e+04     3.5e+04
-Q('0 = Intranode | 1 = Internode')  5.426e+05    1.9e+04     28.547      0.000    5.03e+05    5.83e+05
+Intercept                           7687.9769   2.09e+04      0.367      0.718   -3.63e+04    5.16e+04
+Q('0 = Intranode | 1 = Internode')  5.888e+05   2.96e+04     19.897      0.000    5.27e+05    6.51e+05
 ==============================================================================
-Omnibus:                        1.292   Durbin-Watson:                   1.991
-Prob(Omnibus):                  0.524   Jarque-Bera (JB):                0.395
-Skew:                          -0.322   Prob(JB):                        0.821
-Kurtosis:                       3.246   Cond. No.                         2.62
+Omnibus:                        8.135   Durbin-Watson:                   2.352
+Prob(Omnibus):                  0.017   Jarque-Bera (JB):                5.779
+Skew:                           0.915   Prob(JB):                       0.0556
+Kurtosis:                       4.894   Cond. No.                         2.62
 ==============================================================================
 
 Notes:

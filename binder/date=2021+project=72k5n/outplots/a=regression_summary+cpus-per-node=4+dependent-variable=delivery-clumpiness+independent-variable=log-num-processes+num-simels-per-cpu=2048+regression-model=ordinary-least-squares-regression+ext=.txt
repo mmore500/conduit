@@ -1,24 +1,24 @@
                                OLS Regression Results                               
 ====================================================================================
-Dep. Variable:     Q('Delivery Clumpiness')   R-squared:                       0.045
-Model:                                  OLS   Adj. R-squared:                 -0.008
-Method:                       Least Squares   F-statistic:                    0.8580
-Date:                      Mon, 13 Sep 2021   Prob (F-statistic):              0.367
-Time:                              04:02:39   Log-Likelihood:                 28.479
-No. Observations:                        20   AIC:                            -52.96
-Df Residuals:                            18   BIC:                            -50.97
+Dep. Variable:     Q('Delivery Clumpiness')   R-squared:                       0.028
+Model:                                  OLS   Adj. R-squared:                 -0.027
+Method:                       Least Squares   F-statistic:                    0.5091
+Date:                      Mon, 13 Sep 2021   Prob (F-statistic):              0.485
+Time:                              06:11:54   Log-Likelihood:                 30.227
+No. Observations:                        20   AIC:                            -56.45
+Df Residuals:                            18   BIC:                            -54.46
 Df Model:                                 1                                         
 Covariance Type:                  nonrobust                                         
 ==========================================================================================
                              coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------------
-Intercept                  0.2569      0.097      2.645      0.016       0.053       0.461
-Q('Log Num Processes')     0.0254      0.027      0.926      0.367      -0.032       0.083
+Intercept                  0.2619      0.089      2.943      0.009       0.075       0.449
+Q('Log Num Processes')     0.0180      0.025      0.714      0.485      -0.035       0.071
 ==============================================================================
-Omnibus:                        8.452   Durbin-Watson:                   2.001
-Prob(Omnibus):                  0.015   Jarque-Bera (JB):                5.764
-Skew:                          -1.120   Prob(JB):                       0.0560
-Kurtosis:                       4.378   Cond. No.                         27.0
+Omnibus:                        1.349   Durbin-Watson:                   2.114
+Prob(Omnibus):                  0.510   Jarque-Bera (JB):                0.422
+Skew:                          -0.331   Prob(JB):                        0.810
+Kurtosis:                       3.260   Cond. No.                         27.0
 ==============================================================================
 
 Notes:

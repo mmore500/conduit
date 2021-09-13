@@ -1,24 +1,24 @@
                                    OLS Regression Results                                   
 ============================================================================================
-Dep. Variable:     Q('Latency Walltime Inlet (ns)')   R-squared:                       0.207
-Model:                                          OLS   Adj. R-squared:                  0.163
-Method:                               Least Squares   F-statistic:                     4.694
-Date:                              Mon, 13 Sep 2021   Prob (F-statistic):             0.0439
-Time:                                      04:02:38   Log-Likelihood:                -228.69
-No. Observations:                                20   AIC:                             461.4
-Df Residuals:                                    18   BIC:                             463.4
+Dep. Variable:     Q('Latency Walltime Inlet (ns)')   R-squared:                       0.102
+Model:                                          OLS   Adj. R-squared:                  0.052
+Method:                               Least Squares   F-statistic:                     2.037
+Date:                              Mon, 13 Sep 2021   Prob (F-statistic):              0.171
+Time:                                      06:11:54   Log-Likelihood:                -265.15
+No. Observations:                                20   AIC:                             534.3
+Df Residuals:                                    18   BIC:                             536.3
 Df Model:                                         1                                         
 Covariance Type:                          nonrobust                                         
 ==========================================================================================
                              coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------------
-Intercept               3.435e+05   3.73e+04      9.214      0.000    2.65e+05    4.22e+05
-Q('Log Num Processes')  2.284e+04   1.05e+04      2.167      0.044     693.130     4.5e+04
+Intercept               2.655e+05   2.31e+05      1.150      0.265   -2.19e+05     7.5e+05
+Q('Log Num Processes')  9.315e+04   6.53e+04      1.427      0.171    -4.4e+04     2.3e+05
 ==============================================================================
-Omnibus:                        1.505   Durbin-Watson:                   2.483
-Prob(Omnibus):                  0.471   Jarque-Bera (JB):                0.603
-Skew:                          -0.416   Prob(JB):                        0.740
-Kurtosis:                       3.179   Cond. No.                         27.0
+Omnibus:                       24.463   Durbin-Watson:                   2.612
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               33.475
+Skew:                           2.259   Prob(JB):                     5.38e-08
+Kurtosis:                       7.445   Cond. No.                         27.0
 ==============================================================================
 
 Notes:

@@ -1,24 +1,24 @@
                                 OLS Regression Results                                
 ======================================================================================
-Dep. Variable:     Q('Delivery Failure Rate')   R-squared:                       0.382
-Model:                                    OLS   Adj. R-squared:                  0.348
-Method:                         Least Squares   F-statistic:                     11.13
-Date:                        Mon, 13 Sep 2021   Prob (F-statistic):            0.00367
-Time:                                04:02:38   Log-Likelihood:                 58.015
-No. Observations:                          20   AIC:                            -112.0
-Df Residuals:                              18   BIC:                            -110.0
+Dep. Variable:     Q('Delivery Failure Rate')   R-squared:                       0.923
+Model:                                    OLS   Adj. R-squared:                  0.919
+Method:                         Least Squares   F-statistic:                     217.2
+Date:                        Mon, 13 Sep 2021   Prob (F-statistic):           1.73e-11
+Time:                                06:11:54   Log-Likelihood:                 81.102
+No. Observations:                          20   AIC:                            -158.2
+Df Residuals:                              18   BIC:                            -156.2
 Df Model:                                   1                                         
 Covariance Type:                    nonrobust                                         
 ==========================================================================================
                              coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------------
-Intercept                  0.0104      0.022      0.468      0.645      -0.036       0.057
-Q('Log Num Processes')     0.0209      0.006      3.337      0.004       0.008       0.034
+Intercept                  0.0093      0.007      1.324      0.202      -0.005       0.024
+Q('Log Num Processes')     0.0291      0.002     14.737      0.000       0.025       0.033
 ==============================================================================
-Omnibus:                        4.783   Durbin-Watson:                   2.241
-Prob(Omnibus):                  0.091   Jarque-Bera (JB):                2.567
-Skew:                          -0.644   Prob(JB):                        0.277
-Kurtosis:                       4.193   Cond. No.                         27.0
+Omnibus:                        3.035   Durbin-Watson:                   1.478
+Prob(Omnibus):                  0.219   Jarque-Bera (JB):                1.339
+Skew:                          -0.539   Prob(JB):                        0.512
+Kurtosis:                       3.669   Cond. No.                         27.0
 ==============================================================================
 
 Notes:
