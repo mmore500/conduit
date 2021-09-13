@@ -1,0 +1,25 @@
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     Q('Delivery Clumpiness')   R-squared:                       0.867
+Model:                                  OLS   Adj. R-squared:                  0.859
+Method:                       Least Squares   F-statistic:                     117.0
+Date:                      Mon, 13 Sep 2021   Prob (F-statistic):           2.63e-09
+Time:                              03:29:30   Log-Likelihood:                 16.982
+No. Observations:                        20   AIC:                            -29.96
+Df Residuals:                            18   BIC:                            -27.97
+Df Model:                                 1                                         
+Covariance Type:                  nonrobust                                         
+=================================================================================================================
+                                                    coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------------------------
+Intercept                                         0.5589      0.035     16.199      0.000       0.486       0.631
+Q('0 = Multithreading | 1 = Multiprocessing')    -0.5278      0.049    -10.817      0.000      -0.630      -0.425
+==============================================================================
+Omnibus:                        5.440   Durbin-Watson:                   1.422
+Prob(Omnibus):                  0.066   Jarque-Bera (JB):                3.659
+Skew:                           0.444   Prob(JB):                        0.161
+Kurtosis:                       4.898   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

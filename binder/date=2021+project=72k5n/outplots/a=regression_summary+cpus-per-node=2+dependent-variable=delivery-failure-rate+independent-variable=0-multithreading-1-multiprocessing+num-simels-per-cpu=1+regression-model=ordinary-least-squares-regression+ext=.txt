@@ -1,0 +1,25 @@
+                                OLS Regression Results                                
+======================================================================================
+Dep. Variable:     Q('Delivery Failure Rate')   R-squared:                       0.858
+Model:                                    OLS   Adj. R-squared:                  0.850
+Method:                         Least Squares   F-statistic:                     108.8
+Date:                        Mon, 13 Sep 2021   Prob (F-statistic):           4.64e-09
+Time:                                03:29:30   Log-Likelihood:                 23.093
+No. Observations:                          20   AIC:                            -42.19
+Df Residuals:                              18   BIC:                            -40.19
+Df Model:                                   1                                         
+Covariance Type:                    nonrobust                                         
+=================================================================================================================
+                                                    coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------------------------
+Intercept                                     -4.146e-09      0.025  -1.63e-07      1.000      -0.053       0.053
+Q('0 = Multithreading | 1 = Multiprocessing')     0.3750      0.036     10.432      0.000       0.299       0.451
+==============================================================================
+Omnibus:                        6.248   Durbin-Watson:                   2.431
+Prob(Omnibus):                  0.044   Jarque-Bera (JB):                5.903
+Skew:                           0.139   Prob(JB):                       0.0523
+Kurtosis:                       5.647   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

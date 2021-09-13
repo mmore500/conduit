@@ -1,0 +1,25 @@
+                                    OLS Regression Results                                   
+=============================================================================================
+Dep. Variable:     Q('Latency Walltime Outlet (ns)')   R-squared:                       0.048
+Model:                                           OLS   Adj. R-squared:                 -0.005
+Method:                                Least Squares   F-statistic:                    0.9064
+Date:                               Mon, 13 Sep 2021   Prob (F-statistic):              0.354
+Time:                                       03:29:30   Log-Likelihood:                -188.20
+No. Observations:                                 20   AIC:                             380.4
+Df Residuals:                                     18   BIC:                             382.4
+Df Model:                                          1                                         
+Covariance Type:                           nonrobust                                         
+=================================================================================================================
+                                                    coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------------------------
+Intercept                                      6728.9981    984.956      6.832      0.000    4659.681    8798.315
+Q('0 = Multithreading | 1 = Multiprocessing')  1326.1389   1392.939      0.952      0.354   -1600.317    4252.595
+==============================================================================
+Omnibus:                       16.507   Durbin-Watson:                   1.472
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               16.582
+Skew:                           1.669   Prob(JB):                     0.000251
+Kurtosis:                       5.960   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
