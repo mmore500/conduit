@@ -11,7 +11,7 @@ jobs:
 
   docker-build:
     name: Docker Build
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
@@ -29,7 +29,7 @@ jobs:
 
   tidy:
     name: Docs, Miscellaneous
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     needs:
       - docker-build
     container:
@@ -44,7 +44,7 @@ jobs:
 
   binder:
     name: Notebooks
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     needs:
       - docker-build
     container:
@@ -65,7 +65,7 @@ jobs:
 
   # unit:
   #   name: Unit Tests
-  #   runs-on: ubuntu-16.04
+  #   runs-on: ubuntu-20.04
   #   needs:
   #     - docker-build
   #   strategy:
@@ -89,7 +89,7 @@ jobs:
   #         ctest
   unit:
     name: Unit Tests
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     needs:
       - docker-build
     strategy:
@@ -109,7 +109,7 @@ jobs:
 
   coverage:
     name: Coverage
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     needs:
       - docker-build
     env:
@@ -131,7 +131,7 @@ jobs:
   # TODO: figure out why codecov errors out
   # coverage:
   #   name: Coverage
-  #   runs-on: ubuntu-16.04
+  #   runs-on: ubuntu-20.04
   #   needs:
   #     - docker-build
   #   container:
@@ -158,7 +158,7 @@ jobs:
 
   microbenchmarks:
     name: Microbenchmarks
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     needs:
       - docker-build
     container:
@@ -176,7 +176,7 @@ jobs:
 
   macrobenchmarks:
     name: Macrobenchmarks
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     needs:
       - docker-build
     container:
@@ -194,7 +194,7 @@ jobs:
 
   docs:
     name: Source, Docs, Demos
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     needs:
       - docker-build
     steps:
@@ -203,7 +203,7 @@ jobs:
   # TODO: figure out how to fix npm error
   # docs:
   #   name: Source, Docs, Demos
-  #   runs-on: ubuntu-16.04
+  #   runs-on: ubuntu-20.04
   #   needs:
   #     - docker-build
   #   container:
@@ -220,7 +220,7 @@ jobs:
 
   deploy-pages:
     name: Deploy to GitHub Pages
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     container:
       image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
       env:
@@ -248,7 +248,7 @@ jobs:
 
   deploy-dockerhub:
     name: Deploy to Dockerhub
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-20.04
     needs:
       - docs
       - unit
