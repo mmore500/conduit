@@ -38,10 +38,6 @@ node_modules/
 *.cereal
 *.json
 
-# allow output files from notebooks
-!binder/**/*.csv
-!binder/**/*.json
-
 *.png
 *.adj
 *.edg

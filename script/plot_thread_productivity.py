@@ -1,11 +1,11 @@
-import sys
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from keyname import keyname as kn
 from iterpop import iterpop as ip
 import itertools as it
+from keyname import keyname as kn
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
 from slugify import slugify
+import sys
 
 try:
     __, synchronous = sys.argv
