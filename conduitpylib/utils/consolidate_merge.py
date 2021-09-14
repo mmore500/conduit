@@ -1,3 +1,5 @@
+"""Contains consolidate_merge."""
+
 import pandas as pd
 
 from .strip_end import strip_end
