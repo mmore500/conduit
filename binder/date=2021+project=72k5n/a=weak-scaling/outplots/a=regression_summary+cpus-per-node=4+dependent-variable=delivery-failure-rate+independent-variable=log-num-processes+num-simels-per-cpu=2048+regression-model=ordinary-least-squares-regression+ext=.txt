@@ -1,0 +1,25 @@
+                                OLS Regression Results                                
+======================================================================================
+Dep. Variable:     Q('Delivery Failure Rate')   R-squared:                       0.094
+Model:                                    OLS   Adj. R-squared:                  0.044
+Method:                         Least Squares   F-statistic:                     1.871
+Date:                        Tue, 14 Sep 2021   Prob (F-statistic):              0.188
+Time:                                18:44:27   Log-Likelihood:                 100.58
+No. Observations:                          20   AIC:                            -197.2
+Df Residuals:                              18   BIC:                            -195.2
+Df Model:                                   1                                         
+Covariance Type:                    nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                  0.0041      0.003      1.564      0.135      -0.001       0.010
+Q('Log Num Processes')    -0.0010      0.001     -1.368      0.188      -0.003       0.001
+==============================================================================
+Omnibus:                       34.911   Durbin-Watson:                   2.135
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               82.408
+Skew:                           2.838   Prob(JB):                     1.27e-18
+Kurtosis:                      11.166   Cond. No.                         27.0
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

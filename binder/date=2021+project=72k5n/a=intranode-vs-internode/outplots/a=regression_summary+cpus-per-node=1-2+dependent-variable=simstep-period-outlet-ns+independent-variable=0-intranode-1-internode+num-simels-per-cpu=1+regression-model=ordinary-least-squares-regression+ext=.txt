@@ -1,0 +1,25 @@
+                                   OLS Regression Results                                  
+===========================================================================================
+Dep. Variable:     Q('Simstep Period Outlet (ns)')   R-squared:                       0.981
+Model:                                         OLS   Adj. R-squared:                  0.980
+Method:                              Least Squares   F-statistic:                     912.1
+Date:                             Tue, 14 Sep 2021   Prob (F-statistic):           7.13e-17
+Time:                                     18:37:02   Log-Likelihood:                -147.29
+No. Observations:                               20   AIC:                             298.6
+Df Residuals:                                   18   BIC:                             300.6
+Df Model:                                        1                                         
+Covariance Type:                         nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+Intercept                           9042.6665    127.353     71.005      0.000    8775.107    9310.226
+Q('0 = Intranode | 1 = Internode')  5439.2027    180.105     30.200      0.000    5060.817    5817.589
+==============================================================================
+Omnibus:                        5.824   Durbin-Watson:                   1.686
+Prob(Omnibus):                  0.054   Jarque-Bera (JB):                3.851
+Skew:                          -0.557   Prob(JB):                        0.146
+Kurtosis:                       4.838   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
