@@ -1,8 +1,8 @@
-import sys
+from keyname import keyname as kn
+import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
-from keyname import keyname as kn
+import sys
 
 try:
     __, synchronous = sys.argv
