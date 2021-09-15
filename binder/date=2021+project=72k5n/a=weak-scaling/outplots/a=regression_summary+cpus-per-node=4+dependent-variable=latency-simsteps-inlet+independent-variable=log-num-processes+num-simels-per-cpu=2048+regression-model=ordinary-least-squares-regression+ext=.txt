@@ -4,7 +4,7 @@ Dep. Variable:     Q('Latency Simsteps Inlet')   R-squared:                     
 Model:                                     OLS   Adj. R-squared:                 -0.042
 Method:                          Least Squares   F-statistic:                    0.2283
 Date:                         Wed, 15 Sep 2021   Prob (F-statistic):              0.639
-Time:                                 04:03:50   Log-Likelihood:                 31.545
+Time:                                 05:08:30   Log-Likelihood:                 31.545
 No. Observations:                           20   AIC:                            -59.09
 Df Residuals:                               18   BIC:                            -57.10
 Df Model:                                    1                                         
