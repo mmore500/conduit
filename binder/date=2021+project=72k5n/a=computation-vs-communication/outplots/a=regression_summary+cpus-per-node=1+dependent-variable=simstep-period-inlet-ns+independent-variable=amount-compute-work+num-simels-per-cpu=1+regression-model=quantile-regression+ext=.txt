@@ -1,0 +1,17 @@
+                               QuantReg Regression Results                                
+==========================================================================================
+Dep. Variable:     Q('Simstep Period Inlet (ns)')   Pseudo R-squared:               0.9972
+Model:                                   QuantReg   Bandwidth:                   2.730e+05
+Method:                             Least Squares   Sparsity:                    5.545e+05
+Date:                            Wed, 15 Sep 2021   No. Observations:                   50
+Time:                                    09:27:06   Df Residuals:                       48
+                                                    Df Model:                            1
+============================================================================================
+                               coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------
+Intercept                 1.798e-06    4.4e+04   4.08e-11      1.000   -8.85e+04    8.85e+04
+Q('Amount Compute Work')    30.1639      0.006   5142.771      0.000      30.152      30.176
+============================================================================================
+
+The condition number is large, 8.42e+06. This might indicate that there are
+strong multicollinearity or other numerical problems.

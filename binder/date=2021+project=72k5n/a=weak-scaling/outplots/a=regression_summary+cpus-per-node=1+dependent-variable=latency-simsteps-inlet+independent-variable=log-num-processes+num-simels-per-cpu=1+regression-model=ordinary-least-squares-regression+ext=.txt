@@ -1,0 +1,25 @@
+                                 OLS Regression Results                                
+=======================================================================================
+Dep. Variable:     Q('Latency Simsteps Inlet')   R-squared:                       0.010
+Model:                                     OLS   Adj. R-squared:                 -0.045
+Method:                          Least Squares   F-statistic:                    0.1840
+Date:                         Wed, 15 Sep 2021   Prob (F-statistic):              0.673
+Time:                                 09:35:51   Log-Likelihood:                -12.214
+No. Observations:                           20   AIC:                             28.43
+Df Residuals:                               18   BIC:                             30.42
+Df Model:                                    1                                         
+Covariance Type:                     nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                  6.4587      0.743      8.696      0.000       4.898       8.019
+Q('Log Num Processes')    -0.0901      0.210     -0.429      0.673      -0.531       0.351
+==============================================================================
+Omnibus:                       17.115   Durbin-Watson:                   2.175
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               18.098
+Skew:                           1.669   Prob(JB):                     0.000117
+Kurtosis:                       6.252   Cond. No.                         27.0
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

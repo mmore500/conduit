@@ -1,0 +1,25 @@
+                                 OLS Regression Results                                
+=======================================================================================
+Dep. Variable:     Q('Latency Simsteps Inlet')   R-squared:                       0.954
+Model:                                     OLS   Adj. R-squared:                  0.951
+Method:                          Least Squares   F-statistic:                     369.9
+Date:                         Wed, 15 Sep 2021   Prob (F-statistic):           1.89e-13
+Time:                                 09:28:14   Log-Likelihood:                -58.462
+No. Observations:                           20   AIC:                             120.9
+Df Residuals:                               18   BIC:                             122.9
+Df Model:                                    1                                         
+Covariance Type:                     nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+Intercept                              1.0050      1.500      0.670      0.511      -2.147       4.157
+Q('0 = Intranode | 1 = Internode')    40.8009      2.121     19.232      0.000      36.344      45.258
+==============================================================================
+Omnibus:                        9.759   Durbin-Watson:                   2.325
+Prob(Omnibus):                  0.008   Jarque-Bera (JB):                8.689
+Skew:                           0.894   Prob(JB):                       0.0130
+Kurtosis:                       5.689   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

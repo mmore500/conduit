@@ -1,0 +1,25 @@
+                                  OLS Regression Results                                  
+==========================================================================================
+Dep. Variable:     Q('Simstep Period Inlet (ns)')   R-squared:                         nan
+Model:                                        OLS   Adj. R-squared:                    nan
+Method:                             Least Squares   F-statistic:                       nan
+Date:                            Wed, 15 Sep 2021   Prob (F-statistic):                nan
+Time:                                    09:35:52   Log-Likelihood:                    nan
+No. Observations:                              20   AIC:                               nan
+Df Residuals:                                  18   BIC:                               nan
+Df Model:                                       1                                         
+Covariance Type:                        nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                    -inf        nan        nan        nan         nan         nan
+Q('Log Num Processes')        inf        nan        nan        nan         nan         nan
+==============================================================================
+Omnibus:                          nan   Durbin-Watson:                     nan
+Prob(Omnibus):                    nan   Jarque-Bera (JB):                  nan
+Skew:                             nan   Prob(JB):                          nan
+Kurtosis:                         nan   Cond. No.                         27.0
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
