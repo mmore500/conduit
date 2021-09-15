@@ -28,7 +28,7 @@ jobs:
 
 
   tidy:
-    name: Docs, Miscellaneous
+    name: Tidy
     runs-on: ubuntu-20.04
     needs:
       - docker-build
