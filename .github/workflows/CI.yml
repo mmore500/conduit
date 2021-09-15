@@ -238,13 +238,13 @@ jobs:
       options: --user root
     if: github.ref == 'refs/heads/master'
     needs:
-      - docs
-      - unit
+      - binder
       - coverage
-      - tidy
+      - docs
       - macrobenchmarks
       - microbenchmarks
-      - binder
+      - tidy
+      - unit
     steps:
       - run: make -C /opt/conduit/ web
       - run: cp -r /opt/conduit/web/ web/
@@ -259,13 +259,13 @@ jobs:
     name: Deploy to Dockerhub
     runs-on: ubuntu-20.04
     needs:
-      - docs
-      - unit
+      - binder
       - coverage
-      - tidy
+      - docs
       - macrobenchmarks
       - microbenchmarks
-      - binder
+      - tidy
+      - unit
     steps:
       - uses: actions/checkout@v2
         with:
