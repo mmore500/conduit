@@ -65,7 +65,7 @@ jobs:
       - run: mkdir -p deploy-artifacts/
       - run: cp -r /opt/conduit/binder/. deploy-artifacts/binder/
       # adapted from https://unix.stackexchange.com/a/107647
-      - run: find deploy-artifacts/binder/ -type f ! \( -name '*.csv' -o -name '*.png' -o -name '*.jpg' -o -name '*.pdf' -o -name '*.json' -o -name '*.meta' -o -name '*.txt' -o -name '*.out' \) -delete
+      - run: find deploy-artifacts/binder/ -type f ! \( -name '*.csv' -o -name '*.png' -o -name '*.jpg' -o -name '*.pdf' -o -name '*.json' -o -name '*.meta' -o -name '*.txt' -o -name '*.out' -o -name '*.ipynb' \) -delete
       # delete symlinks (Overleaf is not compatible with symlinks)
       # adapted from https://superuser.com/a/586948
       - run: find deploy-artifacts/binder -type l -delete
