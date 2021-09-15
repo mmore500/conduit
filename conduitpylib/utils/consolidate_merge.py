@@ -7,7 +7,6 @@ from .strip_end import strip_end
 def consolidate_merge(*args, **kwargs):
     """Drop-in wrapper around pandas.merge that performs an outer merge,
     then consolidates identical columns from the left and right dataframes."""
-
     assert 'how' in kwargs and kwargs['how'] == 'outer'
 
     l_suffix = '__TRYCONSOLIDATEME_LEFT__'
