@@ -10,7 +10,7 @@ exdown==0.7.0
 networkx==2.5
 numpy==1.19.5
 scipy==1.5.4
-teeplot==0.2.0
+teeplot==0.3.0
 nbmetalog==0.2.4
 nbconvert==5.6.1
 jupyter_client==6.1.12

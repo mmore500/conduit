@@ -4,7 +4,7 @@ Dep. Variable:     Q('Latency Simsteps Outlet')   Pseudo R-squared:             
 Model:                                 QuantReg   Bandwidth:                      0.4873
 Method:                           Least Squares   Sparsity:                       0.8774
 Date:                          Wed, 15 Sep 2021   No. Observations:                   20
-Time:                                  05:08:31   Df Residuals:                       18
+Time:                                  06:11:37   Df Residuals:                       18
                                                   Df Model:                            1
 ==========================================================================================
                              coef    std err          t      P>|t|      [0.025      0.975]
