@@ -1,5 +1,3 @@
-"""Contains strip_end."""
-
 # adapted from https://stackoverflow.com/a/1038999
 def strip_end(text, suffix):
     """Strips suffix from string.
