@@ -4,7 +4,7 @@ Dep. Variable:     Q('Latency Walltime Inlet (ns)')   Pseudo R-squared:         
 Model:                                     QuantReg   Bandwidth:                   3.815e+04
 Method:                               Least Squares   Sparsity:                    6.453e+04
 Date:                              Wed, 15 Sep 2021   No. Observations:                   20
-Time:                                      06:11:37   Df Residuals:                       18
+Time:                                      07:27:52   Df Residuals:                       18
                                                       Df Model:                            1
 ==========================================================================================
                              coef    std err          t      P>|t|      [0.025      0.975]
