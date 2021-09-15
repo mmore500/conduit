@@ -1,0 +1,25 @@
+                                 OLS Regression Results                                 
+========================================================================================
+Dep. Variable:     Q('Latency Simsteps Outlet')   R-squared:                       0.014
+Model:                                      OLS   Adj. R-squared:                 -0.041
+Method:                           Least Squares   F-statistic:                    0.2559
+Date:                          Wed, 15 Sep 2021   Prob (F-statistic):              0.619
+Time:                                  01:41:18   Log-Likelihood:                 30.157
+No. Observations:                            20   AIC:                            -56.31
+Df Residuals:                                18   BIC:                            -54.32
+Df Model:                                     1                                         
+Covariance Type:                      nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                  1.4290      0.089     16.005      0.000       1.241       1.617
+Q('Log Num Processes')    -0.0128      0.025     -0.506      0.619      -0.066       0.040
+==============================================================================
+Omnibus:                        0.324   Durbin-Watson:                   2.441
+Prob(Omnibus):                  0.850   Jarque-Bera (JB):                0.006
+Skew:                          -0.038   Prob(JB):                        0.997
+Kurtosis:                       2.964   Cond. No.                         27.0
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

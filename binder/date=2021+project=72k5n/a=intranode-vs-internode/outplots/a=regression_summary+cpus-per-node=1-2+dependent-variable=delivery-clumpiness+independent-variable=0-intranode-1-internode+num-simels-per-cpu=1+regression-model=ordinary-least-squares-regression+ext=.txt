@@ -1,0 +1,25 @@
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     Q('Delivery Clumpiness')   R-squared:                       0.999
+Model:                                  OLS   Adj. R-squared:                  0.999
+Method:                       Least Squares   F-statistic:                 2.893e+04
+Date:                      Wed, 15 Sep 2021   Prob (F-statistic):           2.58e-30
+Time:                              01:36:11   Log-Likelihood:                 60.445
+No. Observations:                        20   AIC:                            -116.9
+Df Residuals:                            18   BIC:                            -114.9
+Df Model:                                 1                                         
+Covariance Type:                  nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+Intercept                              0.0138      0.004      3.525      0.002       0.006       0.022
+Q('0 = Intranode | 1 = Internode')     0.9447      0.006    170.088      0.000       0.933       0.956
+==============================================================================
+Omnibus:                        2.687   Durbin-Watson:                   1.499
+Prob(Omnibus):                  0.261   Jarque-Bera (JB):                1.878
+Skew:                           0.745   Prob(JB):                        0.391
+Kurtosis:                       2.824   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
