@@ -62,9 +62,10 @@ jobs:
         with:
           branch: binder # The branch the action should deploy to.
           folder: deploy # The folder the action should deploy.
-      # adapted from https://unix.stackexchange.com/a/107647
       - run: mkdir -p deploy-artifacts/
-      - run: find /opt/conduit/binder/ \( -name '*.csv' -o -name '*.png' -o -name '*.jpg' -o -name '*.pdf' -o -name '*.json' -o -name '*.meta' -o -name '*.txt' -o -name '*.out' \)  -exec cp --parents '{}' deploy-artifacts/ \;
+      - run: cp -r /opt/conduit/binder/. deploy-artifacts/binder/
+      # adapted from https://unix.stackexchange.com/a/107647
+      - run: find deploy-artifacts/binder/ -type f ! \( -name '*.csv' -o -name '*.png' -o -name '*.jpg' -o -name '*.pdf' -o -name '*.json' -o -name '*.meta' -o -name '*.txt' -o -name '*.out' \) -delete
       - uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
           branch: binder-artifacts # The branch the action should deploy to.
