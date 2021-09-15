@@ -1,0 +1,25 @@
+                                  OLS Regression Results                                  
+==========================================================================================
+Dep. Variable:     Q('Simstep Period Inlet (ns)')   R-squared:                       0.451
+Model:                                        OLS   Adj. R-squared:                  0.420
+Method:                             Least Squares   F-statistic:                     14.76
+Date:                            Wed, 15 Sep 2021   Prob (F-statistic):            0.00119
+Time:                                    07:35:46   Log-Likelihood:                -207.02
+No. Observations:                              20   AIC:                             418.0
+Df Residuals:                                  18   BIC:                             420.0
+Df Model:                                       1                                         
+Covariance Type:                        nonrobust                                         
+============================================================================================================
+                                               coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------------
+Intercept                                 1.992e+06   2523.877    789.205      0.000    1.99e+06       2e+06
+Q('0 = With lac-417 | 1 = Sans lac-417')  1.371e+04   3569.301      3.842      0.001    6215.850    2.12e+04
+==============================================================================
+Omnibus:                        3.751   Durbin-Watson:                   2.274
+Prob(Omnibus):                  0.153   Jarque-Bera (JB):                2.050
+Skew:                          -0.752   Prob(JB):                        0.359
+Kurtosis:                       3.445   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
