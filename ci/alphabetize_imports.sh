@@ -1,14 +1,18 @@
 #!/bin/bash
 
-TARGETS=$(find . -type f \( -name "*.hpp" -o -name "*.cpp" \) ! -path "./third-party/*" ! -path "./node_modules/*")
+TARGETS=$(find . -type f \( -name "*.py" -o -name "*.ipynb" \) ! -path "./third-party/*")
 
 for filename in ${TARGETS}
 do
 
+  # skip empty files
+  # adapted from https://stackoverflow.com/a/27710284
+  [ -s "${filename}" ] || continue
+
   printf "."
 
   # adapted from https://stackoverflow.com/a/6970681
-  include_linenos=$(awk '/^#include .*/ {print FNR}' "${filename}")
+  include_linenos="$(awk '/^import .*| *"import .*|^from .* import .*| *"from .* import .*/ {print FNR}' "${filename}")"
 
   # adapted from https://stackoverflow.com/a/26809816
   # and https://superuser.com/a/284192
@@ -18,7 +22,8 @@ do
     read start stop <<< "${line}"
 
     # adapted from https://stackoverflow.com/a/46018238
-    echo "x" | ex -s -c "${start},${stop}!sort -fd" "${filename}"
+    # and https://stackoverflow.com/a/32723119
+    echo "x" | ex -s -c "${start},${stop}!sort -fd -k2" "${filename}"
 
   done
 done

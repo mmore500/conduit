@@ -1,20 +1,17 @@
 #!/usr/bin/python3
 
-import sys
-
-import pandas as pd
-import statsmodels.formula.api as smf
-from scipy.stats import stats
-
-import matplotlib.pyplot as plt
-from matplotlib.offsetbox import AnchoredText
-import seaborn as sns
-
-import itertools as it
-import numpy as np
-from slugify import slugify
-from keyname import keyname as kn
 from iterpop import iterpop as ip
+import itertools as it
+from keyname import keyname as kn
+from matplotlib.offsetbox import AnchoredText
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from scipy.stats import stats
+import seaborn as sns
+from slugify import slugify
+import statsmodels.formula.api as smf
+import sys
 
 try:
     __, synchronous = sys.argv

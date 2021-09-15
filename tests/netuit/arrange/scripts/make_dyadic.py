@@ -10,8 +10,8 @@ whose filename represent the characteristics
 of the graph created.
 """
 
-import networkx as nx
 from keyname import keyname as kn
+import networkx as nx
 
 dims = [3, 4, 7, 10]
 
