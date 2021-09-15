@@ -244,6 +244,7 @@ jobs:
       - tidy
       - macrobenchmarks
       - microbenchmarks
+      - binder
     steps:
       - run: make -C /opt/conduit/ web
       - run: cp -r /opt/conduit/web/ web/
