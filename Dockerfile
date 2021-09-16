@@ -110,6 +110,7 @@ RUN \
     libxrender1 \
     libxss1 \
     libxtst6 \
+    locales \
     lsb-release \
     man \
     mpich \
@@ -243,6 +244,13 @@ RUN \
   ./install_dependencies.sh \
     && \
   echo "installed third party dependencies"
+
+# set up locale
+# adapted from https://stackoverflow.com/a/55077451
+RUN \
+  locale-gen en_US.UTF-8 \
+    && \
+  echo "generated en_US.UTF-8 locale"
 
 # Set enviroment variables
 # Use mimalloc override within the container.
