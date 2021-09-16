@@ -1,0 +1,25 @@
+                                OLS Regression Results                                
+======================================================================================
+Dep. Variable:     Q('Delivery Failure Rate')   R-squared:                         nan
+Model:                                    OLS   Adj. R-squared:                    nan
+Method:                         Least Squares   F-statistic:                       nan
+Date:                        Thu, 16 Sep 2021   Prob (F-statistic):                nan
+Time:                                05:58:54   Log-Likelihood:                    inf
+No. Observations:                          50   AIC:                              -inf
+Df Residuals:                              48   BIC:                              -inf
+Df Model:                                   1                                         
+Covariance Type:                    nonrobust                                         
+=========================================================================================
+                            coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------
+Intercept                      0          0        nan        nan           0           0
+Q('Log Compute Work')          0          0        nan        nan           0           0
+==============================================================================
+Omnibus:                      404.747   Durbin-Watson:                     nan
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               18.750
+Skew:                           0.000   Prob(JB):                     8.48e-05
+Kurtosis:                       0.000   Cond. No.                         4.74
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

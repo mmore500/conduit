@@ -1,0 +1,27 @@
+                                  OLS Regression Results                                  
+==========================================================================================
+Dep. Variable:     Q('Simstep Period Inlet (ns)')   R-squared:                       0.994
+Model:                                        OLS   Adj. R-squared:                  0.994
+Method:                             Least Squares   F-statistic:                     7862.
+Date:                            Thu, 16 Sep 2021   Prob (F-statistic):           7.15e-55
+Time:                                    05:58:54   Log-Likelihood:                -909.24
+No. Observations:                              50   AIC:                             1822.
+Df Residuals:                                  48   BIC:                             1826.
+Df Model:                                       1                                         
+Covariance Type:                        nonrobust                                         
+============================================================================================
+                               coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------
+Intercept                 -3.08e+05    3.1e+06     -0.099      0.921   -6.53e+06    5.92e+06
+Q('Amount Compute Work')    36.5928      0.413     88.666      0.000      35.763      37.423
+==============================================================================
+Omnibus:                       62.234   Durbin-Watson:                   1.799
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              512.373
+Skew:                           3.169   Prob(JB):                    5.49e-112
+Kurtosis:                      17.344   Cond. No.                     8.42e+06
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 8.42e+06. This might indicate that there are
+strong multicollinearity or other numerical problems.

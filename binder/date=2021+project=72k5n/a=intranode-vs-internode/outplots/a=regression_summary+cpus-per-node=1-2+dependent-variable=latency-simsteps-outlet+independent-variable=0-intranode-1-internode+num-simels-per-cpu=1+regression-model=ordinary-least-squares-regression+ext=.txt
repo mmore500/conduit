@@ -1,0 +1,25 @@
+                                 OLS Regression Results                                 
+========================================================================================
+Dep. Variable:     Q('Latency Simsteps Outlet')   R-squared:                       0.957
+Model:                                      OLS   Adj. R-squared:                  0.954
+Method:                           Least Squares   F-statistic:                     396.8
+Date:                          Thu, 16 Sep 2021   Prob (F-statistic):           1.03e-13
+Time:                                  05:59:53   Log-Likelihood:                -57.566
+No. Observations:                            20   AIC:                             119.1
+Df Residuals:                                18   BIC:                             121.1
+Df Model:                                     1                                         
+Covariance Type:                      nonrobust                                         
+======================================================================================================
+                                         coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------------------
+Intercept                              0.9982      1.434      0.696      0.495      -2.015       4.012
+Q('0 = Intranode | 1 = Internode')    40.4086      2.029     19.920      0.000      36.147      44.670
+==============================================================================
+Omnibus:                        9.376   Durbin-Watson:                   2.292
+Prob(Omnibus):                  0.009   Jarque-Bera (JB):                8.353
+Skew:                           0.839   Prob(JB):                       0.0154
+Kurtosis:                       5.684   Cond. No.                         2.62
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
