@@ -13,13 +13,13 @@ struct tuple_index;
 
 template <class T, class... Types>
 struct tuple_index<T, std::tuple<T, Types...>> {
-    static constexpr std::size_t value = 0;
+  static constexpr std::size_t value = 0;
 };
 
 template <class T, class U, class... Types>
 struct tuple_index<T, std::tuple<U, Types...>> {
-    static constexpr std::size_t value =
-      1 + tuple_index<T, std::tuple<Types...>>::value;
+  static constexpr std::size_t value =
+    1 + tuple_index<T, std::tuple<Types...>>::value;
 };
 } // namespace uitsl
 
