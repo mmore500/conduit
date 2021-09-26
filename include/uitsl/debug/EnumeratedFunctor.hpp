@@ -16,16 +16,16 @@ namespace uitsl {
 */
 template <typename Input, typename Output>
 class EnumeratedFunctor {
-    std::unordered_map<Input, Output> map;
+  std::unordered_map<Input, Output> map;
 public:
-    EnumeratedFunctor() = default;
-    EnumeratedFunctor(const std::unordered_map<Input, Output>& map_) : map(map_) { ; }
-    EnumeratedFunctor(const emp::vector<Output>& vect) {
-        for (size_t i = 0; i < vect.size(); ++i) map[i] = vect[i];
-    }
+  EnumeratedFunctor() = default;
+  EnumeratedFunctor(const std::unordered_map<Input, Output>& map_) : map(map_) { ; }
+  EnumeratedFunctor(const emp::vector<Output>& vect) {
+    for (size_t i = 0; i < vect.size(); ++i) map[i] = vect[i];
+  }
 
-    Output operator()(const Input& a) const { return map.at(a); }
-    size_t GetSize() const { return map.size(); }
+  Output operator()(const Input& a) const { return map.at(a); }
+  size_t GetSize() const { return map.size(); }
 };
 
 } // namespace uitsl
