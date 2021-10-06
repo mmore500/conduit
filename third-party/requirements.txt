@@ -95,7 +95,7 @@ nbformat==5.1.3
     # via
     #   nb-clean
     #   nbconvert
-nbmetalog==0.2.4
+nbmetalog==0.2.5
     # via -r requirements.in
 networkx==2.5
     # via -r requirements.in
@@ -160,6 +160,8 @@ python-slugify==4.0.1
     #   teeplot
 pytz==2021.1
     # via pandas
+pyyaml==5.4.1
+    # via nbmetalog
 pyzmq==22.2.1
     # via jupyter-client
 requests==2.25.1
