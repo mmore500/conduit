@@ -1,27 +1,36 @@
 [submodule "third-party/Empirical"]
   path = third-party/Empirical
   url = https://github.com/devosoft/Empirical
+  shallow = true
 [submodule "third-party/force-cover"]
   path = third-party/force-cover
   url = https://github.com/emilydolson/force-cover
+  shallow = true
 [submodule "third-party/benchmark"]
   path = third-party/benchmark
   url = https://github.com/google/benchmark.git
+  shallow = true
 [submodule "third-party/emsdk"]
   path = third-party/emsdk
   url = https://github.com/emscripten-core/emsdk
+  shallow = true
 [submodule "third-party/mimalloc"]
   path = third-party/mimalloc
   url = https://github.com/microsoft/mimalloc
+  shallow = true
 [submodule "third-party/metis"]
   path = third-party/metis
   url = https://github.com/KarypisLab/METIS.git
+  shallow = true
 [submodule "third-party/readerwriterqueue"]
   path = third-party/readerwriterqueue
   url = https://github.com/cameron314/readerwriterqueue
+  shallow = true
 [submodule "third-party/SPSCQueue"]
   path = third-party/SPSCQueue
   url = https://github.com/rigtorp/SPSCQueue
+  shallow = true
 [submodule "third-party/stduuid"]
   path = third-party/stduuid
   url = https://github.com/mmore500/stduuid.git
+  shallow = true
