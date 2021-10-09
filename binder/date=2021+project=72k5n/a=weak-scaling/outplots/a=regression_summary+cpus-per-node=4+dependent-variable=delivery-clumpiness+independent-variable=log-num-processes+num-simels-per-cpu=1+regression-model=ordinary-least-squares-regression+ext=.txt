@@ -3,8 +3,8 @@
 Dep. Variable:     Q('Delivery Clumpiness')   R-squared:                       0.277
 Model:                                  OLS   Adj. R-squared:                  0.237
 Method:                       Least Squares   F-statistic:                     6.891
-Date:                      Wed, 06 Oct 2021   Prob (F-statistic):             0.0172
-Time:                              21:51:52   Log-Likelihood:                 54.494
+Date:                      Sat, 09 Oct 2021   Prob (F-statistic):             0.0172
+Time:                              19:09:15   Log-Likelihood:                 54.494
 No. Observations:                        20   AIC:                            -105.0
 Df Residuals:                            18   BIC:                            -103.0
 Df Model:                                 1                                         
