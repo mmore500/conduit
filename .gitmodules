@@ -1,10 +1,10 @@
 [submodule "third-party/Empirical"]
   path = third-party/Empirical
-  url = https://github.com/devosoft/Empirical
+  url = https://github.com/devosoft/Empirical.git
   shallow = true
 [submodule "third-party/force-cover"]
   path = third-party/force-cover
-  url = https://github.com/emilydolson/force-cover
+  url = https://github.com/emilydolson/force-cover.git
   shallow = true
 [submodule "third-party/benchmark"]
   path = third-party/benchmark
@@ -12,11 +12,11 @@
   shallow = true
 [submodule "third-party/emsdk"]
   path = third-party/emsdk
-  url = https://github.com/emscripten-core/emsdk
+  url = https://github.com/emscripten-core/emsdk.git
   shallow = true
 [submodule "third-party/mimalloc"]
   path = third-party/mimalloc
-  url = https://github.com/microsoft/mimalloc
+  url = https://github.com/microsoft/mimalloc.git
   shallow = true
 [submodule "third-party/metis"]
   path = third-party/metis
@@ -24,11 +24,11 @@
   shallow = true
 [submodule "third-party/readerwriterqueue"]
   path = third-party/readerwriterqueue
-  url = https://github.com/cameron314/readerwriterqueue
+  url = https://github.com/cameron314/readerwriterqueue.git
   shallow = true
 [submodule "third-party/SPSCQueue"]
   path = third-party/SPSCQueue
-  url = https://github.com/rigtorp/SPSCQueue
+  url = https://github.com/rigtorp/SPSCQueue.git
   shallow = true
 [submodule "third-party/stduuid"]
   path = third-party/stduuid
