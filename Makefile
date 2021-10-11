@@ -50,14 +50,15 @@ serve:
 	python3 -m http.server
 
 install-coverage-dependencies:
-	git submodule init && git submodule update \
-		&& cd third-party/force-cover && make
+	git submodule init
+	git submodule update
+	$(MAKE) -C third-party/force-cover/
 
 cov: install-coverage-dependencies
-	cd tests && make cov
+	$(MAKE) cov -C tests/
 
 documentation-coverage:
-	cd docs && make coverage
+	$(MAKE) coverage -C docs/
 
 documentation-coverage-badge.json: documentation-coverage
 	python3 ci/parse_documentation_coverage.py docs/_build/doc-coverage.json > web/documentation-coverage-badge.json
@@ -71,23 +72,23 @@ doto-badge.json:
 clean:
 	rm -f $(PROJECT) web/$(PROJECT).js web/*.js.map web/*.js.map *~ source/*.o web/*.wasm web/*.wast
 	rm -rf coverage_include
-	cd docs && make clean
-	cd demos && make clean
-	cd macrobenchmarks && make clean
-	cd microbenchmarks && make clean
-	cd tests && make clean
+	$(MAKE) clean -C docs/
+	$(MAKE) clean -C demos/
+	$(MAKE) clean -C macrobenchmarks/
+	$(MAKE) clean -C microbenchmarks/
+	$(MAKE) clean -C tests/
 
 docs:
-	cd docs && make html
+	$(MAKE) html -C docs/
 
 demos:
-	cd demos && make
+	$(MAKE) -C demos/
 
 macrobenchmark:
-	cd macrobenchmarks && make bench
+	$(MAKE) bench -C macrobenchmarks/
 
 microbenchmark:
-	cd microbenchmarks && make bench
+	$(MAKE) bench -C microbenchmarks/
 
 benchmark: macrobenchmark microbenchmark
 
@@ -102,15 +103,15 @@ test-source: debug debug-web
 
 test:
 	test $TRAVIS && mkdir -p "~/.openmpi/" && touch "~/.openmpi/mca-params.conf" && grep -qxF 'btl_base_warn_component_used = 0' ~/.openmpi/mca-params.conf || echo 'btl_base_warn_component_used = 0' >> ~/.openmpi/mca-params.conf
-	cd tests && make
+	$(MAKE) -C tests/
 
 test-opt:
 	test $TRAVIS && mkdir -p "~/.openmpi/" && touch "~/.openmpi/mca-params.conf" && grep -qxF 'btl_base_warn_component_used = 0' ~/.openmpi/mca-params.conf || echo 'btl_base_warn_component_used = 0' >> ~/.openmpi/mca-params.conf
-	cd tests && make opt
+	$(MAKE) opt -C tests/
 
 test-fulldebug:
 	test $TRAVIS && mkdir -p "~/.openmpi/" && touch "~/.openmpi/mca-params.conf" && grep -qxF 'btl_base_warn_component_used = 0' ~/.openmpi/mca-params.conf || echo 'btl_base_warn_component_used = 0' >> ~/.openmpi/mca-params.conf
-	cd tests && make fulldebug
+	$(MAKE) fulldebug -C tests/
 
 test-all: test test-opt test-fulldebug
 
