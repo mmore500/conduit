@@ -137,6 +137,7 @@ RUN \
     python3-sphinx \
     python3-virtualenv \
     python3-wheel \
+    rename \
     rsync \
     slurm-client \
     software-properties-common \
