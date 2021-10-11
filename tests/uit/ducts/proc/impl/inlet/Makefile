@@ -14,22 +14,22 @@ TARGET_NAMES += templated
 default: test
 
 test-%: %
-	$(MAKE) test -C $<
+	cd $< && make test
 
 opt-%: %
-	$(MAKE) opt -C $<
+	cd $< && make opt
 
 fulldebug-%: %
-	$(MAKE) fulldebug -C $<
+	cd $< && make fulldebug
 
 cranky-%: %
-	$(MAKE) cranky -C $<
+	cd $< && make cranky
 
 cov-%: %
-	$(MAKE) cov -C $<
+	cd $< && make cov
 
 clean-%: %
-	$(MAKE) clean -C $<
+	cd $< && make clean
 
 # Test in debug mode without pointer tracker
 test: $(addprefix test-, $(TARGET_NAMES))
