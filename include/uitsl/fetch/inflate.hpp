@@ -28,13 +28,13 @@ namespace uitsl {
  */
 inline void inflate(gzFile_s* source_handle, FILE* dest_handle) {
 
- unsigned char buf[UITSL_INFLATE_CHUNK];
+  unsigned char buf[UITSL_INFLATE_CHUNK];
 
- for (
-   int size = gzread(source_handle, buf, UITSL_INFLATE_CHUNK);
-   size > 0;
-   size = gzread(source_handle, buf, UITSL_INFLATE_CHUNK)
- ) std::fwrite(buf, 1, size, dest_handle);
+  for (
+    int size = gzread(source_handle, buf, UITSL_INFLATE_CHUNK);
+    size > 0;
+    size = gzread(source_handle, buf, UITSL_INFLATE_CHUNK)
+  ) std::fwrite(buf, 1, size, dest_handle);
 
 }
 

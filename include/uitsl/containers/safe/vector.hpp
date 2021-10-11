@@ -270,7 +270,7 @@ public:
   ) {
     const std::unique_lock lock{ mutex };
     return impl.insert(position, first, last);
- }
+  }
 
   iterator insert(
     const_iterator position,
