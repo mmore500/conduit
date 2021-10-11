@@ -3,8 +3,8 @@
 Dep. Variable:     Q('Simstep Period Outlet (ns)')   R-squared:                       0.994
 Model:                                         OLS   Adj. R-squared:                  0.994
 Method:                              Least Squares   F-statistic:                     7725.
-Date:                             Sun, 10 Oct 2021   Prob (F-statistic):           1.09e-54
-Time:                                     18:21:53   Log-Likelihood:                -909.19
+Date:                             Mon, 11 Oct 2021   Prob (F-statistic):           1.09e-54
+Time:                                     06:21:57   Log-Likelihood:                -909.19
 No. Observations:                               50   AIC:                             1822.
 Df Residuals:                                   48   BIC:                             1826.
 Df Model:                                        1                                         
