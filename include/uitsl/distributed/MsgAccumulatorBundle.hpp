@@ -16,7 +16,7 @@ template<typename T>
 class MsgAccumulatorBundle {
 
   constexpr static size_t epoch_embed_items {
-     uitsl::div_ceil(sizeof(size_t), sizeof(T))
+    uitsl::div_ceil(sizeof(size_t), sizeof(T))
   };
 
   size_t data_size;

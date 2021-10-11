@@ -27,6 +27,8 @@ decorator==4.4.2
     #   traitlets
 defusedxml==0.7.1
     # via nbconvert
+editorconfig-checker==2.3.5
+    # via -r requirements.in
 entrypoints==0.3
     # via nbconvert
 exdown==0.7.0
@@ -165,7 +167,9 @@ pyyaml==5.4.1
 pyzmq==22.2.1
     # via jupyter-client
 requests==2.25.1
-    # via osfclient
+    # via
+    #   editorconfig-checker
+    #   osfclient
 scipy==1.5.4
     # via
     #   -r requirements.in

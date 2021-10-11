@@ -32,34 +32,34 @@ import sys
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.coverage',
-    'sphinx.ext.mathjax',
-    'breathe',
-    'exhale',
-    'sphinx_rtd_theme',
-    'myst_parser',
-    'sphinxemoji.sphinxemoji',
+  'sphinx.ext.coverage',
+  'sphinx.ext.mathjax',
+  'breathe',
+  'exhale',
+  'sphinx_rtd_theme',
+  'myst_parser',
+  'sphinxemoji.sphinxemoji',
 ]
 
 # Setup the breathe extension
 breathe_projects = {
-    "Conduit": "./doxyoutput/xml"
+  "Conduit": "./doxyoutput/xml"
 }
 breathe_default_project = "Conduit"
 
 # Setup the exhale extension
 exhale_args = {
-    # These arguments are required
-    "containmentFolder":     "./api",
-    "rootFileName":          "library_root.rst",
-    "rootFileTitle":         "Library API",
-    "doxygenStripFromPath":  "..",
-    # Suggested optional arguments
-    "createTreeView":        True,
-    # TIP: if using the sphinx-bootstrap-theme, you need
-    # "treeViewIsBootstrap": True,
-    "exhaleExecutesDoxygen": True,
-    "exhaleDoxygenStdin":    "INPUT = ../include"
+  # These arguments are required
+  "containmentFolder":   "./api",
+  "rootFileName":      "library_root.rst",
+  "rootFileTitle":     "Library API",
+  "doxygenStripFromPath":  "..",
+  # Suggested optional arguments
+  "createTreeView":    True,
+  # TIP: if using the sphinx-bootstrap-theme, you need
+  # "treeViewIsBootstrap": True,
+  "exhaleExecutesDoxygen": True,
+  "exhaleDoxygenStdin":  "INPUT = ../include",
 }
 
 # Tell sphinx what the primary language being documented is.
@@ -151,9 +151,9 @@ html_theme = 'sphinx_rtd_theme'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-#    'collapse_navigation': False,
-#    'sticky_navigation': True,
-    'titles_only': False
+#  'collapse_navigation': False,
+#  'sticky_navigation': True,
+  'titles_only': False,
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -263,8 +263,13 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Conduit.tex', 'Conduit Documentation',
-     'Matthew Andres Moreno', 'manual'),
+  (
+    master_doc,
+    'Conduit.tex',
+    'Conduit Documentation',
+    'Matthew Andres Moreno',
+    'manual',
+  ),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -293,8 +298,13 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'conduit', 'Conduit Documentation',
-     [author], 1)
+  (
+    master_doc,
+    'conduit',
+    'Conduit Documentation',
+    [author],
+    1,
+  ),
 ]
 
 # If true, show URL addresses after external links.
@@ -307,9 +317,15 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Conduit', 'Conduit Documentation',
-     author, 'Conduit', 'One line description of project.',
-     'Miscellaneous'),
+  (
+    master_doc,
+    'Conduit',
+    'Conduit Documentation',
+    author,
+    'Conduit',
+    'One line description of project.',
+    'Miscellaneous',
+  ),
 ]
 
 # Documents to append as an appendix to all manuals.
@@ -331,11 +347,11 @@ texinfo_documents = [
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if on_rtd: # rtd doesn't run Makefile, so we have to copy assets ourself
-    subprocess.call(
-        'mkdir -p _build/html/docs/; cp -r assets _build/html/docs/',
-        shell=True,
-    )
+  subprocess.call(
+    'mkdir -p _build/html/docs/; cp -r assets _build/html/docs/',
+    shell=True,
+  )
 else: # only import and set the theme if we're building docs locally
-    import sphinx_rtd_theme
-    html_theme = 'sphinx_rtd_theme'
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+  import sphinx_rtd_theme
+  html_theme = 'sphinx_rtd_theme'
+  html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
