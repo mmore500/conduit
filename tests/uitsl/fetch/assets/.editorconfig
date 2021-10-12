@@ -1,0 +1,13 @@
+# Configures developers' editors to project coding standards.
+# Requires users to have an editorconfig extension installed on their editor.
+# Adapted largely from https://EditorConfig.org.
+
+# disable editorconfig in this directory
+[*]
+indent_style = unset
+indent_size = unset
+tab_width = unset
+end_of_line = unset
+charset = unset
+trim_trailing_whitespace = unset
+insert_final_newline = unset
