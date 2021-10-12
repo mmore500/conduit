@@ -1021,7 +1021,7 @@ class InstrumentationAggregatingOutletWrapper {
         [](const auto outlet_ptr){ return outlet_ptr->GetNumReadsPerformed(); },
         "Num Reads Performed"
       );
-      res.AddContainerFun(
+       res.AddContainerFun(
         [](const auto outlet_ptr){
           return outlet_ptr->GetNumReadsThatWereFresh();
         },
@@ -1039,7 +1039,7 @@ class InstrumentationAggregatingOutletWrapper {
         },
         "Num Revisions Pulled"
       );
-      res.AddContainerFun(
+       res.AddContainerFun(
         [](const auto outlet_ptr){
           return outlet_ptr->GetNumTryPullsAttempted();
         },
@@ -1049,7 +1049,7 @@ class InstrumentationAggregatingOutletWrapper {
         [](const auto outlet_ptr){ return outlet_ptr->GetNumBlockingPulls(); },
         "Num Blocking Pulls"
       );
-      res.AddContainerFun(
+       res.AddContainerFun(
         [](const auto outlet_ptr){
           return outlet_ptr->GetNumBlockingPullsThatBlocked();
         },
@@ -1073,7 +1073,7 @@ class InstrumentationAggregatingOutletWrapper {
         },
         "Num Pulls Attempted"
       );
-      res.AddContainerFun(
+       res.AddContainerFun(
         [](const auto outlet_ptr){
           return outlet_ptr->GetNumPullsThatWereLadenEventually();
         },

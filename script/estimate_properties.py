@@ -14,14 +14,14 @@ import statsmodels.formula.api as smf
 import sys
 
 try:
-  __, synchronous = sys.argv
+    __, synchronous = sys.argv
 except:
-  raise ValueError('specify "synchronous" as argument')
+    raise ValueError('specify "synchronous" as argument')
 
 try:
-  synchronous = int(synchronous)
+    synchronous = int(synchronous)
 except:
-  raise ValueError('"synchronous" should be an integer')
+    raise ValueError('"synchronous" should be an integer')
 
 assert synchronous in (0, 1), '"synchronous" should be 0 or 1'
 
@@ -42,19 +42,19 @@ def estimate_latency(group):
   }
 
   for spec, val in (
-    (
-      {
-        'statistic' : statistic,
-        'name' : decoder[parameter],
-      },
-      getter(parameter)
-    ) for parameter in model.params.keys()
-    for statistic, getter in (
-      ('Estimated', lambda param: model.params[parameter]),
-      ('Lower Bound', lambda param: model.conf_int()[0][param]),
-      ('Upper Bound', lambda param: model.conf_int()[1][param]),
-    )
-  ):
+        (
+            {
+              'statistic' : statistic,
+              'name' : decoder[parameter],
+            },
+            getter(parameter)
+        ) for parameter in model.params.keys()
+        for statistic, getter in (
+          ('Estimated', lambda param: model.params[parameter]),
+          ('Lower Bound', lambda param: model.conf_int()[0][param]),
+          ('Upper Bound', lambda param: model.conf_int()[1][param]),
+         )
+    ):
     group['{statistic} {name}'.format(**spec)] = val
 
   return group
@@ -162,8 +162,8 @@ def estimate_properties(model):
   #   Parameter2 : [val3, val4]
   # }
   conf_ints = {
-    col : list(bounds)
-    for col, bounds in model.conf_int().iterrows()
+      col : list(bounds)
+      for col, bounds in model.conf_int().iterrows()
   }
 
   # take the product of dicts

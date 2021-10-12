@@ -21,11 +21,11 @@ struct EmptyCompletion
 /*
 The alternative implementation of __barrier_base is a central barrier.
 Two versions of this algorithm are provided:
-  1. A fairly straightforward implementation of the litterature for the
-    general case where the completion function is not empty.
-  2. An optimized implementation that exploits 2's complement arithmetic
-    and well-defined overflow in atomic arithmetic, to handle the phase
-    roll-over for free.
+ 1. A fairly straightforward implementation of the litterature for the
+  general case where the completion function is not empty.
+ 2. An optimized implementation that exploits 2's complement arithmetic
+  and well-defined overflow in atomic arithmetic, to handle the phase
+  roll-over for free.
 */
 
 template<class OnCompletion=EmptyCompletion>

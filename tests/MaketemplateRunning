@@ -32,7 +32,7 @@ cov: FLAGS := -std=c++17 -pipe -pthread -march=native -g -Wall -Wno-unused-funct
 cov:: $(addprefix cov-, $(TARGET_NAMES))
 
 cov-%: % $(TO_ROOT)/coverage_include
-	cd $< && make cov
+	$(MAKE) cov -C $<
 
 clean::
 	rm -f *.out
