@@ -213,15 +213,6 @@ RUN \
     && \
   echo "installed Python packages"
 
-# install scripts associated with Python packages to /usr/local/bin
-# (shouldn't show up on PYTHONPATH i.e., be "import"-able)
-RUN \
-  pip3 install --target /usr/local --timeout 60 --retries 100 -r /opt/conduit/third-party/requirements.txt \
-    && \
-  pip3 install --target /usr/local --timeout 60 --retries 100 -r /opt/conduit/docs/requirements.txt \
-    && \
-  echo "installed Python package scripts"
-
 RUN \
   update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 90 \
     && \
@@ -305,5 +296,17 @@ RUN \
   echo "/context/ /__w/ directories set up, user granted permissions"
 
 USER user
+
+# must be installed as user for executable to be available on PATH
+RUN \
+  pip3 install --timeout 60 --retries 100 editorconfig-checker==2.3.54 \
+    && \
+  ln -s /home/user/.local/bin/ec /home/user/.local/bin/editorconfig-checker \
+    && \
+  echo "installed editorconfig-checker"
+
+# adapted from https://askubuntu.com/a/799306
+# and https://stackoverflow.com/a/38905161
+ENV PATH "/home/user/.local/bin:$PATH"
 
 CMD ["bash"]
