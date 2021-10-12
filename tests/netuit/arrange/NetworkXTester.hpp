@@ -22,9 +22,10 @@ inline emp::vector<dim_t> find_assets(const std::string& name, const std::string
   emp::vector<dim_t> files;
   for (const auto& p : std::filesystem::directory_iterator(base_directory)) {
     const auto file = emp::keyname::unpack(p.path());
-    if (file.count("name") && file.count("ext") &&
-        file.at("name") == name && file.at("ext") == ext
-       ) {
+    if (
+      file.count("name") && file.count("ext") &&
+      file.at("name") == name && file.at("ext") == ext
+    ) {
       // matching file found
       emp_assert(file.count("ndims"));
       // get ndims

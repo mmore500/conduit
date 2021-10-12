@@ -234,7 +234,7 @@ public:
    *
    * @return TODO.
    */
-   optional_ref_t GetNextOrNullopt() {
+  optional_ref_t GetNextOrNullopt() {
     uitsl_occupancy_audit(1);
     return TryStep()
       ? optional_ref_t{ std::reference_wrapper{ Get() } }

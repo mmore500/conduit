@@ -8,22 +8,22 @@ TARGET_NAMES += channel_selection
 default: test
 
 test-%: %
-	cd $< && make test
+	$(MAKE) test -C $<
 
 opt-%: %
-	cd $< && make opt
+	$(MAKE) opt -C $<
 
 fulldebug-%: %
-	cd $< && make fulldebug
+	$(MAKE) fulldebug -C $<
 
 cranky-%: %
-	cd $< && make cranky
+	$(MAKE) cranky -C $<
 
 clean-%: %
-	cd $< && make clean
+	$(MAKE) clean -C $<
 
-cov-%:
-	cd $(@:cov-%=%) && make cov
+cov-%: %
+	$(MAKE) cov -C $<
 
 cov: coverage_conversion $(addprefix cov-, $(TARGET_NAMES))
 
