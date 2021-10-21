@@ -8,7 +8,7 @@ alabaster==0.7.12
     # via sphinx
 attrs==20.3.0
     # via markdown-it-py
-babel==2.9.0
+babel==2.9.1
     # via sphinx
 beautifulsoup4==4.9.3
     # via bs4
@@ -67,8 +67,6 @@ snowballstemmer==2.1.0
     # via sphinx
 soupsieve==2.2
     # via beautifulsoup4
-sphinx-rtd-theme==0.5.0
-    # via -r requirements.in
 sphinx==3.1.2
     # via
     #   -r requirements.in
@@ -77,6 +75,8 @@ sphinx==3.1.2
     #   myst-parser
     #   sphinx-rtd-theme
     #   sphinxemoji
+sphinx-rtd-theme==0.5.0
+    # via -r requirements.in
 sphinxcontrib-applehelp==1.0.2
     # via sphinx
 sphinxcontrib-devhelp==1.0.2
