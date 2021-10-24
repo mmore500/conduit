@@ -74,30 +74,6 @@ jobs:
           branch: binder-artifacts # The branch the action should deploy to.
           folder: deploy-artifacts # The folder the action should deploy.
 
-  # unit:
-  #   name: Unit Tests
-  #   runs-on: ubuntu-20.04
-  #   needs:
-  #     - docker-build
-  #   strategy:
-  #     matrix:
-  #       mpicxx: [mpich, openmpi]
-  #       mode: [ Debug, Opt ]
-  #     fail-fast: false
-  #   container:
-  #     image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
-  #     # github actions requires root to access mounted volumes
-  #     options: --cap-add=SYS_ADMIN
-  #     env:
-  #       DISH_MPICXX: mpicxx.${{ matrix.mpicxx }}
-  #       OMPI_CXX: clang++
-  #   steps:
-  #     - run: |
-  #         cd /opt/conduit/
-  #         cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=.${{ matrix.mpicxx }}
-  #         cmake --build build
-  #         cd build
-  #         ctest
   unit:
     name: Unit Tests
     runs-on: ubuntu-20.04
@@ -108,15 +84,22 @@ jobs:
         mpicxx: [mpich, openmpi]
         mode: [ Debug, Opt ]
       fail-fast: false
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --user=user --cap-add=SYS_ADMIN
+      env:
+        DISH_MPICXX: mpicxx.${{ matrix.mpicxx }}
+        OMPI_CXX: clang++
     steps:
-      - uses: docker-practice/actions-setup-docker@v1
-      - run: >
-          docker run "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c
-          "cd /opt/conduit/ &&
-          cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=.${{ matrix.mpicxx }} &&
-          cmake --build build &&
-          cd build &&
-          ctest"
+      # undo github actions override of HOME to "/home/github/"
+      - run: |
+          export HOME="/home/user/"
+          cd /opt/conduit/
+          cmake -S . -B build -GNinja -DCMAKE_BUILD_TYPE=${{ matrix.mode }} -DMPI_EXECUTABLE_SUFFIX=.${{ matrix.mpicxx }}
+          cmake --build build
+          cd build
+          ctest
 
   coverage:
     name: Coverage
