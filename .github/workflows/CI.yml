@@ -208,26 +208,18 @@ jobs:
     runs-on: ubuntu-20.04
     needs:
       - docker-build
+    container:
+      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      # github actions requires root to access mounted volumes
+      options: --cap-add=SYS_ADMIN
     steps:
-      - run: docker run --cap-add=SYS_ADMIN "mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}" /bin/bash -c "cd /opt/conduit && make test-source && make docs && make demos"
-
-  # TODO: figure out how to fix npm error
-  # docs:
-  #   name: Source, Docs, Demos
-  #   runs-on: ubuntu-20.04
-  #   needs:
-  #     - docker-build
-  #   container:
-  #     image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
-  #     # github actions requires root to access mounted volumes
-  #     options: --cap-add=SYS_ADMIN
-  #   steps:
-  #     - run: |
-  #         sudo chown -R 1000:1000 "/github/home/.npm"
-  #         cd /opt/conduit
-  #         make test-source
-  #         make docs
-  #         make demos
+      # undo github actions override of HOME to "/home/github/"
+      - run: |
+          export HOME="/home/user/"
+          cd /opt/conduit
+          make test-source
+          make docs
+          make demos
 
   deploy-pages:
     name: Deploy to GitHub Pages
