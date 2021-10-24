@@ -4,7 +4,7 @@ Dep. Variable:     Q('Simstep Period Outlet (ns)')   Pseudo R-squared:          
 Model:                                    QuantReg   Bandwidth:                   2.166e+05
 Method:                              Least Squares   Sparsity:                    4.541e+05
 Date:                             Sun, 24 Oct 2021   No. Observations:                   50
-Time:                                     01:31:53   Df Residuals:                       48
+Time:                                     23:19:53   Df Residuals:                       48
                                                      Df Model:                            1
 ============================================================================================
                                coef    std err          t      P>|t|      [0.025      0.975]
