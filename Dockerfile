@@ -43,6 +43,7 @@ RUN \
     && \
   echo "removed -backports, -updates, -proposed, -security repositories"
 
+# adapted in part form https://www.cloudsavvyit.com/13461/how-to-run-puppeteer-and-headless-chrome-in-a-docker-container/
 RUN \
   apt-get update -qq \
     && \
@@ -72,10 +73,13 @@ RUN \
     libdbus-1-3 \
     libexpat1 \
     libfontconfig1 \
+    libgbm-dev \
     libgconf-2-4 \
     libgdk-pixbuf2.0-0 \
     libglib2.0-0 \
     libgtk-3-0 \
+    libicu-dev \
+    libjpeg-dev \
     libhdf5-100 \
     libhdf5-cpp-100 \
     libhdf5-dev \
@@ -94,6 +98,7 @@ RUN \
     libopenmpi2 \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \
+    libpng-dev \
     libpthread-stubs0-dev \
     libstdc++-7-dev \
     libstdc++6=8-20180414-1ubuntu2 \
