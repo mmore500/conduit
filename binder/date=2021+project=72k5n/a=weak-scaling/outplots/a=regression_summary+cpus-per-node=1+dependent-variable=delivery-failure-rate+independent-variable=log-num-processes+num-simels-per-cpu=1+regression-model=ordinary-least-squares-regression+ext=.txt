@@ -4,7 +4,7 @@ Dep. Variable:     Q('Delivery Failure Rate')   R-squared:                      
 Model:                                    OLS   Adj. R-squared:                    nan
 Method:                         Least Squares   F-statistic:                       nan
 Date:                        Mon, 25 Oct 2021   Prob (F-statistic):                nan
-Time:                                01:04:07   Log-Likelihood:                    inf
+Time:                                03:09:46   Log-Likelihood:                    inf
 No. Observations:                          20   AIC:                              -inf
 Df Residuals:                              18   BIC:                              -inf
 Df Model:                                   1                                         

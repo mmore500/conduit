@@ -4,7 +4,7 @@ Dep. Variable:     Q('Latency Walltime Inlet (ns)')   R-squared:                
 Model:                                          OLS   Adj. R-squared:                  0.052
 Method:                               Least Squares   F-statistic:                     2.037
 Date:                              Mon, 25 Oct 2021   Prob (F-statistic):              0.171
-Time:                                      01:04:08   Log-Likelihood:                -265.15
+Time:                                      03:09:46   Log-Likelihood:                -265.15
 No. Observations:                                20   AIC:                             534.3
 Df Residuals:                                    18   BIC:                             536.3
 Df Model:                                         1                                         
