@@ -115,6 +115,14 @@ jobs:
         OMPI_CXX: clang++
         CC: clang
         CXX: clang++
+        # env variables listed in https://codecov.io/env
+        GITHUB_HEAD_REF: ${{ github.head_ref }}
+        GITHUB_REF: ${{ github.ref }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_RUN_ID: ${{ github.run_id }}
+        GITHUB_SERVER_URL: ${{ github.server_url }}
+        GITHUB_SHA: ${{ github.sha }}
+        GITHUB_WORKFLOW: ${{ github.workflow }}
     steps:
       - run: |
           cd /opt/conduit/
@@ -122,12 +130,13 @@ jobs:
           cmake --build build --target ccov-show-test-netuit
           cmake --build build --target ccov-show-test-uit
           cmake --build build --target ccov-show-test-uitsl
-      - uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: true
-          verbose: true
-          directory: /opt/conduit
+          # adapted from https://docs.codecov.com/docs/codecov-uploader
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov -t ${{ secrets.CODECOV_TOKEN }}
+          # @MAM 10-2021: running manually because
+          # codecov/codecov-action@v1 and @v2 don't work
+          # due to permissions errors
 
   microbenchmarks:
     name: Microbenchmarks
