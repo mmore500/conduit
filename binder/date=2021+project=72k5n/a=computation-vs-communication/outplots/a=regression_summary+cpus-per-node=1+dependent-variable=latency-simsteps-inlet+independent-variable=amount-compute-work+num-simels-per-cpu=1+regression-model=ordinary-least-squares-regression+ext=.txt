@@ -3,8 +3,8 @@
 Dep. Variable:     Q('Latency Simsteps Inlet')   R-squared:                         nan
 Model:                                     OLS   Adj. R-squared:                    nan
 Method:                          Least Squares   F-statistic:                       nan
-Date:                         Sun, 31 Oct 2021   Prob (F-statistic):                nan
-Time:                                 01:26:31   Log-Likelihood:                    nan
+Date:                         Sun, 07 Nov 2021   Prob (F-statistic):                nan
+Time:                                 01:30:00   Log-Likelihood:                    nan
 No. Observations:                           50   AIC:                               nan
 Df Residuals:                               48   BIC:                               nan
 Df Model:                                    1                                         
