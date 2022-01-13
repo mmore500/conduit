@@ -235,6 +235,7 @@ uitsl/parallel/ThreadLocalChecker.cpp
 uitsl/parallel/ThreadMap.cpp
 uitsl/polyfill/filesystem_emscripten.cpp
 uitsl/polyfill/filesystem_native.cpp
+uitsl/polyfill/remove_cvref.cpp
 uitsl/utility/NamedArrayElement.cpp
 uitsl/utility/inflate.cpp
 uitsl/utility/untar.cpp

@@ -212,9 +212,11 @@ RUN \
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
 RUN \
-  pip3 install --timeout 60 --retries 100 -r /opt/conduit/third-party/requirements.txt \
+  python3 -m pip install --timeout 60 --retries 100 --upgrade pip==21.3.1 \
     && \
-  pip3 install --timeout 60 --retries 100 -r /opt/conduit/docs/requirements.txt \
+  python3 -m pip install --timeout 60 --retries 100 --ignore-installed -r /opt/conduit/third-party/requirements.txt \
+    && \
+  python3 -m pip install --timeout 60 --retries 100 --ignore-installed -r /opt/conduit/docs/requirements.txt \
     && \
   echo "installed Python packages"
 
