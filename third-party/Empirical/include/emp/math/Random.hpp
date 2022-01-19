@@ -22,6 +22,79 @@
 #include "Range.hpp"
 
 namespace emp {
+
+namespace impl {
+
+// implementation helper for GetRandZeroSymmetricPareto
+double calc_p_zero_symmetric_pareto_fat_side(
+  const double alpha, const double lambda, const double m, const double n
+) {
+
+  if (n == m) return 0.5;
+
+  const double res_addend = (
+    1.0 / (
+      2.0
+      - std::pow( lambda/(n + lambda), alpha)
+      - std::pow( lambda/(m + lambda), alpha)
+    )
+  );
+
+  double res_subtrahend_denom;
+  res_subtrahend_denom = (
+    std::pow( (m + lambda), alpha )
+    * (2.0 * std::pow( lambda, -alpha) - std::pow(n + lambda, -alpha))
+    - 1.0
+  );
+  // need a fallback way to calculate for numerical stability
+  if (std::isnan(res_subtrahend_denom)) res_subtrahend_denom = (
+    2.0 * std::pow( (m + lambda)/lambda, alpha )
+    - std::pow( (m + lambda)/(n + lambda), alpha )
+    - 1.0
+  );
+
+  const double res = res_addend - 1.0 / res_subtrahend_denom;
+  emp_assert(
+    std::isfinite(res)
+    && std::clamp(res, 0.4999, 1.0001) == res,
+    res
+  );
+  return res;
+
+}
+
+// implementation helper for GetRandZeroSymmetricPareto
+double calc_p_zero_symmetric_pareto_skinny_side(
+  const double alpha, const double lambda, const double m, const double n
+) {
+
+  const double res = (
+      1.0
+      - std::pow(lambda / (n + lambda), alpha)
+    ) / (
+      2.0
+      - std::pow(lambda / (n + lambda), alpha)
+      - std::pow(lambda / (m + lambda), alpha)
+  );
+  emp_assert(
+    std::isfinite(res)
+    && std::clamp(res, 0.0, 0.5001) == res,
+    res
+  );
+
+  // assert p_fat_side and p_skinny_side are complimentary outcomes
+  emp_assert( std::abs(
+    1.0
+    - calc_p_zero_symmetric_pareto_fat_side(alpha, lambda, m, n)
+    - res
+  ) < 0.001, res );
+
+  return res;
+
+}
+
+} // namespace impl
+
   using namespace emp;
 
   ///  Middle Square Weyl Sequence: A versatile and non-patterned pseudo-random-number
@@ -212,6 +285,95 @@ namespace emp {
     /// @param mean Center of distribution.
     /// @param std Standard deviation of distribution.
     inline double GetRandNormal(const double mean, const double std) { return mean + GetRandNormal() * std; }
+
+    /// @return A random variable drawn from a pareto distribution.
+    /// @param alpha Shape parameter (default 1).
+    /// @param lower_bound Lower bound (default 1).
+    /// @param upper_bound Upper bound (default infinity, unbounded).
+    /// See <https://en.wikipedia.org/wiki/Pareto_distribution>
+    inline double GetRandPareto(
+      const double alpha=1.0,
+      const double lower_bound=1.0,
+      const double upper_bound=std::numeric_limits<double>::infinity()
+    ) {
+      emp_assert( alpha > 0.0, alpha );
+      emp_assert( lower_bound > 0.0, lower_bound );
+      emp_assert( lower_bound <= upper_bound, lower_bound, upper_bound );
+      if (lower_bound == upper_bound) return lower_bound;
+      // uses inverse transform sampling method
+      // see https://en.wikipedia.org/wiki/Inverse_transform_sampling
+      // and https://en.wikipedia.org/wiki/Pareto_distribution
+
+      // see https://gist.github.com/mmore500/b6de0158a8851ce6e3d65105ed35197f
+      // for validation and testing
+      // url has also been archived on the archive.org wayback machine
+
+      const double unif_lb = std::pow(lower_bound / upper_bound, alpha);
+      constexpr double unif_ub = 1.0;
+      const double unif_sample = GetDouble(unif_lb, unif_ub);
+
+      return lower_bound / std::pow(unif_sample, 1.0/alpha);
+    }
+
+    /// @return A random variable drawn from a pareto distribution.
+    /// @param alpha Shape parameter (default 1).
+    /// @param lambda Scale parameter (default 1).
+    /// @param upper_bound Upper bound (default infinity, unbounded).
+    /// See <https://en.wikipedia.org/wiki/Lomax_distribution>
+    inline double GetRandLomax(
+      const double alpha=1.0,
+      const double lambda=1.0,
+      const double upper_bound=std::numeric_limits<double>::infinity()
+    ) {
+      emp_assert( alpha > 0.0, alpha );
+      emp_assert( lambda > 0.0, lambda );
+      emp_assert( upper_bound >= 0.0, upper_bound );
+      return GetRandPareto(alpha, lambda, upper_bound + lambda) - lambda;
+    }
+
+    /// @return A random variable drawn from a distribution with symmetric
+    /// pareto tails extending both positively and negatively from zero.
+    /// @param alpha Shape parameter (default 1).
+    /// @param lambda Scale parameter (default 1).
+    /// @param lower_bound Lower bound (default -infinity, unbounded).
+    /// @param upper_bound Upper bound (default infinity, unbounded).
+    /// Inspired by <https://doi.org/10.1109/TBC.2004.834013>
+    inline double GetRandZeroSymmetricPareto(
+      const double alpha=1.0,
+      const double lambda=1.0,
+      const double lower_bound=-std::numeric_limits<double>::infinity(),
+      const double upper_bound=std::numeric_limits<double>::infinity()
+    ) {
+      emp_assert( alpha > 0.0, alpha );
+      emp_assert( lower_bound <= 0, lower_bound );
+      emp_assert( upper_bound >= 0, upper_bound );
+
+      // see https://gist.github.com/mmore500/2b95ef3279e49fc1780b3b319c35083a
+      // for derivations and validation
+      // url has also been archived on the archive.org wayback machine
+
+      const double n = std::min(std::abs(lower_bound), upper_bound);
+      const double m = std::max(std::abs(lower_bound), upper_bound);
+
+      // probability of picking on the skinny side of zero
+      const double p_skinny_side
+        = impl::calc_p_zero_symmetric_pareto_skinny_side(
+          alpha, lambda, m, n
+        );
+
+      // is the fat side of the distribution negative?
+      const bool skinny_side_is_positive = std::abs(lower_bound) > upper_bound;
+
+      // pick which side of zero to draw from then do draw with a lomax dist
+      if (P(p_skinny_side) == skinny_side_is_positive) {
+        // draw from positive side
+        return GetRandLomax(alpha, lambda, upper_bound);
+      } else {
+        // draw from negative side
+        return -GetRandLomax(alpha, lambda, std::abs(lower_bound));
+      }
+
+    }
 
     /// Generate a random variable drawn from a Poisson distribution.
     inline uint32_t GetRandPoisson(const double n, const double p) {

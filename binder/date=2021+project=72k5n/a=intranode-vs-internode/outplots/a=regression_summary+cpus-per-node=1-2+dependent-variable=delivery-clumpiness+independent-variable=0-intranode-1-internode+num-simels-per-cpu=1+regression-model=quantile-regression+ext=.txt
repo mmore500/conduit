@@ -3,8 +3,8 @@
 Dep. Variable:     Q('Delivery Clumpiness')   Pseudo R-squared:               0.9851
 Model:                             QuantReg   Bandwidth:                     0.01167
 Method:                       Least Squares   Sparsity:                      0.02285
-Date:                      Sun, 16 Jan 2022   No. Observations:                   20
-Time:                              00:47:16   Df Residuals:                       18
+Date:                      Wed, 19 Jan 2022   No. Observations:                   20
+Time:                              05:00:43   Df Residuals:                       18
                                               Df Model:                            1
 ======================================================================================================
                                          coef    std err          t      P>|t|      [0.025      0.975]
