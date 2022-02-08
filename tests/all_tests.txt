@@ -236,6 +236,9 @@ uitsl/parallel/ThreadMap.cpp
 uitsl/polyfill/filesystem_emscripten.cpp
 uitsl/polyfill/filesystem_native.cpp
 uitsl/polyfill/remove_cvref.cpp
+uitsl/utility/get_exec_instance_uuid.cpp
+uitsl/utility/get_proc_instance_uuid.cpp
+uitsl/utility/get_thread_instance_uuid.cpp
 uitsl/utility/NamedArrayElement.cpp
 uitsl/utility/inflate.cpp
 uitsl/utility/untar.cpp

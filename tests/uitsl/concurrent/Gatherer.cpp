@@ -9,8 +9,6 @@
 #include "Empirical/include/emp/base/vector.hpp"
 
 #include "uitsl/concurrent/Gatherer.hpp"
-#if 0
-#endif
 #include "uitsl/debug/safe_cast.hpp"
 #include "uitsl/mpi/mpi_init_utils.hpp"
 #include "uitsl/nonce/CircularIndex.hpp"
