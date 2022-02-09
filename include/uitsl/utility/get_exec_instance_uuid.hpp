@@ -86,16 +86,6 @@ uuids::uuid get_exec_instance_uuid() {
 
 }
 
-uuids::uuid get_proc_instance_uuid() {
-  static auto uuid = uitsl::generate_random_uuid();
-  return uuid;
-}
-
-uuids::uuid get_thread_instance_uuid() {
-  thread_local auto uuid = uitsl::generate_random_uuid();
-  return uuid;
-}
-
 } // namespace uitsl
 
 #endif // #ifndef UITSL_UTILITY_GET_EXEC_INSTANCE_UUID_HPP_INCLUDE
