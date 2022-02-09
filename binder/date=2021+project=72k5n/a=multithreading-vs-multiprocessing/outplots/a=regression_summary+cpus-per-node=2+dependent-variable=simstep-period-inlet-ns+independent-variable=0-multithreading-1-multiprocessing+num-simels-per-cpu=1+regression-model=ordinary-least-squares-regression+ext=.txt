@@ -3,8 +3,8 @@
 Dep. Variable:     Q('Simstep Period Inlet (ns)')   R-squared:                       0.987
 Model:                                        OLS   Adj. R-squared:                  0.987
 Method:                             Least Squares   F-statistic:                     1408.
-Date:                            Tue, 08 Feb 2022   Prob (F-statistic):           1.52e-18
-Time:                                    22:15:56   Log-Likelihood:                -139.02
+Date:                            Wed, 09 Feb 2022   Prob (F-statistic):           1.52e-18
+Time:                                    03:28:15   Log-Likelihood:                -139.02
 No. Observations:                              20   AIC:                             282.0
 Df Residuals:                                  18   BIC:                             284.0
 Df Model:                                       1                                         

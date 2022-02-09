@@ -3,8 +3,8 @@
 Dep. Variable:     Q('Delivery Failure Rate')   R-squared:                       0.986
 Model:                                    OLS   Adj. R-squared:                  0.985
 Method:                         Least Squares   F-statistic:                     1264.
-Date:                        Tue, 08 Feb 2022   Prob (F-statistic):           3.96e-18
-Time:                                22:15:09   Log-Likelihood:                 50.209
+Date:                        Wed, 09 Feb 2022   Prob (F-statistic):           3.96e-18
+Time:                                03:27:13   Log-Likelihood:                 50.209
 No. Observations:                          20   AIC:                            -96.42
 Df Residuals:                              18   BIC:                            -94.43
 Df Model:                                   1                                         
