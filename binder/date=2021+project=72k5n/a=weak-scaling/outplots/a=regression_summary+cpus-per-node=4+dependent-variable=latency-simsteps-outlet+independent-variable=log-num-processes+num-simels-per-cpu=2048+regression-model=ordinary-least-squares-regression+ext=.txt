@@ -3,8 +3,8 @@
 Dep. Variable:     Q('Latency Simsteps Outlet')   R-squared:                       0.014
 Model:                                      OLS   Adj. R-squared:                 -0.041
 Method:                           Least Squares   F-statistic:                    0.2559
-Date:                          Sun, 06 Mar 2022   Prob (F-statistic):              0.619
-Time:                                  00:55:58   Log-Likelihood:                 30.157
+Date:                          Sun, 13 Mar 2022   Prob (F-statistic):              0.619
+Time:                                  00:54:58   Log-Likelihood:                 30.157
 No. Observations:                            20   AIC:                            -56.31
 Df Residuals:                                18   BIC:                            -54.32
 Df Model:                                     1                                         
