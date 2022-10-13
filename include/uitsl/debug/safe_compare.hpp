@@ -5,8 +5,6 @@
 #include <limits>
 #include <type_traits>
 
-#include "../../../third-party/Empirical/include/emp/math/math.hpp"
-
 namespace uitsl {
 
 namespace internal {

@@ -6,8 +6,9 @@
 #include <regex>
 #include <sstream>
 #include <string>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../uit_emp/tools/string_utils.hpp"
 
 // TODO be clever and use fewer overloads
 
@@ -112,14 +113,14 @@ inline std::string format_member<const void *>(
 
 template<typename T>
 std::string to_string(const T & container) {
-  emp::vector<std::string> res;
+  std::vector<std::string> res;
   std::transform(
     std::begin(container),
     std::end(container),
     std::back_inserter(res),
-    [](const auto & x){ return emp::to_string(x); }
+    [](const auto & x){ return uit_emp::to_string(x); }
   );
-  return emp::join_on(res, ", ");
+  return uit_emp::join_on(res, ", ");
 }
 
 } // namespace uitsl

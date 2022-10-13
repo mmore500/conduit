@@ -3,6 +3,7 @@
 #define UITSL_FETCH_UNTAR_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <charconv>
 #include <fstream>
 #include <numeric>
@@ -12,10 +13,8 @@
 
 #include <sys/stat.h>
 
-#include "../../../third-party/Empirical/include/emp/base/always_assert_warning.hpp"
-#include "../../../third-party/Empirical/include/emp/base/errors.hpp"
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../uit_emp/base/errors.hpp"
+#include "../../uit_emp/tools/string_utils.hpp"
 
 #include "../debug/err_audit.hpp"
 #include "../nonce/ScopeGuard.hpp"
@@ -80,7 +79,7 @@ inline bool try_set_perms( const stdfs::path& path, const stdfs::perms mode ) {
 
   stdfs::permissions(path, mode, err);
 
-  if ( err ) emp::NotifyWarning( emp::to_string(
+  if ( err ) uit_emp::NotifyWarning( uit_emp::to_string(
     "setting permissions for ", path, " failed with error code ", err
   ) );
 
@@ -127,10 +126,10 @@ inline bool try_mkdir( const stdfs::path& target, const stdfs::perms mode ) {
   // stdfs::create_directories is failing inside Docker container
   // so use mkdir as a backup for now
   if (! stdfs::exists(path) ) uitsl_err_audit( mkdir( path.c_str(), 0755 ) );
-  emp_assert( stdfs::exists(path) );
+  assert( stdfs::exists(path) );
 
   if ( err ) {
-    emp::NotifyError( emp::to_string(
+    uit_emp::NotifyError( uit_emp::to_string(
       "creating directory ", path, " failed with error code ", err
     ) );
     return false; // failure
@@ -173,7 +172,7 @@ inline bool unpack_file_chunk(
   const size_t bytes_traversed{ std::fread( buff, 1, 512, source ) };
 
   if ( bytes_traversed < 512 ) {
-    emp::NotifyError( emp::to_string(
+    uit_emp::NotifyError( uit_emp::to_string(
       "short read: expected 512 bytes, got ", bytes_traversed
     ) );
     return false;
@@ -182,7 +181,7 @@ inline bool unpack_file_chunk(
   const size_t bytes_read{ std::min( bytes_remaining, bytes_traversed ) };
 
   if ( std::fwrite(buff, 1, bytes_read, dest) != bytes_read ) {
-    emp::NotifyError( "failed write" );
+    uit_emp::NotifyError( "failed write" );
     return false;
   }
 
@@ -221,16 +220,16 @@ inline bool try_skip(
   const size_t size
 ) {
 
-  emp::NotifyWarning( emp::to_string( "ignoring ", category, " ", path ) );
+  uit_emp::NotifyWarning( uit_emp::to_string( "ignoring ", category, " ", path ) );
 
   if ( size % 512 != 0 ) {
-    emp::NotifyError( emp::to_string( "size not multiple of 512 ", size ) );
+    uit_emp::NotifyError( uit_emp::to_string( "size not multiple of 512 ", size ) );
     return false; // failure
   }
 
   const auto res{ std::fseek( source, size, SEEK_CUR ) };
   if ( res != 0 ) {
-    emp::NotifyError( "bad seek, error code ", res );
+    uit_emp::NotifyError( "bad seek, error code ", res );
     return false; // failure
   };
 
@@ -259,7 +258,7 @@ inline bool try_unpack_chunk( const std::string_view buff, FILE* source ) {
 
 /// Process chunk of a tar file.
 /// @return true if complete, false if incomplete, nullopt on failure
-inline emp::optional<bool> try_process_chunk( FILE* source ) {
+inline std::optional<bool> try_process_chunk( FILE* source ) {
 
   char buff[512];
   std::string_view buff_view{ buff, 512 };
@@ -267,7 +266,7 @@ inline emp::optional<bool> try_process_chunk( FILE* source ) {
   const size_t bytes_read{ std::fread(buff, 1, 512, source) };
 
   if (bytes_read < 512) {
-    emp::NotifyError( emp::to_string(
+    uit_emp::NotifyError( uit_emp::to_string(
       "short read: expected 512, got ", bytes_read
     ) );
     return std::nullopt; // failure
@@ -276,7 +275,7 @@ inline emp::optional<bool> try_process_chunk( FILE* source ) {
   if ( is_end_of_archive( buff_view ) ) return true; // success
 
   if ( verify_checksum( buff_view ) == false ) {
-    emp::NotifyError( "checksum failure" );
+    uit_emp::NotifyError( "checksum failure" );
     return std::nullopt;
   }
 
@@ -297,7 +296,7 @@ inline bool untar(const std::string& filename) {
   FILE *source = std::fopen(filename.c_str(), "r");
 
   if ( source == nullptr ) {
-    emp::NotifyError( "could not open ", filename );
+    uit_emp::NotifyError( "could not open ", filename );
     return false; // failure
   }
 
@@ -307,7 +306,7 @@ inline bool untar(const std::string& filename) {
     const auto res{ internal::try_process_chunk( source ) };
 
     if ( !res.has_value() ) {
-      emp::NotifyError( emp::to_string( "untar failure ", filename ) );
+      uit_emp::NotifyError( uit_emp::to_string( "untar failure ", filename ) );
       return false; // failure
     }
     else if ( *res ) return true; // success

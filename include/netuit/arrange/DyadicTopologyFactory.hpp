@@ -2,7 +2,8 @@
 #ifndef NETUIT_ARRANGE_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
 #define NETUIT_ARRANGE_DYADICTOPOLOGYFACTORY_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <cassert>
+#include <vector>
 
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"
@@ -52,8 +53,8 @@ struct DyadicTopologyFactory {
     return make_dyadic_topology(cardinality);
   }
 
-  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
-    emp_assert(cardinality.size() == 1);
+  netuit::Topology operator()(const std::vector<size_t> cardinality) const {
+    assert(cardinality.size() == 1);
     return make_dyadic_topology(cardinality.front());
   }
 

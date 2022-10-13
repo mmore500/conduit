@@ -3,6 +3,7 @@
 #define UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_CEREAL_IMPL_CEREALDEQUEIMMEDIATESENDDUCT_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <memory>
 #include <stddef.h>
 #include <string>
@@ -12,10 +13,9 @@
 #include <mpi.h>
 
 #include "../../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/io/ContiguousStream.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+
+#include "../../../../../../../uit_emp/base/always_assert.hpp"
+#include "../../../../../../../uit_emp/io/ContiguousStream.hpp"
 
 #include "../../../../../../../uitsl/meta/c::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -27,6 +27,7 @@
 
 #include "../../../backend/MockBackEnd.hpp"
 
+#include "../../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uit {
 namespace internal {
 
@@ -49,16 +50,16 @@ private:
   static_assert( uitsl::c::static_test<T>(), uitsl_c_message );
 
   // newest requests are pushed back, oldest requests are at front
-  std::deque<std::tuple<emp::ContiguousStream, uitsl::Request>> buffer;
+  std::deque<std::tuple<uit_emp::ContiguousStream, uitsl::Request>> buffer;
 
   const uit::InterProcAddress address;
 
   void PostSend() {
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
 
     ImmediateSendFunctor{}(
-      std::get<emp::ContiguousStream>(buffer.back()).GetData(),
-      std::get<emp::ContiguousStream>(buffer.back()).GetSize(),
+      std::get<uit_emp::ContiguousStream>(buffer.back()).GetData(),
+      std::get<uit_emp::ContiguousStream>(buffer.back()).GetSize(),
       MPI_BYTE,
       address.GetOutletProc(),
       address.GetTag(),
@@ -66,14 +67,14 @@ private:
       &std::get<uitsl::Request>(buffer.back())
     );
 
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
   }
 
   bool TryFinalizeSend() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     if (uitsl::test_completion( std::get<uitsl::Request>(buffer.front()) )) {
-      emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+      assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
       buffer.pop_front();
       return true;
     } else return false;
@@ -81,12 +82,12 @@ private:
   }
 
   void CancelPendingSend() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     UITSL_Cancel( &std::get<uitsl::Request>(buffer.front()) );
     UITSL_Request_free( &std::get<uitsl::Request>(buffer.front()) );
 
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     buffer.pop_front();
   }
@@ -113,11 +114,11 @@ public:
    */
   bool TryPut(const T& val) {
     buffer.emplace_back();
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
     { // oarchive flushes on destruction
-      std::get<emp::ContiguousStream>(buffer.back()).Reset();
+      std::get<uit_emp::ContiguousStream>(buffer.back()).Reset();
       cereal::BinaryOutputArchive oarchive(
-        std::get<emp::ContiguousStream>(buffer.back())
+        std::get<uit_emp::ContiguousStream>(buffer.back())
       );
       oarchive(val);
     }
@@ -163,5 +164,6 @@ public:
 
 } // namespace internal
 } // namespace uit
+#include "../../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_CEREAL_IMPL_CEREALDEQUEIMMEDIATESENDDUCT_HPP_INCLUDE

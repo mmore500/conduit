@@ -2,13 +2,14 @@
 #ifndef NETUIT_ARRANGE_SOFTRANDOMGEOMETRICTOPOLOGYFACTORY_HPP_INCLUDE
 #define NETUIT_ARRANGE_SOFTRANDOMGEOMETRICTOPOLOGYFACTORY_HPP_INCLUDE
 
+#include <cassert>
 #include <cstdlib>
 #include <fstream>
 #include <ratio>
 #include <set>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../uit_emp/tools/string_utils.hpp"
 
 #include "../../uitsl/debug/err_verify.hpp"
 #include "../../uitsl/fetch/make_temp_filepath.hpp"
@@ -51,7 +52,7 @@ inline Topology make_soft_random_geometric_topology(
               file.write(line + '\n')
       )" ) + "\"";
 
-  const std::string command = emp::format_string(
+  const std::string command = uit_emp::format_string(
     command_template, n, radius, dim, tmpfile.c_str()
   );
 
@@ -74,8 +75,8 @@ struct SoftRandomGeometricTopologyFactory {
 
   }
 
-  netuit::Topology operator()(const emp::vector<size_t>& cardinality) const {
-    emp_assert(cardinality.size() == 1);
+  netuit::Topology operator()(const std::vector<size_t>& cardinality) const {
+    assert(cardinality.size() == 1);
     return make_soft_random_geometric_topology(
       cardinality.front(),
       static_cast<double>( Radius::num ) / Radius::den,

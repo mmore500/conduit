@@ -4,15 +4,15 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <limits>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/base/always_assert.hpp"
+#include "../../../../../../uit_emp/base/assert.hpp"
 
 #include "../../../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../../../uitsl/distributed/RdmaPacket.hpp"
@@ -25,6 +25,8 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/RdmaBackEnd.hpp"
+
+#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace t {
@@ -71,7 +73,7 @@ public:
     address.GetOutletProc() == uitsl::get_rank(address.GetComm())
       ? back_end->GetWindowManager().Acquire(
         address.GetInletProc(),
-        emp::vector<std::byte>(
+        std::vector<std::byte>(
           reinterpret_cast<std::byte*>(&cache),
           reinterpret_cast<std::byte*>(&cache) + sizeof(packet_t)
         )
@@ -104,7 +106,7 @@ public:
   }
 
   size_t TryConsumeGets(const size_t requested) {
-    emp_assert( requested == std::numeric_limits<size_t>::max() );
+    assert( requested == std::numeric_limits<size_t>::max() );
 
     // lock own window
     back_end->GetWindowManager().LockShared( address.GetInletProc() );
@@ -147,5 +149,7 @@ public:
 
 } // namespace t
 } // namespace uit
+
+#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_GET_SKIPPING_TYPE_TRIVIAL_T__WINDOWDUCT_HPP_INCLUDE

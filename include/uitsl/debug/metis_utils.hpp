@@ -8,6 +8,10 @@
 #include <metis.h>
 #endif
 
+#include "../../uit_emp/base/assert.hpp"
+
+#include "../../uit_emp/vendorization/push_macros.hh"
+
 namespace uitsl::metis {
 inline void verify(const int status) {
   #ifndef __EMSCRIPTEN__
@@ -36,5 +40,7 @@ inline void verify(const int status) {
 }
 
 } // namespace uitsl::metis
+
+#include "../../uit_emp/vendorization/pop_macros.hh"
 
 #endif // #ifndef UITSL_DEBUG_METIS_UTILS_HPP_INCLUDE

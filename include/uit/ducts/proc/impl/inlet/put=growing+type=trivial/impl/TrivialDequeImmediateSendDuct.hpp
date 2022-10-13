@@ -3,6 +3,7 @@
 #define UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_IMPL_TRIVIALDEQUEIMMEDIATESENDDUCT_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <memory>
 #include <stddef.h>
 #include <string>
@@ -11,9 +12,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -24,6 +23,8 @@
 #include "../../../../../../setup/InterProcAddress.hpp"
 
 #include "../../../backend/MockBackEnd.hpp"
+
+#include "../../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace internal {
@@ -52,7 +53,7 @@ private:
   const uit::InterProcAddress address;
 
   void PostSend() {
-    emp_assert( uitsl::test_null(
+    assert( uitsl::test_null(
       std::get<uitsl::Request>(buffer.back())
     ) );
 
@@ -69,10 +70,10 @@ private:
   }
 
   bool TryFinalizeSend() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     if (uitsl::test_completion( std::get<uitsl::Request>(buffer.front()) )) {
-      emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+      assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
       buffer.pop_front();
       return true;
     } else return false;
@@ -80,12 +81,12 @@ private:
   }
 
   void CancelPendingSend() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     UITSL_Cancel( &std::get<uitsl::Request>(buffer.front()) );
     UITSL_Request_free( &std::get<uitsl::Request>(buffer.front()) );
 
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     buffer.pop_front();
   }
@@ -115,7 +116,7 @@ public:
       val,
       uitsl::Request{}
     );
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
     PostSend();
     return true;
   }
@@ -158,5 +159,7 @@ public:
 
 } // namespace internal
 } // namespace uit
+
+#include "../../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_IMPL_TRIVIALDEQUEIMMEDIATESENDDUCT_HPP_INCLUDE

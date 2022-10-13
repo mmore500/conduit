@@ -2,6 +2,8 @@
 #ifndef NETUIT_ARRANGE_PROCONTOPOLOGYFACTORY_HPP_INCLUDE
 #define NETUIT_ARRANGE_PROCONTOPOLOGYFACTORY_HPP_INCLUDE
 
+#include <vector>
+
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"
 #include "../topology/TopoNode.hpp"
@@ -49,7 +51,7 @@ struct ProConTopologyFactory {
     return make_producer_consumer_topology(cardinality);
   }
 
-  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
+  netuit::Topology operator()(const std::vector<size_t> cardinality) const {
     emp_assert(cardinality.size() == 1);
     return make_producer_consumer_topology(cardinality.front());
   }

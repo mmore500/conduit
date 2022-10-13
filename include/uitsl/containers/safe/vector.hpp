@@ -3,8 +3,7 @@
 #define UITSL_CONTAINERS_SAFE_VECTOR_HPP_INCLUDE
 
 #include <shared_mutex>
-
-#include "../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <vector>
 
 namespace uitsl {
 namespace safe {
@@ -12,7 +11,7 @@ namespace safe {
 template<class T, class Allocator = std::allocator<T>>
 class vector {
 
-  using impl_t = emp::vector<T, Allocator>;
+  using impl_t = std::vector<T, Allocator>;
 
   mutable std::shared_mutex mutex;
 

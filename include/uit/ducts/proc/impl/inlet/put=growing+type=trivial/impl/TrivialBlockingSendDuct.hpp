@@ -10,9 +10,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -23,6 +21,7 @@
 
 #include "../../../backend/MockBackEnd.hpp"
 
+#include "../../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uit {
 namespace internal {
 
@@ -109,5 +108,7 @@ public:
 
 } // namespace internal
 } // namespace uit
+
+#include "../../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_IMPL_TRIVIALBLOCKINGSENDDUCT_HPP_INCLUDE

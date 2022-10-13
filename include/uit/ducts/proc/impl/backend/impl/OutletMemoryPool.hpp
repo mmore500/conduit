@@ -3,11 +3,10 @@
 #define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_OUTLETMEMORYPOOL_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <map>
-
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <optional>
+#include <vector>
 
 #include "../../../../../fixtures/Source.hpp"
 #include "../../../../../setup/InterProcAddress.hpp"
@@ -21,11 +20,11 @@ template<typename PoolSpec>
 class OutletMemoryPool {
 
   using address_t = uit::InterProcAddress;
-  emp::vector<address_t> addresses;
+  std::vector<address_t> addresses;
 
   template<typename T>
   using outlet_wrapper_t = typename PoolSpec::template outlet_wrapper_t<T>;
-  emp::optional<outlet_wrapper_t<uit::Outlet<PoolSpec>>> outlet;
+  std::optional<outlet_wrapper_t<uit::Outlet<PoolSpec>>> outlet;
 
   // incremented every time TryConsumeGets is called
   // then reset to zero once every member of the pool has called
@@ -44,7 +43,7 @@ class OutletMemoryPool {
     current_request = requested;
     current_num_consumed = outlet->TryStep(requested);
 
-    emp_assert( std::all_of(
+    assert( std::all_of(
       std::begin(address_checker),
       std::end(address_checker),
       [this](const auto& addr){
@@ -59,7 +58,7 @@ class OutletMemoryPool {
 
   void CheckCallingProc() const {
     [[maybe_unused]] const auto& rep = addresses.front();
-    emp_assert( rep.GetOutletProc() == uitsl::get_rank( rep.GetComm() ) );
+    assert( rep.GetOutletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
 public:
@@ -70,8 +69,8 @@ public:
 
   /// Retister a duct for an entry in the pool.
   void Register(const address_t& address) {
-    emp_assert( !IsInitialized() );
-    emp_assert( std::find(
+    assert( !IsInitialized() );
+    assert( std::find(
       std::begin( addresses ), std::end( addresses ), address
     ) == std::end( addresses ) );
     addresses.push_back( address );
@@ -80,9 +79,9 @@ public:
   /// Get index of this duct's entry in the pool. This is a log-time operation
   /// so the index should be cached by the caller.
   size_t Lookup(const address_t& address) const {
-    emp_assert( IsInitialized() );
-    emp_assert( std::is_sorted( std::begin(addresses), std::end(addresses) ) );
-    emp_assert( std::find(
+    assert( IsInitialized() );
+    assert( std::is_sorted( std::begin(addresses), std::end(addresses) ) );
+    assert( std::find(
       std::begin( addresses ), std::end( addresses ), address
     ) != std::end( addresses ) );
     CheckCallingProc();
@@ -96,14 +95,14 @@ public:
 
   /// Get the querying duct's current value from the underlying duct.
   value_type& Get(const size_t index) {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
     CheckCallingProc();
     return outlet->Get()[index];
   }
 
   /// Get the querying duct's current value from the underlying duct.
   const value_type& Get(const size_t index) const {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
     CheckCallingProc();
     return outlet->Get()[index];
   }
@@ -113,16 +112,16 @@ public:
     const size_t requested,
     const address_t& address // only incl for debug safety check
   ) {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
     CheckCallingProc();
 
     if ( consume_call_counter == 0 ) DoTryConsumeGets(requested);
 
     // check that same request is being made by each caller in current cycle
-    emp_assert( current_request == requested );
+    assert( current_request == requested );
 
     // check that address is unique
-    emp_assert( address_checker.insert( address ).second );
+    assert( address_checker.insert( address ).second );
 
     ++consume_call_counter;
     consume_call_counter %= GetSize();
@@ -135,9 +134,9 @@ public:
     std::shared_ptr<typename PoolSpec::ProcBackEnd> backend
   ) {
 
-    emp_assert( !IsInitialized() );
+    assert( !IsInitialized() );
 
-    emp_assert( std::adjacent_find(
+    assert( std::adjacent_find(
       std::begin(addresses), std::end(addresses),
       [](const auto& a, const auto& b){
         return a.WhichProcsThreads() != b.WhichProcsThreads()
@@ -145,7 +144,7 @@ public:
         ;
       }
     ) == std::end(addresses) );
-    emp_assert( !addresses.empty() );
+    assert( !addresses.empty() );
 
     std::sort( std::begin( addresses ), std::end( addresses ) );
 
@@ -160,7 +159,7 @@ public:
 
     outlet = source.GetOutlet();
 
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
   }
 

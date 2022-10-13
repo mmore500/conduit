@@ -2,12 +2,14 @@
 #ifndef UITSL_DISTRIBUTED_RDMAWINDOW_HPP_INCLUDE
 #define UITSL_DISTRIBUTED_RDMAWINDOW_HPP_INCLUDE
 
+#include <cassert>
 #include <stddef.h>
+#include <optional>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include "../../uit_emp/tools/string_utils.hpp"
 
 #include "../mpi/audited_routines.hpp"
 #include "../mpi/mpi_init_utils.hpp"
@@ -21,9 +23,9 @@ class RdmaWindow {
 
   std::byte *buffer;
 
-  emp::optional<MPI_Win> window;
+  std::optional<MPI_Win> window;
 
-  emp::vector<std::byte> initialization_bytes;
+  std::vector<std::byte> initialization_bytes;
 
   // this is relative to the window communicator
   // rank where window is located
@@ -43,8 +45,8 @@ public:
   bool IsUninitialized() const { return !window.has_value(); }
 
   // returns index
-  size_t Acquire(const emp::vector<std::byte>& initial_bytes) {
-    emp_assert(IsUninitialized());
+  size_t Acquire(const std::vector<std::byte>& initial_bytes) {
+    assert(IsUninitialized());
 
     const size_t address = initialization_bytes.size();
     initialization_bytes.insert(
@@ -58,7 +60,7 @@ public:
   }
 
   std::byte *GetBytes(const size_t byte_offset) {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     return std::next(
       reinterpret_cast<std::byte *>(buffer),
@@ -68,14 +70,14 @@ public:
   }
 
   const MPI_Win & GetWindow() {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     return window.value();
   }
 
   void LockExclusive() {
 
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     UITSL_Win_lock(
       MPI_LOCK_EXCLUSIVE, // int lock_type
@@ -93,7 +95,7 @@ public:
 
   void LockShared() {
 
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     UITSL_Win_lock(
       MPI_LOCK_SHARED, // int lock_type
@@ -111,7 +113,7 @@ public:
 
   void Unlock() {
 
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     UITSL_Win_unlock(
       local_rank, // int rank
@@ -128,7 +130,7 @@ public:
     const MPI_Aint target_disp
   ) {
 
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     UITSL_Put(
       origin_addr, // const void *origin_addr
@@ -150,8 +152,8 @@ public:
     MPI_Request *request
   ) {
 
-    emp_assert( IsInitialized() );
-    emp_assert( *request );
+    assert( IsInitialized() );
+    assert( *request );
 
     UITSL_Rput(
       origin_addr, // const void *origin_addr
@@ -174,7 +176,7 @@ public:
     const MPI_Aint target_disp
   ) {
 
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     UITSL_Accumulate(
       // const void *origin_addr: initial address of buffer (choice)
@@ -211,7 +213,7 @@ public:
     MPI_Request *request
   ) {
 
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     UITSL_Raccumulate(
       // const void *origin_addr: initial address of buffer (choice)
@@ -244,7 +246,7 @@ public:
 
 
   void Initialize(const proc_id_t target, MPI_Comm comm=MPI_COMM_WORLD) {
-    emp_assert(IsUninitialized());
+    assert(IsUninitialized());
 
     local_rank = target;
 
@@ -278,7 +280,7 @@ public:
     // ensure that RputDucts have received target offsets
     UITSL_Barrier(comm);
 
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
   }
 
@@ -289,9 +291,9 @@ public:
   std::string ToString() const {
 
     std::stringstream ss;
-    ss << uitsl::format_member("IsInitialized()", emp::to_string(IsInitialized()))
+    ss << uitsl::format_member("IsInitialized()", uit_emp::to_string(IsInitialized()))
       << '\n';
-    ss << uitsl::format_member("IsUninitialized()", emp::to_string(IsUninitialized()))
+    ss << uitsl::format_member("IsUninitialized()", uit_emp::to_string(IsUninitialized()))
       << '\n';
     // TODO add print function for MPI_Win
     ss << uitsl::format_member("std::byte *buffer", static_cast<const void *>(buffer))

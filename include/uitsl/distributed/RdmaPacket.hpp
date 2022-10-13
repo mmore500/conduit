@@ -2,6 +2,7 @@
 #ifndef UITSL_DISTRIBUTED_RDMAPACKET_HPP_INCLUDE
 #define UITSL_DISTRIBUTED_RDMAPACKET_HPP_INCLUDE
 
+#include <cstddef>
 #include <tuple>
 #include <type_traits>
 

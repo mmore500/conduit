@@ -4,15 +4,12 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <memory>
 #include <stddef.h>
 #include <string>
 
 #include <mpi.h>
-
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../../uitsl/debug/err_audit.hpp"
@@ -58,7 +55,7 @@ private:
 
   void PostSendRequest() {
 
-    emp_assert( uitsl::test_null( request ) );
+    assert( uitsl::test_null( request ) );
     UITSL_Isend(
       &send_buffer,
       sizeof(packet_t),
@@ -68,22 +65,22 @@ private:
       address.GetComm(),
       &request
     );
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
 
   }
 
   bool TryFinalizeSend() {
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
     return uitsl::test_completion( request );
   }
 
   void CancelPendingSend() {
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
 
     UITSL_Cancel( &request );
     UITSL_Request_free( &request );
 
-    emp_assert( uitsl::test_null( request ) );
+    assert( uitsl::test_null( request ) );
 
   }
 

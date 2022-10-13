@@ -4,6 +4,8 @@
 
 #include <unordered_map>
 
+#include "../../uit_emp/datastructs/tuple_utils.hpp"
+
 namespace uitsl {
 
 /*
@@ -20,7 +22,7 @@ class UIDMap {
   std::unordered_multimap<
     node_tuple,
     size_t,
-    emp::TupleHash<bool, T, T>
+    uit_emp::TupleHash<bool, T, T>
   > map;
 
 public:

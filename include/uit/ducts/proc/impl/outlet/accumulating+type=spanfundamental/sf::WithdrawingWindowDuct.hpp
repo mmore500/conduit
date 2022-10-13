@@ -6,13 +6,11 @@
 #include <array>
 #include <limits>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../uitsl/debug/safe_compare.hpp"
 #include "../../../../../../uitsl/debug/WarnOnce.hpp"
@@ -28,6 +26,8 @@
 
 #include "../../backend/RuntimeSizeBackEnd.hpp"
 #include "../../backend/RuntimeSizeRdmaBackEnd.hpp"
+
+#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace sf {
@@ -82,13 +82,13 @@ public:
     address.GetOutletProc() == uitsl::get_rank(address.GetComm())
     ? back_end->GetWindowManager().Acquire(
       address.GetInletProc(),
-      emp::vector<std::byte>(
+      std::vector<std::byte>(
         reinterpret_cast<std::byte*>(pristine.data()),
         reinterpret_cast<std::byte*>(pristine.data()) + pristine.byte_size()
       )
     ) : -1
   ) {
-    emp_assert( rts.HasSize() || back_end->HasSize() );
+    assert( rts.HasSize() || back_end->HasSize() );
     if (address.GetOutletProc() == uitsl::get_rank(address.GetComm())) {
       MPI_Request req;
       UITSL_Isend(
@@ -116,7 +116,7 @@ public:
   }
 
   size_t TryConsumeGets(const size_t requested) {
-    emp_assert( requested == std::numeric_limits<size_t>::max() );
+    assert( requested == std::numeric_limits<size_t>::max() );
 
     // lock own window
     back_end->GetWindowManager().LockShared( address.GetInletProc() );
@@ -146,7 +146,7 @@ public:
 
     back_end->GetWindowManager().Unlock( address.GetInletProc() );
 
-    emp_assert( cache.GetEpoch() >= 0 );
+    assert( cache.GetEpoch() >= 0 );
 
     return static_cast<size_t>( cache.GetEpoch() );
   }
@@ -171,5 +171,7 @@ public:
 
 } // namespace f
 } // namespace uit
+
+#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_ACCUMULATING_TYPE_SPANFUNDAMENTAL_SF__WITHDRAWINGWINDOWDUCT_HPP_INCLUDE

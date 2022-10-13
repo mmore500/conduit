@@ -4,14 +4,13 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
+#include <vector>
 #include <stddef.h>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../../../uitsl/distributed/RdmaPacket.hpp"
@@ -26,6 +25,7 @@
 
 #include "../../backend/RdmaBackEnd.hpp"
 
+#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uit {
 namespace t {
 
@@ -49,7 +49,7 @@ private:
   constexpr inline static size_t N{ImplSpec::N};
   using packet_t = uitsl::RdmaPacket<T>;
 
-  using buffer_t = emp::array<packet_t, N>;
+  using buffer_t = std::array<packet_t, N>;
   buffer_t buffer{};
 
   size_t epoch{};
@@ -57,7 +57,7 @@ private:
   using index_t = uitsl::CircularIndex<N>;
   index_t put_position{};
 
-  emp::array<uitsl::Request, N> put_requests;
+  std::array<uitsl::Request, N> put_requests;
   size_t pending_puts{};
 
   const uit::InterProcAddress address;
@@ -136,10 +136,10 @@ private:
   void PostPut() {
 
     // make sure that target offset has been received
-    emp_assert( uitsl::test_completion(target_offset_request) );
+    assert( uitsl::test_completion(target_offset_request) );
 
     // TODO handle more than one at a time
-    emp_assert( uitsl::test_null(put_requests[put_position]) );
+    assert( uitsl::test_null(put_requests[put_position]) );
 
     // TODO FIXME what kind of lock is needed here?
     back_end->GetWindowManager().LockShared( address.GetOutletProc() );
@@ -154,7 +154,7 @@ private:
 
     back_end->GetWindowManager().Unlock( address.GetOutletProc() );
 
-    emp_assert( !uitsl::test_null(put_requests[put_position]) );
+    assert( !uitsl::test_null(put_requests[put_position]) );
 
     ++put_position;
     ++pending_puts;
@@ -164,23 +164,23 @@ private:
   index_t CalcStalestPutPos() const { return put_position - pending_puts; }
 
   bool TryFinalizePut() {
-    emp_assert( !uitsl::test_null(put_requests[CalcStalestPutPos()]) );
+    assert( !uitsl::test_null(put_requests[CalcStalestPutPos()]) );
 
     if (uitsl::test_completion( put_requests[CalcStalestPutPos()] )) {
       --pending_puts;
-      emp_assert( uitsl::test_null(put_requests[CalcStalestPutPos() - 1]) );
+      assert( uitsl::test_null(put_requests[CalcStalestPutPos() - 1]) );
       return true;
     } else return false;
 
   }
 
   void CancelPendingPut() {
-    emp_assert(!uitsl::test_null( put_requests[CalcStalestPutPos()] ));
+    assert(!uitsl::test_null( put_requests[CalcStalestPutPos()] ));
 
     UITSL_Cancel( &put_requests[CalcStalestPutPos()] );
     UITSL_Request_free( &put_requests[CalcStalestPutPos()] );
 
-    emp_assert(uitsl::test_null( put_requests[CalcStalestPutPos()] ));
+    assert(uitsl::test_null( put_requests[CalcStalestPutPos()] ));
 
     --pending_puts;
   }
@@ -193,11 +193,11 @@ private:
    * @param val TODO.
    */
   void DoPut(const T& val) {
-    emp_assert( pending_puts < N );
-    emp_assert( uitsl::test_null( put_requests[put_position] ) );
+    assert( pending_puts < N );
+    assert( uitsl::test_null( put_requests[put_position] ) );
     buffer[put_position] = packet_t(val, ++epoch);
     PostPut();
-    emp_assert( pending_puts <= N );
+    assert( pending_puts <= N );
   }
 
   /**
@@ -219,7 +219,7 @@ public:
   , back_end(back_end_)
   {
 
-    emp_assert( std::all_of(
+    assert( std::all_of(
       std::begin(put_requests),
       std::end(put_requests),
       [](const auto& req){ return uitsl::test_null( req ); }
@@ -229,10 +229,10 @@ public:
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
-        emp::vector<std::byte>{}
+        std::vector<std::byte>{}
       );
 
-      // we'll emp_assert later to make sure it actually completed
+      // we'll assert later to make sure it actually completed
       UITSL_Irecv(
         &target_offset, // void *buf
         1, // int count
@@ -249,7 +249,7 @@ public:
   ~RingRputDuct() {
     FlushFinalizedPuts();
     while (pending_puts) CancelPendingPut();
-    emp_assert( std::all_of(
+    assert( std::all_of(
       std::begin(put_requests),
       std::end(put_requests),
       [](const auto& req){ return uitsl::test_null( req ); }
@@ -305,4 +305,5 @@ public:
 } // namespace t
 } // namespace uit
 
+#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_DROPPING_TYPE_TRIVIAL_T__RINGRPUTDUCT_HPP_INCLUDE

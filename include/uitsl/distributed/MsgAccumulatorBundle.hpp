@@ -3,10 +3,9 @@
 #define UITSL_DISTRIBUTED_MSGACCUMULATORBUNDLE_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <cstring>
-
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/polyfill/span.hpp"
+#include <vector>
 
 #include "../math/divide_utils.hpp"
 
@@ -22,7 +21,7 @@ class MsgAccumulatorBundle {
   size_t data_size;
   // holds data within size then epoch past the end
   // within reserved capacity
-  emp::vector<T> buff;
+  std::vector<T> buff;
 
   size_t const size() const { return buff.size(); }
 
@@ -36,9 +35,9 @@ public:
     return sizeof(T) * data_size + sizeof(size_t);
   }
 
-  emp::vector<T>& GetData() { return buff; }
+  std::vector<T>& GetData() { return buff; }
 
-  const emp::vector<T>& GetData() const { return buff; }
+  const std::vector<T>& GetData() const { return buff; }
 
   void Reset() {
     buff.reserve(data_size + epoch_embed_items);
@@ -52,7 +51,7 @@ public:
   }
 
   size_t GetEpoch() const {
-    emp_assert( buff.size() == data_size );
+    assert( buff.size() == data_size );
     size_t res;
     std::memcpy(
       &res,
@@ -63,7 +62,7 @@ public:
   }
 
   void SetEpoch(const size_t val) {
-    emp_assert( buff.size() == data_size );
+    assert( buff.size() == data_size );
     std::memcpy(
       buff.data() + data_size,
       &val,
@@ -75,9 +74,9 @@ public:
     SetEpoch( GetEpoch() + amt );
   }
 
-  void BumpData(const emp::vector<T>& bumps) {
-    emp_assert( buff.size() == data_size );
-    emp_assert( bumps.size() == data_size  );
+  void BumpData(const std::vector<T>& bumps) {
+    assert( buff.size() == data_size );
+    assert( bumps.size() == data_size  );
     std::transform(
       std::begin(bumps),
       std::end(bumps),
@@ -91,7 +90,7 @@ public:
   : data_size( data_size_ )
   { Reset(); }
 
-  explicit MsgAccumulatorBundle(const emp::vector<T>& data)
+  explicit MsgAccumulatorBundle(const std::vector<T>& data)
   : data_size( data.size() )
   , buff( data )
   {
@@ -99,7 +98,7 @@ public:
     SetEpoch( size_t{} );
   }
 
-  explicit MsgAccumulatorBundle(emp::vector<T>&& data)
+  explicit MsgAccumulatorBundle(std::vector<T>&& data)
   : data_size( data.size() )
   , buff( std::move(data) )
   {

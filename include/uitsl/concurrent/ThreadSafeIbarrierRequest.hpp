@@ -2,11 +2,10 @@
 #ifndef UITSL_CONCURRENT_THREADSAFEIBARRIERREQUEST_HPP_INCLUDE
 #define UITSL_CONCURRENT_THREADSAFEIBARRIERREQUEST_HPP_INCLUDE
 
+#include <optional>
 #include <mutex>
 
 #include <mpi.h>
-
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 #include "../distributed/IbarrierRequest.hpp"
 
@@ -18,7 +17,7 @@ namespace uitsl {
 class ThreadSafeIbarrierRequest {
 
   /// Request handle corresponding to Ibarrier call.
-  emp::optional<uitsl::IbarrierRequest> request{ std::nullopt };
+  std::optional<uitsl::IbarrierRequest> request{ std::nullopt };
 
   static inline std::mutex mutex{};
 

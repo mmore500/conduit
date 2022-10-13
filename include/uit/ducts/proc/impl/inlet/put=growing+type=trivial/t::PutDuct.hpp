@@ -4,14 +4,13 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../../../uitsl/distributed/RdmaPacket.hpp"
@@ -25,6 +24,8 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/RdmaBackEnd.hpp"
+
+#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace t {
@@ -49,7 +50,7 @@ private:
   constexpr inline static size_t N{ImplSpec::N};
   using packet_t = uitsl::RdmaPacket<T>;
 
-  using buffer_t = emp::array<packet_t, N>;
+  using buffer_t = std::array<packet_t, N>;
   buffer_t buffer{};
 
   size_t epoch{};
@@ -64,7 +65,7 @@ private:
   void DoPut(const packet_t& packet) {
 
     // make sure that target offset has been received
-    emp_assert( uitsl::test_completion(target_offset_request) );
+    assert( uitsl::test_completion(target_offset_request) );
 
     // TODO FIXME what kind of lock is needed?
     back_end->GetWindowManager().LockShared( address.GetOutletProc() );
@@ -93,10 +94,10 @@ public:
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
-        emp::vector<std::byte>{}
+        std::vector<std::byte>{}
       );
 
-      // we'll emp_assert later to make sure it actually completed
+      // we'll assert later to make sure it actually completed
       UITSL_Irecv(
         &target_offset, // void *buf
         1, // int count
@@ -149,5 +150,7 @@ public:
 
 } // namespace t
 } // namespace uit
+
+#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_T__PUTDUCT_HPP_INCLUDE

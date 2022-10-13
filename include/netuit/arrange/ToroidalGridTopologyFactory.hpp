@@ -3,15 +3,13 @@
 #define NETUIT_ARRANGE_TOROIDALGRIDTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 #include <list>
 #include <numeric>
 #include <set>
 #include <tuple>
-
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
+#include <vector>
 
 #include "../../uitsl/math/is_perfect_hypercube.hpp"
 #include "../../uitsl/math/mapping_utils.hpp"
@@ -31,8 +29,8 @@ inline netuit::Topology make_toroidal_grid_topology(
   const uitsl::Dims& dim_cardinality
 ) {
 
-  emp_assert( dim_cardinality.size() == 2 ); // two-dimensional
-  emp_assert( std::set<size_t>(
+  assert( dim_cardinality.size() == 2 ); // two-dimensional
+  assert( std::set<size_t>(
     std::begin( dim_cardinality ), std::end( dim_cardinality )
   ).size() == 1 ); // square
 
@@ -45,7 +43,7 @@ inline netuit::Topology make_toroidal_grid_topology(
     std::multiplies<size_t>{}
   );
 
-  emp::vector<netuit::TopoNode> nodes(cardinality);
+  std::vector<netuit::TopoNode> nodes(cardinality);
   uitsl::UIDMap<size_t> node_edge_map;
 
   auto get_north_output_id = [cardinality](const size_t idx){
@@ -112,7 +110,7 @@ inline netuit::Topology make_toroidal_grid_topology(
 struct ToroidalGridTopologyFactory {
 
   netuit::Topology operator()(const size_t cardinality) const {
-    emp_assert( uitsl::is_perfect_hypercube( cardinality, 2 ) );
+    assert( uitsl::is_perfect_hypercube( cardinality, 2 ) );
     const size_t dimension = static_cast<size_t>( std::sqrt(cardinality) );
     return make_toroidal_grid_topology( { dimension, dimension } );
   }

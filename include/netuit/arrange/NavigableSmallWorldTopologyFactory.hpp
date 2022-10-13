@@ -2,13 +2,14 @@
 #ifndef NETUIT_ARRANGE_NAVIGABLESMALLWORLDTOPOLOGYFACTORY_HPP_INCLUDE
 #define NETUIT_ARRANGE_NAVIGABLESMALLWORLDTOPOLOGYFACTORY_HPP_INCLUDE
 
+#include <cassert>
 #include <cstdlib>
 #include <fstream>
 #include <ratio>
 #include <set>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../uit_emp/tools/string_utils.hpp"
 
 #include "../../uitsl/debug/err_verify.hpp"
 #include "../../uitsl/fetch/make_temp_filepath.hpp"
@@ -60,7 +61,7 @@ inline Topology make_navigable_small_world_topology(
               file.write(line + '\n')
       )" ) + "\"";
 
-  const std::string command = emp::format_string(
+  const std::string command = uit_emp::format_string(
     command_template, n, p, q, r, dim, tmpfile.c_str()
   );
 
@@ -81,8 +82,8 @@ struct NavigableSmallWorldTopologyFactory {
 
   }
 
-  netuit::Topology operator()(const emp::vector<size_t>& cardinality) const {
-    emp_assert(
+  netuit::Topology operator()(const std::vector<size_t>& cardinality) const {
+    assert(
       std::set<size_t>(
         std::begin(cardinality), std::end(cardinality)
       ).size() == 1

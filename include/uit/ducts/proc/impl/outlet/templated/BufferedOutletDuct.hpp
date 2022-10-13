@@ -3,14 +3,13 @@
 #define UIT_DUCTS_PROC_IMPL_OUTLET_TEMPLATED_BUFFEREDOUTLETDUCT_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <deque>
 #include <stddef.h>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/nonce/ScopeGuard.hpp"
@@ -19,6 +18,8 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../../impl/inlet/templated/impl/BufferSpec.hpp"
+
+#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 
@@ -53,7 +54,7 @@ private:
     const size_t num_buffers_consumed = outlet.TryConsumeGets(
       std::numeric_limits<size_t>::max()
     );
-    emp_assert( !outlet.Get().empty() );
+    assert( !outlet.Get().empty() );
     current = std::prev( std::end( outlet.Get() ) );
     // estimate number of individual items consumed
     return num_buffers_consumed * outlet.Get().size();
@@ -64,8 +65,8 @@ private:
 
     do {
 
-      emp_assert( !outlet.Get().empty() );
-      emp_assert(std::distance(std::next(current),std::end(outlet.Get())) >= 0);
+      assert( !outlet.Get().empty() );
+      assert(std::distance(std::next(current),std::end(outlet.Get())) >= 0);
 
       const size_t cur_step = std::min(
         static_cast<size_t>(
@@ -150,5 +151,7 @@ public:
 };
 
 } // namespace uit
+
+#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_TEMPLATED_BUFFEREDOUTLETDUCT_HPP_INCLUDE

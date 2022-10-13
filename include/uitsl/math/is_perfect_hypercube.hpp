@@ -8,8 +8,6 @@
 #include <ratio>
 #include <stddef.h>
 
-#include "../../../third-party/Empirical/include/emp/math/math.hpp"
-
 #include "../debug/safe_cast.hpp"
 
 namespace uitsl {

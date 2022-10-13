@@ -4,13 +4,12 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <stddef.h>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../uitsl/distributed/MsgAccumulatorPacket.hpp"
 #include "../../../../../../uitsl/meta/t::static_test.hpp"
@@ -21,6 +20,8 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/MockBackEnd.hpp"
+
+#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace t {
@@ -52,7 +53,7 @@ private:
   const uit::InterProcAddress address;
 
   void PostReceiveRequest() {
-    emp_assert( uitsl::test_null( receive_request ) );
+    assert( uitsl::test_null( receive_request ) );
     UITSL_Irecv(
       &buffer,
       sizeof(packet_t),
@@ -62,22 +63,22 @@ private:
       address.GetComm(),
       &receive_request
     );
-    emp_assert( !uitsl::test_null( receive_request ) );
+    assert( !uitsl::test_null( receive_request ) );
   }
 
   void CancelReceiveRequest() {
-    emp_assert( !uitsl::test_null( receive_request ) );
+    assert( !uitsl::test_null( receive_request ) );
 
     UITSL_Cancel( &receive_request );
     UITSL_Request_free( &receive_request );
 
-    emp_assert( uitsl::test_null( receive_request ) );
+    assert( uitsl::test_null( receive_request ) );
   }
 
   // returns true if receive was full
   bool TryReceive() {
 
-    emp_assert( !uitsl::test_null( receive_request ) );
+    assert( !uitsl::test_null( receive_request ) );
 
     const bool res = uitsl::test_completion( receive_request );
 
@@ -102,7 +103,7 @@ public:
   ~IrecvDuct() {
     FlushReceives();
     CancelReceiveRequest();
-    emp_assert( uitsl::test_null( receive_request ) );
+    assert( uitsl::test_null( receive_request ) );
   }
 
   [[noreturn]] bool TryPut(const T&) const {
@@ -123,7 +124,7 @@ public:
    */
   size_t TryConsumeGets(const size_t num_requested) {
 
-    emp_assert( num_requested == std::numeric_limits<size_t>::max() );
+    assert( num_requested == std::numeric_limits<size_t>::max() );
 
     cache = packet_t{};
 
@@ -164,5 +165,7 @@ public:
 
 } // namespace t
 } // namespace uit
+
+#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_ACCUMULATING_TYPE_TRIVIAL_T__IRECVDUCT_HPP_INCLUDE

@@ -2,7 +2,7 @@
 #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_POOLSPEC_HPP_INCLUDE
 #define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_POOLSPEC_HPP_INCLUDE
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <vector>
 
 #include "../../../../../spouts/wrappers/TrivialSpoutWrapper.hpp"
 
@@ -20,7 +20,7 @@ class PoolSpec {
 
 public:
 
-  using T = emp::vector<typename ImplSpec::T>;
+  using T = std::vector<typename ImplSpec::T>;
 
   template<typename Inlet>
   using inlet_wrapper_t =

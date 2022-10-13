@@ -3,8 +3,7 @@
 #define UITSL_CHRONO_SPLITWATCH_HPP_INCLUDE
 
 #include <chrono>
-
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
+#include <optional>
 
 namespace uitsl {
 
@@ -14,7 +13,7 @@ class SplitWatch {
   using time_point_t = std::chrono::time_point<Clock>;
   using duration_t = typename Clock::duration;
 
-  emp::optional< time_point_t > last;
+  std::optional< time_point_t > last;
 
 public:
 

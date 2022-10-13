@@ -3,13 +3,12 @@
 #define UITSL_MATH_MAPPING_UTILS_HPP_INCLUDE
 
 #include <cmath>
-
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <vector>
 
 namespace uitsl {
 
-using Point = emp::vector<size_t>;
-using Dims = emp::vector<size_t>;
+using Point = std::vector<size_t>;
+using Dims = std::vector<size_t>;
 
 /**
  * This function maps a point in a finite N-dimensional space to 1-dimensional space
@@ -36,7 +35,7 @@ inline size_t linear_encode(const Point& p, const Dims& dims) {
  * @return 1-dimensional mapping
 */
 inline Point linear_decode(size_t r, const Dims& dims) {
-  emp::vector<size_t> decoded;
+  std::vector<size_t> decoded;
   for (size_t i = 0; i < dims.size(); ++i) {
     decoded.push_back(r % dims[i]);
     r /= dims[i];

@@ -2,15 +2,17 @@
 #ifndef NETUIT_ASSIGN_ASSIGNPERFECTHYPERCUBE_HPP_INCLUDE
 #define NETUIT_ASSIGN_ASSIGNPERFECTHYPERCUBE_HPP_INCLUDE
 
+#include <cassert>
 #include <functional>
 #include <numeric>
 #include <stddef.h>
 
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../third-party/Empirical/include/emp/math/math.hpp"
+#include "../../uit_emp/base/assert.hpp"
 
 #include "../../uitsl/math/is_perfect_hypercube.hpp"
 #include "../../uitsl/math/mapping_utils.hpp"
+
+#include "../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace netuit {
 
@@ -25,12 +27,12 @@ struct AssignPerfectHypercube {
   ) : item_dims( n_dims, std::pow( n_items, 1.0/n_dims ) )
   , partition_dims(n_dims, std::pow( n_partitions, 1.0/n_dims ) ) {
 
-    emp_assert( uitsl::is_perfect_hypercube( n_items, n_dims) );
-    emp_assert( uitsl::is_perfect_hypercube( n_partitions, n_dims) );
-    emp_assert( std::accumulate(
+    assert( uitsl::is_perfect_hypercube( n_items, n_dims) );
+    assert( uitsl::is_perfect_hypercube( n_partitions, n_dims) );
+    assert( std::accumulate(
       std::begin(item_dims), std::end(item_dims), 1ul, std::multiplies<size_t>{}
     ) == n_items );
-    emp_assert( std::accumulate(
+    assert( std::accumulate(
       std::begin(partition_dims), std::end(partition_dims),
       1ul, std::multiplies<size_t>{}
     ) == n_partitions );
@@ -41,7 +43,7 @@ struct AssignPerfectHypercube {
     // get item coordinates
     auto coordinates = uitsl::linear_decode( node_id, item_dims );
 
-    emp_assert( item_dims.front() % partition_dims.front() == 0 );
+    assert( item_dims.front() % partition_dims.front() == 0 );
 
     // transform into partition coordinates
     for (auto& coord : coordinates) {
@@ -61,5 +63,7 @@ struct AssignPerfectHypercube {
 };
 
 } // namespace netuit
+
+#include "../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef NETUIT_ASSIGN_ASSIGNPERFECTHYPERCUBE_HPP_INCLUDE

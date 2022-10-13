@@ -2,10 +2,10 @@
 #ifndef UITSL_DATASTRUCTS_MIRROREDRINGBUFFER_HPP_INCLUDE
 #define UITSL_DATASTRUCTS_MIRROREDRINGBUFFER_HPP_INCLUDE
 
+#include <cstring>
+
 #include <sys/mman.h>
 #include <unistd.h>
-
-#include "../../../third-party/Empirical/include/emp/polyfill/span.hpp"
 
 #include "../debug/err_audit.hpp"
 #include "../debug/safe_cast.hpp"

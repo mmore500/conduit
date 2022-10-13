@@ -2,9 +2,8 @@
 #ifndef UITSL_PARALLEL_THREADLOCALCHECKER_HPP_INCLUDE
 #define UITSL_PARALLEL_THREADLOCALCHECKER_HPP_INCLUDE
 
+#include <cassert>
 #include <mutex>
-
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "thread_utils.hpp"
 
@@ -19,7 +18,7 @@ public:
   ThreadLocalChecker()
   { ; }
 
-  void Check() { emp_assert( thread_id == uitsl::get_thread_id() ); }
+  void Check() { assert( thread_id == uitsl::get_thread_id() ); }
 
 };
 

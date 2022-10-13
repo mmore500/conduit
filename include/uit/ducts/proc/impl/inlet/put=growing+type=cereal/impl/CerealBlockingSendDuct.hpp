@@ -10,11 +10,8 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/io/ContiguousStream.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../../uit_emp/base/always_assert.hpp"
+#include "../../../../../../../uit_emp/io/ContiguousStream.hpp"
 
 #include "../../../../../../../uitsl/meta/c::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -25,6 +22,7 @@
 
 #include "../../../backend/MockBackEnd.hpp"
 
+#include "../../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uit {
 namespace internal {
 
@@ -47,7 +45,7 @@ private:
   static_assert( uitsl::c::static_test<T>(), uitsl_c_message );
   constexpr inline static size_t N{ImplSpec::N};
 
-  emp::ContiguousStream buffer;
+  uit_emp::ContiguousStream buffer;
 
   const uit::InterProcAddress address;
 
@@ -122,5 +120,6 @@ public:
 
 } // namespace internal
 } // namespace uit
+#include "../../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_CEREAL_IMPL_CEREALBLOCKINGSENDDUCT_HPP_INCLUDE

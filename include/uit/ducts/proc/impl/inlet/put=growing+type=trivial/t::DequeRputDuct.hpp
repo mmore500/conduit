@@ -4,17 +4,16 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <deque>
 #include <memory>
 #include <stddef.h>
 #include <tuple>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../../../uitsl/distributed/RdmaPacket.hpp"
@@ -29,6 +28,7 @@
 
 #include "../../backend/RdmaBackEnd.hpp"
 
+#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uit {
 namespace t {
 
@@ -67,9 +67,9 @@ private:
   void PostPut() {
 
     // make sure that target offset has been received
-    emp_assert( uitsl::test_completion(target_offset_request) );
+    assert( uitsl::test_completion(target_offset_request) );
 
-    emp_assert( uitsl::test_null(
+    assert( uitsl::test_null(
       std::get<uitsl::Request>(buffer.back())
     ) );
 
@@ -86,17 +86,17 @@ private:
 
     back_end->GetWindowManager().Unlock( address.GetOutletProc() );
 
-    emp_assert( !uitsl::test_null(
+    assert( !uitsl::test_null(
       std::get<uitsl::Request>(buffer.back())
     ) );
 
   }
 
   bool TryFinalizePut() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     if (uitsl::test_completion( std::get<uitsl::Request>(buffer.front()) )) {
-      emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+      assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
       buffer.pop_front();
       return true;
     } else return false;
@@ -104,12 +104,12 @@ private:
   }
 
   void CancelPendingPut() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     UITSL_Cancel( &std::get<uitsl::Request>(buffer.front()) );
     UITSL_Request_free( &std::get<uitsl::Request>(buffer.front()) );
 
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>(buffer.front()) ) );
 
     buffer.pop_front();
   }
@@ -128,10 +128,10 @@ public:
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
-        emp::vector<std::byte>{}
+        std::vector<std::byte>{}
       );
 
-      // we'll emp_assert later to make sure it actually completed
+      // we'll assert later to make sure it actually completed
       UITSL_Irecv(
         &target_offset, // void *buf
         1, // int count
@@ -160,7 +160,7 @@ public:
       packet_t(val, ++epoch),
       uitsl::Request{}
     );
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>(buffer.back()) ) );
     PostPut();
     return true;
   }
@@ -200,5 +200,7 @@ public:
 
 } // namespace t
 } // namespace uit
+
+#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_T__DEQUERPUTDUCT_HPP_INCLUDE

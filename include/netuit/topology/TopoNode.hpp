@@ -5,9 +5,9 @@
 #include <algorithm>
 #include <iostream>
 #include <string_view>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/polyfill/span.hpp"
+#include "../../uit_emp/polyfill/span.hpp"
 
 #include "../../uitsl/utility/print_utils.hpp"
 
@@ -22,8 +22,8 @@ public:
   using input_t = netuit::TopoNodeInput;
   using output_t = netuit::TopoNodeOutput;
 
-  using inputs_t = emp::vector<input_t>;
-  using outputs_t = emp::vector<output_t>;
+  using inputs_t = std::vector<input_t>;
+  using outputs_t = std::vector<output_t>;
 
 private:
   inputs_t inputs;
@@ -85,11 +85,11 @@ public:
   std::string ToString() const {
     std::stringstream ss;
     ss << uitsl::format_member(
-      "emp::vector<netuit::TopoNodeInput> inputs",
+      "std::vector<netuit::TopoNodeInput> inputs",
       uitsl::to_string(inputs)
     ) << '\n';
     ss << uitsl::format_member(
-      "emp::vector<netuit::TopoNodeInput> outputs",
+      "std::vector<netuit::TopoNodeInput> outputs",
       uitsl::to_string(outputs)
     );
     return ss.str();

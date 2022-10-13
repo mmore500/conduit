@@ -6,14 +6,11 @@
 #include <array>
 #include <stddef.h>
 #include <string>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/array.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorPacket.hpp"
@@ -27,6 +24,8 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/RdmaBackEnd.hpp"
+
+#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace f {
@@ -52,7 +51,7 @@ private:
   using packet_t = uitsl::RdmaAccumulatorPacket<T>;
 
   uitsl::Request request{};
-  emp::array<packet_t, 2> buffer{};
+  std::array<packet_t, 2> buffer{};
   packet_t* send_buffer{ &buffer[0] };
   packet_t* prep_buffer{ &buffer[1] };
 
@@ -104,7 +103,7 @@ public:
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
-        emp::vector<std::byte>{}
+        std::vector<std::byte>{}
       );
 
       // we'll emp_assert later to make sure it actually completed
@@ -168,5 +167,7 @@ public:
 
 } // namespace f
 } // namespace uit
+
+#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_ACCUMULATING_TYPE_FUNDAMENTAL_F__RACCUMULATEDUCT_HPP_INCLUDE

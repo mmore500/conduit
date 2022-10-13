@@ -2,7 +2,8 @@
 #ifndef UITSL_DISTRIBUTED_RDMAACCUMULATORPACKET_HPP_INCLUDE
 #define UITSL_DISTRIBUTED_RDMAACCUMULATORPACKET_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/include/emp/base/array.hpp"
+#include <algorithm>
+#include <iterator>
 
 #include "../utility/NamedArrayElement.hpp"
 

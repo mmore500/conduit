@@ -3,16 +3,16 @@
 #define UITSL_NONCE_SPECTOR_HPP_INCLUDE
 
 #include <variant>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/polyfill/span.hpp"
+#include "../../uit_emp/polyfill/span.hpp"
 
 namespace uitsl {
 
 template<typename T>
 class spector {
 
-  using vector_t = emp::vector<T>;
+  using vector_t = std::vector<T>;
   using span_t = std::span<T>;
 
   std::variant<vector_t, span_t> impl;
@@ -139,7 +139,7 @@ public:
    */
   void resize(const size_t count) {
     emp_assert( std::holds_alternative<vector_t>(impl) );
-    std::get<emp::vector<T>>(impl).resize(count);
+    std::get<std::vector<T>>(impl).resize(count);
   }
 
 

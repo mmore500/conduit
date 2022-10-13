@@ -10,9 +10,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../../uit_emp/base/always_assert.hpp"
 
 #include "../../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../../uitsl/debug/err_audit.hpp"
@@ -26,6 +24,7 @@
 
 #include "../../../backend/MockBackEnd.hpp"
 
+#include "../../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uit {
 namespace internal {
 
@@ -55,7 +54,7 @@ private:
 
   void PostSendRequest() {
 
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetHead() ) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetHead() ) ) );
     ImmediateSendFunctor{}(
       &std::get<T>( buffer.GetHead() ),
       sizeof(T),
@@ -65,27 +64,27 @@ private:
       address.GetComm(),
       &std::get<uitsl::Request>( buffer.GetHead() )
     );
-    emp_assert(!uitsl::test_null(std::get<uitsl::Request>( buffer.GetHead() )));
+    assert(!uitsl::test_null(std::get<uitsl::Request>( buffer.GetHead() )));
 
   }
 
   bool TryFinalizeSend() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
     if (uitsl::test_completion( std::get<uitsl::Request>( buffer.GetTail() ) )) {
-      emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.GetTail()) ) );
+      assert( uitsl::test_null( std::get<uitsl::Request>(buffer.GetTail()) ) );
       uitsl_err_audit(!   buffer.PopTail()   );
       return true;
     } else return false;
   }
 
   void CancelPendingSend() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
     UITSL_Cancel( &std::get<uitsl::Request>( buffer.GetTail() ) );
     UITSL_Request_free( &std::get<uitsl::Request>( buffer.GetTail() ) );
 
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
     uitsl_err_audit(!   buffer.PopTail()   );
   }
@@ -98,7 +97,7 @@ private:
    * @param val TODO.
    */
   void DoPut(const T& val) {
-    emp_assert( buffer.GetSize() < N );
+    assert( buffer.GetSize() < N );
 
     uitsl_err_audit(!   buffer.PushHead()   );
 
@@ -176,5 +175,6 @@ public:
 
 } // namespace internal
 } // namespace uit
+#include "../../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_DROPPING_TYPE_TRIVIAL_IMPL_TRIVIALRINGIMMEDIATESENDDUCT_HPP_INCLUDE

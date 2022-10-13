@@ -2,14 +2,12 @@
 #ifndef UIT_DUCTS_THREAD_PUT_GROWING_GET_SKIPPING_TYPE_ANY_A__MUTEXSCONCEDUCT_HPP_INCLUDE
 #define UIT_DUCTS_THREAD_PUT_GROWING_GET_SKIPPING_TYPE_ANY_A__MUTEXSCONCEDUCT_HPP_INCLUDE
 
+#include <cassert>
 #include <limits>
 #include <mutex>
 #include <stddef.h>
 #include <string>
 #include <utility>
-
-#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/meta/a::static_test.hpp"
 #include "../../../../uitsl/utility/print_utils.hpp"
@@ -81,7 +79,7 @@ public:
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {
-    emp_assert( requested == std::numeric_limits<size_t>::max() );
+    assert( requested == std::numeric_limits<size_t>::max() );
     const std::lock_guard guard{ mutex };
     cache = sconce;
     return std::exchange(updates_since_last_get, 0);

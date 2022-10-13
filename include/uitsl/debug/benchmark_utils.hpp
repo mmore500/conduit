@@ -6,6 +6,8 @@
 
 #include <benchmark/benchmark.h>
 
+#include "../../uit_emp/math/Random.hpp"
+
 #include "../math/stats_utils.hpp"
 
 namespace uitsl {
@@ -63,7 +65,7 @@ benchmark::internal::Benchmark* report_confidence(
   )->ComputeStatistics(
     "ci5",
     [](const std::vector<double>& v) -> double {
-      emp::Random rand;
+      uit_emp::Random rand;
       return std::get<0>(
         bootstrap(rand, v)
       );
@@ -71,7 +73,7 @@ benchmark::internal::Benchmark* report_confidence(
   )->ComputeStatistics(
     "ci95",
     [](const std::vector<double>& v) -> double {
-      emp::Random rand;
+      uit_emp::Random rand;
       return std::get<1>(
         bootstrap(rand, v)
       );

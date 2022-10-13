@@ -3,12 +3,12 @@
 #define UITSL_FETCH_RESOLVE_FETCHED_FILENAME_HPP_INCLUDE
 
 #include <fstream>
+#include <optional>
 #include <regex>
 #include <streambuf>
 #include <string>
 
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../uit_emp/tools/string_utils.hpp"
 
 #include "../debug/compare_files.hpp"
 #include "../polyfill/filesystem.hpp"
@@ -17,7 +17,7 @@
 
 namespace uitsl {
 
-inline emp::optional<std::string> try_filename_from_header(
+inline std::optional<std::string> try_filename_from_header(
   const std::filesystem::path& headerpath
 ) {
 
@@ -44,11 +44,11 @@ inline emp::optional<std::string> try_filename_from_header(
 
 }
 
-inline emp::optional<std::string> try_filename_from_url( const std::string& url ) {
+inline std::optional<std::string> try_filename_from_url( const std::string& url ) {
   if (
     const std::filesystem::path as_path( url );
     as_path.has_extension()
-  ) return emp::url_decode<false>(as_path.filename());
+  ) return uit_emp::url_decode<false>(as_path.filename());
   else return std::nullopt;
 }
 

@@ -3,14 +3,16 @@
 #define UIT_SPOUTS_WRAPPERS_OUTLET_CACHINGOUTLETWRAPPER_HPP_INCLUDE
 
 #include <cstddef>
+#include <optional>
 #include <string>
 #include <typeinfo>
 
-#include "../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../third-party/Empirical/include/emp/datastructs/QueueCache.hpp"
+#include "../../../../uit_emp/datastructs/QueueCache.hpp"
 
 #include "../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../uitsl/distributed/CachePacket.hpp"
+#include "../../../../uitsl/mpi/proc_id_t.hpp"
+#include "../../../../uitsl/parallel/thread_utils.hpp"
 
 namespace uit {
 namespace internal {
@@ -25,7 +27,7 @@ class CachingOutletWrapper {
   using this_t = CachingOutletWrapper<Outlet>;
   using value_type = typename ImplSpec::value_type;
 
-  emp::QueueCache<
+  uit_emp::QueueCache<
     size_t,
     value_type,
     ImplSpec::SpoutCacheSize
@@ -135,7 +137,7 @@ public:
 
   const value_type& GetNext() { while (TryStep() == 0); return Get(); }
 
-  using optional_ref_t = emp::optional<std::reference_wrapper<
+  using optional_ref_t = std::optional<std::reference_wrapper<
     const value_type
   >>;
 

@@ -5,17 +5,15 @@
 #include <algorithm>
 #include <array>
 #include <cstddef>
+#include <optional>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 
 #include "../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/io/MemoryIStream.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/base/always_assert.hpp"
+#include "../../../../../../uit_emp/io/MemoryIStream.hpp"
 
 #include "../../../../../../uitsl/initialization/Uninitialized.hpp"
 #include "../../../../../../uitsl/meta/c::static_test.hpp"
@@ -27,6 +25,8 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/MockBackEnd.hpp"
+
+#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace c {
@@ -52,12 +52,12 @@ private:
 
   size_t pending_gets{};
 
-  using buffer_t = emp::vector<uitsl::Uninitialized<std::byte>>;
+  using buffer_t = std::vector<uitsl::Uninitialized<std::byte>>;
   buffer_t buffer{};
 
   // cached unpacked value
   // initialize to value-constructed default
-  mutable emp::optional<T> cache{ std::in_place_t{} };
+  mutable std::optional<T> cache{ std::in_place_t{} };
 
   const uit::InterProcAddress address;
 
@@ -117,7 +117,7 @@ private:
     if (!cache.has_value()) {
       cache.emplace();
 
-      emp::MemoryIStream imemstream(
+      uit_emp::MemoryIStream imemstream(
         reinterpret_cast<const char*>(buffer.data()),
         buffer.size()
       );
@@ -198,5 +198,7 @@ public:
 
 } // namespace c
 } // namespace uit
+
+#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_GET_STEPPING_TYPE_CEREAL_C__IPROBEDUCT_HPP_INCLUDE

@@ -6,8 +6,7 @@
 #include <stddef.h>
 #include <thread>
 #include <utility>
-
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <vector>
 
 #include "../polyfill/erase_if.hpp"
 
@@ -17,7 +16,7 @@ namespace uitsl {
 
 class ThreadTeam {
 
-  emp::vector<internal::TryJoinableThread> workers;
+  std::vector<internal::TryJoinableThread> workers;
 
 public:
 

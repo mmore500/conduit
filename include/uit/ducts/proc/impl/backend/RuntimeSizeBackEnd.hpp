@@ -2,6 +2,7 @@
 #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_RUNTIMESIZEBACKEND_HPP_INCLUDE
 #define UIT_DUCTS_PROC_IMPL_BACKEND_RUNTIMESIZEBACKEND_HPP_INCLUDE
 
+#include <cstddef>
 #include <limits>
 
 namespace uit {

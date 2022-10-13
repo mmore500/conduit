@@ -4,15 +4,12 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <stddef.h>
 #include <string>
+#include <vector>
 
 #include <mpi.h>
-
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorBundle.hpp"
@@ -69,7 +66,7 @@ private:
 
   void DoPostAccumulate() {
 
-    emp_assert( uitsl::test_null( request ) );
+    assert( uitsl::test_null( request ) );
 
     std::swap( send_buffer, prep_buffer );
     prep_buffer.Reset();
@@ -87,7 +84,7 @@ private:
 
     back_end->GetWindowManager().Unlock( address.GetOutletProc() );
 
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
 
   }
 
@@ -107,16 +104,16 @@ public:
   , prep_buffer( rts.HasSize() ? rts.GetSize() : back_end->GetSize() )
   , send_buffer( rts.HasSize() ? rts.GetSize() : back_end->GetSize() ) {
 
-    emp_assert( rts.HasSize() || back_end->HasSize() );
+    assert( rts.HasSize() || back_end->HasSize() );
 
     if (uitsl::get_rank(address.GetComm()) == address.GetInletProc()) {
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
-        emp::vector<std::byte>{}
+        std::vector<std::byte>{}
       );
 
-      // we'll emp_assert later to make sure it actually completed
+      // we'll assert later to make sure it actually completed
       UITSL_Irecv(
         &target_offset, // void *buf
         1, // int count

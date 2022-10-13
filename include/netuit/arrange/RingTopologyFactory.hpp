@@ -3,7 +3,9 @@
 #define NETUIT_ARRANGE_RINGTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <list>
+#include <vector>
 
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"
@@ -29,7 +31,7 @@ inline Topology make_ring_topology(const size_t cardinality) {
   */
 
   size_t edge_counter{};
-  emp::vector<TopoEdge> edges;
+  std::vector<TopoEdge> edges;
   std::generate_n(
     std::back_inserter(edges),
     cardinality,
@@ -101,8 +103,8 @@ struct RingTopologyFactory {
     return make_ring_topology(cardinality);
   }
 
-  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
-    emp_assert(cardinality.size() == 1);
+  netuit::Topology operator()(const std::vector<size_t> cardinality) const {
+    assert(cardinality.size() == 1);
     return make_ring_topology(cardinality.front());
   }
 

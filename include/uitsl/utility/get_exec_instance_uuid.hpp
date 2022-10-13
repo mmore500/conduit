@@ -8,12 +8,12 @@
 #include <string>
 #include <string_view>
 
-#include "../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../third-party/Empirical/include/emp/base/error.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 #include "../../../third-party/stduuid/include/uuid.h"
+
+#include "../../uit_emp/base/always_assert.hpp"
+#include "../../uit_emp/base/error.hpp"
+#include "../../uit_emp/tools/keyname_utils.hpp"
+#include "../../uit_emp/tools/string_utils.hpp"
 
 #include "../mpi/comm_utils.hpp"
 #include "../mpi/mpi_init_utils.hpp"
@@ -21,6 +21,7 @@
 
 #include "generate_random_uuid.hpp"
 
+#include "../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uitsl {
 
 uuids::uuid get_exec_instance_uuid() {
@@ -61,9 +62,9 @@ uuids::uuid get_exec_instance_uuid() {
     // do a quick (non-exhaustive) check for obvious user misuse
     // i.e., that uuid is actually unique
     const auto reservation_path = std::filesystem::temp_directory_path()
-      / emp::keyname::pack({
+      / uit_emp::keyname::pack({
         {"a", "uitsl_exec_instance_uuid"},
-        {"rank",emp::to_string( uitsl::get_proc_id() )},
+        {"rank",uit_emp::to_string( uitsl::get_proc_id() )},
         {"uid", uuids::to_string( res )},
       });
     emp_always_assert(
@@ -87,5 +88,6 @@ uuids::uuid get_exec_instance_uuid() {
 }
 
 } // namespace uitsl
+#include "../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UITSL_UTILITY_GET_EXEC_INSTANCE_UUID_HPP_INCLUDE

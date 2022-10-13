@@ -8,7 +8,7 @@
 #include <ratio>
 #include <stddef.h>
 
-#include "../../../third-party/Empirical/include/emp/math/math.hpp"
+#include "../../uit_emp/math/math.hpp"
 
 #include "../debug/safe_cast.hpp"
 
@@ -40,17 +40,17 @@ inline size_t stoszt(const std::string & source) {
 
 template<typename TYPE>
 constexpr bool is_power_of_two(TYPE x) {
-  return x > 0 && emp::CountOnes(x) == 1;
+  return x > 0 && uit_emp::CountOnes(x) == 1;
 }
 
 template<typename TYPE>
 constexpr int num_bits(TYPE x) {
-  return x ? emp::IntLog2(emp::Abs(x)) + 1 : 0;
+  return x ? uit_emp::IntLog2(uit_emp::Abs(x)) + 1 : 0;
 }
 
 template<typename TYPE>
 bool test_bit(const TYPE x, const size_t bit) {
-  return std::bitset<sizeof(TYPE)*8>(emp::Abs(x)).test(bit);
+  return std::bitset<sizeof(TYPE)*8>(uit_emp::Abs(x)).test(bit);
 }
 
 inline size_t difference(const size_t a, const size_t b) {

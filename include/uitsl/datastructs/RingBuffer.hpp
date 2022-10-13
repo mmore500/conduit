@@ -3,10 +3,9 @@
 #define UITSL_DATASTRUCTS_RINGBUFFER_HPP_INCLUDE
 
 #include <algorithm>
+#include <array>
 #include <stddef.h>
 #include <utility>
-
-#include "../../../third-party/Empirical/include/emp/base/array.hpp"
 
 #include "../nonce/CircularIndex.hpp"
 
@@ -15,7 +14,7 @@ namespace uitsl {
 template<typename T, size_t N>
 class RingBuffer {
 
-  emp::array<T, N> buffer{};
+  std::array<T, N> buffer{};
   uitsl::CircularIndex<N> tail{};
   size_t num_items{};
 

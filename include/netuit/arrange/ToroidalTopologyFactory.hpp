@@ -8,9 +8,7 @@
 #include <numeric>
 #include <set>
 #include <tuple>
-
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
+#include <vector>
 
 #include "../../uitsl/math/is_perfect_hypercube.hpp"
 #include "../../uitsl/math/mapping_utils.hpp"
@@ -46,7 +44,7 @@ inline netuit::Topology make_toroidal_topology(
     std::multiplies<size_t>()
   );
 
-  emp::vector<netuit::TopoNode> nodes(cardinality);
+  std::vector<netuit::TopoNode> nodes(cardinality);
   uitsl::UIDMap<size_t> node_edge_map;
 
   auto get_neighbor = [&dim_cardinality](uitsl::Point p, const size_t dim, const int n) -> uitsl::Point {
@@ -56,7 +54,7 @@ inline netuit::Topology make_toroidal_topology(
 
   // returns a vector containing all neighbors
   auto get_neighbors = [&get_neighbor](const uitsl::Point& p) {
-    emp::vector<uitsl::Point> neighbors;
+    std::vector<uitsl::Point> neighbors;
 
     for (size_t i{}; i < p.size(); ++i) {
       neighbors.push_back(get_neighbor(p, i, +1));

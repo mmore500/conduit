@@ -3,6 +3,7 @@
 #define UITSL_PARALLEL_THREADIBARRIER_HPP_INCLUDE
 
 #include <atomic>
+#include <cassert>
 #include <deque>
 #include <memory>
 #include <shared_mutex>
@@ -44,7 +45,7 @@ public:
   }
   void Release() {
     const std::unique_lock lock{ mutex };
-    emp_assert(owner_count);
+    assert(owner_count);
     --owner_count;
   }
   bool TryWait() const {
@@ -78,7 +79,7 @@ class ThreadIbarrier {
   ) : manager(manager_)
   , latch(latch_)
   {
-    emp_assert( !IsComplete() );
+    assert( !IsComplete() );
     latch.AcquireAndArrive();
   }
 

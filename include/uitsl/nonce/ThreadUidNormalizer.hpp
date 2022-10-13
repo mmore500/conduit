@@ -5,6 +5,9 @@
 #include <functional>
 #include <unordered_map>
 
+#include "../mpi/proc_id_t.hpp"
+#include "../parallel/thread_utils.hpp"
+
 namespace uitsl {
 
 class ThreadUidNormalizer {

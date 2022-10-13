@@ -2,8 +2,6 @@
 #ifndef UITSL_DISTRIBUTED_MSGACCUMULATORPACKET_HPP_INCLUDE
 #define UITSL_DISTRIBUTED_MSGACCUMULATORPACKET_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/include/emp/base/array.hpp"
-
 #include "../utility/NamedArrayElement.hpp"
 
 namespace uitsl {

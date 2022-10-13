@@ -2,7 +2,8 @@
 #ifndef NETUIT_ARRANGE_COMPLETETOPOLOGYFACTORY_HPP_INCLUDE
 #define NETUIT_ARRANGE_COMPLETETOPOLOGYFACTORY_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <cassert>
+#include <vector>
 
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"
@@ -12,7 +13,7 @@ namespace netuit {
 
 inline netuit::Topology make_complete_topology(const size_t cardinality) {
 
-  emp::vector<netuit::TopoNode> res( cardinality );
+  std::vector<netuit::TopoNode> res( cardinality );
 
   size_t edge_counter{};
 
@@ -36,8 +37,8 @@ struct CompleteTopologyFactory {
     return make_complete_topology(cardinality);
   }
 
-  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
-    emp_assert(cardinality.size() == 1);
+  netuit::Topology operator()(const std::vector<size_t> cardinality) const {
+    assert(cardinality.size() == 1);
     return make_complete_topology(cardinality.front());
   }
   static std::string GetName() { return "Complete Topology"; }

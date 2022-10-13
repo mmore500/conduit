@@ -5,9 +5,9 @@
 #include <algorithm>
 #include <set>
 #include <string>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
+#include "../../uit_emp/tools/keyname_utils.hpp"
 
 #include "../polyfill/filesystem.hpp"
 #include "../polyfill/identity.hpp"
@@ -15,12 +15,12 @@
 namespace uitsl {
 
 std::set< std::string > keyname_key_union(
-  const emp::vector< std::string >& packs
+  const std::vector< std::string >& packs
 ) {
 
   std::set < std:: string > res;
   for ( const auto& pack : packs ) {
-    for ( const auto& [k, v] : emp::keyname::unpack( pack ) ) {
+    for ( const auto& [k, v] : uit_emp::keyname::unpack( pack ) ) {
       res.insert( k );
     }
   }
