@@ -4,7 +4,7 @@ import textwrap
 
 from pylib import iter_headerguards
 
-content = "#ifdef UIT_VENDORIZE_EXT\n"
+content = "#ifdef UIT_VENDORIZE_EMP\n"
 for headerguard in iter_headerguards():
 
     content += textwrap.dedent(f"""\
@@ -16,7 +16,7 @@ for headerguard in iter_headerguards():
     """)
 
 content += "\n"
-content += "#endif // #ifdef UIT_VENDORIZE_EXT"
+content += "#endif // #ifdef UIT_VENDORIZE_EMP"
 content += "\n"
 
 with open(f"vendorization/pop_headerguards.hh", "w") as f:
