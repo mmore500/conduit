@@ -1,38 +1,11 @@
 #!/usr/bin/python3.10
 
-from glob import glob
 import os
 import re
 import textwrap
 import typing
 
-def iter_header_paths() -> typing.Iterator[str]:
-    # yield from glob(
-    #     "**/*.hpp",
-    #     recursive=True,
-    #     root_dir="../../third-party/Empirical/include/emp/",
-    # )
-    yield from (
-        "base/assert.hpp",
-        "base/always_assert.hpp",
-        "base/error.hpp",
-        "base/errors.hpp",
-        "data/DataNode.hpp",
-        "data/DataFile.hpp",
-        "datastructs/QueueCache.hpp",
-        "datastructs/hash_utils.hpp",
-        "datastructs/tuple_utils.hpp",
-        "io/ContiguousStream.hpp",
-        "io/MemoryIStream.hpp",
-        "math/math.hpp",
-        "math/Random.hpp",
-        "math/random_utils.hpp",
-        "meta/meta.hpp",
-        "meta/TypePack.hpp",
-        "polyfill/span.hpp",
-        "tools/string_utils.hpp",
-        "tools/keyname_utils.hpp",
-    )
+from pylib import iter_header_paths
 
 def setup_one_facade(header_path: str) -> None:
     header_guard = (

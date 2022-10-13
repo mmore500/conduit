@@ -1,21 +1,20 @@
-from glob import glob
 import re
 import typing
 
+from ._iter_header_content import iter_header_content
+
 def iter_headerguards() -> typing.Iterator[str]:
-    header_paths = glob(
-        "../../third-party/Empirical/include/emp/**/*.hpp",
-        recursive=True,
-    )
-    for header_path in header_paths:
-        with open(header_path) as header_file:
-            yield from re.findall(
-                r"^#ifndef ([A-Z0-9_]+_H)$",
-                header_file.read(),
-                re.MULTILINE,
-            )
-            yield from re.findall(
-                r"^#ifndef ([A-Z0-9_]+_HPP)$",
-                header_file.read(),
-                re.MULTILINE,
-            )
+    headerguards = set()
+    for header_content in iter_header_content():
+        headerguards.update(re.findall(
+            r"^#ifndef (EMP_[A-Z0-9_]+_H)$",
+            header_content,
+            re.MULTILINE,
+        ))
+        headerguards.update(re.findall(
+            r"^#ifndef (EMP_[A-Z0-9_]+_HPP)$",
+            header_content,
+            re.MULTILINE,
+        ))
+
+    yield from headerguards

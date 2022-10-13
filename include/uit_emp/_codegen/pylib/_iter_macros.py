@@ -1,23 +1,29 @@
-from glob import glob
+import itertools as it
 import re
 import typing
 
-def iter_macros() -> typing.Iterator[str]:
-    header_paths = glob(
-        "../../third-party/Empirical/include/emp/**/*.hpp",
-        recursive=True,
-    )
+from ._iter_header_content import iter_header_content
 
+def iter_macros() -> typing.Iterator[str]:
     macros = set()
-    for header_path in header_paths:
-        with open(header_path) as header_file:
-            for candidate in re.findall(
-                r"^ *#define +([a-zA-Z0-9_]+)[ (]",
-                header_file.read(),
+    for header_content in iter_header_content():
+        for candidate in it.chain(
+            re.findall(
+                r"^ *#define +(EMP_[a-zA-Z0-9_]+)[ (]",
+                header_content,
                 re.MULTILINE,
+            ),
+            re.findall(
+                r"^ *#define +(emp_[a-zA-Z0-9_]+)[ (]",
+                header_content,
+                re.MULTILINE,
+            ),
+        ):
+            if not (
+                candidate.endswith("_HPP")
+                or candidate.endswith("_H")
             ):
-                if not candidate.endswith("_HPP"):
-                    macros.add(candidate)
+                macros.add(candidate)
 
 
     yield from macros
