@@ -10,8 +10,6 @@
 #include <stddef.h>
 #include <unordered_map>
 
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
-
 #include "../debug/OncePerThreadChecker.hpp"
 
 #include "ThreadMap.hpp"

@@ -4,7 +4,7 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../uit_emp/base/assert.hpp"
 
 #include "name_mpi_error.hpp"
 

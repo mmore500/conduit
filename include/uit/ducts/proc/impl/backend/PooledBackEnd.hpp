@@ -6,8 +6,8 @@
 
 #include "../../../../../../third-party/Empirical/third-party/robin-hood-hashing/src/include/robin_hood.h"
 
-#include "../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
+#include "../../../../../uit_emp/base/assert.hpp"
+#include "../../../../../uit_emp/datastructs/tuple_utils.hpp"
 
 #include "../../../../setup/InterProcAddress.hpp"
 

@@ -8,8 +8,6 @@
 #include <tuple>
 #include <unordered_map>
 
-#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
 #include "OccupancyCap.hpp"
 
 namespace uitsl {

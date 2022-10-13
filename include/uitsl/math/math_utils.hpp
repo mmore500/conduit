@@ -3,21 +3,25 @@
 #define UITSL_MATH_MATH_UTILS_HPP_INCLUDE
 
 #include <bitset>
+#include <cassert>
 #include <cmath>
 #include <limits>
 #include <ratio>
 #include <stddef.h>
 
+#include "../../uit_emp/base/assert.hpp"
 #include "../../uit_emp/math/math.hpp"
 
 #include "../debug/safe_cast.hpp"
+
+#include "../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uitsl {
 
 template<typename ...Args> auto sum(Args ...args) { return (args + ...); }
 
 inline size_t mod(int in_val, const size_t mod_val) {
-  emp_assert(mod_val > 0);
+  assert(mod_val > 0);
   const int signed_mod_val = std::min(
     safe_cast<size_t>(std::numeric_limits<int>::max()),
     mod_val
@@ -27,7 +31,7 @@ inline size_t mod(int in_val, const size_t mod_val) {
 }
 
 inline size_t circular_index(const size_t pos, const size_t len, const int diff) {
-  emp_assert(len > 0);
+  assert(len > 0);
   return (pos + mod(diff, len)) % len;
 }
 
@@ -80,5 +84,7 @@ size_t sidebyside_hash(const size_t top, const size_t bottom) {
 }
 
 } // namespace uitsl
+
+#include "../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UITSL_MATH_MATH_UTILS_HPP_INCLUDE

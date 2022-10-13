@@ -11,7 +11,7 @@
 
 #include <curl/curl.h>
 
-#include "../../../third-party/Empirical/include/emp/base/always_assert.hpp"
+#include "../../uit_emp/base/always_assert.hpp"
 
 #include "../debug/err_verify.hpp"
 #include "../nonce/ScopeGuard.hpp"
@@ -19,6 +19,8 @@
 
 #include "make_temp_filepath.hpp"
 #include "resolve_fetched_filename.hpp"
+
+#include "../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uitsl {
 
@@ -96,5 +98,7 @@ inline std::filesystem::path fetch_native( const std::string& url ) {
 }
 
 } // namespace uitsl
+
+#include "../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UITSL_FETCH_FETCH_NATIVE_HPP_INCLUDE
