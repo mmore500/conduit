@@ -11,9 +11,9 @@
 
 #include <mpi.h>
 
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorBundle.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
-#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/meta/f::static_test.hpp"
 #include "../../../../../../uitsl/meta/s::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"

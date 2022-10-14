@@ -3,8 +3,8 @@
 #define UITSL_UTILITY_SETSEPARATOR_HPP_INCLUDE
 
 #include <iostream>
-#include <utility>
 #include <string>
+#include <utility>
 
 #include "SeparatedStream.hpp"
 

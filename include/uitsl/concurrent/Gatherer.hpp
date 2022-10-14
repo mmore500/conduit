@@ -3,8 +3,8 @@
 #define UITSL_CONCURRENT_GATHERER_HPP_INCLUDE
 
 #include <algorithm>
-#include <optional>
 #include <numeric>
+#include <optional>
 #include <thread>
 #include <vector>
 

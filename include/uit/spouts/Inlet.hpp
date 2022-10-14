@@ -6,8 +6,8 @@
 #include <cassert>
 #include <cstdint>
 #include <iostream>
-#include <optional>
 #include <memory>
+#include <optional>
 #include <stddef.h>
 #include <utility>
 

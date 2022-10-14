@@ -1,6 +1,6 @@
 #pragma once
-#ifndef UIT_EMP_DATASTRUCTS_QUEUECACHE_HPP
-#define UIT_EMP_DATASTRUCTS_QUEUECACHE_HPP
+#ifndef UIT_EMP_DATASTRUCTS_QUEUECACHE_HPP_INCLUDE
+#define UIT_EMP_DATASTRUCTS_QUEUECACHE_HPP_INCLUDE
 
 #ifdef UIT_VENDORIZE_EMP
 #include "../vendorization/push_uit_emp.hh"
@@ -17,4 +17,4 @@ namespace uit_emp = emp;
 #include "../vendorization/pop_uit_emp.hh"
 #endif // #ifdef UIT_VENDORIZE_EMP
 
-#endif // #ifndef UIT_EMP_DATASTRUCTS_QUEUECACHE_HPP
+#endif // #ifndef UIT_EMP_DATASTRUCTS_QUEUECACHE_HPP_INCLUDE

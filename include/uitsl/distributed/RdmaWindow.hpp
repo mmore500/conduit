@@ -3,8 +3,8 @@
 #define UITSL_DISTRIBUTED_RDMAWINDOW_HPP_INCLUDE
 
 #include <cassert>
-#include <stddef.h>
 #include <optional>
+#include <stddef.h>
 #include <vector>
 
 #include <mpi.h>

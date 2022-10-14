@@ -2,8 +2,8 @@
 #ifndef UITSL_CONCURRENT_THREADSAFEIBARRIERREQUEST_HPP_INCLUDE
 #define UITSL_CONCURRENT_THREADSAFEIBARRIERREQUEST_HPP_INCLUDE
 
-#include <optional>
 #include <mutex>
+#include <optional>
 
 #include <mpi.h>
 

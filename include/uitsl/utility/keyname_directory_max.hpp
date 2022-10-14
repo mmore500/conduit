@@ -4,8 +4,8 @@
 
 #include <algorithm>
 #include <cassert>
-#include <vector>
 #include <string>
+#include <vector>
 
 #include "../polyfill/filesystem.hpp"
 #include "../polyfill/identity.hpp"

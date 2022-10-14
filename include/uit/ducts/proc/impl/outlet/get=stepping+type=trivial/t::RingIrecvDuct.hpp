@@ -10,10 +10,10 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../uitsl/datastructs/SiftingArray.hpp"
 #include "../../../../../../uitsl/debug/err_audit.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"

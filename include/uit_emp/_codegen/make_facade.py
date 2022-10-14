@@ -11,6 +11,7 @@ def setup_one_facade(header_path: str) -> None:
     header_guard = (
         "UIT_EMP_"
         + header_path.upper().replace("/", "_").replace(".", "_")
+        + "_INCLUDE"
     )
     relpath = lambda x: os.path.relpath(x, os.path.dirname(header_path))
 

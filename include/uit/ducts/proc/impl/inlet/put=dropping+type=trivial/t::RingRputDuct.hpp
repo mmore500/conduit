@@ -5,8 +5,8 @@
 #include <algorithm>
 #include <array>
 #include <cassert>
-#include <vector>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 

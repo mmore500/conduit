@@ -4,8 +4,8 @@
 
 #include <algorithm>
 #include <array>
-#include <optional>
 #include <memory>
+#include <optional>
 #include <stddef.h>
 
 #include <mpi.h>
