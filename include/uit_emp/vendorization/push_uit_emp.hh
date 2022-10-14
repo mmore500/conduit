@@ -1,6 +1,7 @@
 #ifdef UIT_VENDORIZE_EMP
 
 #define emp uit_emp
+#define EMP_NAMESPACE() emp
 
 #include "push_headerguards.hh"
 #include "push_macros.hh"

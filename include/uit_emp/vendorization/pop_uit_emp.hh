@@ -1,6 +1,7 @@
 #ifdef UIT_VENDORIZE_EMP
 
 #undef emp
+#undef EMP_NAMESPACE
 
 #include "pop_headerguards.hh"
 #include "pop_macros.hh"
