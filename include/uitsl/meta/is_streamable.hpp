@@ -8,12 +8,17 @@
 namespace uitsl {
 
 // adapted from https://stackoverflow.com/a/22760197
-template <typename T, class = void>
-struct is_streamable : std::false_type { };
-
 template <typename T>
-struct is_streamable<T, std::void_t<decltype(std::cout << *(T*)0)>>
-  : std::true_type { };
+class is_streamable
+{
+    template <typename U> // must be template to get SFINAE fall-through...
+    static auto test(const U* u) -> decltype(std::cout << *u);
+
+    static auto test(...)        -> std::false_type;
+
+ public:
+    enum { value = !std::is_same_v<decltype(test((T*)0)), std::false_type> };
+};
 
 } // namespace uitsl
 
