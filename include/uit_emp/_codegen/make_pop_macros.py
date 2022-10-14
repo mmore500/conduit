@@ -5,7 +5,7 @@ import textwrap
 from pylib import iter_macros
 
 content = "#ifdef UIT_VENDORIZE_EMP\n"
-for macro in iter_macros():
+for macro in sorted(iter_macros()):
     new_content = textwrap.dedent(f"""\
 
         #ifdef {macro}

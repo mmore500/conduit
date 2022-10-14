@@ -5,7 +5,7 @@ import textwrap
 from pylib import iter_headerguards
 
 content = "#ifdef UIT_VENDORIZE_EMP\n"
-for headerguard in iter_headerguards():
+for headerguard in sorted(iter_headerguards()):
 
 
     content += textwrap.dedent(f"""\
