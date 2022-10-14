@@ -40812,6 +40812,44 @@
 
 #endif // #ifdef EMP_BOOL_IMPL
 
+#ifdef EMP_BUILD_CONFIG
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_BUILD_CONFIG
+    #define UIT_EXTERNAL_HAS_EMP_BUILD_CONFIG
+    #ifndef UIT_INTERNAL_HAS_EMP_BUILD_CONFIG
+      #define UIT_EXTERNAL_1ST_EMP_BUILD_CONFIG
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_BUILD_CONFIG
+    #pragma push_macro("EMP_BUILD_CONFIG")
+    #undef EMP_BUILD_CONFIG
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_BUILD_CONFIG) && defined(UIT_EXTERNAL_1ST_EMP_BUILD_CONFIG\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_BUILD_CONFIG_INSEEP_WARNING
+      #define UIT_EMP_BUILD_CONFIG_INSEEP_WARNING
+      #pragma message(\
+        "EMP_BUILD_CONFIG defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_BUILD_CONFIG
+
+  #ifdef UIT_INTERNAL_HAS_EMP_BUILD_CONFIG
+    #pragma pop_macro("EMP_BUILD_CONFIG")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_BUILD_CONFIG
+
+#endif // #ifdef EMP_BUILD_CONFIG
+
 #ifdef EMP_BUILD_TYPE_PACK
 
   #ifndef UIT_EXTERNAL_HAS_EMP_BUILD_TYPE_PACK
@@ -42445,6 +42483,1184 @@
   #endif // #ifdef UIT_INTERNAL_HAS_EMP_COMPARE_result_10
 
 #endif // #ifdef EMP_COMPARE_result_10
+
+#ifdef EMP_CONFIG__ACCESS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS
+    #pragma push_macro("EMP_CONFIG__ACCESS")
+    #undef EMP_CONFIG__ACCESS
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ACCESS_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ACCESS_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ACCESS defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ACCESS
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS
+    #pragma pop_macro("EMP_CONFIG__ACCESS")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS
+
+#endif // #ifdef EMP_CONFIG__ACCESS
+
+#ifdef EMP_CONFIG__ACCESS_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_ALIAS
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+    #pragma push_macro("EMP_CONFIG__ACCESS_ALIAS")
+    #undef EMP_CONFIG__ACCESS_ALIAS
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_ALIAS\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ACCESS_ALIAS_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ACCESS_ALIAS_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ACCESS_ALIAS defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ACCESS_ALIAS
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+    #pragma pop_macro("EMP_CONFIG__ACCESS_ALIAS")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+
+#endif // #ifdef EMP_CONFIG__ACCESS_ALIAS
+
+#ifdef EMP_CONFIG__ACCESS_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_CONST
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+    #pragma push_macro("EMP_CONFIG__ACCESS_CONST")
+    #undef EMP_CONFIG__ACCESS_CONST
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_CONST) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_CONST\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ACCESS_CONST_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ACCESS_CONST_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ACCESS_CONST defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ACCESS_CONST
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+    #pragma pop_macro("EMP_CONFIG__ACCESS_CONST")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+
+#endif // #ifdef EMP_CONFIG__ACCESS_CONST
+
+#ifdef EMP_CONFIG__ACCESS_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_GROUP
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+    #pragma push_macro("EMP_CONFIG__ACCESS_GROUP")
+    #undef EMP_CONFIG__ACCESS_GROUP
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_GROUP\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ACCESS_GROUP_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ACCESS_GROUP_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ACCESS_GROUP defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ACCESS_GROUP
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+    #pragma pop_macro("EMP_CONFIG__ACCESS_GROUP")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+
+#endif // #ifdef EMP_CONFIG__ACCESS_GROUP
+
+#ifdef EMP_CONFIG__ACCESS_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_VALUE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+    #pragma push_macro("EMP_CONFIG__ACCESS_VALUE")
+    #undef EMP_CONFIG__ACCESS_VALUE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_VALUE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ACCESS_VALUE_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ACCESS_VALUE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ACCESS_VALUE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ACCESS_VALUE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+    #pragma pop_macro("EMP_CONFIG__ACCESS_VALUE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+
+#endif // #ifdef EMP_CONFIG__ACCESS_VALUE
+
+#ifdef EMP_CONFIG__ACCESS_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_const
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_const
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_const
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_const
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_const
+    #pragma push_macro("EMP_CONFIG__ACCESS_const")
+    #undef EMP_CONFIG__ACCESS_const
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_const) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_const\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ACCESS_const_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ACCESS_const_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ACCESS_const defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ACCESS_const
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_const
+    #pragma pop_macro("EMP_CONFIG__ACCESS_const")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_const
+
+#endif // #ifdef EMP_CONFIG__ACCESS_const
+
+#ifdef EMP_CONFIG__ARG_OKAY_
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_")
+    #undef EMP_CONFIG__ARG_OKAY_
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ARG_OKAY__INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ARG_OKAY__INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ARG_OKAY_ defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ARG_OKAY_
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+    #pragma pop_macro("EMP_CONFIG__ARG_OKAY_")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_
+
+#ifdef EMP_CONFIG__ARG_OKAY_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_ALIAS
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_ALIAS")
+    #undef EMP_CONFIG__ARG_OKAY_ALIAS
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_ALIAS\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ARG_OKAY_ALIAS_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ARG_OKAY_ALIAS_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ARG_OKAY_ALIAS defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ARG_OKAY_ALIAS
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+    #pragma pop_macro("EMP_CONFIG__ARG_OKAY_ALIAS")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_ALIAS
+
+#ifdef EMP_CONFIG__ARG_OKAY_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_CONST
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_CONST")
+    #undef EMP_CONFIG__ARG_OKAY_CONST
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_CONST\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ARG_OKAY_CONST_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ARG_OKAY_CONST_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ARG_OKAY_CONST defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ARG_OKAY_CONST
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+    #pragma pop_macro("EMP_CONFIG__ARG_OKAY_CONST")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_CONST
+
+#ifdef EMP_CONFIG__ARG_OKAY_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_GROUP
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_GROUP")
+    #undef EMP_CONFIG__ARG_OKAY_GROUP
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_GROUP\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ARG_OKAY_GROUP_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ARG_OKAY_GROUP_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ARG_OKAY_GROUP defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ARG_OKAY_GROUP
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+    #pragma pop_macro("EMP_CONFIG__ARG_OKAY_GROUP")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_GROUP
+
+#ifdef EMP_CONFIG__ARG_OKAY_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_VALUE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_VALUE")
+    #undef EMP_CONFIG__ARG_OKAY_VALUE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_VALUE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ARG_OKAY_VALUE_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ARG_OKAY_VALUE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ARG_OKAY_VALUE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ARG_OKAY_VALUE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+    #pragma pop_macro("EMP_CONFIG__ARG_OKAY_VALUE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_VALUE
+
+#ifdef EMP_CONFIG__ARG_OKAY_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_const
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_const")
+    #undef EMP_CONFIG__ARG_OKAY_const
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_const\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ARG_OKAY_const_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ARG_OKAY_const_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ARG_OKAY_const defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ARG_OKAY_const
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+    #pragma pop_macro("EMP_CONFIG__ARG_OKAY_const")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_const
+
+#ifdef EMP_CONFIG__CONSTRUCT
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT")
+    #undef EMP_CONFIG__CONSTRUCT
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__CONSTRUCT_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__CONSTRUCT_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__CONSTRUCT defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__CONSTRUCT
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+    #pragma pop_macro("EMP_CONFIG__CONSTRUCT")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT
+
+#ifdef EMP_CONFIG__CONSTRUCT_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_ALIAS
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_ALIAS")
+    #undef EMP_CONFIG__CONSTRUCT_ALIAS
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_ALIAS\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__CONSTRUCT_ALIAS_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__CONSTRUCT_ALIAS_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__CONSTRUCT_ALIAS defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__CONSTRUCT_ALIAS
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+    #pragma pop_macro("EMP_CONFIG__CONSTRUCT_ALIAS")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_ALIAS
+
+#ifdef EMP_CONFIG__CONSTRUCT_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_CONST
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_CONST")
+    #undef EMP_CONFIG__CONSTRUCT_CONST
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_CONST\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__CONSTRUCT_CONST_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__CONSTRUCT_CONST_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__CONSTRUCT_CONST defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__CONSTRUCT_CONST
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+    #pragma pop_macro("EMP_CONFIG__CONSTRUCT_CONST")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_CONST
+
+#ifdef EMP_CONFIG__CONSTRUCT_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_GROUP
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_GROUP")
+    #undef EMP_CONFIG__CONSTRUCT_GROUP
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_GROUP\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__CONSTRUCT_GROUP_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__CONSTRUCT_GROUP_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__CONSTRUCT_GROUP defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__CONSTRUCT_GROUP
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+    #pragma pop_macro("EMP_CONFIG__CONSTRUCT_GROUP")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_GROUP
+
+#ifdef EMP_CONFIG__CONSTRUCT_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_VALUE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_VALUE")
+    #undef EMP_CONFIG__CONSTRUCT_VALUE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_VALUE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__CONSTRUCT_VALUE_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__CONSTRUCT_VALUE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__CONSTRUCT_VALUE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__CONSTRUCT_VALUE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+    #pragma pop_macro("EMP_CONFIG__CONSTRUCT_VALUE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_VALUE
+
+#ifdef EMP_CONFIG__CONSTRUCT_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_const
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_const")
+    #undef EMP_CONFIG__CONSTRUCT_const
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_const\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__CONSTRUCT_const_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__CONSTRUCT_const_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__CONSTRUCT_const defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__CONSTRUCT_const
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+    #pragma pop_macro("EMP_CONFIG__CONSTRUCT_const")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_const
+
+#ifdef EMP_CONFIG__DECLARE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE
+    #pragma push_macro("EMP_CONFIG__DECLARE")
+    #undef EMP_CONFIG__DECLARE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__DECLARE_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__DECLARE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__DECLARE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__DECLARE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE
+    #pragma pop_macro("EMP_CONFIG__DECLARE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE
+
+#endif // #ifdef EMP_CONFIG__DECLARE
+
+#ifdef EMP_CONFIG__DECLARE_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_ALIAS
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+    #pragma push_macro("EMP_CONFIG__DECLARE_ALIAS")
+    #undef EMP_CONFIG__DECLARE_ALIAS
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_ALIAS\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__DECLARE_ALIAS_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__DECLARE_ALIAS_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__DECLARE_ALIAS defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__DECLARE_ALIAS
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+    #pragma pop_macro("EMP_CONFIG__DECLARE_ALIAS")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+
+#endif // #ifdef EMP_CONFIG__DECLARE_ALIAS
+
+#ifdef EMP_CONFIG__DECLARE_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_CONST
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+    #pragma push_macro("EMP_CONFIG__DECLARE_CONST")
+    #undef EMP_CONFIG__DECLARE_CONST
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_CONST) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_CONST\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__DECLARE_CONST_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__DECLARE_CONST_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__DECLARE_CONST defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__DECLARE_CONST
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+    #pragma pop_macro("EMP_CONFIG__DECLARE_CONST")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+
+#endif // #ifdef EMP_CONFIG__DECLARE_CONST
+
+#ifdef EMP_CONFIG__DECLARE_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_GROUP
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+    #pragma push_macro("EMP_CONFIG__DECLARE_GROUP")
+    #undef EMP_CONFIG__DECLARE_GROUP
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_GROUP\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__DECLARE_GROUP_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__DECLARE_GROUP_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__DECLARE_GROUP defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__DECLARE_GROUP
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+    #pragma pop_macro("EMP_CONFIG__DECLARE_GROUP")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+
+#endif // #ifdef EMP_CONFIG__DECLARE_GROUP
+
+#ifdef EMP_CONFIG__DECLARE_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_VALUE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+    #pragma push_macro("EMP_CONFIG__DECLARE_VALUE")
+    #undef EMP_CONFIG__DECLARE_VALUE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_VALUE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__DECLARE_VALUE_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__DECLARE_VALUE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__DECLARE_VALUE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__DECLARE_VALUE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+    #pragma pop_macro("EMP_CONFIG__DECLARE_VALUE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+
+#endif // #ifdef EMP_CONFIG__DECLARE_VALUE
+
+#ifdef EMP_CONFIG__DECLARE_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_const
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_const
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_const
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_const
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_const
+    #pragma push_macro("EMP_CONFIG__DECLARE_const")
+    #undef EMP_CONFIG__DECLARE_const
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_const) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_const\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__DECLARE_const_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__DECLARE_const_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__DECLARE_const defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__DECLARE_const
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_const
+    #pragma pop_macro("EMP_CONFIG__DECLARE_const")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_const
+
+#endif // #ifdef EMP_CONFIG__DECLARE_const
+
+#ifdef EMP_CONFIG__ERROR_CHECK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__ERROR_CHECK
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+    #pragma push_macro("EMP_CONFIG__ERROR_CHECK")
+    #undef EMP_CONFIG__ERROR_CHECK
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__ERROR_CHECK) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__ERROR_CHECK\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__ERROR_CHECK_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__ERROR_CHECK_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__ERROR_CHECK defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__ERROR_CHECK
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+    #pragma pop_macro("EMP_CONFIG__ERROR_CHECK")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+
+#endif // #ifdef EMP_CONFIG__ERROR_CHECK
+
+#ifdef EMP_CONFIG__INIT
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__INIT
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__INIT
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT
+    #pragma push_macro("EMP_CONFIG__INIT")
+    #undef EMP_CONFIG__INIT
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__INIT) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__INIT\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__INIT_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__INIT_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__INIT defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__INIT
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT
+    #pragma pop_macro("EMP_CONFIG__INIT")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT
+
+#endif // #ifdef EMP_CONFIG__INIT
+
+#ifdef EMP_CONFIG__INIT_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_ALIAS
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+    #pragma push_macro("EMP_CONFIG__INIT_ALIAS")
+    #undef EMP_CONFIG__INIT_ALIAS
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__INIT_ALIAS) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_ALIAS\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__INIT_ALIAS_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__INIT_ALIAS_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__INIT_ALIAS defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__INIT_ALIAS
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+    #pragma pop_macro("EMP_CONFIG__INIT_ALIAS")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+
+#endif // #ifdef EMP_CONFIG__INIT_ALIAS
+
+#ifdef EMP_CONFIG__INIT_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_CONST
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_CONST
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_CONST
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_CONST
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_CONST
+    #pragma push_macro("EMP_CONFIG__INIT_CONST")
+    #undef EMP_CONFIG__INIT_CONST
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__INIT_CONST) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_CONST\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__INIT_CONST_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__INIT_CONST_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__INIT_CONST defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__INIT_CONST
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_CONST
+    #pragma pop_macro("EMP_CONFIG__INIT_CONST")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_CONST
+
+#endif // #ifdef EMP_CONFIG__INIT_CONST
+
+#ifdef EMP_CONFIG__INIT_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_GROUP
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+    #pragma push_macro("EMP_CONFIG__INIT_GROUP")
+    #undef EMP_CONFIG__INIT_GROUP
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__INIT_GROUP) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_GROUP\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__INIT_GROUP_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__INIT_GROUP_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__INIT_GROUP defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__INIT_GROUP
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+    #pragma pop_macro("EMP_CONFIG__INIT_GROUP")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+
+#endif // #ifdef EMP_CONFIG__INIT_GROUP
+
+#ifdef EMP_CONFIG__INIT_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_VALUE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+    #pragma push_macro("EMP_CONFIG__INIT_VALUE")
+    #undef EMP_CONFIG__INIT_VALUE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__INIT_VALUE) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_VALUE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__INIT_VALUE_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__INIT_VALUE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__INIT_VALUE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__INIT_VALUE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+    #pragma pop_macro("EMP_CONFIG__INIT_VALUE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+
+#endif // #ifdef EMP_CONFIG__INIT_VALUE
+
+#ifdef EMP_CONFIG__INIT_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_const
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_const
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_const
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_const
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_const
+    #pragma push_macro("EMP_CONFIG__INIT_const")
+    #undef EMP_CONFIG__INIT_const
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG__INIT_const) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_const\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG__INIT_const_INSEEP_WARNING
+      #define UIT_EMP_CONFIG__INIT_const_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG__INIT_const defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG__INIT_const
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_const
+    #pragma pop_macro("EMP_CONFIG__INIT_const")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_const
+
+#endif // #ifdef EMP_CONFIG__INIT_const
 
 #ifdef EMP_CONVERT_ARG_EMP_FAKE_2ARG
 
@@ -86411,6 +87627,44 @@
   #endif // #ifdef UIT_INTERNAL_HAS_EMP_EXPAND_PPACK
 
 #endif // #ifdef EMP_EXPAND_PPACK
+
+#ifdef EMP_EXTEND_CONFIG
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_EXTEND_CONFIG
+    #define UIT_EXTERNAL_HAS_EMP_EXTEND_CONFIG
+    #ifndef UIT_INTERNAL_HAS_EMP_EXTEND_CONFIG
+      #define UIT_EXTERNAL_1ST_EMP_EXTEND_CONFIG
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_EXTEND_CONFIG
+    #pragma push_macro("EMP_EXTEND_CONFIG")
+    #undef EMP_EXTEND_CONFIG
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_EXTEND_CONFIG) && defined(UIT_EXTERNAL_1ST_EMP_EXTEND_CONFIG\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_EXTEND_CONFIG_INSEEP_WARNING
+      #define UIT_EMP_EXTEND_CONFIG_INSEEP_WARNING
+      #pragma message(\
+        "EMP_EXTEND_CONFIG defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_EXTEND_CONFIG
+
+  #ifdef UIT_INTERNAL_HAS_EMP_EXTEND_CONFIG
+    #pragma pop_macro("EMP_EXTEND_CONFIG")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_EXTEND_CONFIG
+
+#endif // #ifdef EMP_EXTEND_CONFIG
 
 #ifdef EMP_FORCE_ARGS_TO
 

@@ -7,6 +7,7 @@ from ._iter_header_paths import iter_header_paths
 @functools.cache
 def get_header_content() -> typing.List[str]:
 
+    res = []
     for header_path in iter_header_paths():
         print(header_path)
         echo = subprocess.run(
@@ -32,9 +33,8 @@ def get_header_content() -> typing.List[str]:
             check=True,
             capture_output=True,
         ).stderr.decode()
-        res = []
-        for line in header_content.splitlines():
 
+        for line in header_content.splitlines():
             if "Empirical" in line:
                 if ' ' in line:
                     line = line.split()[1]

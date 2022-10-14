@@ -25776,6 +25776,30 @@
 
 #endif // #ifdef EMP_BOOL_IMPL
 
+#ifdef EMP_BUILD_CONFIG
+
+  #ifndef UIT_INTERNAL_HAS_EMP_BUILD_CONFIG
+    #define UIT_INTERNAL_HAS_EMP_BUILD_CONFIG
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_BUILD_CONFIG
+      #pragma pop_macro("EMP_BUILD_CONFIG")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_BUILD_CONFIG
+      #ifndef UIT_INTERNAL_1ST_EMP_BUILD_CONFIG
+        #define UIT_INTERNAL_1ST_EMP_BUILD_CONFIG
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_BUILD_CONFIG
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_BUILD_CONFIG
+    #pragma push_macro("EMP_BUILD_CONFIG")
+    #undef EMP_BUILD_CONFIG
+  #endif
+
+#endif // #ifdef EMP_BUILD_CONFIG
+
 #ifdef EMP_BUILD_TYPE_PACK
 
   #ifndef UIT_INTERNAL_HAS_EMP_BUILD_TYPE_PACK
@@ -26807,6 +26831,750 @@
   #endif
 
 #endif // #ifdef EMP_COMPARE_result_10
+
+#ifdef EMP_CONFIG__ACCESS
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS
+      #pragma pop_macro("EMP_CONFIG__ACCESS")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS
+    #pragma push_macro("EMP_CONFIG__ACCESS")
+    #undef EMP_CONFIG__ACCESS
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ACCESS
+
+#ifdef EMP_CONFIG__ACCESS_ALIAS
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_ALIAS
+      #pragma pop_macro("EMP_CONFIG__ACCESS_ALIAS")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_ALIAS
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_ALIAS
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+    #pragma push_macro("EMP_CONFIG__ACCESS_ALIAS")
+    #undef EMP_CONFIG__ACCESS_ALIAS
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ACCESS_ALIAS
+
+#ifdef EMP_CONFIG__ACCESS_CONST
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_CONST
+      #pragma pop_macro("EMP_CONFIG__ACCESS_CONST")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_CONST
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_CONST
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+    #pragma push_macro("EMP_CONFIG__ACCESS_CONST")
+    #undef EMP_CONFIG__ACCESS_CONST
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ACCESS_CONST
+
+#ifdef EMP_CONFIG__ACCESS_GROUP
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_GROUP
+      #pragma pop_macro("EMP_CONFIG__ACCESS_GROUP")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_GROUP
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_GROUP
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+    #pragma push_macro("EMP_CONFIG__ACCESS_GROUP")
+    #undef EMP_CONFIG__ACCESS_GROUP
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ACCESS_GROUP
+
+#ifdef EMP_CONFIG__ACCESS_VALUE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_VALUE
+      #pragma pop_macro("EMP_CONFIG__ACCESS_VALUE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_VALUE
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_VALUE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+    #pragma push_macro("EMP_CONFIG__ACCESS_VALUE")
+    #undef EMP_CONFIG__ACCESS_VALUE
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ACCESS_VALUE
+
+#ifdef EMP_CONFIG__ACCESS_const
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_const
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_const
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ACCESS_const
+      #pragma pop_macro("EMP_CONFIG__ACCESS_const")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_const
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_const
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ACCESS_const
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_const
+    #pragma push_macro("EMP_CONFIG__ACCESS_const")
+    #undef EMP_CONFIG__ACCESS_const
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ACCESS_const
+
+#ifdef EMP_CONFIG__ARG_OKAY_
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_
+      #pragma pop_macro("EMP_CONFIG__ARG_OKAY_")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_")
+    #undef EMP_CONFIG__ARG_OKAY_
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_
+
+#ifdef EMP_CONFIG__ARG_OKAY_ALIAS
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_ALIAS
+      #pragma pop_macro("EMP_CONFIG__ARG_OKAY_ALIAS")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_ALIAS
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_ALIAS
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_ALIAS")
+    #undef EMP_CONFIG__ARG_OKAY_ALIAS
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_ALIAS
+
+#ifdef EMP_CONFIG__ARG_OKAY_CONST
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_CONST
+      #pragma pop_macro("EMP_CONFIG__ARG_OKAY_CONST")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_CONST
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_CONST
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_CONST")
+    #undef EMP_CONFIG__ARG_OKAY_CONST
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_CONST
+
+#ifdef EMP_CONFIG__ARG_OKAY_GROUP
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_GROUP
+      #pragma pop_macro("EMP_CONFIG__ARG_OKAY_GROUP")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_GROUP
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_GROUP
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_GROUP")
+    #undef EMP_CONFIG__ARG_OKAY_GROUP
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_GROUP
+
+#ifdef EMP_CONFIG__ARG_OKAY_VALUE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_VALUE
+      #pragma pop_macro("EMP_CONFIG__ARG_OKAY_VALUE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_VALUE
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_VALUE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_VALUE")
+    #undef EMP_CONFIG__ARG_OKAY_VALUE
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_VALUE
+
+#ifdef EMP_CONFIG__ARG_OKAY_const
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ARG_OKAY_const
+      #pragma pop_macro("EMP_CONFIG__ARG_OKAY_const")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_const
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ARG_OKAY_const
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+    #pragma push_macro("EMP_CONFIG__ARG_OKAY_const")
+    #undef EMP_CONFIG__ARG_OKAY_const
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ARG_OKAY_const
+
+#ifdef EMP_CONFIG__CONSTRUCT
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT
+      #pragma pop_macro("EMP_CONFIG__CONSTRUCT")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT")
+    #undef EMP_CONFIG__CONSTRUCT
+  #endif
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT
+
+#ifdef EMP_CONFIG__CONSTRUCT_ALIAS
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_ALIAS
+      #pragma pop_macro("EMP_CONFIG__CONSTRUCT_ALIAS")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_ALIAS
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_ALIAS
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_ALIAS")
+    #undef EMP_CONFIG__CONSTRUCT_ALIAS
+  #endif
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_ALIAS
+
+#ifdef EMP_CONFIG__CONSTRUCT_CONST
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_CONST
+      #pragma pop_macro("EMP_CONFIG__CONSTRUCT_CONST")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_CONST
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_CONST
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_CONST")
+    #undef EMP_CONFIG__CONSTRUCT_CONST
+  #endif
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_CONST
+
+#ifdef EMP_CONFIG__CONSTRUCT_GROUP
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_GROUP
+      #pragma pop_macro("EMP_CONFIG__CONSTRUCT_GROUP")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_GROUP
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_GROUP
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_GROUP")
+    #undef EMP_CONFIG__CONSTRUCT_GROUP
+  #endif
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_GROUP
+
+#ifdef EMP_CONFIG__CONSTRUCT_VALUE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_VALUE
+      #pragma pop_macro("EMP_CONFIG__CONSTRUCT_VALUE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_VALUE
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_VALUE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_VALUE")
+    #undef EMP_CONFIG__CONSTRUCT_VALUE
+  #endif
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_VALUE
+
+#ifdef EMP_CONFIG__CONSTRUCT_const
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__CONSTRUCT_const
+      #pragma pop_macro("EMP_CONFIG__CONSTRUCT_const")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_const
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__CONSTRUCT_const
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+    #pragma push_macro("EMP_CONFIG__CONSTRUCT_const")
+    #undef EMP_CONFIG__CONSTRUCT_const
+  #endif
+
+#endif // #ifdef EMP_CONFIG__CONSTRUCT_const
+
+#ifdef EMP_CONFIG__DECLARE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE
+      #pragma pop_macro("EMP_CONFIG__DECLARE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE
+    #pragma push_macro("EMP_CONFIG__DECLARE")
+    #undef EMP_CONFIG__DECLARE
+  #endif
+
+#endif // #ifdef EMP_CONFIG__DECLARE
+
+#ifdef EMP_CONFIG__DECLARE_ALIAS
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_ALIAS
+      #pragma pop_macro("EMP_CONFIG__DECLARE_ALIAS")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_ALIAS
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_ALIAS
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+    #pragma push_macro("EMP_CONFIG__DECLARE_ALIAS")
+    #undef EMP_CONFIG__DECLARE_ALIAS
+  #endif
+
+#endif // #ifdef EMP_CONFIG__DECLARE_ALIAS
+
+#ifdef EMP_CONFIG__DECLARE_CONST
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_CONST
+      #pragma pop_macro("EMP_CONFIG__DECLARE_CONST")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_CONST
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_CONST
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+    #pragma push_macro("EMP_CONFIG__DECLARE_CONST")
+    #undef EMP_CONFIG__DECLARE_CONST
+  #endif
+
+#endif // #ifdef EMP_CONFIG__DECLARE_CONST
+
+#ifdef EMP_CONFIG__DECLARE_GROUP
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_GROUP
+      #pragma pop_macro("EMP_CONFIG__DECLARE_GROUP")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_GROUP
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_GROUP
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+    #pragma push_macro("EMP_CONFIG__DECLARE_GROUP")
+    #undef EMP_CONFIG__DECLARE_GROUP
+  #endif
+
+#endif // #ifdef EMP_CONFIG__DECLARE_GROUP
+
+#ifdef EMP_CONFIG__DECLARE_VALUE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_VALUE
+      #pragma pop_macro("EMP_CONFIG__DECLARE_VALUE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_VALUE
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_VALUE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+    #pragma push_macro("EMP_CONFIG__DECLARE_VALUE")
+    #undef EMP_CONFIG__DECLARE_VALUE
+  #endif
+
+#endif // #ifdef EMP_CONFIG__DECLARE_VALUE
+
+#ifdef EMP_CONFIG__DECLARE_const
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_const
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_const
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__DECLARE_const
+      #pragma pop_macro("EMP_CONFIG__DECLARE_const")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_const
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_const
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__DECLARE_const
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__DECLARE_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_const
+    #pragma push_macro("EMP_CONFIG__DECLARE_const")
+    #undef EMP_CONFIG__DECLARE_const
+  #endif
+
+#endif // #ifdef EMP_CONFIG__DECLARE_const
+
+#ifdef EMP_CONFIG__ERROR_CHECK
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__ERROR_CHECK
+      #pragma pop_macro("EMP_CONFIG__ERROR_CHECK")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__ERROR_CHECK
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__ERROR_CHECK
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+    #pragma push_macro("EMP_CONFIG__ERROR_CHECK")
+    #undef EMP_CONFIG__ERROR_CHECK
+  #endif
+
+#endif // #ifdef EMP_CONFIG__ERROR_CHECK
+
+#ifdef EMP_CONFIG__INIT
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__INIT
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__INIT
+      #pragma pop_macro("EMP_CONFIG__INIT")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__INIT
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__INIT
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT
+    #pragma push_macro("EMP_CONFIG__INIT")
+    #undef EMP_CONFIG__INIT
+  #endif
+
+#endif // #ifdef EMP_CONFIG__INIT
+
+#ifdef EMP_CONFIG__INIT_ALIAS
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_ALIAS
+      #pragma pop_macro("EMP_CONFIG__INIT_ALIAS")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__INIT_ALIAS
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__INIT_ALIAS
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+    #pragma push_macro("EMP_CONFIG__INIT_ALIAS")
+    #undef EMP_CONFIG__INIT_ALIAS
+  #endif
+
+#endif // #ifdef EMP_CONFIG__INIT_ALIAS
+
+#ifdef EMP_CONFIG__INIT_CONST
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_CONST
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__INIT_CONST
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_CONST
+      #pragma pop_macro("EMP_CONFIG__INIT_CONST")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_CONST
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__INIT_CONST
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__INIT_CONST
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_CONST
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_CONST
+    #pragma push_macro("EMP_CONFIG__INIT_CONST")
+    #undef EMP_CONFIG__INIT_CONST
+  #endif
+
+#endif // #ifdef EMP_CONFIG__INIT_CONST
+
+#ifdef EMP_CONFIG__INIT_GROUP
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_GROUP
+      #pragma pop_macro("EMP_CONFIG__INIT_GROUP")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__INIT_GROUP
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__INIT_GROUP
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+    #pragma push_macro("EMP_CONFIG__INIT_GROUP")
+    #undef EMP_CONFIG__INIT_GROUP
+  #endif
+
+#endif // #ifdef EMP_CONFIG__INIT_GROUP
+
+#ifdef EMP_CONFIG__INIT_VALUE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_VALUE
+      #pragma pop_macro("EMP_CONFIG__INIT_VALUE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__INIT_VALUE
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__INIT_VALUE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+    #pragma push_macro("EMP_CONFIG__INIT_VALUE")
+    #undef EMP_CONFIG__INIT_VALUE
+  #endif
+
+#endif // #ifdef EMP_CONFIG__INIT_VALUE
+
+#ifdef EMP_CONFIG__INIT_const
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_const
+    #define UIT_INTERNAL_HAS_EMP_CONFIG__INIT_const
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG__INIT_const
+      #pragma pop_macro("EMP_CONFIG__INIT_const")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_const
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG__INIT_const
+        #define UIT_INTERNAL_1ST_EMP_CONFIG__INIT_const
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__INIT_const
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_const
+    #pragma push_macro("EMP_CONFIG__INIT_const")
+    #undef EMP_CONFIG__INIT_const
+  #endif
+
+#endif // #ifdef EMP_CONFIG__INIT_const
 
 #ifdef EMP_CONVERT_ARG_EMP_FAKE_2ARG
 
@@ -54575,6 +55343,30 @@
   #endif
 
 #endif // #ifdef EMP_EXPAND_PPACK
+
+#ifdef EMP_EXTEND_CONFIG
+
+  #ifndef UIT_INTERNAL_HAS_EMP_EXTEND_CONFIG
+    #define UIT_INTERNAL_HAS_EMP_EXTEND_CONFIG
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_EXTEND_CONFIG
+      #pragma pop_macro("EMP_EXTEND_CONFIG")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_EXTEND_CONFIG
+      #ifndef UIT_INTERNAL_1ST_EMP_EXTEND_CONFIG
+        #define UIT_INTERNAL_1ST_EMP_EXTEND_CONFIG
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_EXTEND_CONFIG
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_EXTEND_CONFIG
+    #pragma push_macro("EMP_EXTEND_CONFIG")
+    #undef EMP_EXTEND_CONFIG
+  #endif
+
+#endif // #ifdef EMP_EXTEND_CONFIG
 
 #ifdef EMP_FORCE_ARGS_TO
 
