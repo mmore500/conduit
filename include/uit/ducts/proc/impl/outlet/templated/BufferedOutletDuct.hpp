@@ -9,8 +9,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uit_emp/base/always_assert.hpp"
-
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/nonce/ScopeGuard.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
@@ -18,8 +17,6 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../../impl/inlet/templated/impl/BufferSpec.hpp"
-
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 
@@ -100,12 +97,12 @@ public:
   { ; }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "TryPut called on BufferedOutletDuct");
+    uitsl_always_assert(false, "TryPut called on BufferedOutletDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on BufferedOutletDuct");
+    uitsl_always_assert(false, "Flush called on BufferedOutletDuct");
     __builtin_unreachable();
   }
 
@@ -151,7 +148,5 @@ public:
 };
 
 } // namespace uit
-
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_TEMPLATED_BUFFEREDOUTLETDUCT_HPP_INCLUDE

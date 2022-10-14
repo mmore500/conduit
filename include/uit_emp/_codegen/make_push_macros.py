@@ -5,7 +5,6 @@ import textwrap
 from pylib import iter_macros
 
 content = "\n#ifdef UIT_VENDORIZE_EMP"
-content_assert = "\n#ifdef UIT_VENDORIZE_EMP"
 for macro in iter_macros():
     new_content = textwrap.dedent(f"""\
 
@@ -49,19 +48,9 @@ for macro in iter_macros():
     """)
     content += new_content
 
-    if 'assert' in macro:
-        content_assert += new_content
-
 content += "\n"
 content += "#endif // #ifdef UIT_VENDORIZE_EMP"
 content += "\n"
 
 with open(f"vendorization/push_macros.hh", "w") as f:
     f.write(content)
-
-content_assert += "\n"
-content_assert += "#endif // #ifdef UIT_VENDORIZE_EMP"
-content_assert += "\n"
-
-with open(f"vendorization/push_assert_macros.hh", "w") as f:
-    f.write(content_assert)

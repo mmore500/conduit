@@ -11,10 +11,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uit_emp/base/always_assert.hpp"
-#include "../../../../../../uit_emp/base/assert.hpp"
-
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaPacket.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/t::static_test.hpp"
@@ -25,8 +22,6 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/RdmaBackEnd.hpp"
-
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace t {
@@ -96,12 +91,12 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) {
-    emp_always_assert(false, "TryPut called on WindowDuct");
+    uitsl_always_assert(false, "TryPut called on WindowDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on WindowDuct");
+    uitsl_always_assert(false, "Flush called on WindowDuct");
     __builtin_unreachable();
   }
 
@@ -120,7 +115,7 @@ public:
     );
     back_end->GetWindowManager().Unlock( address.GetInletProc() );
 
-    emp_assert( cache.GetEpoch() >= cur_epoch , cache.GetEpoch(), cur_epoch );
+    uitsl_assert(cache.GetEpoch() >= cur_epoch, cache.GetEpoch() << cur_epoch);
 
     const size_t elapsed_epochs = cache.GetEpoch() - cur_epoch;
 
@@ -149,7 +144,5 @@ public:
 
 } // namespace t
 } // namespace uit
-
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_GET_SKIPPING_TYPE_TRIVIAL_T__WINDOWDUCT_HPP_INCLUDE

@@ -12,9 +12,9 @@
 #include <mpi.h>
 
 #include "../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
-#include "../../../../../../uit_emp/base/always_assert.hpp"
 #include "../../../../../../uit_emp/io/MemoryIStream.hpp"
 
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/initialization/Uninitialized.hpp"
 #include "../../../../../../uitsl/meta/c::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -25,8 +25,6 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/MockBackEnd.hpp"
-
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace c {
@@ -138,12 +136,12 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "Put called on IprobeDuct");
+    uitsl_always_assert(false, "Put called on IprobeDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on IprobeDuct");
+    uitsl_always_assert(false, "Flush called on IprobeDuct");
     __builtin_unreachable();
   }
 
@@ -198,7 +196,5 @@ public:
 
 } // namespace c
 } // namespace uit
-
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_GET_STEPPING_TYPE_CEREAL_C__IPROBEDUCT_HPP_INCLUDE

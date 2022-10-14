@@ -10,10 +10,8 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uit_emp/base/always_assert.hpp"
-
 #include "../../../../../../uitsl/debug/safe_compare.hpp"
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorBundle.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/f::static_test.hpp"
@@ -26,8 +24,6 @@
 
 #include "../../backend/RuntimeSizeBackEnd.hpp"
 #include "../../backend/RuntimeSizeRdmaBackEnd.hpp"
-
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace sf {
@@ -106,12 +102,12 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) {
-    emp_always_assert(false, "TryPut called on WithdrawingWindowDuct");
+    uitsl_always_assert(false, "TryPut called on WithdrawingWindowDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on WithdrawingWindowDuct");
+    uitsl_always_assert(false, "Flush called on WithdrawingWindowDuct");
     __builtin_unreachable();
   }
 
@@ -171,7 +167,5 @@ public:
 
 } // namespace f
 } // namespace uit
-
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_ACCUMULATING_TYPE_SPANFUNDAMENTAL_SF__WITHDRAWINGWINDOWDUCT_HPP_INCLUDE

@@ -13,6 +13,7 @@
 
 #include "../../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../../uitsl/debug/err_audit.hpp"
+#include "../../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../../uitsl/distributed/MsgAccumulatorPacket.hpp"
 #include "../../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/audited_routines.hpp"
@@ -129,19 +130,19 @@ public:
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(
+    uitsl_always_assert(
       false, "ConsumeGets called on AccumulatingTrivialIsendDuct"
     );
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on AccumulatingTrivialIsendDuct");
+    uitsl_always_assert(false, "Get called on AccumulatingTrivialIsendDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on AccumulatingTrivialIsendDuct");
+    uitsl_always_assert(false, "Get called on AccumulatingTrivialIsendDuct");
     __builtin_unreachable();
   }
 

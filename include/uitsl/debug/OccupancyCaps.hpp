@@ -8,6 +8,8 @@
 #include <tuple>
 #include <unordered_map>
 
+#include "../../uitsl/debug/uitsl_assert.hpp"
+
 #include "OccupancyCap.hpp"
 
 namespace uitsl {
@@ -41,11 +43,11 @@ public:
       return res.first->second;
     } else {
       auto & res = lookup.at(line);
-      emp_assert(
+      uitsl_assert(
         res.GetMaximumOccupancy() == maximum_occupancy,
-        [](){ error_message_mutex.lock(); return "locked"; }(),
-        maximum_occupancy,
-        res.GetMaximumOccupancy()
+        [](){ error_message_mutex.lock(); return "locked"; }()
+          << maximum_occupancy
+          << res.GetMaximumOccupancy()
       );
       return res;
     }

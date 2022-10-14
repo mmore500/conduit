@@ -2,6 +2,7 @@
 #ifndef UITSL_DATASTRUCTS_MIRROREDRINGBUFFER_HPP_INCLUDE
 #define UITSL_DATASTRUCTS_MIRROREDRINGBUFFER_HPP_INCLUDE
 
+#include <cassert>
 #include <cstring>
 
 #include <sys/mman.h>
@@ -35,7 +36,7 @@ public:
 
   MirroredRingBuffer() {
 
-    emp_assert( byte_size % getpagesize() == 0 );
+    assert( byte_size % getpagesize() == 0 );
 
     uitsl_err_audit(ftruncate(
       file_descriptor, // int fd
@@ -52,7 +53,7 @@ public:
       0 // off_t offset
     ) );
 
-    emp_assert( buffer != MAP_FAILED ); emp_assert( buffer != nullptr );
+    assert( buffer != MAP_FAILED ); assert( buffer != nullptr );
 
     // map front half of our buffer to underlying buffer
     { const auto res = mmap(
@@ -62,7 +63,7 @@ public:
       MAP_SHARED | MAP_FIXED, // int flags
       file_descriptor, // int fd
       0 // off_t offset
-    ); emp_assert( res != MAP_FAILED ); }
+    ); assert( res != MAP_FAILED ); }
 
     // map back half of our buffer to underlying buffer
     { const auto res = mmap(
@@ -72,7 +73,7 @@ public:
       MAP_SHARED | MAP_FIXED, // int flags
       file_descriptor, // int fd
       0 // off_t offset
-    ); emp_assert( res != MAP_FAILED ); }
+    ); assert( res != MAP_FAILED ); }
 
     // point tail beginning of buffer
     tail = buffer;
@@ -87,12 +88,12 @@ public:
   }
 
   std::byte* step_pointer(std::byte* curr, size_t num_steps=1) const {
-    emp_assert( num_steps <= N );
+    assert( num_steps <= N );
     curr += num_steps * sizeof(T);
     // wraparound if off the end
     curr -= (std::distance(buffer, curr) / byte_size) * byte_size;
-    emp_assert( std::distance(buffer, curr) >= 0 );
-    emp_assert( static_cast<size_t>(std::distance(buffer, curr)) < byte_size );
+    assert( std::distance(buffer, curr) >= 0 );
+    assert( static_cast<size_t>(std::distance(buffer, curr)) < byte_size );
     return curr;
   }
 
@@ -121,12 +122,12 @@ public:
   const T* GetPastHeadPtr() const { return GetTailPtr() + GetSize(); }
 
   T* GetHeadPtr() {
-    emp_assert( GetSize() );
+    assert( GetSize() );
     return GetPastHeadPtr() - 1;
   }
 
   const T* GetHeadPtr() const {
-    emp_assert( GetSize() );
+    assert( GetSize() );
     return GetPastHeadPtr() - 1;
   }
 
@@ -135,19 +136,19 @@ public:
   const T* GetTailPtr() const { return reinterpret_cast<const T*>(tail); }
 
   T Get(const size_t i) const {
-    emp_assert( i < GetSize() );
+    assert( i < GetSize() );
     T res;
     std::memcpy( &res, GetTailPtr() + i, sizeof(T) );
     return res;
   }
 
   T GetHead() const {
-    emp_assert( GetSize() );
+    assert( GetSize() );
     return Get( GetSize() - 1 );
   }
 
   T GetTail() const {
-    emp_assert( GetSize() );
+    assert( GetSize() );
     return Get(0);
   }
 

@@ -10,9 +10,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uit_emp/base/always_assert.hpp"
-
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorPacket.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/f::static_test.hpp"
@@ -25,7 +23,6 @@
 
 #include "../../backend/RdmaBackEnd.hpp"
 
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uit {
 namespace f {
 
@@ -88,7 +85,7 @@ public:
         std::vector<std::byte>{}
       );
 
-      // we'll emp_assert later to make sure it actually completed
+      // we'll assert later to make sure it actually completed
       UITSL_Irecv(
         &target_offset, // void *buf
         1, // int count
@@ -119,17 +116,17 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on AccumulateDuct");
+    uitsl_always_assert(false, "ConsumeGets called on AccumulateDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on AccumulateDuct");
+    uitsl_always_assert(false, "Get called on AccumulateDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on AccumulateDuct");
+    uitsl_always_assert(false, "Get called on AccumulateDuct");
     __builtin_unreachable();
   }
 
@@ -147,6 +144,5 @@ public:
 
 } // namespace f
 } // namespace uit
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_ACCUMULATING_TYPE_FUNDAMENTAL_F__ACCUMULATEDUCT_HPP_INCLUDE

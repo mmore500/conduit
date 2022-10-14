@@ -10,9 +10,9 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorBundle.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/meta/f::static_test.hpp"
 #include "../../../../../../uitsl/meta/s::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -137,17 +137,17 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on AccumulateDuct");
+    uitsl_always_assert(false, "ConsumeGets called on AccumulateDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on AccumulateDuct");
+    uitsl_always_assert(false, "Get called on AccumulateDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on AccumulateDuct");
+    uitsl_always_assert(false, "Get called on AccumulateDuct");
     __builtin_unreachable();
   }
 

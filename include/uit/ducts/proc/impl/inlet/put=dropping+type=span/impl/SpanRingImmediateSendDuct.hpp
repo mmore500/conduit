@@ -13,10 +13,9 @@
 
 #include "../../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
 
-#include "../../../../../../../uit_emp/base/always_assert.hpp"
-
 #include "../../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../../uitsl/debug/err_audit.hpp"
+#include "../../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../../uitsl/meta/s::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../../uitsl/mpi/Request.hpp"
@@ -27,7 +26,6 @@
 
 #include "../../../backend/RuntimeSizeBackEnd.hpp"
 
-#include "../../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uit {
 namespace internal {
 
@@ -189,17 +187,19 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on SpanRingImmediateSendDuct");
+    uitsl_always_assert(
+      false, "ConsumeGets called on SpanRingImmediateSendDuct"
+    );
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on SpanRingImmediateSendDuct");
+    uitsl_always_assert(false, "Get called on SpanRingImmediateSendDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on SpanRingImmediateSendDuct");
+    uitsl_always_assert(false, "Get called on SpanRingImmediateSendDuct");
     __builtin_unreachable();
   }
 
@@ -217,6 +217,5 @@ public:
 
 } // namespace internal
 } // namespace uit
-#include "../../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_DROPPING_TYPE_SPAN_IMPL_SPANRINGIMMEDIATESENDDUCT_HPP_INCLUDE

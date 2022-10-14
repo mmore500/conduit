@@ -9,8 +9,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uit_emp/base/always_assert.hpp"
-
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/MsgAccumulatorPacket.hpp"
 #include "../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -20,8 +19,6 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/MockBackEnd.hpp"
-
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace t {
@@ -107,12 +104,12 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "TryPut called on IrecvDuct");
+    uitsl_always_assert(false, "TryPut called on IrecvDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on IrecvDuct");
+    uitsl_always_assert(false, "Flush called on IrecvDuct");
     __builtin_unreachable();
   }
 
@@ -165,7 +162,5 @@ public:
 
 } // namespace t
 } // namespace uit
-
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_ACCUMULATING_TYPE_TRIVIAL_T__IRECVDUCT_HPP_INCLUDE

@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <stddef.h>
 #include <utility>
 
@@ -30,7 +31,7 @@ public:
 
   bool IsFull() const { return GetSize() == N; }
 
-  void DoPushHead() { emp_assert( !IsFull() ); ++num_items; }
+  void DoPushHead() { assert( !IsFull() ); ++num_items; }
 
   bool PushHead() {
     if ( IsFull() ) return false;
@@ -60,7 +61,7 @@ public:
   }
 
   void DoPopHead(const size_t num_requested=1) {
-    emp_assert( num_requested <= GetSize() );
+    assert( num_requested <= GetSize() );
     num_items -= num_requested;
   }
 
@@ -71,7 +72,7 @@ public:
   }
 
   void DoPopTail(const size_t num_requested=1) {
-    emp_assert( num_requested <= GetSize() );
+    assert( num_requested <= GetSize() );
     tail += num_requested;
     num_items -= num_requested;
   }

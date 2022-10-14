@@ -8,9 +8,7 @@
 #include <metis.h>
 #endif
 
-#include "../../uit_emp/base/assert.hpp"
-
-#include "../../uit_emp/vendorization/push_macros.hh"
+#include "../../uitsl/debug/uitsl_assert.hpp"
 
 namespace uitsl::metis {
 inline void verify(const int status) {
@@ -35,12 +33,10 @@ inline void verify(const int status) {
       name = "unknown";
       break;
   }
-  emp_assert(status == METIS_OK, status, name);
+  uitsl_assert(status == METIS_OK, status << name);
   #endif
 }
 
 } // namespace uitsl::metis
-
-#include "../../uit_emp/vendorization/pop_macros.hh"
 
 #endif // #ifndef UITSL_DEBUG_METIS_UTILS_HPP_INCLUDE

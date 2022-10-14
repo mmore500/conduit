@@ -10,8 +10,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uit_emp/base/always_assert.hpp"
-
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../uitsl/datastructs/SiftingArray.hpp"
 #include "../../../../../../uitsl/debug/err_audit.hpp"
@@ -22,8 +21,6 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/MockBackEnd.hpp"
-
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace t {
@@ -157,7 +154,7 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "TryPut called on RingIrecvDuct");
+    uitsl_always_assert(false, "TryPut called on RingIrecvDuct");
     __builtin_unreachable();
   }
 
@@ -166,7 +163,7 @@ public:
    *
    */
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on RingIrecvDuct");
+    uitsl_always_assert(false, "Flush called on RingIrecvDuct");
     __builtin_unreachable();
   }
 
@@ -229,7 +226,5 @@ public:
 
 } // namespace t
 } // namespace uit
-
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_GET_STEPPING_TYPE_TRIVIAL_T__RINGIRECVDUCT_HPP_INCLUDE

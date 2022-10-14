@@ -8,16 +8,13 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uit_emp/base/always_assert.hpp"
-
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
 
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "impl/BufferSpec.hpp"
-
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 
@@ -97,17 +94,17 @@ public:
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on BufferedInletDuct");
+    uitsl_always_assert(false, "ConsumeGets called on BufferedInletDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on BufferedInletDuct");
+    uitsl_always_assert(false, "Get called on BufferedInletDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on BufferedInletDuct");
+    uitsl_always_assert(false, "Get called on BufferedInletDuct");
     __builtin_unreachable();
   }
 
@@ -123,7 +120,5 @@ public:
 };
 
 } // namespace uit
-
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_BUFFEREDINLETDUCT_HPP_INCLUDE

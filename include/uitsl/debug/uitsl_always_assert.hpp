@@ -5,6 +5,8 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "../meta/is_streamable.hpp"
+#include "../meta/fwd_or_cast.hpp"
 #include "../utility/UITSL_STRINGIFY.hpp"
 #include "../utility/SetSeparator.hpp"
 
@@ -17,7 +19,9 @@ do {                                                                          \
     std::cout << '\n';                                                        \
     std::cout << "ASSERTION FAILED: ";                                        \
     std::cout << '\n';                                                        \
-    std::cout << UITSL_STRINGIFY(expr) << " was " << (expr) << '\n';          \
+    std::cout << UITSL_STRINGIFY(expr) << " was ";                            \
+    std::cout << uitsl::fwd_or_cast<uitsl::is_streamable, bool>(expr);        \
+    std::cout << '\n';                                                        \
     std::cout << '\n';                                                        \
     std::cout << "FILE: " << __FILE__ << '\n';                                \
     std::cout << "FUNCTION: " << __PRETTY_FUNCTION__ << '\n';                 \

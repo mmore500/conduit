@@ -15,13 +15,13 @@
 #include "../../uit_emp/tools/keyname_utils.hpp"
 #include "../../uit_emp/tools/string_utils.hpp"
 
+#include "../debug/uitsl_always_assert.hpp"
 #include "../mpi/comm_utils.hpp"
 #include "../mpi/mpi_init_utils.hpp"
 #include "../polyfill/filesystem.hpp"
 
 #include "generate_random_uuid.hpp"
 
-#include "../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uitsl {
 
 uuids::uuid get_exec_instance_uuid() {
@@ -36,13 +36,14 @@ uuids::uuid get_exec_instance_uuid() {
     // 2. if user provided UITSL_EXEC_INSTANCE_UUID, verify it and then use it
     else if ( const char* seed = std::getenv("UITSL_EXEC_INSTANCE_UUID") ) {
       auto parsed = uuids::uuid::from_string(seed);
-      emp_always_assert(
+      uitsl_always_assert(
         parsed.has_value(),
-        "UITSL_EXEC_INSTANCE_UUID must be a valid uuid", seed
+        "UITSL_EXEC_INSTANCE_UUID must be a valid uuid" << seed
       );
-      emp_always_assert(
+      uitsl_always_assert(
         !parsed->is_nil(),
-        "UITSL_EXEC_INSTANCE_UUID must be a non-nil uuid", seed, *parsed
+        "UITSL_EXEC_INSTANCE_UUID must be a non-nil uuid"
+          << seed << *parsed
       );
       res = *parsed;
     // 3. if PMIX_NAMESPACE is available, use that to make uuid
@@ -67,12 +68,12 @@ uuids::uuid get_exec_instance_uuid() {
         {"rank",uit_emp::to_string( uitsl::get_proc_id() )},
         {"uid", uuids::to_string( res )},
       });
-    emp_always_assert(
+    uitsl_always_assert(
       !std::filesystem::exists( reservation_path ),
-      reservation_path,
-      uitsl::is_multiprocess(),
-      std::getenv("UITSL_EXEC_INSTANCE_UUID"),
-      std::getenv("PMIX_NAMESPACE")
+      reservation_path
+        << uitsl::is_multiprocess()
+        << std::getenv("UITSL_EXEC_INSTANCE_UUID")
+        << std::getenv("PMIX_NAMESPACE")
     );
 
     // touch reservation_path
@@ -88,6 +89,5 @@ uuids::uuid get_exec_instance_uuid() {
 }
 
 } // namespace uitsl
-#include "../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UITSL_UTILITY_GET_EXEC_INSTANCE_UUID_HPP_INCLUDE

@@ -9,9 +9,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uit_emp/base/always_assert.hpp"
-
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/MsgAccumulatorBundle.hpp"
 #include "../../../../../../uitsl/meta/s::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -21,8 +19,6 @@
 #include "../../../../../setup/InterProcAddress.hpp"
 
 #include "../../backend/RuntimeSizeBackEnd.hpp"
-
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace uit {
 namespace s {
@@ -119,12 +115,12 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "TryPut called on IrecvDuct");
+    uitsl_always_assert(false, "TryPut called on IrecvDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on IrecvDuct");
+    uitsl_always_assert(false, "Flush called on IrecvDuct");
     __builtin_unreachable();
   }
 
@@ -176,7 +172,5 @@ public:
 
 } // namespace s
 } // namespace uit
-
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_OUTLET_ACCUMULATING_TYPE_SPAN_S__IRECVDUCT_HPP_INCLUDE

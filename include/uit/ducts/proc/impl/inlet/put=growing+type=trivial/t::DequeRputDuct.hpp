@@ -13,9 +13,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../uit_emp/base/always_assert.hpp"
-
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaPacket.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/t::static_test.hpp"
@@ -28,7 +26,6 @@
 
 #include "../../backend/RdmaBackEnd.hpp"
 
-#include "../../../../../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uit {
 namespace t {
 
@@ -172,17 +169,17 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on DequeRputDuct");
+    uitsl_always_assert(false, "ConsumeGets called on DequeRputDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on DequeRputDuct");
+    uitsl_always_assert(false, "Get called on DequeRputDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on DequeRputDuct");
+    uitsl_always_assert(false, "Get called on DequeRputDuct");
     __builtin_unreachable();
   }
 
@@ -200,7 +197,5 @@ public:
 
 } // namespace t
 } // namespace uit
-
-#include "../../../../../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UIT_DUCTS_PROC_IMPL_INLET_PUT_GROWING_TYPE_TRIVIAL_T__DEQUERPUTDUCT_HPP_INCLUDE

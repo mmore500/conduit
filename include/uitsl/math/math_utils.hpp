@@ -9,12 +9,11 @@
 #include <ratio>
 #include <stddef.h>
 
-#include "../../uit_emp/base/assert.hpp"
 #include "../../uit_emp/math/math.hpp"
 
-#include "../debug/safe_cast.hpp"
+#include "../../uitsl/debug/uitsl_assert.hpp"
 
-#include "../../uit_emp/vendorization/push_assert_macros.hh"
+#include "../debug/safe_cast.hpp"
 
 namespace uitsl {
 
@@ -71,8 +70,8 @@ size_t sidebyside_hash(const size_t top, const size_t bottom) {
   [[maybe_unused]] constexpr size_t top_size = avail_size - bottom_size;
 
   // bounds checking
-  emp_assert(std::bitset<top_size>(top).to_ullong() == top, top);
-  emp_assert(std::bitset<bottom_size>(bottom).to_ullong() == bottom, bottom);
+  uitsl_assert(std::bitset<top_size>(top).to_ullong() == top, top);
+  uitsl_assert(std::bitset<bottom_size>(bottom).to_ullong() == bottom, bottom);
 
   const auto bottom_bits = std::bitset<int_size>( bottom );
   const auto top_bits = std::bitset<int_size>( top ) << bottom_size;
@@ -84,7 +83,5 @@ size_t sidebyside_hash(const size_t top, const size_t bottom) {
 }
 
 } // namespace uitsl
-
-#include "../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UITSL_MATH_MATH_UTILS_HPP_INCLUDE

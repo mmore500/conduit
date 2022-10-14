@@ -3,6 +3,7 @@
 #define UIT_SPOUTS_INLET_HPP_INCLUDE
 
 #include <atomic>
+#include <cassert>
 #include <cstdint>
 #include <iostream>
 #include <optional>
@@ -209,7 +210,7 @@ public:
    * @return TODO.
    */
   size_t GetNumTryPutsThatSucceeded() const {
-    emp_assert( attempted_try_put_count >= dropped_put_count );
+    assert( attempted_try_put_count >= dropped_put_count );
     return attempted_try_put_count - dropped_put_count;
   }
 
@@ -228,7 +229,7 @@ public:
    * @return TODO.
    */
   size_t GetNumBlockingPutsThatSucceededImmediately() const {
-    emp_assert( blocking_put_count >= puts_that_blocked_count );
+    assert( blocking_put_count >= puts_that_blocked_count );
     return blocking_put_count - puts_that_blocked_count;
   }
 

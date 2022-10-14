@@ -7,8 +7,9 @@
 
 #include "../../../../../../third-party/Empirical/third-party/robin-hood-hashing/src/include/robin_hood.h"
 
-#include "../../../../../uit_emp/base/assert.hpp"
 #include "../../../../../uit_emp/datastructs/tuple_utils.hpp"
+
+#include "../../../../../uitsl/debug/uitsl_assert.hpp"
 
 #include "../../../../setup/InterProcAddress.hpp"
 
@@ -156,9 +157,7 @@ public:
 
     auto& aggregator = inlet_aggregators.at( address.WhichProcsThreads() );
 
-    #include "../../../../../uit_emp/vendorization/push_assert_macros.hh"
-    emp_assert( aggregator.IsInitialized(), aggregator.GetSize() );
-    #include "../../../../../uit_emp/vendorization/pop_assert_macros.hh"
+    uitsl_assert( aggregator.IsInitialized(), aggregator.GetSize() );
 
     return aggregator;
   }

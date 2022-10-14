@@ -12,16 +12,14 @@
 #include <metis.h>
 #endif
 
-#include "../../uit_emp/base/assert.hpp"
-
 #include "../../uitsl/debug/audit_cast.hpp"
+#include "../../uitsl/debug/uitsl_assert.hpp"
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
 #include "../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 
 #include "../topology/Topology.hpp"
 
-#include "../../uit_emp/vendorization/push_assert_macros.hh"
 namespace netuit {
 
 /// Apply METIS' K-way partitioning algorithm to subdivide topology
@@ -32,7 +30,10 @@ std::vector<int32_t> PartitionMetis(
   const size_t num_parts, const netuit::Topology& topology
 ) {
 
-  emp_assert( num_parts <= topology.GetSize(), num_parts, topology.GetSize() );
+  uitsl_assert(
+    num_parts <= topology.GetSize(),
+    num_parts << topology.GetSize()
+  );
 
   // set up result vector
   std::vector<int32_t> result( topology.GetSize(), 0 );
@@ -189,6 +190,5 @@ std::pair<
 }
 
 } // namespace netuit
-#include "../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef NETUIT_ASSIGN_GENERATEMETISASSIGNMENTS_HPP_INCLUDE

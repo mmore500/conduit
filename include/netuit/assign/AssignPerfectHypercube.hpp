@@ -7,12 +7,9 @@
 #include <numeric>
 #include <stddef.h>
 
-#include "../../uit_emp/base/assert.hpp"
-
+#include "../../uitsl/debug/uitsl_assert.hpp"
 #include "../../uitsl/math/is_perfect_hypercube.hpp"
 #include "../../uitsl/math/mapping_utils.hpp"
-
-#include "../../uit_emp/vendorization/push_assert_macros.hh"
 
 namespace netuit {
 
@@ -52,10 +49,18 @@ struct AssignPerfectHypercube {
     // get partition id
     const auto res = uitsl::linear_encode( coordinates, partition_dims );
 
-    emp_assert( res < std::accumulate(
-      std::begin(partition_dims), std::end(partition_dims),
-      1ul, std::multiplies<size_t>{}
-    ), node_id, res, coordinates, uitsl::linear_decode( node_id, item_dims ), item_dims, partition_dims );
+    uitsl_assert(
+      res < std::accumulate(
+        std::begin(partition_dims), std::end(partition_dims),
+        1ul, std::multiplies<size_t>{}
+      ),
+      node_id
+        << res
+        << coordinates
+        << uitsl::linear_decode( node_id, item_dims )
+        << item_dims
+        << partition_dims
+    );
 
     return res;
   }
@@ -63,7 +68,5 @@ struct AssignPerfectHypercube {
 };
 
 } // namespace netuit
-
-#include "../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef NETUIT_ASSIGN_ASSIGNPERFECTHYPERCUBE_HPP_INCLUDE

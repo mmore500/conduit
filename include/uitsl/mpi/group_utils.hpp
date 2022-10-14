@@ -2,6 +2,7 @@
 #ifndef UITSL_MPI_GROUP_UTILS_HPP_INCLUDE
 #define UITSL_MPI_GROUP_UTILS_HPP_INCLUDE
 
+#include <cassert>
 #include <numeric>
 #include <set>
 #include <sstream>
@@ -9,17 +10,16 @@
 
 #include <mpi.h>
 
-#include "../../uit_emp/base/assert.hpp"
 #include "../../uit_emp/math/math.hpp"
 
 #include "../debug/safe_compare.hpp"
+#include "../debug/uitsl_assert.hpp"
 #include "../math/math_utils.hpp"
 #include "../utility/print_utils.hpp"
 
 #include "audited_routines.hpp"
 #include "proc_id_t.hpp"
 
-#include "../../uit_emp/vendorization/push_assert_macros.hh"
 namespace uitsl {
 
 // predeclaration
@@ -98,7 +98,7 @@ inline size_t group_size(const MPI_Group & group) {
     group, // MPI_Group group
     &res // int *size
   );
-  emp_assert(res >= 0);
+  assert(res >= 0);
   return res;
 }
 
@@ -125,11 +125,11 @@ inline MPI_Group make_group(
   const auto last{ std::unique(std::begin(ranks), std::end(ranks)) };
   ranks.erase(last, std::end(ranks));
 
-  emp_assert(std::set<proc_id_t>(
+  uitsl_assert(std::set<proc_id_t>(
     std::begin(ranks),
     std::end(ranks)
   ).size() == ranks.size(), uitsl::to_string(ranks));
-  emp_assert(std::all_of(
+  uitsl_assert(std::all_of(
     std::begin(ranks),
     std::end(ranks),
     [&](const auto & rank){
@@ -197,6 +197,5 @@ inline std::string group_to_string(const MPI_Group& group) {
 }
 
 } // namespace uitsl
-#include "../../uit_emp/vendorization/pop_assert_macros.hh"
 
 #endif // #ifndef UITSL_MPI_GROUP_UTILS_HPP_INCLUDE

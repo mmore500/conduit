@@ -2,6 +2,7 @@
 #ifndef UIT_SPOUTS_OUTLET_HPP_INCLUDE
 #define UIT_SPOUTS_OUTLET_HPP_INCLUDE
 
+#include <cassert>
 #include <cstdint>
 #include <iostream>
 #include <limits>
@@ -260,7 +261,7 @@ public:
    * @return TODO.
    */
   size_t GetNumReadsThatWereStale() const {
-    emp_assert( read_count >= fresh_read_count );
+    assert( read_count >= fresh_read_count );
     return read_count - fresh_read_count;
   }
 
@@ -314,7 +315,7 @@ public:
    * @return TODO.
    */
   size_t GetNumRevisionsFromBlockingPulls() const {
-    emp_assert(revision_count >= GetNumRevisionsFromTryPulls());
+    assert(revision_count >= GetNumRevisionsFromTryPulls());
     return revision_count - GetNumRevisionsFromTryPulls();
   }
 
@@ -342,7 +343,7 @@ public:
    * @return TODO.
    */
   size_t GetNumBlockingPullsThatWereLadenImmediately() const {
-    emp_assert( GetNumBlockingPulls() >= GetNumBlockingPullsThatBlocked() );
+    assert( GetNumBlockingPulls() >= GetNumBlockingPullsThatBlocked() );
     return GetNumBlockingPulls() - GetNumBlockingPullsThatBlocked();
   }
 
@@ -382,7 +383,7 @@ public:
    * @return TODO.
    */
   size_t GetNumTryPullsThatWereUnladen() const {
-    emp_assert(nonblocking_pull_attempt_count >= laden_nonblocking_pull_count);
+    assert(nonblocking_pull_attempt_count >= laden_nonblocking_pull_count);
     return nonblocking_pull_attempt_count - laden_nonblocking_pull_count;
   }
 
@@ -392,7 +393,7 @@ public:
    * @return TODO.
    */
   double GetFractionTryPullsThatWereLaden() const {
-    emp_assert(GetNumTryPullsThatWereLaden() >= GetNumTryPullsAttempted());
+    assert(GetNumTryPullsThatWereLaden() >= GetNumTryPullsAttempted());
     return (
       GetNumTryPullsThatWereLaden()
       / static_cast<double>( GetNumTryPullsAttempted() )
@@ -414,7 +415,7 @@ public:
    * @return TODO.
    */
   double GetFractionBlockingPullsThatBlocked() const {
-    emp_assert(
+    assert(
       GetNumBlockingPullsThatBlocked()
       >= GetNumBlockingPulls()
     );
@@ -439,7 +440,7 @@ public:
    * @return TODO.
    */
   double GetFractionPullsThatWereLadenImmediately() const {
-    emp_assert(GetNumPullsThatWereLadenImmediately() >= GetNumPullsAttempted());
+    assert(GetNumPullsThatWereLadenImmediately() >= GetNumPullsAttempted());
     return (
       GetNumPullsThatWereLadenImmediately()
       / static_cast<double>( GetNumPullsAttempted() )
@@ -452,7 +453,7 @@ public:
    * @return TODO.
    */
   double GetFractionPullsThatWereLadenEventually() const {
-    emp_assert(GetNumPullsThatWereLadenEventually() >= GetNumPullsAttempted());
+    assert(GetNumPullsThatWereLadenEventually() >= GetNumPullsAttempted());
     return (
       GetNumPullsThatWereLadenEventually()
       / static_cast<double>( GetNumPullsAttempted() )

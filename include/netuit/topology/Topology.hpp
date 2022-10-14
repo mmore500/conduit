@@ -3,6 +3,7 @@
 #define NETUIT_TOPOLOGY_TOPOLOGY_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <exception>
 #include <iostream>
 #include <iterator>
@@ -55,7 +56,7 @@ private:
   /// @param[in] topo_node Node to register.
   void RegisterNodeInputs(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     for (const auto& input : topo_node.GetInputs()) {
-      emp_assert(input_registry.count(input.GetEdgeID()) == 0);
+      assert(input_registry.count(input.GetEdgeID()) == 0);
       input_registry[input.GetEdgeID()] = node_id;
     }
   }
@@ -65,7 +66,7 @@ private:
   /// @param[in] topo_node Node to register.
   void RegisterNodeOutputs(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     for (const auto& output : topo_node.GetOutputs()) {
-      emp_assert(output_registry.count(output.GetEdgeID()) == 0);
+      assert(output_registry.count(output.GetEdgeID()) == 0);
       output_registry[output.GetEdgeID()] = node_id;
     }
   }
@@ -119,7 +120,7 @@ public:
     }
 
     // make sure the node ids are less than the number of lines
-    emp_assert( std::all_of(
+    assert( std::all_of(
       std::begin(node_map),
       std::end(node_map),
       [num_lines = lines.size()](const auto& kv) {
@@ -212,7 +213,7 @@ public:
       []( const auto& node ){ return node.GetNumOutputs(); }
     );
 
-    emp_assert( degrees.size() == GetSize() );
+    assert( degrees.size() == GetSize() );
 
     // get each starting position of each node's adjacency list
     std::vector<int32_t> x_adj{ 0 };
@@ -222,7 +223,7 @@ public:
       std::back_inserter( x_adj )
     );
 
-    emp_assert( x_adj.size() == GetSize() + 1 );
+    assert( x_adj.size() == GetSize() + 1 );
 
     // build vector of concatenated adjacency lists
     std::vector<int32_t> adjacency;
@@ -235,12 +236,12 @@ public:
       );
     }
 
-    emp_assert( uitsl::safe_equal(
+    assert( uitsl::safe_equal(
       adjacency.size(),
       std::accumulate( std::begin(degrees), std::end(degrees), int32_t{} )
     ) );
 
-    emp_assert( std::all_of(
+    assert( std::all_of(
       std::begin( x_adj ),
       std::end( x_adj ),
       [&adjacency]( const auto val ){
