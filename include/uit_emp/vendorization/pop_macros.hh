@@ -264,6 +264,102 @@
 
 #endif // #ifdef EMP_ADD_IMPL
 
+#ifdef EMP_ADD_TYPE_FROM_MEMBER
+
+  #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+    #define UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER
+      #pragma pop_macro("EMP_ADD_TYPE_FROM_MEMBER")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+      #ifndef UIT_INTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER
+        #define UIT_INTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+    #pragma push_macro("EMP_ADD_TYPE_FROM_MEMBER")
+    #undef EMP_ADD_TYPE_FROM_MEMBER
+  #endif
+
+#endif // #ifdef EMP_ADD_TYPE_FROM_MEMBER
+
+#ifdef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+    #define UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+      #pragma pop_macro("EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+      #ifndef UIT_INTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+        #define UIT_INTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+    #pragma push_macro("EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE")
+    #undef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+  #endif
+
+#endif // #ifdef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+
+#ifdef EMP_ADD_TYPE_FROM_TYPE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+    #define UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE
+      #pragma pop_macro("EMP_ADD_TYPE_FROM_TYPE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+      #ifndef UIT_INTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE
+        #define UIT_INTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+    #pragma push_macro("EMP_ADD_TYPE_FROM_TYPE")
+    #undef EMP_ADD_TYPE_FROM_TYPE
+  #endif
+
+#endif // #ifdef EMP_ADD_TYPE_FROM_TYPE
+
+#ifdef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+
+  #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+    #define UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+      #pragma pop_macro("EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+      #ifndef UIT_INTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+        #define UIT_INTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+    #pragma push_macro("EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER")
+    #undef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+  #endif
+
+#endif // #ifdef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+
 #ifdef EMP_AND
 
   #ifndef UIT_INTERNAL_HAS_EMP_AND
@@ -25680,6 +25776,30 @@
 
 #endif // #ifdef EMP_BOOL_IMPL
 
+#ifdef EMP_BUILD_TYPE_PACK
+
+  #ifndef UIT_INTERNAL_HAS_EMP_BUILD_TYPE_PACK
+    #define UIT_INTERNAL_HAS_EMP_BUILD_TYPE_PACK
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_BUILD_TYPE_PACK
+      #pragma pop_macro("EMP_BUILD_TYPE_PACK")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_BUILD_TYPE_PACK
+      #ifndef UIT_INTERNAL_1ST_EMP_BUILD_TYPE_PACK
+        #define UIT_INTERNAL_1ST_EMP_BUILD_TYPE_PACK
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_BUILD_TYPE_PACK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_BUILD_TYPE_PACK
+    #pragma push_macro("EMP_BUILD_TYPE_PACK")
+    #undef EMP_BUILD_TYPE_PACK
+  #endif
+
+#endif // #ifdef EMP_BUILD_TYPE_PACK
+
 #ifdef EMP_CALL_BY_PACKS
 
   #ifndef UIT_INTERNAL_HAS_EMP_CALL_BY_PACKS
@@ -26280,6 +26400,30 @@
 
 #endif // #ifdef EMP_CALL_BY_PACKS_implD
 
+#ifdef EMP_CHOOSE_MEMBER_TYPE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+    #define UIT_INTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CHOOSE_MEMBER_TYPE
+      #pragma pop_macro("EMP_CHOOSE_MEMBER_TYPE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+      #ifndef UIT_INTERNAL_1ST_EMP_CHOOSE_MEMBER_TYPE
+        #define UIT_INTERNAL_1ST_EMP_CHOOSE_MEMBER_TYPE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+    #pragma push_macro("EMP_CHOOSE_MEMBER_TYPE")
+    #undef EMP_CHOOSE_MEMBER_TYPE
+  #endif
+
+#endif // #ifdef EMP_CHOOSE_MEMBER_TYPE
+
 #ifdef EMP_COMPARE
 
   #ifndef UIT_INTERNAL_HAS_EMP_COMPARE
@@ -26759,6 +26903,102 @@
   #endif
 
 #endif // #ifdef EMP_COUNT_ONES
+
+#ifdef EMP_CREATE_EVAL_SELECT
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+    #define UIT_INTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CREATE_EVAL_SELECT
+      #pragma pop_macro("EMP_CREATE_EVAL_SELECT")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+      #ifndef UIT_INTERNAL_1ST_EMP_CREATE_EVAL_SELECT
+        #define UIT_INTERNAL_1ST_EMP_CREATE_EVAL_SELECT
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+    #pragma push_macro("EMP_CREATE_EVAL_SELECT")
+    #undef EMP_CREATE_EVAL_SELECT
+  #endif
+
+#endif // #ifdef EMP_CREATE_EVAL_SELECT
+
+#ifdef EMP_CREATE_METHOD_FALLBACK
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+    #define UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK
+      #pragma pop_macro("EMP_CREATE_METHOD_FALLBACK")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+      #ifndef UIT_INTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK
+        #define UIT_INTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+    #pragma push_macro("EMP_CREATE_METHOD_FALLBACK")
+    #undef EMP_CREATE_METHOD_FALLBACK
+  #endif
+
+#endif // #ifdef EMP_CREATE_METHOD_FALLBACK
+
+#ifdef EMP_CREATE_METHOD_FALLBACK_VAL
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+    #define UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK_VAL
+      #pragma pop_macro("EMP_CREATE_METHOD_FALLBACK_VAL")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+      #ifndef UIT_INTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK_VAL
+        #define UIT_INTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK_VAL
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+    #pragma push_macro("EMP_CREATE_METHOD_FALLBACK_VAL")
+    #undef EMP_CREATE_METHOD_FALLBACK_VAL
+  #endif
+
+#endif // #ifdef EMP_CREATE_METHOD_FALLBACK_VAL
+
+#ifdef EMP_CREATE_OPTIONAL_METHOD
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+    #define UIT_INTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CREATE_OPTIONAL_METHOD
+      #pragma pop_macro("EMP_CREATE_OPTIONAL_METHOD")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+      #ifndef UIT_INTERNAL_1ST_EMP_CREATE_OPTIONAL_METHOD
+        #define UIT_INTERNAL_1ST_EMP_CREATE_OPTIONAL_METHOD
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+    #pragma push_macro("EMP_CREATE_OPTIONAL_METHOD")
+    #undef EMP_CREATE_OPTIONAL_METHOD
+  #endif
+
+#endif // #ifdef EMP_CREATE_OPTIONAL_METHOD
 
 #ifdef EMP_CROP_ARGS_TO
 
@@ -54312,6 +54552,30 @@
 
 #endif // #ifdef EMP_EVAL_G
 
+#ifdef EMP_EXPAND_PPACK
+
+  #ifndef UIT_INTERNAL_HAS_EMP_EXPAND_PPACK
+    #define UIT_INTERNAL_HAS_EMP_EXPAND_PPACK
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_EXPAND_PPACK
+      #pragma pop_macro("EMP_EXPAND_PPACK")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_EXPAND_PPACK
+      #ifndef UIT_INTERNAL_1ST_EMP_EXPAND_PPACK
+        #define UIT_INTERNAL_1ST_EMP_EXPAND_PPACK
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_EXPAND_PPACK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_EXPAND_PPACK
+    #pragma push_macro("EMP_EXPAND_PPACK")
+    #undef EMP_EXPAND_PPACK
+  #endif
+
+#endif // #ifdef EMP_EXPAND_PPACK
+
 #ifdef EMP_FORCE_ARGS_TO
 
   #ifndef UIT_INTERNAL_HAS_EMP_FORCE_ARGS_TO
@@ -54935,6 +55199,78 @@
   #endif
 
 #endif // #ifdef EMP_IMERGE_9
+
+#ifdef EMP_IMPL_TYPE_DEFAULT
+
+  #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+    #define UIT_INTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_IMPL_TYPE_DEFAULT
+      #pragma pop_macro("EMP_IMPL_TYPE_DEFAULT")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+      #ifndef UIT_INTERNAL_1ST_EMP_IMPL_TYPE_DEFAULT
+        #define UIT_INTERNAL_1ST_EMP_IMPL_TYPE_DEFAULT
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+    #pragma push_macro("EMP_IMPL_TYPE_DEFAULT")
+    #undef EMP_IMPL_TYPE_DEFAULT
+  #endif
+
+#endif // #ifdef EMP_IMPL_TYPE_DEFAULT
+
+#ifdef EMP_IMPL_TYPE_HAS_MEMBER
+
+  #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+    #define UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_IMPL_TYPE_HAS_MEMBER
+      #pragma pop_macro("EMP_IMPL_TYPE_HAS_MEMBER")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+      #ifndef UIT_INTERNAL_1ST_EMP_IMPL_TYPE_HAS_MEMBER
+        #define UIT_INTERNAL_1ST_EMP_IMPL_TYPE_HAS_MEMBER
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+    #pragma push_macro("EMP_IMPL_TYPE_HAS_MEMBER")
+    #undef EMP_IMPL_TYPE_HAS_MEMBER
+  #endif
+
+#endif // #ifdef EMP_IMPL_TYPE_HAS_MEMBER
+
+#ifdef EMP_IMPL_TYPE_HAS_TYPE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+    #define UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_IMPL_TYPE_HAS_TYPE
+      #pragma pop_macro("EMP_IMPL_TYPE_HAS_TYPE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+      #ifndef UIT_INTERNAL_1ST_EMP_IMPL_TYPE_HAS_TYPE
+        #define UIT_INTERNAL_1ST_EMP_IMPL_TYPE_HAS_TYPE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+    #pragma push_macro("EMP_IMPL_TYPE_HAS_TYPE")
+    #undef EMP_IMPL_TYPE_HAS_TYPE
+  #endif
+
+#endif // #ifdef EMP_IMPL_TYPE_HAS_TYPE
 
 #ifdef EMP_INC
 
@@ -65256,6 +65592,30 @@
 
 #endif // #ifdef EMP_SELECT_x
 
+#ifdef EMP_SETUP_TYPE_SELECTOR
+
+  #ifndef UIT_INTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+    #define UIT_INTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_SETUP_TYPE_SELECTOR
+      #pragma pop_macro("EMP_SETUP_TYPE_SELECTOR")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+      #ifndef UIT_INTERNAL_1ST_EMP_SETUP_TYPE_SELECTOR
+        #define UIT_INTERNAL_1ST_EMP_SETUP_TYPE_SELECTOR
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+    #pragma push_macro("EMP_SETUP_TYPE_SELECTOR")
+    #undef EMP_SETUP_TYPE_SELECTOR
+  #endif
+
+#endif // #ifdef EMP_SETUP_TYPE_SELECTOR
+
 #ifdef EMP_SHIFTL
 
   #ifndef UIT_INTERNAL_HAS_EMP_SHIFTL
@@ -66239,6 +66599,78 @@
   #endif
 
 #endif // #ifdef EMP_TEST_IF_VOID__void
+
+#ifdef EMP_TEXT_HASH
+
+  #ifndef UIT_INTERNAL_HAS_EMP_TEXT_HASH
+    #define UIT_INTERNAL_HAS_EMP_TEXT_HASH
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_TEXT_HASH
+      #pragma pop_macro("EMP_TEXT_HASH")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_TEXT_HASH
+      #ifndef UIT_INTERNAL_1ST_EMP_TEXT_HASH
+        #define UIT_INTERNAL_1ST_EMP_TEXT_HASH
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_TEXT_HASH
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_TEXT_HASH
+    #pragma push_macro("EMP_TEXT_HASH")
+    #undef EMP_TEXT_HASH
+  #endif
+
+#endif // #ifdef EMP_TEXT_HASH
+
+#ifdef EMP_TEXT_PACK
+
+  #ifndef UIT_INTERNAL_HAS_EMP_TEXT_PACK
+    #define UIT_INTERNAL_HAS_EMP_TEXT_PACK
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_TEXT_PACK
+      #pragma pop_macro("EMP_TEXT_PACK")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_TEXT_PACK
+      #ifndef UIT_INTERNAL_1ST_EMP_TEXT_PACK
+        #define UIT_INTERNAL_1ST_EMP_TEXT_PACK
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_TEXT_PACK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_TEXT_PACK
+    #pragma push_macro("EMP_TEXT_PACK")
+    #undef EMP_TEXT_PACK
+  #endif
+
+#endif // #ifdef EMP_TEXT_PACK
+
+#ifdef EMP_TEXT_TYPE
+
+  #ifndef UIT_INTERNAL_HAS_EMP_TEXT_TYPE
+    #define UIT_INTERNAL_HAS_EMP_TEXT_TYPE
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_TEXT_TYPE
+      #pragma pop_macro("EMP_TEXT_TYPE")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_TEXT_TYPE
+      #ifndef UIT_INTERNAL_1ST_EMP_TEXT_TYPE
+        #define UIT_INTERNAL_1ST_EMP_TEXT_TYPE
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_TEXT_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_TEXT_TYPE
+    #pragma push_macro("EMP_TEXT_TYPE")
+    #undef EMP_TEXT_TYPE
+  #endif
+
+#endif // #ifdef EMP_TEXT_TYPE
 
 #ifdef EMP_TYPES_TO_VALS
 
@@ -69575,5 +70007,53 @@
   #endif
 
 #endif // #ifdef emp_assert_TO_PAIR
+
+#ifdef emp_bool_decoy
+
+  #ifndef UIT_INTERNAL_HAS_emp_bool_decoy
+    #define UIT_INTERNAL_HAS_emp_bool_decoy
+
+    #ifdef UIT_EXTERNAL_1ST_emp_bool_decoy
+      #pragma pop_macro("emp_bool_decoy")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_emp_bool_decoy
+      #ifndef UIT_INTERNAL_1ST_emp_bool_decoy
+        #define UIT_INTERNAL_1ST_emp_bool_decoy
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_emp_bool_decoy
+
+  #ifndef UIT_EXTERNAL_HAS_emp_bool_decoy
+    #pragma push_macro("emp_bool_decoy")
+    #undef emp_bool_decoy
+  #endif
+
+#endif // #ifdef emp_bool_decoy
+
+#ifdef emp_int_decoy
+
+  #ifndef UIT_INTERNAL_HAS_emp_int_decoy
+    #define UIT_INTERNAL_HAS_emp_int_decoy
+
+    #ifdef UIT_EXTERNAL_1ST_emp_int_decoy
+      #pragma pop_macro("emp_int_decoy")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_emp_int_decoy
+      #ifndef UIT_INTERNAL_1ST_emp_int_decoy
+        #define UIT_INTERNAL_1ST_emp_int_decoy
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_emp_int_decoy
+
+  #ifndef UIT_EXTERNAL_HAS_emp_int_decoy
+    #pragma push_macro("emp_int_decoy")
+    #undef emp_int_decoy
+  #endif
+
+#endif // #ifdef emp_int_decoy
 
 #endif // #ifdef UIT_VENDORIZE_EMP

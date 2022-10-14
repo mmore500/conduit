@@ -7,10 +7,6 @@ def iter_header_paths() -> typing.Iterator[str]:
   # )
 
   yield from (
-      "base/assert.hpp",
-      "base/always_assert.hpp",
-      "base/error.hpp",
-      "base/errors.hpp",
       "data/DataNode.hpp",
       "data/DataFile.hpp",
       "datastructs/QueueCache.hpp",

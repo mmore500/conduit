@@ -418,6 +418,158 @@
 
 #endif // #ifdef EMP_ADD_IMPL
 
+#ifdef EMP_ADD_TYPE_FROM_MEMBER
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+    #define UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+    #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+      #define UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+    #pragma push_macro("EMP_ADD_TYPE_FROM_MEMBER")
+    #undef EMP_ADD_TYPE_FROM_MEMBER
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER) && defined(UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_ADD_TYPE_FROM_MEMBER_INSEEP_WARNING
+      #define UIT_EMP_ADD_TYPE_FROM_MEMBER_INSEEP_WARNING
+      #pragma message(\
+        "EMP_ADD_TYPE_FROM_MEMBER defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_ADD_TYPE_FROM_MEMBER
+
+  #ifdef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+    #pragma pop_macro("EMP_ADD_TYPE_FROM_MEMBER")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+
+#endif // #ifdef EMP_ADD_TYPE_FROM_MEMBER
+
+#ifdef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+    #define UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+    #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+      #define UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+    #pragma push_macro("EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE")
+    #undef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE) && defined(UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE_INSEEP_WARNING
+      #define UIT_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+    #pragma pop_macro("EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+
+#endif // #ifdef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+
+#ifdef EMP_ADD_TYPE_FROM_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+    #define UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+    #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+      #define UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+    #pragma push_macro("EMP_ADD_TYPE_FROM_TYPE")
+    #undef EMP_ADD_TYPE_FROM_TYPE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE) && defined(UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_ADD_TYPE_FROM_TYPE_INSEEP_WARNING
+      #define UIT_EMP_ADD_TYPE_FROM_TYPE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_ADD_TYPE_FROM_TYPE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_ADD_TYPE_FROM_TYPE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+    #pragma pop_macro("EMP_ADD_TYPE_FROM_TYPE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+
+#endif // #ifdef EMP_ADD_TYPE_FROM_TYPE
+
+#ifdef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+    #define UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+    #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+      #define UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+    #pragma push_macro("EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER")
+    #undef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER) && defined(UIT_EXTERNAL_1ST_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER_INSEEP_WARNING
+      #define UIT_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER_INSEEP_WARNING
+      #pragma message(\
+        "EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+
+  #ifdef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+    #pragma pop_macro("EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+
+#endif // #ifdef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+
 #ifdef EMP_AND
 
   #ifndef UIT_EXTERNAL_HAS_EMP_AND
@@ -40660,6 +40812,44 @@
 
 #endif // #ifdef EMP_BOOL_IMPL
 
+#ifdef EMP_BUILD_TYPE_PACK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_BUILD_TYPE_PACK
+    #define UIT_EXTERNAL_HAS_EMP_BUILD_TYPE_PACK
+    #ifndef UIT_INTERNAL_HAS_EMP_BUILD_TYPE_PACK
+      #define UIT_EXTERNAL_1ST_EMP_BUILD_TYPE_PACK
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_BUILD_TYPE_PACK
+    #pragma push_macro("EMP_BUILD_TYPE_PACK")
+    #undef EMP_BUILD_TYPE_PACK
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_BUILD_TYPE_PACK) && defined(UIT_EXTERNAL_1ST_EMP_BUILD_TYPE_PACK\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_BUILD_TYPE_PACK_INSEEP_WARNING
+      #define UIT_EMP_BUILD_TYPE_PACK_INSEEP_WARNING
+      #pragma message(\
+        "EMP_BUILD_TYPE_PACK defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_BUILD_TYPE_PACK
+
+  #ifdef UIT_INTERNAL_HAS_EMP_BUILD_TYPE_PACK
+    #pragma pop_macro("EMP_BUILD_TYPE_PACK")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_BUILD_TYPE_PACK
+
+#endif // #ifdef EMP_BUILD_TYPE_PACK
+
 #ifdef EMP_CALL_BY_PACKS
 
   #ifndef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS
@@ -41610,6 +41800,44 @@
 
 #endif // #ifdef EMP_CALL_BY_PACKS_implD
 
+#ifdef EMP_CHOOSE_MEMBER_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+    #define UIT_EXTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+    #ifndef UIT_INTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+      #define UIT_EXTERNAL_1ST_EMP_CHOOSE_MEMBER_TYPE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+    #pragma push_macro("EMP_CHOOSE_MEMBER_TYPE")
+    #undef EMP_CHOOSE_MEMBER_TYPE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE) && defined(UIT_EXTERNAL_1ST_EMP_CHOOSE_MEMBER_TYPE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CHOOSE_MEMBER_TYPE_INSEEP_WARNING
+      #define UIT_EMP_CHOOSE_MEMBER_TYPE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CHOOSE_MEMBER_TYPE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CHOOSE_MEMBER_TYPE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+    #pragma pop_macro("EMP_CHOOSE_MEMBER_TYPE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+
+#endif // #ifdef EMP_CHOOSE_MEMBER_TYPE
+
 #ifdef EMP_COMPARE
 
   #ifndef UIT_EXTERNAL_HAS_EMP_COMPARE
@@ -42369,6 +42597,158 @@
   #endif // #ifdef UIT_INTERNAL_HAS_EMP_COUNT_ONES
 
 #endif // #ifdef EMP_COUNT_ONES
+
+#ifdef EMP_CREATE_EVAL_SELECT
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+    #define UIT_EXTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+    #ifndef UIT_INTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+      #define UIT_EXTERNAL_1ST_EMP_CREATE_EVAL_SELECT
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+    #pragma push_macro("EMP_CREATE_EVAL_SELECT")
+    #undef EMP_CREATE_EVAL_SELECT
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CREATE_EVAL_SELECT) && defined(UIT_EXTERNAL_1ST_EMP_CREATE_EVAL_SELECT\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CREATE_EVAL_SELECT_INSEEP_WARNING
+      #define UIT_EMP_CREATE_EVAL_SELECT_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CREATE_EVAL_SELECT defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CREATE_EVAL_SELECT
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+    #pragma pop_macro("EMP_CREATE_EVAL_SELECT")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+
+#endif // #ifdef EMP_CREATE_EVAL_SELECT
+
+#ifdef EMP_CREATE_METHOD_FALLBACK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+    #define UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+    #ifndef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+      #define UIT_EXTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+    #pragma push_macro("EMP_CREATE_METHOD_FALLBACK")
+    #undef EMP_CREATE_METHOD_FALLBACK
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK) && defined(UIT_EXTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CREATE_METHOD_FALLBACK_INSEEP_WARNING
+      #define UIT_EMP_CREATE_METHOD_FALLBACK_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CREATE_METHOD_FALLBACK defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CREATE_METHOD_FALLBACK
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+    #pragma pop_macro("EMP_CREATE_METHOD_FALLBACK")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+
+#endif // #ifdef EMP_CREATE_METHOD_FALLBACK
+
+#ifdef EMP_CREATE_METHOD_FALLBACK_VAL
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+    #define UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+    #ifndef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+      #define UIT_EXTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK_VAL
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+    #pragma push_macro("EMP_CREATE_METHOD_FALLBACK_VAL")
+    #undef EMP_CREATE_METHOD_FALLBACK_VAL
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL) && defined(UIT_EXTERNAL_1ST_EMP_CREATE_METHOD_FALLBACK_VAL\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CREATE_METHOD_FALLBACK_VAL_INSEEP_WARNING
+      #define UIT_EMP_CREATE_METHOD_FALLBACK_VAL_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CREATE_METHOD_FALLBACK_VAL defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CREATE_METHOD_FALLBACK_VAL
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+    #pragma pop_macro("EMP_CREATE_METHOD_FALLBACK_VAL")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+
+#endif // #ifdef EMP_CREATE_METHOD_FALLBACK_VAL
+
+#ifdef EMP_CREATE_OPTIONAL_METHOD
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+    #define UIT_EXTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+    #ifndef UIT_INTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+      #define UIT_EXTERNAL_1ST_EMP_CREATE_OPTIONAL_METHOD
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+    #pragma push_macro("EMP_CREATE_OPTIONAL_METHOD")
+    #undef EMP_CREATE_OPTIONAL_METHOD
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD) && defined(UIT_EXTERNAL_1ST_EMP_CREATE_OPTIONAL_METHOD\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CREATE_OPTIONAL_METHOD_INSEEP_WARNING
+      #define UIT_EMP_CREATE_OPTIONAL_METHOD_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CREATE_OPTIONAL_METHOD defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CREATE_OPTIONAL_METHOD
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+    #pragma pop_macro("EMP_CREATE_OPTIONAL_METHOD")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+
+#endif // #ifdef EMP_CREATE_OPTIONAL_METHOD
 
 #ifdef EMP_CROP_ARGS_TO
 
@@ -85994,6 +86374,44 @@
 
 #endif // #ifdef EMP_EVAL_G
 
+#ifdef EMP_EXPAND_PPACK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_EXPAND_PPACK
+    #define UIT_EXTERNAL_HAS_EMP_EXPAND_PPACK
+    #ifndef UIT_INTERNAL_HAS_EMP_EXPAND_PPACK
+      #define UIT_EXTERNAL_1ST_EMP_EXPAND_PPACK
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_EXPAND_PPACK
+    #pragma push_macro("EMP_EXPAND_PPACK")
+    #undef EMP_EXPAND_PPACK
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_EXPAND_PPACK) && defined(UIT_EXTERNAL_1ST_EMP_EXPAND_PPACK\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_EXPAND_PPACK_INSEEP_WARNING
+      #define UIT_EMP_EXPAND_PPACK_INSEEP_WARNING
+      #pragma message(\
+        "EMP_EXPAND_PPACK defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_EXPAND_PPACK
+
+  #ifdef UIT_INTERNAL_HAS_EMP_EXPAND_PPACK
+    #pragma pop_macro("EMP_EXPAND_PPACK")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_EXPAND_PPACK
+
+#endif // #ifdef EMP_EXPAND_PPACK
+
 #ifdef EMP_FORCE_ARGS_TO
 
   #ifndef UIT_EXTERNAL_HAS_EMP_FORCE_ARGS_TO
@@ -86981,6 +87399,120 @@
   #endif // #ifdef UIT_INTERNAL_HAS_EMP_IMERGE_9
 
 #endif // #ifdef EMP_IMERGE_9
+
+#ifdef EMP_IMPL_TYPE_DEFAULT
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+    #define UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+    #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+      #define UIT_EXTERNAL_1ST_EMP_IMPL_TYPE_DEFAULT
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+    #pragma push_macro("EMP_IMPL_TYPE_DEFAULT")
+    #undef EMP_IMPL_TYPE_DEFAULT
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT) && defined(UIT_EXTERNAL_1ST_EMP_IMPL_TYPE_DEFAULT\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_IMPL_TYPE_DEFAULT_INSEEP_WARNING
+      #define UIT_EMP_IMPL_TYPE_DEFAULT_INSEEP_WARNING
+      #pragma message(\
+        "EMP_IMPL_TYPE_DEFAULT defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_IMPL_TYPE_DEFAULT
+
+  #ifdef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+    #pragma pop_macro("EMP_IMPL_TYPE_DEFAULT")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+
+#endif // #ifdef EMP_IMPL_TYPE_DEFAULT
+
+#ifdef EMP_IMPL_TYPE_HAS_MEMBER
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+    #define UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+    #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+      #define UIT_EXTERNAL_1ST_EMP_IMPL_TYPE_HAS_MEMBER
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+    #pragma push_macro("EMP_IMPL_TYPE_HAS_MEMBER")
+    #undef EMP_IMPL_TYPE_HAS_MEMBER
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER) && defined(UIT_EXTERNAL_1ST_EMP_IMPL_TYPE_HAS_MEMBER\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_IMPL_TYPE_HAS_MEMBER_INSEEP_WARNING
+      #define UIT_EMP_IMPL_TYPE_HAS_MEMBER_INSEEP_WARNING
+      #pragma message(\
+        "EMP_IMPL_TYPE_HAS_MEMBER defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_IMPL_TYPE_HAS_MEMBER
+
+  #ifdef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+    #pragma pop_macro("EMP_IMPL_TYPE_HAS_MEMBER")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+
+#endif // #ifdef EMP_IMPL_TYPE_HAS_MEMBER
+
+#ifdef EMP_IMPL_TYPE_HAS_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+    #define UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+    #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+      #define UIT_EXTERNAL_1ST_EMP_IMPL_TYPE_HAS_TYPE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+    #pragma push_macro("EMP_IMPL_TYPE_HAS_TYPE")
+    #undef EMP_IMPL_TYPE_HAS_TYPE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE) && defined(UIT_EXTERNAL_1ST_EMP_IMPL_TYPE_HAS_TYPE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_IMPL_TYPE_HAS_TYPE_INSEEP_WARNING
+      #define UIT_EMP_IMPL_TYPE_HAS_TYPE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_IMPL_TYPE_HAS_TYPE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_IMPL_TYPE_HAS_TYPE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+    #pragma pop_macro("EMP_IMPL_TYPE_HAS_TYPE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+
+#endif // #ifdef EMP_IMPL_TYPE_HAS_TYPE
 
 #ifdef EMP_INC
 
@@ -103322,6 +103854,44 @@
 
 #endif // #ifdef EMP_SELECT_x
 
+#ifdef EMP_SETUP_TYPE_SELECTOR
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+    #define UIT_EXTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+    #ifndef UIT_INTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+      #define UIT_EXTERNAL_1ST_EMP_SETUP_TYPE_SELECTOR
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+    #pragma push_macro("EMP_SETUP_TYPE_SELECTOR")
+    #undef EMP_SETUP_TYPE_SELECTOR
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR) && defined(UIT_EXTERNAL_1ST_EMP_SETUP_TYPE_SELECTOR\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_SETUP_TYPE_SELECTOR_INSEEP_WARNING
+      #define UIT_EMP_SETUP_TYPE_SELECTOR_INSEEP_WARNING
+      #pragma message(\
+        "EMP_SETUP_TYPE_SELECTOR defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_SETUP_TYPE_SELECTOR
+
+  #ifdef UIT_INTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+    #pragma pop_macro("EMP_SETUP_TYPE_SELECTOR")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+
+#endif // #ifdef EMP_SETUP_TYPE_SELECTOR
+
 #ifdef EMP_SHIFTL
 
   #ifndef UIT_EXTERNAL_HAS_EMP_SHIFTL
@@ -104879,6 +105449,120 @@
   #endif // #ifdef UIT_INTERNAL_HAS_EMP_TEST_IF_VOID__void
 
 #endif // #ifdef EMP_TEST_IF_VOID__void
+
+#ifdef EMP_TEXT_HASH
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_TEXT_HASH
+    #define UIT_EXTERNAL_HAS_EMP_TEXT_HASH
+    #ifndef UIT_INTERNAL_HAS_EMP_TEXT_HASH
+      #define UIT_EXTERNAL_1ST_EMP_TEXT_HASH
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_TEXT_HASH
+    #pragma push_macro("EMP_TEXT_HASH")
+    #undef EMP_TEXT_HASH
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_TEXT_HASH) && defined(UIT_EXTERNAL_1ST_EMP_TEXT_HASH\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_TEXT_HASH_INSEEP_WARNING
+      #define UIT_EMP_TEXT_HASH_INSEEP_WARNING
+      #pragma message(\
+        "EMP_TEXT_HASH defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_TEXT_HASH
+
+  #ifdef UIT_INTERNAL_HAS_EMP_TEXT_HASH
+    #pragma pop_macro("EMP_TEXT_HASH")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_TEXT_HASH
+
+#endif // #ifdef EMP_TEXT_HASH
+
+#ifdef EMP_TEXT_PACK
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_TEXT_PACK
+    #define UIT_EXTERNAL_HAS_EMP_TEXT_PACK
+    #ifndef UIT_INTERNAL_HAS_EMP_TEXT_PACK
+      #define UIT_EXTERNAL_1ST_EMP_TEXT_PACK
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_TEXT_PACK
+    #pragma push_macro("EMP_TEXT_PACK")
+    #undef EMP_TEXT_PACK
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_TEXT_PACK) && defined(UIT_EXTERNAL_1ST_EMP_TEXT_PACK\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_TEXT_PACK_INSEEP_WARNING
+      #define UIT_EMP_TEXT_PACK_INSEEP_WARNING
+      #pragma message(\
+        "EMP_TEXT_PACK defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_TEXT_PACK
+
+  #ifdef UIT_INTERNAL_HAS_EMP_TEXT_PACK
+    #pragma pop_macro("EMP_TEXT_PACK")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_TEXT_PACK
+
+#endif // #ifdef EMP_TEXT_PACK
+
+#ifdef EMP_TEXT_TYPE
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_TEXT_TYPE
+    #define UIT_EXTERNAL_HAS_EMP_TEXT_TYPE
+    #ifndef UIT_INTERNAL_HAS_EMP_TEXT_TYPE
+      #define UIT_EXTERNAL_1ST_EMP_TEXT_TYPE
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_TEXT_TYPE
+    #pragma push_macro("EMP_TEXT_TYPE")
+    #undef EMP_TEXT_TYPE
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_TEXT_TYPE) && defined(UIT_EXTERNAL_1ST_EMP_TEXT_TYPE\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_TEXT_TYPE_INSEEP_WARNING
+      #define UIT_EMP_TEXT_TYPE_INSEEP_WARNING
+      #pragma message(\
+        "EMP_TEXT_TYPE defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_TEXT_TYPE
+
+  #ifdef UIT_INTERNAL_HAS_EMP_TEXT_TYPE
+    #pragma pop_macro("EMP_TEXT_TYPE")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_TEXT_TYPE
+
+#endif // #ifdef EMP_TEXT_TYPE
 
 #ifdef EMP_TYPES_TO_VALS
 
@@ -110161,5 +110845,81 @@
   #endif // #ifdef UIT_INTERNAL_HAS_emp_assert_TO_PAIR
 
 #endif // #ifdef emp_assert_TO_PAIR
+
+#ifdef emp_bool_decoy
+
+  #ifndef UIT_EXTERNAL_HAS_emp_bool_decoy
+    #define UIT_EXTERNAL_HAS_emp_bool_decoy
+    #ifndef UIT_INTERNAL_HAS_emp_bool_decoy
+      #define UIT_EXTERNAL_1ST_emp_bool_decoy
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_emp_bool_decoy
+    #pragma push_macro("emp_bool_decoy")
+    #undef emp_bool_decoy
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_emp_bool_decoy) && defined(UIT_EXTERNAL_1ST_emp_bool_decoy\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_emp_bool_decoy_INSEEP_WARNING
+      #define UIT_emp_bool_decoy_INSEEP_WARNING
+      #pragma message(\
+        "emp_bool_decoy defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef emp_bool_decoy
+
+  #ifdef UIT_INTERNAL_HAS_emp_bool_decoy
+    #pragma pop_macro("emp_bool_decoy")
+  #endif // #ifdef UIT_INTERNAL_HAS_emp_bool_decoy
+
+#endif // #ifdef emp_bool_decoy
+
+#ifdef emp_int_decoy
+
+  #ifndef UIT_EXTERNAL_HAS_emp_int_decoy
+    #define UIT_EXTERNAL_HAS_emp_int_decoy
+    #ifndef UIT_INTERNAL_HAS_emp_int_decoy
+      #define UIT_EXTERNAL_1ST_emp_int_decoy
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_emp_int_decoy
+    #pragma push_macro("emp_int_decoy")
+    #undef emp_int_decoy
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_emp_int_decoy) && defined(UIT_EXTERNAL_1ST_emp_int_decoy\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_emp_int_decoy_INSEEP_WARNING
+      #define UIT_emp_int_decoy_INSEEP_WARNING
+      #pragma message(\
+        "emp_int_decoy defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef emp_int_decoy
+
+  #ifdef UIT_INTERNAL_HAS_emp_int_decoy
+    #pragma pop_macro("emp_int_decoy")
+  #endif // #ifdef UIT_INTERNAL_HAS_emp_int_decoy
+
+#endif // #ifdef emp_int_decoy
 
 #endif // #ifdef UIT_VENDORIZE_EMP
