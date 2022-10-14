@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python3.9
 
 import textwrap
 
@@ -11,9 +11,10 @@ for headerguard in sorted(iter_headerguards()):
     content += textwrap.dedent(f"""\
 
         #pragma push_macro("{ headerguard }")
-        #ifndef UIT_{ headerguard }_HEADERGUARD
-        #undef { headerguard }
-        #endif // #ifndef UIT_{ headerguard }_HEADERGUARD
+        #undef {headerguard}
+        #ifdef UIT_{headerguard}_HEADERGUARD
+        #define {headerguard}
+        #endif
     """)
 
 content += "\n"

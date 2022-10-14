@@ -3,7 +3,7 @@
 shopt -s globstar
 for f in include/uit/**/*.hpp include/uitsl/**/*.hpp include/netuit/**/*.hpp; do
   printf "#include \"${f}\"\nint main(){}" | mpicxx -std=c++17 -x c++ - -lmetis &
-  # printf "#include \"${f}\"\nint main(){}" | g++ -std=c++17 -x c++ -DUIT_VENDORIZE_EMP -
+  printf "#include \"${f}\"\nint main(){}" | mpicxx -std=c++17 -DUIT_VENDORIZE_EMP -x c++ - -lmetis &
   echo "${f}"
 
   # adapted from https://unix.stackexchange.com/a/436713

@@ -23,7 +23,7 @@ def iter_macros() -> typing.Iterator[str]:
                 candidate.endswith("_HPP")
                 or candidate.endswith("_H")
             ):
-                macros.add(candidate)
-
+                if candidate != "EMP_NAMESPACE":
+                    macros.add(candidate)
 
     yield from macros
