@@ -1,3 +1,4 @@
+#pragma once
 #ifndef UIT_EMP_DATA_DATANODE_HPP
 #define UIT_EMP_DATA_DATANODE_HPP
 

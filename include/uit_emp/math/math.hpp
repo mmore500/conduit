@@ -1,3 +1,4 @@
+#pragma once
 #ifndef UIT_EMP_MATH_MATH_HPP
 #define UIT_EMP_MATH_MATH_HPP
 

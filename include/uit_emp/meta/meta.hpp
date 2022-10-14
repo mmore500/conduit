@@ -1,3 +1,4 @@
+#pragma once
 #ifndef UIT_EMP_META_META_HPP
 #define UIT_EMP_META_META_HPP
 

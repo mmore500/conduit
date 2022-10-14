@@ -1,3 +1,4 @@
+#pragma once
 #ifndef UIT_EMP_TOOLS_KEYNAME_UTILS_HPP
 #define UIT_EMP_TOOLS_KEYNAME_UTILS_HPP
 

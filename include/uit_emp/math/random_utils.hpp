@@ -1,3 +1,4 @@
+#pragma once
 #ifndef UIT_EMP_MATH_RANDOM_UTILS_HPP
 #define UIT_EMP_MATH_RANDOM_UTILS_HPP
 

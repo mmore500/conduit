@@ -1,3 +1,4 @@
+#pragma once
 #ifndef UIT_EMP_BASE_ERROR_HPP
 #define UIT_EMP_BASE_ERROR_HPP
 

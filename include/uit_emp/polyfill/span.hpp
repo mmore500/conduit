@@ -1,3 +1,4 @@
+#pragma once
 #ifndef UIT_EMP_POLYFILL_SPAN_HPP
 #define UIT_EMP_POLYFILL_SPAN_HPP
 

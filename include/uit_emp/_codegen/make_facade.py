@@ -15,6 +15,7 @@ def setup_one_facade(header_path: str) -> None:
     relpath = lambda x: os.path.relpath(x, os.path.dirname(header_path))
 
     content = textwrap.dedent(f"""\
+        #pragma once
         #ifndef {header_guard}
         #define {header_guard}
 
