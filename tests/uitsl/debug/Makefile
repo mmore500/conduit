@@ -6,6 +6,8 @@ TARGET_NAMES += list_cwd
 TARGET_NAMES += NotImplementedException
 TARGET_NAMES += OncePerThreadChecker
 TARGET_NAMES += safe_compare
+TARGET_NAMES += uitsl_always_assert
+TARGET_NAMES += uitsl_assert
 TARGET_NAMES += WarnOnce
 
 TO_ROOT := $(shell git rev-parse --show-cdup)
