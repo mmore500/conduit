@@ -8,14 +8,16 @@ from ._iter_header_paths import iter_header_paths
 def get_header_content() -> typing.List[str]:
 
     for header_path in iter_header_paths():
-        echo = subprocess.Popen(
+        print(header_path)
+        echo = subprocess.run(
             (
                 "printf",
                 f'#include "../../third-party/Empirical/include/emp/{header_path}" \n int main(){{}}',
             ),
-            stdout=subprocess.PIPE,
+            check=True,
+            capture_output=True,
         )
-        header_content = subprocess.check_output(
+        header_content = subprocess.run(
             [
                 "g++",
                 "-std=c++17",
@@ -26,14 +28,16 @@ def get_header_content() -> typing.List[str]:
                 "-o",
                 "/dev/null",
             ],
-            stdin=echo.stdout,
-            stderr=subprocess.STDOUT,
-        )
+            input=echo.stdout,
+            check=True,
+            capture_output=True,
+        ).stderr.decode()
         res = []
-        for line in header_content.decode().splitlines():
+        for line in header_content.splitlines():
+
             if "Empirical" in line:
                 if ' ' in line:
                     line = line.split()[1]
                 with open(line) as file:
                     res.append(file.read())
-        return res
+    return res

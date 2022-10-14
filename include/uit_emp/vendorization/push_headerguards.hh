@@ -30,40 +30,16 @@
 #define EMP_BASE_EMP_NAMESPACE_HPP
 #endif
 
-#pragma push_macro("EMP_BITSET_UTILS_H")
-#undef EMP_BITSET_UTILS_H
-#ifdef UIT_EMP_BITSET_UTILS_H_HEADERGUARD
-#define EMP_BITSET_UTILS_H
-#endif
-
-#pragma push_macro("EMP_CONST_H")
-#undef EMP_CONST_H
-#ifdef UIT_EMP_CONST_H_HEADERGUARD
-#define EMP_CONST_H
-#endif
-
-#pragma push_macro("EMP_DATA_NODE_H")
-#undef EMP_DATA_NODE_H
-#ifdef UIT_EMP_DATA_NODE_H_HEADERGUARD
-#define EMP_DATA_NODE_H
-#endif
-
-#pragma push_macro("EMP_FUNCTION_SET_H")
-#undef EMP_FUNCTION_SET_H
-#ifdef UIT_EMP_FUNCTION_SET_H_HEADERGUARD
-#define EMP_FUNCTION_SET_H
-#endif
-
-#pragma push_macro("EMP_INDEX_MAP_H")
-#undef EMP_INDEX_MAP_H
-#ifdef UIT_EMP_INDEX_MAP_H_HEADERGUARD
-#define EMP_INDEX_MAP_H
-#endif
-
 #pragma push_macro("EMP_IS_STREAMABLE_HPP")
 #undef EMP_IS_STREAMABLE_HPP
 #ifdef UIT_EMP_IS_STREAMABLE_HPP_HEADERGUARD
 #define EMP_IS_STREAMABLE_HPP
+#endif
+
+#pragma push_macro("EMP_KEY_NAME_UTILS_H")
+#undef EMP_KEY_NAME_UTILS_H
+#ifdef UIT_EMP_KEY_NAME_UTILS_H_HEADERGUARD
+#define EMP_KEY_NAME_UTILS_H
 #endif
 
 #pragma push_macro("EMP_MACROS_H")
@@ -76,12 +52,6 @@
 #undef EMP_MACRO_MATH_H
 #ifdef UIT_EMP_MACRO_MATH_H_HEADERGUARD
 #define EMP_MACRO_MATH_H
-#endif
-
-#pragma push_macro("EMP_MATH_H")
-#undef EMP_MATH_H
-#ifdef UIT_EMP_MATH_H_HEADERGUARD
-#define EMP_MATH_H
 #endif
 
 #pragma push_macro("EMP_META_H")
@@ -106,18 +76,6 @@
 #undef EMP_PTR_H
 #ifdef UIT_EMP_PTR_H_HEADERGUARD
 #define EMP_PTR_H
-#endif
-
-#pragma push_macro("EMP_RANDOM_H")
-#undef EMP_RANDOM_H
-#ifdef UIT_EMP_RANDOM_H_HEADERGUARD
-#define EMP_RANDOM_H
-#endif
-
-#pragma push_macro("EMP_RANGE_H")
-#undef EMP_RANGE_H
-#ifdef UIT_EMP_RANGE_H_HEADERGUARD
-#define EMP_RANGE_H
 #endif
 
 #pragma push_macro("EMP_REFLECTION_H")
@@ -154,12 +112,6 @@
 #undef EMP_TYPE_TRAITS_H
 #ifdef UIT_EMP_TYPE_TRAITS_H_HEADERGUARD
 #define EMP_TYPE_TRAITS_H
-#endif
-
-#pragma push_macro("EMP_VAL_PACK_H")
-#undef EMP_VAL_PACK_H
-#ifdef UIT_EMP_VAL_PACK_H_HEADERGUARD
-#define EMP_VAL_PACK_H
 #endif
 
 #pragma push_macro("EMP_VECTOR_H")
