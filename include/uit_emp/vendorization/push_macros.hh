@@ -42484,6 +42484,44 @@
 
 #endif // #ifdef EMP_COMPARE_result_10
 
+#ifdef EMP_CONFIG_BASE_NAME
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG_BASE_NAME
+    #define UIT_EXTERNAL_HAS_EMP_CONFIG_BASE_NAME
+    #ifndef UIT_INTERNAL_HAS_EMP_CONFIG_BASE_NAME
+      #define UIT_EXTERNAL_1ST_EMP_CONFIG_BASE_NAME
+    #endif
+  #endif
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG_BASE_NAME
+    #pragma push_macro("EMP_CONFIG_BASE_NAME")
+    #undef EMP_CONFIG_BASE_NAME
+  #endif
+
+  #if defined(\
+    UIT_INTERNAL_HAS_EMP_CONFIG_BASE_NAME) && defined(UIT_EXTERNAL_1ST_EMP_CONFIG_BASE_NAME\
+  )
+    #ifndef UIT_SUPPRESS_MACRO_INSEEP_WARNINGS
+    #ifndef UIT_EMP_CONFIG_BASE_NAME_INSEEP_WARNING
+      #define UIT_EMP_CONFIG_BASE_NAME_INSEEP_WARNING
+      #pragma message(\
+        "EMP_CONFIG_BASE_NAME defined first outside vendorized header,"\
+        " so outside definition will be used inside vendorized header"\
+        " on subsequent includes of the vendorized header"\
+        " --- if causes problems, try changing header include order"\
+      )
+    #endif
+    #endif
+  #endif
+
+#else // #ifdef EMP_CONFIG_BASE_NAME
+
+  #ifdef UIT_INTERNAL_HAS_EMP_CONFIG_BASE_NAME
+    #pragma pop_macro("EMP_CONFIG_BASE_NAME")
+  #endif // #ifdef UIT_INTERNAL_HAS_EMP_CONFIG_BASE_NAME
+
+#endif // #ifdef EMP_CONFIG_BASE_NAME
+
 #ifdef EMP_CONFIG__ACCESS
 
   #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS

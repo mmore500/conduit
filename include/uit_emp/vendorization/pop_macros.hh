@@ -26832,6 +26832,30 @@
 
 #endif // #ifdef EMP_COMPARE_result_10
 
+#ifdef EMP_CONFIG_BASE_NAME
+
+  #ifndef UIT_INTERNAL_HAS_EMP_CONFIG_BASE_NAME
+    #define UIT_INTERNAL_HAS_EMP_CONFIG_BASE_NAME
+
+    #ifdef UIT_EXTERNAL_1ST_EMP_CONFIG_BASE_NAME
+      #pragma pop_macro("EMP_CONFIG_BASE_NAME")
+    #endif
+
+    #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG_BASE_NAME
+      #ifndef UIT_INTERNAL_1ST_EMP_CONFIG_BASE_NAME
+        #define UIT_INTERNAL_1ST_EMP_CONFIG_BASE_NAME
+      #endif
+    #endif
+
+  #endif // #ifndef UIT_INTERNAL_HAS_EMP_CONFIG_BASE_NAME
+
+  #ifndef UIT_EXTERNAL_HAS_EMP_CONFIG_BASE_NAME
+    #pragma push_macro("EMP_CONFIG_BASE_NAME")
+    #undef EMP_CONFIG_BASE_NAME
+  #endif
+
+#endif // #ifdef EMP_CONFIG_BASE_NAME
+
 #ifdef EMP_CONFIG__ACCESS
 
   #ifndef UIT_INTERNAL_HAS_EMP_CONFIG__ACCESS
