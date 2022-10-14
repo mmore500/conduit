@@ -7,9 +7,9 @@
 TEST_CASE("uitsl_assert", "[nproc:1]") {
 
 
-  uitsl_assert(true);
-
-  uitsl_assert(true, );
+  // uitsl_assert(true);
+  //
+  // uitsl_assert(true, );
 
   uitsl_assert(true, "");
 

@@ -15,7 +15,7 @@ namespace netuit {
 inline Topology make_adjacency_file_topology(const std::string& filename) {
   std::ifstream file(filename);
 
-  uitsl_always_assert(file);
+  uitsl_always_assert(file, "");
 
   return dynamic_cast<std::istream&>(file);
 }

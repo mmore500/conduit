@@ -30,11 +30,14 @@ do {                                                                          \
     std::cout << "LINE: " << __LINE__ << '\n';                                \
     std::cout << '\n';                                                        \
     std::cout << "MESSAGE:\n";                                                \
+    std::cout << uitsl_ns::SetSeparator(" << ") << __VA_ARGS__;;              \
     std::cout << UITSL_STRINGIFY(__VA_ARGS__) << '\n';                        \
-    std::cout << uitsl_ns::SetSeparator(" << ") __VA_OPT__(<<) __VA_ARGS__;   \
     std::cout << '\n';                                                        \
     std::abort();                                                             \
   }                                                                           \
 } while(0)
+
+// clang doesn't support __VA_OPT__ yet
+// std::cout << uitsl_ns::SetSeparator(" << ") __VA_OPT__(<<) __VA_ARGS__;   \
 
 #endif // #ifndef UITSL_DEBUG_UITSL_ALWAYS_ASSERT_HPP_INCLUDE

@@ -53,7 +53,7 @@ inline std::filesystem::path fetch_native( const std::string& url ) {
     [&curl_handle](){ curl_easy_cleanup( curl_handle ); }
   );
 
-  uitsl_always_assert( curl_handle );
+  uitsl_always_assert( curl_handle, "" );
 
   uitsl::err_verify(
     curl_easy_setopt( curl_handle, CURLOPT_URL, url.c_str())

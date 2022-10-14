@@ -6,9 +6,9 @@ TEST_CASE("uitsl_always_assert", "[nproc:1]") {
 
   // uitsl_always_assert(false);
 
-  uitsl_always_assert(true);
-
-  uitsl_always_assert(true, );
+  // uitsl_always_assert(true);
+  //
+  // uitsl_always_assert(true, );
 
   uitsl_always_assert(true, "");
 
