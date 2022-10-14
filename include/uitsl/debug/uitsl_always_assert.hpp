@@ -7,6 +7,7 @@
 
 #include "../meta/is_streamable.hpp"
 #include "../meta/fwd_or_cast.hpp"
+#include "../meta/UITSL_NAMESPACE.hpp"
 #include "../utility/UITSL_STRINGIFY.hpp"
 #include "../utility/SetSeparator.hpp"
 
@@ -15,12 +16,13 @@
 #define uitsl_always_assert(expr, ...)                                        \
 do {                                                                          \
   if(!(expr)) {                                                               \
+    namespace uitsl_ns = UITSL_NAMESPACE();                                   \
     std::cout << '\n';                                                        \
     std::cout << '\n';                                                        \
     std::cout << "ASSERTION FAILED: ";                                        \
     std::cout << '\n';                                                        \
     std::cout << UITSL_STRINGIFY(expr) << " was ";                            \
-    std::cout << uitsl::fwd_or_cast<uitsl::is_streamable, bool>(expr);        \
+    std::cout << uitsl_ns::fwd_or_cast<uitsl_ns::is_streamable, bool>(expr);  \
     std::cout << '\n';                                                        \
     std::cout << '\n';                                                        \
     std::cout << "FILE: " << __FILE__ << '\n';                                \
@@ -29,7 +31,7 @@ do {                                                                          \
     std::cout << '\n';                                                        \
     std::cout << "MESSAGE:\n";                                                \
     std::cout << UITSL_STRINGIFY(__VA_ARGS__) << '\n';                        \
-    std::cout << uitsl::SetSeparator(" << ") __VA_OPT__(<<) __VA_ARGS__;      \
+    std::cout << uitsl_ns::SetSeparator(" << ") __VA_OPT__(<<) __VA_ARGS__;   \
     std::cout << '\n';                                                        \
     std::abort();                                                             \
   }                                                                           \
