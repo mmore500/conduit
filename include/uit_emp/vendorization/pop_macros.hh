@@ -22,6 +22,10 @@
     #undef EMP_ADD
   #endif
 
+#else // #ifdef EMP_ADD
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD
+        #pragma pop_macro("EMP_ADD")
+    #endif
 #endif // #ifdef EMP_ADD
 
 #ifdef EMP_ADD_10
@@ -46,6 +50,10 @@
     #undef EMP_ADD_10
   #endif
 
+#else // #ifdef EMP_ADD_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_10
+        #pragma pop_macro("EMP_ADD_10")
+    #endif
 #endif // #ifdef EMP_ADD_10
 
 #ifdef EMP_ADD_10_IMPL
@@ -70,6 +78,10 @@
     #undef EMP_ADD_10_IMPL
   #endif
 
+#else // #ifdef EMP_ADD_10_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_10_IMPL
+        #pragma pop_macro("EMP_ADD_10_IMPL")
+    #endif
 #endif // #ifdef EMP_ADD_10_IMPL
 
 #ifdef EMP_ADD_ARG_IF_VAL_0
@@ -94,6 +106,10 @@
     #undef EMP_ADD_ARG_IF_VAL_0
   #endif
 
+#else // #ifdef EMP_ADD_ARG_IF_VAL_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_ARG_IF_VAL_0
+        #pragma pop_macro("EMP_ADD_ARG_IF_VAL_0")
+    #endif
 #endif // #ifdef EMP_ADD_ARG_IF_VAL_0
 
 #ifdef EMP_ADD_ARG_IF_VAL_1
@@ -118,6 +134,10 @@
     #undef EMP_ADD_ARG_IF_VAL_1
   #endif
 
+#else // #ifdef EMP_ADD_ARG_IF_VAL_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_ARG_IF_VAL_1
+        #pragma pop_macro("EMP_ADD_ARG_IF_VAL_1")
+    #endif
 #endif // #ifdef EMP_ADD_ARG_IF_VAL_1
 
 #ifdef EMP_ADD_BIN
@@ -142,6 +162,10 @@
     #undef EMP_ADD_BIN
   #endif
 
+#else // #ifdef EMP_ADD_BIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_BIN
+        #pragma pop_macro("EMP_ADD_BIN")
+    #endif
 #endif // #ifdef EMP_ADD_BIN
 
 #ifdef EMP_ADD_BIN_10
@@ -166,6 +190,10 @@
     #undef EMP_ADD_BIN_10
   #endif
 
+#else // #ifdef EMP_ADD_BIN_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_BIN_10
+        #pragma pop_macro("EMP_ADD_BIN_10")
+    #endif
 #endif // #ifdef EMP_ADD_BIN_10
 
 #ifdef EMP_ADD_BIN_4
@@ -190,6 +218,10 @@
     #undef EMP_ADD_BIN_4
   #endif
 
+#else // #ifdef EMP_ADD_BIN_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_BIN_4
+        #pragma pop_macro("EMP_ADD_BIN_4")
+    #endif
 #endif // #ifdef EMP_ADD_BIN_4
 
 #ifdef EMP_ADD_BIN_8
@@ -214,6 +246,10 @@
     #undef EMP_ADD_BIN_8
   #endif
 
+#else // #ifdef EMP_ADD_BIN_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_BIN_8
+        #pragma pop_macro("EMP_ADD_BIN_8")
+    #endif
 #endif // #ifdef EMP_ADD_BIN_8
 
 #ifdef EMP_ADD_BIN_IMPL
@@ -238,6 +274,10 @@
     #undef EMP_ADD_BIN_IMPL
   #endif
 
+#else // #ifdef EMP_ADD_BIN_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_BIN_IMPL
+        #pragma pop_macro("EMP_ADD_BIN_IMPL")
+    #endif
 #endif // #ifdef EMP_ADD_BIN_IMPL
 
 #ifdef EMP_ADD_IMPL
@@ -262,6 +302,10 @@
     #undef EMP_ADD_IMPL
   #endif
 
+#else // #ifdef EMP_ADD_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_IMPL
+        #pragma pop_macro("EMP_ADD_IMPL")
+    #endif
 #endif // #ifdef EMP_ADD_IMPL
 
 #ifdef EMP_ADD_TYPE_FROM_MEMBER
@@ -286,6 +330,10 @@
     #undef EMP_ADD_TYPE_FROM_MEMBER
   #endif
 
+#else // #ifdef EMP_ADD_TYPE_FROM_MEMBER
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER
+        #pragma pop_macro("EMP_ADD_TYPE_FROM_MEMBER")
+    #endif
 #endif // #ifdef EMP_ADD_TYPE_FROM_MEMBER
 
 #ifdef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
@@ -310,6 +358,10 @@
     #undef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
   #endif
 
+#else // #ifdef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
+        #pragma pop_macro("EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE")
+    #endif
 #endif // #ifdef EMP_ADD_TYPE_FROM_MEMBER_OR_TYPE
 
 #ifdef EMP_ADD_TYPE_FROM_TYPE
@@ -334,6 +386,10 @@
     #undef EMP_ADD_TYPE_FROM_TYPE
   #endif
 
+#else // #ifdef EMP_ADD_TYPE_FROM_TYPE
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE
+        #pragma pop_macro("EMP_ADD_TYPE_FROM_TYPE")
+    #endif
 #endif // #ifdef EMP_ADD_TYPE_FROM_TYPE
 
 #ifdef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
@@ -358,6 +414,10 @@
     #undef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
   #endif
 
+#else // #ifdef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+    #ifdef UIT_EXTERNAL_HAS_EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
+        #pragma pop_macro("EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER")
+    #endif
 #endif // #ifdef EMP_ADD_TYPE_FROM_TYPE_OR_MEMBER
 
 #ifdef EMP_AND
@@ -382,6 +442,10 @@
     #undef EMP_AND
   #endif
 
+#else // #ifdef EMP_AND
+    #ifdef UIT_EXTERNAL_HAS_EMP_AND
+        #pragma pop_macro("EMP_AND")
+    #endif
 #endif // #ifdef EMP_AND
 
 #ifdef EMP_ARGS_TO_PACKS
@@ -406,6 +470,10 @@
     #undef EMP_ARGS_TO_PACKS
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS
+        #pragma pop_macro("EMP_ARGS_TO_PACKS")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS
 
 #ifdef EMP_ARGS_TO_PACKS_1
@@ -430,6 +498,10 @@
     #undef EMP_ARGS_TO_PACKS_1
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_1
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_1")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_1
 
 #ifdef EMP_ARGS_TO_PACKS_128
@@ -454,6 +526,10 @@
     #undef EMP_ARGS_TO_PACKS_128
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_128
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_128")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_128
 
 #ifdef EMP_ARGS_TO_PACKS_16
@@ -478,6 +554,10 @@
     #undef EMP_ARGS_TO_PACKS_16
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_16
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_16")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_16
 
 #ifdef EMP_ARGS_TO_PACKS_2
@@ -502,6 +582,10 @@
     #undef EMP_ARGS_TO_PACKS_2
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_2
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_2")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_2
 
 #ifdef EMP_ARGS_TO_PACKS_256
@@ -526,6 +610,10 @@
     #undef EMP_ARGS_TO_PACKS_256
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_256
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_256")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_256
 
 #ifdef EMP_ARGS_TO_PACKS_32
@@ -550,6 +638,10 @@
     #undef EMP_ARGS_TO_PACKS_32
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_32
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_32")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_32
 
 #ifdef EMP_ARGS_TO_PACKS_4
@@ -574,6 +666,10 @@
     #undef EMP_ARGS_TO_PACKS_4
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_4
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_4")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_4
 
 #ifdef EMP_ARGS_TO_PACKS_512
@@ -598,6 +694,10 @@
     #undef EMP_ARGS_TO_PACKS_512
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_512
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_512")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_512
 
 #ifdef EMP_ARGS_TO_PACKS_64
@@ -622,6 +722,10 @@
     #undef EMP_ARGS_TO_PACKS_64
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_64
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_64")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_64
 
 #ifdef EMP_ARGS_TO_PACKS_8
@@ -646,6 +750,10 @@
     #undef EMP_ARGS_TO_PACKS_8
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_8
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_8")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_8
 
 #ifdef EMP_ARGS_TO_PACKS_impl
@@ -670,6 +778,10 @@
     #undef EMP_ARGS_TO_PACKS_impl
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_impl
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_impl
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_impl")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_impl
 
 #ifdef EMP_ARGS_TO_PACKS_implB
@@ -694,6 +806,10 @@
     #undef EMP_ARGS_TO_PACKS_implB
   #endif
 
+#else // #ifdef EMP_ARGS_TO_PACKS_implB
+    #ifdef UIT_EXTERNAL_HAS_EMP_ARGS_TO_PACKS_implB
+        #pragma pop_macro("EMP_ARGS_TO_PACKS_implB")
+    #endif
 #endif // #ifdef EMP_ARGS_TO_PACKS_implB
 
 #ifdef EMP_ASSEMBLE_IMPL
@@ -718,6 +834,10 @@
     #undef EMP_ASSEMBLE_IMPL
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_IMPL
+        #pragma pop_macro("EMP_ASSEMBLE_IMPL")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_IMPL
 
 #ifdef EMP_ASSEMBLE_MACRO
@@ -742,6 +862,10 @@
     #undef EMP_ASSEMBLE_MACRO
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MACRO
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MACRO
+        #pragma pop_macro("EMP_ASSEMBLE_MACRO")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MACRO
 
 #ifdef EMP_ASSEMBLE_MACRO_1ARG
@@ -766,6 +890,10 @@
     #undef EMP_ASSEMBLE_MACRO_1ARG
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MACRO_1ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MACRO_1ARG
+        #pragma pop_macro("EMP_ASSEMBLE_MACRO_1ARG")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MACRO_1ARG
 
 #ifdef EMP_ASSEMBLE_MACRO_2ARG
@@ -790,6 +918,10 @@
     #undef EMP_ASSEMBLE_MACRO_2ARG
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MACRO_2ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MACRO_2ARG
+        #pragma pop_macro("EMP_ASSEMBLE_MACRO_2ARG")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MACRO_2ARG
 
 #ifdef EMP_ASSEMBLE_MACRO_3ARG
@@ -814,6 +946,10 @@
     #undef EMP_ASSEMBLE_MACRO_3ARG
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MACRO_3ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MACRO_3ARG
+        #pragma pop_macro("EMP_ASSEMBLE_MACRO_3ARG")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MACRO_3ARG
 
 #ifdef EMP_ASSEMBLE_MACRO_4ARG
@@ -838,6 +974,10 @@
     #undef EMP_ASSEMBLE_MACRO_4ARG
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MACRO_4ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MACRO_4ARG
+        #pragma pop_macro("EMP_ASSEMBLE_MACRO_4ARG")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MACRO_4ARG
 
 #ifdef EMP_ASSEMBLE_MACRO_5ARG
@@ -862,6 +1002,10 @@
     #undef EMP_ASSEMBLE_MACRO_5ARG
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MACRO_5ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MACRO_5ARG
+        #pragma pop_macro("EMP_ASSEMBLE_MACRO_5ARG")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MACRO_5ARG
 
 #ifdef EMP_ASSEMBLE_MACRO_6ARG
@@ -886,6 +1030,10 @@
     #undef EMP_ASSEMBLE_MACRO_6ARG
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MACRO_6ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MACRO_6ARG
+        #pragma pop_macro("EMP_ASSEMBLE_MACRO_6ARG")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MACRO_6ARG
 
 #ifdef EMP_ASSEMBLE_MACRO_7ARG
@@ -910,6 +1058,10 @@
     #undef EMP_ASSEMBLE_MACRO_7ARG
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MACRO_7ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MACRO_7ARG
+        #pragma pop_macro("EMP_ASSEMBLE_MACRO_7ARG")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MACRO_7ARG
 
 #ifdef EMP_ASSEMBLE_MACRO_8ARG
@@ -934,6 +1086,10 @@
     #undef EMP_ASSEMBLE_MACRO_8ARG
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MACRO_8ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MACRO_8ARG
+        #pragma pop_macro("EMP_ASSEMBLE_MACRO_8ARG")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MACRO_8ARG
 
 #ifdef EMP_ASSEMBLE_MERGE
@@ -958,6 +1114,10 @@
     #undef EMP_ASSEMBLE_MERGE
   #endif
 
+#else // #ifdef EMP_ASSEMBLE_MERGE
+    #ifdef UIT_EXTERNAL_HAS_EMP_ASSEMBLE_MERGE
+        #pragma pop_macro("EMP_ASSEMBLE_MERGE")
+    #endif
 #endif // #ifdef EMP_ASSEMBLE_MERGE
 
 #ifdef EMP_BIN_TO_DEC
@@ -982,6 +1142,10 @@
     #undef EMP_BIN_TO_DEC
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC
+        #pragma pop_macro("EMP_BIN_TO_DEC")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC
 
 #ifdef EMP_BIN_TO_DEC_0000000000
@@ -1006,6 +1170,10 @@
     #undef EMP_BIN_TO_DEC_0000000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000000000
 
 #ifdef EMP_BIN_TO_DEC_0000000001
@@ -1030,6 +1198,10 @@
     #undef EMP_BIN_TO_DEC_0000000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000000001
 
 #ifdef EMP_BIN_TO_DEC_0000000010
@@ -1054,6 +1226,10 @@
     #undef EMP_BIN_TO_DEC_0000000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000000010
 
 #ifdef EMP_BIN_TO_DEC_0000000011
@@ -1078,6 +1254,10 @@
     #undef EMP_BIN_TO_DEC_0000000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000000011
 
 #ifdef EMP_BIN_TO_DEC_0000000100
@@ -1102,6 +1282,10 @@
     #undef EMP_BIN_TO_DEC_0000000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000000100
 
 #ifdef EMP_BIN_TO_DEC_0000000101
@@ -1126,6 +1310,10 @@
     #undef EMP_BIN_TO_DEC_0000000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000000101
 
 #ifdef EMP_BIN_TO_DEC_0000000110
@@ -1150,6 +1338,10 @@
     #undef EMP_BIN_TO_DEC_0000000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000000110
 
 #ifdef EMP_BIN_TO_DEC_0000000111
@@ -1174,6 +1366,10 @@
     #undef EMP_BIN_TO_DEC_0000000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000000111
 
 #ifdef EMP_BIN_TO_DEC_0000001000
@@ -1198,6 +1394,10 @@
     #undef EMP_BIN_TO_DEC_0000001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000001000
 
 #ifdef EMP_BIN_TO_DEC_0000001001
@@ -1222,6 +1422,10 @@
     #undef EMP_BIN_TO_DEC_0000001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000001001
 
 #ifdef EMP_BIN_TO_DEC_0000001010
@@ -1246,6 +1450,10 @@
     #undef EMP_BIN_TO_DEC_0000001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000001010
 
 #ifdef EMP_BIN_TO_DEC_0000001011
@@ -1270,6 +1478,10 @@
     #undef EMP_BIN_TO_DEC_0000001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000001011
 
 #ifdef EMP_BIN_TO_DEC_0000001100
@@ -1294,6 +1506,10 @@
     #undef EMP_BIN_TO_DEC_0000001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000001100
 
 #ifdef EMP_BIN_TO_DEC_0000001101
@@ -1318,6 +1534,10 @@
     #undef EMP_BIN_TO_DEC_0000001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000001101
 
 #ifdef EMP_BIN_TO_DEC_0000001110
@@ -1342,6 +1562,10 @@
     #undef EMP_BIN_TO_DEC_0000001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000001110
 
 #ifdef EMP_BIN_TO_DEC_0000001111
@@ -1366,6 +1590,10 @@
     #undef EMP_BIN_TO_DEC_0000001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000001111
 
 #ifdef EMP_BIN_TO_DEC_0000010000
@@ -1390,6 +1618,10 @@
     #undef EMP_BIN_TO_DEC_0000010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000010000
 
 #ifdef EMP_BIN_TO_DEC_0000010001
@@ -1414,6 +1646,10 @@
     #undef EMP_BIN_TO_DEC_0000010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000010001
 
 #ifdef EMP_BIN_TO_DEC_0000010010
@@ -1438,6 +1674,10 @@
     #undef EMP_BIN_TO_DEC_0000010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000010010
 
 #ifdef EMP_BIN_TO_DEC_0000010011
@@ -1462,6 +1702,10 @@
     #undef EMP_BIN_TO_DEC_0000010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000010011
 
 #ifdef EMP_BIN_TO_DEC_0000010100
@@ -1486,6 +1730,10 @@
     #undef EMP_BIN_TO_DEC_0000010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000010100
 
 #ifdef EMP_BIN_TO_DEC_0000010101
@@ -1510,6 +1758,10 @@
     #undef EMP_BIN_TO_DEC_0000010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000010101
 
 #ifdef EMP_BIN_TO_DEC_0000010110
@@ -1534,6 +1786,10 @@
     #undef EMP_BIN_TO_DEC_0000010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000010110
 
 #ifdef EMP_BIN_TO_DEC_0000010111
@@ -1558,6 +1814,10 @@
     #undef EMP_BIN_TO_DEC_0000010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000010111
 
 #ifdef EMP_BIN_TO_DEC_0000011000
@@ -1582,6 +1842,10 @@
     #undef EMP_BIN_TO_DEC_0000011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000011000
 
 #ifdef EMP_BIN_TO_DEC_0000011001
@@ -1606,6 +1870,10 @@
     #undef EMP_BIN_TO_DEC_0000011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000011001
 
 #ifdef EMP_BIN_TO_DEC_0000011010
@@ -1630,6 +1898,10 @@
     #undef EMP_BIN_TO_DEC_0000011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000011010
 
 #ifdef EMP_BIN_TO_DEC_0000011011
@@ -1654,6 +1926,10 @@
     #undef EMP_BIN_TO_DEC_0000011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000011011
 
 #ifdef EMP_BIN_TO_DEC_0000011100
@@ -1678,6 +1954,10 @@
     #undef EMP_BIN_TO_DEC_0000011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000011100
 
 #ifdef EMP_BIN_TO_DEC_0000011101
@@ -1702,6 +1982,10 @@
     #undef EMP_BIN_TO_DEC_0000011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000011101
 
 #ifdef EMP_BIN_TO_DEC_0000011110
@@ -1726,6 +2010,10 @@
     #undef EMP_BIN_TO_DEC_0000011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000011110
 
 #ifdef EMP_BIN_TO_DEC_0000011111
@@ -1750,6 +2038,10 @@
     #undef EMP_BIN_TO_DEC_0000011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000011111
 
 #ifdef EMP_BIN_TO_DEC_0000100000
@@ -1774,6 +2066,10 @@
     #undef EMP_BIN_TO_DEC_0000100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000100000
 
 #ifdef EMP_BIN_TO_DEC_0000100001
@@ -1798,6 +2094,10 @@
     #undef EMP_BIN_TO_DEC_0000100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000100001
 
 #ifdef EMP_BIN_TO_DEC_0000100010
@@ -1822,6 +2122,10 @@
     #undef EMP_BIN_TO_DEC_0000100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000100010
 
 #ifdef EMP_BIN_TO_DEC_0000100011
@@ -1846,6 +2150,10 @@
     #undef EMP_BIN_TO_DEC_0000100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000100011
 
 #ifdef EMP_BIN_TO_DEC_0000100100
@@ -1870,6 +2178,10 @@
     #undef EMP_BIN_TO_DEC_0000100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000100100
 
 #ifdef EMP_BIN_TO_DEC_0000100101
@@ -1894,6 +2206,10 @@
     #undef EMP_BIN_TO_DEC_0000100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000100101
 
 #ifdef EMP_BIN_TO_DEC_0000100110
@@ -1918,6 +2234,10 @@
     #undef EMP_BIN_TO_DEC_0000100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000100110
 
 #ifdef EMP_BIN_TO_DEC_0000100111
@@ -1942,6 +2262,10 @@
     #undef EMP_BIN_TO_DEC_0000100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000100111
 
 #ifdef EMP_BIN_TO_DEC_0000101000
@@ -1966,6 +2290,10 @@
     #undef EMP_BIN_TO_DEC_0000101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000101000
 
 #ifdef EMP_BIN_TO_DEC_0000101001
@@ -1990,6 +2318,10 @@
     #undef EMP_BIN_TO_DEC_0000101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000101001
 
 #ifdef EMP_BIN_TO_DEC_0000101010
@@ -2014,6 +2346,10 @@
     #undef EMP_BIN_TO_DEC_0000101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000101010
 
 #ifdef EMP_BIN_TO_DEC_0000101011
@@ -2038,6 +2374,10 @@
     #undef EMP_BIN_TO_DEC_0000101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000101011
 
 #ifdef EMP_BIN_TO_DEC_0000101100
@@ -2062,6 +2402,10 @@
     #undef EMP_BIN_TO_DEC_0000101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000101100
 
 #ifdef EMP_BIN_TO_DEC_0000101101
@@ -2086,6 +2430,10 @@
     #undef EMP_BIN_TO_DEC_0000101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000101101
 
 #ifdef EMP_BIN_TO_DEC_0000101110
@@ -2110,6 +2458,10 @@
     #undef EMP_BIN_TO_DEC_0000101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000101110
 
 #ifdef EMP_BIN_TO_DEC_0000101111
@@ -2134,6 +2486,10 @@
     #undef EMP_BIN_TO_DEC_0000101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000101111
 
 #ifdef EMP_BIN_TO_DEC_0000110000
@@ -2158,6 +2514,10 @@
     #undef EMP_BIN_TO_DEC_0000110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000110000
 
 #ifdef EMP_BIN_TO_DEC_0000110001
@@ -2182,6 +2542,10 @@
     #undef EMP_BIN_TO_DEC_0000110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000110001
 
 #ifdef EMP_BIN_TO_DEC_0000110010
@@ -2206,6 +2570,10 @@
     #undef EMP_BIN_TO_DEC_0000110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000110010
 
 #ifdef EMP_BIN_TO_DEC_0000110011
@@ -2230,6 +2598,10 @@
     #undef EMP_BIN_TO_DEC_0000110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000110011
 
 #ifdef EMP_BIN_TO_DEC_0000110100
@@ -2254,6 +2626,10 @@
     #undef EMP_BIN_TO_DEC_0000110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000110100
 
 #ifdef EMP_BIN_TO_DEC_0000110101
@@ -2278,6 +2654,10 @@
     #undef EMP_BIN_TO_DEC_0000110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000110101
 
 #ifdef EMP_BIN_TO_DEC_0000110110
@@ -2302,6 +2682,10 @@
     #undef EMP_BIN_TO_DEC_0000110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000110110
 
 #ifdef EMP_BIN_TO_DEC_0000110111
@@ -2326,6 +2710,10 @@
     #undef EMP_BIN_TO_DEC_0000110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000110111
 
 #ifdef EMP_BIN_TO_DEC_0000111000
@@ -2350,6 +2738,10 @@
     #undef EMP_BIN_TO_DEC_0000111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000111000
 
 #ifdef EMP_BIN_TO_DEC_0000111001
@@ -2374,6 +2766,10 @@
     #undef EMP_BIN_TO_DEC_0000111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000111001
 
 #ifdef EMP_BIN_TO_DEC_0000111010
@@ -2398,6 +2794,10 @@
     #undef EMP_BIN_TO_DEC_0000111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000111010
 
 #ifdef EMP_BIN_TO_DEC_0000111011
@@ -2422,6 +2822,10 @@
     #undef EMP_BIN_TO_DEC_0000111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000111011
 
 #ifdef EMP_BIN_TO_DEC_0000111100
@@ -2446,6 +2850,10 @@
     #undef EMP_BIN_TO_DEC_0000111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000111100
 
 #ifdef EMP_BIN_TO_DEC_0000111101
@@ -2470,6 +2878,10 @@
     #undef EMP_BIN_TO_DEC_0000111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000111101
 
 #ifdef EMP_BIN_TO_DEC_0000111110
@@ -2494,6 +2906,10 @@
     #undef EMP_BIN_TO_DEC_0000111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000111110
 
 #ifdef EMP_BIN_TO_DEC_0000111111
@@ -2518,6 +2934,10 @@
     #undef EMP_BIN_TO_DEC_0000111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0000111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0000111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0000111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0000111111
 
 #ifdef EMP_BIN_TO_DEC_0001000000
@@ -2542,6 +2962,10 @@
     #undef EMP_BIN_TO_DEC_0001000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001000000
 
 #ifdef EMP_BIN_TO_DEC_0001000001
@@ -2566,6 +2990,10 @@
     #undef EMP_BIN_TO_DEC_0001000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001000001
 
 #ifdef EMP_BIN_TO_DEC_0001000010
@@ -2590,6 +3018,10 @@
     #undef EMP_BIN_TO_DEC_0001000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001000010
 
 #ifdef EMP_BIN_TO_DEC_0001000011
@@ -2614,6 +3046,10 @@
     #undef EMP_BIN_TO_DEC_0001000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001000011
 
 #ifdef EMP_BIN_TO_DEC_0001000100
@@ -2638,6 +3074,10 @@
     #undef EMP_BIN_TO_DEC_0001000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001000100
 
 #ifdef EMP_BIN_TO_DEC_0001000101
@@ -2662,6 +3102,10 @@
     #undef EMP_BIN_TO_DEC_0001000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001000101
 
 #ifdef EMP_BIN_TO_DEC_0001000110
@@ -2686,6 +3130,10 @@
     #undef EMP_BIN_TO_DEC_0001000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001000110
 
 #ifdef EMP_BIN_TO_DEC_0001000111
@@ -2710,6 +3158,10 @@
     #undef EMP_BIN_TO_DEC_0001000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001000111
 
 #ifdef EMP_BIN_TO_DEC_0001001000
@@ -2734,6 +3186,10 @@
     #undef EMP_BIN_TO_DEC_0001001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001001000
 
 #ifdef EMP_BIN_TO_DEC_0001001001
@@ -2758,6 +3214,10 @@
     #undef EMP_BIN_TO_DEC_0001001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001001001
 
 #ifdef EMP_BIN_TO_DEC_0001001010
@@ -2782,6 +3242,10 @@
     #undef EMP_BIN_TO_DEC_0001001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001001010
 
 #ifdef EMP_BIN_TO_DEC_0001001011
@@ -2806,6 +3270,10 @@
     #undef EMP_BIN_TO_DEC_0001001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001001011
 
 #ifdef EMP_BIN_TO_DEC_0001001100
@@ -2830,6 +3298,10 @@
     #undef EMP_BIN_TO_DEC_0001001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001001100
 
 #ifdef EMP_BIN_TO_DEC_0001001101
@@ -2854,6 +3326,10 @@
     #undef EMP_BIN_TO_DEC_0001001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001001101
 
 #ifdef EMP_BIN_TO_DEC_0001001110
@@ -2878,6 +3354,10 @@
     #undef EMP_BIN_TO_DEC_0001001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001001110
 
 #ifdef EMP_BIN_TO_DEC_0001001111
@@ -2902,6 +3382,10 @@
     #undef EMP_BIN_TO_DEC_0001001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001001111
 
 #ifdef EMP_BIN_TO_DEC_0001010000
@@ -2926,6 +3410,10 @@
     #undef EMP_BIN_TO_DEC_0001010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001010000
 
 #ifdef EMP_BIN_TO_DEC_0001010001
@@ -2950,6 +3438,10 @@
     #undef EMP_BIN_TO_DEC_0001010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001010001
 
 #ifdef EMP_BIN_TO_DEC_0001010010
@@ -2974,6 +3466,10 @@
     #undef EMP_BIN_TO_DEC_0001010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001010010
 
 #ifdef EMP_BIN_TO_DEC_0001010011
@@ -2998,6 +3494,10 @@
     #undef EMP_BIN_TO_DEC_0001010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001010011
 
 #ifdef EMP_BIN_TO_DEC_0001010100
@@ -3022,6 +3522,10 @@
     #undef EMP_BIN_TO_DEC_0001010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001010100
 
 #ifdef EMP_BIN_TO_DEC_0001010101
@@ -3046,6 +3550,10 @@
     #undef EMP_BIN_TO_DEC_0001010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001010101
 
 #ifdef EMP_BIN_TO_DEC_0001010110
@@ -3070,6 +3578,10 @@
     #undef EMP_BIN_TO_DEC_0001010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001010110
 
 #ifdef EMP_BIN_TO_DEC_0001010111
@@ -3094,6 +3606,10 @@
     #undef EMP_BIN_TO_DEC_0001010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001010111
 
 #ifdef EMP_BIN_TO_DEC_0001011000
@@ -3118,6 +3634,10 @@
     #undef EMP_BIN_TO_DEC_0001011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001011000
 
 #ifdef EMP_BIN_TO_DEC_0001011001
@@ -3142,6 +3662,10 @@
     #undef EMP_BIN_TO_DEC_0001011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001011001
 
 #ifdef EMP_BIN_TO_DEC_0001011010
@@ -3166,6 +3690,10 @@
     #undef EMP_BIN_TO_DEC_0001011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001011010
 
 #ifdef EMP_BIN_TO_DEC_0001011011
@@ -3190,6 +3718,10 @@
     #undef EMP_BIN_TO_DEC_0001011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001011011
 
 #ifdef EMP_BIN_TO_DEC_0001011100
@@ -3214,6 +3746,10 @@
     #undef EMP_BIN_TO_DEC_0001011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001011100
 
 #ifdef EMP_BIN_TO_DEC_0001011101
@@ -3238,6 +3774,10 @@
     #undef EMP_BIN_TO_DEC_0001011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001011101
 
 #ifdef EMP_BIN_TO_DEC_0001011110
@@ -3262,6 +3802,10 @@
     #undef EMP_BIN_TO_DEC_0001011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001011110
 
 #ifdef EMP_BIN_TO_DEC_0001011111
@@ -3286,6 +3830,10 @@
     #undef EMP_BIN_TO_DEC_0001011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001011111
 
 #ifdef EMP_BIN_TO_DEC_0001100000
@@ -3310,6 +3858,10 @@
     #undef EMP_BIN_TO_DEC_0001100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001100000
 
 #ifdef EMP_BIN_TO_DEC_0001100001
@@ -3334,6 +3886,10 @@
     #undef EMP_BIN_TO_DEC_0001100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001100001
 
 #ifdef EMP_BIN_TO_DEC_0001100010
@@ -3358,6 +3914,10 @@
     #undef EMP_BIN_TO_DEC_0001100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001100010
 
 #ifdef EMP_BIN_TO_DEC_0001100011
@@ -3382,6 +3942,10 @@
     #undef EMP_BIN_TO_DEC_0001100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001100011
 
 #ifdef EMP_BIN_TO_DEC_0001100100
@@ -3406,6 +3970,10 @@
     #undef EMP_BIN_TO_DEC_0001100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001100100
 
 #ifdef EMP_BIN_TO_DEC_0001100101
@@ -3430,6 +3998,10 @@
     #undef EMP_BIN_TO_DEC_0001100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001100101
 
 #ifdef EMP_BIN_TO_DEC_0001100110
@@ -3454,6 +4026,10 @@
     #undef EMP_BIN_TO_DEC_0001100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001100110
 
 #ifdef EMP_BIN_TO_DEC_0001100111
@@ -3478,6 +4054,10 @@
     #undef EMP_BIN_TO_DEC_0001100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001100111
 
 #ifdef EMP_BIN_TO_DEC_0001101000
@@ -3502,6 +4082,10 @@
     #undef EMP_BIN_TO_DEC_0001101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001101000
 
 #ifdef EMP_BIN_TO_DEC_0001101001
@@ -3526,6 +4110,10 @@
     #undef EMP_BIN_TO_DEC_0001101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001101001
 
 #ifdef EMP_BIN_TO_DEC_0001101010
@@ -3550,6 +4138,10 @@
     #undef EMP_BIN_TO_DEC_0001101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001101010
 
 #ifdef EMP_BIN_TO_DEC_0001101011
@@ -3574,6 +4166,10 @@
     #undef EMP_BIN_TO_DEC_0001101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001101011
 
 #ifdef EMP_BIN_TO_DEC_0001101100
@@ -3598,6 +4194,10 @@
     #undef EMP_BIN_TO_DEC_0001101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001101100
 
 #ifdef EMP_BIN_TO_DEC_0001101101
@@ -3622,6 +4222,10 @@
     #undef EMP_BIN_TO_DEC_0001101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001101101
 
 #ifdef EMP_BIN_TO_DEC_0001101110
@@ -3646,6 +4250,10 @@
     #undef EMP_BIN_TO_DEC_0001101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001101110
 
 #ifdef EMP_BIN_TO_DEC_0001101111
@@ -3670,6 +4278,10 @@
     #undef EMP_BIN_TO_DEC_0001101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001101111
 
 #ifdef EMP_BIN_TO_DEC_0001110000
@@ -3694,6 +4306,10 @@
     #undef EMP_BIN_TO_DEC_0001110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001110000
 
 #ifdef EMP_BIN_TO_DEC_0001110001
@@ -3718,6 +4334,10 @@
     #undef EMP_BIN_TO_DEC_0001110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001110001
 
 #ifdef EMP_BIN_TO_DEC_0001110010
@@ -3742,6 +4362,10 @@
     #undef EMP_BIN_TO_DEC_0001110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001110010
 
 #ifdef EMP_BIN_TO_DEC_0001110011
@@ -3766,6 +4390,10 @@
     #undef EMP_BIN_TO_DEC_0001110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001110011
 
 #ifdef EMP_BIN_TO_DEC_0001110100
@@ -3790,6 +4418,10 @@
     #undef EMP_BIN_TO_DEC_0001110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001110100
 
 #ifdef EMP_BIN_TO_DEC_0001110101
@@ -3814,6 +4446,10 @@
     #undef EMP_BIN_TO_DEC_0001110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001110101
 
 #ifdef EMP_BIN_TO_DEC_0001110110
@@ -3838,6 +4474,10 @@
     #undef EMP_BIN_TO_DEC_0001110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001110110
 
 #ifdef EMP_BIN_TO_DEC_0001110111
@@ -3862,6 +4502,10 @@
     #undef EMP_BIN_TO_DEC_0001110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001110111
 
 #ifdef EMP_BIN_TO_DEC_0001111000
@@ -3886,6 +4530,10 @@
     #undef EMP_BIN_TO_DEC_0001111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001111000
 
 #ifdef EMP_BIN_TO_DEC_0001111001
@@ -3910,6 +4558,10 @@
     #undef EMP_BIN_TO_DEC_0001111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001111001
 
 #ifdef EMP_BIN_TO_DEC_0001111010
@@ -3934,6 +4586,10 @@
     #undef EMP_BIN_TO_DEC_0001111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001111010
 
 #ifdef EMP_BIN_TO_DEC_0001111011
@@ -3958,6 +4614,10 @@
     #undef EMP_BIN_TO_DEC_0001111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001111011
 
 #ifdef EMP_BIN_TO_DEC_0001111100
@@ -3982,6 +4642,10 @@
     #undef EMP_BIN_TO_DEC_0001111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001111100
 
 #ifdef EMP_BIN_TO_DEC_0001111101
@@ -4006,6 +4670,10 @@
     #undef EMP_BIN_TO_DEC_0001111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001111101
 
 #ifdef EMP_BIN_TO_DEC_0001111110
@@ -4030,6 +4698,10 @@
     #undef EMP_BIN_TO_DEC_0001111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001111110
 
 #ifdef EMP_BIN_TO_DEC_0001111111
@@ -4054,6 +4726,10 @@
     #undef EMP_BIN_TO_DEC_0001111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0001111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0001111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0001111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0001111111
 
 #ifdef EMP_BIN_TO_DEC_0010000000
@@ -4078,6 +4754,10 @@
     #undef EMP_BIN_TO_DEC_0010000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010000000
 
 #ifdef EMP_BIN_TO_DEC_0010000001
@@ -4102,6 +4782,10 @@
     #undef EMP_BIN_TO_DEC_0010000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010000001
 
 #ifdef EMP_BIN_TO_DEC_0010000010
@@ -4126,6 +4810,10 @@
     #undef EMP_BIN_TO_DEC_0010000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010000010
 
 #ifdef EMP_BIN_TO_DEC_0010000011
@@ -4150,6 +4838,10 @@
     #undef EMP_BIN_TO_DEC_0010000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010000011
 
 #ifdef EMP_BIN_TO_DEC_0010000100
@@ -4174,6 +4866,10 @@
     #undef EMP_BIN_TO_DEC_0010000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010000100
 
 #ifdef EMP_BIN_TO_DEC_0010000101
@@ -4198,6 +4894,10 @@
     #undef EMP_BIN_TO_DEC_0010000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010000101
 
 #ifdef EMP_BIN_TO_DEC_0010000110
@@ -4222,6 +4922,10 @@
     #undef EMP_BIN_TO_DEC_0010000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010000110
 
 #ifdef EMP_BIN_TO_DEC_0010000111
@@ -4246,6 +4950,10 @@
     #undef EMP_BIN_TO_DEC_0010000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010000111
 
 #ifdef EMP_BIN_TO_DEC_0010001000
@@ -4270,6 +4978,10 @@
     #undef EMP_BIN_TO_DEC_0010001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010001000
 
 #ifdef EMP_BIN_TO_DEC_0010001001
@@ -4294,6 +5006,10 @@
     #undef EMP_BIN_TO_DEC_0010001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010001001
 
 #ifdef EMP_BIN_TO_DEC_0010001010
@@ -4318,6 +5034,10 @@
     #undef EMP_BIN_TO_DEC_0010001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010001010
 
 #ifdef EMP_BIN_TO_DEC_0010001011
@@ -4342,6 +5062,10 @@
     #undef EMP_BIN_TO_DEC_0010001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010001011
 
 #ifdef EMP_BIN_TO_DEC_0010001100
@@ -4366,6 +5090,10 @@
     #undef EMP_BIN_TO_DEC_0010001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010001100
 
 #ifdef EMP_BIN_TO_DEC_0010001101
@@ -4390,6 +5118,10 @@
     #undef EMP_BIN_TO_DEC_0010001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010001101
 
 #ifdef EMP_BIN_TO_DEC_0010001110
@@ -4414,6 +5146,10 @@
     #undef EMP_BIN_TO_DEC_0010001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010001110
 
 #ifdef EMP_BIN_TO_DEC_0010001111
@@ -4438,6 +5174,10 @@
     #undef EMP_BIN_TO_DEC_0010001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010001111
 
 #ifdef EMP_BIN_TO_DEC_0010010000
@@ -4462,6 +5202,10 @@
     #undef EMP_BIN_TO_DEC_0010010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010010000
 
 #ifdef EMP_BIN_TO_DEC_0010010001
@@ -4486,6 +5230,10 @@
     #undef EMP_BIN_TO_DEC_0010010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010010001
 
 #ifdef EMP_BIN_TO_DEC_0010010010
@@ -4510,6 +5258,10 @@
     #undef EMP_BIN_TO_DEC_0010010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010010010
 
 #ifdef EMP_BIN_TO_DEC_0010010011
@@ -4534,6 +5286,10 @@
     #undef EMP_BIN_TO_DEC_0010010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010010011
 
 #ifdef EMP_BIN_TO_DEC_0010010100
@@ -4558,6 +5314,10 @@
     #undef EMP_BIN_TO_DEC_0010010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010010100
 
 #ifdef EMP_BIN_TO_DEC_0010010101
@@ -4582,6 +5342,10 @@
     #undef EMP_BIN_TO_DEC_0010010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010010101
 
 #ifdef EMP_BIN_TO_DEC_0010010110
@@ -4606,6 +5370,10 @@
     #undef EMP_BIN_TO_DEC_0010010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010010110
 
 #ifdef EMP_BIN_TO_DEC_0010010111
@@ -4630,6 +5398,10 @@
     #undef EMP_BIN_TO_DEC_0010010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010010111
 
 #ifdef EMP_BIN_TO_DEC_0010011000
@@ -4654,6 +5426,10 @@
     #undef EMP_BIN_TO_DEC_0010011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010011000
 
 #ifdef EMP_BIN_TO_DEC_0010011001
@@ -4678,6 +5454,10 @@
     #undef EMP_BIN_TO_DEC_0010011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010011001
 
 #ifdef EMP_BIN_TO_DEC_0010011010
@@ -4702,6 +5482,10 @@
     #undef EMP_BIN_TO_DEC_0010011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010011010
 
 #ifdef EMP_BIN_TO_DEC_0010011011
@@ -4726,6 +5510,10 @@
     #undef EMP_BIN_TO_DEC_0010011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010011011
 
 #ifdef EMP_BIN_TO_DEC_0010011100
@@ -4750,6 +5538,10 @@
     #undef EMP_BIN_TO_DEC_0010011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010011100
 
 #ifdef EMP_BIN_TO_DEC_0010011101
@@ -4774,6 +5566,10 @@
     #undef EMP_BIN_TO_DEC_0010011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010011101
 
 #ifdef EMP_BIN_TO_DEC_0010011110
@@ -4798,6 +5594,10 @@
     #undef EMP_BIN_TO_DEC_0010011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010011110
 
 #ifdef EMP_BIN_TO_DEC_0010011111
@@ -4822,6 +5622,10 @@
     #undef EMP_BIN_TO_DEC_0010011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010011111
 
 #ifdef EMP_BIN_TO_DEC_0010100000
@@ -4846,6 +5650,10 @@
     #undef EMP_BIN_TO_DEC_0010100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010100000
 
 #ifdef EMP_BIN_TO_DEC_0010100001
@@ -4870,6 +5678,10 @@
     #undef EMP_BIN_TO_DEC_0010100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010100001
 
 #ifdef EMP_BIN_TO_DEC_0010100010
@@ -4894,6 +5706,10 @@
     #undef EMP_BIN_TO_DEC_0010100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010100010
 
 #ifdef EMP_BIN_TO_DEC_0010100011
@@ -4918,6 +5734,10 @@
     #undef EMP_BIN_TO_DEC_0010100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010100011
 
 #ifdef EMP_BIN_TO_DEC_0010100100
@@ -4942,6 +5762,10 @@
     #undef EMP_BIN_TO_DEC_0010100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010100100
 
 #ifdef EMP_BIN_TO_DEC_0010100101
@@ -4966,6 +5790,10 @@
     #undef EMP_BIN_TO_DEC_0010100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010100101
 
 #ifdef EMP_BIN_TO_DEC_0010100110
@@ -4990,6 +5818,10 @@
     #undef EMP_BIN_TO_DEC_0010100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010100110
 
 #ifdef EMP_BIN_TO_DEC_0010100111
@@ -5014,6 +5846,10 @@
     #undef EMP_BIN_TO_DEC_0010100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010100111
 
 #ifdef EMP_BIN_TO_DEC_0010101000
@@ -5038,6 +5874,10 @@
     #undef EMP_BIN_TO_DEC_0010101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010101000
 
 #ifdef EMP_BIN_TO_DEC_0010101001
@@ -5062,6 +5902,10 @@
     #undef EMP_BIN_TO_DEC_0010101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010101001
 
 #ifdef EMP_BIN_TO_DEC_0010101010
@@ -5086,6 +5930,10 @@
     #undef EMP_BIN_TO_DEC_0010101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010101010
 
 #ifdef EMP_BIN_TO_DEC_0010101011
@@ -5110,6 +5958,10 @@
     #undef EMP_BIN_TO_DEC_0010101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010101011
 
 #ifdef EMP_BIN_TO_DEC_0010101100
@@ -5134,6 +5986,10 @@
     #undef EMP_BIN_TO_DEC_0010101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010101100
 
 #ifdef EMP_BIN_TO_DEC_0010101101
@@ -5158,6 +6014,10 @@
     #undef EMP_BIN_TO_DEC_0010101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010101101
 
 #ifdef EMP_BIN_TO_DEC_0010101110
@@ -5182,6 +6042,10 @@
     #undef EMP_BIN_TO_DEC_0010101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010101110
 
 #ifdef EMP_BIN_TO_DEC_0010101111
@@ -5206,6 +6070,10 @@
     #undef EMP_BIN_TO_DEC_0010101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010101111
 
 #ifdef EMP_BIN_TO_DEC_0010110000
@@ -5230,6 +6098,10 @@
     #undef EMP_BIN_TO_DEC_0010110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010110000
 
 #ifdef EMP_BIN_TO_DEC_0010110001
@@ -5254,6 +6126,10 @@
     #undef EMP_BIN_TO_DEC_0010110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010110001
 
 #ifdef EMP_BIN_TO_DEC_0010110010
@@ -5278,6 +6154,10 @@
     #undef EMP_BIN_TO_DEC_0010110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010110010
 
 #ifdef EMP_BIN_TO_DEC_0010110011
@@ -5302,6 +6182,10 @@
     #undef EMP_BIN_TO_DEC_0010110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010110011
 
 #ifdef EMP_BIN_TO_DEC_0010110100
@@ -5326,6 +6210,10 @@
     #undef EMP_BIN_TO_DEC_0010110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010110100
 
 #ifdef EMP_BIN_TO_DEC_0010110101
@@ -5350,6 +6238,10 @@
     #undef EMP_BIN_TO_DEC_0010110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010110101
 
 #ifdef EMP_BIN_TO_DEC_0010110110
@@ -5374,6 +6266,10 @@
     #undef EMP_BIN_TO_DEC_0010110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010110110
 
 #ifdef EMP_BIN_TO_DEC_0010110111
@@ -5398,6 +6294,10 @@
     #undef EMP_BIN_TO_DEC_0010110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010110111
 
 #ifdef EMP_BIN_TO_DEC_0010111000
@@ -5422,6 +6322,10 @@
     #undef EMP_BIN_TO_DEC_0010111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010111000
 
 #ifdef EMP_BIN_TO_DEC_0010111001
@@ -5446,6 +6350,10 @@
     #undef EMP_BIN_TO_DEC_0010111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010111001
 
 #ifdef EMP_BIN_TO_DEC_0010111010
@@ -5470,6 +6378,10 @@
     #undef EMP_BIN_TO_DEC_0010111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010111010
 
 #ifdef EMP_BIN_TO_DEC_0010111011
@@ -5494,6 +6406,10 @@
     #undef EMP_BIN_TO_DEC_0010111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010111011
 
 #ifdef EMP_BIN_TO_DEC_0010111100
@@ -5518,6 +6434,10 @@
     #undef EMP_BIN_TO_DEC_0010111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010111100
 
 #ifdef EMP_BIN_TO_DEC_0010111101
@@ -5542,6 +6462,10 @@
     #undef EMP_BIN_TO_DEC_0010111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010111101
 
 #ifdef EMP_BIN_TO_DEC_0010111110
@@ -5566,6 +6490,10 @@
     #undef EMP_BIN_TO_DEC_0010111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010111110
 
 #ifdef EMP_BIN_TO_DEC_0010111111
@@ -5590,6 +6518,10 @@
     #undef EMP_BIN_TO_DEC_0010111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0010111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0010111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0010111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0010111111
 
 #ifdef EMP_BIN_TO_DEC_0011000000
@@ -5614,6 +6546,10 @@
     #undef EMP_BIN_TO_DEC_0011000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011000000
 
 #ifdef EMP_BIN_TO_DEC_0011000001
@@ -5638,6 +6574,10 @@
     #undef EMP_BIN_TO_DEC_0011000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011000001
 
 #ifdef EMP_BIN_TO_DEC_0011000010
@@ -5662,6 +6602,10 @@
     #undef EMP_BIN_TO_DEC_0011000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011000010
 
 #ifdef EMP_BIN_TO_DEC_0011000011
@@ -5686,6 +6630,10 @@
     #undef EMP_BIN_TO_DEC_0011000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011000011
 
 #ifdef EMP_BIN_TO_DEC_0011000100
@@ -5710,6 +6658,10 @@
     #undef EMP_BIN_TO_DEC_0011000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011000100
 
 #ifdef EMP_BIN_TO_DEC_0011000101
@@ -5734,6 +6686,10 @@
     #undef EMP_BIN_TO_DEC_0011000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011000101
 
 #ifdef EMP_BIN_TO_DEC_0011000110
@@ -5758,6 +6714,10 @@
     #undef EMP_BIN_TO_DEC_0011000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011000110
 
 #ifdef EMP_BIN_TO_DEC_0011000111
@@ -5782,6 +6742,10 @@
     #undef EMP_BIN_TO_DEC_0011000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011000111
 
 #ifdef EMP_BIN_TO_DEC_0011001000
@@ -5806,6 +6770,10 @@
     #undef EMP_BIN_TO_DEC_0011001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011001000
 
 #ifdef EMP_BIN_TO_DEC_0011001001
@@ -5830,6 +6798,10 @@
     #undef EMP_BIN_TO_DEC_0011001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011001001
 
 #ifdef EMP_BIN_TO_DEC_0011001010
@@ -5854,6 +6826,10 @@
     #undef EMP_BIN_TO_DEC_0011001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011001010
 
 #ifdef EMP_BIN_TO_DEC_0011001011
@@ -5878,6 +6854,10 @@
     #undef EMP_BIN_TO_DEC_0011001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011001011
 
 #ifdef EMP_BIN_TO_DEC_0011001100
@@ -5902,6 +6882,10 @@
     #undef EMP_BIN_TO_DEC_0011001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011001100
 
 #ifdef EMP_BIN_TO_DEC_0011001101
@@ -5926,6 +6910,10 @@
     #undef EMP_BIN_TO_DEC_0011001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011001101
 
 #ifdef EMP_BIN_TO_DEC_0011001110
@@ -5950,6 +6938,10 @@
     #undef EMP_BIN_TO_DEC_0011001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011001110
 
 #ifdef EMP_BIN_TO_DEC_0011001111
@@ -5974,6 +6966,10 @@
     #undef EMP_BIN_TO_DEC_0011001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011001111
 
 #ifdef EMP_BIN_TO_DEC_0011010000
@@ -5998,6 +6994,10 @@
     #undef EMP_BIN_TO_DEC_0011010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011010000
 
 #ifdef EMP_BIN_TO_DEC_0011010001
@@ -6022,6 +7022,10 @@
     #undef EMP_BIN_TO_DEC_0011010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011010001
 
 #ifdef EMP_BIN_TO_DEC_0011010010
@@ -6046,6 +7050,10 @@
     #undef EMP_BIN_TO_DEC_0011010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011010010
 
 #ifdef EMP_BIN_TO_DEC_0011010011
@@ -6070,6 +7078,10 @@
     #undef EMP_BIN_TO_DEC_0011010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011010011
 
 #ifdef EMP_BIN_TO_DEC_0011010100
@@ -6094,6 +7106,10 @@
     #undef EMP_BIN_TO_DEC_0011010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011010100
 
 #ifdef EMP_BIN_TO_DEC_0011010101
@@ -6118,6 +7134,10 @@
     #undef EMP_BIN_TO_DEC_0011010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011010101
 
 #ifdef EMP_BIN_TO_DEC_0011010110
@@ -6142,6 +7162,10 @@
     #undef EMP_BIN_TO_DEC_0011010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011010110
 
 #ifdef EMP_BIN_TO_DEC_0011010111
@@ -6166,6 +7190,10 @@
     #undef EMP_BIN_TO_DEC_0011010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011010111
 
 #ifdef EMP_BIN_TO_DEC_0011011000
@@ -6190,6 +7218,10 @@
     #undef EMP_BIN_TO_DEC_0011011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011011000
 
 #ifdef EMP_BIN_TO_DEC_0011011001
@@ -6214,6 +7246,10 @@
     #undef EMP_BIN_TO_DEC_0011011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011011001
 
 #ifdef EMP_BIN_TO_DEC_0011011010
@@ -6238,6 +7274,10 @@
     #undef EMP_BIN_TO_DEC_0011011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011011010
 
 #ifdef EMP_BIN_TO_DEC_0011011011
@@ -6262,6 +7302,10 @@
     #undef EMP_BIN_TO_DEC_0011011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011011011
 
 #ifdef EMP_BIN_TO_DEC_0011011100
@@ -6286,6 +7330,10 @@
     #undef EMP_BIN_TO_DEC_0011011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011011100
 
 #ifdef EMP_BIN_TO_DEC_0011011101
@@ -6310,6 +7358,10 @@
     #undef EMP_BIN_TO_DEC_0011011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011011101
 
 #ifdef EMP_BIN_TO_DEC_0011011110
@@ -6334,6 +7386,10 @@
     #undef EMP_BIN_TO_DEC_0011011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011011110
 
 #ifdef EMP_BIN_TO_DEC_0011011111
@@ -6358,6 +7414,10 @@
     #undef EMP_BIN_TO_DEC_0011011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011011111
 
 #ifdef EMP_BIN_TO_DEC_0011100000
@@ -6382,6 +7442,10 @@
     #undef EMP_BIN_TO_DEC_0011100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011100000
 
 #ifdef EMP_BIN_TO_DEC_0011100001
@@ -6406,6 +7470,10 @@
     #undef EMP_BIN_TO_DEC_0011100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011100001
 
 #ifdef EMP_BIN_TO_DEC_0011100010
@@ -6430,6 +7498,10 @@
     #undef EMP_BIN_TO_DEC_0011100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011100010
 
 #ifdef EMP_BIN_TO_DEC_0011100011
@@ -6454,6 +7526,10 @@
     #undef EMP_BIN_TO_DEC_0011100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011100011
 
 #ifdef EMP_BIN_TO_DEC_0011100100
@@ -6478,6 +7554,10 @@
     #undef EMP_BIN_TO_DEC_0011100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011100100
 
 #ifdef EMP_BIN_TO_DEC_0011100101
@@ -6502,6 +7582,10 @@
     #undef EMP_BIN_TO_DEC_0011100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011100101
 
 #ifdef EMP_BIN_TO_DEC_0011100110
@@ -6526,6 +7610,10 @@
     #undef EMP_BIN_TO_DEC_0011100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011100110
 
 #ifdef EMP_BIN_TO_DEC_0011100111
@@ -6550,6 +7638,10 @@
     #undef EMP_BIN_TO_DEC_0011100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011100111
 
 #ifdef EMP_BIN_TO_DEC_0011101000
@@ -6574,6 +7666,10 @@
     #undef EMP_BIN_TO_DEC_0011101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011101000
 
 #ifdef EMP_BIN_TO_DEC_0011101001
@@ -6598,6 +7694,10 @@
     #undef EMP_BIN_TO_DEC_0011101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011101001
 
 #ifdef EMP_BIN_TO_DEC_0011101010
@@ -6622,6 +7722,10 @@
     #undef EMP_BIN_TO_DEC_0011101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011101010
 
 #ifdef EMP_BIN_TO_DEC_0011101011
@@ -6646,6 +7750,10 @@
     #undef EMP_BIN_TO_DEC_0011101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011101011
 
 #ifdef EMP_BIN_TO_DEC_0011101100
@@ -6670,6 +7778,10 @@
     #undef EMP_BIN_TO_DEC_0011101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011101100
 
 #ifdef EMP_BIN_TO_DEC_0011101101
@@ -6694,6 +7806,10 @@
     #undef EMP_BIN_TO_DEC_0011101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011101101
 
 #ifdef EMP_BIN_TO_DEC_0011101110
@@ -6718,6 +7834,10 @@
     #undef EMP_BIN_TO_DEC_0011101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011101110
 
 #ifdef EMP_BIN_TO_DEC_0011101111
@@ -6742,6 +7862,10 @@
     #undef EMP_BIN_TO_DEC_0011101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011101111
 
 #ifdef EMP_BIN_TO_DEC_0011110000
@@ -6766,6 +7890,10 @@
     #undef EMP_BIN_TO_DEC_0011110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011110000
 
 #ifdef EMP_BIN_TO_DEC_0011110001
@@ -6790,6 +7918,10 @@
     #undef EMP_BIN_TO_DEC_0011110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011110001
 
 #ifdef EMP_BIN_TO_DEC_0011110010
@@ -6814,6 +7946,10 @@
     #undef EMP_BIN_TO_DEC_0011110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011110010
 
 #ifdef EMP_BIN_TO_DEC_0011110011
@@ -6838,6 +7974,10 @@
     #undef EMP_BIN_TO_DEC_0011110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011110011
 
 #ifdef EMP_BIN_TO_DEC_0011110100
@@ -6862,6 +8002,10 @@
     #undef EMP_BIN_TO_DEC_0011110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011110100
 
 #ifdef EMP_BIN_TO_DEC_0011110101
@@ -6886,6 +8030,10 @@
     #undef EMP_BIN_TO_DEC_0011110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011110101
 
 #ifdef EMP_BIN_TO_DEC_0011110110
@@ -6910,6 +8058,10 @@
     #undef EMP_BIN_TO_DEC_0011110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011110110
 
 #ifdef EMP_BIN_TO_DEC_0011110111
@@ -6934,6 +8086,10 @@
     #undef EMP_BIN_TO_DEC_0011110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011110111
 
 #ifdef EMP_BIN_TO_DEC_0011111000
@@ -6958,6 +8114,10 @@
     #undef EMP_BIN_TO_DEC_0011111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011111000
 
 #ifdef EMP_BIN_TO_DEC_0011111001
@@ -6982,6 +8142,10 @@
     #undef EMP_BIN_TO_DEC_0011111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011111001
 
 #ifdef EMP_BIN_TO_DEC_0011111010
@@ -7006,6 +8170,10 @@
     #undef EMP_BIN_TO_DEC_0011111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011111010
 
 #ifdef EMP_BIN_TO_DEC_0011111011
@@ -7030,6 +8198,10 @@
     #undef EMP_BIN_TO_DEC_0011111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011111011
 
 #ifdef EMP_BIN_TO_DEC_0011111100
@@ -7054,6 +8226,10 @@
     #undef EMP_BIN_TO_DEC_0011111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011111100
 
 #ifdef EMP_BIN_TO_DEC_0011111101
@@ -7078,6 +8254,10 @@
     #undef EMP_BIN_TO_DEC_0011111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011111101
 
 #ifdef EMP_BIN_TO_DEC_0011111110
@@ -7102,6 +8282,10 @@
     #undef EMP_BIN_TO_DEC_0011111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011111110
 
 #ifdef EMP_BIN_TO_DEC_0011111111
@@ -7126,6 +8310,10 @@
     #undef EMP_BIN_TO_DEC_0011111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0011111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0011111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0011111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0011111111
 
 #ifdef EMP_BIN_TO_DEC_0100000000
@@ -7150,6 +8338,10 @@
     #undef EMP_BIN_TO_DEC_0100000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100000000
 
 #ifdef EMP_BIN_TO_DEC_0100000001
@@ -7174,6 +8366,10 @@
     #undef EMP_BIN_TO_DEC_0100000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100000001
 
 #ifdef EMP_BIN_TO_DEC_0100000010
@@ -7198,6 +8394,10 @@
     #undef EMP_BIN_TO_DEC_0100000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100000010
 
 #ifdef EMP_BIN_TO_DEC_0100000011
@@ -7222,6 +8422,10 @@
     #undef EMP_BIN_TO_DEC_0100000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100000011
 
 #ifdef EMP_BIN_TO_DEC_0100000100
@@ -7246,6 +8450,10 @@
     #undef EMP_BIN_TO_DEC_0100000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100000100
 
 #ifdef EMP_BIN_TO_DEC_0100000101
@@ -7270,6 +8478,10 @@
     #undef EMP_BIN_TO_DEC_0100000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100000101
 
 #ifdef EMP_BIN_TO_DEC_0100000110
@@ -7294,6 +8506,10 @@
     #undef EMP_BIN_TO_DEC_0100000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100000110
 
 #ifdef EMP_BIN_TO_DEC_0100000111
@@ -7318,6 +8534,10 @@
     #undef EMP_BIN_TO_DEC_0100000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100000111
 
 #ifdef EMP_BIN_TO_DEC_0100001000
@@ -7342,6 +8562,10 @@
     #undef EMP_BIN_TO_DEC_0100001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100001000
 
 #ifdef EMP_BIN_TO_DEC_0100001001
@@ -7366,6 +8590,10 @@
     #undef EMP_BIN_TO_DEC_0100001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100001001
 
 #ifdef EMP_BIN_TO_DEC_0100001010
@@ -7390,6 +8618,10 @@
     #undef EMP_BIN_TO_DEC_0100001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100001010
 
 #ifdef EMP_BIN_TO_DEC_0100001011
@@ -7414,6 +8646,10 @@
     #undef EMP_BIN_TO_DEC_0100001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100001011
 
 #ifdef EMP_BIN_TO_DEC_0100001100
@@ -7438,6 +8674,10 @@
     #undef EMP_BIN_TO_DEC_0100001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100001100
 
 #ifdef EMP_BIN_TO_DEC_0100001101
@@ -7462,6 +8702,10 @@
     #undef EMP_BIN_TO_DEC_0100001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100001101
 
 #ifdef EMP_BIN_TO_DEC_0100001110
@@ -7486,6 +8730,10 @@
     #undef EMP_BIN_TO_DEC_0100001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100001110
 
 #ifdef EMP_BIN_TO_DEC_0100001111
@@ -7510,6 +8758,10 @@
     #undef EMP_BIN_TO_DEC_0100001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100001111
 
 #ifdef EMP_BIN_TO_DEC_0100010000
@@ -7534,6 +8786,10 @@
     #undef EMP_BIN_TO_DEC_0100010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100010000
 
 #ifdef EMP_BIN_TO_DEC_0100010001
@@ -7558,6 +8814,10 @@
     #undef EMP_BIN_TO_DEC_0100010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100010001
 
 #ifdef EMP_BIN_TO_DEC_0100010010
@@ -7582,6 +8842,10 @@
     #undef EMP_BIN_TO_DEC_0100010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100010010
 
 #ifdef EMP_BIN_TO_DEC_0100010011
@@ -7606,6 +8870,10 @@
     #undef EMP_BIN_TO_DEC_0100010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100010011
 
 #ifdef EMP_BIN_TO_DEC_0100010100
@@ -7630,6 +8898,10 @@
     #undef EMP_BIN_TO_DEC_0100010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100010100
 
 #ifdef EMP_BIN_TO_DEC_0100010101
@@ -7654,6 +8926,10 @@
     #undef EMP_BIN_TO_DEC_0100010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100010101
 
 #ifdef EMP_BIN_TO_DEC_0100010110
@@ -7678,6 +8954,10 @@
     #undef EMP_BIN_TO_DEC_0100010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100010110
 
 #ifdef EMP_BIN_TO_DEC_0100010111
@@ -7702,6 +8982,10 @@
     #undef EMP_BIN_TO_DEC_0100010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100010111
 
 #ifdef EMP_BIN_TO_DEC_0100011000
@@ -7726,6 +9010,10 @@
     #undef EMP_BIN_TO_DEC_0100011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100011000
 
 #ifdef EMP_BIN_TO_DEC_0100011001
@@ -7750,6 +9038,10 @@
     #undef EMP_BIN_TO_DEC_0100011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100011001
 
 #ifdef EMP_BIN_TO_DEC_0100011010
@@ -7774,6 +9066,10 @@
     #undef EMP_BIN_TO_DEC_0100011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100011010
 
 #ifdef EMP_BIN_TO_DEC_0100011011
@@ -7798,6 +9094,10 @@
     #undef EMP_BIN_TO_DEC_0100011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100011011
 
 #ifdef EMP_BIN_TO_DEC_0100011100
@@ -7822,6 +9122,10 @@
     #undef EMP_BIN_TO_DEC_0100011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100011100
 
 #ifdef EMP_BIN_TO_DEC_0100011101
@@ -7846,6 +9150,10 @@
     #undef EMP_BIN_TO_DEC_0100011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100011101
 
 #ifdef EMP_BIN_TO_DEC_0100011110
@@ -7870,6 +9178,10 @@
     #undef EMP_BIN_TO_DEC_0100011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100011110
 
 #ifdef EMP_BIN_TO_DEC_0100011111
@@ -7894,6 +9206,10 @@
     #undef EMP_BIN_TO_DEC_0100011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100011111
 
 #ifdef EMP_BIN_TO_DEC_0100100000
@@ -7918,6 +9234,10 @@
     #undef EMP_BIN_TO_DEC_0100100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100100000
 
 #ifdef EMP_BIN_TO_DEC_0100100001
@@ -7942,6 +9262,10 @@
     #undef EMP_BIN_TO_DEC_0100100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100100001
 
 #ifdef EMP_BIN_TO_DEC_0100100010
@@ -7966,6 +9290,10 @@
     #undef EMP_BIN_TO_DEC_0100100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100100010
 
 #ifdef EMP_BIN_TO_DEC_0100100011
@@ -7990,6 +9318,10 @@
     #undef EMP_BIN_TO_DEC_0100100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100100011
 
 #ifdef EMP_BIN_TO_DEC_0100100100
@@ -8014,6 +9346,10 @@
     #undef EMP_BIN_TO_DEC_0100100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100100100
 
 #ifdef EMP_BIN_TO_DEC_0100100101
@@ -8038,6 +9374,10 @@
     #undef EMP_BIN_TO_DEC_0100100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100100101
 
 #ifdef EMP_BIN_TO_DEC_0100100110
@@ -8062,6 +9402,10 @@
     #undef EMP_BIN_TO_DEC_0100100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100100110
 
 #ifdef EMP_BIN_TO_DEC_0100100111
@@ -8086,6 +9430,10 @@
     #undef EMP_BIN_TO_DEC_0100100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100100111
 
 #ifdef EMP_BIN_TO_DEC_0100101000
@@ -8110,6 +9458,10 @@
     #undef EMP_BIN_TO_DEC_0100101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100101000
 
 #ifdef EMP_BIN_TO_DEC_0100101001
@@ -8134,6 +9486,10 @@
     #undef EMP_BIN_TO_DEC_0100101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100101001
 
 #ifdef EMP_BIN_TO_DEC_0100101010
@@ -8158,6 +9514,10 @@
     #undef EMP_BIN_TO_DEC_0100101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100101010
 
 #ifdef EMP_BIN_TO_DEC_0100101011
@@ -8182,6 +9542,10 @@
     #undef EMP_BIN_TO_DEC_0100101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100101011
 
 #ifdef EMP_BIN_TO_DEC_0100101100
@@ -8206,6 +9570,10 @@
     #undef EMP_BIN_TO_DEC_0100101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100101100
 
 #ifdef EMP_BIN_TO_DEC_0100101101
@@ -8230,6 +9598,10 @@
     #undef EMP_BIN_TO_DEC_0100101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100101101
 
 #ifdef EMP_BIN_TO_DEC_0100101110
@@ -8254,6 +9626,10 @@
     #undef EMP_BIN_TO_DEC_0100101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100101110
 
 #ifdef EMP_BIN_TO_DEC_0100101111
@@ -8278,6 +9654,10 @@
     #undef EMP_BIN_TO_DEC_0100101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100101111
 
 #ifdef EMP_BIN_TO_DEC_0100110000
@@ -8302,6 +9682,10 @@
     #undef EMP_BIN_TO_DEC_0100110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100110000
 
 #ifdef EMP_BIN_TO_DEC_0100110001
@@ -8326,6 +9710,10 @@
     #undef EMP_BIN_TO_DEC_0100110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100110001
 
 #ifdef EMP_BIN_TO_DEC_0100110010
@@ -8350,6 +9738,10 @@
     #undef EMP_BIN_TO_DEC_0100110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100110010
 
 #ifdef EMP_BIN_TO_DEC_0100110011
@@ -8374,6 +9766,10 @@
     #undef EMP_BIN_TO_DEC_0100110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100110011
 
 #ifdef EMP_BIN_TO_DEC_0100110100
@@ -8398,6 +9794,10 @@
     #undef EMP_BIN_TO_DEC_0100110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100110100
 
 #ifdef EMP_BIN_TO_DEC_0100110101
@@ -8422,6 +9822,10 @@
     #undef EMP_BIN_TO_DEC_0100110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100110101
 
 #ifdef EMP_BIN_TO_DEC_0100110110
@@ -8446,6 +9850,10 @@
     #undef EMP_BIN_TO_DEC_0100110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100110110
 
 #ifdef EMP_BIN_TO_DEC_0100110111
@@ -8470,6 +9878,10 @@
     #undef EMP_BIN_TO_DEC_0100110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100110111
 
 #ifdef EMP_BIN_TO_DEC_0100111000
@@ -8494,6 +9906,10 @@
     #undef EMP_BIN_TO_DEC_0100111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100111000
 
 #ifdef EMP_BIN_TO_DEC_0100111001
@@ -8518,6 +9934,10 @@
     #undef EMP_BIN_TO_DEC_0100111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100111001
 
 #ifdef EMP_BIN_TO_DEC_0100111010
@@ -8542,6 +9962,10 @@
     #undef EMP_BIN_TO_DEC_0100111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100111010
 
 #ifdef EMP_BIN_TO_DEC_0100111011
@@ -8566,6 +9990,10 @@
     #undef EMP_BIN_TO_DEC_0100111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100111011
 
 #ifdef EMP_BIN_TO_DEC_0100111100
@@ -8590,6 +10018,10 @@
     #undef EMP_BIN_TO_DEC_0100111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100111100
 
 #ifdef EMP_BIN_TO_DEC_0100111101
@@ -8614,6 +10046,10 @@
     #undef EMP_BIN_TO_DEC_0100111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100111101
 
 #ifdef EMP_BIN_TO_DEC_0100111110
@@ -8638,6 +10074,10 @@
     #undef EMP_BIN_TO_DEC_0100111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100111110
 
 #ifdef EMP_BIN_TO_DEC_0100111111
@@ -8662,6 +10102,10 @@
     #undef EMP_BIN_TO_DEC_0100111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0100111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0100111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0100111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0100111111
 
 #ifdef EMP_BIN_TO_DEC_0101000000
@@ -8686,6 +10130,10 @@
     #undef EMP_BIN_TO_DEC_0101000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101000000
 
 #ifdef EMP_BIN_TO_DEC_0101000001
@@ -8710,6 +10158,10 @@
     #undef EMP_BIN_TO_DEC_0101000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101000001
 
 #ifdef EMP_BIN_TO_DEC_0101000010
@@ -8734,6 +10186,10 @@
     #undef EMP_BIN_TO_DEC_0101000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101000010
 
 #ifdef EMP_BIN_TO_DEC_0101000011
@@ -8758,6 +10214,10 @@
     #undef EMP_BIN_TO_DEC_0101000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101000011
 
 #ifdef EMP_BIN_TO_DEC_0101000100
@@ -8782,6 +10242,10 @@
     #undef EMP_BIN_TO_DEC_0101000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101000100
 
 #ifdef EMP_BIN_TO_DEC_0101000101
@@ -8806,6 +10270,10 @@
     #undef EMP_BIN_TO_DEC_0101000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101000101
 
 #ifdef EMP_BIN_TO_DEC_0101000110
@@ -8830,6 +10298,10 @@
     #undef EMP_BIN_TO_DEC_0101000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101000110
 
 #ifdef EMP_BIN_TO_DEC_0101000111
@@ -8854,6 +10326,10 @@
     #undef EMP_BIN_TO_DEC_0101000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101000111
 
 #ifdef EMP_BIN_TO_DEC_0101001000
@@ -8878,6 +10354,10 @@
     #undef EMP_BIN_TO_DEC_0101001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101001000
 
 #ifdef EMP_BIN_TO_DEC_0101001001
@@ -8902,6 +10382,10 @@
     #undef EMP_BIN_TO_DEC_0101001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101001001
 
 #ifdef EMP_BIN_TO_DEC_0101001010
@@ -8926,6 +10410,10 @@
     #undef EMP_BIN_TO_DEC_0101001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101001010
 
 #ifdef EMP_BIN_TO_DEC_0101001011
@@ -8950,6 +10438,10 @@
     #undef EMP_BIN_TO_DEC_0101001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101001011
 
 #ifdef EMP_BIN_TO_DEC_0101001100
@@ -8974,6 +10466,10 @@
     #undef EMP_BIN_TO_DEC_0101001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101001100
 
 #ifdef EMP_BIN_TO_DEC_0101001101
@@ -8998,6 +10494,10 @@
     #undef EMP_BIN_TO_DEC_0101001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101001101
 
 #ifdef EMP_BIN_TO_DEC_0101001110
@@ -9022,6 +10522,10 @@
     #undef EMP_BIN_TO_DEC_0101001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101001110
 
 #ifdef EMP_BIN_TO_DEC_0101001111
@@ -9046,6 +10550,10 @@
     #undef EMP_BIN_TO_DEC_0101001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101001111
 
 #ifdef EMP_BIN_TO_DEC_0101010000
@@ -9070,6 +10578,10 @@
     #undef EMP_BIN_TO_DEC_0101010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101010000
 
 #ifdef EMP_BIN_TO_DEC_0101010001
@@ -9094,6 +10606,10 @@
     #undef EMP_BIN_TO_DEC_0101010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101010001
 
 #ifdef EMP_BIN_TO_DEC_0101010010
@@ -9118,6 +10634,10 @@
     #undef EMP_BIN_TO_DEC_0101010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101010010
 
 #ifdef EMP_BIN_TO_DEC_0101010011
@@ -9142,6 +10662,10 @@
     #undef EMP_BIN_TO_DEC_0101010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101010011
 
 #ifdef EMP_BIN_TO_DEC_0101010100
@@ -9166,6 +10690,10 @@
     #undef EMP_BIN_TO_DEC_0101010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101010100
 
 #ifdef EMP_BIN_TO_DEC_0101010101
@@ -9190,6 +10718,10 @@
     #undef EMP_BIN_TO_DEC_0101010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101010101
 
 #ifdef EMP_BIN_TO_DEC_0101010110
@@ -9214,6 +10746,10 @@
     #undef EMP_BIN_TO_DEC_0101010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101010110
 
 #ifdef EMP_BIN_TO_DEC_0101010111
@@ -9238,6 +10774,10 @@
     #undef EMP_BIN_TO_DEC_0101010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101010111
 
 #ifdef EMP_BIN_TO_DEC_0101011000
@@ -9262,6 +10802,10 @@
     #undef EMP_BIN_TO_DEC_0101011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101011000
 
 #ifdef EMP_BIN_TO_DEC_0101011001
@@ -9286,6 +10830,10 @@
     #undef EMP_BIN_TO_DEC_0101011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101011001
 
 #ifdef EMP_BIN_TO_DEC_0101011010
@@ -9310,6 +10858,10 @@
     #undef EMP_BIN_TO_DEC_0101011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101011010
 
 #ifdef EMP_BIN_TO_DEC_0101011011
@@ -9334,6 +10886,10 @@
     #undef EMP_BIN_TO_DEC_0101011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101011011
 
 #ifdef EMP_BIN_TO_DEC_0101011100
@@ -9358,6 +10914,10 @@
     #undef EMP_BIN_TO_DEC_0101011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101011100
 
 #ifdef EMP_BIN_TO_DEC_0101011101
@@ -9382,6 +10942,10 @@
     #undef EMP_BIN_TO_DEC_0101011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101011101
 
 #ifdef EMP_BIN_TO_DEC_0101011110
@@ -9406,6 +10970,10 @@
     #undef EMP_BIN_TO_DEC_0101011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101011110
 
 #ifdef EMP_BIN_TO_DEC_0101011111
@@ -9430,6 +10998,10 @@
     #undef EMP_BIN_TO_DEC_0101011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101011111
 
 #ifdef EMP_BIN_TO_DEC_0101100000
@@ -9454,6 +11026,10 @@
     #undef EMP_BIN_TO_DEC_0101100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101100000
 
 #ifdef EMP_BIN_TO_DEC_0101100001
@@ -9478,6 +11054,10 @@
     #undef EMP_BIN_TO_DEC_0101100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101100001
 
 #ifdef EMP_BIN_TO_DEC_0101100010
@@ -9502,6 +11082,10 @@
     #undef EMP_BIN_TO_DEC_0101100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101100010
 
 #ifdef EMP_BIN_TO_DEC_0101100011
@@ -9526,6 +11110,10 @@
     #undef EMP_BIN_TO_DEC_0101100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101100011
 
 #ifdef EMP_BIN_TO_DEC_0101100100
@@ -9550,6 +11138,10 @@
     #undef EMP_BIN_TO_DEC_0101100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101100100
 
 #ifdef EMP_BIN_TO_DEC_0101100101
@@ -9574,6 +11166,10 @@
     #undef EMP_BIN_TO_DEC_0101100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101100101
 
 #ifdef EMP_BIN_TO_DEC_0101100110
@@ -9598,6 +11194,10 @@
     #undef EMP_BIN_TO_DEC_0101100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101100110
 
 #ifdef EMP_BIN_TO_DEC_0101100111
@@ -9622,6 +11222,10 @@
     #undef EMP_BIN_TO_DEC_0101100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101100111
 
 #ifdef EMP_BIN_TO_DEC_0101101000
@@ -9646,6 +11250,10 @@
     #undef EMP_BIN_TO_DEC_0101101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101101000
 
 #ifdef EMP_BIN_TO_DEC_0101101001
@@ -9670,6 +11278,10 @@
     #undef EMP_BIN_TO_DEC_0101101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101101001
 
 #ifdef EMP_BIN_TO_DEC_0101101010
@@ -9694,6 +11306,10 @@
     #undef EMP_BIN_TO_DEC_0101101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101101010
 
 #ifdef EMP_BIN_TO_DEC_0101101011
@@ -9718,6 +11334,10 @@
     #undef EMP_BIN_TO_DEC_0101101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101101011
 
 #ifdef EMP_BIN_TO_DEC_0101101100
@@ -9742,6 +11362,10 @@
     #undef EMP_BIN_TO_DEC_0101101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101101100
 
 #ifdef EMP_BIN_TO_DEC_0101101101
@@ -9766,6 +11390,10 @@
     #undef EMP_BIN_TO_DEC_0101101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101101101
 
 #ifdef EMP_BIN_TO_DEC_0101101110
@@ -9790,6 +11418,10 @@
     #undef EMP_BIN_TO_DEC_0101101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101101110
 
 #ifdef EMP_BIN_TO_DEC_0101101111
@@ -9814,6 +11446,10 @@
     #undef EMP_BIN_TO_DEC_0101101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101101111
 
 #ifdef EMP_BIN_TO_DEC_0101110000
@@ -9838,6 +11474,10 @@
     #undef EMP_BIN_TO_DEC_0101110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101110000
 
 #ifdef EMP_BIN_TO_DEC_0101110001
@@ -9862,6 +11502,10 @@
     #undef EMP_BIN_TO_DEC_0101110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101110001
 
 #ifdef EMP_BIN_TO_DEC_0101110010
@@ -9886,6 +11530,10 @@
     #undef EMP_BIN_TO_DEC_0101110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101110010
 
 #ifdef EMP_BIN_TO_DEC_0101110011
@@ -9910,6 +11558,10 @@
     #undef EMP_BIN_TO_DEC_0101110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101110011
 
 #ifdef EMP_BIN_TO_DEC_0101110100
@@ -9934,6 +11586,10 @@
     #undef EMP_BIN_TO_DEC_0101110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101110100
 
 #ifdef EMP_BIN_TO_DEC_0101110101
@@ -9958,6 +11614,10 @@
     #undef EMP_BIN_TO_DEC_0101110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101110101
 
 #ifdef EMP_BIN_TO_DEC_0101110110
@@ -9982,6 +11642,10 @@
     #undef EMP_BIN_TO_DEC_0101110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101110110
 
 #ifdef EMP_BIN_TO_DEC_0101110111
@@ -10006,6 +11670,10 @@
     #undef EMP_BIN_TO_DEC_0101110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101110111
 
 #ifdef EMP_BIN_TO_DEC_0101111000
@@ -10030,6 +11698,10 @@
     #undef EMP_BIN_TO_DEC_0101111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101111000
 
 #ifdef EMP_BIN_TO_DEC_0101111001
@@ -10054,6 +11726,10 @@
     #undef EMP_BIN_TO_DEC_0101111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101111001
 
 #ifdef EMP_BIN_TO_DEC_0101111010
@@ -10078,6 +11754,10 @@
     #undef EMP_BIN_TO_DEC_0101111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101111010
 
 #ifdef EMP_BIN_TO_DEC_0101111011
@@ -10102,6 +11782,10 @@
     #undef EMP_BIN_TO_DEC_0101111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101111011
 
 #ifdef EMP_BIN_TO_DEC_0101111100
@@ -10126,6 +11810,10 @@
     #undef EMP_BIN_TO_DEC_0101111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101111100
 
 #ifdef EMP_BIN_TO_DEC_0101111101
@@ -10150,6 +11838,10 @@
     #undef EMP_BIN_TO_DEC_0101111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101111101
 
 #ifdef EMP_BIN_TO_DEC_0101111110
@@ -10174,6 +11866,10 @@
     #undef EMP_BIN_TO_DEC_0101111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101111110
 
 #ifdef EMP_BIN_TO_DEC_0101111111
@@ -10198,6 +11894,10 @@
     #undef EMP_BIN_TO_DEC_0101111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0101111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0101111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0101111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0101111111
 
 #ifdef EMP_BIN_TO_DEC_0110000000
@@ -10222,6 +11922,10 @@
     #undef EMP_BIN_TO_DEC_0110000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110000000
 
 #ifdef EMP_BIN_TO_DEC_0110000001
@@ -10246,6 +11950,10 @@
     #undef EMP_BIN_TO_DEC_0110000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110000001
 
 #ifdef EMP_BIN_TO_DEC_0110000010
@@ -10270,6 +11978,10 @@
     #undef EMP_BIN_TO_DEC_0110000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110000010
 
 #ifdef EMP_BIN_TO_DEC_0110000011
@@ -10294,6 +12006,10 @@
     #undef EMP_BIN_TO_DEC_0110000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110000011
 
 #ifdef EMP_BIN_TO_DEC_0110000100
@@ -10318,6 +12034,10 @@
     #undef EMP_BIN_TO_DEC_0110000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110000100
 
 #ifdef EMP_BIN_TO_DEC_0110000101
@@ -10342,6 +12062,10 @@
     #undef EMP_BIN_TO_DEC_0110000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110000101
 
 #ifdef EMP_BIN_TO_DEC_0110000110
@@ -10366,6 +12090,10 @@
     #undef EMP_BIN_TO_DEC_0110000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110000110
 
 #ifdef EMP_BIN_TO_DEC_0110000111
@@ -10390,6 +12118,10 @@
     #undef EMP_BIN_TO_DEC_0110000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110000111
 
 #ifdef EMP_BIN_TO_DEC_0110001000
@@ -10414,6 +12146,10 @@
     #undef EMP_BIN_TO_DEC_0110001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110001000
 
 #ifdef EMP_BIN_TO_DEC_0110001001
@@ -10438,6 +12174,10 @@
     #undef EMP_BIN_TO_DEC_0110001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110001001
 
 #ifdef EMP_BIN_TO_DEC_0110001010
@@ -10462,6 +12202,10 @@
     #undef EMP_BIN_TO_DEC_0110001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110001010
 
 #ifdef EMP_BIN_TO_DEC_0110001011
@@ -10486,6 +12230,10 @@
     #undef EMP_BIN_TO_DEC_0110001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110001011
 
 #ifdef EMP_BIN_TO_DEC_0110001100
@@ -10510,6 +12258,10 @@
     #undef EMP_BIN_TO_DEC_0110001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110001100
 
 #ifdef EMP_BIN_TO_DEC_0110001101
@@ -10534,6 +12286,10 @@
     #undef EMP_BIN_TO_DEC_0110001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110001101
 
 #ifdef EMP_BIN_TO_DEC_0110001110
@@ -10558,6 +12314,10 @@
     #undef EMP_BIN_TO_DEC_0110001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110001110
 
 #ifdef EMP_BIN_TO_DEC_0110001111
@@ -10582,6 +12342,10 @@
     #undef EMP_BIN_TO_DEC_0110001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110001111
 
 #ifdef EMP_BIN_TO_DEC_0110010000
@@ -10606,6 +12370,10 @@
     #undef EMP_BIN_TO_DEC_0110010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110010000
 
 #ifdef EMP_BIN_TO_DEC_0110010001
@@ -10630,6 +12398,10 @@
     #undef EMP_BIN_TO_DEC_0110010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110010001
 
 #ifdef EMP_BIN_TO_DEC_0110010010
@@ -10654,6 +12426,10 @@
     #undef EMP_BIN_TO_DEC_0110010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110010010
 
 #ifdef EMP_BIN_TO_DEC_0110010011
@@ -10678,6 +12454,10 @@
     #undef EMP_BIN_TO_DEC_0110010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110010011
 
 #ifdef EMP_BIN_TO_DEC_0110010100
@@ -10702,6 +12482,10 @@
     #undef EMP_BIN_TO_DEC_0110010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110010100
 
 #ifdef EMP_BIN_TO_DEC_0110010101
@@ -10726,6 +12510,10 @@
     #undef EMP_BIN_TO_DEC_0110010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110010101
 
 #ifdef EMP_BIN_TO_DEC_0110010110
@@ -10750,6 +12538,10 @@
     #undef EMP_BIN_TO_DEC_0110010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110010110
 
 #ifdef EMP_BIN_TO_DEC_0110010111
@@ -10774,6 +12566,10 @@
     #undef EMP_BIN_TO_DEC_0110010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110010111
 
 #ifdef EMP_BIN_TO_DEC_0110011000
@@ -10798,6 +12594,10 @@
     #undef EMP_BIN_TO_DEC_0110011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110011000
 
 #ifdef EMP_BIN_TO_DEC_0110011001
@@ -10822,6 +12622,10 @@
     #undef EMP_BIN_TO_DEC_0110011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110011001
 
 #ifdef EMP_BIN_TO_DEC_0110011010
@@ -10846,6 +12650,10 @@
     #undef EMP_BIN_TO_DEC_0110011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110011010
 
 #ifdef EMP_BIN_TO_DEC_0110011011
@@ -10870,6 +12678,10 @@
     #undef EMP_BIN_TO_DEC_0110011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110011011
 
 #ifdef EMP_BIN_TO_DEC_0110011100
@@ -10894,6 +12706,10 @@
     #undef EMP_BIN_TO_DEC_0110011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110011100
 
 #ifdef EMP_BIN_TO_DEC_0110011101
@@ -10918,6 +12734,10 @@
     #undef EMP_BIN_TO_DEC_0110011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110011101
 
 #ifdef EMP_BIN_TO_DEC_0110011110
@@ -10942,6 +12762,10 @@
     #undef EMP_BIN_TO_DEC_0110011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110011110
 
 #ifdef EMP_BIN_TO_DEC_0110011111
@@ -10966,6 +12790,10 @@
     #undef EMP_BIN_TO_DEC_0110011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110011111
 
 #ifdef EMP_BIN_TO_DEC_0110100000
@@ -10990,6 +12818,10 @@
     #undef EMP_BIN_TO_DEC_0110100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110100000
 
 #ifdef EMP_BIN_TO_DEC_0110100001
@@ -11014,6 +12846,10 @@
     #undef EMP_BIN_TO_DEC_0110100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110100001
 
 #ifdef EMP_BIN_TO_DEC_0110100010
@@ -11038,6 +12874,10 @@
     #undef EMP_BIN_TO_DEC_0110100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110100010
 
 #ifdef EMP_BIN_TO_DEC_0110100011
@@ -11062,6 +12902,10 @@
     #undef EMP_BIN_TO_DEC_0110100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110100011
 
 #ifdef EMP_BIN_TO_DEC_0110100100
@@ -11086,6 +12930,10 @@
     #undef EMP_BIN_TO_DEC_0110100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110100100
 
 #ifdef EMP_BIN_TO_DEC_0110100101
@@ -11110,6 +12958,10 @@
     #undef EMP_BIN_TO_DEC_0110100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110100101
 
 #ifdef EMP_BIN_TO_DEC_0110100110
@@ -11134,6 +12986,10 @@
     #undef EMP_BIN_TO_DEC_0110100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110100110
 
 #ifdef EMP_BIN_TO_DEC_0110100111
@@ -11158,6 +13014,10 @@
     #undef EMP_BIN_TO_DEC_0110100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110100111
 
 #ifdef EMP_BIN_TO_DEC_0110101000
@@ -11182,6 +13042,10 @@
     #undef EMP_BIN_TO_DEC_0110101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110101000
 
 #ifdef EMP_BIN_TO_DEC_0110101001
@@ -11206,6 +13070,10 @@
     #undef EMP_BIN_TO_DEC_0110101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110101001
 
 #ifdef EMP_BIN_TO_DEC_0110101010
@@ -11230,6 +13098,10 @@
     #undef EMP_BIN_TO_DEC_0110101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110101010
 
 #ifdef EMP_BIN_TO_DEC_0110101011
@@ -11254,6 +13126,10 @@
     #undef EMP_BIN_TO_DEC_0110101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110101011
 
 #ifdef EMP_BIN_TO_DEC_0110101100
@@ -11278,6 +13154,10 @@
     #undef EMP_BIN_TO_DEC_0110101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110101100
 
 #ifdef EMP_BIN_TO_DEC_0110101101
@@ -11302,6 +13182,10 @@
     #undef EMP_BIN_TO_DEC_0110101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110101101
 
 #ifdef EMP_BIN_TO_DEC_0110101110
@@ -11326,6 +13210,10 @@
     #undef EMP_BIN_TO_DEC_0110101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110101110
 
 #ifdef EMP_BIN_TO_DEC_0110101111
@@ -11350,6 +13238,10 @@
     #undef EMP_BIN_TO_DEC_0110101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110101111
 
 #ifdef EMP_BIN_TO_DEC_0110110000
@@ -11374,6 +13266,10 @@
     #undef EMP_BIN_TO_DEC_0110110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110110000
 
 #ifdef EMP_BIN_TO_DEC_0110110001
@@ -11398,6 +13294,10 @@
     #undef EMP_BIN_TO_DEC_0110110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110110001
 
 #ifdef EMP_BIN_TO_DEC_0110110010
@@ -11422,6 +13322,10 @@
     #undef EMP_BIN_TO_DEC_0110110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110110010
 
 #ifdef EMP_BIN_TO_DEC_0110110011
@@ -11446,6 +13350,10 @@
     #undef EMP_BIN_TO_DEC_0110110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110110011
 
 #ifdef EMP_BIN_TO_DEC_0110110100
@@ -11470,6 +13378,10 @@
     #undef EMP_BIN_TO_DEC_0110110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110110100
 
 #ifdef EMP_BIN_TO_DEC_0110110101
@@ -11494,6 +13406,10 @@
     #undef EMP_BIN_TO_DEC_0110110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110110101
 
 #ifdef EMP_BIN_TO_DEC_0110110110
@@ -11518,6 +13434,10 @@
     #undef EMP_BIN_TO_DEC_0110110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110110110
 
 #ifdef EMP_BIN_TO_DEC_0110110111
@@ -11542,6 +13462,10 @@
     #undef EMP_BIN_TO_DEC_0110110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110110111
 
 #ifdef EMP_BIN_TO_DEC_0110111000
@@ -11566,6 +13490,10 @@
     #undef EMP_BIN_TO_DEC_0110111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110111000
 
 #ifdef EMP_BIN_TO_DEC_0110111001
@@ -11590,6 +13518,10 @@
     #undef EMP_BIN_TO_DEC_0110111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110111001
 
 #ifdef EMP_BIN_TO_DEC_0110111010
@@ -11614,6 +13546,10 @@
     #undef EMP_BIN_TO_DEC_0110111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110111010
 
 #ifdef EMP_BIN_TO_DEC_0110111011
@@ -11638,6 +13574,10 @@
     #undef EMP_BIN_TO_DEC_0110111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110111011
 
 #ifdef EMP_BIN_TO_DEC_0110111100
@@ -11662,6 +13602,10 @@
     #undef EMP_BIN_TO_DEC_0110111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110111100
 
 #ifdef EMP_BIN_TO_DEC_0110111101
@@ -11686,6 +13630,10 @@
     #undef EMP_BIN_TO_DEC_0110111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110111101
 
 #ifdef EMP_BIN_TO_DEC_0110111110
@@ -11710,6 +13658,10 @@
     #undef EMP_BIN_TO_DEC_0110111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110111110
 
 #ifdef EMP_BIN_TO_DEC_0110111111
@@ -11734,6 +13686,10 @@
     #undef EMP_BIN_TO_DEC_0110111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0110111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0110111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0110111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0110111111
 
 #ifdef EMP_BIN_TO_DEC_0111000000
@@ -11758,6 +13714,10 @@
     #undef EMP_BIN_TO_DEC_0111000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111000000
 
 #ifdef EMP_BIN_TO_DEC_0111000001
@@ -11782,6 +13742,10 @@
     #undef EMP_BIN_TO_DEC_0111000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111000001
 
 #ifdef EMP_BIN_TO_DEC_0111000010
@@ -11806,6 +13770,10 @@
     #undef EMP_BIN_TO_DEC_0111000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111000010
 
 #ifdef EMP_BIN_TO_DEC_0111000011
@@ -11830,6 +13798,10 @@
     #undef EMP_BIN_TO_DEC_0111000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111000011
 
 #ifdef EMP_BIN_TO_DEC_0111000100
@@ -11854,6 +13826,10 @@
     #undef EMP_BIN_TO_DEC_0111000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111000100
 
 #ifdef EMP_BIN_TO_DEC_0111000101
@@ -11878,6 +13854,10 @@
     #undef EMP_BIN_TO_DEC_0111000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111000101
 
 #ifdef EMP_BIN_TO_DEC_0111000110
@@ -11902,6 +13882,10 @@
     #undef EMP_BIN_TO_DEC_0111000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111000110
 
 #ifdef EMP_BIN_TO_DEC_0111000111
@@ -11926,6 +13910,10 @@
     #undef EMP_BIN_TO_DEC_0111000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111000111
 
 #ifdef EMP_BIN_TO_DEC_0111001000
@@ -11950,6 +13938,10 @@
     #undef EMP_BIN_TO_DEC_0111001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111001000
 
 #ifdef EMP_BIN_TO_DEC_0111001001
@@ -11974,6 +13966,10 @@
     #undef EMP_BIN_TO_DEC_0111001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111001001
 
 #ifdef EMP_BIN_TO_DEC_0111001010
@@ -11998,6 +13994,10 @@
     #undef EMP_BIN_TO_DEC_0111001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111001010
 
 #ifdef EMP_BIN_TO_DEC_0111001011
@@ -12022,6 +14022,10 @@
     #undef EMP_BIN_TO_DEC_0111001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111001011
 
 #ifdef EMP_BIN_TO_DEC_0111001100
@@ -12046,6 +14050,10 @@
     #undef EMP_BIN_TO_DEC_0111001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111001100
 
 #ifdef EMP_BIN_TO_DEC_0111001101
@@ -12070,6 +14078,10 @@
     #undef EMP_BIN_TO_DEC_0111001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111001101
 
 #ifdef EMP_BIN_TO_DEC_0111001110
@@ -12094,6 +14106,10 @@
     #undef EMP_BIN_TO_DEC_0111001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111001110
 
 #ifdef EMP_BIN_TO_DEC_0111001111
@@ -12118,6 +14134,10 @@
     #undef EMP_BIN_TO_DEC_0111001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111001111
 
 #ifdef EMP_BIN_TO_DEC_0111010000
@@ -12142,6 +14162,10 @@
     #undef EMP_BIN_TO_DEC_0111010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111010000
 
 #ifdef EMP_BIN_TO_DEC_0111010001
@@ -12166,6 +14190,10 @@
     #undef EMP_BIN_TO_DEC_0111010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111010001
 
 #ifdef EMP_BIN_TO_DEC_0111010010
@@ -12190,6 +14218,10 @@
     #undef EMP_BIN_TO_DEC_0111010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111010010
 
 #ifdef EMP_BIN_TO_DEC_0111010011
@@ -12214,6 +14246,10 @@
     #undef EMP_BIN_TO_DEC_0111010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111010011
 
 #ifdef EMP_BIN_TO_DEC_0111010100
@@ -12238,6 +14274,10 @@
     #undef EMP_BIN_TO_DEC_0111010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111010100
 
 #ifdef EMP_BIN_TO_DEC_0111010101
@@ -12262,6 +14302,10 @@
     #undef EMP_BIN_TO_DEC_0111010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111010101
 
 #ifdef EMP_BIN_TO_DEC_0111010110
@@ -12286,6 +14330,10 @@
     #undef EMP_BIN_TO_DEC_0111010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111010110
 
 #ifdef EMP_BIN_TO_DEC_0111010111
@@ -12310,6 +14358,10 @@
     #undef EMP_BIN_TO_DEC_0111010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111010111
 
 #ifdef EMP_BIN_TO_DEC_0111011000
@@ -12334,6 +14386,10 @@
     #undef EMP_BIN_TO_DEC_0111011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111011000
 
 #ifdef EMP_BIN_TO_DEC_0111011001
@@ -12358,6 +14414,10 @@
     #undef EMP_BIN_TO_DEC_0111011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111011001
 
 #ifdef EMP_BIN_TO_DEC_0111011010
@@ -12382,6 +14442,10 @@
     #undef EMP_BIN_TO_DEC_0111011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111011010
 
 #ifdef EMP_BIN_TO_DEC_0111011011
@@ -12406,6 +14470,10 @@
     #undef EMP_BIN_TO_DEC_0111011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111011011
 
 #ifdef EMP_BIN_TO_DEC_0111011100
@@ -12430,6 +14498,10 @@
     #undef EMP_BIN_TO_DEC_0111011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111011100
 
 #ifdef EMP_BIN_TO_DEC_0111011101
@@ -12454,6 +14526,10 @@
     #undef EMP_BIN_TO_DEC_0111011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111011101
 
 #ifdef EMP_BIN_TO_DEC_0111011110
@@ -12478,6 +14554,10 @@
     #undef EMP_BIN_TO_DEC_0111011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111011110
 
 #ifdef EMP_BIN_TO_DEC_0111011111
@@ -12502,6 +14582,10 @@
     #undef EMP_BIN_TO_DEC_0111011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111011111
 
 #ifdef EMP_BIN_TO_DEC_0111100000
@@ -12526,6 +14610,10 @@
     #undef EMP_BIN_TO_DEC_0111100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111100000
 
 #ifdef EMP_BIN_TO_DEC_0111100001
@@ -12550,6 +14638,10 @@
     #undef EMP_BIN_TO_DEC_0111100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111100001
 
 #ifdef EMP_BIN_TO_DEC_0111100010
@@ -12574,6 +14666,10 @@
     #undef EMP_BIN_TO_DEC_0111100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111100010
 
 #ifdef EMP_BIN_TO_DEC_0111100011
@@ -12598,6 +14694,10 @@
     #undef EMP_BIN_TO_DEC_0111100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111100011
 
 #ifdef EMP_BIN_TO_DEC_0111100100
@@ -12622,6 +14722,10 @@
     #undef EMP_BIN_TO_DEC_0111100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111100100
 
 #ifdef EMP_BIN_TO_DEC_0111100101
@@ -12646,6 +14750,10 @@
     #undef EMP_BIN_TO_DEC_0111100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111100101
 
 #ifdef EMP_BIN_TO_DEC_0111100110
@@ -12670,6 +14778,10 @@
     #undef EMP_BIN_TO_DEC_0111100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111100110
 
 #ifdef EMP_BIN_TO_DEC_0111100111
@@ -12694,6 +14806,10 @@
     #undef EMP_BIN_TO_DEC_0111100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111100111
 
 #ifdef EMP_BIN_TO_DEC_0111101000
@@ -12718,6 +14834,10 @@
     #undef EMP_BIN_TO_DEC_0111101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111101000
 
 #ifdef EMP_BIN_TO_DEC_0111101001
@@ -12742,6 +14862,10 @@
     #undef EMP_BIN_TO_DEC_0111101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111101001
 
 #ifdef EMP_BIN_TO_DEC_0111101010
@@ -12766,6 +14890,10 @@
     #undef EMP_BIN_TO_DEC_0111101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111101010
 
 #ifdef EMP_BIN_TO_DEC_0111101011
@@ -12790,6 +14918,10 @@
     #undef EMP_BIN_TO_DEC_0111101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111101011
 
 #ifdef EMP_BIN_TO_DEC_0111101100
@@ -12814,6 +14946,10 @@
     #undef EMP_BIN_TO_DEC_0111101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111101100
 
 #ifdef EMP_BIN_TO_DEC_0111101101
@@ -12838,6 +14974,10 @@
     #undef EMP_BIN_TO_DEC_0111101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111101101
 
 #ifdef EMP_BIN_TO_DEC_0111101110
@@ -12862,6 +15002,10 @@
     #undef EMP_BIN_TO_DEC_0111101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111101110
 
 #ifdef EMP_BIN_TO_DEC_0111101111
@@ -12886,6 +15030,10 @@
     #undef EMP_BIN_TO_DEC_0111101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111101111
 
 #ifdef EMP_BIN_TO_DEC_0111110000
@@ -12910,6 +15058,10 @@
     #undef EMP_BIN_TO_DEC_0111110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111110000
 
 #ifdef EMP_BIN_TO_DEC_0111110001
@@ -12934,6 +15086,10 @@
     #undef EMP_BIN_TO_DEC_0111110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111110001
 
 #ifdef EMP_BIN_TO_DEC_0111110010
@@ -12958,6 +15114,10 @@
     #undef EMP_BIN_TO_DEC_0111110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111110010
 
 #ifdef EMP_BIN_TO_DEC_0111110011
@@ -12982,6 +15142,10 @@
     #undef EMP_BIN_TO_DEC_0111110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111110011
 
 #ifdef EMP_BIN_TO_DEC_0111110100
@@ -13006,6 +15170,10 @@
     #undef EMP_BIN_TO_DEC_0111110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111110100
 
 #ifdef EMP_BIN_TO_DEC_0111110101
@@ -13030,6 +15198,10 @@
     #undef EMP_BIN_TO_DEC_0111110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111110101
 
 #ifdef EMP_BIN_TO_DEC_0111110110
@@ -13054,6 +15226,10 @@
     #undef EMP_BIN_TO_DEC_0111110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111110110
 
 #ifdef EMP_BIN_TO_DEC_0111110111
@@ -13078,6 +15254,10 @@
     #undef EMP_BIN_TO_DEC_0111110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111110111
 
 #ifdef EMP_BIN_TO_DEC_0111111000
@@ -13102,6 +15282,10 @@
     #undef EMP_BIN_TO_DEC_0111111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111111000
 
 #ifdef EMP_BIN_TO_DEC_0111111001
@@ -13126,6 +15310,10 @@
     #undef EMP_BIN_TO_DEC_0111111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111111001
 
 #ifdef EMP_BIN_TO_DEC_0111111010
@@ -13150,6 +15338,10 @@
     #undef EMP_BIN_TO_DEC_0111111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111111010
 
 #ifdef EMP_BIN_TO_DEC_0111111011
@@ -13174,6 +15366,10 @@
     #undef EMP_BIN_TO_DEC_0111111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111111011
 
 #ifdef EMP_BIN_TO_DEC_0111111100
@@ -13198,6 +15394,10 @@
     #undef EMP_BIN_TO_DEC_0111111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111111100
 
 #ifdef EMP_BIN_TO_DEC_0111111101
@@ -13222,6 +15422,10 @@
     #undef EMP_BIN_TO_DEC_0111111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111111101
 
 #ifdef EMP_BIN_TO_DEC_0111111110
@@ -13246,6 +15450,10 @@
     #undef EMP_BIN_TO_DEC_0111111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111111110
 
 #ifdef EMP_BIN_TO_DEC_0111111111
@@ -13270,6 +15478,10 @@
     #undef EMP_BIN_TO_DEC_0111111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_0111111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_0111111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_0111111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_0111111111
 
 #ifdef EMP_BIN_TO_DEC_1000000000
@@ -13294,6 +15506,10 @@
     #undef EMP_BIN_TO_DEC_1000000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000000000
 
 #ifdef EMP_BIN_TO_DEC_1000000001
@@ -13318,6 +15534,10 @@
     #undef EMP_BIN_TO_DEC_1000000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000000001
 
 #ifdef EMP_BIN_TO_DEC_1000000010
@@ -13342,6 +15562,10 @@
     #undef EMP_BIN_TO_DEC_1000000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000000010
 
 #ifdef EMP_BIN_TO_DEC_1000000011
@@ -13366,6 +15590,10 @@
     #undef EMP_BIN_TO_DEC_1000000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000000011
 
 #ifdef EMP_BIN_TO_DEC_1000000100
@@ -13390,6 +15618,10 @@
     #undef EMP_BIN_TO_DEC_1000000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000000100
 
 #ifdef EMP_BIN_TO_DEC_1000000101
@@ -13414,6 +15646,10 @@
     #undef EMP_BIN_TO_DEC_1000000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000000101
 
 #ifdef EMP_BIN_TO_DEC_1000000110
@@ -13438,6 +15674,10 @@
     #undef EMP_BIN_TO_DEC_1000000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000000110
 
 #ifdef EMP_BIN_TO_DEC_1000000111
@@ -13462,6 +15702,10 @@
     #undef EMP_BIN_TO_DEC_1000000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000000111
 
 #ifdef EMP_BIN_TO_DEC_1000001000
@@ -13486,6 +15730,10 @@
     #undef EMP_BIN_TO_DEC_1000001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000001000
 
 #ifdef EMP_BIN_TO_DEC_1000001001
@@ -13510,6 +15758,10 @@
     #undef EMP_BIN_TO_DEC_1000001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000001001
 
 #ifdef EMP_BIN_TO_DEC_1000001010
@@ -13534,6 +15786,10 @@
     #undef EMP_BIN_TO_DEC_1000001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000001010
 
 #ifdef EMP_BIN_TO_DEC_1000001011
@@ -13558,6 +15814,10 @@
     #undef EMP_BIN_TO_DEC_1000001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000001011
 
 #ifdef EMP_BIN_TO_DEC_1000001100
@@ -13582,6 +15842,10 @@
     #undef EMP_BIN_TO_DEC_1000001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000001100
 
 #ifdef EMP_BIN_TO_DEC_1000001101
@@ -13606,6 +15870,10 @@
     #undef EMP_BIN_TO_DEC_1000001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000001101
 
 #ifdef EMP_BIN_TO_DEC_1000001110
@@ -13630,6 +15898,10 @@
     #undef EMP_BIN_TO_DEC_1000001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000001110
 
 #ifdef EMP_BIN_TO_DEC_1000001111
@@ -13654,6 +15926,10 @@
     #undef EMP_BIN_TO_DEC_1000001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000001111
 
 #ifdef EMP_BIN_TO_DEC_1000010000
@@ -13678,6 +15954,10 @@
     #undef EMP_BIN_TO_DEC_1000010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000010000
 
 #ifdef EMP_BIN_TO_DEC_1000010001
@@ -13702,6 +15982,10 @@
     #undef EMP_BIN_TO_DEC_1000010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000010001
 
 #ifdef EMP_BIN_TO_DEC_1000010010
@@ -13726,6 +16010,10 @@
     #undef EMP_BIN_TO_DEC_1000010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000010010
 
 #ifdef EMP_BIN_TO_DEC_1000010011
@@ -13750,6 +16038,10 @@
     #undef EMP_BIN_TO_DEC_1000010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000010011
 
 #ifdef EMP_BIN_TO_DEC_1000010100
@@ -13774,6 +16066,10 @@
     #undef EMP_BIN_TO_DEC_1000010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000010100
 
 #ifdef EMP_BIN_TO_DEC_1000010101
@@ -13798,6 +16094,10 @@
     #undef EMP_BIN_TO_DEC_1000010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000010101
 
 #ifdef EMP_BIN_TO_DEC_1000010110
@@ -13822,6 +16122,10 @@
     #undef EMP_BIN_TO_DEC_1000010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000010110
 
 #ifdef EMP_BIN_TO_DEC_1000010111
@@ -13846,6 +16150,10 @@
     #undef EMP_BIN_TO_DEC_1000010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000010111
 
 #ifdef EMP_BIN_TO_DEC_1000011000
@@ -13870,6 +16178,10 @@
     #undef EMP_BIN_TO_DEC_1000011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000011000
 
 #ifdef EMP_BIN_TO_DEC_1000011001
@@ -13894,6 +16206,10 @@
     #undef EMP_BIN_TO_DEC_1000011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000011001
 
 #ifdef EMP_BIN_TO_DEC_1000011010
@@ -13918,6 +16234,10 @@
     #undef EMP_BIN_TO_DEC_1000011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000011010
 
 #ifdef EMP_BIN_TO_DEC_1000011011
@@ -13942,6 +16262,10 @@
     #undef EMP_BIN_TO_DEC_1000011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000011011
 
 #ifdef EMP_BIN_TO_DEC_1000011100
@@ -13966,6 +16290,10 @@
     #undef EMP_BIN_TO_DEC_1000011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000011100
 
 #ifdef EMP_BIN_TO_DEC_1000011101
@@ -13990,6 +16318,10 @@
     #undef EMP_BIN_TO_DEC_1000011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000011101
 
 #ifdef EMP_BIN_TO_DEC_1000011110
@@ -14014,6 +16346,10 @@
     #undef EMP_BIN_TO_DEC_1000011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000011110
 
 #ifdef EMP_BIN_TO_DEC_1000011111
@@ -14038,6 +16374,10 @@
     #undef EMP_BIN_TO_DEC_1000011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000011111
 
 #ifdef EMP_BIN_TO_DEC_1000100000
@@ -14062,6 +16402,10 @@
     #undef EMP_BIN_TO_DEC_1000100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000100000
 
 #ifdef EMP_BIN_TO_DEC_1000100001
@@ -14086,6 +16430,10 @@
     #undef EMP_BIN_TO_DEC_1000100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000100001
 
 #ifdef EMP_BIN_TO_DEC_1000100010
@@ -14110,6 +16458,10 @@
     #undef EMP_BIN_TO_DEC_1000100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000100010
 
 #ifdef EMP_BIN_TO_DEC_1000100011
@@ -14134,6 +16486,10 @@
     #undef EMP_BIN_TO_DEC_1000100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000100011
 
 #ifdef EMP_BIN_TO_DEC_1000100100
@@ -14158,6 +16514,10 @@
     #undef EMP_BIN_TO_DEC_1000100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000100100
 
 #ifdef EMP_BIN_TO_DEC_1000100101
@@ -14182,6 +16542,10 @@
     #undef EMP_BIN_TO_DEC_1000100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000100101
 
 #ifdef EMP_BIN_TO_DEC_1000100110
@@ -14206,6 +16570,10 @@
     #undef EMP_BIN_TO_DEC_1000100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000100110
 
 #ifdef EMP_BIN_TO_DEC_1000100111
@@ -14230,6 +16598,10 @@
     #undef EMP_BIN_TO_DEC_1000100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000100111
 
 #ifdef EMP_BIN_TO_DEC_1000101000
@@ -14254,6 +16626,10 @@
     #undef EMP_BIN_TO_DEC_1000101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000101000
 
 #ifdef EMP_BIN_TO_DEC_1000101001
@@ -14278,6 +16654,10 @@
     #undef EMP_BIN_TO_DEC_1000101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000101001
 
 #ifdef EMP_BIN_TO_DEC_1000101010
@@ -14302,6 +16682,10 @@
     #undef EMP_BIN_TO_DEC_1000101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000101010
 
 #ifdef EMP_BIN_TO_DEC_1000101011
@@ -14326,6 +16710,10 @@
     #undef EMP_BIN_TO_DEC_1000101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000101011
 
 #ifdef EMP_BIN_TO_DEC_1000101100
@@ -14350,6 +16738,10 @@
     #undef EMP_BIN_TO_DEC_1000101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000101100
 
 #ifdef EMP_BIN_TO_DEC_1000101101
@@ -14374,6 +16766,10 @@
     #undef EMP_BIN_TO_DEC_1000101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000101101
 
 #ifdef EMP_BIN_TO_DEC_1000101110
@@ -14398,6 +16794,10 @@
     #undef EMP_BIN_TO_DEC_1000101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000101110
 
 #ifdef EMP_BIN_TO_DEC_1000101111
@@ -14422,6 +16822,10 @@
     #undef EMP_BIN_TO_DEC_1000101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000101111
 
 #ifdef EMP_BIN_TO_DEC_1000110000
@@ -14446,6 +16850,10 @@
     #undef EMP_BIN_TO_DEC_1000110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000110000
 
 #ifdef EMP_BIN_TO_DEC_1000110001
@@ -14470,6 +16878,10 @@
     #undef EMP_BIN_TO_DEC_1000110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000110001
 
 #ifdef EMP_BIN_TO_DEC_1000110010
@@ -14494,6 +16906,10 @@
     #undef EMP_BIN_TO_DEC_1000110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000110010
 
 #ifdef EMP_BIN_TO_DEC_1000110011
@@ -14518,6 +16934,10 @@
     #undef EMP_BIN_TO_DEC_1000110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000110011
 
 #ifdef EMP_BIN_TO_DEC_1000110100
@@ -14542,6 +16962,10 @@
     #undef EMP_BIN_TO_DEC_1000110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000110100
 
 #ifdef EMP_BIN_TO_DEC_1000110101
@@ -14566,6 +16990,10 @@
     #undef EMP_BIN_TO_DEC_1000110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000110101
 
 #ifdef EMP_BIN_TO_DEC_1000110110
@@ -14590,6 +17018,10 @@
     #undef EMP_BIN_TO_DEC_1000110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000110110
 
 #ifdef EMP_BIN_TO_DEC_1000110111
@@ -14614,6 +17046,10 @@
     #undef EMP_BIN_TO_DEC_1000110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000110111
 
 #ifdef EMP_BIN_TO_DEC_1000111000
@@ -14638,6 +17074,10 @@
     #undef EMP_BIN_TO_DEC_1000111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000111000
 
 #ifdef EMP_BIN_TO_DEC_1000111001
@@ -14662,6 +17102,10 @@
     #undef EMP_BIN_TO_DEC_1000111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000111001
 
 #ifdef EMP_BIN_TO_DEC_1000111010
@@ -14686,6 +17130,10 @@
     #undef EMP_BIN_TO_DEC_1000111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000111010
 
 #ifdef EMP_BIN_TO_DEC_1000111011
@@ -14710,6 +17158,10 @@
     #undef EMP_BIN_TO_DEC_1000111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000111011
 
 #ifdef EMP_BIN_TO_DEC_1000111100
@@ -14734,6 +17186,10 @@
     #undef EMP_BIN_TO_DEC_1000111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000111100
 
 #ifdef EMP_BIN_TO_DEC_1000111101
@@ -14758,6 +17214,10 @@
     #undef EMP_BIN_TO_DEC_1000111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000111101
 
 #ifdef EMP_BIN_TO_DEC_1000111110
@@ -14782,6 +17242,10 @@
     #undef EMP_BIN_TO_DEC_1000111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000111110
 
 #ifdef EMP_BIN_TO_DEC_1000111111
@@ -14806,6 +17270,10 @@
     #undef EMP_BIN_TO_DEC_1000111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1000111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1000111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1000111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1000111111
 
 #ifdef EMP_BIN_TO_DEC_1001000000
@@ -14830,6 +17298,10 @@
     #undef EMP_BIN_TO_DEC_1001000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001000000
 
 #ifdef EMP_BIN_TO_DEC_1001000001
@@ -14854,6 +17326,10 @@
     #undef EMP_BIN_TO_DEC_1001000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001000001
 
 #ifdef EMP_BIN_TO_DEC_1001000010
@@ -14878,6 +17354,10 @@
     #undef EMP_BIN_TO_DEC_1001000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001000010
 
 #ifdef EMP_BIN_TO_DEC_1001000011
@@ -14902,6 +17382,10 @@
     #undef EMP_BIN_TO_DEC_1001000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001000011
 
 #ifdef EMP_BIN_TO_DEC_1001000100
@@ -14926,6 +17410,10 @@
     #undef EMP_BIN_TO_DEC_1001000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001000100
 
 #ifdef EMP_BIN_TO_DEC_1001000101
@@ -14950,6 +17438,10 @@
     #undef EMP_BIN_TO_DEC_1001000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001000101
 
 #ifdef EMP_BIN_TO_DEC_1001000110
@@ -14974,6 +17466,10 @@
     #undef EMP_BIN_TO_DEC_1001000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001000110
 
 #ifdef EMP_BIN_TO_DEC_1001000111
@@ -14998,6 +17494,10 @@
     #undef EMP_BIN_TO_DEC_1001000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001000111
 
 #ifdef EMP_BIN_TO_DEC_1001001000
@@ -15022,6 +17522,10 @@
     #undef EMP_BIN_TO_DEC_1001001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001001000
 
 #ifdef EMP_BIN_TO_DEC_1001001001
@@ -15046,6 +17550,10 @@
     #undef EMP_BIN_TO_DEC_1001001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001001001
 
 #ifdef EMP_BIN_TO_DEC_1001001010
@@ -15070,6 +17578,10 @@
     #undef EMP_BIN_TO_DEC_1001001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001001010
 
 #ifdef EMP_BIN_TO_DEC_1001001011
@@ -15094,6 +17606,10 @@
     #undef EMP_BIN_TO_DEC_1001001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001001011
 
 #ifdef EMP_BIN_TO_DEC_1001001100
@@ -15118,6 +17634,10 @@
     #undef EMP_BIN_TO_DEC_1001001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001001100
 
 #ifdef EMP_BIN_TO_DEC_1001001101
@@ -15142,6 +17662,10 @@
     #undef EMP_BIN_TO_DEC_1001001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001001101
 
 #ifdef EMP_BIN_TO_DEC_1001001110
@@ -15166,6 +17690,10 @@
     #undef EMP_BIN_TO_DEC_1001001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001001110
 
 #ifdef EMP_BIN_TO_DEC_1001001111
@@ -15190,6 +17718,10 @@
     #undef EMP_BIN_TO_DEC_1001001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001001111
 
 #ifdef EMP_BIN_TO_DEC_1001010000
@@ -15214,6 +17746,10 @@
     #undef EMP_BIN_TO_DEC_1001010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001010000
 
 #ifdef EMP_BIN_TO_DEC_1001010001
@@ -15238,6 +17774,10 @@
     #undef EMP_BIN_TO_DEC_1001010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001010001
 
 #ifdef EMP_BIN_TO_DEC_1001010010
@@ -15262,6 +17802,10 @@
     #undef EMP_BIN_TO_DEC_1001010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001010010
 
 #ifdef EMP_BIN_TO_DEC_1001010011
@@ -15286,6 +17830,10 @@
     #undef EMP_BIN_TO_DEC_1001010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001010011
 
 #ifdef EMP_BIN_TO_DEC_1001010100
@@ -15310,6 +17858,10 @@
     #undef EMP_BIN_TO_DEC_1001010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001010100
 
 #ifdef EMP_BIN_TO_DEC_1001010101
@@ -15334,6 +17886,10 @@
     #undef EMP_BIN_TO_DEC_1001010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001010101
 
 #ifdef EMP_BIN_TO_DEC_1001010110
@@ -15358,6 +17914,10 @@
     #undef EMP_BIN_TO_DEC_1001010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001010110
 
 #ifdef EMP_BIN_TO_DEC_1001010111
@@ -15382,6 +17942,10 @@
     #undef EMP_BIN_TO_DEC_1001010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001010111
 
 #ifdef EMP_BIN_TO_DEC_1001011000
@@ -15406,6 +17970,10 @@
     #undef EMP_BIN_TO_DEC_1001011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001011000
 
 #ifdef EMP_BIN_TO_DEC_1001011001
@@ -15430,6 +17998,10 @@
     #undef EMP_BIN_TO_DEC_1001011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001011001
 
 #ifdef EMP_BIN_TO_DEC_1001011010
@@ -15454,6 +18026,10 @@
     #undef EMP_BIN_TO_DEC_1001011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001011010
 
 #ifdef EMP_BIN_TO_DEC_1001011011
@@ -15478,6 +18054,10 @@
     #undef EMP_BIN_TO_DEC_1001011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001011011
 
 #ifdef EMP_BIN_TO_DEC_1001011100
@@ -15502,6 +18082,10 @@
     #undef EMP_BIN_TO_DEC_1001011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001011100
 
 #ifdef EMP_BIN_TO_DEC_1001011101
@@ -15526,6 +18110,10 @@
     #undef EMP_BIN_TO_DEC_1001011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001011101
 
 #ifdef EMP_BIN_TO_DEC_1001011110
@@ -15550,6 +18138,10 @@
     #undef EMP_BIN_TO_DEC_1001011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001011110
 
 #ifdef EMP_BIN_TO_DEC_1001011111
@@ -15574,6 +18166,10 @@
     #undef EMP_BIN_TO_DEC_1001011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001011111
 
 #ifdef EMP_BIN_TO_DEC_1001100000
@@ -15598,6 +18194,10 @@
     #undef EMP_BIN_TO_DEC_1001100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001100000
 
 #ifdef EMP_BIN_TO_DEC_1001100001
@@ -15622,6 +18222,10 @@
     #undef EMP_BIN_TO_DEC_1001100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001100001
 
 #ifdef EMP_BIN_TO_DEC_1001100010
@@ -15646,6 +18250,10 @@
     #undef EMP_BIN_TO_DEC_1001100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001100010
 
 #ifdef EMP_BIN_TO_DEC_1001100011
@@ -15670,6 +18278,10 @@
     #undef EMP_BIN_TO_DEC_1001100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001100011
 
 #ifdef EMP_BIN_TO_DEC_1001100100
@@ -15694,6 +18306,10 @@
     #undef EMP_BIN_TO_DEC_1001100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001100100
 
 #ifdef EMP_BIN_TO_DEC_1001100101
@@ -15718,6 +18334,10 @@
     #undef EMP_BIN_TO_DEC_1001100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001100101
 
 #ifdef EMP_BIN_TO_DEC_1001100110
@@ -15742,6 +18362,10 @@
     #undef EMP_BIN_TO_DEC_1001100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001100110
 
 #ifdef EMP_BIN_TO_DEC_1001100111
@@ -15766,6 +18390,10 @@
     #undef EMP_BIN_TO_DEC_1001100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001100111
 
 #ifdef EMP_BIN_TO_DEC_1001101000
@@ -15790,6 +18418,10 @@
     #undef EMP_BIN_TO_DEC_1001101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001101000
 
 #ifdef EMP_BIN_TO_DEC_1001101001
@@ -15814,6 +18446,10 @@
     #undef EMP_BIN_TO_DEC_1001101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001101001
 
 #ifdef EMP_BIN_TO_DEC_1001101010
@@ -15838,6 +18474,10 @@
     #undef EMP_BIN_TO_DEC_1001101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001101010
 
 #ifdef EMP_BIN_TO_DEC_1001101011
@@ -15862,6 +18502,10 @@
     #undef EMP_BIN_TO_DEC_1001101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001101011
 
 #ifdef EMP_BIN_TO_DEC_1001101100
@@ -15886,6 +18530,10 @@
     #undef EMP_BIN_TO_DEC_1001101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001101100
 
 #ifdef EMP_BIN_TO_DEC_1001101101
@@ -15910,6 +18558,10 @@
     #undef EMP_BIN_TO_DEC_1001101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001101101
 
 #ifdef EMP_BIN_TO_DEC_1001101110
@@ -15934,6 +18586,10 @@
     #undef EMP_BIN_TO_DEC_1001101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001101110
 
 #ifdef EMP_BIN_TO_DEC_1001101111
@@ -15958,6 +18614,10 @@
     #undef EMP_BIN_TO_DEC_1001101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001101111
 
 #ifdef EMP_BIN_TO_DEC_1001110000
@@ -15982,6 +18642,10 @@
     #undef EMP_BIN_TO_DEC_1001110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001110000
 
 #ifdef EMP_BIN_TO_DEC_1001110001
@@ -16006,6 +18670,10 @@
     #undef EMP_BIN_TO_DEC_1001110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001110001
 
 #ifdef EMP_BIN_TO_DEC_1001110010
@@ -16030,6 +18698,10 @@
     #undef EMP_BIN_TO_DEC_1001110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001110010
 
 #ifdef EMP_BIN_TO_DEC_1001110011
@@ -16054,6 +18726,10 @@
     #undef EMP_BIN_TO_DEC_1001110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001110011
 
 #ifdef EMP_BIN_TO_DEC_1001110100
@@ -16078,6 +18754,10 @@
     #undef EMP_BIN_TO_DEC_1001110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001110100
 
 #ifdef EMP_BIN_TO_DEC_1001110101
@@ -16102,6 +18782,10 @@
     #undef EMP_BIN_TO_DEC_1001110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001110101
 
 #ifdef EMP_BIN_TO_DEC_1001110110
@@ -16126,6 +18810,10 @@
     #undef EMP_BIN_TO_DEC_1001110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001110110
 
 #ifdef EMP_BIN_TO_DEC_1001110111
@@ -16150,6 +18838,10 @@
     #undef EMP_BIN_TO_DEC_1001110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001110111
 
 #ifdef EMP_BIN_TO_DEC_1001111000
@@ -16174,6 +18866,10 @@
     #undef EMP_BIN_TO_DEC_1001111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001111000
 
 #ifdef EMP_BIN_TO_DEC_1001111001
@@ -16198,6 +18894,10 @@
     #undef EMP_BIN_TO_DEC_1001111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001111001
 
 #ifdef EMP_BIN_TO_DEC_1001111010
@@ -16222,6 +18922,10 @@
     #undef EMP_BIN_TO_DEC_1001111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001111010
 
 #ifdef EMP_BIN_TO_DEC_1001111011
@@ -16246,6 +18950,10 @@
     #undef EMP_BIN_TO_DEC_1001111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001111011
 
 #ifdef EMP_BIN_TO_DEC_1001111100
@@ -16270,6 +18978,10 @@
     #undef EMP_BIN_TO_DEC_1001111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001111100
 
 #ifdef EMP_BIN_TO_DEC_1001111101
@@ -16294,6 +19006,10 @@
     #undef EMP_BIN_TO_DEC_1001111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001111101
 
 #ifdef EMP_BIN_TO_DEC_1001111110
@@ -16318,6 +19034,10 @@
     #undef EMP_BIN_TO_DEC_1001111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001111110
 
 #ifdef EMP_BIN_TO_DEC_1001111111
@@ -16342,6 +19062,10 @@
     #undef EMP_BIN_TO_DEC_1001111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1001111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1001111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1001111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1001111111
 
 #ifdef EMP_BIN_TO_DEC_1010000000
@@ -16366,6 +19090,10 @@
     #undef EMP_BIN_TO_DEC_1010000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010000000
 
 #ifdef EMP_BIN_TO_DEC_1010000001
@@ -16390,6 +19118,10 @@
     #undef EMP_BIN_TO_DEC_1010000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010000001
 
 #ifdef EMP_BIN_TO_DEC_1010000010
@@ -16414,6 +19146,10 @@
     #undef EMP_BIN_TO_DEC_1010000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010000010
 
 #ifdef EMP_BIN_TO_DEC_1010000011
@@ -16438,6 +19174,10 @@
     #undef EMP_BIN_TO_DEC_1010000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010000011
 
 #ifdef EMP_BIN_TO_DEC_1010000100
@@ -16462,6 +19202,10 @@
     #undef EMP_BIN_TO_DEC_1010000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010000100
 
 #ifdef EMP_BIN_TO_DEC_1010000101
@@ -16486,6 +19230,10 @@
     #undef EMP_BIN_TO_DEC_1010000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010000101
 
 #ifdef EMP_BIN_TO_DEC_1010000110
@@ -16510,6 +19258,10 @@
     #undef EMP_BIN_TO_DEC_1010000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010000110
 
 #ifdef EMP_BIN_TO_DEC_1010000111
@@ -16534,6 +19286,10 @@
     #undef EMP_BIN_TO_DEC_1010000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010000111
 
 #ifdef EMP_BIN_TO_DEC_1010001000
@@ -16558,6 +19314,10 @@
     #undef EMP_BIN_TO_DEC_1010001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010001000
 
 #ifdef EMP_BIN_TO_DEC_1010001001
@@ -16582,6 +19342,10 @@
     #undef EMP_BIN_TO_DEC_1010001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010001001
 
 #ifdef EMP_BIN_TO_DEC_1010001010
@@ -16606,6 +19370,10 @@
     #undef EMP_BIN_TO_DEC_1010001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010001010
 
 #ifdef EMP_BIN_TO_DEC_1010001011
@@ -16630,6 +19398,10 @@
     #undef EMP_BIN_TO_DEC_1010001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010001011
 
 #ifdef EMP_BIN_TO_DEC_1010001100
@@ -16654,6 +19426,10 @@
     #undef EMP_BIN_TO_DEC_1010001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010001100
 
 #ifdef EMP_BIN_TO_DEC_1010001101
@@ -16678,6 +19454,10 @@
     #undef EMP_BIN_TO_DEC_1010001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010001101
 
 #ifdef EMP_BIN_TO_DEC_1010001110
@@ -16702,6 +19482,10 @@
     #undef EMP_BIN_TO_DEC_1010001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010001110
 
 #ifdef EMP_BIN_TO_DEC_1010001111
@@ -16726,6 +19510,10 @@
     #undef EMP_BIN_TO_DEC_1010001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010001111
 
 #ifdef EMP_BIN_TO_DEC_1010010000
@@ -16750,6 +19538,10 @@
     #undef EMP_BIN_TO_DEC_1010010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010010000
 
 #ifdef EMP_BIN_TO_DEC_1010010001
@@ -16774,6 +19566,10 @@
     #undef EMP_BIN_TO_DEC_1010010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010010001
 
 #ifdef EMP_BIN_TO_DEC_1010010010
@@ -16798,6 +19594,10 @@
     #undef EMP_BIN_TO_DEC_1010010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010010010
 
 #ifdef EMP_BIN_TO_DEC_1010010011
@@ -16822,6 +19622,10 @@
     #undef EMP_BIN_TO_DEC_1010010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010010011
 
 #ifdef EMP_BIN_TO_DEC_1010010100
@@ -16846,6 +19650,10 @@
     #undef EMP_BIN_TO_DEC_1010010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010010100
 
 #ifdef EMP_BIN_TO_DEC_1010010101
@@ -16870,6 +19678,10 @@
     #undef EMP_BIN_TO_DEC_1010010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010010101
 
 #ifdef EMP_BIN_TO_DEC_1010010110
@@ -16894,6 +19706,10 @@
     #undef EMP_BIN_TO_DEC_1010010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010010110
 
 #ifdef EMP_BIN_TO_DEC_1010010111
@@ -16918,6 +19734,10 @@
     #undef EMP_BIN_TO_DEC_1010010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010010111
 
 #ifdef EMP_BIN_TO_DEC_1010011000
@@ -16942,6 +19762,10 @@
     #undef EMP_BIN_TO_DEC_1010011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010011000
 
 #ifdef EMP_BIN_TO_DEC_1010011001
@@ -16966,6 +19790,10 @@
     #undef EMP_BIN_TO_DEC_1010011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010011001
 
 #ifdef EMP_BIN_TO_DEC_1010011010
@@ -16990,6 +19818,10 @@
     #undef EMP_BIN_TO_DEC_1010011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010011010
 
 #ifdef EMP_BIN_TO_DEC_1010011011
@@ -17014,6 +19846,10 @@
     #undef EMP_BIN_TO_DEC_1010011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010011011
 
 #ifdef EMP_BIN_TO_DEC_1010011100
@@ -17038,6 +19874,10 @@
     #undef EMP_BIN_TO_DEC_1010011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010011100
 
 #ifdef EMP_BIN_TO_DEC_1010011101
@@ -17062,6 +19902,10 @@
     #undef EMP_BIN_TO_DEC_1010011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010011101
 
 #ifdef EMP_BIN_TO_DEC_1010011110
@@ -17086,6 +19930,10 @@
     #undef EMP_BIN_TO_DEC_1010011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010011110
 
 #ifdef EMP_BIN_TO_DEC_1010011111
@@ -17110,6 +19958,10 @@
     #undef EMP_BIN_TO_DEC_1010011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010011111
 
 #ifdef EMP_BIN_TO_DEC_1010100000
@@ -17134,6 +19986,10 @@
     #undef EMP_BIN_TO_DEC_1010100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010100000
 
 #ifdef EMP_BIN_TO_DEC_1010100001
@@ -17158,6 +20014,10 @@
     #undef EMP_BIN_TO_DEC_1010100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010100001
 
 #ifdef EMP_BIN_TO_DEC_1010100010
@@ -17182,6 +20042,10 @@
     #undef EMP_BIN_TO_DEC_1010100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010100010
 
 #ifdef EMP_BIN_TO_DEC_1010100011
@@ -17206,6 +20070,10 @@
     #undef EMP_BIN_TO_DEC_1010100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010100011
 
 #ifdef EMP_BIN_TO_DEC_1010100100
@@ -17230,6 +20098,10 @@
     #undef EMP_BIN_TO_DEC_1010100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010100100
 
 #ifdef EMP_BIN_TO_DEC_1010100101
@@ -17254,6 +20126,10 @@
     #undef EMP_BIN_TO_DEC_1010100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010100101
 
 #ifdef EMP_BIN_TO_DEC_1010100110
@@ -17278,6 +20154,10 @@
     #undef EMP_BIN_TO_DEC_1010100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010100110
 
 #ifdef EMP_BIN_TO_DEC_1010100111
@@ -17302,6 +20182,10 @@
     #undef EMP_BIN_TO_DEC_1010100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010100111
 
 #ifdef EMP_BIN_TO_DEC_1010101000
@@ -17326,6 +20210,10 @@
     #undef EMP_BIN_TO_DEC_1010101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010101000
 
 #ifdef EMP_BIN_TO_DEC_1010101001
@@ -17350,6 +20238,10 @@
     #undef EMP_BIN_TO_DEC_1010101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010101001
 
 #ifdef EMP_BIN_TO_DEC_1010101010
@@ -17374,6 +20266,10 @@
     #undef EMP_BIN_TO_DEC_1010101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010101010
 
 #ifdef EMP_BIN_TO_DEC_1010101011
@@ -17398,6 +20294,10 @@
     #undef EMP_BIN_TO_DEC_1010101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010101011
 
 #ifdef EMP_BIN_TO_DEC_1010101100
@@ -17422,6 +20322,10 @@
     #undef EMP_BIN_TO_DEC_1010101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010101100
 
 #ifdef EMP_BIN_TO_DEC_1010101101
@@ -17446,6 +20350,10 @@
     #undef EMP_BIN_TO_DEC_1010101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010101101
 
 #ifdef EMP_BIN_TO_DEC_1010101110
@@ -17470,6 +20378,10 @@
     #undef EMP_BIN_TO_DEC_1010101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010101110
 
 #ifdef EMP_BIN_TO_DEC_1010101111
@@ -17494,6 +20406,10 @@
     #undef EMP_BIN_TO_DEC_1010101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010101111
 
 #ifdef EMP_BIN_TO_DEC_1010110000
@@ -17518,6 +20434,10 @@
     #undef EMP_BIN_TO_DEC_1010110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010110000
 
 #ifdef EMP_BIN_TO_DEC_1010110001
@@ -17542,6 +20462,10 @@
     #undef EMP_BIN_TO_DEC_1010110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010110001
 
 #ifdef EMP_BIN_TO_DEC_1010110010
@@ -17566,6 +20490,10 @@
     #undef EMP_BIN_TO_DEC_1010110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010110010
 
 #ifdef EMP_BIN_TO_DEC_1010110011
@@ -17590,6 +20518,10 @@
     #undef EMP_BIN_TO_DEC_1010110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010110011
 
 #ifdef EMP_BIN_TO_DEC_1010110100
@@ -17614,6 +20546,10 @@
     #undef EMP_BIN_TO_DEC_1010110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010110100
 
 #ifdef EMP_BIN_TO_DEC_1010110101
@@ -17638,6 +20574,10 @@
     #undef EMP_BIN_TO_DEC_1010110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010110101
 
 #ifdef EMP_BIN_TO_DEC_1010110110
@@ -17662,6 +20602,10 @@
     #undef EMP_BIN_TO_DEC_1010110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010110110
 
 #ifdef EMP_BIN_TO_DEC_1010110111
@@ -17686,6 +20630,10 @@
     #undef EMP_BIN_TO_DEC_1010110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010110111
 
 #ifdef EMP_BIN_TO_DEC_1010111000
@@ -17710,6 +20658,10 @@
     #undef EMP_BIN_TO_DEC_1010111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010111000
 
 #ifdef EMP_BIN_TO_DEC_1010111001
@@ -17734,6 +20686,10 @@
     #undef EMP_BIN_TO_DEC_1010111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010111001
 
 #ifdef EMP_BIN_TO_DEC_1010111010
@@ -17758,6 +20714,10 @@
     #undef EMP_BIN_TO_DEC_1010111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010111010
 
 #ifdef EMP_BIN_TO_DEC_1010111011
@@ -17782,6 +20742,10 @@
     #undef EMP_BIN_TO_DEC_1010111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010111011
 
 #ifdef EMP_BIN_TO_DEC_1010111100
@@ -17806,6 +20770,10 @@
     #undef EMP_BIN_TO_DEC_1010111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010111100
 
 #ifdef EMP_BIN_TO_DEC_1010111101
@@ -17830,6 +20798,10 @@
     #undef EMP_BIN_TO_DEC_1010111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010111101
 
 #ifdef EMP_BIN_TO_DEC_1010111110
@@ -17854,6 +20826,10 @@
     #undef EMP_BIN_TO_DEC_1010111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010111110
 
 #ifdef EMP_BIN_TO_DEC_1010111111
@@ -17878,6 +20854,10 @@
     #undef EMP_BIN_TO_DEC_1010111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1010111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1010111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1010111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1010111111
 
 #ifdef EMP_BIN_TO_DEC_1011000000
@@ -17902,6 +20882,10 @@
     #undef EMP_BIN_TO_DEC_1011000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011000000
 
 #ifdef EMP_BIN_TO_DEC_1011000001
@@ -17926,6 +20910,10 @@
     #undef EMP_BIN_TO_DEC_1011000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011000001
 
 #ifdef EMP_BIN_TO_DEC_1011000010
@@ -17950,6 +20938,10 @@
     #undef EMP_BIN_TO_DEC_1011000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011000010
 
 #ifdef EMP_BIN_TO_DEC_1011000011
@@ -17974,6 +20966,10 @@
     #undef EMP_BIN_TO_DEC_1011000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011000011
 
 #ifdef EMP_BIN_TO_DEC_1011000100
@@ -17998,6 +20994,10 @@
     #undef EMP_BIN_TO_DEC_1011000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011000100
 
 #ifdef EMP_BIN_TO_DEC_1011000101
@@ -18022,6 +21022,10 @@
     #undef EMP_BIN_TO_DEC_1011000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011000101
 
 #ifdef EMP_BIN_TO_DEC_1011000110
@@ -18046,6 +21050,10 @@
     #undef EMP_BIN_TO_DEC_1011000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011000110
 
 #ifdef EMP_BIN_TO_DEC_1011000111
@@ -18070,6 +21078,10 @@
     #undef EMP_BIN_TO_DEC_1011000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011000111
 
 #ifdef EMP_BIN_TO_DEC_1011001000
@@ -18094,6 +21106,10 @@
     #undef EMP_BIN_TO_DEC_1011001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011001000
 
 #ifdef EMP_BIN_TO_DEC_1011001001
@@ -18118,6 +21134,10 @@
     #undef EMP_BIN_TO_DEC_1011001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011001001
 
 #ifdef EMP_BIN_TO_DEC_1011001010
@@ -18142,6 +21162,10 @@
     #undef EMP_BIN_TO_DEC_1011001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011001010
 
 #ifdef EMP_BIN_TO_DEC_1011001011
@@ -18166,6 +21190,10 @@
     #undef EMP_BIN_TO_DEC_1011001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011001011
 
 #ifdef EMP_BIN_TO_DEC_1011001100
@@ -18190,6 +21218,10 @@
     #undef EMP_BIN_TO_DEC_1011001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011001100
 
 #ifdef EMP_BIN_TO_DEC_1011001101
@@ -18214,6 +21246,10 @@
     #undef EMP_BIN_TO_DEC_1011001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011001101
 
 #ifdef EMP_BIN_TO_DEC_1011001110
@@ -18238,6 +21274,10 @@
     #undef EMP_BIN_TO_DEC_1011001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011001110
 
 #ifdef EMP_BIN_TO_DEC_1011001111
@@ -18262,6 +21302,10 @@
     #undef EMP_BIN_TO_DEC_1011001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011001111
 
 #ifdef EMP_BIN_TO_DEC_1011010000
@@ -18286,6 +21330,10 @@
     #undef EMP_BIN_TO_DEC_1011010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011010000
 
 #ifdef EMP_BIN_TO_DEC_1011010001
@@ -18310,6 +21358,10 @@
     #undef EMP_BIN_TO_DEC_1011010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011010001
 
 #ifdef EMP_BIN_TO_DEC_1011010010
@@ -18334,6 +21386,10 @@
     #undef EMP_BIN_TO_DEC_1011010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011010010
 
 #ifdef EMP_BIN_TO_DEC_1011010011
@@ -18358,6 +21414,10 @@
     #undef EMP_BIN_TO_DEC_1011010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011010011
 
 #ifdef EMP_BIN_TO_DEC_1011010100
@@ -18382,6 +21442,10 @@
     #undef EMP_BIN_TO_DEC_1011010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011010100
 
 #ifdef EMP_BIN_TO_DEC_1011010101
@@ -18406,6 +21470,10 @@
     #undef EMP_BIN_TO_DEC_1011010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011010101
 
 #ifdef EMP_BIN_TO_DEC_1011010110
@@ -18430,6 +21498,10 @@
     #undef EMP_BIN_TO_DEC_1011010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011010110
 
 #ifdef EMP_BIN_TO_DEC_1011010111
@@ -18454,6 +21526,10 @@
     #undef EMP_BIN_TO_DEC_1011010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011010111
 
 #ifdef EMP_BIN_TO_DEC_1011011000
@@ -18478,6 +21554,10 @@
     #undef EMP_BIN_TO_DEC_1011011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011011000
 
 #ifdef EMP_BIN_TO_DEC_1011011001
@@ -18502,6 +21582,10 @@
     #undef EMP_BIN_TO_DEC_1011011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011011001
 
 #ifdef EMP_BIN_TO_DEC_1011011010
@@ -18526,6 +21610,10 @@
     #undef EMP_BIN_TO_DEC_1011011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011011010
 
 #ifdef EMP_BIN_TO_DEC_1011011011
@@ -18550,6 +21638,10 @@
     #undef EMP_BIN_TO_DEC_1011011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011011011
 
 #ifdef EMP_BIN_TO_DEC_1011011100
@@ -18574,6 +21666,10 @@
     #undef EMP_BIN_TO_DEC_1011011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011011100
 
 #ifdef EMP_BIN_TO_DEC_1011011101
@@ -18598,6 +21694,10 @@
     #undef EMP_BIN_TO_DEC_1011011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011011101
 
 #ifdef EMP_BIN_TO_DEC_1011011110
@@ -18622,6 +21722,10 @@
     #undef EMP_BIN_TO_DEC_1011011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011011110
 
 #ifdef EMP_BIN_TO_DEC_1011011111
@@ -18646,6 +21750,10 @@
     #undef EMP_BIN_TO_DEC_1011011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011011111
 
 #ifdef EMP_BIN_TO_DEC_1011100000
@@ -18670,6 +21778,10 @@
     #undef EMP_BIN_TO_DEC_1011100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011100000
 
 #ifdef EMP_BIN_TO_DEC_1011100001
@@ -18694,6 +21806,10 @@
     #undef EMP_BIN_TO_DEC_1011100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011100001
 
 #ifdef EMP_BIN_TO_DEC_1011100010
@@ -18718,6 +21834,10 @@
     #undef EMP_BIN_TO_DEC_1011100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011100010
 
 #ifdef EMP_BIN_TO_DEC_1011100011
@@ -18742,6 +21862,10 @@
     #undef EMP_BIN_TO_DEC_1011100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011100011
 
 #ifdef EMP_BIN_TO_DEC_1011100100
@@ -18766,6 +21890,10 @@
     #undef EMP_BIN_TO_DEC_1011100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011100100
 
 #ifdef EMP_BIN_TO_DEC_1011100101
@@ -18790,6 +21918,10 @@
     #undef EMP_BIN_TO_DEC_1011100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011100101
 
 #ifdef EMP_BIN_TO_DEC_1011100110
@@ -18814,6 +21946,10 @@
     #undef EMP_BIN_TO_DEC_1011100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011100110
 
 #ifdef EMP_BIN_TO_DEC_1011100111
@@ -18838,6 +21974,10 @@
     #undef EMP_BIN_TO_DEC_1011100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011100111
 
 #ifdef EMP_BIN_TO_DEC_1011101000
@@ -18862,6 +22002,10 @@
     #undef EMP_BIN_TO_DEC_1011101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011101000
 
 #ifdef EMP_BIN_TO_DEC_1011101001
@@ -18886,6 +22030,10 @@
     #undef EMP_BIN_TO_DEC_1011101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011101001
 
 #ifdef EMP_BIN_TO_DEC_1011101010
@@ -18910,6 +22058,10 @@
     #undef EMP_BIN_TO_DEC_1011101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011101010
 
 #ifdef EMP_BIN_TO_DEC_1011101011
@@ -18934,6 +22086,10 @@
     #undef EMP_BIN_TO_DEC_1011101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011101011
 
 #ifdef EMP_BIN_TO_DEC_1011101100
@@ -18958,6 +22114,10 @@
     #undef EMP_BIN_TO_DEC_1011101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011101100
 
 #ifdef EMP_BIN_TO_DEC_1011101101
@@ -18982,6 +22142,10 @@
     #undef EMP_BIN_TO_DEC_1011101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011101101
 
 #ifdef EMP_BIN_TO_DEC_1011101110
@@ -19006,6 +22170,10 @@
     #undef EMP_BIN_TO_DEC_1011101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011101110
 
 #ifdef EMP_BIN_TO_DEC_1011101111
@@ -19030,6 +22198,10 @@
     #undef EMP_BIN_TO_DEC_1011101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011101111
 
 #ifdef EMP_BIN_TO_DEC_1011110000
@@ -19054,6 +22226,10 @@
     #undef EMP_BIN_TO_DEC_1011110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011110000
 
 #ifdef EMP_BIN_TO_DEC_1011110001
@@ -19078,6 +22254,10 @@
     #undef EMP_BIN_TO_DEC_1011110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011110001
 
 #ifdef EMP_BIN_TO_DEC_1011110010
@@ -19102,6 +22282,10 @@
     #undef EMP_BIN_TO_DEC_1011110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011110010
 
 #ifdef EMP_BIN_TO_DEC_1011110011
@@ -19126,6 +22310,10 @@
     #undef EMP_BIN_TO_DEC_1011110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011110011
 
 #ifdef EMP_BIN_TO_DEC_1011110100
@@ -19150,6 +22338,10 @@
     #undef EMP_BIN_TO_DEC_1011110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011110100
 
 #ifdef EMP_BIN_TO_DEC_1011110101
@@ -19174,6 +22366,10 @@
     #undef EMP_BIN_TO_DEC_1011110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011110101
 
 #ifdef EMP_BIN_TO_DEC_1011110110
@@ -19198,6 +22394,10 @@
     #undef EMP_BIN_TO_DEC_1011110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011110110
 
 #ifdef EMP_BIN_TO_DEC_1011110111
@@ -19222,6 +22422,10 @@
     #undef EMP_BIN_TO_DEC_1011110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011110111
 
 #ifdef EMP_BIN_TO_DEC_1011111000
@@ -19246,6 +22450,10 @@
     #undef EMP_BIN_TO_DEC_1011111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011111000
 
 #ifdef EMP_BIN_TO_DEC_1011111001
@@ -19270,6 +22478,10 @@
     #undef EMP_BIN_TO_DEC_1011111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011111001
 
 #ifdef EMP_BIN_TO_DEC_1011111010
@@ -19294,6 +22506,10 @@
     #undef EMP_BIN_TO_DEC_1011111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011111010
 
 #ifdef EMP_BIN_TO_DEC_1011111011
@@ -19318,6 +22534,10 @@
     #undef EMP_BIN_TO_DEC_1011111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011111011
 
 #ifdef EMP_BIN_TO_DEC_1011111100
@@ -19342,6 +22562,10 @@
     #undef EMP_BIN_TO_DEC_1011111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011111100
 
 #ifdef EMP_BIN_TO_DEC_1011111101
@@ -19366,6 +22590,10 @@
     #undef EMP_BIN_TO_DEC_1011111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011111101
 
 #ifdef EMP_BIN_TO_DEC_1011111110
@@ -19390,6 +22618,10 @@
     #undef EMP_BIN_TO_DEC_1011111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011111110
 
 #ifdef EMP_BIN_TO_DEC_1011111111
@@ -19414,6 +22646,10 @@
     #undef EMP_BIN_TO_DEC_1011111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1011111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1011111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1011111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1011111111
 
 #ifdef EMP_BIN_TO_DEC_1100000000
@@ -19438,6 +22674,10 @@
     #undef EMP_BIN_TO_DEC_1100000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100000000
 
 #ifdef EMP_BIN_TO_DEC_1100000001
@@ -19462,6 +22702,10 @@
     #undef EMP_BIN_TO_DEC_1100000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100000001
 
 #ifdef EMP_BIN_TO_DEC_1100000010
@@ -19486,6 +22730,10 @@
     #undef EMP_BIN_TO_DEC_1100000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100000010
 
 #ifdef EMP_BIN_TO_DEC_1100000011
@@ -19510,6 +22758,10 @@
     #undef EMP_BIN_TO_DEC_1100000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100000011
 
 #ifdef EMP_BIN_TO_DEC_1100000100
@@ -19534,6 +22786,10 @@
     #undef EMP_BIN_TO_DEC_1100000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100000100
 
 #ifdef EMP_BIN_TO_DEC_1100000101
@@ -19558,6 +22814,10 @@
     #undef EMP_BIN_TO_DEC_1100000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100000101
 
 #ifdef EMP_BIN_TO_DEC_1100000110
@@ -19582,6 +22842,10 @@
     #undef EMP_BIN_TO_DEC_1100000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100000110
 
 #ifdef EMP_BIN_TO_DEC_1100000111
@@ -19606,6 +22870,10 @@
     #undef EMP_BIN_TO_DEC_1100000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100000111
 
 #ifdef EMP_BIN_TO_DEC_1100001000
@@ -19630,6 +22898,10 @@
     #undef EMP_BIN_TO_DEC_1100001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100001000
 
 #ifdef EMP_BIN_TO_DEC_1100001001
@@ -19654,6 +22926,10 @@
     #undef EMP_BIN_TO_DEC_1100001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100001001
 
 #ifdef EMP_BIN_TO_DEC_1100001010
@@ -19678,6 +22954,10 @@
     #undef EMP_BIN_TO_DEC_1100001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100001010
 
 #ifdef EMP_BIN_TO_DEC_1100001011
@@ -19702,6 +22982,10 @@
     #undef EMP_BIN_TO_DEC_1100001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100001011
 
 #ifdef EMP_BIN_TO_DEC_1100001100
@@ -19726,6 +23010,10 @@
     #undef EMP_BIN_TO_DEC_1100001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100001100
 
 #ifdef EMP_BIN_TO_DEC_1100001101
@@ -19750,6 +23038,10 @@
     #undef EMP_BIN_TO_DEC_1100001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100001101
 
 #ifdef EMP_BIN_TO_DEC_1100001110
@@ -19774,6 +23066,10 @@
     #undef EMP_BIN_TO_DEC_1100001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100001110
 
 #ifdef EMP_BIN_TO_DEC_1100001111
@@ -19798,6 +23094,10 @@
     #undef EMP_BIN_TO_DEC_1100001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100001111
 
 #ifdef EMP_BIN_TO_DEC_1100010000
@@ -19822,6 +23122,10 @@
     #undef EMP_BIN_TO_DEC_1100010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100010000
 
 #ifdef EMP_BIN_TO_DEC_1100010001
@@ -19846,6 +23150,10 @@
     #undef EMP_BIN_TO_DEC_1100010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100010001
 
 #ifdef EMP_BIN_TO_DEC_1100010010
@@ -19870,6 +23178,10 @@
     #undef EMP_BIN_TO_DEC_1100010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100010010
 
 #ifdef EMP_BIN_TO_DEC_1100010011
@@ -19894,6 +23206,10 @@
     #undef EMP_BIN_TO_DEC_1100010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100010011
 
 #ifdef EMP_BIN_TO_DEC_1100010100
@@ -19918,6 +23234,10 @@
     #undef EMP_BIN_TO_DEC_1100010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100010100
 
 #ifdef EMP_BIN_TO_DEC_1100010101
@@ -19942,6 +23262,10 @@
     #undef EMP_BIN_TO_DEC_1100010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100010101
 
 #ifdef EMP_BIN_TO_DEC_1100010110
@@ -19966,6 +23290,10 @@
     #undef EMP_BIN_TO_DEC_1100010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100010110
 
 #ifdef EMP_BIN_TO_DEC_1100010111
@@ -19990,6 +23318,10 @@
     #undef EMP_BIN_TO_DEC_1100010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100010111
 
 #ifdef EMP_BIN_TO_DEC_1100011000
@@ -20014,6 +23346,10 @@
     #undef EMP_BIN_TO_DEC_1100011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100011000
 
 #ifdef EMP_BIN_TO_DEC_1100011001
@@ -20038,6 +23374,10 @@
     #undef EMP_BIN_TO_DEC_1100011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100011001
 
 #ifdef EMP_BIN_TO_DEC_1100011010
@@ -20062,6 +23402,10 @@
     #undef EMP_BIN_TO_DEC_1100011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100011010
 
 #ifdef EMP_BIN_TO_DEC_1100011011
@@ -20086,6 +23430,10 @@
     #undef EMP_BIN_TO_DEC_1100011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100011011
 
 #ifdef EMP_BIN_TO_DEC_1100011100
@@ -20110,6 +23458,10 @@
     #undef EMP_BIN_TO_DEC_1100011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100011100
 
 #ifdef EMP_BIN_TO_DEC_1100011101
@@ -20134,6 +23486,10 @@
     #undef EMP_BIN_TO_DEC_1100011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100011101
 
 #ifdef EMP_BIN_TO_DEC_1100011110
@@ -20158,6 +23514,10 @@
     #undef EMP_BIN_TO_DEC_1100011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100011110
 
 #ifdef EMP_BIN_TO_DEC_1100011111
@@ -20182,6 +23542,10 @@
     #undef EMP_BIN_TO_DEC_1100011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100011111
 
 #ifdef EMP_BIN_TO_DEC_1100100000
@@ -20206,6 +23570,10 @@
     #undef EMP_BIN_TO_DEC_1100100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100100000
 
 #ifdef EMP_BIN_TO_DEC_1100100001
@@ -20230,6 +23598,10 @@
     #undef EMP_BIN_TO_DEC_1100100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100100001
 
 #ifdef EMP_BIN_TO_DEC_1100100010
@@ -20254,6 +23626,10 @@
     #undef EMP_BIN_TO_DEC_1100100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100100010
 
 #ifdef EMP_BIN_TO_DEC_1100100011
@@ -20278,6 +23654,10 @@
     #undef EMP_BIN_TO_DEC_1100100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100100011
 
 #ifdef EMP_BIN_TO_DEC_1100100100
@@ -20302,6 +23682,10 @@
     #undef EMP_BIN_TO_DEC_1100100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100100100
 
 #ifdef EMP_BIN_TO_DEC_1100100101
@@ -20326,6 +23710,10 @@
     #undef EMP_BIN_TO_DEC_1100100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100100101
 
 #ifdef EMP_BIN_TO_DEC_1100100110
@@ -20350,6 +23738,10 @@
     #undef EMP_BIN_TO_DEC_1100100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100100110
 
 #ifdef EMP_BIN_TO_DEC_1100100111
@@ -20374,6 +23766,10 @@
     #undef EMP_BIN_TO_DEC_1100100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100100111
 
 #ifdef EMP_BIN_TO_DEC_1100101000
@@ -20398,6 +23794,10 @@
     #undef EMP_BIN_TO_DEC_1100101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100101000
 
 #ifdef EMP_BIN_TO_DEC_1100101001
@@ -20422,6 +23822,10 @@
     #undef EMP_BIN_TO_DEC_1100101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100101001
 
 #ifdef EMP_BIN_TO_DEC_1100101010
@@ -20446,6 +23850,10 @@
     #undef EMP_BIN_TO_DEC_1100101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100101010
 
 #ifdef EMP_BIN_TO_DEC_1100101011
@@ -20470,6 +23878,10 @@
     #undef EMP_BIN_TO_DEC_1100101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100101011
 
 #ifdef EMP_BIN_TO_DEC_1100101100
@@ -20494,6 +23906,10 @@
     #undef EMP_BIN_TO_DEC_1100101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100101100
 
 #ifdef EMP_BIN_TO_DEC_1100101101
@@ -20518,6 +23934,10 @@
     #undef EMP_BIN_TO_DEC_1100101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100101101
 
 #ifdef EMP_BIN_TO_DEC_1100101110
@@ -20542,6 +23962,10 @@
     #undef EMP_BIN_TO_DEC_1100101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100101110
 
 #ifdef EMP_BIN_TO_DEC_1100101111
@@ -20566,6 +23990,10 @@
     #undef EMP_BIN_TO_DEC_1100101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100101111
 
 #ifdef EMP_BIN_TO_DEC_1100110000
@@ -20590,6 +24018,10 @@
     #undef EMP_BIN_TO_DEC_1100110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100110000
 
 #ifdef EMP_BIN_TO_DEC_1100110001
@@ -20614,6 +24046,10 @@
     #undef EMP_BIN_TO_DEC_1100110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100110001
 
 #ifdef EMP_BIN_TO_DEC_1100110010
@@ -20638,6 +24074,10 @@
     #undef EMP_BIN_TO_DEC_1100110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100110010
 
 #ifdef EMP_BIN_TO_DEC_1100110011
@@ -20662,6 +24102,10 @@
     #undef EMP_BIN_TO_DEC_1100110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100110011
 
 #ifdef EMP_BIN_TO_DEC_1100110100
@@ -20686,6 +24130,10 @@
     #undef EMP_BIN_TO_DEC_1100110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100110100
 
 #ifdef EMP_BIN_TO_DEC_1100110101
@@ -20710,6 +24158,10 @@
     #undef EMP_BIN_TO_DEC_1100110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100110101
 
 #ifdef EMP_BIN_TO_DEC_1100110110
@@ -20734,6 +24186,10 @@
     #undef EMP_BIN_TO_DEC_1100110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100110110
 
 #ifdef EMP_BIN_TO_DEC_1100110111
@@ -20758,6 +24214,10 @@
     #undef EMP_BIN_TO_DEC_1100110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100110111
 
 #ifdef EMP_BIN_TO_DEC_1100111000
@@ -20782,6 +24242,10 @@
     #undef EMP_BIN_TO_DEC_1100111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100111000
 
 #ifdef EMP_BIN_TO_DEC_1100111001
@@ -20806,6 +24270,10 @@
     #undef EMP_BIN_TO_DEC_1100111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100111001
 
 #ifdef EMP_BIN_TO_DEC_1100111010
@@ -20830,6 +24298,10 @@
     #undef EMP_BIN_TO_DEC_1100111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100111010
 
 #ifdef EMP_BIN_TO_DEC_1100111011
@@ -20854,6 +24326,10 @@
     #undef EMP_BIN_TO_DEC_1100111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100111011
 
 #ifdef EMP_BIN_TO_DEC_1100111100
@@ -20878,6 +24354,10 @@
     #undef EMP_BIN_TO_DEC_1100111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100111100
 
 #ifdef EMP_BIN_TO_DEC_1100111101
@@ -20902,6 +24382,10 @@
     #undef EMP_BIN_TO_DEC_1100111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100111101
 
 #ifdef EMP_BIN_TO_DEC_1100111110
@@ -20926,6 +24410,10 @@
     #undef EMP_BIN_TO_DEC_1100111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100111110
 
 #ifdef EMP_BIN_TO_DEC_1100111111
@@ -20950,6 +24438,10 @@
     #undef EMP_BIN_TO_DEC_1100111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1100111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1100111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1100111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1100111111
 
 #ifdef EMP_BIN_TO_DEC_1101000000
@@ -20974,6 +24466,10 @@
     #undef EMP_BIN_TO_DEC_1101000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101000000
 
 #ifdef EMP_BIN_TO_DEC_1101000001
@@ -20998,6 +24494,10 @@
     #undef EMP_BIN_TO_DEC_1101000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101000001
 
 #ifdef EMP_BIN_TO_DEC_1101000010
@@ -21022,6 +24522,10 @@
     #undef EMP_BIN_TO_DEC_1101000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101000010
 
 #ifdef EMP_BIN_TO_DEC_1101000011
@@ -21046,6 +24550,10 @@
     #undef EMP_BIN_TO_DEC_1101000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101000011
 
 #ifdef EMP_BIN_TO_DEC_1101000100
@@ -21070,6 +24578,10 @@
     #undef EMP_BIN_TO_DEC_1101000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101000100
 
 #ifdef EMP_BIN_TO_DEC_1101000101
@@ -21094,6 +24606,10 @@
     #undef EMP_BIN_TO_DEC_1101000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101000101
 
 #ifdef EMP_BIN_TO_DEC_1101000110
@@ -21118,6 +24634,10 @@
     #undef EMP_BIN_TO_DEC_1101000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101000110
 
 #ifdef EMP_BIN_TO_DEC_1101000111
@@ -21142,6 +24662,10 @@
     #undef EMP_BIN_TO_DEC_1101000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101000111
 
 #ifdef EMP_BIN_TO_DEC_1101001000
@@ -21166,6 +24690,10 @@
     #undef EMP_BIN_TO_DEC_1101001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101001000
 
 #ifdef EMP_BIN_TO_DEC_1101001001
@@ -21190,6 +24718,10 @@
     #undef EMP_BIN_TO_DEC_1101001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101001001
 
 #ifdef EMP_BIN_TO_DEC_1101001010
@@ -21214,6 +24746,10 @@
     #undef EMP_BIN_TO_DEC_1101001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101001010
 
 #ifdef EMP_BIN_TO_DEC_1101001011
@@ -21238,6 +24774,10 @@
     #undef EMP_BIN_TO_DEC_1101001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101001011
 
 #ifdef EMP_BIN_TO_DEC_1101001100
@@ -21262,6 +24802,10 @@
     #undef EMP_BIN_TO_DEC_1101001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101001100
 
 #ifdef EMP_BIN_TO_DEC_1101001101
@@ -21286,6 +24830,10 @@
     #undef EMP_BIN_TO_DEC_1101001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101001101
 
 #ifdef EMP_BIN_TO_DEC_1101001110
@@ -21310,6 +24858,10 @@
     #undef EMP_BIN_TO_DEC_1101001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101001110
 
 #ifdef EMP_BIN_TO_DEC_1101001111
@@ -21334,6 +24886,10 @@
     #undef EMP_BIN_TO_DEC_1101001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101001111
 
 #ifdef EMP_BIN_TO_DEC_1101010000
@@ -21358,6 +24914,10 @@
     #undef EMP_BIN_TO_DEC_1101010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101010000
 
 #ifdef EMP_BIN_TO_DEC_1101010001
@@ -21382,6 +24942,10 @@
     #undef EMP_BIN_TO_DEC_1101010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101010001
 
 #ifdef EMP_BIN_TO_DEC_1101010010
@@ -21406,6 +24970,10 @@
     #undef EMP_BIN_TO_DEC_1101010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101010010
 
 #ifdef EMP_BIN_TO_DEC_1101010011
@@ -21430,6 +24998,10 @@
     #undef EMP_BIN_TO_DEC_1101010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101010011
 
 #ifdef EMP_BIN_TO_DEC_1101010100
@@ -21454,6 +25026,10 @@
     #undef EMP_BIN_TO_DEC_1101010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101010100
 
 #ifdef EMP_BIN_TO_DEC_1101010101
@@ -21478,6 +25054,10 @@
     #undef EMP_BIN_TO_DEC_1101010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101010101
 
 #ifdef EMP_BIN_TO_DEC_1101010110
@@ -21502,6 +25082,10 @@
     #undef EMP_BIN_TO_DEC_1101010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101010110
 
 #ifdef EMP_BIN_TO_DEC_1101010111
@@ -21526,6 +25110,10 @@
     #undef EMP_BIN_TO_DEC_1101010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101010111
 
 #ifdef EMP_BIN_TO_DEC_1101011000
@@ -21550,6 +25138,10 @@
     #undef EMP_BIN_TO_DEC_1101011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101011000
 
 #ifdef EMP_BIN_TO_DEC_1101011001
@@ -21574,6 +25166,10 @@
     #undef EMP_BIN_TO_DEC_1101011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101011001
 
 #ifdef EMP_BIN_TO_DEC_1101011010
@@ -21598,6 +25194,10 @@
     #undef EMP_BIN_TO_DEC_1101011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101011010
 
 #ifdef EMP_BIN_TO_DEC_1101011011
@@ -21622,6 +25222,10 @@
     #undef EMP_BIN_TO_DEC_1101011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101011011
 
 #ifdef EMP_BIN_TO_DEC_1101011100
@@ -21646,6 +25250,10 @@
     #undef EMP_BIN_TO_DEC_1101011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101011100
 
 #ifdef EMP_BIN_TO_DEC_1101011101
@@ -21670,6 +25278,10 @@
     #undef EMP_BIN_TO_DEC_1101011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101011101
 
 #ifdef EMP_BIN_TO_DEC_1101011110
@@ -21694,6 +25306,10 @@
     #undef EMP_BIN_TO_DEC_1101011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101011110
 
 #ifdef EMP_BIN_TO_DEC_1101011111
@@ -21718,6 +25334,10 @@
     #undef EMP_BIN_TO_DEC_1101011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101011111
 
 #ifdef EMP_BIN_TO_DEC_1101100000
@@ -21742,6 +25362,10 @@
     #undef EMP_BIN_TO_DEC_1101100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101100000
 
 #ifdef EMP_BIN_TO_DEC_1101100001
@@ -21766,6 +25390,10 @@
     #undef EMP_BIN_TO_DEC_1101100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101100001
 
 #ifdef EMP_BIN_TO_DEC_1101100010
@@ -21790,6 +25418,10 @@
     #undef EMP_BIN_TO_DEC_1101100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101100010
 
 #ifdef EMP_BIN_TO_DEC_1101100011
@@ -21814,6 +25446,10 @@
     #undef EMP_BIN_TO_DEC_1101100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101100011
 
 #ifdef EMP_BIN_TO_DEC_1101100100
@@ -21838,6 +25474,10 @@
     #undef EMP_BIN_TO_DEC_1101100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101100100
 
 #ifdef EMP_BIN_TO_DEC_1101100101
@@ -21862,6 +25502,10 @@
     #undef EMP_BIN_TO_DEC_1101100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101100101
 
 #ifdef EMP_BIN_TO_DEC_1101100110
@@ -21886,6 +25530,10 @@
     #undef EMP_BIN_TO_DEC_1101100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101100110
 
 #ifdef EMP_BIN_TO_DEC_1101100111
@@ -21910,6 +25558,10 @@
     #undef EMP_BIN_TO_DEC_1101100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101100111
 
 #ifdef EMP_BIN_TO_DEC_1101101000
@@ -21934,6 +25586,10 @@
     #undef EMP_BIN_TO_DEC_1101101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101101000
 
 #ifdef EMP_BIN_TO_DEC_1101101001
@@ -21958,6 +25614,10 @@
     #undef EMP_BIN_TO_DEC_1101101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101101001
 
 #ifdef EMP_BIN_TO_DEC_1101101010
@@ -21982,6 +25642,10 @@
     #undef EMP_BIN_TO_DEC_1101101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101101010
 
 #ifdef EMP_BIN_TO_DEC_1101101011
@@ -22006,6 +25670,10 @@
     #undef EMP_BIN_TO_DEC_1101101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101101011
 
 #ifdef EMP_BIN_TO_DEC_1101101100
@@ -22030,6 +25698,10 @@
     #undef EMP_BIN_TO_DEC_1101101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101101100
 
 #ifdef EMP_BIN_TO_DEC_1101101101
@@ -22054,6 +25726,10 @@
     #undef EMP_BIN_TO_DEC_1101101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101101101
 
 #ifdef EMP_BIN_TO_DEC_1101101110
@@ -22078,6 +25754,10 @@
     #undef EMP_BIN_TO_DEC_1101101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101101110
 
 #ifdef EMP_BIN_TO_DEC_1101101111
@@ -22102,6 +25782,10 @@
     #undef EMP_BIN_TO_DEC_1101101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101101111
 
 #ifdef EMP_BIN_TO_DEC_1101110000
@@ -22126,6 +25810,10 @@
     #undef EMP_BIN_TO_DEC_1101110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101110000
 
 #ifdef EMP_BIN_TO_DEC_1101110001
@@ -22150,6 +25838,10 @@
     #undef EMP_BIN_TO_DEC_1101110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101110001
 
 #ifdef EMP_BIN_TO_DEC_1101110010
@@ -22174,6 +25866,10 @@
     #undef EMP_BIN_TO_DEC_1101110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101110010
 
 #ifdef EMP_BIN_TO_DEC_1101110011
@@ -22198,6 +25894,10 @@
     #undef EMP_BIN_TO_DEC_1101110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101110011
 
 #ifdef EMP_BIN_TO_DEC_1101110100
@@ -22222,6 +25922,10 @@
     #undef EMP_BIN_TO_DEC_1101110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101110100
 
 #ifdef EMP_BIN_TO_DEC_1101110101
@@ -22246,6 +25950,10 @@
     #undef EMP_BIN_TO_DEC_1101110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101110101
 
 #ifdef EMP_BIN_TO_DEC_1101110110
@@ -22270,6 +25978,10 @@
     #undef EMP_BIN_TO_DEC_1101110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101110110
 
 #ifdef EMP_BIN_TO_DEC_1101110111
@@ -22294,6 +26006,10 @@
     #undef EMP_BIN_TO_DEC_1101110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101110111
 
 #ifdef EMP_BIN_TO_DEC_1101111000
@@ -22318,6 +26034,10 @@
     #undef EMP_BIN_TO_DEC_1101111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101111000
 
 #ifdef EMP_BIN_TO_DEC_1101111001
@@ -22342,6 +26062,10 @@
     #undef EMP_BIN_TO_DEC_1101111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101111001
 
 #ifdef EMP_BIN_TO_DEC_1101111010
@@ -22366,6 +26090,10 @@
     #undef EMP_BIN_TO_DEC_1101111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101111010
 
 #ifdef EMP_BIN_TO_DEC_1101111011
@@ -22390,6 +26118,10 @@
     #undef EMP_BIN_TO_DEC_1101111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101111011
 
 #ifdef EMP_BIN_TO_DEC_1101111100
@@ -22414,6 +26146,10 @@
     #undef EMP_BIN_TO_DEC_1101111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101111100
 
 #ifdef EMP_BIN_TO_DEC_1101111101
@@ -22438,6 +26174,10 @@
     #undef EMP_BIN_TO_DEC_1101111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101111101
 
 #ifdef EMP_BIN_TO_DEC_1101111110
@@ -22462,6 +26202,10 @@
     #undef EMP_BIN_TO_DEC_1101111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101111110
 
 #ifdef EMP_BIN_TO_DEC_1101111111
@@ -22486,6 +26230,10 @@
     #undef EMP_BIN_TO_DEC_1101111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1101111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1101111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1101111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1101111111
 
 #ifdef EMP_BIN_TO_DEC_1110000000
@@ -22510,6 +26258,10 @@
     #undef EMP_BIN_TO_DEC_1110000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110000000
 
 #ifdef EMP_BIN_TO_DEC_1110000001
@@ -22534,6 +26286,10 @@
     #undef EMP_BIN_TO_DEC_1110000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110000001
 
 #ifdef EMP_BIN_TO_DEC_1110000010
@@ -22558,6 +26314,10 @@
     #undef EMP_BIN_TO_DEC_1110000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110000010
 
 #ifdef EMP_BIN_TO_DEC_1110000011
@@ -22582,6 +26342,10 @@
     #undef EMP_BIN_TO_DEC_1110000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110000011
 
 #ifdef EMP_BIN_TO_DEC_1110000100
@@ -22606,6 +26370,10 @@
     #undef EMP_BIN_TO_DEC_1110000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110000100
 
 #ifdef EMP_BIN_TO_DEC_1110000101
@@ -22630,6 +26398,10 @@
     #undef EMP_BIN_TO_DEC_1110000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110000101
 
 #ifdef EMP_BIN_TO_DEC_1110000110
@@ -22654,6 +26426,10 @@
     #undef EMP_BIN_TO_DEC_1110000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110000110
 
 #ifdef EMP_BIN_TO_DEC_1110000111
@@ -22678,6 +26454,10 @@
     #undef EMP_BIN_TO_DEC_1110000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110000111
 
 #ifdef EMP_BIN_TO_DEC_1110001000
@@ -22702,6 +26482,10 @@
     #undef EMP_BIN_TO_DEC_1110001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110001000
 
 #ifdef EMP_BIN_TO_DEC_1110001001
@@ -22726,6 +26510,10 @@
     #undef EMP_BIN_TO_DEC_1110001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110001001
 
 #ifdef EMP_BIN_TO_DEC_1110001010
@@ -22750,6 +26538,10 @@
     #undef EMP_BIN_TO_DEC_1110001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110001010
 
 #ifdef EMP_BIN_TO_DEC_1110001011
@@ -22774,6 +26566,10 @@
     #undef EMP_BIN_TO_DEC_1110001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110001011
 
 #ifdef EMP_BIN_TO_DEC_1110001100
@@ -22798,6 +26594,10 @@
     #undef EMP_BIN_TO_DEC_1110001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110001100
 
 #ifdef EMP_BIN_TO_DEC_1110001101
@@ -22822,6 +26622,10 @@
     #undef EMP_BIN_TO_DEC_1110001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110001101
 
 #ifdef EMP_BIN_TO_DEC_1110001110
@@ -22846,6 +26650,10 @@
     #undef EMP_BIN_TO_DEC_1110001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110001110
 
 #ifdef EMP_BIN_TO_DEC_1110001111
@@ -22870,6 +26678,10 @@
     #undef EMP_BIN_TO_DEC_1110001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110001111
 
 #ifdef EMP_BIN_TO_DEC_1110010000
@@ -22894,6 +26706,10 @@
     #undef EMP_BIN_TO_DEC_1110010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110010000
 
 #ifdef EMP_BIN_TO_DEC_1110010001
@@ -22918,6 +26734,10 @@
     #undef EMP_BIN_TO_DEC_1110010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110010001
 
 #ifdef EMP_BIN_TO_DEC_1110010010
@@ -22942,6 +26762,10 @@
     #undef EMP_BIN_TO_DEC_1110010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110010010
 
 #ifdef EMP_BIN_TO_DEC_1110010011
@@ -22966,6 +26790,10 @@
     #undef EMP_BIN_TO_DEC_1110010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110010011
 
 #ifdef EMP_BIN_TO_DEC_1110010100
@@ -22990,6 +26818,10 @@
     #undef EMP_BIN_TO_DEC_1110010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110010100
 
 #ifdef EMP_BIN_TO_DEC_1110010101
@@ -23014,6 +26846,10 @@
     #undef EMP_BIN_TO_DEC_1110010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110010101
 
 #ifdef EMP_BIN_TO_DEC_1110010110
@@ -23038,6 +26874,10 @@
     #undef EMP_BIN_TO_DEC_1110010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110010110
 
 #ifdef EMP_BIN_TO_DEC_1110010111
@@ -23062,6 +26902,10 @@
     #undef EMP_BIN_TO_DEC_1110010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110010111
 
 #ifdef EMP_BIN_TO_DEC_1110011000
@@ -23086,6 +26930,10 @@
     #undef EMP_BIN_TO_DEC_1110011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110011000
 
 #ifdef EMP_BIN_TO_DEC_1110011001
@@ -23110,6 +26958,10 @@
     #undef EMP_BIN_TO_DEC_1110011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110011001
 
 #ifdef EMP_BIN_TO_DEC_1110011010
@@ -23134,6 +26986,10 @@
     #undef EMP_BIN_TO_DEC_1110011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110011010
 
 #ifdef EMP_BIN_TO_DEC_1110011011
@@ -23158,6 +27014,10 @@
     #undef EMP_BIN_TO_DEC_1110011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110011011
 
 #ifdef EMP_BIN_TO_DEC_1110011100
@@ -23182,6 +27042,10 @@
     #undef EMP_BIN_TO_DEC_1110011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110011100
 
 #ifdef EMP_BIN_TO_DEC_1110011101
@@ -23206,6 +27070,10 @@
     #undef EMP_BIN_TO_DEC_1110011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110011101
 
 #ifdef EMP_BIN_TO_DEC_1110011110
@@ -23230,6 +27098,10 @@
     #undef EMP_BIN_TO_DEC_1110011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110011110
 
 #ifdef EMP_BIN_TO_DEC_1110011111
@@ -23254,6 +27126,10 @@
     #undef EMP_BIN_TO_DEC_1110011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110011111
 
 #ifdef EMP_BIN_TO_DEC_1110100000
@@ -23278,6 +27154,10 @@
     #undef EMP_BIN_TO_DEC_1110100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110100000
 
 #ifdef EMP_BIN_TO_DEC_1110100001
@@ -23302,6 +27182,10 @@
     #undef EMP_BIN_TO_DEC_1110100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110100001
 
 #ifdef EMP_BIN_TO_DEC_1110100010
@@ -23326,6 +27210,10 @@
     #undef EMP_BIN_TO_DEC_1110100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110100010
 
 #ifdef EMP_BIN_TO_DEC_1110100011
@@ -23350,6 +27238,10 @@
     #undef EMP_BIN_TO_DEC_1110100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110100011
 
 #ifdef EMP_BIN_TO_DEC_1110100100
@@ -23374,6 +27266,10 @@
     #undef EMP_BIN_TO_DEC_1110100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110100100
 
 #ifdef EMP_BIN_TO_DEC_1110100101
@@ -23398,6 +27294,10 @@
     #undef EMP_BIN_TO_DEC_1110100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110100101
 
 #ifdef EMP_BIN_TO_DEC_1110100110
@@ -23422,6 +27322,10 @@
     #undef EMP_BIN_TO_DEC_1110100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110100110
 
 #ifdef EMP_BIN_TO_DEC_1110100111
@@ -23446,6 +27350,10 @@
     #undef EMP_BIN_TO_DEC_1110100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110100111
 
 #ifdef EMP_BIN_TO_DEC_1110101000
@@ -23470,6 +27378,10 @@
     #undef EMP_BIN_TO_DEC_1110101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110101000
 
 #ifdef EMP_BIN_TO_DEC_1110101001
@@ -23494,6 +27406,10 @@
     #undef EMP_BIN_TO_DEC_1110101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110101001
 
 #ifdef EMP_BIN_TO_DEC_1110101010
@@ -23518,6 +27434,10 @@
     #undef EMP_BIN_TO_DEC_1110101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110101010
 
 #ifdef EMP_BIN_TO_DEC_1110101011
@@ -23542,6 +27462,10 @@
     #undef EMP_BIN_TO_DEC_1110101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110101011
 
 #ifdef EMP_BIN_TO_DEC_1110101100
@@ -23566,6 +27490,10 @@
     #undef EMP_BIN_TO_DEC_1110101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110101100
 
 #ifdef EMP_BIN_TO_DEC_1110101101
@@ -23590,6 +27518,10 @@
     #undef EMP_BIN_TO_DEC_1110101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110101101
 
 #ifdef EMP_BIN_TO_DEC_1110101110
@@ -23614,6 +27546,10 @@
     #undef EMP_BIN_TO_DEC_1110101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110101110
 
 #ifdef EMP_BIN_TO_DEC_1110101111
@@ -23638,6 +27574,10 @@
     #undef EMP_BIN_TO_DEC_1110101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110101111
 
 #ifdef EMP_BIN_TO_DEC_1110110000
@@ -23662,6 +27602,10 @@
     #undef EMP_BIN_TO_DEC_1110110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110110000
 
 #ifdef EMP_BIN_TO_DEC_1110110001
@@ -23686,6 +27630,10 @@
     #undef EMP_BIN_TO_DEC_1110110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110110001
 
 #ifdef EMP_BIN_TO_DEC_1110110010
@@ -23710,6 +27658,10 @@
     #undef EMP_BIN_TO_DEC_1110110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110110010
 
 #ifdef EMP_BIN_TO_DEC_1110110011
@@ -23734,6 +27686,10 @@
     #undef EMP_BIN_TO_DEC_1110110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110110011
 
 #ifdef EMP_BIN_TO_DEC_1110110100
@@ -23758,6 +27714,10 @@
     #undef EMP_BIN_TO_DEC_1110110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110110100
 
 #ifdef EMP_BIN_TO_DEC_1110110101
@@ -23782,6 +27742,10 @@
     #undef EMP_BIN_TO_DEC_1110110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110110101
 
 #ifdef EMP_BIN_TO_DEC_1110110110
@@ -23806,6 +27770,10 @@
     #undef EMP_BIN_TO_DEC_1110110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110110110
 
 #ifdef EMP_BIN_TO_DEC_1110110111
@@ -23830,6 +27798,10 @@
     #undef EMP_BIN_TO_DEC_1110110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110110111
 
 #ifdef EMP_BIN_TO_DEC_1110111000
@@ -23854,6 +27826,10 @@
     #undef EMP_BIN_TO_DEC_1110111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110111000
 
 #ifdef EMP_BIN_TO_DEC_1110111001
@@ -23878,6 +27854,10 @@
     #undef EMP_BIN_TO_DEC_1110111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110111001
 
 #ifdef EMP_BIN_TO_DEC_1110111010
@@ -23902,6 +27882,10 @@
     #undef EMP_BIN_TO_DEC_1110111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110111010
 
 #ifdef EMP_BIN_TO_DEC_1110111011
@@ -23926,6 +27910,10 @@
     #undef EMP_BIN_TO_DEC_1110111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110111011
 
 #ifdef EMP_BIN_TO_DEC_1110111100
@@ -23950,6 +27938,10 @@
     #undef EMP_BIN_TO_DEC_1110111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110111100
 
 #ifdef EMP_BIN_TO_DEC_1110111101
@@ -23974,6 +27966,10 @@
     #undef EMP_BIN_TO_DEC_1110111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110111101
 
 #ifdef EMP_BIN_TO_DEC_1110111110
@@ -23998,6 +27994,10 @@
     #undef EMP_BIN_TO_DEC_1110111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110111110
 
 #ifdef EMP_BIN_TO_DEC_1110111111
@@ -24022,6 +28022,10 @@
     #undef EMP_BIN_TO_DEC_1110111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1110111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1110111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1110111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1110111111
 
 #ifdef EMP_BIN_TO_DEC_1111000000
@@ -24046,6 +28050,10 @@
     #undef EMP_BIN_TO_DEC_1111000000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111000000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111000000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111000000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111000000
 
 #ifdef EMP_BIN_TO_DEC_1111000001
@@ -24070,6 +28078,10 @@
     #undef EMP_BIN_TO_DEC_1111000001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111000001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111000001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111000001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111000001
 
 #ifdef EMP_BIN_TO_DEC_1111000010
@@ -24094,6 +28106,10 @@
     #undef EMP_BIN_TO_DEC_1111000010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111000010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111000010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111000010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111000010
 
 #ifdef EMP_BIN_TO_DEC_1111000011
@@ -24118,6 +28134,10 @@
     #undef EMP_BIN_TO_DEC_1111000011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111000011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111000011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111000011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111000011
 
 #ifdef EMP_BIN_TO_DEC_1111000100
@@ -24142,6 +28162,10 @@
     #undef EMP_BIN_TO_DEC_1111000100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111000100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111000100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111000100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111000100
 
 #ifdef EMP_BIN_TO_DEC_1111000101
@@ -24166,6 +28190,10 @@
     #undef EMP_BIN_TO_DEC_1111000101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111000101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111000101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111000101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111000101
 
 #ifdef EMP_BIN_TO_DEC_1111000110
@@ -24190,6 +28218,10 @@
     #undef EMP_BIN_TO_DEC_1111000110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111000110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111000110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111000110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111000110
 
 #ifdef EMP_BIN_TO_DEC_1111000111
@@ -24214,6 +28246,10 @@
     #undef EMP_BIN_TO_DEC_1111000111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111000111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111000111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111000111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111000111
 
 #ifdef EMP_BIN_TO_DEC_1111001000
@@ -24238,6 +28274,10 @@
     #undef EMP_BIN_TO_DEC_1111001000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111001000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111001000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111001000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111001000
 
 #ifdef EMP_BIN_TO_DEC_1111001001
@@ -24262,6 +28302,10 @@
     #undef EMP_BIN_TO_DEC_1111001001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111001001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111001001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111001001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111001001
 
 #ifdef EMP_BIN_TO_DEC_1111001010
@@ -24286,6 +28330,10 @@
     #undef EMP_BIN_TO_DEC_1111001010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111001010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111001010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111001010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111001010
 
 #ifdef EMP_BIN_TO_DEC_1111001011
@@ -24310,6 +28358,10 @@
     #undef EMP_BIN_TO_DEC_1111001011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111001011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111001011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111001011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111001011
 
 #ifdef EMP_BIN_TO_DEC_1111001100
@@ -24334,6 +28386,10 @@
     #undef EMP_BIN_TO_DEC_1111001100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111001100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111001100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111001100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111001100
 
 #ifdef EMP_BIN_TO_DEC_1111001101
@@ -24358,6 +28414,10 @@
     #undef EMP_BIN_TO_DEC_1111001101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111001101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111001101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111001101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111001101
 
 #ifdef EMP_BIN_TO_DEC_1111001110
@@ -24382,6 +28442,10 @@
     #undef EMP_BIN_TO_DEC_1111001110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111001110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111001110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111001110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111001110
 
 #ifdef EMP_BIN_TO_DEC_1111001111
@@ -24406,6 +28470,10 @@
     #undef EMP_BIN_TO_DEC_1111001111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111001111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111001111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111001111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111001111
 
 #ifdef EMP_BIN_TO_DEC_1111010000
@@ -24430,6 +28498,10 @@
     #undef EMP_BIN_TO_DEC_1111010000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111010000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111010000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111010000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111010000
 
 #ifdef EMP_BIN_TO_DEC_1111010001
@@ -24454,6 +28526,10 @@
     #undef EMP_BIN_TO_DEC_1111010001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111010001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111010001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111010001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111010001
 
 #ifdef EMP_BIN_TO_DEC_1111010010
@@ -24478,6 +28554,10 @@
     #undef EMP_BIN_TO_DEC_1111010010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111010010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111010010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111010010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111010010
 
 #ifdef EMP_BIN_TO_DEC_1111010011
@@ -24502,6 +28582,10 @@
     #undef EMP_BIN_TO_DEC_1111010011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111010011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111010011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111010011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111010011
 
 #ifdef EMP_BIN_TO_DEC_1111010100
@@ -24526,6 +28610,10 @@
     #undef EMP_BIN_TO_DEC_1111010100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111010100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111010100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111010100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111010100
 
 #ifdef EMP_BIN_TO_DEC_1111010101
@@ -24550,6 +28638,10 @@
     #undef EMP_BIN_TO_DEC_1111010101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111010101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111010101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111010101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111010101
 
 #ifdef EMP_BIN_TO_DEC_1111010110
@@ -24574,6 +28666,10 @@
     #undef EMP_BIN_TO_DEC_1111010110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111010110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111010110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111010110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111010110
 
 #ifdef EMP_BIN_TO_DEC_1111010111
@@ -24598,6 +28694,10 @@
     #undef EMP_BIN_TO_DEC_1111010111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111010111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111010111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111010111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111010111
 
 #ifdef EMP_BIN_TO_DEC_1111011000
@@ -24622,6 +28722,10 @@
     #undef EMP_BIN_TO_DEC_1111011000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111011000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111011000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111011000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111011000
 
 #ifdef EMP_BIN_TO_DEC_1111011001
@@ -24646,6 +28750,10 @@
     #undef EMP_BIN_TO_DEC_1111011001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111011001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111011001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111011001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111011001
 
 #ifdef EMP_BIN_TO_DEC_1111011010
@@ -24670,6 +28778,10 @@
     #undef EMP_BIN_TO_DEC_1111011010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111011010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111011010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111011010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111011010
 
 #ifdef EMP_BIN_TO_DEC_1111011011
@@ -24694,6 +28806,10 @@
     #undef EMP_BIN_TO_DEC_1111011011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111011011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111011011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111011011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111011011
 
 #ifdef EMP_BIN_TO_DEC_1111011100
@@ -24718,6 +28834,10 @@
     #undef EMP_BIN_TO_DEC_1111011100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111011100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111011100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111011100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111011100
 
 #ifdef EMP_BIN_TO_DEC_1111011101
@@ -24742,6 +28862,10 @@
     #undef EMP_BIN_TO_DEC_1111011101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111011101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111011101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111011101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111011101
 
 #ifdef EMP_BIN_TO_DEC_1111011110
@@ -24766,6 +28890,10 @@
     #undef EMP_BIN_TO_DEC_1111011110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111011110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111011110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111011110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111011110
 
 #ifdef EMP_BIN_TO_DEC_1111011111
@@ -24790,6 +28918,10 @@
     #undef EMP_BIN_TO_DEC_1111011111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111011111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111011111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111011111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111011111
 
 #ifdef EMP_BIN_TO_DEC_1111100000
@@ -24814,6 +28946,10 @@
     #undef EMP_BIN_TO_DEC_1111100000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111100000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111100000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111100000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111100000
 
 #ifdef EMP_BIN_TO_DEC_1111100001
@@ -24838,6 +28974,10 @@
     #undef EMP_BIN_TO_DEC_1111100001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111100001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111100001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111100001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111100001
 
 #ifdef EMP_BIN_TO_DEC_1111100010
@@ -24862,6 +29002,10 @@
     #undef EMP_BIN_TO_DEC_1111100010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111100010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111100010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111100010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111100010
 
 #ifdef EMP_BIN_TO_DEC_1111100011
@@ -24886,6 +29030,10 @@
     #undef EMP_BIN_TO_DEC_1111100011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111100011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111100011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111100011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111100011
 
 #ifdef EMP_BIN_TO_DEC_1111100100
@@ -24910,6 +29058,10 @@
     #undef EMP_BIN_TO_DEC_1111100100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111100100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111100100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111100100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111100100
 
 #ifdef EMP_BIN_TO_DEC_1111100101
@@ -24934,6 +29086,10 @@
     #undef EMP_BIN_TO_DEC_1111100101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111100101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111100101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111100101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111100101
 
 #ifdef EMP_BIN_TO_DEC_1111100110
@@ -24958,6 +29114,10 @@
     #undef EMP_BIN_TO_DEC_1111100110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111100110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111100110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111100110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111100110
 
 #ifdef EMP_BIN_TO_DEC_1111100111
@@ -24982,6 +29142,10 @@
     #undef EMP_BIN_TO_DEC_1111100111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111100111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111100111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111100111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111100111
 
 #ifdef EMP_BIN_TO_DEC_1111101000
@@ -25006,6 +29170,10 @@
     #undef EMP_BIN_TO_DEC_1111101000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111101000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111101000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111101000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111101000
 
 #ifdef EMP_BIN_TO_DEC_1111101001
@@ -25030,6 +29198,10 @@
     #undef EMP_BIN_TO_DEC_1111101001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111101001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111101001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111101001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111101001
 
 #ifdef EMP_BIN_TO_DEC_1111101010
@@ -25054,6 +29226,10 @@
     #undef EMP_BIN_TO_DEC_1111101010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111101010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111101010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111101010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111101010
 
 #ifdef EMP_BIN_TO_DEC_1111101011
@@ -25078,6 +29254,10 @@
     #undef EMP_BIN_TO_DEC_1111101011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111101011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111101011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111101011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111101011
 
 #ifdef EMP_BIN_TO_DEC_1111101100
@@ -25102,6 +29282,10 @@
     #undef EMP_BIN_TO_DEC_1111101100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111101100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111101100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111101100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111101100
 
 #ifdef EMP_BIN_TO_DEC_1111101101
@@ -25126,6 +29310,10 @@
     #undef EMP_BIN_TO_DEC_1111101101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111101101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111101101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111101101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111101101
 
 #ifdef EMP_BIN_TO_DEC_1111101110
@@ -25150,6 +29338,10 @@
     #undef EMP_BIN_TO_DEC_1111101110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111101110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111101110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111101110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111101110
 
 #ifdef EMP_BIN_TO_DEC_1111101111
@@ -25174,6 +29366,10 @@
     #undef EMP_BIN_TO_DEC_1111101111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111101111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111101111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111101111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111101111
 
 #ifdef EMP_BIN_TO_DEC_1111110000
@@ -25198,6 +29394,10 @@
     #undef EMP_BIN_TO_DEC_1111110000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111110000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111110000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111110000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111110000
 
 #ifdef EMP_BIN_TO_DEC_1111110001
@@ -25222,6 +29422,10 @@
     #undef EMP_BIN_TO_DEC_1111110001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111110001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111110001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111110001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111110001
 
 #ifdef EMP_BIN_TO_DEC_1111110010
@@ -25246,6 +29450,10 @@
     #undef EMP_BIN_TO_DEC_1111110010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111110010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111110010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111110010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111110010
 
 #ifdef EMP_BIN_TO_DEC_1111110011
@@ -25270,6 +29478,10 @@
     #undef EMP_BIN_TO_DEC_1111110011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111110011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111110011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111110011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111110011
 
 #ifdef EMP_BIN_TO_DEC_1111110100
@@ -25294,6 +29506,10 @@
     #undef EMP_BIN_TO_DEC_1111110100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111110100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111110100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111110100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111110100
 
 #ifdef EMP_BIN_TO_DEC_1111110101
@@ -25318,6 +29534,10 @@
     #undef EMP_BIN_TO_DEC_1111110101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111110101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111110101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111110101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111110101
 
 #ifdef EMP_BIN_TO_DEC_1111110110
@@ -25342,6 +29562,10 @@
     #undef EMP_BIN_TO_DEC_1111110110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111110110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111110110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111110110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111110110
 
 #ifdef EMP_BIN_TO_DEC_1111110111
@@ -25366,6 +29590,10 @@
     #undef EMP_BIN_TO_DEC_1111110111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111110111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111110111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111110111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111110111
 
 #ifdef EMP_BIN_TO_DEC_1111111000
@@ -25390,6 +29618,10 @@
     #undef EMP_BIN_TO_DEC_1111111000
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111111000
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111111000
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111111000")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111111000
 
 #ifdef EMP_BIN_TO_DEC_1111111001
@@ -25414,6 +29646,10 @@
     #undef EMP_BIN_TO_DEC_1111111001
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111111001
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111111001
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111111001")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111111001
 
 #ifdef EMP_BIN_TO_DEC_1111111010
@@ -25438,6 +29674,10 @@
     #undef EMP_BIN_TO_DEC_1111111010
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111111010
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111111010
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111111010")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111111010
 
 #ifdef EMP_BIN_TO_DEC_1111111011
@@ -25462,6 +29702,10 @@
     #undef EMP_BIN_TO_DEC_1111111011
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111111011
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111111011
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111111011")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111111011
 
 #ifdef EMP_BIN_TO_DEC_1111111100
@@ -25486,6 +29730,10 @@
     #undef EMP_BIN_TO_DEC_1111111100
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111111100
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111111100
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111111100")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111111100
 
 #ifdef EMP_BIN_TO_DEC_1111111101
@@ -25510,6 +29758,10 @@
     #undef EMP_BIN_TO_DEC_1111111101
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111111101
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111111101
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111111101")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111111101
 
 #ifdef EMP_BIN_TO_DEC_1111111110
@@ -25534,6 +29786,10 @@
     #undef EMP_BIN_TO_DEC_1111111110
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111111110
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111111110
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111111110")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111111110
 
 #ifdef EMP_BIN_TO_DEC_1111111111
@@ -25558,6 +29814,10 @@
     #undef EMP_BIN_TO_DEC_1111111111
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_1111111111
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_1111111111
+        #pragma pop_macro("EMP_BIN_TO_DEC_1111111111")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_1111111111
 
 #ifdef EMP_BIN_TO_DEC_IMPL
@@ -25582,6 +29842,10 @@
     #undef EMP_BIN_TO_DEC_IMPL
   #endif
 
+#else // #ifdef EMP_BIN_TO_DEC_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_DEC_IMPL
+        #pragma pop_macro("EMP_BIN_TO_DEC_IMPL")
+    #endif
 #endif // #ifdef EMP_BIN_TO_DEC_IMPL
 
 #ifdef EMP_BIN_TO_PACK
@@ -25606,6 +29870,10 @@
     #undef EMP_BIN_TO_PACK
   #endif
 
+#else // #ifdef EMP_BIN_TO_PACK
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_PACK
+        #pragma pop_macro("EMP_BIN_TO_PACK")
+    #endif
 #endif // #ifdef EMP_BIN_TO_PACK
 
 #ifdef EMP_BIN_TO_PACK_IMPL
@@ -25630,6 +29898,10 @@
     #undef EMP_BIN_TO_PACK_IMPL
   #endif
 
+#else // #ifdef EMP_BIN_TO_PACK_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_PACK_IMPL
+        #pragma pop_macro("EMP_BIN_TO_PACK_IMPL")
+    #endif
 #endif // #ifdef EMP_BIN_TO_PACK_IMPL
 
 #ifdef EMP_BIN_TO_PACK_POP
@@ -25654,6 +29926,10 @@
     #undef EMP_BIN_TO_PACK_POP
   #endif
 
+#else // #ifdef EMP_BIN_TO_PACK_POP
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_PACK_POP
+        #pragma pop_macro("EMP_BIN_TO_PACK_POP")
+    #endif
 #endif // #ifdef EMP_BIN_TO_PACK_POP
 
 #ifdef EMP_BIN_TO_SUM
@@ -25678,6 +29954,10 @@
     #undef EMP_BIN_TO_SUM
   #endif
 
+#else // #ifdef EMP_BIN_TO_SUM
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIN_TO_SUM
+        #pragma pop_macro("EMP_BIN_TO_SUM")
+    #endif
 #endif // #ifdef EMP_BIN_TO_SUM
 
 #ifdef EMP_BIT_EQU
@@ -25702,6 +29982,10 @@
     #undef EMP_BIT_EQU
   #endif
 
+#else // #ifdef EMP_BIT_EQU
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIT_EQU
+        #pragma pop_macro("EMP_BIT_EQU")
+    #endif
 #endif // #ifdef EMP_BIT_EQU
 
 #ifdef EMP_BIT_GTR
@@ -25726,6 +30010,10 @@
     #undef EMP_BIT_GTR
   #endif
 
+#else // #ifdef EMP_BIT_GTR
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIT_GTR
+        #pragma pop_macro("EMP_BIT_GTR")
+    #endif
 #endif // #ifdef EMP_BIT_GTR
 
 #ifdef EMP_BIT_LESS
@@ -25750,6 +30038,10 @@
     #undef EMP_BIT_LESS
   #endif
 
+#else // #ifdef EMP_BIT_LESS
+    #ifdef UIT_EXTERNAL_HAS_EMP_BIT_LESS
+        #pragma pop_macro("EMP_BIT_LESS")
+    #endif
 #endif // #ifdef EMP_BIT_LESS
 
 #ifdef EMP_BOOL_IMPL
@@ -25774,6 +30066,10 @@
     #undef EMP_BOOL_IMPL
   #endif
 
+#else // #ifdef EMP_BOOL_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_BOOL_IMPL
+        #pragma pop_macro("EMP_BOOL_IMPL")
+    #endif
 #endif // #ifdef EMP_BOOL_IMPL
 
 #ifdef EMP_BUILD_CONFIG
@@ -25798,6 +30094,10 @@
     #undef EMP_BUILD_CONFIG
   #endif
 
+#else // #ifdef EMP_BUILD_CONFIG
+    #ifdef UIT_EXTERNAL_HAS_EMP_BUILD_CONFIG
+        #pragma pop_macro("EMP_BUILD_CONFIG")
+    #endif
 #endif // #ifdef EMP_BUILD_CONFIG
 
 #ifdef EMP_BUILD_TYPE_PACK
@@ -25822,6 +30122,10 @@
     #undef EMP_BUILD_TYPE_PACK
   #endif
 
+#else // #ifdef EMP_BUILD_TYPE_PACK
+    #ifdef UIT_EXTERNAL_HAS_EMP_BUILD_TYPE_PACK
+        #pragma pop_macro("EMP_BUILD_TYPE_PACK")
+    #endif
 #endif // #ifdef EMP_BUILD_TYPE_PACK
 
 #ifdef EMP_CALL_BY_PACKS
@@ -25846,6 +30150,10 @@
     #undef EMP_CALL_BY_PACKS
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS
+        #pragma pop_macro("EMP_CALL_BY_PACKS")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS
 
 #ifdef EMP_CALL_BY_PACKS_do_call
@@ -25870,6 +30178,10 @@
     #undef EMP_CALL_BY_PACKS_do_call
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_do_call
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_do_call
+        #pragma pop_macro("EMP_CALL_BY_PACKS_do_call")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_do_call
 
 #ifdef EMP_CALL_BY_PACKS_impl
@@ -25894,6 +30206,10 @@
     #undef EMP_CALL_BY_PACKS_impl
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl
 
 #ifdef EMP_CALL_BY_PACKS_impl1
@@ -25918,6 +30234,10 @@
     #undef EMP_CALL_BY_PACKS_impl1
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl1
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl1
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl1")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl1
 
 #ifdef EMP_CALL_BY_PACKS_impl10
@@ -25942,6 +30262,10 @@
     #undef EMP_CALL_BY_PACKS_impl10
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl10
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl10
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl10")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl10
 
 #ifdef EMP_CALL_BY_PACKS_impl10B
@@ -25966,6 +30290,10 @@
     #undef EMP_CALL_BY_PACKS_impl10B
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl10B
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl10B
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl10B")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl10B
 
 #ifdef EMP_CALL_BY_PACKS_impl2
@@ -25990,6 +30318,10 @@
     #undef EMP_CALL_BY_PACKS_impl2
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl2
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl2
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl2")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl2
 
 #ifdef EMP_CALL_BY_PACKS_impl2B
@@ -26014,6 +30346,10 @@
     #undef EMP_CALL_BY_PACKS_impl2B
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl2B
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl2B
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl2B")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl2B
 
 #ifdef EMP_CALL_BY_PACKS_impl3
@@ -26038,6 +30374,10 @@
     #undef EMP_CALL_BY_PACKS_impl3
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl3
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl3
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl3")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl3
 
 #ifdef EMP_CALL_BY_PACKS_impl3B
@@ -26062,6 +30402,10 @@
     #undef EMP_CALL_BY_PACKS_impl3B
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl3B
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl3B
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl3B")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl3B
 
 #ifdef EMP_CALL_BY_PACKS_impl4
@@ -26086,6 +30430,10 @@
     #undef EMP_CALL_BY_PACKS_impl4
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl4
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl4
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl4")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl4
 
 #ifdef EMP_CALL_BY_PACKS_impl4B
@@ -26110,6 +30458,10 @@
     #undef EMP_CALL_BY_PACKS_impl4B
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl4B
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl4B
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl4B")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl4B
 
 #ifdef EMP_CALL_BY_PACKS_impl5
@@ -26134,6 +30486,10 @@
     #undef EMP_CALL_BY_PACKS_impl5
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl5
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl5
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl5")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl5
 
 #ifdef EMP_CALL_BY_PACKS_impl5B
@@ -26158,6 +30514,10 @@
     #undef EMP_CALL_BY_PACKS_impl5B
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl5B
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl5B
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl5B")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl5B
 
 #ifdef EMP_CALL_BY_PACKS_impl6
@@ -26182,6 +30542,10 @@
     #undef EMP_CALL_BY_PACKS_impl6
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl6
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl6
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl6")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl6
 
 #ifdef EMP_CALL_BY_PACKS_impl6B
@@ -26206,6 +30570,10 @@
     #undef EMP_CALL_BY_PACKS_impl6B
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl6B
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl6B
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl6B")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl6B
 
 #ifdef EMP_CALL_BY_PACKS_impl7
@@ -26230,6 +30598,10 @@
     #undef EMP_CALL_BY_PACKS_impl7
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl7
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl7
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl7")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl7
 
 #ifdef EMP_CALL_BY_PACKS_impl7B
@@ -26254,6 +30626,10 @@
     #undef EMP_CALL_BY_PACKS_impl7B
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl7B
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl7B
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl7B")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl7B
 
 #ifdef EMP_CALL_BY_PACKS_impl8
@@ -26278,6 +30654,10 @@
     #undef EMP_CALL_BY_PACKS_impl8
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl8
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl8
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl8")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl8
 
 #ifdef EMP_CALL_BY_PACKS_impl8B
@@ -26302,6 +30682,10 @@
     #undef EMP_CALL_BY_PACKS_impl8B
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl8B
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl8B
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl8B")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl8B
 
 #ifdef EMP_CALL_BY_PACKS_impl9
@@ -26326,6 +30710,10 @@
     #undef EMP_CALL_BY_PACKS_impl9
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl9
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl9
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl9")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl9
 
 #ifdef EMP_CALL_BY_PACKS_impl9B
@@ -26350,6 +30738,10 @@
     #undef EMP_CALL_BY_PACKS_impl9B
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_impl9B
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_impl9B
+        #pragma pop_macro("EMP_CALL_BY_PACKS_impl9B")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_impl9B
 
 #ifdef EMP_CALL_BY_PACKS_implB
@@ -26374,6 +30766,10 @@
     #undef EMP_CALL_BY_PACKS_implB
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_implB
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_implB
+        #pragma pop_macro("EMP_CALL_BY_PACKS_implB")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_implB
 
 #ifdef EMP_CALL_BY_PACKS_implC
@@ -26398,6 +30794,10 @@
     #undef EMP_CALL_BY_PACKS_implC
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_implC
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_implC
+        #pragma pop_macro("EMP_CALL_BY_PACKS_implC")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_implC
 
 #ifdef EMP_CALL_BY_PACKS_implD
@@ -26422,6 +30822,10 @@
     #undef EMP_CALL_BY_PACKS_implD
   #endif
 
+#else // #ifdef EMP_CALL_BY_PACKS_implD
+    #ifdef UIT_EXTERNAL_HAS_EMP_CALL_BY_PACKS_implD
+        #pragma pop_macro("EMP_CALL_BY_PACKS_implD")
+    #endif
 #endif // #ifdef EMP_CALL_BY_PACKS_implD
 
 #ifdef EMP_CHOOSE_MEMBER_TYPE
@@ -26446,6 +30850,10 @@
     #undef EMP_CHOOSE_MEMBER_TYPE
   #endif
 
+#else // #ifdef EMP_CHOOSE_MEMBER_TYPE
+    #ifdef UIT_EXTERNAL_HAS_EMP_CHOOSE_MEMBER_TYPE
+        #pragma pop_macro("EMP_CHOOSE_MEMBER_TYPE")
+    #endif
 #endif // #ifdef EMP_CHOOSE_MEMBER_TYPE
 
 #ifdef EMP_COMPARE
@@ -26470,6 +30878,10 @@
     #undef EMP_COMPARE
   #endif
 
+#else // #ifdef EMP_COMPARE
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE
+        #pragma pop_macro("EMP_COMPARE")
+    #endif
 #endif // #ifdef EMP_COMPARE
 
 #ifdef EMP_COMPARE_BIN
@@ -26494,6 +30906,10 @@
     #undef EMP_COMPARE_BIN
   #endif
 
+#else // #ifdef EMP_COMPARE_BIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_BIN
+        #pragma pop_macro("EMP_COMPARE_BIN")
+    #endif
 #endif // #ifdef EMP_COMPARE_BIN
 
 #ifdef EMP_COMPARE_BIN_IMPL
@@ -26518,6 +30934,10 @@
     #undef EMP_COMPARE_BIN_IMPL
   #endif
 
+#else // #ifdef EMP_COMPARE_BIN_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_BIN_IMPL
+        #pragma pop_macro("EMP_COMPARE_BIN_IMPL")
+    #endif
 #endif // #ifdef EMP_COMPARE_BIN_IMPL
 
 #ifdef EMP_COMPARE_BITS
@@ -26542,6 +30962,10 @@
     #undef EMP_COMPARE_BITS
   #endif
 
+#else // #ifdef EMP_COMPARE_BITS
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_BITS
+        #pragma pop_macro("EMP_COMPARE_BITS")
+    #endif
 #endif // #ifdef EMP_COMPARE_BITS
 
 #ifdef EMP_COMPARE_BITS_IMPL
@@ -26566,6 +30990,10 @@
     #undef EMP_COMPARE_BITS_IMPL
   #endif
 
+#else // #ifdef EMP_COMPARE_BITS_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_BITS_IMPL
+        #pragma pop_macro("EMP_COMPARE_BITS_IMPL")
+    #endif
 #endif // #ifdef EMP_COMPARE_BITS_IMPL
 
 #ifdef EMP_COMPARE_FUN
@@ -26590,6 +31018,10 @@
     #undef EMP_COMPARE_FUN
   #endif
 
+#else // #ifdef EMP_COMPARE_FUN
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_FUN
+        #pragma pop_macro("EMP_COMPARE_FUN")
+    #endif
 #endif // #ifdef EMP_COMPARE_FUN
 
 #ifdef EMP_COMPARE_FUN_impl
@@ -26614,6 +31046,10 @@
     #undef EMP_COMPARE_FUN_impl
   #endif
 
+#else // #ifdef EMP_COMPARE_FUN_impl
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_FUN_impl
+        #pragma pop_macro("EMP_COMPARE_FUN_impl")
+    #endif
 #endif // #ifdef EMP_COMPARE_FUN_impl
 
 #ifdef EMP_COMPARE_FUN_impl2
@@ -26638,6 +31074,10 @@
     #undef EMP_COMPARE_FUN_impl2
   #endif
 
+#else // #ifdef EMP_COMPARE_FUN_impl2
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_FUN_impl2
+        #pragma pop_macro("EMP_COMPARE_FUN_impl2")
+    #endif
 #endif // #ifdef EMP_COMPARE_FUN_impl2
 
 #ifdef EMP_COMPARE_FUN_impl_A
@@ -26662,6 +31102,10 @@
     #undef EMP_COMPARE_FUN_impl_A
   #endif
 
+#else // #ifdef EMP_COMPARE_FUN_impl_A
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_FUN_impl_A
+        #pragma pop_macro("EMP_COMPARE_FUN_impl_A")
+    #endif
 #endif // #ifdef EMP_COMPARE_FUN_impl_A
 
 #ifdef EMP_COMPARE_FUN_impl_B
@@ -26686,6 +31130,10 @@
     #undef EMP_COMPARE_FUN_impl_B
   #endif
 
+#else // #ifdef EMP_COMPARE_FUN_impl_B
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_FUN_impl_B
+        #pragma pop_macro("EMP_COMPARE_FUN_impl_B")
+    #endif
 #endif // #ifdef EMP_COMPARE_FUN_impl_B
 
 #ifdef EMP_COMPARE_FUN_impl_X
@@ -26710,6 +31158,10 @@
     #undef EMP_COMPARE_FUN_impl_X
   #endif
 
+#else // #ifdef EMP_COMPARE_FUN_impl_X
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_FUN_impl_X
+        #pragma pop_macro("EMP_COMPARE_FUN_impl_X")
+    #endif
 #endif // #ifdef EMP_COMPARE_FUN_impl_X
 
 #ifdef EMP_COMPARE_IMPL
@@ -26734,6 +31186,10 @@
     #undef EMP_COMPARE_IMPL
   #endif
 
+#else // #ifdef EMP_COMPARE_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_IMPL
+        #pragma pop_macro("EMP_COMPARE_IMPL")
+    #endif
 #endif // #ifdef EMP_COMPARE_IMPL
 
 #ifdef EMP_COMPARE_get_first
@@ -26758,6 +31214,10 @@
     #undef EMP_COMPARE_get_first
   #endif
 
+#else // #ifdef EMP_COMPARE_get_first
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_get_first
+        #pragma pop_macro("EMP_COMPARE_get_first")
+    #endif
 #endif // #ifdef EMP_COMPARE_get_first
 
 #ifdef EMP_COMPARE_get_first_IMPL
@@ -26782,6 +31242,10 @@
     #undef EMP_COMPARE_get_first_IMPL
   #endif
 
+#else // #ifdef EMP_COMPARE_get_first_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_get_first_IMPL
+        #pragma pop_macro("EMP_COMPARE_get_first_IMPL")
+    #endif
 #endif // #ifdef EMP_COMPARE_get_first_IMPL
 
 #ifdef EMP_COMPARE_result_01
@@ -26806,6 +31270,10 @@
     #undef EMP_COMPARE_result_01
   #endif
 
+#else // #ifdef EMP_COMPARE_result_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_result_01
+        #pragma pop_macro("EMP_COMPARE_result_01")
+    #endif
 #endif // #ifdef EMP_COMPARE_result_01
 
 #ifdef EMP_COMPARE_result_10
@@ -26830,6 +31298,10 @@
     #undef EMP_COMPARE_result_10
   #endif
 
+#else // #ifdef EMP_COMPARE_result_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_COMPARE_result_10
+        #pragma pop_macro("EMP_COMPARE_result_10")
+    #endif
 #endif // #ifdef EMP_COMPARE_result_10
 
 #ifdef EMP_CONFIG_BASE_NAME
@@ -26854,6 +31326,10 @@
     #undef EMP_CONFIG_BASE_NAME
   #endif
 
+#else // #ifdef EMP_CONFIG_BASE_NAME
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG_BASE_NAME
+        #pragma pop_macro("EMP_CONFIG_BASE_NAME")
+    #endif
 #endif // #ifdef EMP_CONFIG_BASE_NAME
 
 #ifdef EMP_CONFIG__ACCESS
@@ -26878,6 +31354,10 @@
     #undef EMP_CONFIG__ACCESS
   #endif
 
+#else // #ifdef EMP_CONFIG__ACCESS
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS
+        #pragma pop_macro("EMP_CONFIG__ACCESS")
+    #endif
 #endif // #ifdef EMP_CONFIG__ACCESS
 
 #ifdef EMP_CONFIG__ACCESS_ALIAS
@@ -26902,6 +31382,10 @@
     #undef EMP_CONFIG__ACCESS_ALIAS
   #endif
 
+#else // #ifdef EMP_CONFIG__ACCESS_ALIAS
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_ALIAS
+        #pragma pop_macro("EMP_CONFIG__ACCESS_ALIAS")
+    #endif
 #endif // #ifdef EMP_CONFIG__ACCESS_ALIAS
 
 #ifdef EMP_CONFIG__ACCESS_CONST
@@ -26926,6 +31410,10 @@
     #undef EMP_CONFIG__ACCESS_CONST
   #endif
 
+#else // #ifdef EMP_CONFIG__ACCESS_CONST
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_CONST
+        #pragma pop_macro("EMP_CONFIG__ACCESS_CONST")
+    #endif
 #endif // #ifdef EMP_CONFIG__ACCESS_CONST
 
 #ifdef EMP_CONFIG__ACCESS_GROUP
@@ -26950,6 +31438,10 @@
     #undef EMP_CONFIG__ACCESS_GROUP
   #endif
 
+#else // #ifdef EMP_CONFIG__ACCESS_GROUP
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_GROUP
+        #pragma pop_macro("EMP_CONFIG__ACCESS_GROUP")
+    #endif
 #endif // #ifdef EMP_CONFIG__ACCESS_GROUP
 
 #ifdef EMP_CONFIG__ACCESS_VALUE
@@ -26974,6 +31466,10 @@
     #undef EMP_CONFIG__ACCESS_VALUE
   #endif
 
+#else // #ifdef EMP_CONFIG__ACCESS_VALUE
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_VALUE
+        #pragma pop_macro("EMP_CONFIG__ACCESS_VALUE")
+    #endif
 #endif // #ifdef EMP_CONFIG__ACCESS_VALUE
 
 #ifdef EMP_CONFIG__ACCESS_const
@@ -26998,6 +31494,10 @@
     #undef EMP_CONFIG__ACCESS_const
   #endif
 
+#else // #ifdef EMP_CONFIG__ACCESS_const
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ACCESS_const
+        #pragma pop_macro("EMP_CONFIG__ACCESS_const")
+    #endif
 #endif // #ifdef EMP_CONFIG__ACCESS_const
 
 #ifdef EMP_CONFIG__ARG_OKAY_
@@ -27022,6 +31522,10 @@
     #undef EMP_CONFIG__ARG_OKAY_
   #endif
 
+#else // #ifdef EMP_CONFIG__ARG_OKAY_
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_
+        #pragma pop_macro("EMP_CONFIG__ARG_OKAY_")
+    #endif
 #endif // #ifdef EMP_CONFIG__ARG_OKAY_
 
 #ifdef EMP_CONFIG__ARG_OKAY_ALIAS
@@ -27046,6 +31550,10 @@
     #undef EMP_CONFIG__ARG_OKAY_ALIAS
   #endif
 
+#else // #ifdef EMP_CONFIG__ARG_OKAY_ALIAS
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_ALIAS
+        #pragma pop_macro("EMP_CONFIG__ARG_OKAY_ALIAS")
+    #endif
 #endif // #ifdef EMP_CONFIG__ARG_OKAY_ALIAS
 
 #ifdef EMP_CONFIG__ARG_OKAY_CONST
@@ -27070,6 +31578,10 @@
     #undef EMP_CONFIG__ARG_OKAY_CONST
   #endif
 
+#else // #ifdef EMP_CONFIG__ARG_OKAY_CONST
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_CONST
+        #pragma pop_macro("EMP_CONFIG__ARG_OKAY_CONST")
+    #endif
 #endif // #ifdef EMP_CONFIG__ARG_OKAY_CONST
 
 #ifdef EMP_CONFIG__ARG_OKAY_GROUP
@@ -27094,6 +31606,10 @@
     #undef EMP_CONFIG__ARG_OKAY_GROUP
   #endif
 
+#else // #ifdef EMP_CONFIG__ARG_OKAY_GROUP
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_GROUP
+        #pragma pop_macro("EMP_CONFIG__ARG_OKAY_GROUP")
+    #endif
 #endif // #ifdef EMP_CONFIG__ARG_OKAY_GROUP
 
 #ifdef EMP_CONFIG__ARG_OKAY_VALUE
@@ -27118,6 +31634,10 @@
     #undef EMP_CONFIG__ARG_OKAY_VALUE
   #endif
 
+#else // #ifdef EMP_CONFIG__ARG_OKAY_VALUE
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_VALUE
+        #pragma pop_macro("EMP_CONFIG__ARG_OKAY_VALUE")
+    #endif
 #endif // #ifdef EMP_CONFIG__ARG_OKAY_VALUE
 
 #ifdef EMP_CONFIG__ARG_OKAY_const
@@ -27142,6 +31662,10 @@
     #undef EMP_CONFIG__ARG_OKAY_const
   #endif
 
+#else // #ifdef EMP_CONFIG__ARG_OKAY_const
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ARG_OKAY_const
+        #pragma pop_macro("EMP_CONFIG__ARG_OKAY_const")
+    #endif
 #endif // #ifdef EMP_CONFIG__ARG_OKAY_const
 
 #ifdef EMP_CONFIG__CONSTRUCT
@@ -27166,6 +31690,10 @@
     #undef EMP_CONFIG__CONSTRUCT
   #endif
 
+#else // #ifdef EMP_CONFIG__CONSTRUCT
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT
+        #pragma pop_macro("EMP_CONFIG__CONSTRUCT")
+    #endif
 #endif // #ifdef EMP_CONFIG__CONSTRUCT
 
 #ifdef EMP_CONFIG__CONSTRUCT_ALIAS
@@ -27190,6 +31718,10 @@
     #undef EMP_CONFIG__CONSTRUCT_ALIAS
   #endif
 
+#else // #ifdef EMP_CONFIG__CONSTRUCT_ALIAS
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_ALIAS
+        #pragma pop_macro("EMP_CONFIG__CONSTRUCT_ALIAS")
+    #endif
 #endif // #ifdef EMP_CONFIG__CONSTRUCT_ALIAS
 
 #ifdef EMP_CONFIG__CONSTRUCT_CONST
@@ -27214,6 +31746,10 @@
     #undef EMP_CONFIG__CONSTRUCT_CONST
   #endif
 
+#else // #ifdef EMP_CONFIG__CONSTRUCT_CONST
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_CONST
+        #pragma pop_macro("EMP_CONFIG__CONSTRUCT_CONST")
+    #endif
 #endif // #ifdef EMP_CONFIG__CONSTRUCT_CONST
 
 #ifdef EMP_CONFIG__CONSTRUCT_GROUP
@@ -27238,6 +31774,10 @@
     #undef EMP_CONFIG__CONSTRUCT_GROUP
   #endif
 
+#else // #ifdef EMP_CONFIG__CONSTRUCT_GROUP
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_GROUP
+        #pragma pop_macro("EMP_CONFIG__CONSTRUCT_GROUP")
+    #endif
 #endif // #ifdef EMP_CONFIG__CONSTRUCT_GROUP
 
 #ifdef EMP_CONFIG__CONSTRUCT_VALUE
@@ -27262,6 +31802,10 @@
     #undef EMP_CONFIG__CONSTRUCT_VALUE
   #endif
 
+#else // #ifdef EMP_CONFIG__CONSTRUCT_VALUE
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_VALUE
+        #pragma pop_macro("EMP_CONFIG__CONSTRUCT_VALUE")
+    #endif
 #endif // #ifdef EMP_CONFIG__CONSTRUCT_VALUE
 
 #ifdef EMP_CONFIG__CONSTRUCT_const
@@ -27286,6 +31830,10 @@
     #undef EMP_CONFIG__CONSTRUCT_const
   #endif
 
+#else // #ifdef EMP_CONFIG__CONSTRUCT_const
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__CONSTRUCT_const
+        #pragma pop_macro("EMP_CONFIG__CONSTRUCT_const")
+    #endif
 #endif // #ifdef EMP_CONFIG__CONSTRUCT_const
 
 #ifdef EMP_CONFIG__DECLARE
@@ -27310,6 +31858,10 @@
     #undef EMP_CONFIG__DECLARE
   #endif
 
+#else // #ifdef EMP_CONFIG__DECLARE
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE
+        #pragma pop_macro("EMP_CONFIG__DECLARE")
+    #endif
 #endif // #ifdef EMP_CONFIG__DECLARE
 
 #ifdef EMP_CONFIG__DECLARE_ALIAS
@@ -27334,6 +31886,10 @@
     #undef EMP_CONFIG__DECLARE_ALIAS
   #endif
 
+#else // #ifdef EMP_CONFIG__DECLARE_ALIAS
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_ALIAS
+        #pragma pop_macro("EMP_CONFIG__DECLARE_ALIAS")
+    #endif
 #endif // #ifdef EMP_CONFIG__DECLARE_ALIAS
 
 #ifdef EMP_CONFIG__DECLARE_CONST
@@ -27358,6 +31914,10 @@
     #undef EMP_CONFIG__DECLARE_CONST
   #endif
 
+#else // #ifdef EMP_CONFIG__DECLARE_CONST
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_CONST
+        #pragma pop_macro("EMP_CONFIG__DECLARE_CONST")
+    #endif
 #endif // #ifdef EMP_CONFIG__DECLARE_CONST
 
 #ifdef EMP_CONFIG__DECLARE_GROUP
@@ -27382,6 +31942,10 @@
     #undef EMP_CONFIG__DECLARE_GROUP
   #endif
 
+#else // #ifdef EMP_CONFIG__DECLARE_GROUP
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_GROUP
+        #pragma pop_macro("EMP_CONFIG__DECLARE_GROUP")
+    #endif
 #endif // #ifdef EMP_CONFIG__DECLARE_GROUP
 
 #ifdef EMP_CONFIG__DECLARE_VALUE
@@ -27406,6 +31970,10 @@
     #undef EMP_CONFIG__DECLARE_VALUE
   #endif
 
+#else // #ifdef EMP_CONFIG__DECLARE_VALUE
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_VALUE
+        #pragma pop_macro("EMP_CONFIG__DECLARE_VALUE")
+    #endif
 #endif // #ifdef EMP_CONFIG__DECLARE_VALUE
 
 #ifdef EMP_CONFIG__DECLARE_const
@@ -27430,6 +31998,10 @@
     #undef EMP_CONFIG__DECLARE_const
   #endif
 
+#else // #ifdef EMP_CONFIG__DECLARE_const
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__DECLARE_const
+        #pragma pop_macro("EMP_CONFIG__DECLARE_const")
+    #endif
 #endif // #ifdef EMP_CONFIG__DECLARE_const
 
 #ifdef EMP_CONFIG__ERROR_CHECK
@@ -27454,6 +32026,10 @@
     #undef EMP_CONFIG__ERROR_CHECK
   #endif
 
+#else // #ifdef EMP_CONFIG__ERROR_CHECK
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__ERROR_CHECK
+        #pragma pop_macro("EMP_CONFIG__ERROR_CHECK")
+    #endif
 #endif // #ifdef EMP_CONFIG__ERROR_CHECK
 
 #ifdef EMP_CONFIG__INIT
@@ -27478,6 +32054,10 @@
     #undef EMP_CONFIG__INIT
   #endif
 
+#else // #ifdef EMP_CONFIG__INIT
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT
+        #pragma pop_macro("EMP_CONFIG__INIT")
+    #endif
 #endif // #ifdef EMP_CONFIG__INIT
 
 #ifdef EMP_CONFIG__INIT_ALIAS
@@ -27502,6 +32082,10 @@
     #undef EMP_CONFIG__INIT_ALIAS
   #endif
 
+#else // #ifdef EMP_CONFIG__INIT_ALIAS
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_ALIAS
+        #pragma pop_macro("EMP_CONFIG__INIT_ALIAS")
+    #endif
 #endif // #ifdef EMP_CONFIG__INIT_ALIAS
 
 #ifdef EMP_CONFIG__INIT_CONST
@@ -27526,6 +32110,10 @@
     #undef EMP_CONFIG__INIT_CONST
   #endif
 
+#else // #ifdef EMP_CONFIG__INIT_CONST
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_CONST
+        #pragma pop_macro("EMP_CONFIG__INIT_CONST")
+    #endif
 #endif // #ifdef EMP_CONFIG__INIT_CONST
 
 #ifdef EMP_CONFIG__INIT_GROUP
@@ -27550,6 +32138,10 @@
     #undef EMP_CONFIG__INIT_GROUP
   #endif
 
+#else // #ifdef EMP_CONFIG__INIT_GROUP
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_GROUP
+        #pragma pop_macro("EMP_CONFIG__INIT_GROUP")
+    #endif
 #endif // #ifdef EMP_CONFIG__INIT_GROUP
 
 #ifdef EMP_CONFIG__INIT_VALUE
@@ -27574,6 +32166,10 @@
     #undef EMP_CONFIG__INIT_VALUE
   #endif
 
+#else // #ifdef EMP_CONFIG__INIT_VALUE
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_VALUE
+        #pragma pop_macro("EMP_CONFIG__INIT_VALUE")
+    #endif
 #endif // #ifdef EMP_CONFIG__INIT_VALUE
 
 #ifdef EMP_CONFIG__INIT_const
@@ -27598,6 +32194,10 @@
     #undef EMP_CONFIG__INIT_const
   #endif
 
+#else // #ifdef EMP_CONFIG__INIT_const
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONFIG__INIT_const
+        #pragma pop_macro("EMP_CONFIG__INIT_const")
+    #endif
 #endif // #ifdef EMP_CONFIG__INIT_const
 
 #ifdef EMP_CONVERT_ARG_EMP_FAKE_2ARG
@@ -27622,6 +32222,10 @@
     #undef EMP_CONVERT_ARG_EMP_FAKE_2ARG
   #endif
 
+#else // #ifdef EMP_CONVERT_ARG_EMP_FAKE_2ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONVERT_ARG_EMP_FAKE_2ARG
+        #pragma pop_macro("EMP_CONVERT_ARG_EMP_FAKE_2ARG")
+    #endif
 #endif // #ifdef EMP_CONVERT_ARG_EMP_FAKE_2ARG
 
 #ifdef EMP_CONVERT_ARG_EMP_FAKE_ARG
@@ -27646,6 +32250,10 @@
     #undef EMP_CONVERT_ARG_EMP_FAKE_ARG
   #endif
 
+#else // #ifdef EMP_CONVERT_ARG_EMP_FAKE_ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_CONVERT_ARG_EMP_FAKE_ARG
+        #pragma pop_macro("EMP_CONVERT_ARG_EMP_FAKE_ARG")
+    #endif
 #endif // #ifdef EMP_CONVERT_ARG_EMP_FAKE_ARG
 
 #ifdef EMP_COUNT_ARGS
@@ -27670,6 +32278,10 @@
     #undef EMP_COUNT_ARGS
   #endif
 
+#else // #ifdef EMP_COUNT_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_COUNT_ARGS
+        #pragma pop_macro("EMP_COUNT_ARGS")
+    #endif
 #endif // #ifdef EMP_COUNT_ARGS
 
 #ifdef EMP_COUNT_ONES
@@ -27694,6 +32306,10 @@
     #undef EMP_COUNT_ONES
   #endif
 
+#else // #ifdef EMP_COUNT_ONES
+    #ifdef UIT_EXTERNAL_HAS_EMP_COUNT_ONES
+        #pragma pop_macro("EMP_COUNT_ONES")
+    #endif
 #endif // #ifdef EMP_COUNT_ONES
 
 #ifdef EMP_CREATE_EVAL_SELECT
@@ -27718,6 +32334,10 @@
     #undef EMP_CREATE_EVAL_SELECT
   #endif
 
+#else // #ifdef EMP_CREATE_EVAL_SELECT
+    #ifdef UIT_EXTERNAL_HAS_EMP_CREATE_EVAL_SELECT
+        #pragma pop_macro("EMP_CREATE_EVAL_SELECT")
+    #endif
 #endif // #ifdef EMP_CREATE_EVAL_SELECT
 
 #ifdef EMP_CREATE_METHOD_FALLBACK
@@ -27742,6 +32362,10 @@
     #undef EMP_CREATE_METHOD_FALLBACK
   #endif
 
+#else // #ifdef EMP_CREATE_METHOD_FALLBACK
+    #ifdef UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK
+        #pragma pop_macro("EMP_CREATE_METHOD_FALLBACK")
+    #endif
 #endif // #ifdef EMP_CREATE_METHOD_FALLBACK
 
 #ifdef EMP_CREATE_METHOD_FALLBACK_VAL
@@ -27766,6 +32390,10 @@
     #undef EMP_CREATE_METHOD_FALLBACK_VAL
   #endif
 
+#else // #ifdef EMP_CREATE_METHOD_FALLBACK_VAL
+    #ifdef UIT_EXTERNAL_HAS_EMP_CREATE_METHOD_FALLBACK_VAL
+        #pragma pop_macro("EMP_CREATE_METHOD_FALLBACK_VAL")
+    #endif
 #endif // #ifdef EMP_CREATE_METHOD_FALLBACK_VAL
 
 #ifdef EMP_CREATE_OPTIONAL_METHOD
@@ -27790,6 +32418,10 @@
     #undef EMP_CREATE_OPTIONAL_METHOD
   #endif
 
+#else // #ifdef EMP_CREATE_OPTIONAL_METHOD
+    #ifdef UIT_EXTERNAL_HAS_EMP_CREATE_OPTIONAL_METHOD
+        #pragma pop_macro("EMP_CREATE_OPTIONAL_METHOD")
+    #endif
 #endif // #ifdef EMP_CREATE_OPTIONAL_METHOD
 
 #ifdef EMP_CROP_ARGS_TO
@@ -27814,6 +32446,10 @@
     #undef EMP_CROP_ARGS_TO
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO
+        #pragma pop_macro("EMP_CROP_ARGS_TO")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO
 
 #ifdef EMP_CROP_ARGS_TO_1
@@ -27838,6 +32474,10 @@
     #undef EMP_CROP_ARGS_TO_1
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_1
+        #pragma pop_macro("EMP_CROP_ARGS_TO_1")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_1
 
 #ifdef EMP_CROP_ARGS_TO_128
@@ -27862,6 +32502,10 @@
     #undef EMP_CROP_ARGS_TO_128
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_128
+        #pragma pop_macro("EMP_CROP_ARGS_TO_128")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_128
 
 #ifdef EMP_CROP_ARGS_TO_16
@@ -27886,6 +32530,10 @@
     #undef EMP_CROP_ARGS_TO_16
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_16
+        #pragma pop_macro("EMP_CROP_ARGS_TO_16")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_16
 
 #ifdef EMP_CROP_ARGS_TO_2
@@ -27910,6 +32558,10 @@
     #undef EMP_CROP_ARGS_TO_2
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_2
+        #pragma pop_macro("EMP_CROP_ARGS_TO_2")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_2
 
 #ifdef EMP_CROP_ARGS_TO_256
@@ -27934,6 +32586,10 @@
     #undef EMP_CROP_ARGS_TO_256
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_256
+        #pragma pop_macro("EMP_CROP_ARGS_TO_256")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_256
 
 #ifdef EMP_CROP_ARGS_TO_32
@@ -27958,6 +32614,10 @@
     #undef EMP_CROP_ARGS_TO_32
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_32
+        #pragma pop_macro("EMP_CROP_ARGS_TO_32")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_32
 
 #ifdef EMP_CROP_ARGS_TO_4
@@ -27982,6 +32642,10 @@
     #undef EMP_CROP_ARGS_TO_4
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_4
+        #pragma pop_macro("EMP_CROP_ARGS_TO_4")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_4
 
 #ifdef EMP_CROP_ARGS_TO_512
@@ -28006,6 +32670,10 @@
     #undef EMP_CROP_ARGS_TO_512
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_512
+        #pragma pop_macro("EMP_CROP_ARGS_TO_512")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_512
 
 #ifdef EMP_CROP_ARGS_TO_64
@@ -28030,6 +32698,10 @@
     #undef EMP_CROP_ARGS_TO_64
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_64
+        #pragma pop_macro("EMP_CROP_ARGS_TO_64")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_64
 
 #ifdef EMP_CROP_ARGS_TO_8
@@ -28054,6 +32726,10 @@
     #undef EMP_CROP_ARGS_TO_8
   #endif
 
+#else // #ifdef EMP_CROP_ARGS_TO_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_CROP_ARGS_TO_8
+        #pragma pop_macro("EMP_CROP_ARGS_TO_8")
+    #endif
 #endif // #ifdef EMP_CROP_ARGS_TO_8
 
 #ifdef EMP_DEC
@@ -28078,6 +32754,10 @@
     #undef EMP_DEC
   #endif
 
+#else // #ifdef EMP_DEC
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC
+        #pragma pop_macro("EMP_DEC")
+    #endif
 #endif // #ifdef EMP_DEC
 
 #ifdef EMP_DECLARE_VARS
@@ -28102,6 +32782,10 @@
     #undef EMP_DECLARE_VARS
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS
+        #pragma pop_macro("EMP_DECLARE_VARS")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS
 
 #ifdef EMP_DECLARE_VARS_1
@@ -28126,6 +32810,10 @@
     #undef EMP_DECLARE_VARS_1
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_1
+        #pragma pop_macro("EMP_DECLARE_VARS_1")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_1
 
 #ifdef EMP_DECLARE_VARS_10
@@ -28150,6 +32838,10 @@
     #undef EMP_DECLARE_VARS_10
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_10
+        #pragma pop_macro("EMP_DECLARE_VARS_10")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_10
 
 #ifdef EMP_DECLARE_VARS_11
@@ -28174,6 +32866,10 @@
     #undef EMP_DECLARE_VARS_11
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_11
+        #pragma pop_macro("EMP_DECLARE_VARS_11")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_11
 
 #ifdef EMP_DECLARE_VARS_12
@@ -28198,6 +32894,10 @@
     #undef EMP_DECLARE_VARS_12
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_12
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_12
+        #pragma pop_macro("EMP_DECLARE_VARS_12")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_12
 
 #ifdef EMP_DECLARE_VARS_13
@@ -28222,6 +32922,10 @@
     #undef EMP_DECLARE_VARS_13
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_13
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_13
+        #pragma pop_macro("EMP_DECLARE_VARS_13")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_13
 
 #ifdef EMP_DECLARE_VARS_14
@@ -28246,6 +32950,10 @@
     #undef EMP_DECLARE_VARS_14
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_14
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_14
+        #pragma pop_macro("EMP_DECLARE_VARS_14")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_14
 
 #ifdef EMP_DECLARE_VARS_15
@@ -28270,6 +32978,10 @@
     #undef EMP_DECLARE_VARS_15
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_15
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_15
+        #pragma pop_macro("EMP_DECLARE_VARS_15")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_15
 
 #ifdef EMP_DECLARE_VARS_16
@@ -28294,6 +33006,10 @@
     #undef EMP_DECLARE_VARS_16
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_16
+        #pragma pop_macro("EMP_DECLARE_VARS_16")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_16
 
 #ifdef EMP_DECLARE_VARS_17
@@ -28318,6 +33034,10 @@
     #undef EMP_DECLARE_VARS_17
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_17
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_17
+        #pragma pop_macro("EMP_DECLARE_VARS_17")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_17
 
 #ifdef EMP_DECLARE_VARS_18
@@ -28342,6 +33062,10 @@
     #undef EMP_DECLARE_VARS_18
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_18
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_18
+        #pragma pop_macro("EMP_DECLARE_VARS_18")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_18
 
 #ifdef EMP_DECLARE_VARS_19
@@ -28366,6 +33090,10 @@
     #undef EMP_DECLARE_VARS_19
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_19
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_19
+        #pragma pop_macro("EMP_DECLARE_VARS_19")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_19
 
 #ifdef EMP_DECLARE_VARS_2
@@ -28390,6 +33118,10 @@
     #undef EMP_DECLARE_VARS_2
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_2
+        #pragma pop_macro("EMP_DECLARE_VARS_2")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_2
 
 #ifdef EMP_DECLARE_VARS_20
@@ -28414,6 +33146,10 @@
     #undef EMP_DECLARE_VARS_20
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_20
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_20
+        #pragma pop_macro("EMP_DECLARE_VARS_20")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_20
 
 #ifdef EMP_DECLARE_VARS_21
@@ -28438,6 +33174,10 @@
     #undef EMP_DECLARE_VARS_21
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_21
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_21
+        #pragma pop_macro("EMP_DECLARE_VARS_21")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_21
 
 #ifdef EMP_DECLARE_VARS_22
@@ -28462,6 +33202,10 @@
     #undef EMP_DECLARE_VARS_22
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_22
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_22
+        #pragma pop_macro("EMP_DECLARE_VARS_22")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_22
 
 #ifdef EMP_DECLARE_VARS_23
@@ -28486,6 +33230,10 @@
     #undef EMP_DECLARE_VARS_23
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_23
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_23
+        #pragma pop_macro("EMP_DECLARE_VARS_23")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_23
 
 #ifdef EMP_DECLARE_VARS_24
@@ -28510,6 +33258,10 @@
     #undef EMP_DECLARE_VARS_24
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_24
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_24
+        #pragma pop_macro("EMP_DECLARE_VARS_24")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_24
 
 #ifdef EMP_DECLARE_VARS_25
@@ -28534,6 +33286,10 @@
     #undef EMP_DECLARE_VARS_25
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_25
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_25
+        #pragma pop_macro("EMP_DECLARE_VARS_25")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_25
 
 #ifdef EMP_DECLARE_VARS_26
@@ -28558,6 +33314,10 @@
     #undef EMP_DECLARE_VARS_26
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_26
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_26
+        #pragma pop_macro("EMP_DECLARE_VARS_26")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_26
 
 #ifdef EMP_DECLARE_VARS_27
@@ -28582,6 +33342,10 @@
     #undef EMP_DECLARE_VARS_27
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_27
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_27
+        #pragma pop_macro("EMP_DECLARE_VARS_27")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_27
 
 #ifdef EMP_DECLARE_VARS_28
@@ -28606,6 +33370,10 @@
     #undef EMP_DECLARE_VARS_28
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_28
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_28
+        #pragma pop_macro("EMP_DECLARE_VARS_28")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_28
 
 #ifdef EMP_DECLARE_VARS_29
@@ -28630,6 +33398,10 @@
     #undef EMP_DECLARE_VARS_29
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_29
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_29
+        #pragma pop_macro("EMP_DECLARE_VARS_29")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_29
 
 #ifdef EMP_DECLARE_VARS_3
@@ -28654,6 +33426,10 @@
     #undef EMP_DECLARE_VARS_3
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_3
+        #pragma pop_macro("EMP_DECLARE_VARS_3")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_3
 
 #ifdef EMP_DECLARE_VARS_30
@@ -28678,6 +33454,10 @@
     #undef EMP_DECLARE_VARS_30
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_30
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_30
+        #pragma pop_macro("EMP_DECLARE_VARS_30")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_30
 
 #ifdef EMP_DECLARE_VARS_31
@@ -28702,6 +33482,10 @@
     #undef EMP_DECLARE_VARS_31
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_31
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_31
+        #pragma pop_macro("EMP_DECLARE_VARS_31")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_31
 
 #ifdef EMP_DECLARE_VARS_32
@@ -28726,6 +33510,10 @@
     #undef EMP_DECLARE_VARS_32
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_32
+        #pragma pop_macro("EMP_DECLARE_VARS_32")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_32
 
 #ifdef EMP_DECLARE_VARS_33
@@ -28750,6 +33538,10 @@
     #undef EMP_DECLARE_VARS_33
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_33
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_33
+        #pragma pop_macro("EMP_DECLARE_VARS_33")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_33
 
 #ifdef EMP_DECLARE_VARS_34
@@ -28774,6 +33566,10 @@
     #undef EMP_DECLARE_VARS_34
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_34
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_34
+        #pragma pop_macro("EMP_DECLARE_VARS_34")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_34
 
 #ifdef EMP_DECLARE_VARS_35
@@ -28798,6 +33594,10 @@
     #undef EMP_DECLARE_VARS_35
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_35
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_35
+        #pragma pop_macro("EMP_DECLARE_VARS_35")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_35
 
 #ifdef EMP_DECLARE_VARS_36
@@ -28822,6 +33622,10 @@
     #undef EMP_DECLARE_VARS_36
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_36
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_36
+        #pragma pop_macro("EMP_DECLARE_VARS_36")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_36
 
 #ifdef EMP_DECLARE_VARS_37
@@ -28846,6 +33650,10 @@
     #undef EMP_DECLARE_VARS_37
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_37
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_37
+        #pragma pop_macro("EMP_DECLARE_VARS_37")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_37
 
 #ifdef EMP_DECLARE_VARS_38
@@ -28870,6 +33678,10 @@
     #undef EMP_DECLARE_VARS_38
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_38
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_38
+        #pragma pop_macro("EMP_DECLARE_VARS_38")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_38
 
 #ifdef EMP_DECLARE_VARS_39
@@ -28894,6 +33706,10 @@
     #undef EMP_DECLARE_VARS_39
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_39
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_39
+        #pragma pop_macro("EMP_DECLARE_VARS_39")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_39
 
 #ifdef EMP_DECLARE_VARS_4
@@ -28918,6 +33734,10 @@
     #undef EMP_DECLARE_VARS_4
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_4
+        #pragma pop_macro("EMP_DECLARE_VARS_4")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_4
 
 #ifdef EMP_DECLARE_VARS_40
@@ -28942,6 +33762,10 @@
     #undef EMP_DECLARE_VARS_40
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_40
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_40
+        #pragma pop_macro("EMP_DECLARE_VARS_40")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_40
 
 #ifdef EMP_DECLARE_VARS_41
@@ -28966,6 +33790,10 @@
     #undef EMP_DECLARE_VARS_41
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_41
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_41
+        #pragma pop_macro("EMP_DECLARE_VARS_41")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_41
 
 #ifdef EMP_DECLARE_VARS_42
@@ -28990,6 +33818,10 @@
     #undef EMP_DECLARE_VARS_42
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_42
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_42
+        #pragma pop_macro("EMP_DECLARE_VARS_42")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_42
 
 #ifdef EMP_DECLARE_VARS_43
@@ -29014,6 +33846,10 @@
     #undef EMP_DECLARE_VARS_43
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_43
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_43
+        #pragma pop_macro("EMP_DECLARE_VARS_43")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_43
 
 #ifdef EMP_DECLARE_VARS_44
@@ -29038,6 +33874,10 @@
     #undef EMP_DECLARE_VARS_44
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_44
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_44
+        #pragma pop_macro("EMP_DECLARE_VARS_44")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_44
 
 #ifdef EMP_DECLARE_VARS_45
@@ -29062,6 +33902,10 @@
     #undef EMP_DECLARE_VARS_45
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_45
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_45
+        #pragma pop_macro("EMP_DECLARE_VARS_45")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_45
 
 #ifdef EMP_DECLARE_VARS_46
@@ -29086,6 +33930,10 @@
     #undef EMP_DECLARE_VARS_46
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_46
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_46
+        #pragma pop_macro("EMP_DECLARE_VARS_46")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_46
 
 #ifdef EMP_DECLARE_VARS_47
@@ -29110,6 +33958,10 @@
     #undef EMP_DECLARE_VARS_47
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_47
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_47
+        #pragma pop_macro("EMP_DECLARE_VARS_47")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_47
 
 #ifdef EMP_DECLARE_VARS_48
@@ -29134,6 +33986,10 @@
     #undef EMP_DECLARE_VARS_48
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_48
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_48
+        #pragma pop_macro("EMP_DECLARE_VARS_48")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_48
 
 #ifdef EMP_DECLARE_VARS_49
@@ -29158,6 +34014,10 @@
     #undef EMP_DECLARE_VARS_49
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_49
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_49
+        #pragma pop_macro("EMP_DECLARE_VARS_49")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_49
 
 #ifdef EMP_DECLARE_VARS_5
@@ -29182,6 +34042,10 @@
     #undef EMP_DECLARE_VARS_5
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_5
+        #pragma pop_macro("EMP_DECLARE_VARS_5")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_5
 
 #ifdef EMP_DECLARE_VARS_50
@@ -29206,6 +34070,10 @@
     #undef EMP_DECLARE_VARS_50
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_50
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_50
+        #pragma pop_macro("EMP_DECLARE_VARS_50")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_50
 
 #ifdef EMP_DECLARE_VARS_51
@@ -29230,6 +34098,10 @@
     #undef EMP_DECLARE_VARS_51
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_51
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_51
+        #pragma pop_macro("EMP_DECLARE_VARS_51")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_51
 
 #ifdef EMP_DECLARE_VARS_52
@@ -29254,6 +34126,10 @@
     #undef EMP_DECLARE_VARS_52
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_52
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_52
+        #pragma pop_macro("EMP_DECLARE_VARS_52")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_52
 
 #ifdef EMP_DECLARE_VARS_53
@@ -29278,6 +34154,10 @@
     #undef EMP_DECLARE_VARS_53
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_53
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_53
+        #pragma pop_macro("EMP_DECLARE_VARS_53")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_53
 
 #ifdef EMP_DECLARE_VARS_54
@@ -29302,6 +34182,10 @@
     #undef EMP_DECLARE_VARS_54
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_54
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_54
+        #pragma pop_macro("EMP_DECLARE_VARS_54")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_54
 
 #ifdef EMP_DECLARE_VARS_55
@@ -29326,6 +34210,10 @@
     #undef EMP_DECLARE_VARS_55
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_55
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_55
+        #pragma pop_macro("EMP_DECLARE_VARS_55")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_55
 
 #ifdef EMP_DECLARE_VARS_56
@@ -29350,6 +34238,10 @@
     #undef EMP_DECLARE_VARS_56
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_56
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_56
+        #pragma pop_macro("EMP_DECLARE_VARS_56")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_56
 
 #ifdef EMP_DECLARE_VARS_57
@@ -29374,6 +34266,10 @@
     #undef EMP_DECLARE_VARS_57
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_57
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_57
+        #pragma pop_macro("EMP_DECLARE_VARS_57")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_57
 
 #ifdef EMP_DECLARE_VARS_58
@@ -29398,6 +34294,10 @@
     #undef EMP_DECLARE_VARS_58
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_58
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_58
+        #pragma pop_macro("EMP_DECLARE_VARS_58")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_58
 
 #ifdef EMP_DECLARE_VARS_59
@@ -29422,6 +34322,10 @@
     #undef EMP_DECLARE_VARS_59
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_59
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_59
+        #pragma pop_macro("EMP_DECLARE_VARS_59")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_59
 
 #ifdef EMP_DECLARE_VARS_6
@@ -29446,6 +34350,10 @@
     #undef EMP_DECLARE_VARS_6
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_6
+        #pragma pop_macro("EMP_DECLARE_VARS_6")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_6
 
 #ifdef EMP_DECLARE_VARS_60
@@ -29470,6 +34378,10 @@
     #undef EMP_DECLARE_VARS_60
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_60
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_60
+        #pragma pop_macro("EMP_DECLARE_VARS_60")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_60
 
 #ifdef EMP_DECLARE_VARS_61
@@ -29494,6 +34406,10 @@
     #undef EMP_DECLARE_VARS_61
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_61
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_61
+        #pragma pop_macro("EMP_DECLARE_VARS_61")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_61
 
 #ifdef EMP_DECLARE_VARS_62
@@ -29518,6 +34434,10 @@
     #undef EMP_DECLARE_VARS_62
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_62
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_62
+        #pragma pop_macro("EMP_DECLARE_VARS_62")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_62
 
 #ifdef EMP_DECLARE_VARS_63
@@ -29542,6 +34462,10 @@
     #undef EMP_DECLARE_VARS_63
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_63
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_63
+        #pragma pop_macro("EMP_DECLARE_VARS_63")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_63
 
 #ifdef EMP_DECLARE_VARS_7
@@ -29566,6 +34490,10 @@
     #undef EMP_DECLARE_VARS_7
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_7
+        #pragma pop_macro("EMP_DECLARE_VARS_7")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_7
 
 #ifdef EMP_DECLARE_VARS_8
@@ -29590,6 +34518,10 @@
     #undef EMP_DECLARE_VARS_8
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_8
+        #pragma pop_macro("EMP_DECLARE_VARS_8")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_8
 
 #ifdef EMP_DECLARE_VARS_9
@@ -29614,6 +34546,10 @@
     #undef EMP_DECLARE_VARS_9
   #endif
 
+#else // #ifdef EMP_DECLARE_VARS_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_DECLARE_VARS_9
+        #pragma pop_macro("EMP_DECLARE_VARS_9")
+    #endif
 #endif // #ifdef EMP_DECLARE_VARS_9
 
 #ifdef EMP_DEC_TO_BIN
@@ -29638,6 +34574,10 @@
     #undef EMP_DEC_TO_BIN
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN
+        #pragma pop_macro("EMP_DEC_TO_BIN")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN
 
 #ifdef EMP_DEC_TO_BIN_0
@@ -29662,6 +34602,10 @@
     #undef EMP_DEC_TO_BIN_0
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_0
+        #pragma pop_macro("EMP_DEC_TO_BIN_0")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_0
 
 #ifdef EMP_DEC_TO_BIN_1
@@ -29686,6 +34630,10 @@
     #undef EMP_DEC_TO_BIN_1
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1
+        #pragma pop_macro("EMP_DEC_TO_BIN_1")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1
 
 #ifdef EMP_DEC_TO_BIN_10
@@ -29710,6 +34658,10 @@
     #undef EMP_DEC_TO_BIN_10
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_10
+        #pragma pop_macro("EMP_DEC_TO_BIN_10")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_10
 
 #ifdef EMP_DEC_TO_BIN_100
@@ -29734,6 +34686,10 @@
     #undef EMP_DEC_TO_BIN_100
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_100
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_100
+        #pragma pop_macro("EMP_DEC_TO_BIN_100")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_100
 
 #ifdef EMP_DEC_TO_BIN_1000
@@ -29758,6 +34714,10 @@
     #undef EMP_DEC_TO_BIN_1000
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1000
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1000
+        #pragma pop_macro("EMP_DEC_TO_BIN_1000")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1000
 
 #ifdef EMP_DEC_TO_BIN_1001
@@ -29782,6 +34742,10 @@
     #undef EMP_DEC_TO_BIN_1001
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1001
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1001
+        #pragma pop_macro("EMP_DEC_TO_BIN_1001")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1001
 
 #ifdef EMP_DEC_TO_BIN_1002
@@ -29806,6 +34770,10 @@
     #undef EMP_DEC_TO_BIN_1002
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1002
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1002
+        #pragma pop_macro("EMP_DEC_TO_BIN_1002")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1002
 
 #ifdef EMP_DEC_TO_BIN_1003
@@ -29830,6 +34798,10 @@
     #undef EMP_DEC_TO_BIN_1003
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1003
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1003
+        #pragma pop_macro("EMP_DEC_TO_BIN_1003")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1003
 
 #ifdef EMP_DEC_TO_BIN_1004
@@ -29854,6 +34826,10 @@
     #undef EMP_DEC_TO_BIN_1004
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1004
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1004
+        #pragma pop_macro("EMP_DEC_TO_BIN_1004")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1004
 
 #ifdef EMP_DEC_TO_BIN_1005
@@ -29878,6 +34854,10 @@
     #undef EMP_DEC_TO_BIN_1005
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1005
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1005
+        #pragma pop_macro("EMP_DEC_TO_BIN_1005")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1005
 
 #ifdef EMP_DEC_TO_BIN_1006
@@ -29902,6 +34882,10 @@
     #undef EMP_DEC_TO_BIN_1006
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1006
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1006
+        #pragma pop_macro("EMP_DEC_TO_BIN_1006")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1006
 
 #ifdef EMP_DEC_TO_BIN_1007
@@ -29926,6 +34910,10 @@
     #undef EMP_DEC_TO_BIN_1007
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1007
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1007
+        #pragma pop_macro("EMP_DEC_TO_BIN_1007")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1007
 
 #ifdef EMP_DEC_TO_BIN_1008
@@ -29950,6 +34938,10 @@
     #undef EMP_DEC_TO_BIN_1008
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1008
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1008
+        #pragma pop_macro("EMP_DEC_TO_BIN_1008")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1008
 
 #ifdef EMP_DEC_TO_BIN_1009
@@ -29974,6 +34966,10 @@
     #undef EMP_DEC_TO_BIN_1009
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1009
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1009
+        #pragma pop_macro("EMP_DEC_TO_BIN_1009")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1009
 
 #ifdef EMP_DEC_TO_BIN_101
@@ -29998,6 +34994,10 @@
     #undef EMP_DEC_TO_BIN_101
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_101
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_101
+        #pragma pop_macro("EMP_DEC_TO_BIN_101")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_101
 
 #ifdef EMP_DEC_TO_BIN_1010
@@ -30022,6 +35022,10 @@
     #undef EMP_DEC_TO_BIN_1010
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1010
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1010
+        #pragma pop_macro("EMP_DEC_TO_BIN_1010")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1010
 
 #ifdef EMP_DEC_TO_BIN_1011
@@ -30046,6 +35050,10 @@
     #undef EMP_DEC_TO_BIN_1011
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1011
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1011
+        #pragma pop_macro("EMP_DEC_TO_BIN_1011")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1011
 
 #ifdef EMP_DEC_TO_BIN_1012
@@ -30070,6 +35078,10 @@
     #undef EMP_DEC_TO_BIN_1012
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1012
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1012
+        #pragma pop_macro("EMP_DEC_TO_BIN_1012")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1012
 
 #ifdef EMP_DEC_TO_BIN_1013
@@ -30094,6 +35106,10 @@
     #undef EMP_DEC_TO_BIN_1013
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1013
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1013
+        #pragma pop_macro("EMP_DEC_TO_BIN_1013")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1013
 
 #ifdef EMP_DEC_TO_BIN_1014
@@ -30118,6 +35134,10 @@
     #undef EMP_DEC_TO_BIN_1014
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1014
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1014
+        #pragma pop_macro("EMP_DEC_TO_BIN_1014")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1014
 
 #ifdef EMP_DEC_TO_BIN_1015
@@ -30142,6 +35162,10 @@
     #undef EMP_DEC_TO_BIN_1015
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1015
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1015
+        #pragma pop_macro("EMP_DEC_TO_BIN_1015")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1015
 
 #ifdef EMP_DEC_TO_BIN_1016
@@ -30166,6 +35190,10 @@
     #undef EMP_DEC_TO_BIN_1016
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1016
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1016
+        #pragma pop_macro("EMP_DEC_TO_BIN_1016")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1016
 
 #ifdef EMP_DEC_TO_BIN_1017
@@ -30190,6 +35218,10 @@
     #undef EMP_DEC_TO_BIN_1017
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1017
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1017
+        #pragma pop_macro("EMP_DEC_TO_BIN_1017")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1017
 
 #ifdef EMP_DEC_TO_BIN_1018
@@ -30214,6 +35246,10 @@
     #undef EMP_DEC_TO_BIN_1018
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1018
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1018
+        #pragma pop_macro("EMP_DEC_TO_BIN_1018")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1018
 
 #ifdef EMP_DEC_TO_BIN_1019
@@ -30238,6 +35274,10 @@
     #undef EMP_DEC_TO_BIN_1019
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1019
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1019
+        #pragma pop_macro("EMP_DEC_TO_BIN_1019")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1019
 
 #ifdef EMP_DEC_TO_BIN_102
@@ -30262,6 +35302,10 @@
     #undef EMP_DEC_TO_BIN_102
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_102
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_102
+        #pragma pop_macro("EMP_DEC_TO_BIN_102")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_102
 
 #ifdef EMP_DEC_TO_BIN_1020
@@ -30286,6 +35330,10 @@
     #undef EMP_DEC_TO_BIN_1020
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1020
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1020
+        #pragma pop_macro("EMP_DEC_TO_BIN_1020")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1020
 
 #ifdef EMP_DEC_TO_BIN_1021
@@ -30310,6 +35358,10 @@
     #undef EMP_DEC_TO_BIN_1021
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1021
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1021
+        #pragma pop_macro("EMP_DEC_TO_BIN_1021")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1021
 
 #ifdef EMP_DEC_TO_BIN_1022
@@ -30334,6 +35386,10 @@
     #undef EMP_DEC_TO_BIN_1022
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1022
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1022
+        #pragma pop_macro("EMP_DEC_TO_BIN_1022")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1022
 
 #ifdef EMP_DEC_TO_BIN_1023
@@ -30358,6 +35414,10 @@
     #undef EMP_DEC_TO_BIN_1023
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_1023
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_1023
+        #pragma pop_macro("EMP_DEC_TO_BIN_1023")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_1023
 
 #ifdef EMP_DEC_TO_BIN_103
@@ -30382,6 +35442,10 @@
     #undef EMP_DEC_TO_BIN_103
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_103
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_103
+        #pragma pop_macro("EMP_DEC_TO_BIN_103")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_103
 
 #ifdef EMP_DEC_TO_BIN_104
@@ -30406,6 +35470,10 @@
     #undef EMP_DEC_TO_BIN_104
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_104
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_104
+        #pragma pop_macro("EMP_DEC_TO_BIN_104")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_104
 
 #ifdef EMP_DEC_TO_BIN_105
@@ -30430,6 +35498,10 @@
     #undef EMP_DEC_TO_BIN_105
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_105
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_105
+        #pragma pop_macro("EMP_DEC_TO_BIN_105")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_105
 
 #ifdef EMP_DEC_TO_BIN_106
@@ -30454,6 +35526,10 @@
     #undef EMP_DEC_TO_BIN_106
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_106
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_106
+        #pragma pop_macro("EMP_DEC_TO_BIN_106")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_106
 
 #ifdef EMP_DEC_TO_BIN_107
@@ -30478,6 +35554,10 @@
     #undef EMP_DEC_TO_BIN_107
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_107
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_107
+        #pragma pop_macro("EMP_DEC_TO_BIN_107")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_107
 
 #ifdef EMP_DEC_TO_BIN_108
@@ -30502,6 +35582,10 @@
     #undef EMP_DEC_TO_BIN_108
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_108
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_108
+        #pragma pop_macro("EMP_DEC_TO_BIN_108")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_108
 
 #ifdef EMP_DEC_TO_BIN_109
@@ -30526,6 +35610,10 @@
     #undef EMP_DEC_TO_BIN_109
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_109
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_109
+        #pragma pop_macro("EMP_DEC_TO_BIN_109")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_109
 
 #ifdef EMP_DEC_TO_BIN_11
@@ -30550,6 +35638,10 @@
     #undef EMP_DEC_TO_BIN_11
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_11
+        #pragma pop_macro("EMP_DEC_TO_BIN_11")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_11
 
 #ifdef EMP_DEC_TO_BIN_110
@@ -30574,6 +35666,10 @@
     #undef EMP_DEC_TO_BIN_110
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_110
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_110
+        #pragma pop_macro("EMP_DEC_TO_BIN_110")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_110
 
 #ifdef EMP_DEC_TO_BIN_111
@@ -30598,6 +35694,10 @@
     #undef EMP_DEC_TO_BIN_111
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_111
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_111
+        #pragma pop_macro("EMP_DEC_TO_BIN_111")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_111
 
 #ifdef EMP_DEC_TO_BIN_112
@@ -30622,6 +35722,10 @@
     #undef EMP_DEC_TO_BIN_112
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_112
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_112
+        #pragma pop_macro("EMP_DEC_TO_BIN_112")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_112
 
 #ifdef EMP_DEC_TO_BIN_113
@@ -30646,6 +35750,10 @@
     #undef EMP_DEC_TO_BIN_113
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_113
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_113
+        #pragma pop_macro("EMP_DEC_TO_BIN_113")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_113
 
 #ifdef EMP_DEC_TO_BIN_114
@@ -30670,6 +35778,10 @@
     #undef EMP_DEC_TO_BIN_114
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_114
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_114
+        #pragma pop_macro("EMP_DEC_TO_BIN_114")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_114
 
 #ifdef EMP_DEC_TO_BIN_115
@@ -30694,6 +35806,10 @@
     #undef EMP_DEC_TO_BIN_115
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_115
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_115
+        #pragma pop_macro("EMP_DEC_TO_BIN_115")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_115
 
 #ifdef EMP_DEC_TO_BIN_116
@@ -30718,6 +35834,10 @@
     #undef EMP_DEC_TO_BIN_116
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_116
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_116
+        #pragma pop_macro("EMP_DEC_TO_BIN_116")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_116
 
 #ifdef EMP_DEC_TO_BIN_117
@@ -30742,6 +35862,10 @@
     #undef EMP_DEC_TO_BIN_117
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_117
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_117
+        #pragma pop_macro("EMP_DEC_TO_BIN_117")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_117
 
 #ifdef EMP_DEC_TO_BIN_118
@@ -30766,6 +35890,10 @@
     #undef EMP_DEC_TO_BIN_118
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_118
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_118
+        #pragma pop_macro("EMP_DEC_TO_BIN_118")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_118
 
 #ifdef EMP_DEC_TO_BIN_119
@@ -30790,6 +35918,10 @@
     #undef EMP_DEC_TO_BIN_119
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_119
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_119
+        #pragma pop_macro("EMP_DEC_TO_BIN_119")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_119
 
 #ifdef EMP_DEC_TO_BIN_12
@@ -30814,6 +35946,10 @@
     #undef EMP_DEC_TO_BIN_12
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_12
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_12
+        #pragma pop_macro("EMP_DEC_TO_BIN_12")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_12
 
 #ifdef EMP_DEC_TO_BIN_120
@@ -30838,6 +35974,10 @@
     #undef EMP_DEC_TO_BIN_120
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_120
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_120
+        #pragma pop_macro("EMP_DEC_TO_BIN_120")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_120
 
 #ifdef EMP_DEC_TO_BIN_121
@@ -30862,6 +36002,10 @@
     #undef EMP_DEC_TO_BIN_121
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_121
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_121
+        #pragma pop_macro("EMP_DEC_TO_BIN_121")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_121
 
 #ifdef EMP_DEC_TO_BIN_122
@@ -30886,6 +36030,10 @@
     #undef EMP_DEC_TO_BIN_122
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_122
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_122
+        #pragma pop_macro("EMP_DEC_TO_BIN_122")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_122
 
 #ifdef EMP_DEC_TO_BIN_123
@@ -30910,6 +36058,10 @@
     #undef EMP_DEC_TO_BIN_123
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_123
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_123
+        #pragma pop_macro("EMP_DEC_TO_BIN_123")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_123
 
 #ifdef EMP_DEC_TO_BIN_124
@@ -30934,6 +36086,10 @@
     #undef EMP_DEC_TO_BIN_124
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_124
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_124
+        #pragma pop_macro("EMP_DEC_TO_BIN_124")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_124
 
 #ifdef EMP_DEC_TO_BIN_125
@@ -30958,6 +36114,10 @@
     #undef EMP_DEC_TO_BIN_125
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_125
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_125
+        #pragma pop_macro("EMP_DEC_TO_BIN_125")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_125
 
 #ifdef EMP_DEC_TO_BIN_126
@@ -30982,6 +36142,10 @@
     #undef EMP_DEC_TO_BIN_126
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_126
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_126
+        #pragma pop_macro("EMP_DEC_TO_BIN_126")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_126
 
 #ifdef EMP_DEC_TO_BIN_127
@@ -31006,6 +36170,10 @@
     #undef EMP_DEC_TO_BIN_127
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_127
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_127
+        #pragma pop_macro("EMP_DEC_TO_BIN_127")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_127
 
 #ifdef EMP_DEC_TO_BIN_128
@@ -31030,6 +36198,10 @@
     #undef EMP_DEC_TO_BIN_128
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_128
+        #pragma pop_macro("EMP_DEC_TO_BIN_128")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_128
 
 #ifdef EMP_DEC_TO_BIN_129
@@ -31054,6 +36226,10 @@
     #undef EMP_DEC_TO_BIN_129
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_129
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_129
+        #pragma pop_macro("EMP_DEC_TO_BIN_129")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_129
 
 #ifdef EMP_DEC_TO_BIN_13
@@ -31078,6 +36254,10 @@
     #undef EMP_DEC_TO_BIN_13
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_13
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_13
+        #pragma pop_macro("EMP_DEC_TO_BIN_13")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_13
 
 #ifdef EMP_DEC_TO_BIN_130
@@ -31102,6 +36282,10 @@
     #undef EMP_DEC_TO_BIN_130
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_130
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_130
+        #pragma pop_macro("EMP_DEC_TO_BIN_130")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_130
 
 #ifdef EMP_DEC_TO_BIN_131
@@ -31126,6 +36310,10 @@
     #undef EMP_DEC_TO_BIN_131
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_131
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_131
+        #pragma pop_macro("EMP_DEC_TO_BIN_131")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_131
 
 #ifdef EMP_DEC_TO_BIN_132
@@ -31150,6 +36338,10 @@
     #undef EMP_DEC_TO_BIN_132
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_132
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_132
+        #pragma pop_macro("EMP_DEC_TO_BIN_132")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_132
 
 #ifdef EMP_DEC_TO_BIN_133
@@ -31174,6 +36366,10 @@
     #undef EMP_DEC_TO_BIN_133
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_133
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_133
+        #pragma pop_macro("EMP_DEC_TO_BIN_133")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_133
 
 #ifdef EMP_DEC_TO_BIN_134
@@ -31198,6 +36394,10 @@
     #undef EMP_DEC_TO_BIN_134
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_134
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_134
+        #pragma pop_macro("EMP_DEC_TO_BIN_134")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_134
 
 #ifdef EMP_DEC_TO_BIN_135
@@ -31222,6 +36422,10 @@
     #undef EMP_DEC_TO_BIN_135
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_135
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_135
+        #pragma pop_macro("EMP_DEC_TO_BIN_135")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_135
 
 #ifdef EMP_DEC_TO_BIN_136
@@ -31246,6 +36450,10 @@
     #undef EMP_DEC_TO_BIN_136
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_136
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_136
+        #pragma pop_macro("EMP_DEC_TO_BIN_136")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_136
 
 #ifdef EMP_DEC_TO_BIN_137
@@ -31270,6 +36478,10 @@
     #undef EMP_DEC_TO_BIN_137
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_137
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_137
+        #pragma pop_macro("EMP_DEC_TO_BIN_137")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_137
 
 #ifdef EMP_DEC_TO_BIN_138
@@ -31294,6 +36506,10 @@
     #undef EMP_DEC_TO_BIN_138
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_138
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_138
+        #pragma pop_macro("EMP_DEC_TO_BIN_138")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_138
 
 #ifdef EMP_DEC_TO_BIN_139
@@ -31318,6 +36534,10 @@
     #undef EMP_DEC_TO_BIN_139
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_139
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_139
+        #pragma pop_macro("EMP_DEC_TO_BIN_139")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_139
 
 #ifdef EMP_DEC_TO_BIN_14
@@ -31342,6 +36562,10 @@
     #undef EMP_DEC_TO_BIN_14
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_14
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_14
+        #pragma pop_macro("EMP_DEC_TO_BIN_14")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_14
 
 #ifdef EMP_DEC_TO_BIN_140
@@ -31366,6 +36590,10 @@
     #undef EMP_DEC_TO_BIN_140
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_140
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_140
+        #pragma pop_macro("EMP_DEC_TO_BIN_140")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_140
 
 #ifdef EMP_DEC_TO_BIN_141
@@ -31390,6 +36618,10 @@
     #undef EMP_DEC_TO_BIN_141
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_141
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_141
+        #pragma pop_macro("EMP_DEC_TO_BIN_141")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_141
 
 #ifdef EMP_DEC_TO_BIN_142
@@ -31414,6 +36646,10 @@
     #undef EMP_DEC_TO_BIN_142
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_142
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_142
+        #pragma pop_macro("EMP_DEC_TO_BIN_142")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_142
 
 #ifdef EMP_DEC_TO_BIN_143
@@ -31438,6 +36674,10 @@
     #undef EMP_DEC_TO_BIN_143
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_143
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_143
+        #pragma pop_macro("EMP_DEC_TO_BIN_143")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_143
 
 #ifdef EMP_DEC_TO_BIN_144
@@ -31462,6 +36702,10 @@
     #undef EMP_DEC_TO_BIN_144
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_144
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_144
+        #pragma pop_macro("EMP_DEC_TO_BIN_144")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_144
 
 #ifdef EMP_DEC_TO_BIN_145
@@ -31486,6 +36730,10 @@
     #undef EMP_DEC_TO_BIN_145
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_145
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_145
+        #pragma pop_macro("EMP_DEC_TO_BIN_145")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_145
 
 #ifdef EMP_DEC_TO_BIN_146
@@ -31510,6 +36758,10 @@
     #undef EMP_DEC_TO_BIN_146
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_146
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_146
+        #pragma pop_macro("EMP_DEC_TO_BIN_146")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_146
 
 #ifdef EMP_DEC_TO_BIN_147
@@ -31534,6 +36786,10 @@
     #undef EMP_DEC_TO_BIN_147
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_147
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_147
+        #pragma pop_macro("EMP_DEC_TO_BIN_147")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_147
 
 #ifdef EMP_DEC_TO_BIN_148
@@ -31558,6 +36814,10 @@
     #undef EMP_DEC_TO_BIN_148
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_148
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_148
+        #pragma pop_macro("EMP_DEC_TO_BIN_148")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_148
 
 #ifdef EMP_DEC_TO_BIN_149
@@ -31582,6 +36842,10 @@
     #undef EMP_DEC_TO_BIN_149
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_149
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_149
+        #pragma pop_macro("EMP_DEC_TO_BIN_149")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_149
 
 #ifdef EMP_DEC_TO_BIN_15
@@ -31606,6 +36870,10 @@
     #undef EMP_DEC_TO_BIN_15
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_15
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_15
+        #pragma pop_macro("EMP_DEC_TO_BIN_15")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_15
 
 #ifdef EMP_DEC_TO_BIN_150
@@ -31630,6 +36898,10 @@
     #undef EMP_DEC_TO_BIN_150
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_150
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_150
+        #pragma pop_macro("EMP_DEC_TO_BIN_150")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_150
 
 #ifdef EMP_DEC_TO_BIN_151
@@ -31654,6 +36926,10 @@
     #undef EMP_DEC_TO_BIN_151
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_151
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_151
+        #pragma pop_macro("EMP_DEC_TO_BIN_151")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_151
 
 #ifdef EMP_DEC_TO_BIN_152
@@ -31678,6 +36954,10 @@
     #undef EMP_DEC_TO_BIN_152
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_152
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_152
+        #pragma pop_macro("EMP_DEC_TO_BIN_152")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_152
 
 #ifdef EMP_DEC_TO_BIN_153
@@ -31702,6 +36982,10 @@
     #undef EMP_DEC_TO_BIN_153
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_153
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_153
+        #pragma pop_macro("EMP_DEC_TO_BIN_153")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_153
 
 #ifdef EMP_DEC_TO_BIN_154
@@ -31726,6 +37010,10 @@
     #undef EMP_DEC_TO_BIN_154
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_154
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_154
+        #pragma pop_macro("EMP_DEC_TO_BIN_154")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_154
 
 #ifdef EMP_DEC_TO_BIN_155
@@ -31750,6 +37038,10 @@
     #undef EMP_DEC_TO_BIN_155
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_155
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_155
+        #pragma pop_macro("EMP_DEC_TO_BIN_155")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_155
 
 #ifdef EMP_DEC_TO_BIN_156
@@ -31774,6 +37066,10 @@
     #undef EMP_DEC_TO_BIN_156
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_156
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_156
+        #pragma pop_macro("EMP_DEC_TO_BIN_156")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_156
 
 #ifdef EMP_DEC_TO_BIN_157
@@ -31798,6 +37094,10 @@
     #undef EMP_DEC_TO_BIN_157
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_157
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_157
+        #pragma pop_macro("EMP_DEC_TO_BIN_157")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_157
 
 #ifdef EMP_DEC_TO_BIN_158
@@ -31822,6 +37122,10 @@
     #undef EMP_DEC_TO_BIN_158
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_158
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_158
+        #pragma pop_macro("EMP_DEC_TO_BIN_158")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_158
 
 #ifdef EMP_DEC_TO_BIN_159
@@ -31846,6 +37150,10 @@
     #undef EMP_DEC_TO_BIN_159
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_159
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_159
+        #pragma pop_macro("EMP_DEC_TO_BIN_159")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_159
 
 #ifdef EMP_DEC_TO_BIN_16
@@ -31870,6 +37178,10 @@
     #undef EMP_DEC_TO_BIN_16
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_16
+        #pragma pop_macro("EMP_DEC_TO_BIN_16")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_16
 
 #ifdef EMP_DEC_TO_BIN_160
@@ -31894,6 +37206,10 @@
     #undef EMP_DEC_TO_BIN_160
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_160
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_160
+        #pragma pop_macro("EMP_DEC_TO_BIN_160")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_160
 
 #ifdef EMP_DEC_TO_BIN_161
@@ -31918,6 +37234,10 @@
     #undef EMP_DEC_TO_BIN_161
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_161
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_161
+        #pragma pop_macro("EMP_DEC_TO_BIN_161")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_161
 
 #ifdef EMP_DEC_TO_BIN_162
@@ -31942,6 +37262,10 @@
     #undef EMP_DEC_TO_BIN_162
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_162
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_162
+        #pragma pop_macro("EMP_DEC_TO_BIN_162")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_162
 
 #ifdef EMP_DEC_TO_BIN_163
@@ -31966,6 +37290,10 @@
     #undef EMP_DEC_TO_BIN_163
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_163
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_163
+        #pragma pop_macro("EMP_DEC_TO_BIN_163")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_163
 
 #ifdef EMP_DEC_TO_BIN_164
@@ -31990,6 +37318,10 @@
     #undef EMP_DEC_TO_BIN_164
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_164
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_164
+        #pragma pop_macro("EMP_DEC_TO_BIN_164")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_164
 
 #ifdef EMP_DEC_TO_BIN_165
@@ -32014,6 +37346,10 @@
     #undef EMP_DEC_TO_BIN_165
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_165
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_165
+        #pragma pop_macro("EMP_DEC_TO_BIN_165")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_165
 
 #ifdef EMP_DEC_TO_BIN_166
@@ -32038,6 +37374,10 @@
     #undef EMP_DEC_TO_BIN_166
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_166
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_166
+        #pragma pop_macro("EMP_DEC_TO_BIN_166")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_166
 
 #ifdef EMP_DEC_TO_BIN_167
@@ -32062,6 +37402,10 @@
     #undef EMP_DEC_TO_BIN_167
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_167
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_167
+        #pragma pop_macro("EMP_DEC_TO_BIN_167")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_167
 
 #ifdef EMP_DEC_TO_BIN_168
@@ -32086,6 +37430,10 @@
     #undef EMP_DEC_TO_BIN_168
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_168
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_168
+        #pragma pop_macro("EMP_DEC_TO_BIN_168")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_168
 
 #ifdef EMP_DEC_TO_BIN_169
@@ -32110,6 +37458,10 @@
     #undef EMP_DEC_TO_BIN_169
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_169
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_169
+        #pragma pop_macro("EMP_DEC_TO_BIN_169")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_169
 
 #ifdef EMP_DEC_TO_BIN_17
@@ -32134,6 +37486,10 @@
     #undef EMP_DEC_TO_BIN_17
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_17
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_17
+        #pragma pop_macro("EMP_DEC_TO_BIN_17")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_17
 
 #ifdef EMP_DEC_TO_BIN_170
@@ -32158,6 +37514,10 @@
     #undef EMP_DEC_TO_BIN_170
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_170
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_170
+        #pragma pop_macro("EMP_DEC_TO_BIN_170")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_170
 
 #ifdef EMP_DEC_TO_BIN_171
@@ -32182,6 +37542,10 @@
     #undef EMP_DEC_TO_BIN_171
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_171
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_171
+        #pragma pop_macro("EMP_DEC_TO_BIN_171")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_171
 
 #ifdef EMP_DEC_TO_BIN_172
@@ -32206,6 +37570,10 @@
     #undef EMP_DEC_TO_BIN_172
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_172
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_172
+        #pragma pop_macro("EMP_DEC_TO_BIN_172")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_172
 
 #ifdef EMP_DEC_TO_BIN_173
@@ -32230,6 +37598,10 @@
     #undef EMP_DEC_TO_BIN_173
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_173
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_173
+        #pragma pop_macro("EMP_DEC_TO_BIN_173")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_173
 
 #ifdef EMP_DEC_TO_BIN_174
@@ -32254,6 +37626,10 @@
     #undef EMP_DEC_TO_BIN_174
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_174
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_174
+        #pragma pop_macro("EMP_DEC_TO_BIN_174")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_174
 
 #ifdef EMP_DEC_TO_BIN_175
@@ -32278,6 +37654,10 @@
     #undef EMP_DEC_TO_BIN_175
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_175
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_175
+        #pragma pop_macro("EMP_DEC_TO_BIN_175")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_175
 
 #ifdef EMP_DEC_TO_BIN_176
@@ -32302,6 +37682,10 @@
     #undef EMP_DEC_TO_BIN_176
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_176
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_176
+        #pragma pop_macro("EMP_DEC_TO_BIN_176")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_176
 
 #ifdef EMP_DEC_TO_BIN_177
@@ -32326,6 +37710,10 @@
     #undef EMP_DEC_TO_BIN_177
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_177
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_177
+        #pragma pop_macro("EMP_DEC_TO_BIN_177")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_177
 
 #ifdef EMP_DEC_TO_BIN_178
@@ -32350,6 +37738,10 @@
     #undef EMP_DEC_TO_BIN_178
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_178
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_178
+        #pragma pop_macro("EMP_DEC_TO_BIN_178")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_178
 
 #ifdef EMP_DEC_TO_BIN_179
@@ -32374,6 +37766,10 @@
     #undef EMP_DEC_TO_BIN_179
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_179
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_179
+        #pragma pop_macro("EMP_DEC_TO_BIN_179")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_179
 
 #ifdef EMP_DEC_TO_BIN_18
@@ -32398,6 +37794,10 @@
     #undef EMP_DEC_TO_BIN_18
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_18
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_18
+        #pragma pop_macro("EMP_DEC_TO_BIN_18")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_18
 
 #ifdef EMP_DEC_TO_BIN_180
@@ -32422,6 +37822,10 @@
     #undef EMP_DEC_TO_BIN_180
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_180
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_180
+        #pragma pop_macro("EMP_DEC_TO_BIN_180")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_180
 
 #ifdef EMP_DEC_TO_BIN_181
@@ -32446,6 +37850,10 @@
     #undef EMP_DEC_TO_BIN_181
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_181
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_181
+        #pragma pop_macro("EMP_DEC_TO_BIN_181")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_181
 
 #ifdef EMP_DEC_TO_BIN_182
@@ -32470,6 +37878,10 @@
     #undef EMP_DEC_TO_BIN_182
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_182
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_182
+        #pragma pop_macro("EMP_DEC_TO_BIN_182")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_182
 
 #ifdef EMP_DEC_TO_BIN_183
@@ -32494,6 +37906,10 @@
     #undef EMP_DEC_TO_BIN_183
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_183
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_183
+        #pragma pop_macro("EMP_DEC_TO_BIN_183")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_183
 
 #ifdef EMP_DEC_TO_BIN_184
@@ -32518,6 +37934,10 @@
     #undef EMP_DEC_TO_BIN_184
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_184
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_184
+        #pragma pop_macro("EMP_DEC_TO_BIN_184")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_184
 
 #ifdef EMP_DEC_TO_BIN_185
@@ -32542,6 +37962,10 @@
     #undef EMP_DEC_TO_BIN_185
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_185
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_185
+        #pragma pop_macro("EMP_DEC_TO_BIN_185")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_185
 
 #ifdef EMP_DEC_TO_BIN_186
@@ -32566,6 +37990,10 @@
     #undef EMP_DEC_TO_BIN_186
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_186
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_186
+        #pragma pop_macro("EMP_DEC_TO_BIN_186")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_186
 
 #ifdef EMP_DEC_TO_BIN_187
@@ -32590,6 +38018,10 @@
     #undef EMP_DEC_TO_BIN_187
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_187
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_187
+        #pragma pop_macro("EMP_DEC_TO_BIN_187")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_187
 
 #ifdef EMP_DEC_TO_BIN_188
@@ -32614,6 +38046,10 @@
     #undef EMP_DEC_TO_BIN_188
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_188
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_188
+        #pragma pop_macro("EMP_DEC_TO_BIN_188")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_188
 
 #ifdef EMP_DEC_TO_BIN_189
@@ -32638,6 +38074,10 @@
     #undef EMP_DEC_TO_BIN_189
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_189
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_189
+        #pragma pop_macro("EMP_DEC_TO_BIN_189")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_189
 
 #ifdef EMP_DEC_TO_BIN_19
@@ -32662,6 +38102,10 @@
     #undef EMP_DEC_TO_BIN_19
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_19
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_19
+        #pragma pop_macro("EMP_DEC_TO_BIN_19")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_19
 
 #ifdef EMP_DEC_TO_BIN_190
@@ -32686,6 +38130,10 @@
     #undef EMP_DEC_TO_BIN_190
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_190
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_190
+        #pragma pop_macro("EMP_DEC_TO_BIN_190")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_190
 
 #ifdef EMP_DEC_TO_BIN_191
@@ -32710,6 +38158,10 @@
     #undef EMP_DEC_TO_BIN_191
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_191
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_191
+        #pragma pop_macro("EMP_DEC_TO_BIN_191")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_191
 
 #ifdef EMP_DEC_TO_BIN_192
@@ -32734,6 +38186,10 @@
     #undef EMP_DEC_TO_BIN_192
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_192
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_192
+        #pragma pop_macro("EMP_DEC_TO_BIN_192")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_192
 
 #ifdef EMP_DEC_TO_BIN_193
@@ -32758,6 +38214,10 @@
     #undef EMP_DEC_TO_BIN_193
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_193
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_193
+        #pragma pop_macro("EMP_DEC_TO_BIN_193")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_193
 
 #ifdef EMP_DEC_TO_BIN_194
@@ -32782,6 +38242,10 @@
     #undef EMP_DEC_TO_BIN_194
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_194
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_194
+        #pragma pop_macro("EMP_DEC_TO_BIN_194")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_194
 
 #ifdef EMP_DEC_TO_BIN_195
@@ -32806,6 +38270,10 @@
     #undef EMP_DEC_TO_BIN_195
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_195
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_195
+        #pragma pop_macro("EMP_DEC_TO_BIN_195")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_195
 
 #ifdef EMP_DEC_TO_BIN_196
@@ -32830,6 +38298,10 @@
     #undef EMP_DEC_TO_BIN_196
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_196
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_196
+        #pragma pop_macro("EMP_DEC_TO_BIN_196")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_196
 
 #ifdef EMP_DEC_TO_BIN_197
@@ -32854,6 +38326,10 @@
     #undef EMP_DEC_TO_BIN_197
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_197
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_197
+        #pragma pop_macro("EMP_DEC_TO_BIN_197")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_197
 
 #ifdef EMP_DEC_TO_BIN_198
@@ -32878,6 +38354,10 @@
     #undef EMP_DEC_TO_BIN_198
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_198
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_198
+        #pragma pop_macro("EMP_DEC_TO_BIN_198")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_198
 
 #ifdef EMP_DEC_TO_BIN_199
@@ -32902,6 +38382,10 @@
     #undef EMP_DEC_TO_BIN_199
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_199
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_199
+        #pragma pop_macro("EMP_DEC_TO_BIN_199")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_199
 
 #ifdef EMP_DEC_TO_BIN_2
@@ -32926,6 +38410,10 @@
     #undef EMP_DEC_TO_BIN_2
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_2
+        #pragma pop_macro("EMP_DEC_TO_BIN_2")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_2
 
 #ifdef EMP_DEC_TO_BIN_20
@@ -32950,6 +38438,10 @@
     #undef EMP_DEC_TO_BIN_20
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_20
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_20
+        #pragma pop_macro("EMP_DEC_TO_BIN_20")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_20
 
 #ifdef EMP_DEC_TO_BIN_200
@@ -32974,6 +38466,10 @@
     #undef EMP_DEC_TO_BIN_200
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_200
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_200
+        #pragma pop_macro("EMP_DEC_TO_BIN_200")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_200
 
 #ifdef EMP_DEC_TO_BIN_201
@@ -32998,6 +38494,10 @@
     #undef EMP_DEC_TO_BIN_201
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_201
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_201
+        #pragma pop_macro("EMP_DEC_TO_BIN_201")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_201
 
 #ifdef EMP_DEC_TO_BIN_202
@@ -33022,6 +38522,10 @@
     #undef EMP_DEC_TO_BIN_202
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_202
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_202
+        #pragma pop_macro("EMP_DEC_TO_BIN_202")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_202
 
 #ifdef EMP_DEC_TO_BIN_203
@@ -33046,6 +38550,10 @@
     #undef EMP_DEC_TO_BIN_203
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_203
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_203
+        #pragma pop_macro("EMP_DEC_TO_BIN_203")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_203
 
 #ifdef EMP_DEC_TO_BIN_204
@@ -33070,6 +38578,10 @@
     #undef EMP_DEC_TO_BIN_204
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_204
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_204
+        #pragma pop_macro("EMP_DEC_TO_BIN_204")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_204
 
 #ifdef EMP_DEC_TO_BIN_205
@@ -33094,6 +38606,10 @@
     #undef EMP_DEC_TO_BIN_205
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_205
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_205
+        #pragma pop_macro("EMP_DEC_TO_BIN_205")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_205
 
 #ifdef EMP_DEC_TO_BIN_206
@@ -33118,6 +38634,10 @@
     #undef EMP_DEC_TO_BIN_206
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_206
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_206
+        #pragma pop_macro("EMP_DEC_TO_BIN_206")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_206
 
 #ifdef EMP_DEC_TO_BIN_207
@@ -33142,6 +38662,10 @@
     #undef EMP_DEC_TO_BIN_207
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_207
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_207
+        #pragma pop_macro("EMP_DEC_TO_BIN_207")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_207
 
 #ifdef EMP_DEC_TO_BIN_208
@@ -33166,6 +38690,10 @@
     #undef EMP_DEC_TO_BIN_208
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_208
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_208
+        #pragma pop_macro("EMP_DEC_TO_BIN_208")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_208
 
 #ifdef EMP_DEC_TO_BIN_209
@@ -33190,6 +38718,10 @@
     #undef EMP_DEC_TO_BIN_209
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_209
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_209
+        #pragma pop_macro("EMP_DEC_TO_BIN_209")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_209
 
 #ifdef EMP_DEC_TO_BIN_21
@@ -33214,6 +38746,10 @@
     #undef EMP_DEC_TO_BIN_21
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_21
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_21
+        #pragma pop_macro("EMP_DEC_TO_BIN_21")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_21
 
 #ifdef EMP_DEC_TO_BIN_210
@@ -33238,6 +38774,10 @@
     #undef EMP_DEC_TO_BIN_210
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_210
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_210
+        #pragma pop_macro("EMP_DEC_TO_BIN_210")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_210
 
 #ifdef EMP_DEC_TO_BIN_211
@@ -33262,6 +38802,10 @@
     #undef EMP_DEC_TO_BIN_211
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_211
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_211
+        #pragma pop_macro("EMP_DEC_TO_BIN_211")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_211
 
 #ifdef EMP_DEC_TO_BIN_212
@@ -33286,6 +38830,10 @@
     #undef EMP_DEC_TO_BIN_212
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_212
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_212
+        #pragma pop_macro("EMP_DEC_TO_BIN_212")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_212
 
 #ifdef EMP_DEC_TO_BIN_213
@@ -33310,6 +38858,10 @@
     #undef EMP_DEC_TO_BIN_213
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_213
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_213
+        #pragma pop_macro("EMP_DEC_TO_BIN_213")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_213
 
 #ifdef EMP_DEC_TO_BIN_214
@@ -33334,6 +38886,10 @@
     #undef EMP_DEC_TO_BIN_214
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_214
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_214
+        #pragma pop_macro("EMP_DEC_TO_BIN_214")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_214
 
 #ifdef EMP_DEC_TO_BIN_215
@@ -33358,6 +38914,10 @@
     #undef EMP_DEC_TO_BIN_215
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_215
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_215
+        #pragma pop_macro("EMP_DEC_TO_BIN_215")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_215
 
 #ifdef EMP_DEC_TO_BIN_216
@@ -33382,6 +38942,10 @@
     #undef EMP_DEC_TO_BIN_216
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_216
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_216
+        #pragma pop_macro("EMP_DEC_TO_BIN_216")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_216
 
 #ifdef EMP_DEC_TO_BIN_217
@@ -33406,6 +38970,10 @@
     #undef EMP_DEC_TO_BIN_217
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_217
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_217
+        #pragma pop_macro("EMP_DEC_TO_BIN_217")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_217
 
 #ifdef EMP_DEC_TO_BIN_218
@@ -33430,6 +38998,10 @@
     #undef EMP_DEC_TO_BIN_218
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_218
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_218
+        #pragma pop_macro("EMP_DEC_TO_BIN_218")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_218
 
 #ifdef EMP_DEC_TO_BIN_219
@@ -33454,6 +39026,10 @@
     #undef EMP_DEC_TO_BIN_219
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_219
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_219
+        #pragma pop_macro("EMP_DEC_TO_BIN_219")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_219
 
 #ifdef EMP_DEC_TO_BIN_22
@@ -33478,6 +39054,10 @@
     #undef EMP_DEC_TO_BIN_22
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_22
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_22
+        #pragma pop_macro("EMP_DEC_TO_BIN_22")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_22
 
 #ifdef EMP_DEC_TO_BIN_220
@@ -33502,6 +39082,10 @@
     #undef EMP_DEC_TO_BIN_220
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_220
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_220
+        #pragma pop_macro("EMP_DEC_TO_BIN_220")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_220
 
 #ifdef EMP_DEC_TO_BIN_221
@@ -33526,6 +39110,10 @@
     #undef EMP_DEC_TO_BIN_221
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_221
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_221
+        #pragma pop_macro("EMP_DEC_TO_BIN_221")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_221
 
 #ifdef EMP_DEC_TO_BIN_222
@@ -33550,6 +39138,10 @@
     #undef EMP_DEC_TO_BIN_222
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_222
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_222
+        #pragma pop_macro("EMP_DEC_TO_BIN_222")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_222
 
 #ifdef EMP_DEC_TO_BIN_223
@@ -33574,6 +39166,10 @@
     #undef EMP_DEC_TO_BIN_223
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_223
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_223
+        #pragma pop_macro("EMP_DEC_TO_BIN_223")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_223
 
 #ifdef EMP_DEC_TO_BIN_224
@@ -33598,6 +39194,10 @@
     #undef EMP_DEC_TO_BIN_224
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_224
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_224
+        #pragma pop_macro("EMP_DEC_TO_BIN_224")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_224
 
 #ifdef EMP_DEC_TO_BIN_225
@@ -33622,6 +39222,10 @@
     #undef EMP_DEC_TO_BIN_225
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_225
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_225
+        #pragma pop_macro("EMP_DEC_TO_BIN_225")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_225
 
 #ifdef EMP_DEC_TO_BIN_226
@@ -33646,6 +39250,10 @@
     #undef EMP_DEC_TO_BIN_226
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_226
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_226
+        #pragma pop_macro("EMP_DEC_TO_BIN_226")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_226
 
 #ifdef EMP_DEC_TO_BIN_227
@@ -33670,6 +39278,10 @@
     #undef EMP_DEC_TO_BIN_227
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_227
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_227
+        #pragma pop_macro("EMP_DEC_TO_BIN_227")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_227
 
 #ifdef EMP_DEC_TO_BIN_228
@@ -33694,6 +39306,10 @@
     #undef EMP_DEC_TO_BIN_228
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_228
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_228
+        #pragma pop_macro("EMP_DEC_TO_BIN_228")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_228
 
 #ifdef EMP_DEC_TO_BIN_229
@@ -33718,6 +39334,10 @@
     #undef EMP_DEC_TO_BIN_229
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_229
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_229
+        #pragma pop_macro("EMP_DEC_TO_BIN_229")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_229
 
 #ifdef EMP_DEC_TO_BIN_23
@@ -33742,6 +39362,10 @@
     #undef EMP_DEC_TO_BIN_23
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_23
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_23
+        #pragma pop_macro("EMP_DEC_TO_BIN_23")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_23
 
 #ifdef EMP_DEC_TO_BIN_230
@@ -33766,6 +39390,10 @@
     #undef EMP_DEC_TO_BIN_230
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_230
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_230
+        #pragma pop_macro("EMP_DEC_TO_BIN_230")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_230
 
 #ifdef EMP_DEC_TO_BIN_231
@@ -33790,6 +39418,10 @@
     #undef EMP_DEC_TO_BIN_231
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_231
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_231
+        #pragma pop_macro("EMP_DEC_TO_BIN_231")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_231
 
 #ifdef EMP_DEC_TO_BIN_232
@@ -33814,6 +39446,10 @@
     #undef EMP_DEC_TO_BIN_232
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_232
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_232
+        #pragma pop_macro("EMP_DEC_TO_BIN_232")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_232
 
 #ifdef EMP_DEC_TO_BIN_233
@@ -33838,6 +39474,10 @@
     #undef EMP_DEC_TO_BIN_233
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_233
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_233
+        #pragma pop_macro("EMP_DEC_TO_BIN_233")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_233
 
 #ifdef EMP_DEC_TO_BIN_234
@@ -33862,6 +39502,10 @@
     #undef EMP_DEC_TO_BIN_234
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_234
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_234
+        #pragma pop_macro("EMP_DEC_TO_BIN_234")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_234
 
 #ifdef EMP_DEC_TO_BIN_235
@@ -33886,6 +39530,10 @@
     #undef EMP_DEC_TO_BIN_235
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_235
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_235
+        #pragma pop_macro("EMP_DEC_TO_BIN_235")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_235
 
 #ifdef EMP_DEC_TO_BIN_236
@@ -33910,6 +39558,10 @@
     #undef EMP_DEC_TO_BIN_236
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_236
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_236
+        #pragma pop_macro("EMP_DEC_TO_BIN_236")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_236
 
 #ifdef EMP_DEC_TO_BIN_237
@@ -33934,6 +39586,10 @@
     #undef EMP_DEC_TO_BIN_237
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_237
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_237
+        #pragma pop_macro("EMP_DEC_TO_BIN_237")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_237
 
 #ifdef EMP_DEC_TO_BIN_238
@@ -33958,6 +39614,10 @@
     #undef EMP_DEC_TO_BIN_238
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_238
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_238
+        #pragma pop_macro("EMP_DEC_TO_BIN_238")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_238
 
 #ifdef EMP_DEC_TO_BIN_239
@@ -33982,6 +39642,10 @@
     #undef EMP_DEC_TO_BIN_239
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_239
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_239
+        #pragma pop_macro("EMP_DEC_TO_BIN_239")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_239
 
 #ifdef EMP_DEC_TO_BIN_24
@@ -34006,6 +39670,10 @@
     #undef EMP_DEC_TO_BIN_24
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_24
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_24
+        #pragma pop_macro("EMP_DEC_TO_BIN_24")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_24
 
 #ifdef EMP_DEC_TO_BIN_240
@@ -34030,6 +39698,10 @@
     #undef EMP_DEC_TO_BIN_240
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_240
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_240
+        #pragma pop_macro("EMP_DEC_TO_BIN_240")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_240
 
 #ifdef EMP_DEC_TO_BIN_241
@@ -34054,6 +39726,10 @@
     #undef EMP_DEC_TO_BIN_241
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_241
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_241
+        #pragma pop_macro("EMP_DEC_TO_BIN_241")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_241
 
 #ifdef EMP_DEC_TO_BIN_242
@@ -34078,6 +39754,10 @@
     #undef EMP_DEC_TO_BIN_242
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_242
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_242
+        #pragma pop_macro("EMP_DEC_TO_BIN_242")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_242
 
 #ifdef EMP_DEC_TO_BIN_243
@@ -34102,6 +39782,10 @@
     #undef EMP_DEC_TO_BIN_243
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_243
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_243
+        #pragma pop_macro("EMP_DEC_TO_BIN_243")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_243
 
 #ifdef EMP_DEC_TO_BIN_244
@@ -34126,6 +39810,10 @@
     #undef EMP_DEC_TO_BIN_244
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_244
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_244
+        #pragma pop_macro("EMP_DEC_TO_BIN_244")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_244
 
 #ifdef EMP_DEC_TO_BIN_245
@@ -34150,6 +39838,10 @@
     #undef EMP_DEC_TO_BIN_245
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_245
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_245
+        #pragma pop_macro("EMP_DEC_TO_BIN_245")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_245
 
 #ifdef EMP_DEC_TO_BIN_246
@@ -34174,6 +39866,10 @@
     #undef EMP_DEC_TO_BIN_246
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_246
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_246
+        #pragma pop_macro("EMP_DEC_TO_BIN_246")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_246
 
 #ifdef EMP_DEC_TO_BIN_247
@@ -34198,6 +39894,10 @@
     #undef EMP_DEC_TO_BIN_247
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_247
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_247
+        #pragma pop_macro("EMP_DEC_TO_BIN_247")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_247
 
 #ifdef EMP_DEC_TO_BIN_248
@@ -34222,6 +39922,10 @@
     #undef EMP_DEC_TO_BIN_248
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_248
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_248
+        #pragma pop_macro("EMP_DEC_TO_BIN_248")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_248
 
 #ifdef EMP_DEC_TO_BIN_249
@@ -34246,6 +39950,10 @@
     #undef EMP_DEC_TO_BIN_249
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_249
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_249
+        #pragma pop_macro("EMP_DEC_TO_BIN_249")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_249
 
 #ifdef EMP_DEC_TO_BIN_25
@@ -34270,6 +39978,10 @@
     #undef EMP_DEC_TO_BIN_25
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_25
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_25
+        #pragma pop_macro("EMP_DEC_TO_BIN_25")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_25
 
 #ifdef EMP_DEC_TO_BIN_250
@@ -34294,6 +40006,10 @@
     #undef EMP_DEC_TO_BIN_250
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_250
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_250
+        #pragma pop_macro("EMP_DEC_TO_BIN_250")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_250
 
 #ifdef EMP_DEC_TO_BIN_251
@@ -34318,6 +40034,10 @@
     #undef EMP_DEC_TO_BIN_251
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_251
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_251
+        #pragma pop_macro("EMP_DEC_TO_BIN_251")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_251
 
 #ifdef EMP_DEC_TO_BIN_252
@@ -34342,6 +40062,10 @@
     #undef EMP_DEC_TO_BIN_252
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_252
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_252
+        #pragma pop_macro("EMP_DEC_TO_BIN_252")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_252
 
 #ifdef EMP_DEC_TO_BIN_253
@@ -34366,6 +40090,10 @@
     #undef EMP_DEC_TO_BIN_253
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_253
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_253
+        #pragma pop_macro("EMP_DEC_TO_BIN_253")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_253
 
 #ifdef EMP_DEC_TO_BIN_254
@@ -34390,6 +40118,10 @@
     #undef EMP_DEC_TO_BIN_254
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_254
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_254
+        #pragma pop_macro("EMP_DEC_TO_BIN_254")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_254
 
 #ifdef EMP_DEC_TO_BIN_255
@@ -34414,6 +40146,10 @@
     #undef EMP_DEC_TO_BIN_255
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_255
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_255
+        #pragma pop_macro("EMP_DEC_TO_BIN_255")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_255
 
 #ifdef EMP_DEC_TO_BIN_256
@@ -34438,6 +40174,10 @@
     #undef EMP_DEC_TO_BIN_256
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_256
+        #pragma pop_macro("EMP_DEC_TO_BIN_256")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_256
 
 #ifdef EMP_DEC_TO_BIN_257
@@ -34462,6 +40202,10 @@
     #undef EMP_DEC_TO_BIN_257
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_257
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_257
+        #pragma pop_macro("EMP_DEC_TO_BIN_257")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_257
 
 #ifdef EMP_DEC_TO_BIN_258
@@ -34486,6 +40230,10 @@
     #undef EMP_DEC_TO_BIN_258
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_258
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_258
+        #pragma pop_macro("EMP_DEC_TO_BIN_258")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_258
 
 #ifdef EMP_DEC_TO_BIN_259
@@ -34510,6 +40258,10 @@
     #undef EMP_DEC_TO_BIN_259
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_259
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_259
+        #pragma pop_macro("EMP_DEC_TO_BIN_259")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_259
 
 #ifdef EMP_DEC_TO_BIN_26
@@ -34534,6 +40286,10 @@
     #undef EMP_DEC_TO_BIN_26
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_26
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_26
+        #pragma pop_macro("EMP_DEC_TO_BIN_26")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_26
 
 #ifdef EMP_DEC_TO_BIN_260
@@ -34558,6 +40314,10 @@
     #undef EMP_DEC_TO_BIN_260
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_260
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_260
+        #pragma pop_macro("EMP_DEC_TO_BIN_260")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_260
 
 #ifdef EMP_DEC_TO_BIN_261
@@ -34582,6 +40342,10 @@
     #undef EMP_DEC_TO_BIN_261
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_261
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_261
+        #pragma pop_macro("EMP_DEC_TO_BIN_261")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_261
 
 #ifdef EMP_DEC_TO_BIN_262
@@ -34606,6 +40370,10 @@
     #undef EMP_DEC_TO_BIN_262
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_262
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_262
+        #pragma pop_macro("EMP_DEC_TO_BIN_262")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_262
 
 #ifdef EMP_DEC_TO_BIN_263
@@ -34630,6 +40398,10 @@
     #undef EMP_DEC_TO_BIN_263
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_263
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_263
+        #pragma pop_macro("EMP_DEC_TO_BIN_263")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_263
 
 #ifdef EMP_DEC_TO_BIN_264
@@ -34654,6 +40426,10 @@
     #undef EMP_DEC_TO_BIN_264
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_264
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_264
+        #pragma pop_macro("EMP_DEC_TO_BIN_264")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_264
 
 #ifdef EMP_DEC_TO_BIN_265
@@ -34678,6 +40454,10 @@
     #undef EMP_DEC_TO_BIN_265
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_265
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_265
+        #pragma pop_macro("EMP_DEC_TO_BIN_265")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_265
 
 #ifdef EMP_DEC_TO_BIN_266
@@ -34702,6 +40482,10 @@
     #undef EMP_DEC_TO_BIN_266
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_266
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_266
+        #pragma pop_macro("EMP_DEC_TO_BIN_266")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_266
 
 #ifdef EMP_DEC_TO_BIN_267
@@ -34726,6 +40510,10 @@
     #undef EMP_DEC_TO_BIN_267
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_267
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_267
+        #pragma pop_macro("EMP_DEC_TO_BIN_267")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_267
 
 #ifdef EMP_DEC_TO_BIN_268
@@ -34750,6 +40538,10 @@
     #undef EMP_DEC_TO_BIN_268
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_268
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_268
+        #pragma pop_macro("EMP_DEC_TO_BIN_268")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_268
 
 #ifdef EMP_DEC_TO_BIN_269
@@ -34774,6 +40566,10 @@
     #undef EMP_DEC_TO_BIN_269
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_269
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_269
+        #pragma pop_macro("EMP_DEC_TO_BIN_269")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_269
 
 #ifdef EMP_DEC_TO_BIN_27
@@ -34798,6 +40594,10 @@
     #undef EMP_DEC_TO_BIN_27
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_27
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_27
+        #pragma pop_macro("EMP_DEC_TO_BIN_27")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_27
 
 #ifdef EMP_DEC_TO_BIN_270
@@ -34822,6 +40622,10 @@
     #undef EMP_DEC_TO_BIN_270
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_270
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_270
+        #pragma pop_macro("EMP_DEC_TO_BIN_270")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_270
 
 #ifdef EMP_DEC_TO_BIN_271
@@ -34846,6 +40650,10 @@
     #undef EMP_DEC_TO_BIN_271
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_271
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_271
+        #pragma pop_macro("EMP_DEC_TO_BIN_271")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_271
 
 #ifdef EMP_DEC_TO_BIN_272
@@ -34870,6 +40678,10 @@
     #undef EMP_DEC_TO_BIN_272
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_272
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_272
+        #pragma pop_macro("EMP_DEC_TO_BIN_272")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_272
 
 #ifdef EMP_DEC_TO_BIN_273
@@ -34894,6 +40706,10 @@
     #undef EMP_DEC_TO_BIN_273
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_273
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_273
+        #pragma pop_macro("EMP_DEC_TO_BIN_273")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_273
 
 #ifdef EMP_DEC_TO_BIN_274
@@ -34918,6 +40734,10 @@
     #undef EMP_DEC_TO_BIN_274
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_274
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_274
+        #pragma pop_macro("EMP_DEC_TO_BIN_274")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_274
 
 #ifdef EMP_DEC_TO_BIN_275
@@ -34942,6 +40762,10 @@
     #undef EMP_DEC_TO_BIN_275
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_275
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_275
+        #pragma pop_macro("EMP_DEC_TO_BIN_275")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_275
 
 #ifdef EMP_DEC_TO_BIN_276
@@ -34966,6 +40790,10 @@
     #undef EMP_DEC_TO_BIN_276
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_276
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_276
+        #pragma pop_macro("EMP_DEC_TO_BIN_276")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_276
 
 #ifdef EMP_DEC_TO_BIN_277
@@ -34990,6 +40818,10 @@
     #undef EMP_DEC_TO_BIN_277
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_277
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_277
+        #pragma pop_macro("EMP_DEC_TO_BIN_277")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_277
 
 #ifdef EMP_DEC_TO_BIN_278
@@ -35014,6 +40846,10 @@
     #undef EMP_DEC_TO_BIN_278
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_278
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_278
+        #pragma pop_macro("EMP_DEC_TO_BIN_278")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_278
 
 #ifdef EMP_DEC_TO_BIN_279
@@ -35038,6 +40874,10 @@
     #undef EMP_DEC_TO_BIN_279
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_279
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_279
+        #pragma pop_macro("EMP_DEC_TO_BIN_279")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_279
 
 #ifdef EMP_DEC_TO_BIN_28
@@ -35062,6 +40902,10 @@
     #undef EMP_DEC_TO_BIN_28
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_28
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_28
+        #pragma pop_macro("EMP_DEC_TO_BIN_28")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_28
 
 #ifdef EMP_DEC_TO_BIN_280
@@ -35086,6 +40930,10 @@
     #undef EMP_DEC_TO_BIN_280
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_280
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_280
+        #pragma pop_macro("EMP_DEC_TO_BIN_280")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_280
 
 #ifdef EMP_DEC_TO_BIN_281
@@ -35110,6 +40958,10 @@
     #undef EMP_DEC_TO_BIN_281
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_281
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_281
+        #pragma pop_macro("EMP_DEC_TO_BIN_281")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_281
 
 #ifdef EMP_DEC_TO_BIN_282
@@ -35134,6 +40986,10 @@
     #undef EMP_DEC_TO_BIN_282
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_282
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_282
+        #pragma pop_macro("EMP_DEC_TO_BIN_282")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_282
 
 #ifdef EMP_DEC_TO_BIN_283
@@ -35158,6 +41014,10 @@
     #undef EMP_DEC_TO_BIN_283
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_283
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_283
+        #pragma pop_macro("EMP_DEC_TO_BIN_283")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_283
 
 #ifdef EMP_DEC_TO_BIN_284
@@ -35182,6 +41042,10 @@
     #undef EMP_DEC_TO_BIN_284
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_284
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_284
+        #pragma pop_macro("EMP_DEC_TO_BIN_284")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_284
 
 #ifdef EMP_DEC_TO_BIN_285
@@ -35206,6 +41070,10 @@
     #undef EMP_DEC_TO_BIN_285
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_285
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_285
+        #pragma pop_macro("EMP_DEC_TO_BIN_285")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_285
 
 #ifdef EMP_DEC_TO_BIN_286
@@ -35230,6 +41098,10 @@
     #undef EMP_DEC_TO_BIN_286
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_286
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_286
+        #pragma pop_macro("EMP_DEC_TO_BIN_286")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_286
 
 #ifdef EMP_DEC_TO_BIN_287
@@ -35254,6 +41126,10 @@
     #undef EMP_DEC_TO_BIN_287
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_287
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_287
+        #pragma pop_macro("EMP_DEC_TO_BIN_287")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_287
 
 #ifdef EMP_DEC_TO_BIN_288
@@ -35278,6 +41154,10 @@
     #undef EMP_DEC_TO_BIN_288
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_288
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_288
+        #pragma pop_macro("EMP_DEC_TO_BIN_288")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_288
 
 #ifdef EMP_DEC_TO_BIN_289
@@ -35302,6 +41182,10 @@
     #undef EMP_DEC_TO_BIN_289
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_289
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_289
+        #pragma pop_macro("EMP_DEC_TO_BIN_289")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_289
 
 #ifdef EMP_DEC_TO_BIN_29
@@ -35326,6 +41210,10 @@
     #undef EMP_DEC_TO_BIN_29
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_29
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_29
+        #pragma pop_macro("EMP_DEC_TO_BIN_29")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_29
 
 #ifdef EMP_DEC_TO_BIN_290
@@ -35350,6 +41238,10 @@
     #undef EMP_DEC_TO_BIN_290
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_290
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_290
+        #pragma pop_macro("EMP_DEC_TO_BIN_290")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_290
 
 #ifdef EMP_DEC_TO_BIN_291
@@ -35374,6 +41266,10 @@
     #undef EMP_DEC_TO_BIN_291
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_291
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_291
+        #pragma pop_macro("EMP_DEC_TO_BIN_291")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_291
 
 #ifdef EMP_DEC_TO_BIN_292
@@ -35398,6 +41294,10 @@
     #undef EMP_DEC_TO_BIN_292
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_292
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_292
+        #pragma pop_macro("EMP_DEC_TO_BIN_292")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_292
 
 #ifdef EMP_DEC_TO_BIN_293
@@ -35422,6 +41322,10 @@
     #undef EMP_DEC_TO_BIN_293
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_293
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_293
+        #pragma pop_macro("EMP_DEC_TO_BIN_293")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_293
 
 #ifdef EMP_DEC_TO_BIN_294
@@ -35446,6 +41350,10 @@
     #undef EMP_DEC_TO_BIN_294
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_294
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_294
+        #pragma pop_macro("EMP_DEC_TO_BIN_294")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_294
 
 #ifdef EMP_DEC_TO_BIN_295
@@ -35470,6 +41378,10 @@
     #undef EMP_DEC_TO_BIN_295
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_295
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_295
+        #pragma pop_macro("EMP_DEC_TO_BIN_295")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_295
 
 #ifdef EMP_DEC_TO_BIN_296
@@ -35494,6 +41406,10 @@
     #undef EMP_DEC_TO_BIN_296
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_296
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_296
+        #pragma pop_macro("EMP_DEC_TO_BIN_296")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_296
 
 #ifdef EMP_DEC_TO_BIN_297
@@ -35518,6 +41434,10 @@
     #undef EMP_DEC_TO_BIN_297
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_297
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_297
+        #pragma pop_macro("EMP_DEC_TO_BIN_297")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_297
 
 #ifdef EMP_DEC_TO_BIN_298
@@ -35542,6 +41462,10 @@
     #undef EMP_DEC_TO_BIN_298
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_298
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_298
+        #pragma pop_macro("EMP_DEC_TO_BIN_298")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_298
 
 #ifdef EMP_DEC_TO_BIN_299
@@ -35566,6 +41490,10 @@
     #undef EMP_DEC_TO_BIN_299
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_299
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_299
+        #pragma pop_macro("EMP_DEC_TO_BIN_299")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_299
 
 #ifdef EMP_DEC_TO_BIN_3
@@ -35590,6 +41518,10 @@
     #undef EMP_DEC_TO_BIN_3
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_3
+        #pragma pop_macro("EMP_DEC_TO_BIN_3")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_3
 
 #ifdef EMP_DEC_TO_BIN_30
@@ -35614,6 +41546,10 @@
     #undef EMP_DEC_TO_BIN_30
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_30
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_30
+        #pragma pop_macro("EMP_DEC_TO_BIN_30")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_30
 
 #ifdef EMP_DEC_TO_BIN_300
@@ -35638,6 +41574,10 @@
     #undef EMP_DEC_TO_BIN_300
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_300
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_300
+        #pragma pop_macro("EMP_DEC_TO_BIN_300")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_300
 
 #ifdef EMP_DEC_TO_BIN_301
@@ -35662,6 +41602,10 @@
     #undef EMP_DEC_TO_BIN_301
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_301
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_301
+        #pragma pop_macro("EMP_DEC_TO_BIN_301")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_301
 
 #ifdef EMP_DEC_TO_BIN_302
@@ -35686,6 +41630,10 @@
     #undef EMP_DEC_TO_BIN_302
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_302
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_302
+        #pragma pop_macro("EMP_DEC_TO_BIN_302")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_302
 
 #ifdef EMP_DEC_TO_BIN_303
@@ -35710,6 +41658,10 @@
     #undef EMP_DEC_TO_BIN_303
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_303
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_303
+        #pragma pop_macro("EMP_DEC_TO_BIN_303")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_303
 
 #ifdef EMP_DEC_TO_BIN_304
@@ -35734,6 +41686,10 @@
     #undef EMP_DEC_TO_BIN_304
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_304
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_304
+        #pragma pop_macro("EMP_DEC_TO_BIN_304")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_304
 
 #ifdef EMP_DEC_TO_BIN_305
@@ -35758,6 +41714,10 @@
     #undef EMP_DEC_TO_BIN_305
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_305
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_305
+        #pragma pop_macro("EMP_DEC_TO_BIN_305")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_305
 
 #ifdef EMP_DEC_TO_BIN_306
@@ -35782,6 +41742,10 @@
     #undef EMP_DEC_TO_BIN_306
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_306
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_306
+        #pragma pop_macro("EMP_DEC_TO_BIN_306")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_306
 
 #ifdef EMP_DEC_TO_BIN_307
@@ -35806,6 +41770,10 @@
     #undef EMP_DEC_TO_BIN_307
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_307
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_307
+        #pragma pop_macro("EMP_DEC_TO_BIN_307")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_307
 
 #ifdef EMP_DEC_TO_BIN_308
@@ -35830,6 +41798,10 @@
     #undef EMP_DEC_TO_BIN_308
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_308
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_308
+        #pragma pop_macro("EMP_DEC_TO_BIN_308")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_308
 
 #ifdef EMP_DEC_TO_BIN_309
@@ -35854,6 +41826,10 @@
     #undef EMP_DEC_TO_BIN_309
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_309
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_309
+        #pragma pop_macro("EMP_DEC_TO_BIN_309")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_309
 
 #ifdef EMP_DEC_TO_BIN_31
@@ -35878,6 +41854,10 @@
     #undef EMP_DEC_TO_BIN_31
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_31
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_31
+        #pragma pop_macro("EMP_DEC_TO_BIN_31")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_31
 
 #ifdef EMP_DEC_TO_BIN_310
@@ -35902,6 +41882,10 @@
     #undef EMP_DEC_TO_BIN_310
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_310
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_310
+        #pragma pop_macro("EMP_DEC_TO_BIN_310")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_310
 
 #ifdef EMP_DEC_TO_BIN_311
@@ -35926,6 +41910,10 @@
     #undef EMP_DEC_TO_BIN_311
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_311
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_311
+        #pragma pop_macro("EMP_DEC_TO_BIN_311")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_311
 
 #ifdef EMP_DEC_TO_BIN_312
@@ -35950,6 +41938,10 @@
     #undef EMP_DEC_TO_BIN_312
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_312
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_312
+        #pragma pop_macro("EMP_DEC_TO_BIN_312")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_312
 
 #ifdef EMP_DEC_TO_BIN_313
@@ -35974,6 +41966,10 @@
     #undef EMP_DEC_TO_BIN_313
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_313
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_313
+        #pragma pop_macro("EMP_DEC_TO_BIN_313")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_313
 
 #ifdef EMP_DEC_TO_BIN_314
@@ -35998,6 +41994,10 @@
     #undef EMP_DEC_TO_BIN_314
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_314
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_314
+        #pragma pop_macro("EMP_DEC_TO_BIN_314")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_314
 
 #ifdef EMP_DEC_TO_BIN_315
@@ -36022,6 +42022,10 @@
     #undef EMP_DEC_TO_BIN_315
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_315
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_315
+        #pragma pop_macro("EMP_DEC_TO_BIN_315")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_315
 
 #ifdef EMP_DEC_TO_BIN_316
@@ -36046,6 +42050,10 @@
     #undef EMP_DEC_TO_BIN_316
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_316
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_316
+        #pragma pop_macro("EMP_DEC_TO_BIN_316")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_316
 
 #ifdef EMP_DEC_TO_BIN_317
@@ -36070,6 +42078,10 @@
     #undef EMP_DEC_TO_BIN_317
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_317
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_317
+        #pragma pop_macro("EMP_DEC_TO_BIN_317")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_317
 
 #ifdef EMP_DEC_TO_BIN_318
@@ -36094,6 +42106,10 @@
     #undef EMP_DEC_TO_BIN_318
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_318
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_318
+        #pragma pop_macro("EMP_DEC_TO_BIN_318")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_318
 
 #ifdef EMP_DEC_TO_BIN_319
@@ -36118,6 +42134,10 @@
     #undef EMP_DEC_TO_BIN_319
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_319
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_319
+        #pragma pop_macro("EMP_DEC_TO_BIN_319")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_319
 
 #ifdef EMP_DEC_TO_BIN_32
@@ -36142,6 +42162,10 @@
     #undef EMP_DEC_TO_BIN_32
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_32
+        #pragma pop_macro("EMP_DEC_TO_BIN_32")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_32
 
 #ifdef EMP_DEC_TO_BIN_320
@@ -36166,6 +42190,10 @@
     #undef EMP_DEC_TO_BIN_320
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_320
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_320
+        #pragma pop_macro("EMP_DEC_TO_BIN_320")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_320
 
 #ifdef EMP_DEC_TO_BIN_321
@@ -36190,6 +42218,10 @@
     #undef EMP_DEC_TO_BIN_321
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_321
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_321
+        #pragma pop_macro("EMP_DEC_TO_BIN_321")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_321
 
 #ifdef EMP_DEC_TO_BIN_322
@@ -36214,6 +42246,10 @@
     #undef EMP_DEC_TO_BIN_322
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_322
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_322
+        #pragma pop_macro("EMP_DEC_TO_BIN_322")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_322
 
 #ifdef EMP_DEC_TO_BIN_323
@@ -36238,6 +42274,10 @@
     #undef EMP_DEC_TO_BIN_323
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_323
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_323
+        #pragma pop_macro("EMP_DEC_TO_BIN_323")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_323
 
 #ifdef EMP_DEC_TO_BIN_324
@@ -36262,6 +42302,10 @@
     #undef EMP_DEC_TO_BIN_324
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_324
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_324
+        #pragma pop_macro("EMP_DEC_TO_BIN_324")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_324
 
 #ifdef EMP_DEC_TO_BIN_325
@@ -36286,6 +42330,10 @@
     #undef EMP_DEC_TO_BIN_325
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_325
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_325
+        #pragma pop_macro("EMP_DEC_TO_BIN_325")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_325
 
 #ifdef EMP_DEC_TO_BIN_326
@@ -36310,6 +42358,10 @@
     #undef EMP_DEC_TO_BIN_326
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_326
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_326
+        #pragma pop_macro("EMP_DEC_TO_BIN_326")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_326
 
 #ifdef EMP_DEC_TO_BIN_327
@@ -36334,6 +42386,10 @@
     #undef EMP_DEC_TO_BIN_327
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_327
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_327
+        #pragma pop_macro("EMP_DEC_TO_BIN_327")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_327
 
 #ifdef EMP_DEC_TO_BIN_328
@@ -36358,6 +42414,10 @@
     #undef EMP_DEC_TO_BIN_328
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_328
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_328
+        #pragma pop_macro("EMP_DEC_TO_BIN_328")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_328
 
 #ifdef EMP_DEC_TO_BIN_329
@@ -36382,6 +42442,10 @@
     #undef EMP_DEC_TO_BIN_329
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_329
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_329
+        #pragma pop_macro("EMP_DEC_TO_BIN_329")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_329
 
 #ifdef EMP_DEC_TO_BIN_33
@@ -36406,6 +42470,10 @@
     #undef EMP_DEC_TO_BIN_33
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_33
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_33
+        #pragma pop_macro("EMP_DEC_TO_BIN_33")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_33
 
 #ifdef EMP_DEC_TO_BIN_330
@@ -36430,6 +42498,10 @@
     #undef EMP_DEC_TO_BIN_330
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_330
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_330
+        #pragma pop_macro("EMP_DEC_TO_BIN_330")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_330
 
 #ifdef EMP_DEC_TO_BIN_331
@@ -36454,6 +42526,10 @@
     #undef EMP_DEC_TO_BIN_331
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_331
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_331
+        #pragma pop_macro("EMP_DEC_TO_BIN_331")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_331
 
 #ifdef EMP_DEC_TO_BIN_332
@@ -36478,6 +42554,10 @@
     #undef EMP_DEC_TO_BIN_332
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_332
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_332
+        #pragma pop_macro("EMP_DEC_TO_BIN_332")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_332
 
 #ifdef EMP_DEC_TO_BIN_333
@@ -36502,6 +42582,10 @@
     #undef EMP_DEC_TO_BIN_333
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_333
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_333
+        #pragma pop_macro("EMP_DEC_TO_BIN_333")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_333
 
 #ifdef EMP_DEC_TO_BIN_334
@@ -36526,6 +42610,10 @@
     #undef EMP_DEC_TO_BIN_334
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_334
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_334
+        #pragma pop_macro("EMP_DEC_TO_BIN_334")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_334
 
 #ifdef EMP_DEC_TO_BIN_335
@@ -36550,6 +42638,10 @@
     #undef EMP_DEC_TO_BIN_335
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_335
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_335
+        #pragma pop_macro("EMP_DEC_TO_BIN_335")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_335
 
 #ifdef EMP_DEC_TO_BIN_336
@@ -36574,6 +42666,10 @@
     #undef EMP_DEC_TO_BIN_336
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_336
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_336
+        #pragma pop_macro("EMP_DEC_TO_BIN_336")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_336
 
 #ifdef EMP_DEC_TO_BIN_337
@@ -36598,6 +42694,10 @@
     #undef EMP_DEC_TO_BIN_337
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_337
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_337
+        #pragma pop_macro("EMP_DEC_TO_BIN_337")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_337
 
 #ifdef EMP_DEC_TO_BIN_338
@@ -36622,6 +42722,10 @@
     #undef EMP_DEC_TO_BIN_338
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_338
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_338
+        #pragma pop_macro("EMP_DEC_TO_BIN_338")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_338
 
 #ifdef EMP_DEC_TO_BIN_339
@@ -36646,6 +42750,10 @@
     #undef EMP_DEC_TO_BIN_339
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_339
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_339
+        #pragma pop_macro("EMP_DEC_TO_BIN_339")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_339
 
 #ifdef EMP_DEC_TO_BIN_34
@@ -36670,6 +42778,10 @@
     #undef EMP_DEC_TO_BIN_34
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_34
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_34
+        #pragma pop_macro("EMP_DEC_TO_BIN_34")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_34
 
 #ifdef EMP_DEC_TO_BIN_340
@@ -36694,6 +42806,10 @@
     #undef EMP_DEC_TO_BIN_340
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_340
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_340
+        #pragma pop_macro("EMP_DEC_TO_BIN_340")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_340
 
 #ifdef EMP_DEC_TO_BIN_341
@@ -36718,6 +42834,10 @@
     #undef EMP_DEC_TO_BIN_341
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_341
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_341
+        #pragma pop_macro("EMP_DEC_TO_BIN_341")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_341
 
 #ifdef EMP_DEC_TO_BIN_342
@@ -36742,6 +42862,10 @@
     #undef EMP_DEC_TO_BIN_342
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_342
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_342
+        #pragma pop_macro("EMP_DEC_TO_BIN_342")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_342
 
 #ifdef EMP_DEC_TO_BIN_343
@@ -36766,6 +42890,10 @@
     #undef EMP_DEC_TO_BIN_343
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_343
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_343
+        #pragma pop_macro("EMP_DEC_TO_BIN_343")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_343
 
 #ifdef EMP_DEC_TO_BIN_344
@@ -36790,6 +42918,10 @@
     #undef EMP_DEC_TO_BIN_344
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_344
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_344
+        #pragma pop_macro("EMP_DEC_TO_BIN_344")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_344
 
 #ifdef EMP_DEC_TO_BIN_345
@@ -36814,6 +42946,10 @@
     #undef EMP_DEC_TO_BIN_345
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_345
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_345
+        #pragma pop_macro("EMP_DEC_TO_BIN_345")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_345
 
 #ifdef EMP_DEC_TO_BIN_346
@@ -36838,6 +42974,10 @@
     #undef EMP_DEC_TO_BIN_346
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_346
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_346
+        #pragma pop_macro("EMP_DEC_TO_BIN_346")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_346
 
 #ifdef EMP_DEC_TO_BIN_347
@@ -36862,6 +43002,10 @@
     #undef EMP_DEC_TO_BIN_347
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_347
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_347
+        #pragma pop_macro("EMP_DEC_TO_BIN_347")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_347
 
 #ifdef EMP_DEC_TO_BIN_348
@@ -36886,6 +43030,10 @@
     #undef EMP_DEC_TO_BIN_348
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_348
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_348
+        #pragma pop_macro("EMP_DEC_TO_BIN_348")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_348
 
 #ifdef EMP_DEC_TO_BIN_349
@@ -36910,6 +43058,10 @@
     #undef EMP_DEC_TO_BIN_349
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_349
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_349
+        #pragma pop_macro("EMP_DEC_TO_BIN_349")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_349
 
 #ifdef EMP_DEC_TO_BIN_35
@@ -36934,6 +43086,10 @@
     #undef EMP_DEC_TO_BIN_35
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_35
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_35
+        #pragma pop_macro("EMP_DEC_TO_BIN_35")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_35
 
 #ifdef EMP_DEC_TO_BIN_350
@@ -36958,6 +43114,10 @@
     #undef EMP_DEC_TO_BIN_350
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_350
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_350
+        #pragma pop_macro("EMP_DEC_TO_BIN_350")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_350
 
 #ifdef EMP_DEC_TO_BIN_351
@@ -36982,6 +43142,10 @@
     #undef EMP_DEC_TO_BIN_351
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_351
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_351
+        #pragma pop_macro("EMP_DEC_TO_BIN_351")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_351
 
 #ifdef EMP_DEC_TO_BIN_352
@@ -37006,6 +43170,10 @@
     #undef EMP_DEC_TO_BIN_352
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_352
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_352
+        #pragma pop_macro("EMP_DEC_TO_BIN_352")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_352
 
 #ifdef EMP_DEC_TO_BIN_353
@@ -37030,6 +43198,10 @@
     #undef EMP_DEC_TO_BIN_353
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_353
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_353
+        #pragma pop_macro("EMP_DEC_TO_BIN_353")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_353
 
 #ifdef EMP_DEC_TO_BIN_354
@@ -37054,6 +43226,10 @@
     #undef EMP_DEC_TO_BIN_354
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_354
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_354
+        #pragma pop_macro("EMP_DEC_TO_BIN_354")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_354
 
 #ifdef EMP_DEC_TO_BIN_355
@@ -37078,6 +43254,10 @@
     #undef EMP_DEC_TO_BIN_355
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_355
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_355
+        #pragma pop_macro("EMP_DEC_TO_BIN_355")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_355
 
 #ifdef EMP_DEC_TO_BIN_356
@@ -37102,6 +43282,10 @@
     #undef EMP_DEC_TO_BIN_356
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_356
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_356
+        #pragma pop_macro("EMP_DEC_TO_BIN_356")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_356
 
 #ifdef EMP_DEC_TO_BIN_357
@@ -37126,6 +43310,10 @@
     #undef EMP_DEC_TO_BIN_357
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_357
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_357
+        #pragma pop_macro("EMP_DEC_TO_BIN_357")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_357
 
 #ifdef EMP_DEC_TO_BIN_358
@@ -37150,6 +43338,10 @@
     #undef EMP_DEC_TO_BIN_358
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_358
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_358
+        #pragma pop_macro("EMP_DEC_TO_BIN_358")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_358
 
 #ifdef EMP_DEC_TO_BIN_359
@@ -37174,6 +43366,10 @@
     #undef EMP_DEC_TO_BIN_359
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_359
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_359
+        #pragma pop_macro("EMP_DEC_TO_BIN_359")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_359
 
 #ifdef EMP_DEC_TO_BIN_36
@@ -37198,6 +43394,10 @@
     #undef EMP_DEC_TO_BIN_36
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_36
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_36
+        #pragma pop_macro("EMP_DEC_TO_BIN_36")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_36
 
 #ifdef EMP_DEC_TO_BIN_360
@@ -37222,6 +43422,10 @@
     #undef EMP_DEC_TO_BIN_360
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_360
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_360
+        #pragma pop_macro("EMP_DEC_TO_BIN_360")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_360
 
 #ifdef EMP_DEC_TO_BIN_361
@@ -37246,6 +43450,10 @@
     #undef EMP_DEC_TO_BIN_361
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_361
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_361
+        #pragma pop_macro("EMP_DEC_TO_BIN_361")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_361
 
 #ifdef EMP_DEC_TO_BIN_362
@@ -37270,6 +43478,10 @@
     #undef EMP_DEC_TO_BIN_362
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_362
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_362
+        #pragma pop_macro("EMP_DEC_TO_BIN_362")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_362
 
 #ifdef EMP_DEC_TO_BIN_363
@@ -37294,6 +43506,10 @@
     #undef EMP_DEC_TO_BIN_363
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_363
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_363
+        #pragma pop_macro("EMP_DEC_TO_BIN_363")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_363
 
 #ifdef EMP_DEC_TO_BIN_364
@@ -37318,6 +43534,10 @@
     #undef EMP_DEC_TO_BIN_364
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_364
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_364
+        #pragma pop_macro("EMP_DEC_TO_BIN_364")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_364
 
 #ifdef EMP_DEC_TO_BIN_365
@@ -37342,6 +43562,10 @@
     #undef EMP_DEC_TO_BIN_365
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_365
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_365
+        #pragma pop_macro("EMP_DEC_TO_BIN_365")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_365
 
 #ifdef EMP_DEC_TO_BIN_366
@@ -37366,6 +43590,10 @@
     #undef EMP_DEC_TO_BIN_366
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_366
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_366
+        #pragma pop_macro("EMP_DEC_TO_BIN_366")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_366
 
 #ifdef EMP_DEC_TO_BIN_367
@@ -37390,6 +43618,10 @@
     #undef EMP_DEC_TO_BIN_367
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_367
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_367
+        #pragma pop_macro("EMP_DEC_TO_BIN_367")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_367
 
 #ifdef EMP_DEC_TO_BIN_368
@@ -37414,6 +43646,10 @@
     #undef EMP_DEC_TO_BIN_368
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_368
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_368
+        #pragma pop_macro("EMP_DEC_TO_BIN_368")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_368
 
 #ifdef EMP_DEC_TO_BIN_369
@@ -37438,6 +43674,10 @@
     #undef EMP_DEC_TO_BIN_369
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_369
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_369
+        #pragma pop_macro("EMP_DEC_TO_BIN_369")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_369
 
 #ifdef EMP_DEC_TO_BIN_37
@@ -37462,6 +43702,10 @@
     #undef EMP_DEC_TO_BIN_37
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_37
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_37
+        #pragma pop_macro("EMP_DEC_TO_BIN_37")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_37
 
 #ifdef EMP_DEC_TO_BIN_370
@@ -37486,6 +43730,10 @@
     #undef EMP_DEC_TO_BIN_370
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_370
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_370
+        #pragma pop_macro("EMP_DEC_TO_BIN_370")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_370
 
 #ifdef EMP_DEC_TO_BIN_371
@@ -37510,6 +43758,10 @@
     #undef EMP_DEC_TO_BIN_371
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_371
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_371
+        #pragma pop_macro("EMP_DEC_TO_BIN_371")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_371
 
 #ifdef EMP_DEC_TO_BIN_372
@@ -37534,6 +43786,10 @@
     #undef EMP_DEC_TO_BIN_372
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_372
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_372
+        #pragma pop_macro("EMP_DEC_TO_BIN_372")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_372
 
 #ifdef EMP_DEC_TO_BIN_373
@@ -37558,6 +43814,10 @@
     #undef EMP_DEC_TO_BIN_373
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_373
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_373
+        #pragma pop_macro("EMP_DEC_TO_BIN_373")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_373
 
 #ifdef EMP_DEC_TO_BIN_374
@@ -37582,6 +43842,10 @@
     #undef EMP_DEC_TO_BIN_374
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_374
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_374
+        #pragma pop_macro("EMP_DEC_TO_BIN_374")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_374
 
 #ifdef EMP_DEC_TO_BIN_375
@@ -37606,6 +43870,10 @@
     #undef EMP_DEC_TO_BIN_375
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_375
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_375
+        #pragma pop_macro("EMP_DEC_TO_BIN_375")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_375
 
 #ifdef EMP_DEC_TO_BIN_376
@@ -37630,6 +43898,10 @@
     #undef EMP_DEC_TO_BIN_376
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_376
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_376
+        #pragma pop_macro("EMP_DEC_TO_BIN_376")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_376
 
 #ifdef EMP_DEC_TO_BIN_377
@@ -37654,6 +43926,10 @@
     #undef EMP_DEC_TO_BIN_377
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_377
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_377
+        #pragma pop_macro("EMP_DEC_TO_BIN_377")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_377
 
 #ifdef EMP_DEC_TO_BIN_378
@@ -37678,6 +43954,10 @@
     #undef EMP_DEC_TO_BIN_378
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_378
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_378
+        #pragma pop_macro("EMP_DEC_TO_BIN_378")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_378
 
 #ifdef EMP_DEC_TO_BIN_379
@@ -37702,6 +43982,10 @@
     #undef EMP_DEC_TO_BIN_379
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_379
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_379
+        #pragma pop_macro("EMP_DEC_TO_BIN_379")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_379
 
 #ifdef EMP_DEC_TO_BIN_38
@@ -37726,6 +44010,10 @@
     #undef EMP_DEC_TO_BIN_38
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_38
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_38
+        #pragma pop_macro("EMP_DEC_TO_BIN_38")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_38
 
 #ifdef EMP_DEC_TO_BIN_380
@@ -37750,6 +44038,10 @@
     #undef EMP_DEC_TO_BIN_380
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_380
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_380
+        #pragma pop_macro("EMP_DEC_TO_BIN_380")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_380
 
 #ifdef EMP_DEC_TO_BIN_381
@@ -37774,6 +44066,10 @@
     #undef EMP_DEC_TO_BIN_381
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_381
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_381
+        #pragma pop_macro("EMP_DEC_TO_BIN_381")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_381
 
 #ifdef EMP_DEC_TO_BIN_382
@@ -37798,6 +44094,10 @@
     #undef EMP_DEC_TO_BIN_382
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_382
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_382
+        #pragma pop_macro("EMP_DEC_TO_BIN_382")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_382
 
 #ifdef EMP_DEC_TO_BIN_383
@@ -37822,6 +44122,10 @@
     #undef EMP_DEC_TO_BIN_383
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_383
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_383
+        #pragma pop_macro("EMP_DEC_TO_BIN_383")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_383
 
 #ifdef EMP_DEC_TO_BIN_384
@@ -37846,6 +44150,10 @@
     #undef EMP_DEC_TO_BIN_384
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_384
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_384
+        #pragma pop_macro("EMP_DEC_TO_BIN_384")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_384
 
 #ifdef EMP_DEC_TO_BIN_385
@@ -37870,6 +44178,10 @@
     #undef EMP_DEC_TO_BIN_385
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_385
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_385
+        #pragma pop_macro("EMP_DEC_TO_BIN_385")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_385
 
 #ifdef EMP_DEC_TO_BIN_386
@@ -37894,6 +44206,10 @@
     #undef EMP_DEC_TO_BIN_386
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_386
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_386
+        #pragma pop_macro("EMP_DEC_TO_BIN_386")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_386
 
 #ifdef EMP_DEC_TO_BIN_387
@@ -37918,6 +44234,10 @@
     #undef EMP_DEC_TO_BIN_387
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_387
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_387
+        #pragma pop_macro("EMP_DEC_TO_BIN_387")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_387
 
 #ifdef EMP_DEC_TO_BIN_388
@@ -37942,6 +44262,10 @@
     #undef EMP_DEC_TO_BIN_388
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_388
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_388
+        #pragma pop_macro("EMP_DEC_TO_BIN_388")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_388
 
 #ifdef EMP_DEC_TO_BIN_389
@@ -37966,6 +44290,10 @@
     #undef EMP_DEC_TO_BIN_389
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_389
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_389
+        #pragma pop_macro("EMP_DEC_TO_BIN_389")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_389
 
 #ifdef EMP_DEC_TO_BIN_39
@@ -37990,6 +44318,10 @@
     #undef EMP_DEC_TO_BIN_39
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_39
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_39
+        #pragma pop_macro("EMP_DEC_TO_BIN_39")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_39
 
 #ifdef EMP_DEC_TO_BIN_390
@@ -38014,6 +44346,10 @@
     #undef EMP_DEC_TO_BIN_390
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_390
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_390
+        #pragma pop_macro("EMP_DEC_TO_BIN_390")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_390
 
 #ifdef EMP_DEC_TO_BIN_391
@@ -38038,6 +44374,10 @@
     #undef EMP_DEC_TO_BIN_391
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_391
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_391
+        #pragma pop_macro("EMP_DEC_TO_BIN_391")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_391
 
 #ifdef EMP_DEC_TO_BIN_392
@@ -38062,6 +44402,10 @@
     #undef EMP_DEC_TO_BIN_392
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_392
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_392
+        #pragma pop_macro("EMP_DEC_TO_BIN_392")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_392
 
 #ifdef EMP_DEC_TO_BIN_393
@@ -38086,6 +44430,10 @@
     #undef EMP_DEC_TO_BIN_393
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_393
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_393
+        #pragma pop_macro("EMP_DEC_TO_BIN_393")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_393
 
 #ifdef EMP_DEC_TO_BIN_394
@@ -38110,6 +44458,10 @@
     #undef EMP_DEC_TO_BIN_394
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_394
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_394
+        #pragma pop_macro("EMP_DEC_TO_BIN_394")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_394
 
 #ifdef EMP_DEC_TO_BIN_395
@@ -38134,6 +44486,10 @@
     #undef EMP_DEC_TO_BIN_395
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_395
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_395
+        #pragma pop_macro("EMP_DEC_TO_BIN_395")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_395
 
 #ifdef EMP_DEC_TO_BIN_396
@@ -38158,6 +44514,10 @@
     #undef EMP_DEC_TO_BIN_396
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_396
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_396
+        #pragma pop_macro("EMP_DEC_TO_BIN_396")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_396
 
 #ifdef EMP_DEC_TO_BIN_397
@@ -38182,6 +44542,10 @@
     #undef EMP_DEC_TO_BIN_397
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_397
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_397
+        #pragma pop_macro("EMP_DEC_TO_BIN_397")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_397
 
 #ifdef EMP_DEC_TO_BIN_398
@@ -38206,6 +44570,10 @@
     #undef EMP_DEC_TO_BIN_398
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_398
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_398
+        #pragma pop_macro("EMP_DEC_TO_BIN_398")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_398
 
 #ifdef EMP_DEC_TO_BIN_399
@@ -38230,6 +44598,10 @@
     #undef EMP_DEC_TO_BIN_399
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_399
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_399
+        #pragma pop_macro("EMP_DEC_TO_BIN_399")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_399
 
 #ifdef EMP_DEC_TO_BIN_4
@@ -38254,6 +44626,10 @@
     #undef EMP_DEC_TO_BIN_4
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_4
+        #pragma pop_macro("EMP_DEC_TO_BIN_4")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_4
 
 #ifdef EMP_DEC_TO_BIN_40
@@ -38278,6 +44654,10 @@
     #undef EMP_DEC_TO_BIN_40
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_40
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_40
+        #pragma pop_macro("EMP_DEC_TO_BIN_40")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_40
 
 #ifdef EMP_DEC_TO_BIN_400
@@ -38302,6 +44682,10 @@
     #undef EMP_DEC_TO_BIN_400
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_400
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_400
+        #pragma pop_macro("EMP_DEC_TO_BIN_400")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_400
 
 #ifdef EMP_DEC_TO_BIN_401
@@ -38326,6 +44710,10 @@
     #undef EMP_DEC_TO_BIN_401
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_401
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_401
+        #pragma pop_macro("EMP_DEC_TO_BIN_401")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_401
 
 #ifdef EMP_DEC_TO_BIN_402
@@ -38350,6 +44738,10 @@
     #undef EMP_DEC_TO_BIN_402
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_402
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_402
+        #pragma pop_macro("EMP_DEC_TO_BIN_402")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_402
 
 #ifdef EMP_DEC_TO_BIN_403
@@ -38374,6 +44766,10 @@
     #undef EMP_DEC_TO_BIN_403
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_403
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_403
+        #pragma pop_macro("EMP_DEC_TO_BIN_403")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_403
 
 #ifdef EMP_DEC_TO_BIN_404
@@ -38398,6 +44794,10 @@
     #undef EMP_DEC_TO_BIN_404
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_404
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_404
+        #pragma pop_macro("EMP_DEC_TO_BIN_404")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_404
 
 #ifdef EMP_DEC_TO_BIN_405
@@ -38422,6 +44822,10 @@
     #undef EMP_DEC_TO_BIN_405
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_405
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_405
+        #pragma pop_macro("EMP_DEC_TO_BIN_405")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_405
 
 #ifdef EMP_DEC_TO_BIN_406
@@ -38446,6 +44850,10 @@
     #undef EMP_DEC_TO_BIN_406
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_406
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_406
+        #pragma pop_macro("EMP_DEC_TO_BIN_406")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_406
 
 #ifdef EMP_DEC_TO_BIN_407
@@ -38470,6 +44878,10 @@
     #undef EMP_DEC_TO_BIN_407
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_407
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_407
+        #pragma pop_macro("EMP_DEC_TO_BIN_407")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_407
 
 #ifdef EMP_DEC_TO_BIN_408
@@ -38494,6 +44906,10 @@
     #undef EMP_DEC_TO_BIN_408
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_408
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_408
+        #pragma pop_macro("EMP_DEC_TO_BIN_408")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_408
 
 #ifdef EMP_DEC_TO_BIN_409
@@ -38518,6 +44934,10 @@
     #undef EMP_DEC_TO_BIN_409
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_409
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_409
+        #pragma pop_macro("EMP_DEC_TO_BIN_409")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_409
 
 #ifdef EMP_DEC_TO_BIN_41
@@ -38542,6 +44962,10 @@
     #undef EMP_DEC_TO_BIN_41
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_41
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_41
+        #pragma pop_macro("EMP_DEC_TO_BIN_41")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_41
 
 #ifdef EMP_DEC_TO_BIN_410
@@ -38566,6 +44990,10 @@
     #undef EMP_DEC_TO_BIN_410
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_410
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_410
+        #pragma pop_macro("EMP_DEC_TO_BIN_410")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_410
 
 #ifdef EMP_DEC_TO_BIN_411
@@ -38590,6 +45018,10 @@
     #undef EMP_DEC_TO_BIN_411
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_411
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_411
+        #pragma pop_macro("EMP_DEC_TO_BIN_411")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_411
 
 #ifdef EMP_DEC_TO_BIN_412
@@ -38614,6 +45046,10 @@
     #undef EMP_DEC_TO_BIN_412
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_412
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_412
+        #pragma pop_macro("EMP_DEC_TO_BIN_412")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_412
 
 #ifdef EMP_DEC_TO_BIN_413
@@ -38638,6 +45074,10 @@
     #undef EMP_DEC_TO_BIN_413
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_413
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_413
+        #pragma pop_macro("EMP_DEC_TO_BIN_413")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_413
 
 #ifdef EMP_DEC_TO_BIN_414
@@ -38662,6 +45102,10 @@
     #undef EMP_DEC_TO_BIN_414
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_414
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_414
+        #pragma pop_macro("EMP_DEC_TO_BIN_414")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_414
 
 #ifdef EMP_DEC_TO_BIN_415
@@ -38686,6 +45130,10 @@
     #undef EMP_DEC_TO_BIN_415
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_415
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_415
+        #pragma pop_macro("EMP_DEC_TO_BIN_415")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_415
 
 #ifdef EMP_DEC_TO_BIN_416
@@ -38710,6 +45158,10 @@
     #undef EMP_DEC_TO_BIN_416
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_416
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_416
+        #pragma pop_macro("EMP_DEC_TO_BIN_416")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_416
 
 #ifdef EMP_DEC_TO_BIN_417
@@ -38734,6 +45186,10 @@
     #undef EMP_DEC_TO_BIN_417
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_417
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_417
+        #pragma pop_macro("EMP_DEC_TO_BIN_417")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_417
 
 #ifdef EMP_DEC_TO_BIN_418
@@ -38758,6 +45214,10 @@
     #undef EMP_DEC_TO_BIN_418
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_418
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_418
+        #pragma pop_macro("EMP_DEC_TO_BIN_418")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_418
 
 #ifdef EMP_DEC_TO_BIN_419
@@ -38782,6 +45242,10 @@
     #undef EMP_DEC_TO_BIN_419
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_419
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_419
+        #pragma pop_macro("EMP_DEC_TO_BIN_419")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_419
 
 #ifdef EMP_DEC_TO_BIN_42
@@ -38806,6 +45270,10 @@
     #undef EMP_DEC_TO_BIN_42
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_42
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_42
+        #pragma pop_macro("EMP_DEC_TO_BIN_42")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_42
 
 #ifdef EMP_DEC_TO_BIN_420
@@ -38830,6 +45298,10 @@
     #undef EMP_DEC_TO_BIN_420
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_420
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_420
+        #pragma pop_macro("EMP_DEC_TO_BIN_420")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_420
 
 #ifdef EMP_DEC_TO_BIN_421
@@ -38854,6 +45326,10 @@
     #undef EMP_DEC_TO_BIN_421
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_421
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_421
+        #pragma pop_macro("EMP_DEC_TO_BIN_421")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_421
 
 #ifdef EMP_DEC_TO_BIN_422
@@ -38878,6 +45354,10 @@
     #undef EMP_DEC_TO_BIN_422
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_422
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_422
+        #pragma pop_macro("EMP_DEC_TO_BIN_422")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_422
 
 #ifdef EMP_DEC_TO_BIN_423
@@ -38902,6 +45382,10 @@
     #undef EMP_DEC_TO_BIN_423
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_423
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_423
+        #pragma pop_macro("EMP_DEC_TO_BIN_423")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_423
 
 #ifdef EMP_DEC_TO_BIN_424
@@ -38926,6 +45410,10 @@
     #undef EMP_DEC_TO_BIN_424
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_424
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_424
+        #pragma pop_macro("EMP_DEC_TO_BIN_424")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_424
 
 #ifdef EMP_DEC_TO_BIN_425
@@ -38950,6 +45438,10 @@
     #undef EMP_DEC_TO_BIN_425
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_425
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_425
+        #pragma pop_macro("EMP_DEC_TO_BIN_425")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_425
 
 #ifdef EMP_DEC_TO_BIN_426
@@ -38974,6 +45466,10 @@
     #undef EMP_DEC_TO_BIN_426
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_426
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_426
+        #pragma pop_macro("EMP_DEC_TO_BIN_426")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_426
 
 #ifdef EMP_DEC_TO_BIN_427
@@ -38998,6 +45494,10 @@
     #undef EMP_DEC_TO_BIN_427
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_427
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_427
+        #pragma pop_macro("EMP_DEC_TO_BIN_427")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_427
 
 #ifdef EMP_DEC_TO_BIN_428
@@ -39022,6 +45522,10 @@
     #undef EMP_DEC_TO_BIN_428
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_428
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_428
+        #pragma pop_macro("EMP_DEC_TO_BIN_428")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_428
 
 #ifdef EMP_DEC_TO_BIN_429
@@ -39046,6 +45550,10 @@
     #undef EMP_DEC_TO_BIN_429
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_429
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_429
+        #pragma pop_macro("EMP_DEC_TO_BIN_429")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_429
 
 #ifdef EMP_DEC_TO_BIN_43
@@ -39070,6 +45578,10 @@
     #undef EMP_DEC_TO_BIN_43
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_43
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_43
+        #pragma pop_macro("EMP_DEC_TO_BIN_43")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_43
 
 #ifdef EMP_DEC_TO_BIN_430
@@ -39094,6 +45606,10 @@
     #undef EMP_DEC_TO_BIN_430
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_430
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_430
+        #pragma pop_macro("EMP_DEC_TO_BIN_430")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_430
 
 #ifdef EMP_DEC_TO_BIN_431
@@ -39118,6 +45634,10 @@
     #undef EMP_DEC_TO_BIN_431
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_431
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_431
+        #pragma pop_macro("EMP_DEC_TO_BIN_431")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_431
 
 #ifdef EMP_DEC_TO_BIN_432
@@ -39142,6 +45662,10 @@
     #undef EMP_DEC_TO_BIN_432
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_432
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_432
+        #pragma pop_macro("EMP_DEC_TO_BIN_432")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_432
 
 #ifdef EMP_DEC_TO_BIN_433
@@ -39166,6 +45690,10 @@
     #undef EMP_DEC_TO_BIN_433
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_433
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_433
+        #pragma pop_macro("EMP_DEC_TO_BIN_433")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_433
 
 #ifdef EMP_DEC_TO_BIN_434
@@ -39190,6 +45718,10 @@
     #undef EMP_DEC_TO_BIN_434
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_434
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_434
+        #pragma pop_macro("EMP_DEC_TO_BIN_434")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_434
 
 #ifdef EMP_DEC_TO_BIN_435
@@ -39214,6 +45746,10 @@
     #undef EMP_DEC_TO_BIN_435
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_435
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_435
+        #pragma pop_macro("EMP_DEC_TO_BIN_435")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_435
 
 #ifdef EMP_DEC_TO_BIN_436
@@ -39238,6 +45774,10 @@
     #undef EMP_DEC_TO_BIN_436
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_436
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_436
+        #pragma pop_macro("EMP_DEC_TO_BIN_436")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_436
 
 #ifdef EMP_DEC_TO_BIN_437
@@ -39262,6 +45802,10 @@
     #undef EMP_DEC_TO_BIN_437
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_437
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_437
+        #pragma pop_macro("EMP_DEC_TO_BIN_437")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_437
 
 #ifdef EMP_DEC_TO_BIN_438
@@ -39286,6 +45830,10 @@
     #undef EMP_DEC_TO_BIN_438
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_438
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_438
+        #pragma pop_macro("EMP_DEC_TO_BIN_438")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_438
 
 #ifdef EMP_DEC_TO_BIN_439
@@ -39310,6 +45858,10 @@
     #undef EMP_DEC_TO_BIN_439
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_439
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_439
+        #pragma pop_macro("EMP_DEC_TO_BIN_439")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_439
 
 #ifdef EMP_DEC_TO_BIN_44
@@ -39334,6 +45886,10 @@
     #undef EMP_DEC_TO_BIN_44
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_44
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_44
+        #pragma pop_macro("EMP_DEC_TO_BIN_44")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_44
 
 #ifdef EMP_DEC_TO_BIN_440
@@ -39358,6 +45914,10 @@
     #undef EMP_DEC_TO_BIN_440
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_440
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_440
+        #pragma pop_macro("EMP_DEC_TO_BIN_440")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_440
 
 #ifdef EMP_DEC_TO_BIN_441
@@ -39382,6 +45942,10 @@
     #undef EMP_DEC_TO_BIN_441
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_441
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_441
+        #pragma pop_macro("EMP_DEC_TO_BIN_441")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_441
 
 #ifdef EMP_DEC_TO_BIN_442
@@ -39406,6 +45970,10 @@
     #undef EMP_DEC_TO_BIN_442
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_442
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_442
+        #pragma pop_macro("EMP_DEC_TO_BIN_442")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_442
 
 #ifdef EMP_DEC_TO_BIN_443
@@ -39430,6 +45998,10 @@
     #undef EMP_DEC_TO_BIN_443
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_443
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_443
+        #pragma pop_macro("EMP_DEC_TO_BIN_443")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_443
 
 #ifdef EMP_DEC_TO_BIN_444
@@ -39454,6 +46026,10 @@
     #undef EMP_DEC_TO_BIN_444
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_444
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_444
+        #pragma pop_macro("EMP_DEC_TO_BIN_444")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_444
 
 #ifdef EMP_DEC_TO_BIN_445
@@ -39478,6 +46054,10 @@
     #undef EMP_DEC_TO_BIN_445
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_445
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_445
+        #pragma pop_macro("EMP_DEC_TO_BIN_445")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_445
 
 #ifdef EMP_DEC_TO_BIN_446
@@ -39502,6 +46082,10 @@
     #undef EMP_DEC_TO_BIN_446
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_446
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_446
+        #pragma pop_macro("EMP_DEC_TO_BIN_446")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_446
 
 #ifdef EMP_DEC_TO_BIN_447
@@ -39526,6 +46110,10 @@
     #undef EMP_DEC_TO_BIN_447
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_447
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_447
+        #pragma pop_macro("EMP_DEC_TO_BIN_447")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_447
 
 #ifdef EMP_DEC_TO_BIN_448
@@ -39550,6 +46138,10 @@
     #undef EMP_DEC_TO_BIN_448
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_448
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_448
+        #pragma pop_macro("EMP_DEC_TO_BIN_448")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_448
 
 #ifdef EMP_DEC_TO_BIN_449
@@ -39574,6 +46166,10 @@
     #undef EMP_DEC_TO_BIN_449
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_449
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_449
+        #pragma pop_macro("EMP_DEC_TO_BIN_449")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_449
 
 #ifdef EMP_DEC_TO_BIN_45
@@ -39598,6 +46194,10 @@
     #undef EMP_DEC_TO_BIN_45
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_45
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_45
+        #pragma pop_macro("EMP_DEC_TO_BIN_45")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_45
 
 #ifdef EMP_DEC_TO_BIN_450
@@ -39622,6 +46222,10 @@
     #undef EMP_DEC_TO_BIN_450
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_450
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_450
+        #pragma pop_macro("EMP_DEC_TO_BIN_450")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_450
 
 #ifdef EMP_DEC_TO_BIN_451
@@ -39646,6 +46250,10 @@
     #undef EMP_DEC_TO_BIN_451
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_451
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_451
+        #pragma pop_macro("EMP_DEC_TO_BIN_451")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_451
 
 #ifdef EMP_DEC_TO_BIN_452
@@ -39670,6 +46278,10 @@
     #undef EMP_DEC_TO_BIN_452
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_452
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_452
+        #pragma pop_macro("EMP_DEC_TO_BIN_452")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_452
 
 #ifdef EMP_DEC_TO_BIN_453
@@ -39694,6 +46306,10 @@
     #undef EMP_DEC_TO_BIN_453
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_453
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_453
+        #pragma pop_macro("EMP_DEC_TO_BIN_453")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_453
 
 #ifdef EMP_DEC_TO_BIN_454
@@ -39718,6 +46334,10 @@
     #undef EMP_DEC_TO_BIN_454
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_454
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_454
+        #pragma pop_macro("EMP_DEC_TO_BIN_454")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_454
 
 #ifdef EMP_DEC_TO_BIN_455
@@ -39742,6 +46362,10 @@
     #undef EMP_DEC_TO_BIN_455
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_455
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_455
+        #pragma pop_macro("EMP_DEC_TO_BIN_455")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_455
 
 #ifdef EMP_DEC_TO_BIN_456
@@ -39766,6 +46390,10 @@
     #undef EMP_DEC_TO_BIN_456
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_456
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_456
+        #pragma pop_macro("EMP_DEC_TO_BIN_456")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_456
 
 #ifdef EMP_DEC_TO_BIN_457
@@ -39790,6 +46418,10 @@
     #undef EMP_DEC_TO_BIN_457
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_457
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_457
+        #pragma pop_macro("EMP_DEC_TO_BIN_457")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_457
 
 #ifdef EMP_DEC_TO_BIN_458
@@ -39814,6 +46446,10 @@
     #undef EMP_DEC_TO_BIN_458
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_458
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_458
+        #pragma pop_macro("EMP_DEC_TO_BIN_458")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_458
 
 #ifdef EMP_DEC_TO_BIN_459
@@ -39838,6 +46474,10 @@
     #undef EMP_DEC_TO_BIN_459
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_459
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_459
+        #pragma pop_macro("EMP_DEC_TO_BIN_459")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_459
 
 #ifdef EMP_DEC_TO_BIN_46
@@ -39862,6 +46502,10 @@
     #undef EMP_DEC_TO_BIN_46
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_46
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_46
+        #pragma pop_macro("EMP_DEC_TO_BIN_46")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_46
 
 #ifdef EMP_DEC_TO_BIN_460
@@ -39886,6 +46530,10 @@
     #undef EMP_DEC_TO_BIN_460
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_460
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_460
+        #pragma pop_macro("EMP_DEC_TO_BIN_460")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_460
 
 #ifdef EMP_DEC_TO_BIN_461
@@ -39910,6 +46558,10 @@
     #undef EMP_DEC_TO_BIN_461
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_461
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_461
+        #pragma pop_macro("EMP_DEC_TO_BIN_461")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_461
 
 #ifdef EMP_DEC_TO_BIN_462
@@ -39934,6 +46586,10 @@
     #undef EMP_DEC_TO_BIN_462
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_462
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_462
+        #pragma pop_macro("EMP_DEC_TO_BIN_462")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_462
 
 #ifdef EMP_DEC_TO_BIN_463
@@ -39958,6 +46614,10 @@
     #undef EMP_DEC_TO_BIN_463
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_463
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_463
+        #pragma pop_macro("EMP_DEC_TO_BIN_463")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_463
 
 #ifdef EMP_DEC_TO_BIN_464
@@ -39982,6 +46642,10 @@
     #undef EMP_DEC_TO_BIN_464
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_464
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_464
+        #pragma pop_macro("EMP_DEC_TO_BIN_464")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_464
 
 #ifdef EMP_DEC_TO_BIN_465
@@ -40006,6 +46670,10 @@
     #undef EMP_DEC_TO_BIN_465
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_465
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_465
+        #pragma pop_macro("EMP_DEC_TO_BIN_465")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_465
 
 #ifdef EMP_DEC_TO_BIN_466
@@ -40030,6 +46698,10 @@
     #undef EMP_DEC_TO_BIN_466
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_466
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_466
+        #pragma pop_macro("EMP_DEC_TO_BIN_466")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_466
 
 #ifdef EMP_DEC_TO_BIN_467
@@ -40054,6 +46726,10 @@
     #undef EMP_DEC_TO_BIN_467
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_467
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_467
+        #pragma pop_macro("EMP_DEC_TO_BIN_467")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_467
 
 #ifdef EMP_DEC_TO_BIN_468
@@ -40078,6 +46754,10 @@
     #undef EMP_DEC_TO_BIN_468
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_468
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_468
+        #pragma pop_macro("EMP_DEC_TO_BIN_468")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_468
 
 #ifdef EMP_DEC_TO_BIN_469
@@ -40102,6 +46782,10 @@
     #undef EMP_DEC_TO_BIN_469
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_469
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_469
+        #pragma pop_macro("EMP_DEC_TO_BIN_469")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_469
 
 #ifdef EMP_DEC_TO_BIN_47
@@ -40126,6 +46810,10 @@
     #undef EMP_DEC_TO_BIN_47
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_47
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_47
+        #pragma pop_macro("EMP_DEC_TO_BIN_47")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_47
 
 #ifdef EMP_DEC_TO_BIN_470
@@ -40150,6 +46838,10 @@
     #undef EMP_DEC_TO_BIN_470
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_470
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_470
+        #pragma pop_macro("EMP_DEC_TO_BIN_470")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_470
 
 #ifdef EMP_DEC_TO_BIN_471
@@ -40174,6 +46866,10 @@
     #undef EMP_DEC_TO_BIN_471
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_471
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_471
+        #pragma pop_macro("EMP_DEC_TO_BIN_471")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_471
 
 #ifdef EMP_DEC_TO_BIN_472
@@ -40198,6 +46894,10 @@
     #undef EMP_DEC_TO_BIN_472
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_472
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_472
+        #pragma pop_macro("EMP_DEC_TO_BIN_472")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_472
 
 #ifdef EMP_DEC_TO_BIN_473
@@ -40222,6 +46922,10 @@
     #undef EMP_DEC_TO_BIN_473
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_473
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_473
+        #pragma pop_macro("EMP_DEC_TO_BIN_473")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_473
 
 #ifdef EMP_DEC_TO_BIN_474
@@ -40246,6 +46950,10 @@
     #undef EMP_DEC_TO_BIN_474
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_474
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_474
+        #pragma pop_macro("EMP_DEC_TO_BIN_474")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_474
 
 #ifdef EMP_DEC_TO_BIN_475
@@ -40270,6 +46978,10 @@
     #undef EMP_DEC_TO_BIN_475
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_475
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_475
+        #pragma pop_macro("EMP_DEC_TO_BIN_475")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_475
 
 #ifdef EMP_DEC_TO_BIN_476
@@ -40294,6 +47006,10 @@
     #undef EMP_DEC_TO_BIN_476
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_476
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_476
+        #pragma pop_macro("EMP_DEC_TO_BIN_476")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_476
 
 #ifdef EMP_DEC_TO_BIN_477
@@ -40318,6 +47034,10 @@
     #undef EMP_DEC_TO_BIN_477
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_477
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_477
+        #pragma pop_macro("EMP_DEC_TO_BIN_477")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_477
 
 #ifdef EMP_DEC_TO_BIN_478
@@ -40342,6 +47062,10 @@
     #undef EMP_DEC_TO_BIN_478
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_478
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_478
+        #pragma pop_macro("EMP_DEC_TO_BIN_478")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_478
 
 #ifdef EMP_DEC_TO_BIN_479
@@ -40366,6 +47090,10 @@
     #undef EMP_DEC_TO_BIN_479
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_479
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_479
+        #pragma pop_macro("EMP_DEC_TO_BIN_479")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_479
 
 #ifdef EMP_DEC_TO_BIN_48
@@ -40390,6 +47118,10 @@
     #undef EMP_DEC_TO_BIN_48
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_48
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_48
+        #pragma pop_macro("EMP_DEC_TO_BIN_48")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_48
 
 #ifdef EMP_DEC_TO_BIN_480
@@ -40414,6 +47146,10 @@
     #undef EMP_DEC_TO_BIN_480
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_480
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_480
+        #pragma pop_macro("EMP_DEC_TO_BIN_480")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_480
 
 #ifdef EMP_DEC_TO_BIN_481
@@ -40438,6 +47174,10 @@
     #undef EMP_DEC_TO_BIN_481
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_481
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_481
+        #pragma pop_macro("EMP_DEC_TO_BIN_481")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_481
 
 #ifdef EMP_DEC_TO_BIN_482
@@ -40462,6 +47202,10 @@
     #undef EMP_DEC_TO_BIN_482
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_482
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_482
+        #pragma pop_macro("EMP_DEC_TO_BIN_482")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_482
 
 #ifdef EMP_DEC_TO_BIN_483
@@ -40486,6 +47230,10 @@
     #undef EMP_DEC_TO_BIN_483
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_483
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_483
+        #pragma pop_macro("EMP_DEC_TO_BIN_483")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_483
 
 #ifdef EMP_DEC_TO_BIN_484
@@ -40510,6 +47258,10 @@
     #undef EMP_DEC_TO_BIN_484
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_484
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_484
+        #pragma pop_macro("EMP_DEC_TO_BIN_484")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_484
 
 #ifdef EMP_DEC_TO_BIN_485
@@ -40534,6 +47286,10 @@
     #undef EMP_DEC_TO_BIN_485
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_485
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_485
+        #pragma pop_macro("EMP_DEC_TO_BIN_485")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_485
 
 #ifdef EMP_DEC_TO_BIN_486
@@ -40558,6 +47314,10 @@
     #undef EMP_DEC_TO_BIN_486
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_486
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_486
+        #pragma pop_macro("EMP_DEC_TO_BIN_486")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_486
 
 #ifdef EMP_DEC_TO_BIN_487
@@ -40582,6 +47342,10 @@
     #undef EMP_DEC_TO_BIN_487
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_487
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_487
+        #pragma pop_macro("EMP_DEC_TO_BIN_487")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_487
 
 #ifdef EMP_DEC_TO_BIN_488
@@ -40606,6 +47370,10 @@
     #undef EMP_DEC_TO_BIN_488
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_488
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_488
+        #pragma pop_macro("EMP_DEC_TO_BIN_488")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_488
 
 #ifdef EMP_DEC_TO_BIN_489
@@ -40630,6 +47398,10 @@
     #undef EMP_DEC_TO_BIN_489
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_489
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_489
+        #pragma pop_macro("EMP_DEC_TO_BIN_489")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_489
 
 #ifdef EMP_DEC_TO_BIN_49
@@ -40654,6 +47426,10 @@
     #undef EMP_DEC_TO_BIN_49
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_49
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_49
+        #pragma pop_macro("EMP_DEC_TO_BIN_49")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_49
 
 #ifdef EMP_DEC_TO_BIN_490
@@ -40678,6 +47454,10 @@
     #undef EMP_DEC_TO_BIN_490
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_490
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_490
+        #pragma pop_macro("EMP_DEC_TO_BIN_490")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_490
 
 #ifdef EMP_DEC_TO_BIN_491
@@ -40702,6 +47482,10 @@
     #undef EMP_DEC_TO_BIN_491
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_491
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_491
+        #pragma pop_macro("EMP_DEC_TO_BIN_491")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_491
 
 #ifdef EMP_DEC_TO_BIN_492
@@ -40726,6 +47510,10 @@
     #undef EMP_DEC_TO_BIN_492
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_492
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_492
+        #pragma pop_macro("EMP_DEC_TO_BIN_492")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_492
 
 #ifdef EMP_DEC_TO_BIN_493
@@ -40750,6 +47538,10 @@
     #undef EMP_DEC_TO_BIN_493
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_493
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_493
+        #pragma pop_macro("EMP_DEC_TO_BIN_493")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_493
 
 #ifdef EMP_DEC_TO_BIN_494
@@ -40774,6 +47566,10 @@
     #undef EMP_DEC_TO_BIN_494
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_494
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_494
+        #pragma pop_macro("EMP_DEC_TO_BIN_494")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_494
 
 #ifdef EMP_DEC_TO_BIN_495
@@ -40798,6 +47594,10 @@
     #undef EMP_DEC_TO_BIN_495
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_495
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_495
+        #pragma pop_macro("EMP_DEC_TO_BIN_495")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_495
 
 #ifdef EMP_DEC_TO_BIN_496
@@ -40822,6 +47622,10 @@
     #undef EMP_DEC_TO_BIN_496
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_496
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_496
+        #pragma pop_macro("EMP_DEC_TO_BIN_496")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_496
 
 #ifdef EMP_DEC_TO_BIN_497
@@ -40846,6 +47650,10 @@
     #undef EMP_DEC_TO_BIN_497
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_497
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_497
+        #pragma pop_macro("EMP_DEC_TO_BIN_497")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_497
 
 #ifdef EMP_DEC_TO_BIN_498
@@ -40870,6 +47678,10 @@
     #undef EMP_DEC_TO_BIN_498
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_498
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_498
+        #pragma pop_macro("EMP_DEC_TO_BIN_498")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_498
 
 #ifdef EMP_DEC_TO_BIN_499
@@ -40894,6 +47706,10 @@
     #undef EMP_DEC_TO_BIN_499
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_499
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_499
+        #pragma pop_macro("EMP_DEC_TO_BIN_499")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_499
 
 #ifdef EMP_DEC_TO_BIN_5
@@ -40918,6 +47734,10 @@
     #undef EMP_DEC_TO_BIN_5
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_5
+        #pragma pop_macro("EMP_DEC_TO_BIN_5")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_5
 
 #ifdef EMP_DEC_TO_BIN_50
@@ -40942,6 +47762,10 @@
     #undef EMP_DEC_TO_BIN_50
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_50
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_50
+        #pragma pop_macro("EMP_DEC_TO_BIN_50")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_50
 
 #ifdef EMP_DEC_TO_BIN_500
@@ -40966,6 +47790,10 @@
     #undef EMP_DEC_TO_BIN_500
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_500
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_500
+        #pragma pop_macro("EMP_DEC_TO_BIN_500")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_500
 
 #ifdef EMP_DEC_TO_BIN_501
@@ -40990,6 +47818,10 @@
     #undef EMP_DEC_TO_BIN_501
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_501
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_501
+        #pragma pop_macro("EMP_DEC_TO_BIN_501")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_501
 
 #ifdef EMP_DEC_TO_BIN_502
@@ -41014,6 +47846,10 @@
     #undef EMP_DEC_TO_BIN_502
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_502
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_502
+        #pragma pop_macro("EMP_DEC_TO_BIN_502")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_502
 
 #ifdef EMP_DEC_TO_BIN_503
@@ -41038,6 +47874,10 @@
     #undef EMP_DEC_TO_BIN_503
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_503
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_503
+        #pragma pop_macro("EMP_DEC_TO_BIN_503")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_503
 
 #ifdef EMP_DEC_TO_BIN_504
@@ -41062,6 +47902,10 @@
     #undef EMP_DEC_TO_BIN_504
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_504
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_504
+        #pragma pop_macro("EMP_DEC_TO_BIN_504")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_504
 
 #ifdef EMP_DEC_TO_BIN_505
@@ -41086,6 +47930,10 @@
     #undef EMP_DEC_TO_BIN_505
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_505
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_505
+        #pragma pop_macro("EMP_DEC_TO_BIN_505")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_505
 
 #ifdef EMP_DEC_TO_BIN_506
@@ -41110,6 +47958,10 @@
     #undef EMP_DEC_TO_BIN_506
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_506
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_506
+        #pragma pop_macro("EMP_DEC_TO_BIN_506")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_506
 
 #ifdef EMP_DEC_TO_BIN_507
@@ -41134,6 +47986,10 @@
     #undef EMP_DEC_TO_BIN_507
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_507
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_507
+        #pragma pop_macro("EMP_DEC_TO_BIN_507")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_507
 
 #ifdef EMP_DEC_TO_BIN_508
@@ -41158,6 +48014,10 @@
     #undef EMP_DEC_TO_BIN_508
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_508
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_508
+        #pragma pop_macro("EMP_DEC_TO_BIN_508")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_508
 
 #ifdef EMP_DEC_TO_BIN_509
@@ -41182,6 +48042,10 @@
     #undef EMP_DEC_TO_BIN_509
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_509
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_509
+        #pragma pop_macro("EMP_DEC_TO_BIN_509")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_509
 
 #ifdef EMP_DEC_TO_BIN_51
@@ -41206,6 +48070,10 @@
     #undef EMP_DEC_TO_BIN_51
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_51
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_51
+        #pragma pop_macro("EMP_DEC_TO_BIN_51")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_51
 
 #ifdef EMP_DEC_TO_BIN_510
@@ -41230,6 +48098,10 @@
     #undef EMP_DEC_TO_BIN_510
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_510
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_510
+        #pragma pop_macro("EMP_DEC_TO_BIN_510")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_510
 
 #ifdef EMP_DEC_TO_BIN_511
@@ -41254,6 +48126,10 @@
     #undef EMP_DEC_TO_BIN_511
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_511
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_511
+        #pragma pop_macro("EMP_DEC_TO_BIN_511")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_511
 
 #ifdef EMP_DEC_TO_BIN_512
@@ -41278,6 +48154,10 @@
     #undef EMP_DEC_TO_BIN_512
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_512
+        #pragma pop_macro("EMP_DEC_TO_BIN_512")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_512
 
 #ifdef EMP_DEC_TO_BIN_513
@@ -41302,6 +48182,10 @@
     #undef EMP_DEC_TO_BIN_513
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_513
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_513
+        #pragma pop_macro("EMP_DEC_TO_BIN_513")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_513
 
 #ifdef EMP_DEC_TO_BIN_514
@@ -41326,6 +48210,10 @@
     #undef EMP_DEC_TO_BIN_514
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_514
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_514
+        #pragma pop_macro("EMP_DEC_TO_BIN_514")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_514
 
 #ifdef EMP_DEC_TO_BIN_515
@@ -41350,6 +48238,10 @@
     #undef EMP_DEC_TO_BIN_515
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_515
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_515
+        #pragma pop_macro("EMP_DEC_TO_BIN_515")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_515
 
 #ifdef EMP_DEC_TO_BIN_516
@@ -41374,6 +48266,10 @@
     #undef EMP_DEC_TO_BIN_516
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_516
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_516
+        #pragma pop_macro("EMP_DEC_TO_BIN_516")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_516
 
 #ifdef EMP_DEC_TO_BIN_517
@@ -41398,6 +48294,10 @@
     #undef EMP_DEC_TO_BIN_517
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_517
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_517
+        #pragma pop_macro("EMP_DEC_TO_BIN_517")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_517
 
 #ifdef EMP_DEC_TO_BIN_518
@@ -41422,6 +48322,10 @@
     #undef EMP_DEC_TO_BIN_518
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_518
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_518
+        #pragma pop_macro("EMP_DEC_TO_BIN_518")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_518
 
 #ifdef EMP_DEC_TO_BIN_519
@@ -41446,6 +48350,10 @@
     #undef EMP_DEC_TO_BIN_519
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_519
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_519
+        #pragma pop_macro("EMP_DEC_TO_BIN_519")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_519
 
 #ifdef EMP_DEC_TO_BIN_52
@@ -41470,6 +48378,10 @@
     #undef EMP_DEC_TO_BIN_52
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_52
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_52
+        #pragma pop_macro("EMP_DEC_TO_BIN_52")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_52
 
 #ifdef EMP_DEC_TO_BIN_520
@@ -41494,6 +48406,10 @@
     #undef EMP_DEC_TO_BIN_520
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_520
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_520
+        #pragma pop_macro("EMP_DEC_TO_BIN_520")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_520
 
 #ifdef EMP_DEC_TO_BIN_521
@@ -41518,6 +48434,10 @@
     #undef EMP_DEC_TO_BIN_521
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_521
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_521
+        #pragma pop_macro("EMP_DEC_TO_BIN_521")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_521
 
 #ifdef EMP_DEC_TO_BIN_522
@@ -41542,6 +48462,10 @@
     #undef EMP_DEC_TO_BIN_522
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_522
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_522
+        #pragma pop_macro("EMP_DEC_TO_BIN_522")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_522
 
 #ifdef EMP_DEC_TO_BIN_523
@@ -41566,6 +48490,10 @@
     #undef EMP_DEC_TO_BIN_523
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_523
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_523
+        #pragma pop_macro("EMP_DEC_TO_BIN_523")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_523
 
 #ifdef EMP_DEC_TO_BIN_524
@@ -41590,6 +48518,10 @@
     #undef EMP_DEC_TO_BIN_524
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_524
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_524
+        #pragma pop_macro("EMP_DEC_TO_BIN_524")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_524
 
 #ifdef EMP_DEC_TO_BIN_525
@@ -41614,6 +48546,10 @@
     #undef EMP_DEC_TO_BIN_525
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_525
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_525
+        #pragma pop_macro("EMP_DEC_TO_BIN_525")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_525
 
 #ifdef EMP_DEC_TO_BIN_526
@@ -41638,6 +48574,10 @@
     #undef EMP_DEC_TO_BIN_526
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_526
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_526
+        #pragma pop_macro("EMP_DEC_TO_BIN_526")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_526
 
 #ifdef EMP_DEC_TO_BIN_527
@@ -41662,6 +48602,10 @@
     #undef EMP_DEC_TO_BIN_527
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_527
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_527
+        #pragma pop_macro("EMP_DEC_TO_BIN_527")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_527
 
 #ifdef EMP_DEC_TO_BIN_528
@@ -41686,6 +48630,10 @@
     #undef EMP_DEC_TO_BIN_528
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_528
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_528
+        #pragma pop_macro("EMP_DEC_TO_BIN_528")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_528
 
 #ifdef EMP_DEC_TO_BIN_529
@@ -41710,6 +48658,10 @@
     #undef EMP_DEC_TO_BIN_529
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_529
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_529
+        #pragma pop_macro("EMP_DEC_TO_BIN_529")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_529
 
 #ifdef EMP_DEC_TO_BIN_53
@@ -41734,6 +48686,10 @@
     #undef EMP_DEC_TO_BIN_53
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_53
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_53
+        #pragma pop_macro("EMP_DEC_TO_BIN_53")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_53
 
 #ifdef EMP_DEC_TO_BIN_530
@@ -41758,6 +48714,10 @@
     #undef EMP_DEC_TO_BIN_530
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_530
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_530
+        #pragma pop_macro("EMP_DEC_TO_BIN_530")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_530
 
 #ifdef EMP_DEC_TO_BIN_531
@@ -41782,6 +48742,10 @@
     #undef EMP_DEC_TO_BIN_531
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_531
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_531
+        #pragma pop_macro("EMP_DEC_TO_BIN_531")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_531
 
 #ifdef EMP_DEC_TO_BIN_532
@@ -41806,6 +48770,10 @@
     #undef EMP_DEC_TO_BIN_532
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_532
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_532
+        #pragma pop_macro("EMP_DEC_TO_BIN_532")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_532
 
 #ifdef EMP_DEC_TO_BIN_533
@@ -41830,6 +48798,10 @@
     #undef EMP_DEC_TO_BIN_533
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_533
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_533
+        #pragma pop_macro("EMP_DEC_TO_BIN_533")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_533
 
 #ifdef EMP_DEC_TO_BIN_534
@@ -41854,6 +48826,10 @@
     #undef EMP_DEC_TO_BIN_534
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_534
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_534
+        #pragma pop_macro("EMP_DEC_TO_BIN_534")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_534
 
 #ifdef EMP_DEC_TO_BIN_535
@@ -41878,6 +48854,10 @@
     #undef EMP_DEC_TO_BIN_535
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_535
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_535
+        #pragma pop_macro("EMP_DEC_TO_BIN_535")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_535
 
 #ifdef EMP_DEC_TO_BIN_536
@@ -41902,6 +48882,10 @@
     #undef EMP_DEC_TO_BIN_536
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_536
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_536
+        #pragma pop_macro("EMP_DEC_TO_BIN_536")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_536
 
 #ifdef EMP_DEC_TO_BIN_537
@@ -41926,6 +48910,10 @@
     #undef EMP_DEC_TO_BIN_537
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_537
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_537
+        #pragma pop_macro("EMP_DEC_TO_BIN_537")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_537
 
 #ifdef EMP_DEC_TO_BIN_538
@@ -41950,6 +48938,10 @@
     #undef EMP_DEC_TO_BIN_538
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_538
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_538
+        #pragma pop_macro("EMP_DEC_TO_BIN_538")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_538
 
 #ifdef EMP_DEC_TO_BIN_539
@@ -41974,6 +48966,10 @@
     #undef EMP_DEC_TO_BIN_539
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_539
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_539
+        #pragma pop_macro("EMP_DEC_TO_BIN_539")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_539
 
 #ifdef EMP_DEC_TO_BIN_54
@@ -41998,6 +48994,10 @@
     #undef EMP_DEC_TO_BIN_54
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_54
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_54
+        #pragma pop_macro("EMP_DEC_TO_BIN_54")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_54
 
 #ifdef EMP_DEC_TO_BIN_540
@@ -42022,6 +49022,10 @@
     #undef EMP_DEC_TO_BIN_540
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_540
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_540
+        #pragma pop_macro("EMP_DEC_TO_BIN_540")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_540
 
 #ifdef EMP_DEC_TO_BIN_541
@@ -42046,6 +49050,10 @@
     #undef EMP_DEC_TO_BIN_541
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_541
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_541
+        #pragma pop_macro("EMP_DEC_TO_BIN_541")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_541
 
 #ifdef EMP_DEC_TO_BIN_542
@@ -42070,6 +49078,10 @@
     #undef EMP_DEC_TO_BIN_542
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_542
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_542
+        #pragma pop_macro("EMP_DEC_TO_BIN_542")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_542
 
 #ifdef EMP_DEC_TO_BIN_543
@@ -42094,6 +49106,10 @@
     #undef EMP_DEC_TO_BIN_543
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_543
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_543
+        #pragma pop_macro("EMP_DEC_TO_BIN_543")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_543
 
 #ifdef EMP_DEC_TO_BIN_544
@@ -42118,6 +49134,10 @@
     #undef EMP_DEC_TO_BIN_544
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_544
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_544
+        #pragma pop_macro("EMP_DEC_TO_BIN_544")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_544
 
 #ifdef EMP_DEC_TO_BIN_545
@@ -42142,6 +49162,10 @@
     #undef EMP_DEC_TO_BIN_545
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_545
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_545
+        #pragma pop_macro("EMP_DEC_TO_BIN_545")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_545
 
 #ifdef EMP_DEC_TO_BIN_546
@@ -42166,6 +49190,10 @@
     #undef EMP_DEC_TO_BIN_546
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_546
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_546
+        #pragma pop_macro("EMP_DEC_TO_BIN_546")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_546
 
 #ifdef EMP_DEC_TO_BIN_547
@@ -42190,6 +49218,10 @@
     #undef EMP_DEC_TO_BIN_547
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_547
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_547
+        #pragma pop_macro("EMP_DEC_TO_BIN_547")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_547
 
 #ifdef EMP_DEC_TO_BIN_548
@@ -42214,6 +49246,10 @@
     #undef EMP_DEC_TO_BIN_548
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_548
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_548
+        #pragma pop_macro("EMP_DEC_TO_BIN_548")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_548
 
 #ifdef EMP_DEC_TO_BIN_549
@@ -42238,6 +49274,10 @@
     #undef EMP_DEC_TO_BIN_549
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_549
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_549
+        #pragma pop_macro("EMP_DEC_TO_BIN_549")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_549
 
 #ifdef EMP_DEC_TO_BIN_55
@@ -42262,6 +49302,10 @@
     #undef EMP_DEC_TO_BIN_55
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_55
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_55
+        #pragma pop_macro("EMP_DEC_TO_BIN_55")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_55
 
 #ifdef EMP_DEC_TO_BIN_550
@@ -42286,6 +49330,10 @@
     #undef EMP_DEC_TO_BIN_550
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_550
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_550
+        #pragma pop_macro("EMP_DEC_TO_BIN_550")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_550
 
 #ifdef EMP_DEC_TO_BIN_551
@@ -42310,6 +49358,10 @@
     #undef EMP_DEC_TO_BIN_551
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_551
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_551
+        #pragma pop_macro("EMP_DEC_TO_BIN_551")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_551
 
 #ifdef EMP_DEC_TO_BIN_552
@@ -42334,6 +49386,10 @@
     #undef EMP_DEC_TO_BIN_552
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_552
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_552
+        #pragma pop_macro("EMP_DEC_TO_BIN_552")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_552
 
 #ifdef EMP_DEC_TO_BIN_553
@@ -42358,6 +49414,10 @@
     #undef EMP_DEC_TO_BIN_553
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_553
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_553
+        #pragma pop_macro("EMP_DEC_TO_BIN_553")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_553
 
 #ifdef EMP_DEC_TO_BIN_554
@@ -42382,6 +49442,10 @@
     #undef EMP_DEC_TO_BIN_554
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_554
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_554
+        #pragma pop_macro("EMP_DEC_TO_BIN_554")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_554
 
 #ifdef EMP_DEC_TO_BIN_555
@@ -42406,6 +49470,10 @@
     #undef EMP_DEC_TO_BIN_555
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_555
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_555
+        #pragma pop_macro("EMP_DEC_TO_BIN_555")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_555
 
 #ifdef EMP_DEC_TO_BIN_556
@@ -42430,6 +49498,10 @@
     #undef EMP_DEC_TO_BIN_556
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_556
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_556
+        #pragma pop_macro("EMP_DEC_TO_BIN_556")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_556
 
 #ifdef EMP_DEC_TO_BIN_557
@@ -42454,6 +49526,10 @@
     #undef EMP_DEC_TO_BIN_557
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_557
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_557
+        #pragma pop_macro("EMP_DEC_TO_BIN_557")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_557
 
 #ifdef EMP_DEC_TO_BIN_558
@@ -42478,6 +49554,10 @@
     #undef EMP_DEC_TO_BIN_558
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_558
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_558
+        #pragma pop_macro("EMP_DEC_TO_BIN_558")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_558
 
 #ifdef EMP_DEC_TO_BIN_559
@@ -42502,6 +49582,10 @@
     #undef EMP_DEC_TO_BIN_559
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_559
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_559
+        #pragma pop_macro("EMP_DEC_TO_BIN_559")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_559
 
 #ifdef EMP_DEC_TO_BIN_56
@@ -42526,6 +49610,10 @@
     #undef EMP_DEC_TO_BIN_56
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_56
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_56
+        #pragma pop_macro("EMP_DEC_TO_BIN_56")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_56
 
 #ifdef EMP_DEC_TO_BIN_560
@@ -42550,6 +49638,10 @@
     #undef EMP_DEC_TO_BIN_560
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_560
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_560
+        #pragma pop_macro("EMP_DEC_TO_BIN_560")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_560
 
 #ifdef EMP_DEC_TO_BIN_561
@@ -42574,6 +49666,10 @@
     #undef EMP_DEC_TO_BIN_561
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_561
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_561
+        #pragma pop_macro("EMP_DEC_TO_BIN_561")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_561
 
 #ifdef EMP_DEC_TO_BIN_562
@@ -42598,6 +49694,10 @@
     #undef EMP_DEC_TO_BIN_562
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_562
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_562
+        #pragma pop_macro("EMP_DEC_TO_BIN_562")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_562
 
 #ifdef EMP_DEC_TO_BIN_563
@@ -42622,6 +49722,10 @@
     #undef EMP_DEC_TO_BIN_563
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_563
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_563
+        #pragma pop_macro("EMP_DEC_TO_BIN_563")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_563
 
 #ifdef EMP_DEC_TO_BIN_564
@@ -42646,6 +49750,10 @@
     #undef EMP_DEC_TO_BIN_564
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_564
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_564
+        #pragma pop_macro("EMP_DEC_TO_BIN_564")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_564
 
 #ifdef EMP_DEC_TO_BIN_565
@@ -42670,6 +49778,10 @@
     #undef EMP_DEC_TO_BIN_565
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_565
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_565
+        #pragma pop_macro("EMP_DEC_TO_BIN_565")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_565
 
 #ifdef EMP_DEC_TO_BIN_566
@@ -42694,6 +49806,10 @@
     #undef EMP_DEC_TO_BIN_566
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_566
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_566
+        #pragma pop_macro("EMP_DEC_TO_BIN_566")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_566
 
 #ifdef EMP_DEC_TO_BIN_567
@@ -42718,6 +49834,10 @@
     #undef EMP_DEC_TO_BIN_567
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_567
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_567
+        #pragma pop_macro("EMP_DEC_TO_BIN_567")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_567
 
 #ifdef EMP_DEC_TO_BIN_568
@@ -42742,6 +49862,10 @@
     #undef EMP_DEC_TO_BIN_568
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_568
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_568
+        #pragma pop_macro("EMP_DEC_TO_BIN_568")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_568
 
 #ifdef EMP_DEC_TO_BIN_569
@@ -42766,6 +49890,10 @@
     #undef EMP_DEC_TO_BIN_569
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_569
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_569
+        #pragma pop_macro("EMP_DEC_TO_BIN_569")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_569
 
 #ifdef EMP_DEC_TO_BIN_57
@@ -42790,6 +49918,10 @@
     #undef EMP_DEC_TO_BIN_57
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_57
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_57
+        #pragma pop_macro("EMP_DEC_TO_BIN_57")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_57
 
 #ifdef EMP_DEC_TO_BIN_570
@@ -42814,6 +49946,10 @@
     #undef EMP_DEC_TO_BIN_570
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_570
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_570
+        #pragma pop_macro("EMP_DEC_TO_BIN_570")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_570
 
 #ifdef EMP_DEC_TO_BIN_571
@@ -42838,6 +49974,10 @@
     #undef EMP_DEC_TO_BIN_571
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_571
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_571
+        #pragma pop_macro("EMP_DEC_TO_BIN_571")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_571
 
 #ifdef EMP_DEC_TO_BIN_572
@@ -42862,6 +50002,10 @@
     #undef EMP_DEC_TO_BIN_572
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_572
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_572
+        #pragma pop_macro("EMP_DEC_TO_BIN_572")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_572
 
 #ifdef EMP_DEC_TO_BIN_573
@@ -42886,6 +50030,10 @@
     #undef EMP_DEC_TO_BIN_573
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_573
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_573
+        #pragma pop_macro("EMP_DEC_TO_BIN_573")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_573
 
 #ifdef EMP_DEC_TO_BIN_574
@@ -42910,6 +50058,10 @@
     #undef EMP_DEC_TO_BIN_574
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_574
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_574
+        #pragma pop_macro("EMP_DEC_TO_BIN_574")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_574
 
 #ifdef EMP_DEC_TO_BIN_575
@@ -42934,6 +50086,10 @@
     #undef EMP_DEC_TO_BIN_575
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_575
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_575
+        #pragma pop_macro("EMP_DEC_TO_BIN_575")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_575
 
 #ifdef EMP_DEC_TO_BIN_576
@@ -42958,6 +50114,10 @@
     #undef EMP_DEC_TO_BIN_576
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_576
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_576
+        #pragma pop_macro("EMP_DEC_TO_BIN_576")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_576
 
 #ifdef EMP_DEC_TO_BIN_577
@@ -42982,6 +50142,10 @@
     #undef EMP_DEC_TO_BIN_577
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_577
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_577
+        #pragma pop_macro("EMP_DEC_TO_BIN_577")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_577
 
 #ifdef EMP_DEC_TO_BIN_578
@@ -43006,6 +50170,10 @@
     #undef EMP_DEC_TO_BIN_578
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_578
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_578
+        #pragma pop_macro("EMP_DEC_TO_BIN_578")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_578
 
 #ifdef EMP_DEC_TO_BIN_579
@@ -43030,6 +50198,10 @@
     #undef EMP_DEC_TO_BIN_579
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_579
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_579
+        #pragma pop_macro("EMP_DEC_TO_BIN_579")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_579
 
 #ifdef EMP_DEC_TO_BIN_58
@@ -43054,6 +50226,10 @@
     #undef EMP_DEC_TO_BIN_58
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_58
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_58
+        #pragma pop_macro("EMP_DEC_TO_BIN_58")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_58
 
 #ifdef EMP_DEC_TO_BIN_580
@@ -43078,6 +50254,10 @@
     #undef EMP_DEC_TO_BIN_580
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_580
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_580
+        #pragma pop_macro("EMP_DEC_TO_BIN_580")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_580
 
 #ifdef EMP_DEC_TO_BIN_581
@@ -43102,6 +50282,10 @@
     #undef EMP_DEC_TO_BIN_581
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_581
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_581
+        #pragma pop_macro("EMP_DEC_TO_BIN_581")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_581
 
 #ifdef EMP_DEC_TO_BIN_582
@@ -43126,6 +50310,10 @@
     #undef EMP_DEC_TO_BIN_582
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_582
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_582
+        #pragma pop_macro("EMP_DEC_TO_BIN_582")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_582
 
 #ifdef EMP_DEC_TO_BIN_583
@@ -43150,6 +50338,10 @@
     #undef EMP_DEC_TO_BIN_583
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_583
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_583
+        #pragma pop_macro("EMP_DEC_TO_BIN_583")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_583
 
 #ifdef EMP_DEC_TO_BIN_584
@@ -43174,6 +50366,10 @@
     #undef EMP_DEC_TO_BIN_584
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_584
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_584
+        #pragma pop_macro("EMP_DEC_TO_BIN_584")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_584
 
 #ifdef EMP_DEC_TO_BIN_585
@@ -43198,6 +50394,10 @@
     #undef EMP_DEC_TO_BIN_585
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_585
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_585
+        #pragma pop_macro("EMP_DEC_TO_BIN_585")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_585
 
 #ifdef EMP_DEC_TO_BIN_586
@@ -43222,6 +50422,10 @@
     #undef EMP_DEC_TO_BIN_586
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_586
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_586
+        #pragma pop_macro("EMP_DEC_TO_BIN_586")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_586
 
 #ifdef EMP_DEC_TO_BIN_587
@@ -43246,6 +50450,10 @@
     #undef EMP_DEC_TO_BIN_587
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_587
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_587
+        #pragma pop_macro("EMP_DEC_TO_BIN_587")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_587
 
 #ifdef EMP_DEC_TO_BIN_588
@@ -43270,6 +50478,10 @@
     #undef EMP_DEC_TO_BIN_588
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_588
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_588
+        #pragma pop_macro("EMP_DEC_TO_BIN_588")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_588
 
 #ifdef EMP_DEC_TO_BIN_589
@@ -43294,6 +50506,10 @@
     #undef EMP_DEC_TO_BIN_589
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_589
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_589
+        #pragma pop_macro("EMP_DEC_TO_BIN_589")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_589
 
 #ifdef EMP_DEC_TO_BIN_59
@@ -43318,6 +50534,10 @@
     #undef EMP_DEC_TO_BIN_59
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_59
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_59
+        #pragma pop_macro("EMP_DEC_TO_BIN_59")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_59
 
 #ifdef EMP_DEC_TO_BIN_590
@@ -43342,6 +50562,10 @@
     #undef EMP_DEC_TO_BIN_590
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_590
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_590
+        #pragma pop_macro("EMP_DEC_TO_BIN_590")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_590
 
 #ifdef EMP_DEC_TO_BIN_591
@@ -43366,6 +50590,10 @@
     #undef EMP_DEC_TO_BIN_591
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_591
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_591
+        #pragma pop_macro("EMP_DEC_TO_BIN_591")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_591
 
 #ifdef EMP_DEC_TO_BIN_592
@@ -43390,6 +50618,10 @@
     #undef EMP_DEC_TO_BIN_592
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_592
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_592
+        #pragma pop_macro("EMP_DEC_TO_BIN_592")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_592
 
 #ifdef EMP_DEC_TO_BIN_593
@@ -43414,6 +50646,10 @@
     #undef EMP_DEC_TO_BIN_593
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_593
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_593
+        #pragma pop_macro("EMP_DEC_TO_BIN_593")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_593
 
 #ifdef EMP_DEC_TO_BIN_594
@@ -43438,6 +50674,10 @@
     #undef EMP_DEC_TO_BIN_594
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_594
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_594
+        #pragma pop_macro("EMP_DEC_TO_BIN_594")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_594
 
 #ifdef EMP_DEC_TO_BIN_595
@@ -43462,6 +50702,10 @@
     #undef EMP_DEC_TO_BIN_595
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_595
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_595
+        #pragma pop_macro("EMP_DEC_TO_BIN_595")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_595
 
 #ifdef EMP_DEC_TO_BIN_596
@@ -43486,6 +50730,10 @@
     #undef EMP_DEC_TO_BIN_596
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_596
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_596
+        #pragma pop_macro("EMP_DEC_TO_BIN_596")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_596
 
 #ifdef EMP_DEC_TO_BIN_597
@@ -43510,6 +50758,10 @@
     #undef EMP_DEC_TO_BIN_597
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_597
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_597
+        #pragma pop_macro("EMP_DEC_TO_BIN_597")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_597
 
 #ifdef EMP_DEC_TO_BIN_598
@@ -43534,6 +50786,10 @@
     #undef EMP_DEC_TO_BIN_598
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_598
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_598
+        #pragma pop_macro("EMP_DEC_TO_BIN_598")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_598
 
 #ifdef EMP_DEC_TO_BIN_599
@@ -43558,6 +50814,10 @@
     #undef EMP_DEC_TO_BIN_599
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_599
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_599
+        #pragma pop_macro("EMP_DEC_TO_BIN_599")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_599
 
 #ifdef EMP_DEC_TO_BIN_6
@@ -43582,6 +50842,10 @@
     #undef EMP_DEC_TO_BIN_6
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_6
+        #pragma pop_macro("EMP_DEC_TO_BIN_6")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_6
 
 #ifdef EMP_DEC_TO_BIN_60
@@ -43606,6 +50870,10 @@
     #undef EMP_DEC_TO_BIN_60
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_60
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_60
+        #pragma pop_macro("EMP_DEC_TO_BIN_60")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_60
 
 #ifdef EMP_DEC_TO_BIN_600
@@ -43630,6 +50898,10 @@
     #undef EMP_DEC_TO_BIN_600
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_600
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_600
+        #pragma pop_macro("EMP_DEC_TO_BIN_600")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_600
 
 #ifdef EMP_DEC_TO_BIN_601
@@ -43654,6 +50926,10 @@
     #undef EMP_DEC_TO_BIN_601
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_601
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_601
+        #pragma pop_macro("EMP_DEC_TO_BIN_601")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_601
 
 #ifdef EMP_DEC_TO_BIN_602
@@ -43678,6 +50954,10 @@
     #undef EMP_DEC_TO_BIN_602
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_602
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_602
+        #pragma pop_macro("EMP_DEC_TO_BIN_602")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_602
 
 #ifdef EMP_DEC_TO_BIN_603
@@ -43702,6 +50982,10 @@
     #undef EMP_DEC_TO_BIN_603
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_603
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_603
+        #pragma pop_macro("EMP_DEC_TO_BIN_603")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_603
 
 #ifdef EMP_DEC_TO_BIN_604
@@ -43726,6 +51010,10 @@
     #undef EMP_DEC_TO_BIN_604
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_604
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_604
+        #pragma pop_macro("EMP_DEC_TO_BIN_604")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_604
 
 #ifdef EMP_DEC_TO_BIN_605
@@ -43750,6 +51038,10 @@
     #undef EMP_DEC_TO_BIN_605
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_605
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_605
+        #pragma pop_macro("EMP_DEC_TO_BIN_605")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_605
 
 #ifdef EMP_DEC_TO_BIN_606
@@ -43774,6 +51066,10 @@
     #undef EMP_DEC_TO_BIN_606
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_606
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_606
+        #pragma pop_macro("EMP_DEC_TO_BIN_606")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_606
 
 #ifdef EMP_DEC_TO_BIN_607
@@ -43798,6 +51094,10 @@
     #undef EMP_DEC_TO_BIN_607
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_607
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_607
+        #pragma pop_macro("EMP_DEC_TO_BIN_607")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_607
 
 #ifdef EMP_DEC_TO_BIN_608
@@ -43822,6 +51122,10 @@
     #undef EMP_DEC_TO_BIN_608
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_608
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_608
+        #pragma pop_macro("EMP_DEC_TO_BIN_608")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_608
 
 #ifdef EMP_DEC_TO_BIN_609
@@ -43846,6 +51150,10 @@
     #undef EMP_DEC_TO_BIN_609
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_609
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_609
+        #pragma pop_macro("EMP_DEC_TO_BIN_609")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_609
 
 #ifdef EMP_DEC_TO_BIN_61
@@ -43870,6 +51178,10 @@
     #undef EMP_DEC_TO_BIN_61
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_61
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_61
+        #pragma pop_macro("EMP_DEC_TO_BIN_61")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_61
 
 #ifdef EMP_DEC_TO_BIN_610
@@ -43894,6 +51206,10 @@
     #undef EMP_DEC_TO_BIN_610
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_610
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_610
+        #pragma pop_macro("EMP_DEC_TO_BIN_610")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_610
 
 #ifdef EMP_DEC_TO_BIN_611
@@ -43918,6 +51234,10 @@
     #undef EMP_DEC_TO_BIN_611
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_611
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_611
+        #pragma pop_macro("EMP_DEC_TO_BIN_611")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_611
 
 #ifdef EMP_DEC_TO_BIN_612
@@ -43942,6 +51262,10 @@
     #undef EMP_DEC_TO_BIN_612
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_612
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_612
+        #pragma pop_macro("EMP_DEC_TO_BIN_612")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_612
 
 #ifdef EMP_DEC_TO_BIN_613
@@ -43966,6 +51290,10 @@
     #undef EMP_DEC_TO_BIN_613
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_613
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_613
+        #pragma pop_macro("EMP_DEC_TO_BIN_613")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_613
 
 #ifdef EMP_DEC_TO_BIN_614
@@ -43990,6 +51318,10 @@
     #undef EMP_DEC_TO_BIN_614
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_614
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_614
+        #pragma pop_macro("EMP_DEC_TO_BIN_614")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_614
 
 #ifdef EMP_DEC_TO_BIN_615
@@ -44014,6 +51346,10 @@
     #undef EMP_DEC_TO_BIN_615
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_615
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_615
+        #pragma pop_macro("EMP_DEC_TO_BIN_615")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_615
 
 #ifdef EMP_DEC_TO_BIN_616
@@ -44038,6 +51374,10 @@
     #undef EMP_DEC_TO_BIN_616
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_616
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_616
+        #pragma pop_macro("EMP_DEC_TO_BIN_616")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_616
 
 #ifdef EMP_DEC_TO_BIN_617
@@ -44062,6 +51402,10 @@
     #undef EMP_DEC_TO_BIN_617
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_617
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_617
+        #pragma pop_macro("EMP_DEC_TO_BIN_617")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_617
 
 #ifdef EMP_DEC_TO_BIN_618
@@ -44086,6 +51430,10 @@
     #undef EMP_DEC_TO_BIN_618
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_618
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_618
+        #pragma pop_macro("EMP_DEC_TO_BIN_618")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_618
 
 #ifdef EMP_DEC_TO_BIN_619
@@ -44110,6 +51458,10 @@
     #undef EMP_DEC_TO_BIN_619
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_619
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_619
+        #pragma pop_macro("EMP_DEC_TO_BIN_619")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_619
 
 #ifdef EMP_DEC_TO_BIN_62
@@ -44134,6 +51486,10 @@
     #undef EMP_DEC_TO_BIN_62
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_62
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_62
+        #pragma pop_macro("EMP_DEC_TO_BIN_62")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_62
 
 #ifdef EMP_DEC_TO_BIN_620
@@ -44158,6 +51514,10 @@
     #undef EMP_DEC_TO_BIN_620
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_620
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_620
+        #pragma pop_macro("EMP_DEC_TO_BIN_620")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_620
 
 #ifdef EMP_DEC_TO_BIN_621
@@ -44182,6 +51542,10 @@
     #undef EMP_DEC_TO_BIN_621
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_621
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_621
+        #pragma pop_macro("EMP_DEC_TO_BIN_621")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_621
 
 #ifdef EMP_DEC_TO_BIN_622
@@ -44206,6 +51570,10 @@
     #undef EMP_DEC_TO_BIN_622
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_622
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_622
+        #pragma pop_macro("EMP_DEC_TO_BIN_622")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_622
 
 #ifdef EMP_DEC_TO_BIN_623
@@ -44230,6 +51598,10 @@
     #undef EMP_DEC_TO_BIN_623
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_623
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_623
+        #pragma pop_macro("EMP_DEC_TO_BIN_623")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_623
 
 #ifdef EMP_DEC_TO_BIN_624
@@ -44254,6 +51626,10 @@
     #undef EMP_DEC_TO_BIN_624
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_624
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_624
+        #pragma pop_macro("EMP_DEC_TO_BIN_624")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_624
 
 #ifdef EMP_DEC_TO_BIN_625
@@ -44278,6 +51654,10 @@
     #undef EMP_DEC_TO_BIN_625
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_625
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_625
+        #pragma pop_macro("EMP_DEC_TO_BIN_625")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_625
 
 #ifdef EMP_DEC_TO_BIN_626
@@ -44302,6 +51682,10 @@
     #undef EMP_DEC_TO_BIN_626
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_626
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_626
+        #pragma pop_macro("EMP_DEC_TO_BIN_626")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_626
 
 #ifdef EMP_DEC_TO_BIN_627
@@ -44326,6 +51710,10 @@
     #undef EMP_DEC_TO_BIN_627
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_627
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_627
+        #pragma pop_macro("EMP_DEC_TO_BIN_627")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_627
 
 #ifdef EMP_DEC_TO_BIN_628
@@ -44350,6 +51738,10 @@
     #undef EMP_DEC_TO_BIN_628
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_628
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_628
+        #pragma pop_macro("EMP_DEC_TO_BIN_628")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_628
 
 #ifdef EMP_DEC_TO_BIN_629
@@ -44374,6 +51766,10 @@
     #undef EMP_DEC_TO_BIN_629
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_629
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_629
+        #pragma pop_macro("EMP_DEC_TO_BIN_629")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_629
 
 #ifdef EMP_DEC_TO_BIN_63
@@ -44398,6 +51794,10 @@
     #undef EMP_DEC_TO_BIN_63
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_63
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_63
+        #pragma pop_macro("EMP_DEC_TO_BIN_63")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_63
 
 #ifdef EMP_DEC_TO_BIN_630
@@ -44422,6 +51822,10 @@
     #undef EMP_DEC_TO_BIN_630
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_630
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_630
+        #pragma pop_macro("EMP_DEC_TO_BIN_630")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_630
 
 #ifdef EMP_DEC_TO_BIN_631
@@ -44446,6 +51850,10 @@
     #undef EMP_DEC_TO_BIN_631
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_631
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_631
+        #pragma pop_macro("EMP_DEC_TO_BIN_631")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_631
 
 #ifdef EMP_DEC_TO_BIN_632
@@ -44470,6 +51878,10 @@
     #undef EMP_DEC_TO_BIN_632
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_632
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_632
+        #pragma pop_macro("EMP_DEC_TO_BIN_632")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_632
 
 #ifdef EMP_DEC_TO_BIN_633
@@ -44494,6 +51906,10 @@
     #undef EMP_DEC_TO_BIN_633
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_633
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_633
+        #pragma pop_macro("EMP_DEC_TO_BIN_633")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_633
 
 #ifdef EMP_DEC_TO_BIN_634
@@ -44518,6 +51934,10 @@
     #undef EMP_DEC_TO_BIN_634
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_634
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_634
+        #pragma pop_macro("EMP_DEC_TO_BIN_634")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_634
 
 #ifdef EMP_DEC_TO_BIN_635
@@ -44542,6 +51962,10 @@
     #undef EMP_DEC_TO_BIN_635
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_635
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_635
+        #pragma pop_macro("EMP_DEC_TO_BIN_635")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_635
 
 #ifdef EMP_DEC_TO_BIN_636
@@ -44566,6 +51990,10 @@
     #undef EMP_DEC_TO_BIN_636
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_636
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_636
+        #pragma pop_macro("EMP_DEC_TO_BIN_636")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_636
 
 #ifdef EMP_DEC_TO_BIN_637
@@ -44590,6 +52018,10 @@
     #undef EMP_DEC_TO_BIN_637
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_637
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_637
+        #pragma pop_macro("EMP_DEC_TO_BIN_637")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_637
 
 #ifdef EMP_DEC_TO_BIN_638
@@ -44614,6 +52046,10 @@
     #undef EMP_DEC_TO_BIN_638
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_638
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_638
+        #pragma pop_macro("EMP_DEC_TO_BIN_638")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_638
 
 #ifdef EMP_DEC_TO_BIN_639
@@ -44638,6 +52074,10 @@
     #undef EMP_DEC_TO_BIN_639
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_639
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_639
+        #pragma pop_macro("EMP_DEC_TO_BIN_639")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_639
 
 #ifdef EMP_DEC_TO_BIN_64
@@ -44662,6 +52102,10 @@
     #undef EMP_DEC_TO_BIN_64
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_64
+        #pragma pop_macro("EMP_DEC_TO_BIN_64")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_64
 
 #ifdef EMP_DEC_TO_BIN_640
@@ -44686,6 +52130,10 @@
     #undef EMP_DEC_TO_BIN_640
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_640
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_640
+        #pragma pop_macro("EMP_DEC_TO_BIN_640")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_640
 
 #ifdef EMP_DEC_TO_BIN_641
@@ -44710,6 +52158,10 @@
     #undef EMP_DEC_TO_BIN_641
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_641
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_641
+        #pragma pop_macro("EMP_DEC_TO_BIN_641")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_641
 
 #ifdef EMP_DEC_TO_BIN_642
@@ -44734,6 +52186,10 @@
     #undef EMP_DEC_TO_BIN_642
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_642
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_642
+        #pragma pop_macro("EMP_DEC_TO_BIN_642")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_642
 
 #ifdef EMP_DEC_TO_BIN_643
@@ -44758,6 +52214,10 @@
     #undef EMP_DEC_TO_BIN_643
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_643
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_643
+        #pragma pop_macro("EMP_DEC_TO_BIN_643")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_643
 
 #ifdef EMP_DEC_TO_BIN_644
@@ -44782,6 +52242,10 @@
     #undef EMP_DEC_TO_BIN_644
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_644
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_644
+        #pragma pop_macro("EMP_DEC_TO_BIN_644")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_644
 
 #ifdef EMP_DEC_TO_BIN_645
@@ -44806,6 +52270,10 @@
     #undef EMP_DEC_TO_BIN_645
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_645
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_645
+        #pragma pop_macro("EMP_DEC_TO_BIN_645")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_645
 
 #ifdef EMP_DEC_TO_BIN_646
@@ -44830,6 +52298,10 @@
     #undef EMP_DEC_TO_BIN_646
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_646
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_646
+        #pragma pop_macro("EMP_DEC_TO_BIN_646")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_646
 
 #ifdef EMP_DEC_TO_BIN_647
@@ -44854,6 +52326,10 @@
     #undef EMP_DEC_TO_BIN_647
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_647
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_647
+        #pragma pop_macro("EMP_DEC_TO_BIN_647")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_647
 
 #ifdef EMP_DEC_TO_BIN_648
@@ -44878,6 +52354,10 @@
     #undef EMP_DEC_TO_BIN_648
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_648
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_648
+        #pragma pop_macro("EMP_DEC_TO_BIN_648")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_648
 
 #ifdef EMP_DEC_TO_BIN_649
@@ -44902,6 +52382,10 @@
     #undef EMP_DEC_TO_BIN_649
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_649
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_649
+        #pragma pop_macro("EMP_DEC_TO_BIN_649")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_649
 
 #ifdef EMP_DEC_TO_BIN_65
@@ -44926,6 +52410,10 @@
     #undef EMP_DEC_TO_BIN_65
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_65
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_65
+        #pragma pop_macro("EMP_DEC_TO_BIN_65")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_65
 
 #ifdef EMP_DEC_TO_BIN_650
@@ -44950,6 +52438,10 @@
     #undef EMP_DEC_TO_BIN_650
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_650
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_650
+        #pragma pop_macro("EMP_DEC_TO_BIN_650")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_650
 
 #ifdef EMP_DEC_TO_BIN_651
@@ -44974,6 +52466,10 @@
     #undef EMP_DEC_TO_BIN_651
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_651
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_651
+        #pragma pop_macro("EMP_DEC_TO_BIN_651")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_651
 
 #ifdef EMP_DEC_TO_BIN_652
@@ -44998,6 +52494,10 @@
     #undef EMP_DEC_TO_BIN_652
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_652
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_652
+        #pragma pop_macro("EMP_DEC_TO_BIN_652")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_652
 
 #ifdef EMP_DEC_TO_BIN_653
@@ -45022,6 +52522,10 @@
     #undef EMP_DEC_TO_BIN_653
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_653
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_653
+        #pragma pop_macro("EMP_DEC_TO_BIN_653")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_653
 
 #ifdef EMP_DEC_TO_BIN_654
@@ -45046,6 +52550,10 @@
     #undef EMP_DEC_TO_BIN_654
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_654
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_654
+        #pragma pop_macro("EMP_DEC_TO_BIN_654")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_654
 
 #ifdef EMP_DEC_TO_BIN_655
@@ -45070,6 +52578,10 @@
     #undef EMP_DEC_TO_BIN_655
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_655
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_655
+        #pragma pop_macro("EMP_DEC_TO_BIN_655")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_655
 
 #ifdef EMP_DEC_TO_BIN_656
@@ -45094,6 +52606,10 @@
     #undef EMP_DEC_TO_BIN_656
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_656
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_656
+        #pragma pop_macro("EMP_DEC_TO_BIN_656")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_656
 
 #ifdef EMP_DEC_TO_BIN_657
@@ -45118,6 +52634,10 @@
     #undef EMP_DEC_TO_BIN_657
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_657
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_657
+        #pragma pop_macro("EMP_DEC_TO_BIN_657")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_657
 
 #ifdef EMP_DEC_TO_BIN_658
@@ -45142,6 +52662,10 @@
     #undef EMP_DEC_TO_BIN_658
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_658
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_658
+        #pragma pop_macro("EMP_DEC_TO_BIN_658")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_658
 
 #ifdef EMP_DEC_TO_BIN_659
@@ -45166,6 +52690,10 @@
     #undef EMP_DEC_TO_BIN_659
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_659
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_659
+        #pragma pop_macro("EMP_DEC_TO_BIN_659")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_659
 
 #ifdef EMP_DEC_TO_BIN_66
@@ -45190,6 +52718,10 @@
     #undef EMP_DEC_TO_BIN_66
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_66
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_66
+        #pragma pop_macro("EMP_DEC_TO_BIN_66")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_66
 
 #ifdef EMP_DEC_TO_BIN_660
@@ -45214,6 +52746,10 @@
     #undef EMP_DEC_TO_BIN_660
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_660
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_660
+        #pragma pop_macro("EMP_DEC_TO_BIN_660")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_660
 
 #ifdef EMP_DEC_TO_BIN_661
@@ -45238,6 +52774,10 @@
     #undef EMP_DEC_TO_BIN_661
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_661
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_661
+        #pragma pop_macro("EMP_DEC_TO_BIN_661")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_661
 
 #ifdef EMP_DEC_TO_BIN_662
@@ -45262,6 +52802,10 @@
     #undef EMP_DEC_TO_BIN_662
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_662
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_662
+        #pragma pop_macro("EMP_DEC_TO_BIN_662")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_662
 
 #ifdef EMP_DEC_TO_BIN_663
@@ -45286,6 +52830,10 @@
     #undef EMP_DEC_TO_BIN_663
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_663
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_663
+        #pragma pop_macro("EMP_DEC_TO_BIN_663")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_663
 
 #ifdef EMP_DEC_TO_BIN_664
@@ -45310,6 +52858,10 @@
     #undef EMP_DEC_TO_BIN_664
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_664
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_664
+        #pragma pop_macro("EMP_DEC_TO_BIN_664")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_664
 
 #ifdef EMP_DEC_TO_BIN_665
@@ -45334,6 +52886,10 @@
     #undef EMP_DEC_TO_BIN_665
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_665
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_665
+        #pragma pop_macro("EMP_DEC_TO_BIN_665")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_665
 
 #ifdef EMP_DEC_TO_BIN_666
@@ -45358,6 +52914,10 @@
     #undef EMP_DEC_TO_BIN_666
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_666
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_666
+        #pragma pop_macro("EMP_DEC_TO_BIN_666")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_666
 
 #ifdef EMP_DEC_TO_BIN_667
@@ -45382,6 +52942,10 @@
     #undef EMP_DEC_TO_BIN_667
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_667
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_667
+        #pragma pop_macro("EMP_DEC_TO_BIN_667")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_667
 
 #ifdef EMP_DEC_TO_BIN_668
@@ -45406,6 +52970,10 @@
     #undef EMP_DEC_TO_BIN_668
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_668
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_668
+        #pragma pop_macro("EMP_DEC_TO_BIN_668")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_668
 
 #ifdef EMP_DEC_TO_BIN_669
@@ -45430,6 +52998,10 @@
     #undef EMP_DEC_TO_BIN_669
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_669
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_669
+        #pragma pop_macro("EMP_DEC_TO_BIN_669")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_669
 
 #ifdef EMP_DEC_TO_BIN_67
@@ -45454,6 +53026,10 @@
     #undef EMP_DEC_TO_BIN_67
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_67
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_67
+        #pragma pop_macro("EMP_DEC_TO_BIN_67")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_67
 
 #ifdef EMP_DEC_TO_BIN_670
@@ -45478,6 +53054,10 @@
     #undef EMP_DEC_TO_BIN_670
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_670
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_670
+        #pragma pop_macro("EMP_DEC_TO_BIN_670")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_670
 
 #ifdef EMP_DEC_TO_BIN_671
@@ -45502,6 +53082,10 @@
     #undef EMP_DEC_TO_BIN_671
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_671
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_671
+        #pragma pop_macro("EMP_DEC_TO_BIN_671")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_671
 
 #ifdef EMP_DEC_TO_BIN_672
@@ -45526,6 +53110,10 @@
     #undef EMP_DEC_TO_BIN_672
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_672
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_672
+        #pragma pop_macro("EMP_DEC_TO_BIN_672")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_672
 
 #ifdef EMP_DEC_TO_BIN_673
@@ -45550,6 +53138,10 @@
     #undef EMP_DEC_TO_BIN_673
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_673
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_673
+        #pragma pop_macro("EMP_DEC_TO_BIN_673")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_673
 
 #ifdef EMP_DEC_TO_BIN_674
@@ -45574,6 +53166,10 @@
     #undef EMP_DEC_TO_BIN_674
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_674
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_674
+        #pragma pop_macro("EMP_DEC_TO_BIN_674")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_674
 
 #ifdef EMP_DEC_TO_BIN_675
@@ -45598,6 +53194,10 @@
     #undef EMP_DEC_TO_BIN_675
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_675
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_675
+        #pragma pop_macro("EMP_DEC_TO_BIN_675")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_675
 
 #ifdef EMP_DEC_TO_BIN_676
@@ -45622,6 +53222,10 @@
     #undef EMP_DEC_TO_BIN_676
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_676
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_676
+        #pragma pop_macro("EMP_DEC_TO_BIN_676")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_676
 
 #ifdef EMP_DEC_TO_BIN_677
@@ -45646,6 +53250,10 @@
     #undef EMP_DEC_TO_BIN_677
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_677
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_677
+        #pragma pop_macro("EMP_DEC_TO_BIN_677")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_677
 
 #ifdef EMP_DEC_TO_BIN_678
@@ -45670,6 +53278,10 @@
     #undef EMP_DEC_TO_BIN_678
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_678
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_678
+        #pragma pop_macro("EMP_DEC_TO_BIN_678")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_678
 
 #ifdef EMP_DEC_TO_BIN_679
@@ -45694,6 +53306,10 @@
     #undef EMP_DEC_TO_BIN_679
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_679
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_679
+        #pragma pop_macro("EMP_DEC_TO_BIN_679")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_679
 
 #ifdef EMP_DEC_TO_BIN_68
@@ -45718,6 +53334,10 @@
     #undef EMP_DEC_TO_BIN_68
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_68
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_68
+        #pragma pop_macro("EMP_DEC_TO_BIN_68")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_68
 
 #ifdef EMP_DEC_TO_BIN_680
@@ -45742,6 +53362,10 @@
     #undef EMP_DEC_TO_BIN_680
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_680
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_680
+        #pragma pop_macro("EMP_DEC_TO_BIN_680")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_680
 
 #ifdef EMP_DEC_TO_BIN_681
@@ -45766,6 +53390,10 @@
     #undef EMP_DEC_TO_BIN_681
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_681
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_681
+        #pragma pop_macro("EMP_DEC_TO_BIN_681")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_681
 
 #ifdef EMP_DEC_TO_BIN_682
@@ -45790,6 +53418,10 @@
     #undef EMP_DEC_TO_BIN_682
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_682
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_682
+        #pragma pop_macro("EMP_DEC_TO_BIN_682")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_682
 
 #ifdef EMP_DEC_TO_BIN_683
@@ -45814,6 +53446,10 @@
     #undef EMP_DEC_TO_BIN_683
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_683
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_683
+        #pragma pop_macro("EMP_DEC_TO_BIN_683")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_683
 
 #ifdef EMP_DEC_TO_BIN_684
@@ -45838,6 +53474,10 @@
     #undef EMP_DEC_TO_BIN_684
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_684
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_684
+        #pragma pop_macro("EMP_DEC_TO_BIN_684")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_684
 
 #ifdef EMP_DEC_TO_BIN_685
@@ -45862,6 +53502,10 @@
     #undef EMP_DEC_TO_BIN_685
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_685
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_685
+        #pragma pop_macro("EMP_DEC_TO_BIN_685")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_685
 
 #ifdef EMP_DEC_TO_BIN_686
@@ -45886,6 +53530,10 @@
     #undef EMP_DEC_TO_BIN_686
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_686
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_686
+        #pragma pop_macro("EMP_DEC_TO_BIN_686")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_686
 
 #ifdef EMP_DEC_TO_BIN_687
@@ -45910,6 +53558,10 @@
     #undef EMP_DEC_TO_BIN_687
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_687
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_687
+        #pragma pop_macro("EMP_DEC_TO_BIN_687")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_687
 
 #ifdef EMP_DEC_TO_BIN_688
@@ -45934,6 +53586,10 @@
     #undef EMP_DEC_TO_BIN_688
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_688
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_688
+        #pragma pop_macro("EMP_DEC_TO_BIN_688")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_688
 
 #ifdef EMP_DEC_TO_BIN_689
@@ -45958,6 +53614,10 @@
     #undef EMP_DEC_TO_BIN_689
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_689
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_689
+        #pragma pop_macro("EMP_DEC_TO_BIN_689")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_689
 
 #ifdef EMP_DEC_TO_BIN_69
@@ -45982,6 +53642,10 @@
     #undef EMP_DEC_TO_BIN_69
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_69
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_69
+        #pragma pop_macro("EMP_DEC_TO_BIN_69")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_69
 
 #ifdef EMP_DEC_TO_BIN_690
@@ -46006,6 +53670,10 @@
     #undef EMP_DEC_TO_BIN_690
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_690
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_690
+        #pragma pop_macro("EMP_DEC_TO_BIN_690")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_690
 
 #ifdef EMP_DEC_TO_BIN_691
@@ -46030,6 +53698,10 @@
     #undef EMP_DEC_TO_BIN_691
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_691
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_691
+        #pragma pop_macro("EMP_DEC_TO_BIN_691")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_691
 
 #ifdef EMP_DEC_TO_BIN_692
@@ -46054,6 +53726,10 @@
     #undef EMP_DEC_TO_BIN_692
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_692
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_692
+        #pragma pop_macro("EMP_DEC_TO_BIN_692")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_692
 
 #ifdef EMP_DEC_TO_BIN_693
@@ -46078,6 +53754,10 @@
     #undef EMP_DEC_TO_BIN_693
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_693
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_693
+        #pragma pop_macro("EMP_DEC_TO_BIN_693")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_693
 
 #ifdef EMP_DEC_TO_BIN_694
@@ -46102,6 +53782,10 @@
     #undef EMP_DEC_TO_BIN_694
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_694
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_694
+        #pragma pop_macro("EMP_DEC_TO_BIN_694")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_694
 
 #ifdef EMP_DEC_TO_BIN_695
@@ -46126,6 +53810,10 @@
     #undef EMP_DEC_TO_BIN_695
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_695
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_695
+        #pragma pop_macro("EMP_DEC_TO_BIN_695")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_695
 
 #ifdef EMP_DEC_TO_BIN_696
@@ -46150,6 +53838,10 @@
     #undef EMP_DEC_TO_BIN_696
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_696
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_696
+        #pragma pop_macro("EMP_DEC_TO_BIN_696")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_696
 
 #ifdef EMP_DEC_TO_BIN_697
@@ -46174,6 +53866,10 @@
     #undef EMP_DEC_TO_BIN_697
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_697
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_697
+        #pragma pop_macro("EMP_DEC_TO_BIN_697")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_697
 
 #ifdef EMP_DEC_TO_BIN_698
@@ -46198,6 +53894,10 @@
     #undef EMP_DEC_TO_BIN_698
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_698
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_698
+        #pragma pop_macro("EMP_DEC_TO_BIN_698")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_698
 
 #ifdef EMP_DEC_TO_BIN_699
@@ -46222,6 +53922,10 @@
     #undef EMP_DEC_TO_BIN_699
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_699
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_699
+        #pragma pop_macro("EMP_DEC_TO_BIN_699")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_699
 
 #ifdef EMP_DEC_TO_BIN_7
@@ -46246,6 +53950,10 @@
     #undef EMP_DEC_TO_BIN_7
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_7
+        #pragma pop_macro("EMP_DEC_TO_BIN_7")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_7
 
 #ifdef EMP_DEC_TO_BIN_70
@@ -46270,6 +53978,10 @@
     #undef EMP_DEC_TO_BIN_70
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_70
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_70
+        #pragma pop_macro("EMP_DEC_TO_BIN_70")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_70
 
 #ifdef EMP_DEC_TO_BIN_700
@@ -46294,6 +54006,10 @@
     #undef EMP_DEC_TO_BIN_700
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_700
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_700
+        #pragma pop_macro("EMP_DEC_TO_BIN_700")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_700
 
 #ifdef EMP_DEC_TO_BIN_701
@@ -46318,6 +54034,10 @@
     #undef EMP_DEC_TO_BIN_701
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_701
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_701
+        #pragma pop_macro("EMP_DEC_TO_BIN_701")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_701
 
 #ifdef EMP_DEC_TO_BIN_702
@@ -46342,6 +54062,10 @@
     #undef EMP_DEC_TO_BIN_702
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_702
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_702
+        #pragma pop_macro("EMP_DEC_TO_BIN_702")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_702
 
 #ifdef EMP_DEC_TO_BIN_703
@@ -46366,6 +54090,10 @@
     #undef EMP_DEC_TO_BIN_703
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_703
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_703
+        #pragma pop_macro("EMP_DEC_TO_BIN_703")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_703
 
 #ifdef EMP_DEC_TO_BIN_704
@@ -46390,6 +54118,10 @@
     #undef EMP_DEC_TO_BIN_704
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_704
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_704
+        #pragma pop_macro("EMP_DEC_TO_BIN_704")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_704
 
 #ifdef EMP_DEC_TO_BIN_705
@@ -46414,6 +54146,10 @@
     #undef EMP_DEC_TO_BIN_705
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_705
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_705
+        #pragma pop_macro("EMP_DEC_TO_BIN_705")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_705
 
 #ifdef EMP_DEC_TO_BIN_706
@@ -46438,6 +54174,10 @@
     #undef EMP_DEC_TO_BIN_706
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_706
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_706
+        #pragma pop_macro("EMP_DEC_TO_BIN_706")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_706
 
 #ifdef EMP_DEC_TO_BIN_707
@@ -46462,6 +54202,10 @@
     #undef EMP_DEC_TO_BIN_707
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_707
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_707
+        #pragma pop_macro("EMP_DEC_TO_BIN_707")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_707
 
 #ifdef EMP_DEC_TO_BIN_708
@@ -46486,6 +54230,10 @@
     #undef EMP_DEC_TO_BIN_708
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_708
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_708
+        #pragma pop_macro("EMP_DEC_TO_BIN_708")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_708
 
 #ifdef EMP_DEC_TO_BIN_709
@@ -46510,6 +54258,10 @@
     #undef EMP_DEC_TO_BIN_709
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_709
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_709
+        #pragma pop_macro("EMP_DEC_TO_BIN_709")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_709
 
 #ifdef EMP_DEC_TO_BIN_71
@@ -46534,6 +54286,10 @@
     #undef EMP_DEC_TO_BIN_71
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_71
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_71
+        #pragma pop_macro("EMP_DEC_TO_BIN_71")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_71
 
 #ifdef EMP_DEC_TO_BIN_710
@@ -46558,6 +54314,10 @@
     #undef EMP_DEC_TO_BIN_710
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_710
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_710
+        #pragma pop_macro("EMP_DEC_TO_BIN_710")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_710
 
 #ifdef EMP_DEC_TO_BIN_711
@@ -46582,6 +54342,10 @@
     #undef EMP_DEC_TO_BIN_711
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_711
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_711
+        #pragma pop_macro("EMP_DEC_TO_BIN_711")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_711
 
 #ifdef EMP_DEC_TO_BIN_712
@@ -46606,6 +54370,10 @@
     #undef EMP_DEC_TO_BIN_712
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_712
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_712
+        #pragma pop_macro("EMP_DEC_TO_BIN_712")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_712
 
 #ifdef EMP_DEC_TO_BIN_713
@@ -46630,6 +54398,10 @@
     #undef EMP_DEC_TO_BIN_713
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_713
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_713
+        #pragma pop_macro("EMP_DEC_TO_BIN_713")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_713
 
 #ifdef EMP_DEC_TO_BIN_714
@@ -46654,6 +54426,10 @@
     #undef EMP_DEC_TO_BIN_714
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_714
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_714
+        #pragma pop_macro("EMP_DEC_TO_BIN_714")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_714
 
 #ifdef EMP_DEC_TO_BIN_715
@@ -46678,6 +54454,10 @@
     #undef EMP_DEC_TO_BIN_715
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_715
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_715
+        #pragma pop_macro("EMP_DEC_TO_BIN_715")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_715
 
 #ifdef EMP_DEC_TO_BIN_716
@@ -46702,6 +54482,10 @@
     #undef EMP_DEC_TO_BIN_716
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_716
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_716
+        #pragma pop_macro("EMP_DEC_TO_BIN_716")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_716
 
 #ifdef EMP_DEC_TO_BIN_717
@@ -46726,6 +54510,10 @@
     #undef EMP_DEC_TO_BIN_717
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_717
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_717
+        #pragma pop_macro("EMP_DEC_TO_BIN_717")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_717
 
 #ifdef EMP_DEC_TO_BIN_718
@@ -46750,6 +54538,10 @@
     #undef EMP_DEC_TO_BIN_718
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_718
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_718
+        #pragma pop_macro("EMP_DEC_TO_BIN_718")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_718
 
 #ifdef EMP_DEC_TO_BIN_719
@@ -46774,6 +54566,10 @@
     #undef EMP_DEC_TO_BIN_719
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_719
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_719
+        #pragma pop_macro("EMP_DEC_TO_BIN_719")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_719
 
 #ifdef EMP_DEC_TO_BIN_72
@@ -46798,6 +54594,10 @@
     #undef EMP_DEC_TO_BIN_72
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_72
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_72
+        #pragma pop_macro("EMP_DEC_TO_BIN_72")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_72
 
 #ifdef EMP_DEC_TO_BIN_720
@@ -46822,6 +54622,10 @@
     #undef EMP_DEC_TO_BIN_720
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_720
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_720
+        #pragma pop_macro("EMP_DEC_TO_BIN_720")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_720
 
 #ifdef EMP_DEC_TO_BIN_721
@@ -46846,6 +54650,10 @@
     #undef EMP_DEC_TO_BIN_721
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_721
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_721
+        #pragma pop_macro("EMP_DEC_TO_BIN_721")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_721
 
 #ifdef EMP_DEC_TO_BIN_722
@@ -46870,6 +54678,10 @@
     #undef EMP_DEC_TO_BIN_722
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_722
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_722
+        #pragma pop_macro("EMP_DEC_TO_BIN_722")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_722
 
 #ifdef EMP_DEC_TO_BIN_723
@@ -46894,6 +54706,10 @@
     #undef EMP_DEC_TO_BIN_723
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_723
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_723
+        #pragma pop_macro("EMP_DEC_TO_BIN_723")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_723
 
 #ifdef EMP_DEC_TO_BIN_724
@@ -46918,6 +54734,10 @@
     #undef EMP_DEC_TO_BIN_724
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_724
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_724
+        #pragma pop_macro("EMP_DEC_TO_BIN_724")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_724
 
 #ifdef EMP_DEC_TO_BIN_725
@@ -46942,6 +54762,10 @@
     #undef EMP_DEC_TO_BIN_725
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_725
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_725
+        #pragma pop_macro("EMP_DEC_TO_BIN_725")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_725
 
 #ifdef EMP_DEC_TO_BIN_726
@@ -46966,6 +54790,10 @@
     #undef EMP_DEC_TO_BIN_726
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_726
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_726
+        #pragma pop_macro("EMP_DEC_TO_BIN_726")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_726
 
 #ifdef EMP_DEC_TO_BIN_727
@@ -46990,6 +54818,10 @@
     #undef EMP_DEC_TO_BIN_727
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_727
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_727
+        #pragma pop_macro("EMP_DEC_TO_BIN_727")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_727
 
 #ifdef EMP_DEC_TO_BIN_728
@@ -47014,6 +54846,10 @@
     #undef EMP_DEC_TO_BIN_728
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_728
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_728
+        #pragma pop_macro("EMP_DEC_TO_BIN_728")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_728
 
 #ifdef EMP_DEC_TO_BIN_729
@@ -47038,6 +54874,10 @@
     #undef EMP_DEC_TO_BIN_729
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_729
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_729
+        #pragma pop_macro("EMP_DEC_TO_BIN_729")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_729
 
 #ifdef EMP_DEC_TO_BIN_73
@@ -47062,6 +54902,10 @@
     #undef EMP_DEC_TO_BIN_73
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_73
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_73
+        #pragma pop_macro("EMP_DEC_TO_BIN_73")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_73
 
 #ifdef EMP_DEC_TO_BIN_730
@@ -47086,6 +54930,10 @@
     #undef EMP_DEC_TO_BIN_730
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_730
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_730
+        #pragma pop_macro("EMP_DEC_TO_BIN_730")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_730
 
 #ifdef EMP_DEC_TO_BIN_731
@@ -47110,6 +54958,10 @@
     #undef EMP_DEC_TO_BIN_731
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_731
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_731
+        #pragma pop_macro("EMP_DEC_TO_BIN_731")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_731
 
 #ifdef EMP_DEC_TO_BIN_732
@@ -47134,6 +54986,10 @@
     #undef EMP_DEC_TO_BIN_732
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_732
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_732
+        #pragma pop_macro("EMP_DEC_TO_BIN_732")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_732
 
 #ifdef EMP_DEC_TO_BIN_733
@@ -47158,6 +55014,10 @@
     #undef EMP_DEC_TO_BIN_733
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_733
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_733
+        #pragma pop_macro("EMP_DEC_TO_BIN_733")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_733
 
 #ifdef EMP_DEC_TO_BIN_734
@@ -47182,6 +55042,10 @@
     #undef EMP_DEC_TO_BIN_734
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_734
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_734
+        #pragma pop_macro("EMP_DEC_TO_BIN_734")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_734
 
 #ifdef EMP_DEC_TO_BIN_735
@@ -47206,6 +55070,10 @@
     #undef EMP_DEC_TO_BIN_735
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_735
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_735
+        #pragma pop_macro("EMP_DEC_TO_BIN_735")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_735
 
 #ifdef EMP_DEC_TO_BIN_736
@@ -47230,6 +55098,10 @@
     #undef EMP_DEC_TO_BIN_736
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_736
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_736
+        #pragma pop_macro("EMP_DEC_TO_BIN_736")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_736
 
 #ifdef EMP_DEC_TO_BIN_737
@@ -47254,6 +55126,10 @@
     #undef EMP_DEC_TO_BIN_737
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_737
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_737
+        #pragma pop_macro("EMP_DEC_TO_BIN_737")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_737
 
 #ifdef EMP_DEC_TO_BIN_738
@@ -47278,6 +55154,10 @@
     #undef EMP_DEC_TO_BIN_738
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_738
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_738
+        #pragma pop_macro("EMP_DEC_TO_BIN_738")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_738
 
 #ifdef EMP_DEC_TO_BIN_739
@@ -47302,6 +55182,10 @@
     #undef EMP_DEC_TO_BIN_739
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_739
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_739
+        #pragma pop_macro("EMP_DEC_TO_BIN_739")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_739
 
 #ifdef EMP_DEC_TO_BIN_74
@@ -47326,6 +55210,10 @@
     #undef EMP_DEC_TO_BIN_74
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_74
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_74
+        #pragma pop_macro("EMP_DEC_TO_BIN_74")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_74
 
 #ifdef EMP_DEC_TO_BIN_740
@@ -47350,6 +55238,10 @@
     #undef EMP_DEC_TO_BIN_740
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_740
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_740
+        #pragma pop_macro("EMP_DEC_TO_BIN_740")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_740
 
 #ifdef EMP_DEC_TO_BIN_741
@@ -47374,6 +55266,10 @@
     #undef EMP_DEC_TO_BIN_741
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_741
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_741
+        #pragma pop_macro("EMP_DEC_TO_BIN_741")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_741
 
 #ifdef EMP_DEC_TO_BIN_742
@@ -47398,6 +55294,10 @@
     #undef EMP_DEC_TO_BIN_742
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_742
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_742
+        #pragma pop_macro("EMP_DEC_TO_BIN_742")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_742
 
 #ifdef EMP_DEC_TO_BIN_743
@@ -47422,6 +55322,10 @@
     #undef EMP_DEC_TO_BIN_743
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_743
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_743
+        #pragma pop_macro("EMP_DEC_TO_BIN_743")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_743
 
 #ifdef EMP_DEC_TO_BIN_744
@@ -47446,6 +55350,10 @@
     #undef EMP_DEC_TO_BIN_744
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_744
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_744
+        #pragma pop_macro("EMP_DEC_TO_BIN_744")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_744
 
 #ifdef EMP_DEC_TO_BIN_745
@@ -47470,6 +55378,10 @@
     #undef EMP_DEC_TO_BIN_745
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_745
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_745
+        #pragma pop_macro("EMP_DEC_TO_BIN_745")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_745
 
 #ifdef EMP_DEC_TO_BIN_746
@@ -47494,6 +55406,10 @@
     #undef EMP_DEC_TO_BIN_746
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_746
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_746
+        #pragma pop_macro("EMP_DEC_TO_BIN_746")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_746
 
 #ifdef EMP_DEC_TO_BIN_747
@@ -47518,6 +55434,10 @@
     #undef EMP_DEC_TO_BIN_747
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_747
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_747
+        #pragma pop_macro("EMP_DEC_TO_BIN_747")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_747
 
 #ifdef EMP_DEC_TO_BIN_748
@@ -47542,6 +55462,10 @@
     #undef EMP_DEC_TO_BIN_748
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_748
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_748
+        #pragma pop_macro("EMP_DEC_TO_BIN_748")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_748
 
 #ifdef EMP_DEC_TO_BIN_749
@@ -47566,6 +55490,10 @@
     #undef EMP_DEC_TO_BIN_749
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_749
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_749
+        #pragma pop_macro("EMP_DEC_TO_BIN_749")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_749
 
 #ifdef EMP_DEC_TO_BIN_75
@@ -47590,6 +55518,10 @@
     #undef EMP_DEC_TO_BIN_75
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_75
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_75
+        #pragma pop_macro("EMP_DEC_TO_BIN_75")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_75
 
 #ifdef EMP_DEC_TO_BIN_750
@@ -47614,6 +55546,10 @@
     #undef EMP_DEC_TO_BIN_750
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_750
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_750
+        #pragma pop_macro("EMP_DEC_TO_BIN_750")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_750
 
 #ifdef EMP_DEC_TO_BIN_751
@@ -47638,6 +55574,10 @@
     #undef EMP_DEC_TO_BIN_751
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_751
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_751
+        #pragma pop_macro("EMP_DEC_TO_BIN_751")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_751
 
 #ifdef EMP_DEC_TO_BIN_752
@@ -47662,6 +55602,10 @@
     #undef EMP_DEC_TO_BIN_752
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_752
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_752
+        #pragma pop_macro("EMP_DEC_TO_BIN_752")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_752
 
 #ifdef EMP_DEC_TO_BIN_753
@@ -47686,6 +55630,10 @@
     #undef EMP_DEC_TO_BIN_753
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_753
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_753
+        #pragma pop_macro("EMP_DEC_TO_BIN_753")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_753
 
 #ifdef EMP_DEC_TO_BIN_754
@@ -47710,6 +55658,10 @@
     #undef EMP_DEC_TO_BIN_754
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_754
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_754
+        #pragma pop_macro("EMP_DEC_TO_BIN_754")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_754
 
 #ifdef EMP_DEC_TO_BIN_755
@@ -47734,6 +55686,10 @@
     #undef EMP_DEC_TO_BIN_755
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_755
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_755
+        #pragma pop_macro("EMP_DEC_TO_BIN_755")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_755
 
 #ifdef EMP_DEC_TO_BIN_756
@@ -47758,6 +55714,10 @@
     #undef EMP_DEC_TO_BIN_756
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_756
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_756
+        #pragma pop_macro("EMP_DEC_TO_BIN_756")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_756
 
 #ifdef EMP_DEC_TO_BIN_757
@@ -47782,6 +55742,10 @@
     #undef EMP_DEC_TO_BIN_757
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_757
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_757
+        #pragma pop_macro("EMP_DEC_TO_BIN_757")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_757
 
 #ifdef EMP_DEC_TO_BIN_758
@@ -47806,6 +55770,10 @@
     #undef EMP_DEC_TO_BIN_758
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_758
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_758
+        #pragma pop_macro("EMP_DEC_TO_BIN_758")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_758
 
 #ifdef EMP_DEC_TO_BIN_759
@@ -47830,6 +55798,10 @@
     #undef EMP_DEC_TO_BIN_759
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_759
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_759
+        #pragma pop_macro("EMP_DEC_TO_BIN_759")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_759
 
 #ifdef EMP_DEC_TO_BIN_76
@@ -47854,6 +55826,10 @@
     #undef EMP_DEC_TO_BIN_76
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_76
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_76
+        #pragma pop_macro("EMP_DEC_TO_BIN_76")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_76
 
 #ifdef EMP_DEC_TO_BIN_760
@@ -47878,6 +55854,10 @@
     #undef EMP_DEC_TO_BIN_760
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_760
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_760
+        #pragma pop_macro("EMP_DEC_TO_BIN_760")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_760
 
 #ifdef EMP_DEC_TO_BIN_761
@@ -47902,6 +55882,10 @@
     #undef EMP_DEC_TO_BIN_761
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_761
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_761
+        #pragma pop_macro("EMP_DEC_TO_BIN_761")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_761
 
 #ifdef EMP_DEC_TO_BIN_762
@@ -47926,6 +55910,10 @@
     #undef EMP_DEC_TO_BIN_762
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_762
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_762
+        #pragma pop_macro("EMP_DEC_TO_BIN_762")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_762
 
 #ifdef EMP_DEC_TO_BIN_763
@@ -47950,6 +55938,10 @@
     #undef EMP_DEC_TO_BIN_763
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_763
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_763
+        #pragma pop_macro("EMP_DEC_TO_BIN_763")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_763
 
 #ifdef EMP_DEC_TO_BIN_764
@@ -47974,6 +55966,10 @@
     #undef EMP_DEC_TO_BIN_764
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_764
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_764
+        #pragma pop_macro("EMP_DEC_TO_BIN_764")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_764
 
 #ifdef EMP_DEC_TO_BIN_765
@@ -47998,6 +55994,10 @@
     #undef EMP_DEC_TO_BIN_765
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_765
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_765
+        #pragma pop_macro("EMP_DEC_TO_BIN_765")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_765
 
 #ifdef EMP_DEC_TO_BIN_766
@@ -48022,6 +56022,10 @@
     #undef EMP_DEC_TO_BIN_766
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_766
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_766
+        #pragma pop_macro("EMP_DEC_TO_BIN_766")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_766
 
 #ifdef EMP_DEC_TO_BIN_767
@@ -48046,6 +56050,10 @@
     #undef EMP_DEC_TO_BIN_767
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_767
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_767
+        #pragma pop_macro("EMP_DEC_TO_BIN_767")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_767
 
 #ifdef EMP_DEC_TO_BIN_768
@@ -48070,6 +56078,10 @@
     #undef EMP_DEC_TO_BIN_768
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_768
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_768
+        #pragma pop_macro("EMP_DEC_TO_BIN_768")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_768
 
 #ifdef EMP_DEC_TO_BIN_769
@@ -48094,6 +56106,10 @@
     #undef EMP_DEC_TO_BIN_769
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_769
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_769
+        #pragma pop_macro("EMP_DEC_TO_BIN_769")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_769
 
 #ifdef EMP_DEC_TO_BIN_77
@@ -48118,6 +56134,10 @@
     #undef EMP_DEC_TO_BIN_77
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_77
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_77
+        #pragma pop_macro("EMP_DEC_TO_BIN_77")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_77
 
 #ifdef EMP_DEC_TO_BIN_770
@@ -48142,6 +56162,10 @@
     #undef EMP_DEC_TO_BIN_770
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_770
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_770
+        #pragma pop_macro("EMP_DEC_TO_BIN_770")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_770
 
 #ifdef EMP_DEC_TO_BIN_771
@@ -48166,6 +56190,10 @@
     #undef EMP_DEC_TO_BIN_771
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_771
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_771
+        #pragma pop_macro("EMP_DEC_TO_BIN_771")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_771
 
 #ifdef EMP_DEC_TO_BIN_772
@@ -48190,6 +56218,10 @@
     #undef EMP_DEC_TO_BIN_772
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_772
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_772
+        #pragma pop_macro("EMP_DEC_TO_BIN_772")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_772
 
 #ifdef EMP_DEC_TO_BIN_773
@@ -48214,6 +56246,10 @@
     #undef EMP_DEC_TO_BIN_773
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_773
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_773
+        #pragma pop_macro("EMP_DEC_TO_BIN_773")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_773
 
 #ifdef EMP_DEC_TO_BIN_774
@@ -48238,6 +56274,10 @@
     #undef EMP_DEC_TO_BIN_774
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_774
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_774
+        #pragma pop_macro("EMP_DEC_TO_BIN_774")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_774
 
 #ifdef EMP_DEC_TO_BIN_775
@@ -48262,6 +56302,10 @@
     #undef EMP_DEC_TO_BIN_775
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_775
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_775
+        #pragma pop_macro("EMP_DEC_TO_BIN_775")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_775
 
 #ifdef EMP_DEC_TO_BIN_776
@@ -48286,6 +56330,10 @@
     #undef EMP_DEC_TO_BIN_776
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_776
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_776
+        #pragma pop_macro("EMP_DEC_TO_BIN_776")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_776
 
 #ifdef EMP_DEC_TO_BIN_777
@@ -48310,6 +56358,10 @@
     #undef EMP_DEC_TO_BIN_777
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_777
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_777
+        #pragma pop_macro("EMP_DEC_TO_BIN_777")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_777
 
 #ifdef EMP_DEC_TO_BIN_778
@@ -48334,6 +56386,10 @@
     #undef EMP_DEC_TO_BIN_778
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_778
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_778
+        #pragma pop_macro("EMP_DEC_TO_BIN_778")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_778
 
 #ifdef EMP_DEC_TO_BIN_779
@@ -48358,6 +56414,10 @@
     #undef EMP_DEC_TO_BIN_779
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_779
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_779
+        #pragma pop_macro("EMP_DEC_TO_BIN_779")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_779
 
 #ifdef EMP_DEC_TO_BIN_78
@@ -48382,6 +56442,10 @@
     #undef EMP_DEC_TO_BIN_78
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_78
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_78
+        #pragma pop_macro("EMP_DEC_TO_BIN_78")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_78
 
 #ifdef EMP_DEC_TO_BIN_780
@@ -48406,6 +56470,10 @@
     #undef EMP_DEC_TO_BIN_780
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_780
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_780
+        #pragma pop_macro("EMP_DEC_TO_BIN_780")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_780
 
 #ifdef EMP_DEC_TO_BIN_781
@@ -48430,6 +56498,10 @@
     #undef EMP_DEC_TO_BIN_781
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_781
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_781
+        #pragma pop_macro("EMP_DEC_TO_BIN_781")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_781
 
 #ifdef EMP_DEC_TO_BIN_782
@@ -48454,6 +56526,10 @@
     #undef EMP_DEC_TO_BIN_782
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_782
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_782
+        #pragma pop_macro("EMP_DEC_TO_BIN_782")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_782
 
 #ifdef EMP_DEC_TO_BIN_783
@@ -48478,6 +56554,10 @@
     #undef EMP_DEC_TO_BIN_783
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_783
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_783
+        #pragma pop_macro("EMP_DEC_TO_BIN_783")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_783
 
 #ifdef EMP_DEC_TO_BIN_784
@@ -48502,6 +56582,10 @@
     #undef EMP_DEC_TO_BIN_784
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_784
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_784
+        #pragma pop_macro("EMP_DEC_TO_BIN_784")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_784
 
 #ifdef EMP_DEC_TO_BIN_785
@@ -48526,6 +56610,10 @@
     #undef EMP_DEC_TO_BIN_785
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_785
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_785
+        #pragma pop_macro("EMP_DEC_TO_BIN_785")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_785
 
 #ifdef EMP_DEC_TO_BIN_786
@@ -48550,6 +56638,10 @@
     #undef EMP_DEC_TO_BIN_786
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_786
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_786
+        #pragma pop_macro("EMP_DEC_TO_BIN_786")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_786
 
 #ifdef EMP_DEC_TO_BIN_787
@@ -48574,6 +56666,10 @@
     #undef EMP_DEC_TO_BIN_787
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_787
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_787
+        #pragma pop_macro("EMP_DEC_TO_BIN_787")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_787
 
 #ifdef EMP_DEC_TO_BIN_788
@@ -48598,6 +56694,10 @@
     #undef EMP_DEC_TO_BIN_788
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_788
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_788
+        #pragma pop_macro("EMP_DEC_TO_BIN_788")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_788
 
 #ifdef EMP_DEC_TO_BIN_789
@@ -48622,6 +56722,10 @@
     #undef EMP_DEC_TO_BIN_789
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_789
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_789
+        #pragma pop_macro("EMP_DEC_TO_BIN_789")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_789
 
 #ifdef EMP_DEC_TO_BIN_79
@@ -48646,6 +56750,10 @@
     #undef EMP_DEC_TO_BIN_79
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_79
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_79
+        #pragma pop_macro("EMP_DEC_TO_BIN_79")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_79
 
 #ifdef EMP_DEC_TO_BIN_790
@@ -48670,6 +56778,10 @@
     #undef EMP_DEC_TO_BIN_790
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_790
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_790
+        #pragma pop_macro("EMP_DEC_TO_BIN_790")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_790
 
 #ifdef EMP_DEC_TO_BIN_791
@@ -48694,6 +56806,10 @@
     #undef EMP_DEC_TO_BIN_791
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_791
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_791
+        #pragma pop_macro("EMP_DEC_TO_BIN_791")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_791
 
 #ifdef EMP_DEC_TO_BIN_792
@@ -48718,6 +56834,10 @@
     #undef EMP_DEC_TO_BIN_792
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_792
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_792
+        #pragma pop_macro("EMP_DEC_TO_BIN_792")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_792
 
 #ifdef EMP_DEC_TO_BIN_793
@@ -48742,6 +56862,10 @@
     #undef EMP_DEC_TO_BIN_793
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_793
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_793
+        #pragma pop_macro("EMP_DEC_TO_BIN_793")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_793
 
 #ifdef EMP_DEC_TO_BIN_794
@@ -48766,6 +56890,10 @@
     #undef EMP_DEC_TO_BIN_794
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_794
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_794
+        #pragma pop_macro("EMP_DEC_TO_BIN_794")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_794
 
 #ifdef EMP_DEC_TO_BIN_795
@@ -48790,6 +56918,10 @@
     #undef EMP_DEC_TO_BIN_795
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_795
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_795
+        #pragma pop_macro("EMP_DEC_TO_BIN_795")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_795
 
 #ifdef EMP_DEC_TO_BIN_796
@@ -48814,6 +56946,10 @@
     #undef EMP_DEC_TO_BIN_796
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_796
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_796
+        #pragma pop_macro("EMP_DEC_TO_BIN_796")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_796
 
 #ifdef EMP_DEC_TO_BIN_797
@@ -48838,6 +56974,10 @@
     #undef EMP_DEC_TO_BIN_797
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_797
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_797
+        #pragma pop_macro("EMP_DEC_TO_BIN_797")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_797
 
 #ifdef EMP_DEC_TO_BIN_798
@@ -48862,6 +57002,10 @@
     #undef EMP_DEC_TO_BIN_798
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_798
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_798
+        #pragma pop_macro("EMP_DEC_TO_BIN_798")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_798
 
 #ifdef EMP_DEC_TO_BIN_799
@@ -48886,6 +57030,10 @@
     #undef EMP_DEC_TO_BIN_799
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_799
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_799
+        #pragma pop_macro("EMP_DEC_TO_BIN_799")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_799
 
 #ifdef EMP_DEC_TO_BIN_8
@@ -48910,6 +57058,10 @@
     #undef EMP_DEC_TO_BIN_8
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_8
+        #pragma pop_macro("EMP_DEC_TO_BIN_8")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_8
 
 #ifdef EMP_DEC_TO_BIN_80
@@ -48934,6 +57086,10 @@
     #undef EMP_DEC_TO_BIN_80
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_80
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_80
+        #pragma pop_macro("EMP_DEC_TO_BIN_80")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_80
 
 #ifdef EMP_DEC_TO_BIN_800
@@ -48958,6 +57114,10 @@
     #undef EMP_DEC_TO_BIN_800
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_800
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_800
+        #pragma pop_macro("EMP_DEC_TO_BIN_800")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_800
 
 #ifdef EMP_DEC_TO_BIN_801
@@ -48982,6 +57142,10 @@
     #undef EMP_DEC_TO_BIN_801
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_801
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_801
+        #pragma pop_macro("EMP_DEC_TO_BIN_801")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_801
 
 #ifdef EMP_DEC_TO_BIN_802
@@ -49006,6 +57170,10 @@
     #undef EMP_DEC_TO_BIN_802
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_802
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_802
+        #pragma pop_macro("EMP_DEC_TO_BIN_802")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_802
 
 #ifdef EMP_DEC_TO_BIN_803
@@ -49030,6 +57198,10 @@
     #undef EMP_DEC_TO_BIN_803
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_803
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_803
+        #pragma pop_macro("EMP_DEC_TO_BIN_803")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_803
 
 #ifdef EMP_DEC_TO_BIN_804
@@ -49054,6 +57226,10 @@
     #undef EMP_DEC_TO_BIN_804
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_804
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_804
+        #pragma pop_macro("EMP_DEC_TO_BIN_804")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_804
 
 #ifdef EMP_DEC_TO_BIN_805
@@ -49078,6 +57254,10 @@
     #undef EMP_DEC_TO_BIN_805
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_805
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_805
+        #pragma pop_macro("EMP_DEC_TO_BIN_805")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_805
 
 #ifdef EMP_DEC_TO_BIN_806
@@ -49102,6 +57282,10 @@
     #undef EMP_DEC_TO_BIN_806
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_806
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_806
+        #pragma pop_macro("EMP_DEC_TO_BIN_806")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_806
 
 #ifdef EMP_DEC_TO_BIN_807
@@ -49126,6 +57310,10 @@
     #undef EMP_DEC_TO_BIN_807
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_807
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_807
+        #pragma pop_macro("EMP_DEC_TO_BIN_807")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_807
 
 #ifdef EMP_DEC_TO_BIN_808
@@ -49150,6 +57338,10 @@
     #undef EMP_DEC_TO_BIN_808
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_808
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_808
+        #pragma pop_macro("EMP_DEC_TO_BIN_808")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_808
 
 #ifdef EMP_DEC_TO_BIN_809
@@ -49174,6 +57366,10 @@
     #undef EMP_DEC_TO_BIN_809
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_809
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_809
+        #pragma pop_macro("EMP_DEC_TO_BIN_809")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_809
 
 #ifdef EMP_DEC_TO_BIN_81
@@ -49198,6 +57394,10 @@
     #undef EMP_DEC_TO_BIN_81
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_81
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_81
+        #pragma pop_macro("EMP_DEC_TO_BIN_81")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_81
 
 #ifdef EMP_DEC_TO_BIN_810
@@ -49222,6 +57422,10 @@
     #undef EMP_DEC_TO_BIN_810
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_810
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_810
+        #pragma pop_macro("EMP_DEC_TO_BIN_810")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_810
 
 #ifdef EMP_DEC_TO_BIN_811
@@ -49246,6 +57450,10 @@
     #undef EMP_DEC_TO_BIN_811
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_811
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_811
+        #pragma pop_macro("EMP_DEC_TO_BIN_811")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_811
 
 #ifdef EMP_DEC_TO_BIN_812
@@ -49270,6 +57478,10 @@
     #undef EMP_DEC_TO_BIN_812
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_812
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_812
+        #pragma pop_macro("EMP_DEC_TO_BIN_812")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_812
 
 #ifdef EMP_DEC_TO_BIN_813
@@ -49294,6 +57506,10 @@
     #undef EMP_DEC_TO_BIN_813
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_813
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_813
+        #pragma pop_macro("EMP_DEC_TO_BIN_813")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_813
 
 #ifdef EMP_DEC_TO_BIN_814
@@ -49318,6 +57534,10 @@
     #undef EMP_DEC_TO_BIN_814
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_814
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_814
+        #pragma pop_macro("EMP_DEC_TO_BIN_814")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_814
 
 #ifdef EMP_DEC_TO_BIN_815
@@ -49342,6 +57562,10 @@
     #undef EMP_DEC_TO_BIN_815
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_815
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_815
+        #pragma pop_macro("EMP_DEC_TO_BIN_815")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_815
 
 #ifdef EMP_DEC_TO_BIN_816
@@ -49366,6 +57590,10 @@
     #undef EMP_DEC_TO_BIN_816
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_816
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_816
+        #pragma pop_macro("EMP_DEC_TO_BIN_816")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_816
 
 #ifdef EMP_DEC_TO_BIN_817
@@ -49390,6 +57618,10 @@
     #undef EMP_DEC_TO_BIN_817
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_817
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_817
+        #pragma pop_macro("EMP_DEC_TO_BIN_817")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_817
 
 #ifdef EMP_DEC_TO_BIN_818
@@ -49414,6 +57646,10 @@
     #undef EMP_DEC_TO_BIN_818
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_818
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_818
+        #pragma pop_macro("EMP_DEC_TO_BIN_818")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_818
 
 #ifdef EMP_DEC_TO_BIN_819
@@ -49438,6 +57674,10 @@
     #undef EMP_DEC_TO_BIN_819
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_819
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_819
+        #pragma pop_macro("EMP_DEC_TO_BIN_819")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_819
 
 #ifdef EMP_DEC_TO_BIN_82
@@ -49462,6 +57702,10 @@
     #undef EMP_DEC_TO_BIN_82
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_82
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_82
+        #pragma pop_macro("EMP_DEC_TO_BIN_82")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_82
 
 #ifdef EMP_DEC_TO_BIN_820
@@ -49486,6 +57730,10 @@
     #undef EMP_DEC_TO_BIN_820
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_820
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_820
+        #pragma pop_macro("EMP_DEC_TO_BIN_820")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_820
 
 #ifdef EMP_DEC_TO_BIN_821
@@ -49510,6 +57758,10 @@
     #undef EMP_DEC_TO_BIN_821
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_821
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_821
+        #pragma pop_macro("EMP_DEC_TO_BIN_821")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_821
 
 #ifdef EMP_DEC_TO_BIN_822
@@ -49534,6 +57786,10 @@
     #undef EMP_DEC_TO_BIN_822
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_822
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_822
+        #pragma pop_macro("EMP_DEC_TO_BIN_822")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_822
 
 #ifdef EMP_DEC_TO_BIN_823
@@ -49558,6 +57814,10 @@
     #undef EMP_DEC_TO_BIN_823
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_823
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_823
+        #pragma pop_macro("EMP_DEC_TO_BIN_823")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_823
 
 #ifdef EMP_DEC_TO_BIN_824
@@ -49582,6 +57842,10 @@
     #undef EMP_DEC_TO_BIN_824
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_824
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_824
+        #pragma pop_macro("EMP_DEC_TO_BIN_824")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_824
 
 #ifdef EMP_DEC_TO_BIN_825
@@ -49606,6 +57870,10 @@
     #undef EMP_DEC_TO_BIN_825
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_825
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_825
+        #pragma pop_macro("EMP_DEC_TO_BIN_825")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_825
 
 #ifdef EMP_DEC_TO_BIN_826
@@ -49630,6 +57898,10 @@
     #undef EMP_DEC_TO_BIN_826
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_826
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_826
+        #pragma pop_macro("EMP_DEC_TO_BIN_826")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_826
 
 #ifdef EMP_DEC_TO_BIN_827
@@ -49654,6 +57926,10 @@
     #undef EMP_DEC_TO_BIN_827
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_827
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_827
+        #pragma pop_macro("EMP_DEC_TO_BIN_827")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_827
 
 #ifdef EMP_DEC_TO_BIN_828
@@ -49678,6 +57954,10 @@
     #undef EMP_DEC_TO_BIN_828
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_828
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_828
+        #pragma pop_macro("EMP_DEC_TO_BIN_828")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_828
 
 #ifdef EMP_DEC_TO_BIN_829
@@ -49702,6 +57982,10 @@
     #undef EMP_DEC_TO_BIN_829
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_829
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_829
+        #pragma pop_macro("EMP_DEC_TO_BIN_829")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_829
 
 #ifdef EMP_DEC_TO_BIN_83
@@ -49726,6 +58010,10 @@
     #undef EMP_DEC_TO_BIN_83
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_83
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_83
+        #pragma pop_macro("EMP_DEC_TO_BIN_83")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_83
 
 #ifdef EMP_DEC_TO_BIN_830
@@ -49750,6 +58038,10 @@
     #undef EMP_DEC_TO_BIN_830
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_830
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_830
+        #pragma pop_macro("EMP_DEC_TO_BIN_830")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_830
 
 #ifdef EMP_DEC_TO_BIN_831
@@ -49774,6 +58066,10 @@
     #undef EMP_DEC_TO_BIN_831
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_831
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_831
+        #pragma pop_macro("EMP_DEC_TO_BIN_831")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_831
 
 #ifdef EMP_DEC_TO_BIN_832
@@ -49798,6 +58094,10 @@
     #undef EMP_DEC_TO_BIN_832
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_832
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_832
+        #pragma pop_macro("EMP_DEC_TO_BIN_832")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_832
 
 #ifdef EMP_DEC_TO_BIN_833
@@ -49822,6 +58122,10 @@
     #undef EMP_DEC_TO_BIN_833
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_833
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_833
+        #pragma pop_macro("EMP_DEC_TO_BIN_833")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_833
 
 #ifdef EMP_DEC_TO_BIN_834
@@ -49846,6 +58150,10 @@
     #undef EMP_DEC_TO_BIN_834
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_834
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_834
+        #pragma pop_macro("EMP_DEC_TO_BIN_834")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_834
 
 #ifdef EMP_DEC_TO_BIN_835
@@ -49870,6 +58178,10 @@
     #undef EMP_DEC_TO_BIN_835
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_835
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_835
+        #pragma pop_macro("EMP_DEC_TO_BIN_835")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_835
 
 #ifdef EMP_DEC_TO_BIN_836
@@ -49894,6 +58206,10 @@
     #undef EMP_DEC_TO_BIN_836
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_836
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_836
+        #pragma pop_macro("EMP_DEC_TO_BIN_836")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_836
 
 #ifdef EMP_DEC_TO_BIN_837
@@ -49918,6 +58234,10 @@
     #undef EMP_DEC_TO_BIN_837
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_837
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_837
+        #pragma pop_macro("EMP_DEC_TO_BIN_837")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_837
 
 #ifdef EMP_DEC_TO_BIN_838
@@ -49942,6 +58262,10 @@
     #undef EMP_DEC_TO_BIN_838
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_838
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_838
+        #pragma pop_macro("EMP_DEC_TO_BIN_838")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_838
 
 #ifdef EMP_DEC_TO_BIN_839
@@ -49966,6 +58290,10 @@
     #undef EMP_DEC_TO_BIN_839
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_839
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_839
+        #pragma pop_macro("EMP_DEC_TO_BIN_839")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_839
 
 #ifdef EMP_DEC_TO_BIN_84
@@ -49990,6 +58318,10 @@
     #undef EMP_DEC_TO_BIN_84
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_84
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_84
+        #pragma pop_macro("EMP_DEC_TO_BIN_84")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_84
 
 #ifdef EMP_DEC_TO_BIN_840
@@ -50014,6 +58346,10 @@
     #undef EMP_DEC_TO_BIN_840
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_840
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_840
+        #pragma pop_macro("EMP_DEC_TO_BIN_840")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_840
 
 #ifdef EMP_DEC_TO_BIN_841
@@ -50038,6 +58374,10 @@
     #undef EMP_DEC_TO_BIN_841
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_841
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_841
+        #pragma pop_macro("EMP_DEC_TO_BIN_841")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_841
 
 #ifdef EMP_DEC_TO_BIN_842
@@ -50062,6 +58402,10 @@
     #undef EMP_DEC_TO_BIN_842
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_842
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_842
+        #pragma pop_macro("EMP_DEC_TO_BIN_842")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_842
 
 #ifdef EMP_DEC_TO_BIN_843
@@ -50086,6 +58430,10 @@
     #undef EMP_DEC_TO_BIN_843
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_843
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_843
+        #pragma pop_macro("EMP_DEC_TO_BIN_843")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_843
 
 #ifdef EMP_DEC_TO_BIN_844
@@ -50110,6 +58458,10 @@
     #undef EMP_DEC_TO_BIN_844
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_844
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_844
+        #pragma pop_macro("EMP_DEC_TO_BIN_844")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_844
 
 #ifdef EMP_DEC_TO_BIN_845
@@ -50134,6 +58486,10 @@
     #undef EMP_DEC_TO_BIN_845
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_845
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_845
+        #pragma pop_macro("EMP_DEC_TO_BIN_845")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_845
 
 #ifdef EMP_DEC_TO_BIN_846
@@ -50158,6 +58514,10 @@
     #undef EMP_DEC_TO_BIN_846
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_846
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_846
+        #pragma pop_macro("EMP_DEC_TO_BIN_846")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_846
 
 #ifdef EMP_DEC_TO_BIN_847
@@ -50182,6 +58542,10 @@
     #undef EMP_DEC_TO_BIN_847
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_847
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_847
+        #pragma pop_macro("EMP_DEC_TO_BIN_847")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_847
 
 #ifdef EMP_DEC_TO_BIN_848
@@ -50206,6 +58570,10 @@
     #undef EMP_DEC_TO_BIN_848
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_848
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_848
+        #pragma pop_macro("EMP_DEC_TO_BIN_848")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_848
 
 #ifdef EMP_DEC_TO_BIN_849
@@ -50230,6 +58598,10 @@
     #undef EMP_DEC_TO_BIN_849
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_849
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_849
+        #pragma pop_macro("EMP_DEC_TO_BIN_849")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_849
 
 #ifdef EMP_DEC_TO_BIN_85
@@ -50254,6 +58626,10 @@
     #undef EMP_DEC_TO_BIN_85
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_85
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_85
+        #pragma pop_macro("EMP_DEC_TO_BIN_85")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_85
 
 #ifdef EMP_DEC_TO_BIN_850
@@ -50278,6 +58654,10 @@
     #undef EMP_DEC_TO_BIN_850
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_850
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_850
+        #pragma pop_macro("EMP_DEC_TO_BIN_850")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_850
 
 #ifdef EMP_DEC_TO_BIN_851
@@ -50302,6 +58682,10 @@
     #undef EMP_DEC_TO_BIN_851
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_851
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_851
+        #pragma pop_macro("EMP_DEC_TO_BIN_851")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_851
 
 #ifdef EMP_DEC_TO_BIN_852
@@ -50326,6 +58710,10 @@
     #undef EMP_DEC_TO_BIN_852
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_852
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_852
+        #pragma pop_macro("EMP_DEC_TO_BIN_852")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_852
 
 #ifdef EMP_DEC_TO_BIN_853
@@ -50350,6 +58738,10 @@
     #undef EMP_DEC_TO_BIN_853
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_853
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_853
+        #pragma pop_macro("EMP_DEC_TO_BIN_853")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_853
 
 #ifdef EMP_DEC_TO_BIN_854
@@ -50374,6 +58766,10 @@
     #undef EMP_DEC_TO_BIN_854
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_854
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_854
+        #pragma pop_macro("EMP_DEC_TO_BIN_854")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_854
 
 #ifdef EMP_DEC_TO_BIN_855
@@ -50398,6 +58794,10 @@
     #undef EMP_DEC_TO_BIN_855
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_855
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_855
+        #pragma pop_macro("EMP_DEC_TO_BIN_855")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_855
 
 #ifdef EMP_DEC_TO_BIN_856
@@ -50422,6 +58822,10 @@
     #undef EMP_DEC_TO_BIN_856
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_856
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_856
+        #pragma pop_macro("EMP_DEC_TO_BIN_856")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_856
 
 #ifdef EMP_DEC_TO_BIN_857
@@ -50446,6 +58850,10 @@
     #undef EMP_DEC_TO_BIN_857
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_857
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_857
+        #pragma pop_macro("EMP_DEC_TO_BIN_857")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_857
 
 #ifdef EMP_DEC_TO_BIN_858
@@ -50470,6 +58878,10 @@
     #undef EMP_DEC_TO_BIN_858
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_858
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_858
+        #pragma pop_macro("EMP_DEC_TO_BIN_858")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_858
 
 #ifdef EMP_DEC_TO_BIN_859
@@ -50494,6 +58906,10 @@
     #undef EMP_DEC_TO_BIN_859
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_859
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_859
+        #pragma pop_macro("EMP_DEC_TO_BIN_859")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_859
 
 #ifdef EMP_DEC_TO_BIN_86
@@ -50518,6 +58934,10 @@
     #undef EMP_DEC_TO_BIN_86
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_86
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_86
+        #pragma pop_macro("EMP_DEC_TO_BIN_86")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_86
 
 #ifdef EMP_DEC_TO_BIN_860
@@ -50542,6 +58962,10 @@
     #undef EMP_DEC_TO_BIN_860
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_860
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_860
+        #pragma pop_macro("EMP_DEC_TO_BIN_860")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_860
 
 #ifdef EMP_DEC_TO_BIN_861
@@ -50566,6 +58990,10 @@
     #undef EMP_DEC_TO_BIN_861
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_861
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_861
+        #pragma pop_macro("EMP_DEC_TO_BIN_861")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_861
 
 #ifdef EMP_DEC_TO_BIN_862
@@ -50590,6 +59018,10 @@
     #undef EMP_DEC_TO_BIN_862
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_862
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_862
+        #pragma pop_macro("EMP_DEC_TO_BIN_862")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_862
 
 #ifdef EMP_DEC_TO_BIN_863
@@ -50614,6 +59046,10 @@
     #undef EMP_DEC_TO_BIN_863
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_863
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_863
+        #pragma pop_macro("EMP_DEC_TO_BIN_863")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_863
 
 #ifdef EMP_DEC_TO_BIN_864
@@ -50638,6 +59074,10 @@
     #undef EMP_DEC_TO_BIN_864
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_864
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_864
+        #pragma pop_macro("EMP_DEC_TO_BIN_864")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_864
 
 #ifdef EMP_DEC_TO_BIN_865
@@ -50662,6 +59102,10 @@
     #undef EMP_DEC_TO_BIN_865
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_865
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_865
+        #pragma pop_macro("EMP_DEC_TO_BIN_865")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_865
 
 #ifdef EMP_DEC_TO_BIN_866
@@ -50686,6 +59130,10 @@
     #undef EMP_DEC_TO_BIN_866
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_866
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_866
+        #pragma pop_macro("EMP_DEC_TO_BIN_866")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_866
 
 #ifdef EMP_DEC_TO_BIN_867
@@ -50710,6 +59158,10 @@
     #undef EMP_DEC_TO_BIN_867
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_867
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_867
+        #pragma pop_macro("EMP_DEC_TO_BIN_867")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_867
 
 #ifdef EMP_DEC_TO_BIN_868
@@ -50734,6 +59186,10 @@
     #undef EMP_DEC_TO_BIN_868
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_868
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_868
+        #pragma pop_macro("EMP_DEC_TO_BIN_868")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_868
 
 #ifdef EMP_DEC_TO_BIN_869
@@ -50758,6 +59214,10 @@
     #undef EMP_DEC_TO_BIN_869
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_869
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_869
+        #pragma pop_macro("EMP_DEC_TO_BIN_869")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_869
 
 #ifdef EMP_DEC_TO_BIN_87
@@ -50782,6 +59242,10 @@
     #undef EMP_DEC_TO_BIN_87
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_87
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_87
+        #pragma pop_macro("EMP_DEC_TO_BIN_87")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_87
 
 #ifdef EMP_DEC_TO_BIN_870
@@ -50806,6 +59270,10 @@
     #undef EMP_DEC_TO_BIN_870
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_870
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_870
+        #pragma pop_macro("EMP_DEC_TO_BIN_870")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_870
 
 #ifdef EMP_DEC_TO_BIN_871
@@ -50830,6 +59298,10 @@
     #undef EMP_DEC_TO_BIN_871
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_871
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_871
+        #pragma pop_macro("EMP_DEC_TO_BIN_871")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_871
 
 #ifdef EMP_DEC_TO_BIN_872
@@ -50854,6 +59326,10 @@
     #undef EMP_DEC_TO_BIN_872
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_872
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_872
+        #pragma pop_macro("EMP_DEC_TO_BIN_872")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_872
 
 #ifdef EMP_DEC_TO_BIN_873
@@ -50878,6 +59354,10 @@
     #undef EMP_DEC_TO_BIN_873
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_873
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_873
+        #pragma pop_macro("EMP_DEC_TO_BIN_873")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_873
 
 #ifdef EMP_DEC_TO_BIN_874
@@ -50902,6 +59382,10 @@
     #undef EMP_DEC_TO_BIN_874
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_874
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_874
+        #pragma pop_macro("EMP_DEC_TO_BIN_874")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_874
 
 #ifdef EMP_DEC_TO_BIN_875
@@ -50926,6 +59410,10 @@
     #undef EMP_DEC_TO_BIN_875
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_875
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_875
+        #pragma pop_macro("EMP_DEC_TO_BIN_875")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_875
 
 #ifdef EMP_DEC_TO_BIN_876
@@ -50950,6 +59438,10 @@
     #undef EMP_DEC_TO_BIN_876
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_876
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_876
+        #pragma pop_macro("EMP_DEC_TO_BIN_876")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_876
 
 #ifdef EMP_DEC_TO_BIN_877
@@ -50974,6 +59466,10 @@
     #undef EMP_DEC_TO_BIN_877
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_877
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_877
+        #pragma pop_macro("EMP_DEC_TO_BIN_877")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_877
 
 #ifdef EMP_DEC_TO_BIN_878
@@ -50998,6 +59494,10 @@
     #undef EMP_DEC_TO_BIN_878
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_878
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_878
+        #pragma pop_macro("EMP_DEC_TO_BIN_878")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_878
 
 #ifdef EMP_DEC_TO_BIN_879
@@ -51022,6 +59522,10 @@
     #undef EMP_DEC_TO_BIN_879
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_879
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_879
+        #pragma pop_macro("EMP_DEC_TO_BIN_879")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_879
 
 #ifdef EMP_DEC_TO_BIN_88
@@ -51046,6 +59550,10 @@
     #undef EMP_DEC_TO_BIN_88
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_88
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_88
+        #pragma pop_macro("EMP_DEC_TO_BIN_88")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_88
 
 #ifdef EMP_DEC_TO_BIN_880
@@ -51070,6 +59578,10 @@
     #undef EMP_DEC_TO_BIN_880
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_880
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_880
+        #pragma pop_macro("EMP_DEC_TO_BIN_880")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_880
 
 #ifdef EMP_DEC_TO_BIN_881
@@ -51094,6 +59606,10 @@
     #undef EMP_DEC_TO_BIN_881
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_881
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_881
+        #pragma pop_macro("EMP_DEC_TO_BIN_881")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_881
 
 #ifdef EMP_DEC_TO_BIN_882
@@ -51118,6 +59634,10 @@
     #undef EMP_DEC_TO_BIN_882
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_882
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_882
+        #pragma pop_macro("EMP_DEC_TO_BIN_882")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_882
 
 #ifdef EMP_DEC_TO_BIN_883
@@ -51142,6 +59662,10 @@
     #undef EMP_DEC_TO_BIN_883
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_883
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_883
+        #pragma pop_macro("EMP_DEC_TO_BIN_883")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_883
 
 #ifdef EMP_DEC_TO_BIN_884
@@ -51166,6 +59690,10 @@
     #undef EMP_DEC_TO_BIN_884
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_884
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_884
+        #pragma pop_macro("EMP_DEC_TO_BIN_884")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_884
 
 #ifdef EMP_DEC_TO_BIN_885
@@ -51190,6 +59718,10 @@
     #undef EMP_DEC_TO_BIN_885
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_885
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_885
+        #pragma pop_macro("EMP_DEC_TO_BIN_885")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_885
 
 #ifdef EMP_DEC_TO_BIN_886
@@ -51214,6 +59746,10 @@
     #undef EMP_DEC_TO_BIN_886
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_886
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_886
+        #pragma pop_macro("EMP_DEC_TO_BIN_886")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_886
 
 #ifdef EMP_DEC_TO_BIN_887
@@ -51238,6 +59774,10 @@
     #undef EMP_DEC_TO_BIN_887
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_887
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_887
+        #pragma pop_macro("EMP_DEC_TO_BIN_887")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_887
 
 #ifdef EMP_DEC_TO_BIN_888
@@ -51262,6 +59802,10 @@
     #undef EMP_DEC_TO_BIN_888
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_888
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_888
+        #pragma pop_macro("EMP_DEC_TO_BIN_888")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_888
 
 #ifdef EMP_DEC_TO_BIN_889
@@ -51286,6 +59830,10 @@
     #undef EMP_DEC_TO_BIN_889
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_889
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_889
+        #pragma pop_macro("EMP_DEC_TO_BIN_889")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_889
 
 #ifdef EMP_DEC_TO_BIN_89
@@ -51310,6 +59858,10 @@
     #undef EMP_DEC_TO_BIN_89
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_89
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_89
+        #pragma pop_macro("EMP_DEC_TO_BIN_89")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_89
 
 #ifdef EMP_DEC_TO_BIN_890
@@ -51334,6 +59886,10 @@
     #undef EMP_DEC_TO_BIN_890
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_890
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_890
+        #pragma pop_macro("EMP_DEC_TO_BIN_890")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_890
 
 #ifdef EMP_DEC_TO_BIN_891
@@ -51358,6 +59914,10 @@
     #undef EMP_DEC_TO_BIN_891
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_891
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_891
+        #pragma pop_macro("EMP_DEC_TO_BIN_891")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_891
 
 #ifdef EMP_DEC_TO_BIN_892
@@ -51382,6 +59942,10 @@
     #undef EMP_DEC_TO_BIN_892
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_892
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_892
+        #pragma pop_macro("EMP_DEC_TO_BIN_892")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_892
 
 #ifdef EMP_DEC_TO_BIN_893
@@ -51406,6 +59970,10 @@
     #undef EMP_DEC_TO_BIN_893
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_893
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_893
+        #pragma pop_macro("EMP_DEC_TO_BIN_893")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_893
 
 #ifdef EMP_DEC_TO_BIN_894
@@ -51430,6 +59998,10 @@
     #undef EMP_DEC_TO_BIN_894
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_894
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_894
+        #pragma pop_macro("EMP_DEC_TO_BIN_894")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_894
 
 #ifdef EMP_DEC_TO_BIN_895
@@ -51454,6 +60026,10 @@
     #undef EMP_DEC_TO_BIN_895
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_895
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_895
+        #pragma pop_macro("EMP_DEC_TO_BIN_895")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_895
 
 #ifdef EMP_DEC_TO_BIN_896
@@ -51478,6 +60054,10 @@
     #undef EMP_DEC_TO_BIN_896
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_896
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_896
+        #pragma pop_macro("EMP_DEC_TO_BIN_896")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_896
 
 #ifdef EMP_DEC_TO_BIN_897
@@ -51502,6 +60082,10 @@
     #undef EMP_DEC_TO_BIN_897
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_897
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_897
+        #pragma pop_macro("EMP_DEC_TO_BIN_897")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_897
 
 #ifdef EMP_DEC_TO_BIN_898
@@ -51526,6 +60110,10 @@
     #undef EMP_DEC_TO_BIN_898
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_898
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_898
+        #pragma pop_macro("EMP_DEC_TO_BIN_898")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_898
 
 #ifdef EMP_DEC_TO_BIN_899
@@ -51550,6 +60138,10 @@
     #undef EMP_DEC_TO_BIN_899
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_899
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_899
+        #pragma pop_macro("EMP_DEC_TO_BIN_899")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_899
 
 #ifdef EMP_DEC_TO_BIN_9
@@ -51574,6 +60166,10 @@
     #undef EMP_DEC_TO_BIN_9
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_9
+        #pragma pop_macro("EMP_DEC_TO_BIN_9")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_9
 
 #ifdef EMP_DEC_TO_BIN_90
@@ -51598,6 +60194,10 @@
     #undef EMP_DEC_TO_BIN_90
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_90
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_90
+        #pragma pop_macro("EMP_DEC_TO_BIN_90")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_90
 
 #ifdef EMP_DEC_TO_BIN_900
@@ -51622,6 +60222,10 @@
     #undef EMP_DEC_TO_BIN_900
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_900
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_900
+        #pragma pop_macro("EMP_DEC_TO_BIN_900")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_900
 
 #ifdef EMP_DEC_TO_BIN_901
@@ -51646,6 +60250,10 @@
     #undef EMP_DEC_TO_BIN_901
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_901
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_901
+        #pragma pop_macro("EMP_DEC_TO_BIN_901")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_901
 
 #ifdef EMP_DEC_TO_BIN_902
@@ -51670,6 +60278,10 @@
     #undef EMP_DEC_TO_BIN_902
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_902
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_902
+        #pragma pop_macro("EMP_DEC_TO_BIN_902")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_902
 
 #ifdef EMP_DEC_TO_BIN_903
@@ -51694,6 +60306,10 @@
     #undef EMP_DEC_TO_BIN_903
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_903
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_903
+        #pragma pop_macro("EMP_DEC_TO_BIN_903")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_903
 
 #ifdef EMP_DEC_TO_BIN_904
@@ -51718,6 +60334,10 @@
     #undef EMP_DEC_TO_BIN_904
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_904
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_904
+        #pragma pop_macro("EMP_DEC_TO_BIN_904")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_904
 
 #ifdef EMP_DEC_TO_BIN_905
@@ -51742,6 +60362,10 @@
     #undef EMP_DEC_TO_BIN_905
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_905
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_905
+        #pragma pop_macro("EMP_DEC_TO_BIN_905")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_905
 
 #ifdef EMP_DEC_TO_BIN_906
@@ -51766,6 +60390,10 @@
     #undef EMP_DEC_TO_BIN_906
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_906
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_906
+        #pragma pop_macro("EMP_DEC_TO_BIN_906")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_906
 
 #ifdef EMP_DEC_TO_BIN_907
@@ -51790,6 +60418,10 @@
     #undef EMP_DEC_TO_BIN_907
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_907
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_907
+        #pragma pop_macro("EMP_DEC_TO_BIN_907")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_907
 
 #ifdef EMP_DEC_TO_BIN_908
@@ -51814,6 +60446,10 @@
     #undef EMP_DEC_TO_BIN_908
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_908
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_908
+        #pragma pop_macro("EMP_DEC_TO_BIN_908")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_908
 
 #ifdef EMP_DEC_TO_BIN_909
@@ -51838,6 +60474,10 @@
     #undef EMP_DEC_TO_BIN_909
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_909
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_909
+        #pragma pop_macro("EMP_DEC_TO_BIN_909")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_909
 
 #ifdef EMP_DEC_TO_BIN_91
@@ -51862,6 +60502,10 @@
     #undef EMP_DEC_TO_BIN_91
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_91
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_91
+        #pragma pop_macro("EMP_DEC_TO_BIN_91")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_91
 
 #ifdef EMP_DEC_TO_BIN_910
@@ -51886,6 +60530,10 @@
     #undef EMP_DEC_TO_BIN_910
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_910
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_910
+        #pragma pop_macro("EMP_DEC_TO_BIN_910")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_910
 
 #ifdef EMP_DEC_TO_BIN_911
@@ -51910,6 +60558,10 @@
     #undef EMP_DEC_TO_BIN_911
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_911
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_911
+        #pragma pop_macro("EMP_DEC_TO_BIN_911")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_911
 
 #ifdef EMP_DEC_TO_BIN_912
@@ -51934,6 +60586,10 @@
     #undef EMP_DEC_TO_BIN_912
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_912
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_912
+        #pragma pop_macro("EMP_DEC_TO_BIN_912")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_912
 
 #ifdef EMP_DEC_TO_BIN_913
@@ -51958,6 +60614,10 @@
     #undef EMP_DEC_TO_BIN_913
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_913
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_913
+        #pragma pop_macro("EMP_DEC_TO_BIN_913")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_913
 
 #ifdef EMP_DEC_TO_BIN_914
@@ -51982,6 +60642,10 @@
     #undef EMP_DEC_TO_BIN_914
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_914
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_914
+        #pragma pop_macro("EMP_DEC_TO_BIN_914")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_914
 
 #ifdef EMP_DEC_TO_BIN_915
@@ -52006,6 +60670,10 @@
     #undef EMP_DEC_TO_BIN_915
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_915
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_915
+        #pragma pop_macro("EMP_DEC_TO_BIN_915")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_915
 
 #ifdef EMP_DEC_TO_BIN_916
@@ -52030,6 +60698,10 @@
     #undef EMP_DEC_TO_BIN_916
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_916
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_916
+        #pragma pop_macro("EMP_DEC_TO_BIN_916")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_916
 
 #ifdef EMP_DEC_TO_BIN_917
@@ -52054,6 +60726,10 @@
     #undef EMP_DEC_TO_BIN_917
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_917
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_917
+        #pragma pop_macro("EMP_DEC_TO_BIN_917")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_917
 
 #ifdef EMP_DEC_TO_BIN_918
@@ -52078,6 +60754,10 @@
     #undef EMP_DEC_TO_BIN_918
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_918
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_918
+        #pragma pop_macro("EMP_DEC_TO_BIN_918")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_918
 
 #ifdef EMP_DEC_TO_BIN_919
@@ -52102,6 +60782,10 @@
     #undef EMP_DEC_TO_BIN_919
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_919
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_919
+        #pragma pop_macro("EMP_DEC_TO_BIN_919")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_919
 
 #ifdef EMP_DEC_TO_BIN_92
@@ -52126,6 +60810,10 @@
     #undef EMP_DEC_TO_BIN_92
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_92
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_92
+        #pragma pop_macro("EMP_DEC_TO_BIN_92")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_92
 
 #ifdef EMP_DEC_TO_BIN_920
@@ -52150,6 +60838,10 @@
     #undef EMP_DEC_TO_BIN_920
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_920
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_920
+        #pragma pop_macro("EMP_DEC_TO_BIN_920")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_920
 
 #ifdef EMP_DEC_TO_BIN_921
@@ -52174,6 +60866,10 @@
     #undef EMP_DEC_TO_BIN_921
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_921
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_921
+        #pragma pop_macro("EMP_DEC_TO_BIN_921")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_921
 
 #ifdef EMP_DEC_TO_BIN_922
@@ -52198,6 +60894,10 @@
     #undef EMP_DEC_TO_BIN_922
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_922
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_922
+        #pragma pop_macro("EMP_DEC_TO_BIN_922")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_922
 
 #ifdef EMP_DEC_TO_BIN_923
@@ -52222,6 +60922,10 @@
     #undef EMP_DEC_TO_BIN_923
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_923
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_923
+        #pragma pop_macro("EMP_DEC_TO_BIN_923")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_923
 
 #ifdef EMP_DEC_TO_BIN_924
@@ -52246,6 +60950,10 @@
     #undef EMP_DEC_TO_BIN_924
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_924
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_924
+        #pragma pop_macro("EMP_DEC_TO_BIN_924")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_924
 
 #ifdef EMP_DEC_TO_BIN_925
@@ -52270,6 +60978,10 @@
     #undef EMP_DEC_TO_BIN_925
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_925
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_925
+        #pragma pop_macro("EMP_DEC_TO_BIN_925")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_925
 
 #ifdef EMP_DEC_TO_BIN_926
@@ -52294,6 +61006,10 @@
     #undef EMP_DEC_TO_BIN_926
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_926
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_926
+        #pragma pop_macro("EMP_DEC_TO_BIN_926")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_926
 
 #ifdef EMP_DEC_TO_BIN_927
@@ -52318,6 +61034,10 @@
     #undef EMP_DEC_TO_BIN_927
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_927
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_927
+        #pragma pop_macro("EMP_DEC_TO_BIN_927")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_927
 
 #ifdef EMP_DEC_TO_BIN_928
@@ -52342,6 +61062,10 @@
     #undef EMP_DEC_TO_BIN_928
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_928
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_928
+        #pragma pop_macro("EMP_DEC_TO_BIN_928")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_928
 
 #ifdef EMP_DEC_TO_BIN_929
@@ -52366,6 +61090,10 @@
     #undef EMP_DEC_TO_BIN_929
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_929
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_929
+        #pragma pop_macro("EMP_DEC_TO_BIN_929")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_929
 
 #ifdef EMP_DEC_TO_BIN_93
@@ -52390,6 +61118,10 @@
     #undef EMP_DEC_TO_BIN_93
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_93
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_93
+        #pragma pop_macro("EMP_DEC_TO_BIN_93")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_93
 
 #ifdef EMP_DEC_TO_BIN_930
@@ -52414,6 +61146,10 @@
     #undef EMP_DEC_TO_BIN_930
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_930
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_930
+        #pragma pop_macro("EMP_DEC_TO_BIN_930")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_930
 
 #ifdef EMP_DEC_TO_BIN_931
@@ -52438,6 +61174,10 @@
     #undef EMP_DEC_TO_BIN_931
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_931
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_931
+        #pragma pop_macro("EMP_DEC_TO_BIN_931")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_931
 
 #ifdef EMP_DEC_TO_BIN_932
@@ -52462,6 +61202,10 @@
     #undef EMP_DEC_TO_BIN_932
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_932
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_932
+        #pragma pop_macro("EMP_DEC_TO_BIN_932")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_932
 
 #ifdef EMP_DEC_TO_BIN_933
@@ -52486,6 +61230,10 @@
     #undef EMP_DEC_TO_BIN_933
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_933
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_933
+        #pragma pop_macro("EMP_DEC_TO_BIN_933")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_933
 
 #ifdef EMP_DEC_TO_BIN_934
@@ -52510,6 +61258,10 @@
     #undef EMP_DEC_TO_BIN_934
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_934
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_934
+        #pragma pop_macro("EMP_DEC_TO_BIN_934")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_934
 
 #ifdef EMP_DEC_TO_BIN_935
@@ -52534,6 +61286,10 @@
     #undef EMP_DEC_TO_BIN_935
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_935
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_935
+        #pragma pop_macro("EMP_DEC_TO_BIN_935")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_935
 
 #ifdef EMP_DEC_TO_BIN_936
@@ -52558,6 +61314,10 @@
     #undef EMP_DEC_TO_BIN_936
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_936
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_936
+        #pragma pop_macro("EMP_DEC_TO_BIN_936")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_936
 
 #ifdef EMP_DEC_TO_BIN_937
@@ -52582,6 +61342,10 @@
     #undef EMP_DEC_TO_BIN_937
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_937
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_937
+        #pragma pop_macro("EMP_DEC_TO_BIN_937")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_937
 
 #ifdef EMP_DEC_TO_BIN_938
@@ -52606,6 +61370,10 @@
     #undef EMP_DEC_TO_BIN_938
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_938
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_938
+        #pragma pop_macro("EMP_DEC_TO_BIN_938")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_938
 
 #ifdef EMP_DEC_TO_BIN_939
@@ -52630,6 +61398,10 @@
     #undef EMP_DEC_TO_BIN_939
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_939
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_939
+        #pragma pop_macro("EMP_DEC_TO_BIN_939")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_939
 
 #ifdef EMP_DEC_TO_BIN_94
@@ -52654,6 +61426,10 @@
     #undef EMP_DEC_TO_BIN_94
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_94
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_94
+        #pragma pop_macro("EMP_DEC_TO_BIN_94")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_94
 
 #ifdef EMP_DEC_TO_BIN_940
@@ -52678,6 +61454,10 @@
     #undef EMP_DEC_TO_BIN_940
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_940
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_940
+        #pragma pop_macro("EMP_DEC_TO_BIN_940")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_940
 
 #ifdef EMP_DEC_TO_BIN_941
@@ -52702,6 +61482,10 @@
     #undef EMP_DEC_TO_BIN_941
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_941
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_941
+        #pragma pop_macro("EMP_DEC_TO_BIN_941")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_941
 
 #ifdef EMP_DEC_TO_BIN_942
@@ -52726,6 +61510,10 @@
     #undef EMP_DEC_TO_BIN_942
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_942
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_942
+        #pragma pop_macro("EMP_DEC_TO_BIN_942")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_942
 
 #ifdef EMP_DEC_TO_BIN_943
@@ -52750,6 +61538,10 @@
     #undef EMP_DEC_TO_BIN_943
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_943
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_943
+        #pragma pop_macro("EMP_DEC_TO_BIN_943")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_943
 
 #ifdef EMP_DEC_TO_BIN_944
@@ -52774,6 +61566,10 @@
     #undef EMP_DEC_TO_BIN_944
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_944
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_944
+        #pragma pop_macro("EMP_DEC_TO_BIN_944")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_944
 
 #ifdef EMP_DEC_TO_BIN_945
@@ -52798,6 +61594,10 @@
     #undef EMP_DEC_TO_BIN_945
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_945
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_945
+        #pragma pop_macro("EMP_DEC_TO_BIN_945")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_945
 
 #ifdef EMP_DEC_TO_BIN_946
@@ -52822,6 +61622,10 @@
     #undef EMP_DEC_TO_BIN_946
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_946
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_946
+        #pragma pop_macro("EMP_DEC_TO_BIN_946")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_946
 
 #ifdef EMP_DEC_TO_BIN_947
@@ -52846,6 +61650,10 @@
     #undef EMP_DEC_TO_BIN_947
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_947
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_947
+        #pragma pop_macro("EMP_DEC_TO_BIN_947")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_947
 
 #ifdef EMP_DEC_TO_BIN_948
@@ -52870,6 +61678,10 @@
     #undef EMP_DEC_TO_BIN_948
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_948
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_948
+        #pragma pop_macro("EMP_DEC_TO_BIN_948")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_948
 
 #ifdef EMP_DEC_TO_BIN_949
@@ -52894,6 +61706,10 @@
     #undef EMP_DEC_TO_BIN_949
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_949
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_949
+        #pragma pop_macro("EMP_DEC_TO_BIN_949")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_949
 
 #ifdef EMP_DEC_TO_BIN_95
@@ -52918,6 +61734,10 @@
     #undef EMP_DEC_TO_BIN_95
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_95
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_95
+        #pragma pop_macro("EMP_DEC_TO_BIN_95")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_95
 
 #ifdef EMP_DEC_TO_BIN_950
@@ -52942,6 +61762,10 @@
     #undef EMP_DEC_TO_BIN_950
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_950
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_950
+        #pragma pop_macro("EMP_DEC_TO_BIN_950")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_950
 
 #ifdef EMP_DEC_TO_BIN_951
@@ -52966,6 +61790,10 @@
     #undef EMP_DEC_TO_BIN_951
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_951
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_951
+        #pragma pop_macro("EMP_DEC_TO_BIN_951")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_951
 
 #ifdef EMP_DEC_TO_BIN_952
@@ -52990,6 +61818,10 @@
     #undef EMP_DEC_TO_BIN_952
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_952
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_952
+        #pragma pop_macro("EMP_DEC_TO_BIN_952")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_952
 
 #ifdef EMP_DEC_TO_BIN_953
@@ -53014,6 +61846,10 @@
     #undef EMP_DEC_TO_BIN_953
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_953
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_953
+        #pragma pop_macro("EMP_DEC_TO_BIN_953")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_953
 
 #ifdef EMP_DEC_TO_BIN_954
@@ -53038,6 +61874,10 @@
     #undef EMP_DEC_TO_BIN_954
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_954
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_954
+        #pragma pop_macro("EMP_DEC_TO_BIN_954")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_954
 
 #ifdef EMP_DEC_TO_BIN_955
@@ -53062,6 +61902,10 @@
     #undef EMP_DEC_TO_BIN_955
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_955
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_955
+        #pragma pop_macro("EMP_DEC_TO_BIN_955")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_955
 
 #ifdef EMP_DEC_TO_BIN_956
@@ -53086,6 +61930,10 @@
     #undef EMP_DEC_TO_BIN_956
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_956
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_956
+        #pragma pop_macro("EMP_DEC_TO_BIN_956")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_956
 
 #ifdef EMP_DEC_TO_BIN_957
@@ -53110,6 +61958,10 @@
     #undef EMP_DEC_TO_BIN_957
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_957
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_957
+        #pragma pop_macro("EMP_DEC_TO_BIN_957")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_957
 
 #ifdef EMP_DEC_TO_BIN_958
@@ -53134,6 +61986,10 @@
     #undef EMP_DEC_TO_BIN_958
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_958
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_958
+        #pragma pop_macro("EMP_DEC_TO_BIN_958")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_958
 
 #ifdef EMP_DEC_TO_BIN_959
@@ -53158,6 +62014,10 @@
     #undef EMP_DEC_TO_BIN_959
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_959
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_959
+        #pragma pop_macro("EMP_DEC_TO_BIN_959")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_959
 
 #ifdef EMP_DEC_TO_BIN_96
@@ -53182,6 +62042,10 @@
     #undef EMP_DEC_TO_BIN_96
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_96
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_96
+        #pragma pop_macro("EMP_DEC_TO_BIN_96")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_96
 
 #ifdef EMP_DEC_TO_BIN_960
@@ -53206,6 +62070,10 @@
     #undef EMP_DEC_TO_BIN_960
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_960
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_960
+        #pragma pop_macro("EMP_DEC_TO_BIN_960")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_960
 
 #ifdef EMP_DEC_TO_BIN_961
@@ -53230,6 +62098,10 @@
     #undef EMP_DEC_TO_BIN_961
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_961
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_961
+        #pragma pop_macro("EMP_DEC_TO_BIN_961")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_961
 
 #ifdef EMP_DEC_TO_BIN_962
@@ -53254,6 +62126,10 @@
     #undef EMP_DEC_TO_BIN_962
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_962
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_962
+        #pragma pop_macro("EMP_DEC_TO_BIN_962")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_962
 
 #ifdef EMP_DEC_TO_BIN_963
@@ -53278,6 +62154,10 @@
     #undef EMP_DEC_TO_BIN_963
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_963
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_963
+        #pragma pop_macro("EMP_DEC_TO_BIN_963")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_963
 
 #ifdef EMP_DEC_TO_BIN_964
@@ -53302,6 +62182,10 @@
     #undef EMP_DEC_TO_BIN_964
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_964
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_964
+        #pragma pop_macro("EMP_DEC_TO_BIN_964")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_964
 
 #ifdef EMP_DEC_TO_BIN_965
@@ -53326,6 +62210,10 @@
     #undef EMP_DEC_TO_BIN_965
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_965
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_965
+        #pragma pop_macro("EMP_DEC_TO_BIN_965")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_965
 
 #ifdef EMP_DEC_TO_BIN_966
@@ -53350,6 +62238,10 @@
     #undef EMP_DEC_TO_BIN_966
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_966
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_966
+        #pragma pop_macro("EMP_DEC_TO_BIN_966")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_966
 
 #ifdef EMP_DEC_TO_BIN_967
@@ -53374,6 +62266,10 @@
     #undef EMP_DEC_TO_BIN_967
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_967
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_967
+        #pragma pop_macro("EMP_DEC_TO_BIN_967")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_967
 
 #ifdef EMP_DEC_TO_BIN_968
@@ -53398,6 +62294,10 @@
     #undef EMP_DEC_TO_BIN_968
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_968
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_968
+        #pragma pop_macro("EMP_DEC_TO_BIN_968")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_968
 
 #ifdef EMP_DEC_TO_BIN_969
@@ -53422,6 +62322,10 @@
     #undef EMP_DEC_TO_BIN_969
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_969
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_969
+        #pragma pop_macro("EMP_DEC_TO_BIN_969")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_969
 
 #ifdef EMP_DEC_TO_BIN_97
@@ -53446,6 +62350,10 @@
     #undef EMP_DEC_TO_BIN_97
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_97
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_97
+        #pragma pop_macro("EMP_DEC_TO_BIN_97")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_97
 
 #ifdef EMP_DEC_TO_BIN_970
@@ -53470,6 +62378,10 @@
     #undef EMP_DEC_TO_BIN_970
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_970
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_970
+        #pragma pop_macro("EMP_DEC_TO_BIN_970")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_970
 
 #ifdef EMP_DEC_TO_BIN_971
@@ -53494,6 +62406,10 @@
     #undef EMP_DEC_TO_BIN_971
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_971
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_971
+        #pragma pop_macro("EMP_DEC_TO_BIN_971")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_971
 
 #ifdef EMP_DEC_TO_BIN_972
@@ -53518,6 +62434,10 @@
     #undef EMP_DEC_TO_BIN_972
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_972
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_972
+        #pragma pop_macro("EMP_DEC_TO_BIN_972")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_972
 
 #ifdef EMP_DEC_TO_BIN_973
@@ -53542,6 +62462,10 @@
     #undef EMP_DEC_TO_BIN_973
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_973
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_973
+        #pragma pop_macro("EMP_DEC_TO_BIN_973")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_973
 
 #ifdef EMP_DEC_TO_BIN_974
@@ -53566,6 +62490,10 @@
     #undef EMP_DEC_TO_BIN_974
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_974
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_974
+        #pragma pop_macro("EMP_DEC_TO_BIN_974")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_974
 
 #ifdef EMP_DEC_TO_BIN_975
@@ -53590,6 +62518,10 @@
     #undef EMP_DEC_TO_BIN_975
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_975
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_975
+        #pragma pop_macro("EMP_DEC_TO_BIN_975")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_975
 
 #ifdef EMP_DEC_TO_BIN_976
@@ -53614,6 +62546,10 @@
     #undef EMP_DEC_TO_BIN_976
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_976
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_976
+        #pragma pop_macro("EMP_DEC_TO_BIN_976")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_976
 
 #ifdef EMP_DEC_TO_BIN_977
@@ -53638,6 +62574,10 @@
     #undef EMP_DEC_TO_BIN_977
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_977
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_977
+        #pragma pop_macro("EMP_DEC_TO_BIN_977")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_977
 
 #ifdef EMP_DEC_TO_BIN_978
@@ -53662,6 +62602,10 @@
     #undef EMP_DEC_TO_BIN_978
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_978
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_978
+        #pragma pop_macro("EMP_DEC_TO_BIN_978")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_978
 
 #ifdef EMP_DEC_TO_BIN_979
@@ -53686,6 +62630,10 @@
     #undef EMP_DEC_TO_BIN_979
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_979
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_979
+        #pragma pop_macro("EMP_DEC_TO_BIN_979")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_979
 
 #ifdef EMP_DEC_TO_BIN_98
@@ -53710,6 +62658,10 @@
     #undef EMP_DEC_TO_BIN_98
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_98
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_98
+        #pragma pop_macro("EMP_DEC_TO_BIN_98")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_98
 
 #ifdef EMP_DEC_TO_BIN_980
@@ -53734,6 +62686,10 @@
     #undef EMP_DEC_TO_BIN_980
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_980
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_980
+        #pragma pop_macro("EMP_DEC_TO_BIN_980")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_980
 
 #ifdef EMP_DEC_TO_BIN_981
@@ -53758,6 +62714,10 @@
     #undef EMP_DEC_TO_BIN_981
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_981
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_981
+        #pragma pop_macro("EMP_DEC_TO_BIN_981")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_981
 
 #ifdef EMP_DEC_TO_BIN_982
@@ -53782,6 +62742,10 @@
     #undef EMP_DEC_TO_BIN_982
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_982
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_982
+        #pragma pop_macro("EMP_DEC_TO_BIN_982")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_982
 
 #ifdef EMP_DEC_TO_BIN_983
@@ -53806,6 +62770,10 @@
     #undef EMP_DEC_TO_BIN_983
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_983
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_983
+        #pragma pop_macro("EMP_DEC_TO_BIN_983")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_983
 
 #ifdef EMP_DEC_TO_BIN_984
@@ -53830,6 +62798,10 @@
     #undef EMP_DEC_TO_BIN_984
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_984
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_984
+        #pragma pop_macro("EMP_DEC_TO_BIN_984")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_984
 
 #ifdef EMP_DEC_TO_BIN_985
@@ -53854,6 +62826,10 @@
     #undef EMP_DEC_TO_BIN_985
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_985
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_985
+        #pragma pop_macro("EMP_DEC_TO_BIN_985")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_985
 
 #ifdef EMP_DEC_TO_BIN_986
@@ -53878,6 +62854,10 @@
     #undef EMP_DEC_TO_BIN_986
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_986
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_986
+        #pragma pop_macro("EMP_DEC_TO_BIN_986")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_986
 
 #ifdef EMP_DEC_TO_BIN_987
@@ -53902,6 +62882,10 @@
     #undef EMP_DEC_TO_BIN_987
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_987
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_987
+        #pragma pop_macro("EMP_DEC_TO_BIN_987")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_987
 
 #ifdef EMP_DEC_TO_BIN_988
@@ -53926,6 +62910,10 @@
     #undef EMP_DEC_TO_BIN_988
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_988
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_988
+        #pragma pop_macro("EMP_DEC_TO_BIN_988")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_988
 
 #ifdef EMP_DEC_TO_BIN_989
@@ -53950,6 +62938,10 @@
     #undef EMP_DEC_TO_BIN_989
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_989
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_989
+        #pragma pop_macro("EMP_DEC_TO_BIN_989")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_989
 
 #ifdef EMP_DEC_TO_BIN_99
@@ -53974,6 +62966,10 @@
     #undef EMP_DEC_TO_BIN_99
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_99
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_99
+        #pragma pop_macro("EMP_DEC_TO_BIN_99")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_99
 
 #ifdef EMP_DEC_TO_BIN_990
@@ -53998,6 +62994,10 @@
     #undef EMP_DEC_TO_BIN_990
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_990
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_990
+        #pragma pop_macro("EMP_DEC_TO_BIN_990")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_990
 
 #ifdef EMP_DEC_TO_BIN_991
@@ -54022,6 +63022,10 @@
     #undef EMP_DEC_TO_BIN_991
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_991
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_991
+        #pragma pop_macro("EMP_DEC_TO_BIN_991")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_991
 
 #ifdef EMP_DEC_TO_BIN_992
@@ -54046,6 +63050,10 @@
     #undef EMP_DEC_TO_BIN_992
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_992
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_992
+        #pragma pop_macro("EMP_DEC_TO_BIN_992")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_992
 
 #ifdef EMP_DEC_TO_BIN_993
@@ -54070,6 +63078,10 @@
     #undef EMP_DEC_TO_BIN_993
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_993
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_993
+        #pragma pop_macro("EMP_DEC_TO_BIN_993")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_993
 
 #ifdef EMP_DEC_TO_BIN_994
@@ -54094,6 +63106,10 @@
     #undef EMP_DEC_TO_BIN_994
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_994
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_994
+        #pragma pop_macro("EMP_DEC_TO_BIN_994")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_994
 
 #ifdef EMP_DEC_TO_BIN_995
@@ -54118,6 +63134,10 @@
     #undef EMP_DEC_TO_BIN_995
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_995
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_995
+        #pragma pop_macro("EMP_DEC_TO_BIN_995")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_995
 
 #ifdef EMP_DEC_TO_BIN_996
@@ -54142,6 +63162,10 @@
     #undef EMP_DEC_TO_BIN_996
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_996
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_996
+        #pragma pop_macro("EMP_DEC_TO_BIN_996")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_996
 
 #ifdef EMP_DEC_TO_BIN_997
@@ -54166,6 +63190,10 @@
     #undef EMP_DEC_TO_BIN_997
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_997
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_997
+        #pragma pop_macro("EMP_DEC_TO_BIN_997")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_997
 
 #ifdef EMP_DEC_TO_BIN_998
@@ -54190,6 +63218,10 @@
     #undef EMP_DEC_TO_BIN_998
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_998
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_998
+        #pragma pop_macro("EMP_DEC_TO_BIN_998")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_998
 
 #ifdef EMP_DEC_TO_BIN_999
@@ -54214,6 +63246,10 @@
     #undef EMP_DEC_TO_BIN_999
   #endif
 
+#else // #ifdef EMP_DEC_TO_BIN_999
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_BIN_999
+        #pragma pop_macro("EMP_DEC_TO_BIN_999")
+    #endif
 #endif // #ifdef EMP_DEC_TO_BIN_999
 
 #ifdef EMP_DEC_TO_PACK
@@ -54238,6 +63274,10 @@
     #undef EMP_DEC_TO_PACK
   #endif
 
+#else // #ifdef EMP_DEC_TO_PACK
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_PACK
+        #pragma pop_macro("EMP_DEC_TO_PACK")
+    #endif
 #endif // #ifdef EMP_DEC_TO_PACK
 
 #ifdef EMP_DEC_TO_SUM
@@ -54262,6 +63302,10 @@
     #undef EMP_DEC_TO_SUM
   #endif
 
+#else // #ifdef EMP_DEC_TO_SUM
+    #ifdef UIT_EXTERNAL_HAS_EMP_DEC_TO_SUM
+        #pragma pop_macro("EMP_DEC_TO_SUM")
+    #endif
 #endif // #ifdef EMP_DEC_TO_SUM
 
 #ifdef EMP_DIV
@@ -54286,6 +63330,10 @@
     #undef EMP_DIV
   #endif
 
+#else // #ifdef EMP_DIV
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV
+        #pragma pop_macro("EMP_DIV")
+    #endif
 #endif // #ifdef EMP_DIV
 
 #ifdef EMP_DIV_impl
@@ -54310,6 +63358,10 @@
     #undef EMP_DIV_impl
   #endif
 
+#else // #ifdef EMP_DIV_impl
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl
+        #pragma pop_macro("EMP_DIV_impl")
+    #endif
 #endif // #ifdef EMP_DIV_impl
 
 #ifdef EMP_DIV_implB
@@ -54334,6 +63386,10 @@
     #undef EMP_DIV_implB
   #endif
 
+#else // #ifdef EMP_DIV_implB
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_implB
+        #pragma pop_macro("EMP_DIV_implB")
+    #endif
 #endif // #ifdef EMP_DIV_implB
 
 #ifdef EMP_DIV_impl_0
@@ -54358,6 +63414,10 @@
     #undef EMP_DIV_impl_0
   #endif
 
+#else // #ifdef EMP_DIV_impl_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_0
+        #pragma pop_macro("EMP_DIV_impl_0")
+    #endif
 #endif // #ifdef EMP_DIV_impl_0
 
 #ifdef EMP_DIV_impl_1
@@ -54382,6 +63442,10 @@
     #undef EMP_DIV_impl_1
   #endif
 
+#else // #ifdef EMP_DIV_impl_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_1
+        #pragma pop_macro("EMP_DIV_impl_1")
+    #endif
 #endif // #ifdef EMP_DIV_impl_1
 
 #ifdef EMP_DIV_impl_2
@@ -54406,6 +63470,10 @@
     #undef EMP_DIV_impl_2
   #endif
 
+#else // #ifdef EMP_DIV_impl_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_2
+        #pragma pop_macro("EMP_DIV_impl_2")
+    #endif
 #endif // #ifdef EMP_DIV_impl_2
 
 #ifdef EMP_DIV_impl_3
@@ -54430,6 +63498,10 @@
     #undef EMP_DIV_impl_3
   #endif
 
+#else // #ifdef EMP_DIV_impl_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_3
+        #pragma pop_macro("EMP_DIV_impl_3")
+    #endif
 #endif // #ifdef EMP_DIV_impl_3
 
 #ifdef EMP_DIV_impl_4
@@ -54454,6 +63526,10 @@
     #undef EMP_DIV_impl_4
   #endif
 
+#else // #ifdef EMP_DIV_impl_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_4
+        #pragma pop_macro("EMP_DIV_impl_4")
+    #endif
 #endif // #ifdef EMP_DIV_impl_4
 
 #ifdef EMP_DIV_impl_5
@@ -54478,6 +63554,10 @@
     #undef EMP_DIV_impl_5
   #endif
 
+#else // #ifdef EMP_DIV_impl_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_5
+        #pragma pop_macro("EMP_DIV_impl_5")
+    #endif
 #endif // #ifdef EMP_DIV_impl_5
 
 #ifdef EMP_DIV_impl_6
@@ -54502,6 +63582,10 @@
     #undef EMP_DIV_impl_6
   #endif
 
+#else // #ifdef EMP_DIV_impl_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_6
+        #pragma pop_macro("EMP_DIV_impl_6")
+    #endif
 #endif // #ifdef EMP_DIV_impl_6
 
 #ifdef EMP_DIV_impl_7
@@ -54526,6 +63610,10 @@
     #undef EMP_DIV_impl_7
   #endif
 
+#else // #ifdef EMP_DIV_impl_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_7
+        #pragma pop_macro("EMP_DIV_impl_7")
+    #endif
 #endif // #ifdef EMP_DIV_impl_7
 
 #ifdef EMP_DIV_impl_8
@@ -54550,6 +63638,10 @@
     #undef EMP_DIV_impl_8
   #endif
 
+#else // #ifdef EMP_DIV_impl_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_8
+        #pragma pop_macro("EMP_DIV_impl_8")
+    #endif
 #endif // #ifdef EMP_DIV_impl_8
 
 #ifdef EMP_DIV_impl_9
@@ -54574,6 +63666,10 @@
     #undef EMP_DIV_impl_9
   #endif
 
+#else // #ifdef EMP_DIV_impl_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_impl_9
+        #pragma pop_macro("EMP_DIV_impl_9")
+    #endif
 #endif // #ifdef EMP_DIV_impl_9
 
 #ifdef EMP_DIV_start
@@ -54598,6 +63694,10 @@
     #undef EMP_DIV_start
   #endif
 
+#else // #ifdef EMP_DIV_start
+    #ifdef UIT_EXTERNAL_HAS_EMP_DIV_start
+        #pragma pop_macro("EMP_DIV_start")
+    #endif
 #endif // #ifdef EMP_DIV_start
 
 #ifdef EMP_DUPLICATE_ARGS
@@ -54622,6 +63722,10 @@
     #undef EMP_DUPLICATE_ARGS
   #endif
 
+#else // #ifdef EMP_DUPLICATE_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_DUPLICATE_ARGS
+        #pragma pop_macro("EMP_DUPLICATE_ARGS")
+    #endif
 #endif // #ifdef EMP_DUPLICATE_ARGS
 
 #ifdef EMP_DUPLICATE_ARGS_SUM
@@ -54646,6 +63750,10 @@
     #undef EMP_DUPLICATE_ARGS_SUM
   #endif
 
+#else // #ifdef EMP_DUPLICATE_ARGS_SUM
+    #ifdef UIT_EXTERNAL_HAS_EMP_DUPLICATE_ARGS_SUM
+        #pragma pop_macro("EMP_DUPLICATE_ARGS_SUM")
+    #endif
 #endif // #ifdef EMP_DUPLICATE_ARGS_SUM
 
 #ifdef EMP_ECHO_ARGS
@@ -54670,6 +63778,10 @@
     #undef EMP_ECHO_ARGS
   #endif
 
+#else // #ifdef EMP_ECHO_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_ECHO_ARGS
+        #pragma pop_macro("EMP_ECHO_ARGS")
+    #endif
 #endif // #ifdef EMP_ECHO_ARGS
 
 #ifdef EMP_EMPTY
@@ -54694,6 +63806,10 @@
     #undef EMP_EMPTY
   #endif
 
+#else // #ifdef EMP_EMPTY
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY
+        #pragma pop_macro("EMP_EMPTY")
+    #endif
 #endif // #ifdef EMP_EMPTY
 
 #ifdef EMP_EMPTY10
@@ -54718,6 +63834,10 @@
     #undef EMP_EMPTY10
   #endif
 
+#else // #ifdef EMP_EMPTY10
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY10
+        #pragma pop_macro("EMP_EMPTY10")
+    #endif
 #endif // #ifdef EMP_EMPTY10
 
 #ifdef EMP_EMPTY2
@@ -54742,6 +63862,10 @@
     #undef EMP_EMPTY2
   #endif
 
+#else // #ifdef EMP_EMPTY2
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY2
+        #pragma pop_macro("EMP_EMPTY2")
+    #endif
 #endif // #ifdef EMP_EMPTY2
 
 #ifdef EMP_EMPTY3
@@ -54766,6 +63890,10 @@
     #undef EMP_EMPTY3
   #endif
 
+#else // #ifdef EMP_EMPTY3
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY3
+        #pragma pop_macro("EMP_EMPTY3")
+    #endif
 #endif // #ifdef EMP_EMPTY3
 
 #ifdef EMP_EMPTY4
@@ -54790,6 +63918,10 @@
     #undef EMP_EMPTY4
   #endif
 
+#else // #ifdef EMP_EMPTY4
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY4
+        #pragma pop_macro("EMP_EMPTY4")
+    #endif
 #endif // #ifdef EMP_EMPTY4
 
 #ifdef EMP_EMPTY5
@@ -54814,6 +63946,10 @@
     #undef EMP_EMPTY5
   #endif
 
+#else // #ifdef EMP_EMPTY5
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY5
+        #pragma pop_macro("EMP_EMPTY5")
+    #endif
 #endif // #ifdef EMP_EMPTY5
 
 #ifdef EMP_EMPTY6
@@ -54838,6 +63974,10 @@
     #undef EMP_EMPTY6
   #endif
 
+#else // #ifdef EMP_EMPTY6
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY6
+        #pragma pop_macro("EMP_EMPTY6")
+    #endif
 #endif // #ifdef EMP_EMPTY6
 
 #ifdef EMP_EMPTY7
@@ -54862,6 +64002,10 @@
     #undef EMP_EMPTY7
   #endif
 
+#else // #ifdef EMP_EMPTY7
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY7
+        #pragma pop_macro("EMP_EMPTY7")
+    #endif
 #endif // #ifdef EMP_EMPTY7
 
 #ifdef EMP_EMPTY8
@@ -54886,6 +64030,10 @@
     #undef EMP_EMPTY8
   #endif
 
+#else // #ifdef EMP_EMPTY8
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY8
+        #pragma pop_macro("EMP_EMPTY8")
+    #endif
 #endif // #ifdef EMP_EMPTY8
 
 #ifdef EMP_EMPTY9
@@ -54910,6 +64058,10 @@
     #undef EMP_EMPTY9
   #endif
 
+#else // #ifdef EMP_EMPTY9
+    #ifdef UIT_EXTERNAL_HAS_EMP_EMPTY9
+        #pragma pop_macro("EMP_EMPTY9")
+    #endif
 #endif // #ifdef EMP_EMPTY9
 
 #ifdef EMP_EQU
@@ -54934,6 +64086,10 @@
     #undef EMP_EQU
   #endif
 
+#else // #ifdef EMP_EQU
+    #ifdef UIT_EXTERNAL_HAS_EMP_EQU
+        #pragma pop_macro("EMP_EQU")
+    #endif
 #endif // #ifdef EMP_EQU
 
 #ifdef EMP_EVAL
@@ -54958,6 +64114,10 @@
     #undef EMP_EVAL
   #endif
 
+#else // #ifdef EMP_EVAL
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL
+        #pragma pop_macro("EMP_EVAL")
+    #endif
 #endif // #ifdef EMP_EVAL
 
 #ifdef EMP_EVAL10
@@ -54982,6 +64142,10 @@
     #undef EMP_EVAL10
   #endif
 
+#else // #ifdef EMP_EVAL10
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL10
+        #pragma pop_macro("EMP_EVAL10")
+    #endif
 #endif // #ifdef EMP_EVAL10
 
 #ifdef EMP_EVAL2
@@ -55006,6 +64170,10 @@
     #undef EMP_EVAL2
   #endif
 
+#else // #ifdef EMP_EVAL2
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL2
+        #pragma pop_macro("EMP_EVAL2")
+    #endif
 #endif // #ifdef EMP_EVAL2
 
 #ifdef EMP_EVAL3
@@ -55030,6 +64198,10 @@
     #undef EMP_EVAL3
   #endif
 
+#else // #ifdef EMP_EVAL3
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL3
+        #pragma pop_macro("EMP_EVAL3")
+    #endif
 #endif // #ifdef EMP_EVAL3
 
 #ifdef EMP_EVAL4
@@ -55054,6 +64226,10 @@
     #undef EMP_EVAL4
   #endif
 
+#else // #ifdef EMP_EVAL4
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL4
+        #pragma pop_macro("EMP_EVAL4")
+    #endif
 #endif // #ifdef EMP_EVAL4
 
 #ifdef EMP_EVAL5
@@ -55078,6 +64254,10 @@
     #undef EMP_EVAL5
   #endif
 
+#else // #ifdef EMP_EVAL5
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL5
+        #pragma pop_macro("EMP_EVAL5")
+    #endif
 #endif // #ifdef EMP_EVAL5
 
 #ifdef EMP_EVAL6
@@ -55102,6 +64282,10 @@
     #undef EMP_EVAL6
   #endif
 
+#else // #ifdef EMP_EVAL6
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL6
+        #pragma pop_macro("EMP_EVAL6")
+    #endif
 #endif // #ifdef EMP_EVAL6
 
 #ifdef EMP_EVAL7
@@ -55126,6 +64310,10 @@
     #undef EMP_EVAL7
   #endif
 
+#else // #ifdef EMP_EVAL7
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL7
+        #pragma pop_macro("EMP_EVAL7")
+    #endif
 #endif // #ifdef EMP_EVAL7
 
 #ifdef EMP_EVAL8
@@ -55150,6 +64338,10 @@
     #undef EMP_EVAL8
   #endif
 
+#else // #ifdef EMP_EVAL8
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL8
+        #pragma pop_macro("EMP_EVAL8")
+    #endif
 #endif // #ifdef EMP_EVAL8
 
 #ifdef EMP_EVAL9
@@ -55174,6 +64366,10 @@
     #undef EMP_EVAL9
   #endif
 
+#else // #ifdef EMP_EVAL9
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL9
+        #pragma pop_macro("EMP_EVAL9")
+    #endif
 #endif // #ifdef EMP_EVAL9
 
 #ifdef EMP_EVAL_A
@@ -55198,6 +64394,10 @@
     #undef EMP_EVAL_A
   #endif
 
+#else // #ifdef EMP_EVAL_A
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL_A
+        #pragma pop_macro("EMP_EVAL_A")
+    #endif
 #endif // #ifdef EMP_EVAL_A
 
 #ifdef EMP_EVAL_B
@@ -55222,6 +64422,10 @@
     #undef EMP_EVAL_B
   #endif
 
+#else // #ifdef EMP_EVAL_B
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL_B
+        #pragma pop_macro("EMP_EVAL_B")
+    #endif
 #endif // #ifdef EMP_EVAL_B
 
 #ifdef EMP_EVAL_C
@@ -55246,6 +64450,10 @@
     #undef EMP_EVAL_C
   #endif
 
+#else // #ifdef EMP_EVAL_C
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL_C
+        #pragma pop_macro("EMP_EVAL_C")
+    #endif
 #endif // #ifdef EMP_EVAL_C
 
 #ifdef EMP_EVAL_D
@@ -55270,6 +64478,10 @@
     #undef EMP_EVAL_D
   #endif
 
+#else // #ifdef EMP_EVAL_D
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL_D
+        #pragma pop_macro("EMP_EVAL_D")
+    #endif
 #endif // #ifdef EMP_EVAL_D
 
 #ifdef EMP_EVAL_E
@@ -55294,6 +64506,10 @@
     #undef EMP_EVAL_E
   #endif
 
+#else // #ifdef EMP_EVAL_E
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL_E
+        #pragma pop_macro("EMP_EVAL_E")
+    #endif
 #endif // #ifdef EMP_EVAL_E
 
 #ifdef EMP_EVAL_F
@@ -55318,6 +64534,10 @@
     #undef EMP_EVAL_F
   #endif
 
+#else // #ifdef EMP_EVAL_F
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL_F
+        #pragma pop_macro("EMP_EVAL_F")
+    #endif
 #endif // #ifdef EMP_EVAL_F
 
 #ifdef EMP_EVAL_G
@@ -55342,6 +64562,10 @@
     #undef EMP_EVAL_G
   #endif
 
+#else // #ifdef EMP_EVAL_G
+    #ifdef UIT_EXTERNAL_HAS_EMP_EVAL_G
+        #pragma pop_macro("EMP_EVAL_G")
+    #endif
 #endif // #ifdef EMP_EVAL_G
 
 #ifdef EMP_EXPAND_PPACK
@@ -55366,6 +64590,10 @@
     #undef EMP_EXPAND_PPACK
   #endif
 
+#else // #ifdef EMP_EXPAND_PPACK
+    #ifdef UIT_EXTERNAL_HAS_EMP_EXPAND_PPACK
+        #pragma pop_macro("EMP_EXPAND_PPACK")
+    #endif
 #endif // #ifdef EMP_EXPAND_PPACK
 
 #ifdef EMP_EXTEND_CONFIG
@@ -55390,6 +64618,10 @@
     #undef EMP_EXTEND_CONFIG
   #endif
 
+#else // #ifdef EMP_EXTEND_CONFIG
+    #ifdef UIT_EXTERNAL_HAS_EMP_EXTEND_CONFIG
+        #pragma pop_macro("EMP_EXTEND_CONFIG")
+    #endif
 #endif // #ifdef EMP_EXTEND_CONFIG
 
 #ifdef EMP_FORCE_ARGS_TO
@@ -55414,6 +64646,10 @@
     #undef EMP_FORCE_ARGS_TO
   #endif
 
+#else // #ifdef EMP_FORCE_ARGS_TO
+    #ifdef UIT_EXTERNAL_HAS_EMP_FORCE_ARGS_TO
+        #pragma pop_macro("EMP_FORCE_ARGS_TO")
+    #endif
 #endif // #ifdef EMP_FORCE_ARGS_TO
 
 #ifdef EMP_GET_ARG
@@ -55438,6 +64674,10 @@
     #undef EMP_GET_ARG
   #endif
 
+#else // #ifdef EMP_GET_ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_GET_ARG
+        #pragma pop_macro("EMP_GET_ARG")
+    #endif
 #endif // #ifdef EMP_GET_ARG
 
 #ifdef EMP_GET_ARG_1
@@ -55462,6 +64702,10 @@
     #undef EMP_GET_ARG_1
   #endif
 
+#else // #ifdef EMP_GET_ARG_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_GET_ARG_1
+        #pragma pop_macro("EMP_GET_ARG_1")
+    #endif
 #endif // #ifdef EMP_GET_ARG_1
 
 #ifdef EMP_GET_ARG_1_IMPL
@@ -55486,6 +64730,10 @@
     #undef EMP_GET_ARG_1_IMPL
   #endif
 
+#else // #ifdef EMP_GET_ARG_1_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_GET_ARG_1_IMPL
+        #pragma pop_macro("EMP_GET_ARG_1_IMPL")
+    #endif
 #endif // #ifdef EMP_GET_ARG_1_IMPL
 
 #ifdef EMP_GET_ARG_2
@@ -55510,6 +64758,10 @@
     #undef EMP_GET_ARG_2
   #endif
 
+#else // #ifdef EMP_GET_ARG_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_GET_ARG_2
+        #pragma pop_macro("EMP_GET_ARG_2")
+    #endif
 #endif // #ifdef EMP_GET_ARG_2
 
 #ifdef EMP_GET_ARG_2_IMPL
@@ -55534,6 +64786,10 @@
     #undef EMP_GET_ARG_2_IMPL
   #endif
 
+#else // #ifdef EMP_GET_ARG_2_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_GET_ARG_2_IMPL
+        #pragma pop_macro("EMP_GET_ARG_2_IMPL")
+    #endif
 #endif // #ifdef EMP_GET_ARG_2_IMPL
 
 #ifdef EMP_GET_EVEN_ARGS
@@ -55558,6 +64814,10 @@
     #undef EMP_GET_EVEN_ARGS
   #endif
 
+#else // #ifdef EMP_GET_EVEN_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_GET_EVEN_ARGS
+        #pragma pop_macro("EMP_GET_EVEN_ARGS")
+    #endif
 #endif // #ifdef EMP_GET_EVEN_ARGS
 
 #ifdef EMP_GET_ODD_ARGS
@@ -55582,6 +64842,10 @@
     #undef EMP_GET_ODD_ARGS
   #endif
 
+#else // #ifdef EMP_GET_ODD_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_GET_ODD_ARGS
+        #pragma pop_macro("EMP_GET_ODD_ARGS")
+    #endif
 #endif // #ifdef EMP_GET_ODD_ARGS
 
 #ifdef EMP_GTR
@@ -55606,6 +64870,10 @@
     #undef EMP_GTR
   #endif
 
+#else // #ifdef EMP_GTR
+    #ifdef UIT_EXTERNAL_HAS_EMP_GTR
+        #pragma pop_macro("EMP_GTR")
+    #endif
 #endif // #ifdef EMP_GTR
 
 #ifdef EMP_GTR_EQU
@@ -55630,6 +64898,10 @@
     #undef EMP_GTR_EQU
   #endif
 
+#else // #ifdef EMP_GTR_EQU
+    #ifdef UIT_EXTERNAL_HAS_EMP_GTR_EQU
+        #pragma pop_macro("EMP_GTR_EQU")
+    #endif
 #endif // #ifdef EMP_GTR_EQU
 
 #ifdef EMP_HALF
@@ -55654,6 +64926,10 @@
     #undef EMP_HALF
   #endif
 
+#else // #ifdef EMP_HALF
+    #ifdef UIT_EXTERNAL_HAS_EMP_HALF
+        #pragma pop_macro("EMP_HALF")
+    #endif
 #endif // #ifdef EMP_HALF
 
 #ifdef EMP_IF
@@ -55678,6 +64954,10 @@
     #undef EMP_IF
   #endif
 
+#else // #ifdef EMP_IF
+    #ifdef UIT_EXTERNAL_HAS_EMP_IF
+        #pragma pop_macro("EMP_IF")
+    #endif
 #endif // #ifdef EMP_IF
 
 #ifdef EMP_IF_impl
@@ -55702,6 +64982,10 @@
     #undef EMP_IF_impl
   #endif
 
+#else // #ifdef EMP_IF_impl
+    #ifdef UIT_EXTERNAL_HAS_EMP_IF_impl
+        #pragma pop_macro("EMP_IF_impl")
+    #endif
 #endif // #ifdef EMP_IF_impl
 
 #ifdef EMP_IF_impl_0
@@ -55726,6 +65010,10 @@
     #undef EMP_IF_impl_0
   #endif
 
+#else // #ifdef EMP_IF_impl_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_IF_impl_0
+        #pragma pop_macro("EMP_IF_impl_0")
+    #endif
 #endif // #ifdef EMP_IF_impl_0
 
 #ifdef EMP_IF_impl_get_2
@@ -55750,6 +65038,10 @@
     #undef EMP_IF_impl_get_2
   #endif
 
+#else // #ifdef EMP_IF_impl_get_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_IF_impl_get_2
+        #pragma pop_macro("EMP_IF_impl_get_2")
+    #endif
 #endif // #ifdef EMP_IF_impl_get_2
 
 #ifdef EMP_IMERGE
@@ -55774,6 +65066,10 @@
     #undef EMP_IMERGE
   #endif
 
+#else // #ifdef EMP_IMERGE
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE
+        #pragma pop_macro("EMP_IMERGE")
+    #endif
 #endif // #ifdef EMP_IMERGE
 
 #ifdef EMP_IMERGE_1
@@ -55798,6 +65094,10 @@
     #undef EMP_IMERGE_1
   #endif
 
+#else // #ifdef EMP_IMERGE_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_1
+        #pragma pop_macro("EMP_IMERGE_1")
+    #endif
 #endif // #ifdef EMP_IMERGE_1
 
 #ifdef EMP_IMERGE_10
@@ -55822,6 +65122,10 @@
     #undef EMP_IMERGE_10
   #endif
 
+#else // #ifdef EMP_IMERGE_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_10
+        #pragma pop_macro("EMP_IMERGE_10")
+    #endif
 #endif // #ifdef EMP_IMERGE_10
 
 #ifdef EMP_IMERGE_2
@@ -55846,6 +65150,10 @@
     #undef EMP_IMERGE_2
   #endif
 
+#else // #ifdef EMP_IMERGE_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_2
+        #pragma pop_macro("EMP_IMERGE_2")
+    #endif
 #endif // #ifdef EMP_IMERGE_2
 
 #ifdef EMP_IMERGE_3
@@ -55870,6 +65178,10 @@
     #undef EMP_IMERGE_3
   #endif
 
+#else // #ifdef EMP_IMERGE_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_3
+        #pragma pop_macro("EMP_IMERGE_3")
+    #endif
 #endif // #ifdef EMP_IMERGE_3
 
 #ifdef EMP_IMERGE_4
@@ -55894,6 +65206,10 @@
     #undef EMP_IMERGE_4
   #endif
 
+#else // #ifdef EMP_IMERGE_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_4
+        #pragma pop_macro("EMP_IMERGE_4")
+    #endif
 #endif // #ifdef EMP_IMERGE_4
 
 #ifdef EMP_IMERGE_5
@@ -55918,6 +65234,10 @@
     #undef EMP_IMERGE_5
   #endif
 
+#else // #ifdef EMP_IMERGE_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_5
+        #pragma pop_macro("EMP_IMERGE_5")
+    #endif
 #endif // #ifdef EMP_IMERGE_5
 
 #ifdef EMP_IMERGE_6
@@ -55942,6 +65262,10 @@
     #undef EMP_IMERGE_6
   #endif
 
+#else // #ifdef EMP_IMERGE_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_6
+        #pragma pop_macro("EMP_IMERGE_6")
+    #endif
 #endif // #ifdef EMP_IMERGE_6
 
 #ifdef EMP_IMERGE_7
@@ -55966,6 +65290,10 @@
     #undef EMP_IMERGE_7
   #endif
 
+#else // #ifdef EMP_IMERGE_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_7
+        #pragma pop_macro("EMP_IMERGE_7")
+    #endif
 #endif // #ifdef EMP_IMERGE_7
 
 #ifdef EMP_IMERGE_8
@@ -55990,6 +65318,10 @@
     #undef EMP_IMERGE_8
   #endif
 
+#else // #ifdef EMP_IMERGE_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_8
+        #pragma pop_macro("EMP_IMERGE_8")
+    #endif
 #endif // #ifdef EMP_IMERGE_8
 
 #ifdef EMP_IMERGE_9
@@ -56014,6 +65346,10 @@
     #undef EMP_IMERGE_9
   #endif
 
+#else // #ifdef EMP_IMERGE_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMERGE_9
+        #pragma pop_macro("EMP_IMERGE_9")
+    #endif
 #endif // #ifdef EMP_IMERGE_9
 
 #ifdef EMP_IMPL_TYPE_DEFAULT
@@ -56038,6 +65374,10 @@
     #undef EMP_IMPL_TYPE_DEFAULT
   #endif
 
+#else // #ifdef EMP_IMPL_TYPE_DEFAULT
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_DEFAULT
+        #pragma pop_macro("EMP_IMPL_TYPE_DEFAULT")
+    #endif
 #endif // #ifdef EMP_IMPL_TYPE_DEFAULT
 
 #ifdef EMP_IMPL_TYPE_HAS_MEMBER
@@ -56062,6 +65402,10 @@
     #undef EMP_IMPL_TYPE_HAS_MEMBER
   #endif
 
+#else // #ifdef EMP_IMPL_TYPE_HAS_MEMBER
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_MEMBER
+        #pragma pop_macro("EMP_IMPL_TYPE_HAS_MEMBER")
+    #endif
 #endif // #ifdef EMP_IMPL_TYPE_HAS_MEMBER
 
 #ifdef EMP_IMPL_TYPE_HAS_TYPE
@@ -56086,6 +65430,10 @@
     #undef EMP_IMPL_TYPE_HAS_TYPE
   #endif
 
+#else // #ifdef EMP_IMPL_TYPE_HAS_TYPE
+    #ifdef UIT_EXTERNAL_HAS_EMP_IMPL_TYPE_HAS_TYPE
+        #pragma pop_macro("EMP_IMPL_TYPE_HAS_TYPE")
+    #endif
 #endif // #ifdef EMP_IMPL_TYPE_HAS_TYPE
 
 #ifdef EMP_INC
@@ -56110,6 +65458,10 @@
     #undef EMP_INC
   #endif
 
+#else // #ifdef EMP_INC
+    #ifdef UIT_EXTERNAL_HAS_EMP_INC
+        #pragma pop_macro("EMP_INC")
+    #endif
 #endif // #ifdef EMP_INC
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS
@@ -56134,6 +65486,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_do_call
@@ -56158,6 +65514,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_do_call
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_do_call
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_do_call
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_do_call")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_do_call
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl
@@ -56182,6 +65542,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl1
@@ -56206,6 +65570,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl1
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl1
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl1
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl1")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl1
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl10
@@ -56230,6 +65598,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl10
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl10
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl10
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl10")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl10
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl10B
@@ -56254,6 +65626,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl10B
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl10B
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl10B
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl10B")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl10B
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl2
@@ -56278,6 +65654,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl2
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl2
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl2
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl2")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl2
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl2B
@@ -56302,6 +65682,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl2B
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl2B
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl2B
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl2B")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl2B
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl3
@@ -56326,6 +65710,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl3
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl3
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl3
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl3")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl3
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl3B
@@ -56350,6 +65738,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl3B
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl3B
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl3B
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl3B")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl3B
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl4
@@ -56374,6 +65766,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl4
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl4
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl4
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl4")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl4
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl4B
@@ -56398,6 +65794,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl4B
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl4B
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl4B
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl4B")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl4B
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl5
@@ -56422,6 +65822,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl5
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl5
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl5
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl5")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl5
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl5B
@@ -56446,6 +65850,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl5B
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl5B
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl5B
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl5B")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl5B
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl6
@@ -56470,6 +65878,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl6
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl6
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl6
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl6")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl6
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl6B
@@ -56494,6 +65906,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl6B
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl6B
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl6B
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl6B")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl6B
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl7
@@ -56518,6 +65934,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl7
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl7
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl7
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl7")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl7
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl7B
@@ -56542,6 +65962,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl7B
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl7B
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl7B
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl7B")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl7B
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl8
@@ -56566,6 +65990,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl8
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl8
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl8
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl8")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl8
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl8B
@@ -56590,6 +66018,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl8B
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl8B
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl8B
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl8B")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl8B
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl9
@@ -56614,6 +66046,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl9
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl9
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl9
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl9")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl9
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl9B
@@ -56638,6 +66074,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_impl9B
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl9B
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_impl9B
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_impl9B")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_impl9B
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_implB
@@ -56662,6 +66102,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_implB
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_implB
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_implB
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_implB")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_implB
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_implC
@@ -56686,6 +66130,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_implC
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_implC
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_implC
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_implC")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_implC
 
 #ifdef EMP_INTERNAL_CALL_BY_PACKS_implD
@@ -56710,6 +66158,10 @@
     #undef EMP_INTERNAL_CALL_BY_PACKS_implD
   #endif
 
+#else // #ifdef EMP_INTERNAL_CALL_BY_PACKS_implD
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_CALL_BY_PACKS_implD
+        #pragma pop_macro("EMP_INTERNAL_CALL_BY_PACKS_implD")
+    #endif
 #endif // #ifdef EMP_INTERNAL_CALL_BY_PACKS_implD
 
 #ifdef EMP_INTERNAL_WRAP_ARGS
@@ -56734,6 +66186,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1
@@ -56758,6 +66214,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_128
@@ -56782,6 +66242,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_128
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_128
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_128")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_128
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_16
@@ -56806,6 +66270,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_16
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_16
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_16")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_16
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG
@@ -56830,6 +66298,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_1
@@ -56854,6 +66326,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_1
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_1
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_1")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_1
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_128
@@ -56878,6 +66354,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_128
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_128
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_128")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_128
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_16
@@ -56902,6 +66382,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_16
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_16
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_16")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_16
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_2
@@ -56926,6 +66410,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_2
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_2
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_2")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_2
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_256
@@ -56950,6 +66438,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_256
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_256
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_256")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_256
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_32
@@ -56974,6 +66466,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_32
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_32
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_32")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_32
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_4
@@ -56998,6 +66494,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_4
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_4
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_4")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_4
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_512
@@ -57022,6 +66522,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_512
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_512
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_512")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_512
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_64
@@ -57046,6 +66550,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_64
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_64
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_64")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_64
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_8
@@ -57070,6 +66578,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_1ARG_8
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_1ARG_8
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_1ARG_8")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_1ARG_8
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_2
@@ -57094,6 +66606,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_2
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_2
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_2")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_2
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_256
@@ -57118,6 +66634,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_256
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_256
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_256")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_256
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_32
@@ -57142,6 +66662,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_32
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_32
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_32")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_32
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_4
@@ -57166,6 +66690,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_4
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_4
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_4")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_4
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_512
@@ -57190,6 +66718,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_512
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_512
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_512")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_512
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_64
@@ -57214,6 +66746,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_64
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_64
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_64")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_64
 
 #ifdef EMP_INTERNAL_WRAP_ARGS_8
@@ -57238,6 +66774,10 @@
     #undef EMP_INTERNAL_WRAP_ARGS_8
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_ARGS_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_ARGS_8
+        #pragma pop_macro("EMP_INTERNAL_WRAP_ARGS_8")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_ARGS_8
 
 #ifdef EMP_INTERNAL_WRAP_EACH
@@ -57262,6 +66802,10 @@
     #undef EMP_INTERNAL_WRAP_EACH
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1
@@ -57286,6 +66830,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1
 
 #ifdef EMP_INTERNAL_WRAP_EACH_128
@@ -57310,6 +66858,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_128
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_128
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_128")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_128
 
 #ifdef EMP_INTERNAL_WRAP_EACH_16
@@ -57334,6 +66886,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_16
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_16
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_16")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_16
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG
@@ -57358,6 +66914,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_1
@@ -57382,6 +66942,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_1
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_1
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_1")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_1
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_128
@@ -57406,6 +66970,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_128
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_128
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_128")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_128
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_16
@@ -57430,6 +66998,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_16
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_16
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_16")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_16
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_2
@@ -57454,6 +67026,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_2
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_2
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_2")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_2
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_256
@@ -57478,6 +67054,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_256
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_256
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_256")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_256
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_32
@@ -57502,6 +67082,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_32
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_32
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_32")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_32
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_4
@@ -57526,6 +67110,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_4
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_4
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_4")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_4
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_512
@@ -57550,6 +67138,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_512
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_512
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_512")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_512
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_64
@@ -57574,6 +67166,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_64
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_64
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_64")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_64
 
 #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_8
@@ -57598,6 +67194,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_1ARG_8
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_1ARG_8
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_1ARG_8")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_1ARG_8
 
 #ifdef EMP_INTERNAL_WRAP_EACH_2
@@ -57622,6 +67222,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_2
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_2
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_2")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_2
 
 #ifdef EMP_INTERNAL_WRAP_EACH_256
@@ -57646,6 +67250,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_256
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_256
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_256")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_256
 
 #ifdef EMP_INTERNAL_WRAP_EACH_32
@@ -57670,6 +67278,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_32
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_32
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_32")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_32
 
 #ifdef EMP_INTERNAL_WRAP_EACH_4
@@ -57694,6 +67306,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_4
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_4
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_4")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_4
 
 #ifdef EMP_INTERNAL_WRAP_EACH_512
@@ -57718,6 +67334,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_512
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_512
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_512")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_512
 
 #ifdef EMP_INTERNAL_WRAP_EACH_64
@@ -57742,6 +67362,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_64
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_64
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_64")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_64
 
 #ifdef EMP_INTERNAL_WRAP_EACH_8
@@ -57766,6 +67390,10 @@
     #undef EMP_INTERNAL_WRAP_EACH_8
   #endif
 
+#else // #ifdef EMP_INTERNAL_WRAP_EACH_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_INTERNAL_WRAP_EACH_8
+        #pragma pop_macro("EMP_INTERNAL_WRAP_EACH_8")
+    #endif
 #endif // #ifdef EMP_INTERNAL_WRAP_EACH_8
 
 #ifdef EMP_LAYOUT
@@ -57790,6 +67418,10 @@
     #undef EMP_LAYOUT
   #endif
 
+#else // #ifdef EMP_LAYOUT
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT
+        #pragma pop_macro("EMP_LAYOUT")
+    #endif
 #endif // #ifdef EMP_LAYOUT
 
 #ifdef EMP_LAYOUT_0
@@ -57814,6 +67446,10 @@
     #undef EMP_LAYOUT_0
   #endif
 
+#else // #ifdef EMP_LAYOUT_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_0
+        #pragma pop_macro("EMP_LAYOUT_0")
+    #endif
 #endif // #ifdef EMP_LAYOUT_0
 
 #ifdef EMP_LAYOUT_1
@@ -57838,6 +67474,10 @@
     #undef EMP_LAYOUT_1
   #endif
 
+#else // #ifdef EMP_LAYOUT_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_1
+        #pragma pop_macro("EMP_LAYOUT_1")
+    #endif
 #endif // #ifdef EMP_LAYOUT_1
 
 #ifdef EMP_LAYOUT_10
@@ -57862,6 +67502,10 @@
     #undef EMP_LAYOUT_10
   #endif
 
+#else // #ifdef EMP_LAYOUT_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_10
+        #pragma pop_macro("EMP_LAYOUT_10")
+    #endif
 #endif // #ifdef EMP_LAYOUT_10
 
 #ifdef EMP_LAYOUT_11
@@ -57886,6 +67530,10 @@
     #undef EMP_LAYOUT_11
   #endif
 
+#else // #ifdef EMP_LAYOUT_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_11
+        #pragma pop_macro("EMP_LAYOUT_11")
+    #endif
 #endif // #ifdef EMP_LAYOUT_11
 
 #ifdef EMP_LAYOUT_12
@@ -57910,6 +67558,10 @@
     #undef EMP_LAYOUT_12
   #endif
 
+#else // #ifdef EMP_LAYOUT_12
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_12
+        #pragma pop_macro("EMP_LAYOUT_12")
+    #endif
 #endif // #ifdef EMP_LAYOUT_12
 
 #ifdef EMP_LAYOUT_13
@@ -57934,6 +67586,10 @@
     #undef EMP_LAYOUT_13
   #endif
 
+#else // #ifdef EMP_LAYOUT_13
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_13
+        #pragma pop_macro("EMP_LAYOUT_13")
+    #endif
 #endif // #ifdef EMP_LAYOUT_13
 
 #ifdef EMP_LAYOUT_14
@@ -57958,6 +67614,10 @@
     #undef EMP_LAYOUT_14
   #endif
 
+#else // #ifdef EMP_LAYOUT_14
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_14
+        #pragma pop_macro("EMP_LAYOUT_14")
+    #endif
 #endif // #ifdef EMP_LAYOUT_14
 
 #ifdef EMP_LAYOUT_15
@@ -57982,6 +67642,10 @@
     #undef EMP_LAYOUT_15
   #endif
 
+#else // #ifdef EMP_LAYOUT_15
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_15
+        #pragma pop_macro("EMP_LAYOUT_15")
+    #endif
 #endif // #ifdef EMP_LAYOUT_15
 
 #ifdef EMP_LAYOUT_16
@@ -58006,6 +67670,10 @@
     #undef EMP_LAYOUT_16
   #endif
 
+#else // #ifdef EMP_LAYOUT_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_16
+        #pragma pop_macro("EMP_LAYOUT_16")
+    #endif
 #endif // #ifdef EMP_LAYOUT_16
 
 #ifdef EMP_LAYOUT_17
@@ -58030,6 +67698,10 @@
     #undef EMP_LAYOUT_17
   #endif
 
+#else // #ifdef EMP_LAYOUT_17
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_17
+        #pragma pop_macro("EMP_LAYOUT_17")
+    #endif
 #endif // #ifdef EMP_LAYOUT_17
 
 #ifdef EMP_LAYOUT_18
@@ -58054,6 +67726,10 @@
     #undef EMP_LAYOUT_18
   #endif
 
+#else // #ifdef EMP_LAYOUT_18
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_18
+        #pragma pop_macro("EMP_LAYOUT_18")
+    #endif
 #endif // #ifdef EMP_LAYOUT_18
 
 #ifdef EMP_LAYOUT_19
@@ -58078,6 +67754,10 @@
     #undef EMP_LAYOUT_19
   #endif
 
+#else // #ifdef EMP_LAYOUT_19
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_19
+        #pragma pop_macro("EMP_LAYOUT_19")
+    #endif
 #endif // #ifdef EMP_LAYOUT_19
 
 #ifdef EMP_LAYOUT_2
@@ -58102,6 +67782,10 @@
     #undef EMP_LAYOUT_2
   #endif
 
+#else // #ifdef EMP_LAYOUT_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_2
+        #pragma pop_macro("EMP_LAYOUT_2")
+    #endif
 #endif // #ifdef EMP_LAYOUT_2
 
 #ifdef EMP_LAYOUT_20
@@ -58126,6 +67810,10 @@
     #undef EMP_LAYOUT_20
   #endif
 
+#else // #ifdef EMP_LAYOUT_20
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_20
+        #pragma pop_macro("EMP_LAYOUT_20")
+    #endif
 #endif // #ifdef EMP_LAYOUT_20
 
 #ifdef EMP_LAYOUT_21
@@ -58150,6 +67838,10 @@
     #undef EMP_LAYOUT_21
   #endif
 
+#else // #ifdef EMP_LAYOUT_21
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_21
+        #pragma pop_macro("EMP_LAYOUT_21")
+    #endif
 #endif // #ifdef EMP_LAYOUT_21
 
 #ifdef EMP_LAYOUT_22
@@ -58174,6 +67866,10 @@
     #undef EMP_LAYOUT_22
   #endif
 
+#else // #ifdef EMP_LAYOUT_22
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_22
+        #pragma pop_macro("EMP_LAYOUT_22")
+    #endif
 #endif // #ifdef EMP_LAYOUT_22
 
 #ifdef EMP_LAYOUT_23
@@ -58198,6 +67894,10 @@
     #undef EMP_LAYOUT_23
   #endif
 
+#else // #ifdef EMP_LAYOUT_23
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_23
+        #pragma pop_macro("EMP_LAYOUT_23")
+    #endif
 #endif // #ifdef EMP_LAYOUT_23
 
 #ifdef EMP_LAYOUT_24
@@ -58222,6 +67922,10 @@
     #undef EMP_LAYOUT_24
   #endif
 
+#else // #ifdef EMP_LAYOUT_24
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_24
+        #pragma pop_macro("EMP_LAYOUT_24")
+    #endif
 #endif // #ifdef EMP_LAYOUT_24
 
 #ifdef EMP_LAYOUT_25
@@ -58246,6 +67950,10 @@
     #undef EMP_LAYOUT_25
   #endif
 
+#else // #ifdef EMP_LAYOUT_25
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_25
+        #pragma pop_macro("EMP_LAYOUT_25")
+    #endif
 #endif // #ifdef EMP_LAYOUT_25
 
 #ifdef EMP_LAYOUT_26
@@ -58270,6 +67978,10 @@
     #undef EMP_LAYOUT_26
   #endif
 
+#else // #ifdef EMP_LAYOUT_26
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_26
+        #pragma pop_macro("EMP_LAYOUT_26")
+    #endif
 #endif // #ifdef EMP_LAYOUT_26
 
 #ifdef EMP_LAYOUT_27
@@ -58294,6 +68006,10 @@
     #undef EMP_LAYOUT_27
   #endif
 
+#else // #ifdef EMP_LAYOUT_27
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_27
+        #pragma pop_macro("EMP_LAYOUT_27")
+    #endif
 #endif // #ifdef EMP_LAYOUT_27
 
 #ifdef EMP_LAYOUT_28
@@ -58318,6 +68034,10 @@
     #undef EMP_LAYOUT_28
   #endif
 
+#else // #ifdef EMP_LAYOUT_28
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_28
+        #pragma pop_macro("EMP_LAYOUT_28")
+    #endif
 #endif // #ifdef EMP_LAYOUT_28
 
 #ifdef EMP_LAYOUT_29
@@ -58342,6 +68062,10 @@
     #undef EMP_LAYOUT_29
   #endif
 
+#else // #ifdef EMP_LAYOUT_29
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_29
+        #pragma pop_macro("EMP_LAYOUT_29")
+    #endif
 #endif // #ifdef EMP_LAYOUT_29
 
 #ifdef EMP_LAYOUT_3
@@ -58366,6 +68090,10 @@
     #undef EMP_LAYOUT_3
   #endif
 
+#else // #ifdef EMP_LAYOUT_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_3
+        #pragma pop_macro("EMP_LAYOUT_3")
+    #endif
 #endif // #ifdef EMP_LAYOUT_3
 
 #ifdef EMP_LAYOUT_30
@@ -58390,6 +68118,10 @@
     #undef EMP_LAYOUT_30
   #endif
 
+#else // #ifdef EMP_LAYOUT_30
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_30
+        #pragma pop_macro("EMP_LAYOUT_30")
+    #endif
 #endif // #ifdef EMP_LAYOUT_30
 
 #ifdef EMP_LAYOUT_31
@@ -58414,6 +68146,10 @@
     #undef EMP_LAYOUT_31
   #endif
 
+#else // #ifdef EMP_LAYOUT_31
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_31
+        #pragma pop_macro("EMP_LAYOUT_31")
+    #endif
 #endif // #ifdef EMP_LAYOUT_31
 
 #ifdef EMP_LAYOUT_32
@@ -58438,6 +68174,10 @@
     #undef EMP_LAYOUT_32
   #endif
 
+#else // #ifdef EMP_LAYOUT_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_32
+        #pragma pop_macro("EMP_LAYOUT_32")
+    #endif
 #endif // #ifdef EMP_LAYOUT_32
 
 #ifdef EMP_LAYOUT_33
@@ -58462,6 +68202,10 @@
     #undef EMP_LAYOUT_33
   #endif
 
+#else // #ifdef EMP_LAYOUT_33
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_33
+        #pragma pop_macro("EMP_LAYOUT_33")
+    #endif
 #endif // #ifdef EMP_LAYOUT_33
 
 #ifdef EMP_LAYOUT_34
@@ -58486,6 +68230,10 @@
     #undef EMP_LAYOUT_34
   #endif
 
+#else // #ifdef EMP_LAYOUT_34
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_34
+        #pragma pop_macro("EMP_LAYOUT_34")
+    #endif
 #endif // #ifdef EMP_LAYOUT_34
 
 #ifdef EMP_LAYOUT_35
@@ -58510,6 +68258,10 @@
     #undef EMP_LAYOUT_35
   #endif
 
+#else // #ifdef EMP_LAYOUT_35
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_35
+        #pragma pop_macro("EMP_LAYOUT_35")
+    #endif
 #endif // #ifdef EMP_LAYOUT_35
 
 #ifdef EMP_LAYOUT_36
@@ -58534,6 +68286,10 @@
     #undef EMP_LAYOUT_36
   #endif
 
+#else // #ifdef EMP_LAYOUT_36
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_36
+        #pragma pop_macro("EMP_LAYOUT_36")
+    #endif
 #endif // #ifdef EMP_LAYOUT_36
 
 #ifdef EMP_LAYOUT_37
@@ -58558,6 +68314,10 @@
     #undef EMP_LAYOUT_37
   #endif
 
+#else // #ifdef EMP_LAYOUT_37
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_37
+        #pragma pop_macro("EMP_LAYOUT_37")
+    #endif
 #endif // #ifdef EMP_LAYOUT_37
 
 #ifdef EMP_LAYOUT_38
@@ -58582,6 +68342,10 @@
     #undef EMP_LAYOUT_38
   #endif
 
+#else // #ifdef EMP_LAYOUT_38
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_38
+        #pragma pop_macro("EMP_LAYOUT_38")
+    #endif
 #endif // #ifdef EMP_LAYOUT_38
 
 #ifdef EMP_LAYOUT_39
@@ -58606,6 +68370,10 @@
     #undef EMP_LAYOUT_39
   #endif
 
+#else // #ifdef EMP_LAYOUT_39
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_39
+        #pragma pop_macro("EMP_LAYOUT_39")
+    #endif
 #endif // #ifdef EMP_LAYOUT_39
 
 #ifdef EMP_LAYOUT_4
@@ -58630,6 +68398,10 @@
     #undef EMP_LAYOUT_4
   #endif
 
+#else // #ifdef EMP_LAYOUT_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_4
+        #pragma pop_macro("EMP_LAYOUT_4")
+    #endif
 #endif // #ifdef EMP_LAYOUT_4
 
 #ifdef EMP_LAYOUT_40
@@ -58654,6 +68426,10 @@
     #undef EMP_LAYOUT_40
   #endif
 
+#else // #ifdef EMP_LAYOUT_40
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_40
+        #pragma pop_macro("EMP_LAYOUT_40")
+    #endif
 #endif // #ifdef EMP_LAYOUT_40
 
 #ifdef EMP_LAYOUT_41
@@ -58678,6 +68454,10 @@
     #undef EMP_LAYOUT_41
   #endif
 
+#else // #ifdef EMP_LAYOUT_41
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_41
+        #pragma pop_macro("EMP_LAYOUT_41")
+    #endif
 #endif // #ifdef EMP_LAYOUT_41
 
 #ifdef EMP_LAYOUT_42
@@ -58702,6 +68482,10 @@
     #undef EMP_LAYOUT_42
   #endif
 
+#else // #ifdef EMP_LAYOUT_42
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_42
+        #pragma pop_macro("EMP_LAYOUT_42")
+    #endif
 #endif // #ifdef EMP_LAYOUT_42
 
 #ifdef EMP_LAYOUT_43
@@ -58726,6 +68510,10 @@
     #undef EMP_LAYOUT_43
   #endif
 
+#else // #ifdef EMP_LAYOUT_43
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_43
+        #pragma pop_macro("EMP_LAYOUT_43")
+    #endif
 #endif // #ifdef EMP_LAYOUT_43
 
 #ifdef EMP_LAYOUT_44
@@ -58750,6 +68538,10 @@
     #undef EMP_LAYOUT_44
   #endif
 
+#else // #ifdef EMP_LAYOUT_44
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_44
+        #pragma pop_macro("EMP_LAYOUT_44")
+    #endif
 #endif // #ifdef EMP_LAYOUT_44
 
 #ifdef EMP_LAYOUT_45
@@ -58774,6 +68566,10 @@
     #undef EMP_LAYOUT_45
   #endif
 
+#else // #ifdef EMP_LAYOUT_45
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_45
+        #pragma pop_macro("EMP_LAYOUT_45")
+    #endif
 #endif // #ifdef EMP_LAYOUT_45
 
 #ifdef EMP_LAYOUT_46
@@ -58798,6 +68594,10 @@
     #undef EMP_LAYOUT_46
   #endif
 
+#else // #ifdef EMP_LAYOUT_46
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_46
+        #pragma pop_macro("EMP_LAYOUT_46")
+    #endif
 #endif // #ifdef EMP_LAYOUT_46
 
 #ifdef EMP_LAYOUT_47
@@ -58822,6 +68622,10 @@
     #undef EMP_LAYOUT_47
   #endif
 
+#else // #ifdef EMP_LAYOUT_47
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_47
+        #pragma pop_macro("EMP_LAYOUT_47")
+    #endif
 #endif // #ifdef EMP_LAYOUT_47
 
 #ifdef EMP_LAYOUT_48
@@ -58846,6 +68650,10 @@
     #undef EMP_LAYOUT_48
   #endif
 
+#else // #ifdef EMP_LAYOUT_48
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_48
+        #pragma pop_macro("EMP_LAYOUT_48")
+    #endif
 #endif // #ifdef EMP_LAYOUT_48
 
 #ifdef EMP_LAYOUT_49
@@ -58870,6 +68678,10 @@
     #undef EMP_LAYOUT_49
   #endif
 
+#else // #ifdef EMP_LAYOUT_49
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_49
+        #pragma pop_macro("EMP_LAYOUT_49")
+    #endif
 #endif // #ifdef EMP_LAYOUT_49
 
 #ifdef EMP_LAYOUT_5
@@ -58894,6 +68706,10 @@
     #undef EMP_LAYOUT_5
   #endif
 
+#else // #ifdef EMP_LAYOUT_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_5
+        #pragma pop_macro("EMP_LAYOUT_5")
+    #endif
 #endif // #ifdef EMP_LAYOUT_5
 
 #ifdef EMP_LAYOUT_50
@@ -58918,6 +68734,10 @@
     #undef EMP_LAYOUT_50
   #endif
 
+#else // #ifdef EMP_LAYOUT_50
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_50
+        #pragma pop_macro("EMP_LAYOUT_50")
+    #endif
 #endif // #ifdef EMP_LAYOUT_50
 
 #ifdef EMP_LAYOUT_51
@@ -58942,6 +68762,10 @@
     #undef EMP_LAYOUT_51
   #endif
 
+#else // #ifdef EMP_LAYOUT_51
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_51
+        #pragma pop_macro("EMP_LAYOUT_51")
+    #endif
 #endif // #ifdef EMP_LAYOUT_51
 
 #ifdef EMP_LAYOUT_52
@@ -58966,6 +68790,10 @@
     #undef EMP_LAYOUT_52
   #endif
 
+#else // #ifdef EMP_LAYOUT_52
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_52
+        #pragma pop_macro("EMP_LAYOUT_52")
+    #endif
 #endif // #ifdef EMP_LAYOUT_52
 
 #ifdef EMP_LAYOUT_53
@@ -58990,6 +68818,10 @@
     #undef EMP_LAYOUT_53
   #endif
 
+#else // #ifdef EMP_LAYOUT_53
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_53
+        #pragma pop_macro("EMP_LAYOUT_53")
+    #endif
 #endif // #ifdef EMP_LAYOUT_53
 
 #ifdef EMP_LAYOUT_54
@@ -59014,6 +68846,10 @@
     #undef EMP_LAYOUT_54
   #endif
 
+#else // #ifdef EMP_LAYOUT_54
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_54
+        #pragma pop_macro("EMP_LAYOUT_54")
+    #endif
 #endif // #ifdef EMP_LAYOUT_54
 
 #ifdef EMP_LAYOUT_55
@@ -59038,6 +68874,10 @@
     #undef EMP_LAYOUT_55
   #endif
 
+#else // #ifdef EMP_LAYOUT_55
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_55
+        #pragma pop_macro("EMP_LAYOUT_55")
+    #endif
 #endif // #ifdef EMP_LAYOUT_55
 
 #ifdef EMP_LAYOUT_56
@@ -59062,6 +68902,10 @@
     #undef EMP_LAYOUT_56
   #endif
 
+#else // #ifdef EMP_LAYOUT_56
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_56
+        #pragma pop_macro("EMP_LAYOUT_56")
+    #endif
 #endif // #ifdef EMP_LAYOUT_56
 
 #ifdef EMP_LAYOUT_57
@@ -59086,6 +68930,10 @@
     #undef EMP_LAYOUT_57
   #endif
 
+#else // #ifdef EMP_LAYOUT_57
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_57
+        #pragma pop_macro("EMP_LAYOUT_57")
+    #endif
 #endif // #ifdef EMP_LAYOUT_57
 
 #ifdef EMP_LAYOUT_58
@@ -59110,6 +68958,10 @@
     #undef EMP_LAYOUT_58
   #endif
 
+#else // #ifdef EMP_LAYOUT_58
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_58
+        #pragma pop_macro("EMP_LAYOUT_58")
+    #endif
 #endif // #ifdef EMP_LAYOUT_58
 
 #ifdef EMP_LAYOUT_59
@@ -59134,6 +68986,10 @@
     #undef EMP_LAYOUT_59
   #endif
 
+#else // #ifdef EMP_LAYOUT_59
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_59
+        #pragma pop_macro("EMP_LAYOUT_59")
+    #endif
 #endif // #ifdef EMP_LAYOUT_59
 
 #ifdef EMP_LAYOUT_6
@@ -59158,6 +69014,10 @@
     #undef EMP_LAYOUT_6
   #endif
 
+#else // #ifdef EMP_LAYOUT_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_6
+        #pragma pop_macro("EMP_LAYOUT_6")
+    #endif
 #endif // #ifdef EMP_LAYOUT_6
 
 #ifdef EMP_LAYOUT_60
@@ -59182,6 +69042,10 @@
     #undef EMP_LAYOUT_60
   #endif
 
+#else // #ifdef EMP_LAYOUT_60
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_60
+        #pragma pop_macro("EMP_LAYOUT_60")
+    #endif
 #endif // #ifdef EMP_LAYOUT_60
 
 #ifdef EMP_LAYOUT_61
@@ -59206,6 +69070,10 @@
     #undef EMP_LAYOUT_61
   #endif
 
+#else // #ifdef EMP_LAYOUT_61
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_61
+        #pragma pop_macro("EMP_LAYOUT_61")
+    #endif
 #endif // #ifdef EMP_LAYOUT_61
 
 #ifdef EMP_LAYOUT_62
@@ -59230,6 +69098,10 @@
     #undef EMP_LAYOUT_62
   #endif
 
+#else // #ifdef EMP_LAYOUT_62
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_62
+        #pragma pop_macro("EMP_LAYOUT_62")
+    #endif
 #endif // #ifdef EMP_LAYOUT_62
 
 #ifdef EMP_LAYOUT_63
@@ -59254,6 +69126,10 @@
     #undef EMP_LAYOUT_63
   #endif
 
+#else // #ifdef EMP_LAYOUT_63
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_63
+        #pragma pop_macro("EMP_LAYOUT_63")
+    #endif
 #endif // #ifdef EMP_LAYOUT_63
 
 #ifdef EMP_LAYOUT_7
@@ -59278,6 +69154,10 @@
     #undef EMP_LAYOUT_7
   #endif
 
+#else // #ifdef EMP_LAYOUT_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_7
+        #pragma pop_macro("EMP_LAYOUT_7")
+    #endif
 #endif // #ifdef EMP_LAYOUT_7
 
 #ifdef EMP_LAYOUT_8
@@ -59302,6 +69182,10 @@
     #undef EMP_LAYOUT_8
   #endif
 
+#else // #ifdef EMP_LAYOUT_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_8
+        #pragma pop_macro("EMP_LAYOUT_8")
+    #endif
 #endif // #ifdef EMP_LAYOUT_8
 
 #ifdef EMP_LAYOUT_9
@@ -59326,6 +69210,10 @@
     #undef EMP_LAYOUT_9
   #endif
 
+#else // #ifdef EMP_LAYOUT_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_LAYOUT_9
+        #pragma pop_macro("EMP_LAYOUT_9")
+    #endif
 #endif // #ifdef EMP_LAYOUT_9
 
 #ifdef EMP_LESS
@@ -59350,6 +69238,10 @@
     #undef EMP_LESS
   #endif
 
+#else // #ifdef EMP_LESS
+    #ifdef UIT_EXTERNAL_HAS_EMP_LESS
+        #pragma pop_macro("EMP_LESS")
+    #endif
 #endif // #ifdef EMP_LESS
 
 #ifdef EMP_LESS_EQU
@@ -59374,6 +69266,10 @@
     #undef EMP_LESS_EQU
   #endif
 
+#else // #ifdef EMP_LESS_EQU
+    #ifdef UIT_EXTERNAL_HAS_EMP_LESS_EQU
+        #pragma pop_macro("EMP_LESS_EQU")
+    #endif
 #endif // #ifdef EMP_LESS_EQU
 
 #ifdef EMP_LOG2
@@ -59398,6 +69294,10 @@
     #undef EMP_LOG2
   #endif
 
+#else // #ifdef EMP_LOG2
+    #ifdef UIT_EXTERNAL_HAS_EMP_LOG2
+        #pragma pop_macro("EMP_LOG2")
+    #endif
 #endif // #ifdef EMP_LOG2
 
 #ifdef EMP_LOG2_BIN
@@ -59422,6 +69322,10 @@
     #undef EMP_LOG2_BIN
   #endif
 
+#else // #ifdef EMP_LOG2_BIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_LOG2_BIN
+        #pragma pop_macro("EMP_LOG2_BIN")
+    #endif
 #endif // #ifdef EMP_LOG2_BIN
 
 #ifdef EMP_LOG2_IMPL
@@ -59446,6 +69350,10 @@
     #undef EMP_LOG2_IMPL
   #endif
 
+#else // #ifdef EMP_LOG2_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_LOG2_IMPL
+        #pragma pop_macro("EMP_LOG2_IMPL")
+    #endif
 #endif // #ifdef EMP_LOG2_IMPL
 
 #ifdef EMP_MATH_BIN_TIMES_0
@@ -59470,6 +69378,10 @@
     #undef EMP_MATH_BIN_TIMES_0
   #endif
 
+#else // #ifdef EMP_MATH_BIN_TIMES_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIN_TIMES_0
+        #pragma pop_macro("EMP_MATH_BIN_TIMES_0")
+    #endif
 #endif // #ifdef EMP_MATH_BIN_TIMES_0
 
 #ifdef EMP_MATH_BIN_TIMES_1
@@ -59494,6 +69406,10 @@
     #undef EMP_MATH_BIN_TIMES_1
   #endif
 
+#else // #ifdef EMP_MATH_BIN_TIMES_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIN_TIMES_1
+        #pragma pop_macro("EMP_MATH_BIN_TIMES_1")
+    #endif
 #endif // #ifdef EMP_MATH_BIN_TIMES_1
 
 #ifdef EMP_MATH_BIT_AND_00
@@ -59518,6 +69434,10 @@
     #undef EMP_MATH_BIT_AND_00
   #endif
 
+#else // #ifdef EMP_MATH_BIT_AND_00
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_AND_00
+        #pragma pop_macro("EMP_MATH_BIT_AND_00")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_AND_00
 
 #ifdef EMP_MATH_BIT_AND_01
@@ -59542,6 +69462,10 @@
     #undef EMP_MATH_BIT_AND_01
   #endif
 
+#else // #ifdef EMP_MATH_BIT_AND_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_AND_01
+        #pragma pop_macro("EMP_MATH_BIT_AND_01")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_AND_01
 
 #ifdef EMP_MATH_BIT_AND_10
@@ -59566,6 +69490,10 @@
     #undef EMP_MATH_BIT_AND_10
   #endif
 
+#else // #ifdef EMP_MATH_BIT_AND_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_AND_10
+        #pragma pop_macro("EMP_MATH_BIT_AND_10")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_AND_10
 
 #ifdef EMP_MATH_BIT_AND_11
@@ -59590,6 +69518,10 @@
     #undef EMP_MATH_BIT_AND_11
   #endif
 
+#else // #ifdef EMP_MATH_BIT_AND_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_AND_11
+        #pragma pop_macro("EMP_MATH_BIT_AND_11")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_AND_11
 
 #ifdef EMP_MATH_BIT_EQU_00
@@ -59614,6 +69546,10 @@
     #undef EMP_MATH_BIT_EQU_00
   #endif
 
+#else // #ifdef EMP_MATH_BIT_EQU_00
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_EQU_00
+        #pragma pop_macro("EMP_MATH_BIT_EQU_00")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_EQU_00
 
 #ifdef EMP_MATH_BIT_EQU_01
@@ -59638,6 +69574,10 @@
     #undef EMP_MATH_BIT_EQU_01
   #endif
 
+#else // #ifdef EMP_MATH_BIT_EQU_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_EQU_01
+        #pragma pop_macro("EMP_MATH_BIT_EQU_01")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_EQU_01
 
 #ifdef EMP_MATH_BIT_EQU_10
@@ -59662,6 +69602,10 @@
     #undef EMP_MATH_BIT_EQU_10
   #endif
 
+#else // #ifdef EMP_MATH_BIT_EQU_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_EQU_10
+        #pragma pop_macro("EMP_MATH_BIT_EQU_10")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_EQU_10
 
 #ifdef EMP_MATH_BIT_EQU_11
@@ -59686,6 +69630,10 @@
     #undef EMP_MATH_BIT_EQU_11
   #endif
 
+#else // #ifdef EMP_MATH_BIT_EQU_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_EQU_11
+        #pragma pop_macro("EMP_MATH_BIT_EQU_11")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_EQU_11
 
 #ifdef EMP_MATH_BIT_LESS_00
@@ -59710,6 +69658,10 @@
     #undef EMP_MATH_BIT_LESS_00
   #endif
 
+#else // #ifdef EMP_MATH_BIT_LESS_00
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_LESS_00
+        #pragma pop_macro("EMP_MATH_BIT_LESS_00")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_LESS_00
 
 #ifdef EMP_MATH_BIT_LESS_01
@@ -59734,6 +69686,10 @@
     #undef EMP_MATH_BIT_LESS_01
   #endif
 
+#else // #ifdef EMP_MATH_BIT_LESS_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_LESS_01
+        #pragma pop_macro("EMP_MATH_BIT_LESS_01")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_LESS_01
 
 #ifdef EMP_MATH_BIT_LESS_10
@@ -59758,6 +69714,10 @@
     #undef EMP_MATH_BIT_LESS_10
   #endif
 
+#else // #ifdef EMP_MATH_BIT_LESS_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_LESS_10
+        #pragma pop_macro("EMP_MATH_BIT_LESS_10")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_LESS_10
 
 #ifdef EMP_MATH_BIT_LESS_11
@@ -59782,6 +69742,10 @@
     #undef EMP_MATH_BIT_LESS_11
   #endif
 
+#else // #ifdef EMP_MATH_BIT_LESS_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_LESS_11
+        #pragma pop_macro("EMP_MATH_BIT_LESS_11")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_LESS_11
 
 #ifdef EMP_MATH_BIT_NAND_00
@@ -59806,6 +69770,10 @@
     #undef EMP_MATH_BIT_NAND_00
   #endif
 
+#else // #ifdef EMP_MATH_BIT_NAND_00
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_NAND_00
+        #pragma pop_macro("EMP_MATH_BIT_NAND_00")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_NAND_00
 
 #ifdef EMP_MATH_BIT_NAND_01
@@ -59830,6 +69798,10 @@
     #undef EMP_MATH_BIT_NAND_01
   #endif
 
+#else // #ifdef EMP_MATH_BIT_NAND_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_NAND_01
+        #pragma pop_macro("EMP_MATH_BIT_NAND_01")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_NAND_01
 
 #ifdef EMP_MATH_BIT_NAND_10
@@ -59854,6 +69826,10 @@
     #undef EMP_MATH_BIT_NAND_10
   #endif
 
+#else // #ifdef EMP_MATH_BIT_NAND_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_NAND_10
+        #pragma pop_macro("EMP_MATH_BIT_NAND_10")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_NAND_10
 
 #ifdef EMP_MATH_BIT_NAND_11
@@ -59878,6 +69854,10 @@
     #undef EMP_MATH_BIT_NAND_11
   #endif
 
+#else // #ifdef EMP_MATH_BIT_NAND_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_NAND_11
+        #pragma pop_macro("EMP_MATH_BIT_NAND_11")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_NAND_11
 
 #ifdef EMP_MATH_BIT_NOR_00
@@ -59902,6 +69882,10 @@
     #undef EMP_MATH_BIT_NOR_00
   #endif
 
+#else // #ifdef EMP_MATH_BIT_NOR_00
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_NOR_00
+        #pragma pop_macro("EMP_MATH_BIT_NOR_00")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_NOR_00
 
 #ifdef EMP_MATH_BIT_NOR_01
@@ -59926,6 +69910,10 @@
     #undef EMP_MATH_BIT_NOR_01
   #endif
 
+#else // #ifdef EMP_MATH_BIT_NOR_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_NOR_01
+        #pragma pop_macro("EMP_MATH_BIT_NOR_01")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_NOR_01
 
 #ifdef EMP_MATH_BIT_NOR_10
@@ -59950,6 +69938,10 @@
     #undef EMP_MATH_BIT_NOR_10
   #endif
 
+#else // #ifdef EMP_MATH_BIT_NOR_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_NOR_10
+        #pragma pop_macro("EMP_MATH_BIT_NOR_10")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_NOR_10
 
 #ifdef EMP_MATH_BIT_NOR_11
@@ -59974,6 +69966,10 @@
     #undef EMP_MATH_BIT_NOR_11
   #endif
 
+#else // #ifdef EMP_MATH_BIT_NOR_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_NOR_11
+        #pragma pop_macro("EMP_MATH_BIT_NOR_11")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_NOR_11
 
 #ifdef EMP_MATH_BIT_OR_00
@@ -59998,6 +69994,10 @@
     #undef EMP_MATH_BIT_OR_00
   #endif
 
+#else // #ifdef EMP_MATH_BIT_OR_00
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_OR_00
+        #pragma pop_macro("EMP_MATH_BIT_OR_00")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_OR_00
 
 #ifdef EMP_MATH_BIT_OR_01
@@ -60022,6 +70022,10 @@
     #undef EMP_MATH_BIT_OR_01
   #endif
 
+#else // #ifdef EMP_MATH_BIT_OR_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_OR_01
+        #pragma pop_macro("EMP_MATH_BIT_OR_01")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_OR_01
 
 #ifdef EMP_MATH_BIT_OR_10
@@ -60046,6 +70050,10 @@
     #undef EMP_MATH_BIT_OR_10
   #endif
 
+#else // #ifdef EMP_MATH_BIT_OR_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_OR_10
+        #pragma pop_macro("EMP_MATH_BIT_OR_10")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_OR_10
 
 #ifdef EMP_MATH_BIT_OR_11
@@ -60070,6 +70078,10 @@
     #undef EMP_MATH_BIT_OR_11
   #endif
 
+#else // #ifdef EMP_MATH_BIT_OR_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_OR_11
+        #pragma pop_macro("EMP_MATH_BIT_OR_11")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_OR_11
 
 #ifdef EMP_MATH_BIT_XOR_00
@@ -60094,6 +70106,10 @@
     #undef EMP_MATH_BIT_XOR_00
   #endif
 
+#else // #ifdef EMP_MATH_BIT_XOR_00
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_XOR_00
+        #pragma pop_macro("EMP_MATH_BIT_XOR_00")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_XOR_00
 
 #ifdef EMP_MATH_BIT_XOR_01
@@ -60118,6 +70134,10 @@
     #undef EMP_MATH_BIT_XOR_01
   #endif
 
+#else // #ifdef EMP_MATH_BIT_XOR_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_XOR_01
+        #pragma pop_macro("EMP_MATH_BIT_XOR_01")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_XOR_01
 
 #ifdef EMP_MATH_BIT_XOR_10
@@ -60142,6 +70162,10 @@
     #undef EMP_MATH_BIT_XOR_10
   #endif
 
+#else // #ifdef EMP_MATH_BIT_XOR_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_XOR_10
+        #pragma pop_macro("EMP_MATH_BIT_XOR_10")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_XOR_10
 
 #ifdef EMP_MATH_BIT_XOR_11
@@ -60166,6 +70190,10 @@
     #undef EMP_MATH_BIT_XOR_11
   #endif
 
+#else // #ifdef EMP_MATH_BIT_XOR_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_BIT_XOR_11
+        #pragma pop_macro("EMP_MATH_BIT_XOR_11")
+    #endif
 #endif // #ifdef EMP_MATH_BIT_XOR_11
 
 #ifdef EMP_MATH_CLEAR_CARRY
@@ -60190,6 +70218,10 @@
     #undef EMP_MATH_CLEAR_CARRY
   #endif
 
+#else // #ifdef EMP_MATH_CLEAR_CARRY
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_CLEAR_CARRY
+        #pragma pop_macro("EMP_MATH_CLEAR_CARRY")
+    #endif
 #endif // #ifdef EMP_MATH_CLEAR_CARRY
 
 #ifdef EMP_MATH_CLEAR_CARRY_0
@@ -60214,6 +70246,10 @@
     #undef EMP_MATH_CLEAR_CARRY_0
   #endif
 
+#else // #ifdef EMP_MATH_CLEAR_CARRY_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_CLEAR_CARRY_0
+        #pragma pop_macro("EMP_MATH_CLEAR_CARRY_0")
+    #endif
 #endif // #ifdef EMP_MATH_CLEAR_CARRY_0
 
 #ifdef EMP_MATH_CLEAR_CARRY_1
@@ -60238,6 +70274,10 @@
     #undef EMP_MATH_CLEAR_CARRY_1
   #endif
 
+#else // #ifdef EMP_MATH_CLEAR_CARRY_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_CLEAR_CARRY_1
+        #pragma pop_macro("EMP_MATH_CLEAR_CARRY_1")
+    #endif
 #endif // #ifdef EMP_MATH_CLEAR_CARRY_1
 
 #ifdef EMP_MATH_CLEAR_CARRY_2
@@ -60262,6 +70302,10 @@
     #undef EMP_MATH_CLEAR_CARRY_2
   #endif
 
+#else // #ifdef EMP_MATH_CLEAR_CARRY_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_CLEAR_CARRY_2
+        #pragma pop_macro("EMP_MATH_CLEAR_CARRY_2")
+    #endif
 #endif // #ifdef EMP_MATH_CLEAR_CARRY_2
 
 #ifdef EMP_MATH_CLEAR_CARRY_IMPL
@@ -60286,6 +70330,10 @@
     #undef EMP_MATH_CLEAR_CARRY_IMPL
   #endif
 
+#else // #ifdef EMP_MATH_CLEAR_CARRY_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_CLEAR_CARRY_IMPL
+        #pragma pop_macro("EMP_MATH_CLEAR_CARRY_IMPL")
+    #endif
 #endif // #ifdef EMP_MATH_CLEAR_CARRY_IMPL
 
 #ifdef EMP_MATH_CLEAR_CARRY_N
@@ -60310,6 +70358,10 @@
     #undef EMP_MATH_CLEAR_CARRY_N
   #endif
 
+#else // #ifdef EMP_MATH_CLEAR_CARRY_N
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_CLEAR_CARRY_N
+        #pragma pop_macro("EMP_MATH_CLEAR_CARRY_N")
+    #endif
 #endif // #ifdef EMP_MATH_CLEAR_CARRY_N
 
 #ifdef EMP_MATH_COUNT_BITS
@@ -60334,6 +70386,10 @@
     #undef EMP_MATH_COUNT_BITS
   #endif
 
+#else // #ifdef EMP_MATH_COUNT_BITS
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_COUNT_BITS
+        #pragma pop_macro("EMP_MATH_COUNT_BITS")
+    #endif
 #endif // #ifdef EMP_MATH_COUNT_BITS
 
 #ifdef EMP_MATH_COUNT_BITS_00
@@ -60358,6 +70414,10 @@
     #undef EMP_MATH_COUNT_BITS_00
   #endif
 
+#else // #ifdef EMP_MATH_COUNT_BITS_00
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_COUNT_BITS_00
+        #pragma pop_macro("EMP_MATH_COUNT_BITS_00")
+    #endif
 #endif // #ifdef EMP_MATH_COUNT_BITS_00
 
 #ifdef EMP_MATH_COUNT_BITS_01
@@ -60382,6 +70442,10 @@
     #undef EMP_MATH_COUNT_BITS_01
   #endif
 
+#else // #ifdef EMP_MATH_COUNT_BITS_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_COUNT_BITS_01
+        #pragma pop_macro("EMP_MATH_COUNT_BITS_01")
+    #endif
 #endif // #ifdef EMP_MATH_COUNT_BITS_01
 
 #ifdef EMP_MATH_COUNT_BITS_0N
@@ -60406,6 +70470,10 @@
     #undef EMP_MATH_COUNT_BITS_0N
   #endif
 
+#else // #ifdef EMP_MATH_COUNT_BITS_0N
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_COUNT_BITS_0N
+        #pragma pop_macro("EMP_MATH_COUNT_BITS_0N")
+    #endif
 #endif // #ifdef EMP_MATH_COUNT_BITS_0N
 
 #ifdef EMP_MATH_COUNT_BITS_10
@@ -60430,6 +70498,10 @@
     #undef EMP_MATH_COUNT_BITS_10
   #endif
 
+#else // #ifdef EMP_MATH_COUNT_BITS_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_COUNT_BITS_10
+        #pragma pop_macro("EMP_MATH_COUNT_BITS_10")
+    #endif
 #endif // #ifdef EMP_MATH_COUNT_BITS_10
 
 #ifdef EMP_MATH_COUNT_BITS_11
@@ -60454,6 +70526,10 @@
     #undef EMP_MATH_COUNT_BITS_11
   #endif
 
+#else // #ifdef EMP_MATH_COUNT_BITS_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_COUNT_BITS_11
+        #pragma pop_macro("EMP_MATH_COUNT_BITS_11")
+    #endif
 #endif // #ifdef EMP_MATH_COUNT_BITS_11
 
 #ifdef EMP_MATH_COUNT_BITS_1N
@@ -60478,6 +70554,10 @@
     #undef EMP_MATH_COUNT_BITS_1N
   #endif
 
+#else // #ifdef EMP_MATH_COUNT_BITS_1N
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_COUNT_BITS_1N
+        #pragma pop_macro("EMP_MATH_COUNT_BITS_1N")
+    #endif
 #endif // #ifdef EMP_MATH_COUNT_BITS_1N
 
 #ifdef EMP_MATH_COUNT_BITS_IMPL
@@ -60502,6 +70582,10 @@
     #undef EMP_MATH_COUNT_BITS_IMPL
   #endif
 
+#else // #ifdef EMP_MATH_COUNT_BITS_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_COUNT_BITS_IMPL
+        #pragma pop_macro("EMP_MATH_COUNT_BITS_IMPL")
+    #endif
 #endif // #ifdef EMP_MATH_COUNT_BITS_IMPL
 
 #ifdef EMP_MATH_DIFF_BITS
@@ -60526,6 +70610,10 @@
     #undef EMP_MATH_DIFF_BITS
   #endif
 
+#else // #ifdef EMP_MATH_DIFF_BITS
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_DIFF_BITS
+        #pragma pop_macro("EMP_MATH_DIFF_BITS")
+    #endif
 #endif // #ifdef EMP_MATH_DIFF_BITS
 
 #ifdef EMP_MATH_DIFF_BITS_00
@@ -60550,6 +70638,10 @@
     #undef EMP_MATH_DIFF_BITS_00
   #endif
 
+#else // #ifdef EMP_MATH_DIFF_BITS_00
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_DIFF_BITS_00
+        #pragma pop_macro("EMP_MATH_DIFF_BITS_00")
+    #endif
 #endif // #ifdef EMP_MATH_DIFF_BITS_00
 
 #ifdef EMP_MATH_DIFF_BITS_01
@@ -60574,6 +70666,10 @@
     #undef EMP_MATH_DIFF_BITS_01
   #endif
 
+#else // #ifdef EMP_MATH_DIFF_BITS_01
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_DIFF_BITS_01
+        #pragma pop_macro("EMP_MATH_DIFF_BITS_01")
+    #endif
 #endif // #ifdef EMP_MATH_DIFF_BITS_01
 
 #ifdef EMP_MATH_DIFF_BITS_10
@@ -60598,6 +70694,10 @@
     #undef EMP_MATH_DIFF_BITS_10
   #endif
 
+#else // #ifdef EMP_MATH_DIFF_BITS_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_DIFF_BITS_10
+        #pragma pop_macro("EMP_MATH_DIFF_BITS_10")
+    #endif
 #endif // #ifdef EMP_MATH_DIFF_BITS_10
 
 #ifdef EMP_MATH_DIFF_BITS_11
@@ -60622,6 +70722,10 @@
     #undef EMP_MATH_DIFF_BITS_11
   #endif
 
+#else // #ifdef EMP_MATH_DIFF_BITS_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_DIFF_BITS_11
+        #pragma pop_macro("EMP_MATH_DIFF_BITS_11")
+    #endif
 #endif // #ifdef EMP_MATH_DIFF_BITS_11
 
 #ifdef EMP_MATH_DIFF_BITS_IMPL
@@ -60646,6 +70750,10 @@
     #undef EMP_MATH_DIFF_BITS_IMPL
   #endif
 
+#else // #ifdef EMP_MATH_DIFF_BITS_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_DIFF_BITS_IMPL
+        #pragma pop_macro("EMP_MATH_DIFF_BITS_IMPL")
+    #endif
 #endif // #ifdef EMP_MATH_DIFF_BITS_IMPL
 
 #ifdef EMP_MATH_GET_CARRY
@@ -60670,6 +70778,10 @@
     #undef EMP_MATH_GET_CARRY
   #endif
 
+#else // #ifdef EMP_MATH_GET_CARRY
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_GET_CARRY
+        #pragma pop_macro("EMP_MATH_GET_CARRY")
+    #endif
 #endif // #ifdef EMP_MATH_GET_CARRY
 
 #ifdef EMP_MATH_GET_CARRY_0
@@ -60694,6 +70806,10 @@
     #undef EMP_MATH_GET_CARRY_0
   #endif
 
+#else // #ifdef EMP_MATH_GET_CARRY_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_GET_CARRY_0
+        #pragma pop_macro("EMP_MATH_GET_CARRY_0")
+    #endif
 #endif // #ifdef EMP_MATH_GET_CARRY_0
 
 #ifdef EMP_MATH_GET_CARRY_1
@@ -60718,6 +70834,10 @@
     #undef EMP_MATH_GET_CARRY_1
   #endif
 
+#else // #ifdef EMP_MATH_GET_CARRY_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_GET_CARRY_1
+        #pragma pop_macro("EMP_MATH_GET_CARRY_1")
+    #endif
 #endif // #ifdef EMP_MATH_GET_CARRY_1
 
 #ifdef EMP_MATH_GET_CARRY_2
@@ -60742,6 +70862,10 @@
     #undef EMP_MATH_GET_CARRY_2
   #endif
 
+#else // #ifdef EMP_MATH_GET_CARRY_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_GET_CARRY_2
+        #pragma pop_macro("EMP_MATH_GET_CARRY_2")
+    #endif
 #endif // #ifdef EMP_MATH_GET_CARRY_2
 
 #ifdef EMP_MATH_GET_CARRY_IMPL
@@ -60766,6 +70890,10 @@
     #undef EMP_MATH_GET_CARRY_IMPL
   #endif
 
+#else // #ifdef EMP_MATH_GET_CARRY_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_GET_CARRY_IMPL
+        #pragma pop_macro("EMP_MATH_GET_CARRY_IMPL")
+    #endif
 #endif // #ifdef EMP_MATH_GET_CARRY_IMPL
 
 #ifdef EMP_MATH_GET_CARRY_N
@@ -60790,6 +70918,10 @@
     #undef EMP_MATH_GET_CARRY_N
   #endif
 
+#else // #ifdef EMP_MATH_GET_CARRY_N
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_GET_CARRY_N
+        #pragma pop_macro("EMP_MATH_GET_CARRY_N")
+    #endif
 #endif // #ifdef EMP_MATH_GET_CARRY_N
 
 #ifdef EMP_MATH_RESTORE_BIN
@@ -60814,6 +70946,10 @@
     #undef EMP_MATH_RESTORE_BIN
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN
 
 #ifdef EMP_MATH_RESTORE_BIN_1
@@ -60838,6 +70974,10 @@
     #undef EMP_MATH_RESTORE_BIN_1
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN_1
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN_1")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN_1
 
 #ifdef EMP_MATH_RESTORE_BIN_2
@@ -60862,6 +71002,10 @@
     #undef EMP_MATH_RESTORE_BIN_2
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN_2
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN_2")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN_2
 
 #ifdef EMP_MATH_RESTORE_BIN_3
@@ -60886,6 +71030,10 @@
     #undef EMP_MATH_RESTORE_BIN_3
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN_3
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN_3")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN_3
 
 #ifdef EMP_MATH_RESTORE_BIN_4
@@ -60910,6 +71058,10 @@
     #undef EMP_MATH_RESTORE_BIN_4
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN_4
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN_4")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN_4
 
 #ifdef EMP_MATH_RESTORE_BIN_5
@@ -60934,6 +71086,10 @@
     #undef EMP_MATH_RESTORE_BIN_5
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN_5
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN_5")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN_5
 
 #ifdef EMP_MATH_RESTORE_BIN_6
@@ -60958,6 +71114,10 @@
     #undef EMP_MATH_RESTORE_BIN_6
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN_6
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN_6")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN_6
 
 #ifdef EMP_MATH_RESTORE_BIN_7
@@ -60982,6 +71142,10 @@
     #undef EMP_MATH_RESTORE_BIN_7
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN_7
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN_7")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN_7
 
 #ifdef EMP_MATH_RESTORE_BIN_8
@@ -61006,6 +71170,10 @@
     #undef EMP_MATH_RESTORE_BIN_8
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN_8
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN_8")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN_8
 
 #ifdef EMP_MATH_RESTORE_BIN_9
@@ -61030,6 +71198,10 @@
     #undef EMP_MATH_RESTORE_BIN_9
   #endif
 
+#else // #ifdef EMP_MATH_RESTORE_BIN_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_RESTORE_BIN_9
+        #pragma pop_macro("EMP_MATH_RESTORE_BIN_9")
+    #endif
 #endif // #ifdef EMP_MATH_RESTORE_BIN_9
 
 #ifdef EMP_MATH_VAL_TIMES_0
@@ -61054,6 +71226,10 @@
     #undef EMP_MATH_VAL_TIMES_0
   #endif
 
+#else // #ifdef EMP_MATH_VAL_TIMES_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_VAL_TIMES_0
+        #pragma pop_macro("EMP_MATH_VAL_TIMES_0")
+    #endif
 #endif // #ifdef EMP_MATH_VAL_TIMES_0
 
 #ifdef EMP_MATH_VAL_TIMES_1
@@ -61078,6 +71254,10 @@
     #undef EMP_MATH_VAL_TIMES_1
   #endif
 
+#else // #ifdef EMP_MATH_VAL_TIMES_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_MATH_VAL_TIMES_1
+        #pragma pop_macro("EMP_MATH_VAL_TIMES_1")
+    #endif
 #endif // #ifdef EMP_MATH_VAL_TIMES_1
 
 #ifdef EMP_MERGE
@@ -61102,6 +71282,10 @@
     #undef EMP_MERGE
   #endif
 
+#else // #ifdef EMP_MERGE
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE
+        #pragma pop_macro("EMP_MERGE")
+    #endif
 #endif // #ifdef EMP_MERGE
 
 #ifdef EMP_MERGE_1
@@ -61126,6 +71310,10 @@
     #undef EMP_MERGE_1
   #endif
 
+#else // #ifdef EMP_MERGE_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_1
+        #pragma pop_macro("EMP_MERGE_1")
+    #endif
 #endif // #ifdef EMP_MERGE_1
 
 #ifdef EMP_MERGE_10
@@ -61150,6 +71338,10 @@
     #undef EMP_MERGE_10
   #endif
 
+#else // #ifdef EMP_MERGE_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_10
+        #pragma pop_macro("EMP_MERGE_10")
+    #endif
 #endif // #ifdef EMP_MERGE_10
 
 #ifdef EMP_MERGE_2
@@ -61174,6 +71366,10 @@
     #undef EMP_MERGE_2
   #endif
 
+#else // #ifdef EMP_MERGE_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_2
+        #pragma pop_macro("EMP_MERGE_2")
+    #endif
 #endif // #ifdef EMP_MERGE_2
 
 #ifdef EMP_MERGE_3
@@ -61198,6 +71394,10 @@
     #undef EMP_MERGE_3
   #endif
 
+#else // #ifdef EMP_MERGE_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_3
+        #pragma pop_macro("EMP_MERGE_3")
+    #endif
 #endif // #ifdef EMP_MERGE_3
 
 #ifdef EMP_MERGE_4
@@ -61222,6 +71422,10 @@
     #undef EMP_MERGE_4
   #endif
 
+#else // #ifdef EMP_MERGE_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_4
+        #pragma pop_macro("EMP_MERGE_4")
+    #endif
 #endif // #ifdef EMP_MERGE_4
 
 #ifdef EMP_MERGE_5
@@ -61246,6 +71450,10 @@
     #undef EMP_MERGE_5
   #endif
 
+#else // #ifdef EMP_MERGE_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_5
+        #pragma pop_macro("EMP_MERGE_5")
+    #endif
 #endif // #ifdef EMP_MERGE_5
 
 #ifdef EMP_MERGE_6
@@ -61270,6 +71478,10 @@
     #undef EMP_MERGE_6
   #endif
 
+#else // #ifdef EMP_MERGE_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_6
+        #pragma pop_macro("EMP_MERGE_6")
+    #endif
 #endif // #ifdef EMP_MERGE_6
 
 #ifdef EMP_MERGE_7
@@ -61294,6 +71506,10 @@
     #undef EMP_MERGE_7
   #endif
 
+#else // #ifdef EMP_MERGE_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_7
+        #pragma pop_macro("EMP_MERGE_7")
+    #endif
 #endif // #ifdef EMP_MERGE_7
 
 #ifdef EMP_MERGE_8
@@ -61318,6 +71534,10 @@
     #undef EMP_MERGE_8
   #endif
 
+#else // #ifdef EMP_MERGE_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_8
+        #pragma pop_macro("EMP_MERGE_8")
+    #endif
 #endif // #ifdef EMP_MERGE_8
 
 #ifdef EMP_MERGE_9
@@ -61342,6 +71562,10 @@
     #undef EMP_MERGE_9
   #endif
 
+#else // #ifdef EMP_MERGE_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_MERGE_9
+        #pragma pop_macro("EMP_MERGE_9")
+    #endif
 #endif // #ifdef EMP_MERGE_9
 
 #ifdef EMP_MOD
@@ -61366,6 +71590,10 @@
     #undef EMP_MOD
   #endif
 
+#else // #ifdef EMP_MOD
+    #ifdef UIT_EXTERNAL_HAS_EMP_MOD
+        #pragma pop_macro("EMP_MOD")
+    #endif
 #endif // #ifdef EMP_MOD
 
 #ifdef EMP_MOD_impl
@@ -61390,6 +71618,10 @@
     #undef EMP_MOD_impl
   #endif
 
+#else // #ifdef EMP_MOD_impl
+    #ifdef UIT_EXTERNAL_HAS_EMP_MOD_impl
+        #pragma pop_macro("EMP_MOD_impl")
+    #endif
 #endif // #ifdef EMP_MOD_impl
 
 #ifdef EMP_MOD_impl2
@@ -61414,6 +71646,10 @@
     #undef EMP_MOD_impl2
   #endif
 
+#else // #ifdef EMP_MOD_impl2
+    #ifdef UIT_EXTERNAL_HAS_EMP_MOD_impl2
+        #pragma pop_macro("EMP_MOD_impl2")
+    #endif
 #endif // #ifdef EMP_MOD_impl2
 
 #ifdef EMP_MULT
@@ -61438,6 +71674,10 @@
     #undef EMP_MULT
   #endif
 
+#else // #ifdef EMP_MULT
+    #ifdef UIT_EXTERNAL_HAS_EMP_MULT
+        #pragma pop_macro("EMP_MULT")
+    #endif
 #endif // #ifdef EMP_MULT
 
 #ifdef EMP_MULT_BIN
@@ -61462,6 +71702,10 @@
     #undef EMP_MULT_BIN
   #endif
 
+#else // #ifdef EMP_MULT_BIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_MULT_BIN
+        #pragma pop_macro("EMP_MULT_BIN")
+    #endif
 #endif // #ifdef EMP_MULT_BIN
 
 #ifdef EMP_MULT_IMPL
@@ -61486,6 +71730,10 @@
     #undef EMP_MULT_IMPL
   #endif
 
+#else // #ifdef EMP_MULT_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_MULT_IMPL
+        #pragma pop_macro("EMP_MULT_IMPL")
+    #endif
 #endif // #ifdef EMP_MULT_IMPL
 
 #ifdef EMP_NAND
@@ -61510,6 +71758,10 @@
     #undef EMP_NAND
   #endif
 
+#else // #ifdef EMP_NAND
+    #ifdef UIT_EXTERNAL_HAS_EMP_NAND
+        #pragma pop_macro("EMP_NAND")
+    #endif
 #endif // #ifdef EMP_NAND
 
 #ifdef EMP_NEQU
@@ -61534,6 +71786,10 @@
     #undef EMP_NEQU
   #endif
 
+#else // #ifdef EMP_NEQU
+    #ifdef UIT_EXTERNAL_HAS_EMP_NEQU
+        #pragma pop_macro("EMP_NEQU")
+    #endif
 #endif // #ifdef EMP_NEQU
 
 #ifdef EMP_NOR
@@ -61558,6 +71814,10 @@
     #undef EMP_NOR
   #endif
 
+#else // #ifdef EMP_NOR
+    #ifdef UIT_EXTERNAL_HAS_EMP_NOR
+        #pragma pop_macro("EMP_NOR")
+    #endif
 #endif // #ifdef EMP_NOR
 
 #ifdef EMP_NOT
@@ -61582,6 +71842,10 @@
     #undef EMP_NOT
   #endif
 
+#else // #ifdef EMP_NOT
+    #ifdef UIT_EXTERNAL_HAS_EMP_NOT
+        #pragma pop_macro("EMP_NOT")
+    #endif
 #endif // #ifdef EMP_NOT
 
 #ifdef EMP_NUMS_TO_VARS
@@ -61606,6 +71870,10 @@
     #undef EMP_NUMS_TO_VARS
   #endif
 
+#else // #ifdef EMP_NUMS_TO_VARS
+    #ifdef UIT_EXTERNAL_HAS_EMP_NUMS_TO_VARS
+        #pragma pop_macro("EMP_NUMS_TO_VARS")
+    #endif
 #endif // #ifdef EMP_NUMS_TO_VARS
 
 #ifdef EMP_NUM_TO_VAR
@@ -61630,6 +71898,10 @@
     #undef EMP_NUM_TO_VAR
   #endif
 
+#else // #ifdef EMP_NUM_TO_VAR
+    #ifdef UIT_EXTERNAL_HAS_EMP_NUM_TO_VAR
+        #pragma pop_macro("EMP_NUM_TO_VAR")
+    #endif
 #endif // #ifdef EMP_NUM_TO_VAR
 
 #ifdef EMP_OR
@@ -61654,6 +71926,10 @@
     #undef EMP_OR
   #endif
 
+#else // #ifdef EMP_OR
+    #ifdef UIT_EXTERNAL_HAS_EMP_OR
+        #pragma pop_macro("EMP_OR")
+    #endif
 #endif // #ifdef EMP_OR
 
 #ifdef EMP_PACKS_POP_ALL
@@ -61678,6 +71954,10 @@
     #undef EMP_PACKS_POP_ALL
   #endif
 
+#else // #ifdef EMP_PACKS_POP_ALL
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACKS_POP_ALL
+        #pragma pop_macro("EMP_PACKS_POP_ALL")
+    #endif
 #endif // #ifdef EMP_PACKS_POP_ALL
 
 #ifdef EMP_PACKS_PUSH_ALL
@@ -61702,6 +71982,10 @@
     #undef EMP_PACKS_PUSH_ALL
   #endif
 
+#else // #ifdef EMP_PACKS_PUSH_ALL
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACKS_PUSH_ALL
+        #pragma pop_macro("EMP_PACKS_PUSH_ALL")
+    #endif
 #endif // #ifdef EMP_PACKS_PUSH_ALL
 
 #ifdef EMP_PACKS_PUSH_REAR_ALL
@@ -61726,6 +72010,10 @@
     #undef EMP_PACKS_PUSH_REAR_ALL
   #endif
 
+#else // #ifdef EMP_PACKS_PUSH_REAR_ALL
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACKS_PUSH_REAR_ALL
+        #pragma pop_macro("EMP_PACKS_PUSH_REAR_ALL")
+    #endif
 #endif // #ifdef EMP_PACKS_PUSH_REAR_ALL
 
 #ifdef EMP_PACKS_SIZE_ALL
@@ -61750,6 +72038,10 @@
     #undef EMP_PACKS_SIZE_ALL
   #endif
 
+#else // #ifdef EMP_PACKS_SIZE_ALL
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACKS_SIZE_ALL
+        #pragma pop_macro("EMP_PACKS_SIZE_ALL")
+    #endif
 #endif // #ifdef EMP_PACKS_SIZE_ALL
 
 #ifdef EMP_PACKS_TOP_ALL
@@ -61774,6 +72066,10 @@
     #undef EMP_PACKS_TOP_ALL
   #endif
 
+#else // #ifdef EMP_PACKS_TOP_ALL
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACKS_TOP_ALL
+        #pragma pop_macro("EMP_PACKS_TOP_ALL")
+    #endif
 #endif // #ifdef EMP_PACKS_TOP_ALL
 
 #ifdef EMP_PACK_ARGS
@@ -61798,6 +72094,10 @@
     #undef EMP_PACK_ARGS
   #endif
 
+#else // #ifdef EMP_PACK_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACK_ARGS
+        #pragma pop_macro("EMP_PACK_ARGS")
+    #endif
 #endif // #ifdef EMP_PACK_ARGS
 
 #ifdef EMP_PACK_POP
@@ -61822,6 +72122,10 @@
     #undef EMP_PACK_POP
   #endif
 
+#else // #ifdef EMP_PACK_POP
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACK_POP
+        #pragma pop_macro("EMP_PACK_POP")
+    #endif
 #endif // #ifdef EMP_PACK_POP
 
 #ifdef EMP_PACK_PUSH
@@ -61846,6 +72150,10 @@
     #undef EMP_PACK_PUSH
   #endif
 
+#else // #ifdef EMP_PACK_PUSH
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACK_PUSH
+        #pragma pop_macro("EMP_PACK_PUSH")
+    #endif
 #endif // #ifdef EMP_PACK_PUSH
 
 #ifdef EMP_PACK_PUSH_REAR
@@ -61870,6 +72178,10 @@
     #undef EMP_PACK_PUSH_REAR
   #endif
 
+#else // #ifdef EMP_PACK_PUSH_REAR
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACK_PUSH_REAR
+        #pragma pop_macro("EMP_PACK_PUSH_REAR")
+    #endif
 #endif // #ifdef EMP_PACK_PUSH_REAR
 
 #ifdef EMP_PACK_SIZE
@@ -61894,6 +72206,10 @@
     #undef EMP_PACK_SIZE
   #endif
 
+#else // #ifdef EMP_PACK_SIZE
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACK_SIZE
+        #pragma pop_macro("EMP_PACK_SIZE")
+    #endif
 #endif // #ifdef EMP_PACK_SIZE
 
 #ifdef EMP_PACK_TOP
@@ -61918,6 +72234,10 @@
     #undef EMP_PACK_TOP
   #endif
 
+#else // #ifdef EMP_PACK_TOP
+    #ifdef UIT_EXTERNAL_HAS_EMP_PACK_TOP
+        #pragma pop_macro("EMP_PACK_TOP")
+    #endif
 #endif // #ifdef EMP_PACK_TOP
 
 #ifdef EMP_PERMUTE
@@ -61942,6 +72262,10 @@
     #undef EMP_PERMUTE
   #endif
 
+#else // #ifdef EMP_PERMUTE
+    #ifdef UIT_EXTERNAL_HAS_EMP_PERMUTE
+        #pragma pop_macro("EMP_PERMUTE")
+    #endif
 #endif // #ifdef EMP_PERMUTE
 
 #ifdef EMP_PERMUTE_1
@@ -61966,6 +72290,10 @@
     #undef EMP_PERMUTE_1
   #endif
 
+#else // #ifdef EMP_PERMUTE_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_PERMUTE_1
+        #pragma pop_macro("EMP_PERMUTE_1")
+    #endif
 #endif // #ifdef EMP_PERMUTE_1
 
 #ifdef EMP_PERMUTE_2
@@ -61990,6 +72318,10 @@
     #undef EMP_PERMUTE_2
   #endif
 
+#else // #ifdef EMP_PERMUTE_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_PERMUTE_2
+        #pragma pop_macro("EMP_PERMUTE_2")
+    #endif
 #endif // #ifdef EMP_PERMUTE_2
 
 #ifdef EMP_PERMUTE_3
@@ -62014,6 +72346,10 @@
     #undef EMP_PERMUTE_3
   #endif
 
+#else // #ifdef EMP_PERMUTE_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_PERMUTE_3
+        #pragma pop_macro("EMP_PERMUTE_3")
+    #endif
 #endif // #ifdef EMP_PERMUTE_3
 
 #ifdef EMP_PERMUTE_4
@@ -62038,6 +72374,10 @@
     #undef EMP_PERMUTE_4
   #endif
 
+#else // #ifdef EMP_PERMUTE_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_PERMUTE_4
+        #pragma pop_macro("EMP_PERMUTE_4")
+    #endif
 #endif // #ifdef EMP_PERMUTE_4
 
 #ifdef EMP_PERMUTE_5
@@ -62062,6 +72402,10 @@
     #undef EMP_PERMUTE_5
   #endif
 
+#else // #ifdef EMP_PERMUTE_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_PERMUTE_5
+        #pragma pop_macro("EMP_PERMUTE_5")
+    #endif
 #endif // #ifdef EMP_PERMUTE_5
 
 #ifdef EMP_POP_ARG
@@ -62086,6 +72430,10 @@
     #undef EMP_POP_ARG
   #endif
 
+#else // #ifdef EMP_POP_ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARG
+        #pragma pop_macro("EMP_POP_ARG")
+    #endif
 #endif // #ifdef EMP_POP_ARG
 
 #ifdef EMP_POP_ARGS
@@ -62110,6 +72458,10 @@
     #undef EMP_POP_ARGS
   #endif
 
+#else // #ifdef EMP_POP_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS
+        #pragma pop_macro("EMP_POP_ARGS")
+    #endif
 #endif // #ifdef EMP_POP_ARGS
 
 #ifdef EMP_POP_ARGS_0
@@ -62134,6 +72486,10 @@
     #undef EMP_POP_ARGS_0
   #endif
 
+#else // #ifdef EMP_POP_ARGS_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_0
+        #pragma pop_macro("EMP_POP_ARGS_0")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_0
 
 #ifdef EMP_POP_ARGS_1
@@ -62158,6 +72514,10 @@
     #undef EMP_POP_ARGS_1
   #endif
 
+#else // #ifdef EMP_POP_ARGS_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_1
+        #pragma pop_macro("EMP_POP_ARGS_1")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_1
 
 #ifdef EMP_POP_ARGS_128
@@ -62182,6 +72542,10 @@
     #undef EMP_POP_ARGS_128
   #endif
 
+#else // #ifdef EMP_POP_ARGS_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_128
+        #pragma pop_macro("EMP_POP_ARGS_128")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_128
 
 #ifdef EMP_POP_ARGS_16
@@ -62206,6 +72570,10 @@
     #undef EMP_POP_ARGS_16
   #endif
 
+#else // #ifdef EMP_POP_ARGS_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_16
+        #pragma pop_macro("EMP_POP_ARGS_16")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_16
 
 #ifdef EMP_POP_ARGS_2
@@ -62230,6 +72598,10 @@
     #undef EMP_POP_ARGS_2
   #endif
 
+#else // #ifdef EMP_POP_ARGS_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_2
+        #pragma pop_macro("EMP_POP_ARGS_2")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_2
 
 #ifdef EMP_POP_ARGS_256
@@ -62254,6 +72626,10 @@
     #undef EMP_POP_ARGS_256
   #endif
 
+#else // #ifdef EMP_POP_ARGS_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_256
+        #pragma pop_macro("EMP_POP_ARGS_256")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_256
 
 #ifdef EMP_POP_ARGS_32
@@ -62278,6 +72654,10 @@
     #undef EMP_POP_ARGS_32
   #endif
 
+#else // #ifdef EMP_POP_ARGS_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_32
+        #pragma pop_macro("EMP_POP_ARGS_32")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_32
 
 #ifdef EMP_POP_ARGS_4
@@ -62302,6 +72682,10 @@
     #undef EMP_POP_ARGS_4
   #endif
 
+#else // #ifdef EMP_POP_ARGS_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_4
+        #pragma pop_macro("EMP_POP_ARGS_4")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_4
 
 #ifdef EMP_POP_ARGS_512
@@ -62326,6 +72710,10 @@
     #undef EMP_POP_ARGS_512
   #endif
 
+#else // #ifdef EMP_POP_ARGS_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_512
+        #pragma pop_macro("EMP_POP_ARGS_512")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_512
 
 #ifdef EMP_POP_ARGS_64
@@ -62350,6 +72738,10 @@
     #undef EMP_POP_ARGS_64
   #endif
 
+#else // #ifdef EMP_POP_ARGS_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_64
+        #pragma pop_macro("EMP_POP_ARGS_64")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_64
 
 #ifdef EMP_POP_ARGS_8
@@ -62374,6 +72766,10 @@
     #undef EMP_POP_ARGS_8
   #endif
 
+#else // #ifdef EMP_POP_ARGS_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_8
+        #pragma pop_macro("EMP_POP_ARGS_8")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_8
 
 #ifdef EMP_POP_ARGS_IMPL_1
@@ -62398,6 +72794,10 @@
     #undef EMP_POP_ARGS_IMPL_1
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_1
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_1")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_1
 
 #ifdef EMP_POP_ARGS_IMPL_128
@@ -62422,6 +72822,10 @@
     #undef EMP_POP_ARGS_IMPL_128
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_128
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_128")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_128
 
 #ifdef EMP_POP_ARGS_IMPL_16
@@ -62446,6 +72850,10 @@
     #undef EMP_POP_ARGS_IMPL_16
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_16
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_16")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_16
 
 #ifdef EMP_POP_ARGS_IMPL_2
@@ -62470,6 +72878,10 @@
     #undef EMP_POP_ARGS_IMPL_2
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_2
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_2")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_2
 
 #ifdef EMP_POP_ARGS_IMPL_256
@@ -62494,6 +72906,10 @@
     #undef EMP_POP_ARGS_IMPL_256
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_256
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_256")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_256
 
 #ifdef EMP_POP_ARGS_IMPL_32
@@ -62518,6 +72934,10 @@
     #undef EMP_POP_ARGS_IMPL_32
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_32
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_32")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_32
 
 #ifdef EMP_POP_ARGS_IMPL_4
@@ -62542,6 +72962,10 @@
     #undef EMP_POP_ARGS_IMPL_4
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_4
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_4")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_4
 
 #ifdef EMP_POP_ARGS_IMPL_512
@@ -62566,6 +72990,10 @@
     #undef EMP_POP_ARGS_IMPL_512
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_512
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_512")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_512
 
 #ifdef EMP_POP_ARGS_IMPL_64
@@ -62590,6 +73018,10 @@
     #undef EMP_POP_ARGS_IMPL_64
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_64
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_64")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_64
 
 #ifdef EMP_POP_ARGS_IMPL_8
@@ -62614,6 +73046,10 @@
     #undef EMP_POP_ARGS_IMPL_8
   #endif
 
+#else // #ifdef EMP_POP_ARGS_IMPL_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_IMPL_8
+        #pragma pop_macro("EMP_POP_ARGS_IMPL_8")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_IMPL_8
 
 #ifdef EMP_POP_ARGS_SUM
@@ -62638,6 +73074,10 @@
     #undef EMP_POP_ARGS_SUM
   #endif
 
+#else // #ifdef EMP_POP_ARGS_SUM
+    #ifdef UIT_EXTERNAL_HAS_EMP_POP_ARGS_SUM
+        #pragma pop_macro("EMP_POP_ARGS_SUM")
+    #endif
 #endif // #ifdef EMP_POP_ARGS_SUM
 
 #ifdef EMP_PRINT_RESULT
@@ -62662,6 +73102,10 @@
     #undef EMP_PRINT_RESULT
   #endif
 
+#else // #ifdef EMP_PRINT_RESULT
+    #ifdef UIT_EXTERNAL_HAS_EMP_PRINT_RESULT
+        #pragma pop_macro("EMP_PRINT_RESULT")
+    #endif
 #endif // #ifdef EMP_PRINT_RESULT
 
 #ifdef EMP_PRINT_RESULT_IMPL
@@ -62686,6 +73130,10 @@
     #undef EMP_PRINT_RESULT_IMPL
   #endif
 
+#else // #ifdef EMP_PRINT_RESULT_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_PRINT_RESULT_IMPL
+        #pragma pop_macro("EMP_PRINT_RESULT_IMPL")
+    #endif
 #endif // #ifdef EMP_PRINT_RESULT_IMPL
 
 #ifdef EMP_PRINT_RESULT_TO
@@ -62710,6 +73158,10 @@
     #undef EMP_PRINT_RESULT_TO
   #endif
 
+#else // #ifdef EMP_PRINT_RESULT_TO
+    #ifdef UIT_EXTERNAL_HAS_EMP_PRINT_RESULT_TO
+        #pragma pop_macro("EMP_PRINT_RESULT_TO")
+    #endif
 #endif // #ifdef EMP_PRINT_RESULT_TO
 
 #ifdef EMP_RANGE
@@ -62734,6 +73186,10 @@
     #undef EMP_RANGE
   #endif
 
+#else // #ifdef EMP_RANGE
+    #ifdef UIT_EXTERNAL_HAS_EMP_RANGE
+        #pragma pop_macro("EMP_RANGE")
+    #endif
 #endif // #ifdef EMP_RANGE
 
 #ifdef EMP_RANGE_TO
@@ -62758,6 +73214,10 @@
     #undef EMP_RANGE_TO
   #endif
 
+#else // #ifdef EMP_RANGE_TO
+    #ifdef UIT_EXTERNAL_HAS_EMP_RANGE_TO
+        #pragma pop_macro("EMP_RANGE_TO")
+    #endif
 #endif // #ifdef EMP_RANGE_TO
 
 #ifdef EMP_REMOVE_COMMAS
@@ -62782,6 +73242,10 @@
     #undef EMP_REMOVE_COMMAS
   #endif
 
+#else // #ifdef EMP_REMOVE_COMMAS
+    #ifdef UIT_EXTERNAL_HAS_EMP_REMOVE_COMMAS
+        #pragma pop_macro("EMP_REMOVE_COMMAS")
+    #endif
 #endif // #ifdef EMP_REMOVE_COMMAS
 
 #ifdef EMP_REPLACE_COMMAS
@@ -62806,6 +73270,10 @@
     #undef EMP_REPLACE_COMMAS
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS
+        #pragma pop_macro("EMP_REPLACE_COMMAS")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS
 
 #ifdef EMP_REPLACE_COMMAS_1
@@ -62830,6 +73298,10 @@
     #undef EMP_REPLACE_COMMAS_1
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_1
+        #pragma pop_macro("EMP_REPLACE_COMMAS_1")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_1
 
 #ifdef EMP_REPLACE_COMMAS_128
@@ -62854,6 +73326,10 @@
     #undef EMP_REPLACE_COMMAS_128
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_128
+        #pragma pop_macro("EMP_REPLACE_COMMAS_128")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_128
 
 #ifdef EMP_REPLACE_COMMAS_16
@@ -62878,6 +73354,10 @@
     #undef EMP_REPLACE_COMMAS_16
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_16
+        #pragma pop_macro("EMP_REPLACE_COMMAS_16")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_16
 
 #ifdef EMP_REPLACE_COMMAS_2
@@ -62902,6 +73382,10 @@
     #undef EMP_REPLACE_COMMAS_2
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_2
+        #pragma pop_macro("EMP_REPLACE_COMMAS_2")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_2
 
 #ifdef EMP_REPLACE_COMMAS_256
@@ -62926,6 +73410,10 @@
     #undef EMP_REPLACE_COMMAS_256
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_256
+        #pragma pop_macro("EMP_REPLACE_COMMAS_256")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_256
 
 #ifdef EMP_REPLACE_COMMAS_32
@@ -62950,6 +73438,10 @@
     #undef EMP_REPLACE_COMMAS_32
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_32
+        #pragma pop_macro("EMP_REPLACE_COMMAS_32")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_32
 
 #ifdef EMP_REPLACE_COMMAS_4
@@ -62974,6 +73466,10 @@
     #undef EMP_REPLACE_COMMAS_4
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_4
+        #pragma pop_macro("EMP_REPLACE_COMMAS_4")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_4
 
 #ifdef EMP_REPLACE_COMMAS_512
@@ -62998,6 +73494,10 @@
     #undef EMP_REPLACE_COMMAS_512
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_512
+        #pragma pop_macro("EMP_REPLACE_COMMAS_512")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_512
 
 #ifdef EMP_REPLACE_COMMAS_64
@@ -63022,6 +73522,10 @@
     #undef EMP_REPLACE_COMMAS_64
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_64
+        #pragma pop_macro("EMP_REPLACE_COMMAS_64")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_64
 
 #ifdef EMP_REPLACE_COMMAS_8
@@ -63046,6 +73550,10 @@
     #undef EMP_REPLACE_COMMAS_8
   #endif
 
+#else // #ifdef EMP_REPLACE_COMMAS_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_REPLACE_COMMAS_8
+        #pragma pop_macro("EMP_REPLACE_COMMAS_8")
+    #endif
 #endif // #ifdef EMP_REPLACE_COMMAS_8
 
 #ifdef EMP_REVERSE_ARGS
@@ -63070,6 +73578,10 @@
     #undef EMP_REVERSE_ARGS
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS
+        #pragma pop_macro("EMP_REVERSE_ARGS")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS
 
 #ifdef EMP_REVERSE_ARGS_1
@@ -63094,6 +73606,10 @@
     #undef EMP_REVERSE_ARGS_1
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_1
+        #pragma pop_macro("EMP_REVERSE_ARGS_1")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_1
 
 #ifdef EMP_REVERSE_ARGS_10
@@ -63118,6 +73634,10 @@
     #undef EMP_REVERSE_ARGS_10
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_10
+        #pragma pop_macro("EMP_REVERSE_ARGS_10")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_10
 
 #ifdef EMP_REVERSE_ARGS_11
@@ -63142,6 +73662,10 @@
     #undef EMP_REVERSE_ARGS_11
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_11
+        #pragma pop_macro("EMP_REVERSE_ARGS_11")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_11
 
 #ifdef EMP_REVERSE_ARGS_12
@@ -63166,6 +73690,10 @@
     #undef EMP_REVERSE_ARGS_12
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_12
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_12
+        #pragma pop_macro("EMP_REVERSE_ARGS_12")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_12
 
 #ifdef EMP_REVERSE_ARGS_13
@@ -63190,6 +73718,10 @@
     #undef EMP_REVERSE_ARGS_13
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_13
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_13
+        #pragma pop_macro("EMP_REVERSE_ARGS_13")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_13
 
 #ifdef EMP_REVERSE_ARGS_14
@@ -63214,6 +73746,10 @@
     #undef EMP_REVERSE_ARGS_14
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_14
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_14
+        #pragma pop_macro("EMP_REVERSE_ARGS_14")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_14
 
 #ifdef EMP_REVERSE_ARGS_15
@@ -63238,6 +73774,10 @@
     #undef EMP_REVERSE_ARGS_15
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_15
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_15
+        #pragma pop_macro("EMP_REVERSE_ARGS_15")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_15
 
 #ifdef EMP_REVERSE_ARGS_16
@@ -63262,6 +73802,10 @@
     #undef EMP_REVERSE_ARGS_16
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_16
+        #pragma pop_macro("EMP_REVERSE_ARGS_16")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_16
 
 #ifdef EMP_REVERSE_ARGS_17
@@ -63286,6 +73830,10 @@
     #undef EMP_REVERSE_ARGS_17
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_17
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_17
+        #pragma pop_macro("EMP_REVERSE_ARGS_17")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_17
 
 #ifdef EMP_REVERSE_ARGS_18
@@ -63310,6 +73858,10 @@
     #undef EMP_REVERSE_ARGS_18
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_18
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_18
+        #pragma pop_macro("EMP_REVERSE_ARGS_18")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_18
 
 #ifdef EMP_REVERSE_ARGS_19
@@ -63334,6 +73886,10 @@
     #undef EMP_REVERSE_ARGS_19
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_19
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_19
+        #pragma pop_macro("EMP_REVERSE_ARGS_19")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_19
 
 #ifdef EMP_REVERSE_ARGS_2
@@ -63358,6 +73914,10 @@
     #undef EMP_REVERSE_ARGS_2
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_2
+        #pragma pop_macro("EMP_REVERSE_ARGS_2")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_2
 
 #ifdef EMP_REVERSE_ARGS_20
@@ -63382,6 +73942,10 @@
     #undef EMP_REVERSE_ARGS_20
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_20
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_20
+        #pragma pop_macro("EMP_REVERSE_ARGS_20")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_20
 
 #ifdef EMP_REVERSE_ARGS_21
@@ -63406,6 +73970,10 @@
     #undef EMP_REVERSE_ARGS_21
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_21
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_21
+        #pragma pop_macro("EMP_REVERSE_ARGS_21")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_21
 
 #ifdef EMP_REVERSE_ARGS_22
@@ -63430,6 +73998,10 @@
     #undef EMP_REVERSE_ARGS_22
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_22
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_22
+        #pragma pop_macro("EMP_REVERSE_ARGS_22")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_22
 
 #ifdef EMP_REVERSE_ARGS_23
@@ -63454,6 +74026,10 @@
     #undef EMP_REVERSE_ARGS_23
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_23
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_23
+        #pragma pop_macro("EMP_REVERSE_ARGS_23")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_23
 
 #ifdef EMP_REVERSE_ARGS_24
@@ -63478,6 +74054,10 @@
     #undef EMP_REVERSE_ARGS_24
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_24
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_24
+        #pragma pop_macro("EMP_REVERSE_ARGS_24")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_24
 
 #ifdef EMP_REVERSE_ARGS_25
@@ -63502,6 +74082,10 @@
     #undef EMP_REVERSE_ARGS_25
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_25
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_25
+        #pragma pop_macro("EMP_REVERSE_ARGS_25")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_25
 
 #ifdef EMP_REVERSE_ARGS_26
@@ -63526,6 +74110,10 @@
     #undef EMP_REVERSE_ARGS_26
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_26
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_26
+        #pragma pop_macro("EMP_REVERSE_ARGS_26")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_26
 
 #ifdef EMP_REVERSE_ARGS_27
@@ -63550,6 +74138,10 @@
     #undef EMP_REVERSE_ARGS_27
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_27
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_27
+        #pragma pop_macro("EMP_REVERSE_ARGS_27")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_27
 
 #ifdef EMP_REVERSE_ARGS_28
@@ -63574,6 +74166,10 @@
     #undef EMP_REVERSE_ARGS_28
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_28
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_28
+        #pragma pop_macro("EMP_REVERSE_ARGS_28")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_28
 
 #ifdef EMP_REVERSE_ARGS_29
@@ -63598,6 +74194,10 @@
     #undef EMP_REVERSE_ARGS_29
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_29
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_29
+        #pragma pop_macro("EMP_REVERSE_ARGS_29")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_29
 
 #ifdef EMP_REVERSE_ARGS_3
@@ -63622,6 +74222,10 @@
     #undef EMP_REVERSE_ARGS_3
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_3
+        #pragma pop_macro("EMP_REVERSE_ARGS_3")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_3
 
 #ifdef EMP_REVERSE_ARGS_30
@@ -63646,6 +74250,10 @@
     #undef EMP_REVERSE_ARGS_30
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_30
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_30
+        #pragma pop_macro("EMP_REVERSE_ARGS_30")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_30
 
 #ifdef EMP_REVERSE_ARGS_31
@@ -63670,6 +74278,10 @@
     #undef EMP_REVERSE_ARGS_31
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_31
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_31
+        #pragma pop_macro("EMP_REVERSE_ARGS_31")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_31
 
 #ifdef EMP_REVERSE_ARGS_32
@@ -63694,6 +74306,10 @@
     #undef EMP_REVERSE_ARGS_32
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_32
+        #pragma pop_macro("EMP_REVERSE_ARGS_32")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_32
 
 #ifdef EMP_REVERSE_ARGS_33
@@ -63718,6 +74334,10 @@
     #undef EMP_REVERSE_ARGS_33
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_33
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_33
+        #pragma pop_macro("EMP_REVERSE_ARGS_33")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_33
 
 #ifdef EMP_REVERSE_ARGS_34
@@ -63742,6 +74362,10 @@
     #undef EMP_REVERSE_ARGS_34
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_34
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_34
+        #pragma pop_macro("EMP_REVERSE_ARGS_34")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_34
 
 #ifdef EMP_REVERSE_ARGS_35
@@ -63766,6 +74390,10 @@
     #undef EMP_REVERSE_ARGS_35
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_35
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_35
+        #pragma pop_macro("EMP_REVERSE_ARGS_35")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_35
 
 #ifdef EMP_REVERSE_ARGS_36
@@ -63790,6 +74418,10 @@
     #undef EMP_REVERSE_ARGS_36
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_36
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_36
+        #pragma pop_macro("EMP_REVERSE_ARGS_36")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_36
 
 #ifdef EMP_REVERSE_ARGS_37
@@ -63814,6 +74446,10 @@
     #undef EMP_REVERSE_ARGS_37
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_37
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_37
+        #pragma pop_macro("EMP_REVERSE_ARGS_37")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_37
 
 #ifdef EMP_REVERSE_ARGS_38
@@ -63838,6 +74474,10 @@
     #undef EMP_REVERSE_ARGS_38
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_38
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_38
+        #pragma pop_macro("EMP_REVERSE_ARGS_38")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_38
 
 #ifdef EMP_REVERSE_ARGS_39
@@ -63862,6 +74502,10 @@
     #undef EMP_REVERSE_ARGS_39
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_39
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_39
+        #pragma pop_macro("EMP_REVERSE_ARGS_39")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_39
 
 #ifdef EMP_REVERSE_ARGS_4
@@ -63886,6 +74530,10 @@
     #undef EMP_REVERSE_ARGS_4
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_4
+        #pragma pop_macro("EMP_REVERSE_ARGS_4")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_4
 
 #ifdef EMP_REVERSE_ARGS_40
@@ -63910,6 +74558,10 @@
     #undef EMP_REVERSE_ARGS_40
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_40
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_40
+        #pragma pop_macro("EMP_REVERSE_ARGS_40")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_40
 
 #ifdef EMP_REVERSE_ARGS_41
@@ -63934,6 +74586,10 @@
     #undef EMP_REVERSE_ARGS_41
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_41
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_41
+        #pragma pop_macro("EMP_REVERSE_ARGS_41")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_41
 
 #ifdef EMP_REVERSE_ARGS_42
@@ -63958,6 +74614,10 @@
     #undef EMP_REVERSE_ARGS_42
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_42
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_42
+        #pragma pop_macro("EMP_REVERSE_ARGS_42")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_42
 
 #ifdef EMP_REVERSE_ARGS_43
@@ -63982,6 +74642,10 @@
     #undef EMP_REVERSE_ARGS_43
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_43
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_43
+        #pragma pop_macro("EMP_REVERSE_ARGS_43")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_43
 
 #ifdef EMP_REVERSE_ARGS_44
@@ -64006,6 +74670,10 @@
     #undef EMP_REVERSE_ARGS_44
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_44
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_44
+        #pragma pop_macro("EMP_REVERSE_ARGS_44")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_44
 
 #ifdef EMP_REVERSE_ARGS_45
@@ -64030,6 +74698,10 @@
     #undef EMP_REVERSE_ARGS_45
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_45
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_45
+        #pragma pop_macro("EMP_REVERSE_ARGS_45")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_45
 
 #ifdef EMP_REVERSE_ARGS_46
@@ -64054,6 +74726,10 @@
     #undef EMP_REVERSE_ARGS_46
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_46
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_46
+        #pragma pop_macro("EMP_REVERSE_ARGS_46")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_46
 
 #ifdef EMP_REVERSE_ARGS_47
@@ -64078,6 +74754,10 @@
     #undef EMP_REVERSE_ARGS_47
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_47
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_47
+        #pragma pop_macro("EMP_REVERSE_ARGS_47")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_47
 
 #ifdef EMP_REVERSE_ARGS_48
@@ -64102,6 +74782,10 @@
     #undef EMP_REVERSE_ARGS_48
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_48
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_48
+        #pragma pop_macro("EMP_REVERSE_ARGS_48")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_48
 
 #ifdef EMP_REVERSE_ARGS_49
@@ -64126,6 +74810,10 @@
     #undef EMP_REVERSE_ARGS_49
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_49
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_49
+        #pragma pop_macro("EMP_REVERSE_ARGS_49")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_49
 
 #ifdef EMP_REVERSE_ARGS_5
@@ -64150,6 +74838,10 @@
     #undef EMP_REVERSE_ARGS_5
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_5
+        #pragma pop_macro("EMP_REVERSE_ARGS_5")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_5
 
 #ifdef EMP_REVERSE_ARGS_50
@@ -64174,6 +74866,10 @@
     #undef EMP_REVERSE_ARGS_50
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_50
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_50
+        #pragma pop_macro("EMP_REVERSE_ARGS_50")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_50
 
 #ifdef EMP_REVERSE_ARGS_51
@@ -64198,6 +74894,10 @@
     #undef EMP_REVERSE_ARGS_51
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_51
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_51
+        #pragma pop_macro("EMP_REVERSE_ARGS_51")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_51
 
 #ifdef EMP_REVERSE_ARGS_52
@@ -64222,6 +74922,10 @@
     #undef EMP_REVERSE_ARGS_52
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_52
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_52
+        #pragma pop_macro("EMP_REVERSE_ARGS_52")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_52
 
 #ifdef EMP_REVERSE_ARGS_53
@@ -64246,6 +74950,10 @@
     #undef EMP_REVERSE_ARGS_53
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_53
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_53
+        #pragma pop_macro("EMP_REVERSE_ARGS_53")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_53
 
 #ifdef EMP_REVERSE_ARGS_54
@@ -64270,6 +74978,10 @@
     #undef EMP_REVERSE_ARGS_54
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_54
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_54
+        #pragma pop_macro("EMP_REVERSE_ARGS_54")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_54
 
 #ifdef EMP_REVERSE_ARGS_55
@@ -64294,6 +75006,10 @@
     #undef EMP_REVERSE_ARGS_55
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_55
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_55
+        #pragma pop_macro("EMP_REVERSE_ARGS_55")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_55
 
 #ifdef EMP_REVERSE_ARGS_56
@@ -64318,6 +75034,10 @@
     #undef EMP_REVERSE_ARGS_56
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_56
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_56
+        #pragma pop_macro("EMP_REVERSE_ARGS_56")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_56
 
 #ifdef EMP_REVERSE_ARGS_57
@@ -64342,6 +75062,10 @@
     #undef EMP_REVERSE_ARGS_57
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_57
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_57
+        #pragma pop_macro("EMP_REVERSE_ARGS_57")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_57
 
 #ifdef EMP_REVERSE_ARGS_58
@@ -64366,6 +75090,10 @@
     #undef EMP_REVERSE_ARGS_58
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_58
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_58
+        #pragma pop_macro("EMP_REVERSE_ARGS_58")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_58
 
 #ifdef EMP_REVERSE_ARGS_59
@@ -64390,6 +75118,10 @@
     #undef EMP_REVERSE_ARGS_59
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_59
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_59
+        #pragma pop_macro("EMP_REVERSE_ARGS_59")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_59
 
 #ifdef EMP_REVERSE_ARGS_6
@@ -64414,6 +75146,10 @@
     #undef EMP_REVERSE_ARGS_6
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_6
+        #pragma pop_macro("EMP_REVERSE_ARGS_6")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_6
 
 #ifdef EMP_REVERSE_ARGS_60
@@ -64438,6 +75174,10 @@
     #undef EMP_REVERSE_ARGS_60
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_60
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_60
+        #pragma pop_macro("EMP_REVERSE_ARGS_60")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_60
 
 #ifdef EMP_REVERSE_ARGS_61
@@ -64462,6 +75202,10 @@
     #undef EMP_REVERSE_ARGS_61
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_61
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_61
+        #pragma pop_macro("EMP_REVERSE_ARGS_61")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_61
 
 #ifdef EMP_REVERSE_ARGS_62
@@ -64486,6 +75230,10 @@
     #undef EMP_REVERSE_ARGS_62
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_62
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_62
+        #pragma pop_macro("EMP_REVERSE_ARGS_62")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_62
 
 #ifdef EMP_REVERSE_ARGS_63
@@ -64510,6 +75258,10 @@
     #undef EMP_REVERSE_ARGS_63
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_63
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_63
+        #pragma pop_macro("EMP_REVERSE_ARGS_63")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_63
 
 #ifdef EMP_REVERSE_ARGS_64
@@ -64534,6 +75286,10 @@
     #undef EMP_REVERSE_ARGS_64
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_64
+        #pragma pop_macro("EMP_REVERSE_ARGS_64")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_64
 
 #ifdef EMP_REVERSE_ARGS_7
@@ -64558,6 +75314,10 @@
     #undef EMP_REVERSE_ARGS_7
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_7
+        #pragma pop_macro("EMP_REVERSE_ARGS_7")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_7
 
 #ifdef EMP_REVERSE_ARGS_8
@@ -64582,6 +75342,10 @@
     #undef EMP_REVERSE_ARGS_8
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_8
+        #pragma pop_macro("EMP_REVERSE_ARGS_8")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_8
 
 #ifdef EMP_REVERSE_ARGS_9
@@ -64606,6 +75370,10 @@
     #undef EMP_REVERSE_ARGS_9
   #endif
 
+#else // #ifdef EMP_REVERSE_ARGS_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_REVERSE_ARGS_9
+        #pragma pop_macro("EMP_REVERSE_ARGS_9")
+    #endif
 #endif // #ifdef EMP_REVERSE_ARGS_9
 
 #ifdef EMP_ROTATE_ARGS
@@ -64630,6 +75398,10 @@
     #undef EMP_ROTATE_ARGS
   #endif
 
+#else // #ifdef EMP_ROTATE_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_ROTATE_ARGS
+        #pragma pop_macro("EMP_ROTATE_ARGS")
+    #endif
 #endif // #ifdef EMP_ROTATE_ARGS
 
 #ifdef EMP_RUN_JOIN
@@ -64654,6 +75426,10 @@
     #undef EMP_RUN_JOIN
   #endif
 
+#else // #ifdef EMP_RUN_JOIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_RUN_JOIN
+        #pragma pop_macro("EMP_RUN_JOIN")
+    #endif
 #endif // #ifdef EMP_RUN_JOIN
 
 #ifdef EMP_SELECT_ARGS
@@ -64678,6 +75454,10 @@
     #undef EMP_SELECT_ARGS
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS
+        #pragma pop_macro("EMP_SELECT_ARGS")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS
 
 #ifdef EMP_SELECT_ARGS_1
@@ -64702,6 +75482,10 @@
     #undef EMP_SELECT_ARGS_1
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_1
+        #pragma pop_macro("EMP_SELECT_ARGS_1")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_1
 
 #ifdef EMP_SELECT_ARGS_10
@@ -64726,6 +75510,10 @@
     #undef EMP_SELECT_ARGS_10
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_10
+        #pragma pop_macro("EMP_SELECT_ARGS_10")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_10
 
 #ifdef EMP_SELECT_ARGS_11
@@ -64750,6 +75538,10 @@
     #undef EMP_SELECT_ARGS_11
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_11
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_11
+        #pragma pop_macro("EMP_SELECT_ARGS_11")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_11
 
 #ifdef EMP_SELECT_ARGS_12
@@ -64774,6 +75566,10 @@
     #undef EMP_SELECT_ARGS_12
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_12
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_12
+        #pragma pop_macro("EMP_SELECT_ARGS_12")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_12
 
 #ifdef EMP_SELECT_ARGS_13
@@ -64798,6 +75594,10 @@
     #undef EMP_SELECT_ARGS_13
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_13
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_13
+        #pragma pop_macro("EMP_SELECT_ARGS_13")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_13
 
 #ifdef EMP_SELECT_ARGS_14
@@ -64822,6 +75622,10 @@
     #undef EMP_SELECT_ARGS_14
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_14
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_14
+        #pragma pop_macro("EMP_SELECT_ARGS_14")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_14
 
 #ifdef EMP_SELECT_ARGS_15
@@ -64846,6 +75650,10 @@
     #undef EMP_SELECT_ARGS_15
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_15
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_15
+        #pragma pop_macro("EMP_SELECT_ARGS_15")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_15
 
 #ifdef EMP_SELECT_ARGS_16
@@ -64870,6 +75678,10 @@
     #undef EMP_SELECT_ARGS_16
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_16
+        #pragma pop_macro("EMP_SELECT_ARGS_16")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_16
 
 #ifdef EMP_SELECT_ARGS_17
@@ -64894,6 +75706,10 @@
     #undef EMP_SELECT_ARGS_17
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_17
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_17
+        #pragma pop_macro("EMP_SELECT_ARGS_17")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_17
 
 #ifdef EMP_SELECT_ARGS_18
@@ -64918,6 +75734,10 @@
     #undef EMP_SELECT_ARGS_18
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_18
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_18
+        #pragma pop_macro("EMP_SELECT_ARGS_18")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_18
 
 #ifdef EMP_SELECT_ARGS_19
@@ -64942,6 +75762,10 @@
     #undef EMP_SELECT_ARGS_19
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_19
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_19
+        #pragma pop_macro("EMP_SELECT_ARGS_19")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_19
 
 #ifdef EMP_SELECT_ARGS_2
@@ -64966,6 +75790,10 @@
     #undef EMP_SELECT_ARGS_2
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_2
+        #pragma pop_macro("EMP_SELECT_ARGS_2")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_2
 
 #ifdef EMP_SELECT_ARGS_20
@@ -64990,6 +75818,10 @@
     #undef EMP_SELECT_ARGS_20
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_20
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_20
+        #pragma pop_macro("EMP_SELECT_ARGS_20")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_20
 
 #ifdef EMP_SELECT_ARGS_21
@@ -65014,6 +75846,10 @@
     #undef EMP_SELECT_ARGS_21
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_21
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_21
+        #pragma pop_macro("EMP_SELECT_ARGS_21")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_21
 
 #ifdef EMP_SELECT_ARGS_22
@@ -65038,6 +75874,10 @@
     #undef EMP_SELECT_ARGS_22
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_22
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_22
+        #pragma pop_macro("EMP_SELECT_ARGS_22")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_22
 
 #ifdef EMP_SELECT_ARGS_23
@@ -65062,6 +75902,10 @@
     #undef EMP_SELECT_ARGS_23
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_23
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_23
+        #pragma pop_macro("EMP_SELECT_ARGS_23")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_23
 
 #ifdef EMP_SELECT_ARGS_24
@@ -65086,6 +75930,10 @@
     #undef EMP_SELECT_ARGS_24
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_24
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_24
+        #pragma pop_macro("EMP_SELECT_ARGS_24")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_24
 
 #ifdef EMP_SELECT_ARGS_25
@@ -65110,6 +75958,10 @@
     #undef EMP_SELECT_ARGS_25
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_25
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_25
+        #pragma pop_macro("EMP_SELECT_ARGS_25")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_25
 
 #ifdef EMP_SELECT_ARGS_26
@@ -65134,6 +75986,10 @@
     #undef EMP_SELECT_ARGS_26
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_26
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_26
+        #pragma pop_macro("EMP_SELECT_ARGS_26")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_26
 
 #ifdef EMP_SELECT_ARGS_27
@@ -65158,6 +76014,10 @@
     #undef EMP_SELECT_ARGS_27
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_27
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_27
+        #pragma pop_macro("EMP_SELECT_ARGS_27")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_27
 
 #ifdef EMP_SELECT_ARGS_28
@@ -65182,6 +76042,10 @@
     #undef EMP_SELECT_ARGS_28
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_28
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_28
+        #pragma pop_macro("EMP_SELECT_ARGS_28")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_28
 
 #ifdef EMP_SELECT_ARGS_29
@@ -65206,6 +76070,10 @@
     #undef EMP_SELECT_ARGS_29
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_29
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_29
+        #pragma pop_macro("EMP_SELECT_ARGS_29")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_29
 
 #ifdef EMP_SELECT_ARGS_3
@@ -65230,6 +76098,10 @@
     #undef EMP_SELECT_ARGS_3
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_3
+        #pragma pop_macro("EMP_SELECT_ARGS_3")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_3
 
 #ifdef EMP_SELECT_ARGS_30
@@ -65254,6 +76126,10 @@
     #undef EMP_SELECT_ARGS_30
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_30
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_30
+        #pragma pop_macro("EMP_SELECT_ARGS_30")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_30
 
 #ifdef EMP_SELECT_ARGS_31
@@ -65278,6 +76154,10 @@
     #undef EMP_SELECT_ARGS_31
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_31
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_31
+        #pragma pop_macro("EMP_SELECT_ARGS_31")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_31
 
 #ifdef EMP_SELECT_ARGS_32
@@ -65302,6 +76182,10 @@
     #undef EMP_SELECT_ARGS_32
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_32
+        #pragma pop_macro("EMP_SELECT_ARGS_32")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_32
 
 #ifdef EMP_SELECT_ARGS_33
@@ -65326,6 +76210,10 @@
     #undef EMP_SELECT_ARGS_33
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_33
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_33
+        #pragma pop_macro("EMP_SELECT_ARGS_33")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_33
 
 #ifdef EMP_SELECT_ARGS_34
@@ -65350,6 +76238,10 @@
     #undef EMP_SELECT_ARGS_34
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_34
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_34
+        #pragma pop_macro("EMP_SELECT_ARGS_34")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_34
 
 #ifdef EMP_SELECT_ARGS_35
@@ -65374,6 +76266,10 @@
     #undef EMP_SELECT_ARGS_35
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_35
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_35
+        #pragma pop_macro("EMP_SELECT_ARGS_35")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_35
 
 #ifdef EMP_SELECT_ARGS_36
@@ -65398,6 +76294,10 @@
     #undef EMP_SELECT_ARGS_36
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_36
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_36
+        #pragma pop_macro("EMP_SELECT_ARGS_36")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_36
 
 #ifdef EMP_SELECT_ARGS_37
@@ -65422,6 +76322,10 @@
     #undef EMP_SELECT_ARGS_37
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_37
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_37
+        #pragma pop_macro("EMP_SELECT_ARGS_37")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_37
 
 #ifdef EMP_SELECT_ARGS_38
@@ -65446,6 +76350,10 @@
     #undef EMP_SELECT_ARGS_38
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_38
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_38
+        #pragma pop_macro("EMP_SELECT_ARGS_38")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_38
 
 #ifdef EMP_SELECT_ARGS_39
@@ -65470,6 +76378,10 @@
     #undef EMP_SELECT_ARGS_39
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_39
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_39
+        #pragma pop_macro("EMP_SELECT_ARGS_39")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_39
 
 #ifdef EMP_SELECT_ARGS_4
@@ -65494,6 +76406,10 @@
     #undef EMP_SELECT_ARGS_4
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_4
+        #pragma pop_macro("EMP_SELECT_ARGS_4")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_4
 
 #ifdef EMP_SELECT_ARGS_40
@@ -65518,6 +76434,10 @@
     #undef EMP_SELECT_ARGS_40
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_40
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_40
+        #pragma pop_macro("EMP_SELECT_ARGS_40")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_40
 
 #ifdef EMP_SELECT_ARGS_41
@@ -65542,6 +76462,10 @@
     #undef EMP_SELECT_ARGS_41
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_41
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_41
+        #pragma pop_macro("EMP_SELECT_ARGS_41")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_41
 
 #ifdef EMP_SELECT_ARGS_42
@@ -65566,6 +76490,10 @@
     #undef EMP_SELECT_ARGS_42
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_42
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_42
+        #pragma pop_macro("EMP_SELECT_ARGS_42")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_42
 
 #ifdef EMP_SELECT_ARGS_43
@@ -65590,6 +76518,10 @@
     #undef EMP_SELECT_ARGS_43
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_43
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_43
+        #pragma pop_macro("EMP_SELECT_ARGS_43")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_43
 
 #ifdef EMP_SELECT_ARGS_44
@@ -65614,6 +76546,10 @@
     #undef EMP_SELECT_ARGS_44
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_44
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_44
+        #pragma pop_macro("EMP_SELECT_ARGS_44")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_44
 
 #ifdef EMP_SELECT_ARGS_45
@@ -65638,6 +76574,10 @@
     #undef EMP_SELECT_ARGS_45
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_45
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_45
+        #pragma pop_macro("EMP_SELECT_ARGS_45")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_45
 
 #ifdef EMP_SELECT_ARGS_46
@@ -65662,6 +76602,10 @@
     #undef EMP_SELECT_ARGS_46
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_46
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_46
+        #pragma pop_macro("EMP_SELECT_ARGS_46")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_46
 
 #ifdef EMP_SELECT_ARGS_47
@@ -65686,6 +76630,10 @@
     #undef EMP_SELECT_ARGS_47
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_47
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_47
+        #pragma pop_macro("EMP_SELECT_ARGS_47")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_47
 
 #ifdef EMP_SELECT_ARGS_48
@@ -65710,6 +76658,10 @@
     #undef EMP_SELECT_ARGS_48
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_48
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_48
+        #pragma pop_macro("EMP_SELECT_ARGS_48")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_48
 
 #ifdef EMP_SELECT_ARGS_49
@@ -65734,6 +76686,10 @@
     #undef EMP_SELECT_ARGS_49
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_49
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_49
+        #pragma pop_macro("EMP_SELECT_ARGS_49")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_49
 
 #ifdef EMP_SELECT_ARGS_5
@@ -65758,6 +76714,10 @@
     #undef EMP_SELECT_ARGS_5
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_5
+        #pragma pop_macro("EMP_SELECT_ARGS_5")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_5
 
 #ifdef EMP_SELECT_ARGS_50
@@ -65782,6 +76742,10 @@
     #undef EMP_SELECT_ARGS_50
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_50
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_50
+        #pragma pop_macro("EMP_SELECT_ARGS_50")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_50
 
 #ifdef EMP_SELECT_ARGS_51
@@ -65806,6 +76770,10 @@
     #undef EMP_SELECT_ARGS_51
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_51
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_51
+        #pragma pop_macro("EMP_SELECT_ARGS_51")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_51
 
 #ifdef EMP_SELECT_ARGS_52
@@ -65830,6 +76798,10 @@
     #undef EMP_SELECT_ARGS_52
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_52
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_52
+        #pragma pop_macro("EMP_SELECT_ARGS_52")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_52
 
 #ifdef EMP_SELECT_ARGS_53
@@ -65854,6 +76826,10 @@
     #undef EMP_SELECT_ARGS_53
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_53
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_53
+        #pragma pop_macro("EMP_SELECT_ARGS_53")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_53
 
 #ifdef EMP_SELECT_ARGS_54
@@ -65878,6 +76854,10 @@
     #undef EMP_SELECT_ARGS_54
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_54
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_54
+        #pragma pop_macro("EMP_SELECT_ARGS_54")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_54
 
 #ifdef EMP_SELECT_ARGS_55
@@ -65902,6 +76882,10 @@
     #undef EMP_SELECT_ARGS_55
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_55
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_55
+        #pragma pop_macro("EMP_SELECT_ARGS_55")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_55
 
 #ifdef EMP_SELECT_ARGS_56
@@ -65926,6 +76910,10 @@
     #undef EMP_SELECT_ARGS_56
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_56
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_56
+        #pragma pop_macro("EMP_SELECT_ARGS_56")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_56
 
 #ifdef EMP_SELECT_ARGS_57
@@ -65950,6 +76938,10 @@
     #undef EMP_SELECT_ARGS_57
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_57
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_57
+        #pragma pop_macro("EMP_SELECT_ARGS_57")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_57
 
 #ifdef EMP_SELECT_ARGS_58
@@ -65974,6 +76966,10 @@
     #undef EMP_SELECT_ARGS_58
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_58
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_58
+        #pragma pop_macro("EMP_SELECT_ARGS_58")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_58
 
 #ifdef EMP_SELECT_ARGS_59
@@ -65998,6 +76994,10 @@
     #undef EMP_SELECT_ARGS_59
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_59
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_59
+        #pragma pop_macro("EMP_SELECT_ARGS_59")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_59
 
 #ifdef EMP_SELECT_ARGS_6
@@ -66022,6 +77022,10 @@
     #undef EMP_SELECT_ARGS_6
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_6
+        #pragma pop_macro("EMP_SELECT_ARGS_6")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_6
 
 #ifdef EMP_SELECT_ARGS_60
@@ -66046,6 +77050,10 @@
     #undef EMP_SELECT_ARGS_60
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_60
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_60
+        #pragma pop_macro("EMP_SELECT_ARGS_60")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_60
 
 #ifdef EMP_SELECT_ARGS_61
@@ -66070,6 +77078,10 @@
     #undef EMP_SELECT_ARGS_61
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_61
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_61
+        #pragma pop_macro("EMP_SELECT_ARGS_61")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_61
 
 #ifdef EMP_SELECT_ARGS_62
@@ -66094,6 +77106,10 @@
     #undef EMP_SELECT_ARGS_62
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_62
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_62
+        #pragma pop_macro("EMP_SELECT_ARGS_62")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_62
 
 #ifdef EMP_SELECT_ARGS_63
@@ -66118,6 +77134,10 @@
     #undef EMP_SELECT_ARGS_63
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_63
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_63
+        #pragma pop_macro("EMP_SELECT_ARGS_63")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_63
 
 #ifdef EMP_SELECT_ARGS_64
@@ -66142,6 +77162,10 @@
     #undef EMP_SELECT_ARGS_64
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_64
+        #pragma pop_macro("EMP_SELECT_ARGS_64")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_64
 
 #ifdef EMP_SELECT_ARGS_65
@@ -66166,6 +77190,10 @@
     #undef EMP_SELECT_ARGS_65
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_65
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_65
+        #pragma pop_macro("EMP_SELECT_ARGS_65")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_65
 
 #ifdef EMP_SELECT_ARGS_66
@@ -66190,6 +77218,10 @@
     #undef EMP_SELECT_ARGS_66
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_66
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_66
+        #pragma pop_macro("EMP_SELECT_ARGS_66")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_66
 
 #ifdef EMP_SELECT_ARGS_67
@@ -66214,6 +77246,10 @@
     #undef EMP_SELECT_ARGS_67
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_67
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_67
+        #pragma pop_macro("EMP_SELECT_ARGS_67")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_67
 
 #ifdef EMP_SELECT_ARGS_68
@@ -66238,6 +77274,10 @@
     #undef EMP_SELECT_ARGS_68
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_68
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_68
+        #pragma pop_macro("EMP_SELECT_ARGS_68")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_68
 
 #ifdef EMP_SELECT_ARGS_69
@@ -66262,6 +77302,10 @@
     #undef EMP_SELECT_ARGS_69
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_69
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_69
+        #pragma pop_macro("EMP_SELECT_ARGS_69")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_69
 
 #ifdef EMP_SELECT_ARGS_7
@@ -66286,6 +77330,10 @@
     #undef EMP_SELECT_ARGS_7
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_7
+        #pragma pop_macro("EMP_SELECT_ARGS_7")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_7
 
 #ifdef EMP_SELECT_ARGS_8
@@ -66310,6 +77358,10 @@
     #undef EMP_SELECT_ARGS_8
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_8
+        #pragma pop_macro("EMP_SELECT_ARGS_8")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_8
 
 #ifdef EMP_SELECT_ARGS_9
@@ -66334,6 +77386,10 @@
     #undef EMP_SELECT_ARGS_9
   #endif
 
+#else // #ifdef EMP_SELECT_ARGS_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_ARGS_9
+        #pragma pop_macro("EMP_SELECT_ARGS_9")
+    #endif
 #endif // #ifdef EMP_SELECT_ARGS_9
 
 #ifdef EMP_SELECT_do_arg
@@ -66358,6 +77414,10 @@
     #undef EMP_SELECT_do_arg
   #endif
 
+#else // #ifdef EMP_SELECT_do_arg
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_do_arg
+        #pragma pop_macro("EMP_SELECT_do_arg")
+    #endif
 #endif // #ifdef EMP_SELECT_do_arg
 
 #ifdef EMP_SELECT_i
@@ -66382,6 +77442,10 @@
     #undef EMP_SELECT_i
   #endif
 
+#else // #ifdef EMP_SELECT_i
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_i
+        #pragma pop_macro("EMP_SELECT_i")
+    #endif
 #endif // #ifdef EMP_SELECT_i
 
 #ifdef EMP_SELECT_x
@@ -66406,6 +77470,10 @@
     #undef EMP_SELECT_x
   #endif
 
+#else // #ifdef EMP_SELECT_x
+    #ifdef UIT_EXTERNAL_HAS_EMP_SELECT_x
+        #pragma pop_macro("EMP_SELECT_x")
+    #endif
 #endif // #ifdef EMP_SELECT_x
 
 #ifdef EMP_SETUP_TYPE_SELECTOR
@@ -66430,6 +77498,10 @@
     #undef EMP_SETUP_TYPE_SELECTOR
   #endif
 
+#else // #ifdef EMP_SETUP_TYPE_SELECTOR
+    #ifdef UIT_EXTERNAL_HAS_EMP_SETUP_TYPE_SELECTOR
+        #pragma pop_macro("EMP_SETUP_TYPE_SELECTOR")
+    #endif
 #endif // #ifdef EMP_SETUP_TYPE_SELECTOR
 
 #ifdef EMP_SHIFTL
@@ -66454,6 +77526,10 @@
     #undef EMP_SHIFTL
   #endif
 
+#else // #ifdef EMP_SHIFTL
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL
+        #pragma pop_macro("EMP_SHIFTL")
+    #endif
 #endif // #ifdef EMP_SHIFTL
 
 #ifdef EMP_SHIFTL_BIN
@@ -66478,6 +77554,10 @@
     #undef EMP_SHIFTL_BIN
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN
+        #pragma pop_macro("EMP_SHIFTL_BIN")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN
 
 #ifdef EMP_SHIFTL_BIN_0
@@ -66502,6 +77582,10 @@
     #undef EMP_SHIFTL_BIN_0
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_0
+        #pragma pop_macro("EMP_SHIFTL_BIN_0")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_0
 
 #ifdef EMP_SHIFTL_BIN_1
@@ -66526,6 +77610,10 @@
     #undef EMP_SHIFTL_BIN_1
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_1
+        #pragma pop_macro("EMP_SHIFTL_BIN_1")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_1
 
 #ifdef EMP_SHIFTL_BIN_10
@@ -66550,6 +77638,10 @@
     #undef EMP_SHIFTL_BIN_10
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_10
+        #pragma pop_macro("EMP_SHIFTL_BIN_10")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_10
 
 #ifdef EMP_SHIFTL_BIN_2
@@ -66574,6 +77666,10 @@
     #undef EMP_SHIFTL_BIN_2
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_2
+        #pragma pop_macro("EMP_SHIFTL_BIN_2")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_2
 
 #ifdef EMP_SHIFTL_BIN_3
@@ -66598,6 +77694,10 @@
     #undef EMP_SHIFTL_BIN_3
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_3
+        #pragma pop_macro("EMP_SHIFTL_BIN_3")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_3
 
 #ifdef EMP_SHIFTL_BIN_4
@@ -66622,6 +77722,10 @@
     #undef EMP_SHIFTL_BIN_4
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_4
+        #pragma pop_macro("EMP_SHIFTL_BIN_4")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_4
 
 #ifdef EMP_SHIFTL_BIN_5
@@ -66646,6 +77750,10 @@
     #undef EMP_SHIFTL_BIN_5
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_5
+        #pragma pop_macro("EMP_SHIFTL_BIN_5")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_5
 
 #ifdef EMP_SHIFTL_BIN_6
@@ -66670,6 +77778,10 @@
     #undef EMP_SHIFTL_BIN_6
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_6
+        #pragma pop_macro("EMP_SHIFTL_BIN_6")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_6
 
 #ifdef EMP_SHIFTL_BIN_7
@@ -66694,6 +77806,10 @@
     #undef EMP_SHIFTL_BIN_7
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_7
+        #pragma pop_macro("EMP_SHIFTL_BIN_7")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_7
 
 #ifdef EMP_SHIFTL_BIN_8
@@ -66718,6 +77834,10 @@
     #undef EMP_SHIFTL_BIN_8
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_8
+        #pragma pop_macro("EMP_SHIFTL_BIN_8")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_8
 
 #ifdef EMP_SHIFTL_BIN_9
@@ -66742,6 +77862,10 @@
     #undef EMP_SHIFTL_BIN_9
   #endif
 
+#else // #ifdef EMP_SHIFTL_BIN_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_BIN_9
+        #pragma pop_macro("EMP_SHIFTL_BIN_9")
+    #endif
 #endif // #ifdef EMP_SHIFTL_BIN_9
 
 #ifdef EMP_SHIFTL_IMPL
@@ -66766,6 +77890,10 @@
     #undef EMP_SHIFTL_IMPL
   #endif
 
+#else // #ifdef EMP_SHIFTL_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_IMPL
+        #pragma pop_macro("EMP_SHIFTL_IMPL")
+    #endif
 #endif // #ifdef EMP_SHIFTL_IMPL
 
 #ifdef EMP_SHIFTL_X
@@ -66790,6 +77918,10 @@
     #undef EMP_SHIFTL_X
   #endif
 
+#else // #ifdef EMP_SHIFTL_X
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_X
+        #pragma pop_macro("EMP_SHIFTL_X")
+    #endif
 #endif // #ifdef EMP_SHIFTL_X
 
 #ifdef EMP_SHIFTL_X_IMPL
@@ -66814,6 +77946,10 @@
     #undef EMP_SHIFTL_X_IMPL
   #endif
 
+#else // #ifdef EMP_SHIFTL_X_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTL_X_IMPL
+        #pragma pop_macro("EMP_SHIFTL_X_IMPL")
+    #endif
 #endif // #ifdef EMP_SHIFTL_X_IMPL
 
 #ifdef EMP_SHIFTR
@@ -66838,6 +77974,10 @@
     #undef EMP_SHIFTR
   #endif
 
+#else // #ifdef EMP_SHIFTR
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR
+        #pragma pop_macro("EMP_SHIFTR")
+    #endif
 #endif // #ifdef EMP_SHIFTR
 
 #ifdef EMP_SHIFTR_BIN
@@ -66862,6 +78002,10 @@
     #undef EMP_SHIFTR_BIN
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN
+        #pragma pop_macro("EMP_SHIFTR_BIN")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN
 
 #ifdef EMP_SHIFTR_BIN_0
@@ -66886,6 +78030,10 @@
     #undef EMP_SHIFTR_BIN_0
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_0
+        #pragma pop_macro("EMP_SHIFTR_BIN_0")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_0
 
 #ifdef EMP_SHIFTR_BIN_1
@@ -66910,6 +78058,10 @@
     #undef EMP_SHIFTR_BIN_1
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_1
+        #pragma pop_macro("EMP_SHIFTR_BIN_1")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_1
 
 #ifdef EMP_SHIFTR_BIN_10
@@ -66934,6 +78086,10 @@
     #undef EMP_SHIFTR_BIN_10
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_10
+        #pragma pop_macro("EMP_SHIFTR_BIN_10")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_10
 
 #ifdef EMP_SHIFTR_BIN_2
@@ -66958,6 +78114,10 @@
     #undef EMP_SHIFTR_BIN_2
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_2
+        #pragma pop_macro("EMP_SHIFTR_BIN_2")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_2
 
 #ifdef EMP_SHIFTR_BIN_3
@@ -66982,6 +78142,10 @@
     #undef EMP_SHIFTR_BIN_3
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_3
+        #pragma pop_macro("EMP_SHIFTR_BIN_3")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_3
 
 #ifdef EMP_SHIFTR_BIN_4
@@ -67006,6 +78170,10 @@
     #undef EMP_SHIFTR_BIN_4
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_4
+        #pragma pop_macro("EMP_SHIFTR_BIN_4")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_4
 
 #ifdef EMP_SHIFTR_BIN_5
@@ -67030,6 +78198,10 @@
     #undef EMP_SHIFTR_BIN_5
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_5
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_5
+        #pragma pop_macro("EMP_SHIFTR_BIN_5")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_5
 
 #ifdef EMP_SHIFTR_BIN_6
@@ -67054,6 +78226,10 @@
     #undef EMP_SHIFTR_BIN_6
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_6
+        #pragma pop_macro("EMP_SHIFTR_BIN_6")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_6
 
 #ifdef EMP_SHIFTR_BIN_7
@@ -67078,6 +78254,10 @@
     #undef EMP_SHIFTR_BIN_7
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_7
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_7
+        #pragma pop_macro("EMP_SHIFTR_BIN_7")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_7
 
 #ifdef EMP_SHIFTR_BIN_8
@@ -67102,6 +78282,10 @@
     #undef EMP_SHIFTR_BIN_8
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_8
+        #pragma pop_macro("EMP_SHIFTR_BIN_8")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_8
 
 #ifdef EMP_SHIFTR_BIN_9
@@ -67126,6 +78310,10 @@
     #undef EMP_SHIFTR_BIN_9
   #endif
 
+#else // #ifdef EMP_SHIFTR_BIN_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_BIN_9
+        #pragma pop_macro("EMP_SHIFTR_BIN_9")
+    #endif
 #endif // #ifdef EMP_SHIFTR_BIN_9
 
 #ifdef EMP_SHIFTR_IMPL
@@ -67150,6 +78338,10 @@
     #undef EMP_SHIFTR_IMPL
   #endif
 
+#else // #ifdef EMP_SHIFTR_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_IMPL
+        #pragma pop_macro("EMP_SHIFTR_IMPL")
+    #endif
 #endif // #ifdef EMP_SHIFTR_IMPL
 
 #ifdef EMP_SHIFTR_X
@@ -67174,6 +78366,10 @@
     #undef EMP_SHIFTR_X
   #endif
 
+#else // #ifdef EMP_SHIFTR_X
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_X
+        #pragma pop_macro("EMP_SHIFTR_X")
+    #endif
 #endif // #ifdef EMP_SHIFTR_X
 
 #ifdef EMP_SHIFTR_X_IMPL
@@ -67198,6 +78394,10 @@
     #undef EMP_SHIFTR_X_IMPL
   #endif
 
+#else // #ifdef EMP_SHIFTR_X_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_SHIFTR_X_IMPL
+        #pragma pop_macro("EMP_SHIFTR_X_IMPL")
+    #endif
 #endif // #ifdef EMP_SHIFTR_X_IMPL
 
 #ifdef EMP_STRINGIFY
@@ -67222,6 +78422,10 @@
     #undef EMP_STRINGIFY
   #endif
 
+#else // #ifdef EMP_STRINGIFY
+    #ifdef UIT_EXTERNAL_HAS_EMP_STRINGIFY
+        #pragma pop_macro("EMP_STRINGIFY")
+    #endif
 #endif // #ifdef EMP_STRINGIFY
 
 #ifdef EMP_STRINGIFY_EACH
@@ -67246,6 +78450,10 @@
     #undef EMP_STRINGIFY_EACH
   #endif
 
+#else // #ifdef EMP_STRINGIFY_EACH
+    #ifdef UIT_EXTERNAL_HAS_EMP_STRINGIFY_EACH
+        #pragma pop_macro("EMP_STRINGIFY_EACH")
+    #endif
 #endif // #ifdef EMP_STRINGIFY_EACH
 
 #ifdef EMP_STRINGIFY_IMPL
@@ -67270,6 +78478,10 @@
     #undef EMP_STRINGIFY_IMPL
   #endif
 
+#else // #ifdef EMP_STRINGIFY_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_STRINGIFY_IMPL
+        #pragma pop_macro("EMP_STRINGIFY_IMPL")
+    #endif
 #endif // #ifdef EMP_STRINGIFY_IMPL
 
 #ifdef EMP_SUB
@@ -67294,6 +78506,10 @@
     #undef EMP_SUB
   #endif
 
+#else // #ifdef EMP_SUB
+    #ifdef UIT_EXTERNAL_HAS_EMP_SUB
+        #pragma pop_macro("EMP_SUB")
+    #endif
 #endif // #ifdef EMP_SUB
 
 #ifdef EMP_SUB_BIN
@@ -67318,6 +78534,10 @@
     #undef EMP_SUB_BIN
   #endif
 
+#else // #ifdef EMP_SUB_BIN
+    #ifdef UIT_EXTERNAL_HAS_EMP_SUB_BIN
+        #pragma pop_macro("EMP_SUB_BIN")
+    #endif
 #endif // #ifdef EMP_SUB_BIN
 
 #ifdef EMP_SUB_IMPL
@@ -67342,6 +78562,10 @@
     #undef EMP_SUB_IMPL
   #endif
 
+#else // #ifdef EMP_SUB_IMPL
+    #ifdef UIT_EXTERNAL_HAS_EMP_SUB_IMPL
+        #pragma pop_macro("EMP_SUB_IMPL")
+    #endif
 #endif // #ifdef EMP_SUB_IMPL
 
 #ifdef EMP_TDEBUG
@@ -67366,6 +78590,10 @@
     #undef EMP_TDEBUG
   #endif
 
+#else // #ifdef EMP_TDEBUG
+    #ifdef UIT_EXTERNAL_HAS_EMP_TDEBUG
+        #pragma pop_macro("EMP_TDEBUG")
+    #endif
 #endif // #ifdef EMP_TDEBUG
 
 #ifdef EMP_TEST_IF_VOID
@@ -67390,6 +78618,10 @@
     #undef EMP_TEST_IF_VOID
   #endif
 
+#else // #ifdef EMP_TEST_IF_VOID
+    #ifdef UIT_EXTERNAL_HAS_EMP_TEST_IF_VOID
+        #pragma pop_macro("EMP_TEST_IF_VOID")
+    #endif
 #endif // #ifdef EMP_TEST_IF_VOID
 
 #ifdef EMP_TEST_IF_VOID__void
@@ -67414,6 +78646,10 @@
     #undef EMP_TEST_IF_VOID__void
   #endif
 
+#else // #ifdef EMP_TEST_IF_VOID__void
+    #ifdef UIT_EXTERNAL_HAS_EMP_TEST_IF_VOID__void
+        #pragma pop_macro("EMP_TEST_IF_VOID__void")
+    #endif
 #endif // #ifdef EMP_TEST_IF_VOID__void
 
 #ifdef EMP_TEXT_HASH
@@ -67438,6 +78674,10 @@
     #undef EMP_TEXT_HASH
   #endif
 
+#else // #ifdef EMP_TEXT_HASH
+    #ifdef UIT_EXTERNAL_HAS_EMP_TEXT_HASH
+        #pragma pop_macro("EMP_TEXT_HASH")
+    #endif
 #endif // #ifdef EMP_TEXT_HASH
 
 #ifdef EMP_TEXT_PACK
@@ -67462,6 +78702,10 @@
     #undef EMP_TEXT_PACK
   #endif
 
+#else // #ifdef EMP_TEXT_PACK
+    #ifdef UIT_EXTERNAL_HAS_EMP_TEXT_PACK
+        #pragma pop_macro("EMP_TEXT_PACK")
+    #endif
 #endif // #ifdef EMP_TEXT_PACK
 
 #ifdef EMP_TEXT_TYPE
@@ -67486,6 +78730,10 @@
     #undef EMP_TEXT_TYPE
   #endif
 
+#else // #ifdef EMP_TEXT_TYPE
+    #ifdef UIT_EXTERNAL_HAS_EMP_TEXT_TYPE
+        #pragma pop_macro("EMP_TEXT_TYPE")
+    #endif
 #endif // #ifdef EMP_TEXT_TYPE
 
 #ifdef EMP_TYPES_TO_VALS
@@ -67510,6 +78758,10 @@
     #undef EMP_TYPES_TO_VALS
   #endif
 
+#else // #ifdef EMP_TYPES_TO_VALS
+    #ifdef UIT_EXTERNAL_HAS_EMP_TYPES_TO_VALS
+        #pragma pop_macro("EMP_TYPES_TO_VALS")
+    #endif
 #endif // #ifdef EMP_TYPES_TO_VALS
 
 #ifdef EMP_TYPE_TO_VAL
@@ -67534,6 +78786,10 @@
     #undef EMP_TYPE_TO_VAL
   #endif
 
+#else // #ifdef EMP_TYPE_TO_VAL
+    #ifdef UIT_EXTERNAL_HAS_EMP_TYPE_TO_VAL
+        #pragma pop_macro("EMP_TYPE_TO_VAL")
+    #endif
 #endif // #ifdef EMP_TYPE_TO_VAL
 
 #ifdef EMP_UNPACK_ARGS
@@ -67558,6 +78814,10 @@
     #undef EMP_UNPACK_ARGS
   #endif
 
+#else // #ifdef EMP_UNPACK_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_UNPACK_ARGS
+        #pragma pop_macro("EMP_UNPACK_ARGS")
+    #endif
 #endif // #ifdef EMP_UNPACK_ARGS
 
 #ifdef EMP_WRAP_ARGS
@@ -67582,6 +78842,10 @@
     #undef EMP_WRAP_ARGS
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS
+        #pragma pop_macro("EMP_WRAP_ARGS")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS
 
 #ifdef EMP_WRAP_ARGSET
@@ -67606,6 +78870,10 @@
     #undef EMP_WRAP_ARGSET
   #endif
 
+#else // #ifdef EMP_WRAP_ARGSET
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGSET
+        #pragma pop_macro("EMP_WRAP_ARGSET")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGSET
 
 #ifdef EMP_WRAP_ARGSET_0
@@ -67630,6 +78898,10 @@
     #undef EMP_WRAP_ARGSET_0
   #endif
 
+#else // #ifdef EMP_WRAP_ARGSET_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGSET_0
+        #pragma pop_macro("EMP_WRAP_ARGSET_0")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGSET_0
 
 #ifdef EMP_WRAP_ARGSET_1
@@ -67654,6 +78926,10 @@
     #undef EMP_WRAP_ARGSET_1
   #endif
 
+#else // #ifdef EMP_WRAP_ARGSET_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGSET_1
+        #pragma pop_macro("EMP_WRAP_ARGSET_1")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGSET_1
 
 #ifdef EMP_WRAP_ARGSET_2
@@ -67678,6 +78954,10 @@
     #undef EMP_WRAP_ARGSET_2
   #endif
 
+#else // #ifdef EMP_WRAP_ARGSET_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGSET_2
+        #pragma pop_macro("EMP_WRAP_ARGSET_2")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGSET_2
 
 #ifdef EMP_WRAP_ARGSET_3
@@ -67702,6 +78982,10 @@
     #undef EMP_WRAP_ARGSET_3
   #endif
 
+#else // #ifdef EMP_WRAP_ARGSET_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGSET_3
+        #pragma pop_macro("EMP_WRAP_ARGSET_3")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGSET_3
 
 #ifdef EMP_WRAP_ARGS_1
@@ -67726,6 +79010,10 @@
     #undef EMP_WRAP_ARGS_1
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1
+        #pragma pop_macro("EMP_WRAP_ARGS_1")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1
 
 #ifdef EMP_WRAP_ARGS_128
@@ -67750,6 +79038,10 @@
     #undef EMP_WRAP_ARGS_128
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_128
+        #pragma pop_macro("EMP_WRAP_ARGS_128")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_128
 
 #ifdef EMP_WRAP_ARGS_16
@@ -67774,6 +79066,10 @@
     #undef EMP_WRAP_ARGS_16
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_16
+        #pragma pop_macro("EMP_WRAP_ARGS_16")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_16
 
 #ifdef EMP_WRAP_ARGS_1ARG
@@ -67798,6 +79094,10 @@
     #undef EMP_WRAP_ARGS_1ARG
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG
 
 #ifdef EMP_WRAP_ARGS_1ARG_1
@@ -67822,6 +79122,10 @@
     #undef EMP_WRAP_ARGS_1ARG_1
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_1
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_1")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_1
 
 #ifdef EMP_WRAP_ARGS_1ARG_128
@@ -67846,6 +79150,10 @@
     #undef EMP_WRAP_ARGS_1ARG_128
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_128
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_128")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_128
 
 #ifdef EMP_WRAP_ARGS_1ARG_16
@@ -67870,6 +79178,10 @@
     #undef EMP_WRAP_ARGS_1ARG_16
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_16
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_16")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_16
 
 #ifdef EMP_WRAP_ARGS_1ARG_2
@@ -67894,6 +79206,10 @@
     #undef EMP_WRAP_ARGS_1ARG_2
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_2
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_2")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_2
 
 #ifdef EMP_WRAP_ARGS_1ARG_256
@@ -67918,6 +79234,10 @@
     #undef EMP_WRAP_ARGS_1ARG_256
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_256
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_256")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_256
 
 #ifdef EMP_WRAP_ARGS_1ARG_32
@@ -67942,6 +79262,10 @@
     #undef EMP_WRAP_ARGS_1ARG_32
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_32
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_32")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_32
 
 #ifdef EMP_WRAP_ARGS_1ARG_4
@@ -67966,6 +79290,10 @@
     #undef EMP_WRAP_ARGS_1ARG_4
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_4
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_4")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_4
 
 #ifdef EMP_WRAP_ARGS_1ARG_512
@@ -67990,6 +79318,10 @@
     #undef EMP_WRAP_ARGS_1ARG_512
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_512
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_512")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_512
 
 #ifdef EMP_WRAP_ARGS_1ARG_64
@@ -68014,6 +79346,10 @@
     #undef EMP_WRAP_ARGS_1ARG_64
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_64
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_64")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_64
 
 #ifdef EMP_WRAP_ARGS_1ARG_8
@@ -68038,6 +79374,10 @@
     #undef EMP_WRAP_ARGS_1ARG_8
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_1ARG_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_1ARG_8
+        #pragma pop_macro("EMP_WRAP_ARGS_1ARG_8")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_1ARG_8
 
 #ifdef EMP_WRAP_ARGS_2
@@ -68062,6 +79402,10 @@
     #undef EMP_WRAP_ARGS_2
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_2
+        #pragma pop_macro("EMP_WRAP_ARGS_2")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_2
 
 #ifdef EMP_WRAP_ARGS_256
@@ -68086,6 +79430,10 @@
     #undef EMP_WRAP_ARGS_256
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_256
+        #pragma pop_macro("EMP_WRAP_ARGS_256")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_256
 
 #ifdef EMP_WRAP_ARGS_32
@@ -68110,6 +79458,10 @@
     #undef EMP_WRAP_ARGS_32
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_32
+        #pragma pop_macro("EMP_WRAP_ARGS_32")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_32
 
 #ifdef EMP_WRAP_ARGS_4
@@ -68134,6 +79486,10 @@
     #undef EMP_WRAP_ARGS_4
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_4
+        #pragma pop_macro("EMP_WRAP_ARGS_4")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_4
 
 #ifdef EMP_WRAP_ARGS_512
@@ -68158,6 +79514,10 @@
     #undef EMP_WRAP_ARGS_512
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_512
+        #pragma pop_macro("EMP_WRAP_ARGS_512")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_512
 
 #ifdef EMP_WRAP_ARGS_64
@@ -68182,6 +79542,10 @@
     #undef EMP_WRAP_ARGS_64
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_64
+        #pragma pop_macro("EMP_WRAP_ARGS_64")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_64
 
 #ifdef EMP_WRAP_ARGS_8
@@ -68206,6 +79570,10 @@
     #undef EMP_WRAP_ARGS_8
   #endif
 
+#else // #ifdef EMP_WRAP_ARGS_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARGS_8
+        #pragma pop_macro("EMP_WRAP_ARGS_8")
+    #endif
 #endif // #ifdef EMP_WRAP_ARGS_8
 
 #ifdef EMP_WRAP_ARG_PAIRS
@@ -68230,6 +79598,10 @@
     #undef EMP_WRAP_ARG_PAIRS
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS
 
 #ifdef EMP_WRAP_ARG_PAIRS_10
@@ -68254,6 +79626,10 @@
     #undef EMP_WRAP_ARG_PAIRS_10
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_10
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_10
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_10")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_10
 
 #ifdef EMP_WRAP_ARG_PAIRS_100
@@ -68278,6 +79654,10 @@
     #undef EMP_WRAP_ARG_PAIRS_100
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_100
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_100
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_100")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_100
 
 #ifdef EMP_WRAP_ARG_PAIRS_102
@@ -68302,6 +79682,10 @@
     #undef EMP_WRAP_ARG_PAIRS_102
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_102
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_102
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_102")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_102
 
 #ifdef EMP_WRAP_ARG_PAIRS_104
@@ -68326,6 +79710,10 @@
     #undef EMP_WRAP_ARG_PAIRS_104
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_104
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_104
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_104")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_104
 
 #ifdef EMP_WRAP_ARG_PAIRS_106
@@ -68350,6 +79738,10 @@
     #undef EMP_WRAP_ARG_PAIRS_106
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_106
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_106
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_106")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_106
 
 #ifdef EMP_WRAP_ARG_PAIRS_108
@@ -68374,6 +79766,10 @@
     #undef EMP_WRAP_ARG_PAIRS_108
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_108
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_108
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_108")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_108
 
 #ifdef EMP_WRAP_ARG_PAIRS_110
@@ -68398,6 +79794,10 @@
     #undef EMP_WRAP_ARG_PAIRS_110
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_110
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_110
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_110")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_110
 
 #ifdef EMP_WRAP_ARG_PAIRS_112
@@ -68422,6 +79822,10 @@
     #undef EMP_WRAP_ARG_PAIRS_112
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_112
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_112
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_112")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_112
 
 #ifdef EMP_WRAP_ARG_PAIRS_114
@@ -68446,6 +79850,10 @@
     #undef EMP_WRAP_ARG_PAIRS_114
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_114
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_114
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_114")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_114
 
 #ifdef EMP_WRAP_ARG_PAIRS_116
@@ -68470,6 +79878,10 @@
     #undef EMP_WRAP_ARG_PAIRS_116
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_116
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_116
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_116")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_116
 
 #ifdef EMP_WRAP_ARG_PAIRS_118
@@ -68494,6 +79906,10 @@
     #undef EMP_WRAP_ARG_PAIRS_118
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_118
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_118
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_118")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_118
 
 #ifdef EMP_WRAP_ARG_PAIRS_12
@@ -68518,6 +79934,10 @@
     #undef EMP_WRAP_ARG_PAIRS_12
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_12
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_12
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_12")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_12
 
 #ifdef EMP_WRAP_ARG_PAIRS_120
@@ -68542,6 +79962,10 @@
     #undef EMP_WRAP_ARG_PAIRS_120
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_120
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_120
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_120")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_120
 
 #ifdef EMP_WRAP_ARG_PAIRS_122
@@ -68566,6 +79990,10 @@
     #undef EMP_WRAP_ARG_PAIRS_122
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_122
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_122
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_122")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_122
 
 #ifdef EMP_WRAP_ARG_PAIRS_124
@@ -68590,6 +80018,10 @@
     #undef EMP_WRAP_ARG_PAIRS_124
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_124
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_124
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_124")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_124
 
 #ifdef EMP_WRAP_ARG_PAIRS_126
@@ -68614,6 +80046,10 @@
     #undef EMP_WRAP_ARG_PAIRS_126
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_126
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_126
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_126")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_126
 
 #ifdef EMP_WRAP_ARG_PAIRS_128
@@ -68638,6 +80074,10 @@
     #undef EMP_WRAP_ARG_PAIRS_128
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_128
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_128")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_128
 
 #ifdef EMP_WRAP_ARG_PAIRS_14
@@ -68662,6 +80102,10 @@
     #undef EMP_WRAP_ARG_PAIRS_14
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_14
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_14
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_14")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_14
 
 #ifdef EMP_WRAP_ARG_PAIRS_16
@@ -68686,6 +80130,10 @@
     #undef EMP_WRAP_ARG_PAIRS_16
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_16
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_16")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_16
 
 #ifdef EMP_WRAP_ARG_PAIRS_18
@@ -68710,6 +80158,10 @@
     #undef EMP_WRAP_ARG_PAIRS_18
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_18
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_18
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_18")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_18
 
 #ifdef EMP_WRAP_ARG_PAIRS_2
@@ -68734,6 +80186,10 @@
     #undef EMP_WRAP_ARG_PAIRS_2
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_2
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_2")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_2
 
 #ifdef EMP_WRAP_ARG_PAIRS_20
@@ -68758,6 +80214,10 @@
     #undef EMP_WRAP_ARG_PAIRS_20
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_20
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_20
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_20")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_20
 
 #ifdef EMP_WRAP_ARG_PAIRS_22
@@ -68782,6 +80242,10 @@
     #undef EMP_WRAP_ARG_PAIRS_22
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_22
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_22
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_22")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_22
 
 #ifdef EMP_WRAP_ARG_PAIRS_24
@@ -68806,6 +80270,10 @@
     #undef EMP_WRAP_ARG_PAIRS_24
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_24
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_24
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_24")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_24
 
 #ifdef EMP_WRAP_ARG_PAIRS_26
@@ -68830,6 +80298,10 @@
     #undef EMP_WRAP_ARG_PAIRS_26
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_26
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_26
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_26")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_26
 
 #ifdef EMP_WRAP_ARG_PAIRS_28
@@ -68854,6 +80326,10 @@
     #undef EMP_WRAP_ARG_PAIRS_28
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_28
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_28
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_28")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_28
 
 #ifdef EMP_WRAP_ARG_PAIRS_30
@@ -68878,6 +80354,10 @@
     #undef EMP_WRAP_ARG_PAIRS_30
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_30
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_30
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_30")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_30
 
 #ifdef EMP_WRAP_ARG_PAIRS_32
@@ -68902,6 +80382,10 @@
     #undef EMP_WRAP_ARG_PAIRS_32
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_32
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_32")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_32
 
 #ifdef EMP_WRAP_ARG_PAIRS_34
@@ -68926,6 +80410,10 @@
     #undef EMP_WRAP_ARG_PAIRS_34
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_34
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_34
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_34")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_34
 
 #ifdef EMP_WRAP_ARG_PAIRS_36
@@ -68950,6 +80438,10 @@
     #undef EMP_WRAP_ARG_PAIRS_36
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_36
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_36
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_36")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_36
 
 #ifdef EMP_WRAP_ARG_PAIRS_38
@@ -68974,6 +80466,10 @@
     #undef EMP_WRAP_ARG_PAIRS_38
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_38
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_38
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_38")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_38
 
 #ifdef EMP_WRAP_ARG_PAIRS_4
@@ -68998,6 +80494,10 @@
     #undef EMP_WRAP_ARG_PAIRS_4
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_4
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_4")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_4
 
 #ifdef EMP_WRAP_ARG_PAIRS_40
@@ -69022,6 +80522,10 @@
     #undef EMP_WRAP_ARG_PAIRS_40
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_40
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_40
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_40")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_40
 
 #ifdef EMP_WRAP_ARG_PAIRS_42
@@ -69046,6 +80550,10 @@
     #undef EMP_WRAP_ARG_PAIRS_42
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_42
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_42
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_42")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_42
 
 #ifdef EMP_WRAP_ARG_PAIRS_44
@@ -69070,6 +80578,10 @@
     #undef EMP_WRAP_ARG_PAIRS_44
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_44
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_44
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_44")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_44
 
 #ifdef EMP_WRAP_ARG_PAIRS_46
@@ -69094,6 +80606,10 @@
     #undef EMP_WRAP_ARG_PAIRS_46
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_46
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_46
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_46")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_46
 
 #ifdef EMP_WRAP_ARG_PAIRS_48
@@ -69118,6 +80634,10 @@
     #undef EMP_WRAP_ARG_PAIRS_48
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_48
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_48
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_48")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_48
 
 #ifdef EMP_WRAP_ARG_PAIRS_50
@@ -69142,6 +80662,10 @@
     #undef EMP_WRAP_ARG_PAIRS_50
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_50
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_50
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_50")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_50
 
 #ifdef EMP_WRAP_ARG_PAIRS_52
@@ -69166,6 +80690,10 @@
     #undef EMP_WRAP_ARG_PAIRS_52
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_52
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_52
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_52")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_52
 
 #ifdef EMP_WRAP_ARG_PAIRS_54
@@ -69190,6 +80718,10 @@
     #undef EMP_WRAP_ARG_PAIRS_54
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_54
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_54
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_54")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_54
 
 #ifdef EMP_WRAP_ARG_PAIRS_56
@@ -69214,6 +80746,10 @@
     #undef EMP_WRAP_ARG_PAIRS_56
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_56
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_56
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_56")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_56
 
 #ifdef EMP_WRAP_ARG_PAIRS_58
@@ -69238,6 +80774,10 @@
     #undef EMP_WRAP_ARG_PAIRS_58
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_58
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_58
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_58")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_58
 
 #ifdef EMP_WRAP_ARG_PAIRS_6
@@ -69262,6 +80802,10 @@
     #undef EMP_WRAP_ARG_PAIRS_6
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_6
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_6")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_6
 
 #ifdef EMP_WRAP_ARG_PAIRS_60
@@ -69286,6 +80830,10 @@
     #undef EMP_WRAP_ARG_PAIRS_60
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_60
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_60
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_60")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_60
 
 #ifdef EMP_WRAP_ARG_PAIRS_62
@@ -69310,6 +80858,10 @@
     #undef EMP_WRAP_ARG_PAIRS_62
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_62
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_62
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_62")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_62
 
 #ifdef EMP_WRAP_ARG_PAIRS_64
@@ -69334,6 +80886,10 @@
     #undef EMP_WRAP_ARG_PAIRS_64
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_64
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_64")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_64
 
 #ifdef EMP_WRAP_ARG_PAIRS_66
@@ -69358,6 +80914,10 @@
     #undef EMP_WRAP_ARG_PAIRS_66
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_66
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_66
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_66")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_66
 
 #ifdef EMP_WRAP_ARG_PAIRS_68
@@ -69382,6 +80942,10 @@
     #undef EMP_WRAP_ARG_PAIRS_68
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_68
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_68
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_68")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_68
 
 #ifdef EMP_WRAP_ARG_PAIRS_70
@@ -69406,6 +80970,10 @@
     #undef EMP_WRAP_ARG_PAIRS_70
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_70
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_70
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_70")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_70
 
 #ifdef EMP_WRAP_ARG_PAIRS_72
@@ -69430,6 +80998,10 @@
     #undef EMP_WRAP_ARG_PAIRS_72
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_72
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_72
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_72")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_72
 
 #ifdef EMP_WRAP_ARG_PAIRS_74
@@ -69454,6 +81026,10 @@
     #undef EMP_WRAP_ARG_PAIRS_74
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_74
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_74
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_74")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_74
 
 #ifdef EMP_WRAP_ARG_PAIRS_76
@@ -69478,6 +81054,10 @@
     #undef EMP_WRAP_ARG_PAIRS_76
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_76
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_76
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_76")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_76
 
 #ifdef EMP_WRAP_ARG_PAIRS_78
@@ -69502,6 +81082,10 @@
     #undef EMP_WRAP_ARG_PAIRS_78
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_78
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_78
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_78")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_78
 
 #ifdef EMP_WRAP_ARG_PAIRS_8
@@ -69526,6 +81110,10 @@
     #undef EMP_WRAP_ARG_PAIRS_8
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_8
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_8")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_8
 
 #ifdef EMP_WRAP_ARG_PAIRS_80
@@ -69550,6 +81138,10 @@
     #undef EMP_WRAP_ARG_PAIRS_80
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_80
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_80
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_80")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_80
 
 #ifdef EMP_WRAP_ARG_PAIRS_82
@@ -69574,6 +81166,10 @@
     #undef EMP_WRAP_ARG_PAIRS_82
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_82
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_82
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_82")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_82
 
 #ifdef EMP_WRAP_ARG_PAIRS_84
@@ -69598,6 +81194,10 @@
     #undef EMP_WRAP_ARG_PAIRS_84
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_84
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_84
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_84")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_84
 
 #ifdef EMP_WRAP_ARG_PAIRS_86
@@ -69622,6 +81222,10 @@
     #undef EMP_WRAP_ARG_PAIRS_86
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_86
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_86
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_86")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_86
 
 #ifdef EMP_WRAP_ARG_PAIRS_88
@@ -69646,6 +81250,10 @@
     #undef EMP_WRAP_ARG_PAIRS_88
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_88
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_88
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_88")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_88
 
 #ifdef EMP_WRAP_ARG_PAIRS_90
@@ -69670,6 +81278,10 @@
     #undef EMP_WRAP_ARG_PAIRS_90
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_90
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_90
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_90")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_90
 
 #ifdef EMP_WRAP_ARG_PAIRS_92
@@ -69694,6 +81306,10 @@
     #undef EMP_WRAP_ARG_PAIRS_92
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_92
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_92
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_92")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_92
 
 #ifdef EMP_WRAP_ARG_PAIRS_94
@@ -69718,6 +81334,10 @@
     #undef EMP_WRAP_ARG_PAIRS_94
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_94
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_94
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_94")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_94
 
 #ifdef EMP_WRAP_ARG_PAIRS_96
@@ -69742,6 +81362,10 @@
     #undef EMP_WRAP_ARG_PAIRS_96
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_96
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_96
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_96")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_96
 
 #ifdef EMP_WRAP_ARG_PAIRS_98
@@ -69766,6 +81390,10 @@
     #undef EMP_WRAP_ARG_PAIRS_98
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_PAIRS_98
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_PAIRS_98
+        #pragma pop_macro("EMP_WRAP_ARG_PAIRS_98")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_PAIRS_98
 
 #ifdef EMP_WRAP_ARG_TRIPLES
@@ -69790,6 +81418,10 @@
     #undef EMP_WRAP_ARG_TRIPLES
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_TRIPLES
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_TRIPLES
+        #pragma pop_macro("EMP_WRAP_ARG_TRIPLES")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_TRIPLES
 
 #ifdef EMP_WRAP_ARG_TRIPLES_12
@@ -69814,6 +81446,10 @@
     #undef EMP_WRAP_ARG_TRIPLES_12
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_TRIPLES_12
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_TRIPLES_12
+        #pragma pop_macro("EMP_WRAP_ARG_TRIPLES_12")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_TRIPLES_12
 
 #ifdef EMP_WRAP_ARG_TRIPLES_3
@@ -69838,6 +81474,10 @@
     #undef EMP_WRAP_ARG_TRIPLES_3
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_TRIPLES_3
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_TRIPLES_3
+        #pragma pop_macro("EMP_WRAP_ARG_TRIPLES_3")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_TRIPLES_3
 
 #ifdef EMP_WRAP_ARG_TRIPLES_6
@@ -69862,6 +81502,10 @@
     #undef EMP_WRAP_ARG_TRIPLES_6
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_TRIPLES_6
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_TRIPLES_6
+        #pragma pop_macro("EMP_WRAP_ARG_TRIPLES_6")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_TRIPLES_6
 
 #ifdef EMP_WRAP_ARG_TRIPLES_9
@@ -69886,6 +81530,10 @@
     #undef EMP_WRAP_ARG_TRIPLES_9
   #endif
 
+#else // #ifdef EMP_WRAP_ARG_TRIPLES_9
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_ARG_TRIPLES_9
+        #pragma pop_macro("EMP_WRAP_ARG_TRIPLES_9")
+    #endif
 #endif // #ifdef EMP_WRAP_ARG_TRIPLES_9
 
 #ifdef EMP_WRAP_EACH
@@ -69910,6 +81558,10 @@
     #undef EMP_WRAP_EACH
   #endif
 
+#else // #ifdef EMP_WRAP_EACH
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH
+        #pragma pop_macro("EMP_WRAP_EACH")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH
 
 #ifdef EMP_WRAP_EACH_1
@@ -69934,6 +81586,10 @@
     #undef EMP_WRAP_EACH_1
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1
+        #pragma pop_macro("EMP_WRAP_EACH_1")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1
 
 #ifdef EMP_WRAP_EACH_128
@@ -69958,6 +81614,10 @@
     #undef EMP_WRAP_EACH_128
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_128
+        #pragma pop_macro("EMP_WRAP_EACH_128")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_128
 
 #ifdef EMP_WRAP_EACH_16
@@ -69982,6 +81642,10 @@
     #undef EMP_WRAP_EACH_16
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_16
+        #pragma pop_macro("EMP_WRAP_EACH_16")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_16
 
 #ifdef EMP_WRAP_EACH_1ARG
@@ -70006,6 +81670,10 @@
     #undef EMP_WRAP_EACH_1ARG
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG
 
 #ifdef EMP_WRAP_EACH_1ARG_1
@@ -70030,6 +81698,10 @@
     #undef EMP_WRAP_EACH_1ARG_1
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_1
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_1")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_1
 
 #ifdef EMP_WRAP_EACH_1ARG_128
@@ -70054,6 +81726,10 @@
     #undef EMP_WRAP_EACH_1ARG_128
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_128
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_128")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_128
 
 #ifdef EMP_WRAP_EACH_1ARG_16
@@ -70078,6 +81754,10 @@
     #undef EMP_WRAP_EACH_1ARG_16
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_16
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_16")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_16
 
 #ifdef EMP_WRAP_EACH_1ARG_2
@@ -70102,6 +81782,10 @@
     #undef EMP_WRAP_EACH_1ARG_2
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_2
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_2")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_2
 
 #ifdef EMP_WRAP_EACH_1ARG_256
@@ -70126,6 +81810,10 @@
     #undef EMP_WRAP_EACH_1ARG_256
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_256
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_256")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_256
 
 #ifdef EMP_WRAP_EACH_1ARG_32
@@ -70150,6 +81838,10 @@
     #undef EMP_WRAP_EACH_1ARG_32
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_32
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_32")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_32
 
 #ifdef EMP_WRAP_EACH_1ARG_4
@@ -70174,6 +81866,10 @@
     #undef EMP_WRAP_EACH_1ARG_4
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_4
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_4")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_4
 
 #ifdef EMP_WRAP_EACH_1ARG_512
@@ -70198,6 +81894,10 @@
     #undef EMP_WRAP_EACH_1ARG_512
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_512
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_512")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_512
 
 #ifdef EMP_WRAP_EACH_1ARG_64
@@ -70222,6 +81922,10 @@
     #undef EMP_WRAP_EACH_1ARG_64
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_64
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_64")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_64
 
 #ifdef EMP_WRAP_EACH_1ARG_8
@@ -70246,6 +81950,10 @@
     #undef EMP_WRAP_EACH_1ARG_8
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_1ARG_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_1ARG_8
+        #pragma pop_macro("EMP_WRAP_EACH_1ARG_8")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_1ARG_8
 
 #ifdef EMP_WRAP_EACH_2
@@ -70270,6 +81978,10 @@
     #undef EMP_WRAP_EACH_2
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_2
+        #pragma pop_macro("EMP_WRAP_EACH_2")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_2
 
 #ifdef EMP_WRAP_EACH_256
@@ -70294,6 +82006,10 @@
     #undef EMP_WRAP_EACH_256
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_256
+        #pragma pop_macro("EMP_WRAP_EACH_256")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_256
 
 #ifdef EMP_WRAP_EACH_32
@@ -70318,6 +82034,10 @@
     #undef EMP_WRAP_EACH_32
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_32
+        #pragma pop_macro("EMP_WRAP_EACH_32")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_32
 
 #ifdef EMP_WRAP_EACH_4
@@ -70342,6 +82062,10 @@
     #undef EMP_WRAP_EACH_4
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_4
+        #pragma pop_macro("EMP_WRAP_EACH_4")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_4
 
 #ifdef EMP_WRAP_EACH_512
@@ -70366,6 +82090,10 @@
     #undef EMP_WRAP_EACH_512
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_512
+        #pragma pop_macro("EMP_WRAP_EACH_512")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_512
 
 #ifdef EMP_WRAP_EACH_64
@@ -70390,6 +82118,10 @@
     #undef EMP_WRAP_EACH_64
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_64
+        #pragma pop_macro("EMP_WRAP_EACH_64")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_64
 
 #ifdef EMP_WRAP_EACH_8
@@ -70414,6 +82146,10 @@
     #undef EMP_WRAP_EACH_8
   #endif
 
+#else // #ifdef EMP_WRAP_EACH_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_WRAP_EACH_8
+        #pragma pop_macro("EMP_WRAP_EACH_8")
+    #endif
 #endif // #ifdef EMP_WRAP_EACH_8
 
 #ifdef EMP_XOR
@@ -70438,6 +82174,10 @@
     #undef EMP_XOR
   #endif
 
+#else // #ifdef EMP_XOR
+    #ifdef UIT_EXTERNAL_HAS_EMP_XOR
+        #pragma pop_macro("EMP_XOR")
+    #endif
 #endif // #ifdef EMP_XOR
 
 #ifdef EMP_dup_bin_0
@@ -70462,6 +82202,10 @@
     #undef EMP_dup_bin_0
   #endif
 
+#else // #ifdef EMP_dup_bin_0
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_0
+        #pragma pop_macro("EMP_dup_bin_0")
+    #endif
 #endif // #ifdef EMP_dup_bin_0
 
 #ifdef EMP_dup_bin_1
@@ -70486,6 +82230,10 @@
     #undef EMP_dup_bin_1
   #endif
 
+#else // #ifdef EMP_dup_bin_1
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_1
+        #pragma pop_macro("EMP_dup_bin_1")
+    #endif
 #endif // #ifdef EMP_dup_bin_1
 
 #ifdef EMP_dup_bin_128
@@ -70510,6 +82258,10 @@
     #undef EMP_dup_bin_128
   #endif
 
+#else // #ifdef EMP_dup_bin_128
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_128
+        #pragma pop_macro("EMP_dup_bin_128")
+    #endif
 #endif // #ifdef EMP_dup_bin_128
 
 #ifdef EMP_dup_bin_16
@@ -70534,6 +82286,10 @@
     #undef EMP_dup_bin_16
   #endif
 
+#else // #ifdef EMP_dup_bin_16
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_16
+        #pragma pop_macro("EMP_dup_bin_16")
+    #endif
 #endif // #ifdef EMP_dup_bin_16
 
 #ifdef EMP_dup_bin_2
@@ -70558,6 +82314,10 @@
     #undef EMP_dup_bin_2
   #endif
 
+#else // #ifdef EMP_dup_bin_2
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_2
+        #pragma pop_macro("EMP_dup_bin_2")
+    #endif
 #endif // #ifdef EMP_dup_bin_2
 
 #ifdef EMP_dup_bin_256
@@ -70582,6 +82342,10 @@
     #undef EMP_dup_bin_256
   #endif
 
+#else // #ifdef EMP_dup_bin_256
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_256
+        #pragma pop_macro("EMP_dup_bin_256")
+    #endif
 #endif // #ifdef EMP_dup_bin_256
 
 #ifdef EMP_dup_bin_32
@@ -70606,6 +82370,10 @@
     #undef EMP_dup_bin_32
   #endif
 
+#else // #ifdef EMP_dup_bin_32
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_32
+        #pragma pop_macro("EMP_dup_bin_32")
+    #endif
 #endif // #ifdef EMP_dup_bin_32
 
 #ifdef EMP_dup_bin_4
@@ -70630,6 +82398,10 @@
     #undef EMP_dup_bin_4
   #endif
 
+#else // #ifdef EMP_dup_bin_4
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_4
+        #pragma pop_macro("EMP_dup_bin_4")
+    #endif
 #endif // #ifdef EMP_dup_bin_4
 
 #ifdef EMP_dup_bin_512
@@ -70654,6 +82426,10 @@
     #undef EMP_dup_bin_512
   #endif
 
+#else // #ifdef EMP_dup_bin_512
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_512
+        #pragma pop_macro("EMP_dup_bin_512")
+    #endif
 #endif // #ifdef EMP_dup_bin_512
 
 #ifdef EMP_dup_bin_64
@@ -70678,6 +82454,10 @@
     #undef EMP_dup_bin_64
   #endif
 
+#else // #ifdef EMP_dup_bin_64
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_64
+        #pragma pop_macro("EMP_dup_bin_64")
+    #endif
 #endif // #ifdef EMP_dup_bin_64
 
 #ifdef EMP_dup_bin_8
@@ -70702,6 +82482,10 @@
     #undef EMP_dup_bin_8
   #endif
 
+#else // #ifdef EMP_dup_bin_8
+    #ifdef UIT_EXTERNAL_HAS_EMP_dup_bin_8
+        #pragma pop_macro("EMP_dup_bin_8")
+    #endif
 #endif // #ifdef EMP_dup_bin_8
 
 #ifdef emp_always_assert
@@ -70726,6 +82510,10 @@
     #undef emp_always_assert
   #endif
 
+#else // #ifdef emp_always_assert
+    #ifdef UIT_EXTERNAL_HAS_emp_always_assert
+        #pragma pop_macro("emp_always_assert")
+    #endif
 #endif // #ifdef emp_always_assert
 
 #ifdef emp_always_assert_impl
@@ -70750,6 +82538,10 @@
     #undef emp_always_assert_impl
   #endif
 
+#else // #ifdef emp_always_assert_impl
+    #ifdef UIT_EXTERNAL_HAS_emp_always_assert_impl
+        #pragma pop_macro("emp_always_assert_impl")
+    #endif
 #endif // #ifdef emp_always_assert_impl
 
 #ifdef emp_always_assert_msvc_impl
@@ -70774,6 +82566,10 @@
     #undef emp_always_assert_msvc_impl
   #endif
 
+#else // #ifdef emp_always_assert_msvc_impl
+    #ifdef UIT_EXTERNAL_HAS_emp_always_assert_msvc_impl
+        #pragma pop_macro("emp_always_assert_msvc_impl")
+    #endif
 #endif // #ifdef emp_always_assert_msvc_impl
 
 #ifdef emp_assert
@@ -70798,6 +82594,10 @@
     #undef emp_assert
   #endif
 
+#else // #ifdef emp_assert
+    #ifdef UIT_EXTERNAL_HAS_emp_assert
+        #pragma pop_macro("emp_assert")
+    #endif
 #endif // #ifdef emp_assert
 
 #ifdef emp_assert_TO_PAIR
@@ -70822,6 +82622,10 @@
     #undef emp_assert_TO_PAIR
   #endif
 
+#else // #ifdef emp_assert_TO_PAIR
+    #ifdef UIT_EXTERNAL_HAS_emp_assert_TO_PAIR
+        #pragma pop_macro("emp_assert_TO_PAIR")
+    #endif
 #endif // #ifdef emp_assert_TO_PAIR
 
 #ifdef emp_bool_decoy
@@ -70846,6 +82650,10 @@
     #undef emp_bool_decoy
   #endif
 
+#else // #ifdef emp_bool_decoy
+    #ifdef UIT_EXTERNAL_HAS_emp_bool_decoy
+        #pragma pop_macro("emp_bool_decoy")
+    #endif
 #endif // #ifdef emp_bool_decoy
 
 #ifdef emp_int_decoy
@@ -70870,6 +82678,10 @@
     #undef emp_int_decoy
   #endif
 
+#else // #ifdef emp_int_decoy
+    #ifdef UIT_EXTERNAL_HAS_emp_int_decoy
+        #pragma pop_macro("emp_int_decoy")
+    #endif
 #endif // #ifdef emp_int_decoy
 
 #endif // #ifdef UIT_VENDORIZE_EMP

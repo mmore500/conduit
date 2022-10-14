@@ -30,6 +30,10 @@ for macro in sorted(iter_macros()):
             #undef {macro}
           #endif
 
+        #else // #ifdef {macro}
+            #ifdef UIT_EXTERNAL_HAS_{macro}
+                #pragma pop_macro("{macro}")
+            #endif
         #endif // #ifdef {macro}
     """)
     content += new_content
