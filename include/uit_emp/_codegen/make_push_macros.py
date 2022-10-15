@@ -33,6 +33,11 @@ for macro in sorted(iter_macros()):
                 " so outside definition will be used inside vendorized header"\\
                 " on subsequent includes of the vendorized header"\\
                 " --- if causes problems, try changing header include order"\\
+                " or #include "\\
+                " uit_emp/vendorization/consolidate_context_switches.hpp"\\
+                " at the top of your translation unit;"\\
+                " alternatively, define UIT_SUPPRESS_MACRO_INSEEP_WARNINGS "\\
+                " to silence this warning"\\
               )
             #endif
             #endif

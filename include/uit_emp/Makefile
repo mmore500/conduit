@@ -1,4 +1,5 @@
 all:
+	./_codegen/make_consolidation.py
 	./_codegen/make_facade.py
 	./_codegen/make_pop_headerguards.py
 	./_codegen/make_pop_macros.py

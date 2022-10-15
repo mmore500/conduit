@@ -19,6 +19,7 @@ def setup_one_facade(header_path: str) -> None:
         #pragma once
         #ifndef {header_guard}
         #define {header_guard}
+        #ifndef UIT_EMP_VENDORIZATION_CONSOLIDATE_CONTEXT_SWITCHES_HPP_INCLUDE
 
         #ifdef UIT_VENDORIZE_EMP
         #include "{relpath('vendorization/push_uit_emp.hh')}"
@@ -37,6 +38,7 @@ def setup_one_facade(header_path: str) -> None:
         #include "{relpath('vendorization/pop_uit_emp.hh')}"
         #endif // #ifdef UIT_VENDORIZE_EMP
 
+        #endif // #ifndef UIT_EMP_VENDORIZATION_CONSOLIDATE_CONTEXT_SWITCHES_HPP_INCLUDE
         #endif // #ifndef {header_guard}
     """)
 
