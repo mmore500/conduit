@@ -294,6 +294,7 @@ RUN \
     && \
   echo "user added and granted permissions to /opt and /home/user"
 
+# git safe directory: https://stackoverflow.com/a/73100228/17332200
 RUN \
   mkdir /context/ \
     && \
@@ -302,6 +303,8 @@ RUN \
   mkdir /__w/ \
     && \
   chown user:user /__w/ \
+    && \
+  git config --global --add safe.directory '*' \
     && \
   echo "/context/ /__w/ directories set up, user granted permissions"
 
