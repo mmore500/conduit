@@ -54,6 +54,7 @@ jobs:
     steps:
       # Adapted from https://askubuntu.com/a/524368
       - run: cd /opt/conduit/binder && ./execute_notebooks.sh
+      - run: git config --global --add safe.directory /__w/conduit/conduit
       - run: git init
       - uses: fregante/setup-git-user@v1
       - run: git commit --allow-empty -m "Initial commit"
