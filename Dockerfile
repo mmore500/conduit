@@ -306,6 +306,8 @@ RUN \
     && \
   git config --global --add safe.directory '*' \
     && \
+  git config --global --add safe.directory /__w/conduit/conduit \
+    && \
   echo "/context/ /__w/ directories set up, user granted permissions"
 
 USER user
