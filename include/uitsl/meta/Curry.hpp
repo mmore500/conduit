@@ -2,14 +2,10 @@
 #ifndef UITSL_META_CURRY_HPP_INCLUDE
 #define UITSL_META_CURRY_HPP_INCLUDE
 
-#include <stddef.h>
 #include <type_traits>
 // TODO generalize
 
 namespace uitsl {
-
-#include <assert.h>
-#include <vector>
 
 template<
   template<typename...> typename Input,

@@ -4,6 +4,8 @@
 
 #include <fstream>
 
+#include "../../uitsl/debug/uitsl_always_assert.hpp"
+
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"
 #include "../topology/TopoNode.hpp"
@@ -13,7 +15,7 @@ namespace netuit {
 inline Topology make_adjacency_file_topology(const std::string& filename) {
   std::ifstream file(filename);
 
-  emp_always_assert(file);
+  uitsl_always_assert(file, "");
 
   return dynamic_cast<std::istream&>(file);
 }

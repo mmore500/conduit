@@ -4,18 +4,16 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <memory>
 #include <stddef.h>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
 #include "../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../uitsl/datastructs/SiftingArray.hpp"
 #include "../../../../../../uitsl/debug/err_audit.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
@@ -58,7 +56,7 @@ private:
     );
     requests.PushBack( MPI_REQUEST_NULL );
 
-    emp_assert( uitsl::test_null( requests.Back() ) );
+    assert( uitsl::test_null( requests.Back() ) );
     UITSL_Irecv(
       &data.GetHead(),
       sizeof(T),
@@ -68,17 +66,17 @@ private:
       address.GetComm(),
       &requests.Back()
     );
-    emp_assert( !uitsl::test_null( requests.Back() ) );
+    assert( !uitsl::test_null( requests.Back() ) );
 
   }
 
   void CancelReceiveRequest() {
-    emp_assert( !uitsl::test_null( requests.Back() ) );
+    assert( !uitsl::test_null( requests.Back() ) );
 
     UITSL_Cancel(  &requests.Back() );
     UITSL_Request_free( &requests.Back() );
 
-    emp_assert( uitsl::test_null( requests.Back() ) );
+    assert( uitsl::test_null( requests.Back() ) );
 
     uitsl_err_audit(!  data.PopTail()  );
     uitsl_err_audit(!  requests.PopBack()  );
@@ -95,13 +93,13 @@ private:
     // so let's boogie out early to avoid drama
     if (requests.GetSize() == 0) return;
 
-    emp_assert( std::none_of(
+    assert( std::none_of(
       std::begin(requests),
       std::end(requests),
       [](const auto& req){ return uitsl::test_null( req ); }
     ) );
 
-    thread_local emp::array<int, N> out_indices; // ignored
+    thread_local std::array<int, N> out_indices; // ignored
     int num_received; // ignored
 
     UITSL_Testsome(
@@ -112,8 +110,8 @@ private:
       MPI_STATUSES_IGNORE // MPI_Status array_of_statuses[]
     );
 
-    emp_assert( num_received >= 0 );
-    emp_assert( static_cast<size_t>(num_received) <= requests.GetSize() );
+    assert( num_received >= 0 );
+    assert( static_cast<size_t>(num_received) <= requests.GetSize() );
 
   }
 
@@ -143,7 +141,7 @@ public:
 
     data.PushHead( T{} ); // value-initialized initial Get item
     for (size_t i = 0; i < N; ++i) PostReceiveRequest();
-    emp_assert( std::none_of(
+    assert( std::none_of(
       std::begin(requests),
       std::end(requests),
       [](const auto& req){ return uitsl::test_null( req ); }
@@ -156,7 +154,7 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "TryPut called on RingIrecvDuct");
+    uitsl_always_assert(false, "TryPut called on RingIrecvDuct");
     __builtin_unreachable();
   }
 
@@ -165,7 +163,7 @@ public:
    *
    */
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on RingIrecvDuct");
+    uitsl_always_assert(false, "Flush called on RingIrecvDuct");
     __builtin_unreachable();
   }
 

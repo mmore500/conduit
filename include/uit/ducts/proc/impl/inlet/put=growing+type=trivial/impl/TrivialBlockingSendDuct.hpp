@@ -10,10 +10,7 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
+#include "../../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../../uitsl/nonce/CircularIndex.hpp"
@@ -81,17 +78,17 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on TrivialBlockingSendDuct");
+    uitsl_always_assert(false, "ConsumeGets called on TrivialBlockingSendDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on TrivialBlockingSendDuct");
+    uitsl_always_assert(false, "Get called on TrivialBlockingSendDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on TrivialBlockingSendDuct");
+    uitsl_always_assert(false, "Get called on TrivialBlockingSendDuct");
     __builtin_unreachable();
   }
 

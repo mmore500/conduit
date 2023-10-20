@@ -2,16 +2,14 @@
 #ifndef UIT_DUCTS_DUCT_HPP_INCLUDE
 #define UIT_DUCTS_DUCT_HPP_INCLUDE
 
+#include <optional>
 #include <stddef.h>
 #include <string>
 #include <type_traits>
 #include <utility>
 #include <variant>
 
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../third-party/Empirical/include/emp/meta/TypePack.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../uit_emp/meta/TypePack.hpp"
 
 #include "../../uitsl/containers/safe/unordered_map.hpp"
 #include "../../uitsl/math/math_utils.hpp"
@@ -87,7 +85,7 @@ UITSL_GENERATE_HAS_MEMBER_FUNCTION( CanStep );
 template<typename ImplSpec>
 class Duct {
 
-  using ducts_t = typename emp::TypePack<
+  using ducts_t = typename uit_emp::TypePack<
     typename ImplSpec::IntraDuct,
     typename ImplSpec::ThreadDuct,
     typename ImplSpec::ProcInletDuct,
@@ -278,9 +276,9 @@ public:
    *
    * @return TODO.
    */
-  emp::optional<bool> HoldsIntraImpl() const {
+  std::optional<bool> HoldsIntraImpl() const {
     if ( MaybeHoldsIntraImpl() ) {
-      return HoldsAmbiguousImpl() ? std::nullopt : emp::optional<bool>{ true };
+      return HoldsAmbiguousImpl() ? std::nullopt : std::optional<bool>{ true };
     } else return false;
   }
 
@@ -289,9 +287,9 @@ public:
    *
    * @return TODO.
    */
-  emp::optional<bool> HoldsThreadImpl() const {
+  std::optional<bool> HoldsThreadImpl() const {
     if ( MaybeHoldsThreadImpl() ) {
-      return HoldsAmbiguousImpl() ? std::nullopt : emp::optional<bool>{ true };
+      return HoldsAmbiguousImpl() ? std::nullopt : std::optional<bool>{ true };
     } else return false;
   }
 
@@ -300,9 +298,9 @@ public:
    *
    * @return TODO.
    */
-  emp::optional<bool> HoldsProcImpl() const {
+  std::optional<bool> HoldsProcImpl() const {
     if ( MaybeHoldsProcImpl() ) {
-      return HoldsAmbiguousImpl() ? std::nullopt : emp::optional<bool>{ true };
+      return HoldsAmbiguousImpl() ? std::nullopt : std::optional<bool>{ true };
     } else return false;
   }
 
@@ -378,58 +376,58 @@ public:
     mesh_id_registry[GetUID()] = mesh_id;
   }
 
-  emp::optional<uitsl::proc_id_t> LookupInletProc() const {
+  std::optional<uitsl::proc_id_t> LookupInletProc() const {
     return inlet_proc_registry.contains( GetUID() )
-      ? emp::optional<uitsl::proc_id_t>{ inlet_proc_registry.at( GetUID() ) }
+      ? std::optional<uitsl::proc_id_t>{ inlet_proc_registry.at( GetUID() ) }
       : std::nullopt
     ;
   }
 
-  emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
+  std::optional<uitsl::proc_id_t> LookupOutletProc() const {
     return outlet_proc_registry.contains( GetUID() )
-      ? emp::optional<uitsl::proc_id_t>{ outlet_proc_registry.at( GetUID() ) }
+      ? std::optional<uitsl::proc_id_t>{ outlet_proc_registry.at( GetUID() ) }
       : std::nullopt
     ;
   }
 
-  emp::optional<uitsl::thread_id_t> LookupInletThread() const {
+  std::optional<uitsl::thread_id_t> LookupInletThread() const {
     return inlet_thread_registry.contains( GetUID() )
-      ? emp::optional<uitsl::thread_id_t>{inlet_thread_registry.at( GetUID() )}
+      ? std::optional<uitsl::thread_id_t>{inlet_thread_registry.at( GetUID() )}
       : std::nullopt
     ;
   }
 
-  emp::optional<uitsl::thread_id_t> LookupOutletThread() const {
+  std::optional<uitsl::thread_id_t> LookupOutletThread() const {
     return outlet_thread_registry.contains( GetUID() )
-      ? emp::optional<uitsl::thread_id_t>{outlet_thread_registry.at( GetUID() )}
+      ? std::optional<uitsl::thread_id_t>{outlet_thread_registry.at( GetUID() )}
       : std::nullopt
     ;
   }
 
-  emp::optional<size_t> LookupEdgeID() const {
+  std::optional<size_t> LookupEdgeID() const {
     return edge_id_registry.contains( GetUID() )
-      ? emp::optional<size_t>{edge_id_registry.at( GetUID() )}
+      ? std::optional<size_t>{edge_id_registry.at( GetUID() )}
       : std::nullopt
     ;
   }
 
-  emp::optional<size_t> LookupInletNodeID() const {
+  std::optional<size_t> LookupInletNodeID() const {
     return inlet_node_id_registry.contains( GetUID() )
-      ? emp::optional<size_t>{inlet_node_id_registry.at(GetUID())}
+      ? std::optional<size_t>{inlet_node_id_registry.at(GetUID())}
       : std::nullopt
     ;
   }
 
-  emp::optional<size_t> LookupOutletNodeID() const {
+  std::optional<size_t> LookupOutletNodeID() const {
     return outlet_node_id_registry.contains( GetUID() )
-      ? emp::optional<size_t>{outlet_node_id_registry.at(GetUID())}
+      ? std::optional<size_t>{outlet_node_id_registry.at(GetUID())}
       : std::nullopt
     ;
   }
 
-  emp::optional<size_t> LookupMeshID() const {
+  std::optional<size_t> LookupMeshID() const {
     return mesh_id_registry.contains( GetUID() )
-      ? emp::optional<size_t>{mesh_id_registry.at(GetUID())}
+      ? std::optional<size_t>{mesh_id_registry.at(GetUID())}
       : std::nullopt
     ;
   }

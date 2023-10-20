@@ -3,9 +3,8 @@
 #define UITSL_DEBUG_ISFIRSTEXECUTIONCHECKER_HPP_INCLUDE
 
 #include <atomic>
+#include <cassert>
 #include <stddef.h>
-
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 namespace uitsl {
 
@@ -21,7 +20,7 @@ public:
   : flag(other.flag.load())
   { ; }
 
-  void Check() { emp_assert(0 == flag++); }
+  void Check() { assert(0 == flag++); }
 
 };
 

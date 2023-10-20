@@ -2,10 +2,10 @@
 #ifndef UITSL_DATASTRUCTS_PODINTERNALNODE_HPP_INCLUDE
 #define UITSL_DATASTRUCTS_PODINTERNALNODE_HPP_INCLUDE
 
+#include <cassert>
+#include <cstddef>
 #include <tuple>
 #include <type_traits>
-
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../meta/tuple_has_type.hpp"
 
@@ -28,7 +28,7 @@ class PodInternalNode : public std::tuple<First, Rest...> {
     template<size_t RemainingSteps, size_t ChildIndex=0>
     static constexpr auto GetLeafType() noexcept {
 
-      emp_assert( false , "GetLeafType should not be run" );
+      assert( false && "GetLeafType should not be run" );
 
       using Child = typename std::tuple_element<ChildIndex, parent_t>::type;
       constexpr size_t ChildSteps = Child::GetSize();

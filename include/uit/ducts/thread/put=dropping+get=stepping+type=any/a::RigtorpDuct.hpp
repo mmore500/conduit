@@ -2,13 +2,11 @@
 #ifndef UIT_DUCTS_THREAD_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__RIGTORPDUCT_HPP_INCLUDE
 #define UIT_DUCTS_THREAD_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__RIGTORPDUCT_HPP_INCLUDE
 
+#include <cassert>
 #include <mutex>
 #include <stddef.h>
 #include <string>
 
-#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../third-party/Empirical/include/emp/base/errors.hpp"
-#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 #include "../../../../../third-party/SPSCQueue/include/rigtorp/SPSCQueue.h"
 
 #include "../../../../uitsl/debug/occupancy_audit.hpp"
@@ -45,7 +43,7 @@ class RigtorpDuct {
    */
   size_t CountUnconsumedGets() const {
     const size_t available = queue.size();
-    emp_assert( available );
+    assert( available );
     return available - 1;
   }
 

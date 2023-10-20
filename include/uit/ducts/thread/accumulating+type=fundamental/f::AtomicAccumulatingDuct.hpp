@@ -2,13 +2,11 @@
 #ifndef UIT_DUCTS_THREAD_ACCUMULATING_TYPE_FUNDAMENTAL_F__ATOMICACCUMULATINGDUCT_HPP_INCLUDE
 #define UIT_DUCTS_THREAD_ACCUMULATING_TYPE_FUNDAMENTAL_F__ATOMICACCUMULATINGDUCT_HPP_INCLUDE
 
+#include <cassert>
 #include <limits>
 #include <stddef.h>
 #include <string>
 #include <utility>
-
-#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/meta/f::static_test.hpp"
 #include "../../../../uitsl/parallel/RelaxedAtomic.hpp"
@@ -59,7 +57,7 @@ public:
    * @param requested TODO.
    */
   size_t TryConsumeGets(const size_t requested) {
-    emp_assert( requested == std::numeric_limits<size_t>::max() );
+    assert( requested == std::numeric_limits<size_t>::max() );
     cache = accumulator.exchange( T{} );
     return std::exchange( updates_since_last_get, 0 );
   }

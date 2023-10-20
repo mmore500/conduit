@@ -4,18 +4,16 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <functional>
 #include <utility>
-
-#include "../../../third-party/Empirical/include/emp/base/array.hpp"
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 namespace uitsl {
 
 template<typename T, size_t N>
 class SiftingArray {
 
-  emp::array<T, N> data;
+  std::array<T, N> data;
 
   size_t num_items{};
 
@@ -59,30 +57,30 @@ public:
 
   const T* GetData() const { return data.data(); }
 
-  T& Get(const size_t i) { emp_assert( i < num_items ); return data[i]; }
+  T& Get(const size_t i) { assert( i < num_items ); return data[i]; }
 
   const T& Get(const size_t i) const {
-    emp_assert( i < num_items );
+    assert( i < num_items );
     return data[i];
   }
 
-  T& Front() { emp_assert( num_items ); return Get(0); }
+  T& Front() { assert( num_items ); return Get(0); }
 
-  const T& Front() const { emp_assert( num_items ); return Get(0); }
+  const T& Front() const { assert( num_items ); return Get(0); }
 
-  T& Back() { emp_assert( num_items ); return Get(num_items - 1); }
+  T& Back() { assert( num_items ); return Get(num_items - 1); }
 
-  const T& Back() const { emp_assert( num_items ); return Get(num_items - 1); }
+  const T& Back() const { assert( num_items ); return Get(num_items - 1); }
 
   void PushBack(const T& val=T{}) {
-    emp_assert( num_items < N );
+    assert( num_items < N );
     ++num_items;
     Get(num_items - 1) = val;
   };
 
   template<typename P>
   void PushBack(P&& val) {
-    emp_assert( num_items < N );
+    assert( num_items < N );
     ++num_items;
     Get(num_items - 1) = std::forward<P>(val);
   }

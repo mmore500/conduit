@@ -2,14 +2,14 @@
 #ifndef UIT_SPOUTS_OUTLET_HPP_INCLUDE
 #define UIT_SPOUTS_OUTLET_HPP_INCLUDE
 
+#include <cassert>
 #include <cstdint>
 #include <iostream>
 #include <limits>
 #include <memory>
+#include <optional>
 #include <stddef.h>
 #include <utility>
-
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 #include "../../uitsl/debug/occupancy_audit.hpp"
 #include "../../uitsl/nonce/CircularIndex.hpp"
@@ -225,7 +225,7 @@ public:
     return Get();
   }
 
-  using optional_ref_t = emp::optional<std::reference_wrapper<const T>>;
+  using optional_ref_t = std::optional<std::reference_wrapper<const T>>;
 
   /**
    * Get next if available.
@@ -261,7 +261,7 @@ public:
    * @return TODO.
    */
   size_t GetNumReadsThatWereStale() const {
-    emp_assert( read_count >= fresh_read_count );
+    assert( read_count >= fresh_read_count );
     return read_count - fresh_read_count;
   }
 
@@ -315,7 +315,7 @@ public:
    * @return TODO.
    */
   size_t GetNumRevisionsFromBlockingPulls() const {
-    emp_assert(revision_count >= GetNumRevisionsFromTryPulls());
+    assert(revision_count >= GetNumRevisionsFromTryPulls());
     return revision_count - GetNumRevisionsFromTryPulls();
   }
 
@@ -343,7 +343,7 @@ public:
    * @return TODO.
    */
   size_t GetNumBlockingPullsThatWereLadenImmediately() const {
-    emp_assert( GetNumBlockingPulls() >= GetNumBlockingPullsThatBlocked() );
+    assert( GetNumBlockingPulls() >= GetNumBlockingPullsThatBlocked() );
     return GetNumBlockingPulls() - GetNumBlockingPullsThatBlocked();
   }
 
@@ -383,7 +383,7 @@ public:
    * @return TODO.
    */
   size_t GetNumTryPullsThatWereUnladen() const {
-    emp_assert(nonblocking_pull_attempt_count >= laden_nonblocking_pull_count);
+    assert(nonblocking_pull_attempt_count >= laden_nonblocking_pull_count);
     return nonblocking_pull_attempt_count - laden_nonblocking_pull_count;
   }
 
@@ -393,7 +393,7 @@ public:
    * @return TODO.
    */
   double GetFractionTryPullsThatWereLaden() const {
-    emp_assert(GetNumTryPullsThatWereLaden() >= GetNumTryPullsAttempted());
+    assert(GetNumTryPullsThatWereLaden() >= GetNumTryPullsAttempted());
     return (
       GetNumTryPullsThatWereLaden()
       / static_cast<double>( GetNumTryPullsAttempted() )
@@ -415,7 +415,7 @@ public:
    * @return TODO.
    */
   double GetFractionBlockingPullsThatBlocked() const {
-    emp_assert(
+    assert(
       GetNumBlockingPullsThatBlocked()
       >= GetNumBlockingPulls()
     );
@@ -440,7 +440,7 @@ public:
    * @return TODO.
    */
   double GetFractionPullsThatWereLadenImmediately() const {
-    emp_assert(GetNumPullsThatWereLadenImmediately() >= GetNumPullsAttempted());
+    assert(GetNumPullsThatWereLadenImmediately() >= GetNumPullsAttempted());
     return (
       GetNumPullsThatWereLadenImmediately()
       / static_cast<double>( GetNumPullsAttempted() )
@@ -453,7 +453,7 @@ public:
    * @return TODO.
    */
   double GetFractionPullsThatWereLadenEventually() const {
-    emp_assert(GetNumPullsThatWereLadenEventually() >= GetNumPullsAttempted());
+    assert(GetNumPullsThatWereLadenEventually() >= GetNumPullsAttempted());
     return (
       GetNumPullsThatWereLadenEventually()
       / static_cast<double>( GetNumPullsAttempted() )
@@ -565,13 +565,13 @@ public:
    */
   typename duct_t::uid_t GetDuctUID() const { return duct->GetUID(); }
 
-  emp::optional<bool> HoldsIntraImpl() const { return duct->HoldsIntraImpl(); }
+  std::optional<bool> HoldsIntraImpl() const { return duct->HoldsIntraImpl(); }
 
-  emp::optional<bool> HoldsThreadImpl() const {
+  std::optional<bool> HoldsThreadImpl() const {
     return duct->HoldsThreadImpl();
   }
 
-  emp::optional<bool> HoldsProcImpl() const { return duct->HoldsProcImpl(); }
+  std::optional<bool> HoldsProcImpl() const { return duct->HoldsProcImpl(); }
 
   std::string WhichImplHeld() const { return duct->WhichImplHeld(); }
 
@@ -613,35 +613,35 @@ public:
     duct->RegisterMeshID(mesh_id);
   }
 
-  emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
+  std::optional<uitsl::proc_id_t> LookupOutletProc() const {
     return duct->LookupOutletProc();
   }
 
-  emp::optional<uitsl::thread_id_t> LookupOutletThread() const {
+  std::optional<uitsl::thread_id_t> LookupOutletThread() const {
     return duct->LookupOutletThread();
   }
 
-  emp::optional<uitsl::proc_id_t> LookupInletProc() const {
+  std::optional<uitsl::proc_id_t> LookupInletProc() const {
     return duct->LookupInletProc();
   }
 
-  emp::optional<uitsl::thread_id_t> LookupInletThread() const {
+  std::optional<uitsl::thread_id_t> LookupInletThread() const {
     return duct->LookupInletThread();
   }
 
-  emp::optional<size_t> LookupEdgeID() const {
+  std::optional<size_t> LookupEdgeID() const {
     return duct->LookupEdgeID();
   }
 
-  emp::optional<size_t> LookupInletNodeID() const {
+  std::optional<size_t> LookupInletNodeID() const {
     return duct->LookupInletNodeID();
   }
 
-  emp::optional<size_t> LookupOutletNodeID() const {
+  std::optional<size_t> LookupOutletNodeID() const {
     return duct->LookupOutletNodeID();
   }
 
-  emp::optional<size_t> LookupMeshID() const { return duct->LookupMeshID(); }
+  std::optional<size_t> LookupMeshID() const { return duct->LookupMeshID(); }
 
   /**
    * TODO.

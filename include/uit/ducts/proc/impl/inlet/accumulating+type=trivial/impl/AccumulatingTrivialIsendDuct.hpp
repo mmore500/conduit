@@ -4,18 +4,16 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <memory>
 #include <stddef.h>
 #include <string>
 
 #include <mpi.h>
 
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
 #include "../../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../../uitsl/debug/err_audit.hpp"
+#include "../../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../../uitsl/distributed/MsgAccumulatorPacket.hpp"
 #include "../../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/audited_routines.hpp"
@@ -58,7 +56,7 @@ private:
 
   void PostSendRequest() {
 
-    emp_assert( uitsl::test_null( request ) );
+    assert( uitsl::test_null( request ) );
     UITSL_Isend(
       &send_buffer,
       sizeof(packet_t),
@@ -68,22 +66,22 @@ private:
       address.GetComm(),
       &request
     );
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
 
   }
 
   bool TryFinalizeSend() {
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
     return uitsl::test_completion( request );
   }
 
   void CancelPendingSend() {
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
 
     UITSL_Cancel( &request );
     UITSL_Request_free( &request );
 
-    emp_assert( uitsl::test_null( request ) );
+    assert( uitsl::test_null( request ) );
 
   }
 
@@ -132,19 +130,19 @@ public:
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(
+    uitsl_always_assert(
       false, "ConsumeGets called on AccumulatingTrivialIsendDuct"
     );
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on AccumulatingTrivialIsendDuct");
+    uitsl_always_assert(false, "Get called on AccumulatingTrivialIsendDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on AccumulatingTrivialIsendDuct");
+    uitsl_always_assert(false, "Get called on AccumulatingTrivialIsendDuct");
     __builtin_unreachable();
   }
 

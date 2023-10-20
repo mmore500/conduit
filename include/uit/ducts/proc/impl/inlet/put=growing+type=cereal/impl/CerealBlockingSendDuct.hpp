@@ -10,12 +10,9 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/io/ContiguousStream.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../../uit_emp/io/ContiguousStream.hpp"
 
+#include "../../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../../uitsl/meta/c::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../../uitsl/nonce/CircularIndex.hpp"
@@ -47,7 +44,7 @@ private:
   static_assert( uitsl::c::static_test<T>(), uitsl_c_message );
   constexpr inline static size_t N{ImplSpec::N};
 
-  emp::ContiguousStream buffer;
+  uit_emp::ContiguousStream buffer;
 
   const uit::InterProcAddress address;
 
@@ -94,17 +91,17 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on CerealBlockingSendDuct");
+    uitsl_always_assert(false, "ConsumeGets called on CerealBlockingSendDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on CerealBlockingSendDuct");
+    uitsl_always_assert(false, "Get called on CerealBlockingSendDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on CerealBlockingSendDuct");
+    uitsl_always_assert(false, "Get called on CerealBlockingSendDuct");
     __builtin_unreachable();
   }
 

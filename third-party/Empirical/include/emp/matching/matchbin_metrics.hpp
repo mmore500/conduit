@@ -12,6 +12,7 @@
 #ifndef EMP_MATCH_BIN_METRICS_H
 #define EMP_MATCH_BIN_METRICS_H
 
+#include <algorithm>
 #include <iostream>
 #include <unordered_map>
 #include <unordered_set>
@@ -418,7 +419,7 @@ namespace emp {
       return emp::to_string(Width) + "-bit " + base();
     }
 
-    std::string base() const override { return "Approx Dual Streak Metric"; }
+    std::string base() const override { return "Approx Single Streak Metric"; }
 
     double operator()(const query_t& a, const tag_t& b) const override {
       return calculate(a, b);
@@ -433,13 +434,20 @@ namespace emp {
     }
 
     static inline double ProbabilityKBitSequence(const size_t k) {
+      const double numerator = static_cast<double>(Width - k + 1);
+
+      double denominator;
+      if constexpr (Width < 511) {
+        emp_assert(k < 511);
+        denominator = emp::exp2_overflow_unsafe(-static_cast<int>(k));
+      } else {
+        denominator = emp::exp2(-static_cast<int>(k));
+      }
+
       // Bad Math
       // ... at least clamp it
-      return std::clamp(
-        static_cast<double>(Width - k + 1) / std::pow(2, k),
-        0.0,
-        1.0
-      );
+      return std::clamp(numerator * denominator, 0.0, 1.0);
+
     }
 
   };
@@ -486,9 +494,23 @@ namespace emp {
       return 1.0 - match;
     }
 
-    inline static double ProbabilityKBitSequence(size_t k) {
+    // Approximate Math
+    inline static double ProbabilityKBitSequence(const size_t k) {
+
+      const double numerator = static_cast<double>(Width - k + 1);
+
+      double denominator;
+      if constexpr (Width < 511) {
+        emp_assert(k < 511);
+        denominator = emp::exp2_overflow_unsafe(-static_cast<int>(k));
+      } else {
+        denominator = emp::exp2(-static_cast<int>(k));
+      }
+
       // Bad Math
-      return static_cast<double>(Width - k + 1) / std::pow(2, k);
+      // but no need to clamp
+      return numerator * denominator;
+
     }
 
   };
@@ -497,89 +519,10 @@ namespace emp {
   /// This implementation uses Incorrect Math from Downing's Intelligence
   /// Emerging.
   /// Adapted from Downing, Keith L. Intelligence emerging: adaptivity and search in evolving neural systems. MIT Press, 2015.
+  /// ApproxDualStreakMetric has been optimized directly, so this metric is
+  /// redundant and should not be used.
   template<size_t Width>
-  struct OptimizedApproxDualStreakMetric : public BaseMetric<
-    emp::BitSet<Width>,
-    emp::BitSet<Width>
-  > {
-
-    using query_t = emp::BitSet<Width>;
-    using tag_t = emp::BitSet<Width>;
-
-    size_t dim() const override { return 1; }
-
-    size_t width() const override { return Width; }
-
-    std::string name() const override {
-      return emp::to_string(Width) + "-bit " + base();
-    }
-
-    std::string base() const override { return "Approx Dual Streak Metric"; }
-
-    double operator()(const query_t& a, const tag_t& b) const override {
-      return calculate(a, b);
-    }
-
-    // TODO move to math utils
-    // adapted from https://stackoverflow.com/a/39949009
-    // profiling result https://quick-bench.com/q/-c32FIZ0rRRnJCM2PNp-Nq_vq1E
-    inline double static fastDivide(const double y, const double x) {
-        // calculates y/x
-        union {
-            double dbl;
-            unsigned long long ull;
-        } u;
-        u.dbl = x;                      // x = x
-        u.ull = ( 0xbfcdd6a18f6a6f52ULL - u.ull ) >> (unsigned char)1;
-                                        // pow( x, -0.5 )
-        u.dbl *= u.dbl;                 // pow( pow(x,-0.5), 2 ) = pow( x, -1 ) = 1.0/x
-        return u.dbl * y;               // (1.0/x) * y = y/x
-    }
-
-    // TODO move to math utils
-    static constexpr double customPow(const size_t k) {
-      // lookup table provides a big speedup in runtime MAM
-      double res = 1.0;
-      for ( size_t i{}; i < k; ++i ) res *= 0.5;
-
-      return res;
-    }
-
-    __attribute__ ((hot))
-    inline static double calculate(const query_t& a, const tag_t& b) {
-      const emp::BitSet<Width> bs = a^b;
-      const size_t same = (~bs).LongestSegmentOnes();
-      const size_t different = bs.LongestSegmentOnes();
-      const double ps = ProbabilityKBitSequence(same);
-      const double pd = ProbabilityKBitSequence(different);
-
-      const double match = fastDivide(pd, ps + pd);
-      // Note: here, close match score > poor match score
-      // However, we're computing distance where smaller means closer match.
-      // Note also: 0.0 < match < 1.0
-      // So, we subtract match score from 1.0 to get a distance.
-      return 1.0 - match;
-      // TODO
-      // 1 - pd / (ps + pd) == ps / (ps + pd)
-      // return fastDivide(ps, ps + pd);
-
-    }
-
-    __attribute__ ((hot))
-    inline static double ProbabilityKBitSequence(const size_t k) {
-      // Bad Math
-      static constexpr std::array<double, Width + 1> lookup = [](){
-        std::array<double, Width + 1> res{};
-        for ( size_t i{}; i <= Width; ++i ) {
-          res[i] = static_cast<double>(Width - i + 1) * customPow(i);
-        }
-        return res;
-      }();
-      emp_assert( k < lookup.size() );
-      return lookup[ k ];
-    }
-
-  };
+  using OptimizedApproxDualStreakMetric [[deprecated]] = ApproxDualStreakMetric<Width>;
 
   /// Compute the probability of K or more heads in a row out of N flips.
   /// Adapted from https://www.askamathematician.com/2010/07/q-whats-the-chance-of-getting-a-run-of-k-successes-in-n-bernoulli-trials-why-use-approximations-when-the-exact-answer-is-known/
@@ -741,6 +684,77 @@ namespace emp {
       const double p_same = GetDistn().GetStreakProbability(same);
 
       return p_same;
+    }
+
+  };
+
+  template<size_t Width>
+  struct CodonMetric : public BaseMetric<
+    emp::BitSet<Width>,
+    emp::BitSet<Width>
+  > {
+
+    using query_t = emp::BitSet<Width>;
+    using tag_t = emp::BitSet<Width>;
+
+    size_t dim() const override { return 1; }
+
+    size_t width() const override { return Width; }
+
+    std::string name() const override {
+      return emp::to_string(Width) + "-bit " + base();
+    }
+
+    std::string base() const override { return "Codon Metric"; }
+
+    inline static double calculate(const query_t& a, const tag_t& b) {
+
+      // codon code
+      emp::Random rand_(1);
+      const emp::BitSet<Width> codon_code(rand_);
+
+      emp::vector<size_t> query_codon_idxs;
+      emp::vector<size_t> tag_codon_idxs;
+      emp::BitSet<Width> mask;
+      mask.SetUInt(0, 15);
+      for (size_t i{}; i < Width; i += 4) {
+        if ((mask & a) == (mask & codon_code)) query_codon_idxs.push_back(i);
+        if ((mask & b) == (mask & codon_code)) tag_codon_idxs.push_back(i);
+        const auto temp = mask;
+        for (size_t j{}; j < 15; ++j) {
+          mask += temp;
+        }
+      }
+
+      emp::vector<emp::BitSet<Width>> query_genes;
+      query_genes.push_back(a);
+      for (const size_t i : query_codon_idxs) {
+        query_genes.push_back(a.ROTATE(i + 4));
+      }
+
+      emp::vector<emp::BitSet<Width>> tag_genes;
+      tag_genes.push_back(b);
+      for (const size_t i : tag_codon_idxs) {
+        tag_genes.push_back(b.ROTATE(i + 4));
+      }
+
+      emp::vector<size_t> overlaps;
+      for (const auto& query_gene : query_genes) {
+        for (const auto& tag_gene : tag_genes) {
+          overlaps.push_back(
+            (query_gene ^ tag_gene).FindBit()
+          );
+        }
+      }
+
+      if (overlaps.size()) return 1.0 / static_cast<double>(
+        *std::max_element(std::begin(overlaps), std::end(overlaps)) + 2
+      );
+      else return 1.0;
+    }
+
+    double operator()(const query_t& a, const tag_t& b) const override {
+      return calculate(a, b);
     }
 
   };

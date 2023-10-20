@@ -3,19 +3,19 @@
 #define UIT_SPOUTS_WRAPPERS_INLET_INSTRUMENTATIONAGGREGATINGINLETWRAPPER_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <chrono>
 #include <cstddef>
 #include <memory>
+#include <optional>
 #include <shared_mutex>
 #include <string>
 #include <string_view>
 #include <type_traits>
 #include <utility>
 
-#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../third-party/Empirical/include/emp/data/DataFile.hpp"
-#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../uit_emp/data/DataFile.hpp"
+#include "../../../../uit_emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/algorithm/accumulate_if.hpp"
 #include "../../../../uitsl/containers/safe/unordered_set.hpp"
@@ -387,7 +387,7 @@ class InstrumentationAggregatingInletWrapper {
         size_t num_dropped_puts{};
 
         std::string pack() const {
-          return emp::to_string(
+          return uit_emp::to_string(
             num_try_puts_attempted, ',', num_dropped_puts
           );
         }
@@ -413,7 +413,7 @@ class InstrumentationAggregatingInletWrapper {
         size_t num_round_trip_touches{};
 
         std::string pack() const {
-          return emp::to_string(
+          return uit_emp::to_string(
             num_puts_attempted, ',', num_round_trip_touches
           );
         }
@@ -432,8 +432,8 @@ class InstrumentationAggregatingInletWrapper {
       ).pack();
     }
 
-    static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
-      emp::DataFile res( filename );
+    static uit_emp::DataFile MakeSummaryDataFile(const std::string& filename) {
+      uit_emp::DataFile res( filename );
       res.AddFun(
         [](){
           return std::chrono::time_point_cast<std::chrono::nanoseconds>(
@@ -528,7 +528,7 @@ class InstrumentationAggregatingInletWrapper {
 
     static auto MakeContainerDataFile(const std::string& filename) {
 
-      auto res = emp::MakeContainerDataFile<decltype(&registry)>(
+      auto res = uit_emp::MakeContainerDataFile<decltype(&registry)>(
         [](){ return &registry; },
         filename
       );
@@ -643,25 +643,25 @@ class InstrumentationAggregatingInletWrapper {
       res.AddContainerFun(
         [](const auto inlet_ptr){
           const auto res = inlet_ptr->LookupInletProc();
-          return res.has_value() ? emp::to_string(*res) : "null";
+          return res.has_value() ? uit_emp::to_string(*res) : "null";
         }, "Inlet Proc"
       );
       res.AddContainerFun(
         [](const auto inlet_ptr){
           const auto res = inlet_ptr->LookupOutletProc();
-          return res.has_value() ? emp::to_string(*res) : "null";
+          return res.has_value() ? uit_emp::to_string(*res) : "null";
         }, "Outlet Proc"
       );
       res.AddContainerFun(
         [](const auto inlet_ptr){
           const auto res = inlet_ptr->LookupInletThread();
-          return res.has_value() ? emp::to_string(*res) : "null";
+          return res.has_value() ? uit_emp::to_string(*res) : "null";
         }, "Inlet Thread"
       );
       res.AddContainerFun(
         [](const auto inlet_ptr){
           const auto res = inlet_ptr->LookupOutletThread();
-          return res.has_value() ? emp::to_string(*res) : "null";
+          return res.has_value() ? uit_emp::to_string(*res) : "null";
         }, "Outlet Thread"
       );
       res.AddFun(
@@ -707,7 +707,7 @@ class InstrumentationAggregatingInletWrapper {
     static std::string_view name() { return "proc"; }
   };
 
-  using touch_count_address_cache_t = emp::optional<
+  using touch_count_address_cache_t = std::optional<
     uit::impl::round_trip_touch_addr_t
   >;
   mutable touch_count_address_cache_t touch_count_address_cache{ std::nullopt };
@@ -729,8 +729,8 @@ class InstrumentationAggregatingInletWrapper {
   }
 
   size_t GetCurRoundTripTouchCount() const {
-    emp_assert(
-      uit::impl::round_trip_touch_counter.count( GetTouchCountAddr() ),
+    assert(
+      uit::impl::round_trip_touch_counter.count( GetTouchCountAddr() ) &&
       "round_trip_touch_counter should be initialized during Mesh construction."
     );
     return uit::impl::round_trip_touch_counter.at( GetTouchCountAddr() );
@@ -749,7 +749,7 @@ public:
   InstrumentationAggregatingInletWrapper(
     InstrumentationAggregatingInletWrapper& other
   ) : inlet( other.inlet ) {
-    emp_assert( !registry.contains(this) );
+    assert( !registry.contains(this) );
     registry.insert(this);
   }
 
@@ -759,7 +759,7 @@ public:
   InstrumentationAggregatingInletWrapper(
     const InstrumentationAggregatingInletWrapper& other
   ) : inlet( other.inlet ) {
-    emp_assert( !registry.contains(this) );
+    assert( !registry.contains(this) );
     registry.insert(this);
   };
 
@@ -769,7 +769,7 @@ public:
   InstrumentationAggregatingInletWrapper(
     InstrumentationAggregatingInletWrapper&& other
   ) : inlet( std::move(other.inlet) ) {
-    emp_assert( !registry.contains(this) );
+    assert( !registry.contains(this) );
     registry.insert(this);
   };
 
@@ -780,13 +780,13 @@ public:
   explicit InstrumentationAggregatingInletWrapper(Args&&... args)
   : inlet(std::forward<Args>(args)...)
   {
-    emp_assert( !registry.contains(this) );
+    assert( !registry.contains(this) );
     registry.insert(this);
   }
 
   ~InstrumentationAggregatingInletWrapper() {
     [[maybe_unused]] const size_t res = registry.erase( this );
-    emp_assert( res == 1, res );
+    assert( res == 1 );
   }
 
   void Put(const value_type& val) {

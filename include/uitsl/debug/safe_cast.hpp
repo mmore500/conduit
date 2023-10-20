@@ -4,6 +4,7 @@
 
 #include <limits>
 #include <stddef.h>
+#include <stdexcept>
 
 #include "safe_compare.hpp"
 

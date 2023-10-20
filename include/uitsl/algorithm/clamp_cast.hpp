@@ -6,7 +6,7 @@
 #include <cmath>
 #include <limits>
 
-#include "../../../third-party/Empirical/include/emp/base/always_assert.hpp"
+#include "../../uitsl/debug/uitsl_always_assert.hpp"
 
 #include "nan_to_zero.hpp"
 
@@ -35,7 +35,7 @@ To clamp_cast( const From from ) {
   #ifdef __EMSCRIPTEN__
     // necessary to keep nan sanitization from getting optimized away
     // and (I assume?) implicitly taken care of via the static_cast
-    emp_always_assert( !std::isnan( clamped ) );
+    uitsl_always_assert( !std::isnan( clamped ), "" );
   #endif
 
   return static_cast<To>( clamped );

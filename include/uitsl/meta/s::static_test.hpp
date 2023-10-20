@@ -2,6 +2,7 @@
 #ifndef UITSL_META_S__STATIC_TEST_HPP_INCLUDE
 #define UITSL_META_S__STATIC_TEST_HPP_INCLUDE
 
+#include <cstddef>
 #include <type_traits>
 
 #include "HasMemberFunction.hpp"

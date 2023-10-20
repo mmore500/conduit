@@ -5,16 +5,13 @@
 #include <algorithm>
 #include <array>
 #include <memory>
+#include <optional>
 #include <stddef.h>
 #include <string>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
 
@@ -49,7 +46,7 @@ private:
   std::shared_ptr<BackEndImpl> back_end;
 
   using aggregator_t = typename BackEndImpl::inlet_aggregator_t;
-  emp::optional<std::reference_wrapper<aggregator_t>> aggregator;
+  std::optional<std::reference_wrapper<aggregator_t>> aggregator;
 
   void SetupAggregator() {
     aggregator = back_end->GetInletAggregator(address);
@@ -84,17 +81,17 @@ public:
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on AggregatedInletDuct");
+    uitsl_always_assert(false, "ConsumeGets called on AggregatedInletDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on AggregatedInletDuct");
+    uitsl_always_assert(false, "Get called on AggregatedInletDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on AggregatedInletDuct");
+    uitsl_always_assert(false, "Get called on AggregatedInletDuct");
     __builtin_unreachable();
   }
 

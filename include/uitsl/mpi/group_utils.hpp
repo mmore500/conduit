@@ -2,16 +2,18 @@
 #ifndef UITSL_MPI_GROUP_UTILS_HPP_INCLUDE
 #define UITSL_MPI_GROUP_UTILS_HPP_INCLUDE
 
+#include <cassert>
 #include <numeric>
 #include <set>
 #include <sstream>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../third-party/Empirical/include/emp/math/math.hpp"
+#include "../../uit_emp/math/math.hpp"
 
 #include "../debug/safe_compare.hpp"
+#include "../debug/uitsl_assert.hpp"
 #include "../math/math_utils.hpp"
 #include "../utility/print_utils.hpp"
 
@@ -23,7 +25,7 @@ namespace uitsl {
 // predeclaration
 inline MPI_Group comm_to_group(const MPI_Comm &);
 
-inline MPI_Group intersect_groups(emp::vector<MPI_Group> groups) {
+inline MPI_Group intersect_groups(std::vector<MPI_Group> groups) {
 
   MPI_Group res{
     groups.size() ? groups.back() : MPI_GROUP_EMPTY
@@ -48,7 +50,7 @@ inline MPI_Group intersect_groups(emp::vector<MPI_Group> groups) {
 
 }
 
-inline MPI_Group combine_groups(emp::vector<MPI_Group> groups) {
+inline MPI_Group combine_groups(std::vector<MPI_Group> groups) {
 
   MPI_Group res{
     groups.size() ? groups.back() : MPI_GROUP_EMPTY
@@ -96,7 +98,7 @@ inline size_t group_size(const MPI_Group & group) {
     group, // MPI_Group group
     &res // int *size
   );
-  emp_assert(res >= 0);
+  assert(res >= 0);
   return res;
 }
 
@@ -115,7 +117,7 @@ inline MPI_Comm group_to_comm(
 }
 
 inline MPI_Group make_group(
-  emp::vector<proc_id_t> ranks,
+  std::vector<proc_id_t> ranks,
   const MPI_Group source=uitsl::comm_to_group(MPI_COMM_WORLD)
 ) {
 
@@ -123,11 +125,11 @@ inline MPI_Group make_group(
   const auto last{ std::unique(std::begin(ranks), std::end(ranks)) };
   ranks.erase(last, std::end(ranks));
 
-  emp_assert(std::set<proc_id_t>(
+  uitsl_assert(std::set<proc_id_t>(
     std::begin(ranks),
     std::end(ranks)
   ).size() == ranks.size(), uitsl::to_string(ranks));
-  emp_assert(std::all_of(
+  uitsl_assert(std::all_of(
     std::begin(ranks),
     std::end(ranks),
     [&](const auto & rank){
@@ -161,16 +163,16 @@ inline proc_id_t translate_group_rank(
   return res;
 }
 
-inline emp::vector<proc_id_t> get_group_ranks(const MPI_Group& group) {
+inline std::vector<proc_id_t> get_group_ranks(const MPI_Group& group) {
 
-  emp::vector<proc_id_t> within_group_ranks(group_size(group));
+  std::vector<proc_id_t> within_group_ranks(group_size(group));
   std::iota(
     std::begin(within_group_ranks),
     std::end(within_group_ranks),
     0
   );
 
-  emp::vector<proc_id_t> within_world_ranks(within_group_ranks.size());
+  std::vector<proc_id_t> within_world_ranks(within_group_ranks.size());
   UITSL_Group_translate_ranks(
     group, // MPI_Group group1
     within_group_ranks.size(), // int n

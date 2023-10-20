@@ -4,17 +4,14 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <limits>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaPacket.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/t::static_test.hpp"
@@ -71,7 +68,7 @@ public:
     address.GetOutletProc() == uitsl::get_rank(address.GetComm())
       ? back_end->GetWindowManager().Acquire(
         address.GetInletProc(),
-        emp::vector<std::byte>(
+        std::vector<std::byte>(
           reinterpret_cast<std::byte*>(&cache),
           reinterpret_cast<std::byte*>(&cache) + sizeof(packet_t)
         )
@@ -94,17 +91,17 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) {
-    emp_always_assert(false, "TryPut called on WindowDuct");
+    uitsl_always_assert(false, "TryPut called on WindowDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on WindowDuct");
+    uitsl_always_assert(false, "Flush called on WindowDuct");
     __builtin_unreachable();
   }
 
   size_t TryConsumeGets(const size_t requested) {
-    emp_assert( requested == std::numeric_limits<size_t>::max() );
+    assert( requested == std::numeric_limits<size_t>::max() );
 
     // lock own window
     back_end->GetWindowManager().LockShared( address.GetInletProc() );
@@ -118,7 +115,7 @@ public:
     );
     back_end->GetWindowManager().Unlock( address.GetInletProc() );
 
-    emp_assert( cache.GetEpoch() >= cur_epoch , cache.GetEpoch(), cur_epoch );
+    uitsl_assert(cache.GetEpoch() >= cur_epoch, cache.GetEpoch() << cur_epoch);
 
     const size_t elapsed_epochs = cache.GetEpoch() - cur_epoch;
 

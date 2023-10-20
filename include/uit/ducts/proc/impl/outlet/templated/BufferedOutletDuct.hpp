@@ -3,15 +3,13 @@
 #define UIT_DUCTS_PROC_IMPL_OUTLET_TEMPLATED_BUFFEREDOUTLETDUCT_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <deque>
 #include <stddef.h>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/nonce/ScopeGuard.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
@@ -53,7 +51,7 @@ private:
     const size_t num_buffers_consumed = outlet.TryConsumeGets(
       std::numeric_limits<size_t>::max()
     );
-    emp_assert( !outlet.Get().empty() );
+    assert( !outlet.Get().empty() );
     current = std::prev( std::end( outlet.Get() ) );
     // estimate number of individual items consumed
     return num_buffers_consumed * outlet.Get().size();
@@ -64,8 +62,8 @@ private:
 
     do {
 
-      emp_assert( !outlet.Get().empty() );
-      emp_assert(std::distance(std::next(current),std::end(outlet.Get())) >= 0);
+      assert( !outlet.Get().empty() );
+      assert(std::distance(std::next(current),std::end(outlet.Get())) >= 0);
 
       const size_t cur_step = std::min(
         static_cast<size_t>(
@@ -99,12 +97,12 @@ public:
   { ; }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "TryPut called on BufferedOutletDuct");
+    uitsl_always_assert(false, "TryPut called on BufferedOutletDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on BufferedOutletDuct");
+    uitsl_always_assert(false, "Flush called on BufferedOutletDuct");
     __builtin_unreachable();
   }
 

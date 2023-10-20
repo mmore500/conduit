@@ -7,6 +7,8 @@
 #define CATCH_CONFIG_DEFAULT_REPORTER "multiprocess"
 #include "Catch/single_include/catch2/catch.hpp"
 
+#include "../../uit_emp/tools/string_utils.hpp"
+
 #include "../mpi/mpi_init_utils.hpp"
 
 namespace Catch {
@@ -23,7 +25,7 @@ public:
   void testRunEnded(Catch::TestRunStats const& testRunStats) override {
 
     if(uitsl::is_root() || !testRunStats.totals.testCases.allPassed()) {
-      const std::string message{ emp::to_string(
+      const std::string message{ uit_emp::to_string(
         "\x1B[35m",
         "Processes: ",
         uitsl::get_nprocs(),

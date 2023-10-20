@@ -6,15 +6,15 @@
 #include <numeric>
 #include <stddef.h>
 #include <utility>
+#include <vector>
 
 #ifndef __EMSCRIPTEN__
 #include <metis.h>
 #endif
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-
 #include "../../uitsl/debug/audit_cast.hpp"
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
+#include "../../uitsl/debug/uitsl_assert.hpp"
 #include "../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../uitsl/parallel/thread_utils.hpp"
 
@@ -26,14 +26,17 @@ namespace netuit {
 /// @param parts number of parts to subdivide topology into
 /// @param topology topology to subdivide
 /// @return vector indicating what partition each vertex should go into
-emp::vector<int32_t> PartitionMetis(
+std::vector<int32_t> PartitionMetis(
   const size_t num_parts, const netuit::Topology& topology
 ) {
 
-  emp_assert( num_parts <= topology.GetSize(), num_parts, topology.GetSize() );
+  uitsl_assert(
+    num_parts <= topology.GetSize(),
+    num_parts << topology.GetSize()
+  );
 
   // set up result vector
-  emp::vector<int32_t> result( topology.GetSize(), 0 );
+  std::vector<int32_t> result( topology.GetSize(), 0 );
 
   // the trivial no-split partition crashes METIS, so return before METIS call
   if ( num_parts == 1 ) return result;

@@ -5,16 +5,13 @@
 #include <algorithm>
 #include <array>
 #include <memory>
+#include <optional>
 #include <stddef.h>
 #include <string>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
 
@@ -49,7 +46,7 @@ private:
   std::shared_ptr<BackEndImpl> back_end;
 
   using pool_t = typename BackEndImpl::inlet_pool_t;
-  emp::optional<std::reference_wrapper<pool_t>> pool;
+  std::optional<std::reference_wrapper<pool_t>> pool;
   size_t pool_index;
 
   void SetupPool() {
@@ -86,19 +83,19 @@ public:
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(
+    uitsl_always_assert(
       false, "ConsumeGets called on AccumulatingPooledInletDuct"
     );
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on AccumulatingPooledInletDuct");
+    uitsl_always_assert(false, "Get called on AccumulatingPooledInletDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on AccumulatingPooledInletDuct");
+    uitsl_always_assert(false, "Get called on AccumulatingPooledInletDuct");
     __builtin_unreachable();
   }
 

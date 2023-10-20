@@ -2,12 +2,13 @@
 #ifndef UITSL_MPI_COMM_UTILS_HPP_INCLUDE
 #define UITSL_MPI_COMM_UTILS_HPP_INCLUDE
 
+#include <array>
+#include <cassert>
 #include <set>
 #include <sstream>
+#include <vector>
 
 #include <mpi.h>
-
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../utility/print_utils.hpp"
 
@@ -60,7 +61,7 @@ inline MPI_Group comm_to_group(const MPI_Comm & comm){
 
 inline std::string get_name(const MPI_Comm& comm) {
   int len;
-  emp::array<char, MPI_MAX_OBJECT_NAME> buffer;
+  std::array<char, MPI_MAX_OBJECT_NAME> buffer;
   UITSL_Comm_get_name(comm, buffer.data(), &len);
   return std::string{}.assign(buffer.data(), len);
 }
@@ -76,7 +77,7 @@ inline MPI_Comm duplicate_comm(const MPI_Comm& comm) {
 
 inline size_t comm_size(const MPI_Comm& comm) {
   const int res{ get_nprocs(comm) };
-  emp_assert(res >= 0);
+  assert(res >= 0);
   return res;
 }
 
@@ -96,7 +97,7 @@ inline MPI_Comm split_comm(
 
 }
 
-inline emp::vector<proc_id_t> get_comm_ranks(const MPI_Comm& comm) {
+inline std::vector<proc_id_t> get_comm_ranks(const MPI_Comm& comm) {
   return uitsl::get_group_ranks(uitsl::comm_to_group(comm));
 }
 

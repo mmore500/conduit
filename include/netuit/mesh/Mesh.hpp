@@ -3,9 +3,11 @@
 #define NETUIT_MESH_MESH_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <ratio>
 #include <stddef.h>
 #include <unordered_map>
+#include <vector>
 
 #include <mpi.h>
 
@@ -137,7 +139,7 @@ class Mesh {
         typename ImplSpec::ProcOutletDuct
       >(addr, back_end);
       // assert that generated tags are unique
-      emp_assert( tag_checker.insert(tag).second );
+      assert( tag_checker.insert(tag).second );
     }
 
   }
@@ -220,7 +222,7 @@ class Mesh {
         nodes.GetInputRegistry().at( output.GetEdgeID() )
       };
       uit::impl::round_trip_touch_counter[ addr ];
-      emp_assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
+      assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
     }
   }
 
@@ -263,7 +265,7 @@ class Mesh {
         nodes.GetOutputRegistry().at( input.GetEdgeID() )
       };
       uit::impl::round_trip_touch_counter[ addr ];
-      emp_assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
+      assert( uit::impl::round_trip_touch_counter.count(addr) == 1 );
     }
   }
 
@@ -298,7 +300,7 @@ public:
   // TODO rename GetNumEdges
   size_t GetEdgeCount() const { return nodes.GetEdgeCount(); }
 
-  using submesh_t = emp::vector<node_t>;
+  using submesh_t = std::vector<node_t>;
 
   submesh_t GetSubmesh(const uitsl::thread_id_t tid=0) const {
     return GetSubmesh(tid, uitsl::get_proc_id(comm));

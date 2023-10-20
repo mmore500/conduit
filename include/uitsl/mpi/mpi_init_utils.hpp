@@ -9,8 +9,7 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/include/emp/base/array.hpp"
-#include "../../../third-party/Empirical/include/emp/base/errors.hpp"
+#include "../../uit_emp/base/errors.hpp"
 
 #include "../debug/safe_cast.hpp"
 #include "../utility/print_utils.hpp"
@@ -27,7 +26,7 @@ namespace uitsl {
 inline void mpi_init_multithread(int *argc, char ***argv) {
   int res{};
   UITSL_Init_thread(argc, argv, MPI_THREAD_MULTIPLE, &res);
-  if (res < MPI_THREAD_MULTIPLE) emp::NotifyWarning(
+  if (res < MPI_THREAD_MULTIPLE) uit_emp::NotifyWarning(
     "MPI implementation may not provide full multithread support."
   );
 }

@@ -4,16 +4,13 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaPacket.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/t::static_test.hpp"
@@ -49,7 +46,7 @@ private:
   constexpr inline static size_t N{ImplSpec::N};
   using packet_t = uitsl::RdmaPacket<T>;
 
-  using buffer_t = emp::array<packet_t, N>;
+  using buffer_t = std::array<packet_t, N>;
   buffer_t buffer{};
 
   size_t epoch{};
@@ -64,7 +61,7 @@ private:
   void DoPut(const packet_t& packet) {
 
     // make sure that target offset has been received
-    emp_assert( uitsl::test_completion(target_offset_request) );
+    assert( uitsl::test_completion(target_offset_request) );
 
     // TODO FIXME what kind of lock is needed?
     back_end->GetWindowManager().LockShared( address.GetOutletProc() );
@@ -93,10 +90,10 @@ public:
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
-        emp::vector<std::byte>{}
+        std::vector<std::byte>{}
       );
 
-      // we'll emp_assert later to make sure it actually completed
+      // we'll assert later to make sure it actually completed
       UITSL_Irecv(
         &target_offset, // void *buf
         1, // int count
@@ -121,17 +118,17 @@ public:
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on PutDuct");
+    uitsl_always_assert(false, "ConsumeGets called on PutDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on PutDuct");
+    uitsl_always_assert(false, "Get called on PutDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on PutDuct");
+    uitsl_always_assert(false, "Get called on PutDuct");
     __builtin_unreachable();
   }
 

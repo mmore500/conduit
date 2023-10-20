@@ -2,11 +2,10 @@
 #ifndef UIT_DUCTS_INTRA_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__HEADTAILDUCT_HPP_INCLUDE
 #define UIT_DUCTS_INTRA_PUT_DROPPING_GET_STEPPING_TYPE_ANY_A__HEADTAILDUCT_HPP_INCLUDE
 
+#include <array>
+#include <cassert>
 #include <stddef.h>
 #include <string>
-
-#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/debug/occupancy_audit.hpp"
 #include "../../../../uitsl/meta/a::static_test.hpp"
@@ -29,7 +28,7 @@ class HeadTailDuct {
   constexpr inline static size_t N{ImplSpec::N};
 
   // aligned implicit value initializes T
-  using buffer_t = emp::array<T, N>;
+  using buffer_t = std::array<T, N>;
 
   size_t head{};
   size_t tail{};
@@ -44,7 +43,7 @@ class HeadTailDuct {
    */
   size_t CountUnconsumedGets() const {
     //TODO FIXME handle wraparound case?
-    emp_assert(tail <= head);
+    assert(tail <= head);
     return head - tail;
   }
 
@@ -57,7 +56,7 @@ class HeadTailDuct {
     uitsl_occupancy_audit(1);
     ++head;
     buffer[head % N] = val;
-    emp_assert( CountUnconsumedGets() <= N );
+    assert( CountUnconsumedGets() <= N );
   }
 
   /**
@@ -70,7 +69,7 @@ class HeadTailDuct {
     uitsl_occupancy_audit(1);
     ++head;
     buffer[head % N] = std::forward<P>(val);
-    emp_assert( CountUnconsumedGets() <= N );
+    assert( CountUnconsumedGets() <= N );
   }
 
   /**

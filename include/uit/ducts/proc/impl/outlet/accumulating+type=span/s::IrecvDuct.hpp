@@ -4,15 +4,12 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <stddef.h>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/MsgAccumulatorBundle.hpp"
 #include "../../../../../../uitsl/meta/s::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -56,7 +53,7 @@ private:
   uitsl::Request receive_request;
 
   void PostReceiveRequest() {
-    emp_assert( uitsl::test_null( receive_request ) );
+    assert( uitsl::test_null( receive_request ) );
     UITSL_Irecv(
       buffer.data(),
       buffer.byte_size(),
@@ -66,22 +63,22 @@ private:
       address.GetComm(),
       &receive_request
     );
-    emp_assert( !uitsl::test_null( receive_request ) );
+    assert( !uitsl::test_null( receive_request ) );
   }
 
   void CancelReceiveRequest() {
-    emp_assert( !uitsl::test_null( receive_request ) );
+    assert( !uitsl::test_null( receive_request ) );
 
     UITSL_Cancel( &receive_request );
     UITSL_Request_free( &receive_request );
 
-    emp_assert( uitsl::test_null( receive_request ) );
+    assert( uitsl::test_null( receive_request ) );
   }
 
   // returns true if receive was full
   bool TryReceive() {
 
-    emp_assert( !uitsl::test_null( receive_request ) );
+    assert( !uitsl::test_null( receive_request ) );
 
     const bool res = uitsl::test_completion( receive_request );
 
@@ -107,23 +104,23 @@ public:
   , buffer( rts.HasSize() ? rts.GetSize() : back_end->GetSize() )
   , cache( rts.HasSize() ? rts.GetSize() : back_end->GetSize() )
   {
-    emp_assert( rts.HasSize() || back_end->HasSize() );
+    assert( rts.HasSize() || back_end->HasSize() );
     PostReceiveRequest();
   }
 
   ~IrecvDuct() {
     FlushReceives();
     CancelReceiveRequest();
-    emp_assert( uitsl::test_null( receive_request ) );
+    assert( uitsl::test_null( receive_request ) );
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "TryPut called on IrecvDuct");
+    uitsl_always_assert(false, "TryPut called on IrecvDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on IrecvDuct");
+    uitsl_always_assert(false, "Flush called on IrecvDuct");
     __builtin_unreachable();
   }
 
@@ -135,7 +132,7 @@ public:
    */
   size_t TryConsumeGets(const size_t num_requested) {
 
-    emp_assert( num_requested == std::numeric_limits<size_t>::max() );
+    assert( num_requested == std::numeric_limits<size_t>::max() );
 
     cache.Reset();
 

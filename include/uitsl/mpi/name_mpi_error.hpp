@@ -4,8 +4,6 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
-
 namespace uitsl {
 
 inline std::string name_mpi_error(const int err) {

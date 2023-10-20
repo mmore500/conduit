@@ -6,15 +6,11 @@
 #include <array>
 #include <stddef.h>
 #include <string>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorPacket.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/f::static_test.hpp"
@@ -86,10 +82,10 @@ public:
       // make spoof call to ensure reciporical activation
       back_end->GetWindowManager().Acquire(
         address.GetOutletProc(),
-        emp::vector<std::byte>{}
+        std::vector<std::byte>{}
       );
 
-      // we'll emp_assert later to make sure it actually completed
+      // we'll assert later to make sure it actually completed
       UITSL_Irecv(
         &target_offset, // void *buf
         1, // int count
@@ -120,17 +116,17 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on AccumulateDuct");
+    uitsl_always_assert(false, "ConsumeGets called on AccumulateDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on AccumulateDuct");
+    uitsl_always_assert(false, "Get called on AccumulateDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on AccumulateDuct");
+    uitsl_always_assert(false, "Get called on AccumulateDuct");
     __builtin_unreachable();
   }
 

@@ -6,9 +6,9 @@
 #include <string>
 #include <type_traits>
 #include <utility>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
+#include "../../uit_emp/tools/keyname_utils.hpp"
 
 #include "../polyfill/filesystem.hpp"
 #include "../polyfill/identity.hpp"
@@ -20,7 +20,7 @@ namespace uitsl {
 template< typename T >
 auto keyname_directory_transform(
   const std::string& key,
-  emp::vector<std::pair<std::string, std::string>> filters={},
+  std::vector<std::pair<std::string, std::string>> filters={},
   const std::filesystem::path& target=".",
   const T& parser=std::identity,
   const bool use_regex=false
@@ -36,11 +36,11 @@ auto keyname_directory_transform(
     filters, target, use_regex
   );
 
-  emp::vector< parsed_t > res;
+  std::vector< parsed_t > res;
   std::transform(
     std::begin( targets ), std::end( targets ), std::back_inserter( res ),
     [&]( const auto& entry ){
-      return parser( emp::keyname::unpack( entry.string() ).at( key ) );
+      return parser( uit_emp::keyname::unpack( entry.string() ).at( key ) );
     }
   );
 

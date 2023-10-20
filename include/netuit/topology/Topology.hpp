@@ -3,6 +3,7 @@
 #define NETUIT_TOPOLOGY_TOPOLOGY_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <exception>
 #include <iostream>
 #include <iterator>
@@ -11,9 +12,10 @@
 #include <string>
 #include <unordered_map>
 #include <utility>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/datastructs/hash_utils.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
+#include "../../uit_emp/tools/keyname_utils.hpp"
+#include "../../uit_emp/tools/string_utils.hpp"
 
 #include "../../uitsl/debug/EnumeratedFunctor.hpp"
 #include "../../uitsl/debug/metis_utils.hpp"
@@ -30,7 +32,7 @@ public:
   using node_id_t = size_t;
   using edge_id_t = size_t;
 private:
-  using topology_t = emp::vector<TopoNode>;
+  using topology_t = std::vector<TopoNode>;
   topology_t topology;
 
   // unordered_maps of edge ids to node ids
@@ -54,7 +56,7 @@ private:
   /// @param[in] topo_node Node to register.
   void RegisterNodeInputs(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     for (const auto& input : topo_node.GetInputs()) {
-      emp_assert(input_registry.count(input.GetEdgeID()) == 0);
+      assert(input_registry.count(input.GetEdgeID()) == 0);
       input_registry[input.GetEdgeID()] = node_id;
     }
   }
@@ -64,7 +66,7 @@ private:
   /// @param[in] topo_node Node to register.
   void RegisterNodeOutputs(const node_id_t node_id, const netuit::TopoNode& topo_node) {
     for (const auto& output : topo_node.GetOutputs()) {
-      emp_assert(output_registry.count(output.GetEdgeID()) == 0);
+      assert(output_registry.count(output.GetEdgeID()) == 0);
       output_registry[output.GetEdgeID()] = node_id;
     }
   }
@@ -72,8 +74,8 @@ private:
   /// Return outputs of a node in Topology
   /// @param[in] topo_node Node to return outputs of.
   /// @return Vector of node IDs which topo_node is an output of.
-  emp::vector<node_id_t> GetNodeOutputs(const netuit::TopoNode& node) const {
-    emp::vector<node_id_t> res;
+  std::vector<node_id_t> GetNodeOutputs(const netuit::TopoNode& node) const {
+    std::vector<node_id_t> res;
     for ( const auto& edge : node.GetOutputs() ) {
       res.push_back( input_registry.at( edge.GetEdgeID() ) );
     }
@@ -93,7 +95,7 @@ public:
   }
 
   Topology(std::istream& is) {
-    emp::vector<std::string> lines;
+    std::vector<std::string> lines;
     // read file lines into vector
     uitsl::read_lines(is, std::back_inserter(lines));
 
@@ -118,7 +120,7 @@ public:
     }
 
     // make sure the node ids are less than the number of lines
-    emp_assert( std::all_of(
+    assert( std::all_of(
       std::begin(node_map),
       std::end(node_map),
       [num_lines = lines.size()](const auto& kv) {
@@ -198,12 +200,12 @@ public:
   auto AsCSR() const {
 
     if ( GetSize() == 0 ) return std::make_pair(
-      emp::vector<int32_t>{},
-      emp::vector<int32_t>{}
+      std::vector<int32_t>{},
+      std::vector<int32_t>{}
     );
 
     // get vector with degree of each node
-    emp::vector<int32_t> degrees;
+    std::vector<int32_t> degrees;
     std::transform(
       std::begin( topology ),
       std::end( topology ),
@@ -211,20 +213,20 @@ public:
       []( const auto& node ){ return node.GetNumOutputs(); }
     );
 
-    emp_assert( degrees.size() == GetSize() );
+    assert( degrees.size() == GetSize() );
 
     // get each starting position of each node's adjacency list
-    emp::vector<int32_t> x_adj{ 0 };
+    std::vector<int32_t> x_adj{ 0 };
     std::partial_sum(
       std::begin( degrees ),
       std::end(degrees),
       std::back_inserter( x_adj )
     );
 
-    emp_assert( x_adj.size() == GetSize() + 1 );
+    assert( x_adj.size() == GetSize() + 1 );
 
     // build vector of concatenated adjacency lists
-    emp::vector<int32_t> adjacency;
+    std::vector<int32_t> adjacency;
     for( const auto& node : topology ) {
       const auto outputs = GetNodeOutputs( node );
       adjacency.insert(
@@ -234,12 +236,12 @@ public:
       );
     }
 
-    emp_assert( uitsl::safe_equal(
+    assert( uitsl::safe_equal(
       adjacency.size(),
       std::accumulate( std::begin(degrees), std::end(degrees), int32_t{} )
     ) );
 
-    emp_assert( std::all_of(
+    assert( std::all_of(
       std::begin( x_adj ),
       std::end( x_adj ),
       [&adjacency]( const auto val ){
@@ -276,11 +278,11 @@ public:
     }
   }
 
-  void PrintPartition(const emp::vector<int>& partition, std::ostream& os = std::cout) const {
+  void PrintPartition(const std::vector<int>& partition, std::ostream& os = std::cout) const {
     auto name_node = [&partition] (const size_t index) -> std::string {
-      return emp::keyname::pack({
-        {"node_id", emp::to_string(index)},
-        {"partition", emp::to_string(partition[index])}
+      return uit_emp::keyname::pack({
+        {"node_id", uit_emp::to_string(index)},
+        {"partition", uit_emp::to_string(partition[index])}
       });
     };
 
@@ -300,7 +302,7 @@ public:
   /// @param[in] translator Map of Node IDs to Canonical Node IDs.
   /// @return Subtopology from Node IDs.
   Topology GetSubTopology(const std::unordered_set<size_t>& node_ids) const {
-    emp::vector<netuit::TopoNode> nodes;
+    std::vector<netuit::TopoNode> nodes;
     std::unordered_map<node_id_t, node_id_t> translator;
 
     // fill subtopology with all nodes in node_ids

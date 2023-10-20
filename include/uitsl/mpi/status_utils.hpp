@@ -2,12 +2,11 @@
 #ifndef UITSL_MPI_STATUS_UTILS_HPP_INCLUDE
 #define UITSL_MPI_STATUS_UTILS_HPP_INCLUDE
 
+#include <cassert>
 #include <sstream>
 #include <string>
 
 #include <mpi.h>
-
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../utility/print_utils.hpp"
 
@@ -23,7 +22,7 @@ inline int get_count(const MPI_Status& status, const MPI_Datatype& datatype) {
     datatype, // MPI_Datatype datatype: datatype of each receive buffer element
     &res // int *count: number of received elements (integer)
   );
-  emp_assert( res != MPI_UNDEFINED );
+  assert( res != MPI_UNDEFINED );
   return res;
 }
 

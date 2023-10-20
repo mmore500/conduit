@@ -4,7 +4,7 @@
 
 #include <mpi.h>
 
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../uitsl/debug/uitsl_assert.hpp"
 
 #include "name_mpi_error.hpp"
 
@@ -12,7 +12,7 @@ namespace uitsl {
 
 inline void mpi_audit(const int err) {
 
-  emp_assert(err == MPI_SUCCESS, err, uitsl::name_mpi_error(err));
+  uitsl_assert(err == MPI_SUCCESS, err << uitsl::name_mpi_error(err));
 
 }
 

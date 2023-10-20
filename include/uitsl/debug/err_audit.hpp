@@ -2,15 +2,17 @@
 #ifndef UITSL_DEBUG_ERR_AUDIT_HPP_INCLUDE
 #define UITSL_DEBUG_ERR_AUDIT_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/include/emp/base/assert.hpp"
+#include "../../uitsl/debug/uitsl_assert.hpp"
 
 namespace uitsl {
 
-inline void err_audit(const int err) { emp_assert(err == 0, err); }
+inline void err_audit(const int err) {
+  uitsl_assert(err == 0, err);
+}
 
 inline void err_audit(
   const int err, const int line, const std::string& file
-) { emp_assert(err == 0, err, line, file); }
+) { uitsl_assert(err == 0, err << line << file); }
 
 } // namespace uitsl
 

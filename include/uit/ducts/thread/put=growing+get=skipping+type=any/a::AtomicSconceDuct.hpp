@@ -2,14 +2,13 @@
 #ifndef UIT_DUCTS_THREAD_PUT_GROWING_GET_SKIPPING_TYPE_ANY_A__ATOMICSCONCEDUCT_HPP_INCLUDE
 #define UIT_DUCTS_THREAD_PUT_GROWING_GET_SKIPPING_TYPE_ANY_A__ATOMICSCONCEDUCT_HPP_INCLUDE
 
+#include <array>
 #include <atomic>
+#include <cassert>
 #include <limits>
 #include <stddef.h>
 #include <string>
 #include <utility>
-
-#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/debug/WarnOnce.hpp"
 #include "../../../../uitsl/meta/a::static_test.hpp"
@@ -31,7 +30,7 @@ class AtomicSconceDuct {
   using T = typename ImplSpec::T;
   static_assert( uitsl::a::static_test<T>(), uitsl_a_message );
 
-  emp::array<T, 2> sconces{};
+  std::array<T, 2> sconces{};
   std::atomic<size_t> position{};
   uitsl::RelaxedAtomic<size_t> updates_since_last_get;
 
@@ -78,7 +77,7 @@ public:
    * @param n TODO.
    */
   size_t TryConsumeGets(const size_t requested) {
-    emp_assert( requested == std::numeric_limits<size_t>::max() );
+    assert( requested == std::numeric_limits<size_t>::max() );
     position ^= 1; // toggle between 0 and 1
     return updates_since_last_get.exchange(0);
   }

@@ -3,8 +3,8 @@
 #define UITSL_DATASTRUCTS_PODLEAFNODE_HPP_INCLUDE
 
 #include <algorithm>
-
-#include "../../../third-party/Empirical/include/emp/base/array.hpp"
+#include <array>
+#include <cassert>
 
 namespace uitsl {
 
@@ -19,7 +19,7 @@ public:
   PodLeafNode() = default;
 
   PodLeafNode(const T& other) {
-    emp_assert( N == 1 );
+    assert( N == 1 );
     data[0] = other;
   }
 
@@ -109,12 +109,12 @@ public:
    */
   void Reset() noexcept { data.fill( T{} ); }
 
-  operator T&() noexcept { emp_assert( N == 1 ); return Get(); }
+  operator T&() noexcept { assert( N == 1 ); return Get(); }
 
-  operator const T&() const noexcept { emp_assert( N == 1 ); return Get(); }
+  operator const T&() const noexcept { assert( N == 1 ); return Get(); }
 
   PodLeafNode& operator=(const T& other) noexcept {
-    emp_assert( N == 1 );
+    assert( N == 1 );
     data[0] = other;
     return *this;
   }

@@ -4,18 +4,16 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <memory>
 #include <stddef.h>
 #include <string>
 
 #include <mpi.h>
 
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
 #include "../../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../../uitsl/debug/err_audit.hpp"
+#include "../../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../../uitsl/distributed/MsgAccumulatorBundle.hpp"
 #include "../../../../../../../uitsl/meta/s::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/audited_routines.hpp"
@@ -59,7 +57,7 @@ private:
 
   void PostSendRequest() {
 
-    emp_assert( uitsl::test_null( request ) );
+    assert( uitsl::test_null( request ) );
     UITSL_Isend(
       send_buffer.data(),
       send_buffer.byte_size(),
@@ -69,22 +67,22 @@ private:
       address.GetComm(),
       &request
     );
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
 
   }
 
   bool TryFinalizeSend() {
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
     return uitsl::test_completion( request );
   }
 
   void CancelPendingSend() {
-    emp_assert( !uitsl::test_null( request ) );
+    assert( !uitsl::test_null( request ) );
 
     UITSL_Cancel( &request );
     UITSL_Request_free( &request );
 
-    emp_assert( uitsl::test_null( request ) );
+    assert( uitsl::test_null( request ) );
 
   }
 
@@ -98,7 +96,7 @@ public:
   ) : address(address_)
   , send_buffer( rts.HasSize() ? rts.GetSize() : back_end->GetSize() )
   , pending_buffer( rts.HasSize() ? rts.GetSize() : back_end->GetSize() ) {
-    emp_assert( rts.HasSize() || back_end->HasSize() );
+    assert( rts.HasSize() || back_end->HasSize() );
   }
 
   ~AccumulatingSpanIsendDuct() {
@@ -144,17 +142,19 @@ public:
   }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(false, "ConsumeGets called on AccumulatingSpanIsendDuct");
+    uitsl_always_assert(
+      false, "ConsumeGets called on AccumulatingSpanIsendDuct"
+    );
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on AccumulatingSpanIsendDuct");
+    uitsl_always_assert(false, "Get called on AccumulatingSpanIsendDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on AccumulatingSpanIsendDuct");
+    uitsl_always_assert(false, "Get called on AccumulatingSpanIsendDuct");
     __builtin_unreachable();
   }
 

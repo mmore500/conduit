@@ -5,10 +5,11 @@
 #include <cstddef>
 #include <utility>
 
-#include "../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../third-party/Empirical/include/emp/datastructs/QueueCache.hpp"
+#include "../../../../uit_emp/datastructs/QueueCache.hpp"
 
 #include "../../../../uitsl/distributed/CachePacket.hpp"
+#include "../../../../uitsl/mpi/proc_id_t.hpp"
+#include "../../../../uitsl/parallel/thread_utils.hpp"
 
 namespace uit {
 namespace internal {
@@ -25,7 +26,7 @@ class CachingInletWrapper {
 
   using value_type = typename ImplSpec::value_type;
 
-  emp::QueueCache<
+  uit_emp::QueueCache<
     value_type,
     size_t,
     ImplSpec::SpoutCacheSize

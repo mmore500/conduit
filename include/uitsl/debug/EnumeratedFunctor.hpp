@@ -3,8 +3,7 @@
 #define UITSL_DEBUG_ENUMERATEDFUNCTOR_HPP_INCLUDE
 
 #include <unordered_map>
-
-#include "../third-party/Empirical/include/emp/base/vector.hpp"
+#include <vector>
 
 namespace uitsl {
 
@@ -20,7 +19,7 @@ class EnumeratedFunctor {
 public:
   EnumeratedFunctor() = default;
   EnumeratedFunctor(const std::unordered_map<Input, Output>& map_) : map(map_) { ; }
-  EnumeratedFunctor(const emp::vector<Output>& vect) {
+  EnumeratedFunctor(const std::vector<Output>& vect) {
     for (size_t i = 0; i < vect.size(); ++i) map[i] = vect[i];
   }
 

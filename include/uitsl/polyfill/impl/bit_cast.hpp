@@ -2,6 +2,7 @@
 #ifndef UITSL_POLYFILL_IMPL_BIT_CAST_HPP_INCLUDE
 #define UITSL_POLYFILL_IMPL_BIT_CAST_HPP_INCLUDE
 
+#include <cstring>
 #include <type_traits>
 
 namespace std {

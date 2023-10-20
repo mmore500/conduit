@@ -4,7 +4,8 @@
 
 #include <tuple>
 
-#include "../../../../../third-party/Empirical/include/emp/datastructs/hash_utils.hpp"
+#include "../../../../uit_emp/datastructs/hash_utils.hpp"
+#include "../../../../uit_emp/meta/meta.hpp"
 
 namespace uit {
 namespace impl {
@@ -37,7 +38,7 @@ namespace std {
   template <>
   struct hash<uit::impl::RoundTripCounterAddr> {
     size_t operator()(const uit::impl::RoundTripCounterAddr& addr) const {
-      return emp::CombineHash(
+      return uit_emp::CombineHash(
         addr.mesh_id,
         addr.this_spout_node_id,
         addr.partner_spout_node_id

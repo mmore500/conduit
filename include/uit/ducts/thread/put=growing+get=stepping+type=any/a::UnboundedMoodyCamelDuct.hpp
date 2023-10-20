@@ -2,13 +2,11 @@
 #ifndef UIT_DUCTS_THREAD_PUT_GROWING_GET_STEPPING_TYPE_ANY_A__UNBOUNDEDMOODYCAMELDUCT_HPP_INCLUDE
 #define UIT_DUCTS_THREAD_PUT_GROWING_GET_STEPPING_TYPE_ANY_A__UNBOUNDEDMOODYCAMELDUCT_HPP_INCLUDE
 
+#include <cassert>
 #include <mutex>
 #include <stddef.h>
 #include <string>
 
-#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../third-party/Empirical/include/emp/base/errors.hpp"
-#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 #include "../../../../../third-party/readerwriterqueue/atomicops.h"
 #include "../../../../../third-party/readerwriterqueue/readerwriterqueue.h"
 
@@ -38,7 +36,7 @@ class UnboundedMoodyCamelDuct {
 
   size_t CountUnconsumedGets() const {
     const size_t available = queue.size_approx();
-    emp_assert( available );
+    assert( available );
     return available - 1;
   }
 

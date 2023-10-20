@@ -3,9 +3,11 @@
 #define UIT_SPOUTS_INLET_HPP_INCLUDE
 
 #include <atomic>
+#include <cassert>
 #include <cstdint>
 #include <iostream>
 #include <memory>
+#include <optional>
 #include <stddef.h>
 #include <utility>
 
@@ -208,7 +210,7 @@ public:
    * @return TODO.
    */
   size_t GetNumTryPutsThatSucceeded() const {
-    emp_assert( attempted_try_put_count >= dropped_put_count );
+    assert( attempted_try_put_count >= dropped_put_count );
     return attempted_try_put_count - dropped_put_count;
   }
 
@@ -227,7 +229,7 @@ public:
    * @return TODO.
    */
   size_t GetNumBlockingPutsThatSucceededImmediately() const {
-    emp_assert( blocking_put_count >= puts_that_blocked_count );
+    assert( blocking_put_count >= puts_that_blocked_count );
     return blocking_put_count - puts_that_blocked_count;
   }
 
@@ -352,13 +354,13 @@ public:
    */
   typename duct_t::uid_t GetDuctUID() const { return duct->GetUID(); }
 
-  emp::optional<bool> HoldsIntraImpl() const { return duct->HoldsIntraImpl(); }
+  std::optional<bool> HoldsIntraImpl() const { return duct->HoldsIntraImpl(); }
 
-  emp::optional<bool> HoldsThreadImpl() const {
+  std::optional<bool> HoldsThreadImpl() const {
     return duct->HoldsThreadImpl();
   }
 
-  emp::optional<bool> HoldsProcImpl() const { return duct->HoldsProcImpl(); }
+  std::optional<bool> HoldsProcImpl() const { return duct->HoldsProcImpl(); }
 
   std::string WhichImplHeld() const { return duct->WhichImplHeld(); }
 
@@ -394,35 +396,35 @@ public:
     duct->RegisterMeshID(mesh_id);
   }
 
-  emp::optional<uitsl::proc_id_t> LookupOutletProc() const {
+  std::optional<uitsl::proc_id_t> LookupOutletProc() const {
     return duct->LookupOutletProc();
   }
 
-  emp::optional<uitsl::thread_id_t> LookupOutletThread() const {
+  std::optional<uitsl::thread_id_t> LookupOutletThread() const {
     return duct->LookupOutletThread();
   }
 
-  emp::optional<uitsl::proc_id_t> LookupInletProc() const {
+  std::optional<uitsl::proc_id_t> LookupInletProc() const {
     return duct->LookupInletProc();
   }
 
-  emp::optional<uitsl::thread_id_t> LookupInletThread() const {
+  std::optional<uitsl::thread_id_t> LookupInletThread() const {
     return duct->LookupInletThread();
   }
 
-  emp::optional<size_t> LookupEdgeID() const {
+  std::optional<size_t> LookupEdgeID() const {
     return duct->LookupEdgeID();
   }
 
-  emp::optional<size_t> LookupInletNodeID() const {
+  std::optional<size_t> LookupInletNodeID() const {
     return duct->LookupInletNodeID();
   }
 
-  emp::optional<size_t> LookupOutletNodeID() const {
+  std::optional<size_t> LookupOutletNodeID() const {
     return duct->LookupOutletNodeID();
   }
 
-  emp::optional<size_t> LookupMeshID() const { return duct->LookupMeshID(); }
+  std::optional<size_t> LookupMeshID() const { return duct->LookupMeshID(); }
 
   /**
    * TODO.

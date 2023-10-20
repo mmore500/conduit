@@ -2,11 +2,14 @@
 #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_AGGREGATEDBACKEND_HPP_INCLUDE
 #define UIT_DUCTS_PROC_IMPL_BACKEND_AGGREGATEDBACKEND_HPP_INCLUDE
 
+#include <cassert>
 #include <tuple>
 
-#include "../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
 #include "../../../../../../third-party/Empirical/third-party/robin-hood-hashing/src/include/robin_hood.h"
+
+#include "../../../../../uit_emp/datastructs/tuple_utils.hpp"
+
+#include "../../../../../uitsl/debug/uitsl_assert.hpp"
 
 #include "../../../../setup/InterProcAddress.hpp"
 
@@ -49,7 +52,7 @@ private:
       uitsl::proc_id_t, uitsl::thread_id_t
     >,
     inlet_aggregator_t,
-    emp::TupleHash<
+    uit_emp::TupleHash<
       uitsl::proc_id_t, uitsl::thread_id_t,
       uitsl::proc_id_t, uitsl::thread_id_t
     >
@@ -62,7 +65,7 @@ private:
       uitsl::proc_id_t, uitsl::thread_id_t
     >,
     outlet_aggregator_t,
-    emp::TupleHash<
+    uit_emp::TupleHash<
       uitsl::proc_id_t, uitsl::thread_id_t,
       uitsl::proc_id_t, uitsl::thread_id_t
     >
@@ -71,7 +74,7 @@ private:
   bool AreAllInletAggregatorsInitialized() const {
 
     // check that all windows are in the same initialization state
-    emp_assert( std::adjacent_find(
+    assert( std::adjacent_find(
       std::begin(inlet_aggregators), std::end(inlet_aggregators),
       [](const auto& aggregator_pair1, const auto& aggregator_pair2) {
         const auto& [key1, aggregator1] = aggregator_pair1;
@@ -94,7 +97,7 @@ private:
   bool AreAllOutletAggregatorsInitialized() const {
 
     // check that all windows are in the same initialization state
-    emp_assert( std::adjacent_find(
+    assert( std::adjacent_find(
       std::begin(outlet_aggregators), std::end(outlet_aggregators),
       [](const auto& aggregator_pair1, const auto& aggregator_pair2) {
         const auto& [key1, aggregator1] = aggregator_pair1;
@@ -115,7 +118,7 @@ private:
   }
 
   bool IsInitialized() const {
-    emp_assert(
+    assert(
       AreAllInletAggregatorsInitialized() == AreAllOutletAggregatorsInitialized()
       || inlet_aggregators.empty()
       || outlet_aggregators.empty()
@@ -131,40 +134,40 @@ private:
 public:
 
   void RegisterInletSlot(const address_t& address) {
-    emp_assert( !IsInitialized() );
+    assert( !IsInitialized() );
     inlet_aggregators[ address.WhichProcsThreads() ].Register(address);
   }
 
   void RegisterOutletSlot(const address_t& address) {
-    emp_assert( !IsInitialized() );
+    assert( !IsInitialized() );
     outlet_aggregators[ address.WhichProcsThreads() ].Register(address);
   }
 
   void Initialize() {
-    emp_assert( !IsInitialized() );
+    assert( !IsInitialized() );
 
     for (auto& [__, aggregator] : inlet_aggregators) aggregator.Initialize();
     for (auto& [__, aggregator] : outlet_aggregators) aggregator.Initialize();
 
-    emp_assert( IsInitialized() || IsEmpty() );
+    assert( IsInitialized() || IsEmpty() );
   }
 
   inlet_aggregator_t& GetInletAggregator(const address_t& address) {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     auto& aggregator = inlet_aggregators.at( address.WhichProcsThreads() );
 
-    emp_assert( aggregator.IsInitialized(), aggregator.GetSize() );
+    uitsl_assert( aggregator.IsInitialized(), aggregator.GetSize() );
 
     return aggregator;
   }
 
   outlet_aggregator_t& GetOutletAggregator(const address_t& address) {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     auto& aggregator = outlet_aggregators.at( address.WhichProcsThreads() );
 
-    emp_assert( aggregator.IsInitialized() );
+    assert( aggregator.IsInitialized() );
 
     return aggregator;
   }

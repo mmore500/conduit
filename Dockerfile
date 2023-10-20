@@ -211,7 +211,10 @@ RUN \
 # magic from https://github.com/puppeteer/puppeteer/issues/3451#issuecomment-523961368
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
+# git confifg, see https://stackoverflow.com/a/76769867
 RUN \
+  git config --global url."https://".insteadOf git:// \
+    && \
   python3 -m pip install --timeout 60 --retries 100 --upgrade pip==21.3.1 \
     && \
   python3 -m pip install --timeout 60 --retries 100 --ignore-installed -r /opt/conduit/third-party/requirements.txt \
@@ -291,6 +294,7 @@ RUN \
     && \
   echo "user added and granted permissions to /opt and /home/user"
 
+# git safe directory: https://stackoverflow.com/a/73100228/17332200
 RUN \
   mkdir /context/ \
     && \
@@ -299,6 +303,10 @@ RUN \
   mkdir /__w/ \
     && \
   chown user:user /__w/ \
+    && \
+  git config --global --add safe.directory '*' \
+    && \
+  git config --global --add safe.directory /__w/conduit/conduit \
     && \
   echo "/context/ /__w/ directories set up, user granted permissions"
 

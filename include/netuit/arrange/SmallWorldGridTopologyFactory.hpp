@@ -2,13 +2,13 @@
 #ifndef NETUIT_ARRANGE_SMALLWORLDGRIDTOPOLOGYFACTORY_HPP_INCLUDE
 #define NETUIT_ARRANGE_SMALLWORLDGRIDTOPOLOGYFACTORY_HPP_INCLUDE
 
+#include <cassert>
 #include <cstdlib>
 #include <fstream>
 #include <ratio>
 #include <set>
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../uit_emp/tools/string_utils.hpp"
 
 #include "../../uitsl/debug/err_verify.hpp"
 #include "../../uitsl/fetch/make_temp_filepath.hpp"
@@ -64,7 +64,7 @@ inline Topology make_small_world_grid_topology(
               file.write(line + '\n')
       )" ) + "\"";
 
-  const std::string command = emp::format_string(
+  const std::string command = uit_emp::format_string(
     command_template, n, dim, p, tmpfile.c_str()
   );
 
@@ -85,8 +85,8 @@ struct SmallWorldGridTopologyFactory {
 
   }
 
-  netuit::Topology operator()(const emp::vector<size_t>& cardinality) const {
-    emp_assert(
+  netuit::Topology operator()(const std::vector<size_t>& cardinality) const {
+    assert(
       std::set<size_t>(
         std::begin(cardinality), std::end(cardinality)
       ).size() == 1

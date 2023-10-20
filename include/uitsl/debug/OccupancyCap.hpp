@@ -7,6 +7,8 @@
 #include <stddef.h>
 #include <unordered_set>
 
+#include "../../uitsl/debug/uitsl_assert.hpp"
+
 #include "../parallel/thread_utils.hpp"
 #include "../utility/print_utils.hpp"
 
@@ -33,20 +35,20 @@ public:
 
     const thread_id_t id = get_thread_id();
 
-    emp_assert(
+    uitsl_assert(
       occupants.count(id) == 0,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      occupants.count(id)
+      [](){ error_message_mutex.lock(); return "locked"; }()
+        << occupants.count(id)
     );
 
     occupants.insert(id);
 
-    emp_assert(
+    uitsl_assert(
       occupants.size() <= maximum_occupancy,
-      [](){ error_message_mutex.lock(); return "locked"; }(),
-      occupants.size(),
-      maximum_occupancy,
-      to_string(occupants)
+      [](){ error_message_mutex.lock(); return "locked"; }()
+        << occupants.size()
+        << maximum_occupancy
+        << uitsl::to_string(occupants)
     );
 
   }
@@ -60,7 +62,7 @@ public:
 
     const thread_id_t id = get_thread_id();
 
-    emp_assert(
+    uitsl_assert(
       occupants.count(id),
       [](){ error_message_mutex.lock(); return "locked"; }()
     );

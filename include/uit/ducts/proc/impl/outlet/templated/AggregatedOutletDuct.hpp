@@ -5,15 +5,12 @@
 #include <algorithm>
 #include <array>
 #include <memory>
+#include <optional>
 #include <stddef.h>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../uitsl/utility/print_utils.hpp"
 
@@ -45,7 +42,7 @@ private:
   std::shared_ptr<BackEndImpl> back_end;
 
   using aggregator_t = typename BackEndImpl::outlet_aggregator_t;
-  emp::optional<std::reference_wrapper<aggregator_t>> aggregator;
+  std::optional<std::reference_wrapper<aggregator_t>> aggregator;
 
   void SetupAggregator() {
     aggregator = back_end->GetOutletAggregator(address);
@@ -61,12 +58,12 @@ public:
   { back_end->RegisterOutletSlot(address); }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "TryPut called on AggregatedOutletDuct");
+    uitsl_always_assert(false, "TryPut called on AggregatedOutletDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on AggregatedOutletDuct");
+    uitsl_always_assert(false, "Flush called on AggregatedOutletDuct");
     __builtin_unreachable();
   }
 

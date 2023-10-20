@@ -2,9 +2,8 @@
 #ifndef UITSL_PARALLEL_RECURSIVEEXCLUSIVELOCK_HPP_INCLUDE
 #define UITSL_PARALLEL_RECURSIVEEXCLUSIVELOCK_HPP_INCLUDE
 
+#include <optional>
 #include <shared_mutex>
-
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 #include "RecursiveMutex.hpp"
 #include "thread_utils.hpp"
@@ -14,7 +13,7 @@ namespace uitsl {
 class RecursiveExclusiveLock {
 
   uitsl::RecursiveMutex& mutex;
-  emp::optional<std::unique_lock<std::shared_mutex>> lock;
+  std::optional<std::unique_lock<std::shared_mutex>> lock;
 
 public:
 

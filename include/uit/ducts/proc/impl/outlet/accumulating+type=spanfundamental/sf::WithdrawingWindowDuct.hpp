@@ -6,16 +6,12 @@
 #include <array>
 #include <limits>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
 #include "../../../../../../uitsl/debug/safe_compare.hpp"
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorBundle.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/f::static_test.hpp"
@@ -82,13 +78,13 @@ public:
     address.GetOutletProc() == uitsl::get_rank(address.GetComm())
     ? back_end->GetWindowManager().Acquire(
       address.GetInletProc(),
-      emp::vector<std::byte>(
+      std::vector<std::byte>(
         reinterpret_cast<std::byte*>(pristine.data()),
         reinterpret_cast<std::byte*>(pristine.data()) + pristine.byte_size()
       )
     ) : -1
   ) {
-    emp_assert( rts.HasSize() || back_end->HasSize() );
+    assert( rts.HasSize() || back_end->HasSize() );
     if (address.GetOutletProc() == uitsl::get_rank(address.GetComm())) {
       MPI_Request req;
       UITSL_Isend(
@@ -106,17 +102,17 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) {
-    emp_always_assert(false, "TryPut called on WithdrawingWindowDuct");
+    uitsl_always_assert(false, "TryPut called on WithdrawingWindowDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on WithdrawingWindowDuct");
+    uitsl_always_assert(false, "Flush called on WithdrawingWindowDuct");
     __builtin_unreachable();
   }
 
   size_t TryConsumeGets(const size_t requested) {
-    emp_assert( requested == std::numeric_limits<size_t>::max() );
+    assert( requested == std::numeric_limits<size_t>::max() );
 
     // lock own window
     back_end->GetWindowManager().LockShared( address.GetInletProc() );
@@ -146,7 +142,7 @@ public:
 
     back_end->GetWindowManager().Unlock( address.GetInletProc() );
 
-    emp_assert( cache.GetEpoch() >= 0 );
+    assert( cache.GetEpoch() >= 0 );
 
     return static_cast<size_t>( cache.GetEpoch() );
   }

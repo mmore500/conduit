@@ -2,6 +2,7 @@
 #ifndef NETUIT_MESH_MESHTOPOLOGY_HPP_INCLUDE
 #define NETUIT_MESH_MESHTOPOLOGY_HPP_INCLUDE
 
+#include <cassert>
 #include <map>
 #include <set>
 #include <stddef.h>
@@ -50,7 +51,7 @@ class MeshTopology {
     const node_id_t node_id, const netuit::TopoNode& topo_node
   ) {
     for (const netuit::TopoNodeInput & input : topo_node.GetInputs()) {
-      emp_assert(input_registry.count(input.GetEdgeID()) == 0);
+      assert(input_registry.count(input.GetEdgeID()) == 0);
       edge_registry.insert(input.GetEdgeID());
       input_registry[input.GetEdgeID()] = node_id;
     }
@@ -60,7 +61,7 @@ class MeshTopology {
     const node_id_t node_id, const netuit::TopoNode& topo_node
   ) {
     for (const netuit::TopoNodeOutput& output : topo_node.GetOutputs()) {
-      emp_assert(output_registry.count(output.GetEdgeID()) == 0);
+      assert(output_registry.count(output.GetEdgeID()) == 0);
       edge_registry.insert(output.GetEdgeID());
       output_registry[output.GetEdgeID()] = node_id;
     }
@@ -158,7 +159,7 @@ public:
     InitializeEdges(topology, proc_assignment, comm);
 
     // ensure that input, output registries have same keys as edge registry
-    emp_assert(
+    assert(
       edge_registry == [this](){
         std::set<edge_id_t> res;
         std::transform(
@@ -170,7 +171,7 @@ public:
         return res;
       }()
     );
-    emp_assert(
+    assert(
       edge_registry == [this](){
         std::set<edge_id_t> res;
         std::transform(

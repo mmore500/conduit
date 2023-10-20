@@ -3,10 +3,9 @@
 #define UIT_DUCTS_PROC_IMPL_BACKEND_IMPL_OUTLETMEMORYAGGREGATOR_HPP_INCLUDE
 
 #include <algorithm>
-
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <cassert>
+#include <optional>
+#include <vector>
 
 #include "../../../../../../uitsl/algorithm/upper_uniquify.hpp"
 
@@ -20,13 +19,13 @@ template<typename AggregatorSpec>
 class OutletMemoryAggregator {
 
   using address_t = uit::InterProcAddress;
-  emp::vector<address_t> addresses;
+  std::vector<address_t> addresses;
 
   template<typename T>
   using outlet_wrapper_t = typename AggregatorSpec::template outlet_wrapper_t<
     T
   >;
-  emp::optional<outlet_wrapper_t<uit::Outlet<AggregatorSpec>>> outlet;
+  std::optional<outlet_wrapper_t<uit::Outlet<AggregatorSpec>>> outlet;
 
   // multimap of index -> value_type
   using T = typename AggregatorSpec::T;
@@ -60,7 +59,7 @@ class OutletMemoryAggregator {
 
     do {
 
-      emp_assert( buffer.count( tag ) );
+      assert( buffer.count( tag ) );
 
       const auto lower_bound = buffer.lower_bound( tag );
       const size_t cur_step = std::min(
@@ -115,7 +114,7 @@ class OutletMemoryAggregator {
 
   void CheckCallingProc() const {
     [[maybe_unused]] const auto& rep = addresses.front();
-    emp_assert( rep.GetOutletProc() == uitsl::get_rank( rep.GetComm() ) );
+    assert( rep.GetOutletProc() == uitsl::get_rank( rep.GetComm() ) );
   }
 
 public:
@@ -126,8 +125,8 @@ public:
 
   /// Register a duct for an entry in the pool.
   void Register(const address_t& address) {
-    emp_assert( !IsInitialized() );
-    emp_assert( std::find(
+    assert( !IsInitialized() );
+    assert( std::find(
       std::begin( addresses ), std::end( addresses ), address
     ) == std::end(addresses) );
     addresses.push_back(address);
@@ -135,17 +134,17 @@ public:
 
   /// Get the querying duct's current value from the underlying duct.
   value_type& Get(const int tag) {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
     CheckCallingProc();
-    emp_assert( buffer.count(tag) );
+    assert( buffer.count(tag) );
     return buffer.lower_bound(tag)->second;
   }
 
   /// Get the querying duct's current value from the underlying duct.
   const value_type& Get(const int tag) const {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
     CheckCallingProc();
-    emp_assert( buffer.count(tag) );
+    assert( buffer.count(tag) );
     return buffer.lower_bound(tag)->second;
   }
 
@@ -154,7 +153,7 @@ public:
     const size_t requested,
     const int tag
   ) {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
     CheckCallingProc();
 
     if ( requested == std::numeric_limits<size_t>::max()) {
@@ -167,7 +166,7 @@ public:
 
       return current_num_consumed;
     } else {
-      emp_assert( jump_call_counter == 0 );
+      assert( jump_call_counter == 0 );
       return DoTryStepGets(requested, tag);
     }
 
@@ -176,9 +175,9 @@ public:
   /// Call after all members have requested a position in the pool.
   void Initialize() {
 
-    emp_assert( !IsInitialized() );
+    assert( !IsInitialized() );
 
-    emp_assert( std::adjacent_find(
+    assert( std::adjacent_find(
       std::begin(addresses), std::end(addresses),
       [](const auto& a, const auto& b){
         return a.WhichProcsThreads() != b.WhichProcsThreads()
@@ -186,7 +185,7 @@ public:
         ;
       }
     ) == std::end(addresses) );
-    emp_assert( !addresses.empty() );
+    assert( !addresses.empty() );
 
     auto backend = std::make_shared<
       typename AggregatorSpec::ProcBackEnd
@@ -222,7 +221,7 @@ public:
       }
     );
 
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
   }
 

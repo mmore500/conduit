@@ -4,18 +4,16 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <cstddef>
+#include <optional>
 #include <stddef.h>
 
 #include <mpi.h>
 
 #include "../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/initialization/Uninitialized.hpp"
 #include "../../../../../../uitsl/meta/s::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -53,7 +51,7 @@ private:
 
   const uit::InterProcAddress address;
 
-  emp::optional<size_t> runtime_size;
+  std::optional<size_t> runtime_size;
 
   // most vexing parse
   T buffer = T( runtime_size.value_or(0) );
@@ -62,10 +60,10 @@ private:
   void PerformReceive(const MPI_Status& status) {
     const int msg_len = uitsl::get_count(status, MPI_BYTE);
 
-    emp_assert(msg_len % sizeof(typename T::value_type) == 0);
+    assert(msg_len % sizeof(typename T::value_type) == 0);
     buffer.resize(msg_len / sizeof(typename T::value_type));
 
-    emp_assert( !runtime_size.has_value() || *runtime_size == buffer.size() );
+    assert( !runtime_size.has_value() || *runtime_size == buffer.size() );
 
     UITSL_Recv(
       buffer.data(), // void* buf: initial address of receive buffer
@@ -119,7 +117,7 @@ public:
     const uit::RuntimeSizeBackEnd<ImplSpec>& rts
       =uit::RuntimeSizeBackEnd<ImplSpec>{}
   ) : address(address_)
-  , runtime_size( [&]()  -> emp::optional<size_t> {
+  , runtime_size( [&]()  -> std::optional<size_t> {
     if ( rts.HasSize() ) return {rts.GetSize()};
     else if ( back_end->HasSize() ) return {back_end->GetSize()};
     else return std::nullopt;
@@ -131,7 +129,7 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "Put called on IprobeDuct");
+    uitsl_always_assert(false, "Put called on IprobeDuct");
     __builtin_unreachable();
   }
 
@@ -140,7 +138,7 @@ public:
    *
    */
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on IprobeDuct");
+    uitsl_always_assert(false, "Flush called on IprobeDuct");
     __builtin_unreachable();
   }
 

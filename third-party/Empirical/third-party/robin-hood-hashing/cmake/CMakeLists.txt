@@ -38,7 +38,7 @@ MESSAGE(STATUS "${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}, C++${CMA
 
 function(add_compile_flags_target target)
     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-        target_compile_options(${target} PRIVATE -march=native)
+        # target_compile_options(${target} PRIVATE -march=native)
         target_compile_options(${target} PRIVATE -fdiagnostics-color)
         target_compile_options(${target} PRIVATE -Werror)
         target_compile_options(${target} PRIVATE -pedantic)
@@ -47,6 +47,7 @@ function(add_compile_flags_target target)
         target_compile_options(${target} PRIVATE -fstrict-aliasing)
         target_compile_options(${target} PRIVATE -Wstrict-aliasing=2)
         target_compile_options(${target} PRIVATE -Wno-zero-as-null-pointer-constant)
+        target_compile_options(${target} PRIVATE -Wno-reserved-identifier)
     endif()
 
     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
@@ -128,7 +129,10 @@ function(add_compile_flags_target target)
     if(MSVC)
         target_compile_options(${target} PRIVATE /EHsc) # exception handling
         target_compile_options(${target} PRIVATE /std:c++latest) # for post c++14 updates in MSVC
-        target_compile_options(${target} PRIVATE /permissive-)   # force standard conformance - this is the better flag than /Za
+        if (CXX_COMPILER_VERSION VERSION_GREATER 19.0)
+            # MSVC 2017 or later
+            target_compile_options(${target} PRIVATE "/permissive-") # force standards conformance - this is the better flag than /Za
+        endif()
         target_compile_options(${target} PRIVATE /WX)
         target_compile_options(${target} PRIVATE /Wall) # turns on warnings from levels 1 through 4 which are off by default - https://msdn.microsoft.com/en-us/library/23k5d385.aspx
         
@@ -152,7 +156,15 @@ function(add_compile_flags_target target)
             /wd4774 # 'swprintf_s' : format string expected in argument 3 is not a string literal
 
             /wd5045 # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
+
         )
+        if (CXX_COMPILER_VERSION VERSION_LESS_EQUAL 19.0)
+            # MSVC 2015 produces several warnings that look to be incorrect.
+            target_compile_options(${target} PRIVATE
+                /wd4548 # expression before comma has no effect
+                /wd4996 # 'std::copy' with parameters that may be unsafe
+            )
+        endif()
     endif()
 
     if (CMAKE_CXX_COMPILER_ID MATCHES "Clang|AppleClang|GNU" )

@@ -3,9 +3,9 @@
 #define UITSL_DISTRIBUTED_CACHEPACKET_HPP_INCLUDE
 
 #include <cstddef>
+#include <optional>
 
 #include "../../../third-party/cereal/include/cereal/types/optional.hpp"
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
 
 namespace uitsl {
 
@@ -14,7 +14,7 @@ class CachePacket {
 
   size_t cache_id{};
 
-  emp::optional<T> data{ T{} };
+  std::optional<T> data{ T{} };
 
 public:
 

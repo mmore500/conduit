@@ -2,6 +2,8 @@
 #ifndef UITSL_UTILITY_NAMEDARRAYELEMENT_HPP_INCLUDE
 #define UITSL_UTILITY_NAMEDARRAYELEMENT_HPP_INCLUDE
 
+#include <cstddef>
+
 namespace uitsl {
 
 // adapted from http://cplusplus.bordoon.com/namedArrayElements.html

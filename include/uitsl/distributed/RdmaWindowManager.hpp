@@ -2,12 +2,13 @@
 #ifndef UITSL_DISTRIBUTED_RDMAWINDOWMANAGER_HPP_INCLUDE
 #define UITSL_DISTRIBUTED_RDMAWINDOWMANAGER_HPP_INCLUDE
 
+#include <cassert>
 #include <cstddef>
 #include <set>
 #include <stddef.h>
 #include <thread>
 #include <unordered_map>
-#include <unordered_map>
+#include <vector>
 
 #include <mpi.h>
 
@@ -59,47 +60,47 @@ public:
   // TODO cache line alignment?
   size_t Acquire(
     const proc_id_t rank,
-    const emp::vector<std::byte>& initial_bytes
+    const std::vector<std::byte>& initial_bytes
   ) {
 
     // make this call thread safe
     const std::lock_guard guard{mutex};
 
-    emp_assert( !IsInitialized() );
+    assert( !IsInitialized() );
 
     return windows[rank].Acquire(initial_bytes);
 
   }
 
   std::byte *GetBytes(const proc_id_t rank, const size_t byte_offset) {
-    emp_assert( IsInitialized() );
-    emp_assert( windows.count(rank) );
+    assert( IsInitialized() );
+    assert( windows.count(rank) );
 
     return windows.at(rank).GetBytes(byte_offset);
 
   }
 
   const MPI_Win& GetWindow(const proc_id_t rank) {
-    emp_assert( IsInitialized() );
-    emp_assert( windows.count(rank) );
+    assert( IsInitialized() );
+    assert( windows.count(rank) );
     return windows.at(rank).GetWindow();
   }
 
   void LockExclusive(const proc_id_t rank) {
-    emp_assert( IsInitialized() );
-    emp_assert( windows.count(rank) );
+    assert( IsInitialized() );
+    assert( windows.count(rank) );
     return windows.at(rank).LockExclusive();
   }
 
   void LockShared(const proc_id_t rank) {
-    emp_assert( IsInitialized() );
-    emp_assert( windows.count(rank) );
+    assert( IsInitialized() );
+    assert( windows.count(rank) );
     return windows.at(rank).LockShared();
   }
 
   void Unlock(const proc_id_t rank) {
-    emp_assert( IsInitialized() );
-    emp_assert( windows.count(rank) );
+    assert( IsInitialized() );
+    assert( windows.count(rank) );
     return windows.at(rank).Unlock();
   }
 
@@ -109,8 +110,8 @@ public:
     const size_t num_bytes,
     const MPI_Aint target_disp
   ) {
-    emp_assert( IsInitialized() );
-    emp_assert( windows.count(rank) );
+    assert( IsInitialized() );
+    assert( windows.count(rank) );
     windows.at(rank).Put(origin_addr, num_bytes, target_disp);
   }
 
@@ -121,9 +122,9 @@ public:
     const MPI_Aint target_disp,
     MPI_Request *request
   ) {
-    emp_assert( IsInitialized() );
-    emp_assert( windows.count(rank) );
-    emp_assert( uitsl::test_null(*request) );
+    assert( IsInitialized() );
+    assert( windows.count(rank) );
+    assert( uitsl::test_null(*request) );
     windows.at(rank).Rput(origin_addr, num_bytes, target_disp, request);
   }
 
@@ -134,8 +135,8 @@ public:
     const size_t num_bytes,
     const MPI_Aint target_disp
   ) {
-    emp_assert( IsInitialized() );
-    emp_assert( windows.count(rank) );
+    assert( IsInitialized() );
+    assert( windows.count(rank) );
     windows.at(rank).Accumulate<T>(origin_addr, num_bytes, target_disp);
   }
 
@@ -147,16 +148,16 @@ public:
     const MPI_Aint target_disp,
     MPI_Request *request
   ) {
-    emp_assert( IsInitialized() );
-    emp_assert( windows.count(rank) );
-    emp_assert( uitsl::test_null(*request) );
+    assert( IsInitialized() );
+    assert( windows.count(rank) );
+    assert( uitsl::test_null(*request) );
   windows.at(
       rank
     ).Raccumulate<T>(origin_addr, num_bytes, target_disp, request);
   }
 
   void Initialize(MPI_Comm comm=MPI_COMM_WORLD) {
-    emp_assert(!IsInitialized());
+    assert(!IsInitialized());
 
     // sort ranks to prevent deadlock
     for (proc_id_t rank : GetSortedRanks()) {
@@ -181,7 +182,7 @@ public:
     // ensure that RputDucts have received target offsets
     UITSL_Barrier(comm);
 
-    emp_assert(windows.empty() || IsInitialized());
+    assert(windows.empty() || IsInitialized());
   }
 
   std::string ToString() {

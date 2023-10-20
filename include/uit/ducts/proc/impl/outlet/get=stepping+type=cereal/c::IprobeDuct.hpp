@@ -5,18 +5,16 @@
 #include <algorithm>
 #include <array>
 #include <cstddef>
+#include <optional>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 
 #include "../../../../../../../third-party/cereal/include/cereal/archives/binary.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/io/MemoryIStream.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../../../uit_emp/io/MemoryIStream.hpp"
 
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/initialization/Uninitialized.hpp"
 #include "../../../../../../uitsl/meta/c::static_test.hpp"
 #include "../../../../../../uitsl/mpi/mpi_init_utils.hpp"
@@ -52,12 +50,12 @@ private:
 
   size_t pending_gets{};
 
-  using buffer_t = emp::vector<uitsl::Uninitialized<std::byte>>;
+  using buffer_t = std::vector<uitsl::Uninitialized<std::byte>>;
   buffer_t buffer{};
 
   // cached unpacked value
   // initialize to value-constructed default
-  mutable emp::optional<T> cache{ std::in_place_t{} };
+  mutable std::optional<T> cache{ std::in_place_t{} };
 
   const uit::InterProcAddress address;
 
@@ -117,7 +115,7 @@ private:
     if (!cache.has_value()) {
       cache.emplace();
 
-      emp::MemoryIStream imemstream(
+      uit_emp::MemoryIStream imemstream(
         reinterpret_cast<const char*>(buffer.data()),
         buffer.size()
       );
@@ -138,12 +136,12 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) const {
-    emp_always_assert(false, "Put called on IprobeDuct");
+    uitsl_always_assert(false, "Put called on IprobeDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on IprobeDuct");
+    uitsl_always_assert(false, "Flush called on IprobeDuct");
     __builtin_unreachable();
   }
 

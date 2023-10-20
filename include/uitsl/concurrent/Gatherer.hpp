@@ -4,12 +4,11 @@
 
 #include <algorithm>
 #include <numeric>
+#include <optional>
 #include <thread>
+#include <vector>
 
 #include <mpi.h>
-
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "../containers/safe/deque.hpp"
 #include "../mpi/audited_routines.hpp"
@@ -45,10 +44,10 @@ class Gatherer {
    * @param root The ID of the process to gather to.
    * @returns Data item count from each participating process.
    */
-  emp::vector<int> GatherCounts(const int root) {
+  std::vector<int> GatherCounts(const int root) {
 
     const int count = items.size();
-    emp::vector<int> res(get_nprocs());
+    std::vector<int> res(get_nprocs());
 
     UITSL_Gather(
       &count, // const void *sendbuf,
@@ -95,12 +94,12 @@ public:
    * @note All processes within @comm must make this call simultaneously.
    * @note Only a single thread from each process should make this call.
    */
-  emp::optional<emp::vector<T>> Gather(const int root=0) {
+  std::optional<std::vector<T>> Gather(const int root=0) {
 
-    const emp::vector<int> counts = GatherCounts(root);
+    const std::vector<int> counts = GatherCounts(root);
 
     // calculate where each processes' contribution should be placed
-    emp::vector<int> displacements{0};
+    std::vector<int> displacements{0};
     std::partial_sum(
       std::begin(counts),
       std::end(counts),
@@ -113,10 +112,10 @@ public:
       std::end(counts),
       size_t{}
     );
-    emp::vector<T> res(num_items);
+    std::vector<T> res(num_items);
 
     // initialize buffer to contribute items from
-    emp::vector<T> send_buffer( std::begin(items), std::end(items) );
+    std::vector<T> send_buffer( std::begin(items), std::end(items) );
 
     // do gather, contributed items are only delivered to root process
     UITSL_Gatherv(
@@ -133,7 +132,7 @@ public:
 
     // if executing process is root, return gathered items
     return root == get_rank(comm)
-      ? emp::optional<emp::vector<T>>{ res }
+      ? std::optional<std::vector<T>>{ res }
       : std::nullopt;
 
   }

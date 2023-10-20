@@ -4,10 +4,9 @@
 
 #include <chrono>
 #include <thread>
+#include <vector>
 
 #include <benchmark/src/cycleclock.h>
-
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 #include "TimeGuard.hpp"
 
@@ -37,7 +36,7 @@ namespace uitsl {
 
   inline double estimate_cycle_freq() {
 
-    emp::vector<double> readings;
+    std::vector<double> readings;
 
     std::generate_n(
       std::back_inserter(readings),

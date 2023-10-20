@@ -8,6 +8,8 @@
 #include <metis.h>
 #endif
 
+#include "../../uitsl/debug/uitsl_assert.hpp"
+
 namespace uitsl::metis {
 inline void verify(const int status) {
   #ifndef __EMSCRIPTEN__
@@ -31,7 +33,7 @@ inline void verify(const int status) {
       name = "unknown";
       break;
   }
-  emp_assert(status == METIS_OK, status, name);
+  uitsl_assert(status == METIS_OK, status << name);
   #endif
 }
 

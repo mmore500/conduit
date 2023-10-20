@@ -2,11 +2,14 @@
 #ifndef UIT_DUCTS_PROC_IMPL_BACKEND_ACCUMULATINGPOOLEDBACKEND_HPP_INCLUDE
 #define UIT_DUCTS_PROC_IMPL_BACKEND_ACCUMULATINGPOOLEDBACKEND_HPP_INCLUDE
 
+#include <cassert>
 #include <tuple>
 
-#include "../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
 #include "../../../../../../third-party/Empirical/third-party/robin-hood-hashing/src/include/robin_hood.h"
+
+#include "../../../../../uit_emp/datastructs/tuple_utils.hpp"
+
+#include "../../../../../uitsl/debug/uitsl_assert.hpp"
 
 #include "../../../../setup/InterProcAddress.hpp"
 
@@ -51,7 +54,7 @@ private:
       uitsl::proc_id_t, uitsl::thread_id_t
     >,
     inlet_pool_t,
-    emp::TupleHash<
+    uit_emp::TupleHash<
       uitsl::proc_id_t, uitsl::thread_id_t,
       uitsl::proc_id_t, uitsl::thread_id_t
     >
@@ -64,7 +67,7 @@ private:
       uitsl::proc_id_t, uitsl::thread_id_t
     >,
     outlet_pool_t,
-    emp::TupleHash<
+    uit_emp::TupleHash<
       uitsl::proc_id_t, uitsl::thread_id_t,
       uitsl::proc_id_t, uitsl::thread_id_t
     >
@@ -73,7 +76,7 @@ private:
   bool AreAllInletPoolsInitialized() const {
 
     // check that all windows are in the same initialization state
-    emp_assert( std::adjacent_find(
+    assert( std::adjacent_find(
       std::begin(inlet_pools), std::end(inlet_pools),
       [](const auto& pool_pair1, const auto& pool_pair2) {
         const auto& [key1, pool1] = pool_pair1;
@@ -95,7 +98,7 @@ private:
   bool AreAllOutletPoolsInitialized() const {
 
     // check that all windows are in the same initialization state
-    emp_assert( std::adjacent_find(
+    assert( std::adjacent_find(
       std::begin(outlet_pools), std::end(outlet_pools),
       [](const auto& pool_pair1, const auto& pool_pair2) {
         const auto& [key1, pool1] = pool_pair1;
@@ -115,7 +118,7 @@ private:
   }
 
   bool IsInitialized() const {
-    emp_assert(
+    assert(
       AreAllInletPoolsInitialized() == AreAllOutletPoolsInitialized()
       || inlet_pools.empty()
       || outlet_pools.empty()
@@ -130,40 +133,40 @@ private:
 public:
 
   void RegisterInletSlot(const address_t& address) {
-    emp_assert( !IsInitialized() );
+    assert( !IsInitialized() );
     inlet_pools[ address.WhichProcsThreads() ].Register(address);
   }
 
   void RegisterOutletSlot(const address_t& address) {
-    emp_assert( !IsInitialized() );
+    assert( !IsInitialized() );
     outlet_pools[ address.WhichProcsThreads() ].Register(address);
   }
 
   void Initialize() {
-    emp_assert( !IsInitialized() );
+    assert( !IsInitialized() );
 
     for (auto& [__, pool] : inlet_pools) pool.Initialize();
     for (auto& [__, pool] : outlet_pools) pool.Initialize();
 
-    emp_assert( IsInitialized() || IsEmpty() );
+    assert( IsInitialized() || IsEmpty() );
   }
 
   inlet_pool_t& GetInletPool(const address_t& address) {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     auto& pool = inlet_pools.at( address.WhichProcsThreads() );
 
-    emp_assert( pool.IsInitialized(), pool.GetSize() );
+    uitsl_assert( pool.IsInitialized(), pool.GetSize() );
 
     return pool;
   }
 
   outlet_pool_t& GetOutletPool(const address_t& address) {
-    emp_assert( IsInitialized() );
+    assert( IsInitialized() );
 
     auto& pool = outlet_pools.at( address.WhichProcsThreads() );
 
-    emp_assert( pool.IsInitialized() );
+    assert( pool.IsInitialized() );
 
     return pool;
   }

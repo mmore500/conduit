@@ -11,9 +11,8 @@
 
 #include <curl/curl.h>
 
-#include "../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-
 #include "../debug/err_verify.hpp"
+#include "../debug/uitsl_always_assert.hpp"
 #include "../nonce/ScopeGuard.hpp"
 #include "../polyfill/filesystem.hpp"
 
@@ -54,7 +53,7 @@ inline std::filesystem::path fetch_native( const std::string& url ) {
     [&curl_handle](){ curl_easy_cleanup( curl_handle ); }
   );
 
-  emp_always_assert( curl_handle );
+  uitsl_always_assert( curl_handle, "" );
 
   uitsl::err_verify(
     curl_easy_setopt( curl_handle, CURLOPT_URL, url.c_str())
@@ -82,7 +81,7 @@ inline std::filesystem::path fetch_native( const std::string& url ) {
       if ( http_code == 200 ) break;
     }
 
-    emp_always_assert( retry < 5, retry, err, http_code, url );
+    uitsl_always_assert( retry < 5, retry << err << http_code << url );
 
     using namespace std::chrono_literals;
     std::this_thread::sleep_for( 10s );

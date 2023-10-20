@@ -3,12 +3,15 @@
 #define UITSL_MATH_MATH_UTILS_HPP_INCLUDE
 
 #include <bitset>
+#include <cassert>
 #include <cmath>
 #include <limits>
 #include <ratio>
 #include <stddef.h>
 
-#include "../../../third-party/Empirical/include/emp/math/math.hpp"
+#include "../../uit_emp/math/math.hpp"
+
+#include "../../uitsl/debug/uitsl_assert.hpp"
 
 #include "../debug/safe_cast.hpp"
 
@@ -17,7 +20,7 @@ namespace uitsl {
 template<typename ...Args> auto sum(Args ...args) { return (args + ...); }
 
 inline size_t mod(int in_val, const size_t mod_val) {
-  emp_assert(mod_val > 0);
+  assert(mod_val > 0);
   const int signed_mod_val = std::min(
     safe_cast<size_t>(std::numeric_limits<int>::max()),
     mod_val
@@ -27,7 +30,7 @@ inline size_t mod(int in_val, const size_t mod_val) {
 }
 
 inline size_t circular_index(const size_t pos, const size_t len, const int diff) {
-  emp_assert(len > 0);
+  assert(len > 0);
   return (pos + mod(diff, len)) % len;
 }
 
@@ -40,17 +43,17 @@ inline size_t stoszt(const std::string & source) {
 
 template<typename TYPE>
 constexpr bool is_power_of_two(TYPE x) {
-  return x > 0 && emp::CountOnes(x) == 1;
+  return x > 0 && uit_emp::CountOnes(x) == 1;
 }
 
 template<typename TYPE>
 constexpr int num_bits(TYPE x) {
-  return x ? emp::IntLog2(emp::Abs(x)) + 1 : 0;
+  return x ? uit_emp::IntLog2(uit_emp::Abs(x)) + 1 : 0;
 }
 
 template<typename TYPE>
 bool test_bit(const TYPE x, const size_t bit) {
-  return std::bitset<sizeof(TYPE)*8>(emp::Abs(x)).test(bit);
+  return std::bitset<sizeof(TYPE)*8>(uit_emp::Abs(x)).test(bit);
 }
 
 inline size_t difference(const size_t a, const size_t b) {
@@ -67,8 +70,8 @@ size_t sidebyside_hash(const size_t top, const size_t bottom) {
   [[maybe_unused]] constexpr size_t top_size = avail_size - bottom_size;
 
   // bounds checking
-  emp_assert(std::bitset<top_size>(top).to_ullong() == top, top);
-  emp_assert(std::bitset<bottom_size>(bottom).to_ullong() == bottom, bottom);
+  uitsl_assert(std::bitset<top_size>(top).to_ullong() == top, top);
+  uitsl_assert(std::bitset<bottom_size>(bottom).to_ullong() == bottom, bottom);
 
   const auto bottom_bits = std::bitset<int_size>( bottom );
   const auto top_bits = std::bitset<int_size>( top ) << bottom_size;

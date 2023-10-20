@@ -3,10 +3,12 @@
 #define UIT_SPOUTS_WRAPPERS_OUTLET_INSTRUMENTATIONAGGREGATINGOUTLETWRAPPER_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <chrono>
 #include <cstddef>
 #include <functional>
 #include <memory>
+#include <optional>
 #include <shared_mutex>
 #include <string>
 #include <string_view>
@@ -14,15 +16,14 @@
 #include <type_traits>
 #include <utility>
 
-#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../../../third-party/Empirical/include/emp/data/DataFile.hpp"
-#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
+#include "../../../../uit_emp/data/DataFile.hpp"
+#include "../../../../uit_emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/algorithm/accumulate_if.hpp"
 #include "../../../../uitsl/containers/safe/unordered_set.hpp"
 #include "../../../../uitsl/countdown/coarse_runtime.hpp"
-#include "../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../uitsl/mpi/comm_utils.hpp"
+#include "../../../../uitsl/mpi/proc_id_t.hpp"
 #include "../../../../uitsl/parallel/thread_utils.hpp"
 
 #include "../impl/round_trip_touch_counter.hpp"
@@ -755,7 +756,7 @@ class InstrumentationAggregatingOutletWrapper {
         size_t num_round_trip_touches{};
 
         std::string pack() const {
-          return emp::to_string(
+          return uit_emp::to_string(
             num_pulls_attempted, ',', num_round_trip_touches
           );
         }
@@ -782,7 +783,7 @@ class InstrumentationAggregatingOutletWrapper {
         size_t num_try_pulls_that_were_laden{};
 
         std::string pack() const {
-          return emp::to_string(
+          return uit_emp::to_string(
             net_flux_through_duct,
             ',', num_try_pulls_attempted,
             ',', num_try_pulls_that_were_laden
@@ -805,8 +806,8 @@ class InstrumentationAggregatingOutletWrapper {
       ).pack();
     }
 
-    static emp::DataFile MakeSummaryDataFile(const std::string& filename) {
-      emp::DataFile res( filename );
+    static uit_emp::DataFile MakeSummaryDataFile(const std::string& filename) {
+      uit_emp::DataFile res( filename );
       res.AddFun(
         [](){
           return std::chrono::time_point_cast<std::chrono::nanoseconds>(
@@ -993,7 +994,7 @@ class InstrumentationAggregatingOutletWrapper {
 
     static auto MakeContainerDataFile(const std::string& filename) {
 
-      auto res = emp::MakeContainerDataFile<decltype(&registry)>(
+      auto res = uit_emp::MakeContainerDataFile<decltype(&registry)>(
         [](){ return &registry; },
         filename
       );
@@ -1212,25 +1213,25 @@ class InstrumentationAggregatingOutletWrapper {
       res.AddContainerFun(
         [](const auto outlet_ptr){
           const auto res = outlet_ptr->LookupInletProc();
-          return res.has_value() ? emp::to_string(*res) : "null";
+          return res.has_value() ? uit_emp::to_string(*res) : "null";
         }, "Inlet Proc"
       );
       res.AddContainerFun(
         [](const auto outlet_ptr){
           const auto res = outlet_ptr->LookupOutletProc();
-          return res.has_value() ? emp::to_string(*res) : "null";
+          return res.has_value() ? uit_emp::to_string(*res) : "null";
         }, "Outlet Proc"
       );
       res.AddContainerFun(
         [](const auto outlet_ptr){
           const auto res = outlet_ptr->LookupInletThread();
-          return res.has_value() ? emp::to_string(*res) : "null";
+          return res.has_value() ? uit_emp::to_string(*res) : "null";
         }, "Inlet Thread"
       );
       res.AddContainerFun(
         [](const auto outlet_ptr){
           const auto res = outlet_ptr->LookupOutletThread();
-          return res.has_value() ? emp::to_string(*res) : "null";
+          return res.has_value() ? uit_emp::to_string(*res) : "null";
         }, "Outlet Thread"
       );
       res.AddFun(
@@ -1276,7 +1277,7 @@ class InstrumentationAggregatingOutletWrapper {
     static std::string_view name() { return "proc"; }
   };
 
-  using touch_count_address_cache_t = emp::optional<
+  using touch_count_address_cache_t = std::optional<
     uit::impl::round_trip_touch_addr_t
   >;
   mutable touch_count_address_cache_t touch_count_address_cache{ std::nullopt };
@@ -1298,16 +1299,16 @@ class InstrumentationAggregatingOutletWrapper {
   }
 
   size_t GetCurRoundTripTouchCount() const {
-    emp_assert(
-      uit::impl::round_trip_touch_counter.count( GetTouchCountAddr() ),
+    assert(
+      uit::impl::round_trip_touch_counter.count( GetTouchCountAddr() ) &&
       "round_trip_touch_counter should be initialized during Mesh construction."
     );
     return uit::impl::round_trip_touch_counter.at( GetTouchCountAddr() );
   }
 
   void ProgressRoundTripTouchCount() const {
-    emp_assert(
-      uit::impl::round_trip_touch_counter.count( GetTouchCountAddr() ),
+    assert(
+      uit::impl::round_trip_touch_counter.count( GetTouchCountAddr() ) &&
       "round_trip_touch_counter should be initialized during Mesh construction."
     );
     uit::impl::round_trip_touch_counter.at(
@@ -1328,7 +1329,7 @@ public:
   InstrumentationAggregatingOutletWrapper(
     InstrumentationAggregatingOutletWrapper& other
   ) : outlet( other.outlet ) {
-    emp_assert( !registry.contains(this) );
+    assert( !registry.contains(this) );
     registry.insert(this);
   }
 
@@ -1338,7 +1339,7 @@ public:
   InstrumentationAggregatingOutletWrapper(
     const InstrumentationAggregatingOutletWrapper& other
   ) : outlet( other.outlet ) {
-    emp_assert( !registry.contains(this) );
+    assert( !registry.contains(this) );
     registry.insert(this);
   };
 
@@ -1348,7 +1349,7 @@ public:
   InstrumentationAggregatingOutletWrapper(
     InstrumentationAggregatingOutletWrapper&& other
   ) : outlet( std::move(other.outlet) ) {
-    emp_assert( !registry.contains(this) );
+    assert( !registry.contains(this) );
     registry.insert(this);
   };
 
@@ -1358,13 +1359,13 @@ public:
   template <typename... Args>
   explicit InstrumentationAggregatingOutletWrapper(Args&&... args)
   : outlet(std::forward<Args>(args)...) {
-    emp_assert( !registry.contains(this) );
+    assert( !registry.contains(this) );
     registry.insert(this);
   }
 
   ~InstrumentationAggregatingOutletWrapper() {
     [[maybe_unused]] const size_t res = registry.erase( this );
-    emp_assert( res == 1, res );
+    assert( res == 1 );
   }
 
   size_t TryStep(const size_t num_steps) {
@@ -1398,7 +1399,7 @@ public:
     return Get();
   }
 
-  using optional_ref_t = emp::optional<
+  using optional_ref_t = std::optional<
     std::reference_wrapper<const value_type>
   >;
 

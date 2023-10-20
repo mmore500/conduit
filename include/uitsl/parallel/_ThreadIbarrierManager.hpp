@@ -2,6 +2,7 @@
 #ifndef UITSL_PARALLEL__THREADIBARRIERMANAGER_HPP_INCLUDE
 #define UITSL_PARALLEL__THREADIBARRIERMANAGER_HPP_INCLUDE
 
+#include <cassert>
 #include <iterator>
 #include <memory>
 #include <mutex>
@@ -51,25 +52,25 @@ public:
     // race condition where multiple latches are appended is okay
     if (latches.empty()) latches.emplace_back(expected);
 
-    emp_assert(latches.size());
+    assert(latches.size());
 
     auto& position = thread_positions.HasEntry()
       ? thread_positions.Get()
       : thread_positions.GetWithDefault( std::begin(latches) );
-    emp_assert(thread_positions.GetSize() <= expected);
+    assert(thread_positions.GetSize() <= expected);
 
-    emp_assert(position != std::end(latches));
-    emp_assert(!position->TryWait());
+    assert(position != std::end(latches));
+    assert(!position->TryWait());
 
     // race condition where multiple latches are appended is okay
     if (std::next(position) == std::end(latches)) {
       latches.emplace_back(expected);
-      emp_assert(std::next(position) != std::end(latches));
+      assert(std::next(position) != std::end(latches));
     }
 
     std::advance(position, 1);
-    emp_assert(position != std::end(latches));
-    emp_assert(!position->TryWait());
+    assert(position != std::end(latches));
+    assert(!position->TryWait());
 
     TryFlush();
 

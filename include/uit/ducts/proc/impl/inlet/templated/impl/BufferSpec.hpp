@@ -2,7 +2,7 @@
 #ifndef UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_IMPL_BUFFERSPEC_HPP_INCLUDE
 #define UIT_DUCTS_PROC_IMPL_INLET_TEMPLATED_IMPL_BUFFERSPEC_HPP_INCLUDE
 
-#include "../../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <vector>
 
 #include "../../../../../mock/ThrowDuct.hpp"
 
@@ -19,7 +19,7 @@ class BufferSpecKernel {
 
 public:
 
-  using T = emp::vector<typename ImplSpec::T>;
+  using T = std::vector<typename ImplSpec::T>;
   constexpr inline static size_t N{ ImplSpec::N };
   constexpr inline static size_t B{ ImplSpec::B };
 

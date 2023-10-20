@@ -2,11 +2,10 @@
 #ifndef UIT_DUCTS_INTRA_PUT_DROPPING_GET_STEPPING_TYPE_ANY_IMPL_PENDINGDUCT_HPP_INCLUDE
 #define UIT_DUCTS_INTRA_PUT_DROPPING_GET_STEPPING_TYPE_ANY_IMPL_PENDINGDUCT_HPP_INCLUDE
 
+#include <array>
+#include <cassert>
 #include <stddef.h>
 #include <string>
-
-#include "../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../../uitsl/debug/occupancy_audit.hpp"
 #include "../../../../../uitsl/meta/a::static_test.hpp"
@@ -33,7 +32,7 @@ class PendingDuct {
   static_assert( uitsl::a::static_test<T>(), uitsl_a_message );
   constexpr inline static size_t N{ImplSpec::N};
 
-  using buffer_t = emp::array<BufferElementType, N>;
+  using buffer_t = std::array<BufferElementType, N>;
 
   PendingType pending_gets{};
   uitsl::CircularIndex<N> put_position{1};
@@ -54,7 +53,7 @@ class PendingDuct {
     buffer[put_position] = val;
     ++pending_gets;
     ++put_position;
-    emp_assert( pending_gets <= N );
+    assert( pending_gets <= N );
   }
 
   template<typename P>
@@ -63,7 +62,7 @@ class PendingDuct {
     buffer[put_position] = std::forward<P>(val);
     ++pending_gets;
     ++put_position;
-    emp_assert( pending_gets <= N );
+    assert( pending_gets <= N );
   }
 
   /**

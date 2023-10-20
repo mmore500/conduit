@@ -7,29 +7,31 @@
 #include <string>
 #include <type_traits>
 #include <utility>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../third-party/Empirical/include/emp/tools/keyname_utils.hpp"
+#include "../../uit_emp/tools/keyname_utils.hpp"
 
 #include "../polyfill/filesystem.hpp"
 #include "../polyfill/identity.hpp"
 
 namespace uitsl {
 
-template<typename C=emp::vector<std::pair<std::string, std::string>>>
-emp::vector< std::filesystem::path > keyname_directory_filter(
+template<typename C=std::vector<std::pair<std::string, std::string>>>
+std::vector< std::filesystem::path > keyname_directory_filter(
   const C& keyvals,
   const std::filesystem::path& target=".",
   const bool use_regex=false
 ) {
 
-  emp::vector< std::filesystem::path > res;
+  std::vector< std::filesystem::path > res;
   std::copy_if(
     std::filesystem::directory_iterator( target ),
     std::filesystem::directory_iterator{},
     std::back_inserter( res ),
     [&]( const auto& entry ){
-      const auto keyname_attrs = emp::keyname::unpack( entry.path().string() );
+      const auto keyname_attrs = uit_emp::keyname::unpack(
+        entry.path().string()
+      );
       return std::all_of(
         std::begin(keyvals),
         std::end(keyvals),

@@ -2,7 +2,8 @@
 #ifndef NETUIT_ARRANGE_EMPTYTOPOLOGYFACTORY_HPP_INCLUDE
 #define NETUIT_ARRANGE_EMPTYTOPOLOGYFACTORY_HPP_INCLUDE
 
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <cassert>
+#include <vector>
 
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"
@@ -12,7 +13,7 @@ namespace netuit {
 
 netuit::Topology make_empty_topology(const size_t cardinality) {
 
-  emp::vector<netuit::TopoNode> res( cardinality );
+  std::vector<netuit::TopoNode> res( cardinality );
 
   return netuit::Topology{ res };
 
@@ -24,8 +25,8 @@ struct EmptyTopologyFactory {
     return make_empty_topology(cardinality);
   }
 
-  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
-    emp_assert(cardinality.size() == 1);
+  netuit::Topology operator()(const std::vector<size_t> cardinality) const {
+    assert(cardinality.size() == 1);
     return make_empty_topology(cardinality.front());
   }
   static std::string GetName() { return "Empty Topology"; }

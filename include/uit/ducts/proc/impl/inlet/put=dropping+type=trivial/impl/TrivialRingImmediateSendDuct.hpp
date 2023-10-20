@@ -10,12 +10,9 @@
 
 #include <mpi.h>
 
-#include "../../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
 #include "../../../../../../../uitsl/datastructs/RingBuffer.hpp"
 #include "../../../../../../../uitsl/debug/err_audit.hpp"
+#include "../../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../../uitsl/meta/t::static_test.hpp"
 #include "../../../../../../../uitsl/mpi/mpi_init_utils.hpp"
 #include "../../../../../../../uitsl/mpi/Request.hpp"
@@ -55,7 +52,7 @@ private:
 
   void PostSendRequest() {
 
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetHead() ) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetHead() ) ) );
     ImmediateSendFunctor{}(
       &std::get<T>( buffer.GetHead() ),
       sizeof(T),
@@ -65,27 +62,27 @@ private:
       address.GetComm(),
       &std::get<uitsl::Request>( buffer.GetHead() )
     );
-    emp_assert(!uitsl::test_null(std::get<uitsl::Request>( buffer.GetHead() )));
+    assert(!uitsl::test_null(std::get<uitsl::Request>( buffer.GetHead() )));
 
   }
 
   bool TryFinalizeSend() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
     if (uitsl::test_completion( std::get<uitsl::Request>( buffer.GetTail() ) )) {
-      emp_assert( uitsl::test_null( std::get<uitsl::Request>(buffer.GetTail()) ) );
+      assert( uitsl::test_null( std::get<uitsl::Request>(buffer.GetTail()) ) );
       uitsl_err_audit(!   buffer.PopTail()   );
       return true;
     } else return false;
   }
 
   void CancelPendingSend() {
-    emp_assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
+    assert( !uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
     UITSL_Cancel( &std::get<uitsl::Request>( buffer.GetTail() ) );
     UITSL_Request_free( &std::get<uitsl::Request>( buffer.GetTail() ) );
 
-    emp_assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
+    assert( uitsl::test_null( std::get<uitsl::Request>( buffer.GetTail() ) ) );
 
     uitsl_err_audit(!   buffer.PopTail()   );
   }
@@ -98,7 +95,7 @@ private:
    * @param val TODO.
    */
   void DoPut(const T& val) {
-    emp_assert( buffer.GetSize() < N );
+    assert( buffer.GetSize() < N );
 
     uitsl_err_audit(!   buffer.PushHead()   );
 
@@ -146,19 +143,19 @@ public:
   bool TryFlush() const { return true; }
 
   [[noreturn]] size_t TryConsumeGets(size_t) const {
-    emp_always_assert(
+    uitsl_always_assert(
       false, "ConsumeGets called on TrivialRingImmediateSendDuct"
     );
     __builtin_unreachable();
   }
 
   [[noreturn]] const T& Get() const {
-    emp_always_assert(false, "Get called on TrivialRingImmediateSendDuct");
+    uitsl_always_assert(false, "Get called on TrivialRingImmediateSendDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] T& Get() {
-    emp_always_assert(false, "Get called on TrivialRingImmediateSendDuct");
+    uitsl_always_assert(false, "Get called on TrivialRingImmediateSendDuct");
     __builtin_unreachable();
   }
 

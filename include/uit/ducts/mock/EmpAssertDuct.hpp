@@ -2,10 +2,9 @@
 #ifndef UIT_DUCTS_MOCK_EMPASSERTDUCT_HPP_INCLUDE
 #define UIT_DUCTS_MOCK_EMPASSERTDUCT_HPP_INCLUDE
 
+#include <cassert>
 #include <stddef.h>
 #include <string>
-
-#include "../../../../third-party/Empirical/include/emp/base/assert.hpp"
 
 #include "../proc/impl/backend/MockBackEnd.hpp"
 
@@ -42,7 +41,7 @@ public:
    * @throws TODO.
    */
   bool TryPut(const T&) const {
-    emp_assert(false, "TryPut called on EmpAssertDuct");
+    assert(false && "TryPut called on EmpAssertDuct");
     return false;
   }
 
@@ -51,7 +50,7 @@ public:
    *
    */
   bool TryFlush() const {
-    emp_assert(false, "Flush called on EmpAssertDuct");
+    assert(false && "Flush called on EmpAssertDuct");
     return true;
   }
 
@@ -61,7 +60,7 @@ public:
    * @throws TODO.
    */
   const T& Get() const {
-    emp_assert(false, "Get called on EmpAssertDuct");
+    assert(false && "Get called on EmpAssertDuct");
     return val;
   }
 
@@ -71,7 +70,7 @@ public:
    * @throws TODO.
    */
   T& Get() {
-    emp_assert(false, "Get called on EmpAssertDuct");
+    assert(false && "Get called on EmpAssertDuct");
     return val;
   }
 
@@ -81,7 +80,7 @@ public:
    * @throws TODO.
    */
   size_t TryConsumeGets(size_t) const {
-    emp_assert(false, "ConsumeGets called on EmpAssertDuct");
+    assert(false && "ConsumeGets called on EmpAssertDuct");
     return 0;
   }
 

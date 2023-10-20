@@ -2,13 +2,10 @@
 #ifndef UIT_DUCTS_INTRA_PUT_GROWING_GET_STEPPING_TYPE_ANY_A__DEQUEDUCT_HPP_INCLUDE
 #define UIT_DUCTS_INTRA_PUT_GROWING_GET_STEPPING_TYPE_ANY_A__DEQUEDUCT_HPP_INCLUDE
 
+#include <cassert>
 #include <deque>
 #include <stddef.h>
 #include <string>
-
-#include "../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../third-party/Empirical/include/emp/base/errors.hpp"
-#include "../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
 
 #include "../../../../uitsl/meta/a::static_test.hpp"
 #include "../../../../uitsl/utility/print_utils.hpp"
@@ -32,7 +29,7 @@ class DequeDuct {
 
   size_t CountUnconsumedGets() const {
     const size_t available = queue.size();
-    emp_assert( available );
+    assert( available );
     return available - 1;
   }
 

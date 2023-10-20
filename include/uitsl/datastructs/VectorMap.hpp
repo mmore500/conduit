@@ -4,10 +4,10 @@
 
 #include <functional>
 #include <memory>
+#include <optional>
 #include <utility>
+#include <vector>
 
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
 
 namespace uitsl {
 
@@ -15,7 +15,7 @@ namespace internal {
 
 template<typename Key, typename T>
 class VectorMapIterator
-: public emp::vector<std::reference_wrapper<
+: public std::vector<std::reference_wrapper<
   std::pair<const Key, T>
 >>::iterator {
 
@@ -23,7 +23,7 @@ public:
   using value_type = std::pair<const Key, T>;
 
 private:
-  using parent_t = typename emp::vector<std::reference_wrapper<
+  using parent_t = typename std::vector<std::reference_wrapper<
     value_type
   >>::iterator;
 
@@ -45,7 +45,7 @@ public:
 
 template<typename Key, typename T>
 class VectorMapConstIterator
-: public emp::vector<std::reference_wrapper<
+: public std::vector<std::reference_wrapper<
   const std::pair<const Key, T>
 >>::const_iterator {
 
@@ -53,7 +53,7 @@ public:
   using value_type = std::pair<const Key, T>;
 
 private:
-  using parent_t = typename emp::vector<std::reference_wrapper<
+  using parent_t = typename std::vector<std::reference_wrapper<
     const value_type
   >>::const_iterator;
 
@@ -78,7 +78,7 @@ public:
   using mapped_type = T;
   using value_type = std::pair<const Key, T>;
 private:
-  using container_t = emp::vector< emp::optional< value_type > >;
+  using container_t = std::vector< std::optional< value_type > >;
 public:
   using difference_type = typename container_t::difference_type;
   using size_type = typename container_t::size_type;
@@ -98,10 +98,10 @@ private:
 
   size_t num_items{};
 
-  emp::optional<emp::vector<std::reference_wrapper<
+  std::optional<std::vector<std::reference_wrapper<
     value_type
   >>> view;
-  mutable emp::optional<emp::vector<std::reference_wrapper<
+  mutable std::optional<std::vector<std::reference_wrapper<
     const value_type
   >>> const_view;
 
@@ -128,7 +128,7 @@ private:
 public:
 
   T& operator[](const Key i) {
-    emp_assert( i >= 0 );
+    assert( i >= 0 );
 
     // if needed, make space
     if (static_cast<size_t>(i) >= data.size()) data.resize(i + 1);

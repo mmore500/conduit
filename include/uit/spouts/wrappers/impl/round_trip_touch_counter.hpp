@@ -5,8 +5,6 @@
 #include <tuple>
 #include <unordered_map>
 
-#include "../../../../../third-party/Empirical/include/emp/datastructs/tuple_utils.hpp"
-
 #include "RoundTripCounterAddr.hpp"
 
 namespace uit {

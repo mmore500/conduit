@@ -3,7 +3,9 @@
 #define UITSL_UTILITY_KEYNAME_DIRECTORY_MIN_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
 #include <string>
+#include <vector>
 
 #include "../polyfill/filesystem.hpp"
 
@@ -14,7 +16,7 @@ namespace uitsl {
 template< typename T >
 auto keyname_directory_min(
   const std::string& key,
-  const emp::vector<std::pair<std::string, std::string>>& filters={},
+  const std::vector<std::pair<std::string, std::string>>& filters={},
   const std::filesystem::path& target=".",
   const T& parser=std::identity
 ) {
@@ -23,7 +25,7 @@ auto keyname_directory_min(
     key, filters, target, parser
   );
 
-  emp_assert( transformed.size() );
+  assert( transformed.size() );
 
   return *std::min_element(std::begin( transformed ), std::end( transformed ));
 

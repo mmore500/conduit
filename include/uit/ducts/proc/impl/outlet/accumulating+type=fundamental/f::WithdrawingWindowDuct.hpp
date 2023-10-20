@@ -4,18 +4,15 @@
 
 #include <algorithm>
 #include <array>
+#include <cassert>
 #include <limits>
 #include <stddef.h>
+#include <vector>
 
 #include <mpi.h>
 
-#include "../../../../../../../third-party/Empirical/include/emp/base/always_assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/assert.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/base/vector.hpp"
-#include "../../../../../../../third-party/Empirical/include/emp/tools/string_utils.hpp"
-
 #include "../../../../../../uitsl/debug/safe_compare.hpp"
-#include "../../../../../../uitsl/debug/WarnOnce.hpp"
+#include "../../../../../../uitsl/debug/uitsl_always_assert.hpp"
 #include "../../../../../../uitsl/distributed/RdmaAccumulatorPacket.hpp"
 #include "../../../../../../uitsl/distributed/RdmaWindowManager.hpp"
 #include "../../../../../../uitsl/meta/f::static_test.hpp"
@@ -71,7 +68,7 @@ public:
     address.GetOutletProc() == uitsl::get_rank(address.GetComm())
       ? back_end->GetWindowManager().Acquire(
         address.GetInletProc(),
-        emp::vector<std::byte>(
+        std::vector<std::byte>(
           reinterpret_cast<std::byte*>(&cache),
           reinterpret_cast<std::byte*>(&cache) + sizeof(packet_t)
         )
@@ -94,17 +91,17 @@ public:
   }
 
   [[noreturn]] bool TryPut(const T&) {
-    emp_always_assert(false, "TryPut called on WithdrawingWindowDuct");
+    uitsl_always_assert(false, "TryPut called on WithdrawingWindowDuct");
     __builtin_unreachable();
   }
 
   [[noreturn]] bool TryFlush() const {
-    emp_always_assert(false, "Flush called on WithdrawingWindowDuct");
+    uitsl_always_assert(false, "Flush called on WithdrawingWindowDuct");
     __builtin_unreachable();
   }
 
   size_t TryConsumeGets(const size_t requested) {
-    emp_assert( requested == std::numeric_limits<size_t>::max() );
+    assert( requested == std::numeric_limits<size_t>::max() );
 
     // lock own window
     back_end->GetWindowManager().LockShared( address.GetInletProc() );
@@ -121,7 +118,7 @@ public:
       sizeof(packet_t)
     );
 
-    emp_assert( reinterpret_cast<packet_t&>(*target).data == cache.data );
+    assert( reinterpret_cast<packet_t&>(*target).data == cache.data );
 
     // reset data in window
     const static packet_t pristine{};
@@ -131,11 +128,11 @@ public:
       sizeof(packet_t)
     );
 
-    emp_assert( reinterpret_cast<packet_t&>(*target).data == T{} );
+    assert( reinterpret_cast<packet_t&>(*target).data == T{} );
 
     back_end->GetWindowManager().Unlock( address.GetInletProc() );
 
-    emp_assert( cache.epoch >= 0 );
+    assert( cache.epoch >= 0 );
 
     return static_cast<size_t>( cache.epoch );
   }

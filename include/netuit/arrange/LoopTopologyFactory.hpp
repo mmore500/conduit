@@ -3,6 +3,8 @@
 #define NETUIT_ARRANGE_LOOPTOPOLOGYFACTORY_HPP_INCLUDE
 
 #include <algorithm>
+#include <cassert>
+#include <vector>
 
 #include "../topology/TopoEdge.hpp"
 #include "../topology/Topology.hpp"
@@ -38,8 +40,8 @@ struct LoopTopologyFactory {
     return make_loop_topology(cardinality);
   }
 
-  netuit::Topology operator()(const emp::vector<size_t> cardinality) const {
-    emp_assert(cardinality.size() == 1);
+  netuit::Topology operator()(const std::vector<size_t> cardinality) const {
+    assert(cardinality.size() == 1);
     return make_loop_topology(cardinality.front());
   }
 

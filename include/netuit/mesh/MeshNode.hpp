@@ -2,11 +2,10 @@
 #ifndef NETUIT_MESH_MESHNODE_HPP_INCLUDE
 #define NETUIT_MESH_MESHNODE_HPP_INCLUDE
 
+#include <optional>
 #include <sstream>
 #include <stddef.h>
-
-#include "../../../third-party/Empirical/include/emp/base/optional.hpp"
-#include "../../../third-party/Empirical/include/emp/base/vector.hpp"
+#include <vector>
 
 #include "MeshNodeInput.hpp"
 #include "MeshNodeOutput.hpp"
@@ -20,8 +19,8 @@ public:
   using input_t = netuit::MeshNodeInput<ImplSpec>;
   using output_t = netuit::MeshNodeOutput<ImplSpec>;
 
-  using inputs_t = emp::vector<input_t>;
-  using outputs_t = emp::vector<output_t>;
+  using inputs_t = std::vector<input_t>;
+  using outputs_t = std::vector<output_t>;
 
 private:
   inputs_t inputs;
@@ -71,12 +70,12 @@ public:
 
   bool HasOutput(const size_t i) const { return i < GetNumOutputs(); }
 
-  emp::optional<input_t> GetInputOrNullopt(const size_t i) const {
-    return HasInput(i) ? emp::optional<input_t>{GetInput(i)} : std::nullopt;
+  std::optional<input_t> GetInputOrNullopt(const size_t i) const {
+    return HasInput(i) ? std::optional<input_t>{GetInput(i)} : std::nullopt;
   }
 
-  emp::optional<output_t> GetOutputOrNullopt(const size_t i) const {
-    return HasOutput(i) ? emp::optional<output_t>{GetOutput(i)} : std::nullopt;
+  std::optional<output_t> GetOutputOrNullopt(const size_t i) const {
+    return HasOutput(i) ? std::optional<output_t>{GetOutput(i)} : std::nullopt;
   }
 
   std::string ToString() const {
