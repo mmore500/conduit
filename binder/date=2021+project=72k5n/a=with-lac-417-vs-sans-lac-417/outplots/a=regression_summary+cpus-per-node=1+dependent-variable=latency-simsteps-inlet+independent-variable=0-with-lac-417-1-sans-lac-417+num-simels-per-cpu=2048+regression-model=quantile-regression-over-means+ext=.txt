@@ -1,14 +1,14 @@
                               QuantReg Regression Results                              
 =======================================================================================
-Dep. Variable:     Q('Latency Simsteps Inlet')   Pseudo R-squared:                0.000
-Model:                                QuantReg   Bandwidth:                     0.04773
-Method:                          Least Squares   Sparsity:                       0.1010
-Date:                         Sun, 13 Mar 2022   No. Observations:                   20
-Time:                                 01:01:48   Df Residuals:                       18
+Dep. Variable:     Q('Latency Simsteps Inlet')   Pseudo R-squared:               0.5219
+Model:                                QuantReg   Bandwidth:                      0.5820
+Method:                          Least Squares   Sparsity:                        1.425
+Date:                         Fri, 20 Oct 2023   No. Observations:                   20
+Time:                                 10:18:28   Df Residuals:                       18
                                                  Df Model:                            1
 ============================================================================================================
                                                coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------------------------------------
-Intercept                                    1.1689      0.016     73.221      0.000       1.135       1.202
-Q('0 = With lac-417 | 1 = Sans lac-417')     0.0013      0.023      0.057      0.955      -0.046       0.049
+Intercept                                    6.4390      0.225     28.587      0.000       5.966       6.912
+Q('0 = With lac-417 | 1 = Sans lac-417')    -5.2350      0.319    -16.435      0.000      -5.904      -4.566
 ============================================================================================================
