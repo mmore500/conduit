@@ -211,7 +211,10 @@ RUN \
 # magic from https://github.com/puppeteer/puppeteer/issues/3451#issuecomment-523961368
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
+# git confifg, see https://stackoverflow.com/a/76769867
 RUN \
+  git config --global url."https://".insteadOf git:// \
+    && \
   python3 -m pip install --timeout 60 --retries 100 --upgrade pip==21.3.1 \
     && \
   python3 -m pip install --timeout 60 --retries 100 --ignore-installed -r /opt/conduit/third-party/requirements.txt \
