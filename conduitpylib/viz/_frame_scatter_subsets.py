@@ -59,15 +59,8 @@ def frame_scatter_subsets(
         )
 
         frame_min_y, frame_max_y = (
-            (
-                frame_data[y].min(),
-                frame_data[y].max(),
-            )
-            if log_y
-            else (
-                frame_data[y].min(),
-                frame_data[y].max(),
-            )
+            frame_data[y].min(),
+            frame_data[y].max(),
         )
 
         if log_y:
