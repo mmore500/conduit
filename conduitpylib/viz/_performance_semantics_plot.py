@@ -17,28 +17,68 @@ import pandas as pd
 import seaborn as sns
 
 from ._frame_scatter_subsets import frame_scatter_subsets
+from ._set_kde_lims import set_kde_lims
 
 
 def performance_semantics_plot(
     data: pd.DataFrame,
     hue: str,
     hue_order: typing.Optional[typing.List[str]] = None,
-    heat: str = "Fraction Messages Dropped",
-    x: str="Simstep Period Inlet (ns)",
-    y: str="Latency Simsteps Inlet",
+    heat: str = "% Msgs Lost",
+    x: str = "Simstep Period Inlet (ns)",
+    y: str = "Latency Simsteps Inlet",
+    linestyles: typing.Optional[typing.List[str]] = None,
+    palette: typing.Optional[typing.List[str]] = None,
+    size_inches: typing.Tuple[float, float] = (3.5, 2.5),
 ) -> sns.JointGrid:
     hue_order = ["Sans lac-417", "With lac-417"]
     assert set(hue_order) == set(data[hue].unique())
 
-    palette = ["#648FFF", "#40B0A6"]
+    if hue_order is None:
+        hue_order = sorted(data[hue].unique())
+
+    if linestyles is None:
+        linestyles = [":", "--"]
+
+    if palette is None:
+        # alternate palettes: ["#648FFF", "#40B0A6"] & ["#40b07f", "#646eff"]
+        palette = ["#5c5cff", "#64e0ff"]
     assert len(palette) == len(hue_order)
 
-    jointgrid = sns.JointGrid(
+    jointgrid = sns.JointGrid(data=data, x=x, y=y, hue=hue, ratio=8, height=8)
+
+    sns.kdeplot(
+        ax=jointgrid.ax_joint,
         data=data,
         x=x,
         y=y,
+        alpha=0.4,
+        cut=10,
+        fill=True,  # remove fill manually below, needed for set_kde_lims
         hue=hue,
+        legend=False,
+        levels=2,
+        log_scale=(False, True),
+        palette=palette,
+        thresh=1e-12,
+        zorder=100,
     )
+
+    # ensure that entire KDE is visible
+    set_kde_lims(jointgrid.ax_joint, log_x=False, log_y=True)
+
+    # set linestyles of marginal KDE outlines
+    # adapted from https://stackoverflow.com/a/70089200
+    for path_collection, linestyle in zip(
+        jointgrid.ax_joint.collections,
+        reversed(linestyles),
+    ):
+        # need faux fill for set_kde_lims. set
+        color = path_collection.get_facecolor()
+        path_collection.set_facecolor("none")
+        path_collection.set_edgecolor(color)
+        path_collection.set_linestyle(linestyle)
+        path_collection.set_linewidth(2)
 
     # PLOT JOINT DISTRIBUTION
     ###########################################################################
@@ -49,10 +89,11 @@ def performance_semantics_plot(
         x=x,
         y=y,
         hue=heat,
-        style="Allocation",
-        markers=["o", "D"],
+        markers="D",
+        # style=hue,
+        # markers=["o", "D"],
         palette="flare",
-        alpha=0.4,
+        alpha=0.3,
     )
 
     # set up joint plot axes...
@@ -62,31 +103,31 @@ def performance_semantics_plot(
     # ... set simsteps inlet to log scale
     jointgrid.ax_joint.set_yscale("log")
     # ... set simstep period time to zero minimum
-    jointgrid.ax_joint.set_xlim(xmin=0)
+    current_xmin = jointgrid.ax_joint.get_xlim()[0]
+    jointgrid.ax_joint.set_xlim(xmin=min(0, current_xmin))
+    # ... set communication latency to at least 0.1 minimum
+    current_ymin = jointgrid.ax_joint.get_ylim()[0]
+    jointgrid.ax_joint.set_ylim(ymin=min(0.1, current_ymin))
     # ... set axis labels
     jointgrid.ax_joint.set_xlabel("Update Rate (ns)")
     jointgrid.ax_joint.set_ylabel("Communication Latency (updates)")
 
-    # outline subsets of scatter points
-    frame_scatter_subsets(
-        data,
-        x=x,
-        y=y,
-        frame=hue,
-        ax=jointgrid.ax_joint,
-        frame_order=hue_order,
-        log_y=True,
-        palette=palette,
-    )
-
     # PLOT MARGINAL DISTRIBUTIONS
     ###########################################################################
     # plot marginal distributions as kernel density estimates
-    jointgrid.plot_marginals(sns.kdeplot, palette=palette, fill=True, lw=3, alpha=0.1)
+    jointgrid.plot_marginals(
+        sns.kdeplot,
+        alpha=0.1,
+        fill=True,
+        lw=3,
+        palette=palette,
+    )
+
+    # now that we have marginals, set figure dimensions
+    jointgrid.fig.set_size_inches(*size_inches)
 
     # set linestyles of marginal KDE outlines
     # https://stackoverflow.com/a/70089200
-    linestyles = ["--", "-"]
     for line, linestyle in it.chain(
         zip(jointgrid.ax_marg_x.collections, linestyles),
         zip(jointgrid.ax_marg_y.collections, linestyles),
@@ -94,36 +135,23 @@ def performance_semantics_plot(
         line.set_linestyle(linestyle)
         line.set_alpha(0.4)
 
-
-    # set density to loc scale
-    jointgrid.ax_marg_x.set_yscale("symlog", linthresh=0.0000000001)
-    jointgrid.ax_marg_y.set_xscale("symlog", linthresh=0.0001)
-
-    sns.rugplot(
-        data=data,
-        ax=jointgrid.ax_marg_x,
-        x=x,
-        hue=heat,
-        palette="flare",
-        legend=False,
-        alpha=0.05,
-        expand_margins=False,
-        clip_on=False,
-        height=-0.3,
-    )
-
-    sns.rugplot(
-        data=data,
-        ax=jointgrid.ax_marg_y,
-        y=y,
-        hue=heat,
-        palette="flare",
-        legend=False,
-        alpha=0.3,
-        expand_margins=False,
-        clip_on=False,
-        height=-0.3,
-    )
+    # do manual rugplot because plot_marginals messes up colormapping
+    for ax, kwarg in (
+        (jointgrid.ax_marg_x, {"x": x}),
+        (jointgrid.ax_marg_y, {"y": y}),
+    ):
+        sns.rugplot(
+            ax=ax,
+            data=data,
+            hue=heat,
+            palette="flare",
+            legend=False,
+            alpha=0.03,
+            expand_margins=False,
+            clip_on=False,
+            height=-0.8,
+            **kwarg,
+        )
 
     # SET UP LEGEND
     ###########################################################################
@@ -132,10 +160,16 @@ def performance_semantics_plot(
     (
         handles,
         labels,
-    ) = jointgrid.ax_joint.get_legend_handles_labels()  # get existing handles and labels
-    empty_patch = mpl_patches.Patch(
-        color="none", label="Extra label"
-    )
+    ) = (
+        jointgrid.ax_joint.get_legend_handles_labels()
+    )  # get existing handles and labels
+    empty_patch = mpl_patches.Patch(color="none", label="Extra label")
+
+    # don't know why, but have to manulaly add heat title
+    # when scatter style is disabled
+    handles = [empty_patch, *handles]
+    labels = [heat, *labels]
+
     handles.append(empty_patch)
     labels.append(hue)
     # ... then add legend entries manually
@@ -151,12 +185,11 @@ def performance_semantics_plot(
         handles.append(example_patch)
         labels.append(label)
 
-
     # helper function to disable transparency on legend entries
     # adapted from https://stackoverflow.com/a/59629242
     def remove_alpha(handle, orig) -> None:
         handle.update_from(orig)
-        handle.set_alpha(1)
+        handle.set_alpha(1.0)
 
     # create legend
     legend = jointgrid.ax_joint.legend(
@@ -167,17 +200,17 @@ def performance_semantics_plot(
             plt.Line2D: mpl_HandlerLine2D(update_func=remove_alpha),
         },  # apply helper function
         borderaxespad=0,
-        bbox_to_anchor=(-0.4, 0, 0.2, 1), # place legend to left of plot
+        bbox_to_anchor=(-0.4, -0.1, 0.1, 1.2),  # place legend to left of plot
     )  # apply new handles and labels to plot
     legend._legend_box.set_height(legend.get_bbox_to_anchor().height)
 
     # title background adapted from https://stackoverflow.com/a/76103441
-    title = "\n🤕🆚🙂\n"
+    title = "🙂/🤕"
     legend.set_title(
-        f"{title: ^4}",  # pad both sides with spaces to improve centering
+        title,
         # use custom font with monochrome emojis
         # because vanilla matplotlib backend doesn't support color bitmap fonts
-        prop=mpl_FontProperties(fname="../NotoEmoji-Regular.ttf", size=40),
+        prop=mpl_FontProperties(fname="../NotoEmoji-Regular4.ttf", size=25),
     )
     legend._legend_title_box._text.set_bbox(
         {"facecolor": "gray", "alpha": 0.3, "lw": 0},
@@ -208,3 +241,14 @@ def performance_semantics_plot(
         zorder=-5,
         legend=False,
     )
+
+    # FINALIZE
+    ###########################################################################
+    for ax in jointgrid.ax_marg_x, jointgrid.ax_marg_y:
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
+
+    jointgrid.ax_joint.set_ylim(top=jointgrid.ax_joint.get_ylim()[1] * 3)
+    jointgrid.ax_joint.set_xlim(right=jointgrid.ax_joint.get_xlim()[1] * 1.1)
+
+    plt.tight_layout()
