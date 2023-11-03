@@ -3,6 +3,7 @@ import copy
 import functools
 import typing
 
+from .equals_by_value import equals_by_value
 from .hash_with_lax_fallback import hash_with_lax_fallback
 from .UnequalSentinel import UnequalSentinel
 
@@ -37,6 +38,10 @@ def lru_cache_universal(maxsize: typing.Optional[int] = 64) -> typing.Callable:
 
     def decorator(func: typing.Callable) -> typing.Callable:
         cache = dict()
+        info = {
+            "hits": 0,
+            "misses": 0,
+        }
 
         @functools.wraps(func)
         def wrapper(*args, **kwargs) -> typing.Any:
@@ -57,11 +62,33 @@ def lru_cache_universal(maxsize: typing.Optional[int] = 64) -> typing.Callable:
                 (UnequalSentinel(), None),
             )
 
-            # cache hit!
+            # try indexing by lookupkey
             if cached_full_key == query_full_key:
+                # cache hit!
+                info["hits"] += 1
                 return _robust_copy(cached_result)
 
+            # try searching through all full keys
+            for cached_full_key, cached_result in cache.values():
+                cached_args, cached_kwargs = cached_full_key
+
+                if (
+                    all(
+                        equals_by_value(arg, cached_arg)
+                        for arg, cached_arg in zip(args, cached_args)
+                    )
+                    and len(cached_kwargs) == len(hashable_kwargs)
+                    and all(
+                        equals_by_value(kwargs[key], cached_kwargs[key])
+                        for key in kwargs.keys()
+                    )
+                ):
+                    # cache hit!
+                    info["hits"] += 1
+                    return _robust_copy(cached_result)
+
             # ... cache miss!
+            info["misses"] += 1
             # trim cache if at max size
             if maxsize is not None and len(cache) >= maxsize:
                 # python iterates dicts in insertion order
@@ -75,6 +102,7 @@ def lru_cache_universal(maxsize: typing.Optional[int] = 64) -> typing.Callable:
 
         wrapper.cache = cache
         wrapper.cache_clear = cache.clear
+        wrapper.cache_info = info
 
         return wrapper
 

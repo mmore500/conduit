@@ -8,6 +8,11 @@ from .count_outliers import (
 )
 from .hash_with_lax_fallback import hash_with_lax_fallback
 from .lru_cache_universal import lru_cache_universal
+from .seaborn_monkeypatch_kdecache import (
+    seaborn_monkeypatch_kdecache,
+    seaborn_monkeypatched_kdecache,
+    seaborn_unmonkeypatch_kdecache,
+)
 from .strip_end import strip_end
 from .UnequalSentinel import UnequalSentinel
 
@@ -20,6 +25,9 @@ __all__ = [
     'count_proportion_outliers',
     'hash_with_lax_fallback',
     'lru_cache_universal',
+    'seaborn_monkeypatch_kdecache',
+    'seaborn_monkeypatched_kdecache',
+    'seaborn_unmonkeypatch_kdecache',
     'strip_end',
     'UnequalSentinel',
 ]
