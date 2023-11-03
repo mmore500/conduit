@@ -8,6 +8,7 @@ from .count_outliers import (
 )
 from .hash_with_lax_fallback import hash_with_lax_fallback
 from .strip_end import strip_end
+from .UnequalSentinel import UnequalSentinel
 
 # adapted from https://stackoverflow.com/a/31079085
 __all__ = [
@@ -17,4 +18,5 @@ __all__ = [
     'count_proportion_outliers',
     'hash_with_lax_fallback',
     'strip_end',
+    'UnequalSentinel',
 ]
