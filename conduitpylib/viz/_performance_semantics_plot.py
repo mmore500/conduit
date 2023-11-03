@@ -31,7 +31,7 @@ def performance_semantics_plot(
     palette: typing.Optional[typing.List[str]] = None,
     size_inches: typing.Tuple[float, float] = (3.5, 2.5),
 ) -> sns.JointGrid:
-    hue_order = ["Sans lac-417", "With lac-417"]
+
     assert set(hue_order) == set(data[hue].unique())
 
     if hue_order is None:
