@@ -14,6 +14,7 @@ from .seaborn_monkeypatch_kdecache import (
     seaborn_monkeypatched_kdecache,
     seaborn_unmonkeypatch_kdecache,
 )
+from .splice import splice
 from .strip_end import strip_end
 from .UnequalSentinel import UnequalSentinel
 
@@ -30,6 +31,7 @@ __all__ = [
     'seaborn_monkeypatch_kdecache',
     'seaborn_monkeypatched_kdecache',
     'seaborn_unmonkeypatch_kdecache',
+    'splice',
     'strip_end',
     'UnequalSentinel',
 ]
