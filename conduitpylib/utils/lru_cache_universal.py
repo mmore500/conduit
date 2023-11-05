@@ -63,7 +63,7 @@ def lru_cache_universal(maxsize: typing.Optional[int] = 64) -> typing.Callable:
             )
 
             # try indexing by lookupkey
-            if cached_full_key == query_full_key:
+            if equals_by_value(cached_full_key, query_full_key):
                 # cache hit!
                 info["hits"] += 1
                 return _robust_copy(cached_result)
