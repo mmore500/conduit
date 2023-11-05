@@ -8,6 +8,7 @@ from .count_outliers import (
 )
 from .hash_with_lax_fallback import hash_with_lax_fallback
 from .lru_cache_universal import lru_cache_universal
+from .round_to_multiple import round_to_multiple
 from .seaborn_monkeypatch_kdecache import (
     seaborn_monkeypatch_kdecache,
     seaborn_monkeypatched_kdecache,
@@ -25,6 +26,7 @@ __all__ = [
     'count_proportion_outliers',
     'hash_with_lax_fallback',
     'lru_cache_universal',
+    'round_to_multiple',
     'seaborn_monkeypatch_kdecache',
     'seaborn_monkeypatched_kdecache',
     'seaborn_unmonkeypatch_kdecache',
