@@ -49,6 +49,7 @@ def performance_semantics_scatterplot(
     title: str = "",
     legend: typing.Literal["hide", "only", "show"] = "show",
     legend_contents_pad: bool = False,
+    legend_font_name: typing.Optional[str] = None,
     legend_prop: typing.Dict = frozendict(),
     linestyles: typing.Optional[typing.List[str]] = None,
     palette: typing.Optional[typing.List[str]] = None,
@@ -333,7 +334,7 @@ def performance_semantics_scatterplot(
         f"{thinspace}{title}{thinspace}",
         # use custom font with monochrome emojis
         # because vanilla matplotlib backend doesn't support color bitmap fonts
-        prop=mpl_FontProperties(fname="../NotoEmoji-Regular4.ttf", size=30),
+        prop=mpl_FontProperties(fname=legend_font_name, size=30),
     )
     legend_._legend_title_box._text.set_bbox(
         {"facecolor": "gray", "alpha": 0.3, "lw": 3},
