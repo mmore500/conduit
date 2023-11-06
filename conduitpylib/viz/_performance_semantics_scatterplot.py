@@ -351,7 +351,7 @@ def performance_semantics_scatterplot(
 
     max_latency = data["Latency Simsteps Inlet"]
     min_latency = data["Latency Simsteps Inlet"] / data["Num Messages Per Pull"]
-    if legend != "only":
+    if legend != "only" and show_bunching_smear:
         jointgrid.ax_joint.errorbar(
             data=data,
             x=x,
