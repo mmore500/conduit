@@ -4,11 +4,11 @@ from matplotlib import pyplot as plt
 import pandas as pd
 
 from ._calc_performance_semantics_axis_lims import (
-    calc_performance_semantics_axis_limits,
+    calc_performance_semantics_axis_lims,
 )
 
 
-def set_performance_semantics_axis_limits(
+def set_performance_semantics_axis_lims(
     ax: plt.Axes,
     data: pd.DataFrame,
     x: str = "Simstep Period Inlet (ns)",
@@ -16,7 +16,7 @@ def set_performance_semantics_axis_limits(
     hue: typing.Optional[str] = None,
 ) -> None:
 
-    xmin, xmax, ymin, ymax = calc_performance_semantics_axis_limits(
+    xmin, xmax, ymin, ymax = calc_performance_semantics_axis_lims(
         data=data,
         x=x,
         y=y,

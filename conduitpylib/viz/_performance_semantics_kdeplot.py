@@ -22,7 +22,7 @@ from ..utils import seaborn_monkeypatched_kdecache
 from ._compact_xaxis_units import compact_xaxis_units
 from ._frame_scatter_subsets import frame_scatter_subsets
 from ._set_performance_semantics_axis_lims import (
-    set_performance_semantics_axis_limits,
+    set_performance_semantics_axis_lims,
 )
 
 
@@ -197,7 +197,7 @@ def performance_semantics_kdeplot(
         ax.get_xaxis().set_visible(False)
         ax.get_yaxis().set_visible(False)
 
-    set_performance_semantics_axis_limits(
+    set_performance_semantics_axis_lims(
         ax=jointgrid.ax_joint,
         data=data,
         x=x,

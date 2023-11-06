@@ -29,7 +29,7 @@ from ..utils import (
 from ._compact_xaxis_units import compact_xaxis_units
 from ._get_defaults import get_default_linestyles, get_default_palette
 from ._set_performance_semantics_axis_lims import (
-    set_performance_semantics_axis_limits,
+    set_performance_semantics_axis_lims,
 )
 from ._frame_scatter_subsets import frame_scatter_subsets
 
@@ -376,7 +376,7 @@ def performance_semantics_scatterplot(
         ax.get_xaxis().set_visible(False)
         ax.get_yaxis().set_visible(False)
 
-    set_performance_semantics_axis_limits(
+    set_performance_semantics_axis_lims(
         ax=jointgrid.ax_joint,
         data=data,
         x=x,

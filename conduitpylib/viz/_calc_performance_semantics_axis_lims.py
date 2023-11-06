@@ -26,7 +26,7 @@ from ._set_kde_lims import set_kde_lims
 
 @lru_cache_universal()
 @seaborn_monkeypatched_kdecache()
-def calc_performance_semantics_axis_limits(
+def calc_performance_semantics_axis_lims(
     data: pd.DataFrame,
     x: str = "Simstep Period Inlet (ns)",
     y: str = "Latency Simsteps Inlet",
