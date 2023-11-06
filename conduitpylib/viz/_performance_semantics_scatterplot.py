@@ -367,7 +367,8 @@ def performance_semantics_scatterplot(
                     max_latency - data["Latency Simsteps Inlet"],
                 ],
             ),
-            # visible=(legend != "only"),  # doesn't work, need outer conditional
+            # doesn't work, need outer conditional
+            # visible=(legend != "only"),
             zorder=-5,
         )
 
