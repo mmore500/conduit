@@ -60,10 +60,10 @@ def performance_semantics_scatterplot(
     ylim: typing.Optional[typing.Tuple[float, float]] = None,
 ) -> mpl_Figure:
     if hue is not None:
-        if not set(hue_order) <= set(data[hue].unique()):
-            raise ValueError("hue_order has hue categories missing from data.")
         if hue_order is None:
             hue_order = sorted(data[hue].unique())
+        if not set(hue_order) <= set(data[hue].unique()):
+            raise ValueError("hue_order has hue categories missing from data.")
     elif hue_order is not None:
         raise ValueError(
             "If hue is None, hue_order must also be None.",

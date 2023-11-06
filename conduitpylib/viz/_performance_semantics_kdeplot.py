@@ -40,7 +40,7 @@ def performance_semantics_kdeplot(
     xlim: typing.Optional[typing.Tuple[float, float]] = None,
     ylim: typing.Optional[typing.Tuple[float, float]] = None,
 ) -> mpl_figure.Figure:
-    assert set(hue_order) == set(data[hue].unique())
+    assert set(hue_order) >= set(data[hue])
 
     if hue_order is None:
         hue_order = sorted(data[hue].unique())
