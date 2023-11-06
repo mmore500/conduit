@@ -35,7 +35,7 @@ from ._frame_scatter_subsets import frame_scatter_subsets
 
 
 @seaborn_monkeypatched_kdecache()
-def performance_semantics_plot(
+def performance_semantics_scatterplot(
     data: pd.DataFrame,
     hue: typing.Optional[str] = None,
     hue_order: typing.Optional[typing.List[str]] = None,

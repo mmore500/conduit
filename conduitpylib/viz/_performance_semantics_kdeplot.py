@@ -27,7 +27,7 @@ from ._set_performance_semantics_axis_lims import (
 
 
 @seaborn_monkeypatched_kdecache()
-def performance_semantics_map_distributions(
+def performance_semantics_kdeplot(
     data: pd.DataFrame,
     hue: str,
     hue_order: typing.Optional[typing.List[str]] = None,
