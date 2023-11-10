@@ -1,6 +1,21 @@
 # Pull base image.
 FROM ubuntu:bionic-20180125@sha256:d6f6cc62b6bed64387d84ca227b76b9cc45049b0d0aefee0deec21ed19a300bf
 
+# adapted from https://stackoverflow.com/a/63944890
+RUN : \
+    && apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        software-properties-common \
+    && add-apt-repository -y ppa:deadsnakes \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+        python3.8-venv \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && :
+
+RUN python3.8 -m venv /venv
+ENV PATH=/venv/bin:$PATH
+
 COPY . /opt/conduit/
 
 SHELL ["/bin/bash", "-c"]
