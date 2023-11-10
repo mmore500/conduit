@@ -5,6 +5,7 @@ from ._retrieve_and_prepare_delta_dataframes import (
     retrieve_and_prepare_delta_dataframes,
 )
 from ._wrangle_instrumentation_longform import wrangle_instrumentation_longform
+from ._wrangle_instrumentation_wideform import wrangle_instrumentation_wideform
 from ._wrangle_longitudinal_deltas import wrangle_longitudinal_deltas
 from ._wrangle_snapshot_deltas import wrangle_snapshot_deltas
 
@@ -15,6 +16,7 @@ __all__ = [
     "merge_inlet_outlet_data",
     "retrieve_and_prepare_delta_dataframes",
     "wrangle_instrumentation_longform",
+    "wrangle_instrumentation_wideform",
     "wrangle_longitudinal_deltas",
     "wrangle_snapshot_deltas",
 ]
