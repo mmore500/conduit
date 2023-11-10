@@ -28,7 +28,7 @@ git+git://github.com/mmore500/patchworklib@010008a90d859f54efdaec19b250f8e6c978d
 # unused depndency, loosend version pin for installability
 git+git://github.com/mmore500/plotnine@833700abf9c917f4ee839ffc6cb81109a5f5df1f#egg=plotnine
 mizani==0.7.3  # unused dependency pinned to force installability
-bidict==0.22.1
+bidict==0.21.4
 opytional==0.1.0
 # prevent true
 pip-tools==5.5.0

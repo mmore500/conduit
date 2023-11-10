@@ -8,7 +8,7 @@ attrs==21.2.0
     # via jsonschema
 backcall==0.2.0
     # via ipython
-bidict==0.22.1
+bidict==0.21.4
     # via -r requirements.in
 bleach==4.1.0
     # via nbconvert
