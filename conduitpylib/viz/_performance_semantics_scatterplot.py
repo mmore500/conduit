@@ -349,8 +349,13 @@ def performance_semantics_scatterplot(
     ###########################################################################
     # due to unwanted side effects, must come after legend plot
 
-    max_latency = data["Latency Simsteps Inlet"]
-    min_latency = data["Latency Simsteps Inlet"] / data["Num Messages Per Pull"]
+    smear_duration_updates = (
+        data["Num Messages Per Laden Pull"] / data["Num Messages Per Pull"]
+    ) - 1  # noqa: fmt
+    # smear_duration_updates = np.max(smear_duration_updates, 0)
+    # max_latency = data["Latency Simsteps Inlet"] + smear_duration_updates / 2
+    data["Latency lb"] = data["Latency Simsteps Inlet"] - (smear_duration_updates / 2)
+    # assert (smear_duration_updates / 2  <= data[y]).all()
     if legend != "only" and show_bunching_smear:
         jointgrid.ax_joint.errorbar(
             data=data,
@@ -362,9 +367,11 @@ def performance_semantics_scatterplot(
             yerr=np.vstack(
                 [
                     # below-error height
-                    data["Latency Simsteps Inlet"] - min_latency,
+                    # data["Latency Simsteps Inlet"] - min_latency,
+                    smear_duration_updates / 2,
                     # above-error height
-                    max_latency - data["Latency Simsteps Inlet"],
+                    # max_latency - data["Latency Simsteps Inlet"],
+                    smear_duration_updates / 2,
                 ],
             ),
             # doesn't work, need outer conditional
