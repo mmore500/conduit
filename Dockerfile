@@ -36,13 +36,6 @@ RUN \
     && \
   echo "buffed apt-get resiliency"
 
-RUN \
-  find /etc/apt -type f -name '*.list' -exec sed -i 's/\(^deb.*-backports.*\)/#\1/; s/\(^deb.*-updates.*\)/#\1/; s/\(^deb.*-proposed.*\)/#\1/; s/\(^deb.*-security.*\)/#\1/' {} + \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "removed -backports, -updates, -proposed, -security repositories"
-
 # adapted in part form https://www.cloudsavvyit.com/13461/how-to-run-puppeteer-and-headless-chrome-in-a-docker-container/
 RUN \
   apt-get update -qq \
