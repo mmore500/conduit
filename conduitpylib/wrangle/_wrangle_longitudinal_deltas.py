@@ -81,10 +81,14 @@ def wrangle_longitudinal_deltas(merged_df: pd.DataFrame) -> pd.DataFrame:
         df_finalized_observations["Inlet-Seconds Elapsed"]
     )
 
-    df_finalized_observations["Messages Received Per Second"] = df_finalized_observations["Net Flux Through Duct"] / (
+    df_finalized_observations[
+        "Messages Received Per Second"
+    ] = df_finalized_observations["Net Flux Through Duct"] / (
         df_finalized_observations["Outlet-Seconds Elapsed"]
     )
-    df_finalized_observations["Messages Sent Per Second"] = df_finalized_observations["Num Try Puts Attempted"] / (
+    df_finalized_observations[
+        "Messages Sent Per Second"
+    ] = df_finalized_observations["Num Try Puts Attempted"] / (
         df_finalized_observations["Inlet-Seconds Elapsed"]
     )
 
