@@ -218,11 +218,11 @@ RUN \
     && \
   update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-7 90 \
     && \
-  npm install -g n@6.7.0 semver \
+  npm install -g n@6.7.0 semver@7.5.4 \
     && \
   npm cache clean --force \
     && \
-  n 12.18.2 \
+  PATH="$PATH" n 12.18.2 \
     && \
   export python="/usr/bin/python" \
     && \
