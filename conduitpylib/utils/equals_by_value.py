@@ -6,6 +6,15 @@ import pandas as pd
 
 def _equals_by_value(obj1: typing.Any, obj2: typing.Any) -> bool:
 
+    # Handle builtin datatypes recursively
+    if isinstance(obj1, (tuple, list)) and isinstance(obj2, (tuple, list)):
+        return all(_equals_by_value(o1, o2) for o1, o2 in zip(obj1, obj2))
+
+    if isinstance(obj1, dict) and isinstance(obj2, dict):
+        return len(obj1) == len(obj2) and all(
+            k in obj2 and _equals_by_value(obj1[k], obj2[k]) for k in obj1
+        )
+
     # Handle comparison between pandas DataFrames or Series
     if all(isinstance(o, pd.Series) for o in (obj1, obj2)):
         return np.allclose(obj1, obj2)
