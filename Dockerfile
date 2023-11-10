@@ -1,31 +1,6 @@
 # Pull base image.
 FROM ubuntu:focal-20231003@sha256:4bab3d12db59c8f2427dbec33d65e2e18d15562effcc0a021d624b1b7385a612
 
-# adapted from https://stackoverflow.com/a/63944890
-# and https://stackoverflow.com/a/59282256
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-        software-properties-common \
-        apt-transport-https \
-        ca-certificates \
-        curl \
-        tzdata \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN add-apt-repository 'ppa:deadsnakes/ppa'
-
-RUN apt-get -y update \
-    && apt-get install -y --no-install-recommends \
-        python3.8 \
-        python3.8-dev \
-        python3.8-venv \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN python3.8 -m venv /venv
-ENV PATH=/venv/bin:$PATH
-
 COPY . /opt/conduit/
 
 SHELL ["/bin/bash", "-c"]
