@@ -165,6 +165,8 @@ RUN \
 RUN \
   apt-get update -qq \
     && \
+  apt-get install -qq software-properties-common \
+    && \
   rm /etc/apt/apt.conf.d/docker-gzip-indexes \
     && \
   apt-get purge apt-show-versions \
