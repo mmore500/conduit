@@ -2,10 +2,16 @@
 FROM ubuntu:bionic-20180125@sha256:d6f6cc62b6bed64387d84ca227b76b9cc45049b0d0aefee0deec21ed19a300bf
 
 # adapted from https://stackoverflow.com/a/63944890
+# and https://stackoverflow.com/a/59282256
 RUN : \
     && apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         software-properties-common \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        software-properties-common \
+    && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
     && add-apt-repository -y ppa:deadsnakes \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3.8-venv \
