@@ -52,14 +52,6 @@ def wrangle_snapshot_deltas(
         df_snapshot_diffs["Num Pulls Attempted"]
         / df_snapshot_diffs["Num Round Trip Touches Outlet"]
     )
-    df_snapshot_diffs["Delivery Clumpiness"] = 1.0 - df_snapshot_diffs[
-        "Num Pulls That Were Laden Immediately"
-    ] / df_snapshot_diffs[["Net Flux Through Duct", "Num Pulls Attempted"]].min(
-        axis=1
-    )
-    df_snapshot_diffs["Intermittancy"] = df_snapshot_diffs[
-        "Delivery Clumpiness"
-    ]
     df_snapshot_diffs["Inlet-Nanoseconds Elapsed"] = (
         df_snapshot_diffs["Num Inlets"]
         * df_snapshot_diffs["Row Final Timepoint (ns) Inlet"]
@@ -133,6 +125,9 @@ def wrangle_snapshot_deltas(
         df_snapshot_diffs["Num Messages Per Laden Pull"]
         / df_snapshot_diffs["Num Messages Per Pull"]
     ) - 1
+    df_snapshot_diffs["Delivery Clumpiness"] = df_snapshot_diffs["Bunchiness"]
+    df_snapshot_diffs["Intermittancy"] = df_snapshot_diffs["Bunchiness"]
+    df_snapshot_diffs["Bunching"] = df_snapshot_diffs["Bunchiness"]
 
     df_snapshot_diffs["Latency, Log10 Updates"] = np.log10(
         df_snapshot_diffs["Latency Simsteps Inlet"]
@@ -145,8 +140,6 @@ def wrangle_snapshot_deltas(
     df_snapshot_diffs["Delivery Failure, %"] = (
         df_snapshot_diffs["Fraction Messages Dropped"] * 100
     )
-
-    df_snapshot_diffs["Bunching"] = df_snapshot_diffs["Bunchiness"]
 
     df_snapshot_diffs["Msgs Received Per Sent"] = df_snapshot_diffs[
         "Num Messages Per Pull"

@@ -44,6 +44,16 @@ def wrangle_longitudinal_deltas(merged_df: pd.DataFrame) -> pd.DataFrame:
         / df_finalized_observations["Num Messages Per Pull"]
     ) - 1
 
+    df_finalized_observations[
+        "Delivery Clumpiness"
+    ] = df_finalized_observations["Bunchiness"]
+    df_finalized_observations["Intermittancy"] = df_finalized_observations[
+        "Bunchiness"
+    ]
+    df_finalized_observations["Bunching"] = df_finalized_observations[
+        "Bunchiness"
+    ]
+
     df_finalized_observations["Latency, Log10 Updates"] = np.log10(
         df_finalized_observations["Latency Simsteps Inlet"]
     )
@@ -55,10 +65,6 @@ def wrangle_longitudinal_deltas(merged_df: pd.DataFrame) -> pd.DataFrame:
     df_finalized_observations["Delivery Failure, %"] = (
         df_finalized_observations["Fraction Messages Dropped"] * 100
     )
-
-    df_finalized_observations["Bunching"] = df_finalized_observations[
-        "Bunchiness"
-    ]
 
     df_finalized_observations[
         "Msgs Received Per Sent"
