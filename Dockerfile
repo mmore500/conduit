@@ -1,5 +1,5 @@
 # Pull base image.
-FROM ubuntu:bionic-20180125@sha256:d6f6cc62b6bed64387d84ca227b76b9cc45049b0d0aefee0deec21ed19a300bf
+FROM ubuntu:focal-20231003@sha256:4bab3d12db59c8f2427dbec33d65e2e18d15562effcc0a021d624b1b7385a612
 
 # adapted from https://stackoverflow.com/a/63944890
 # and https://stackoverflow.com/a/59282256
