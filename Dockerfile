@@ -9,7 +9,7 @@ RUN apt-get update \
         apt-transport-https \
         ca-certificates \
         curl \
-        tzdata
+        tzdata \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
