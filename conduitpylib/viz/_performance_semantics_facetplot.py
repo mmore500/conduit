@@ -18,7 +18,6 @@ from ._performance_semantics_scatterplot import (
 
 
 @patch.dict(pw.param, {"margin": 0.0})
-@pw.patchworklib.patched_axisgrid()
 def performance_semantics_facetplot(
     data: pd.DataFrame,
     x: str="Simstep Period Inlet (ns)",
