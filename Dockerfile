@@ -47,7 +47,9 @@ RUN \
 RUN \
   apt-get update -qq \
     && \
-  apt-get install -y --allow-downgrades --no-install-recommends \
+  apt-get install -y aptitude  --allow-downgrades --no-install-recommends aptitude \
+    && \
+  aptitude install -y --without-recommends \
     build-essential \
     ca-certificates \
     cmake \
