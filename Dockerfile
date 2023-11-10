@@ -1,5 +1,5 @@
 # Pull base image.
-FROM ubuntu:focal-20231003@sha256:4bab3d12db59c8f2427dbec33d65e2e18d15562effcc0a021d624b1b7385a612
+FROM ubuntu:focal-20231003@sha256:218bb51abbd1864df8be26166f847547b3851a89999ca7bfceb85ca9b5d2e95d
 
 COPY . /opt/conduit/
 
