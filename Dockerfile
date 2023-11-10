@@ -52,6 +52,7 @@ RUN \
   aptitude install -y --without-recommends \
     build-essential \
     ca-certificates \
+    clang-7 \
     cmake \
     curl \
     doxygen \
@@ -62,6 +63,7 @@ RUN \
     git \
     gpg-agent \
     gzip \
+    g++-9 \
     hdf5-helpers \
     hdf5-tools \
     htop \
@@ -70,6 +72,7 @@ RUN \
     libatk1.0-0 \
     libc6 \
     libcairo2 \
+    libclang-7-dev \
     libcups2 \
     libcurl4 \
     libcurl4-openssl-dev \
@@ -118,6 +121,8 @@ RUN \
     libxrender1 \
     libxss1 \
     libxtst6 \
+    llvm-7 \
+    llvm-7-dev \
     locales \
     lsb-release \
     man \
@@ -161,51 +166,39 @@ RUN \
     && \
   echo "installed fundamentals"
 
-# adapted in part from https://askubuntu.com/a/916451
-RUN \
-  apt-get update -qq \
-    && \
-  apt-get install -qq software-properties-common \
-    && \
-  rm /etc/apt/apt.conf.d/docker-gzip-indexes \
-    && \
-  apt-get purge apt-show-versions \
-    && \
-  rm /var/lib/apt/lists/*lz4 \
-    && \
-  apt-get -o Acquire::GzipIndexes=false update \
-    && \
-  add-apt-repository -y ppa:ubuntu-toolchain-r/test \
-    && \
-  wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
-    && \
-  apt-add-repository "deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-7 main" \
-    && \
-  add-apt-repository -y ppa:ubuntu-toolchain-r/test \
-    && \
-  apt-get update -qq \
-    && \
-  apt-get clean \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "configured packaging system"
 
-RUN \
-  apt-get update -qq \
-    && \
-  apt-get install -qq \
-    libclang-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    llvm-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    llvm-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    clang-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    g++-9=9.4.0-1ubuntu1~18.04 \
-    && \
-  apt-get clean \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "installed llvm-7 dependencies"
+
+
+
+# adapted in part from https://askubuntu.com/a/916451
+# RUN \
+#   apt-get update -qq \
+#     && \
+#   apt-get install -qq software-properties-common \
+#     && \
+#   rm /etc/apt/apt.conf.d/docker-gzip-indexes \
+#     && \
+#   apt-get purge apt-show-versions \
+#     && \
+#   rm /var/lib/apt/lists/*lz4 \
+#     && \
+#   apt-get -o Acquire::GzipIndexes=false update \
+#     && \
+#   add-apt-repository -y ppa:ubuntu-toolchain-r/test \
+#     && \
+#   wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
+#     && \
+#   apt-add-repository "deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-7 main" \
+#     && \
+#   add-apt-repository -y ppa:ubuntu-toolchain-r/test \
+#     && \
+#   apt-get update -qq \
+#     && \
+#   apt-get clean \
+#     && \
+#   rm -rf /var/lib/apt/lists/* \
+#     && \
+#   echo "configured packaging system"
 
 # magic from https://github.com/puppeteer/puppeteer/issues/3451#issuecomment-523961368
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
