@@ -80,14 +80,14 @@ RUN \
     libgtk-3-0 \
     libicu-dev \
     libjpeg-dev \
-    libhdf5-100 \
-    libhdf5-cpp-100 \
+    libhdf5-103 \
+    libhdf5-cpp-103 \
     libhdf5-dev \
     libhdf5-doc \
     libhdf5-mpi-dev \
-    libhdf5-mpich-100 \
+    libhdf5-mpich-103 \
     libhdf5-mpich-dev \
-    libhdf5-openmpi-100 \
+    libhdf5-openmpi-103 \
     libhdf5-openmpi-dev \
     libhdf5-serial-dev \
     libmpich-dev \
@@ -95,13 +95,13 @@ RUN \
     libnspr4 \
     libnss3 \
     libopenmpi-dev \
-    libopenmpi2 \
+    # libopenmpi2 \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \
     libpng-dev \
     libpthread-stubs0-dev \
     libstdc++-7-dev \
-    libstdc++6=8-20180414-1ubuntu2 \
+    libstdc++6 \
     libx11-6 \
     libx11-xcb1 \
     libxcb1 \
@@ -128,24 +128,24 @@ RUN \
     openmpi-common \
     openmpi-doc \
     openssh-server \
-    python-dev \
-    python-h5py \
-    python-pip \
-    python-setuptools \
-    python-sphinx \
-    python-virtualenv \
-    python-wheel \
+    # python-dev \
+    # python-h5py \
+    # python-pip \
+    # python-setuptools \
+    # python-virtualenv \
+    # python-wheel \
     python3-dev \
     python3-h5py \
     python3-pip \
     python3-setuptools \
-    python3-sphinx \
     python3-virtualenv \
     python3-wheel \
     rename \
     rsync \
     slurm-client \
     software-properties-common \
+    sphinx-doc \
+    sphinx-common \
     tar \
     unzip \
     vim \
