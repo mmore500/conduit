@@ -218,7 +218,7 @@ RUN \
     && \
   update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-7 90 \
     && \
-  npm install -g n@6.7.0 \
+  npm install -g n@6.7.0 semver \
     && \
   npm cache clean --force \
     && \
