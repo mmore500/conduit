@@ -59,6 +59,7 @@ RUN \
     fonts-liberation \
     gconf-service \
     gdb \
+    git \
     gpg-agent \
     gzip \
     hdf5-helpers \
@@ -153,12 +154,6 @@ RUN \
     vim \
     wget \
     xdg-utils \
-    && \
-  add-apt-repository ppa:git-core/ppa -y \
-    && \
-  apt-get update -qq \
-    && \
-  apt-get install -y --no-install-recommends git \
     && \
   apt-get clean \
     && \
