@@ -11,6 +11,9 @@ from ._performance_semantics_kdeplot import performance_semantics_kdeplot
 from ._performance_semantics_scatterplot import (
     performance_semantics_scatterplot,
 )
+from ._runtime_indicator_regplot import runtime_indicator_regplot
+from ._runtime_indicators_pairplot import runtime_indicators_pairplot
+from ._runtime_indicators_regplot import runtime_indicators_regplot
 from ._set_kde_lims import set_kde_lims
 
 
@@ -25,5 +28,8 @@ __all__ = [
     "performance_semantics_facetplot",
     "performance_semantics_kdeplot",
     "performance_semantics_scatterplot",
+    "runtime_indicator_regplot",
+    "runtime_indicators_pairplot",
+    "runtime_indicators_regplot",
     "set_kde_lims",
 ]
