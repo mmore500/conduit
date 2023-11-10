@@ -2,6 +2,7 @@
 
 from ._annotate_spearman import annotate_spearman
 from ._beleaguerment_regplot import beleaguerment_regplot
+from ._beleaguerment_facetplot import beleaguerment_facetplot
 from ._compact_xaxis_units import compact_xaxis_units
 from ._frame_scatter_subsets import frame_scatter_subsets
 from ._performance_semantics_facetplot import performance_semantics_facetplot
@@ -15,6 +16,7 @@ from ._set_kde_lims import set_kde_lims
 # adapted from https://stackoverflow.com/a/31079085
 __all__ = [
     "annotate_spearman",
+    "beleaguerment_facetplot",
     "beleaguerment_regplot",
     "compact_xaxis_units",
     "frame_scatter_subsets",

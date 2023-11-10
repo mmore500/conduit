@@ -3,6 +3,7 @@ from scipy import stats
 
 from ..utils import get_signif_asterisks
 
+
 def annotate_spearman(x: str, y: str, **kws) -> None:
     data = kws.pop("data")
     ax = kws.get("ax", plt.gca())
@@ -12,7 +13,9 @@ def annotate_spearman(x: str, y: str, **kws) -> None:
     stars = get_signif_asterisks(p_value)
 
     # Linear regression
-    slope, _intercept, _r_value, _p_value, _std_err = stats.linregress(data[x], data[y])
+    slope, _intercept, _r_value, _p_value, _std_err = stats.linregress(
+        data[x], data[y]
+    )
 
     # Annotate the plot
     ax.annotate(
@@ -21,6 +24,8 @@ def annotate_spearman(x: str, y: str, **kws) -> None:
         xycoords="axes fraction",
         ha="left",
         va="top",
-        bbox=dict(boxstyle="round,pad=0.5", facecolor="white", alpha=0.5),
-        zorder=100,
+        bbox=dict(
+            alpha=1.0, boxstyle="round,pad=0.5", facecolor="white", zorder=900
+        ),
+        zorder=1000,
     )
