@@ -6,6 +6,7 @@ from ._beleaguerment_regplot import beleaguerment_regplot
 from ._beleaguerment_facetplot import beleaguerment_facetplot
 from ._compact_xaxis_units import compact_xaxis_units
 from ._frame_scatter_subsets import frame_scatter_subsets
+from ._get_notomoji_font_path import get_notomoji_font_path
 from ._performance_semantics_facetplot import performance_semantics_facetplot
 from ._performance_semantics_kdeplot import performance_semantics_kdeplot
 from ._performance_semantics_scatterplot import (
@@ -28,6 +29,7 @@ __all__ = [
     "beleaguerment_regplot",
     "compact_xaxis_units",
     "frame_scatter_subsets",
+    "get_notomoji_font_path",
     "performance_semantics_facetplot",
     "performance_semantics_kdeplot",
     "performance_semantics_scatterplot",

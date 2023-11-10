@@ -65,6 +65,9 @@ def wrangle_longitudinal_deltas(merged_df: pd.DataFrame) -> pd.DataFrame:
     df_finalized_observations["Delivery Failure, %"] = (
         df_finalized_observations["Fraction Messages Dropped"] * 100
     )
+    df_finalized_observations["% Msgs Lost"] = df_finalized_observations[
+        "Delivery Failure, %"
+    ]
 
     df_finalized_observations[
         "Msgs Received Per Sent"

@@ -102,10 +102,6 @@ def wrangle_snapshot_deltas(
         }
     )
 
-    df_snapshot_diffs["% Msgs Lost"] = (
-        df_snapshot_diffs["Fraction Messages Dropped"] * 100
-    )
-
     df_snapshot_diffs["Dominance"] = (
         df_snapshot_diffs["Num Try Puts Attempted"]
         / df_snapshot_diffs["Net Flux Through Duct"]
@@ -140,6 +136,7 @@ def wrangle_snapshot_deltas(
     df_snapshot_diffs["Delivery Failure, %"] = (
         df_snapshot_diffs["Fraction Messages Dropped"] * 100
     )
+    df_snapshot_diffs["% Msgs Lost"] = df_snapshot_diffs["Delivery Failure, %"]
 
     df_snapshot_diffs["Msgs Received Per Sent"] = df_snapshot_diffs[
         "Num Messages Per Pull"
