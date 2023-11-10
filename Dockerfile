@@ -3,21 +3,19 @@ FROM ubuntu:bionic-20180125@sha256:d6f6cc62b6bed64387d84ca227b76b9cc45049b0d0aef
 
 # adapted from https://stackoverflow.com/a/63944890
 # and https://stackoverflow.com/a/59282256
-RUN : \
-    && apt-get update \
+RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         software-properties-common \
         apt-transport-https \
         ca-certificates \
         curl \
-        software-properties-common \
-    && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
+    && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg \
+    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null \
     && add-apt-repository -y ppa:deadsnakes \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         python3.8-venv \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
-    && :
+    && rm -rf /var/lib/apt/lists/*
 
 RUN python3.8 -m venv /venv
 ENV PATH=/venv/bin:$PATH
