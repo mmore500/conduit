@@ -10,6 +10,15 @@ from collections import OrderedDict
 from .equals_by_value import equals_by_value
 
 
+def _raises(callable: typing.Callable) -> bool:
+    try:
+        callable()
+    except Exception:
+        return True
+    else:
+        return False
+
+
 def pickle_cache(maxsize: int = 256) -> typing.Callable:
     def decorator(func: typing.Callable) -> typing.Callable:
         info = {
@@ -43,8 +52,10 @@ def pickle_cache(maxsize: int = 256) -> typing.Callable:
                     oldest, *_rest = shelf.keys()
                     del shelf[oldest]
 
-                if hash_value not in shelf or not equals_by_value(
-                    shelf[hash_value][0], context
+                if (
+                    hash_value not in shelf
+                    or _raises(lambda: shelf[hash_value])
+                    or not equals_by_value(shelf[hash_value][0], context)
                 ):
                     info["misses"] += 1
                     result = func(*args, **kwargs)
