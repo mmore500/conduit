@@ -12,6 +12,7 @@ def beleaguerment_facetplot(
     x: str = "Messages Received Per Second",
     y: str = "Messages Sent Per Second",
     hue: typing.Optional[str] = None,
+    hue_order: typing.Optional[typing.List[str]] = None,
     palette: typing.Optional[typing.List[str]] = None,
 ) -> sns.FacetGrid:
     if palette is None:
@@ -19,6 +20,14 @@ def beleaguerment_facetplot(
 
     data_real = data.copy()
     data_dummy = data.copy()
+
+    if hue is not None:
+        if hue_order is None:
+            hue_order = sorted(data[hue].unique())
+        if not set(hue_order) <= set(data[hue].unique()):
+            raise ValueError("hue_order has hue categories missing from data.")
+    elif hue_order is not None:
+        raise ValueError("If hue is None, hue_order must also be None.")
 
     if hue is not None:
         data_dummy[hue] = "dummy"
@@ -30,6 +39,7 @@ def beleaguerment_facetplot(
         aspect=1.2,
         col=hue,
         hue=hue,
+        hue_order=["dummy", *hue_order],
         sharex=True,
         sharey=True,
         palette=["white", *palette],
@@ -49,6 +59,7 @@ def beleaguerment_facetplot(
         x=x,
         y=y,
         hue=hue,
+        hue_order=hue_order,
         ax=bothax,
         alpha=0.7,
         fill=True,
