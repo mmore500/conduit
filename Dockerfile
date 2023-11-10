@@ -220,6 +220,8 @@ RUN \
     && \
   npm install -g n@6.7.0 \
     && \
+  npm cache clean --force \
+    && \
   n 12.18.2 \
     && \
   export python="/usr/bin/python" \
