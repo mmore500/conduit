@@ -19,13 +19,21 @@ def annotate_spearman(x: str, y: str, **kwargs) -> None:
 
     # Annotate the plot
     ax.annotate(
-        f"Spear Rho:\n {corr:.2f} {stars}\nn:{len(data)}\nLinReg Slope:\n {slope:.2f}",
-        xy=(0.05, 0.95),
-        xycoords="axes fraction",
-        ha="left",
-        va="top",
-        bbox=dict(
-            alpha=1.0, boxstyle="round,pad=0.5", facecolor="white", zorder=900
-        ),
-        zorder=1000,
+        f"Rho: {corr:.2f} {stars} / Slope: {slope:.2f}\nn:{len(data)}",
+        **{
+            **dict(
+                xy=(0.05, 0.95),
+                xycoords="axes fraction",
+                ha="left",
+                va="top",
+                bbox=dict(
+                    alpha=1.0,
+                    boxstyle="round,pad=0.5",
+                    facecolor="white",
+                    zorder=900,
+                ),
+                zorder=1000,
+            ),
+            **kwargs,
+        },
     )

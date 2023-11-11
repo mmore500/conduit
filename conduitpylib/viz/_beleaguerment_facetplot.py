@@ -1,5 +1,6 @@
 import typing
 
+from frozendict import frozendict
 import pandas as pd
 import seaborn as sns
 
@@ -14,6 +15,11 @@ def beleaguerment_facetplot(
     hue: typing.Optional[str] = None,
     hue_order: typing.Optional[typing.List[str]] = None,
     palette: typing.Optional[typing.List[str]] = None,
+    annotation_kwargs: typing.Dict = frozendict(),
+    kde_kwargs: typing.Dict = frozendict(),
+    regline_kwargs: typing.Dict = frozendict(),
+    scatter_kwargs: typing.Dict = frozendict(),
+    scatter_outline_kwargs: typing.Dict = frozendict(),
 ) -> sns.FacetGrid:
     if palette is None:
         palette = get_default_palette()
@@ -31,6 +37,8 @@ def beleaguerment_facetplot(
 
     if hue is not None:
         data_dummy[hue] = "dummy"
+        data_dummy[x] = -1
+        data_dummy[y] = -1
 
     data_with_spoof = pd.concat([data_dummy, data_real])
 
@@ -42,18 +50,12 @@ def beleaguerment_facetplot(
         hue_order=["dummy", *hue_order],
         sharex=True,
         sharey=True,
-        palette=["white", *palette],
+        palette=[(0.0, 0.0, 0.0, 0.0), *palette],
         height=4,
     )
 
-    g.map_dataframe(
-        beleaguerment_regplot,
-        x=x,
-        y=y,
-    )
-
     bothax = g.axes.flat[0]
-    bothax.cla()
+    bothax.clear()
     sns.kdeplot(
         data=data,
         x=x,
@@ -61,14 +63,30 @@ def beleaguerment_facetplot(
         hue=hue,
         hue_order=hue_order,
         ax=bothax,
-        alpha=0.7,
-        fill=True,
-        legend=True,
-        palette=palette,
+        **{
+            **dict(
+                alpha=0.7,
+                cut=10,
+                fill=True,
+                legend=True,
+                palette=palette,
+            ),
+            **kde_kwargs,
+        },
     )
     sns.move_legend(bothax, loc="upper left")
 
     bothax.axline((0, 0), slope=1, color="black", linestyle=":", lw=2)
+
+    g.map_dataframe(
+        beleaguerment_regplot,
+        x=x,
+        y=y,
+        annotation_kwargs=annotation_kwargs,
+        regline_kwargs=regline_kwargs,
+        scatter_kwargs=scatter_kwargs,
+        scatter_outline_kwargs=scatter_outline_kwargs,
+    )
 
     for ax in g.axes.flat:
         ax.set_xlim(left=0)

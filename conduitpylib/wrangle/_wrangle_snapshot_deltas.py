@@ -1,3 +1,5 @@
+import typing
+
 import numpy as np
 import pandas as pd
 
@@ -10,8 +12,11 @@ from ._diff_snapshot_states import diff_snapshot_states
 def wrangle_snapshot_deltas(
     merged_df: pd.DataFrame,
     max_snapshot: int = 5,
+    treatment_column: typing.Optional[str] = None,
 ) -> pd.DataFrame:
-    df_snapshot_diffs = diff_snapshot_states(merged_df, max_snapshot)
+    df_snapshot_diffs = diff_snapshot_states(
+        merged_df, max_snapshot, treatment_column=treatment_column
+    )
 
     df_snapshot_diffs["Fraction Messages Delivered"] = (
         df_snapshot_diffs["Num Try Puts That Succeeded"]

@@ -1,3 +1,5 @@
+import typing
+
 import numpy as np
 import pandas as pd
 
@@ -9,6 +11,7 @@ from ..utils import pickle_cache
 def diff_snapshot_states(
     merged_df: pd.DataFrame,
     max_snapshot: int,
+    treatment_column: typing.Optional[str] = None,
 ) -> pd.DataFrame:
     df_blurry_snapshots = merged_df[
             merged_df["Has Execution Blur"].astype(bool)
@@ -37,7 +40,9 @@ def diff_snapshot_states(
             "Num Outlets",
             "Execution Instance UUID",
             "Num Threads",
-            "Allocation",
+            *(
+                [treatment_column] if treatment_column is not None else []
+            ),
         ],
         as_index=False,
     ).aggregate(

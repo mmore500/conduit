@@ -23,40 +23,51 @@ def merge_inlet_outlet_data(
     ):
         df["Runtime Seconds Elapsed Inlet"] = df["Runtime Seconds Elapsed"]
         df["Runtime Seconds Elapsed Outlet"] = df["Runtime Seconds Elapsed"]
+    else:
+        df["Runtime Seconds Elapsed Inlet"] = df_inlet["Runtime Seconds Elapsed"]
+        df["Runtime Seconds Elapsed Outlet"] = df_outlet["Runtime Seconds Elapsed"]
 
-    df = df.astype(
-        {
-            "Num Inlets": "int64",
-            "Num Outlets": "int64",
-            "Num Puts Attempted": "int64",
-            "Num Try Puts Attempted": "int64",
-            "Num Blocking Puts": "int64",
-            "Num Try Puts That Succeeded": "int64",
-            "Num Puts That Succeeded Eventually": "int64",
-            "Num Blocking Puts That Succeeded Immediately": "int64",
-            "Num Puts That Succeeded Immediately": "int64",
-            "Num Puts That Blocked": "int64",
-            "Num Dropped Puts": "int64",
-            "Num Round Trip Touches Inlet": "int64",
-            "Net Flux Through Duct": "int64",
-            "proc": "int64",
-            "Snapshot": "int64",
-            "Has Execution Blur": "bool",
-            "Replicate": "int64",
-            "Async Mode": "int64",
-            "Num Threads": "int64",
-            "Num Processes": "int64",
-            "SLURM_NNODES": "int64",
-            "SLURM_NTASKS": "int64",
-            "SLURM_CPUS_ON_NODE": "int64",
-        }
-    )
+    conv = {
+        "Num Inlets": "int64",
+        "Num Outlets": "int64",
+        "Num Puts Attempted": "int64",
+        "Num Try Puts Attempted": "int64",
+        "Num Blocking Puts": "int64",
+        "Num Try Puts That Succeeded": "int64",
+        "Num Puts That Succeeded Eventually": "int64",
+        "Num Blocking Puts That Succeeded Immediately": "int64",
+        "Num Puts That Succeeded Immediately": "int64",
+        "Num Puts That Blocked": "int64",
+        "Num Dropped Puts": "int64",
+        "Num Round Trip Touches Inlet": "int64",
+        "Net Flux Through Duct": "int64",
+        "proc": "int64",
+        "Snapshot": "int64",
+        "Has Execution Blur": "bool",
+        "Replicate": "int64",
+        "Async Mode": "int64",
+        "Num Threads": "int64",
+        "Num Processes": "int64",
+        "SLURM_NNODES": "int64",
+        "SLURM_NTASKS": "int64",
+        "SLURM_CPUS_ON_NODE": "int64",
+    }
+    for key, value in conv.items():
+        df[key] = df[key].astype(value, errors="ignore")
 
-
-    df["Hostname"] = df.apply(
-        lambda row: kn.unpack(row["Source File Inlet"])["_hostname"],
-        axis=1,
-    )
+    try:
+        df["Hostname"] = df.apply(
+            lambda row: kn.unpack(row["Source File Inlet"])["_hostname"],
+            axis=1,
+        )
+    except Exception:
+        try:
+            df["Hostname"] = df.apply(
+                lambda row: kn.unpack(row["Source File Outlet"])["_hostname"],
+                axis=1,
+            )
+        except Exception:
+            df["Hostname"] = df["Process Instance UUID"]
 
     df["Num Nodes"] = df["SLURM_NNODES"]
     df["Num Tasks"] = df["SLURM_NTASKS"]

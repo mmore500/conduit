@@ -12,6 +12,7 @@ from ._wrangle_snapshot_deltas import wrangle_snapshot_deltas
 def retrieve_and_prepare_delta_dataframes(
     df_inlet_url: str = "https://osf.io/jgpnv/download",
     df_outlet_url: str = "https://osf.io/ncdfq/download",
+    apply: typing.Callable = lambda df: df,
     treatment_column: typing.Optional[str] = None,
     return_merge_df: bool = False,
 ) -> typing.Union[pd.DataFrame, typing.Tuple[pd.DataFrame, pd.DataFrame]]:
@@ -27,11 +28,27 @@ def retrieve_and_prepare_delta_dataframes(
     )
     nbm.print_dataframe_summary(*eval(nbm.nvp_expr("df_outlet")))
 
-    merge_df = merge_inlet_outlet_data(df_inlet, df_outlet)
+    if df_inlet["Process Instance UUID"].isna().any():
+        print(
+            f"""df_inlet has {
+            df_inlet["Process Instance UUID"].isna().sum()
+        } na rows, dropping them"""
+        )
+    if df_outlet["Process Instance UUID"].isna().any():
+        print(
+            f"""df_outlet has {
+            df_outlet["Process Instance UUID"].isna().sum()
+        } na rows, dropping them"""
+        )
+
+    df_inlet.dropna(subset=["Process Instance UUID"], inplace=True)
+    df_outlet.dropna(subset=["Process Instance UUID"], inplace=True)
+
+    merge_df = apply(merge_inlet_outlet_data(df_inlet, df_outlet))
 
     res = (
         wrangle_longitudinal_deltas(merge_df),
-        wrangle_snapshot_deltas(merge_df),
+        wrangle_snapshot_deltas(merge_df, treatment_column=treatment_column),
     )
 
     for df_ in res:

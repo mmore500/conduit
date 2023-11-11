@@ -24,10 +24,6 @@ def wrangle_longitudinal_deltas(merged_df: pd.DataFrame) -> pd.DataFrame:
         df_finalized_observations["Simstep Period Inlet (s)"] * 1e9
     )
 
-    df_finalized_observations["Allocation"] = df_finalized_observations[
-        "Treatment"
-    ]
-
     df_finalized_observations["Num Messages Per Pull"] = (
         df_finalized_observations["Net Flux Through Duct"]
         / df_finalized_observations["Num Pulls Attempted"]
