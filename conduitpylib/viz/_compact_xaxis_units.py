@@ -88,13 +88,6 @@ def compact_xaxis_units(
     assert np.isclose(approx_pow, new_multiplier_pow)
     new_prefix = _si_prefixes.inv[new_multiplier_pow]
 
-    # apply new multiplier, consolidating offset axis scale and label unit
-    def replace_group(match):
-        # Extracting the captured group
-        captured_group = match.group(1)
-        # Defining the replacement value for the captured group
-        return replacement_value
-
     ax.xaxis.get_offset_text().set(visible=False)  # remove offset axis scale
     old_prefix_span = old_prefix_match.span(1)
     new_label_string = splice(

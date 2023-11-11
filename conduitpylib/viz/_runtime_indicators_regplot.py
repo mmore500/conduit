@@ -1,7 +1,5 @@
-import itertools as it
 import typing
 
-from matplotlib import patheffects as mpl_pe
 from matplotlib import pyplot as plt
 import pandas as pd
 import seaborn as sns

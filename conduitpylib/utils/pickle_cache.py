@@ -1,11 +1,9 @@
-import inspect
-import shelve
-import hashlib
-import pickle
-from pathlib import Path
 from functools import wraps
+import hashlib
+import inspect
+from pathlib import Path
+import shelve
 import typing
-from collections import OrderedDict
 
 from .equals_by_value import equals_by_value
 

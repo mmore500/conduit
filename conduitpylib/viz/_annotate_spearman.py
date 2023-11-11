@@ -4,9 +4,9 @@ from scipy import stats
 from ..utils import get_signif_asterisks
 
 
-def annotate_spearman(x: str, y: str, **kws) -> None:
-    data = kws.pop("data")
-    ax = kws.get("ax", plt.gca())
+def annotate_spearman(x: str, y: str, **kwargs) -> None:
+    data = kwargs.pop("data")
+    ax = kwargs.pop("ax", plt.gca())
 
     # Calculate Spearman correlation and significance
     corr, p_value = stats.spearmanr(data[x], data[y])
