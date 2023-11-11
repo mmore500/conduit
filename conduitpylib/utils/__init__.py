@@ -6,9 +6,9 @@ from .count_outliers import (
     count_outliers,
     count_proportion_outliers,
 )
+from .get_signif_asterisks import get_signif_asterisks
 from .hash_with_lax_fallback import hash_with_lax_fallback
 from .lru_cache_universal import lru_cache_universal
-from .get_signif_asterisks import get_signif_asterisks
 from .round_to_multiple import round_to_multiple
 from .pickle_cache import pickle_cache
 from .seaborn_monkeypatch_kdecache import (
