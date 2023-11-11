@@ -158,40 +158,6 @@ RUN \
     && \
   echo "installed fundamentals"
 
-
-
-
-
-# adapted in part from https://askubuntu.com/a/916451
-# RUN \
-#   apt-get update -qq \
-#     && \
-#   apt-get install -qq software-properties-common \
-#     && \
-#   rm /etc/apt/apt.conf.d/docker-gzip-indexes \
-#     && \
-#   apt-get purge apt-show-versions \
-#     && \
-#   rm /var/lib/apt/lists/*lz4 \
-#     && \
-#   apt-get -o Acquire::GzipIndexes=false update \
-#     && \
-#   add-apt-repository -y ppa:ubuntu-toolchain-r/test \
-#     && \
-#   wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
-#     && \
-#   apt-add-repository "deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-7 main" \
-#     && \
-#   add-apt-repository -y ppa:ubuntu-toolchain-r/test \
-#     && \
-#   apt-get update -qq \
-#     && \
-#   apt-get clean \
-#     && \
-#   rm -rf /var/lib/apt/lists/* \
-#     && \
-#   echo "configured packaging system"
-
 # magic from https://github.com/puppeteer/puppeteer/issues/3451#issuecomment-523961368
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
