@@ -1,3 +1,4 @@
+import numpy as np
 from matplotlib import pyplot as plt
 from scipy import stats
 
@@ -16,6 +17,10 @@ def annotate_spearman(x: str, y: str, **kwargs) -> None:
     slope, _intercept, _r_value, _p_value, _std_err = stats.linregress(
         data[x], data[y]
     )
+
+    if np.isnan(corr):
+        assert np.isnan(slope)
+        return  # Nop
 
     # Annotate the plot
     ax.annotate(

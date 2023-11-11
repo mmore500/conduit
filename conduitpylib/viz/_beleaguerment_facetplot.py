@@ -1,6 +1,7 @@
 import typing
 
 from frozendict import frozendict
+import numpy as np
 import pandas as pd
 import seaborn as sns
 
@@ -37,8 +38,8 @@ def beleaguerment_facetplot(
 
     if hue is not None:
         data_dummy[hue] = "dummy"
-        data_dummy[x] = -1
-        data_dummy[y] = -1
+        data_dummy[x] = np.nan
+        data_dummy[y] = np.nan
 
     data_with_spoof = pd.concat([data_dummy, data_real])
 
@@ -56,6 +57,7 @@ def beleaguerment_facetplot(
 
     bothax = g.axes.flat[0]
     bothax.clear()
+    bothax.cla()
     sns.kdeplot(
         data=data,
         x=x,
