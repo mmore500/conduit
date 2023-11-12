@@ -9,6 +9,7 @@
  [*]
  end_of_line = lf
  insert_final_newline = true
+ max_line_length = 79
 
  # Matches multiple files with brace expansion notation
  # Set default charset and tab width
