@@ -24,6 +24,23 @@ def beleaguerment_regplot(
     if ax is None:
         ax = plt.gca()
 
+    # outline scattered points
+    sns.kdeplot(
+        data=data,
+        x=x,
+        y=y,
+        ax=ax,
+        fill=False,
+        **{
+            "thresh": 1e-6,
+            "cut": 10,
+            "lw": 0.5,
+            "alpha": 0.6,
+            "levels": 1,
+            **scatter_outline_kwargs,
+        },
+    )
+
     sns.regplot(
         data=data,
         x=x,
@@ -41,36 +58,22 @@ def beleaguerment_regplot(
             ),
             **regline_kwargs,
         },
-        scatter_kws=dict(
-            lw=0.5,
-            marker="D",
-            **{
-                **scatter_kwargs,
-                **kwargs,
-            },
-        ),
+        scatter_kws={
+            "linewidth": 1,
+            "marker": "D",
+            "edgecolors": "black",
+            **scatter_kwargs,
+            **kwargs,
+        },
         truncate=False,
     )
-
-    # outline scattered points
-    sns.kdeplot(
-        data=data,
-        x=x,
-        y=y,
-        ax=ax,
-        fill=False,
-        **{
-            **dict(
-                thresh=1e-6,
-                cut=10,
-                lw=0.5,
-                alpha=0.6,
-                levels=1,
-            ),
-            **scatter_outline_kwargs,
-        },
+    # style seaborn's regplot error band
+    # adapted from https://stackoverflow.com/a/48673499
+    plt.setp(
+        ax.collections[-1],
+        alpha=0.2,
+        ec="gray",
+        linewidth=2,
     )
 
-    annotate_spearman(
-        data=data, x=x, y=y, ax=ax, **annotation_kwargs
-    )
+    annotate_spearman(data=data, x=x, y=y, ax=ax, **annotation_kwargs)

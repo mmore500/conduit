@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
+from ._apply_symmetric_axes import apply_symmetric_axes
+from ._DrawBatched import DrawBatched
 from ._beleaguerment_regplot import beleaguerment_regplot
 from ._get_defaults import get_default_palette
 
@@ -19,6 +21,7 @@ def beleaguerment_facetplot(
     annotation_kwargs: typing.Dict = frozendict(),
     kde_kwargs: typing.Dict = frozendict(),
     regline_kwargs: typing.Dict = frozendict(),
+    rugplot_kwargs: typing.Dict = frozendict(),
     scatter_kwargs: typing.Dict = frozendict(),
     scatter_outline_kwargs: typing.Dict = frozendict(),
 ) -> sns.FacetGrid:
@@ -49,8 +52,8 @@ def beleaguerment_facetplot(
         col=hue,
         hue=hue,
         hue_order=["dummy", *hue_order],
-        sharex=True,
-        sharey=True,
+        sharex=False,
+        sharey=False,
         palette=[(0.0, 0.0, 0.0, 0.0), *palette],
         height=4,
     )
@@ -66,19 +69,61 @@ def beleaguerment_facetplot(
         hue_order=hue_order,
         ax=bothax,
         **{
-            **dict(
-                alpha=0.7,
-                cut=10,
-                fill=True,
-                legend=True,
-                palette=palette,
-            ),
+            "alpha": 0.7,
+            "cut": 10,
+            "fill": True,
+            "legend": True,
+            "palette": palette,
             **kde_kwargs,
+        },
+    )
+    sns.rugplot(
+        data=data,
+        x=x,
+        y=y,
+        ax=bothax,
+        **{
+            "color": "darkgray",
+            "linewidth": 20,
+            "height": 0.12,
+            "legend": False,
+        },
+    )
+
+    batching_kwargs = {
+        key: rugplot_kwargs.pop(key)
+        for key in (
+            "batch_size",
+            "batch_limit",
+            "progress_apply",
+            "random_state",
+            "sort_by",
+        )
+        if key in rugplot_kwargs
+    }
+    DrawBatched(sns.rugplot, data, **batching_kwargs)(
+        data=DrawBatched.DataPlaceholder,
+        x=x,
+        y=y,
+        hue=hue,
+        hue_order=hue_order,
+        ax=bothax,
+        **{
+            "linewidth": 5,
+            "height": 0.1,
+            "legend": False,
+            "palette": palette,
+            **rugplot_kwargs,
         },
     )
     sns.move_legend(bothax, loc="upper left")
 
     bothax.axline((0, 0), slope=1, color="black", linestyle=":", lw=2)
+
+    g.axes.flat[0].set_xlim(left=0)
+    g.axes.flat[0].set_ylim(bottom=0)
+
+    map(apply_symmetric_axes, g.axes.flat)
 
     g.map_dataframe(
         beleaguerment_regplot,
@@ -91,9 +136,7 @@ def beleaguerment_facetplot(
     )
 
     for ax in g.axes.flat:
-        ax.set_xlim(left=0)
-        ax.set_ylim(bottom=0)
-        ax.set_xticks(ax.get_yticks())
         ax.ticklabel_format(scilimits=(-2, 2))
+        ax.grid(True)
 
     return g
