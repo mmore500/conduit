@@ -1,5 +1,6 @@
 from difflib import restore
 import itertools as it
+import sys
 import typing
 import warnings
 
@@ -24,9 +25,11 @@ import pandas as pd
 import seaborn as sns
 
 from ..utils import (
+    open_dummy_axis,
     seaborn_monkeypatched_kdecache,
 )
 from ._compact_xaxis_units import compact_xaxis_units
+from ._DrawBatched import DrawBatched
 from ._get_defaults import get_default_linestyles, get_default_palette
 from ._set_performance_semantics_axis_lims import (
     set_performance_semantics_axis_lims,
@@ -43,8 +46,9 @@ def performance_semantics_scatterplot(
     heat_norm: typing.Optional[typing.Tuple[float, float]] = (0, 100),
     x: str = "Simstep Period Inlet (ns)",
     y: str = "Latency Simsteps Inlet",
+    batch_kwargs: typing.Dict = frozendict(batch_size=sys.maxsize),
     background_color: typing.Optional[str] = None,
-    bunching_smear_alpha: float = 0.3,
+    bunching_smear_alpha: float = 0.2,
     bunching_smear_color: str = "green",
     title: str = "",
     legend: typing.Literal["hide", "only", "show"] = "show",
@@ -53,6 +57,7 @@ def performance_semantics_scatterplot(
     legend_prop: typing.Dict = frozendict(),
     linestyles: typing.Optional[typing.List[str]] = None,
     palette: typing.Optional[typing.List[str]] = None,
+    scatter_kwargs: typing.Dict = frozendict(),
     show_bunching_smear: bool = True,
     size_inches: typing.Tuple[float, float] = (3.5, 2.5),
     xlabel: typing.Optional[str] = None,
@@ -118,36 +123,67 @@ def performance_semantics_scatterplot(
 
     # PLOT JOINT DISTRIBUTION
     ###########################################################################
-    # scatterplot observations
-    sns.scatterplot(
-        ax=jointgrid.ax_joint,
-        data=data,
-        x=x,
-        y=y,
-        hue=heat,
-        legend=False,  # use dummy below instead
-        hue_norm=heat_norm,
-        alpha=0.3,
-        markers="D",
-        palette="flare",
-        visible=(legend != "only"),
-    )
-    if heat is not None:
-        # use dummy data to force full legend representation of heat
-        num_legend_samples = 4
-        dummy_x = jointgrid.ax_joint.get_xlim()[0]
-        dummy_y = jointgrid.ax_joint.get_ylim()[0]
+    def scatter_batch(data, zorder):
+        # PLOT BUNCHING SMEAR ON JOINT DISTRIBUTION
+        ###########################################################################
+        # due to unwanted side effects, must come after legend plot
+        smear_duration_updates = (
+            data["Num Messages Per Laden Pull"] / data["Num Messages Per Pull"]
+        ) - 1  # noqa: fmt
+        if legend != "only" and show_bunching_smear:
+            jointgrid.ax_joint.errorbar(
+                data=data,
+                x=x,
+                y=y,
+                fmt="none",  # don't draw dat points
+                alpha=bunching_smear_alpha,
+                ecolor=bunching_smear_color,
+                yerr=np.vstack(
+                    [
+                        # below-error height
+                        smear_duration_updates / 2,
+                        # above-error height
+                        smear_duration_updates / 2,
+                    ],
+                ),
+                # doesn't work, need outer conditional
+                # visible=(legend != "only"),
+                # zorder=-5,
+                # legend=False,
+                zorder=zorder,
+            )
+
+        # PLOT P/S Scatter ON JOINT DISTRIBUTION
+        #######################################################################
         sns.scatterplot(
             ax=jointgrid.ax_joint,
-            x=np.full(num_legend_samples, dummy_x),
-            y=np.full(num_legend_samples, dummy_y),
-            hue=np.linspace(*heat_norm, num_legend_samples, dtype=int),
+            data=data,
+            x=x,
+            y=y,
+            hue=heat,
+            legend=False,  # use dummy below instead
             hue_norm=heat_norm,
-            alpha=0.0,
-            legend="full",
-            markers="D",
-            palette="flare",
+            **{
+                "alpha": 0.4,
+                "markers": "D",
+                "palette": "flare",
+                "visible": (legend != "only"),
+                **scatter_kwargs,
+            },
+            zorder=zorder,
         )
+
+    DrawBatched(
+        scatter_batch,
+        data,
+        {
+            "sort_by": heat,
+            **batch_kwargs,
+        },
+    )(
+        data=DrawBatched.DataPlaceholder,
+        zorder=DrawBatched.ZorderPlaceholder,
+    )
 
     # set up joint plot axes...
     # ... annotate latency simsteps inlet values
@@ -269,12 +305,27 @@ def performance_semantics_scatterplot(
         postfix_labels.extend([" ", bunching_smear_label])
         postfix_handles.extend([empty_patch, bunching_smear_handle])
 
-    (
-        handles,
-        labels,
-    ) = (
-        jointgrid.ax_joint.get_legend_handles_labels()
-    )  # get existing handles and labels
+    with open_dummy_axis() as dummy_ax:
+        if heat is not None:
+            # use dummy data to force full legend representation of heat
+            num_legend_samples = 4
+            sns.scatterplot(
+                ax=dummy_ax,
+                x=np.full(num_legend_samples, 0),
+                y=np.full(num_legend_samples, 0),
+                hue=np.linspace(*heat_norm, num_legend_samples, dtype=int),
+                hue_norm=heat_norm,
+                alpha=0.0,
+                legend="full",
+                markers="D",
+                palette="flare",
+            )
+
+        (
+            handles,
+            labels,
+        ) = dummy_ax.get_legend_handles_labels()
+
     if labels:
         first, *rest = map("{} %".format, labels)
         labels = [f"{first} Msgs Lost", *rest]
@@ -317,7 +368,9 @@ def performance_semantics_scatterplot(
         handles,
         labels,
         handler_map={
-            mpl_PathCollection: mpl_HandlerPathCollection(update_func=remove_alpha),
+            mpl_PathCollection: mpl_HandlerPathCollection(
+                update_func=remove_alpha
+            ),
             plt.Line2D: mpl_HandlerLine2D(update_func=remove_alpha),
         },  # apply helper function
         borderaxespad=0,
@@ -344,40 +397,6 @@ def performance_semantics_scatterplot(
 
     if legend == "hide":
         legend_.set_visible(False)
-
-    # PLOT BUNCHING SMEAR ON JOINT DISTRIBUTION
-    ###########################################################################
-    # due to unwanted side effects, must come after legend plot
-
-    smear_duration_updates = (
-        data["Num Messages Per Laden Pull"] / data["Num Messages Per Pull"]
-    ) - 1  # noqa: fmt
-    # smear_duration_updates = np.max(smear_duration_updates, 0)
-    # max_latency = data["Latency Simsteps Inlet"] + smear_duration_updates / 2
-    data["Latency lb"] = data["Latency Simsteps Inlet"] - (smear_duration_updates / 2)
-    # assert (smear_duration_updates / 2  <= data[y]).all()
-    if legend != "only" and show_bunching_smear:
-        jointgrid.ax_joint.errorbar(
-            data=data,
-            x=x,
-            y=y,
-            fmt="none",  # don't draw data points
-            alpha=bunching_smear_alpha,
-            ecolor=bunching_smear_color,
-            yerr=np.vstack(
-                [
-                    # below-error height
-                    # data["Latency Simsteps Inlet"] - min_latency,
-                    smear_duration_updates / 2,
-                    # above-error height
-                    # max_latency - data["Latency Simsteps Inlet"],
-                    smear_duration_updates / 2,
-                ],
-            ),
-            # doesn't work, need outer conditional
-            # visible=(legend != "only"),
-            zorder=-5,
-        )
 
     # FINALIZE
     ###########################################################################

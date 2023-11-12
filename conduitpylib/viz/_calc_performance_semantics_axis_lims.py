@@ -62,7 +62,7 @@ def calc_performance_semantics_axis_lims(
 
     # ensure adequate lower coverage
     xmin = min(0, xmin)
-    ymin = min(0.1, ymin)
+    ymin = min(0.4, ymin)
 
     # make room for rugplot elements
     xmax *= 1.1
