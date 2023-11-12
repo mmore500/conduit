@@ -105,5 +105,8 @@ def merge_inlet_outlet_data(
         df["Latency Simsteps Outlet"] * df["Simstep Period Outlet (s)"]
     )
     df["Log Num Processes"] = np.log(df["Num Processes"]) / np.log(4)
+    df["Log Compute Work"] = (
+        np.log(np.maximum(df["Amount Compute Work"], 1)) / np.log(64)
+    ).astype("int64")
 
     return df
