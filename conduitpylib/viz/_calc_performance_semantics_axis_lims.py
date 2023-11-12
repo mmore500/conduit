@@ -44,12 +44,12 @@ def calc_performance_semantics_axis_lims(
         alpha=0.0,
         cut=10,
         fill=True,  # needed for set_kde_lims
-        hue=hue,
         legend=False,
         levels=2,
         log_scale=(False, True),
         thresh=1e-12,
         zorder=100,
+        **({"hue": hue} if hue is not None else {}),
     )
 
     # ensure that entire KDE is visible
