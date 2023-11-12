@@ -40,7 +40,7 @@ RUN \
 RUN \
   apt-get update -qq \
     && \
-  apt-get install -y aptitude git  --allow-downgrades --no-install-recommends aptitude \
+  apt-get install -y aptitude git --allow-downgrades --no-install-recommends aptitude \
     && \
   aptitude install -y --without-recommends \
     build-essential \

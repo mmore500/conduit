@@ -24,8 +24,12 @@ def merge_inlet_outlet_data(
         df["Runtime Seconds Elapsed Inlet"] = df["Runtime Seconds Elapsed"]
         df["Runtime Seconds Elapsed Outlet"] = df["Runtime Seconds Elapsed"]
     else:
-        df["Runtime Seconds Elapsed Inlet"] = df_inlet["Runtime Seconds Elapsed"]
-        df["Runtime Seconds Elapsed Outlet"] = df_outlet["Runtime Seconds Elapsed"]
+        df["Runtime Seconds Elapsed Inlet"] = df_inlet[
+            "Runtime Seconds Elapsed"
+        ]
+        df["Runtime Seconds Elapsed Outlet"] = df_outlet[
+            "Runtime Seconds Elapsed"
+        ]
 
     conv = {
         "Num Inlets": "int64",
