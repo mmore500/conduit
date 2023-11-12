@@ -5,6 +5,7 @@ from ._apply_symmetric_axes import apply_symmetric_axes
 from ._beleaguerment_regplot import beleaguerment_regplot
 from ._beleaguerment_facetplot import beleaguerment_facetplot
 from ._compact_xaxis_units import compact_xaxis_units
+from ._DrawBatched import DrawBatched
 from ._errplot import errplot, facet_errplot
 from ._facet_barplot import facet_barplot
 from ._facet_boxplot import (
@@ -37,6 +38,7 @@ __all__ = [
     "beleaguerment_facetplot",
     "beleaguerment_regplot",
     "compact_xaxis_units",
+    "DrawBatched",
     "errplot",
     "facet_barplot",
     "facet_errplot",
