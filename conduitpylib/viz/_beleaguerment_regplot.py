@@ -59,7 +59,7 @@ def beleaguerment_regplot(
             **regline_kwargs,
         },
         scatter_kws={
-            "linewidth": 1,
+            "linewidths": 1,
             "marker": "D",
             "edgecolors": "black",
             **scatter_kwargs,
