@@ -28,7 +28,11 @@ class DrawBatched:
         if not mutate:
             data = data.copy()
 
-        num_batches = min(len(data) // batch_size, batch_limit)
+        round_up = batch_size - 1
+        num_batches = (len(data) + round_up) // batch_size
+        num_batches = min(num_batches, batch_limit)
+        if num_batches == 0:
+            assert len(data) == 0
 
         data = data.sample(frac=1, random_state=random_state)
         if sort_by is not None:
@@ -36,11 +40,12 @@ class DrawBatched:
         data.reset_index(drop=True, inplace=True)
 
         self._draw_func = draw_func
-        batches = np.array_split(data, num_batches)
+        batches = np.array_split(data, num_batches) if num_batches else []
         self._batches = progress_apply(batches)
 
     def __call__(self: "DrawBatched", *args, **kwargs) -> typing.Any:
         for i, batch in enumerate(self._batches):
+
             def replace(obj):
                 return {
                     id(self.DataPlaceholder): batch,
