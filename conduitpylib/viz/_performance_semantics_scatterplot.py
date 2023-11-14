@@ -176,7 +176,7 @@ def performance_semantics_scatterplot(
     DrawBatched(
         scatter_batch,
         data,
-        {
+        **{
             "sort_by": heat,
             **batch_kwargs,
         },
