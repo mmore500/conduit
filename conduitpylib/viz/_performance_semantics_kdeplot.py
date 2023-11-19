@@ -126,7 +126,7 @@ def performance_semantics_kdeplot(
         legend=False,
         levels=2,
         log_scale=(False, True),
-        linewidths=4,
+        linewidth=4,
         linestyles="solid",
         palette=palette,
         thresh=1e-12,
