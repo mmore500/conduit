@@ -54,7 +54,15 @@ def performance_semantics_kdeplot(
 
     assert len(palette) >= len(hue_order)
 
-    jointgrid = sns.JointGrid(data=data, x=x, y=y, hue=hue, ratio=8, height=8)
+    jointgrid = sns.JointGrid(
+        data=data,
+        x=x,
+        y=y,
+        hue=hue,
+        hue_order=hue_order,
+        ratio=8,
+        height=8,
+    )
 
     sns.kdeplot(
         ax=jointgrid.ax_joint,
@@ -65,6 +73,7 @@ def performance_semantics_kdeplot(
         cut=10,
         fill=True,
         hue=hue,
+        hue_order=hue_order,
         legend=False,
         levels=2,
         log_scale=(False, True),
@@ -95,6 +104,7 @@ def performance_semantics_kdeplot(
         cut=10,
         fill=True,
         hue=hue,
+        hue_order=hue_order,
         legend=False,
         levels=2,
         log_scale=(False, True),
@@ -112,6 +122,7 @@ def performance_semantics_kdeplot(
         cut=10,
         fill=False,
         hue=hue,
+        hue_order=hue_order,
         legend=False,
         levels=2,
         log_scale=(False, True),
@@ -166,6 +177,7 @@ def performance_semantics_kdeplot(
             color=palette[0],
             data=data,
             hue=hue,
+            hue_order=hue_order,
             palette=palette,
             legend=False,
             alpha=0.03,
