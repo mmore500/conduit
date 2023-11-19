@@ -4,6 +4,7 @@ import typing
 from unittest.mock import patch
 import warnings
 
+from frozendict import frozendict
 import pandas as pd
 import patchworklib as pw
 
@@ -27,9 +28,11 @@ def performance_semantics_facetplot(
     title: str = "",
     brick_size_graphs: typing.Tuple[float, float] = (0.51, 0.5),
     brick_size_legend: typing.Tuple[float, float] = (0.68, 1.2),
+    kde_kwargs: typing.Dict = frozendict(),
     legend_font_name: typing.Optional[str] = None,
     linestyles: typing.Optional[typing.List[str]] = None,
     palette: typing.Optional[typing.List[str]] = None,
+    scatter_kwargs: typing.Dict = frozendict(),
 ) -> pw.Brick:
     if hue is not None:
         if hue_order is None:
@@ -59,7 +62,8 @@ def performance_semantics_facetplot(
         y=y,
         hue=hue,
     )
-
+    xlim = (xmin, xmax)
+    ylim = (ymin, ymax)
 
     fig_legend = performance_semantics_scatterplot(
         data=data,
@@ -72,34 +76,42 @@ def performance_semantics_facetplot(
         linestyles=linestyles,
         palette=palette,
         title=title,
-        xlim=(xmin, xmax),
-        ylim=(ymin, ymax),
+        xlim=xlim,
+        ylim=ylim,
     )
     brick_legend = pw.load_seaborngrid(fig_legend, figsize=brick_size_legend)
 
     fig_kde = performance_semantics_kdeplot(
-        data=data,
-        x=x,
-        y=y,
-        hue=hue,
-        hue_order=hue_order,
-        palette=palette[:2],
-        xlim=(xmin, xmax),
-        ylim=(ymin, ymax),
+        **{
+            "data": data,
+            "x": x,
+            "y": y,
+            "hue": hue,
+            "hue_order": hue_order,
+            "palette": palette,
+            "xlim": xlim,
+            "ylim": ylim,
+            **kde_kwargs,
+        },
     )
     brick_kde = pw.load_seaborngrid(fig_kde, figsize=brick_size_graphs)
 
     fig_scatterplots = [
         performance_semantics_scatterplot(
-            data=data[data[hue] == hue_order[i]],
-            hue=None,
-            background_color=palette[i],
-            legend="hide",
-            linestyles=linestyles[i:],
-            palette=palette[i:],
-            xlim=(xmin, xmax),
-            ylabel="",
-            ylim=(ymin, ymax),
+            **{
+                "data": data[data[hue] == hue_order[i]],
+                "x": x,
+                "y": y,
+                "hue": None,
+                "background_color": palette[i],
+                "legend": "hide",
+                "linestyles": linestyles[i:],
+                "palette": palette[i:],
+                "xlim": xlim,
+                "ylabel": "",
+                "ylim": ylim,
+                **scatter_kwargs,
+            },
         )
         for i in range(len(hue_order))
     ]
