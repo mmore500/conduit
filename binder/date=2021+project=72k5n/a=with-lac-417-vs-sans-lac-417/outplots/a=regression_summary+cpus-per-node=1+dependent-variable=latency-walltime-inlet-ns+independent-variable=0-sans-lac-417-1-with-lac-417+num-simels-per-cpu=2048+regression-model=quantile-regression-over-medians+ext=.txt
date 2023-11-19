@@ -3,8 +3,8 @@
 Dep. Variable:     Q('Latency Walltime Inlet (ns)')   Pseudo R-squared:                0.000
 Model:                                     QuantReg   Bandwidth:                   9.991e+04
 Method:                               Least Squares   Sparsity:                    2.070e+05
-Date:                              Sat, 18 Nov 2023   No. Observations:                   20
-Time:                                      23:54:23   Df Residuals:                       18
+Date:                              Sun, 19 Nov 2023   No. Observations:                   20
+Time:                                      00:02:53   Df Residuals:                       18
                                                       Df Model:                            1
 ============================================================================================================
                                                coef    std err          t      P>|t|      [0.025      0.975]
