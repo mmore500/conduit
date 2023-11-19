@@ -3,8 +3,8 @@
 Dep. Variable:     Q('Delivery Failure Rate')   Pseudo R-squared:               0.7931
 Model:                               QuantReg   Bandwidth:                    0.005917
 Method:                         Least Squares   Sparsity:                      0.01436
-Date:                        Sat, 18 Nov 2023   No. Observations:                   20
-Time:                                23:51:12   Df Residuals:                       18
+Date:                        Sun, 19 Nov 2023   No. Observations:                   20
+Time:                                00:15:20   Df Residuals:                       18
                                                 Df Model:                            1
 =================================================================================================================
                                                     coef    std err          t      P>|t|      [0.025      0.975]
