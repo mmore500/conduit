@@ -7,7 +7,7 @@ import warnings
 import pandas as pd
 import patchworklib as pw
 
-from. _calc_performance_semantics_axis_lims import (
+from ._calc_performance_semantics_axis_lims import (
     calc_performance_semantics_axis_lims,
 )
 from ._get_defaults import get_default_linestyles, get_default_palette
@@ -20,18 +20,17 @@ from ._performance_semantics_scatterplot import (
 @patch.dict(pw.param, {"margin": 0.0})
 def performance_semantics_facetplot(
     data: pd.DataFrame,
-    x: str="Simstep Period Inlet (ns)",
-    y: str="Latency Simsteps Inlet",
+    x: str = "Simstep Period Inlet (ns)",
+    y: str = "Latency Simsteps Inlet",
     hue: typing.Optional[str] = None,
     hue_order: typing.Optional[typing.List[str]] = None,
     title: str = "",
     brick_size_graphs: typing.Tuple[float, float] = (0.51, 0.5),
     brick_size_legend: typing.Tuple[float, float] = (0.68, 1.2),
     legend_font_name: typing.Optional[str] = None,
-    palette: typing.Optional[typing.List[str]] = None,
     linestyles: typing.Optional[typing.List[str]] = None,
+    palette: typing.Optional[typing.List[str]] = None,
 ) -> pw.Brick:
-
     if hue is not None:
         if hue_order is None:
             hue_order = sorted(data[hue].unique())
