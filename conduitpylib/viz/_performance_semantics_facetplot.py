@@ -33,6 +33,7 @@ def performance_semantics_facetplot(
     linestyles: typing.Optional[typing.List[str]] = None,
     palette: typing.Optional[typing.List[str]] = None,
     scatter_kwargs: typing.Dict = frozendict(),
+    sharexy: bool = True,
 ) -> pw.Brick:
     if hue is not None:
         if hue_order is None:
@@ -62,8 +63,8 @@ def performance_semantics_facetplot(
         y=y,
         hue=hue,
     )
-    xlim = (xmin, xmax)
-    ylim = (ymin, ymax)
+    xlim = (xmin, xmax) if sharexy else None
+    ylim = (ymin, ymax) if sharexy else None
 
     fig_legend = performance_semantics_scatterplot(
         data=data,
