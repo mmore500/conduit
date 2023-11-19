@@ -29,6 +29,7 @@ from ..utils import (
     seaborn_monkeypatched_kdecache,
 )
 from ._compact_xaxis_units import compact_xaxis_units
+from ._draw_edge_markers import draw_edge_markers
 from ._DrawBatched import DrawBatched
 from ._get_defaults import get_default_linestyles, get_default_palette
 from ._set_performance_semantics_axis_lims import (
@@ -50,11 +51,13 @@ def performance_semantics_scatterplot(
     background_color: typing.Optional[str] = None,
     bunching_smear_alpha: float = 0.2,
     bunching_smear_color: str = "green",
+    edge_marker_kwargs: typing.Dict = frozendict(),
     legend: typing.Literal["hide", "only", "show"] = "show",
     legend_contents_pad: bool = False,
     legend_font_name: typing.Optional[str] = None,
     legend_prop: typing.Dict = frozendict(),
     linestyles: typing.Optional[typing.List[str]] = None,
+    outlier_percentile_x: float = 99.0,
     palette: typing.Optional[typing.List[str]] = None,
     scatter_kwargs: typing.Dict = frozendict(),
     show_bunching_smear: bool = True,
@@ -403,6 +406,7 @@ def performance_semantics_scatterplot(
     for ax in jointgrid.ax_marg_x, jointgrid.ax_marg_y:
         ax.get_xaxis().set_visible(False)
         ax.get_yaxis().set_visible(False)
+        ax.patch.set_alpha(0.0)
 
     set_performance_semantics_axis_lims(
         ax=jointgrid.ax_joint,
@@ -410,11 +414,14 @@ def performance_semantics_scatterplot(
         x=x,
         y=y,
         hue=hue,
+        outlier_percentile_x=outlier_percentile_x,
     )
     if xlim is not None:
         jointgrid.ax_joint.set_xlim(xlim)
     if ylim is not None:
         jointgrid.ax_joint.set_ylim(ylim)
+
+    draw_edge_markers(jointgrid.ax_joint, **edge_marker_kwargs)
 
     if xlabel is not None:
         jointgrid.ax_joint.set_xlabel(xlabel)
