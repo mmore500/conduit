@@ -21,6 +21,7 @@ import seaborn as sns
 from ..utils import seaborn_monkeypatched_kdecache
 from ._compact_xaxis_units import compact_xaxis_units
 from ._frame_scatter_subsets import frame_scatter_subsets
+from . import _get_defaults as cfg
 from ._set_performance_semantics_axis_lims import (
     set_performance_semantics_axis_lims,
 )
@@ -46,11 +47,10 @@ def performance_semantics_kdeplot(
         hue_order = sorted(data[hue].unique())
 
     if linestyles is None:
-        linestyles = [":", "--"]
+        linestyles = cfg.get_default_linestyles()
 
     if palette is None:
-        # alternate palettes: ["#648FFF", "#40B0A6"] & ["#40b07f", "#646eff"]
-        palette = ["#5c5cff", "#64e0ff"]
+        palette = cfg.get_default_palette()
 
     assert len(palette) >= len(hue_order)
 
@@ -86,7 +86,7 @@ def performance_semantics_kdeplot(
     # adapted from https://stackoverflow.com/a/70089200
     for path_collection, linestyle in zip(
         jointgrid.ax_joint.collections,
-        reversed(linestyles),
+        linestyles,
     ):
         # need faux fill for set_kde_lims. set
         color = path_collection.get_facecolor()
@@ -161,8 +161,8 @@ def performance_semantics_kdeplot(
     # set linestyles of marginal KDE outlines
     # https://stackoverflow.com/a/70089200
     for line, linestyle in it.chain(
-        zip(jointgrid.ax_marg_x.collections, linestyles),
-        zip(jointgrid.ax_marg_y.collections, linestyles),
+        zip(reversed(jointgrid.ax_marg_x.collections), linestyles),
+        zip(reversed(jointgrid.ax_marg_y.collections), linestyles),
     ):
         line.set_linestyle(linestyle)
         line.set_alpha(0.4)

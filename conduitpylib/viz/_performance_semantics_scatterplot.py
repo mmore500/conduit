@@ -112,7 +112,7 @@ def performance_semantics_scatterplot(
         # adapted from https://stackoverflow.com/a/70089200
         for path_collection, linestyle in zip(
             jointgrid.ax_joint.collections,
-            it.cycle(reversed(linestyles)),
+            it.cycle(linestyles),
         ):
             # need faux fill for set_kde_lims. set
             color = path_collection.get_facecolor()
@@ -260,7 +260,7 @@ def performance_semantics_scatterplot(
         # prefix_handles.append(empty_patch)
         # prefix_labels.append(hue)
         # ... then add legend entries manually
-        for ls, color, label in zip(reversed(linestyles), palette, hue_order):
+        for ls, color, label in zip(linestyles, palette, hue_order):
             example_patch = mpl_patches.Patch(
                 facecolor=color,
                 linestyle=ls,
