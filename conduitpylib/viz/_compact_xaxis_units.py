@@ -83,10 +83,13 @@ def compact_xaxis_units(
 
     # calculate new prefix from net multiplier
     new_multiplier = offset_amount * old_multiplier
-    approx_pow = np.log10(new_multiplier)
+    approx_pow = round_to_multiple(np.log10(new_multiplier), multiple=1)
     new_multiplier_pow = round_to_multiple(approx_pow, multiple=3)
-    assert np.isclose(approx_pow, new_multiplier_pow)
+    leftover_pow = approx_pow - new_multiplier_pow
+
     new_prefix = _si_prefixes.inv[new_multiplier_pow]
+    if leftover_pow:
+        new_prefix = f"10^{leftover_pow}" + new_prefix
 
     ax.xaxis.get_offset_text().set(visible=False)  # remove offset axis scale
     old_prefix_span = old_prefix_match.span(1)
