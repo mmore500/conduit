@@ -68,7 +68,7 @@ def calc_performance_semantics_axis_lims(
     ymin = min(0.4, ymin)
 
     # make room for rugplot elements
-    xmax *= 1.1
+    xmax *= 1.3
     ymax *= 3
 
     return xmin, xmax, ymin, ymax

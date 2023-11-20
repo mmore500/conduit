@@ -1,5 +1,6 @@
 """Visualization tools."""
 
+from ._align_marker import align_marker
 from ._annotate_spearman import annotate_spearman
 from ._apply_symmetric_axes import apply_symmetric_axes
 from ._beleaguerment_regplot import beleaguerment_regplot
@@ -34,6 +35,7 @@ from ._unsplit_regression import facet_unsplit_regression, unsplit_regression
 
 # adapted from https://stackoverflow.com/a/31079085
 __all__ = [
+    "align_marker",
     "apply_symmetric_axes",
     "annotate_spearman",
     "beleaguerment_facetplot",

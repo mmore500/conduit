@@ -1,3 +1,4 @@
+import contextlib
 from difflib import restore
 import itertools as it
 import sys
@@ -452,6 +453,14 @@ def performance_semantics_scatterplot(
             which="both",
         )
 
+    with contextlib.suppress(AttributeError):
+        jointgrid.ax_joint.ticklabel_format(
+            axis="x", style="sci", scilimits=(-2, 3)
+        )
+    with contextlib.suppress(AttributeError):
+        jointgrid.ax_joint.ticklabel_format(
+            axis="y", style="sci", scilimits=(-2, 3)
+        )
     compact_xaxis_units(ax=jointgrid.ax_joint, base_unit="s")
 
     if legend == "only":
