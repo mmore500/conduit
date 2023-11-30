@@ -4,10 +4,11 @@ import typing
 from unittest.mock import patch
 import warnings
 
+from frozendict import frozendict
 import pandas as pd
 import patchworklib as pw
 
-from. _calc_performance_semantics_axis_lims import (
+from ._calc_performance_semantics_axis_lims import (
     calc_performance_semantics_axis_lims,
 )
 from ._get_defaults import get_default_linestyles, get_default_palette
@@ -20,18 +21,20 @@ from ._performance_semantics_scatterplot import (
 @patch.dict(pw.param, {"margin": 0.0})
 def performance_semantics_facetplot(
     data: pd.DataFrame,
-    x: str="Simstep Period Inlet (ns)",
-    y: str="Latency Simsteps Inlet",
+    x: str = "Simstep Period Inlet (ns)",
+    y: str = "Latency Simsteps Inlet",
     hue: typing.Optional[str] = None,
     hue_order: typing.Optional[typing.List[str]] = None,
     title: str = "",
     brick_size_graphs: typing.Tuple[float, float] = (0.51, 0.5),
     brick_size_legend: typing.Tuple[float, float] = (0.68, 1.2),
+    kde_kwargs: typing.Dict = frozendict(),
     legend_font_name: typing.Optional[str] = None,
-    palette: typing.Optional[typing.List[str]] = None,
     linestyles: typing.Optional[typing.List[str]] = None,
+    palette: typing.Optional[typing.List[str]] = None,
+    scatter_kwargs: typing.Dict = frozendict(),
+    sharexy: bool = True,
 ) -> pw.Brick:
-
     if hue is not None:
         if hue_order is None:
             hue_order = sorted(data[hue].unique())
@@ -60,7 +63,8 @@ def performance_semantics_facetplot(
         y=y,
         hue=hue,
     )
-
+    xlim = (xmin, xmax) if sharexy else None
+    ylim = (ymin, ymax) if sharexy else None
 
     fig_legend = performance_semantics_scatterplot(
         data=data,
@@ -73,34 +77,42 @@ def performance_semantics_facetplot(
         linestyles=linestyles,
         palette=palette,
         title=title,
-        xlim=(xmin, xmax),
-        ylim=(ymin, ymax),
+        xlim=xlim,
+        ylim=ylim,
     )
     brick_legend = pw.load_seaborngrid(fig_legend, figsize=brick_size_legend)
 
     fig_kde = performance_semantics_kdeplot(
-        data=data,
-        x=x,
-        y=y,
-        hue=hue,
-        hue_order=hue_order,
-        palette=palette[:2],
-        xlim=(xmin, xmax),
-        ylim=(ymin, ymax),
+        **{
+            "data": data,
+            "x": x,
+            "y": y,
+            "hue": hue,
+            "hue_order": hue_order,
+            "palette": palette,
+            "xlim": xlim,
+            "ylim": ylim,
+            **kde_kwargs,
+        },
     )
     brick_kde = pw.load_seaborngrid(fig_kde, figsize=brick_size_graphs)
 
     fig_scatterplots = [
         performance_semantics_scatterplot(
-            data=data[data[hue] == hue_order[i]],
-            hue=None,
-            background_color=palette[i],
-            legend="hide",
-            linestyles=linestyles[i:],
-            palette=palette[i:],
-            xlim=(xmin, xmax),
-            ylabel="",
-            ylim=(ymin, ymax),
+            **{
+                "data": data[data[hue] == hue_order[i]],
+                "x": x,
+                "y": y,
+                "hue": None,
+                "background_color": palette[i],
+                "legend": "hide",
+                "linestyles": linestyles[i:],
+                "palette": palette[i:],
+                "xlim": xlim,
+                "ylabel": "",
+                "ylim": ylim,
+                **scatter_kwargs,
+            },
         )
         for i in range(len(hue_order))
     ]

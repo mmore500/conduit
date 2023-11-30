@@ -1,3 +1,4 @@
+import contextlib
 from difflib import restore
 import itertools as it
 import sys
@@ -29,6 +30,7 @@ from ..utils import (
     seaborn_monkeypatched_kdecache,
 )
 from ._compact_xaxis_units import compact_xaxis_units
+from ._draw_edge_markers import draw_edge_markers
 from ._DrawBatched import DrawBatched
 from ._get_defaults import get_default_linestyles, get_default_palette
 from ._set_performance_semantics_axis_lims import (
@@ -50,16 +52,18 @@ def performance_semantics_scatterplot(
     background_color: typing.Optional[str] = None,
     bunching_smear_alpha: float = 0.2,
     bunching_smear_color: str = "green",
-    title: str = "",
+    edge_marker_kwargs: typing.Dict = frozendict(),
     legend: typing.Literal["hide", "only", "show"] = "show",
     legend_contents_pad: bool = False,
     legend_font_name: typing.Optional[str] = None,
     legend_prop: typing.Dict = frozendict(),
     linestyles: typing.Optional[typing.List[str]] = None,
+    outlier_percentile_x: float = 99.0,
     palette: typing.Optional[typing.List[str]] = None,
     scatter_kwargs: typing.Dict = frozendict(),
     show_bunching_smear: bool = True,
     size_inches: typing.Tuple[float, float] = (3.5, 2.5),
+    title: str = "",
     xlabel: typing.Optional[str] = None,
     xlim: typing.Optional[typing.Tuple[float, float]] = None,
     ylabel: typing.Optional[str] = None,
@@ -112,7 +116,7 @@ def performance_semantics_scatterplot(
         # adapted from https://stackoverflow.com/a/70089200
         for path_collection, linestyle in zip(
             jointgrid.ax_joint.collections,
-            it.cycle(reversed(linestyles)),
+            it.cycle(linestyles),
         ):
             # need faux fill for set_kde_lims. set
             color = path_collection.get_facecolor()
@@ -260,7 +264,7 @@ def performance_semantics_scatterplot(
         # prefix_handles.append(empty_patch)
         # prefix_labels.append(hue)
         # ... then add legend entries manually
-        for ls, color, label in zip(reversed(linestyles), palette, hue_order):
+        for ls, color, label in zip(linestyles, palette, hue_order):
             example_patch = mpl_patches.Patch(
                 facecolor=color,
                 linestyle=ls,
@@ -403,6 +407,7 @@ def performance_semantics_scatterplot(
     for ax in jointgrid.ax_marg_x, jointgrid.ax_marg_y:
         ax.get_xaxis().set_visible(False)
         ax.get_yaxis().set_visible(False)
+        ax.patch.set_alpha(0.0)
 
     set_performance_semantics_axis_lims(
         ax=jointgrid.ax_joint,
@@ -410,11 +415,14 @@ def performance_semantics_scatterplot(
         x=x,
         y=y,
         hue=hue,
+        outlier_percentile_x=outlier_percentile_x,
     )
     if xlim is not None:
         jointgrid.ax_joint.set_xlim(xlim)
     if ylim is not None:
         jointgrid.ax_joint.set_ylim(ylim)
+
+    draw_edge_markers(jointgrid.ax_joint, **edge_marker_kwargs)
 
     if xlabel is not None:
         jointgrid.ax_joint.set_xlabel(xlabel)
@@ -445,6 +453,14 @@ def performance_semantics_scatterplot(
             which="both",
         )
 
+    with contextlib.suppress(AttributeError):
+        jointgrid.ax_joint.ticklabel_format(
+            axis="x", style="sci", scilimits=(-2, 3)
+        )
+    with contextlib.suppress(AttributeError):
+        jointgrid.ax_joint.ticklabel_format(
+            axis="y", style="sci", scilimits=(-2, 3)
+        )
     compact_xaxis_units(ax=jointgrid.ax_joint, base_unit="s")
 
     if legend == "only":

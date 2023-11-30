@@ -31,14 +31,17 @@ def calc_performance_semantics_axis_lims(
     x: str = "Simstep Period Inlet (ns)",
     y: str = "Latency Simsteps Inlet",
     hue: typing.Optional[str] = None,
+    outlier_percentile_x: float = 99.0,
 ) -> typing.Tuple[float, float, float, float]:
-
     dummy_fig = plt.figure()
     dummy_ax = dummy_fig.add_subplot(111)
 
+    percentile99x = np.percentile(data[x], outlier_percentile_x)
+    outlier_thresh = percentile99x * 2
+
     sns.kdeplot(
         ax=dummy_ax,
-        data=data,
+        data=data[data[x] < outlier_thresh],
         x=x,
         y=y,
         alpha=0.0,
@@ -65,7 +68,7 @@ def calc_performance_semantics_axis_lims(
     ymin = min(0.4, ymin)
 
     # make room for rugplot elements
-    xmax *= 1.1
+    xmax *= 1.3
     ymax *= 3
 
     return xmin, xmax, ymin, ymax

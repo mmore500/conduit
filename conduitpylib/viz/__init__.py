@@ -1,10 +1,12 @@
 """Visualization tools."""
 
+from ._align_marker import align_marker
 from ._annotate_spearman import annotate_spearman
 from ._apply_symmetric_axes import apply_symmetric_axes
 from ._beleaguerment_regplot import beleaguerment_regplot
 from ._beleaguerment_facetplot import beleaguerment_facetplot
 from ._compact_xaxis_units import compact_xaxis_units
+from ._draw_edge_markers import draw_edge_markers
 from ._DrawBatched import DrawBatched
 from ._errplot import errplot, facet_errplot
 from ._facet_barplot import facet_barplot
@@ -33,11 +35,13 @@ from ._unsplit_regression import facet_unsplit_regression, unsplit_regression
 
 # adapted from https://stackoverflow.com/a/31079085
 __all__ = [
+    "align_marker",
     "apply_symmetric_axes",
     "annotate_spearman",
     "beleaguerment_facetplot",
     "beleaguerment_regplot",
     "compact_xaxis_units",
+    "draw_edge_markers",
     "DrawBatched",
     "errplot",
     "facet_barplot",
