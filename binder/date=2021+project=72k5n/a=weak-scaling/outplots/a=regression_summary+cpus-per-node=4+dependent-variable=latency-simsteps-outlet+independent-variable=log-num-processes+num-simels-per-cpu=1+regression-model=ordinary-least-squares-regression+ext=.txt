@@ -4,7 +4,7 @@ Dep. Variable:     Q('Latency Simsteps Outlet')   R-squared:                    
 Model:                                      OLS   Adj. R-squared:                    nan
 Method:                           Least Squares   F-statistic:                       nan
 Date:                          Thu, 30 Nov 2023   Prob (F-statistic):                nan
-Time:                                  19:10:53   Log-Likelihood:                    nan
+Time:                                  19:18:17   Log-Likelihood:                    nan
 No. Observations:                            20   AIC:                               nan
 Df Residuals:                                18   BIC:                               nan
 Df Model:                                     1                                         

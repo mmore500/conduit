@@ -4,7 +4,7 @@ Dep. Variable:     Q('Latency Walltime Outlet (ns)')   Pseudo R-squared:        
 Model:                                      QuantReg   Bandwidth:                   6.856e+05
 Method:                                Least Squares   Sparsity:                    4.685e+06
 Date:                               Thu, 30 Nov 2023   No. Observations:                   50
-Time:                                       19:08:51   Df Residuals:                       48
+Time:                                       19:16:13   Df Residuals:                       48
                                                        Df Model:                            1
 ============================================================================================
                                coef    std err          t      P>|t|      [0.025      0.975]
