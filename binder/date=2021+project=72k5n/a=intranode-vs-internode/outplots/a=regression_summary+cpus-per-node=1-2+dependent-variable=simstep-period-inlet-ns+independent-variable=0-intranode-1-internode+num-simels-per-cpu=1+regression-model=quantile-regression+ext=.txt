@@ -4,7 +4,7 @@ Dep. Variable:     Q('Simstep Period Inlet (ns)')   Pseudo R-squared:           
 Model:                                   QuantReg   Bandwidth:                       460.4
 Method:                             Least Squares   Sparsity:                        853.9
 Date:                            Thu, 30 Nov 2023   No. Observations:                   20
-Time:                                    19:16:45   Df Residuals:                       18
+Time:                                    19:18:43   Df Residuals:                       18
                                                     Df Model:                            1
 ======================================================================================================
                                          coef    std err          t      P>|t|      [0.025      0.975]

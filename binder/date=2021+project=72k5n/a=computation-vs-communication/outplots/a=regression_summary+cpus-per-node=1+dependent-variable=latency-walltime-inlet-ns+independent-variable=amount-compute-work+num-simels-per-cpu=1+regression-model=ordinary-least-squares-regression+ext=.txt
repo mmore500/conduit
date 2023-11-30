@@ -4,7 +4,7 @@ Dep. Variable:     Q('Latency Walltime Inlet (ns)')   R-squared:                
 Model:                                          OLS   Adj. R-squared:                    nan
 Method:                               Least Squares   F-statistic:                       nan
 Date:                              Thu, 30 Nov 2023   Prob (F-statistic):                nan
-Time:                                      19:16:13   Log-Likelihood:                    nan
+Time:                                      19:18:11   Log-Likelihood:                    nan
 No. Observations:                                50   AIC:                               nan
 Df Residuals:                                    48   BIC:                               nan
 Df Model:                                         1                                         
