@@ -1,5 +1,5 @@
 git+git://github.com/mmore500/osfclient@9e2e14d#egg=osfclient
-keyname==0.5.4
+keyname==0.5.5
 numpy==1.23.5
 pandas==1.1.2
 frozendict==1.2
