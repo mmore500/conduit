@@ -28,8 +28,6 @@ echo "--------------------------------------"
 ################################################################################
 
 shopt -s nullglob
-export KEYNAME_CHOP_CHUNK_SIZE=255
-echo "KEYNAME_CHOP_CHUNK_SIZE ${KEYNAME_CHOP_CHUNK_SIZE}"
 
 # Find all .ipynb files and use xargs to run nbconvert in parallel, within the directory of each notebook
 find "${script_dir}/" -name "*.ipynb" -print0 | xargs -0 -n 1 -P 2 -I {} bash -c '{
@@ -38,6 +36,8 @@ find "${script_dir}/" -name "*.ipynb" -print0 | xargs -0 -n 1 -P 2 -I {} bash -c
   notebook_base=$(basename "$notebook")
   echo "Processing notebook ${notebook_base} in directory ${notebook_dir}"
   cd "${notebook_dir}"
+  export KEYNAME_CHOP_CHUNK_SIZE=255
+  echo "KEYNAME_CHOP_CHUNK_SIZE ${KEYNAME_CHOP_CHUNK_SIZE}"
   jupyter nbconvert \
     --to notebook --execute --inplace \
     --ExecutePreprocessor.timeout=600 \
