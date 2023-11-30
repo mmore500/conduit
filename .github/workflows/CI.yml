@@ -47,10 +47,8 @@ jobs:
     runs-on:
       group: ubuntu-runners
       labels: ubuntu-20.04-16core
-    needs:
-      - docker-build
     container:
-      image: mmore500/conduit:GITHUB_ACTION_${{ github.run_number }}
+      image: mmore500/conduit:GITHUB_ACTION_684
       # github actions requires root to access mounted volumes
       options: --user root
     steps:
