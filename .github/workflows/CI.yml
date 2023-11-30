@@ -52,28 +52,18 @@ jobs:
       # github actions requires root to access mounted volumes
       options: --user root
     steps:
+      - uses: actions/checkout@v2
+        # with:
+        #   submodules: 'recursive'
+      - run: python3 -m pip install -r requirements.txt
       # Adapted from https://askubuntu.com/a/524368
-      - run: cd /opt/conduit/binder && ./execute_notebooks.sh
-      - run: git config --global --add safe.directory /__w/conduit/conduit
-      - run: git init
-      - uses: fregante/setup-git-user@v1
-      - run: git commit --allow-empty -m "Initial commit"
-      - run: cp -r /opt/conduit/ deploy/
+      - run: cd binder && ./execute_notebooks.sh
+      # adapted from https://unix.stackexchange.com/a/545630
+      - run: find -type f -name "*.pdf" -exec bash -c 'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dBATCH -dQUIET -sOutputFile="new.pdf" "{}"; rm "{}"; mv "new.pdf" "{}";' {} \;
       - uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
+          folder: .
           branch: binder # The branch the action should deploy to.
-          folder: deploy # The folder the action should deploy.
-      - run: mkdir -p deploy-artifacts/
-      - run: cp -r /opt/conduit/binder/. deploy-artifacts/binder/
-      # adapted from https://unix.stackexchange.com/a/107647
-      - run: find deploy-artifacts/binder/ -type f ! \( -name '*.csv' -o -name '*.png' -o -name '*.jpg' -o -name '*.pdf' -o -name '*.json' -o -name '*.meta' -o -name '*.txt' -o -name '*.out' -o -name '*.ipynb' \) -delete
-      # delete symlinks (Overleaf is not compatible with symlinks)
-      # adapted from https://superuser.com/a/586948
-      - run: find deploy-artifacts/binder -type l -delete
-      - uses: JamesIves/github-pages-deploy-action@4.0.0
-        with:
-          branch: binder-artifacts # The branch the action should deploy to.
-          folder: deploy-artifacts # The folder the action should deploy.
 
   unit:
     name: Unit Tests
