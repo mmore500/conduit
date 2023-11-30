@@ -28,6 +28,8 @@ echo "--------------------------------------"
 ################################################################################
 
 shopt -s nullglob
+export KEYNAME_CHOP_CHUNK_SIZE=255
+echo "KEYNAME_CHOP_CHUNK_SIZE ${KEYNAME_CHOP_CHUNK_SIZE}"
 
 for notebook in "${script_dir}/"*.ipynb; do
   echo "notebook ${notebook}"
