@@ -9,13 +9,14 @@
  [*]
  end_of_line = lf
  insert_final_newline = true
+ max_line_length = 79
 
  # Matches multiple files with brace expansion notation
  # Set default charset and tab width
  [*.{js,py}]
  charset = utf-8
  indent_style = space
- indent_size = 2
+ indent_size = 4
 
  # cpp and hpp file indentation
  [*.{cpp,hpp}]
