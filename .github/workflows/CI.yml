@@ -44,7 +44,9 @@ jobs:
 
   binder:
     name: Notebooks
-    runs-on: ubuntu-20.04
+    runs-on:
+      group: ubuntu-runners
+      labels: ubuntu-20.04-16core
     needs:
       - docker-build
     container:
