@@ -53,6 +53,7 @@ RUN \
     fonts-liberation \
     gconf-service \
     gdb \
+    ghostscript \
     gpg-agent \
     gzip \
     g++-9 \
