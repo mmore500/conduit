@@ -38,7 +38,7 @@ for notebook in "${script_dir}/"*.ipynb; do
   jupyter nbconvert \
     --to notebook --execute --inplace \
     --ExecutePreprocessor.timeout=600 \
-    "${notebook}" &
+    "${notebook}"
 done
 
 shopt -u nullglob
@@ -52,9 +52,7 @@ echo "-------------------------"
 shopt -s nullglob
 
 for script in "${script_dir}/"*/execute_notebooks.sh; do
-  "${script}" "$@" &
+  "${script}" "$@"
 done
 
 shopt -u nullglob
-
-wait

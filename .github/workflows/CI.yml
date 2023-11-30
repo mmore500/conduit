@@ -44,9 +44,9 @@ jobs:
 
   binder:
     name: Notebooks
-    runs-on:
-      group: ubuntu-runners
-      labels: ubuntu-20.04-16core
+    runs-on: ubuntu-20.04
+    needs:
+      - docker-build
     container:
       image: mmore500/conduit:GITHUB_ACTION_684
       # github actions requires root to access mounted volumes
