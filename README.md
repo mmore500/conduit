@@ -14,7 +14,7 @@
 [![DOI](https://zenodo.org/badge/278400174.svg)](https://zenodo.org/badge/latestdoi/278400174)
 
   * Free software: MIT license
-  * Documentation: [https://conduit.fyi](https://conduit.fyi)
+  * Documentation: [https://uit.readthedocs.io](https://uit.readthedocs.io/en/latest/)
   * header-only, namespace-encapsulated software
 
 C++ library that wraps intra-thread, inter-thread, and inter-process communication in a uniform, modular, object-oriented interface, with a focus on asynchronous high-performance computing applications.
