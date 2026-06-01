@@ -567,6 +567,8 @@ If Conduit contributes to a scholarly work, please cite it as
 }
 ```
 
+Conduit is built using the [Empirical C++ library](https://github.com/devosoft/Empirical/); consider also citing [Empirical](https://github.com/devosoft/Empirical).
+
 You can also access metadata to cite Conduit in our [`CITATION.cff` file](https://github.com/mmore500/conduit/blob/master/CITATION.cff), and find additional citation formats in our [documentation](https://uit.readthedocs.io/en/latest/citing.html).
 
 And don't forget to leave a [star on GitHub](https://github.com/mmore500/conduit/stargazers)!
