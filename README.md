@@ -542,6 +542,35 @@ Although tools in this namespace may be useful outside the scope of the conduit 
 The low-level API resides in the `uit` ("conduit") namespace.
 The high-level API resides in the `netuit` ("networked conduit") namespace.
 
+## Citing
+
+If Conduit contributes to a scholarly work, please cite it as
+
+> Moreno, M. A., Papa, S. R., & Ofria, C. (2021). Conduit: A C++ Library for Best-Effort High Performance Computing. In Proceedings of the Genetic and Evolutionary Computation Conference Companion (pp. 1795–1800). Association for Computing Machinery. https://doi.org/10.1145/3449726.3463205
+
+```bibtex
+@inproceedings{moreno2021conduit,
+  author = {Moreno, Matthew Andres and Papa, Santiago Rodriguez and Ofria, Charles},
+  title = {Conduit: A C++ Library for Best-Effort High Performance Computing},
+  year = {2021},
+  isbn = {9781450383516},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3449726.3463205},
+  doi = {10.1145/3449726.3463205},
+  booktitle = {Proceedings of the Genetic and Evolutionary Computation Conference Companion},
+  pages = {1795–1800},
+  numpages = {6},
+  keywords = {high performance computing, best-effort computing},
+  location = {Lille, France},
+  series = {GECCO '21}
+}
+```
+
+You can also access metadata to cite Conduit in our [`CITATION.cff` file](https://github.com/mmore500/conduit/blob/master/CITATION.cff), and find additional citation formats in our [documentation](https://uit.readthedocs.io/en/latest/citing.html).
+
+And don't forget to leave a [star on GitHub](https://github.com/mmore500/conduit/stargazers)!
+
 ## Acknowledgement
 
 This project is built using the [Empirical C++ library](https://github.com/devosoft/Empirical/).
