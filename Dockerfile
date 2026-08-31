@@ -1,5 +1,5 @@
 # Pull base image.
-FROM ubuntu:bionic-20180125@sha256:d6f6cc62b6bed64387d84ca227b76b9cc45049b0d0aefee0deec21ed19a300bf
+FROM ubuntu:focal-20231003@sha256:218bb51abbd1864df8be26166f847547b3851a89999ca7bfceb85ca9b5d2e95d
 
 COPY . /opt/conduit/
 
@@ -36,20 +36,16 @@ RUN \
     && \
   echo "buffed apt-get resiliency"
 
-RUN \
-  find /etc/apt -type f -name '*.list' -exec sed -i 's/\(^deb.*-backports.*\)/#\1/; s/\(^deb.*-updates.*\)/#\1/; s/\(^deb.*-proposed.*\)/#\1/; s/\(^deb.*-security.*\)/#\1/' {} + \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "removed -backports, -updates, -proposed, -security repositories"
-
 # adapted in part form https://www.cloudsavvyit.com/13461/how-to-run-puppeteer-and-headless-chrome-in-a-docker-container/
 RUN \
   apt-get update -qq \
     && \
-  apt-get install -y --allow-downgrades --no-install-recommends \
+  apt-get install -y aptitude git --allow-downgrades --no-install-recommends aptitude \
+    && \
+  aptitude install -y --without-recommends \
     build-essential \
     ca-certificates \
+    clang-7 \
     cmake \
     curl \
     doxygen \
@@ -57,8 +53,10 @@ RUN \
     fonts-liberation \
     gconf-service \
     gdb \
+    ghostscript \
     gpg-agent \
     gzip \
+    g++-9 \
     hdf5-helpers \
     hdf5-tools \
     htop \
@@ -67,6 +65,7 @@ RUN \
     libatk1.0-0 \
     libc6 \
     libcairo2 \
+    libclang-7-dev \
     libcups2 \
     libcurl4 \
     libcurl4-openssl-dev \
@@ -80,14 +79,14 @@ RUN \
     libgtk-3-0 \
     libicu-dev \
     libjpeg-dev \
-    libhdf5-100 \
-    libhdf5-cpp-100 \
+    libhdf5-103 \
+    libhdf5-cpp-103 \
     libhdf5-dev \
     libhdf5-doc \
     libhdf5-mpi-dev \
-    libhdf5-mpich-100 \
+    libhdf5-mpich-103 \
     libhdf5-mpich-dev \
-    libhdf5-openmpi-100 \
+    libhdf5-openmpi-103 \
     libhdf5-openmpi-dev \
     libhdf5-serial-dev \
     libmpich-dev \
@@ -95,13 +94,13 @@ RUN \
     libnspr4 \
     libnss3 \
     libopenmpi-dev \
-    libopenmpi2 \
+    # libopenmpi2 \
     libpango-1.0-0 \
     libpangocairo-1.0-0 \
     libpng-dev \
     libpthread-stubs0-dev \
     libstdc++-7-dev \
-    libstdc++6=8-20180414-1ubuntu2 \
+    libstdc++6 \
     libx11-6 \
     libx11-xcb1 \
     libxcb1 \
@@ -115,6 +114,8 @@ RUN \
     libxrender1 \
     libxss1 \
     libxtst6 \
+    llvm-7 \
+    llvm-7-dev \
     locales \
     lsb-release \
     man \
@@ -128,35 +129,29 @@ RUN \
     openmpi-common \
     openmpi-doc \
     openssh-server \
-    python-dev \
-    python-h5py \
-    python-pip \
-    python-setuptools \
-    python-sphinx \
-    python-virtualenv \
-    python-wheel \
+    # python-dev \
+    # python-h5py \
+    # python-pip \
+    # python-setuptools \
+    # python-virtualenv \
+    # python-wheel \
     python3-dev \
     python3-h5py \
     python3-pip \
     python3-setuptools \
-    python3-sphinx \
     python3-virtualenv \
     python3-wheel \
     rename \
     rsync \
     slurm-client \
     software-properties-common \
+    sphinx-doc \
+    sphinx-common \
     tar \
     unzip \
     vim \
     wget \
     xdg-utils \
-    && \
-  add-apt-repository ppa:git-core/ppa -y \
-    && \
-  apt-get update -qq \
-    && \
-  apt-get install -y --no-install-recommends git \
     && \
   apt-get clean \
     && \
@@ -164,54 +159,13 @@ RUN \
     && \
   echo "installed fundamentals"
 
-# adapted in part from https://askubuntu.com/a/916451
-RUN \
-  apt-get update -qq \
-    && \
-  rm /etc/apt/apt.conf.d/docker-gzip-indexes \
-    && \
-  apt-get purge apt-show-versions \
-    && \
-  rm /var/lib/apt/lists/*lz4 \
-    && \
-  apt-get -o Acquire::GzipIndexes=false update \
-    && \
-  add-apt-repository -y ppa:ubuntu-toolchain-r/test \
-    && \
-  wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add - \
-    && \
-  apt-add-repository "deb https://apt.llvm.org/xenial/ llvm-toolchain-xenial-7 main" \
-    && \
-  add-apt-repository -y ppa:ubuntu-toolchain-r/test \
-    && \
-  apt-get update -qq \
-    && \
-  apt-get clean \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "configured packaging system"
-
-RUN \
-  apt-get update -qq \
-    && \
-  apt-get install -qq \
-    libclang-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    llvm-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    llvm-7-dev=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    clang-7=1:7.1.0~svn353565-1~exp1~20190408084827.60 \
-    g++-9=9.4.0-1ubuntu1~18.04 \
-    && \
-  apt-get clean \
-    && \
-  rm -rf /var/lib/apt/lists/* \
-    && \
-  echo "installed llvm-7 dependencies"
-
 # magic from https://github.com/puppeteer/puppeteer/issues/3451#issuecomment-523961368
 RUN echo 'kernel.unprivileged_userns_clone=1' > /etc/sysctl.d/userns.conf
 
+# git confifg, see https://stackoverflow.com/a/76769867
 RUN \
+  git config --global url."https://".insteadOf git:// \
+    && \
   python3 -m pip install --timeout 60 --retries 100 --upgrade pip==21.3.1 \
     && \
   python3 -m pip install --timeout 60 --retries 100 --ignore-installed -r /opt/conduit/third-party/requirements.txt \
@@ -231,9 +185,11 @@ RUN \
     && \
   update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-7 90 \
     && \
-  npm install -g n@6.7.0 \
+  npm install -g n@6.7.0 semver@7.5.4 \
     && \
-  n 12.18.2 \
+  npm cache clean --force \
+    && \
+  PATH="$PATH" n 12.18.2 \
     && \
   export python="/usr/bin/python" \
     && \
@@ -291,6 +247,7 @@ RUN \
     && \
   echo "user added and granted permissions to /opt and /home/user"
 
+# git safe directory: https://stackoverflow.com/a/73100228/17332200
 RUN \
   mkdir /context/ \
     && \
@@ -299,6 +256,10 @@ RUN \
   mkdir /__w/ \
     && \
   chown user:user /__w/ \
+    && \
+  git config --global --add safe.directory '*' \
+    && \
+  git config --global --add safe.directory /__w/conduit/conduit \
     && \
   echo "/context/ /__w/ directories set up, user granted permissions"
 

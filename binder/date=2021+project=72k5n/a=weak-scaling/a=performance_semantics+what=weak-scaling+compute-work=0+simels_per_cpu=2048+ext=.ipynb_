@@ -1,0 +1,211 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import random\n",
+    "\n",
+    "from keyname import keyname as kn\n",
+    "from matplotlib import pyplot as plt\n",
+    "from nbmetalog import nbmetalog as nbm\n",
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "import patchworklib as pw\n",
+    "from scipy import stats\n",
+    "import seaborn as sns\n",
+    "from slugify import slugify\n",
+    "import statsmodels.api as sm\n",
+    "import statsmodels.formula.api as smf\n",
+    "from teeplot import teeplot as tp\n",
+    "import itertools as it\n",
+    "import matplotlib.patheffects as pe\n",
+    "from tqdm import tqdm\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.random.seed(1)\n",
+    "random.seed(1)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from conduitpylib.viz import _get_defaults as cfg\n",
+    "\n",
+    "from conduitpylib.viz import (\n",
+    "    get_notomoji_font_path,\n",
+    "    performance_semantics_scatterplot,\n",
+    "    performance_semantics_facetplot,\n",
+    ")\n",
+    "\n",
+    "from conduitpylib.wrangle import (\n",
+    "    retrieve_and_prepare_delta_dataframes,\n",
+    ")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "nbm.print_metadata()\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Get Data\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "longitudinal, snapshot = retrieve_and_prepare_delta_dataframes(\n",
+    "    df_inlet_url=\"https://osf.io/2rdj6/download\",\n",
+    "    df_outlet_url=\"https://osf.io/9utpr/download\",\n",
+    "    treatment_column=None,\n",
+    ")\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Compare Finalized and Rolling Measures\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "treatment_variables = [\n",
+    "    \"Cpus Per Node\",\n",
+    "    \"Num Simels Per Cpu\",\n",
+    "    \"Num Processes\",\n",
+    "]\n",
+    "\n",
+    "for data in \"longitudinal\", \"snapshot\":\n",
+    "    for treatment, group in eval(data).groupby(treatment_variables):\n",
+    "        group_df = group.reset_index()\n",
+    "        tp.tee(\n",
+    "            performance_semantics_scatterplot,\n",
+    "            data=group_df,\n",
+    "            x=\"Simstep Period Inlet (ns)\",\n",
+    "            y=\"Latency Simsteps Inlet\",\n",
+    "            heat=\"% Msgs Lost\",\n",
+    "            legend_font_name=get_notomoji_font_path(),\n",
+    "            title=(\n",
+    "                \"\ud83d\udcf6\"\n",
+    "                + \"{}\".format(\"\u2610\u2680\u2681\u2682\u2683\u2684\u2685\"[treatment[0]])\n",
+    "                + (\"\ud83c\udfe0\" if treatment[1] == 1 else \"\ud83c\udfd8\ufe0f\")\n",
+    "            ),\n",
+    "            batch_kwargs={\n",
+    "                \"batch_size\": 10,\n",
+    "                \"progress_apply\": tqdm,\n",
+    "            },\n",
+    "            bunching_smear_alpha=0.2,\n",
+    "            scatter_kwargs={\n",
+    "                \"alpha\": 0.4,\n",
+    "            },\n",
+    "            teeplot_outattrs={\n",
+    "                \"treatment\": slugify(\n",
+    "                    \"-\".join(\n",
+    "                        map(\n",
+    "                            \"-\".join,\n",
+    "                            zip(treatment_variables, map(str, treatment)),\n",
+    "                        ),\n",
+    "                    ),\n",
+    "                ),\n",
+    "            },\n",
+    "        )\n",
+    "        plt.show()\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "treatment_variables = [\n",
+    "    \"Cpus Per Node\",\n",
+    "    \"Num Simels Per Cpu\",\n",
+    "]\n",
+    "\n",
+    "for data in \"longitudinal\", \"snapshot\":\n",
+    "    for treatment, group in eval(data).groupby(treatment_variables):\n",
+    "        group_df = group.reset_index()\n",
+    "        plt.clf()\n",
+    "        with pw.patched_axisgrid():\n",
+    "            facetplot = tp.tee(\n",
+    "                performance_semantics_facetplot,\n",
+    "                data=eval(data),\n",
+    "                x=\"Simstep Period Inlet (ns)\",\n",
+    "                y=\"Latency Simsteps Inlet\",\n",
+    "                hue=\"Log Num Processes\",\n",
+    "                legend_font_name=get_notomoji_font_path(),\n",
+    "                scatter_kwargs={\n",
+    "                    \"x\": \"Simstep Period Inlet (ns)\",\n",
+    "                },\n",
+    "                sharexy=True,\n",
+    "                title=(\n",
+    "                    \"\ud83d\udcf6\"\n",
+    "                    + \"{}\".format(\"\u2610\u2680\u2681\u2682\u2683\u2684\u2685\"[treatment[0]])\n",
+    "                    + (\"\ud83c\udfe0\" if treatment[1] == 1 else \"\ud83c\udfd8\ufe0f\")\n",
+    "                ),\n",
+    "                teeplot_outattrs={\n",
+    "                    \"data\": slugify(data),\n",
+    "                    \"treatment\": slugify(\n",
+    "                        \"-\".join(\n",
+    "                            map(\n",
+    "                                \"-\".join,\n",
+    "                                zip(treatment_variables, map(str, treatment)),\n",
+    "                            ),\n",
+    "                        ),\n",
+    "                    ),\n",
+    "                },\n",
+    "            )\n",
+    "            display(facetplot)\n",
+    "            plt.show()\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
